@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# object: http://ogp.me/ns/object# article: http://ogp.me/ns/article# profile: http://ogp.me/ns/profile#">
+    <meta charset="UTF-8">
+
+    
+    
+    
+    
+    
+    
+    
+
+    <link as="script" href="https://assets-cdn.github.com/assets/frameworks-35477f5e4824848c27a44f62e3cd3b009cc9fbedf6074ddd8765ee70d09499c6.js" rel="preload">
+    
+    <link as="script" href="https://assets-cdn.github.com/assets/github-121e6c09bb508b99e99c9fb1d41a3b377c131efae6cf3423f6ca2b3492ed4b3b.js" rel="preload">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Language" content="en">
+    <meta name="viewport" content="width=device-width">
+    
+    
+    <title>metaprogramming-ruby/1.2-open-classes.markdown at master · elite28/metaprogramming-ruby</title>
+    <link rel="search" type="application/opensearchdescription+xml" href="https://github.com/opensearch.xml" title="GitHub">
+    <link rel="fluid-icon" href="https://github.com/fluidicon.png" title="GitHub">
+    <link rel="apple-touch-icon" href="https://github.com/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="57x57" href="https://github.com/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="https://github.com/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="https://github.com/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="https://github.com/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="https://github.com/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="https://github.com/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="https://github.com/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="https://github.com/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://github.com/apple-touch-icon-180x180.png">
+    <meta property="fb:app_id" content="1401488693436528">
+
+      <meta content="https://avatars3.githubusercontent.com/u/347701?v=3&amp;s=400" name="twitter:image:src"><meta content="@github" name="twitter:site"><meta content="summary" name="twitter:card"><meta content="elite28/metaprogramming-ruby" name="twitter:title"><meta content="metaprogramming-ruby - translate metaprogramming ruby" name="twitter:description">
+      <meta content="https://avatars3.githubusercontent.com/u/347701?v=3&amp;s=400" property="og:image"><meta content="GitHub" property="og:site_name"><meta content="object" property="og:type"><meta content="elite28/metaprogramming-ruby" property="og:title"><meta content="https://github.com/elite28/metaprogramming-ruby" property="og:url"><meta content="metaprogramming-ruby - translate metaprogramming ruby" property="og:description">
+      <meta name="browser-stats-url" content="https://api.github.com/_private/browser/stats">
+    <meta name="browser-errors-url" content="https://api.github.com/_private/browser/errors">
+    <link rel="assets" href="https://assets-cdn.github.com/">
+    <link rel="web-socket" href="wss://live.github.com/_sockets/Nzc1ODY3OjYyYTY2ZmZhMGI5MTg2MzUwNWU5OTBjMDFhNGIwMDE1OmVkYWU4NmIwNmY4NTk2MTI2MGZjM2FmYWMwZjNiMzc5ZTg1Mzc4YTE4Yzg5MGM1NjFmMjU1MjA3ODkxZTIzMWY=--b5eacf1241695fdd9d37e48394ff53e3b6a0d5a7">
+    <meta name="pjax-timeout" content="1000">
+    <link rel="sudo-modal" href="https://github.com/sessions/sudo_modal">
+
+    <meta name="msapplication-TileImage" content="/windows-tile.png">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    
+
+    <meta name="google-site-verification" content="KT5gs8h0wvaagLKAVWq8bbeNwnZZK1r1XQysX3xurLU">
+<meta name="google-site-verification" content="ZzhVyEFwb7w3e0-uOTltm8Jsck2F5StVihD0exw2fsA">
+    <meta name="google-analytics" content="UA-3769691-2">
+
+<meta content="collector.githubapp.com" name="octolytics-host"><meta content="github" name="octolytics-app-id"><meta content="75884F80:2D36E:4EFC876:578C2F59" name="octolytics-dimension-request_id"><meta content="775867" name="octolytics-actor-id"><meta content="bamanzi" name="octolytics-actor-login"><meta content="e1253ee97109340dbe6750e67f37cd50634b775c85ce81905686b977ca0464a6" name="octolytics-actor-hash">
+
+
+
+
+  <meta class="js-ga-set" name="dimension1" content="Logged In">
+
+
+
+        <meta name="hostname" content="github.com">
+    <meta name="user-login" content="bamanzi">
+
+        <meta name="expected-hostname" content="github.com">
+      <meta name="js-proxy-site-detection-payload" content="ZmE5OTJjODBjZjJjZDI3YjhkMzczYjFjYTUxNjFiZmIyOTA1Y2ZlNDc3NmIzZDU1Yzc0Mjk1Y2NlNGViMWZmYnx7InJlbW90ZV9hZGRyZXNzIjoiMTE3LjEzNi43OS4xMjgiLCJyZXF1ZXN0X2lkIjoiNzU4ODRGODA6MkQzNkU6NEVGQzg3Njo1NzhDMkY1OSIsInRpbWVzdGFtcCI6MTQ2ODgwNDk1NH0=">
+
+
+      <link rel="mask-icon" href="https://assets-cdn.github.com/pinned-octocat.svg" color="#4078c0">
+      <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+    <meta name="html-safe-nonce" content="9bc6031c5c1839e039b5149459eaa3d47140a792">
+    <meta content="84da46a5ca5dc665232f8b3d18ab77c9d7b5d735" name="form-nonce">
+
+    <meta http-equiv="x-pjax-version" content="843306541653655d87637353a377dafa">
+    
+
+      
+  <meta name="description" content="metaprogramming-ruby - translate metaprogramming ruby">
+  <meta name="go-import" content="github.com/elite28/metaprogramming-ruby git https://github.com/elite28/metaprogramming-ruby.git">
+
+  <meta content="347701" name="octolytics-dimension-user_id"><meta content="elite28" name="octolytics-dimension-user_login"><meta content="1640276" name="octolytics-dimension-repository_id"><meta content="elite28/metaprogramming-ruby" name="octolytics-dimension-repository_nwo"><meta content="true" name="octolytics-dimension-repository_public"><meta content="false" name="octolytics-dimension-repository_is_fork"><meta content="1640276" name="octolytics-dimension-repository_network_root_id"><meta content="elite28/metaprogramming-ruby" name="octolytics-dimension-repository_network_root_nwo">
+  <link href="https://github.com/elite28/metaprogramming-ruby/commits/master.atom" rel="alternate" title="Recent Commits to metaprogramming-ruby:master" type="application/atom+xml">
+
+
+      
+  <meta data-pjax-transient="true" name="selected-link" value="repo_source"><meta content="/<user-name>/<repo-name>/blob/show" data-pjax-transient="true" name="analytics-location"><link rel="canonical" href="https://github.com/elite28/metaprogramming-ruby/blob/master/zh/02-metaprogramming-ruby/01-Monday-The-Object-Model/1.2-open-classes.markdown" data-pjax-transient="true"><link data-pjax-transient="true" href="https://github.com/elite28/metaprogramming-ruby/commits/master.atom" rel="alternate" title="Recent Commits to metaprogramming-ruby:master" type="application/atom+xml">
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+
+
+  <body class="logged-in   env-production linux vis-public">
+    <div id="js-pjax-loader-bar" class="pjax-loader-bar"><div style="width: 100%;" class="progress"></div></div>
+    <a href="#start-of-content" tabindex="1" class="accessibility-aid js-skip-to-content">Skip to content</a>
+
+    
+    
+    
+
+
+
+        <div class="header header-logged-in true" role="banner">
+  <div class="container clearfix">
+
+    <a class="header-logo-invertocat" href="https://github.com/" data-hotkey="g d" aria-label="Homepage" data-ga-click="Header, go to dashboard, icon:logo">
+  <svg aria-hidden="true" class="octicon octicon-mark-github" height="28" version="1.1" viewBox="0 0 16 16" width="28"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>
+</a>
+
+
+        <div class="header-search scoped-search site-scoped-search js-site-search" role="search">
+  <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="https://github.com/elite28/metaprogramming-ruby/search" class="js-site-search-form" data-scoped-search-url="/elite28/metaprogramming-ruby/search" data-unscoped-search-url="/search" method="get"><div style="margin: 0px; padding: 0px; display: inline;"><input name="utf8" value="✓" type="hidden"></div>
+    <label class="form-control header-search-wrapper js-chromeless-input-container">
+      <div class="header-search-scope">This repository</div>
+      <input class="form-control header-search-input js-site-search-focus js-site-search-field is-clearable" data-hotkey="s" name="q" placeholder="Search" aria-label="Search this repository" data-unscoped-placeholder="Search GitHub" data-scoped-placeholder="Search" tabindex="1" autocapitalize="off" type="text">
+    </label>
+</form></div>
+
+
+      <ul class="header-nav left" role="navigation">
+        <li class="header-nav-item">
+          <a href="https://github.com/pulls" class="js-selected-navigation-item header-nav-link" data-ga-click="Header, click, Nav menu - item:pulls context:user" data-hotkey="g p" data-selected-links="/pulls /pulls/assigned /pulls/mentioned /pulls">
+            Pull requests
+</a>        </li>
+        <li class="header-nav-item">
+          <a href="https://github.com/issues" class="js-selected-navigation-item header-nav-link" data-ga-click="Header, click, Nav menu - item:issues context:user" data-hotkey="g i" data-selected-links="/issues /issues/assigned /issues/mentioned /issues">
+            Issues
+</a>        </li>
+          <li class="header-nav-item">
+            <a class="header-nav-link" href="https://gist.github.com/" data-ga-click="Header, go to gist, text:gist">Gist</a>
+          </li>
+      </ul>
+
+    
+<ul class="header-nav user-nav right" id="user-links">
+  <li class="header-nav-item">
+    
+    <a href="https://github.com/notifications" aria-label="You have unread notifications" class="header-nav-link notification-indicator tooltipped tooltipped-s js-socket-channel js-notification-indicator" data-channel="tenant:1:notification-changed:775867" data-ga-click="Header, go to notifications, icon:unread" data-hotkey="g n">
+        <span class="mail-status unread"></span>
+        <svg aria-hidden="true" class="octicon octicon-bell" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path d="M14 12v1H0v-1l.73-.58c.77-.77.81-2.55 1.19-4.42C2.69 3.23 6 2 6 2c0-.55.45-1 1-1s1 .45 1 1c0 0 3.39 1.23 4.16 5 .38 1.88.42 3.66 1.19 4.42l.66.58H14zm-7 4c1.11 0 2-.89 2-2H5c0 1.11.89 2 2 2z"></path></svg>
+</a>
+  </li>
+
+  <li class="header-nav-item dropdown js-menu-container">
+    <a class="header-nav-link tooltipped tooltipped-s js-menu-target" href="https://github.com/new" aria-label="Create new…" data-ga-click="Header, create new, icon:add">
+      <svg aria-hidden="true" class="octicon octicon-plus left" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 9H7v5H5V9H0V7h5V2h2v5h5z"></path></svg>
+      <span class="dropdown-caret"></span>
+    </a>
+
+    <div class="dropdown-menu-content js-menu-content">
+      <ul class="dropdown-menu dropdown-menu-sw">
+        
+<a class="dropdown-item" href="https://github.com/new" data-ga-click="Header, create new repository">
+  New repository
+</a>
+
+  <a class="dropdown-item" href="https://github.com/new/import" data-ga-click="Header, import a repository">
+    Import repository
+  </a>
+
+
+  <a class="dropdown-item" href="https://github.com/organizations/new" data-ga-click="Header, create new organization">
+    New organization
+  </a>
+
+
+
+
+      </ul>
+    </div>
+  </li>
+
+  <li class="header-nav-item dropdown js-menu-container">
+    <a class="header-nav-link name tooltipped tooltipped-sw js-menu-target" href="https://github.com/bamanzi" aria-label="View profile and more" data-ga-click="Header, show menu, icon:avatar">
+      <img alt="@bamanzi" class="avatar" src="775867.dat" width="20" height="20">
+      <span class="dropdown-caret"></span>
+    </a>
+
+    <div class="dropdown-menu-content js-menu-content">
+      <div class="dropdown-menu dropdown-menu-sw">
+        <div class="dropdown-header header-nav-current-user css-truncate">
+          Signed in as <strong class="css-truncate-target">bamanzi</strong>
+        </div>
+
+        <div class="dropdown-divider"></div>
+
+        <a class="dropdown-item" href="https://github.com/bamanzi" data-ga-click="Header, go to profile, text:your profile">
+          Your profile
+        </a>
+        <a class="dropdown-item" href="https://github.com/stars" data-ga-click="Header, go to starred repos, text:your stars">
+          Your stars
+        </a>
+        <a class="dropdown-item" href="https://github.com/explore" data-ga-click="Header, go to explore, text:explore">
+          Explore
+        </a>
+          <a class="dropdown-item" href="https://github.com/integrations" data-ga-click="Header, go to integrations, text:integrations">
+            Integrations
+          </a>
+        <a class="dropdown-item" href="https://help.github.com/" data-ga-click="Header, go to help, text:help">
+          Help
+        </a>
+
+
+        <div class="dropdown-divider"></div>
+
+        <a class="dropdown-item" href="https://github.com/settings/profile" data-ga-click="Header, go to settings, icon:settings">
+          Settings
+        </a>
+
+        <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="https://github.com/logout" class="logout-form" data-form-nonce="84da46a5ca5dc665232f8b3d18ab77c9d7b5d735" method="post"><div style="margin: 0px; padding: 0px; display: inline;"><input name="utf8" value="✓" type="hidden"><input name="authenticity_token" value="vQxDbK8JRYx4xDCUA2Q/VjJhpNwiheCXnNfAeDB+jGF5rRmLkxwiVs//uN29s66wi9XBt7GI6xhQJjIyQwfCwg==" type="hidden"></div>
+          <button class="dropdown-item dropdown-signout" data-ga-click="Header, sign out, icon:logout">
+            Sign out
+          </button>
+</form>      </div>
+    </div>
+  </li>
+</ul>
+
+
+    
+  </div>
+</div>
+
+
+      
+
+
+    <div id="start-of-content" class="accessibility-aid"></div>
+
+      <div id="js-flash-container">
+</div>
+
+
+    <div role="main">
+        <div itemscope="" itemtype="http://schema.org/SoftwareSourceCode">
+    <div id="js-repo-pjax-container" data-pjax-container=""><div class="pagehead repohead instapaper_ignore readability-menu experiment-repo-nav">
+  <div class="container repohead-details-container">
+
+    
+
+<ul class="pagehead-actions">
+
+  <li>
+        <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="https://github.com/notifications/subscribe" class="js-social-container" data-autosubmit="true" data-form-nonce="84da46a5ca5dc665232f8b3d18ab77c9d7b5d735" data-remote="true" method="post"><div style="margin: 0px; padding: 0px; display: inline;"><input name="utf8" value="✓" type="hidden"><input name="authenticity_token" value="JmRvyyWlN4ibILsyDESDvf9HLVxdLTCFlb1lUzO+GqyRvhgjghchslVck21sVqvI6Btt1hJGA2+WRGS93Ef2sQ==" type="hidden"></div>      <input class="form-control" id="repository_id" name="repository_id" value="1640276" type="hidden">
+
+        <div class="select-menu js-menu-container js-select-menu">
+          <a href="https://github.com/elite28/metaprogramming-ruby/subscription" class="btn btn-sm btn-with-count select-menu-button js-menu-target" role="button" tabindex="0" aria-haspopup="true" data-ga-click="Repository, click Watch settings, action:blob#show">
+            <span class="js-select-button">
+              <svg aria-hidden="true" class="octicon octicon-eye" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M8.06 2C3 2 0 8 0 8s3 6 8.06 6C13 14 16 8 16 8s-3-6-7.94-6zM8 12c-2.2 0-4-1.78-4-4 0-2.2 1.8-4 4-4 2.22 0 4 1.8 4 4 0 2.22-1.78 4-4 4zm2-4c0 1.11-.89 2-2 2-1.11 0-2-.89-2-2 0-1.11.89-2 2-2 1.11 0 2 .89 2 2z"></path></svg>
+              Watch
+            </span>
+          </a>
+          <a class="social-count js-social-count" href="https://github.com/elite28/metaprogramming-ruby/watchers">
+            1
+          </a>
+
+        <div class="select-menu-modal-holder">
+          <div class="select-menu-modal subscription-menu-modal js-menu-content" aria-hidden="true">
+            <div class="select-menu-header js-navigation-enable" tabindex="-1">
+              <svg aria-label="Close" class="octicon octicon-x js-menu-close" height="16" role="img" version="1.1" viewBox="0 0 12 16" width="12"><path d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48z"></path></svg>
+              <span class="select-menu-title">Notifications</span>
+            </div>
+
+              <div class="select-menu-list js-navigation-container" role="menu">
+
+                <div class="select-menu-item js-navigation-item selected" role="menuitem" tabindex="0">
+                  <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+                  <div class="select-menu-item-text">
+                    <input checked="checked" id="do_included" name="do" value="included" type="radio">
+                    <span class="select-menu-item-heading">Not watching</span>
+                    <span class="description">Be notified when participating or @mentioned.</span>
+                    <span class="js-select-button-text hidden-select-button-text">
+                      <svg aria-hidden="true" class="octicon octicon-eye" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M8.06 2C3 2 0 8 0 8s3 6 8.06 6C13 14 16 8 16 8s-3-6-7.94-6zM8 12c-2.2 0-4-1.78-4-4 0-2.2 1.8-4 4-4 2.22 0 4 1.8 4 4 0 2.22-1.78 4-4 4zm2-4c0 1.11-.89 2-2 2-1.11 0-2-.89-2-2 0-1.11.89-2 2-2 1.11 0 2 .89 2 2z"></path></svg>
+                      Watch
+                    </span>
+                  </div>
+                </div>
+
+                <div class="select-menu-item js-navigation-item " role="menuitem" tabindex="0">
+                  <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+                  <div class="select-menu-item-text">
+                    <input id="do_subscribed" name="do" value="subscribed" type="radio">
+                    <span class="select-menu-item-heading">Watching</span>
+                    <span class="description">Be notified of all conversations.</span>
+                    <span class="js-select-button-text hidden-select-button-text">
+                      <svg aria-hidden="true" class="octicon octicon-eye" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M8.06 2C3 2 0 8 0 8s3 6 8.06 6C13 14 16 8 16 8s-3-6-7.94-6zM8 12c-2.2 0-4-1.78-4-4 0-2.2 1.8-4 4-4 2.22 0 4 1.8 4 4 0 2.22-1.78 4-4 4zm2-4c0 1.11-.89 2-2 2-1.11 0-2-.89-2-2 0-1.11.89-2 2-2 1.11 0 2 .89 2 2z"></path></svg>
+                      Unwatch
+                    </span>
+                  </div>
+                </div>
+
+                <div class="select-menu-item js-navigation-item " role="menuitem" tabindex="0">
+                  <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+                  <div class="select-menu-item-text">
+                    <input id="do_ignore" name="do" value="ignore" type="radio">
+                    <span class="select-menu-item-heading">Ignoring</span>
+                    <span class="description">Never be notified.</span>
+                    <span class="js-select-button-text hidden-select-button-text">
+                      <svg aria-hidden="true" class="octicon octicon-mute" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M8 2.81v10.38c0 .67-.81 1-1.28.53L3 10H1c-.55 0-1-.45-1-1V7c0-.55.45-1 1-1h2l3.72-3.72C7.19 1.81 8 2.14 8 2.81zm7.53 3.22l-1.06-1.06-1.97 1.97-1.97-1.97-1.06 1.06L11.44 8 9.47 9.97l1.06 1.06 1.97-1.97 1.97 1.97 1.06-1.06L13.56 8l1.97-1.97z"></path></svg>
+                      Stop ignoring
+                    </span>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+</form>
+  </li>
+
+  <li>
+    
+  <div class="js-toggler-container js-social-container starring-container on">
+
+    <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="https://github.com/elite28/metaprogramming-ruby/unstar" class="starred" data-form-nonce="84da46a5ca5dc665232f8b3d18ab77c9d7b5d735" data-remote="true" method="post"><div style="margin: 0px; padding: 0px; display: inline;"><input name="utf8" value="✓" type="hidden"><input name="authenticity_token" value="P1GW7ViPWJsVFIH8BJC/wwBfq51l+16o1D6rEZe5natqM0RJc/ytD1MRTZrLJyHJ83UcVxsekkqNMpnR4SOZ7Q==" type="hidden"></div>
+      <button class="btn btn-sm btn-with-count js-toggler-target" aria-label="Unstar this repository" title="Unstar elite28/metaprogramming-ruby" data-ga-click="Repository, click unstar button, action:blob#show; text:Unstar">
+        <svg aria-hidden="true" class="octicon octicon-star" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path d="M14 6l-4.9-.64L7 1 4.9 5.36 0 6l3.6 3.26L2.67 14 7 11.67 11.33 14l-.93-4.74z"></path></svg>
+        Unstar
+      </button>
+        <a class="social-count js-social-count" href="https://github.com/elite28/metaprogramming-ruby/stargazers">
+          5
+        </a>
+</form>
+    <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="https://github.com/elite28/metaprogramming-ruby/star" class="unstarred" data-form-nonce="84da46a5ca5dc665232f8b3d18ab77c9d7b5d735" data-remote="true" method="post"><div style="margin: 0px; padding: 0px; display: inline;"><input name="utf8" value="✓" type="hidden"><input name="authenticity_token" value="oC6rQ0fLb1y8+ZUzdxscA3EWkvha/ujVX+NAkKBp9tVYtZAsC3zI0KFcFgJQs/ErmAlnP/LLvFnouTY4zILCGQ==" type="hidden"></div>
+      <button class="btn btn-sm btn-with-count js-toggler-target" aria-label="Star this repository" title="Star elite28/metaprogramming-ruby" data-ga-click="Repository, click star button, action:blob#show; text:Star">
+        <svg aria-hidden="true" class="octicon octicon-star" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path d="M14 6l-4.9-.64L7 1 4.9 5.36 0 6l3.6 3.26L2.67 14 7 11.67 11.33 14l-.93-4.74z"></path></svg>
+        Star
+      </button>
+        <a class="social-count js-social-count" href="https://github.com/elite28/metaprogramming-ruby/stargazers">
+          5
+        </a>
+</form>  </div>
+
+  </li>
+
+  <li>
+          <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="https://github.com/elite28/metaprogramming-ruby/fork" class="btn-with-count" data-form-nonce="84da46a5ca5dc665232f8b3d18ab77c9d7b5d735" method="post"><div style="margin: 0px; padding: 0px; display: inline;"><input name="utf8" value="✓" type="hidden"><input name="authenticity_token" value="juEX0yHRIbbMNU4XKQC68glt91jm1LyLEAJZkYUZdPco89R+uu4OmFGefXjIsty1iFVnJF2Kb5arVkF0Z23yOA==" type="hidden"></div>
+            <button type="submit" class="btn btn-sm btn-with-count" data-ga-click="Repository, show fork modal, action:blob#show; text:Fork" title="Fork your own copy of elite28/metaprogramming-ruby to your account" aria-label="Fork your own copy of elite28/metaprogramming-ruby to your account">
+              <svg aria-hidden="true" class="octicon octicon-repo-forked" height="16" version="1.1" viewBox="0 0 10 16" width="10"><path d="M8 1a1.993 1.993 0 0 0-1 3.72V6L5 8 3 6V4.72A1.993 1.993 0 0 0 2 1a1.993 1.993 0 0 0-1 3.72V6.5l3 3v1.78A1.993 1.993 0 0 0 5 15a1.993 1.993 0 0 0 1-3.72V9.5l3-3V4.72A1.993 1.993 0 0 0 8 1zM2 4.2C1.34 4.2.8 3.65.8 3c0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zm3 10c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zm3-10c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2z"></path></svg>
+              Fork
+            </button>
+</form>
+    <a href="https://github.com/elite28/metaprogramming-ruby/network" class="social-count">
+      1
+    </a>
+  </li>
+</ul>
+
+    <h1 class="public ">
+  <svg aria-hidden="true" class="octicon octicon-repo" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M4 9H3V8h1v1zm0-3H3v1h1V6zm0-2H3v1h1V4zm0-2H3v1h1V2zm8-1v12c0 .55-.45 1-1 1H6v2l-1.5-1.5L3 16v-2H1c-.55 0-1-.45-1-1V1c0-.55.45-1 1-1h10c.55 0 1 .45 1 1zm-1 10H1v2h2v-1h3v1h5v-2zm0-10H2v9h9V1z"></path></svg>
+  <span class="author" itemprop="author"><a href="https://github.com/elite28" class="url fn" rel="author">elite28</a></span><!--
+--><span class="path-divider">/</span><!--
+--><strong itemprop="name"><a href="https://github.com/elite28/metaprogramming-ruby" data-pjax="#js-repo-pjax-container">metaprogramming-ruby</a></strong>
+
+</h1>
+
+  </div>
+  <div class="container">
+    
+<nav class="reponav js-repo-nav js-sidenav-container-pjax" itemscope="" itemtype="http://schema.org/BreadcrumbList" role="navigation" data-pjax="#js-repo-pjax-container">
+
+  <span itemscope="" itemtype="http://schema.org/ListItem" itemprop="itemListElement">
+    <a href="https://github.com/elite28/metaprogramming-ruby" aria-selected="true" class="js-selected-navigation-item reponav-item selected" data-hotkey="g c" data-selected-links="repo_source repo_downloads repo_commits repo_releases repo_tags repo_branches /elite28/metaprogramming-ruby" itemprop="url">
+      <svg aria-hidden="true" class="octicon octicon-code" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path d="M9.5 3L8 4.5 11.5 8 8 11.5 9.5 13 14 8 9.5 3zm-5 0L0 8l4.5 5L6 11.5 2.5 8 6 4.5 4.5 3z"></path></svg>
+      <span itemprop="name">Code</span>
+      <meta itemprop="position" content="1">
+</a>  </span>
+
+
+  <span itemscope="" itemtype="http://schema.org/ListItem" itemprop="itemListElement">
+    <a href="https://github.com/elite28/metaprogramming-ruby/pulls" class="js-selected-navigation-item reponav-item" data-hotkey="g p" data-selected-links="repo_pulls /elite28/metaprogramming-ruby/pulls" itemprop="url">
+      <svg aria-hidden="true" class="octicon octicon-git-pull-request" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M11 11.28V5c-.03-.78-.34-1.47-.94-2.06C9.46 2.35 8.78 2.03 8 2H7V0L4 3l3 3V4h1c.27.02.48.11.69.31.21.2.3.42.31.69v6.28A1.993 1.993 0 0 0 10 15a1.993 1.993 0 0 0 1-3.72zm-1 2.92c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zM4 3c0-1.11-.89-2-2-2a1.993 1.993 0 0 0-1 3.72v6.56A1.993 1.993 0 0 0 2 15a1.993 1.993 0 0 0 1-3.72V4.72c.59-.34 1-.98 1-1.72zm-.8 10c0 .66-.55 1.2-1.2 1.2-.65 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2zM2 4.2C1.34 4.2.8 3.65.8 3c0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2z"></path></svg>
+      <span itemprop="name">Pull requests</span>
+      <span class="counter">0</span>
+      <meta itemprop="position" content="3">
+</a>  </span>
+
+    <a href="https://github.com/elite28/metaprogramming-ruby/wiki" class="js-selected-navigation-item reponav-item" data-hotkey="g w" data-selected-links="repo_wiki /elite28/metaprogramming-ruby/wiki">
+      <svg aria-hidden="true" class="octicon octicon-book" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M3 5h4v1H3V5zm0 3h4V7H3v1zm0 2h4V9H3v1zm11-5h-4v1h4V5zm0 2h-4v1h4V7zm0 2h-4v1h4V9zm2-6v9c0 .55-.45 1-1 1H9.5l-1 1-1-1H2c-.55 0-1-.45-1-1V3c0-.55.45-1 1-1h5.5l1 1 1-1H15c.55 0 1 .45 1 1zm-8 .5L7.5 3H2v9h6V3.5zm7-.5H9.5l-.5.5V12h6V3z"></path></svg>
+      Wiki
+</a>
+
+  <a href="https://github.com/elite28/metaprogramming-ruby/pulse" class="js-selected-navigation-item reponav-item" data-selected-links="pulse /elite28/metaprogramming-ruby/pulse">
+    <svg aria-hidden="true" class="octicon octicon-pulse" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path d="M11.5 8L8.8 5.4 6.6 8.5 5.5 1.6 2.38 8H0v2h3.6l.9-1.8.9 5.4L9 8.5l1.6 1.5H14V8z"></path></svg>
+    Pulse
+</a>
+  <a href="https://github.com/elite28/metaprogramming-ruby/graphs" class="js-selected-navigation-item reponav-item" data-selected-links="repo_graphs repo_contributors /elite28/metaprogramming-ruby/graphs">
+    <svg aria-hidden="true" class="octicon octicon-graph" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M16 14v1H0V0h1v14h15zM5 13H3V8h2v5zm4 0H7V3h2v10zm4 0h-2V6h2v7z"></path></svg>
+    Graphs
+</a>
+
+</nav>
+
+  </div>
+</div><div class="container new-discussion-timeline experiment-repo-nav">
+  <div class="repository-content">
+
+    
+
+<a href="https://github.com/elite28/metaprogramming-ruby/blob/5d6c7f02a7d8ea12fd08f286606c73b464ab04b1/zh/02-metaprogramming-ruby/01-Monday-The-Object-Model/1.2-open-classes.markdown" class="hidden js-permalink-shortcut" data-hotkey="y">Permalink</a>
+
+<!-- blob contrib key: blob_contributors:v21:c8a2da0c715a2fee1305e2baaa60d2c6 -->
+
+<div class="file-navigation js-zeroclipboard-container has-zeroclipboard-disabled">
+  
+<div class="select-menu branch-select-menu js-menu-container js-select-menu left">
+  <button class="btn btn-sm select-menu-button js-menu-target css-truncate" data-hotkey="w" title="master" type="button" aria-label="Switch branches or tags" tabindex="0" aria-haspopup="true">
+    <i>Branch:</i>
+    <span class="js-select-button css-truncate-target">master</span>
+  </button>
+
+  <div class="select-menu-modal-holder js-menu-content js-navigation-container" data-pjax="" aria-hidden="true">
+
+    <div class="select-menu-modal">
+      <div class="select-menu-header">
+        <svg aria-label="Close" class="octicon octicon-x js-menu-close" height="16" role="img" version="1.1" viewBox="0 0 12 16" width="12"><path d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48z"></path></svg>
+        <span class="select-menu-title">Switch branches/tags</span>
+      </div>
+
+      <div class="select-menu-filters">
+        <div class="select-menu-text-filter">
+          <input aria-label="Filter branches/tags" id="context-commitish-filter-field" class="form-control js-filterable-field js-navigation-enable" placeholder="Filter branches/tags" type="text">
+        </div>
+        <div class="select-menu-tabs">
+          <ul>
+            <li class="select-menu-tab">
+              <a href="#" data-tab-filter="branches" data-filter-placeholder="Filter branches/tags" class="js-select-menu-tab" role="tab">Branches</a>
+            </li>
+            <li class="select-menu-tab">
+              <a href="#" data-tab-filter="tags" data-filter-placeholder="Find a tag…" class="js-select-menu-tab" role="tab">Tags</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="select-menu-list select-menu-tab-bucket js-select-menu-tab-bucket" data-tab-filter="branches" role="menu">
+
+        <div data-filterable-for="context-commitish-filter-field" data-filterable-type="substring">
+
+
+            <a class="select-menu-item js-navigation-item js-navigation-open selected" href="#" data-name="master" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target js-select-menu-filter-text" title="master">
+                master
+              </span>
+            </a>
+        </div>
+
+          <div class="select-menu-no-results">Nothing to show</div>
+      </div>
+
+      <div class="select-menu-list select-menu-tab-bucket js-select-menu-tab-bucket" data-tab-filter="tags">
+        <div data-filterable-for="context-commitish-filter-field" data-filterable-type="substring">
+
+
+        </div>
+
+        <div class="select-menu-no-results">Nothing to show</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+  <div class="btn-group right">
+    <a href="https://github.com/elite28/metaprogramming-ruby/find/master" class="js-pjax-capture-input btn btn-sm" data-pjax="" data-hotkey="t">
+      Find file
+    </a>
+    
+  </div>
+  <div class="breadcrumb js-zeroclipboard-target">
+    <span class="repo-root js-repo-root"><span class="js-path-segment"><a href="https://github.com/elite28/metaprogramming-ruby"><span>metaprogramming-ruby</span></a></span></span><span class="separator">/</span><span class="js-path-segment"><a href="https://github.com/elite28/metaprogramming-ruby/tree/master/zh"><span>zh</span></a></span><span class="separator">/</span><span class="js-path-segment"><a href="https://github.com/elite28/metaprogramming-ruby/tree/master/zh/02-metaprogramming-ruby"><span>02-metaprogramming-ruby</span></a></span><span class="separator">/</span><span class="js-path-segment"><a href="https://github.com/elite28/metaprogramming-ruby/tree/master/zh/02-metaprogramming-ruby/01-Monday-The-Object-Model"><span>01-Monday-The-Object-Model</span></a></span><span class="separator">/</span><strong class="final-path">1.2-open-classes.markdown</strong>
+  </div>
+</div>
+
+
+  <div class="commit-tease">
+      <span class="right">
+        <a class="commit-tease-sha" href="https://github.com/elite28/metaprogramming-ruby/commit/020f7f8afc167cf68aa778785df7bd699c3cea63" data-pjax="">
+          020f7f8
+        </a>
+        <relative-time title="Sun 24 Apr 2011 02:56:19 PM HKT" datetime="2011-04-24T06:56:19Z">on Apr 24, 2011</relative-time>
+      </span>
+      <div>
+        <img alt="@ZhangHanDong" class="avatar" src="27893.dat" width="20" height="20">
+        <a href="https://github.com/ZhangHanDong" class="user-mention" rel="contributor">ZhangHanDong</a>
+          <a href="https://github.com/elite28/metaprogramming-ruby/commit/020f7f8afc167cf68aa778785df7bd699c3cea63" class="message" data-pjax="true" title="1.2 end">1.2 end</a>
+      </div>
+
+    <div class="commit-tease-contributors">
+      <button type="button" class="btn-link muted-link contributors-toggle" data-facebox="#blob_contributors_box">
+        <strong>1</strong>
+         contributor
+      </button>
+      
+    </div>
+
+    <div id="blob_contributors_box" style="display: none;">
+      <h2 class="facebox-header" data-facebox-id="facebox-header">Users who have contributed to this file</h2>
+      <ul class="facebox-user-list" data-facebox-id="facebox-description">
+          <li class="facebox-user-list-item">
+            <img alt="@ZhangHanDong" src="27893_001.dat" width="24" height="24">
+            <a href="https://github.com/ZhangHanDong">ZhangHanDong</a>
+          </li>
+      </ul>
+    </div>
+  </div>
+
+<div class="file">
+  <div class="file-header">
+  <div class="file-actions">
+
+    <div class="btn-group">
+      <a href="https://github.com/elite28/metaprogramming-ruby/raw/master/zh/02-metaprogramming-ruby/01-Monday-The-Object-Model/1.2-open-classes.markdown" class="btn btn-sm " id="raw-url">Raw</a>
+        <a href="https://github.com/elite28/metaprogramming-ruby/blame/master/zh/02-metaprogramming-ruby/01-Monday-The-Object-Model/1.2-open-classes.markdown" class="btn btn-sm js-update-url-with-hash">Blame</a>
+      <a href="https://github.com/elite28/metaprogramming-ruby/commits/master/zh/02-metaprogramming-ruby/01-Monday-The-Object-Model/1.2-open-classes.markdown" class="btn btn-sm " rel="nofollow">History</a>
+    </div>
+
+
+        <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="https://github.com/elite28/metaprogramming-ruby/edit/master/zh/02-metaprogramming-ruby/01-Monday-The-Object-Model/1.2-open-classes.markdown" class="inline-form js-update-url-with-hash" data-form-nonce="84da46a5ca5dc665232f8b3d18ab77c9d7b5d735" method="post"><div style="margin: 0px; padding: 0px; display: inline;"><input name="utf8" value="✓" type="hidden"><input name="authenticity_token" value="agPzXl+BT/LXCmUzkexxFbQclqM8u7Cb9GUXFgrRluXj5ky1pHkcD39c/x9/10+KkYi4lCyVnc99SHEqUscxjQ==" type="hidden"></div>
+          <button class="btn-octicon tooltipped tooltipped-nw" type="submit" aria-label="Fork this project and edit the file" data-hotkey="e" data-disable-with="">
+            <svg aria-hidden="true" class="octicon octicon-pencil" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path d="M0 12v3h3l8-8-3-3-8 8zm3 2H1v-2h1v1h1v1zm10.3-9.3L12 6 9 3l1.3-1.3a.996.996 0 0 1 1.41 0l1.59 1.59c.39.39.39 1.02 0 1.41z"></path></svg>
+          </button>
+</form>        <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="https://github.com/elite28/metaprogramming-ruby/delete/master/zh/02-metaprogramming-ruby/01-Monday-The-Object-Model/1.2-open-classes.markdown" class="inline-form" data-form-nonce="84da46a5ca5dc665232f8b3d18ab77c9d7b5d735" method="post"><div style="margin: 0px; padding: 0px; display: inline;"><input name="utf8" value="✓" type="hidden"><input name="authenticity_token" value="ga8wNrw/S1OPFQp+ljOJTJTg7etF43p/MLTzyvB57hIRmNOif8Kn5cRzrV1Iz5olzFk3lROfSfP60anagoKqOw==" type="hidden"></div>
+          <button class="btn-octicon btn-octicon-danger tooltipped tooltipped-nw" type="submit" aria-label="Fork this project and delete the file" data-disable-with="">
+            <svg aria-hidden="true" class="octicon octicon-trashcan" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M11 2H9c0-.55-.45-1-1-1H5c-.55 0-1 .45-1 1H2c-.55 0-1 .45-1 1v1c0 .55.45 1 1 1v9c0 .55.45 1 1 1h7c.55 0 1-.45 1-1V5c.55 0 1-.45 1-1V3c0-.55-.45-1-1-1zm-1 12H3V5h1v8h1V5h1v8h1V5h1v8h1V5h1v9zm1-10H2V3h9v1z"></path></svg>
+          </button>
+</form>  </div>
+
+  <div class="file-info">
+      159 lines (110 sloc)
+      <span class="file-info-divider"></span>
+    7.89 KB
+  </div>
+</div>
+
+  
+  <div id="readme" class="readme blob instapaper_body">
+    <article class="markdown-body entry-content" itemprop="text"><h2><a id="user-content-12-开放类open-classes" class="anchor" href="#12-开放类open-classes" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1.2 开放类(Open Classes)</h2>
+
+<p><em>这里比尔带你第一次品味Ruby的类</em></p>
+
+<p>在你和比尔浏览了Bookworm源码几分钟以后，你提出了第一个需要重构的地方。Bookworm有一个函数，剥离了一个字符串的所有标点符号和特殊符号，仅仅留下字母数字和空格:</p>
+
+<pre><code>def to_alphanumeric(s)
+  s.gsub /[^\w\s]/, ''
+end
+</code></pre>
+
+<p>这个方法的单元测试:</p>
+
+<pre><code>require 'test/unit'
+class ToAlphanumericTest &lt; Test::Unit::TestCase
+  def test_strips_non_alphanumeric_characters
+    assert_equal '3 the Magic Number' , to_alphanumeric('#3, the *Magic, Number*?' )
+  end
+end
+</code></pre>
+
+<p>“这个to_alphanumeric( )方法不是很面向对象，是不是？”， 比尔来灵感了，“如果我们能让这个字符串转换它自己，应该比把它传给一个方法好的多。”</p>
+
+<p>虽然你是个新手，无法提供帮助，但是你插嘴道：“但是这只是一个字符串正则表达式。去为它增加方法，我们不得不去写一个新的AlphanumericString类。我不确定这样做值不值得。”</p>
+
+<p>“我想我有一个更简单的方法解决这个问题”， 比尔回答。 它打开了String类， 并且把to_alphanumeric( )放置到那里：</p>
+
+<pre><code>class String
+  def to_alphanumeric
+    gsub /[^\w\s]/, ''
+  end
+end
+</code></pre>
+
+<p>比尔也改变了String#to_alphanumeric( )的调用者. 例如，单元测试变成了下面形式:</p>
+
+<pre><code>require 'test/unit'
+  class StringExtensionsTest &lt; Test::Unit::TestCase
+    def test_strips_non_alphanumeric_characters
+      assert_equal '3 the Magic Number' , '#3, the *Magic, Number*?'.to_alphanumeric
+    end
+  end
+</code></pre>
+
+<p>我们需要了解一些关于Ruby类的知识才能理解比尔的技巧。 比尔很乐意去教你 。。。</p>
+
+<p><strong>深入类定义(Inside Class Definitions)</strong></p>
+
+<p>在Ruby中， 定义一个类的代码，和其他代码没有什么差别。你可以把任意代码放置到你想放置的类定义中， 就像比尔演示的这个例子:</p>
+
+<pre><code>3.times do
+  class C
+    puts "Hello"
+  end
+end
+=&gt; Hello
+   Hello
+   Hello
+</code></pre>
+
+<p>Ruby执行了类中定义的代码，只是因为它可以执行任意代码。这是否意味着，定义了三个相同名字的类？ 并不是这样， 比尔又给出了第二个例子：</p>
+
+<pre><code>class D
+  def x; 'x' ; end
+end
+</code></pre>
+
+<blockquote>
+<p>你应该把你的方法放到哪里?</p>
+
+<p>在1.2节, 开放类的28页, 比尔演示了如何把to_alphanumeric( )方法移动到String类里。
+但是即使你能这样做，你可能也想知道你是否应该这样做。给系统中的每一个字符串都暴露一个to_alphanumeric()方法是否正确？独立出String类,&gt;单写一个方法， 岂不是更好？ 这次，你处理的是一个非常通用的功能，适用于所有的字符串.所以你能听从比尔的建议，把字母数字的转换放到String类里。
+通常情况如此。 然而， 在你用一大堆特定领域方法污染Ruby标准库之前，请好好想想。 毕竟， 像String这样的类， &gt;带有大量的你必须记住的方法。你可以选择去打开类。你也能定义一个新的AlphanumericString类，甚至可以专门为少数的选定的字符对象增加to_al&gt;phanumeric( )方法 (你会在单例方法的讨论部分学会如何去做(133页)). 在以后的章节，你会学到更多关于打开类的替代方法和他们之间的差异。</p>
+</blockquote>
+
+<pre><code>class D
+  def y; 'y' ; end
+end
+obj = D.new
+obj.x # =&gt; "x"
+obj.y # =&gt; "y"
+</code></pre>
+
+<p>前一段代码， 第一次提到D类的时候，这个类还不存在呢。所以Ruby会按部就班的定义类和x()方法。第二段代码， 类D已经存在， 所以Ruby不需要再定义它，而是重新打开了它，并且在里面定义了y()。</p>
+
+<p>从某种层面来说， Ruby的类关键字，与其说是类声明，还不如说是一个域控制器。确实如此， 它创建了不存在的类， 但是你可能认为这只是它做其他行为产生的副作用。类的核心工作是，为你提供一个可以定义方法的类的上下文。</p>
+
+<p>你可能认为比尔在这吹毛求疵，但是关于类关键字的这些细节并不是夸夸其谈。它有一个重要的实际结果：你总是可以打开一个存在的类，甚至标准库里的类，诸如String或者是Array， 然后让代码飞（运行时修改）。 你可以把这种调用技术叫“打开类（开放类）”</p>
+
+<p>为了演示人们在实际中如何使用打开类。比尔使用了一个真实库中的一个例子。</p>
+
+<p><strong>示例： Money gem</strong></p>
+
+<p>比尔使用了一个叫Money的gem包，这是一个用来管理钱和货币单位的工具类集合， 比尔以此来作为打开类的例子。</p>
+
+<p>1 下面是如何创建Money的例子:</p>
+
+<pre><code>cents = 9999
+# 99.99 US Dollars:
+bargain_price = Money.new(cents)
+</code></pre>
+
+<p>你可以通过调用Numeric#to_money( )方法，快速的转换任意数字为一个Money对象:</p>
+
+<pre><code># 100.00 US Dollars:
+standard_price = 100.to_money()
+</code></pre>
+
+<p>因为Numeric是Ruby的标准类，你可能想知道Numeric#to_money方法是哪儿来的。通过看Money gem包的源码， 你会发现一段代码， 它打开了Numeric类，并且定义那个方法：</p>
+
+<pre><code>class Numeric
+  def to_money
+    Money.new(self * 100)
+  end
+end
+</code></pre>
+
+<p>打开类。 有很多标准库十分普遍的做法。</p>
+
+<p><strong>打开类（Open Classes）的问题所在</strong></p>
+
+<p>你和比尔在发现下一个重构点之前， 对打开类的使用并没有考虑太多。Bookworm的源码包含了一个方法， 是用来替换一个数组中的符合条件的元素：</p>
+
+<pre><code>def replace(array, from, to)
+  array.each_with_index do |e, i|
+    array[i] = to if e == from
+  end
+end
+</code></pre>
+
+<p>你看都没看replace( )的工作原理, 你只是看了Bookworm的单元测试演示如何去使用它:</p>
+
+<pre><code>def test_replace
+  book_topics = ['html' , 'java' , 'css' ]
+  replace(book_topics, 'java' , 'ruby' )
+  expected = ['html' , 'ruby' , 'css' ]
+  assert_equal expected, book_topics
+end
+</code></pre>
+
+<p>这一次， 你终于知道怎么去做了。 你以迅雷比尔来不及掩耳之势，抢过了键盘，把这个方法挪到了Array的类里:</p>
+
+<pre><code>class Array
+  def replace(from, to)
+    each_with_index do |e, i|
+      self[i] = to if e == from
+    end
+  end
+end
+</code></pre>
+
+<p>然后你把所有replace()的调用都改成了Array#replace(). 例如，测试变成了现在这样:</p>
+
+<pre><code>def test_replace
+  book_topics = ['html' , 'java' , 'css' ]
+  book_topics.replace('java' , 'ruby' )
+  sexpected = ['html' , 'ruby' , 'css' ]
+  assert_equal expected, book_topics
+end
+</code></pre>
+
+<p>看上去似乎一切顺利， 直到你运行了Bookworm的单元测试。 这次你傻眼了， 他们不仅没有通过， 而且有很多跟你修改代码无关的测试也报错了。杯具！ 到底发生了什么？</p>
+
+<p><strong>Monkey See, Monkey Patch</strong></p>
+
+<p>你的好搭档比尔来给你解围了。 “我想我知道发生了什么”，他又有灵感了。 他祭出了神器－irb， 召唤出Ruby的Array的所有方法列表，然后开始正则匹配re：</p>
+
+<pre><code>[].methods.grep /^re/ # =&gt; [:replace, :reject, :reject!, :respond_to?, ...
+</code></pre>
+
+<p>靠！ 根据irb输出的信息，你发现了问题所在。Array类已经有了一个叫replace()的方法。 当你定义你自己的replace()方法的时候， 你实际是重写了原来的replace()， 而Bookworm中有一部分代码也依赖与原始的replace()方法。</p>
+
+<p>这是开放类的阴暗面啊，有木有: 如果你胡乱的给类里面加零碎的方法， 你就可能遇到上面的bug. 有一些人看不惯这样野蛮的方式， 就把这类方式起了一个贬义的名称： 他们叫它<em>Monkeypatch</em>. </p>
+
+<p>你和比尔把你自己的Array#replace()方法重命名为Array#substitute()方法， 并且修改了对应的单元测试，和调用它的代码。 你得到了深刻的教训，但是这并没有影响你的态度。  如果有什么影响的话， 那就是这次事故引发了你对Ruby类的好奇心。 事实证明， 比尔很高兴和你探讨这个话题。</p>
+</article>
+  </div>
+
+</div>
+
+<button type="button" data-facebox="#jump-to-line" data-facebox-class="linejump" data-hotkey="l" class="hidden">Jump to Line</button>
+<div id="jump-to-line" style="display: none;">
+  <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="" class="js-jump-to-line-form" method="get"><div style="margin: 0px; padding: 0px; display: inline;"><input name="utf8" value="✓" type="hidden"></div>
+    <input class="form-control linejump-input js-jump-to-line-field" placeholder="Jump to line…" aria-label="Jump to line" autofocus="" type="text">
+    <button type="submit" class="btn">Go</button>
+</form></div>
+
+  </div>
+  <div class="modal-backdrop js-touch-events"></div>
+</div></div>
+  </div>
+
+    </div>
+
+        <div class="container site-footer-container">
+  <div class="site-footer" role="contentinfo">
+    <ul class="site-footer-links right">
+        <li><a href="https://github.com/contact" data-ga-click="Footer, go to contact, text:contact">Contact GitHub</a></li>
+      <li><a href="https://developer.github.com/" data-ga-click="Footer, go to api, text:api">API</a></li>
+      <li><a href="https://training.github.com/" data-ga-click="Footer, go to training, text:training">Training</a></li>
+      <li><a href="https://shop.github.com/" data-ga-click="Footer, go to shop, text:shop">Shop</a></li>
+        <li><a href="https://github.com/blog" data-ga-click="Footer, go to blog, text:blog">Blog</a></li>
+        <li><a href="https://github.com/about" data-ga-click="Footer, go to about, text:about">About</a></li>
+
+    </ul>
+
+    <a href="https://github.com/" aria-label="Homepage" class="site-footer-mark" title="GitHub">
+      <svg aria-hidden="true" class="octicon octicon-mark-github" height="24" version="1.1" viewBox="0 0 16 16" width="24"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>
+</a>
+    <ul class="site-footer-links">
+      <li>© 2016 <span title="0.11224s from github-fe128-cp1-prd.iad.github.net">GitHub</span>, Inc.</li>
+        <li><a href="https://github.com/site/terms" data-ga-click="Footer, go to terms, text:terms">Terms</a></li>
+        <li><a href="https://github.com/site/privacy" data-ga-click="Footer, go to privacy, text:privacy">Privacy</a></li>
+        <li><a href="https://github.com/security" data-ga-click="Footer, go to security, text:security">Security</a></li>
+        <li><a href="https://status.github.com/" data-ga-click="Footer, go to status, text:status">Status</a></li>
+        <li><a href="https://help.github.com/" data-ga-click="Footer, go to help, text:help">Help</a></li>
+    </ul>
+  </div>
+</div>
+
+
+
+    
+
+    <div id="ajax-error-message" class="ajax-error-message flash flash-error">
+      <svg aria-hidden="true" class="octicon octicon-alert" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M8.865 1.52c-.18-.31-.51-.5-.87-.5s-.69.19-.87.5L.275 13.5c-.18.31-.18.69 0 1 .19.31.52.5.87.5h13.7c.36 0 .69-.19.86-.5.17-.31.18-.69.01-1L8.865 1.52zM8.995 13h-2v-2h2v2zm0-3h-2V6h2v4z"></path></svg>
+      <button type="button" class="flash-close js-flash-close js-ajax-error-dismiss" aria-label="Dismiss error">
+        <svg aria-hidden="true" class="octicon octicon-x" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48z"></path></svg>
+      </button>
+      Something went wrong with that request. Please try again.
+    </div>
+
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    <div class="js-stale-session-flash stale-session-flash flash flash-warn flash-banner hidden">
+      <svg aria-hidden="true" class="octicon octicon-alert" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M8.865 1.52c-.18-.31-.51-.5-.87-.5s-.69.19-.87.5L.275 13.5c-.18.31-.18.69 0 1 .19.31.52.5.87.5h13.7c.36 0 .69-.19.86-.5.17-.31.18-.69.01-1L8.865 1.52zM8.995 13h-2v-2h2v2zm0-3h-2V6h2v4z"></path></svg>
+      <span class="signed-in-tab-flash">You signed in with another tab or window. <a href="#">Reload</a> to refresh your session.</span>
+      <span class="signed-out-tab-flash">You signed out in another tab or window. <a href="#">Reload</a> to refresh your session.</span>
+    </div>
+    <div class="facebox" id="facebox" style="display: none;">
+  <div class="facebox-popup">
+    <div class="facebox-content" role="dialog" aria-labelledby="facebox-header" aria-describedby="facebox-description">
+    </div>
+    <button type="button" class="facebox-close js-facebox-close" aria-label="Close modal">
+      <svg aria-hidden="true" class="octicon octicon-x" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48z"></path></svg>
+    </button>
+  </div>
+</div>
+
+  
+
+
+</body>
+</html>

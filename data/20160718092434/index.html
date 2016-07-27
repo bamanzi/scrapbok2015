@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en-US" style="" class="js flexbox canvas canvastext webgl no-touch geolocation postmessage no-websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients no-cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths skrollr skrollr-desktop">
+<!--[if IE 8]>         <html lang="en" class="no-js ie8 lte-ie9"> <![endif]--><!--[if lte IE 9]>     <html lang="en" class="no-js lte-ie9"> <![endif]--><head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <title>Metaprogramming in Ruby: Part 1 | Aaron Krauss</title>
+    <link rel="profile" href="http://gmpg.org/xfn/11">
+    <link rel="pingback" href="https://thesocietea.org/xmlrpc.php">
+
+    <meta name="description" content="Table of Contents Metaprogramming in Ruby: Part 1 Metaprogramming in Ruby: Part 2 What is Metaprogramming? Metaprogramming is code that writes code for you.&nbsp;But isn’t that what code generators do, like the rails gem, or yeoman? Or even bytecode compilers? Yes, but metaprogramming typically refers to something else in Ruby.&nbsp;Metaprogramming in ruby refers to code...">
+    <meta property="og:description" content="Table of Contents Metaprogramming in Ruby: Part 1 Metaprogramming in Ruby: Part 2 What is Metaprogramming? Metaprogramming is code that writes code for you.&nbsp;But isn’t that what code generators do, like the rails gem, or yeoman? Or even bytecode compilers? Yes, but metaprogramming typically refers to something else in Ruby.&nbsp;Metaprogramming in ruby refers to code...">
+    <meta property="og:image" content="https://thesocietea.org/assets/images/dist/aaron-krauss.jpg">
+    <meta property="og:title" content="Metaprogramming in Ruby: Part 1 | Aaron Krauss">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimal-ui">
+
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="apple-touch-icon" sizes="57x57" href="https://thesocietea.org/assets/images/favicon/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="https://thesocietea.org/assets/images/favicon/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="https://thesocietea.org/assets/images/favicon/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="https://thesocietea.org/assets/images/favicon/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="https://thesocietea.org/assets/images/favicon/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="https://thesocietea.org/assets/images/favicon/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="https://thesocietea.org/assets/images/favicon/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="https://thesocietea.org/assets/images/favicon/apple-touch-icon-152x152.png">
+    <link rel="icon" type="image/png" href="favicon-196x196.png" sizes="196x196">
+    <link rel="icon" type="image/png" href="favicon-160x160.png" sizes="160x160">
+    <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
+    <meta name="msapplication-TileColor" content="#2d89ef">
+    <meta name="msapplication-TileImage" content="/assets/images/favicon/mstile-144x144.png">
+    <meta name="msapplication-config" content="/assets/images/favicon/browserconfig.xml">
+
+    
+    
+    
+    <!--[if lt IE 9]>
+      <script src="/assets/js/ie/selectivizr-min.js"></script>
+    <![endif]-->
+  
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+  <body style="height: 8582px;" class="single single-post postid-655 single-format-standard m-scene">
+    <!--[if lt IE 8]>
+        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <header class="spanner sticky mini affixed">
+      <div class="container-padding">
+        <div class="container">
+          <a href="https://thesocietea.org/"><img src="ak_logo_trimmed.png" alt=""></a>
+          <div class="nav-wrapper" id="navigation">
+            <nav class="nav">
+              <div class="menu-main-menu-container"><ul id="menu-main-menu" class="menu"><li id="menu-item-25" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-25"><a href="https://thesocietea.org/about/">About</a>
+<ul class="sub-menu">
+	<li id="menu-item-1341" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1341"><a href="https://thesocietea.org/about/">About Me</a></li>
+	<li id="menu-item-1330" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1330"><a href="https://thesocietea.org/speaking/">Speaking</a></li>
+	<li id="menu-item-1340" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1340"><a href="http://thesocietea.org/resume">Resume</a></li>
+</ul>
+</li>
+<li id="menu-item-26" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-26"><a href="https://thesocietea.org/blog/">Blog</a></li>
+<li id="menu-item-32" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-32"><a href="https://thesocietea.org/projects/">Projects</a>
+<ul class="sub-menu">
+	<li id="menu-item-1339" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1339"><a href="https://thesocietea.org/projects/">Big Projects</a></li>
+	<li id="menu-item-335" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-335"><a href="http://labs.thesocietea.org/">Labs</a></li>
+</ul>
+</li>
+<li id="menu-item-27" class="nav-call-action menu-item menu-item-type-post_type menu-item-object-page menu-item-27"><a href="https://thesocietea.org/skills/">Skills</a></li>
+</ul></div>            </nav>
+          </div>
+          <div class="nav-wrapper" id="mobile-navigation">
+            <nav class="nav">
+              <ul>
+                <li>
+                  <a id="responsive-menu-icon">
+                    <span class="line-one"></span>
+                    <span class="line-two"></span>
+                    <span class="line-three"></span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </header>
+
+	<div id="primary" class="single-post content-area">
+		<main id="main" class="site-main" role="main">
+
+
+			
+<article id="post-655" class="post-655 post type-post status-publish format-standard hentry category-uncategorized">
+            <div class="container-padding">
+<div class="container">
+  <header class="entry-header">
+    <h1 class="entry-title">Metaprogramming in Ruby: Part 1</h1>
+    <div class="entry-meta">
+      <span class="posted-on"><span><time class="entry-date published" datetime="2015-08-14T12:00:48+00:00">August 14, 2015</time></span></span>    </div><!-- .entry-meta -->
+  </header><!-- .entry-header -->
+<hr class="short">
+
+  <div class="entry-content">
+    <p><strong>Table of Contents</strong></p>
+<ul>
+<li>Metaprogramming in Ruby: Part 1</li>
+<li><a href="https://thesocietea.org/2015/09/metaprogramming-in-ruby-part-2/">Metaprogramming in Ruby: Part 2</a></li>
+</ul>
+<hr>
+<h2>What is Metaprogramming?</h2>
+<p>Metaprogramming is code that writes code for you.&nbsp;But isn’t that what code generators do, like the rails gem, or yeoman? Or even bytecode compilers?</p>
+<p>Yes, but metaprogramming typically refers to something else in Ruby<strong>.&nbsp;</strong>Metaprogramming in ruby refers to code that writes code for you <strong>dynamically. At runtime.</strong>&nbsp;Ruby is a prime language for dynamic metaprogramming because it employs <a href="https://en.wikipedia.org/wiki/Type_introspection" target="_blank">type introspection</a> and is intensely <a href="https://en.wikipedia.org/wiki/Reflection_(computer_programming)" target="_blank">reflective</a>&nbsp;– to a higher degree than just about any other language out there.&nbsp;This allows you to do some really cool things like add in a ton of functionality with very few lines of code, but&nbsp;there’s a catch; you can jack up a lot of things too at the same time and/or end up with practically unreadable code if you’re not careful. The moral of the story is, in&nbsp;Uncle Ben’s words:</p>
+<blockquote><p>“With great power comes great responsibility.”</p></blockquote>
+<p>When Uncle Ben&nbsp;said this, he wasn’t talking about any <em>real&nbsp;</em><em>life</em> things.&nbsp;He was talking about Metaprogramming.</p>
+<h2>Let’s Get Started</h2>
+<p>Let’s say you want to create a method that will accept a string and strip everything out except for alphanumeric characters:</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+
+
+		<div id="crayon-578c2f560a2a8049687986" class="crayon-syntax crayon-theme-tomorrow-night crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" no-popup minimize scroll-mouseover" style="margin-top: 12px; margin-bottom: 12px; font-size: 14px ! important; line-height: 18px ! important; height: auto;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 14px ! important; height: 21px ! important; line-height: 21px ! important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 14px ! important; height: 21px ! important; line-height: 21px ! important;"><div class="crayon-button crayon-nums-button crayon-pressed" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><span class="crayon-language">Ruby</span></div></div>
+			<div class="crayon-info" style="min-height: 19.6px ! important; line-height: 19.6px ! important;"></div>
+			<div class="crayon-plain-wrap"></div>
+			<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+				<table style="" class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 14px ! important; line-height: 18px ! important;"><div class="crayon-num" data-line="crayon-578c2f560a2a8049687986-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-578c2f560a2a8049687986-2">2</div><div class="crayon-num" data-line="crayon-578c2f560a2a8049687986-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-578c2f560a2a8049687986-4">4</div><div class="crayon-num" data-line="crayon-578c2f560a2a8049687986-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-578c2f560a2a8049687986-6">6</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 14px ! important; line-height: 18px ! important; -moz-tab-size: 4;"><div class="crayon-line" id="crayon-578c2f560a2a8049687986-1"><span class="crayon-r">def</span><span class="crayon-h"> </span><span class="crayon-e">to_alphanumeric</span><span class="crayon-sy">(</span><span class="crayon-v">s</span><span class="crayon-sy">)</span></div><div class="crayon-line crayon-striped-line" id="crayon-578c2f560a2a8049687986-2"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">s</span><span class="crayon-sy">.</span><span class="crayon-e">gsub</span><span class="crayon-sy">(</span><span class="crayon-o">/</span><span class="crayon-sy">[</span><span class="crayon-o">^</span><span class="crayon-sy">\</span><span class="crayon-v">w</span><span class="crayon-sy">\</span><span class="crayon-v">s</span><span class="crayon-sy">]</span><span class="crayon-o">/</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-s">''</span><span class="crayon-sy">)</span></div><div class="crayon-line" id="crayon-578c2f560a2a8049687986-3"><span class="crayon-st">end</span></div><div class="crayon-line crayon-striped-line" id="crayon-578c2f560a2a8049687986-4">&nbsp;</div><div class="crayon-line" id="crayon-578c2f560a2a8049687986-5"><span class="crayon-i">puts</span><span class="crayon-h"> </span><span class="crayon-e">to_alphanumeric</span><span class="crayon-sy">(</span><span class="crayon-s">"A&amp;^ar$o%n&amp;* (is&amp;*&amp;))) t&amp;*(*he B0&amp;*S**^S)"</span><span class="crayon-sy">)</span></div><div class="crayon-line crayon-striped-line" id="crayon-578c2f560a2a8049687986-6"><span class="crayon-c"># =&gt; "Aaron is the B0SS"</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0013 seconds] -->
+<p>That gets the job done, but it’s&nbsp;not very object oriented. Let’s fix that.</p>
+<h2>Open Classes</h2>
+<p></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+
+
+		<div id="crayon-578c2f560a2f3902702653" class="crayon-syntax crayon-theme-tomorrow-night crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" no-popup minimize scroll-mouseover" style="margin-top: 12px; margin-bottom: 12px; font-size: 14px ! important; line-height: 18px ! important; height: auto;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 14px ! important; height: 21px ! important; line-height: 21px ! important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 14px ! important; height: 21px ! important; line-height: 21px ! important;"><div class="crayon-button crayon-nums-button crayon-pressed" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><span class="crayon-language">Ruby</span></div></div>
+			<div class="crayon-info" style="min-height: 19.6px ! important; line-height: 19.6px ! important;"></div>
+			<div class="crayon-plain-wrap"></div>
+			<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+				<table style="" class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 14px ! important; line-height: 18px ! important;"><div class="crayon-num" data-line="crayon-578c2f560a2f3902702653-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-578c2f560a2f3902702653-2">2</div><div class="crayon-num" data-line="crayon-578c2f560a2f3902702653-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-578c2f560a2f3902702653-4">4</div><div class="crayon-num" data-line="crayon-578c2f560a2f3902702653-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-578c2f560a2f3902702653-6">6</div><div class="crayon-num" data-line="crayon-578c2f560a2f3902702653-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-578c2f560a2f3902702653-8">8</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 14px ! important; line-height: 18px ! important; -moz-tab-size: 4;"><div class="crayon-line" id="crayon-578c2f560a2f3902702653-1"><span class="crayon-r">class</span><span class="crayon-h"> </span><span class="crayon-t">String</span></div><div class="crayon-line crayon-striped-line" id="crayon-578c2f560a2f3902702653-2"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-r">def</span><span class="crayon-h"> </span><span class="crayon-v">to</span><span class="crayon-sy">_</span>alphanumeric</div><div class="crayon-line" id="crayon-578c2f560a2f3902702653-3"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-e">gsub</span><span class="crayon-sy">(</span><span class="crayon-o">/</span><span class="crayon-sy">[</span><span class="crayon-o">^</span><span class="crayon-sy">\</span><span class="crayon-v">w</span><span class="crayon-sy">\</span><span class="crayon-v">s</span><span class="crayon-sy">]</span><span class="crayon-o">/</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-s">''</span><span class="crayon-sy">)</span></div><div class="crayon-line crayon-striped-line" id="crayon-578c2f560a2f3902702653-4"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-st">end</span></div><div class="crayon-line" id="crayon-578c2f560a2f3902702653-5"><span class="crayon-st">end</span></div><div class="crayon-line crayon-striped-line" id="crayon-578c2f560a2f3902702653-6">&nbsp;</div><div class="crayon-line" id="crayon-578c2f560a2f3902702653-7"><span class="crayon-i">puts</span><span class="crayon-h"> </span><span class="crayon-s">"A&amp;^ar$o%n&amp;* (is&amp;*&amp;))) t&amp;*(*he B0&amp;*S**^S)"</span><span class="crayon-sy">.</span><span class="crayon-v">to_alphanumeric</span></div><div class="crayon-line crayon-striped-line" id="crayon-578c2f560a2f3902702653-8"><span class="crayon-c"># =&gt; "Aaron is the B0SS"</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0017 seconds] -->
+<p>In ruby, you can break open any existing class and add to it just like this – even if you weren’t the one who originally declared it (i.e. the String class here is a ruby default class). Cool stuff. Nuff said. However, there’s a problem with open classes. Check this code out.</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+
+
+		<div id="crayon-578c2f560a2ff081810082" class="crayon-syntax crayon-theme-tomorrow-night crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" no-popup minimize scroll-mouseover" style="margin-top: 12px; margin-bottom: 12px; font-size: 14px ! important; line-height: 18px ! important; height: auto;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 14px ! important; height: 21px ! important; line-height: 21px ! important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 14px ! important; height: 21px ! important; line-height: 21px ! important;"><div class="crayon-button crayon-nums-button crayon-pressed" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><span class="crayon-language">Ruby</span></div></div>
+			<div class="crayon-info" style="min-height: 19.6px ! important; line-height: 19.6px ! important;"></div>
+			<div class="crayon-plain-wrap"></div>
+			<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+				<table style="" class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 14px ! important; line-height: 18px ! important;"><div class="crayon-num" data-line="crayon-578c2f560a2ff081810082-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-578c2f560a2ff081810082-2">2</div><div class="crayon-num" data-line="crayon-578c2f560a2ff081810082-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-578c2f560a2ff081810082-4">4</div><div class="crayon-num" data-line="crayon-578c2f560a2ff081810082-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-578c2f560a2ff081810082-6">6</div><div class="crayon-num" data-line="crayon-578c2f560a2ff081810082-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-578c2f560a2ff081810082-8">8</div><div class="crayon-num" data-line="crayon-578c2f560a2ff081810082-9">9</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 14px ! important; line-height: 18px ! important; -moz-tab-size: 4;"><div class="crayon-line" id="crayon-578c2f560a2ff081810082-1"><span class="crayon-r">class</span><span class="crayon-h"> </span><span class="crayon-t">Array</span></div><div class="crayon-line crayon-striped-line" id="crayon-578c2f560a2ff081810082-2"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-r">def</span><span class="crayon-h"> </span><span class="crayon-e">replace</span><span class="crayon-sy">(</span><span class="crayon-v">original</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">replacement</span><span class="crayon-sy">)</span></div><div class="crayon-line" id="crayon-578c2f560a2ff081810082-3"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-r">self</span><span class="crayon-sy">.</span><span class="crayon-e">map</span><span class="crayon-h"> </span><span class="crayon-k ">{</span><span class="crayon-o">|</span><span class="crayon-v">e</span><span class="crayon-o">|</span><span class="crayon-h"> </span><span class="crayon-v">e</span><span class="crayon-h"> </span><span class="crayon-o">==</span><span class="crayon-h"> </span><span class="crayon-i">original</span><span class="crayon-h"> </span><span class="crayon-sy">?</span><span class="crayon-h"> </span><span class="crayon-v">replacement</span><span class="crayon-h"> </span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-i">e</span><span class="crayon-h"> </span><span class="crayon-k ">}</span></div><div class="crayon-line crayon-striped-line" id="crayon-578c2f560a2ff081810082-4"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-st">end</span></div><div class="crayon-line" id="crayon-578c2f560a2ff081810082-5"><span class="crayon-st">end</span></div><div class="crayon-line crayon-striped-line" id="crayon-578c2f560a2ff081810082-6">&nbsp;</div><div class="crayon-line" id="crayon-578c2f560a2ff081810082-7"><span class="crayon-i">puts</span><span class="crayon-h"> </span><span class="crayon-sy">[</span><span class="crayon-s">'x'</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-s">'y'</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-s">'z'</span><span class="crayon-sy">]</span><span class="crayon-sy">.</span><span class="crayon-e">replace</span><span class="crayon-sy">(</span><span class="crayon-s">'x'</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-s">'a'</span><span class="crayon-sy">)</span></div><div class="crayon-line crayon-striped-line" id="crayon-578c2f560a2ff081810082-8">&nbsp;</div><div class="crayon-line" id="crayon-578c2f560a2ff081810082-9"><span class="crayon-c"># =&gt; a, y, z</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0018 seconds] -->
+<p>We wrote an Array#replace method that takes in 2 arguments, the first of which is the value you want to replace in the array, and the second of which you want to replace the first with.</p>
+<p>This code works just fine. Why is this a problem? The Array#replace method already exists, and it swaps out the entire array with another array that you provide as an arg. We just overwrote that method, and that’s bad. We probably didn’t mean to do that.</p>
+<p>This process of editing classes in ruby is called <strong>Monkeypatching</strong>. It’s not bad by any means, but you definitely need to be&nbsp;sure you know what you’re doing.</p>
+<h2>Ruby’s Object Model</h2>
+<p>Before we get further, we need to talk about how Ruby’s object model works.</p>
+<figure id="attachment_661" style="width: 579px;" class="wp-caption aligncenter"><img class="wp-image-661 size-full" src="ruby_object_model.png" alt="ruby_object_model" srcset="ruby_object_model-300x228.png 300w, ruby_object_model.png 579w" sizes="(max-width: 579px) 100vw, 579px" width="579" height="440"><figcaption class="wp-caption-text">Image from Metaprogramming Ruby – by Paolo Perrotta</figcaption></figure>
+<p>This may look like a confusing diagram, but it neatly lays out how objects, classes, and modules are related in ruby. There are 3 key things of note here:</p>
+<ul>
+<li>Instantiated objects (obj1, obj2, obj3) have a class of <strong>MyClass</strong></li>
+<li>MyClass has a class of <strong>Class&nbsp;</strong>(This mean that classes are also objects in Ruby. That’s tough to wrap your head around, I know)</li>
+<li>While MyClass has a class of Class, it inherits from <strong>Object</strong></li>
+</ul>
+<p>We’ll reference this again later in Part 2. For now, let’s move on to the Ancestors Chain.</p>
+<h2>Ancestors Chain</h2>
+<p>This diagram is a little bit easier to understand, and deals solely with inheritance and module inclusion.</p>
+<figure id="attachment_660" style="width: 396px;" class="wp-caption aligncenter"><img class="wp-image-660 size-full" src="ancestor_chain.jpg" alt="ancestor_chain" srcset="ancestor_chain-215x300.jpg 215w, ancestor_chain.jpg 396w" sizes="(max-width: 396px) 100vw, 396px" width="396" height="552"><figcaption class="wp-caption-text">Image from Metaprogramming Ruby – by Paolo Perrotta</figcaption></figure>
+<p>When you call a method, Ruby goes right into the class of the receiver and then up the ancestors chain, until it either finds the method or reaches the end of the chain. In this diagram, an object&nbsp;<strong>b</strong> is instantiated from class&nbsp;<strong>Book</strong>. Book has 2 modules included:&nbsp;<strong>Printable&nbsp;</strong>and <b>Document</b>. Book inherits from class <b>Object</b>, which is the class that nearly everything&nbsp;inherits from in Ruby. Object includes a module called&nbsp;<strong>Kernel</strong>. And finally, Object inherits from&nbsp;<b>BasicObject</b>&nbsp;– the absolute parent of every object in Ruby.</p>
+<p>Now that we’ve got these 2 very important topics down a little – Ruby’s Object Model and the Ancestors Chain – we can get back to some code.</p>
+<h2>Methods</h2>
+<p>In Ruby, you can dynamically create methods and dynamically call methods. And call methods that don’t even exist – without throwing an error.</p>
+<h3>Methods Part 1: Dynamically Defining Methods</h3>
+<p>Why would you want to dynamically define methods? Maybe to reduce code duplication, or to add cool functionality. <a href="http://guides.rubyonrails.org/active_record_basics.html" target="_blank">ActiveRecord</a> (the default <a href="http://en.wikipedia.org/wiki/Object-relational_mapping" target="_blank">ORM</a> tool for Rails projects) uses it heavily. Check this example out.</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+
+
+		<div id="crayon-578c2f560a308545658402" class="crayon-syntax crayon-theme-tomorrow-night crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" no-popup minimize scroll-mouseover" style="margin-top: 12px; margin-bottom: 12px; font-size: 14px ! important; line-height: 18px ! important; height: auto;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 14px ! important; height: 21px ! important; line-height: 21px ! important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 14px ! important; height: 21px ! important; line-height: 21px ! important;"><div class="crayon-button crayon-nums-button crayon-pressed" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><span class="crayon-language">Ruby</span></div></div>
+			<div class="crayon-info" style="min-height: 19.6px ! important; line-height: 19.6px ! important;"></div>
+			<div class="crayon-plain-wrap"></div>
+			<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+				<table style="" class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 14px ! important; line-height: 18px ! important;"><div class="crayon-num" data-line="crayon-578c2f560a308545658402-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-578c2f560a308545658402-2">2</div><div class="crayon-num" data-line="crayon-578c2f560a308545658402-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-578c2f560a308545658402-4">4</div><div class="crayon-num" data-line="crayon-578c2f560a308545658402-5">5</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 14px ! important; line-height: 18px ! important; -moz-tab-size: 4;"><div class="crayon-line" id="crayon-578c2f560a308545658402-1"><span class="crayon-r">class</span><span class="crayon-h"> </span><span class="crayon-v">Book</span><span class="crayon-h"> </span><span class="crayon-o">&lt;</span><span class="crayon-h"> </span><span class="crayon-v">ActiveRecord</span><span class="crayon-o">::</span><span class="crayon-i">Base</span></div><div class="crayon-line crayon-striped-line" id="crayon-578c2f560a308545658402-2"><span class="crayon-st">end</span></div><div class="crayon-line" id="crayon-578c2f560a308545658402-3">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-578c2f560a308545658402-4"><span class="crayon-v">b</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-v">Book</span><span class="crayon-sy">.</span><span class="crayon-i">new</span></div><div class="crayon-line" id="crayon-578c2f560a308545658402-5"><span class="crayon-v">b</span><span class="crayon-sy">.</span><span class="crayon-v">title</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0015 seconds] -->
+<p>If you’re familiar with ActiveRecord, then this looks like nothing out of the ordinary. Even though we don’t define the title attribute in the Book class, we assume that <em>Book</em> is an ORM wrapper around a Book database table, and that <em>title</em> is an attribute in that table. Thus, we return the title column for that particular database row that <strong>b</strong> represents.</p>
+<p>Normally, calling title on this class should error with a NoMethodError – but ActiveRecord dynamically adds methods just like we’re about to do. The ActiveRecord code base is a prime example of how you can use metaprogramming to the max.</p>
+<p>Let’s try this out and create our own methods:</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+
+
+		<div id="crayon-578c2f560a30f374950144" class="crayon-syntax crayon-theme-tomorrow-night crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" no-popup minimize scroll-mouseover" style="margin-top: 12px; margin-bottom: 12px; font-size: 14px ! important; line-height: 18px ! important; height: auto;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 14px ! important; height: 21px ! important; line-height: 21px ! important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 14px ! important; height: 21px ! important; line-height: 21px ! important;"><div class="crayon-button crayon-nums-button crayon-pressed" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><span class="crayon-language">Ruby</span></div></div>
+			<div class="crayon-info" style="min-height: 19.6px ! important; line-height: 19.6px ! important;"></div>
+			<div class="crayon-plain-wrap"></div>
+			<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+				<table style="" class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 14px ! important; line-height: 18px ! important;"><div class="crayon-num" data-line="crayon-578c2f560a30f374950144-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-578c2f560a30f374950144-2">2</div><div class="crayon-num" data-line="crayon-578c2f560a30f374950144-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-578c2f560a30f374950144-4">4</div><div class="crayon-num" data-line="crayon-578c2f560a30f374950144-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-578c2f560a30f374950144-6">6</div><div class="crayon-num" data-line="crayon-578c2f560a30f374950144-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-578c2f560a30f374950144-8">8</div><div class="crayon-num" data-line="crayon-578c2f560a30f374950144-9">9</div><div class="crayon-num crayon-striped-num" data-line="crayon-578c2f560a30f374950144-10">10</div><div class="crayon-num" data-line="crayon-578c2f560a30f374950144-11">11</div><div class="crayon-num crayon-striped-num" data-line="crayon-578c2f560a30f374950144-12">12</div><div class="crayon-num" data-line="crayon-578c2f560a30f374950144-13">13</div><div class="crayon-num crayon-striped-num" data-line="crayon-578c2f560a30f374950144-14">14</div><div class="crayon-num" data-line="crayon-578c2f560a30f374950144-15">15</div><div class="crayon-num crayon-striped-num" data-line="crayon-578c2f560a30f374950144-16">16</div><div class="crayon-num" data-line="crayon-578c2f560a30f374950144-17">17</div><div class="crayon-num crayon-striped-num" data-line="crayon-578c2f560a30f374950144-18">18</div><div class="crayon-num" data-line="crayon-578c2f560a30f374950144-19">19</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 14px ! important; line-height: 18px ! important; -moz-tab-size: 4;"><div class="crayon-line" id="crayon-578c2f560a30f374950144-1"><span class="crayon-r">def</span><span class="crayon-h"> </span><span class="crayon-i">foo</span></div><div class="crayon-line crayon-striped-line" id="crayon-578c2f560a30f374950144-2"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">puts</span><span class="crayon-h"> </span><span class="crayon-s">"foo was called"</span></div><div class="crayon-line" id="crayon-578c2f560a30f374950144-3"><span class="crayon-st">end</span></div><div class="crayon-line crayon-striped-line" id="crayon-578c2f560a30f374950144-4">&nbsp;</div><div class="crayon-line" id="crayon-578c2f560a30f374950144-5"><span class="crayon-r">def</span><span class="crayon-h"> </span><span class="crayon-i">baz</span></div><div class="crayon-line crayon-striped-line" id="crayon-578c2f560a30f374950144-6"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">puts</span><span class="crayon-h"> </span><span class="crayon-s">"baz was called"</span></div><div class="crayon-line" id="crayon-578c2f560a30f374950144-7"><span class="crayon-st">end</span></div><div class="crayon-line crayon-striped-line" id="crayon-578c2f560a30f374950144-8">&nbsp;</div><div class="crayon-line" id="crayon-578c2f560a30f374950144-9"><span class="crayon-r">def</span><span class="crayon-h"> </span><span class="crayon-i">bar</span></div><div class="crayon-line crayon-striped-line" id="crayon-578c2f560a30f374950144-10"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">puts</span><span class="crayon-h"> </span><span class="crayon-s">"bar was called"</span></div><div class="crayon-line" id="crayon-578c2f560a30f374950144-11"><span class="crayon-st">end</span></div><div class="crayon-line crayon-striped-line" id="crayon-578c2f560a30f374950144-12">&nbsp;</div><div class="crayon-line" id="crayon-578c2f560a30f374950144-13"><span class="crayon-i">foo</span></div><div class="crayon-line crayon-striped-line" id="crayon-578c2f560a30f374950144-14"><span class="crayon-i">baz</span></div><div class="crayon-line" id="crayon-578c2f560a30f374950144-15"><span class="crayon-v">bar</span></div><div class="crayon-line crayon-striped-line" id="crayon-578c2f560a30f374950144-16">&nbsp;</div><div class="crayon-line" id="crayon-578c2f560a30f374950144-17"><span class="crayon-c"># =&gt; foo was called</span></div><div class="crayon-line crayon-striped-line" id="crayon-578c2f560a30f374950144-18"><span class="crayon-c"># =&gt; baz was called</span></div><div class="crayon-line" id="crayon-578c2f560a30f374950144-19"><span class="crayon-c"># =&gt; bar was called</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0012 seconds] -->
+<p>See the duplication? Let’s fix that with metaprogramming.</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+
+
+		<div id="crayon-578c2f560a315221508516" class="crayon-syntax crayon-theme-tomorrow-night crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" no-popup minimize scroll-mouseover" style="margin-top: 12px; margin-bottom: 12px; font-size: 14px ! important; line-height: 18px ! important; height: auto;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 14px ! important; height: 21px ! important; line-height: 21px ! important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 14px ! important; height: 21px ! important; line-height: 21px ! important;"><span class="crayon-mixed-highlight" title="Contains Mixed Languages"></span><div class="crayon-button crayon-nums-button crayon-pressed" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><span class="crayon-language">Ruby</span></div></div>
+			<div class="crayon-info" style="min-height: 19.6px ! important; line-height: 19.6px ! important;"></div>
+			<div class="crayon-plain-wrap"></div>
+			<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+				<table style="" class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 14px ! important; line-height: 18px ! important;"><div class="crayon-num" data-line="crayon-578c2f560a315221508516-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-578c2f560a315221508516-2">2</div><div class="crayon-num" data-line="crayon-578c2f560a315221508516-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-578c2f560a315221508516-4">4</div><div class="crayon-num" data-line="crayon-578c2f560a315221508516-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-578c2f560a315221508516-6">6</div><div class="crayon-num" data-line="crayon-578c2f560a315221508516-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-578c2f560a315221508516-8">8</div><div class="crayon-num" data-line="crayon-578c2f560a315221508516-9">9</div><div class="crayon-num crayon-striped-num" data-line="crayon-578c2f560a315221508516-10">10</div><div class="crayon-num" data-line="crayon-578c2f560a315221508516-11">11</div><div class="crayon-num crayon-striped-num" data-line="crayon-578c2f560a315221508516-12">12</div><div class="crayon-num" data-line="crayon-578c2f560a315221508516-13">13</div><div class="crayon-num crayon-striped-num" data-line="crayon-578c2f560a315221508516-14">14</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 14px ! important; line-height: 18px ! important; -moz-tab-size: 4;"><div class="crayon-line" id="crayon-578c2f560a315221508516-1"><span class="crayon-s">%w(foo baz bar)</span><span class="crayon-sy">.</span><span class="crayon-i">each</span><span class="crayon-h"> </span><span class="crayon-st">do</span><span class="crayon-h"> </span><span class="crayon-o">|</span><span class="crayon-v">s</span><span class="crayon-o">|</span></div><div class="crayon-line crayon-striped-line" id="crayon-578c2f560a315221508516-2">&nbsp;</div><div class="crayon-line" id="crayon-578c2f560a315221508516-3"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-e">define_method</span><span class="crayon-sy">(</span><span class="crayon-v">s</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-st">do</span></div><div class="crayon-line crayon-striped-line" id="crayon-578c2f560a315221508516-4"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">puts</span><span class="crayon-h"> </span><span class="crayon-s">"#{s} was called"</span></div><div class="crayon-line" id="crayon-578c2f560a315221508516-5"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-st">end</span></div><div class="crayon-line crayon-striped-line" id="crayon-578c2f560a315221508516-6"><span class="crayon-st">end</span></div><div class="crayon-line" id="crayon-578c2f560a315221508516-7">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-578c2f560a315221508516-8"><span class="crayon-i">foo</span></div><div class="crayon-line" id="crayon-578c2f560a315221508516-9"><span class="crayon-i">baz</span></div><div class="crayon-line crayon-striped-line" id="crayon-578c2f560a315221508516-10"><span class="crayon-v">bar</span></div><div class="crayon-line" id="crayon-578c2f560a315221508516-11">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-578c2f560a315221508516-12"><span class="crayon-c"># =&gt; foo was called</span></div><div class="crayon-line" id="crayon-578c2f560a315221508516-13"><span class="crayon-c"># =&gt; baz was called</span></div><div class="crayon-line crayon-striped-line" id="crayon-578c2f560a315221508516-14"><span class="crayon-c"># =&gt; bar was called</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0012 seconds] -->
+<p>What we’re doing here is dynamically defining the methods <strong>foo</strong>, <strong>baz</strong>, and <strong>bar</strong>, and then we can call them. The <a href="http://ruby-doc.org/core-2.2.0/Module.html#method-i-define_method" target="_blank">Module#define_method</a> method is something that I personally use a lot, and it’s so, so helpful. <a href="https://github.com/Staplegun-US/intervals_api/blob/master/lib/intervals_api/request_handler.rb#L21" target="_blank">Here’s an example</a> of how I used it in a gem I wrote.</p>
+<p>You can see how much code we saved here – especially if we were writing real methods. BUT – is it worth the added code complexity? That’s your call.</p>
+<h3>Methods Part 2: Dynamically Calling Methods</h3>
+<p>Dynamically calling methods or attributes is a form of&nbsp;<strong>reflection</strong>, and is something many languages can do.&nbsp;Here’s an example of how to call a method by either the string or symbol name of that method in ruby:</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+
+
+		<div id="crayon-578c2f560a31c833816303" class="crayon-syntax crayon-theme-tomorrow-night crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" no-popup minimize scroll-mouseover" style="margin-top: 12px; margin-bottom: 12px; font-size: 14px ! important; line-height: 18px ! important; height: auto;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 14px ! important; height: 21px ! important; line-height: 21px ! important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 14px ! important; height: 21px ! important; line-height: 21px ! important;"><span class="crayon-mixed-highlight" title="Contains Mixed Languages"></span><div class="crayon-button crayon-nums-button crayon-pressed" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><span class="crayon-language">Ruby</span></div></div>
+			<div class="crayon-info" style="min-height: 19.6px ! important; line-height: 19.6px ! important;"></div>
+			<div class="crayon-plain-wrap"></div>
+			<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+				<table style="" class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 14px ! important; line-height: 18px ! important;"><div class="crayon-num" data-line="crayon-578c2f560a31c833816303-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-578c2f560a31c833816303-2">2</div><div class="crayon-num" data-line="crayon-578c2f560a31c833816303-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-578c2f560a31c833816303-4">4</div><div class="crayon-num" data-line="crayon-578c2f560a31c833816303-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-578c2f560a31c833816303-6">6</div><div class="crayon-num" data-line="crayon-578c2f560a31c833816303-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-578c2f560a31c833816303-8">8</div><div class="crayon-num" data-line="crayon-578c2f560a31c833816303-9">9</div><div class="crayon-num crayon-striped-num" data-line="crayon-578c2f560a31c833816303-10">10</div><div class="crayon-num" data-line="crayon-578c2f560a31c833816303-11">11</div><div class="crayon-num crayon-striped-num" data-line="crayon-578c2f560a31c833816303-12">12</div><div class="crayon-num" data-line="crayon-578c2f560a31c833816303-13">13</div><div class="crayon-num crayon-striped-num" data-line="crayon-578c2f560a31c833816303-14">14</div><div class="crayon-num" data-line="crayon-578c2f560a31c833816303-15">15</div><div class="crayon-num crayon-striped-num" data-line="crayon-578c2f560a31c833816303-16">16</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 14px ! important; line-height: 18px ! important; -moz-tab-size: 4;"><div class="crayon-line" id="crayon-578c2f560a31c833816303-1"><span class="crayon-s">%w(test1 test2 test3 test4 test5)</span><span class="crayon-sy">.</span><span class="crayon-i">each</span><span class="crayon-h"> </span><span class="crayon-st">do</span><span class="crayon-h"> </span><span class="crayon-o">|</span><span class="crayon-v">s</span><span class="crayon-o">|</span></div><div class="crayon-line crayon-striped-line" id="crayon-578c2f560a31c833816303-2">&nbsp;</div><div class="crayon-line" id="crayon-578c2f560a31c833816303-3"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-e">define_method</span><span class="crayon-sy">(</span><span class="crayon-v">s</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-st">do</span></div><div class="crayon-line crayon-striped-line" id="crayon-578c2f560a31c833816303-4"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">puts</span><span class="crayon-h"> </span><span class="crayon-s">"#{s} was called"</span></div><div class="crayon-line" id="crayon-578c2f560a31c833816303-5"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-st">end</span></div><div class="crayon-line crayon-striped-line" id="crayon-578c2f560a31c833816303-6"><span class="crayon-st">end</span></div><div class="crayon-line" id="crayon-578c2f560a31c833816303-7">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-578c2f560a31c833816303-8"><span class="crayon-c"># New Code</span></div><div class="crayon-line" id="crayon-578c2f560a31c833816303-9">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-578c2f560a31c833816303-10"><span class="crayon-sy">(</span><span class="crayon-cn">1..5</span><span class="crayon-sy">)</span><span class="crayon-sy">.</span><span class="crayon-i">each</span><span class="crayon-h"> </span><span class="crayon-k ">{</span><span class="crayon-h"> </span><span class="crayon-o">|</span><span class="crayon-v">n</span><span class="crayon-o">|</span><span class="crayon-h"> </span><span class="crayon-e">send</span><span class="crayon-sy">(</span><span class="crayon-s">"test#{n}"</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-k ">}</span></div><div class="crayon-line" id="crayon-578c2f560a31c833816303-11">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-578c2f560a31c833816303-12"><span class="crayon-c"># =&gt; test1 was called</span></div><div class="crayon-line" id="crayon-578c2f560a31c833816303-13"><span class="crayon-c"># =&gt; test2 was called</span></div><div class="crayon-line crayon-striped-line" id="crayon-578c2f560a31c833816303-14"><span class="crayon-c"># =&gt; test3 was called</span></div><div class="crayon-line" id="crayon-578c2f560a31c833816303-15"><span class="crayon-c"># =&gt; test4 was called</span></div><div class="crayon-line crayon-striped-line" id="crayon-578c2f560a31c833816303-16"><span class="crayon-c"># =&gt; test5 was called</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0017 seconds] -->
+<p>The <a href="http://ruby-doc.org/core-2.2.2/Object.html#method-i-send" target="_blank">Object#send</a> method is how we can dynamically call methods. Here I’m spinning through the numbers 1 through 5, and calling a method whose name is dependent on the current variable value. Clutch.</p>
+<p>Because every object in Ruby inherits from Object, you can also call <em>send</em> as a method on any object to access one of its other methods or attributes – like this:</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+
+
+		<div id="crayon-578c2f560a322183364403" class="crayon-syntax crayon-theme-tomorrow-night crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" no-popup minimize scroll-mouseover" style="margin-top: 12px; margin-bottom: 12px; font-size: 14px ! important; line-height: 18px ! important; height: auto;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 14px ! important; height: 21px ! important; line-height: 21px ! important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 14px ! important; height: 21px ! important; line-height: 21px ! important;"><div class="crayon-button crayon-nums-button crayon-pressed" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><span class="crayon-language">Ruby</span></div></div>
+			<div class="crayon-info" style="min-height: 19.6px ! important; line-height: 19.6px ! important;"></div>
+			<div class="crayon-plain-wrap"></div>
+			<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+				<table style="" class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 14px ! important; line-height: 18px ! important;"><div class="crayon-num" data-line="crayon-578c2f560a322183364403-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-578c2f560a322183364403-2">2</div><div class="crayon-num" data-line="crayon-578c2f560a322183364403-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-578c2f560a322183364403-4">4</div><div class="crayon-num" data-line="crayon-578c2f560a322183364403-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-578c2f560a322183364403-6">6</div><div class="crayon-num" data-line="crayon-578c2f560a322183364403-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-578c2f560a322183364403-8">8</div><div class="crayon-num" data-line="crayon-578c2f560a322183364403-9">9</div><div class="crayon-num crayon-striped-num" data-line="crayon-578c2f560a322183364403-10">10</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 14px ! important; line-height: 18px ! important; -moz-tab-size: 4;"><div class="crayon-line" id="crayon-578c2f560a322183364403-1"><span class="crayon-r">class</span><span class="crayon-h"> </span><span class="crayon-i">OKCRB</span></div><div class="crayon-line crayon-striped-line" id="crayon-578c2f560a322183364403-2"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-r">def</span><span class="crayon-h"> </span><span class="crayon-v">is_boss</span><span class="crayon-sy">?</span></div><div class="crayon-line" id="crayon-578c2f560a322183364403-3"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">puts</span><span class="crayon-h"> </span><span class="crayon-s">"true"</span></div><div class="crayon-line crayon-striped-line" id="crayon-578c2f560a322183364403-4"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-st">end</span></div><div class="crayon-line" id="crayon-578c2f560a322183364403-5"><span class="crayon-st">end</span></div><div class="crayon-line crayon-striped-line" id="crayon-578c2f560a322183364403-6">&nbsp;</div><div class="crayon-line" id="crayon-578c2f560a322183364403-7"><span class="crayon-v">okcrb</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-v">OKCRB</span><span class="crayon-sy">.</span><span class="crayon-i">new</span></div><div class="crayon-line crayon-striped-line" id="crayon-578c2f560a322183364403-8"><span class="crayon-v">okcrb</span><span class="crayon-sy">.</span><span class="crayon-e">send</span><span class="crayon-sy">(</span><span class="crayon-s">"is_boss?"</span><span class="crayon-sy">)</span></div><div class="crayon-line" id="crayon-578c2f560a322183364403-9">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-578c2f560a322183364403-10"><span class="crayon-c"># =&gt; true</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0010 seconds] -->
+<p>The power with&nbsp;<em>send</em>&nbsp;comes when you want to call a method based on some in-scope situation – often times based off of a variable value. Object#send also allows you to call private functions – so be careful if you’re not meaning to do that. Use <a href="http://ruby-doc.org/core-2.2.2/Object.html#method-i-public_send" target="_blank">Object#public_send</a> if you can – it does the same thing, but is restricted from accessing private methods and attributes.</p>
+<h3>Methods Part 3: Ghost Methods</h3>
+<p>What happens if we try to execute this code?</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+
+
+		<div id="crayon-578c2f560a328156641316" class="crayon-syntax crayon-theme-tomorrow-night crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" no-popup minimize scroll-mouseover" style="margin-top: 12px; margin-bottom: 12px; font-size: 14px ! important; line-height: 18px ! important; height: auto;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 14px ! important; height: 21px ! important; line-height: 21px ! important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 14px ! important; height: 21px ! important; line-height: 21px ! important;"><div class="crayon-button crayon-nums-button crayon-pressed" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><span class="crayon-language">Ruby</span></div></div>
+			<div class="crayon-info" style="min-height: 19.6px ! important; line-height: 19.6px ! important;"></div>
+			<div class="crayon-plain-wrap"></div>
+			<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+				<table style="" class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 14px ! important; line-height: 18px ! important;"><div class="crayon-num" data-line="crayon-578c2f560a328156641316-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-578c2f560a328156641316-2">2</div><div class="crayon-num" data-line="crayon-578c2f560a328156641316-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-578c2f560a328156641316-4">4</div><div class="crayon-num" data-line="crayon-578c2f560a328156641316-5">5</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 14px ! important; line-height: 18px ! important; -moz-tab-size: 4;"><div class="crayon-line" id="crayon-578c2f560a328156641316-1"><span class="crayon-r">class</span><span class="crayon-h"> </span><span class="crayon-i">Book</span></div><div class="crayon-line crayon-striped-line" id="crayon-578c2f560a328156641316-2"><span class="crayon-st">end</span></div><div class="crayon-line" id="crayon-578c2f560a328156641316-3">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-578c2f560a328156641316-4"><span class="crayon-v">b</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-v">Book</span><span class="crayon-sy">.</span><span class="crayon-i">new</span></div><div class="crayon-line" id="crayon-578c2f560a328156641316-5"><span class="crayon-v">b</span><span class="crayon-sy">.</span><span class="crayon-v">read</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0006 seconds] -->
+<p>We would get a <strong>NoMethodError</strong>, because Book doesn’t know how to handle the method <em>read</em>. But it doesn’t have to be that way. Let’s explore <strong>method_missing</strong>.</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+
+
+		<div id="crayon-578c2f560a32e311965538" class="crayon-syntax crayon-theme-tomorrow-night crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" no-popup minimize scroll-mouseover" style="margin-top: 12px; margin-bottom: 12px; font-size: 14px ! important; line-height: 18px ! important; height: auto;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 14px ! important; height: 21px ! important; line-height: 21px ! important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 14px ! important; height: 21px ! important; line-height: 21px ! important;"><div class="crayon-button crayon-nums-button crayon-pressed" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><span class="crayon-language">Ruby</span></div></div>
+			<div class="crayon-info" style="min-height: 19.6px ! important; line-height: 19.6px ! important;"></div>
+			<div class="crayon-plain-wrap"></div>
+			<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+				<table style="" class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 14px ! important; line-height: 18px ! important;"><div class="crayon-num" data-line="crayon-578c2f560a32e311965538-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-578c2f560a32e311965538-2">2</div><div class="crayon-num" data-line="crayon-578c2f560a32e311965538-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-578c2f560a32e311965538-4">4</div><div class="crayon-num" data-line="crayon-578c2f560a32e311965538-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-578c2f560a32e311965538-6">6</div><div class="crayon-num" data-line="crayon-578c2f560a32e311965538-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-578c2f560a32e311965538-8">8</div><div class="crayon-num" data-line="crayon-578c2f560a32e311965538-9">9</div><div class="crayon-num crayon-striped-num" data-line="crayon-578c2f560a32e311965538-10">10</div><div class="crayon-num" data-line="crayon-578c2f560a32e311965538-11">11</div><div class="crayon-num crayon-striped-num" data-line="crayon-578c2f560a32e311965538-12">12</div><div class="crayon-num" data-line="crayon-578c2f560a32e311965538-13">13</div><div class="crayon-num crayon-striped-num" data-line="crayon-578c2f560a32e311965538-14">14</div><div class="crayon-num" data-line="crayon-578c2f560a32e311965538-15">15</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 14px ! important; line-height: 18px ! important; -moz-tab-size: 4;"><div class="crayon-line" id="crayon-578c2f560a32e311965538-1"><span class="crayon-r">class</span><span class="crayon-h"> </span><span class="crayon-i">Book</span></div><div class="crayon-line crayon-striped-line" id="crayon-578c2f560a32e311965538-2"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-r">def</span><span class="crayon-h"> </span><span class="crayon-e">method_missing</span><span class="crayon-sy">(</span><span class="crayon-t">method</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-o">*</span><span class="crayon-v">args</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">&amp;block</span><span class="crayon-sy">)</span></div><div class="crayon-line" id="crayon-578c2f560a32e311965538-3"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">puts</span><span class="crayon-h"> </span><span class="crayon-s">"You called: #{method}(#{args.join(', ')})"</span></div><div class="crayon-line crayon-striped-line" id="crayon-578c2f560a32e311965538-4"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">puts</span><span class="crayon-h"> </span><span class="crayon-s">"(You also passed it a block)"</span><span class="crayon-h"> </span><span class="crayon-st">if</span><span class="crayon-h"> </span><span class="crayon-v">block_given</span><span class="crayon-sy">?</span></div><div class="crayon-line" id="crayon-578c2f560a32e311965538-5"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-st">end</span></div><div class="crayon-line crayon-striped-line" id="crayon-578c2f560a32e311965538-6"><span class="crayon-st">end</span></div><div class="crayon-line" id="crayon-578c2f560a32e311965538-7">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-578c2f560a32e311965538-8"><span class="crayon-v">b</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-v">Book</span><span class="crayon-sy">.</span><span class="crayon-i">new</span></div><div class="crayon-line" id="crayon-578c2f560a32e311965538-9">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-578c2f560a32e311965538-10"><span class="crayon-v">b</span><span class="crayon-sy">.</span><span class="crayon-i">read</span></div><div class="crayon-line" id="crayon-578c2f560a32e311965538-11"><span class="crayon-v">b</span><span class="crayon-sy">.</span><span class="crayon-e">read</span><span class="crayon-sy">(</span><span class="crayon-s">'a'</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-s">'b'</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-k ">{</span><span class="crayon-h"> </span><span class="crayon-s">"foo"</span><span class="crayon-h"> </span><span class="crayon-k ">}</span></div><div class="crayon-line crayon-striped-line" id="crayon-578c2f560a32e311965538-12">&nbsp;</div><div class="crayon-line" id="crayon-578c2f560a32e311965538-13"><span class="crayon-c"># =&gt; You called: read()</span></div><div class="crayon-line crayon-striped-line" id="crayon-578c2f560a32e311965538-14"><span class="crayon-c"># =&gt; You called read(a, b)</span></div><div class="crayon-line" id="crayon-578c2f560a32e311965538-15"><span class="crayon-c"># =&gt; (You also passed it a block)</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0020 seconds] -->
+<p><a href="http://ruby-doc.org/core-2.1.0/BasicObject.html#method-i-method_missing" target="_blank">BasicObject#method_missing</a> provides you an option to build a handler that will automatically get called in the event of a NoMethodError – but before that error ever happens. You are then given as parameters the method name that you tried to call, its arguments, and its block. From there, you can do anything you want.</p>
+<p>While this looks really cool, be hesitant to use it unless you have a valid reason, because:</p>
+<ul>
+<li>It takes extra time to hit the method_missing handler because you traverse the Ancestor Chain</li>
+<li>If you’re not careful, you’ll swallow actual errors uninentionally. User <strong>super</strong> to handle any unintended errors, which will then call the default method_missing handler.</li>
+</ul>
+<hr class="short">
+<p>That’s all we’re going to cover in this first part. We reviewed&nbsp;Open Classes, Ruby’s Object Model, The Ancestors Chain, Dynamic Method Declarations, Dynamic Method Calling, and Ghost Methods, but there’s even more in store for Part 2 where we’ll cover Scopes, Dynamically Defining Classes, Closures (Blocks, Procs, and Lambdas), Various Evals (instance_eval, class_eval, and eval), and Writing a Multi-Purpose Module.</p>
+<p>We won’t be covering <a href="http://www.integralist.co.uk/posts/eigenclass.html" target="_blank">Singleton Methods and Eigenclasses</a> however. Those concepts cover a good chunk of metaprogramming in Ruby, but they are in my opinion the most confusing concepts to master and I’ve never ran into a situation where using them would have made my code much better. So I chose to avoid them altogether, but if you’re interested in learning more there are tons of articles about them.</p>
+<p>Thanks for sticking around until the end – and stay on the lookout for Metaprogramming in Ruby: Part 2!</p>
+   </div><!-- .entry-content -->
+
+</div>
+</div>
+
+  <footer class="entry-footer">
+  </footer><!-- .entry-footer -->
+</article><!-- #post-## -->
+
+			
+      <div class="container">
+        <div class="container-padding">
+          
+<div id="disqus_thread"><iframe verticalscrolling="no" horizontalscrolling="no" src="index_1.html" style="width: 1px ! important; min-width: 100% ! important; border: medium none ! important; overflow: hidden ! important; height: 1637px ! important;" title="Disqus" tabindex="0" allowtransparency="true" name="dsq-app2" id="dsq-app2" scrolling="no" width="100%" frameborder="0"></iframe></div>
+
+
+
+        </div>
+      </div>
+
+
+		</main><!-- #main -->
+	</div><!-- #primary -->
+
+        
+        
+
+
+
+
+
+
+
+    <footer class="main-footer">
+    <div class="container-padding">
+      <div class="container">
+        <div class="down-triangle"></div>
+        <div class="footer-content">
+          <p>©2016 Aaron Krauss. All Rights Reserved.</p>
+        </div>
+        <div class="footer-logos">
+          <ul class="footer-icons">
+          <li><a class="icon-github" title="GitHub" target="github" href="https://github.com/alkrauss48"></a></li>
+          <li><a class="icon-twitter" title="Twitter" target="twitter" href="https://twitter.com/thecodeboss"></a></li>
+          <li><a class="icon3-untappd" title="Untappd" target="untappd" href="https://untappd.com/user/thecodeboss"></a></li>
+          <li><a class="icon-uniE603" title="Email" href="mailto:alkrauss48@gmail.com"></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    </footer>
+
+    
+    <!--[if lt IE 9]>
+      <script src="/assets/js/ie/ie.js"></script>
+    <![endif]-->
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+    <!-- <script> -->
+    <!--   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){ -->
+    <!--   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o), -->
+    <!--   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m) -->
+    <!--   })(window,document,'script','//www.google&#45;analytics.com/analytics.js','ga'); -->
+    <!--   ga('create', 'UA&#45;38589428&#45;1', 'thesocietea.org'); -->
+    <!--   ga('send', 'pageview'); -->
+    <!-- </script> -->
+    
+    
+    
+  
+
+<div class="sidr right" id="sidr-main"><div class="sidr-inner">
+            <nav class="sidr-class-nav">
+              <div class="sidr-class-menu-main-menu-container"><ul id="sidr-id-menu-main-menu" class="sidr-class-menu"><li id="sidr-id-menu-item-25" class="sidr-class-menu-item sidr-class-menu-item-type-post_type sidr-class-menu-item-object-page sidr-class-menu-item-has-children sidr-class-menu-item-25"><a href="https://thesocietea.org/about/">About</a>
+<ul class="sidr-class-sub-menu">
+	<li id="sidr-id-menu-item-1341" class="sidr-class-menu-item sidr-class-menu-item-type-post_type sidr-class-menu-item-object-page sidr-class-menu-item-1341"><a href="https://thesocietea.org/about/">About Me</a></li>
+	<li id="sidr-id-menu-item-1330" class="sidr-class-menu-item sidr-class-menu-item-type-post_type sidr-class-menu-item-object-page sidr-class-menu-item-1330"><a href="https://thesocietea.org/speaking/">Speaking</a></li>
+	<li id="sidr-id-menu-item-1340" class="sidr-class-menu-item sidr-class-menu-item-type-custom sidr-class-menu-item-object-custom sidr-class-menu-item-1340"><a href="http://thesocietea.org/resume">Resume</a></li>
+</ul>
+</li>
+<li id="sidr-id-menu-item-26" class="sidr-class-menu-item sidr-class-menu-item-type-post_type sidr-class-menu-item-object-page sidr-class-menu-item-26"><a href="https://thesocietea.org/blog/">Blog</a></li>
+<li id="sidr-id-menu-item-32" class="sidr-class-menu-item sidr-class-menu-item-type-post_type sidr-class-menu-item-object-page sidr-class-menu-item-has-children sidr-class-menu-item-32"><a href="https://thesocietea.org/projects/">Projects</a>
+<ul class="sidr-class-sub-menu">
+	<li id="sidr-id-menu-item-1339" class="sidr-class-menu-item sidr-class-menu-item-type-post_type sidr-class-menu-item-object-page sidr-class-menu-item-1339"><a href="https://thesocietea.org/projects/">Big Projects</a></li>
+	<li id="sidr-id-menu-item-335" class="sidr-class-menu-item sidr-class-menu-item-type-custom sidr-class-menu-item-object-custom sidr-class-menu-item-335"><a href="http://labs.thesocietea.org/">Labs</a></li>
+</ul>
+</li>
+<li id="sidr-id-menu-item-27" class="sidr-class-nav-call-action sidr-class-menu-item sidr-class-menu-item-type-post_type sidr-class-menu-item-object-page sidr-class-menu-item-27"><a href="https://thesocietea.org/skills/">Skills</a></li>
+</ul></div>            </nav>
+          </div></div></body>
+</html>

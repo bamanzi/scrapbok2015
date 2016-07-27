@@ -1,0 +1,778 @@
+/* ::::: https://fonts.googleapis.com/css?family=Open+Sans:400,700,800,300 ::::: */
+
+@font-face {
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 300;
+  src: local("Open Sans Light"), local("OpenSans-Light"), url("DXI1ORHCpsQm3Vp6mXoaTXhCUOGz7vYGh680lGh-uXM.woff") format("woff");
+}
+@font-face {
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Open Sans"), local("OpenSans"), url("cJZKeOuBrn4kERxqtaUH3T8E0i7KZn-EPnyo3HZu7kw.woff") format("woff");
+}
+@font-face {
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 700;
+  src: local("Open Sans Bold"), local("OpenSans-Bold"), url("k3k702ZOKiLJc3WVjuplzHhCUOGz7vYGh680lGh-uXM.woff") format("woff");
+}
+@font-face {
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 800;
+  src: local("Open Sans Extrabold"), local("OpenSans-Extrabold"), url("EInbV5DfGHOiMmvb1Xr-hnhCUOGz7vYGh680lGh-uXM.woff") format("woff");
+}
+/* ::::: https://thesocietea.org/assets/css/screen.css ::::: */
+
+article, aside, details, figcaption, figure, footer, header, hgroup, nav, section, summary { display: block; }
+html { font-size: 100%; }
+html, button, input, select, textarea { font-family: sans-serif; }
+body { margin: 0px; }
+a:focus { outline: thin dotted; }
+a:hover, a:active { outline: 0px none; }
+h1 { font-size: 2em; margin: 0.67em 0px; }
+h2 { font-size: 1.5em; margin: 0.83em 0px; }
+h3 { font-size: 1.17em; margin: 1em 0px; }
+b, strong { font-weight: bold; }
+p, pre { margin: 1em 0px; }
+dl, menu, ol, ul { margin: 1em 0px; }
+menu, ol, ul { padding: 0px 0px 0px 40px; }
+nav ul, nav ol { list-style: none outside none; }
+img { border: 0px none; }
+table { border-collapse: collapse; border-spacing: 0px; }
+@font-face {
+  font-family: "site-main-icons";
+  font-style: normal;
+  font-weight: normal;
+  src: url("site-main-icons.eot") format("embedded-opentype"), url("site-main-icons.woff") format("woff"), url("site-main-icons.ttf") format("truetype"), url("site-main-icons.svg") format("svg");
+}
+[class^="icon-"], [class*=" icon-"] { font-family: 'site-main-icons'; font-style: normal; font-weight: normal; font-variant: normal; text-transform: none; line-height: 1; }
+.icon-uniE603:before { content: ""; }
+.icon-twitter:before { content: ""; }
+.icon-github:before { content: ""; }
+@font-face {
+  font-family: "site-main-icons-2";
+  font-style: normal;
+  font-weight: normal;
+  src: url("site-main-icons-2.eot") format("embedded-opentype"), url("site-main-icons-2.woff") format("woff"), url("site-main-icons-2.ttf") format("truetype"), url("site-main-icons-2.svg") format("svg");
+}
+@font-face {
+  font-family: "site-main-icons-3";
+  font-style: normal;
+  font-weight: normal;
+  src: url("site-main-icons-3.eot") format("embedded-opentype"), url("site-main-icons-3.ttf") format("truetype"), url("site-main-icons-3.woff") format("woff"), url("site-main-icons-3.svg") format("svg");
+}
+[class^="icon3-"], [class*=" icon3-"] { font-family: 'site-main-icons-3'; font-style: normal; font-weight: normal; font-variant: normal; text-transform: none; line-height: 1; }
+.icon3-untappd:before { content: ""; }
+@media screen and (max-width: 800px) and (orientation: landscape), screen and (max-height: 300px) {
+}
+@media all and (max-width: 900px) {
+}
+.container { max-width: 58em; margin-left: auto; margin-right: auto; }
+.container:before, .container:after { content: " "; display: table; }
+.container:after { clear: both; }
+.container {  }
+@media screen and (max-width: 876px) {
+  .container-padding { padding: 0px 1em; }
+}
+html { height: 100%; }
+body { font-family: 'Open Sans',sans-serif; height: 100% ! important; }
+a:focus { outline: 1px solid rgb(255, 165, 0); }
+@keyframes blink {
+0% { opacity: 1; }
+50% { opacity: 0; }
+100% { opacity: 1; }
+}
+body > header { background: none repeat scroll 0% 0% rgb(51, 51, 51); }
+footer.main-footer { position: relative; background-color: rgb(51, 51, 51); z-index: 10; }
+footer.main-footer .down-triangle { border-top: 20px solid white; }
+.nav-wrapper { float: right; }
+.nav ul { margin: 0px; list-style: none outside none; position: relative; padding: 0px; }
+.nav ul:before, .nav ul:after { content: " "; display: table; }
+.nav ul:after { clear: both; }
+.nav ul {  }
+.nav ul li { transition: line-height 0.25s ease 0s; float: left; padding: 0px 1em; line-height: 1.4; }
+.nav ul li a { display: inline-block; transition: all 0.25s ease 0s; line-height: 3.6; text-decoration: none; font-weight: bold; color: white; }
+.nav ul li a:hover, .nav ul li a:focus { color: rgb(0, 231, 173); }
+.nav ul li.nav-call-action { padding-right: 0px; }
+.nav ul li.nav-call-action a { transition: all 0.25s ease 0s; text-transform: uppercase; font-size: 80%; font-weight: normal; color: white; background-color: rgb(255, 95, 0); padding: 0px 1em; margin-right: 0em; margin-top: 0.4em; }
+.nav ul li.nav-call-action a:hover, .nav ul li.nav-call-action a:focus { color: rgb(255, 95, 0); background-color: white; }
+.nav ul li .sub-menu { position: absolute; left: -999em; width: 400px; padding: 0px; margin: 0px; background-color: rgb(20, 112, 231); top: 100%; }
+.nav ul li .sub-menu:before, .nav ul li .sub-menu:after { content: ""; height: 2em; width: 1000px; position: absolute; top: 0px; background-color: rgb(20, 112, 231); }
+.nav ul li .sub-menu:before { right: 100%; }
+.nav ul li .sub-menu:after { left: 100%; }
+.nav ul li li { margin: 0px; background-color: rgb(20, 112, 231); display: block; padding: 0px 1em; }
+.nav ul li li a { line-height: 2 ! important; font-weight: normal; }
+.nav ul li:hover .sub-menu, .nav ul li:focus .sub-menu { left: 0px; }
+@media screen and (max-width: 425px) {
+}
+@media screen and (max-width: 425px) {
+}
+@media screen and (max-width: 650px) {
+}
+@media screen and (max-width: 650px) {
+}
+.footer-icons { display: inline-block; list-style: none outside none; margin: 0px; }
+.footer-icons li { float: left; margin: 0px 1em; }
+.footer-icons li a { font-size: 80%; text-shadow: 1px 1px 2px rgb(0, 0, 0); transition: color 0.25s ease 0s; text-decoration: none; color: white; }
+.footer-icons li a:hover, .footer-icons li a:focus { color: rgb(0, 231, 173); }
+.footer-icons li { line-height: 2.2em; }
+hr { display: block; height: 1px; border-right: 0px none; border-width: 1px 0px 0px; border-style: solid none none; border-color: rgb(204, 204, 204) -moz-use-text-color -moz-use-text-color; -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; margin: 1em 0px; padding: 0px; }
+hr.short { width: 5em; text-align: left; border-top: 3px solid rgb(20, 112, 231); }
+.spanner { width: 100%; }
+.sticky { transition: height 0.25s ease 0s; z-index: 100; border-bottom: 2px solid rgb(0, 231, 173); height: 55px; top: 100%; left: 0px; position: absolute; margin-top: -55px; }
+@media screen and (max-width: 876px) {
+  .sticky { left: auto; }
+}
+.sticky img { transition: width 0.25s ease 0s; margin-top: 0.5em; width: 50px; }
+.sticky.affixed { position: fixed; top: 0px; left: auto; margin-top: 0px; }
+.sticky.mini { height: 40px; }
+.sticky.mini #mobile-navigation ul { margin: 0.25em 0px; }
+.sticky.mini img { margin-top: 0.5em; width: 30px; }
+.sticky.mini .nav li a { line-height: 2.65; display: inline-block; }
+.sticky.mini .nav li.nav-call-action a { line-height: 2.4; margin-top: 0.55em; }
+#navigation { display: inline-block; }
+@media screen and (max-width: 876px) {
+  #navigation { display: none; }
+}
+#mobile-navigation { display: none; }
+@media screen and (max-width: 876px) {
+  #mobile-navigation { display: inline-block; }
+}
+#mobile-navigation li { font-size: 200%; padding: 0px; }
+.line-one { top: 7px; }
+.line-two { top: 14px; }
+.line-three { top: 21px; }
+#responsive-menu-icon { display: block; position: relative; width: 35px; height: 35px; transition: transform 0.25s ease 0s; }
+#responsive-menu-icon span { transition: all 0.35s ease-in-out 0s; height: 3px; width: 25px; background-color: white; display: block; position: absolute; right: 0px; opacity: 1; }
+@media screen and (max-width: 650px) {
+}
+@media screen and (max-width: 425px) {
+}
+.down-triangle { position: absolute; left: 50%; top: 0px; display: inline; margin-left: -20px; width: 0px; height: 0px; border-left: 20px solid transparent; border-right: 20px solid transparent; }
+@media screen and (max-width: 650px) {
+}
+@media screen and (max-width: 650px) {
+}
+.footer-content { width: 48.2759%; float: left; margin-right: 3.44828%; color: white; font-size: 70%; }
+@media screen and (max-width: 650px) {
+  .footer-content { text-align: center; width: 100%; float: left; padding-top: 2em; }
+}
+.footer-logos { width: 48.2759%; float: right; }
+.footer-logos ul { float: right; padding: 0px; }
+@media screen and (max-width: 650px) {
+  .footer-logos { width: 100%; float: left; margin-right: auto; text-align: center; }
+  .footer-logos ul { float: none; }
+}
+@media screen and (max-width: 876px) and (min-width: 650px) {
+}
+@media screen and (max-width: 650px) {
+}
+@media screen and (max-width: 876px) {
+}
+@media screen and (max-width: 425px) {
+}
+@media screen and (max-width: 425px) {
+}
+@media screen and (max-width: 425px) {
+}
+@media screen and (max-width: 876px) {
+}
+@media screen and (max-width: 876px) {
+}
+@media screen and (max-width: 876px) {
+}
+@media screen and (max-width: 876px) {
+}
+.entry-title { display: inline-block; color: rgb(255, 95, 0); }
+.entry-content { line-height: 2; margin-bottom: 1em; }
+.entry-content a { position: relative; display: inline-block; text-decoration: none; font-weight: bold; line-height: 2; color: rgb(0, 231, 173); transition: color 0.25s ease 0s; perspective-origin: 50% 100%; perspective: 600px; }
+.entry-content a:before, .entry-content a:after { position: absolute; top: 0px; left: -4px; z-index: -1; box-sizing: content-box; padding: 0px 4px; width: 100%; height: 100%; content: ""; }
+.entry-content a:before { background-color: rgb(0, 231, 173); transition: transform 0.25s cubic-bezier(0.7, 0, 0.4, 1) 0s; transform: rotateX(90deg); transform-origin: 50% 100% 0px; }
+.entry-content a:hover, .entry-content a:focus { color: white; }
+.entry-content a:hover:before, .entry-content a:focus:before { transform: rotateX(0deg); }
+.entry-content h2 { color: rgb(20, 112, 231); }
+.entry-content h3 { font-size: 1.25em; }
+.entry-content li { padding: 0.25em 0px; }
+.entry-content hr { width: 5em; text-align: left; border-top: 3px solid rgb(20, 112, 231); }
+.posted-on { font-weight: 300; font-size: 80%; }
+.single-post { margin-top: 4em; margin-bottom: 2em; }
+@media screen and (max-width: 876px) and (min-width: 425px) {
+}
+@media screen and (max-width: 425px) {
+}
+@keyframes fadeIn {
+0% { opacity: 0; }
+100% { opacity: 1; }
+}
+@media screen and (max-width: 425px) {
+}
+@media screen and (max-width: 650px) {
+}
+/* ::::: https://thesocietea.org/wp-content/plugins/crayon-syntax-highlighter/themes/tomorrow-night/tomorrow-night.css ::::: */
+
+.crayon-theme-tomorrow-night { border-width: 1px ! important; border-color: rgb(0, 0, 0) ! important; border-style: solid ! important; text-shadow: none ! important; background: none repeat scroll 0% 0% rgb(39, 41, 44) ! important; }
+.crayon-theme-tomorrow-night .crayon-table .crayon-nums { background: none repeat scroll 0% 0% rgb(75, 77, 79) ! important; color: rgb(137, 137, 137) ! important; border-right-width: 1px ! important; }
+.crayon-theme-tomorrow-night .crayon-striped-line { background: none repeat scroll 0% 0% rgb(32, 35, 38) ! important; }
+.crayon-theme-tomorrow-night .crayon-striped-num { background: none repeat scroll 0% 0% rgb(58, 60, 61) ! important; color: rgb(151, 151, 151) ! important; }
+.crayon-theme-tomorrow-night .crayon-info { background: none repeat scroll 0% 0% rgb(250, 249, 215) ! important; border-bottom: 1px solid rgb(177, 175, 94) ! important; color: rgb(126, 125, 52) ! important; }
+.crayon-theme-tomorrow-night .crayon-toolbar { background: none repeat scroll 0% 0% rgb(145, 145, 145) ! important; border-bottom: 1px solid rgb(46, 46, 46) ! important; }
+.crayon-theme-tomorrow-night .crayon-toolbar > div { float: left ! important; }
+.crayon-theme-tomorrow-night .crayon-toolbar .crayon-tools { float: right ! important; }
+.crayon-theme-tomorrow-night .crayon-title { color: rgb(42, 42, 42) ! important; }
+.crayon-theme-tomorrow-night .crayon-language { color: rgb(73, 73, 73) ! important; }
+.crayon-theme-tomorrow-night .crayon-button {  }
+.crayon-theme-tomorrow-night .crayon-button:hover { background-color: rgb(188, 188, 188) ! important; color: rgb(102, 102, 102); }
+.crayon-theme-tomorrow-night .crayon-button:active { background-color: rgb(188, 188, 188) ! important; color: rgb(255, 255, 255); }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-c { color: rgb(167, 168, 162) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-s { color: rgb(178, 175, 117) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-k { color: rgb(146, 175, 193) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-st { color: rgb(146, 175, 193) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-r { color: rgb(146, 175, 193) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-t { color: rgb(187, 167, 197) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-i { color: rgb(199, 199, 199) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-e { color: rgb(232, 206, 145) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-v { color: rgb(216, 124, 123) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-cn { color: rgb(231, 163, 122) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-o { color: rgb(153, 201, 196) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-sy { color: rgb(201, 210, 209) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-h { color: rgb(0, 111, 224) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre { color: rgb(255, 255, 255) ! important; }
+/* ::::: https://thesocietea.org/wp-content/plugins/crayon-syntax-highlighter/fonts/monaco.css ::::: */
+
+@font-face {
+  font-family: "MonacoRegular";
+  font-style: normal;
+  font-weight: normal;
+  src: url("monaco-webfont.eot") format("embedded-opentype"), url("monaco-webfont.woff") format("woff"), url("monaco-webfont.ttf") format("truetype"), url("monaco-webfont.svg") format("svg");
+}
+.crayon-font-monaco * { font-family: Monaco,'MonacoRegular','Courier New',monospace ! important; }
+/* ::::: https://thesocietea.org/wp-content/plugins/crayon-syntax-highlighter/themes/tomorrow-night/tomorrow-night.css ::::: */
+
+.crayon-theme-tomorrow-night { border-width: 1px ! important; border-color: rgb(0, 0, 0) ! important; border-style: solid ! important; text-shadow: none ! important; background: none repeat scroll 0% 0% rgb(39, 41, 44) ! important; }
+.crayon-theme-tomorrow-night .crayon-table .crayon-nums { background: none repeat scroll 0% 0% rgb(75, 77, 79) ! important; color: rgb(137, 137, 137) ! important; border-right-width: 1px ! important; }
+.crayon-theme-tomorrow-night .crayon-striped-line { background: none repeat scroll 0% 0% rgb(32, 35, 38) ! important; }
+.crayon-theme-tomorrow-night .crayon-striped-num { background: none repeat scroll 0% 0% rgb(58, 60, 61) ! important; color: rgb(151, 151, 151) ! important; }
+.crayon-theme-tomorrow-night .crayon-info { background: none repeat scroll 0% 0% rgb(250, 249, 215) ! important; border-bottom: 1px solid rgb(177, 175, 94) ! important; color: rgb(126, 125, 52) ! important; }
+.crayon-theme-tomorrow-night .crayon-toolbar { background: none repeat scroll 0% 0% rgb(145, 145, 145) ! important; border-bottom: 1px solid rgb(46, 46, 46) ! important; }
+.crayon-theme-tomorrow-night .crayon-toolbar > div { float: left ! important; }
+.crayon-theme-tomorrow-night .crayon-toolbar .crayon-tools { float: right ! important; }
+.crayon-theme-tomorrow-night .crayon-title { color: rgb(42, 42, 42) ! important; }
+.crayon-theme-tomorrow-night .crayon-language { color: rgb(73, 73, 73) ! important; }
+.crayon-theme-tomorrow-night .crayon-button {  }
+.crayon-theme-tomorrow-night .crayon-button:hover { background-color: rgb(188, 188, 188) ! important; color: rgb(102, 102, 102); }
+.crayon-theme-tomorrow-night .crayon-button:active { background-color: rgb(188, 188, 188) ! important; color: rgb(255, 255, 255); }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-c { color: rgb(167, 168, 162) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-s { color: rgb(178, 175, 117) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-k { color: rgb(146, 175, 193) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-st { color: rgb(146, 175, 193) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-r { color: rgb(146, 175, 193) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-t { color: rgb(187, 167, 197) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-i { color: rgb(199, 199, 199) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-e { color: rgb(232, 206, 145) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-v { color: rgb(216, 124, 123) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-cn { color: rgb(231, 163, 122) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-o { color: rgb(153, 201, 196) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-sy { color: rgb(201, 210, 209) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-h { color: rgb(0, 111, 224) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre { color: rgb(255, 255, 255) ! important; }
+/* ::::: https://thesocietea.org/wp-content/plugins/crayon-syntax-highlighter/fonts/monaco.css ::::: */
+
+@font-face {
+  font-family: "MonacoRegular";
+  font-style: normal;
+  font-weight: normal;
+  src: url("monaco-webfont.eot") format("embedded-opentype"), url("monaco-webfont.woff") format("woff"), url("monaco-webfont.ttf") format("truetype"), url("monaco-webfont.svg") format("svg");
+}
+.crayon-font-monaco * { font-family: Monaco,'MonacoRegular','Courier New',monospace ! important; }
+/* ::::: https://thesocietea.org/wp-content/plugins/crayon-syntax-highlighter/themes/tomorrow-night/tomorrow-night.css ::::: */
+
+.crayon-theme-tomorrow-night { border-width: 1px ! important; border-color: rgb(0, 0, 0) ! important; border-style: solid ! important; text-shadow: none ! important; background: none repeat scroll 0% 0% rgb(39, 41, 44) ! important; }
+.crayon-theme-tomorrow-night .crayon-table .crayon-nums { background: none repeat scroll 0% 0% rgb(75, 77, 79) ! important; color: rgb(137, 137, 137) ! important; border-right-width: 1px ! important; }
+.crayon-theme-tomorrow-night .crayon-striped-line { background: none repeat scroll 0% 0% rgb(32, 35, 38) ! important; }
+.crayon-theme-tomorrow-night .crayon-striped-num { background: none repeat scroll 0% 0% rgb(58, 60, 61) ! important; color: rgb(151, 151, 151) ! important; }
+.crayon-theme-tomorrow-night .crayon-info { background: none repeat scroll 0% 0% rgb(250, 249, 215) ! important; border-bottom: 1px solid rgb(177, 175, 94) ! important; color: rgb(126, 125, 52) ! important; }
+.crayon-theme-tomorrow-night .crayon-toolbar { background: none repeat scroll 0% 0% rgb(145, 145, 145) ! important; border-bottom: 1px solid rgb(46, 46, 46) ! important; }
+.crayon-theme-tomorrow-night .crayon-toolbar > div { float: left ! important; }
+.crayon-theme-tomorrow-night .crayon-toolbar .crayon-tools { float: right ! important; }
+.crayon-theme-tomorrow-night .crayon-title { color: rgb(42, 42, 42) ! important; }
+.crayon-theme-tomorrow-night .crayon-language { color: rgb(73, 73, 73) ! important; }
+.crayon-theme-tomorrow-night .crayon-button {  }
+.crayon-theme-tomorrow-night .crayon-button:hover { background-color: rgb(188, 188, 188) ! important; color: rgb(102, 102, 102); }
+.crayon-theme-tomorrow-night .crayon-button:active { background-color: rgb(188, 188, 188) ! important; color: rgb(255, 255, 255); }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-c { color: rgb(167, 168, 162) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-s { color: rgb(178, 175, 117) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-k { color: rgb(146, 175, 193) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-st { color: rgb(146, 175, 193) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-r { color: rgb(146, 175, 193) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-t { color: rgb(187, 167, 197) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-i { color: rgb(199, 199, 199) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-e { color: rgb(232, 206, 145) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-v { color: rgb(216, 124, 123) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-cn { color: rgb(231, 163, 122) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-o { color: rgb(153, 201, 196) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-sy { color: rgb(201, 210, 209) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-h { color: rgb(0, 111, 224) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre { color: rgb(255, 255, 255) ! important; }
+/* ::::: https://thesocietea.org/wp-content/plugins/crayon-syntax-highlighter/fonts/monaco.css ::::: */
+
+@font-face {
+  font-family: "MonacoRegular";
+  font-style: normal;
+  font-weight: normal;
+  src: url("monaco-webfont.eot") format("embedded-opentype"), url("monaco-webfont.woff") format("woff"), url("monaco-webfont.ttf") format("truetype"), url("monaco-webfont.svg") format("svg");
+}
+.crayon-font-monaco * { font-family: Monaco,'MonacoRegular','Courier New',monospace ! important; }
+/* ::::: https://thesocietea.org/wp-content/plugins/crayon-syntax-highlighter/themes/tomorrow-night/tomorrow-night.css ::::: */
+
+.crayon-theme-tomorrow-night { border-width: 1px ! important; border-color: rgb(0, 0, 0) ! important; border-style: solid ! important; text-shadow: none ! important; background: none repeat scroll 0% 0% rgb(39, 41, 44) ! important; }
+.crayon-theme-tomorrow-night .crayon-table .crayon-nums { background: none repeat scroll 0% 0% rgb(75, 77, 79) ! important; color: rgb(137, 137, 137) ! important; border-right-width: 1px ! important; }
+.crayon-theme-tomorrow-night .crayon-striped-line { background: none repeat scroll 0% 0% rgb(32, 35, 38) ! important; }
+.crayon-theme-tomorrow-night .crayon-striped-num { background: none repeat scroll 0% 0% rgb(58, 60, 61) ! important; color: rgb(151, 151, 151) ! important; }
+.crayon-theme-tomorrow-night .crayon-info { background: none repeat scroll 0% 0% rgb(250, 249, 215) ! important; border-bottom: 1px solid rgb(177, 175, 94) ! important; color: rgb(126, 125, 52) ! important; }
+.crayon-theme-tomorrow-night .crayon-toolbar { background: none repeat scroll 0% 0% rgb(145, 145, 145) ! important; border-bottom: 1px solid rgb(46, 46, 46) ! important; }
+.crayon-theme-tomorrow-night .crayon-toolbar > div { float: left ! important; }
+.crayon-theme-tomorrow-night .crayon-toolbar .crayon-tools { float: right ! important; }
+.crayon-theme-tomorrow-night .crayon-title { color: rgb(42, 42, 42) ! important; }
+.crayon-theme-tomorrow-night .crayon-language { color: rgb(73, 73, 73) ! important; }
+.crayon-theme-tomorrow-night .crayon-button {  }
+.crayon-theme-tomorrow-night .crayon-button:hover { background-color: rgb(188, 188, 188) ! important; color: rgb(102, 102, 102); }
+.crayon-theme-tomorrow-night .crayon-button:active { background-color: rgb(188, 188, 188) ! important; color: rgb(255, 255, 255); }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-c { color: rgb(167, 168, 162) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-s { color: rgb(178, 175, 117) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-k { color: rgb(146, 175, 193) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-st { color: rgb(146, 175, 193) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-r { color: rgb(146, 175, 193) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-t { color: rgb(187, 167, 197) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-i { color: rgb(199, 199, 199) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-e { color: rgb(232, 206, 145) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-v { color: rgb(216, 124, 123) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-cn { color: rgb(231, 163, 122) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-o { color: rgb(153, 201, 196) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-sy { color: rgb(201, 210, 209) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-h { color: rgb(0, 111, 224) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre { color: rgb(255, 255, 255) ! important; }
+/* ::::: https://thesocietea.org/wp-content/plugins/crayon-syntax-highlighter/fonts/monaco.css ::::: */
+
+@font-face {
+  font-family: "MonacoRegular";
+  font-style: normal;
+  font-weight: normal;
+  src: url("monaco-webfont.eot") format("embedded-opentype"), url("monaco-webfont.woff") format("woff"), url("monaco-webfont.ttf") format("truetype"), url("monaco-webfont.svg") format("svg");
+}
+.crayon-font-monaco * { font-family: Monaco,'MonacoRegular','Courier New',monospace ! important; }
+/* ::::: https://thesocietea.org/wp-content/plugins/crayon-syntax-highlighter/themes/tomorrow-night/tomorrow-night.css ::::: */
+
+.crayon-theme-tomorrow-night { border-width: 1px ! important; border-color: rgb(0, 0, 0) ! important; border-style: solid ! important; text-shadow: none ! important; background: none repeat scroll 0% 0% rgb(39, 41, 44) ! important; }
+.crayon-theme-tomorrow-night .crayon-table .crayon-nums { background: none repeat scroll 0% 0% rgb(75, 77, 79) ! important; color: rgb(137, 137, 137) ! important; border-right-width: 1px ! important; }
+.crayon-theme-tomorrow-night .crayon-striped-line { background: none repeat scroll 0% 0% rgb(32, 35, 38) ! important; }
+.crayon-theme-tomorrow-night .crayon-striped-num { background: none repeat scroll 0% 0% rgb(58, 60, 61) ! important; color: rgb(151, 151, 151) ! important; }
+.crayon-theme-tomorrow-night .crayon-info { background: none repeat scroll 0% 0% rgb(250, 249, 215) ! important; border-bottom: 1px solid rgb(177, 175, 94) ! important; color: rgb(126, 125, 52) ! important; }
+.crayon-theme-tomorrow-night .crayon-toolbar { background: none repeat scroll 0% 0% rgb(145, 145, 145) ! important; border-bottom: 1px solid rgb(46, 46, 46) ! important; }
+.crayon-theme-tomorrow-night .crayon-toolbar > div { float: left ! important; }
+.crayon-theme-tomorrow-night .crayon-toolbar .crayon-tools { float: right ! important; }
+.crayon-theme-tomorrow-night .crayon-title { color: rgb(42, 42, 42) ! important; }
+.crayon-theme-tomorrow-night .crayon-language { color: rgb(73, 73, 73) ! important; }
+.crayon-theme-tomorrow-night .crayon-button {  }
+.crayon-theme-tomorrow-night .crayon-button:hover { background-color: rgb(188, 188, 188) ! important; color: rgb(102, 102, 102); }
+.crayon-theme-tomorrow-night .crayon-button:active { background-color: rgb(188, 188, 188) ! important; color: rgb(255, 255, 255); }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-c { color: rgb(167, 168, 162) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-s { color: rgb(178, 175, 117) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-k { color: rgb(146, 175, 193) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-st { color: rgb(146, 175, 193) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-r { color: rgb(146, 175, 193) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-t { color: rgb(187, 167, 197) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-i { color: rgb(199, 199, 199) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-e { color: rgb(232, 206, 145) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-v { color: rgb(216, 124, 123) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-cn { color: rgb(231, 163, 122) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-o { color: rgb(153, 201, 196) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-sy { color: rgb(201, 210, 209) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-h { color: rgb(0, 111, 224) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre { color: rgb(255, 255, 255) ! important; }
+/* ::::: https://thesocietea.org/wp-content/plugins/crayon-syntax-highlighter/fonts/monaco.css ::::: */
+
+@font-face {
+  font-family: "MonacoRegular";
+  font-style: normal;
+  font-weight: normal;
+  src: url("monaco-webfont.eot") format("embedded-opentype"), url("monaco-webfont.woff") format("woff"), url("monaco-webfont.ttf") format("truetype"), url("monaco-webfont.svg") format("svg");
+}
+.crayon-font-monaco * { font-family: Monaco,'MonacoRegular','Courier New',monospace ! important; }
+/* ::::: https://thesocietea.org/wp-content/plugins/crayon-syntax-highlighter/themes/tomorrow-night/tomorrow-night.css ::::: */
+
+.crayon-theme-tomorrow-night { border-width: 1px ! important; border-color: rgb(0, 0, 0) ! important; border-style: solid ! important; text-shadow: none ! important; background: none repeat scroll 0% 0% rgb(39, 41, 44) ! important; }
+.crayon-theme-tomorrow-night .crayon-table .crayon-nums { background: none repeat scroll 0% 0% rgb(75, 77, 79) ! important; color: rgb(137, 137, 137) ! important; border-right-width: 1px ! important; }
+.crayon-theme-tomorrow-night .crayon-striped-line { background: none repeat scroll 0% 0% rgb(32, 35, 38) ! important; }
+.crayon-theme-tomorrow-night .crayon-striped-num { background: none repeat scroll 0% 0% rgb(58, 60, 61) ! important; color: rgb(151, 151, 151) ! important; }
+.crayon-theme-tomorrow-night .crayon-info { background: none repeat scroll 0% 0% rgb(250, 249, 215) ! important; border-bottom: 1px solid rgb(177, 175, 94) ! important; color: rgb(126, 125, 52) ! important; }
+.crayon-theme-tomorrow-night .crayon-toolbar { background: none repeat scroll 0% 0% rgb(145, 145, 145) ! important; border-bottom: 1px solid rgb(46, 46, 46) ! important; }
+.crayon-theme-tomorrow-night .crayon-toolbar > div { float: left ! important; }
+.crayon-theme-tomorrow-night .crayon-toolbar .crayon-tools { float: right ! important; }
+.crayon-theme-tomorrow-night .crayon-title { color: rgb(42, 42, 42) ! important; }
+.crayon-theme-tomorrow-night .crayon-language { color: rgb(73, 73, 73) ! important; }
+.crayon-theme-tomorrow-night .crayon-button {  }
+.crayon-theme-tomorrow-night .crayon-button:hover { background-color: rgb(188, 188, 188) ! important; color: rgb(102, 102, 102); }
+.crayon-theme-tomorrow-night .crayon-button:active { background-color: rgb(188, 188, 188) ! important; color: rgb(255, 255, 255); }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-c { color: rgb(167, 168, 162) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-s { color: rgb(178, 175, 117) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-k { color: rgb(146, 175, 193) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-st { color: rgb(146, 175, 193) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-r { color: rgb(146, 175, 193) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-t { color: rgb(187, 167, 197) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-i { color: rgb(199, 199, 199) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-e { color: rgb(232, 206, 145) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-v { color: rgb(216, 124, 123) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-cn { color: rgb(231, 163, 122) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-o { color: rgb(153, 201, 196) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-sy { color: rgb(201, 210, 209) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-h { color: rgb(0, 111, 224) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre { color: rgb(255, 255, 255) ! important; }
+/* ::::: https://thesocietea.org/wp-content/plugins/crayon-syntax-highlighter/fonts/monaco.css ::::: */
+
+@font-face {
+  font-family: "MonacoRegular";
+  font-style: normal;
+  font-weight: normal;
+  src: url("monaco-webfont.eot") format("embedded-opentype"), url("monaco-webfont.woff") format("woff"), url("monaco-webfont.ttf") format("truetype"), url("monaco-webfont.svg") format("svg");
+}
+.crayon-font-monaco * { font-family: Monaco,'MonacoRegular','Courier New',monospace ! important; }
+/* ::::: https://thesocietea.org/wp-content/plugins/crayon-syntax-highlighter/themes/tomorrow-night/tomorrow-night.css ::::: */
+
+.crayon-theme-tomorrow-night { border-width: 1px ! important; border-color: rgb(0, 0, 0) ! important; border-style: solid ! important; text-shadow: none ! important; background: none repeat scroll 0% 0% rgb(39, 41, 44) ! important; }
+.crayon-theme-tomorrow-night .crayon-table .crayon-nums { background: none repeat scroll 0% 0% rgb(75, 77, 79) ! important; color: rgb(137, 137, 137) ! important; border-right-width: 1px ! important; }
+.crayon-theme-tomorrow-night .crayon-striped-line { background: none repeat scroll 0% 0% rgb(32, 35, 38) ! important; }
+.crayon-theme-tomorrow-night .crayon-striped-num { background: none repeat scroll 0% 0% rgb(58, 60, 61) ! important; color: rgb(151, 151, 151) ! important; }
+.crayon-theme-tomorrow-night .crayon-info { background: none repeat scroll 0% 0% rgb(250, 249, 215) ! important; border-bottom: 1px solid rgb(177, 175, 94) ! important; color: rgb(126, 125, 52) ! important; }
+.crayon-theme-tomorrow-night .crayon-toolbar { background: none repeat scroll 0% 0% rgb(145, 145, 145) ! important; border-bottom: 1px solid rgb(46, 46, 46) ! important; }
+.crayon-theme-tomorrow-night .crayon-toolbar > div { float: left ! important; }
+.crayon-theme-tomorrow-night .crayon-toolbar .crayon-tools { float: right ! important; }
+.crayon-theme-tomorrow-night .crayon-title { color: rgb(42, 42, 42) ! important; }
+.crayon-theme-tomorrow-night .crayon-language { color: rgb(73, 73, 73) ! important; }
+.crayon-theme-tomorrow-night .crayon-button {  }
+.crayon-theme-tomorrow-night .crayon-button:hover { background-color: rgb(188, 188, 188) ! important; color: rgb(102, 102, 102); }
+.crayon-theme-tomorrow-night .crayon-button:active { background-color: rgb(188, 188, 188) ! important; color: rgb(255, 255, 255); }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-c { color: rgb(167, 168, 162) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-s { color: rgb(178, 175, 117) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-k { color: rgb(146, 175, 193) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-st { color: rgb(146, 175, 193) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-r { color: rgb(146, 175, 193) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-t { color: rgb(187, 167, 197) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-i { color: rgb(199, 199, 199) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-e { color: rgb(232, 206, 145) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-v { color: rgb(216, 124, 123) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-cn { color: rgb(231, 163, 122) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-o { color: rgb(153, 201, 196) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-sy { color: rgb(201, 210, 209) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-h { color: rgb(0, 111, 224) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre { color: rgb(255, 255, 255) ! important; }
+/* ::::: https://thesocietea.org/wp-content/plugins/crayon-syntax-highlighter/fonts/monaco.css ::::: */
+
+@font-face {
+  font-family: "MonacoRegular";
+  font-style: normal;
+  font-weight: normal;
+  src: url("monaco-webfont.eot") format("embedded-opentype"), url("monaco-webfont.woff") format("woff"), url("monaco-webfont.ttf") format("truetype"), url("monaco-webfont.svg") format("svg");
+}
+.crayon-font-monaco * { font-family: Monaco,'MonacoRegular','Courier New',monospace ! important; }
+/* ::::: https://thesocietea.org/wp-content/plugins/crayon-syntax-highlighter/themes/tomorrow-night/tomorrow-night.css ::::: */
+
+.crayon-theme-tomorrow-night { border-width: 1px ! important; border-color: rgb(0, 0, 0) ! important; border-style: solid ! important; text-shadow: none ! important; background: none repeat scroll 0% 0% rgb(39, 41, 44) ! important; }
+.crayon-theme-tomorrow-night .crayon-table .crayon-nums { background: none repeat scroll 0% 0% rgb(75, 77, 79) ! important; color: rgb(137, 137, 137) ! important; border-right-width: 1px ! important; }
+.crayon-theme-tomorrow-night .crayon-striped-line { background: none repeat scroll 0% 0% rgb(32, 35, 38) ! important; }
+.crayon-theme-tomorrow-night .crayon-striped-num { background: none repeat scroll 0% 0% rgb(58, 60, 61) ! important; color: rgb(151, 151, 151) ! important; }
+.crayon-theme-tomorrow-night .crayon-info { background: none repeat scroll 0% 0% rgb(250, 249, 215) ! important; border-bottom: 1px solid rgb(177, 175, 94) ! important; color: rgb(126, 125, 52) ! important; }
+.crayon-theme-tomorrow-night .crayon-toolbar { background: none repeat scroll 0% 0% rgb(145, 145, 145) ! important; border-bottom: 1px solid rgb(46, 46, 46) ! important; }
+.crayon-theme-tomorrow-night .crayon-toolbar > div { float: left ! important; }
+.crayon-theme-tomorrow-night .crayon-toolbar .crayon-tools { float: right ! important; }
+.crayon-theme-tomorrow-night .crayon-title { color: rgb(42, 42, 42) ! important; }
+.crayon-theme-tomorrow-night .crayon-language { color: rgb(73, 73, 73) ! important; }
+.crayon-theme-tomorrow-night .crayon-button {  }
+.crayon-theme-tomorrow-night .crayon-button:hover { background-color: rgb(188, 188, 188) ! important; color: rgb(102, 102, 102); }
+.crayon-theme-tomorrow-night .crayon-button:active { background-color: rgb(188, 188, 188) ! important; color: rgb(255, 255, 255); }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-c { color: rgb(167, 168, 162) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-s { color: rgb(178, 175, 117) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-k { color: rgb(146, 175, 193) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-st { color: rgb(146, 175, 193) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-r { color: rgb(146, 175, 193) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-t { color: rgb(187, 167, 197) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-i { color: rgb(199, 199, 199) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-e { color: rgb(232, 206, 145) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-v { color: rgb(216, 124, 123) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-cn { color: rgb(231, 163, 122) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-o { color: rgb(153, 201, 196) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-sy { color: rgb(201, 210, 209) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-h { color: rgb(0, 111, 224) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre { color: rgb(255, 255, 255) ! important; }
+/* ::::: https://thesocietea.org/wp-content/plugins/crayon-syntax-highlighter/fonts/monaco.css ::::: */
+
+@font-face {
+  font-family: "MonacoRegular";
+  font-style: normal;
+  font-weight: normal;
+  src: url("monaco-webfont.eot") format("embedded-opentype"), url("monaco-webfont.woff") format("woff"), url("monaco-webfont.ttf") format("truetype"), url("monaco-webfont.svg") format("svg");
+}
+.crayon-font-monaco * { font-family: Monaco,'MonacoRegular','Courier New',monospace ! important; }
+/* ::::: https://thesocietea.org/wp-content/plugins/crayon-syntax-highlighter/themes/tomorrow-night/tomorrow-night.css ::::: */
+
+.crayon-theme-tomorrow-night { border-width: 1px ! important; border-color: rgb(0, 0, 0) ! important; border-style: solid ! important; text-shadow: none ! important; background: none repeat scroll 0% 0% rgb(39, 41, 44) ! important; }
+.crayon-theme-tomorrow-night .crayon-table .crayon-nums { background: none repeat scroll 0% 0% rgb(75, 77, 79) ! important; color: rgb(137, 137, 137) ! important; border-right-width: 1px ! important; }
+.crayon-theme-tomorrow-night .crayon-striped-line { background: none repeat scroll 0% 0% rgb(32, 35, 38) ! important; }
+.crayon-theme-tomorrow-night .crayon-striped-num { background: none repeat scroll 0% 0% rgb(58, 60, 61) ! important; color: rgb(151, 151, 151) ! important; }
+.crayon-theme-tomorrow-night .crayon-info { background: none repeat scroll 0% 0% rgb(250, 249, 215) ! important; border-bottom: 1px solid rgb(177, 175, 94) ! important; color: rgb(126, 125, 52) ! important; }
+.crayon-theme-tomorrow-night .crayon-toolbar { background: none repeat scroll 0% 0% rgb(145, 145, 145) ! important; border-bottom: 1px solid rgb(46, 46, 46) ! important; }
+.crayon-theme-tomorrow-night .crayon-toolbar > div { float: left ! important; }
+.crayon-theme-tomorrow-night .crayon-toolbar .crayon-tools { float: right ! important; }
+.crayon-theme-tomorrow-night .crayon-title { color: rgb(42, 42, 42) ! important; }
+.crayon-theme-tomorrow-night .crayon-language { color: rgb(73, 73, 73) ! important; }
+.crayon-theme-tomorrow-night .crayon-button {  }
+.crayon-theme-tomorrow-night .crayon-button:hover { background-color: rgb(188, 188, 188) ! important; color: rgb(102, 102, 102); }
+.crayon-theme-tomorrow-night .crayon-button:active { background-color: rgb(188, 188, 188) ! important; color: rgb(255, 255, 255); }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-c { color: rgb(167, 168, 162) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-s { color: rgb(178, 175, 117) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-k { color: rgb(146, 175, 193) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-st { color: rgb(146, 175, 193) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-r { color: rgb(146, 175, 193) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-t { color: rgb(187, 167, 197) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-i { color: rgb(199, 199, 199) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-e { color: rgb(232, 206, 145) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-v { color: rgb(216, 124, 123) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-cn { color: rgb(231, 163, 122) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-o { color: rgb(153, 201, 196) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-sy { color: rgb(201, 210, 209) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-h { color: rgb(0, 111, 224) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre { color: rgb(255, 255, 255) ! important; }
+/* ::::: https://thesocietea.org/wp-content/plugins/crayon-syntax-highlighter/fonts/monaco.css ::::: */
+
+@font-face {
+  font-family: "MonacoRegular";
+  font-style: normal;
+  font-weight: normal;
+  src: url("monaco-webfont.eot") format("embedded-opentype"), url("monaco-webfont.woff") format("woff"), url("monaco-webfont.ttf") format("truetype"), url("monaco-webfont.svg") format("svg");
+}
+.crayon-font-monaco * { font-family: Monaco,'MonacoRegular','Courier New',monospace ! important; }
+/* ::::: https://thesocietea.org/wp-content/plugins/crayon-syntax-highlighter/themes/tomorrow-night/tomorrow-night.css ::::: */
+
+.crayon-theme-tomorrow-night { border-width: 1px ! important; border-color: rgb(0, 0, 0) ! important; border-style: solid ! important; text-shadow: none ! important; background: none repeat scroll 0% 0% rgb(39, 41, 44) ! important; }
+.crayon-theme-tomorrow-night .crayon-table .crayon-nums { background: none repeat scroll 0% 0% rgb(75, 77, 79) ! important; color: rgb(137, 137, 137) ! important; border-right-width: 1px ! important; }
+.crayon-theme-tomorrow-night .crayon-striped-line { background: none repeat scroll 0% 0% rgb(32, 35, 38) ! important; }
+.crayon-theme-tomorrow-night .crayon-striped-num { background: none repeat scroll 0% 0% rgb(58, 60, 61) ! important; color: rgb(151, 151, 151) ! important; }
+.crayon-theme-tomorrow-night .crayon-info { background: none repeat scroll 0% 0% rgb(250, 249, 215) ! important; border-bottom: 1px solid rgb(177, 175, 94) ! important; color: rgb(126, 125, 52) ! important; }
+.crayon-theme-tomorrow-night .crayon-toolbar { background: none repeat scroll 0% 0% rgb(145, 145, 145) ! important; border-bottom: 1px solid rgb(46, 46, 46) ! important; }
+.crayon-theme-tomorrow-night .crayon-toolbar > div { float: left ! important; }
+.crayon-theme-tomorrow-night .crayon-toolbar .crayon-tools { float: right ! important; }
+.crayon-theme-tomorrow-night .crayon-title { color: rgb(42, 42, 42) ! important; }
+.crayon-theme-tomorrow-night .crayon-language { color: rgb(73, 73, 73) ! important; }
+.crayon-theme-tomorrow-night .crayon-button {  }
+.crayon-theme-tomorrow-night .crayon-button:hover { background-color: rgb(188, 188, 188) ! important; color: rgb(102, 102, 102); }
+.crayon-theme-tomorrow-night .crayon-button:active { background-color: rgb(188, 188, 188) ! important; color: rgb(255, 255, 255); }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-c { color: rgb(167, 168, 162) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-s { color: rgb(178, 175, 117) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-k { color: rgb(146, 175, 193) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-st { color: rgb(146, 175, 193) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-r { color: rgb(146, 175, 193) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-t { color: rgb(187, 167, 197) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-i { color: rgb(199, 199, 199) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-e { color: rgb(232, 206, 145) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-v { color: rgb(216, 124, 123) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-cn { color: rgb(231, 163, 122) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-o { color: rgb(153, 201, 196) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-sy { color: rgb(201, 210, 209) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-h { color: rgb(0, 111, 224) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre { color: rgb(255, 255, 255) ! important; }
+/* ::::: https://thesocietea.org/wp-content/plugins/crayon-syntax-highlighter/fonts/monaco.css ::::: */
+
+@font-face {
+  font-family: "MonacoRegular";
+  font-style: normal;
+  font-weight: normal;
+  src: url("monaco-webfont.eot") format("embedded-opentype"), url("monaco-webfont.woff") format("woff"), url("monaco-webfont.ttf") format("truetype"), url("monaco-webfont.svg") format("svg");
+}
+.crayon-font-monaco * { font-family: Monaco,'MonacoRegular','Courier New',monospace ! important; }
+/* ::::: https://thesocietea.org/wp-content/plugins/crayon-syntax-highlighter/themes/tomorrow-night/tomorrow-night.css ::::: */
+
+.crayon-theme-tomorrow-night { border-width: 1px ! important; border-color: rgb(0, 0, 0) ! important; border-style: solid ! important; text-shadow: none ! important; background: none repeat scroll 0% 0% rgb(39, 41, 44) ! important; }
+.crayon-theme-tomorrow-night .crayon-table .crayon-nums { background: none repeat scroll 0% 0% rgb(75, 77, 79) ! important; color: rgb(137, 137, 137) ! important; border-right-width: 1px ! important; }
+.crayon-theme-tomorrow-night .crayon-striped-line { background: none repeat scroll 0% 0% rgb(32, 35, 38) ! important; }
+.crayon-theme-tomorrow-night .crayon-striped-num { background: none repeat scroll 0% 0% rgb(58, 60, 61) ! important; color: rgb(151, 151, 151) ! important; }
+.crayon-theme-tomorrow-night .crayon-info { background: none repeat scroll 0% 0% rgb(250, 249, 215) ! important; border-bottom: 1px solid rgb(177, 175, 94) ! important; color: rgb(126, 125, 52) ! important; }
+.crayon-theme-tomorrow-night .crayon-toolbar { background: none repeat scroll 0% 0% rgb(145, 145, 145) ! important; border-bottom: 1px solid rgb(46, 46, 46) ! important; }
+.crayon-theme-tomorrow-night .crayon-toolbar > div { float: left ! important; }
+.crayon-theme-tomorrow-night .crayon-toolbar .crayon-tools { float: right ! important; }
+.crayon-theme-tomorrow-night .crayon-title { color: rgb(42, 42, 42) ! important; }
+.crayon-theme-tomorrow-night .crayon-language { color: rgb(73, 73, 73) ! important; }
+.crayon-theme-tomorrow-night .crayon-button {  }
+.crayon-theme-tomorrow-night .crayon-button:hover { background-color: rgb(188, 188, 188) ! important; color: rgb(102, 102, 102); }
+.crayon-theme-tomorrow-night .crayon-button:active { background-color: rgb(188, 188, 188) ! important; color: rgb(255, 255, 255); }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-c { color: rgb(167, 168, 162) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-s { color: rgb(178, 175, 117) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-k { color: rgb(146, 175, 193) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-st { color: rgb(146, 175, 193) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-r { color: rgb(146, 175, 193) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-t { color: rgb(187, 167, 197) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-i { color: rgb(199, 199, 199) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-e { color: rgb(232, 206, 145) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-v { color: rgb(216, 124, 123) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-cn { color: rgb(231, 163, 122) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-o { color: rgb(153, 201, 196) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-sy { color: rgb(201, 210, 209) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-h { color: rgb(0, 111, 224) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre { color: rgb(255, 255, 255) ! important; }
+/* ::::: https://thesocietea.org/wp-content/plugins/crayon-syntax-highlighter/fonts/monaco.css ::::: */
+
+@font-face {
+  font-family: "MonacoRegular";
+  font-style: normal;
+  font-weight: normal;
+  src: url("monaco-webfont.eot") format("embedded-opentype"), url("monaco-webfont.woff") format("woff"), url("monaco-webfont.ttf") format("truetype"), url("monaco-webfont.svg") format("svg");
+}
+.crayon-font-monaco * { font-family: Monaco,'MonacoRegular','Courier New',monospace ! important; }
+/* ::::: https://thesocietea.org/wp-content/plugins/crayon-syntax-highlighter/themes/tomorrow-night/tomorrow-night.css ::::: */
+
+.crayon-theme-tomorrow-night { border-width: 1px ! important; border-color: rgb(0, 0, 0) ! important; border-style: solid ! important; text-shadow: none ! important; background: none repeat scroll 0% 0% rgb(39, 41, 44) ! important; }
+.crayon-theme-tomorrow-night .crayon-table .crayon-nums { background: none repeat scroll 0% 0% rgb(75, 77, 79) ! important; color: rgb(137, 137, 137) ! important; border-right-width: 1px ! important; }
+.crayon-theme-tomorrow-night .crayon-striped-line { background: none repeat scroll 0% 0% rgb(32, 35, 38) ! important; }
+.crayon-theme-tomorrow-night .crayon-striped-num { background: none repeat scroll 0% 0% rgb(58, 60, 61) ! important; color: rgb(151, 151, 151) ! important; }
+.crayon-theme-tomorrow-night .crayon-info { background: none repeat scroll 0% 0% rgb(250, 249, 215) ! important; border-bottom: 1px solid rgb(177, 175, 94) ! important; color: rgb(126, 125, 52) ! important; }
+.crayon-theme-tomorrow-night .crayon-toolbar { background: none repeat scroll 0% 0% rgb(145, 145, 145) ! important; border-bottom: 1px solid rgb(46, 46, 46) ! important; }
+.crayon-theme-tomorrow-night .crayon-toolbar > div { float: left ! important; }
+.crayon-theme-tomorrow-night .crayon-toolbar .crayon-tools { float: right ! important; }
+.crayon-theme-tomorrow-night .crayon-title { color: rgb(42, 42, 42) ! important; }
+.crayon-theme-tomorrow-night .crayon-language { color: rgb(73, 73, 73) ! important; }
+.crayon-theme-tomorrow-night .crayon-button {  }
+.crayon-theme-tomorrow-night .crayon-button:hover { background-color: rgb(188, 188, 188) ! important; color: rgb(102, 102, 102); }
+.crayon-theme-tomorrow-night .crayon-button:active { background-color: rgb(188, 188, 188) ! important; color: rgb(255, 255, 255); }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-c { color: rgb(167, 168, 162) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-s { color: rgb(178, 175, 117) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-k { color: rgb(146, 175, 193) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-st { color: rgb(146, 175, 193) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-r { color: rgb(146, 175, 193) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-t { color: rgb(187, 167, 197) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-i { color: rgb(199, 199, 199) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-e { color: rgb(232, 206, 145) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-v { color: rgb(216, 124, 123) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-cn { color: rgb(231, 163, 122) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-o { color: rgb(153, 201, 196) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-sy { color: rgb(201, 210, 209) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-h { color: rgb(0, 111, 224) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre { color: rgb(255, 255, 255) ! important; }
+/* ::::: https://thesocietea.org/wp-content/plugins/crayon-syntax-highlighter/fonts/monaco.css ::::: */
+
+@font-face {
+  font-family: "MonacoRegular";
+  font-style: normal;
+  font-weight: normal;
+  src: url("monaco-webfont.eot") format("embedded-opentype"), url("monaco-webfont.woff") format("woff"), url("monaco-webfont.ttf") format("truetype"), url("monaco-webfont.svg") format("svg");
+}
+.crayon-font-monaco * { font-family: Monaco,'MonacoRegular','Courier New',monospace ! important; }
+/* ::::: https://thesocietea.org/wp-content/plugins/crayon-syntax-highlighter/themes/tomorrow-night/tomorrow-night.css ::::: */
+
+.crayon-theme-tomorrow-night { border-width: 1px ! important; border-color: rgb(0, 0, 0) ! important; border-style: solid ! important; text-shadow: none ! important; background: none repeat scroll 0% 0% rgb(39, 41, 44) ! important; }
+.crayon-theme-tomorrow-night .crayon-table .crayon-nums { background: none repeat scroll 0% 0% rgb(75, 77, 79) ! important; color: rgb(137, 137, 137) ! important; border-right-width: 1px ! important; }
+.crayon-theme-tomorrow-night .crayon-striped-line { background: none repeat scroll 0% 0% rgb(32, 35, 38) ! important; }
+.crayon-theme-tomorrow-night .crayon-striped-num { background: none repeat scroll 0% 0% rgb(58, 60, 61) ! important; color: rgb(151, 151, 151) ! important; }
+.crayon-theme-tomorrow-night .crayon-info { background: none repeat scroll 0% 0% rgb(250, 249, 215) ! important; border-bottom: 1px solid rgb(177, 175, 94) ! important; color: rgb(126, 125, 52) ! important; }
+.crayon-theme-tomorrow-night .crayon-toolbar { background: none repeat scroll 0% 0% rgb(145, 145, 145) ! important; border-bottom: 1px solid rgb(46, 46, 46) ! important; }
+.crayon-theme-tomorrow-night .crayon-toolbar > div { float: left ! important; }
+.crayon-theme-tomorrow-night .crayon-toolbar .crayon-tools { float: right ! important; }
+.crayon-theme-tomorrow-night .crayon-title { color: rgb(42, 42, 42) ! important; }
+.crayon-theme-tomorrow-night .crayon-language { color: rgb(73, 73, 73) ! important; }
+.crayon-theme-tomorrow-night .crayon-button {  }
+.crayon-theme-tomorrow-night .crayon-button:hover { background-color: rgb(188, 188, 188) ! important; color: rgb(102, 102, 102); }
+.crayon-theme-tomorrow-night .crayon-button:active { background-color: rgb(188, 188, 188) ! important; color: rgb(255, 255, 255); }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-c { color: rgb(167, 168, 162) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-s { color: rgb(178, 175, 117) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-k { color: rgb(146, 175, 193) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-st { color: rgb(146, 175, 193) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-r { color: rgb(146, 175, 193) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-t { color: rgb(187, 167, 197) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-i { color: rgb(199, 199, 199) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-e { color: rgb(232, 206, 145) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-v { color: rgb(216, 124, 123) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-cn { color: rgb(231, 163, 122) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-o { color: rgb(153, 201, 196) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-sy { color: rgb(201, 210, 209) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-h { color: rgb(0, 111, 224) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre { color: rgb(255, 255, 255) ! important; }
+/* ::::: https://thesocietea.org/wp-content/plugins/crayon-syntax-highlighter/fonts/monaco.css ::::: */
+
+@font-face {
+  font-family: "MonacoRegular";
+  font-style: normal;
+  font-weight: normal;
+  src: url("monaco-webfont.eot") format("embedded-opentype"), url("monaco-webfont.woff") format("woff"), url("monaco-webfont.ttf") format("truetype"), url("monaco-webfont.svg") format("svg");
+}
+.crayon-font-monaco * { font-family: Monaco,'MonacoRegular','Courier New',monospace ! important; }
+/* ::::: https://thesocietea.org/wp-content/plugins/crayon-syntax-highlighter/css/min/crayon.min.css?ver=_2.7.2_beta (@media all) ::::: */
+
+.crayon-table { font-size: 12px; border: 1px solid rgb(153, 153, 153); padding: 0px; margin: 12px 0px 0px; }
+.crayon-table td { vertical-align: top; border-bottom: 1px solid rgb(170, 170, 170); padding: 0px 6px; margin: 0px; background: none repeat scroll 0% 0% rgb(238, 238, 238); }
+.crayon-table-last td, .crayon-table tr:last-child td { border: 0px none; }
+.crayon-syntax { overflow: hidden ! important; position: relative ! important; text-align: left; direction: ltr ! important; box-sizing: border-box; }
+.crayon-syntax div { background: none repeat scroll 0px center transparent; border: 0px none; padding: 0px; margin: 0px; text-align: left; }
+.crayon-syntax, .crayon-syntax .crayon-main, .crayon-syntax .crayon-toolbar, .crayon-syntax .crayon-info, .crayon-syntax .crayon-plain, .crayon-syntax .crayon-code { width: 100%; }
+.crayon-syntax .crayon-main, .crayon-syntax .crayon-plain { overflow: auto; }
+.crayon-syntax, .crayon-syntax .crayon-main, .crayon-syntax .crayon-plain, .crayon-syntax .crayon-table { padding: 0px; margin: 0px; }
+.crayon-syntax .crayon-table { border: medium none ! important; background: none repeat scroll 0% 0% transparent ! important; padding: 0px ! important; margin-top: 0px ! important; margin-right: 0px ! important; margin-bottom: 0px ! important; width: auto ! important; border-spacing: 0px ! important; border-collapse: collapse ! important; table-layout: auto ! important; }
+.crayon-syntax .crayon-table td, .crayon-syntax .crayon-table tr { padding: 0px ! important; border: medium none ! important; background: none repeat scroll 0px center transparent; vertical-align: top ! important; margin: 0px ! important; }
+.crayon-syntax .crayon-num { text-align: center; padding: 0px 5px; margin: 0px; }
+.crayon-syntax .crayon-toolbar { position: relative; overflow: hidden; z-index: 4; }
+.crayon-syntax .crayon-info { position: absolute; overflow: hidden; display: none; z-index: 3; padding: 0px; min-height: 18px; line-height: 18px; }
+.crayon-syntax .crayon-toolbar span { padding: 0px 4px ! important; }
+.crayon-syntax .crayon-toolbar .crayon-button { display: inline; float: left ! important; position: relative; width: 24px; background-repeat: no-repeat; line-height: 15px; border: 0px none; text-decoration: none; }
+.crayon-toolbar .crayon-button, .crayon-toolbar .crayon-button:hover, .crayon-toolbar .crayon-button.crayon-pressed:hover { background-position: 0px center; }
+.crayon-toolbar .crayon-button.crayon-pressed, .crayon-toolbar .crayon-button:active, .crayon-toolbar .crayon-button.crayon-pressed:active { background-position: -24px 0px; }
+.crayon-toolbar .crayon-button.crayon-nums-button .crayon-button-icon, .crayon-toolbar .crayon-button.crayon-nums-button:hover .crayon-button-icon, .crayon-toolbar .crayon-button.crayon-nums-button.crayon-pressed:hover .crayon-button-icon { background-position: 0px -32px; }
+.crayon-toolbar .crayon-button.crayon-wrap-button .crayon-button-icon, .crayon-toolbar .crayon-button.crayon-wrap-button:hover .crayon-button-icon, .crayon-toolbar .crayon-button.crayon-wrap-button.crayon-pressed:hover .crayon-button-icon { background-position: 0px -112px; }
+.crayon-toolbar .crayon-button.crayon-nums-button.crayon-pressed .crayon-button-icon, .crayon-toolbar .crayon-button.crayon-nums-button:active .crayon-button-icon, .crayon-toolbar .crayon-button.crayon-nums-button.crayon-pressed:active .crayon-button-icon { background-position: -24px -32px; }
+.crayon-toolbar .crayon-button.crayon-wrap-button.crayon-pressed .crayon-button-icon, .crayon-toolbar .crayon-button.crayon-wrap-button:active .crayon-button-icon, .crayon-toolbar .crayon-button.crayon-wrap-button.crayon-pressed:active .crayon-button-icon { background-position: -24px -112px; }
+.crayon-syntax .crayon-toolbar .crayon-language { padding-right: 8px ! important; }
+.crayon-syntax .crayon-title, .crayon-syntax .crayon-language { float: left; }
+.crayon-syntax .crayon-pre, .crayon-syntax pre { color: rgb(0, 0, 0); white-space: pre; margin: 0px; padding: 0px; overflow: visible; background: none repeat scroll 0% 0% transparent ! important; border: medium none ! important; }
+.crayon-syntax .crayon-line { padding: 0px 5px; }
+.crayon-syntax { font-family: Monaco,'MonacoRegular','Courier New',monospace; font-weight: 500; }
+.crayon-table .crayon-nums-content { white-space: nowrap; }
+.crayon-syntax .crayon-num, .crayon-syntax .crayon-pre .crayon-line, .crayon-syntax .crayon-toolbar *, .crayon-syntax .crayon-pre * { font-family: inherit; font-size: inherit ! important; line-height: inherit ! important; font-weight: inherit ! important; height: inherit; }
+.crayon-syntax .crayon-toolbar .crayon-button .crayon-button-icon { background-image: url("buttons.png"); height: 16px ! important; width: 100%; position: absolute; left: 0px; top: 50%; margin-top: -8px; }
+.crayon-syntax .crayon-toolbar .crayon-tools { position: absolute; right: 0px; }
+.crayon-syntax .crayon-plain-wrap { height: auto ! important; padding: 0px ! important; margin: 0px ! important; }
+/* ::::: https://thesocietea.org/wp-content/plugins/crayon-syntax-highlighter/themes/tomorrow-night/tomorrow-night.css?ver=_2.7.2_beta (@media all) ::::: */
+
+.crayon-theme-tomorrow-night { border-width: 1px ! important; border-color: rgb(0, 0, 0) ! important; border-style: solid ! important; text-shadow: none ! important; background: none repeat scroll 0% 0% rgb(39, 41, 44) ! important; }
+.crayon-theme-tomorrow-night .crayon-table .crayon-nums { background: none repeat scroll 0% 0% rgb(75, 77, 79) ! important; color: rgb(137, 137, 137) ! important; border-right-width: 1px ! important; }
+.crayon-theme-tomorrow-night .crayon-striped-line { background: none repeat scroll 0% 0% rgb(32, 35, 38) ! important; }
+.crayon-theme-tomorrow-night .crayon-striped-num { background: none repeat scroll 0% 0% rgb(58, 60, 61) ! important; color: rgb(151, 151, 151) ! important; }
+.crayon-theme-tomorrow-night .crayon-info { background: none repeat scroll 0% 0% rgb(250, 249, 215) ! important; border-bottom: 1px solid rgb(177, 175, 94) ! important; color: rgb(126, 125, 52) ! important; }
+.crayon-theme-tomorrow-night .crayon-toolbar { background: none repeat scroll 0% 0% rgb(145, 145, 145) ! important; border-bottom: 1px solid rgb(46, 46, 46) ! important; }
+.crayon-theme-tomorrow-night .crayon-toolbar > div { float: left ! important; }
+.crayon-theme-tomorrow-night .crayon-toolbar .crayon-tools { float: right ! important; }
+.crayon-theme-tomorrow-night .crayon-title { color: rgb(42, 42, 42) ! important; }
+.crayon-theme-tomorrow-night .crayon-language { color: rgb(73, 73, 73) ! important; }
+.crayon-theme-tomorrow-night .crayon-button {  }
+.crayon-theme-tomorrow-night .crayon-button:hover { background-color: rgb(188, 188, 188) ! important; color: rgb(102, 102, 102); }
+.crayon-theme-tomorrow-night .crayon-button:active { background-color: rgb(188, 188, 188) ! important; color: rgb(255, 255, 255); }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-c { color: rgb(167, 168, 162) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-s { color: rgb(178, 175, 117) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-k { color: rgb(146, 175, 193) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-st { color: rgb(146, 175, 193) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-r { color: rgb(146, 175, 193) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-t { color: rgb(187, 167, 197) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-i { color: rgb(199, 199, 199) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-e { color: rgb(232, 206, 145) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-v { color: rgb(216, 124, 123) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-cn { color: rgb(231, 163, 122) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-o { color: rgb(153, 201, 196) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-sy { color: rgb(201, 210, 209) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre .crayon-h { color: rgb(0, 111, 224) ! important; }
+.crayon-theme-tomorrow-night .crayon-pre { color: rgb(255, 255, 255) ! important; }
+/* ::::: https://thesocietea.org/wp-content/plugins/crayon-syntax-highlighter/fonts/monaco.css?ver=_2.7.2_beta (@media all) ::::: */
+
+@font-face {
+  font-family: "MonacoRegular";
+  font-style: normal;
+  font-weight: normal;
+  src: url("monaco-webfont.eot") format("embedded-opentype"), url("monaco-webfont.woff") format("woff"), url("monaco-webfont.ttf") format("truetype"), url("monaco-webfont.svg") format("svg");
+}
+.crayon-font-monaco * { font-family: Monaco,'MonacoRegular','Courier New',monospace ! important; }

@@ -1,0 +1,201 @@
+/* ::::: http://guides.ruby-china.org/stylesheets/style.css ::::: */
+
+/* ::::: (import) http://guides.ruby-china.org/stylesheets/reset.css ::::: */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td { margin: 0px; padding: 0px; border: 0px none; outline: 0px none; font-size: 100%; background: none repeat scroll 0% 0% transparent; }
+body { line-height: 1; color: black; background: none repeat scroll 0% 0% white; }
+:focus { outline: 0px none; outline-offset: 0px; }
+table { border-collapse: collapse; border-spacing: 0px; }
+caption, th, td { text-align: left; font-weight: normal; }
+/* ::::: (end import) ::::: */
+/* ::::: (import) http://guides.ruby-china.org/stylesheets/main.css ::::: */
+@media screen and (max-width: 480px) {
+}
+.hide { display: none; }
+li ul, li ol { margin: 0px 1.5em; }
+ul, ol { margin: 0px 1.5em 1.5em; }
+ul { list-style-type: disc; }
+ol { list-style-type: decimal; }
+dl { margin: 0px 0px 1.5em; }
+dl dt { font-weight: bold; }
+dd { margin-left: 1.5em; }
+pre, code { font-size: 1em; font-family: "Anonymous Pro","Inconsolata","Menlo","Consolas","Bitstream Vera Sans Mono","Courier New",monospace; line-height: 1.5; margin: 1.5em 0px; overflow: auto; color: rgb(34, 34, 34); }
+pre, tt, code, .note > p { white-space: pre-wrap; word-wrap: break-word; }
+strong { font-weight: bold; }
+em, dfn { font-style: italic; }
+p { margin: 0px 0px 1.5em; }
+input.text, input.title, textarea, select { margin: 0.5em 0px; border: 1px solid rgb(187, 187, 187); }
+table { margin: 0px 0px 1.5em; border: 2px solid rgb(204, 204, 204); background: none repeat scroll 0% 0% rgb(255, 255, 255); border-collapse: collapse; }
+table th, table td { padding: 0.25em 1em; border: 1px solid rgb(204, 204, 204); border-collapse: collapse; }
+table th { border-bottom: 2px solid rgb(204, 204, 204); background: none repeat scroll 0% 0% rgb(238, 238, 238); font-weight: bold; padding: 0.5em 1em; }
+img { max-width: 100%; }
+body { text-align: center; font-family: Helvetica,Arial,sans-serif; font-size: 87.5%; line-height: 1.5em; background: none repeat scroll 0% 0% rgb(255, 255, 255); color: rgb(153, 153, 153); }
+.wrapper { text-align: left; margin: 0px auto; max-width: 960px; padding: 0px 1em; }
+.red-button { display: inline-block; border-top: 1px solid rgba(255, 255, 255, 0.5); background: -moz-linear-gradient(center top , rgb(197, 47, 36), rgb(117, 25, 19)) repeat scroll 0% 0% transparent; padding: 9px 18px; border-radius: 11px 11px 11px 11px; box-shadow: 0px 1px 0px rgb(0, 0, 0); text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.4); color: white; font-size: 15px; font-family: Helvetica,Arial,Sans-Serif; text-decoration: none; vertical-align: middle; cursor: pointer; }
+.red-button:active { border-top: medium none; padding-top: 10px; background: -moz-linear-gradient(center top , rgb(117, 25, 19), rgb(197, 47, 36)) repeat scroll 0% 0% transparent; }
+#topNav { padding: 1em 0px; color: rgb(86, 86, 86); background: none repeat scroll 0% 0% rgb(34, 34, 34); }
+.s-hidden { display: none; }
+@media screen and (min-width: 1025px) {
+  .more-info-button { display: none; }
+  .more-info-links { list-style: none outside none; display: inline; margin: 0px; }
+  .more-info { display: inline-block; }
+  .more-info:after { content: " |"; }
+  .more-info:last-child:after { content: ""; }
+}
+@media screen and (max-width: 1024px) {
+  #topNav .wrapper { text-align: center; }
+  .more-info-button { position: relative; z-index: 25; }
+  .more-info-label { display: none; }
+  .more-info-links { display: block; list-style: none outside none; background-color: rgb(197, 47, 36); border-radius: 5px 5px 5px 5px; padding-top: 5.25em; border: 1px solid rgb(152, 9, 5); }
+  .more-info-links.s-hidden { display: none; }
+  .more-info { padding: 0.75em; border-top: 1px solid rgb(152, 9, 5); }
+  .more-info a, .more-info a:link, .more-info a:visited { display: block; color: white; width: 100%; height: 100%; text-decoration: none; text-transform: uppercase; }
+}
+#header { background: url("header_tile.gif") repeat-x scroll 0% 0% rgb(197, 47, 36); color: rgb(255, 255, 255); padding: 1.5em 0px; z-index: 99; }
+#feature { background: url("feature_tile.gif") repeat-x scroll 0% 0% rgb(213, 233, 246); color: rgb(51, 51, 51); padding: 0.5em 0px 1.5em; }
+#container { color: rgb(51, 51, 51); padding: 0.5em 0px 1.5em; }
+#mainCol { max-width: 630px; margin-left: 2em; }
+#subCol { position: absolute; z-index: 0; top: 21px; right: 0px; background: none repeat scroll 0% 0% rgb(255, 255, 255); padding: 1em 1.5em 1em 1.25em; width: 17em; font-size: 0.9285em; line-height: 1.3846em; margin-right: 1em; }
+@media screen and (max-width: 800px) {
+  #subCol { position: static; width: inherit; margin-left: -1em; margin-right: 0px; padding-right: 1.25em; }
+}
+#footer { padding: 2em 0px; background: url("footer_tile.gif") repeat-x scroll 0% 0% rgb(34, 34, 34); }
+#footer .wrapper { padding-left: 1em; max-width: 960px; }
+#header .wrapper, #topNav .wrapper, #feature .wrapper { padding-left: 1em; max-width: 960px; }
+#feature .wrapper { max-width: 640px; padding-right: 23em; position: relative; z-index: 0; }
+@media screen and (max-width: 800px) {
+  #feature .wrapper { padding-right: 0px; }
+}
+a, a:link, a:visited { color: rgb(238, 63, 63); text-decoration: underline; }
+#mainCol a, #subCol a, #feature a { color: rgb(152, 9, 5); }
+#mainCol a code, #subCol a code, #feature a code { color: rgb(152, 9, 5); }
+.nav { margin: 1.5em 0px 0px; padding: 0px; list-style: none outside none; float: right; font-size: 1.2857em; }
+.nav .nav-item { color: rgb(255, 255, 255); text-decoration: none; }
+.nav .nav-item:hover { text-decoration: underline; }
+.guides-index-large, .guides-index-small .guides-index-item { padding: 0.5em 1.5em; border-radius: 1em 1em 1em 1em; background: none repeat scroll 0% 0% rgb(152, 9, 5); position: relative; color: white; }
+.guides-index .guides-index-item { background: url("nav_arrow.gif") no-repeat scroll right top rgb(152, 9, 5); padding-right: 1em; position: relative; z-index: 15; padding-bottom: 0.125em; }
+.guides-index:hover .guides-index-item, .guides-index .guides-index-item:hover { background-position: right -81px; text-decoration: underline ! important; }
+@media screen and (min-width: 481px) {
+  .nav { float: right; margin-top: 1.5em; font-size: 1.2857em; }
+  .nav > li { display: inline; margin-left: 0.5em; }
+  .guides-index.guides-index-small { display: none; }
+}
+@media screen and (max-width: 480px) {
+  .nav { float: none; width: 100%; text-align: center; }
+  .nav .nav-item { display: block; margin: 0px; width: 100%; background-color: rgb(152, 9, 5); border-right: 1px solid rgb(98, 12, 4); border-width: 0px 1px 1px; border-style: none solid solid; border-color: -moz-use-text-color rgb(98, 12, 4) rgb(98, 12, 4); -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; padding: 15px 0px; text-align: center; }
+  .nav .nav-item, .nav-item.guides-index-item { text-transform: uppercase; }
+  .nav .nav-item:first-child, .nav-item.guides-index-small { border-top: 1px solid rgb(98, 12, 4); }
+  .guides-index.guides-index-small { display: block; margin-top: 1.5em; }
+  .guides-index.guides-index-large { display: none; }
+  .guides-index-small .guides-index-item { font-family: inherit; font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: inherit; font-size-adjust: inherit; font-stretch: inherit; -moz-font-feature-settings: inherit; -moz-font-language-override: inherit; padding-left: 0.75em; font-size: 0.95em; background-position: 96% 16px; }
+  .guides-index-small .guides-index-item:hover { background-position: 96% -65px; }
+}
+#guides { width: 27em; display: block; background: none repeat scroll 0% 0% rgb(152, 9, 5); border-radius: 1em 1em 1em 1em; color: rgb(241, 147, 140); padding: 2em 2em 1.5em; position: absolute; z-index: 10; top: -0.25em; right: 0px; }
+#guides dt, #guides dd { font-weight: normal; font-size: 0.722em; margin: 0px; padding: 0px; }
+#guides dt { padding: 0px; margin: 0.5em 0px 0px; }
+#guides a { color: rgb(255, 255, 255); background: none repeat scroll 0% 0% transparent ! important; text-decoration: none; }
+#guides a:hover { text-decoration: underline; }
+#guides .L, #guides .R { float: left; width: 50%; margin: 0px; padding: 0px; }
+#guides .R { float: right; }
+#guides hr { display: block; border: medium none; height: 1px; color: rgb(241, 147, 140); background: none repeat scroll 0% 0% rgb(241, 147, 140); }
+h1 { font-size: 2.5em; line-height: 1em; margin: 0.6em 0px 0.2em; font-weight: bold; }
+h2 { font-size: 2.1428em; line-height: 1em; margin: 0.7em 0px 0.2333em; font-weight: bold; }
+@media screen and (max-width: 480px) {
+  h2 { font-size: 1.45em; }
+}
+h3 { font-size: 1.7142em; line-height: 1.286em; margin: 0.875em 0px 0.2916em; font-weight: bold; }
+@media screen and (max-width: 480px) {
+  h3 { font-size: 1.45em; }
+}
+h4 { font-size: 1.2857em; line-height: 1.2em; margin: 1.6667em 0px 0.3887em; font-weight: bold; }
+h5 { font-size: 1em; line-height: 1.5em; margin: 1em 0px 0.5em; font-weight: bold; }
+h6 { font-size: 1em; line-height: 1.5em; margin: 1em 0px 0.5em; font-weight: normal; }
+#topNav strong { color: rgb(153, 153, 153); margin-right: 0.5em; }
+#topNav strong a { color: rgb(255, 255, 255); }
+#header h1 { float: left; background: url("rails_guides_logo.gif") no-repeat scroll 0% 0% transparent; width: 297px; text-indent: -9999em; margin: 0px; padding: 0px; }
+@media screen and (max-width: 480px) {
+  #header h1 { float: none; }
+}
+#header h1 a { text-decoration: none; display: block; height: 77px; }
+#feature p { font-size: 1.2857em; margin-bottom: 0.75em; }
+@media screen and (max-width: 480px) {
+  #feature p { font-size: 1em; }
+}
+#feature ul { margin-left: 0px; }
+#feature ul li { list-style: none outside none; background: url("check_bullet.gif") no-repeat scroll left 0.5em transparent; padding: 0.5em 1.75em; font-size: 1.1428em; font-weight: bold; }
+@media screen and (max-width: 480px) {
+}
+#mainCol div.warning, #subCol dd.warning { background: url("tab_red.gif") no-repeat scroll left top rgb(249, 217, 216); border: medium none; padding: 1.25em 1.25em 0.25em 48px; margin-left: 0px; margin-top: 0.25em; }
+#subCol .chapters { color: rgb(152, 9, 5); }
+#subCol .chapters a { font-weight: bold; }
+#subCol .chapters ul a { font-weight: normal; }
+#subCol .chapters li { margin-bottom: 0.75em; }
+#subCol h3.chapter { margin-top: 0.25em; }
+#subCol h3.chapter img { vertical-align: text-bottom; }
+#subCol .chapters ul { margin-left: 0px; margin-top: 0.5em; }
+#subCol .chapters ul li { list-style: none outside none; padding: 0px 0px 0px 1em; background: url("bullet.gif") no-repeat scroll left 0.45em transparent; margin-left: 0px; font-size: 1em; font-weight: normal; }
+div.code_container { background: url("tab_grey.gif") no-repeat scroll left top rgb(238, 238, 238); padding: 0.25em 1em 0.5em 48px; }
+.note { background: url("tab_note.gif") no-repeat scroll left top rgb(255, 249, 216); border: medium none; padding: 1em 1em 0.25em 48px; margin: 0.25em 0px 1.5em; }
+.info { background: url("tab_info.gif") no-repeat scroll left top rgb(213, 233, 246); border: medium none; padding: 1em 1em 0.25em 48px; margin: 0.25em 0px 1.5em; }
+.note code, .info code, .todo code { border: medium none; background: none repeat scroll 0% 0% transparent; padding: 0px; }
+#mainCol ul li { list-style: none outside none; background: url("grey_bullet.gif") no-repeat scroll left 0.5em transparent; padding-left: 1em; margin-left: 0px; }
+.clearfix:after { content: "."; display: block; height: 0px; clear: both; visibility: hidden; }
+.clearfix { display: inline-block; }
+.clearfix { display: block; }
+div.code_container, div.important, div.caution, div.warning, div.note, div.info { margin-bottom: 1.5em; }
+div.important p, div.caution p, div.warning p, div.note p, div.info p { margin-bottom: 1em; }
+table th { font-weight: bold; }
+table td, table th { padding: 9px 10px; text-align: left; }
+@media only screen and (max-width: 767px) {
+  table.responsive { margin-bottom: 0px; }
+  table.responsive td, table.responsive th { position: relative; white-space: nowrap; overflow: hidden; }
+  table.responsive th:first-child, table.responsive td:first-child, table.responsive td:first-child, table.responsive.pinned td { display: none; }
+}
+/* ::::: (end import) ::::: */
+/* ::::: http://guides.ruby-china.org/stylesheets/print.css (@media print) ::::: */
+
+@media print {
+body, .wrapper, .note, .info, code, #topNav, .L, .R, #frame, #container, #header, #navigation, #footer, #feature, #mainCol, #subCol, #extraCol, .content { position: static; text-align: left; text-indent: 0px; background: none repeat scroll 0% 0% White; color: Black; border-color: Black; width: auto; height: auto; display: block; float: none; min-height: 0px; margin: 0px; padding: 0px; }
+body { background: none repeat scroll 0% 0% rgb(255, 255, 255); font-size: 10pt ! important; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; line-height: 1.5; color: rgb(0, 0, 0); padding: 0px 3%; }
+.hide, .nav { display: none ! important; }
+a:link, a:visited { background: none repeat scroll 0% 0% transparent; font-weight: bold; text-decoration: underline; }
+hr { background: none repeat scroll 0% 0% rgb(204, 204, 204); color: rgb(204, 204, 204); width: 100%; height: 2px; margin: 2em 0px; padding: 0px; border: medium none; }
+h1, h2, h3, h4, h5, h6 { font-family: "Helvetica Neue",Arial,"Lucida Grande",sans-serif; }
+code { font: 0.9em "Courier New",Monaco,Courier,monospace; display: inline; }
+img { float: left; margin: 1.5em 1.5em 1.5em 0px; }
+}
+/* ::::: http://guides.ruby-china.org/stylesheets/syntaxhighlighter/shCore.css ::::: */
+
+.syntaxhighlighter a, .syntaxhighlighter div, .syntaxhighlighter code, .syntaxhighlighter table, .syntaxhighlighter table td, .syntaxhighlighter table tr, .syntaxhighlighter table tbody, .syntaxhighlighter table thead, .syntaxhighlighter table caption, .syntaxhighlighter textarea { background: none repeat scroll 0% 0% transparent ! important; border: 0px none ! important; bottom: auto ! important; float: none ! important; height: auto ! important; left: auto ! important; line-height: 1.1em ! important; margin: 0px ! important; outline: 0px none ! important; overflow: visible ! important; padding: 0px ! important; position: static ! important; right: auto ! important; text-align: left ! important; top: auto ! important; vertical-align: baseline ! important; width: auto ! important; box-sizing: content-box ! important; font-family: "Consolas","Bitstream Vera Sans Mono","Courier New",Courier,monospace ! important; font-weight: normal ! important; font-style: normal ! important; font-size: 1em ! important; min-height: inherit ! important; }
+.syntaxhighlighter { width: 100% ! important; margin: 1em 0px ! important; position: relative ! important; overflow: auto ! important; font-size: 1em ! important; }
+.syntaxhighlighter .bold { font-weight: bold ! important; }
+.syntaxhighlighter .line { white-space: pre ! important; }
+.syntaxhighlighter table { width: 100% ! important; }
+.syntaxhighlighter table td.code { width: 100% ! important; }
+.syntaxhighlighter table td.code .container { position: relative ! important; }
+.syntaxhighlighter table td.code .line { padding: 0px 1em ! important; }
+.syntaxhighlighter.nogutter td.code .container textarea, .syntaxhighlighter.nogutter td.code .line { padding-left: 0em ! important; }
+/* ::::: http://guides.ruby-china.org/stylesheets/syntaxhighlighter/shThemeRailsGuides.css ::::: */
+
+.syntaxhighlighter { background-color: rgb(238, 238, 238) ! important; font-family: "Anonymous Pro","Inconsolata","Menlo","Consolas","Bitstream Vera Sans Mono","Courier New",monospace ! important; overflow-y: hidden ! important; overflow-x: auto ! important; }
+.syntaxhighlighter .line.alt1 { background-color: rgb(238, 238, 238) ! important; }
+.syntaxhighlighter .line.alt2 { background-color: rgb(238, 238, 238) ! important; }
+.syntaxhighlighter .plain, .syntaxhighlighter .plain a { color: rgb(34, 34, 34) ! important; }
+.syntaxhighlighter .comments, .syntaxhighlighter .comments a { color: rgb(112, 128, 144) ! important; }
+.syntaxhighlighter .string, .syntaxhighlighter .string a { font-style: italic ! important; color: rgb(101, 136, 168) ! important; }
+.syntaxhighlighter .keyword { color: rgb(100, 67, 77) ! important; }
+.syntaxhighlighter .variable { color: rgb(34, 34, 34) ! important; }
+.syntaxhighlighter .constants { color: rgb(0, 102, 204) ! important; }
+.syntaxhighlighter .script { color: rgb(34, 34, 34) ! important; }
+.syntaxhighlighter .color1, .syntaxhighlighter .color1 a { color: gray ! important; }
+.syntaxhighlighter .color2, .syntaxhighlighter .color2 a { color: rgb(34, 34, 34) ! important; font-weight: bold ! important; }
+/* ::::: http://guides.ruby-china.org/stylesheets/fixes.css ::::: */
+
+.syntaxhighlighter a, .syntaxhighlighter div, .syntaxhighlighter code, .syntaxhighlighter table, .syntaxhighlighter table td, .syntaxhighlighter table tr, .syntaxhighlighter table tbody, .syntaxhighlighter table thead, .syntaxhighlighter table caption, .syntaxhighlighter textarea { line-height: 1.25em ! important; }
+/* ::::: [internal] ::::: */
+
+@media screen {
+}
+@media print {
+}
+/* ::::: [internal] ::::: */
+
