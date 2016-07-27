@@ -1,0 +1,154 @@
+/* ::::: http://minimul.com/stylesheets/master.css (@media screen) ::::: */
+
+@media screen {
+@keyframes loading-animation-rotation {
+0% { transform: rotate(0deg); }
+100% { transform: rotate(359deg); }
+}
+@keyframes loading-animation-rotation {
+0% { transform: rotate(0deg); }
+100% { transform: rotate(359deg); }
+}
+body { margin: 0px; background: url("white-grunge.jpg") repeat scroll 0% 0% transparent; counter-reset: fig-counter; font-size: 20px; }
+ul { margin: 0px; padding: 0px; }
+ul li { margin-bottom: 1em; }
+img { border: medium none; }
+a { color: rgb(24, 29, 20); }
+#comments { padding: 4px; margin-left: auto; margin-right: auto; width: 50%; }
+.article header { padding-top: 20px; }
+.article h1, .article h2, .article h3 { font-family: "Roboto",Arial,sans-serif; }
+.article ol > li { padding: 1em 0px; }
+.article h3, .article h4 { margin-bottom: 1em; }
+.article h3 + p, .article h3 + ol, .article h3 + ul { margin-top: 2px; text-indent: 15px; }
+.article .post ul { margin: 5px; padding: 5px; }
+.article .post .body .left img, .article .post .body .middle img { padding: 5px; border: 1px solid black; }
+.article .post .title { margin: 0px 13%; font-size: 36px; }
+.article .body .left { float: left; width: 13%; }
+.article .body .middle { float: left; width: 74%; line-height: 1.6em; font-family: "Arbutus Slab",Georgia,Cambria,"Times New Roman",Times,serif; font-size: 20px; }
+.article .body .middle .alert { padding: 10px; background-color: rgb(216, 222, 210); min-height: 67px; margin-bottom: 2em; }
+.article .body .middle .alert.yellow { background-color: rgb(255, 255, 242); }
+.article .body .middle .alert.red { background-color: rgb(255, 178, 178); }
+.article .body .middle .alert.margin-top { margin-top: 2em; }
+.article .body .middle h3 { font-size: 24px; }
+.article .body .right { float: right; width: 13%; }
+footer.pre { margin-top: 2%; background: url("pre-footer-background.png") no-repeat scroll 0% 0% black; height: 50px; }
+footer.main { background: url("footer-background.png") repeat scroll 0% 0% transparent; color: white; }
+footer.main h3 { font-family: "Roboto",Arial,sans-serif; }
+footer.main a:link, footer.main a:hover, footer.main a:visited { color: white; font-weight: 400; }
+footer.main .left { float: left; width: 55%; }
+footer.main .right { float: right; width: 35%; }
+footer.main .left, footer.main .right { padding: 20px; }
+footer.main ol, footer.main ul { font-family: "Roboto",Arial,sans-serif; }
+footer.main li { padding: 4px; }
+footer.final { padding: 10px; }
+footer.final span { float: right; font: 400 14px "Arbutus Slab",Georgia,Cambria,"Times New Roman",Times,serif; padding: 5px; }
+#side-panel #by-line { font-size: 20px; font-family: "Roboto",Arial,sans-serif; line-height: 1.3em; }
+#author .tag-box { position: relative; margin: 100px 0px; border: 10px solid rgb(238, 238, 238); padding: 30px; color: black; font: 600 20px "Roboto",Arial,sans-serif; width: 320px; border-radius: 0px 0px 0px 25px; }
+#author .tag-box .organic-post { position: absolute; right: -50px; bottom: -50px; height: 100%; width: 35%; background: url("organic-minimul.png") no-repeat scroll right bottom transparent; }
+#author .tag-box .organic-post span { display: block; text-indent: -10000px; }
+#author span { float: left; width: 80px; }
+#author img { float: right; margin-left: 20px; }
+div.spacer { clear: both; }
+figure { box-shadow: -5px 10px 10px -5px rgba(0, 0, 0, 0.25); }
+figcaption { padding: 0.5em 1em; }
+figcaption.count { counter-increment: fig-counter; }
+figcaption.count:before { content: "Fig. " counter(fig-counter, decimal) " – "; }
+code { padding: 2px; background: none repeat scroll 0% 0% rgb(238, 238, 238); font-size: 18px; font-family: Consolas,Lucida Console,monospace ! important; }
+.out-of-date, .alert { padding: 10px; background: none repeat scroll 0% 0% rgb(255, 204, 204); }
+.socialize a { padding-right: 20px; }
+.bordered-speech-bubble-clear { background-color: rgb(229, 229, 229); border-top: 0px solid rgb(229, 229, 229); border-radius: 25px 25px 25px 25px; width: 40%; margin: 2px auto; padding: 40px 10px; position: relative; }
+.bordered-speech-bubble-clear:after { content: ""; display: block; position: absolute; top: -49px; left: 50%; height: 0px; width: 0px; border-bottom: 50px solid rgb(229, 229, 229); border-right: 50px solid transparent; transform: skewX(15deg); }
+.made-with-love-in-nh { font-size: 16px; padding-top: 1.5em; }
+#js-article-comment { cursor: pointer; font-family: "Arbutus Slab",Georgia,Cambria,"Times New Roman",Times,serif; font-size: 20px; margin-top: 4em; }
+.subscription { margin-top: 20px; text-align: center; border: 10px solid rgb(238, 238, 238); padding: 30px; border-radius: 0px 0px 0px 25px; }
+.general-depreciation-notice { border-right: 20px solid black; border-radius: 25px 25px 25px 25px; width: 40%; margin: 2px auto; padding: 40px 10px; position: relative; background: url("sd-museum-small.png") no-repeat scroll right bottom rgb(255, 76, 76); }
+.general-depreciation-notice:after { content: ""; display: block; position: absolute; top: 50%; right: -44px; height: 0px; width: 0px; border-bottom: 25px solid black; border-right: 25px solid transparent; }
+.minimul-says { border-bottom: 20px solid black; border-radius: 25px 25px 25px 25px; margin: 2px auto; position: relative; width: 20%; padding: 10px; text-indent: 40px; background: url("sd-museum-small.png") no-repeat scroll left top white; }
+.minimul-says:after { content: ""; display: block; position: absolute; top: 100%; left: 50%; height: 0px; width: 0px; border-top: 40px solid black; border-right: 40px solid transparent; transform: skewX(-15deg); }
+.minimul-says + p { text-indent: 1em; }
+@media only screen and (min-width: 1680px) {
+  .article .post .title { margin: 0px 25%; }
+  .article .body .left { width: 25%; }
+  .article .body .middle { width: 50%; }
+  .article .body .middle .minimul-says { width: 20%; }
+  .article .body .right { width: 25%; }
+}
+@media only screen and (max-width: 1024px) {
+  .article .post .title { margin: 0px 1%; }
+  .article .body .left { width: 1%; }
+  .article .body .middle { width: 98%; }
+  .article .body .middle .minimul-says { width: 39.2%; }
+  .article .body .right { width: 1%; }
+  footer.main .left { width: 85%; }
+  footer.main .right { float: left; width: 85%; }
+}
+@media only screen and (max-width: 800px) {
+  .article .post .title { margin: 0px 1%; }
+  .article .body .left { width: 1%; }
+  .article .body .middle { width: 98%; }
+  .article .body .middle .minimul-says { width: 39.2%; }
+  .article .body .right { width: 1%; }
+  footer.main .left { width: 90%; }
+  footer.main .right { float: left; width: 90%; }
+}
+@media only screen and (max-device-width: 480px) {
+  .article .post .title { margin: 0px 1%; }
+  .article .body .left { width: 1%; }
+  .article .body .middle { width: 98%; }
+  .article .body .middle .minimul-says { width: 39.2%; }
+  .article .body .right { width: 1%; }
+  footer.main .left { width: 98%; }
+  footer.main .right { float: left; width: 98%; }
+}
+}
+/* ::::: http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css (@media screen) ::::: */
+
+@media screen {
+@font-face {
+  font-family: "FontAwesome";
+  font-style: normal;
+  font-weight: normal;
+  src: url("fontawesome-webfont.eot") format("embedded-opentype"), url("fontawesome-webfont.woff") format("woff"), url("fontawesome-webfont.ttf") format("truetype"), url("fontawesome-webfont.svg") format("svg");
+}
+[class^="icon-"], [class*=" icon-"] { font-family: FontAwesome; font-weight: normal; font-style: normal; text-decoration: inherit; }
+[class^="icon-"]:before, [class*=" icon-"]:before { text-decoration: inherit; display: inline-block; }
+.icon-border { border: 1px solid rgb(238, 238, 238); padding: 0.2em 0.25em 0.15em; border-radius: 3px 3px 3px 3px; }
+.icon-2x { font-size: 2em; }
+.icon-2x.icon-border { border-width: 2px; border-radius: 4px 4px 4px 4px; }
+.icon-3x { font-size: 3em; }
+.icon-3x.icon-border { border-width: 3px; border-radius: 5px 5px 5px 5px; }
+.pull-left { float: left; }
+.pull-left[class^="icon-"], .pull-left[class*=" icon-"] { margin-right: 0.3em; }
+[class^="icon-"], [class*=" icon-"] { display: inline; width: auto; height: auto; line-height: normal; vertical-align: baseline; background-image: none; background-position: 0% 0%; background-repeat: repeat; margin-top: 0px; }
+@keyframes spin {
+0% { transform: rotate(0deg); }
+100% { transform: rotate(359deg); }
+}
+@keyframes spin {
+0% { transform: rotate(0deg); }
+100% { transform: rotate(359deg); }
+}
+.icon-film:before { content: ""; }
+.icon-refresh:before { content: ""; }
+.icon-bullhorn:before { content: ""; }
+.icon-bolt:before { content: ""; }
+.icon-coffee:before { content: ""; }
+.icon-beer:before { content: ""; }
+.icon-exclamation:before { content: ""; }
+}
+/* ::::: https://google-code-prettify.googlecode.com/svn/loader/skins/sunburst.css ::::: */
+
+/* ERROR: Unable to access this CSS */
+
+/* ::::: [internal] ::::: */
+
+.fluid-width-video-wrapper { width: 100%; position: relative; padding: 0px; }
+.fluid-width-video-wrapper iframe, .fluid-width-video-wrapper object, .fluid-width-video-wrapper embed { position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; }
+/* ::::: [internal] ::::: */
+
+@media screen {
+}
+@media print {
+}
+/* ::::: [internal] ::::: */
+

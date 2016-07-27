@@ -1,0 +1,2279 @@
+<!DOCTYPE html>
+<html itemtype="http://schema.org/QAPage" itemscope="">
+<head>
+<meta charset="UTF-8">
+
+
+<title>How do I scroll in tmux? - Super User</title>
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="apple-touch-icon image_src" href="http://cdn.sstatic.net/Sites/superuser/img/apple-touch-icon.png?v=0ad5b7a83e49">
+    <link rel="search" type="application/opensearchdescription+xml" title="Super User" href="http://superuser.com/opensearch.xml">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@super_user">
+    <meta name="twitter:domain" content="superuser.com">
+    <meta property="og:type" content="website">    
+    <meta property="og:image" itemprop="image primaryImageOfPage" content="http://cdn.sstatic.net/Sites/superuser/img/apple-touch-icon@2.png?v=e869e4459439&amp;a">
+    <meta name="twitter:title" property="og:title" itemprop="title name" content="How do I scroll in tmux?">
+    <meta name="twitter:description" property="og:description" itemprop="description" content="I just started using tmux, and I really like it, but I need to be able to scroll within the buffers/panes/windows I have open. I don't care if it works with the mouse or not. When I search the tmux...">
+    <meta property="og:url" content="http://superuser.com/questions/209437/how-do-i-scroll-in-tmux">
+    <link rel="canonical" href="http://superuser.com/questions/209437/how-do-i-scroll-in-tmux">
+
+    
+    
+    
+    
+    
+
+            <link rel="alternate" type="application/atom+xml" title="Feed for question 'How do I scroll in tmux?'" href="http://superuser.com/feeds/question/209437">
+            <meta name="twitter:app:country" content="US">
+            <meta name="twitter:app:name:iphone" content="Stack Exchange iOS">
+            <meta name="twitter:app:id:iphone" content="871299723">
+            <meta name="twitter:app:url:iphone" content="se-zaphod://superuser.com/questions/209437/how-do-i-scroll-in-tmux">
+            <meta name="twitter:app:name:ipad" content="Stack Exchange iOS">
+            <meta name="twitter:app:id:ipad" content="871299723">
+            <meta name="twitter:app:url:ipad" content="se-zaphod://superuser.com/questions/209437/how-do-i-scroll-in-tmux">
+            <meta name="twitter:app:name:googleplay" content="Stack Exchange Android">
+            <meta name="twitter:app:url:googleplay" content="http://superuser.com/questions/209437/how-do-i-scroll-in-tmux">
+            <meta name="twitter:app:id:googleplay" content="com.stackexchange.marvin">
+        
+
+
+    
+    
+    
+        
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body class="question-page new-topbar">
+    
+    
+        
+        <iframe id="adzerk-user-match" src="index_1.html" style="display: none;" marginheight="0" marginwidth="0" scrolling="no" width="0" frameborder="0" height="0"></iframe>
+
+
+
+
+    <div id="notify-container"></div>
+    <div id="overlay-header"></div>
+    <div id="custom-header"></div>
+
+
+
+
+
+<div class="topbar">
+    <div class="topbar-wrapper">
+
+        <div class="js-topbar-dialog-corral">
+
+
+<div class="topbar-dialog siteSwitcher-dialog dno">
+    <div class="header">
+        <h3><a href="http://superuser.com/">current community</a></h3>
+    </div>
+    <div class="modal-content current-site-container">
+        <ul class="current-site">
+                <li>
+                        <div class="related-links">
+            <a href="http://blog.superuser.com/" class="js-gps-track" data-gps-track="site_switcher.click({ item_type:7 })">blog</a>
+                    <a href="http://chat.stackexchange.com/?tab=site&amp;host=superuser.com" class="js-gps-track" data-gps-track="site_switcher.click({ item_type:6 })">chat</a>
+            </div>
+
+
+
+
+    <a href="http://superuser.com/" class="current-site-link site-link js-gps-track" data-id="3" data-gps-track="
+        site_switcher.click({ item_type:3 })">
+        <div class="site-icon favicon favicon-superuser" title="Super User"></div>
+        Super User
+    </a>
+
+                </li>
+                <li class="related-site">
+                        <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                    
+
+
+
+    <a href="http://meta.superuser.com/" class="site-link js-gps-track" data-id="77" data-gps-track="
+            site.switch({ target_site:77, item_type:3 }),
+        site_switcher.click({ item_type:4 })">
+        <div class="site-icon favicon favicon-superusermeta" title="Meta Super User"></div>
+        Meta Super User
+    </a>
+
+                </li>
+        </ul>
+    </div>
+    <div class="header" id="your-communities-header">
+        <h3>
+your communities        </h3>
+            
+    </div>
+    <div class="modal-content" id="your-communities-section">
+            
+            <div class="call-to-login">
+<a href="https://superuser.com/users/signup?ssrc=site_switcher&amp;returnurl=http%3a%2f%2fsuperuser.com%2fquestions%2f209437%2fhow-do-i-scroll-in-tmux" class="login-link js-gps-track" data-gps-track="site_switcher.click({ item_type:10 })">Sign up</a> or <a href="https://superuser.com/users/login?ssrc=site_switcher&amp;returnurl=http%3a%2f%2fsuperuser.com%2fquestions%2f209437%2fhow-do-i-scroll-in-tmux" class="login-link js-gps-track" data-gps-track="site_switcher.click({ item_type:11 })">log in</a> to customize your list.
+            </div>
+    </div>
+    <div class="header">
+        <h3><a href="http://stackexchange.com/sites">more stack exchange communities</a></h3>
+        <a href="http://blog.stackoverflow.com/" class="fr">company blog</a>
+    </div>
+    <div class="modal-content">
+            <div class="child-content"></div>
+    </div>
+</div>
+        </div>
+
+        <div class="network-items">
+
+            <a href="http://stackexchange.com/" class="topbar-icon icon-site-switcher yes-hover js-site-switcher-button js-gps-track" data-gps-track="site_switcher.show" title="A list of all 158 Stack Exchange sites">
+                <span class="hidden-text">Stack Exchange</span>
+            </a>
+
+    <a href="#" class="topbar-icon icon-inbox yes-hover js-inbox-button" title="Recent inbox messages">
+        <span class="hidden-text">Inbox</span>
+        <span class="unread-count" style="display: none;"></span>
+    </a>
+    <a href="#" class="topbar-icon icon-achievements yes-hover js-achievements-button" data-unread-class="" title="Recent achievements: reputation, badges, and privileges earned">
+        <span class="hidden-text">Reputation and Badges</span>
+        <span class="unread-count" style="display: none;">
+            
+        </span>
+    </a>
+        </div>
+
+        <div class="topbar-links">
+
+                <div class="links-container">
+                <span class="topbar-menu-links">
+                                    <a href="https://superuser.com/users/signup?ssrc=head&amp;returnurl=http%3a%2f%2fsuperuser.com%2fquestions%2f209437%2fhow-do-i-scroll-in-tmux" class="login-link">sign up</a>
+                                <a href="https://superuser.com/users/login?ssrc=head&amp;returnurl=http%3a%2f%2fsuperuser.com%2fquestions%2f209437%2fhow-do-i-scroll-in-tmux" class="login-link">log in</a>
+
+                            <a href="http://superuser.com/tour">tour</a>
+    <a href="#" class="icon-help js-help-button" title="Help Center and other resources">
+        help
+        <span class="triangle"></span>
+    </a>
+    <div class="topbar-dialog help-dialog js-help-dialog dno">
+        <div class="modal-content">
+            <ul>
+                                    <li>
+                        <a href="http://superuser.com/tour" class="js-gps-track" data-gps-track="help_popup.click({ item_type:1 })">
+                            Tour
+                            <span class="item-summary">
+                                Start here for a quick overview of the site
+                            </span>
+                        </a>
+                    </li>
+                <li>
+                    <a href="http://superuser.com/help" class="js-gps-track" data-gps-track="help_popup.click({ item_type:4 })">
+                        Help Center
+                        <span class="item-summary">
+                            Detailed answers to any questions you might have
+                        </span>
+                    </a>
+                </li>
+                        <li>
+                            <a href="http://meta.superuser.com/" class="js-gps-track" data-gps-track="help_popup.click({ item_type:2 })">
+                                Meta
+                                <span class="item-summary">
+                                    Discuss the workings and policies of this site
+                                </span>
+                            </a>
+                        </li>
+                    <li>
+                        <a href="http://stackoverflow.com/company/about" class="js-gps-track" data-gps-track="help_popup.click({ item_type:6 })">
+                            About Us
+                            <span class="item-summary">
+                                Learn more about Stack Overflow the company
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://business.stackoverflow.com/?ref=topbar_help" class="js-gps-track" data-gps-track="help_popup.click({ item_type:7 })">
+                            Business
+                            <span class="item-summary">
+                                Learn more about hiring developers or posting ads with us
+                            </span>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+                                            </span>
+                </div>
+
+            <div class="search-container">
+                <form id="search" action="http://superuser.com/search" method="get" autocomplete="off">
+                    <input name="q" placeholder="Search Q&amp;A" value="" tabindex="1" autocomplete="off" maxlength="240" type="text">
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+    
+
+    <div class="container">
+        <div id="header">
+            <br class="cbt">
+            <div id="hlogo">
+                <a href="http://superuser.com/">
+                    Super User
+                </a>
+            </div>
+            <div id="hmenus">
+                <div class="nav mainnavs">
+                    <ul>
+                        <li class="youarehere"><a id="nav-questions" href="http://superuser.com/questions">Questions</a></li>
+                                                <li><a id="nav-tags" href="http://superuser.com/tags">Tags</a></li>
+                        <li><a id="nav-users" href="http://superuser.com/users">Users</a></li>
+                        <li><a id="nav-badges" href="http://superuser.com/help/badges">Badges</a></li>
+                        <li><a id="nav-unanswered" href="http://superuser.com/unanswered">Unanswered</a></li>
+                    </ul>
+                </div>
+                <div class="nav askquestion">
+                    <ul>
+                        <li>
+                            <a id="nav-askquestion" href="http://superuser.com/questions/ask">Ask Question</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+
+
+
+        <div id="content">
+            
+
+<div itemscope="" itemtype="http://schema.org/Question">
+    <link itemprop="image" href="http://cdn.sstatic.net/Sites/superuser/img/apple-touch-icon.png?v=0ad5b7a83e49">
+
+<div id="herobox">
+    <div id="hero-content">
+            <div id="close"><a title="click to minimize">_</a></div>
+        <div id="blurb">
+            Super User is a question and answer site for computer enthusiasts and power users. It's 100% free, no registration required.
+            <br>
+            <br>
+            <a href="http://superuser.com/users/signup?ssrc=hero&amp;returnurl=http%3a%2f%2fsuperuser.com%2fquestions%2f209437%2fhow-do-i-scroll-in-tmux" id="tell-me-more" class="button">Sign up</a>
+        </div>
+        <div id="desc">
+            <b>Here's how it works:</b>
+            <ol id="hiw">
+                <li id="q">Anybody can ask a question
+                </li>
+                <li id="an">Anybody can answer
+                </li>
+                <li id="b">The best answers are voted up and rise to the top
+                </li>
+            </ol>
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+    
+</div>
+			<div id="question-header">
+                <h1 itemprop="name"><a href="#" class="question-hyperlink">How do I scroll in tmux?</a></h1>
+		</div>
+			<div id="mainbar">
+
+			
+
+<div class="question" data-questionid="209437" id="question">
+
+    
+            <div class="everyonelovesstackoverflow" id="adzerk850188411"></div>    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input name="_id_" value="209437" type="hidden">
+        <a class="vote-up-off" title="This question shows research effort; it is useful and clear">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">635</span>
+        <a class="vote-down-off" title="This question does not show any research effort; it is unclear or not useful">down vote</a>
+
+        <a class="star-off" href="#">favorite</a>
+        <div class="favoritecount"><b>261</b></div>
+
+
+</div>
+
+            </td>
+            
+<td class="postcell">
+<div>
+    <div class="post-text" itemprop="text">
+
+<p>I just started using tmux, and I really like it, but I need to be able to scroll within the buffers/panes/windows I have open. I don't care if it works with the mouse or not. When I search the tmux man page, I find only two instances of the word "scroll" even showing up, and both have to do with copy mode. Is there a way to scroll without all the overhead of entering copy mode?</p>
+    </div>
+    <div class="post-taglist">
+        <a href="http://superuser.com/questions/tagged/tmux" class="post-tag js-gps-track" title="show questions tagged 'tmux'" rel="tag">tmux</a> 
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://superuser.com/q/209437" title="short permalink to this question" class="short-link" id="link-post-209437">share</a><span class="lsep">|</span><a href="http://superuser.com/posts/209437/edit" class="suggest-edit-post" title="">improve this question</a></div>        
+    </td>
+    <td class="post-signature" align="right">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="http://superuser.com/posts/209437/revisions" title="show all edits to this post">edited <span title="2012-09-27 18:13:46Z" class="relativetime">Sep 27 '12 at 18:13</span></a>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://superuser.com/users/18192/flow"><div class="gravatar-wrapper-32"><img src="786b7a4e236f0179a2d7b67aac9b402e.dat" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://superuser.com/users/18192/flow">Flow</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">488</span><span title="1 gold badge"><span class="badge1"></span><span class="badgecount">1</span></span><span title="8 silver badges"><span class="badge2"></span><span class="badgecount">8</span></span><span title="21 bronze badges"><span class="badge3"></span><span class="badgecount">21</span></span>
+        </div>
+    </div>
+</div>    </td>
+    <td class="post-signature owner">
+        <div class="user-info ">
+    <div class="user-action-time">
+        asked <span title="2010-11-10 18:40:45Z" class="relativetime">Nov 10 '10 at 18:40</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://superuser.com/users/37690/chadoh"><div class="gravatar-wrapper-32"><img src="259469ed60f945161a150e79a381b26c.dat" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://superuser.com/users/37690/chadoh">chadoh</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">3,308</span><span title="3 gold badges"><span class="badge1"></span><span class="badgecount">3</span></span><span title="9 silver badges"><span class="badge2"></span><span class="badgecount">9</span></span><span title="7 bronze badges"><span class="badge3"></span><span class="badgecount">7</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</div>
+</td>
+        </tr>
+                
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-209437" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+
+    <tr id="comment-212486" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of 'useful comment' votes received" class="warm">7</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">What overhead are you concerned with? <code>copy-mode</code> is the way to view history (and optionally copy stuff out of it).</span>
+                    –&nbsp;<a href="http://superuser.com/users/14827/chris-johnsen" title="20,980 reputation" class="comment-user">Chris Johnsen</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment212486_209437"><span title="2010-11-11 05:48:00Z" class="relativetime-clean">Nov 11 '10 at 5:48</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-1026487" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">for me you can press f7 for scroll mode and q to quit</span>
+                    –&nbsp;<a href="http://superuser.com/users/58697/johnmerlino" title="172 reputation" class="comment-user">JohnMerlino</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment1026487_209437"><span title="2014-07-25 14:56:53Z" class="relativetime-clean">Jul 25 '14 at 14:56</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-209437" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid answering questions in comments.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="#"></a>
+        </div>         
+    </td>
+</tr>        </tbody></table>
+</div>
+
+			<div id="answers">
+
+				<a name="tab-top"></a>
+				<div id="answers-header">
+					<div class="subheader answers-subheader">
+						<h2>
+								8 Answers
+                                <span style="display: none;" itemprop="answerCount">8</span>
+						</h2>
+						<div>
+							<div id="tabs">
+        <a href="http://superuser.com/questions/209437/how-do-i-scroll-in-tmux?answertab=active#tab-top" data-nav-xhref="" title="Answers with the latest activity first" data-value="active" data-shortcut="A">
+            active</a>
+        <a href="http://superuser.com/questions/209437/how-do-i-scroll-in-tmux?answertab=oldest#tab-top" data-nav-xhref="" title="Answers in the order they were provided" data-value="oldest" data-shortcut="O">
+            oldest</a>
+        <a class="youarehere" href="http://superuser.com/questions/209437/how-do-i-scroll-in-tmux?answertab=votes#tab-top" data-nav-xhref="" title="Answers with the highest score first" data-value="votes" data-shortcut="V">
+            votes</a>
+</div>
+						</div>
+					</div>    
+				</div>    
+
+
+
+
+  
+<a name="209608"></a>
+<div id="answer-209608" class="answer accepted-answer" data-answerid="209608" itemscope="" itemtype="http://schema.org/Answer" itemprop="acceptedAnswer">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input name="_id_" value="209608" type="hidden">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">748</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+        <span class="vote-accepted-on load-accepted-answer-date" title="loading when this answer was accepted...">accepted</span>
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p><kbd>Ctrl</kbd>-<kbd>b</kbd> then <kbd>[</kbd> then you can use your normal navigation keys to scroll around (eg. <kbd>Up Arrow</kbd> or <kbd>PgDn</kbd>). Press <kbd>q</kbd> to quit scroll mode.</p>
+
+<p>Alternatively you can press <kbd>Ctrl</kbd>-<kbd>b</kbd> <kbd>PgUp</kbd> to go directly into copy mode and scroll one page up (which is what it sounds like you will want most of the time)</p>
+
+<p>In <code>vi</code> mode (see below), you can also scroll the page up/down line by line using <kbd>Shift</kbd>-<kbd>k</kbd> and <kbd>Shift</kbd>-<kbd>j</kbd> (if you're already in scroll mode). Unshifted, the cursor moves instead of the page.</p>
+
+<p>Excerpts from the <a href="http://linux.die.net/man/1/tmux">man page</a>:</p>
+
+<blockquote>
+  <p>tmux may be controlled from an attached client by using a key combination of a prefix key, ‘C-b’ (Ctrl-b) by default, followed by a command key.</p>
+</blockquote>
+
+<pre><code> The default command key bindings are:
+
+[           Enter copy mode to copy text or view the history.
+
+Function                     vi              emacs
+--------                     --              -----
+Half page down               C-d             M-Down
+Half page up                 C-u             M-Up
+Next page                    C-f             Page down
+Previous page                C-b             Page up
+Scroll down                  C-Down or C-e   C-Down
+Scroll up                    C-Up or C-y     C-Up
+Search again                 n               n
+Search again in reverse      N               N
+Search backward              ?               C-r
+Search forward               /               C-s
+</code></pre>
+
+<p>Plus a bunch more. Note that you have to press <code>C-b</code> twice if you use that for page up since <code>C-b</code> is bound as the command key. See the man page for information on prefacing a copy mode command with a repeat count.</p>
+
+<p>You can set the key binding mode using <kbd>Ctrl</kbd>-<kbd>b</kbd>, then</p>
+
+<pre><code>:set-window-option mode-keys emacs
+</code></pre>
+
+<p>or <code>vi</code>.</p>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://superuser.com/a/209608" title="short permalink to this answer" class="short-link" id="link-post-209608">share</a><span class="lsep">|</span><a href="http://superuser.com/posts/209608/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td class="post-signature" align="right">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="http://superuser.com/posts/209608/revisions" title="show all edits to this post">edited <span title="2016-01-26 01:01:16Z" class="relativetime">Jan 26 at 1:01</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        
+        <div class="-flair">
+            
+        </div>
+    </div>
+</div>    </td>
+            
+
+
+    <td class="post-signature" align="right">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2010-11-11 03:02:16Z" class="relativetime">Nov 11 '10 at 3:02</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://superuser.com/users/310/dennis-williamson"><div class="gravatar-wrapper-32"><img src="a85af5779b78386bc17a9532a5126ecb.dat" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://superuser.com/users/310/dennis-williamson">Dennis Williamson</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score 55,673" dir="ltr">55.7k</span><span title="10 gold badges"><span class="badge1"></span><span class="badgecount">10</span></span><span title="98 silver badges"><span class="badge2"></span><span class="badgecount">98</span></span><span title="131 bronze badges"><span class="badge3"></span><span class="badgecount">131</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-209608" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="8" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+
+    <tr id="comment-212487" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of 'useful comment' votes received" class="warm">9</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">I think <code>C-b =</code> is <code>choose-buffer</code> by default. Did you mean <code>C-b [</code> (which is <code>copy-mode</code> by default)? Also you can also use <code>C-b PageUp</code> to start copy-mode directly on the previous page (very handy when you know what you want to view/copy has already scrolled off the current page).</span>
+                    –&nbsp;<a href="http://superuser.com/users/14827/chris-johnsen" title="20,980 reputation" class="comment-user">Chris Johnsen</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment212487_209608"><span title="2010-11-11 05:55:46Z" class="relativetime-clean">Nov 11 '10 at 5:55</span></a></span>
+                    <span class="edited-yes" title="this comment was edited 1 time"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-212648" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of 'useful comment' votes received" class="cool">4</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Correct, my tmux has no scroll-mode. You need to <code>C-b [</code> to enter copy mode and then use either the emacs or vi key-bindings to scroll around. This seems like a lot of steps just to scroll, but the benefits of tmux still outweigh these annoyances. I'm on a macbook and there is no PageUp key :-\. (Also, how do I make keys with markdown like you did, Dennis?)</span>
+                    –&nbsp;<a href="http://superuser.com/users/37690/chadoh" title="3,308 reputation" class="comment-user owner">chadoh</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment212648_209608"><span title="2010-11-11 17:11:09Z" class="relativetime-clean">Nov 11 '10 at 17:11</span></a></span>
+                    <span class="edited-yes" title="this comment was edited 2 times"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-212683" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of 'useful comment' votes received" class="supernova">31</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@chadoh: Try these on your Macbook: Home: fn-LeftArrow; End: fn-RightArrow; Page Up: fn-UpArrow; Page Down: fn-DownArrow.  To make keycaps: <code>&lt;kbd&gt;Ctrl&lt;/kbd&gt;</code></span>
+                    –&nbsp;<a href="http://superuser.com/users/310/dennis-williamson" title="55,673 reputation" class="comment-user">Dennis Williamson</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment212683_209608"><span title="2010-11-11 18:43:15Z" class="relativetime-clean">Nov 11 '10 at 18:43</span></a></span>
+                    <span class="edited-yes" title="this comment was edited 1 time"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-280085" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of 'useful comment' votes received" class="cool">3</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">on macbook, the fn+up goes straight to terminal app and never hits tmux</span>
+                    –&nbsp;<a href="http://superuser.com/users/16194/tyler" title="120 reputation" class="comment-user">Tyler</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment280085_209608"><span title="2011-04-11 17:57:15Z" class="relativetime-clean">Apr 11 '11 at 17:57</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-734820" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of 'useful comment' votes received" class="warm">13</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">On a macbook if you're in scroll mode you can use fn+Shift+LeftArrow to scroll up a page.</span>
+                    –&nbsp;<a href="http://superuser.com/users/225303/nick-hammond" title="101 reputation" class="comment-user">Nick Hammond</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment734820_209608"><span title="2013-05-18 17:51:51Z" class="relativetime-clean">May 18 '13 at 17:51</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-209608" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link  dno" title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."></a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link " title="expand to show all comments on this post" href="#">show <b>8</b> more comments</a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+
+            <div class="everyonelovesstackoverflow" id="adzerk1349809155"></div>
+  
+<a name="510310"></a>
+<div id="answer-510310" class="answer" data-answerid="510310" itemscope="" itemtype="http://schema.org/Answer">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input name="_id_" value="510310" type="hidden">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">120</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Well, you should consider the proper way to set scrolling:
+add in your <code>tmux.conf</code></p>
+
+<pre><code>set -g mode-mouse on
+</code></pre>
+
+<p>It worked for me in windows and panes. Now tmux is just perfect. </p>
+
+<p><a href="https://mutelight.org/practical-tmux">Practical tmux</a> has more info on tmux.conf files.</p>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://superuser.com/a/510310" title="short permalink to this answer" class="short-link" id="link-post-510310">share</a><span class="lsep">|</span><a href="http://superuser.com/posts/510310/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td class="post-signature" align="right">
+<div class="user-info user-hover">
+    <div class="user-action-time">
+        <a href="http://superuser.com/posts/510310/revisions" title="show all edits to this post">edited <span title="2013-03-26 13:51:45Z" class="relativetime">Mar 26 '13 at 13:51</span></a>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://superuser.com/users/42315/gilles"><div class="gravatar-wrapper-32"><img src="cFyP6.jpg" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://superuser.com/users/42315/gilles">Gilles</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score 41,236" dir="ltr">41.2k</span><span title="8 gold badges"><span class="badge1"></span><span class="badgecount">8</span></span><span title="85 silver badges"><span class="badge2"></span><span class="badgecount">85</span></span><span title="134 bronze badges"><span class="badge3"></span><span class="badgecount">134</span></span>
+        </div>
+    </div>
+</div>    </td>
+            
+
+
+    <td class="post-signature" align="right">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2012-11-25 13:05:29Z" class="relativetime">Nov 25 '12 at 13:05</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://superuser.com/users/175785/chaiyachaiya"><div class="gravatar-wrapper-32"><img src="b61c1c8bd89ffd6a81e277b408290009.dat" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://superuser.com/users/175785/chaiyachaiya">chaiyachaiya</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">1,201</span><span title="1 gold badge"><span class="badge1"></span><span class="badgecount">1</span></span><span title="5 silver badges"><span class="badge2"></span><span class="badgecount">5</span></span><span title="2 bronze badges"><span class="badge3"></span><span class="badgecount">2</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-510310" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="2" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+
+    <tr id="comment-780594" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of 'useful comment' votes received" class="cool">3</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">When I do this, mouse clicks and scrolls cause gibberish characters to be printed to the prompt area of the terminal I'm using with tmux. Any ideas?</span>
+                    –&nbsp;<a href="http://superuser.com/users/110014/mr-f" title="103 reputation" class="comment-user">Mr. F</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment780594_510310"><span title="2013-08-01 15:38:11Z" class="relativetime-clean">Aug 1 '13 at 15:38</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-888858" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of 'useful comment' votes received" class="warm">5</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Future tmux mouse users: To save you having to scroll to the bottom again before typing, you can hit <code>q</code> to exit scroll mode.</span>
+                    –&nbsp;<a href="http://superuser.com/users/270158/jezen-thomas" title="115 reputation" class="comment-user">Jezen Thomas</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment888858_510310"><span title="2014-01-07 05:11:43Z" class="relativetime-clean">Jan 7 '14 at 5:11</span></a></span>
+                    <span class="edited-yes" title="this comment was edited 1 time"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-1190450" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of 'useful comment' votes received" class="warm">5</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Mouse scrolling works fine with this, but unfortunately I cannot use the mouse to select text anymore. Using Tilda and tmux.</span>
+                    –&nbsp;<a href="http://superuser.com/users/10011/friederbluemle" title="157 reputation" class="comment-user">friederbluemle</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment1190450_510310"><span title="2015-03-17 03:40:37Z" class="relativetime-clean">Mar 17 '15 at 3:40</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-1371396" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of 'useful comment' votes received" class="warm">10</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Note that in tmux 2.1 and up, this is replaced with <code>set -g mouse on</code>, and scrolling does not automatically enter copy mode like it did before.</span>
+                    –&nbsp;<a href="http://superuser.com/users/139740/thrnio" title="101 reputation" class="comment-user">thrnio</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment1371396_510310"><span title="2015-10-29 22:49:49Z" class="relativetime-clean">Oct 29 '15 at 22:49</span></a></span>
+                    <span class="edited-yes" title="this comment was edited 1 time"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-1513559" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of 'useful comment' votes received" class="cool">1</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Important note: This setting breaks highlighting and copying text. Use shift+click to maintain this functionality.</span>
+                    –&nbsp;<a href="http://superuser.com/users/578072/shadoninja" title="101 reputation" class="comment-user">Shadoninja</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment1513559_510310"><span title="2016-05-04 22:50:36Z" class="relativetime-clean">May 4 at 22:50</span></a></span>
+                    <span class="edited-yes" title="this comment was edited 1 time"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-510310" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link  dno" title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."></a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link " title="expand to show all comments on this post" href="#">show <b>2</b> more comments</a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+
+  
+<a name="326592"></a>
+<div id="answer-326592" class="answer" data-answerid="326592" itemscope="" itemtype="http://schema.org/Answer">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input name="_id_" value="326592" type="hidden">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">101</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>From my .tmux.conf:</p>
+
+<pre><code># Sane scrolling
+set -g terminal-overrides 'xterm*:smcup@:rmcup@'
+</code></pre>
+
+<p>This enables native xterm scrolling.</p>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://superuser.com/a/326592" title="short permalink to this answer" class="short-link" id="link-post-326592">share</a><span class="lsep">|</span><a href="http://superuser.com/posts/326592/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td class="post-signature" align="right">
+<div class="user-info user-hover">
+    <div class="user-action-time">
+        <a href="http://superuser.com/posts/326592/revisions" title="show all edits to this post">edited <span title="2012-03-30 08:35:59Z" class="relativetime">Mar 30 '12 at 8:35</span></a>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://superuser.com/users/-1/community"><div class="gravatar-wrapper-32"><img src="a007be5a61f6aa8f3e85ae2fc18dd66e.dat" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://superuser.com/users/-1/community">Community</a><span class="mod-flair" title="moderator">♦</span>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">1</span>
+        </div>
+    </div>
+</div>    </td>
+            
+
+
+    <td class="post-signature" align="right">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2011-08-22 20:49:40Z" class="relativetime">Aug 22 '11 at 20:49</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://superuser.com/users/95189/togdon"><div class="gravatar-wrapper-32"><img src="9d39193dfd44e288876166a9609a1b84.dat" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://superuser.com/users/95189/togdon">togdon</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">1,119</span><span title="1 gold badge"><span class="badge1"></span><span class="badgecount">1</span></span><span title="6 silver badges"><span class="badge2"></span><span class="badgecount">6</span></span><span title="4 bronze badges"><span class="badge3"></span><span class="badgecount">4</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-326592" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="9" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+
+    <tr id="comment-387813" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of 'useful comment' votes received" class="hot">21</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Can you explain what this does exactly?</span>
+                    –&nbsp;<a href="http://superuser.com/users/103525/ivo" title="101 reputation" class="comment-user">Ivo</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment387813_326592"><span title="2011-10-31 06:25:01Z" class="relativetime-clean">Oct 31 '11 at 6:25</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-401625" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of 'useful comment' votes received" class="warm">7</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">I don't know what it does, but it is pure genius.  Finally, tmux scrolling works, yay!</span>
+                    –&nbsp;<a href="http://superuser.com/users/11240/oneself" title="356 reputation" class="comment-user">oneself</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment401625_326592"><span title="2011-11-28 21:26:35Z" class="relativetime-clean">Nov 28 '11 at 21:26</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-471983" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of 'useful comment' votes received" class="cool">4</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">This doesn't work for me on OS X...</span>
+                    –&nbsp;<a href="http://superuser.com/users/105531/nick" title="131 reputation" class="comment-user">Nick</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment471983_326592"><span title="2012-04-17 13:56:52Z" class="relativetime-clean">Apr 17 '12 at 13:56</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-472039" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of 'useful comment' votes received" class="hot">16</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Solution: <a href="https://gist.github.com/1297707" rel="nofollow">gist.github.com/1297707</a></span>
+                    –&nbsp;<a href="http://superuser.com/users/105531/nick" title="131 reputation" class="comment-user">Nick</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment472039_326592"><span title="2012-04-17 15:25:04Z" class="relativetime-clean">Apr 17 '12 at 15:25</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-714457" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of 'useful comment' votes received" class="warm">5</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Check this out if you're confused about togdon's answer: <a href="http://superuser.com/questions/310251/use-terminal-scrollbar-with-tmux?lq=1" title="use terminal scrollbar with tmux">superuser.com/questions/310251/…</a>   IMO, if you have only a single pane, this solution works better than the accepted answer.</span>
+                    –&nbsp;<a href="http://superuser.com/users/84959/thameera" title="105 reputation" class="comment-user">thameera</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment714457_326592"><span title="2013-04-16 07:48:31Z" class="relativetime-clean">Apr 16 '13 at 7:48</span></a></span>
+                    <span class="edited-yes" title="this comment was edited 3 times"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-326592" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link  dno" title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."></a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link " title="expand to show all comments on this post" href="#">show <b>9</b> more comments</a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+
+  
+<a name="610507"></a>
+<div id="answer-610507" class="answer" data-answerid="610507" itemscope="" itemtype="http://schema.org/Answer">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input name="_id_" value="610507" type="hidden">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">6</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>This is the way I made it work, and the reasons why I think it is better than the default way.</p>
+
+<p>To try it out, put all the code sections in <code>~/.tmux.conf</code>.</p>
+
+<p>Step 1. Change the prefix key so you won't have to reach one bit. 'B' is seemingly a close key, but it is in the middle of the two index fingers (at 'F' and 'J', respectively). Because that shortcut is essential in tmux, C-j is much better as it involves zero hand movement (apart from hitting the key).</p>
+
+<pre><code>set -g prefix C-j
+unbind C-b
+bind C-j send-prefix
+</code></pre>
+
+<p>Step 2. 'S' (to enter copy-mode) is: 1) close (same reason as above), 2) involves the other hand (compare: the 1-2 in boxing, or the <code>ls</code> command to view files in a directory), and 3) could be thought of as mnemonic for "scroll" (although the copy-mode isn't just about scrolling).</p>
+
+<pre><code>bind s copy-mode
+</code></pre>
+
+<p>Step 3. The last part, the actual scrolling. 'P' and 'N' are familiar for this purpose to the Emacs users. They are close, intuitive ('P' is above 'N' on the keyboard), and mnemonic ("previous" and "next"). If you just did some scrolling in Emacs, and then go to tmux, it makes sense to have those shortcuts.</p>
+
+<p>However, I found that 'I' and 'K' are even better - they are even closer than 'P' and 'N', and intuitive (for the same reason); as for mnemonics - as scrolling is such a common thing to do, mnemonics won't really matter as the shortcuts will soon bypass your brain and enter the muscle memory.</p>
+
+<pre><code>bind -t emacs-copy 'p' scroll-up
+bind -t emacs-copy 'n' scroll-down
+bind -t emacs-copy 'i' scroll-up
+bind -t emacs-copy 'k' scroll-down
+</code></pre>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://superuser.com/a/610507" title="short permalink to this answer" class="short-link" id="link-post-610507">share</a><span class="lsep">|</span><a href="http://superuser.com/posts/610507/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td class="post-signature" align="right">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2013-06-21 15:33:39Z" class="relativetime">Jun 21 '13 at 15:33</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://superuser.com/users/106960/emanuel-berg"><div class="gravatar-wrapper-32"><img src="tuEbI.jpg" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://superuser.com/users/106960/emanuel-berg">Emanuel Berg</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">294</span><span title="3 silver badges"><span class="badge2"></span><span class="badgecount">3</span></span><span title="10 bronze badges"><span class="badge3"></span><span class="badgecount">10</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-610507" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-610507" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="#"></a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+
+  
+<a name="1007721"></a>
+<div id="answer-1007721" class="answer" data-answerid="1007721" itemscope="" itemtype="http://schema.org/Answer">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input name="_id_" value="1007721" type="hidden">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">5</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>For the newest tmux 2.1, to scroll with your mouse sanely, this is the right answer:</p>
+
+<pre><code>set -g mouse on
+" sane scrolling:
+bind -n WheelUpPane if-shell -F -t = "#{mouse_any_flag}" "send-keys -M" "if -Ft= '#{pane_in_mode}' 'send-keys -M' 'copy-mode -e; send-keys -M'"
+</code></pre>
+
+<p>it's not enough to just reload your .tmux.conf you need to restart your tmux, e.g. <code>tmux kill-server &amp;&amp; tmux</code></p>
+
+<p>taken from <a href="https://github.com/tmux/tmux/issues/145">https://github.com/tmux/tmux/issues/145</a></p>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://superuser.com/a/1007721" title="short permalink to this answer" class="short-link" id="link-post-1007721">share</a><span class="lsep">|</span><a href="http://superuser.com/posts/1007721/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td class="post-signature" align="right">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2015-12-01 16:09:27Z" class="relativetime">Dec 1 '15 at 16:09</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://superuser.com/users/526656/flov"><div class="gravatar-wrapper-32"><img src="znt69.jpg" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://superuser.com/users/526656/flov">Flov</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">151</span><span title="1 silver badge"><span class="badge2"></span><span class="badgecount">1</span></span><span title="3 bronze badges"><span class="badge3"></span><span class="badgecount">3</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-1007721" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-1007721" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="#"></a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+
+  
+<a name="902604"></a>
+<div id="answer-902604" class="answer" data-answerid="902604" itemscope="" itemtype="http://schema.org/Answer">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input name="_id_" value="902604" type="hidden">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">2</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>In my case, just <kbd>opt</kbd> + <kbd>UpArrow</kbd> and <kbd>opt</kbd> + <kbd>DownArrow</kbd> on OSX.</p>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://superuser.com/a/902604" title="short permalink to this answer" class="short-link" id="link-post-902604">share</a><span class="lsep">|</span><a href="http://superuser.com/posts/902604/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td class="post-signature" align="right">
+<div class="user-info user-hover">
+    <div class="user-action-time">
+        <a href="http://superuser.com/posts/902604/revisions" title="show all edits to this post">edited <span title="2015-04-17 04:14:30Z" class="relativetime">Apr 17 '15 at 4:14</span></a>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://superuser.com/users/279815/varaquilex"><div class="gravatar-wrapper-32"><img src="08lgW.png" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://superuser.com/users/279815/varaquilex">Varaquilex</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">2,157</span><span title="2 gold badges"><span class="badge1"></span><span class="badgecount">2</span></span><span title="16 silver badges"><span class="badge2"></span><span class="badgecount">16</span></span><span title="37 bronze badges"><span class="badge3"></span><span class="badgecount">37</span></span>
+        </div>
+    </div>
+</div>    </td>
+            
+
+
+    <td class="post-signature" align="right">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2015-04-17 03:43:47Z" class="relativetime">Apr 17 '15 at 3:43</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://superuser.com/users/436346/yth"><div class="gravatar-wrapper-32"><img src="fe84dc3351e3aef6c16f42d6ca1d58d3.dat" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://superuser.com/users/436346/yth">Yth</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">31</span><span title="2 bronze badges"><span class="badge3"></span><span class="badgecount">2</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-902604" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+
+    <tr id="comment-1210940" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@fixer1234 The question does not mention Linux at all. <code>tmux</code> can be used on OS X, too.</span>
+                    –&nbsp;<a href="http://superuser.com/users/48078/slhck" title="121,250 reputation" class="comment-user">slhck</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment1210940_902604"><span title="2015-04-17 11:51:49Z" class="relativetime-clean">Apr 17 '15 at 11:51</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-1211122" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@slhck: Thanks.  Too bleary-eyed; astigmatism kicked in.  I had misread the tmux tag as a linux tag.</span>
+                    –&nbsp;<a href="http://superuser.com/users/364367/fixer1234" title="9,616 reputation" class="comment-user">fixer1234</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment1211122_902604"><span title="2015-04-17 16:07:07Z" class="relativetime-clean">Apr 17 '15 at 16:07</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-902604" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="#"></a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+
+  
+<a name="1059424"></a>
+<div id="answer-1059424" class="answer" data-answerid="1059424" itemscope="" itemtype="http://schema.org/Answer">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input name="_id_" value="1059424" type="hidden">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">1</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>I searched around a lot for this and the best solution for me works as mentioned in this detailed guide:
+<a href="http://tangledhelix.com/blog/2012/07/16/tmux-and-mouse-mode/" rel="nofollow">http://tangledhelix.com/blog/2012/07/16/tmux-and-mouse-mode/</a></p>
+
+<p>Add these bindings in ~/.tmux.conf:</p>
+
+<pre><code>set -g mode-mouse on
+
+unbind +
+bind + \
+  new-window -d -n tmux-zoom 'clear &amp;&amp; echo TMUX ZOOM &amp;&amp; read' \;\
+  swap-pane -s tmux-zoom.0 \;\
+  select-window -t tmux-zoom
+
+unbind -
+bind - \
+  last-window \;\
+  swap-pane -s tmux-zoom.0 \;\
+  kill-window -t tmux-zoom
+</code></pre>
+
+<p>With the above approach implemented, you can copy from panes in a window as well by <em>zooming</em> into each pane first using <strong>Prefix</strong> <strong>+</strong>.</p>
+
+<p>One important detail that was missing with the mouse mode is to press <strong>Shift</strong> before selecting an area to copy. This will copy it to traditional terminal buffer instead of the tmux copy buffer. (<a href="https://wiki.archlinux.org/index.php/Tmux#Scrolling_issues" rel="nofollow">https://wiki.archlinux.org/index.php/Tmux#Scrolling_issues</a>)</p>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://superuser.com/a/1059424" title="short permalink to this answer" class="short-link" id="link-post-1059424">share</a><span class="lsep">|</span><a href="http://superuser.com/posts/1059424/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td class="post-signature" align="right">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="http://superuser.com/posts/1059424/revisions" title="show all edits to this post">edited <span title="2016-03-31 01:34:28Z" class="relativetime">Mar 31 at 1:34</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        
+        <div class="-flair">
+            
+        </div>
+    </div>
+</div>    </td>
+            
+
+
+    <td class="post-signature" align="right">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2016-03-31 00:42:33Z" class="relativetime">Mar 31 at 0:42</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://superuser.com/users/562815/muneeb"><div class="gravatar-wrapper-32"><img src="eec89d54d55a593c3dc38d273c201148.dat" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://superuser.com/users/562815/muneeb">Muneeb</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">16</span><span title="4 bronze badges"><span class="badge3"></span><span class="badgecount">4</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-1059424" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+
+    <tr id="comment-1488230" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Appreciate your answer. But many a times the referred links may break. It would always be beneficial to add the core part of your answer here and provide the link just for reference.</span>
+                    –&nbsp;<a href="http://superuser.com/users/345527/prasanna" title="2,569 reputation" class="comment-user">Prasanna</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment1488230_1059424"><span title="2016-03-31 01:14:49Z" class="relativetime-clean">Mar 31 at 1:14</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-1059424" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="#"></a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+
+  
+<a name="992922"></a>
+<div id="answer-992922" class="answer" data-answerid="992922" itemscope="" itemtype="http://schema.org/Answer">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input name="_id_" value="992922" type="hidden">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">1</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>The only thing that works for me is putting the following in <code>~/.tmux.conf</code></p>
+
+<pre><code># Allow xterm titles in terminal window, terminal scrolling with scrollbar, and setting overrides of C-Up, C-Down, C-Left, C-Right
+set -g terminal-overrides "xterm*:XT:smcup@:rmcup@:kUP5=\eOA:kDN5=\eOB:kLFT5=\eOD:kRIT5=\eOC"
+</code></pre>
+
+<p>(you may need to reboot for this to take effect)</p>
+
+<p><strong>Update:</strong></p>
+
+<p>I found that if you change the setting in Putty Connection &gt; Data &gt; Terminal-type to "putty" (used to fix some formatting issues) from "xterm" then this solution stops working. </p>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://superuser.com/a/992922" title="short permalink to this answer" class="short-link" id="link-post-992922">share</a><span class="lsep">|</span><a href="http://superuser.com/posts/992922/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td class="post-signature" align="right">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="http://superuser.com/posts/992922/revisions" title="show all edits to this post">edited <span title="2016-07-15 07:34:09Z" class="relativetime">2 days ago</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        
+        <div class="-flair">
+            
+        </div>
+    </div>
+</div>    </td>
+            
+
+
+    <td class="post-signature" align="right">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2015-10-28 10:59:33Z" class="relativetime">Oct 28 '15 at 10:59</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://superuser.com/users/373302/phocks"><div class="gravatar-wrapper-32"><img src="0b194e4cae0828e21142af8506696cc6.dat" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://superuser.com/users/373302/phocks">phocks</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">125</span><span title="7 bronze badges"><span class="badge3"></span><span class="badgecount">7</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-992922" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+
+    <tr id="comment-1544577" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of 'useful comment' votes received" class="cool">1</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">This one actually solves my scrolling problem in iPhone app as well.</span>
+                    –&nbsp;<a href="http://superuser.com/users/445952/nathaneilcapital" title="99 reputation" class="comment-user">NathaneilCapital</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment1544577_992922"><span title="2016-06-17 17:20:08Z" class="relativetime-clean">Jun 17 at 17:20</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-1556197" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">The latest I tried this wasn't working any more, but this worked. Strange. <code>set -ga terminal-overrides ',xterm*:smcup@:rmcup@'</code></span>
+                    –&nbsp;<a href="http://superuser.com/users/373302/phocks" title="125 reputation" class="comment-user">phocks</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment1556197_992922"><span title="2016-07-05 05:30:08Z" class="relativetime-clean">Jul 5 at 5:30</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-992922" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="#"></a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+									<a name="new-answer"></a>
+						<form id="post-form" action="http://superuser.com/questions/209437/answer/submit" method="post" class="post-form">
+						    <input id="post-id" value="209437" type="hidden">
+                            <input id="qualityBanWarningShown" name="qualityBanWarningShown" value="false" type="hidden">
+                            <input name="referrer" value="" type="hidden">
+							<h2 class="space">Your Answer</h2>
+
+
+        
+
+
+
+
+<div id="post-editor" class="post-editor js-post-editor">
+
+    <div style="position: relative;">     
+        <div class="wmd-container">
+            <div id="wmd-button-bar" class="wmd-button-bar"><ul id="wmd-button-row" class="wmd-button-row"><li style="left: 0px;" class="wmd-button" id="wmd-bold-button"><span style="background-position: 0px -20px;"></span></li><li style="left: 25px;" class="wmd-button" id="wmd-italic-button"><span style="background-position: -20px -20px;"></span></li><li style="left: 50px;" class="wmd-spacer" id="wmd-spacer1"><span style="background-position: -40px -20px;"></span></li><li style="left: 75px;" class="wmd-button" id="wmd-link-button"><span style="background-position: -40px -20px;"></span></li><li style="left: 100px;" class="wmd-button" id="wmd-quote-button"><span style="background-position: -60px -20px;"></span></li><li style="left: 125px;" class="wmd-button" id="wmd-code-button"><span style="background-position: -80px -20px;"></span></li><li style="left: 150px;" class="wmd-button" id="wmd-image-button"><span style="background-position: -100px -20px;"></span></li><li style="left: 175px;" class="wmd-spacer" id="wmd-spacer2"><span style="background-position: -120px -20px;"></span></li><li style="left: 200px;" class="wmd-button" id="wmd-olist-button"><span style="background-position: -120px -20px;"></span></li><li style="left: 225px;" class="wmd-button" id="wmd-ulist-button"><span style="background-position: -140px -20px;"></span></li><li style="left: 250px;" class="wmd-button" id="wmd-heading-button"><span style="background-position: -160px -20px;"></span></li><li style="left: 275px;" class="wmd-button" id="wmd-hr-button"><span style="background-position: -180px -20px;"></span></li><li style="left: 300px;" class="wmd-spacer" id="wmd-spacer3"><span style="background-position: -200px -20px;"></span></li><li style="left: 325px;" class="wmd-button" id="wmd-undo-button"><span style="background-position: -200px -20px;"></span></li><li style="left: 350px;" class="wmd-button" id="wmd-redo-button"><span style="background-position: -220px -20px;"></span></li></ul></div>
+            <textarea id="wmd-input" class="wmd-input" name="post-text" cols="92" rows="15" tabindex="101" data-min-length=""></textarea>
+        </div>
+    </div>
+
+    <div class="fl" style="margin-top: 8px; height: 24px;">&nbsp;</div>
+    <div id="draft-saved" class="draft-saved community-option fl" style="margin-top: 8px; height: 24px; display: none;">draft saved</div>
+
+    <div id="draft-discarded" class="draft-discarded community-option fl" style="margin-top: 8px; height: 24px; display: none;">draft discarded</div>
+
+
+
+    <div id="wmd-preview" class="wmd-preview"></div>
+    <div></div>
+    <div class="edit-block">
+        <input id="fkey" name="fkey" value="6e6e2c4b5682fb979a292aa7618942ad" type="hidden">
+        <input id="author" name="author" type="text">
+    </div>
+
+
+
+</div>
+							<div style="position: relative;">
+								
+								            <div class="form-item new-post-login">
+        
+                <div class="new-login-form">
+                    <div class="new-login-left">
+                        <h3>Sign up or <a id="login-link" href="http://superuser.com/users/login?ssrc=question_page&amp;returnurl=http%3a%2f%2fsuperuser.com%2fquestions%2f209437%2fhow-do-i-scroll-in-tmux%23new-answer">log in</a></h3>
+                        
+                        <div class="preferred-login google-login">
+                            <p><span class="icon"></span><span>Sign up using Google</span></p>
+                        </div>
+                        <div class="preferred-login facebook-login">
+                            <p><span class="icon"></span><span>Sign up using Facebook</span></p>
+                        </div>
+                        <div class="preferred-login stackexchange-login">
+                            <p><span class="icon"></span><span>Sign up using Email and Password</span></p>
+                        </div>
+                    </div>
+                    <input name="manual-openid" class="manual-openid" type="hidden">
+                    <input name="use-facebook" class="use-facebook" value="false" type="hidden">
+                    <input name="use-google" class="use-google" value="false" type="hidden">
+                    <input class="submit-openid" value="Submit" style="display: none;" type="button">
+                    <div class="new-login-right">
+                                <h3>Post as a guest</h3>
+    <div class="form-item">
+        <table>
+        <tbody><tr>
+                    <td class="vm">
+                <div>
+                    <label for="display-name">Name</label>
+                    <input id="display-name" name="display-name" size="30" maxlength="30" value="" tabindex="105" type="text">
+                </div>
+                <div>
+                    <label for="m-address">Email</label>
+                    <input id="m-address" name="m-address" size="30" maxlength="100" value="" tabindex="106" placeholder="required, but never shown" type="email">
+                </div>
+            </td>
+        </tr>
+        </tbody></table>
+    </div>
+
+                    </div>
+                </div>
+            </div>
+            
+            
+
+							</div>
+           
+															<div class="form-submit cbt">
+									<input id="submit-button" value="Post Your Answer" tabindex="110" type="submit">
+									<a href="#" class="btn-clear discard-answer dno">discard</a>
+
+<p class="privacy-policy-agreement">
+By posting your answer, you agree to the <a href="http://stackexchange.com/legal/privacy-policy" target="_blank">privacy policy</a> and <a href="http://stackexchange.com/legal/terms-of-service" target="_blank">terms of service</a>.</p>
+<input name="legalLinksShown" value="1" type="hidden">								</div>
+						</form>
+
+
+
+						<h2 class="bottom-notice" data-loc="1">
+Not the answer you're looking for?							Browse other questions tagged <a href="http://superuser.com/questions/tagged/tmux" class="post-tag" title="show questions tagged 'tmux'" rel="tag">tmux</a>  or <a href="http://superuser.com/questions/ask">ask your own question</a>.						</h2>
+			</div>
+		</div>
+				<div id="sidebar" class="show-votes">
+						    <div class="module question-stats">
+			        <table id="qinfo">
+			            <tbody><tr>
+			                <td>
+			                    <p class="label-key">asked</p>
+			                </td>
+			                <td style="padding-left: 10px;">
+			                    <p class="label-key" title="2010-11-10 18:40:45Z"><b>5 years ago</b></p>
+			                </td>
+			            </tr>
+			            <tr>
+			                <td>
+			                    <p class="label-key">viewed</p>
+			                </td>
+
+			                <td style="padding-left: 10px;">
+			                    <p class="label-key">
+			                        <b>269034 times</b>
+			                    </p>
+			                </td>
+			            </tr>
+			                <tr>
+			                    <td>
+			                        <p class="label-key">active</p>
+			                    </td>
+			                    <td style="padding-left: 10px;">
+			                        <p class="label-key"><b><a href="http://superuser.com/questions/209437/how-do-i-scroll-in-tmux?lastactivity" class="lastactivity-link" title="2016-07-15 07:34:09Z">2 days ago</a></b></p>
+			                    </td>
+			                </tr>
+			        </tbody></table>
+			    </div>
+						
+			
+            <div class="everyonelovesstackoverflow" id="adzerk2002291425"></div>
+			  
+    
+            <div class="module sidebar-linked">
+	<h4 id="h-linked">Linked</h4>
+	<div class="linked" data-tracker="lq=1">
+
+<div class="spacer">
+	<a href="http://superuser.com/q/906826?lq=1" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">0</div>
+	</a>
+	<a href="http://superuser.com/questions/906826/scrolling-in-tmux-over-ssh-putty?noredirect=1&amp;lq=1" class="question-hyperlink">Scrolling in tmux over SSH (PuTTY)</a>
+</div>
+<div class="spacer">
+	<a href="http://superuser.com/q/1028926?lq=1" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">0</div>
+	</a>
+	<a href="http://superuser.com/questions/1028926/unable-to-scroll-a-tmux-pane-terminal-up-down-with-mouse-scroll-button-in-tmux?noredirect=1&amp;lq=1" class="question-hyperlink">Unable to scroll a tmux pane terminal UP/DOWN with mouse scroll button in tmux</a>
+</div>
+<div class="spacer">
+	<a href="http://superuser.com/q/210125?lq=1" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  large">159</div>
+	</a>
+	<a href="http://superuser.com/questions/210125/scroll-shell-output-with-mouse-in-tmux?noredirect=1&amp;lq=1" class="question-hyperlink">Scroll shell output with mouse in tmux</a>
+</div>
+<div class="spacer">
+	<a href="http://superuser.com/q/310251?lq=1" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">26</div>
+	</a>
+	<a href="http://superuser.com/questions/310251/use-terminal-scrollbar-with-tmux?noredirect=1&amp;lq=1" class="question-hyperlink">Use terminal scrollbar with tmux</a>
+</div>
+<div class="spacer">
+	<a href="http://superuser.com/q/396206?lq=1" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">6</div>
+	</a>
+	<a href="http://superuser.com/questions/396206/bind-keys-for-scrolling-pages-in-copy-mode-in-tmux?noredirect=1&amp;lq=1" class="question-hyperlink">Bind keys for scrolling pages in copy mode in tmux</a>
+</div>
+<div class="spacer">
+	<a href="http://superuser.com/q/552257?lq=1" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">1</div>
+	</a>
+	<a href="http://superuser.com/questions/552257/scroll-in-tmux-but-dont-enter-copy-mode?noredirect=1&amp;lq=1" class="question-hyperlink">Scroll in tmux but don't enter copy mode?</a>
+</div>			</div>
+</div>
+
+				<div class="module sidebar-related">
+					<h4 id="h-related">Related</h4>
+                    <div class="related js-gps-related-questions" data-tracker="rq=1">
+                        <div class="spacer js-gps-track"><a href="http://superuser.com/q/251019?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes default">6</div></a><a href="http://superuser.com/questions/251019/customizing-tmux-status-to-represent-current-working-directory-and-files?rq=1" class="question-hyperlink">Customizing tmux status to represent current working directory and files</a></div><div class="spacer js-gps-track"><a href="http://superuser.com/q/253414?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted default">7</div></a><a href="http://superuser.com/questions/253414/how-to-enter-copy-mode-on-mouse-scroll-in-tmux?rq=1" class="question-hyperlink">How to enter copy mode on mouse scroll in tmux?</a></div><div class="spacer js-gps-track"><a href="http://superuser.com/q/267349?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted default">0</div></a><a href="http://superuser.com/questions/267349/tmux-deleting-currently-displayed-content-when-pressing-l?rq=1" class="question-hyperlink">tmux deleting currently displayed content when pressing ^L</a></div><div class="spacer js-gps-track"><a href="http://superuser.com/q/300060?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted default">11</div></a><a href="http://superuser.com/questions/300060/tmux-and-text-selection-with-mouse-through-putty?rq=1" class="question-hyperlink">tmux and text selection with mouse through putty</a></div><div class="spacer js-gps-track"><a href="http://superuser.com/q/412168?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted default">1</div></a><a href="http://superuser.com/questions/412168/what-does-the-0-0-indicator-mean-when-entering-copy-mode-in-tmux?rq=1" class="question-hyperlink">What does the [0/0] indicator mean when entering copy mode in tmux?</a></div><div class="spacer js-gps-track"><a href="http://superuser.com/q/537470?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes default">1</div></a><a href="http://superuser.com/questions/537470/tmux-mouse-select-and-scroll-at-the-same-time?rq=1" class="question-hyperlink">tmux mouse select and scroll at the same time?</a></div><div class="spacer js-gps-track"><a href="http://superuser.com/q/552257?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes default">1</div></a><a href="http://superuser.com/questions/552257/scroll-in-tmux-but-dont-enter-copy-mode?rq=1" class="question-hyperlink">Scroll in tmux but don't enter copy mode?</a></div><div class="spacer js-gps-track"><a href="http://superuser.com/q/706881?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted default">4</div></a><a href="http://superuser.com/questions/706881/mouse-scrolling-in-vim-through-tmux-how-to-configure?rq=1" class="question-hyperlink">Mouse scrolling in vim through tmux, how to configure?</a></div><div class="spacer js-gps-track"><a href="http://superuser.com/q/747299?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes default">6</div></a><a href="http://superuser.com/questions/747299/how-do-i-increase-the-copy-buffer-size-in-tmux?rq=1" class="question-hyperlink">How do I increase the copy buffer size in tmux?</a></div><div class="spacer js-gps-track"><a href="http://superuser.com/q/1005251?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes default">0</div></a><a href="http://superuser.com/questions/1005251/tmux-1-8-how-can-i-use-scrolling-and-mouse-select-pane-at-the-same-time?rq=1" class="question-hyperlink">Tmux 1.8: How can I use scrolling and mouse-select-pane at the same time?</a></div>
+                    </div>
+				</div>
+            
+<div id="hot-network-questions" class="module">
+    <h4>
+        <a href="http://stackexchange.com/questions?tab=hot" class="js-gps-track" data-gps-track="posts_hot_network.click({ item_type:1, location:11 })">
+            Hot Network Questions
+        </a>
+    </h4>
+    <ul>
+            <li>
+                <div class="favicon favicon-superuser" title="Super User"></div><a href="http://superuser.com/questions/1101885/secure-lan-within-existing-office-lan" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:3 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Secure LAN within existing office LAN
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-workplace" title="The Workplace Stack Exchange"></div><a href="http://workplace.stackexchange.com/questions/71338/dealing-with-expensive-office-traditions" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:423 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Dealing with expensive office traditions
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-unix" title="Unix &amp; Linux Stack Exchange"></div><a href="http://unix.stackexchange.com/questions/296517/sfdisk-no-read-doesnt-work" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:106 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    sfdisk --no-read doesn't work
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-aviation" title="Aviation Stack Exchange"></div><a href="http://aviation.stackexchange.com/questions/30110/aircraft-make-and-model" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:528 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Aircraft make and model
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-serverfault" title="Server Fault"></div><a href="http://serverfault.com/questions/790296/how-to-allow-ssh-to-root-user-only-from-the-local-network" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:2 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How to allow ssh to root user only from the local network?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-writers" title="Writers Stack Exchange"></div><a href="http://writers.stackexchange.com/questions/23820/why-not-god-as-our-subject" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:166 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why not God as our subject?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-physics" title="Physics Stack Exchange"></div><a href="http://physics.stackexchange.com/questions/268454/what-is-a-standing-wave-for-dummies" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:151 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What is a standing wave (for dummies)?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-scifi" title="Science Fiction &amp; Fantasy Stack Exchange"></div><a href="http://scifi.stackexchange.com/questions/134683/has-riker-ever-made-a-comment-about-being-called-number-one" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:186 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Has Riker ever made a comment about being called "Number One"?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-worldbuilding" title="Worldbuilding Stack Exchange"></div><a href="http://worldbuilding.stackexchange.com/questions/47463/my-star-will-explode-as-a-supernova-what-can-i-do-in-order-to-ensure-that-my-pl" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:579 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    My star will explode as a supernova. What can I do in order to ensure that my planet survives that?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-bicycles" title="Bicycles Stack Exchange"></div><a href="http://bicycles.stackexchange.com/questions/41292/why-do-mens-bicycles-have-a-top-tube-while-womens-bicycles-dont" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:126 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why do men's bicycles have a top tube while women's bicycles don't?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-academia" title="Academia Stack Exchange"></div><a href="http://academia.stackexchange.com/questions/72764/is-it-appropriate-to-make-a-pun-that-references-a-highly-charged-topic-in-curren" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:415 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Is it appropriate to make a pun that references a highly charged topic in current events, in a lecture on an unrelated subject?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-unix" title="Unix &amp; Linux Stack Exchange"></div><a href="http://unix.stackexchange.com/questions/296484/terminal-only-as-desktop" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:106 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Terminal only as "Desktop"
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-english" title="English Language &amp; Usage Stack Exchange"></div><a href="http://english.stackexchange.com/questions/337608/what-do-you-call-the-additional-money-you-pay-when-you-buy-a-store-or-restaurant" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:97 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What do you call the additional money you pay when you buy a store or restaurant in return for many cutomers and nice facilities?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-gis" title="Geographic Information Systems Stack Exchange"></div><a href="http://gis.stackexchange.com/questions/202482/checking-if-feature-class-locked-in-arcgis-using-arcpy" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:79 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Checking if feature class locked in ArcGIS using ArcPy?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-english" title="English Language &amp; Usage Stack Exchange"></div><a href="http://english.stackexchange.com/questions/337676/what-does-disciplinary-mean-in-this-sentence-from-the-ny-times" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:97 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What does "disciplinary" mean in this sentence from the NY Times?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-programmers" title="Programmers Stack Exchange"></div><a href="http://programmers.stackexchange.com/questions/324797/would-unit-tests-have-helped-citigroup-to-avoid-this-expensive-mistake" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:131 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Would unit tests have helped Citigroup to avoid this expensive mistake?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-math" title="Mathematics Stack Exchange"></div><a href="http://math.stackexchange.com/questions/1862413/formal-definition-of-counterexample" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:69 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Formal definition of “counterexample”.
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-math" title="Mathematics Stack Exchange"></div><a href="http://math.stackexchange.com/questions/1862692/question-about-continuity-in-the-box-topology" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:69 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Question about continuity in the box topology
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-money" title="Personal Finance &amp; Money Stack Exchange"></div><a href="http://money.stackexchange.com/questions/67493/how-does-a-mortgage-pay-the-seller" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:93 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How does a mortgage pay the seller?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-salesforce" title="Salesforce Stack Exchange"></div><a href="http://salesforce.stackexchange.com/questions/131792/how-to-pass-parameter-in-the-new-button-to-vf-page-in-related-list-section" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:459 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How to pass parameter in the new button to VF page in related list section
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-academia" title="Academia Stack Exchange"></div><a href="http://academia.stackexchange.com/questions/72741/should-i-admit-that-i-cant-find-a-solution-to-a-math-problem" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:415 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Should I admit that I can't find a solution to a math problem?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-chemistry" title="Chemistry Stack Exchange"></div><a href="http://chemistry.stackexchange.com/questions/55108/what-does-it-mean-by-photons-of-higher-intensity" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:431 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What does it mean by 'photons of higher intensity'?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-writers" title="Writers Stack Exchange"></div><a href="http://writers.stackexchange.com/questions/23840/using-show-not-tell-while-characters-are-planning-for-something-that-happens" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:166 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Using "show not tell" while characters are planning for something that happens
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-rpg" title="Role-playing Games Stack Exchange"></div><a href="http://rpg.stackexchange.com/questions/84285/can-you-use-a-swift-action-during-a-full-round-action" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:122 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Can you use a swift action during a full round action?
+                </a>
+
+            </li>
+    </ul>
+
+        
+</div>
+		</div>
+	
+<div id="feed-link">
+    <div id="feed-link-text">
+        <a href="http://superuser.com/feeds/question/209437" title="feed of this question and its answers">
+            <span class="feed-icon"></span>question feed
+        </a>
+    </div>
+</div>	
+<div style="display: none;" id="prettify-lang"></div></div>
+
+
+        </div>
+    </div>
+    <div id="footer" class="categories">
+        <div class="footerwrap">            
+            <div id="footer-menu">
+                <div class="top-footer-links">
+                    <a href="http://stackoverflow.com/company/about">about us</a>
+                        <a href="http://superuser.com/tour">tour</a>
+                    <a href="http://superuser.com/help">help</a>
+                    <a href="http://blog.superuser.com/?blb=1">blog</a>
+                        <a href="http://chat.stackexchange.com/?tab=site&amp;host=superuser.com">chat</a>
+                    <a href="http://data.stackexchange.com/">data</a>
+                    <a href="http://stackexchange.com/legal">legal</a>
+                    <a href="http://stackexchange.com/legal/privacy-policy">privacy policy</a>
+                    <a href="http://stackoverflow.com/company/work-here">work here</a>
+                    <a href="http://stackexchange.com/mediakit">advertising info</a>
+
+                    <a>mobile</a>
+                    <b><a href="http://superuser.com/contact">contact us</a></b>
+                        <b><a href="http://meta.superuser.com/">feedback</a></b>
+                    
+                </div>
+                <div id="footer-sites">
+                    <table>
+    <tbody><tr>
+            <th colspan="3">
+                Technology
+            </th>
+            <th>
+                Life / Arts
+            </th>
+            <th>
+                Culture / Recreation
+            </th>
+            <th>
+                Science
+            </th>
+            <th>
+                Other
+            </th>
+    </tr>
+    <tr>
+            <td>
+                <ol>
+                        <li><a href="http://stackoverflow.com/" title="professional and enthusiast programmers">Stack Overflow</a></li>
+                        <li><a href="http://serverfault.com/" title="system and network administrators">Server Fault</a></li>
+                        <li><a href="http://superuser.com/" title="computer enthusiasts and power users">Super User</a></li>
+                        <li><a href="http://webapps.stackexchange.com/" title="power users of web applications">Web Applications</a></li>
+                        <li><a href="http://askubuntu.com/" title="Ubuntu users and developers">Ask Ubuntu</a></li>
+                        <li><a href="http://webmasters.stackexchange.com/" title="pro webmasters">Webmasters</a></li>
+                        <li><a href="http://gamedev.stackexchange.com/" title="professional and independent game developers">Game Development</a></li>
+                        <li><a href="http://tex.stackexchange.com/" title="users of TeX, LaTeX, ConTeXt, and related typesetting systems">TeX - LaTeX</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="http://programmers.stackexchange.com/" title="professional programmers interested in conceptual questions about software development">Programmers</a></li>
+                        <li><a href="http://unix.stackexchange.com/" title="users of Linux, FreeBSD and other Un*x-like operating systems">Unix &amp; Linux</a></li>
+                        <li><a href="http://apple.stackexchange.com/" title="power users of Apple hardware and software">Ask Different (Apple)</a></li>
+                        <li><a href="http://wordpress.stackexchange.com/" title="WordPress developers and administrators">WordPress Development</a></li>
+                        <li><a href="http://gis.stackexchange.com/" title="cartographers, geographers and GIS professionals">Geographic Information Systems</a></li>
+                        <li><a href="http://electronics.stackexchange.com/" title="electronics and electrical engineering professionals, students, and enthusiasts">Electrical Engineering</a></li>
+                        <li><a href="http://android.stackexchange.com/" title="enthusiasts and power users of the Android operating system">Android Enthusiasts</a></li>
+                        <li><a href="http://security.stackexchange.com/" title="information security professionals">Information Security</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="http://dba.stackexchange.com/" title="database professionals who wish to improve their database skills and learn from others in the community">Database Administrators</a></li>
+                        <li><a href="http://drupal.stackexchange.com/" title="Drupal developers and administrators">Drupal Answers</a></li>
+                        <li><a href="http://sharepoint.stackexchange.com/" title="SharePoint enthusiasts">SharePoint</a></li>
+                        <li><a href="http://ux.stackexchange.com/" title="user experience researchers and experts">User Experience</a></li>
+                        <li><a href="http://mathematica.stackexchange.com/" title="users of Mathematica">Mathematica</a></li>
+                        <li><a href="http://salesforce.stackexchange.com/" title="Salesforce administrators, implementation experts, developers and anybody in-between">Salesforce</a></li>
+                        <li><a href="http://expressionengine.stackexchange.com/" title="administrators, end users, developers and designers for ExpressionEngine® CMS">ExpressionEngine® Answers</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#technology" class="more">
+                                more (13)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://photo.stackexchange.com/" title="professional, enthusiast and amateur photographers">Photography</a></li>
+                        <li><a href="http://scifi.stackexchange.com/" title="science fiction and fantasy enthusiasts">Science Fiction &amp; Fantasy</a></li>
+                        <li><a href="http://graphicdesign.stackexchange.com/" title="Graphic Design professionals, students, and enthusiasts">Graphic Design</a></li>
+                        <li><a href="http://movies.stackexchange.com/" title="movie and tv enthusiasts">Movies &amp; TV</a></li>
+                        <li><a href="http://cooking.stackexchange.com/" title="professional and amateur chefs">Seasoned Advice (cooking)</a></li>
+                        <li><a href="http://diy.stackexchange.com/" title="contractors and serious DIYers">Home Improvement</a></li>
+                        <li><a href="http://money.stackexchange.com/" title="people who want to be financially literate">Personal Finance &amp; Money</a></li>
+                        <li><a href="http://academia.stackexchange.com/" title="academics and those enrolled in higher education">Academia</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#lifearts" class="more">
+                                more (9)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://english.stackexchange.com/" title="linguists, etymologists, and serious English language enthusiasts">English Language &amp; Usage</a></li>
+                        <li><a href="http://skeptics.stackexchange.com/" title="scientific skepticism">Skeptics</a></li>
+                        <li><a href="http://judaism.stackexchange.com/" title="those who base their lives on Jewish law and tradition and anyone interested in learning more">Mi Yodeya (Judaism)</a></li>
+                        <li><a href="http://travel.stackexchange.com/" title="road warriors and seasoned travelers">Travel</a></li>
+                        <li><a href="http://christianity.stackexchange.com/" title="committed Christians, experts in Christianity and those interested in learning more">Christianity</a></li>
+                        <li><a href="http://gaming.stackexchange.com/" title="passionate videogamers on all platforms">Arqade (gaming)</a></li>
+                        <li><a href="http://bicycles.stackexchange.com/" title="people who build and repair bicycles, people who train cycling, or commute on bicycles">Bicycles</a></li>
+                        <li><a href="http://rpg.stackexchange.com/" title="gamemasters and players of tabletop, paper-and-pencil role-playing games">Role-playing Games</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#culturerecreation" class="more">
+                                more (21)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://math.stackexchange.com/" title="people studying math at any level and professionals in related fields">Mathematics</a></li>
+                        <li><a href="http://stats.stackexchange.com/" title="people interested in statistics, machine learning, data analysis, data mining, and data visualization">Cross Validated (stats)</a></li>
+                        <li><a href="http://cstheory.stackexchange.com/" title="theoretical computer scientists and researchers in related fields">Theoretical Computer Science</a></li>
+                        <li><a href="http://physics.stackexchange.com/" title="active researchers, academics and students of physics">Physics</a></li>
+                        <li><a href="http://mathoverflow.net/" title="professional mathematicians">MathOverflow</a></li>
+                        <li><a href="http://chemistry.stackexchange.com/" title="scientists, academics, teachers and students">Chemistry</a></li>
+                        <li><a href="http://biology.stackexchange.com/" title="biology researchers, academics, and students">Biology</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#science" class="more">
+                                more (5)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://stackapps.com/" title="apps, scripts, and development with the Stack Exchange API">Stack Apps</a></li>
+                        <li><a href="http://meta.stackexchange.com/" title="meta-discussion of the Stack Exchange family of Q&amp;A websites">Meta Stack Exchange</a></li>
+                        <li><a href="http://area51.stackexchange.com/" title="proposing new sites in the Stack Exchange network">Area 51</a></li>
+                        <li><a href="http://careers.stackoverflow.com/">Stack Overflow Careers</a></li>
+                    
+                </ol>
+            </td>
+    </tr>
+</tbody></table>
+                </div>
+            </div>
+            <div id="copyright">
+                site design / logo © 2016 Stack Exchange Inc; user contributions licensed under <a href="https://creativecommons.org/licenses/by-sa/3.0/" rel="license">cc by-sa 3.0</a> 
+                with <a href="http://blog.stackoverflow.com/2009/06/attribution-required/" rel="license">attribution required</a>
+            </div>
+            <div id="svnrev">
+                rev 2016.7.18.3771
+            </div>
+                </div>
+    </div>
+    
+
+
+
+    
+        
+    
+            
+    
+</body>
+</html>

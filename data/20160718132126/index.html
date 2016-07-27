@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>  do not need set in sinatra for speed -->
+	<title>Increased Developer Productivity with Tmux, Part 2: ~/.tmux.conf </title>
+
+  <link href="http://minimul.com/feed" rel="alternate" title="Feed for Minimul: a QuickBooks integration expert" type="application/atom+xml">
+  
+  
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body id="increased-developer-productivity-with-tmux-part-2" class="article">
+  <div class="container">
+  <header>
+  <a href="http://minimul.com/"><img src="minimul-logo-small.gif" alt="Go back to the main page" title="Go back to main page"></a>
+</header>
+
+<hr>
+
+<article>
+  <div class="post">
+    <h1 class="title">
+      Increased Developer Productivity with Tmux, Part 2: ~/.tmux.conf
+      <span class="meta">
+      </span>
+    </h1>
+    <div class="body">
+      <div class="left">
+        
+<div class="general-depreciation-notice">
+  This article is over 2 years old. Proceed with caution.
+  <p>Regards ♨  – Minimul</p> 
+</div>
+  
+        &nbsp;
+      </div>
+      <div class="middle">
+        
+      <p>&nbsp;</p>
+
+
+
+
+<p class="video-container">
+  <div style="padding-top: 50%;" class="fluid-width-video-wrapper"><iframe id="fitvid312141" class="youtube-player" style="display: block;" type="text/html" src="index_1.xhtml" frameborder="0"></iframe></div>
+</p>
+
+
+
+
+<br>
+
+
+<h3>The heart &amp; soul of the Tmux: .tmux.conf</h3>
+
+<p>In <a href="http://minimul.com/increased-developer-productivity-with-tmux-part-1.html">Part 1</a> I displayed in 5 minutes some of the benefits of Tmux or the "why" of wanting to use Tmux for software development. In this installment, I want to start getting to the "how" of using Tmux. To do that I must start with configuring Tmux via the <code>~/.tmux.conf</code> file.</p>
+
+<div class="alert green margin-top">
+  <i class="icon-refresh icon-2x pull-left icon-border"></i>
+  To live reload <code>.tmux.conf</code> setting changes do &lt;prefix&gt; &lt;colon&gt; and type <code>source-file ~/.tmux.conf</code>
+  <p>The .tmux.conf file in this article is located <a href="https://github.com/minimul/dotfiles/blob/master/.tmux.conf" target="_blank">here.</a></p>
+</div>
+
+
+<ol>
+  <li>To start I open and vertically split a Tmux window opening <code>~./.tmux.conf</code> within vim in the right pane.</li>
+    <figure>
+      <img src="tmux-conf-start.png">
+      <figcaption class="count">The <code>~/.tmux.conf</code> file.</figcaption>
+    </figure>
+    <div class="alert yellow margin-top">
+      <i class="icon-film icon-2x pull-left icon-border"></i>
+       This section is at the <a href="http://www.youtube.com/watch?v=Xl8GjUvouRM#t=01m04s" target="_blank">1:04 mark</a> in the screencast.
+    </div>
+  <li>I unbind the default Tmux prefix, <code>Control-b</code>, and assign the prefix to be the backtick key <code>`</code>.</li>
+    <figure>
+      <img src="tmux-conf-prefix.png">
+      <figcaption class="count">Customizing the prefix key.</figcaption>
+    </figure>
+    <div class="alert red margin-top">
+      <i class="icon-exclamation icon-2x pull-left icon-border"></i>
+  Be sure to use these 3 lines exactly as they appear if you also want to use the backtick key as your prefix. These lines ensure that you can also type the <code>`</code> character when desired. To type the <code>`</code> character you hit the backtick key twice.
+    </div>
+    <div class="alert green margin-top">
+      <i class="icon-coffee icon-2x pull-left icon-border"></i>
+      The 'prefix' is the key that initiates Tmux or precedes a Tmux command. By default the prefix is <code>Control-b</code>. To hit <code>Control-b</code> all the time is cumbersome so I assign just a single key as the prefix.
+    </div>
+  <li>Next, the &lt;prefix&gt;-L is assigned to take one back to the last active window.</li>
+    <figure>
+      <img src="tmux-conf-last-window.png">
+      <figcaption class="count">Vital binding that I use all the time.</figcaption>
+    </figure>
+    <div class="alert yellow margin-top">
+      <i class="icon-film icon-2x pull-left icon-border"></i>
+       A demonstration of the last-window command binding is at the <a href="http://www.youtube.com/watch?v=Xl8GjUvouRM#t=02m29s" target="_blank">2:29 mark</a>.
+    </div>
+  <li>Set for 256 colors.</li>
+    <figure>
+      <img src="tmux-conf-screen-color.png">
+      <figcaption class="count">Works good in OSX Terminal.app but might need to be changed for another OS.</figcaption>
+    </figure>
+  <li>Set window numbering to start at 1</li>
+    <figure>
+      <img src="tmux-conf-window-numbering.png">
+      <figcaption class="count">Otherwise window numbering will start at 0.</figcaption>
+    </figure>
+  <li>Enable the mouse.</li>
+    <figure>
+      <img src="tmux-conf-mouse.png">
+      <figcaption class="count">Enhanced mouse support.</figcaption>
+    </figure>
+    <div class="alert green margin-top">
+      <i class="icon-bolt icon-2x pull-left icon-border"></i>
+      <div class="minimul-says">
+        Minimul says —
+      </div>
+      <p>
+      I don't use the mouse much at this stage but from time to time I do for a simple clipboard copy. If you are getting started with Tmux don't feel like you have to be mouse-free right away. Use the mouse or other touch device liberally so as not to take too much of a productivity hit while learning. Over time you will use the keyboard for almost everything console related.
+      </p>
+    </div>
+  <li>Set the scroll history</li>
+    <figure>
+      <img src="tmux-conf-scroll-history.png">
+      <figcaption class="count"><code>30000</code> setting has worked well for me. Don't set this too low underestimating the large output of data files and stack traces.</figcaption>
+    </figure>
+  <li>Configure the status bar</li>
+    <figure>
+      <img src="tmux-conf-status-window.png">
+      <figcaption class="count">You can certainly "trick" out the status bar but I prefer a simple one.</figcaption>
+    </figure>
+    <div class="alert yellow margin-top">
+      <i class="icon-film icon-2x pull-left icon-border"></i>
+       Status bar is at the <a href="http://www.youtube.com/watch?v=Xl8GjUvouRM#t=05m01s" target="_blank">5:01 mark</a>.
+    </div>
+  <li>Set a "nested" prefix key in case you need to run a Tmux instance inside of a Tmux instance</li>
+    <figure>
+      <img src="tmux-conf-nested.png">
+      <figcaption class="count">To send a Tmux command to nested window you would type <code>&lt;prefix&gt;-a</code> first.</figcaption>
+    </figure>
+    <div class="alert green margin-top">
+      <i class="icon-beer icon-2x pull-left icon-border"></i>
+       In practice when a nested scenario pops up for me is when I am doing system admin on a Linux box. However, in that case I just use <a href="http://www.gnu.org/software/screen/" target="_blank">screen</a> because it is easy to install or already installed on the server. For small system admin tasks screen is totally fine. Tmux shines on more advanced usage.
+     </div>
+  <li>If you are a vimmer then you <i>must</i> turn on vim bindings when in copy mode.</li>
+    <figure>
+      <img src="tmux-conf-vim-bindings.png">
+      <figcaption class="count">I will have a separate installment on Tmux "copy mode".</figcaption>
+    </figure>
+  <li>Set up copying to the system clipboard</li>
+    <figure>
+      <img src="tmux-conf-copy-pasting.png">
+      <figcaption class="count">Please refer to this <a href="http://robots.thoughtbot.com/tmux-copy-paste-on-os-x-a-better-future" target="_blank">article</a> for more on this topic. I also will be doing another episode on this.</figcaption>
+    </figure>
+  <li>More vim-related settings this time map vim movement keys for moving around window panes.</li>
+    <figure>
+      <img src="tmux-conf-move-around.png">
+      <figcaption class="count">Moving around window panes efficiently is a must.</figcaption>
+    </figure>
+    <div class="alert yellow margin-top">
+      <i class="icon-film icon-2x pull-left icon-border"></i>
+       Pane movement bindings are at the <a href="http://www.youtube.com/watch?v=Xl8GjUvouRM#t=08m37s" target="_blank">8:37 mark</a>.
+    </div>
+    <div class="alert green margin-top">
+      <i class="icon-coffee icon-2x pull-left icon-border"></i>
+      The previously mentioned vim bindings were for copy mode. These bindings are simply activated using &lt;prefix&gt;-h , for example, to move to the left pane from the right.
+     </div>
+  <li>Next, are my mappings for resizing vertically split panes.</li>
+    <figure>
+      <img src="tmux-conf-width-bindings.png">
+      <figcaption class="count">A vertically split window is my most common view so I have bindings for quickly resizing the panes.</figcaption>
+    </figure>
+    <div class="alert green margin-top">
+      <i class="icon-coffee icon-2x pull-left icon-border"></i>
+      The 'M' stands for 'Meta key'. I use the option key in Terminal.app as my meta key. To do this in Terminal.app you must go to Terminal -&gt; Preferences -&gt;  Settings tab -&gt; and check "Use option as meta key".
+     </div> 
+    <figure>
+      <img src="tmux-conf-meta-key.png">
+      <figcaption class="count">This should be the case for OSX 10.7 and up.</figcaption>
+    </figure>
+    <ul>
+      <li>For example, &lt;prefix&gt;-M-7 makes the <code>-t 1</code> pane (or target pane 1 or the right pane) 90 lines of width.</li>
+        <figure>
+          <img src="tmux-conf-m7.png">
+          <figcaption class="count">This view enables me to see more when there is a lot of word-wrapping going on in the right pane.</figcaption>
+        </figure>
+        <div class="alert yellow margin-top">
+          <i class="icon-film icon-2x pull-left icon-border"></i>
+           Pane resizing is at the <a href="http://www.youtube.com/watch?v=Xl8GjUvouRM#t=09m45s" target="_blank">9:45 mark</a>.
+        </div>
+      <li>&lt;prefix&gt;-M-9 reverses the M-7 view</li>
+        <figure>
+          <img src="tmux-conf-m9.png">
+          <figcaption class="count">This view is for when there is too much word wrapping in the left pane.</figcaption>
+        </figure>
+      <li>&lt;prefix&gt;-M-1 is a Tmux built-in binding and will even up the vertical panes.</li>
+        <figure>
+          <img src="tmux-conf-even-horizontal.png">
+          <figcaption class="count">Called 'even-horizontal' oddly enough.</figcaption>
+        </figure>
+    </ul>
+</ol>
+
+
+<h3>That concludes installment 2. <i>The .tmux.conf file</i></h3>
+
+<p>Customizing Tmux is a must for increasing your productivity with the tool. My <code>.tmux.conf</code> is a good starting point but study what others are putting in theirs. Keep sharpening your Tmux "chainsaw" but making note of commands you run often that don't have customized shortcuts and add them. Remove bindings and configurations that in the end you don't really use, keeping the file purposeful. Stay tuned for <a href="http://minimul.com/increased-developer-productivity-with-tmux-part-3.html">Part 3</a>, which I will explain Tmux sessions. While you are waiting for the article check out the <a href="http://youtu.be/knForhvDR3I" target="_blank">screencast</a> that is already baked.</p>
+
+<p><span class="which-css" style="display: none;">http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome</span></p>
+
+        <!--
+        <ul class="socialize-article">
+          <li><a href="http://news.ycombinator.com/submit" class="hn-share-button">Vote on HN</a></li>
+          <li><a href="https://twitter.com/share" class="twitter-share-button" data-via="minimulx">Tweet</a></li>
+        </ul>
+        -->
+        <figure id="js-article-comment" class="bordered-speech-bubble-clear">Comment on this article?</figure>
+        
+        
+
+<div class="subscription">
+  <i class="icon-bullhorn icon-3x pull-left icon-border"></i>
+    <p>
+    If you like this article and screencast go to the dedicated page for this series at <a href="http://minimul.com/teaches/tmux">http://minimul.com/teaches/tmux</a>.
+    </p>
+</div>
+
+        <div id="author">
+          <div class="tag-box">
+            <span>
+            Pushed on 05/27/2014 by Christian
+            </span>
+            <img src="fletcher-boardin.jpg" alt="Christian pict tagline"> 
+            <div class="spacer made-with-love-in-nh"><a href="http://minimul.com/does/apps/in/nh" target="_blank">Made with ❤ in New Hampshire</a></div>
+            <a class="organic-post"><span>100% organic content by Minimul</span></a>
+          </div>
+        </div>
+      
+      </div>
+      <div class="right">
+         
+      </div>
+      <div class="spacer">&nbsp;</div>
+    </div><!-- /body -->
+
+  <div id="comments">
+    <div id="disqus_thread"></div>
+    <a href="#disqus_thread" id="disqus-comment-count" style="display: none;"></a>
+  </div><!-- /comments -->
+  </div><!-- .post -->
+</article>
+
+  </div>
+  
+  <footer class="pre">
+    &nbsp;
+  </footer>
+  <footer class="main">
+    <div class="left">
+      <h3>Important QuickBooks Integration references</h3>
+      <ol class="no-indent">
+        <li><a href="https://intuitdeveloper.lc.intuit.com/" target="_blank">Ask a QuickBooks Integration question</a></li>
+        <li><a href="https://developer.intuit.com/docs/api/accounting" target="_blank">QuickBooks Online API Reference</a></li>
+        <li><a href="https://developer.intuit.com/docs/0050_quickbooks_api/0010_your_first_request/rest_essentials_for_the_quickbooks_api" target="_blank">REST essentials for the QuickBooks Online API</a></li>
+        <li><a href="https://developer.intuit.com/docs?redirectid=QBDesktop" target="_blank">QuickBooks Desktop Integration Reference</a></li>
+        <li><a href="https://developer.intuit.com/blog/2015/03/03/top-20-intuit-developer-questions" target="_blank">
+      Top 20 Intuit Developer Questions</a></li>
+        <li><a href="https://developer.intuit.com/hub" target="_blank">QuickBooks Developer Hub</a></li>
+        <li><a href="http://status.developer.intuit.com/" target="_blank">Intuit Platform System Status</a></li>
+        <li><a href="https://developer.intuit.com/blog/2014/04/02/using-a-two-phased-approach-to-launching-on-intuit-apps-com" target="_blank">Getting on the Intuit App Store</a></li>
+        <li><a href="http://support.quickbooks.intuit.com/support/articles/HOW12778" target="_blank">IIF File Support</a></li>
+        <li><a href="http://guruimporter.com/" target="_blank">Get IIF Journal Entries into QuickBooks Online</a></li>
+        <li><a href="https://developer.intuit.com/blog/2014/07/22/oauth-openid-requirements-and-best-practices" target="_blank">
+          OAuth &amp; OpenID Requirements and Best Practices</a></li>
+        <li><a href="https://developer.intuit.com/docs/0250_qb/0010_get_oriented/0080_quickbooks_web_connector" target="_blank">QuickBooks Desktop Web Connector</a></li>
+        <li><a href="http://www.consolibyte.com/docs/index.php/QuickBooks_Web_Connector_Overview" target="_blank">QuickBooks Web Connector Overview</a></li>
+        <li><a href="http://developer-static.intuit.com/qbsdk-current/common/newosr/index.html" target="_blank">QBXMLOn Screen Reference</a></li>
+        <li><a href="http://minimul.com/migrates/quickbooks/api/v2/to/sdk">Migrating a QBD Online REST Integration to QBSDK</a></li>
+        <li><a href="http://minimul.com/quickbooks-ruby-newsletter/archives">QuickBooks Ruby Newsletter</a></li>
+        <li><a href="https://github.com/minimul/qbo_api" target="_blank">The qbo_api gem</a></li>
+        <li><a href="http://ruckus.tumblr.com/post/88152229186/rails-quickbooks-web-connector-qwc" target="_blank">Rails &amp; the QuickBooks Web Connector</a></li>
+      </ol>
+    </div>
+    <div class="right">
+      <div id="side-panel">
+  <p class="header">
+    <img id="thinking-pict" src="minimul-banner-pict.png">
+  </p>
+  <div id="by-line">
+    <p>Christian Pelczarski, a.k.a Minimul, a QuickBooks integration consultant and a <a href="http://minimul.com/does/mvps">Minimal Viable Products (MVP) expert</a>.</p> 
+    <p>My home base is near Keene, New Hampshire.</p> 
+    <p>
+    I help <a href="http://minimul.com/does/quickbooks">businesses realize greater profits</a> through a successful and reliable QuickBooks integration. 
+    I am available for hire, <a href="http://minimul.com/does/quickbooks">contact me</a>.
+    </p>
+    <p class="socialize">
+      <a title="Go to my Twitter account" href="https://twitter.com/minimulx" target="_blank"><i>Twitter</i></a>
+      <a title="Go to my Github account" href="https://github.com/minimul" target="_blank"><i>Github</i></a>
+      <a title="Go to my G+ page" href="https://plus.google.com/116984345853025933791?rel=author"><i>Google+</i></a>
+      <a title="See all of my screencasts" href="http://minimul.com/casts"><i>Minimulcasts</i></a>
+      <a title="All articles" href="http://minimul.com/all-articles"><i>All articles</i></a>
+      <a title="Learn Tmux" href="http://minimul.com/teaches/tmux"><i>Learn Tmux</i></a>
+      <a title="Email" href="mailto:christian@minimul.com?Subject=Hey%20Minimul,%20..." target="_blank"><i>christian@minimul.com</i></a>
+      <a title="Micro articles" href="http://minimul.com/micros"><i>Micros</i></a>
+      <a title="Optical Character Recognition (OCR) Consulting" href="http://minimul.com/does/ocr"><i>OCR</i></a>
+    </p>
+  </div>
+</div>
+
+    </div>
+    <div class="spacer">&nbsp;</div>
+  </footer>
+  <footer class="final">
+    <span>Content © minimul</span>
+  </footer>
+
+  <!-- End of HTML : script tags go here -->
+  
+    
+    
+    
+  
+  
+  
+
+  
+
+  
+    
+    
+  
+
+  
+
+  
+    
+    
+      
+
+  
+
+
+
+</body>
+</html>

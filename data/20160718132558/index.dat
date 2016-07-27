@@ -1,0 +1,11 @@
+id	20160718132558
+create	20160718132558
+modify	20160718132558
+type	
+title	jonathanslenders/pymux: A terminal multiplexer (like tmux) in Python
+chars	UTF-8
+icon	favicon.ico
+source	https://github.com/jonathanslenders/pymux
+comment	
+lock	
+folder	tmux
