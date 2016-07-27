@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en-US" xmlns:fb="http://www.facebook.com/2008/fbml" class="Public LoggedOut Sidebar Responsive hasJs NoTouch HasDragDrop" dir="LTR" id="XenForo">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<base href="">
+
+<title>Installing Debian Wheezy (testing) With debootstrap From A Grml Live Linux</title>
+<meta name="keywords" content="other,debian">
+<meta name="description" content="Installing Debian Wheezy (testing) With debootstrap From A Grml Live Linux
+
+This tutorial explains how to install Debian Wheezy (testing) with the h... ">
+<meta name="og:title" content="Installing Debian Wheezy (testing) With debootstrap From A Grml Live Linux">
+<meta name="og:description" content="Installing Debian Wheezy (testing) With debootstrap From A Grml Live Linux
+
+This tutorial explains how to install Debian Wheezy (testing) with the h... ">
+<meta name="og:site_name" content="Howtoforge">
+<meta name="og:type" content="article">
+<meta property="og:image" content="https://www.howtoforge.com/images/teaser/debian.gif">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="howtoforgecom">
+<meta name="twitter:creator" content="howtoforgecom">
+<meta name="twitter:title" content="Installing Debian Wheezy (testing) With debootstrap From A Grml Live Linux">
+<meta name="twitter:description" content="Installing Debian Wheezy (testing) With debootstrap From A Grml Live Linux
+
+This tutorial explains how to install Debian Wheezy (testing) with the h... ">
+<link rel="alternate" href="https://www.howtoforge.com/installing-debian-wheezy-testing-with-debootstrap-from-a-grml-live-linux" hreflang="en">
+<link rel="next" href="https://www.howtoforge.com/installing-debian-wheezy-testing-with-debootstrap-from-a-grml-live-linux-p2">
+<link rel="canonical" href="https://www.howtoforge.com/installing-debian-wheezy-testing-with-debootstrap-from-a-grml-live-linux">
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+<link rel="alternate" type="application/rss+xml" title="RSS-Feed für Howtoforge" href="https://www.howtoforge.com/feed.rss">
+
+
+
+
+
+
+ 
+
+
+ 
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body>
+<div id="loginBar">
+<div class="pageWidth">
+<div class="pageContent">
+<h3 id="loginBarHandle">
+<label for="LoginControl"><a href="https://www.howtoforge.com/community/login/" class="concealed noOutline">Log in or Sign up</a></label>
+</h3>
+<span class="helper"></span>
+<form action="https://www.howtoforge.com/community/login/login?redirect=/installing-debian-wheezy-testing-with-debootstrap-from-a-grml-live-linux" method="post" class="xenForm eAuth" id="login" style="display: none;">
+<ul id="eAuthUnit">
+<li><a href="https://www.howtoforge.com/community/register/facebook?reg=1" class="fbLogin" tabindex="110"><span>Log in with Facebook</span></a></li>
+<li><a href="https://www.howtoforge.com/community/register/twitter?reg=1" class="twitterLogin" tabindex="110"><span>Log in with Twitter</span></a></li>
+<li><span class="googleLogin GoogleLogin JsOnly" tabindex="110" data-client-id="198773272284-b6tfk0c28bje81p774prrcrkq9jb3o44.apps.googleusercontent.com" data-redirect-url="/community/register/google?code=__CODE__&amp;csrf=hVMXbW_3rnrmq4Em"><span>Log in with Google</span></span></li>
+</ul>
+<div class="ctrlWrapper">
+<dl class="ctrlUnit">
+<dt><label for="LoginControl">Your name or email address:</label></dt>
+<dd><input style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAALZJREFUOBFjYKAANDQ0rGWiQD9IqzgL0BQ3IKMXiB8AcSKQ/waIrYDsKUD8Fir2pKmpSf/fv3+zgPxfzMzMSbW1tbeBbAaQC+b+//9fB4h9gOwikCAQTAPyDYHYBciuBQkANfcB+WZAbPP37992kBgIUOoFBiZGRsYkIL4ExJvZ2NhAXmFgYmLKBPLPAfFuFhaWJpAYEBQC+SeA+BDQC5UQIQpJYFgdodQLLyh0w6j20RCgUggAAEREPpKMfaEsAAAAAElFTkSuQmCC&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;" name="login" id="LoginControl" class="textCtrl" tabindex="101" type="text"></dd>
+</dl>
+<dl class="ctrlUnit">
+<dt>
+<label for="ctrl_password">Do you already have an account?</label>
+</dt>
+<dd>
+<ul>
+<li><label for="ctrl_not_registered"><input name="register" value="1" id="ctrl_not_registered" tabindex="105" type="radio">
+No, create an account now.</label></li>
+<li><label for="ctrl_registered"><input name="register" value="0" id="ctrl_registered" tabindex="105" checked="checked" class="Disabler" type="radio">
+Yes, my password is:</label></li>
+<li id="ctrl_registered_Disabler">
+<input style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAALZJREFUOBFjYKAANDQ0rGWiQD9IqzgL0BQ3IKMXiB8AcSKQ/waIrYDsKUD8Fir2pKmpSf/fv3+zgPxfzMzMSbW1tbeBbAaQC+b+//9fB4h9gOwikCAQTAPyDYHYBciuBQkANfcB+WZAbPP37992kBgIUOoFBiZGRsYkIL4ExJvZ2NhAXmFgYmLKBPLPAfFuFhaWJpAYEBQC+SeA+BDQC5UQIQpJYFgdodQLLyh0w6j20RCgUggAAEREPpKMfaEsAAAAAElFTkSuQmCC&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;" name="password" class="textCtrl" id="ctrl_password" tabindex="102" type="password">
+<div class="lostPassword"><a href="https://www.howtoforge.com/community/lost-password/" tabindex="106">Forgot your password?</a></div>
+</li>
+</ul>
+</dd>
+</dl>
+<dl class="ctrlUnit submitUnit">
+<dt></dt>
+<dd>
+<input class="button primary" value="Log in" tabindex="104" data-loginphrase="Log in" data-signupphrase="Sign up" type="submit">
+<label for="ctrl_remember" class="rememberPassword"><input name="remember" value="1" id="ctrl_remember" tabindex="103" type="checkbox"> Stay logged in</label>
+</dd>
+</dl>
+</div>
+<input name="cookie_check" value="1" type="hidden">
+<input name="redirect" value="/community/" type="hidden">
+<input name="_xfToken" value="" type="hidden">
+</form></div>
+</div>
+</div>
+<header>
+<div id="header">
+<div id="logoBlock">
+<div class="pageWidth">
+<div class="pageContent">
+<div id="logo"><a href="https://www.howtoforge.com/">
+<span></span>
+<img src="howtoforge_logo_trans.gif" alt="Howtoforge" style="margin-left: 20px;" pagespeed_url_hash="639055748">
+</a></div>
+<span class="helper"></span>
+<div class="langSwitch">
+<b><img src="gb.png" alt="HowtoForge - Linux Tutorials in English" pagespeed_url_hash="3664605987"> English</b> | <a href="https://www.howtoforge.de/" title="HowtoForge.de - Linux Tutorials auf Deutsch"><img src="de.png" alt="HowtoForge.de - Linux Tutorials auf Deutsch" pagespeed_url_hash="478786493"> Deutsch</a>
+</div>
+</div>
+</div>
+</div>
+<div id="navigation" class="pageWidth withSearch">
+<div class="pageContent">
+<nav>
+<div class="navTabs">
+<ul class="publicTabs">
+ 
+<li class="navTab forums selected">
+<a href="https://www.howtoforge.com/" class="navLink">Tutorials</a>
+<div class="tabLinks forumsTabLinks">
+<ul class="secondaryContent blockLinksList">
+<li><a href="https://www.howtoforge.com/search/">Tutorial search</a></li>
+</ul>
+</div>
+</li>
+<li class="navTab forums PopupClosed">
+<a href="https://www.howtoforge.com/tutorials/" class="navLink">Tags</a>
+</li>
+<li class="navTab forums PopupClosed"><a href="https://www.howtoforge.com/community/" class="navLink">Forums</a></li>
+<li class="navTab forums PopupClosed"><a href="https://www.howtoforge.com/contribute/" class="navLink">Contribute</a></li>
+<li class="navTab forums PopupClosed"><a href="https://www.howtoforge.com/subscription/" class="navLink">Subscribe</a></li>
+<li class="navTab forums PopupClosed"><a href="http://www.ispconfig.org/" class="navLink">ISPConfig</a></li>
+<li class="navTab forums PopupClosed"><a href="http://www.lxer.com/" class="navLink">News</a></li>
+</ul>
+</div>
+<span class="helper"></span>
+</nav>
+</div>
+</div>
+<div id="searchBar" class="pageWidth">
+<span id="QuickSearchPlaceholder" title=" Search..."> Search</span>
+<fieldset id="QuickSearch">
+<form action="https://www.howtoforge.com/" method="post" class="formPopup">
+<div class="primaryControls">
+ 
+<input name="q" value="" class="textCtrl" placeholder="Search..." results="0" title="Enter your search and hit enter..." id="QuickSearchQuery" type="search">
+ 
+</div>
+<input name="_xfToken" value="" type="hidden">
+</form>
+</fieldset>
+</div>
+</div>
+</header>
+<div id="content" class="forum_list">
+<div class="pageWidth">
+<div class="pageContent">
+ 
+<div class="mainContainer">
+<div class="mainContent">
+ 
+<div class="breadBoxTop">
+<nav>
+<fieldset style="" class="breadcrumb">
+<span class="crumbs">
+<span class="crust homeCrumb" itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb">
+<a href="https://www.howtoforge.com/" class="crumb" rel="up" itemprop="url"><span itemprop="title">Tutorials</span></a>
+<span class="arrow"><span></span></span>
+</span>
+<span class="crust selectedTabCrumb" itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb">
+<a href="#" class="crumb" rel="up" itemprop="url"><span itemprop="title">Installing Debian Wheezy (testing) With debootstrap From A Grml Live Linux</span></a>
+<span class="arrow"><span>&gt;</span></span>
+</span>
+</span>
+</fieldset>
+</nav>
+</div>
+ 
+<div id="htfContentPage">
+<div class="bsa-apiads"><a href="https://srv.buysellads.com/ads/click/x/GTND423NFTADVK7UF6B4YKQWCYADEKJLCYSICZ3JCESDE53NC6YDLK7KC6BDK53YCKSDTK3EHJNCLSIZ" target="_blank" rel="nofollow">Secure and easy to use platform to manage your WordPress sites &amp; ecommerce!</a><img src="11341-6532-111.dat" pagespeed_url_hash="3622188944"></div>
+<div class="contributeEdit" style="float: right; width: 450px; max-width: 100%;">
+ 
+<div id="tocContainer">
+<h3>On this page</h3>
+<ol class="toc">
+<li><a href="#installing-debian-wheezy-testing-with-debootstrap-from-a-grml-live-linux-">Installing Debian Wheezy (testing) With debootstrap From A Grml Live Linux</a>
+<ol>
+<li><a href="#-preliminary-note">1 Preliminary Note</a></li>
+<li><a href="#-partitioning">2 Partitioning</a>
+</li></ol></li>
+</ol>
+</div>
+</div>
+<h2 id="installing-debian-wheezy-testing-with-debootstrap-from-a-grml-live-linux-">Installing Debian Wheezy (testing) With debootstrap From A Grml Live Linux </h2>
+<p>Version 1.0 <br>
+Author: Falko Timme <br>
+<a mce_real_href="http://twitter.com/howtoforgecom" href="http://twitter.com/howtoforgecom" target="_blank"></a><a class="fancybox" id="img-twitter" href="https://www.howtoforge.com/images/socialmedia/big/twitter.png"><img mce_real_src="https://www.howtoforge.com/images/socialmedia/twitter.png" src="twitter.png" alt="" pagespeed_url_hash="2328183429" width="16px" border="0" height="16px"></a> <a mce_real_href="http://twitter.com/howtoforgecom" href="http://twitter.com/howtoforgecom" target="_blank">Follow me on Twitter</a><br>
+</p>
+<p>This tutorial explains how to install Debian Wheezy (testing) with the help of debootstrap from a <a mce_real_href="http://grml.org/" href="http://grml.org/" target="_blank">Grml Live Linux</a> system (like it is used as a rescue system at <a mce_real_href="https://www.webtropia.com/" href="https://www.webtropia.com/" target="_blank">Webtropia</a>). This should work - with minor changes - for other Debian and Ubuntu versions as well. By following this guide, it is possible to configure the system to your needs (OS version, partitioning, RAID, LVM, etc.) instead of depending on the few pre-configured images that your server provider offers. </p><div style="width: 336px; float: left; margin: 10px 15px 10px 0px; background-color: white;"> 
+ 
+
+ </div>
+<p>I do not issue any guarantee that this will work for you!</p>
+<p>&nbsp;</p>
+<h3 id="-preliminary-note">1 Preliminary Note</h3>
+<p>The server I'm using in this tutorial has two hard drives. I want to use software RAID1 and LVM for this server. </p>
+<p>Before you boot the system into rescue mode, you should take note of its network settings so that you can use the same network settings for the new system. For example, if you use Debian or Ubuntu on the system, take a look at <span class="system">/etc/network/interfaces</span>:</p>
+<p class="command">cat /etc/network/interfaces</p>
+<p>It could look as follows:</p>
+<table class="" width="90%" align="center" bgcolor="#CCCCCC" border="1" bordercolor="#000000" cellpadding="2" cellspacing="0">
+<tbody><tr>
+<td class="">
+<pre>auto lo
+iface lo inet loopback
+
+auto eth0
+iface eth0 inet static
+     address &lt;ip_address&gt;
+     netmask &lt;netmask&gt;
+     broadcast &lt;broadcast&gt;
+     gateway &lt;gateway&gt;
+iface eth0 inet6 static
+  address &lt;ipv6_address&gt;
+  netmask 64
+  up ip -6 route add &lt;ipv6_gateway&gt; dev eth0
+  down ip -6 route del &lt;ipv6_gateway&gt; dev eth0
+  up ip -6 route add default via &lt;ipv6_gateway&gt; dev eth0
+  down ip -6 route del default via &lt;ipv6_gateway&gt; dev eth0</pre> </td>
+</tr>
+</tbody></table>
+<p>&nbsp;</p>
+<h3 id="-partitioning">2 Partitioning</h3>
+<p>Now boot into the Grml rescue system.</p>
+<p>In the rescue system, let's check of software RAID and LVM are in use for the hard drives (if so, we need to remove them before we partition the hard drives):</p>
+<p>The commands</p>
+<p class="command">lvdisplay</p>
+<p class="command">vgdisplay</p>
+<p class="command">pvdisplay</p>
+<p>tell you if there are logical volumes, volume groups, and block devices being used for LVM. If so, you can remove them as follows (make sure you use the correct data, as displayed by the three above commands):</p>
+<p class="command">lvremove /dev/vg0/root</p>
+<p class="command">vgremove vg0</p>
+<p class="command">pvremove /dev/md1</p>
+<p>Let's check if software RAID is in use:</p>
+<p class="command">cat /proc/mdstat</p>
+<p>If the output is as below, you have to RAID devices, <span class="system">/dev/md0</span> and <span class="system">/dev/md1</span> which have to be removed:</p>
+<p class="system">root@grml&nbsp;~&nbsp;#&nbsp;cat&nbsp;/proc/mdstat<br>
+Personalities&nbsp;:&nbsp;[linear]&nbsp;[raid0]&nbsp;[raid1]&nbsp;[raid10]&nbsp;[multipath]<br>
+md0&nbsp;:&nbsp;active&nbsp;raid1&nbsp;sda1[0]&nbsp;sdb1[1]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;530048&nbsp;blocks&nbsp;[2/2]&nbsp;[UU]<br>
+<br>
+md1&nbsp;:&nbsp;active&nbsp;raid1&nbsp;sda2[0]&nbsp;sdb2[1]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;104856192&nbsp;blocks&nbsp;[2/2]&nbsp;[UU]<br>
+<br>
+unused&nbsp;devices:&nbsp;&lt;none&gt;<br>
+root@grml&nbsp;~&nbsp;#</p>
+<p>Remove them as follows:</p>
+<p class="command">mdadm --stop /dev/md0<br>
+mdadm --stop /dev/md1</p>
+<p>Double-check that no RAID devices are left:</p>
+<p class="command">cat /proc/mdstat</p>
+<p class="system">root@grml ~ # cat /proc/mdstat<br>
+Personalities : [linear] [raid0] [raid1] [raid10] [multipath]<br>
+unused devices: &lt;none&gt;<br>
+root@grml ~ # </p>
+<p>Let's take a look at the current partitioning:</p>
+<p class="command">fdisk -l</p>
+<p class="system">root@grml&nbsp;~&nbsp;#&nbsp;fdisk&nbsp;-l<br>
+<br>
+Disk&nbsp;/dev/sdb:&nbsp;2000.4&nbsp;GB,&nbsp;2000398934016&nbsp;bytes<br>
+255&nbsp;heads,&nbsp;63&nbsp;sectors/track,&nbsp;243201&nbsp;cylinders<br>
+Units&nbsp;=&nbsp;cylinders&nbsp;of&nbsp;16065&nbsp;*&nbsp;512&nbsp;=&nbsp;8225280&nbsp;bytes<br>
+Sector&nbsp;size&nbsp;(logical/physical):&nbsp;512&nbsp;bytes&nbsp;/&nbsp;4096&nbsp;bytes<br>
+I/O&nbsp;size&nbsp;(minimum/optimal):&nbsp;4096&nbsp;bytes&nbsp;/&nbsp;4096&nbsp;bytes<br>
+Disk&nbsp;identifier:&nbsp;0x957081d4<br>
+<br>
+&nbsp;&nbsp;&nbsp;Device&nbsp;Boot&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Start&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;End&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Blocks&nbsp;&nbsp;&nbsp;Id&nbsp;&nbsp;System<br>
+/dev/sdb1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;66&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;530112+&nbsp;&nbsp;fd&nbsp;&nbsp;Linux&nbsp;raid&nbsp;autodetect<br>
+Partition&nbsp;1&nbsp;does&nbsp;not&nbsp;end&nbsp;on&nbsp;cylinder&nbsp;boundary.<br>
+Partition&nbsp;1&nbsp;does&nbsp;not&nbsp;start&nbsp;on&nbsp;physical&nbsp;sector&nbsp;boundary.<br>
+/dev/sdb2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;66&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;13120&nbsp;&nbsp;&nbsp;104856256&nbsp;&nbsp;&nbsp;fd&nbsp;&nbsp;Linux&nbsp;raid&nbsp;autodetect<br>
+<br>
+Disk&nbsp;/dev/sda:&nbsp;2000.4&nbsp;GB,&nbsp;2000398934016&nbsp;bytes<br>
+255&nbsp;heads,&nbsp;63&nbsp;sectors/track,&nbsp;243201&nbsp;cylinders<br>
+Units&nbsp;=&nbsp;cylinders&nbsp;of&nbsp;16065&nbsp;*&nbsp;512&nbsp;=&nbsp;8225280&nbsp;bytes<br>
+Sector&nbsp;size&nbsp;(logical/physical):&nbsp;512&nbsp;bytes&nbsp;/&nbsp;4096&nbsp;bytes<br>
+I/O&nbsp;size&nbsp;(minimum/optimal):&nbsp;4096&nbsp;bytes&nbsp;/&nbsp;4096&nbsp;bytes<br>
+Disk&nbsp;identifier:&nbsp;0x000cdcbd<br>
+<br>
+&nbsp;&nbsp;&nbsp;Device&nbsp;Boot&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Start&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;End&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Blocks&nbsp;&nbsp;&nbsp;Id&nbsp;&nbsp;System<br>
+/dev/sda1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;66&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;530112+&nbsp;&nbsp;fd&nbsp;&nbsp;Linux&nbsp;raid&nbsp;autodetect<br>
+Partition&nbsp;1&nbsp;does&nbsp;not&nbsp;end&nbsp;on&nbsp;cylinder&nbsp;boundary.<br>
+Partition&nbsp;1&nbsp;does&nbsp;not&nbsp;start&nbsp;on&nbsp;physical&nbsp;sector&nbsp;boundary.<br>
+/dev/sda2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;66&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;13120&nbsp;&nbsp;&nbsp;104856256&nbsp;&nbsp;&nbsp;fd&nbsp;&nbsp;Linux&nbsp;raid&nbsp;autodetect<br>
+root@grml&nbsp;~&nbsp;#</p>
+<p>Because I have two identical hard drives, I want to use software RAID1 plus LVM (because of its felxibility). Because LVM cannot be used on the boot partition, I have to create a separate <span class="system">/boot</span> partition where I use RAID1 without LVM.</p>
+<p>To do this, I delete the existing partitions from <span class="system">/dev/sda</span>, create two new ones (a small one of about 512MB for <span class="system">/boot</span> and a large one; you could of course use all remaining space for the large partition, but I tend to leave some space unused because bad sectors tend to appear in the outer areas of a spinning disk - if you use an SSD, it's ok to use the whole disk) with <span class="system">Linux raid autodetect</span> as the partition type: </p>
+<p><span class="system">root@grml&nbsp;~&nbsp;#&nbsp;fdisk&nbsp;/dev/sda<br>
+<br>
+The&nbsp;device&nbsp;presents&nbsp;a&nbsp;logical&nbsp;sector&nbsp;size&nbsp;that&nbsp;is&nbsp;smaller&nbsp;than<br>
+the&nbsp;physical&nbsp;sector&nbsp;size.&nbsp;Aligning&nbsp;to&nbsp;a&nbsp;physical&nbsp;sector&nbsp;(or&nbsp;optimal<br>
+I/O)&nbsp;size&nbsp;boundary&nbsp;is&nbsp;recommended,&nbsp;or&nbsp;performance&nbsp;may&nbsp;be&nbsp;impacted.<br>
+<br>
+WARNING:&nbsp;DOS-compatible&nbsp;mode&nbsp;is&nbsp;deprecated.&nbsp;It's&nbsp;strongly&nbsp;recommended&nbsp;to<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;switch&nbsp;off&nbsp;the&nbsp;mode&nbsp;(command&nbsp;'c')&nbsp;and&nbsp;change&nbsp;display&nbsp;units&nbsp;to<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sectors&nbsp;(command&nbsp;'u').<br>
+<br>
+Command&nbsp;(m&nbsp;for&nbsp;help):</span>&nbsp;<span class="highlight">&lt;--&nbsp;d</span><br>
+<span class="system">Partition&nbsp;number&nbsp;(1-4):</span>&nbsp;<span class="highlight">&lt;--&nbsp;1</span><br>
+<br>
+<span class="system">Command&nbsp;(m&nbsp;for&nbsp;help):</span>&nbsp;<span class="highlight">&lt;--&nbsp;d</span><br>
+<span class="system">Selected&nbsp;partition&nbsp;2<br>
+<br>
+Command&nbsp;(m&nbsp;for&nbsp;help):</span>&nbsp;<span class="highlight">&lt;--&nbsp;n</span><br>
+<span class="system">Command&nbsp;action<br>
+&nbsp;&nbsp;&nbsp;e&nbsp;&nbsp;&nbsp;extended<br>
+&nbsp;&nbsp;&nbsp;p&nbsp;&nbsp;&nbsp;primary&nbsp;partition&nbsp;(1-4)</span><br>
+<span class="highlight">&lt;--&nbsp;p</span><br>
+<span class="system">Partition&nbsp;number&nbsp;(1-4):</span>&nbsp;<span class="highlight">&lt;--&nbsp;1</span><br>
+<span class="system">First&nbsp;cylinder&nbsp;(1-243201,&nbsp;default&nbsp;1):</span>&nbsp;<span class="highlight">&lt;--&nbsp;ENTER</span><br>
+<span class="system">Using&nbsp;default&nbsp;value&nbsp;1<br>
+Last&nbsp;cylinder,&nbsp;+cylinders&nbsp;or&nbsp;+size{K,M,G}&nbsp;(1-243201,&nbsp;default&nbsp;243201):</span>&nbsp;<span class="highlight">&lt;--&nbsp;+512M</span><br>
+<br>
+<span class="system">Command&nbsp;(m&nbsp;for&nbsp;help):</span>&nbsp;<span class="highlight">&lt;--&nbsp;t</span><br>
+<span class="system">Selected&nbsp;partition&nbsp;1<br>
+Hex&nbsp;code&nbsp;(type&nbsp;L&nbsp;to&nbsp;list&nbsp;codes):</span>&nbsp;<span class="highlight">&lt;--&nbsp;fd</span><br>
+<span class="system">Changed&nbsp;system&nbsp;type&nbsp;of&nbsp;partition&nbsp;1&nbsp;to&nbsp;fd&nbsp;(Linux&nbsp;raid&nbsp;autodetect)<br>
+<br>
+Command&nbsp;(m&nbsp;for&nbsp;help):</span>&nbsp;<span class="highlight">&lt;--&nbsp;n</span><br>
+<span class="system">Command&nbsp;action<br>
+&nbsp;&nbsp;&nbsp;e&nbsp;&nbsp;&nbsp;extended<br>
+&nbsp;&nbsp;&nbsp;p&nbsp;&nbsp;&nbsp;primary&nbsp;partition&nbsp;(1-4)</span><br>
+<span class="highlight">&lt;--&nbsp;p</span><br>
+<span class="system">Partition&nbsp;number&nbsp;(1-4):</span>&nbsp;<span class="highlight">&lt;--&nbsp;2</span><br>
+<span class="system">First&nbsp;cylinder&nbsp;(66-243201,&nbsp;default&nbsp;66):</span>&nbsp;<span class="highlight">&lt;--&nbsp;ENTER</span><br>
+<span class="system">Using&nbsp;default&nbsp;value&nbsp;66<br>
+Last&nbsp;cylinder,&nbsp;+cylinders&nbsp;or&nbsp;+size{K,M,G}&nbsp;(66-243201,&nbsp;default&nbsp;243201):</span>&nbsp;<span class="highlight">&lt;--&nbsp;240000 (I tend to leave some space unused here) </span><br>
+<br>
+<span class="system">Command&nbsp;(m&nbsp;for&nbsp;help):</span>&nbsp;<span class="highlight">&lt;--&nbsp;t</span><br>
+<span class="system">Partition&nbsp;number&nbsp;(1-4):</span>&nbsp;<span class="highlight">&lt;--&nbsp;2</span><br>
+<span class="system">Hex&nbsp;code&nbsp;(type&nbsp;L&nbsp;to&nbsp;list&nbsp;codes):</span>&nbsp;<span class="highlight">&lt;--&nbsp;fd</span><br>
+<span class="system">Changed&nbsp;system&nbsp;type&nbsp;of&nbsp;partition&nbsp;2&nbsp;to&nbsp;fd&nbsp;(Linux&nbsp;raid&nbsp;autodetect)<br>
+<br>
+Command&nbsp;(m&nbsp;for&nbsp;help):</span>&nbsp;<span class="highlight">&lt;--&nbsp;w</span><br>
+<span class="system">The&nbsp;partition&nbsp;table&nbsp;has&nbsp;been&nbsp;altered!<br>
+<br>
+Calling&nbsp;ioctl()&nbsp;to&nbsp;re-read&nbsp;partition&nbsp;table.<br>
+<br>
+WARNING:&nbsp;If&nbsp;you&nbsp;have&nbsp;created&nbsp;or&nbsp;modified&nbsp;any&nbsp;DOS&nbsp;6.x<br>
+partitions,&nbsp;please&nbsp;see&nbsp;the&nbsp;fdisk&nbsp;manual&nbsp;page&nbsp;for&nbsp;additional<br>
+information.<br>
+Syncing&nbsp;disks.<br>
+root@grml&nbsp;~&nbsp;#</span></p><div style="width: 336px; float: left; margin: 10px 15px 10px 0px; background-color: white;"> 
+ 
+
+ </div>
+<p>Next I run...</p>
+<p class="command">sfdisk -d /dev/sda | sfdisk --force /dev/sdb</p>
+<p>... to copy the partitioning scheme from <span class="system">/dev/sda</span> to <span class="system">/dev/sdb</span> so that they are identical on both disks. </p>
+<p>Run...</p>
+<p class="command">mdadm --zero-superblock /dev/sda1<br>
+mdadm --zero-superblock /dev/sda2<br>
+mdadm --zero-superblock /dev/sdb1<br>
+mdadm --zero-superblock /dev/sdb2</p>
+<p>... to remove any remainders from previous RAID arrays from the partitions.</p>
+<p>Now we create the RAID array <span class="system">/dev/md0</span> from <span class="system">/dev/sda1</span> and <span class="system">/dev/sdb1</span>...</p>
+<p class="command">mdadm --create /dev/md0 --level=1 --raid-disks=2 /dev/sda1 /dev/sdb1</p>
+<p>... and <span class="system">/dev/md1</span> from <span class="system">/dev/sda2</span> and <span class="system">/dev/sdb2</span>: </p>
+<p class="command">mdadm --create /dev/md1 --level=1 --raid-disks=2 /dev/sda2 /dev/sdb2</p>
+<p>Let's check with:</p>
+<p class="command">cat /proc/mdstat </p>
+<p>As you see, we have two new RAID1 arrays:</p>
+<p class="system">root@grml&nbsp;~&nbsp;#&nbsp;cat&nbsp;/proc/mdstat<br>
+Personalities&nbsp;:&nbsp;[linear]&nbsp;[raid0]&nbsp;[raid1]&nbsp;[raid10]&nbsp;[multipath]<br>
+md1&nbsp;:&nbsp;active&nbsp;raid1&nbsp;sdb2[1]&nbsp;sda2[0]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1927269760&nbsp;blocks&nbsp;[2/2]&nbsp;[UU]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[&gt;....................]&nbsp;&nbsp;resync&nbsp;=&nbsp;&nbsp;0.0%&nbsp;(347136/1927269760)&nbsp;finish=185.0min&nbsp;speed=173568K/sec<br>
+<br>
+md0&nbsp;:&nbsp;active&nbsp;raid1&nbsp;sdb1[1]&nbsp;sda1[0]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;530048&nbsp;blocks&nbsp;[2/2]&nbsp;[UU]<br>
+<br>
+unused&nbsp;devices:&nbsp;&lt;none&gt;<br>
+root@grml&nbsp;~&nbsp;#</p>
+<p>Let's put an ext4 filesystem on <span class="system">/dev/md0</span>:</p>
+<p class="command">mkfs.ext4 /dev/md0</p>
+<p>Prepare <span class="system">/dev/md1</span> for LVM:</p>
+<p class="command">pvcreate /dev/md1</p>
+<p>Create the volume group <span class="system">vg0</span>:</p>
+<p class="command">vgcreate vg0 /dev/md1</p>
+<p>Create a logical volume for <span class="system">/</span> with a size of 100GB:</p>
+<p class="command">lvcreate -n root -L 100G vg0</p>
+<p>Create a logical volume for swap with a size of 10GB:</p>
+<p class="command">lvcreate -n swap -L 10G vg0</p>
+<p>Run:</p>
+<p class="command">lvscan</p>
+<p>If all logical volumes are shown as <span class="system">ACTIVE</span>, everything is fine:</p>
+<p class="system">root@grml&nbsp;~&nbsp;#&nbsp;lvscan<br>
+&nbsp;&nbsp;ACTIVE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'/dev/vg0/root'&nbsp;[100,00&nbsp;GiB]&nbsp;inherit<br>
+&nbsp;&nbsp;ACTIVE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'/dev/vg0/swap'&nbsp;[10,00&nbsp;GiB]&nbsp;inherit<br>
+root@grml&nbsp;~&nbsp;#</p>
+<p>If not, run...</p>
+<p class="command">vgchange -ay</p>
+<p>... and check with <span class="system">lvscan</span> again. </p>
+<p>Next create filesystems on <span class="system">/dev/vg0/root</span> and <span class="system">/dev/vg0/swap</span>:</p>
+<p class="command">mkfs.ext4 /dev/vg0/root<br>
+mkswap /dev/vg0/swap</p>
+<p>Mount the root volume to <span class="system">/mnt</span>, create a few diretories and mount <span class="system">/dev/md0</span> to <span class="system">/mnt/boot</span>:</p>
+<p class="command">mount /dev/vg0/root /mnt<br>
+cd /mnt<br>
+mkdir boot<br>
+mkdir proc<br>
+mkdir dev<br>
+mkdir sys<br>
+mkdir home<br>
+mount /dev/md0 boot/ </p>
+<p>Create an <span class="system">fstab</span> for the new system:</p>
+<p class="command">mkdir etc<br>
+cd etc<br>
+vi fstab</p>
+<table class="" width="90%" align="center" bgcolor="#CCCCCC" border="1" bordercolor="#000000" cellpadding="2" cellspacing="0">
+<tbody><tr>
+<td class="">
+<pre>proc /proc   proc   defaults 0 0
+/dev/md0 /boot   ext4   defaults 0 2
+/dev/vg0/root /              ext4   defaults 0 1
+/dev/vg0/swap          none      swap  defaults,pri=1 0 0</pre> </td>
+</tr>
+</tbody></table>
+<nav>
+<div id="articlePrevNextContainer">
+<div id="articlePrevLink"></div>
+<div id="articleNextLink"><a href="https://www.howtoforge.com/installing-debian-wheezy-testing-with-debootstrap-from-a-grml-live-linux-p2">Next &gt;&gt;</a></div>
+</div>
+</nav>
+<div style="height: 30px; margin-top: 20px;">
+<p style="text-align: right;"><img src="pdficon_small.png" pagespeed_url_hash="1813355361"> <a href="https://www.howtoforge.com/subscription/">view as pdf</a> | <img src="print.gif" pagespeed_url_hash="3731829194"> <a href="https://www.howtoforge.com/subscription/">print</a></p>
+</div>
+<div style="height: 30px; margin-top: 20px;">
+<div style="float: left;"><b>Share this page:</b></div>
+<div style="float: left; margin-left: 10px;"><a href="https://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-lang="en-US" data-url="http://www.howtoforge.com/installing-debian-wheezy-testing-with-debootstrap-from-a-grml-live-linux" data-via="howtoforgecom">Tweet</a> <a class="twitter-follow-button" href="https://twitter.com/howtoforgecom">Follow</a></div>
+<div style="float: left; margin-left: 20px;"><fb:like href="https://www.howtoforge.com/installing-debian-wheezy-testing-with-debootstrap-from-a-grml-live-linux" layout="button_count" action="recommend" font="trebuchet ms" colorscheme="light"></fb:like></div>
+<div style="float: left; margin-left: 50px;"><div class="g-plusone" data-size="medium" data-count="true" data-href="https://www.howtoforge.com/installing-debian-wheezy-testing-with-debootstrap-from-a-grml-live-linux"></div></div>
+</div>
+</div>
+ 
+ 
+<div id="htfContentPagePaging">
+<h2>Sub pages</h2>
+<nav>
+<ul>
+<li><a href="#"><b>Installing Debian Wheezy (testing) With debootstrap From A Grml Live Linux</b></a></li><li><a href="https://www.howtoforge.com/installing-debian-wheezy-testing-with-debootstrap-from-a-grml-live-linux-p2">Installing Debian Wheezy (testing) With debootstrap From A Grml Live Linux - Page 2</a></li> </ul>
+</nav>
+</div>
+ 
+ 
+<div id="htfContentPageComment">
+<a name="comments"></a>
+<h2>1 Comment(s)</h2>
+ 
+<div id="commentform">
+<div class="commentContainerHead" style="font-size: 18px;">Add comment</div>
+<div class="commentContainer">
+<form method="post" action="https://www.howtoforge.com/installing-debian-wheezy-testing-with-debootstrap-from-a-grml-live-linux/#comments">
+<input name="reply_to" id="reply-to-comment" value="0" type="hidden">
+<div id="commentFormDetail">
+<div style="width: 48%; float: left; margin-right: 3%;">
+<label for="commentname">Name *</label>
+<input id="commentname" name="commentname" value="">
+</div>
+<div style="width: 48%; float: left;">
+<label for="commentname">Email *</label>
+<input id="commentemail" name="commentemail" value="">
+</div>
+<div style="clear: both;"></div>
+</div>
+<div style="visibility: hidden; border-width: 1px;" id="mceu_5" class="mce-tinymce mce-container mce-panel" hidefocus="1" tabindex="-1" role="application"><div id="mceu_5-body" class="mce-container-body mce-stack-layout"><div id="mceu_6" class="mce-toolbar-grp mce-container mce-panel mce-first mce-stack-layout-item" hidefocus="1" tabindex="-1" role="group"><div id="mceu_6-body" class="mce-container-body mce-stack-layout"><div id="mceu_7" class="mce-container mce-toolbar mce-first mce-last mce-stack-layout-item" role="toolbar"><div id="mceu_7-body" class="mce-container-body mce-flow-layout"><div role="group" id="mceu_8" class="mce-container mce-first mce-flow-layout-item mce-btn-group"><div id="mceu_8-body"><div aria-disabled="true" aria-label="Undo" role="button" id="mceu_0" class="mce-widget mce-btn mce-first mce-disabled" tabindex="-1" aria-labelledby="mceu_0"><button role="presentation" type="button" tabindex="-1"><i class="mce-ico mce-i-undo"></i></button></div><div aria-disabled="true" aria-label="Redo" role="button" id="mceu_1" class="mce-widget mce-btn mce-last mce-disabled" tabindex="-1" aria-labelledby="mceu_1"><button role="presentation" type="button" tabindex="-1"><i class="mce-ico mce-i-redo"></i></button></div></div></div><div role="group" id="mceu_9" class="mce-container mce-last mce-flow-layout-item mce-btn-group"><div id="mceu_9-body"><div aria-label="Bold" role="button" id="mceu_2" class="mce-widget mce-btn mce-first" tabindex="-1" aria-labelledby="mceu_2"><button role="presentation" type="button" tabindex="-1"><i class="mce-ico mce-i-bold"></i></button></div><div aria-label="Italic" role="button" id="mceu_3" class="mce-widget mce-btn" tabindex="-1" aria-labelledby="mceu_3"><button role="presentation" type="button" tabindex="-1"><i class="mce-ico mce-i-italic"></i></button></div><div aria-label="Insert/edit link" role="button" id="mceu_4" class="mce-widget mce-btn mce-last" tabindex="-1" aria-labelledby="mceu_4"><button role="presentation" type="button" tabindex="-1"><i class="mce-ico mce-i-link"></i></button></div></div></div></div></div></div></div><div style="border-width: 1px 0px 0px;" id="mceu_10" class="mce-edit-area mce-container mce-panel mce-stack-layout-item" hidefocus="1" tabindex="-1" role="group"><iframe src="index_1.html" style="width: 100%; height: 100px; display: block;" title="Rich Text Area. Press ALT-F9 for menu. Press ALT-F10 for toolbar. Press ALT-0 for help" allowtransparency="true" id="commentedit_ifr" frameborder="0"></iframe></div><div style="border-width: 1px 0px 0px;" id="mceu_11" class="mce-statusbar mce-container mce-panel mce-last mce-stack-layout-item" hidefocus="1" tabindex="-1" role="group"><div id="mceu_11-body" class="mce-container-body mce-flow-layout"><div id="mceu_12" class="mce-path mce-first mce-flow-layout-item"><div role="button" class="mce-path-item mce-last" data-index="0" tabindex="-1" id="mceu_12-0" aria-level="0">p</div></div><div id="mceu_13" class="mce-last mce-flow-layout-item mce-resizehandle"><i class="mce-ico mce-i-resize"></i></div></div></div></div></div><textarea aria-hidden="true" id="commentedit" name="commentedit" style="width: auto; display: none;"></textarea>
+<div>
+<div style="float: left;">
+<div class="g-recaptcha" data-sitekey="6LdX9fUSAAAAALWwVoPdeXScMSketz4npF-0QcQ1"></div>
+
+</div>
+<div style="margin-top: 10px; margin-bottom: 10px;">
+<input name="submit" class="button primary" style="float: right;" value="Submit comment" type="submit">
+</div>
+<div style="clear: both;"></div>
+</div>
+ 
+
+</form>
+</div>
+</div>
+ 
+<h3>Comments</h3>
+<div class="commentContainerHead commentLevel0">
+<div class="floatLeft"><b>From:</b> Aoli </div>
+<div class="floatRight"><a href="#" data-comment="7603" class="reply-to">Reply</a> &nbsp;</div>
+<div class="clearBoth"></div>
+</div>
+<div id="comment7603" class="commentContainer commentLevel0">
+<p></p><p>Why not also use the full Grml-live on a bootable USB drive with one of the wheezy Beta4 netinst CD images at the Debian Installer site&nbsp; <a title="http://www.debian.org/devel/debian-installer/ " target="_blank" mce_real_href="http://www.debian.org/devel/debian-installer/ " href="http://www.debian.org/devel/debian-installer/">http://www.debian.org/devel/debian-installer/</a> saved on the same drive?? These would be used together for installing Debian Wheezy (testing) onto the software RAID1 and LVM<b></b> server setup.</p><p>This way, one could save a bit of bandwidth by not having to run the full 'debootstrap' command<br></p><p><span class="command">debootstrap --arch amd64 testing /mnt ftp://ftp.de.debian.org/debian/</span></p><p>&nbsp;<br></p><p>Knoppix <a title="Knoppix" target="_blank" mce_real_href="http://www.knopper.net/knoppix/index-en.html" href="http://www.knopper.net/knoppix/index-en.html">http://www.knopper.net/knoppix/index-en.html</a> already has this capability in a more convoluted fashion for installing <b>its</b> customized mix of Wheezy and Sid. <br></p><p>&nbsp;Just a suggestion here :)<br></p><p></p>
+</div>
+</div>
+ 
+<div class="breadBoxBottom">
+<nav>
+<fieldset style="" class="breadcrumb">
+<span class="crumbs">
+<span class="crust homeCrumb" itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb">
+<a href="https://www.howtoforge.com/" class="crumb" rel="up" itemprop="url"><span itemprop="title">Tutorials</span></a>
+<span class="arrow"><span></span></span>
+</span>
+<span class="crust selectedTabCrumb" itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb">
+<a href="#" class="crumb" rel="up" itemprop="url"><span itemprop="title">Installing Debian Wheezy (testing) With debootstrap From A Grml Live Linux</span></a>
+<span class="arrow"><span>&gt;</span></span>
+</span>
+</span>
+</fieldset>
+</nav>
+</div>
+
+<div style="margin-top: 10px; margin-bottom: 10px; text-align: center;">
+ 
+<center>
+ 
+ 
+
+ 
+</center>
+ </div>
+ 
+ 
+
+ 
+</div>
+</div>
+ 
+<aside>
+<div class="sidebar">
+<div class="section loginButton">
+<div class="secondaryContent">
+<label for="LoginControl" id="SignupButton"><a href="https://www.howtoforge.com/community/login/" class="inner">Sign up now!</a></label>
+</div>
+</div>
+<div class="widget WidgetFramework_WidgetRenderer_ShareThisPage" id="widget-2">
+ 
+<div class="widget WidgetFramework_WidgetRenderer_ShareThisPage" id="widget-5">
+<div class="section infoBlock sharePage">
+<div class="secondaryContent socialMediaIcon">
+<a href="https://twitter.com/howtoforgecom" target="_blank"><img src="twitter_001.png" pagespeed_url_hash="1158659234"></a>
+<a href="https://www.facebook.com/howtoforge" target="_blank"><img src="facebook.png" pagespeed_url_hash="1073237413"></a>
+<a href="https://plus.google.com/+howtoforge/posts" target="_blank"><img src="googleplus.png" pagespeed_url_hash="2111806198"></a>
+<a href="https://www.howtoforge.com/feed" target="_blank"><img src="rss.png" pagespeed_url_hash="2255810733"></a>
+</div>
+</div>
+</div>
+<div class="section widget-group-no-name widget-container">
+<div class="secondaryContent widget WidgetFramework_WidgetRenderer_Stats" id="widget-3">
+<h3>Tutorial Info</h3>
+<div class="pairsJustified">
+<dl class="discussionCount">
+<dt>Author:</dt>
+<dd>falko</dd>
+</dl>
+<dl class="discussionCount">
+<dt>Tags:</dt>
+<dd><a href="https://www.howtoforge.com/tutorials/other/" rel="tag">other</a>, <a href="https://www.howtoforge.com/tutorials/debian/" rel="tag">debian</a></dd>
+</dl>
+</div>
+</div>
+</div>
+ 
+<div class="widget WidgetFramework_WidgetRenderer_ShareThisPage" id="widget-5">
+<div class="section infoBlock sharePage">
+<div class="secondaryContent">
+<h3>Share This Page</h3>
+<div class="tweet shareControl">
+<a href="https://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-lang="en-US" data-url="http://www.howtoforge.com/installing-debian-wheezy-testing-with-debootstrap-from-a-grml-live-linux" data-via="howtoforgecom">Tweet</a>
+</div>
+<div class="facebookLike shareControl">
+<fb:like href="http://www.howtoforge.com/installing-debian-wheezy-testing-with-debootstrap-from-a-grml-live-linux" layout="button_count" action="recommend" font="trebuchet ms" colorscheme="light"></fb:like>
+</div>
+<div class="plusone shareControl">
+<div class="g-plusone" data-size="medium" data-count="true" data-href="https://www.howtoforge.com/installing-debian-wheezy-testing-with-debootstrap-from-a-grml-live-linux"></div>
+</div>
+</div>
+</div>
+</div>
+ 
+ 
+ 
+
+ 
+
+ 
+ 
+</div>
+</div>
+</aside>
+</div>
+</div>
+</div>
+<footer>
+<div class="footer">
+<div class="pageWidth">
+<div class="pageContent">
+<div class="skin_branding"><a href="http://www.xenfocus.com/" rel="nofollow">Xenforo skin</a><span> by <a href="http://www.xenfocus.com/" rel="nofollow">Xenfocus</a></span></div>
+<ul class="footerLinks">
+<li><a href="https://www.howtoforge.com/community/misc/contact">Contact</a></li>
+<li><a href="https://www.howtoforge.com/community/help/">Help</a></li>
+<li><a href="https://www.howtoforge.com/imprint/">Imprint</a></li>
+<li><a href="https://www.howtoforge.com/" class="homeLink">Tutorials</a></li>
+<li><a href="#navigation" class="topLink">Top</a></li>
+<li><a href="https://www.howtoforge.com/feed" rel="alternate" class="globalFeed" target="_blank" title="RSS-Feed for Howtoforge">RSS-Feed</a></li>
+</ul>
+<span class="helper"></span>
+</div>
+</div>
+</div>
+<div class="footerLegal">
+<div class="pageWidth">
+<div class="pageContent">
+<ul id="legal">
+<li><a href="https://www.howtoforge.com/community/help/terms">Terms</a></li>
+</ul>
+<div id="copyright"><a href="https://www.howtoforge.com/" class="concealed">Howtoforge <span>© projektfarm GmbH.</span></a></div>
+<span class="helper"></span>
+</div>
+</div>
+</div>
+</footer>
+<div style="height: 100px;"></div>
+
+
+
+
+<div id="fancybox-tmp"></div><div id="fancybox-loading"><div></div></div><div id="fancybox-overlay"></div><div id="fancybox-wrap"><div id="fancybox-outer"><div class="fancybox-bg" id="fancybox-bg-n"></div><div class="fancybox-bg" id="fancybox-bg-ne"></div><div class="fancybox-bg" id="fancybox-bg-e"></div><div class="fancybox-bg" id="fancybox-bg-se"></div><div class="fancybox-bg" id="fancybox-bg-s"></div><div class="fancybox-bg" id="fancybox-bg-sw"></div><div class="fancybox-bg" id="fancybox-bg-w"></div><div class="fancybox-bg" id="fancybox-bg-nw"></div><div id="fancybox-content"></div><a id="fancybox-close"></a><div id="fancybox-title"></div><a id="fancybox-left"><span class="fancy-ico" id="fancybox-left-ico"></span></a><a id="fancybox-right"><span class="fancy-ico" id="fancybox-right-ico"></span></a></div></div></body>
+</html>

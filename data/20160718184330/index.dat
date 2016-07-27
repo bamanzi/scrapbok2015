@@ -1,0 +1,11 @@
+id	20160718184330
+create	20160718184330
+modify	20160718184330
+type	
+title	zh_CN/Debootstrap - Debian Wiki
+chars	UTF-8
+icon	favicon.ico
+source	https://wiki.debian.org/zh_CN/Debootstrap
+comment	
+lock	
+folder	chroot

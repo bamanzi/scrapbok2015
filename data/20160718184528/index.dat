@@ -1,0 +1,11 @@
+id	20160718184528
+create	20160718184528
+modify	20160718184528
+type	
+title	dozzie/yumbootstrap: Linux chroot installer for Yum-based distributions
+chars	UTF-8
+icon	favicon.ico
+source	https://github.com/dozzie/yumbootstrap
+comment	
+lock	
+folder	chroot

@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>页面没找到 - firefoxbug</title>
+
+    <!-- 使用url函数转换相关路径 -->
+    <link rel="stylesheet" href="http://www.firefoxbug.com/admin/css/normalize.css">
+    <link rel="stylesheet" href="http://www.firefoxbug.com/admin/css/grid.css">
+    <link rel="stylesheet" href="http://www.firefoxbug.com/usr/themes/default/style.css">
+
+    <!--[if lt IE 9]>
+    <script src="http://www.firefoxbug.com/admin/js/html5shiv.js"></script>
+    <script src="http://www.firefoxbug.com/admin/js/respond.js"></script>
+    <![endif]-->
+
+    <!-- 通过自有函数输出HTML头部信息 -->
+    <meta name="description" content="吾之所为，汝之所见 | As I do，As you know" />
+<meta name="keywords" content="firefoxbug" />
+<meta name="generator" content="Typecho 1.0/14.10.10" />
+<meta name="template" content="default" />
+<link rel="pingback" href="http://www.firefoxbug.com/index.php/action/xmlrpc" />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.firefoxbug.com/index.php/action/xmlrpc?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.firefoxbug.com/index.php/action/xmlrpc?wlw" />
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://www.firefoxbug.com/index.php/feed/" />
+<link rel="alternate" type="application/rdf+xml" title="RSS 1.0" href="http://www.firefoxbug.com/index.php/feed/rss/" />
+<link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="http://www.firefoxbug.com/index.php/feed/atom/" />
+</head>
+<body>
+<!--[if lt IE 8]>
+    <div class="browsehappy">当前网页 <strong>不支持</strong> 你正在使用的浏览器. 为了正常的访问, 请 <a href="http://browsehappy.com/">升级你的浏览器</a>.</div>
+<![endif]-->
+
+<header id="header" class="clearfix">
+    <div class="container">
+        <div class="colgroup">
+            <div class="site-name col-mb-12 col-9">
+                <a id="logo" href="http://www.firefoxbug.com/">
+                                        firefoxbug                </a>
+        	    <p class="description">吾之所为，汝之所见 | As I do，As you know</p>
+            </div>
+            <div class="site-search col-3 kit-hidden-tb">
+                <form id="search" method="post" action="./" role="search">
+                    <label for="s" class="sr-only">搜索关键字</label>
+                    <input type="text" name="s" class="text" placeholder="输入关键字搜索" />
+                    <button type="submit" class="submit">搜索</button>
+                </form>
+            </div>
+            <div class="col-mb-12">
+                <nav id="nav-menu" class="clearfix" role="navigation">
+                    <a href="http://www.firefoxbug.com/">首页</a>
+                                                            <a href="http://www.firefoxbug.com/index.php/%E5%85%B3%E4%BA%8E%E4%BD%9C%E8%80%85.html" title="关于我">关于我</a>
+                                        <a href="http://www.firefoxbug.com/index.php/%E7%95%99%E8%A8%80%E6%9D%BF.html" title="留言板">留言板</a>
+                                        <a href="http://www.firefoxbug.com/index.php/2810.html" title="求贤如渴">求贤如渴</a>
+                                    </nav>
+            </div>
+        </div><!-- end .colgroup -->
+    </div>
+</header><!-- end #header -->
+<div id="body">
+    <div class="container">
+        <div class="colgroup">
+
+    
+    
+
+    <div class="col-mb-12 col-tb-8 col-tb-offset-2">
+
+        <div class="error-page">
+            <h2 class="post-title">404 - 页面没找到</h2>
+            <p>你想查看的页面已被转移或删除了，要不要搜索看看：</p>
+            <form method="post">
+                <p><input type="text" name="s" class="text" autofocus /></p>
+                <p><button type="submit" class="submit">搜索</button></p>
+            </form>
+        </div>
+
+    </div><!-- end #content-->
+	
+            
+        </div><!-- end .colgroup -->
+    </div>
+</div><!-- end #body -->
+
+<footer id="footer" role="contentinfo">
+    &copy; 2016 <a href="http://www.firefoxbug.com/">firefoxbug</a>.
+    由 <a href="http://www.typecho.org">Typecho</a> 强力驱动.
+</footer><!-- end #footer -->
+
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1000445871'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1000445871' type='text/javascript'%3E%3C/script%3E"));</script>
+</body>
+</html>

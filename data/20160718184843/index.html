@@ -1,0 +1,400 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="zh-cn" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>[转]通过debootstrap安装Debian - feisky - 博客园</title>
+
+
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/feisky/rss">
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/feisky/rsd.xml">
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/feisky/wlwmanifest.xml">
+  
+
+
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body>
+<a name="top"></a>
+
+<table class="Framework" width="100%" cellpadding="0" cellspacing="0">
+	<tbody><tr>
+		<td colspan="3">
+			
+<div id="top">
+<table cellpadding="10" cellspacing="0">
+	<tbody><tr>
+		<td nowrap="">
+			<h1><a id="Header1_HeaderTitle" class="headermaintitle" href="http://www.cnblogs.com/feisky/">feisky</a></h1>
+			云计算、虚拟化与Linux技术笔记
+		</td>
+	</tr>
+</tbody></table>
+</div>
+<div id="sub">
+	<div id="sub-right">
+<div class="BlogStats">posts - 1013, comments - 292, trackbacks - 1, articles - 1</div></div>
+	
+&nbsp;
+<a id="Header1_MyLinks1_HomeLink" href="http://www.cnblogs.com/">博客园</a>&nbsp;:: 
+<a id="Header1_MyLinks1_MyHomeLink" href="http://www.cnblogs.com/feisky/">首页</a>&nbsp;::
+<a id="Header1_MyLinks1_NewPostLink" rel="nofollow" href="http://i.cnblogs.com/EditPosts.aspx?opt=1">新随笔</a>&nbsp;::
+<a id="Header1_MyLinks1_ContactLink" accesskey="9" rel="nofollow" href="http://msg.cnblogs.com/send/feisky">联系</a>&nbsp;::
+<a id="Header1_MyLinks1_Syndication" href="http://www.cnblogs.com/feisky/rss">订阅</a>
+<a id="Header1_MyLinks1_XMLLink" class="XMLLink" href="http://www.cnblogs.com/feisky/rss"><img src="xml.gif" alt="订阅"></a>&nbsp;::
+<a id="Header1_MyLinks1_Admin" rel="nofollow" href="http://i.cnblogs.com/">管理</a>
+
+</div>
+		</td>
+	</tr>
+	<tr>
+		<td class="LeftCell">
+			<div id="leftmenu">
+            	
+		            <div id="blog-calendar" style="display: none;"></div>
+		            
+<div id="cell">
+<img src="icon-group.jpg" vspace="2" align="left" hspace="5"><h3>公告</h3>
+<div id="news">
+	<div id="blog-news">
+<p>下载我的<a href="http://files.cnblogs.com/feisky/Feisky.apk" target="_blank">Android博客软件</a>：</p><p><a href="http://files.cnblogs.com/feisky/Feisky.apk" target="_blank"><img src="img.jpg" alt="" width="180" height="180"></a><br></p>
+
+<p></p>
+<h2><a href="http://feiskyer.github.io/">访问Feisky的Github博客</a></h2><div id="profile_block">昵称：<a href="http://home.cnblogs.com/u/feisky/">feisky</a><br>园龄：<a href="http://home.cnblogs.com/u/feisky/" title="入园时间：2009-02-18">7年5个月</a><br>粉丝：<a href="http://home.cnblogs.com/u/feisky/followers/">771</a><br>关注：<a href="http://home.cnblogs.com/u/feisky/followees/">5</a><div id="p_b_follow"><a>+加关注</a></div></div></div>
+</div>
+</div>
+
+	            
+	            <div id="blog-sidecolumn"><div id="sidebar_search" class="sidebar-block"></div><div id="sidebar_categories">
+		<div id="cell">
+		<img src="icon-group.jpg" vspace="2" align="left" hspace="5"><h3>随笔分类<span style="font-size: 11px; font-weight: normal;">(623)</span></h3>
+		
+				<ul>
+			
+				<li><a id="CatList_LinkList_0_Link_0" href="http://www.cnblogs.com/feisky/category/225793.html">Android(43)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_0_Link_1" href="http://www.cnblogs.com/feisky/category/214730.html">C/C++(34)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_0_Link_2" href="http://www.cnblogs.com/feisky/category/631688.html">Docker(14)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_0_Link_3" href="http://www.cnblogs.com/feisky/category/215237.html">Linux(150)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_0_Link_4" href="http://www.cnblogs.com/feisky/category/248156.html">Linux kernel(34)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_0_Link_5" href="http://www.cnblogs.com/feisky/category/215208.html">Matlab(5)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_0_Link_6" href="http://www.cnblogs.com/feisky/category/449971.html">NoSQL(2)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_0_Link_7" href="http://www.cnblogs.com/feisky/category/391781.html">OpenStack(45)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_0_Link_8" href="http://www.cnblogs.com/feisky/category/274191.html">Python(16)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_0_Link_9" href="http://www.cnblogs.com/feisky/category/230470.html">QT (26)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_0_Link_10" href="http://www.cnblogs.com/feisky/category/219703.html">Visual C++(11)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_0_Link_11" href="http://www.cnblogs.com/feisky/category/347006.html">Windows(4)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_0_Link_12" href="http://www.cnblogs.com/feisky/category/334643.html">Xen(62)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_0_Link_13" href="http://www.cnblogs.com/feisky/category/274906.html">个人管理(2)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_0_Link_14" href="http://www.cnblogs.com/feisky/category/176853.html">个人日记(10)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_0_Link_15" href="http://www.cnblogs.com/feisky/category/215132.html">机器视觉(19)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_0_Link_16" href="http://www.cnblogs.com/feisky/category/214729.html">嵌入式系统(8)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_0_Link_17" href="http://www.cnblogs.com/feisky/category/352177.html">软件设计(12)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_0_Link_18" href="http://www.cnblogs.com/feisky/category/314255.html">数据库(3)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_0_Link_19" href="http://www.cnblogs.com/feisky/category/215931.html">算法结构(5)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_0_Link_20" href="http://www.cnblogs.com/feisky/category/214985.html">图像处理(11)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_0_Link_21" href="http://www.cnblogs.com/feisky/category/214987.html">网络(47)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_0_Link_22" href="http://www.cnblogs.com/feisky/category/301061.html">虚拟化(25)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_0_Link_23" href="http://www.cnblogs.com/feisky/category/334644.html">云计算(29)</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_0_Link_24" href="http://www.cnblogs.com/feisky/category/214733.html">职业规划(6)</a>
+				</li>
+			
+				</ul>
+			</div>
+	
+		<div id="cell">
+		<img src="icon-group.jpg" vspace="2" align="left" hspace="5"><h3>我的链接</h3>
+		
+				<ul>
+			
+				<li><a id="CatList_LinkList_1_Link_0" href="http://feiskyer.blogspot.com/" rel="nofollow">Blogger</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_1_Link_1" href="http://feiskyer.github.com/" rel="nofollow" target="_blank">GitHub</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_1_Link_2" href="http://feisky.quora.com/" rel="nofollow">Quora</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_1_Link_3" href="https://www.twitter.com/feisky" rel="nofollow">twitter</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_1_Link_4" href="http://feisky.wordpress.com/" rel="nofollow">wordpress</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_1_Link_5" href="http://www.cnblogs.com/feisky/" rel="nofollow" target="_blank">博客园</a>
+				</li>
+			
+				<li><a id="CatList_LinkList_1_Link_6" href="http://weibo.com/371069890" rel="nofollow" target="_blank">新浪微博</a>
+				</li>
+			
+				</ul>
+			</div>
+	</div><div id="recent_comments_wrap">
+    <div id="cell">
+        <img src="icon-group.jpg" vspace="2" align="left" hspace="5">
+        <h3>最新评论</h3>
+        <div class="RecentComment">
+            <div id="RecentCommentsBlock"><ul>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/feisky/archive/2012/10/21/2732919.html#3468770">1. Re:tcpip详解笔记(1) 概述</a></li>
+        <li class="recent_comment_body">《TCP/IP详解 卷1：协议》的Web网页在线版这里有：，不谢 ^_^...</li>
+        <li class="recent_comment_author">--jb2011</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/feisky/archive/2012/10/21/2733175.html#3468769">2. Re:tcpip详解笔记（16） TCP的交互数据流</a></li>
+        <li class="recent_comment_body">《TCP/IP详解 卷1：协议》的Web网页在线版这里有：<a href="#" target="_blank"></a>，不谢 ^_^</li>
+        <li class="recent_comment_author">--jb2011</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/feisky/archive/2010/03/31/1701560.html#3351903">3. Re:Linux Shell编程基础</a></li>
+        <li class="recent_comment_body">很适合初学者，谢谢分享！</li>
+        <li class="recent_comment_author">--QY小石头</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/feisky/archive/2011/01/05/1926177.html#3293272">4. Re:Android数据存储之文件存储</a></li>
+        <li class="recent_comment_body">说的很详细，谢谢！</li>
+        <li class="recent_comment_author">--随风而行lulu</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/feisky/p/4063162.html#3287328">5. Re:为docker配置固定ip</a></li>
+        <li class="recent_comment_body">我请问一下  如果重启docker服务的话   IP还在吗  是不是失效了</li>
+        <li class="recent_comment_author">--猪猪周</li>
+</ul>
+</div>
+        </div>
+    </div>
+</div>
+</div>
+			</div>
+		</td>
+		<td class="MainCell">
+			<div id="main">
+				
+<div id="post_detail">
+	<div class="post">
+		<div class="posthead">
+			<h2>
+				<a id="cb_post_title_url" class="singleposttitle" href="http://www.cnblogs.com/feisky/archive/2012/09/27/2706066.html">[转]通过debootstrap安装Debian</a>
+			</h2>
+ 			Posted on <span id="post-date">2012-09-27 17:42</span> <a href="http://www.cnblogs.com/feisky/">feisky</a> 阅读(<span id="post_view_count">124</span>) 评论(<span id="post_comment_count">0</span>)  <a href="http://i.cnblogs.com/EditPosts.aspx?postid=2706066" rel="nofollow">编辑</a> <a href="#">收藏</a>
+			
+			
+		</div>
+		<div class="postbody"><div id="cnblogs_post_body"><p>Debian的工具debootstrap可以用于在系统的某个目录中安装一套基本系统，这个基本系统除了一些配置项外，与Debian安装程序在安装的第一阶段安装的内容基本相同。这项功能有许多有趣的功能，例如，你可以从某个定制版本的Debian Live光盘上通过这个命令快速的在硬盘上安装Debian而不需要Debian的安装程序，也可以把创建在硬盘上的基本系统目录作为某些涉及系统安全性服务的chroot运行环境，通过chroot进入该目录并调试和运行一些可能修改系统配置的应用程序，作为定制小型系统模板等等。<br><br>Debootstrap必需以root身份来运行，如果当前系统中没有这个工具，可以通过下面的命令来安装：</p>
+<blockquote>root@debian ~# apt-get install debootstrap</blockquote>
+<p>
+<span>下面我们来看一下，如何在当前Debian系统中某个目录里安装一个Debian的基本系统。假设我们将基本系统安装到 /root/chroot_env 目录下，只需要通过下面的命令即可完成安装过程：</span></p>
+<blockquote>root@debian ~# mkdir /root/chroot_env<br>root@debian ~# debootstrap sarge /root/chroot_env http://debian.cn99.com/debian<br>I: Retrieving Release<br>I: Retrieving Packages<br>I: Validating Packages<br>I: Resolving dependencies of required packages...<br>I: Resolving dependencies of base packages...<br>I: Found additional required dependencies: libtext-iconv-perl zlib1g<br>I: Checking component main on http://debian.cn99.com/debian...<br>I: Retrieving adduser<br>I: Validating adduser<br>I: Retrieving apt<br>I: Validating apt<br>....<br>I: Installing core packages...<br>I: Unpacking required packages...<br>I: Configuring required packages...<br>I: Installing base packages...<br>I: Base system installed successfully.<br>root@debian ~#</blockquote>
+<p>
+<span>几分种后（取决于你选取的Debian镜像和网络速度等），安装过程结束，在目录 /root/chroot_env中已经有一个全新安装的Debian基本系统。我们可以通过chroot命令来进入到该基本系统环境：</span></p>
+<blockquote>root@debian ~# chroot /root/chroot_env<br>root@debian /# ls<br>bin dev home lib mnt proc sbin sys usr<br>boot etc initrd media opt root srv tmp var<br>root@debian /# apt-get clean<br>root@debian /# du -sh<br>111M .</blockquote>
+<p>
+<span>基本系统大约110M左右。如果希望在基本系统中执行一些与系统相关的命令，应当先在该基本系统中加载proc文件系统，并且其反映的一些信息都是当前系统的信息。</span></p>
+<blockquote>root@debian /# mount -t proc proc /proc<br>root@debian /# ps -aef # 将显示主机的所有进程<br>...<br>root@debian /# hostname # 将显示当前主机名而非新系统主机名<br>redice</blockquote>
+<p>
+<span>如果上述过程中，/root/chroot_env目录挂接了一个硬盘分区的话，新的系统将可以通过Lilo，grub等作为根分区来引导系统。这时，需要进行一些必要的配置，如/etc/hosts，/etc/hostname，/etc/network/interfaces文件等都需要进行适当的修改。另外，由于通过debootstrap进行安装时，无法确知硬盘的分区情况，因此，还必需手工修改/etc/fstab文件。</span></p>
+<p><span>原文：<a href="http://rediceli.blogspot.com/2006/08/debootstrapdebian.html">http://rediceli.blogspot.com/2006/08/debootstrapdebian.html</a></span></p></div><div style="display: block;" id="MySignature"><div class="wumii-hook"><div id="wumiiBtnDiv" style="clear: both; overflow: visible; position: relative; left: 0px; top: 0px; height: 28px; margin: 0px; padding: 10px 0px 0px; text-shadow: none; text-indent: 0px;">
+    <div id="wumiiLikeBtnDiv" style="position: static; float: left; display: inline; width: 89px; height: 28px; margin: 0px 0px 0px 282.5px; padding: 0px; background: url(&quot;widget_buttons_deepBlue.png&quot;) no-repeat scroll 0px 0px transparent; text-indent: 0px;">
+        <a href="http://www.wumii.com/item/61RA0hyA" target="_blank" id="wumiiNumLikes" style="float: left; width: 38px; height: 20px; line-height: 21px; margin: 4px 0px 0px 4px; padding: 0px; border: medium none; background-color: rgb(255, 255, 255); color: rgb(56, 92, 128); letter-spacing: 0px; text-decoration: none; text-align: center; text-indent: 0px; font-size: 12px;">0</a>
+        <span style="float: left; width: 40px; height: 29px; margin: 0px; padding: 0px; outline: medium none; cursor: pointer;" id="wumiiLikeBtn" hidefocus="true"></span>
+    </div>
+    <div id="wumiiRecommendBtnDiv" style="position: static; clear: none; float: left; display: inline; height: 28px; margin: 0px; padding: 0px 5px; text-indent: 0px;">
+        <span id="wumiiRecommendBtn" hidefocus="true" style="float: left; display: inline; width: 60px; height: 28px; margin: 0px 0px 0px 5px; padding: 0px; background: url(&quot;widget_buttons_deepBlue.png&quot;) no-repeat scroll -267px 0px transparent; cursor: pointer; outline: medium none;"></span>
+        <img src="loading.gif" id="wumiiLoading" style="clear: none; display: none; height: 15px; margin: 7px 0px 0px 8px; padding: 0px; border: 0px none; background: none repeat scroll 0% 0% transparent; cursor: default;" alt="正在加载推荐文章">
+    </div>
+</div>
+<div class="wumii-related-items-div" wmode="1" style="margin: 0px; border: medium none; padding: 0px; clear: both; overflow: hidden;">
+    
+    
+    
+        <div class="wumii-internal" style="padding: 0px; margin: 0px; border: medium none; clear: both; display: block;">
+        <div class="wumii-widget-title" style="margin: 0px; border: medium none; padding: 20px 0px 5px; text-indent: 0px; text-align: left; font-weight: bold;">无觅猜您也喜欢：</div>
+                <ul class="wumii-text-ul" style="padding: 0px; margin: 0px 0px 0px 1px;" fromurl="http%3A%2F%2Fwww.cnblogs.com%2Ffeisky%2Farchive%2F2012%2F09%2F27%2F2706066.html"><li class="wumii-text-li" style="list-style: disc inside none; display: list-item; line-height: 1.65em; background: none repeat scroll 0px 0px transparent; padding: 0px; margin: 0px; text-indent: 0px; text-align: left; font-size: 12px;">
+    <a class="wumii-text-a" hidefocus="true" href="http://www.cnblogs.com/feisky/archive/2012/10/05/2712509.html" style="text-decoration: none; border-bottom: medium none; outline: medium none; color: rgb(51, 51, 51);" redirecturl=""><span>Linux彩色输出</span></a>
+</li><li class="wumii-text-li" style="list-style: disc inside none; display: list-item; line-height: 1.65em; background: none repeat scroll 0px 0px transparent; padding: 0px; margin: 0px; text-indent: 0px; text-align: left; font-size: 12px;">
+    <a class="wumii-text-a" hidefocus="true" href="http://www.cnblogs.com/feisky/archive/2010/05/30/1747484.html" style="text-decoration: none; border-bottom: medium none; outline: medium none; color: rgb(51, 51, 51);" redirecturl=""><span>linux 开机启动脚本</span></a>
+</li><li class="wumii-text-li" style="list-style: disc inside none; display: list-item; line-height: 1.65em; background: none repeat scroll 0px 0px transparent; padding: 0px; margin: 0px; text-indent: 0px; text-align: left; font-size: 12px;">
+    <a class="wumii-text-a" hidefocus="true" href="http://www.cnblogs.com/feisky/archive/2010/03/20/1690561.html?t=1375283897486" style="text-decoration: none; border-bottom: medium none; outline: medium none; color: rgb(51, 51, 51);" redirecturl=""><span>Linux定时器的使用</span></a>
+</li><li class="wumii-text-li" style="list-style: disc inside none; display: list-item; line-height: 1.65em; background: none repeat scroll 0px 0px transparent; padding: 0px; margin: 0px; text-indent: 0px; text-align: left; font-size: 12px;">
+    <a class="wumii-text-a" hidefocus="true" href="http://www.cnblogs.com/feisky/archive/2010/03/31/1701560.html?t=1377834124172" style="text-decoration: none; border-bottom: medium none; outline: medium none; color: rgb(51, 51, 51);" redirecturl=""><span>Linux Shell编程基础</span></a>
+</li><li class="wumii-text-li" style="list-style: disc inside none; display: list-item; line-height: 1.65em; background: none repeat scroll 0px 0px transparent; padding: 0px; margin: 0px; text-indent: 0px; text-align: left; font-size: 12px;">
+    <a class="wumii-text-a" hidefocus="true" href="http://www.cnblogs.com/feisky/archive/2012/04/14/2447503.html" style="text-decoration: none; border-bottom: medium none; outline: medium none; color: rgb(51, 51, 51);" redirecturl=""><span>转一篇Linux可用内存的统计方法</span></a>
+</li><li class="wumii-text-li" style="list-style: disc inside none; display: list-item; line-height: 1.65em; background: none repeat scroll 0px 0px transparent; padding: 0px; margin: 0px; text-indent: 0px; text-align: left; font-size: 12px;">
+    <a class="wumii-text-a" hidefocus="true" href="http://www.cnblogs.com/feisky/archive/2013/01/09/2852663.html" style="text-decoration: none; border-bottom: medium none; outline: medium none; color: rgb(51, 51, 51);" redirecturl=""><span>[转]应该知道的Linux技巧</span></a>
+</li><li class="wumii-text-li" style="list-style: disc inside none; display: list-item; line-height: 1.65em; background: none repeat scroll 0px 0px transparent; padding: 0px; margin: 0px; text-indent: 0px; text-align: left; font-size: 12px;">
+    <a class="wumii-text-a" hidefocus="true" href="http://www.cnblogs.com/feisky/archive/2013/03/04/2942671.html" style="text-decoration: none; border-bottom: medium none; outline: medium none; color: rgb(51, 51, 51);" redirecturl=""><span>Linux下方便的socket读写查看器（socktop）</span></a>
+</li><li class="wumii-text-li" style="list-style: disc inside none; display: list-item; line-height: 1.65em; background: none repeat scroll 0px 0px transparent; padding: 0px; margin: 0px; text-indent: 0px; text-align: left; font-size: 12px;">
+    <a class="wumii-text-a" hidefocus="true" href="http://www.cnblogs.com/feisky/archive/2013/03/11/2954862.html" style="text-decoration: none; border-bottom: medium none; outline: medium none; color: rgb(51, 51, 51);" redirecturl=""><span>Linux Kernel Development——中断</span></a>
+</li></ul>
+    </div><div class="wumii-footer" style="margin: 0px; border: medium none; padding: 5px 0px; clear: both; text-align: right;">
+            <a href="http://www.wumii.com/widget/relatedItems" target="_blank" title="无觅关联推荐" style="font: 12px arial; color: rgb(187, 187, 187); border-bottom: medium none; word-wrap: normal; display: inline; cursor: pointer;">无觅关联推荐[?]</a>
+        </div>
+</div></div><div id="wumiiRelatedItems"></div></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory">分类: <a href="http://www.cnblogs.com/feisky/category/215237.html">Linux</a></div>
+<div id="EntryTag"></div>
+<div id="blog_post_info"><div id="green_channel">
+<a id="green_channel_digg">好文要顶</a>
+<a id="green_channel_follow">关注我</a>
+<a id="green_channel_favorite">收藏该文</a><a id="green_channel_contact" href="http://msg.cnblogs.com/send/feisky" target="_blank">联系我</a>
+<a id="green_channel_weibo" title="分享至新浪微博"><img src="icon_weibo_24.png" alt=""></a>
+<a id="green_channel_wechat" title="分享至微信"><img src="wechat.png" alt=""></a>
+</div>
+<div id="author_profile">
+<div id="author_profile_info" class="author_profile_info">
+<a href="http://home.cnblogs.com/u/feisky/" target="_blank"><img src="u49523.jpg" class="author_avatar" alt=""></a>
+<div id="author_profile_detail" class="author_profile_info">
+<a href="http://home.cnblogs.com/u/feisky/">feisky</a><br>
+<a href="http://home.cnblogs.com/u/feisky/followees">关注 - 5</a><br>
+<a href="http://home.cnblogs.com/u/feisky/followers">粉丝 - 771</a>
+</div>
+</div>
+<div class="clear"></div>
+<div id="author_profile_honor"></div>
+<div id="author_profile_follow">
+    <a>+加关注</a>
+</div>
+</div>
+<div id="div_digg">										
+    <div class="diggit">
+        <span class="diggnum" id="digg_count">0</span>
+    </div>
+	<div class="buryit"> 
+		<span class="burynum" id="bury_count">0</span>
+	</div>
+	<div class="clear"></div>	
+	<div class="diggword" id="digg_tips">
+    (请您对文章做出评价)
+    </div>	
+</div>
+</div>
+<div class="clear"></div>
+<div id="post_next_prev"><a href="http://www.cnblogs.com/feisky/archive/2012/09/24/2700487.html" class="p_n_p_prefix">« </a> 上一篇：<a href="http://www.cnblogs.com/feisky/archive/2012/09/24/2700487.html" title="发布于2012-09-24 18:28">The Architecture of Open Source Applications: Audacity</a><br><a href="http://www.cnblogs.com/feisky/archive/2012/09/27/2706114.html" class="p_n_p_prefix">» </a> 下一篇：<a href="http://www.cnblogs.com/feisky/archive/2012/09/27/2706114.html" title="发布于2012-09-27 18:12">cloudfoundry warden安装和配置</a><br></div>
+</div>
+
+</div>
+	</div></div><a name="!comments"></a><div id="blog-comments-placeholder"></div>
+<div id="comment_form" class="commentform">
+<a name="commentform"></a>
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="#">刷新页面</a><a href="#top">返回顶部</a></div>
+<div id="comment_form_container">
+<div id="commentform_title">发表评论</div>
+<span id="tip_comment" style="color: Red;"></span>
+<p>
+昵称：<input id="tbCommentAuthor" class="author" disabled="disabled" size="50" value="巴蛮子" type="text">
+</p>
+<div class="commentbox_main">
+<div class="commentbox_title">
+<div class="commentbox_title_left">评论内容：</div>
+<div class="commentbox_title_right">
+<img id="ubb_quote" class="comment_icon" src="quote.gif" alt="引用" title="添加引用">
+<img id="ubb_bold" class="comment_icon" src="b.png" alt="粗体" title="添加粗体">
+<img id="ubb_url" class="comment_icon" src="lk.png" alt="链接" title="添加链接">
+<img id="ubb_indent" class="comment_icon" src="indent.png" alt="缩进" title="添加首行缩进">
+<img id="ubb_code" class="comment_icon" src="InsertCode.gif" alt="代码" title="添加代码">
+<img id="ubb_img" class="comment_icon" src="img.gif" alt="图片" title="上传图片">
+</div>
+</div>
+<div class="clear"></div>
+<textarea id="tbCommentBody" class="comment_textarea"></textarea>
+</div>
+<p id="commentbox_opt">
+<input id="btn_comment_submit" class="comment_btn" value="提交评论" type="button">
+<span id="span_comment_canceledit" style="display: none;"><a>不改了</a></span>
+<a>退出登录</a>
+        <a id="commentbox_opt_sub" title="订阅后有新评论时会邮件通知您">订阅评论</a>
+</p>
+<div id="tip_comment2" style="color: Red;"></div>
+<p>
+[Ctrl+Enter快捷键提交]
+</p>
+<div style="display: none;">
+<span id="comment_edit_id"></span><span id="span_parentcomment_id"></span>
+<span id="span_parent_id"></span>
+<span id="span_comment_replyto"></span>
+<span id="span_comment_posted"></span>
+</div>
+</div>
+<div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+<div id="ad_t2"><a href="http://www.ucancode.com/index.htm" target="_blank">【推荐】50万行VC++源码: 大型组态工控、电力仿真CAD与GIS源码库</a><br><a href="http://www.rongcloud.cn/" target="_blank">【推荐】融云即时通讯云－豆果美食、Faceu等亿级APP都在用</a><br><a href="http://group.cnblogs.com/topic/75069.html" target="_blank">【福利】你是我的好朋友，我要送你个天猫红包</a><br></div>
+<div id="opt_under_post"></div>
+<div id="ad_c1" class="c_ad_block"><a href="http://www.gcpowertools.com.cn/products/spreadjs/?utm_source=cnblogs&amp;utm_medium=blogpage&amp;utm_term=bottom&amp;utm_content=SpreadJS&amp;utm_campaign=community" target="_blank"><img src="24442-20160630110700952-722310635.gif" alt="" width="300" height="250"></a></div>
+<div id="under_post_news"><div class="itnews c_ad_block"><b>最新IT新闻</b>:<br> ·  <a href="http://news.cnblogs.com/n/549636/" target="_blank">雅虎面临大幅裁员 每个员工创造的营收不到Facebook的三分之一</a><br> ·  <a href="http://news.cnblogs.com/n/549635/" target="_blank">继区块链技术之后 蚂蚁金服宣布正研发虚拟机器人</a><br> ·  <a href="http://news.cnblogs.com/n/549634/" target="_blank">马化腾抛售200万股腾讯股份 持股降至8.8%</a><br> ·  <a href="http://news.cnblogs.com/n/549633/" target="_blank">人类第一种癌症疫苗进入国内：预防多种癌症</a><br> ·  <a href="http://news.cnblogs.com/n/549632/" target="_blank">万能的支付宝：支付宝上也能结婚了！</a><br>» <a href="http://news.cnblogs.com/" title="IT新闻" target="_blank">更多新闻...</a></div></div>
+<div id="ad_c2" class="c_ad_block"><a href="https://www.jiguang.cn/?from=cnblogs01" target="_blank"><img src="24442-20160613130538213-1713265809.jpg" alt="" width="468" height="60"></a></div>
+<div id="under_post_kb"><div class="itnews c_ad_block" id="kb_block"><b>最新知识库文章</b>:<br><div id="kb_recent"> ·  <a href="http://kb.cnblogs.com/page/548394/" target="_blank">如何给变量取个简短且无歧义的名字</a><br> ·  <a href="http://kb.cnblogs.com/page/549080/" target="_blank">编程的智慧</a><br> ·  <a href="http://kb.cnblogs.com/page/549049/" target="_blank">写给初学前端工程师的一封信</a><br> ·  <a href="http://kb.cnblogs.com/page/544641/" target="_blank">抽象：程序员必备的能力</a><br> ·  <a href="http://kb.cnblogs.com/page/213197/" target="_blank">编程同写作，写代码只是在码字</a><br></div>» <a href="http://kb.cnblogs.com/" target="_blank">更多知识库文章...</a></div></div>
+<div id="HistoryToday" class="c_ad_block"></div>
+
+</div>
+
+
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2" class="FooterCell">
+			
+<p id="footer">
+	Powered by: 
+	<br>
+	
+	<a id="Footer1_Hyperlink3" name="Hyperlink1" href="http://www.cnblogs.com/" style="font-family: Verdana; font-size: 12px;">博客园</a>
+	<br>
+	Copyright © feisky
+</p>
+
+		</td>
+	</tr>
+</tbody></table>
+
+<!--PageEndHtml Block Begin-->
+
+
+<a href="http://www.wumii.com/widget/relatedItems" style="border: 0px none;">
+    <img src="pixel.png" alt="无觅相关文章插件，快速提升流量" style="border: 0px none; padding: 0px; margin: 0px;">
+</a>
+<!--PageEndHtml Block End-->
+
+
+</body>
+</html>

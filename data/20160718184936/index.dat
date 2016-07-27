@@ -1,0 +1,11 @@
+id	20160718184936
+create	20160718184936
+modify	20160718184936
+type	
+title	Linux nginx: Chroot (Jail) Setup
+chars	UTF-8
+icon	favicon.ico
+source	http://www.cyberciti.biz/faq/howto-run-nginx-in-a-chroot-jail/
+comment	
+lock	
+folder	chroot

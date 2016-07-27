@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html class="no-js">
+<!--<![endif]--><head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Linux chroot使用 - firefoxbug</title>
+
+    <!-- 使用url函数转换相关路径 -->
+    
+    
+    
+
+    <!--[if lt IE 9]>
+    <script src="http://www.firefoxbug.com/admin/js/html5shiv.js"></script>
+    <script src="http://www.firefoxbug.com/admin/js/respond.js"></script>
+    <![endif]-->
+
+    <!-- 通过自有函数输出HTML头部信息 -->
+    <meta name="description" content="什么是 chrootchroot，即 change root directory (更改 root 目录)。在 linux 系统中，系统默认的目录结构都是以 /，即是以根 (root) 开始的。而在使...">
+<meta name="generator" content="Typecho 1.0/14.10.10">
+<meta name="template" content="default">
+<link rel="pingback" href="http://www.firefoxbug.com/index.php/action/xmlrpc">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.firefoxbug.com/index.php/action/xmlrpc?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.firefoxbug.com/index.php/action/xmlrpc?wlw">
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://www.firefoxbug.com/index.php/feed/archives/2808/">
+<link rel="alternate" type="application/rdf+xml" title="RSS 1.0" href="http://www.firefoxbug.com/index.php/feed/rss/archives/2808/">
+<link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="http://www.firefoxbug.com/index.php/feed/atom/archives/2808/">
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body>
+<!--[if lt IE 8]>
+    <div class="browsehappy">当前网页 <strong>不支持</strong> 你正在使用的浏览器. 为了正常的访问, 请 <a href="http://browsehappy.com/">升级你的浏览器</a>.</div>
+<![endif]-->
+
+<header id="header" class="clearfix">
+    <div class="container">
+        <div class="colgroup">
+            <div class="site-name col-mb-12 col-9">
+                <a id="logo" href="http://www.firefoxbug.com/">
+                                        firefoxbug                </a>
+        	    <p class="description">吾之所为，汝之所见 | As I do，As you know</p>
+            </div>
+            <div class="site-search col-3 kit-hidden-tb">
+                <form id="search" method="post" action="http://www.firefoxbug.com/index.php/archives/2808/" role="search">
+                    <label for="s" class="sr-only">搜索关键字</label>
+                    <input name="s" class="text" placeholder="输入关键字搜索" type="text">
+                    <button type="submit" class="submit">搜索</button>
+                </form>
+            </div>
+            <div class="col-mb-12">
+                <nav id="nav-menu" class="clearfix" role="navigation">
+                    <a href="http://www.firefoxbug.com/">首页</a>
+                                                            <a href="http://www.firefoxbug.com/index.php/%E5%85%B3%E4%BA%8E%E4%BD%9C%E8%80%85.html" title="关于我">关于我</a>
+                                        <a href="http://www.firefoxbug.com/index.php/%E7%95%99%E8%A8%80%E6%9D%BF.html" title="留言板">留言板</a>
+                                        <a href="http://www.firefoxbug.com/index.php/2810.html" title="求贤如渴">求贤如渴</a>
+                                    </nav>
+            </div>
+        </div><!-- end .colgroup -->
+    </div>
+</header><!-- end #header -->
+<div id="body">
+    <div class="container">
+        <div class="colgroup">
+
+    
+    
+
+<div class="col-mb-12 col-8" id="main" role="main">
+    <article class="post">
+        <h1 class="post-title"><a href="http://www.firefoxbug.com/index.php/archives/2808/">Linux chroot使用</a></h1>
+        <ul class="post-meta">
+            <li>作者：firefoxbug</li>
+            <li>时间：May 16, 2015</li>
+            <li>分类：<a href="http://www.firefoxbug.com/index.php/category/Linux%E7%B3%BB%E7%BB%9F%E8%BF%90%E7%BB%B4/">Linux系统运维</a>,<a href="http://www.firefoxbug.com/index.php/category/Docker/">Docker</a></li>
+        </ul>
+        <div class="post-content">
+            <h3>什么是 chroot</h3>
+
+<p>chroot，即 change root directory (更改 root 目录)。在 linux 系统中，系统默认的目录结构都是以 <code>/</code>，即是以根 (root) 开始的。而在使用 chroot 之后，系统的目录结构将以指定的位置作为 <code>/</code> 位置。<br>
+chroot是Linux很早的一项“类docker”技术，也能够将打包好的Kernel镜像通过chroot方式加载到内存里，看上去和普通的kernel没有区别。</p>
+
+<h3>如何使用chroot</h3>
+
+<p>本文内容主要包括</p>
+
+<ul>
+<li>在宿主机（centos-A）上搭建一个Nginx服务</li>
+<li>打包宿主机（centos-A）的OS镜像</li>
+<li>在服务机（ubuntu-B）采用chroot方式加载打包好的镜像</li>
+</ul>
+
+<!--more-->
+
+<h3>宿主机搭建Nginx服务</h3>
+
+<p>宿主机可以任意选择一台centos或redhat系列</p>
+
+<pre><code>[centos-A]$ yum install gcc gcc-c++
+[centos-A]$ yum install pcre-devel open-ssl openssl openssl-devel
+[centos-A]$ wget http://tengine.taobao.org/download/tengine-2.1.0.tar.gz
+[centos-A]$ sudo tar -zxvf tengine-2.1.0.tar.gz
+[centos-A]$ cd tengine-2.1.0
+[centos-A]$ ./configure
+[centos-A]$ make &amp; make install
+[centos-A]$ /usr/local/nginx/sbin/nginx
+
+</code></pre>
+
+<h3>宿主机打包OS镜像</h3>
+
+<pre><code>[centos-A]$ sudo  tar --numeric-owner --exclude=/root/nginx-base-os.tar.gz --exclude=/var/lib/docker --exclude=/proc --exclude=/sys --exclude=/lost+found -pczf nginx-base-os.tar.gz /
+
+</code></pre>
+
+<h3>chroot加载镜像</h3>
+
+<p>下载打包好的镜像到服务器B上，服务器B可以选择任意操作系统，我这里是ubuntu。</p>
+
+<pre><code>[ubuntu-B]$ mkdir nginx-base-os
+[ubuntu-B]$ sudo tar -pxvf nginx-base-os.tar.gz -C nginx-base-os
+[ubuntu-B]$ sudo chroot .
+
+下面就是进入到chroot里了，操作的是另一个镜像
+[chroot-images]$ mkdir proc sys dev lost+found
+[chroot-images]$ sudo mount -t proc none proc/
+[chroot-images]$ sudo mount -t sysfs none sys/
+[chroot-images]$ sudo mount -o bind none dev/
+启动镜像的nginx
+[chroot-images]$ /usr/local/nginx/sbin/nginx
+
+可以另外开一个终端ssh到宿主机B上查看进程
+[ubuntu-B]$ ps axf | grep nginx
+ 1422 ?        Ss     0:00 nginx: master process /usr/local/nginx/sbin/nginx
+ 1424 ?        S      0:00  \_ nginx: worker process
+</code></pre>
+
+<h3>总结</h3>
+
+<p>采用chroot的方式可以很快实现“类docker”的功能，优点主要如下</p>
+
+<ol>
+<li>不需要依赖OS底层的任何基础库，不需要像docker那样装docker包。一个OS上打包好的镜像，可以在任意支持chroot的Linux Kernel上跑</li>
+<li>chroot镜像里运行起来的进程和宿主机是没有namespace隔离的，网络、fd都是共享的，不存在性能损耗。</li>
+</ol>
+
+<p>同样chroot也有一些缺点</p>
+
+<ol>
+<li>chroot的方式是不存在资源隔离的，镜像里的进程完全是和宿主机共享资源，特别是网络资源，所有局限性就是对于“对外暴露端口提供服务”的镜像不能run多个</li>
+<li>chroot的镜像比docker会比较大，因为chroot是整个kernel都打包成镜像。</li>
+</ol>
+
+<p>docker其实是一种chroot、cgroup之类库整合而成的软件，我个人觉得学习docker更多的是学习docker本身的思想。其实在“单机服务、不存在资源隔离、硬盘存储够大”的场景下，chroot完全足够了。</p>
+        </div>
+        <p class="tags">标签：none</p>
+    </article>
+
+    <div id="comments"> 
+<!-- Duoshuo Comment BEGIN -->
+	<div id="ds-thread" class="ds-thread" data-thread-key="2808" data-title="Linux chroot使用" data-author-key="1" data-url=""><div id="ds-reset"><div class="ds-comments-info"><div class="ds-sort"><a class="ds-order-desc">最新</a><a class="ds-order-asc ds-current">最早</a><a class="ds-order-hot">最热</a></div><ul class="ds-comments-tabs"><li class="ds-tab"><a class="ds-comments-tab-duoshuo ds-current">0条评论</a></li>  </ul></div><ul class="ds-comments"><li class="ds-post ds-post-placeholder">还没有评论，沙发等你来抢</li></ul><div style="display: none;" class="ds-paginator"><div class="ds-border"></div><a data-page="1" class="ds-current">1</a></div><a name="respond"></a><div class="ds-login-buttons"><p>社交帐号登录:</p><div class="ds-social-links"><ul class="ds-service-list"><li><a href="http://firefoxbug.duoshuo.com/login/weixin/" rel="nofollow" class="ds-service-link ds-weixin">微信</a></li><li><a href="http://firefoxbug.duoshuo.com/login/weibo/" rel="nofollow" class="ds-service-link ds-weibo">微博</a></li><li><a href="http://firefoxbug.duoshuo.com/login/qq/" rel="nofollow" class="ds-service-link ds-qq">QQ</a></li><li><a href="http://firefoxbug.duoshuo.com/login/renren/" rel="nofollow" class="ds-service-link ds-renren">人人</a></li><li><a class="ds-more-services">更多»</a></li></ul><ul class="ds-service-list ds-additional-services"><li><a href="http://firefoxbug.duoshuo.com/login/douban/" rel="nofollow" class="ds-service-link ds-douban">豆瓣</a></li><li><a href="http://firefoxbug.duoshuo.com/login/kaixin/" rel="nofollow" class="ds-service-link ds-kaixin">开心</a></li><li><a href="http://firefoxbug.duoshuo.com/login/baidu/" rel="nofollow" class="ds-service-link ds-baidu">百度</a></li><li><a href="http://firefoxbug.duoshuo.com/login/google/" rel="nofollow" class="ds-service-link ds-google">谷歌</a></li></ul></div></div><div class="ds-replybox"><a class="ds-avatar"><img src="noavatar_default.png" alt=""></a><form method="post"><input name="thread_id" value="1263091470198374793" type="hidden">
+<input name="parent_id" value="" type="hidden">
+<input name="nonce" value="578cb28689fb2" type="hidden"><div class="ds-textarea-wrapper ds-rounded-top"><textarea name="message" title="Ctrl+Enter快捷提交" placeholder="说点什么吧…"></textarea><pre class="ds-hidden-text"></pre></div><div class="ds-post-toolbar"><div class="ds-post-options ds-gradient-bg"><span class="ds-sync"></span></div><button class="ds-post-button" type="submit">发布</button><div class="ds-toolbar-buttons"><a class="ds-toolbar-button ds-add-emote" title="插入表情"></a></div></div></form></div><p class="ds-powered-by"><a href="http://duoshuo.com/" target="_blank" rel="nofollow">As I do，As you know.正在使用多说</a></p></div></div>
+	
+<!-- Duoshuo Comment END -->
+ 
+</div>
+</div><!-- end #main-->
+
+<div class="col-mb-12 col-offset-1 col-3 kit-hidden-tb" id="secondary" role="complementary">
+        <section class="widget">
+		<h3 class="widget-title">最新文章</h3>
+        <ul class="widget-list">
+            <li><a href="http://www.firefoxbug.com/index.php/archives/2818/">Python中staticmethod方法和classmethod方法区别</a></li>
+<li><a href="http://www.firefoxbug.com/index.php/archives/2817/">Python re模块</a></li>
+<li><a href="http://www.firefoxbug.com/index.php/archives/2816/">maven学习二（dependencies）</a></li>
+<li><a href="http://www.firefoxbug.com/index.php/archives/2815/">maven学习一（HelloWorld工程）</a></li>
+<li><a href="http://www.firefoxbug.com/index.php/archives/2809/">git 版本回退</a></li>
+<li><a href="http://www.firefoxbug.com/index.php/archives/2808/">Linux chroot使用</a></li>
+<li><a href="http://www.firefoxbug.com/index.php/archives/2807/">Docker学习笔记一</a></li>
+<li><a href="http://www.firefoxbug.com/index.php/archives/2806/">理解HTTP之keep-alive</a></li>
+<li><a href="http://www.firefoxbug.com/index.php/archives/2805/">理解TCP之Keepalive</a></li>
+<li><a href="http://www.firefoxbug.com/index.php/archives/2804/">git merge不同branch文件</a></li>
+<li><a href="http://www.firefoxbug.com/index.php/archives/2803/">Linux特殊字符（M-BM-）</a></li>
+<li><a href="http://www.firefoxbug.com/index.php/archives/2802/">Nginx负载均衡+监控状态检测</a></li>
+<li><a href="http://www.firefoxbug.com/index.php/archives/2801/">理解Linux文件系统挂载参数noatime nodiratime</a></li>
+<li><a href="http://www.firefoxbug.com/index.php/archives/2800/">Linux的overcommit配置</a></li>
+<li><a href="http://www.firefoxbug.com/index.php/archives/2799/">Linux时间转化(date和unix时间)笔记</a></li>
+<li><a href="http://www.firefoxbug.com/index.php/archives/2798/">TCP滑动窗口和流控 </a></li>
+<li><a href="http://www.firefoxbug.com/index.php/archives/2796/">理解TIME_WAIT(2)</a></li>
+<li><a href="http://www.firefoxbug.com/index.php/archives/2795/">理解TIME_WAIT</a></li>
+<li><a href="http://www.firefoxbug.com/index.php/archives/2791/">一致性hash在分布式系统中的应用</a></li>
+<li><a href="http://www.firefoxbug.com/index.php/archives/2787/">while进行批量ssh操作的问题</a></li>
+        </ul>
+    </section>
+    
+    
+        <section class="widget">
+		<h3 class="widget-title">分类</h3>
+        <ul class="widget-list">
+            <li><a href="http://www.firefoxbug.com/index.php/category/Linux/">Linux</a> (238篇)</li>
+<li><a href="http://www.firefoxbug.com/index.php/category/Linux%E5%86%85%E6%A0%B8/">Linux内核</a> (9篇)</li>
+<li><a href="http://www.firefoxbug.com/index.php/category/Linux%E7%B3%BB%E7%BB%9F%E8%BF%90%E7%BB%B4/">Linux系统运维</a> (114篇)</li>
+<li><a href="http://www.firefoxbug.com/index.php/category/Nginx/">Nginx</a> (34篇)</li>
+<li><a href="http://www.firefoxbug.com/index.php/category/tcpip/">TCP/IP</a> (15篇)</li>
+<li><a href="http://www.firefoxbug.com/index.php/category/cc/">C/C++</a> (85篇)</li>
+<li><a href="http://www.firefoxbug.com/index.php/category/python/">Python</a> (42篇)</li>
+<li><a href="http://www.firefoxbug.com/index.php/category/Java/">Java</a> (2篇)</li>
+<li><a href="http://www.firefoxbug.com/index.php/category/hadoop/">Hadoop</a> (10篇)</li>
+<li><a href="http://www.firefoxbug.com/index.php/category/Zookeeper/">Zookeeper</a> (8篇)</li>
+<li><a href="http://www.firefoxbug.com/index.php/category/Docker/">Docker</a> (2篇)</li>
+<li><a href="http://www.firefoxbug.com/index.php/category/FPGA/">FPGA</a> (12篇)</li>
+<li><a href="http://www.firefoxbug.com/index.php/category/cdn/">CDN</a> (3篇)</li>
+<li><a href="http://www.firefoxbug.com/index.php/category/Git/">Git</a> (6篇)</li>
+<li><a href="http://www.firefoxbug.com/index.php/category/ganglia/">Ganglia</a> (4篇)</li>
+<li><a href="http://www.firefoxbug.com/index.php/category/logstash--e6-9c-8d-e5-8a-a1-e5-99-a8/">Logstash</a> (5篇)</li>
+<li><a href="http://www.firefoxbug.com/index.php/category/elasticsearch/">Elasticsearch</a> (2篇)</li>
+<li><a href="http://www.firefoxbug.com/index.php/category/zeromq/">ZeroMQ</a> (2篇)</li>
+<li><a href="http://www.firefoxbug.com/index.php/category/macosx/">MacOSX</a> (6篇)</li>
+<li><a href="http://www.firefoxbug.com/index.php/category/Windows%E7%BC%96%E7%A8%8B/">Windows编程</a> (23篇)</li>
+<li><a href="http://www.firefoxbug.com/index.php/category/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a> (11篇)</li>
+<li><a href="http://www.firefoxbug.com/index.php/category/%25e7%25a8%258b%25e5%25ba%258f%25e4%25ba%25ba%25e7%2594%259f/">程序人生</a> (14篇)</li>
+        </ul>
+	</section>
+    
+        <section class="widget">
+		<h3 class="widget-title">归档</h3>
+        <ul class="widget-list">
+            <li><a href="http://www.firefoxbug.com/index.php/2016/05/">2016-05</a> (1篇)</li>
+<li><a href="http://www.firefoxbug.com/index.php/2016/01/">2016-01</a> (3篇)</li>
+<li><a href="http://www.firefoxbug.com/index.php/2015/07/">2015-07</a> (1篇)</li>
+<li><a href="http://www.firefoxbug.com/index.php/2015/05/">2015-05</a> (1篇)</li>
+<li><a href="http://www.firefoxbug.com/index.php/2015/04/">2015-04</a> (7篇)</li>
+<li><a href="http://www.firefoxbug.com/index.php/2014/12/">2014-12</a> (1篇)</li>
+<li><a href="http://www.firefoxbug.com/index.php/2014/11/">2014-11</a> (5篇)</li>
+<li><a href="http://www.firefoxbug.com/index.php/2014/10/">2014-10</a> (2篇)</li>
+<li><a href="http://www.firefoxbug.com/index.php/2014/09/">2014-09</a> (2篇)</li>
+<li><a href="http://www.firefoxbug.com/index.php/2014/08/">2014-08</a> (4篇)</li>
+<li><a href="http://www.firefoxbug.com/index.php/2014/07/">2014-07</a> (3篇)</li>
+<li><a href="http://www.firefoxbug.com/index.php/2014/06/">2014-06</a> (7篇)</li>
+<li><a href="http://www.firefoxbug.com/index.php/2014/05/">2014-05</a> (9篇)</li>
+<li><a href="http://www.firefoxbug.com/index.php/2014/04/">2014-04</a> (16篇)</li>
+<li><a href="http://www.firefoxbug.com/index.php/2014/03/">2014-03</a> (8篇)</li>
+<li><a href="http://www.firefoxbug.com/index.php/2014/02/">2014-02</a> (6篇)</li>
+<li><a href="http://www.firefoxbug.com/index.php/2014/01/">2014-01</a> (3篇)</li>
+<li><a href="http://www.firefoxbug.com/index.php/2013/12/">2013-12</a> (7篇)</li>
+<li><a href="http://www.firefoxbug.com/index.php/2013/11/">2013-11</a> (9篇)</li>
+<li><a href="http://www.firefoxbug.com/index.php/2013/10/">2013-10</a> (10篇)</li>
+<li><a href="http://www.firefoxbug.com/index.php/2013/09/">2013-09</a> (9篇)</li>
+<li><a href="http://www.firefoxbug.com/index.php/2013/08/">2013-08</a> (16篇)</li>
+<li><a href="http://www.firefoxbug.com/index.php/2013/07/">2013-07</a> (14篇)</li>
+<li><a href="http://www.firefoxbug.com/index.php/2013/06/">2013-06</a> (8篇)</li>
+<li><a href="http://www.firefoxbug.com/index.php/2013/05/">2013-05</a> (6篇)</li>
+<li><a href="http://www.firefoxbug.com/index.php/2013/04/">2013-04</a> (9篇)</li>
+<li><a href="http://www.firefoxbug.com/index.php/2013/03/">2013-03</a> (8篇)</li>
+<li><a href="http://www.firefoxbug.com/index.php/2013/02/">2013-02</a> (3篇)</li>
+<li><a href="http://www.firefoxbug.com/index.php/2013/01/">2013-01</a> (6篇)</li>
+<li><a href="http://www.firefoxbug.com/index.php/2012/12/">2012-12</a> (12篇)</li>
+<li><a href="http://www.firefoxbug.com/index.php/2012/11/">2012-11</a> (19篇)</li>
+<li><a href="http://www.firefoxbug.com/index.php/2012/10/">2012-10</a> (8篇)</li>
+<li><a href="http://www.firefoxbug.com/index.php/2012/09/">2012-09</a> (8篇)</li>
+<li><a href="http://www.firefoxbug.com/index.php/2012/08/">2012-08</a> (6篇)</li>
+<li><a href="http://www.firefoxbug.com/index.php/2012/07/">2012-07</a> (14篇)</li>
+<li><a href="http://www.firefoxbug.com/index.php/2012/06/">2012-06</a> (9篇)</li>
+<li><a href="http://www.firefoxbug.com/index.php/2012/05/">2012-05</a> (18篇)</li>
+<li><a href="http://www.firefoxbug.com/index.php/2012/04/">2012-04</a> (16篇)</li>
+<li><a href="http://www.firefoxbug.com/index.php/2012/03/">2012-03</a> (19篇)</li>
+<li><a href="http://www.firefoxbug.com/index.php/2012/02/">2012-02</a> (12篇)</li>
+<li><a href="http://www.firefoxbug.com/index.php/2012/01/">2012-01</a> (17篇)</li>
+<li><a href="http://www.firefoxbug.com/index.php/2011/12/">2011-12</a> (20篇)</li>
+<li><a href="http://www.firefoxbug.com/index.php/2011/11/">2011-11</a> (10篇)</li>
+<li><a href="http://www.firefoxbug.com/index.php/2011/10/">2011-10</a> (5篇)</li>
+<li><a href="http://www.firefoxbug.com/index.php/2011/09/">2011-09</a> (5篇)</li>
+<li><a href="http://www.firefoxbug.com/index.php/2011/08/">2011-08</a> (5篇)</li>
+<li><a href="http://www.firefoxbug.com/index.php/2011/07/">2011-07</a> (3篇)</li>
+<li><a href="http://www.firefoxbug.com/index.php/2011/06/">2011-06</a> (3篇)</li>
+        </ul>
+	</section>
+    
+    	<section class="widget">
+		<h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+                            <li class="last"><a href="http://www.firefoxbug.com/admin/login.php">登录</a></li>
+                        <li><a href="http://www.firefoxbug.com/index.php/feed/">文章 RSS</a></li>
+            <li><a href="http://www.firefoxbug.com/index.php/feed/comments/">评论 RSS</a></li>
+            <li><a href="http://www.typecho.org/">Typecho</a></li>
+        </ul>
+	</section>
+    
+</div><!-- end #sidebar -->
+
+            
+        </div><!-- end .colgroup -->
+    </div>
+</div><!-- end #body -->
+
+<footer id="footer" role="contentinfo">
+    © 2016 <a href="http://www.firefoxbug.com/">firefoxbug</a>.
+    由 <a href="http://www.typecho.org/">Typecho</a> 强力驱动.
+</footer><!-- end #footer -->
+
+<span id="cnzz_stat_icon_1000445871"></span>
+
+
+</body>
+</html>

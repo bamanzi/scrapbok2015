@@ -1,0 +1,11 @@
+id	20160718185341
+create	20160718185341
+modify	20160718185341
+type	
+title	fsquillace/junest: The Arch Linux based distro that runs upon any Linux distros without root access
+chars	UTF-8
+icon	favicon.ico
+source	https://github.com/fsquillace/junest
+comment	
+lock	
+folder	chroot

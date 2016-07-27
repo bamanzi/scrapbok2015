@@ -1,0 +1,11 @@
+id	20160718184735
+create	20160718184735
+modify	20160718184735
+type	
+title	6 Steps for Minimal Ubuntu Installation Using debootstrap
+chars	UTF-8
+icon	favicon.ico.gzip
+source	http://www.thegeekstuff.com/2010/01/debootstrap-minimal-debian-ubuntu-installation/
+comment	
+lock	
+folder	chroot

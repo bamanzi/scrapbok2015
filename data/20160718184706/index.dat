@@ -1,0 +1,11 @@
+id	20160718184706
+create	20160718184706
+modify	20160718184706
+type	
+title	Installing Debian Wheezy (testing) With debootstrap From A Grml Live Linux
+chars	UTF-8
+icon	favicon.ico
+source	https://www.howtoforge.com/installing-debian-wheezy-testing-with-debootstrap-from-a-grml-live-linux
+comment	
+lock	
+folder	chroot
