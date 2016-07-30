@@ -1,0 +1,11 @@
+/* ::::: [internal] ::::: */
+
+body { padding: 0px; margin: 0px; background: none repeat scroll 0% 0% transparent; }
+#d { text-align: center; overflow: hidden; }
+#c { overflow: hidden; position: relative; margin: auto; text-align: left; }
+.text { line-height: 16px; font-size: 14px; font-family: arial,simsun,sans-serif; font-weight: normal; padding: 4px; background: none repeat scroll 0% 0% rgb(255, 255, 255); border: 0px none; }
+.text a { white-space: normal; word-break: break-all; word-wrap: break-word; }
+.text a:hover { color: rgb(238, 0, 0); text-decoration: underline; }
+.title a { color: rgb(0, 0, 255); text-decoration: underline; }
+.desc a { color: rgb(0, 0, 0); text-decoration: none; }
+.surl a { color: rgb(0, 128, 0); font-size: 11px; text-decoration: none; }

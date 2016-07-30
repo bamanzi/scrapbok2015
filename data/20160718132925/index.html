@@ -1,0 +1,886 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" dir="ltr">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Build Geany on Windows (using Waf) DEPRECATED - Geany Wiki</title>
+<meta name="generator" content="DokuWiki">
+<meta name="robots" content="index,follow">
+<meta name="keywords" content="howto,win32,build">
+<link rel="search" type="application/opensearchdescription+xml" href="http://wiki.geany.org/lib/exe/opensearch.php" title="Geany Wiki">
+<link rel="start" href="http://wiki.geany.org/">
+<link rel="contents" href="http://wiki.geany.org/howtos/win32/build?do=index" title="Sitemap">
+<link rel="alternate" type="application/rss+xml" title="Recent Changes" href="http://wiki.geany.org/feed.php">
+<link rel="alternate" type="application/rss+xml" title="Current namespace" href="http://wiki.geany.org/feed.php?mode=list&amp;ns=howtos:win32">
+<link rel="alternate" type="text/html" title="Plain HTML" href="http://wiki.geany.org/_export/xhtml/howtos/win32/build">
+<link rel="alternate" type="text/plain" title="Wiki Markup" href="http://wiki.geany.org/_export/raw/howtos/win32/build">
+<link rel="canonical" href="http://wiki.geany.org/howtos/win32/build">
+
+
+
+
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="apple-touch-icon" href="http://wiki.geany.org/lib/tpl/vector/static/3rd/dokuwiki/apple-touch-icon.png">
+
+<!--[if lte IE 8]><link rel="stylesheet" media="all" type="text/css" href="/lib/tpl/vector/static/css/screen_iehacks.css" /><![endif]-->
+<!--[if lt IE 7]><style type="text/css">body{behavior:url("/lib/tpl/vector/static/3rd/vector/csshover.htc")}</style><![endif]-->
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+<script>try {  for(var lastpass_iter=0; lastpass_iter < document.forms.length; lastpass_iter++){    var lastpass_f = document.forms[lastpass_iter];    if(typeof(lastpass_f.lpsubmitorig)=="undefined"){      if (typeof(lastpass_f.submit) == "function") {        lastpass_f.lpsubmitorig = lastpass_f.submit;        lastpass_f.submit = function(){          var form = this;          try {            if (document.documentElement && 'createEvent' in document)            {              var forms = document.getElementsByTagName('form');              for (var i=0 ; i<forms.length ; ++i)                if (forms[i]==form)                {                  var element = document.createElement('lpformsubmitdataelement');                  element.setAttribute('formnum',i);                  element.setAttribute('from','submithook');                  document.documentElement.appendChild(element);                  var evt = document.createEvent('Events');                  evt.initEvent('lpformsubmit',true,false);                  element.dispatchEvent(evt);                  break;                }            }          } catch (e) {}          try {            form.lpsubmitorig();          } catch (e) {}        }      }    }  }} catch (e) {}</script></head>
+<body class="skin-vector">
+<div id="page-container">
+<div id="page-base" class="noprint"></div>
+<div id="head-base" class="noprint"></div>
+
+<!-- start div id=content -->
+<div id="content">
+  <a name="top" id="top"></a>
+  <a name="dokuwiki__top" id="dokuwiki__top"></a>
+
+  <!-- start main content area -->
+  
+  <!-- start div id bodyContent -->
+  <div id="bodyContent" class="dokuwiki">
+    <!-- start rendered wiki content -->
+    <!-- TOC START -->
+<div id="dw__toc">
+<h3 style="cursor: pointer;" class="toggle open"><strong><span>−</span></strong>Table of Contents</h3>
+<div aria-expanded="true" style="">
+
+<ul style="" class="toc">
+<li class="level1"><div class="li"><a href="#build_geany_on_windows_using_waf_deprecated">Build Geany on Windows (using Waf) DEPRECATED</a></div>
+<ul class="toc">
+<li class="level2"><div class="li"><a href="#prerequisites">Prerequisites</a></div>
+<ul class="toc">
+<li class="level3"><div class="li"><a href="#git">Git</a></div></li>
+<li class="level3"><div class="li"><a href="#python">Python</a></div></li>
+<li class="level3"><div class="li"><a href="#perl">Perl</a></div></li>
+<li class="level3"><div class="li"><a href="#nsis">NSIS</a></div></li>
+<li class="level3"><div class="li"><a href="#unxutils">UnxUtils</a></div></li>
+<li class="level3"><div class="li"><a href="#gtk">GTK+</a></div></li>
+<li class="level3"><div class="li"><a href="#gettext">Gettext</a></div></li>
+<li class="level3"><div class="li"><a href="#docutils_rst2html">DocUtils (rst2html)</a></div></li>
+<li class="level3"><div class="li"><a href="#further_dependencies_for_geany-plugins">Further dependencies (for geany-plugins)</a></div></li>
+</ul>
+</li>
+<li class="level2"><div class="li"><a href="#setup">Setup</a></div>
+<ul class="toc">
+<li class="level3"><div class="li"><a href="#modify_path">Modify %PATH%</a></div></li>
+<li class="level3"><div class="li"><a href="#clone_the_geany_repository_from_github">Clone the Geany repository from Github</a></div></li>
+</ul>
+</li>
+<li class="level2"><div class="li"><a href="#build_and_test">Build and test</a></div>
+<ul class="toc">
+<li class="level3"><div class="li"><a href="#build_geany">Build Geany</a></div></li>
+<li class="level3"><div class="li"><a href="#build_geany-plugins">Build Geany-Plugins</a></div></li>
+<li class="level3"><div class="li"><a href="#test_the_geany_build">Test the Geany build</a></div></li>
+</ul>
+</li>
+<li class="level2"><div class="li"><a href="#create_a_stripped_down_gtk_runtime_environment">Create a stripped down GTK runtime environment</a></div></li>
+<li class="level2"><div class="li"><a href="#release_geany_and_geany-plugins">Release Geany and Geany-Plugins</a></div>
+<ul class="toc">
+<li class="level3"><div class="li"><a href="#release_geany">Release Geany</a></div></li>
+<li class="level3"><div class="li"><a href="#release_geany-plugins">Release Geany-Plugins</a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="level1"><div class="li"><a href="#todo">TODO</a></div></li>
+</ul>
+</div>
+</div>
+<!-- TOC END -->
+
+<h1 id="build_geany_on_windows_using_waf_deprecated">Build Geany on Windows (using Waf) <br></h1>
+<div class="level1">
+
+<p>
+This howto describes how to set up a working build environment on Windows
+to be able to compile, build and test <abbr title="A fast and lightweight IDE">Geany</abbr> and <abbr title="A fast and lightweight IDE">Geany</abbr>-<abbr title="A way to extend Geany's functionality">Plugins</abbr>.
+</p>
+
+<p>
+Furthermore, this howto will cover how to create a full <abbr title="A fast and lightweight IDE">Geany</abbr> release on Windows including
+generating the Windows installers.
+</p>
+
+<p>
+The described setup is quite custom and might not be state-of-art and as clean as it could.
+However, it worked for the author(<a href="http://wiki.geany.org/users/enrico" class="wikilink1" title="users:enrico">Enrico Tröger</a>) for years :).
+</p>
+
+<p>
+Be careful about paths: this howto assumes everything is installed on the C: drive of a Windows
+system (tested on Windows XP and 7). Furthermore, most additional dependent libraries and helper
+utilities are installed into c:\libs.
+It is recommended to keep these locations. If you need to change them, be careful and be sure
+to adjust all paths mentioned in the following sections before executing them.
+</p>
+
+<p>
+Also note that in some of the linked helper scripts, the paths are hardcoded, so you need to adjust
+them as well.
+</p>
+
+</div>
+
+<h2 id="prerequisites">Prerequisites</h2>
+<div class="level2">
+
+<p>
+Download and install the following tools
+</p>
+
+</div>
+
+<h3 id="git">Git</h3>
+<div class="level3">
+
+<p>
+Download and install from <a href="http://git-scm.com/download/win" class="urlextern" title="http://git-scm.com/download/win" rel="nofollow">http://git-scm.com/download/win</a>
+</p>
+
+</div>
+
+<h3 id="python">Python</h3>
+<div class="level3">
+
+<p>
+Python is required for the Waf build system and various helper scripts.
+Best to use the x86 (32bit) version of the latest Python 2 installer.
+Download the installer, execute it and follow the instructions (install to c:\python27).
+</p>
+
+<p>
+<a href="https://www.python.org/downloads/windows/" class="urlextern" title="https://www.python.org/downloads/windows/" rel="nofollow">https://www.python.org/downloads/windows/</a>
+</p>
+
+</div>
+
+<h3 id="perl">Perl</h3>
+<div class="level3">
+
+<p>
+Download and install the Strawberry Perl distribution from <a href="http://strawberryperl.com/" class="urlextern" title="http://strawberryperl.com" rel="nofollow">http://strawberryperl.com</a>.
+This distribution also includes the mingw-gcc and related tools which will be used to compile <abbr title="A fast and lightweight IDE">Geany</abbr> later.
+Choose the 32bit installer and install Perl into c:\perl.
+</p>
+
+<p>
+<a href="http://strawberryperl.com/" class="urlextern" title="http://strawberryperl.com/" rel="nofollow">http://strawberryperl.com/</a>
+</p>
+
+</div>
+
+<h3 id="nsis">NSIS</h3>
+<div class="level3">
+
+<p>
+To be able to Windows installers for <abbr title="A fast and lightweight IDE">Geany</abbr> (most probably only interesting for <abbr title="A fast and lightweight IDE">Geany</abbr> core devs), you need
+the Nullsoft Scriptable Install System (NSIS).
+</p>
+
+<p>
+Download and install NSIS 2.46.
+</p>
+
+<p>
+<a href="http://nsis.sourceforge.net/Download" class="urlextern" title="http://nsis.sourceforge.net/Download" rel="nofollow">http://nsis.sourceforge.net/Download</a>
+</p>
+
+</div>
+
+<h3 id="unxutils">UnxUtils</h3>
+<div class="level3">
+
+<p>
+UnxUtils contain lots of well known and useful tools from a Unix system, compiled for Windows (find, grep, etc.).
+</p>
+
+<p>
+Download the ZIP archive and unpack it to C:\libs\utils
+</p>
+
+<p>
+<a href="http://sourceforge.net/projects/unxutils/files/latest/download" class="urlextern" title="http://sourceforge.net/projects/unxutils/files/latest/download" rel="nofollow">http://sourceforge.net/projects/unxutils/files/latest/download</a>
+</p>
+
+</div>
+
+<h3 id="gtk">GTK+</h3>
+<div class="level3">
+
+<p>
+And now to the exciting part: <abbr title="Gimp ToolKit, a highly usable, feature rich toolkit for creating graphical user interfaces">GTK+</abbr> on Windows.
+</p>
+
+<p>
+The easiest way is to download the whole <abbr title="Gimp ToolKit, a highly usable, feature rich toolkit for creating graphical user interfaces">GTK+</abbr> bundle (<abbr title="Gimp ToolKit, a highly usable, feature rich toolkit for creating graphical user interfaces">GTK</abbr>+2.0, <a href="http://www.gtk.org/download/win32.php" class="urlextern" title="http://www.gtk.org/download/win32.php" rel="nofollow">http://www.gtk.org/download/win32.php</a>) and extract it to c:\libs.
+</p>
+
+<p>
+<a href="http://ftp.gnome.org/pub/gnome/binaries/win32/gtk+/2.24/gtk+-bundle_2.24.10-20120208_win32.zip" class="urlextern" title="http://ftp.gnome.org/pub/gnome/binaries/win32/gtk+/2.24/gtk+-bundle_2.24.10-20120208_win32.zip" rel="nofollow">http://ftp.gnome.org/pub/gnome/binaries/win32/gtk+/2.24/gtk+-bundle_2.24.10-20120208_win32.zip</a>
+</p>
+
+</div>
+
+<h3 id="gettext">Gettext</h3>
+<div class="level3">
+
+<p>
+Download the following archives and extract them to c:\libs.
+</p>
+<ul>
+<li class="level1"><div class="li"> <a href="http://ftp.gnome.org/pub/gnome/binaries/win32/dependencies/gettext-tools-dev_0.18.1.1-2_win32.zip" class="urlextern" title="http://ftp.gnome.org/pub/gnome/binaries/win32/dependencies/gettext-tools-dev_0.18.1.1-2_win32.zip" rel="nofollow">http://ftp.gnome.org/pub/gnome/binaries/win32/dependencies/gettext-tools-dev_0.18.1.1-2_win32.zip</a></div>
+</li>
+<li class="level1"><div class="li"> <a href="http://ftp.gnome.org/pub/gnome/binaries/win32/dependencies/gettext-runtime_0.18.1.1-2_win32.zip" class="urlextern" title="http://ftp.gnome.org/pub/gnome/binaries/win32/dependencies/gettext-runtime_0.18.1.1-2_win32.zip" rel="nofollow">http://ftp.gnome.org/pub/gnome/binaries/win32/dependencies/gettext-runtime_0.18.1.1-2_win32.zip</a></div>
+</li>
+<li class="level1"><div class="li"> <a href="http://ftp.acc.umu.se/pub/gnome/binaries/win32/intltool/0.40/intltool_0.40.4-1_win32.zip" class="urlextern" title="http://ftp.acc.umu.se/pub/gnome/binaries/win32/intltool/0.40/intltool_0.40.4-1_win32.zip" rel="nofollow">http://ftp.acc.umu.se/pub/gnome/binaries/win32/intltool/0.40/intltool_0.40.4-1_win32.zip</a></div>
+</li>
+</ul>
+
+</div>
+
+<h3 id="docutils_rst2html">DocUtils (rst2html)</h3>
+<div class="level3">
+
+<p>
+Download the tarball from <a href="http://docutils.sourceforge.net/" class="urlextern" title="http://docutils.sourceforge.net" rel="nofollow">http://docutils.sourceforge.net</a> and extract it to some folder.
+Enter the folder and execute the following commands:
+</p>
+<pre class="code">cd docutils-0.12
+python setup.py install
+cp Tools\rst2html.py c:\python27</pre>
+
+</div>
+
+<h3 id="further_dependencies_for_geany-plugins">Further dependencies (for geany-plugins)</h3>
+<div class="level3">
+
+<p>
+If you want to compile geany-plugins as well, you need the following dependencies.
+Download the archives and extract them into c:\libs.
+</p>
+<ul>
+<li class="level1"><div class="li"> <a href="http://download.tuxfamily.org/ctpl/releases/ctpl-0.3.2-win32.zip" class="urlextern" title="http://download.tuxfamily.org/ctpl/releases/ctpl-0.3.2-win32.zip" rel="nofollow">http://download.tuxfamily.org/ctpl/releases/ctpl-0.3.2-win32.zip</a></div>
+</li>
+<li class="level1"><div class="li"> <a href="http://ftp.acc.umu.se/pub/gnome/binaries/win32/libsoup/2.26/libsoup-dev_2.26.3-1_win32.zip" class="urlextern" title="http://ftp.acc.umu.se/pub/gnome/binaries/win32/libsoup/2.26/libsoup-dev_2.26.3-1_win32.zip" rel="nofollow">http://ftp.acc.umu.se/pub/gnome/binaries/win32/libsoup/2.26/libsoup-dev_2.26.3-1_win32.zip</a></div>
+</li>
+<li class="level1"><div class="li"> <a href="http://ftp.acc.umu.se/pub/gnome/binaries/win32/libsoup/2.26/libsoup_2.26.3-1_win32.zip" class="urlextern" title="http://ftp.acc.umu.se/pub/gnome/binaries/win32/libsoup/2.26/libsoup_2.26.3-1_win32.zip" rel="nofollow">http://ftp.acc.umu.se/pub/gnome/binaries/win32/libsoup/2.26/libsoup_2.26.3-1_win32.zip</a></div>
+</li>
+<li class="level1"><div class="li"> <a href="http://ftp.acc.umu.se/pub/gnome/binaries/win32/dependencies/libxml2_2.9.0-1_win32.zip" class="urlextern" title="http://ftp.acc.umu.se/pub/gnome/binaries/win32/dependencies/libxml2_2.9.0-1_win32.zip" rel="nofollow">http://ftp.acc.umu.se/pub/gnome/binaries/win32/dependencies/libxml2_2.9.0-1_win32.zip</a></div>
+</li>
+<li class="level1"><div class="li"> <a href="http://ftp.acc.umu.se/pub/gnome/binaries/win32/dependencies/libxml2-dev_2.9.0-1_win32.zip" class="urlextern" title="http://ftp.acc.umu.se/pub/gnome/binaries/win32/dependencies/libxml2-dev_2.9.0-1_win32.zip" rel="nofollow">http://ftp.acc.umu.se/pub/gnome/binaries/win32/dependencies/libxml2-dev_2.9.0-1_win32.zip</a></div>
+</li>
+<li class="level1"><div class="li"> <a href="http://ftp.acc.umu.se/pub/gnome/binaries/win32/dependencies/enchant-dev_1.5.0-2_win32.zip" class="urlextern" title="http://ftp.acc.umu.se/pub/gnome/binaries/win32/dependencies/enchant-dev_1.5.0-2_win32.zip" rel="nofollow">http://ftp.acc.umu.se/pub/gnome/binaries/win32/dependencies/enchant-dev_1.5.0-2_win32.zip</a></div>
+</li>
+<li class="level1"><div class="li"> <a href="http://ftp.acc.umu.se/pub/gnome/binaries/win32/dependencies/enchant_1.5.0-2_win32.zip" class="urlextern" title="http://ftp.acc.umu.se/pub/gnome/binaries/win32/dependencies/enchant_1.5.0-2_win32.zip" rel="nofollow">http://ftp.acc.umu.se/pub/gnome/binaries/win32/dependencies/enchant_1.5.0-2_win32.zip</a></div>
+</li>
+</ul>
+
+</div>
+
+<h4 id="lua_for_windows">Lua for Windows</h4>
+<div class="level4">
+
+<p>
+Setting up Lua on Windows in our custom build environment requires a few additional steps.
+</p>
+<ul>
+<li class="level1"><div class="li"> Download lua-5.1.4_Win32_dll12_lib.zip from <a href="http://sourceforge.net/projects/luabinaries/files/5.1.4/Windows%20Libraries/" class="urlextern" title="http://sourceforge.net/projects/luabinaries/files/5.1.4/Windows%20Libraries/" rel="nofollow">http://sourceforge.net/projects/luabinaries/files/5.1.4/Windows%20Libraries/</a></div>
+</li>
+<li class="level1"><div class="li"> Extract to c:\libs</div>
+</li>
+<li class="level1"><div class="li"> Move liblua5.1.* to c:\libs\lib</div>
+</li>
+<li class="level1"><div class="li"> Create c:\libs\lib\pkgconfig\lua.pc with the following content:</div>
+</li>
+</ul>
+<dl class="code">
+<dt><a href="http://wiki.geany.org/_export/code/howtos/win32/build?codeblock=1" title="Download Snippet" class="mediafile mf_pc">lua.pc</a></dt>
+<dd><pre class="code ini"><span class="re1">prefix</span><span class="sy0">=</span><span class="re2">c:\libs</span>
+<span class="re1">exec_prefix</span><span class="sy0">=</span><span class="re2">$<span class="br0">{</span>prefix<span class="br0">}</span></span>
+<span class="re1">libdir</span><span class="sy0">=</span><span class="re2">$<span class="br0">{</span>exec_prefix<span class="br0">}</span>/lib</span>
+<span class="re1">includedir</span><span class="sy0">=</span><span class="re2">$<span class="br0">{</span>prefix<span class="br0">}</span>/include</span>
+<span class="re1">datarootdir</span><span class="sy0">=</span><span class="re2">$<span class="br0">{</span>prefix<span class="br0">}</span>/share</span>
+<span class="re1">datadir</span><span class="sy0">=</span><span class="re2">$<span class="br0">{</span>datarootdir<span class="br0">}</span></span>
+<span class="re1">localedir</span><span class="sy0">=</span><span class="re2">$<span class="br0">{</span>datarootdir<span class="br0">}</span>/locale</span>
+&nbsp;
+Name: Lua
+Description: A fast and lightweight IDE using GTK2
+Requires: gtk+-<span class="nu0">2.0</span> &gt;<span class="sy0">=</span><span class="re2"> 2.8.0</span>
+Version: <span class="nu0">5.1</span>
+Libs: -L$<span class="br0">{</span>libdir<span class="br0">}</span> -llua5.1
+Cflags: -I$<span class="br0">{</span>includedir<span class="br0">}</span></pre>
+</dd></dl>
+
+</div>
+
+<h2 id="setup">Setup</h2>
+<div class="level2">
+
+</div>
+
+<h3 id="modify_path">Modify %PATH%</h3>
+<div class="level3">
+
+<p>
+For convenience and a working build system, you need to extend the %PATH% variable, so the newly installed tools will be available
+without typing the whole path every time.
+</p>
+
+<p>
+To do so, open the <em>Control Panel</em> and choose <em>System and Security\System</em>, then click on the left on <em>Advanced system settings</em>.
+In the newly opened dialog, click on <em>Environment Variables</em>. In the list of <em>System variables</em> search for <em>Path</em>.
+</p>
+
+<p>
+Edit it and add the following paths to the end of list (seperated with semicolon):
+</p>
+<pre class="code">C:\python27;C:\Program Files (x86)\NSIS;c:\libs\bin;C:\libs\utils\usr\local\wbin;C:\Program Files (x86)\Git\cmd;C:\perl\perl\site\bin;C:\perl\perl\bin;C:\perl\c\bin</pre>
+
+<p>
+It might be some of the paths were already added by some installers. Adding them twice won't hurt but it is always better to check the whole list before saving.
+</p>
+
+<p>
+Then save and close all dialogs.
+</p>
+
+<p>
+To test the new setting, open a new command line window (Start → Run → “cmd.exe”) and test executing the following commands:
+</p>
+<ul>
+<li class="level1"><div class="li"> python</div>
+</li>
+<li class="level1"><div class="li"> perl</div>
+</li>
+<li class="level1"><div class="li"> wget</div>
+</li>
+<li class="level1"><div class="li"> pkg-config</div>
+</li>
+<li class="level1"><div class="li"> makensis</div>
+</li>
+</ul>
+
+</div>
+
+<h3 id="clone_the_geany_repository_from_github">Clone the Geany repository from Github</h3>
+<div class="level3">
+
+<p>
+Before starting with the rest, you need the <abbr title="A fast and lightweight IDE">Geany</abbr> source code first (and the code of geany-plugins and the extra themes).
+In a command line window, execute the following commands:
+</p>
+<pre class="code">mkdir \git
+cd \git
+git clone git://github.com/geany/geany
+git clone git://github.com/geany/geany-plugins
+git clone git://github.com/geany/geany-themes</pre>
+
+</div>
+
+<h2 id="build_and_test">Build and test</h2>
+<div class="level2">
+
+</div>
+
+<h3 id="build_geany">Build Geany</h3>
+<div class="level3">
+
+<p>
+Now you are ready to compile and build <abbr title="A fast and lightweight IDE">Geany</abbr> already.
+</p>
+
+<p>
+In a command line window, execute the following commands:
+</p>
+<pre class="code">cd \git\geany
+python waf configure
+python waf build
+python waf install</pre>
+
+<p>
+If all went fine, you should have a full <abbr title="A fast and lightweight IDE">Geany</abbr> for Windows build in \git\geany\geany-1.25 (or whatever is the current version of GIT Master).
+</p>
+
+</div>
+
+<h4 id="copy_include_headers_for_later_use">Copy include headers for later use</h4>
+<div class="level4">
+
+<p>
+To be able to compile plugins against your current version of <abbr title="A fast and lightweight IDE">Geany</abbr>, 
+you need to copy the header files and the pkg-config file geany.pc to
+c:\libs so that pkg-config and the compiler will find those files.
+</p>
+
+<p>
+To do so easily, you can use the following script to copy the header files and the geany.pc 
+pkg-config file to c:\libs.
+</p>
+<dl class="code">
+<dt><a href="http://wiki.geany.org/_export/code/howtos/win32/build?codeblock=5" title="Download Snippet" class="mediafile mf_py">copy_headers.py</a></dt>
+<dd><pre class="code python"><span class="co1">#!/usr/bin/env python</span>
+&nbsp;
+<span class="kw1">import</span> <span class="kw3">glob</span><span class="sy0">,</span> <span class="kw3">os</span><span class="sy0">,</span> <span class="kw3">shutil</span>
+&nbsp;
+VERSION <span class="sy0">=</span> <span class="st0">'1.25nightly'</span>
+DEST <span class="sy0">=</span> r<span class="st0">'<span class="es0">\l</span>ibs'</span>
+&nbsp;
+<span class="co1"># header files</span>
+<span class="kw3">shutil</span>.<span class="me1">rmtree</span><span class="br0">(</span>r<span class="st0">'%s<span class="es0">\i</span>nclude<span class="es0">\g</span>eany'</span> % DEST<span class="sy0">,</span> ignore_errors<span class="sy0">=</span><span class="kw2">True</span><span class="br0">)</span>
+<span class="kw3">shutil</span>.<span class="me1">copytree</span><span class="br0">(</span>r<span class="st0">'geany-%s<span class="es0">\i</span>nclude<span class="es0">\g</span>eany'</span> % VERSION<span class="sy0">,</span> r<span class="st0">'%s<span class="es0">\i</span>nclude<span class="es0">\g</span>eany'</span> % DEST<span class="br0">)</span>
+<span class="co1"># geany-0.dll</span>
+dlls <span class="sy0">=</span> <span class="kw3">glob</span>.<span class="kw3">glob</span><span class="br0">(</span>r<span class="st0">'geany-%s<span class="es0">\b</span>in<span class="es0">\g</span>eany*.dll'</span> % VERSION<span class="br0">)</span>
+<span class="kw1">for</span> filename <span class="kw1">in</span> dlls:
+    <span class="co1"># copy it to lib\ instead bin\ so the lookup works</span>
+    <span class="co1"># rename the file to geany.dll, as the linker uses '-lgeany'</span>
+    <span class="co1"># this loop will overwrite previously copied files if there is more</span>
+    <span class="co1"># one geany*.dll in the source directory, this should not happen</span>
+    <span class="kw3">shutil</span>.<span class="kw3">copy</span><span class="br0">(</span>filename<span class="sy0">,</span> r<span class="st0">'%s<span class="es0">\l</span>ib<span class="es0">\g</span>eany.dll'</span> % DEST<span class="br0">)</span>
+<span class="co1"># geany.pc</span>
+<span class="kw3">shutil</span>.<span class="kw3">copy</span><span class="br0">(</span>r<span class="st0">'geany-%s<span class="es0">\l</span>ib<span class="es0">\p</span>kgconfig<span class="es0">\g</span>eany.pc'</span> % VERSION<span class="sy0">,</span> r<span class="st0">'%s<span class="es0">\l</span>ib<span class="es0">\p</span>kgconfig'</span> % DEST<span class="br0">)</span></pre>
+</dd></dl>
+
+</div>
+
+<h3 id="build_geany-plugins">Build Geany-Plugins</h3>
+<div class="level3">
+
+<p>
+After <abbr title="A fast and lightweight IDE">Geany</abbr> has been compiled and the headers copied into the target location, you
+should be able to compile <abbr title="A fast and lightweight IDE">Geany</abbr>-<abbr title="A way to extend Geany's functionality">Plugins</abbr> as well.
+In a command line window, execute the following commands:
+</p>
+<pre class="code">cd \git\geany
+python waf configure
+python waf build
+python waf install</pre>
+
+<p>
+Carefully read the output of <em>python waf configure</em> and check whether the installed dependencies
+have been found. At the time of writing, it is expected that the following dependencies will not
+be found and/or are not really supported yet:
+</p>
+<ul>
+<li class="level1"><div class="li"> GpgMe</div>
+</li>
+<li class="level1"><div class="li"> GtkSpell</div>
+</li>
+<li class="level1"><div class="li"> PyGTK (an update to this tutorial for building GeanyPy using PyGTK on Windows is planned)</div>
+</li>
+<li class="level1"><div class="li"> <abbr title="In Geany embedded terminal emulation">VTE</abbr></div>
+</li>
+<li class="level1"><div class="li"> Vala</div>
+</li>
+<li class="level1"><div class="li"> WebKit</div>
+</li>
+</ul>
+
+<p>
+If all went fine, you should have the plugins built in \git\geany-plugins\geany-plugins-1.25 (or whatever is the current version of GIT Master).
+</p>
+
+</div>
+
+<h3 id="test_the_geany_build">Test the Geany build</h3>
+<div class="level3">
+
+<p>
+After you have built <abbr title="A fast and lightweight IDE">Geany</abbr> and <abbr title="A fast and lightweight IDE">Geany</abbr>-<abbr title="A way to extend Geany's functionality">Plugins</abbr> from source, you might want to run and test it.
+This is a bit tricky but possible.
+</p>
+
+</div>
+
+<h4 id="initial_test_setup">Initial test setup</h4>
+<div class="level4">
+
+<p>
+Execute the following commands only once:
+</p>
+<ul>
+<li class="level1"><div class="li"> create directory: c:\git\geany_test</div>
+</li>
+<li class="level1"><div class="li"> copy everything from c:\git\geany\geany-1.25 to c:\git\geany_test</div>
+</li>
+<li class="level1"><div class="li"> copy bundled <abbr title="Gimp ToolKit, a highly usable, feature rich toolkit for creating graphical user interfaces">GTK</abbr> runtine environment to c:\git\geany_test</div>
+</li>
+<li class="level1"><div class="li"> copy everything from c:\git\geany-plugins\geany-plugins-1.25 to c:\git\geany_test</div>
+</li>
+<li class="level1"><div class="li"> copy plugins dependencies from c:\git\geany-plugins\contrib to c:\git\geany_test</div>
+</li>
+</ul>
+
+</div>
+
+<h4 id="usage">Usage</h4>
+<div class="level4">
+
+<p>
+Save the following script to \git\geany\
+</p>
+<dl class="code">
+<dt><a href="http://wiki.geany.org/_export/code/howtos/win32/build?codeblock=7" title="Download Snippet" class="mediafile mf_bat">_geany_test.bat</a></dt>
+<dd><pre class="code winbatch">cd c<span class="co2">:\git\geany\</span>
+&nbsp;
+copy _build_\geany.exe c<span class="co2">:\git\geany_test\bin\</span>
+xcopy <span class="sy0">/</span>Y _build_\<span class="sy0">*</span>.dll c<span class="co2">:\git\geany_test\lib\</span>
+&nbsp;
+cd c<span class="co2">:\git\geany-plugins\</span>
+<span class="kw1">for</span> <span class="sy0">/</span>F <span class="st0">"usebackq"</span> <span class="sy0">%%</span>i <span class="kw1">in</span> <span class="br0">(</span><span class="st0">`dir /s /b _build_\*.dll`</span><span class="br0">)</span> do copy <span class="sy0">%%</span>i c<span class="co2">:\git\geany_test\lib</span>
+<span class="sy0">#</span> cleanup
+rm c<span class="co2">:\git\geany_test\lib\libgeanylua.dll</span>
+&nbsp;
+cd c<span class="co2">:\git\geany_test\bin\</span>
+&nbsp;
+geany.exe <span class="sy0">-</span>v <span class="sy0">--</span>socket<span class="sy0">-</span>file ..\_geany_config\mysocket <span class="sy0">-</span>c ..\_geany_config</pre>
+</dd></dl>
+
+<p>
+Then whenever you want to test a <abbr title="A fast and lightweight IDE">Geany</abbr> build, run _geany_test.bat from \git\geany.
+</p>
+
+</div>
+
+<h2 id="create_a_stripped_down_gtk_runtime_environment">Create a stripped down GTK runtime environment</h2>
+<div class="level2">
+
+<p>
+To create a stripped down <abbr title="Gimp ToolKit, a highly usable, feature rich toolkit for creating graphical user interfaces">GTK</abbr> runtime environment used to embed into the Windows installer,
+we first download the latest <abbr title="Gimp ToolKit, a highly usable, feature rich toolkit for creating graphical user interfaces">GTK</abbr> (currently GTK2) bundle from <a href="http://www.gtk.org/" class="urlextern" title="http://www.gtk.org" rel="nofollow">www.gtk.org</a>.
+</p>
+
+<p>
+For this example the bundle gtk+-bundle_2.24.10-20120208_win32.zip was used.
+Extract the bundle into a new folder.
+</p>
+
+<p>
+Then execute the following commands to remove any not necessary files:
+</p>
+<pre class="code">rm -rf bin\envsubst.exe
+rm -rf bin\fc-cache.exe
+rm -rf bin\fc-cat.exe
+rm -rf bin\fc-list.exe
+rm -rf bin\freetype-config
+rm -rf bin\gdbus.exe
+rm -rf bin\gdk-pixbuf-csource.exe
+rm -rf bin\gdk-pixbuf-query-loaders.exe
+rm -rf bin\gettext.exe
+rm -rf bin\gettext.sh
+rm -rf bin\gio-querymodules.exe
+rm -rf bin\glib-compile-schemas.exe
+rm -rf bin\glib-genmarshal.exe
+rm -rf bin\glib-gettextize
+rm -rf bin\glib-mkenums
+rm -rf bin\gobject-query.exe
+rm -rf bin\gspawn-win32-helper.exe
+rm -rf bin\gspawn-win32-helper-console.exe
+rm -rf bin\gtk-builder-convert
+rm -rf bin\gtk-demo.exe
+rm -rf bin\gtk-query-immodules-2.0.exe
+rm -rf bin\gtk-update-icon-cache.exe
+rm -rf bin\gtk-update-icon-cache.exe.manifest
+rm -rf bin\libasprintf-0.dll
+rm -rf bin\libcairo-script-interpreter-2.dll
+rm -rf bin\libgcc_s_dw2-1.dll
+rm -rf bin\ngettext.exe
+rm -rf bin\pango-querymodules.exe
+rm -rf bin\pango-view.exe
+rm -rf bin\pkg-config.exe
+rm -rf bin\xmlwf.exe
+rm -rf etc\bash_completion.d
+rm -rf gtk+-bundle_2.*README.txt
+rm -rf include
+rm -rf lib\*.a
+rm -rf lib\*.def
+rm -rf lib\*.dll
+rm -rf lib\*.lib
+rm -rf lib\gdk-pixbuf-2.0
+rm -rf lib\glib-2.0
+rm -rf lib\pkgconfig
+rm -rf man
+rm -rf manifest
+rm -rf share\aclocal
+rm -rf share\doc
+rm -rf share\glib-2.0
+rm -rf share\gtk-2.0
+rm -rf share\gtk-doc
+rm -rf share\man
+rm -rf src</pre>
+
+<p>
+Then create a subdirectory “gtk” in your <abbr title="A fast and lightweight IDE">Geany</abbr> git clone and copy
+the remaining bundle contents into the “gtk” directory so that it contains
+the bin-etc-lib-share directory structure:
+</p>
+
+<p>
+Et voila: you got a stripped down <abbr title="Gimp ToolKit, a highly usable, feature rich toolkit for creating graphical user interfaces">GTK</abbr> runtime environment ready to use for <abbr title="A fast and lightweight IDE">Geany</abbr> on Windows.
+</p>
+
+<p>
+Since <abbr title="A fast and lightweight IDE">Geany</abbr> 1.25 we include a grep binary in the installer to easily make Find in Files
+work on Windows without further user interaction. So we need to copy grep.exe
+from UnxUtils to the <abbr title="Gimp ToolKit, a highly usable, feature rich toolkit for creating graphical user interfaces">GTK</abbr> runtime directory:
+</p>
+<pre class="code">cp c:\libs\utils\usr\local\wbin\grep.exe c:\git\geany\gtk\bin</pre>
+
+<p>
+As usual, edit paths as necessary.
+</p>
+
+</div>
+
+<h2 id="release_geany_and_geany-plugins">Release Geany and Geany-Plugins</h2>
+<div class="level2">
+
+</div>
+
+<h3 id="release_geany">Release Geany</h3>
+<div class="level3">
+
+<p>
+Download <a href="http://wiki.geany.org/_media/howtos/win32/release.py.txt" class="media mediafile mf_txt" title="howtos:win32:release.py.txt (3&nbsp;KB)">release.py.txt</a> (and remove the .txt extension)
+</p>
+<ul>
+<li class="level1"><div class="li"> edit release.py and update VERSION constant</div>
+</li>
+<li class="level1"><div class="li"> check for a clean working copy (e.g. no uncommitted changes)</div>
+</li>
+<li class="level1"><div class="li"> clean and build (adjust versions as necessary):</div>
+</li>
+</ul>
+<pre class="code">rmdir /S geany-1.25
+python waf clean
+git pull
+python waf configure --no-scm
+python waf build
+python waf install
+python release.py</pre>
+<ul>
+<li class="level1"><div class="li"> Party!</div>
+</li>
+</ul>
+
+</div>
+
+<h3 id="release_geany-plugins">Release Geany-Plugins</h3>
+<div class="level3">
+
+<p>
+Download <a href="http://wiki.geany.org/_media/howtos/win32/release.plugins.py.txt" class="media mediafile mf_txt" title="howtos:win32:release.plugins.py.txt (2.6&nbsp;KB)">release.plugins.py.txt</a> (and remove the .txt extension)
+</p>
+<ul>
+<li class="level1"><div class="li"> edit: release.py and update VERSION constant</div>
+</li>
+<li class="level1"><div class="li"> check for a clean working copy (e.g. no uncommitted changes)</div>
+</li>
+<li class="level1"><div class="li"> clean and build (adjust versions as necessary):</div>
+</li>
+</ul>
+<pre class="code">rmdir /S geany-plugins-1.25
+python waf clean
+git pull
+python waf configure --no-scm
+python waf build
+python waf install
+python release.py</pre>
+<ul>
+<li class="level1"><div class="li"> Party!</div>
+</li>
+</ul>
+
+</div>
+
+<h1 id="todo">TODO</h1>
+<div class="level1">
+<ul>
+<li class="level1"><div class="li"> document and provide plugins contrib</div>
+</li>
+<li class="level1"><div class="li"> document release process in detail</div>
+</li>
+<li class="level1"><div class="li"> document PyGTK installation </div>
+</li>
+</ul>
+<div class="tags"><span>
+	<a href="http://wiki.geany.org/tag/howto?do=showtag&amp;tag=howto" class="wikilink1" title="tag:howto" rel="tag">howto</a>,
+	<a href="http://wiki.geany.org/tag/win32?do=showtag&amp;tag=win32" class="wikilink1" title="tag:win32" rel="tag">win32</a>,
+	<a href="http://wiki.geany.org/tag/build?do=showtag&amp;tag=build" class="wikilink1" title="tag:build" rel="tag">build</a>
+</span></div>
+
+</div>
+
+    <!-- end rendered wiki content -->
+    <div class="clearer"></div>
+  </div>
+  <!-- end div id bodyContent -->
+
+  
+  <div class="catlinks noprint"><p>
+    <span class="bchead">Trace:</span> <span class="bcsep">•</span> <span class="curid"><bdi><a href="#" class="breadcrumbs" title="howtos:win32:build">Build Geany on Windows (using Waf) DEPRECATED</a></bdi></span>
+  </p></div>
+
+</div>
+<!-- end div id=content -->
+
+
+<!-- start div id=head -->
+<div id="head" class="noprint">
+  
+  <div id="p-personal">
+    <ul>
+      <li id="pt-login"><a href="http://wiki.geany.org/howtos/win32/build?do=login" rel="nofollow">Log In</a></li>
+    </ul>
+  </div>
+
+  <!-- start div id=left-navigation -->
+  <div id="left-navigation">
+    <div id="p-namespaces" class="vectorTabs">
+      <ul>
+        <li id="ca-nstab-main" class="selected"><a href="#"><span>Article</span></a></li>
+      </ul>
+    </div>
+  </div>
+  <!-- end div id=left-navigation -->
+
+  <!-- start div id=right-navigation -->
+  <div id="right-navigation">
+    <div id="p-views" class="vectorTabs">
+      <ul>
+        <li id="ca-view" class="selected"><a href="#"><span>Read</span></a></li>
+        <li id="ca-edit"><a href="http://wiki.geany.org/howtos/win32/build?do=edit&amp;rev=1467032016" accesskey="E" title="[ALT+E]"><span>Show pagesource</span></a></li>
+        <li id="ca-history"><a href="http://wiki.geany.org/howtos/win32/build?do=revisions" accesskey="O" title="[ALT+O]"><span>Old revisions</span></a></li>
+      </ul>
+    </div>
+    <div id="p-search">
+      <h5>
+        <label for="qsearch__in">Search</label>
+      </h5>
+      <form action="http://wiki.geany.org/start" accept-charset="utf-8" id="dw__search" name="dw__search">
+        <input name="do" value="search" type="hidden">
+        <div id="simpleSearch">
+          <input id="qsearch__in" name="id" accesskey="f" value="" type="text">
+          <button id="searchButton" type="submit" name="button" title="Search for this text">&nbsp;</button>
+        </div>
+        <div id="qsearch__out" class="ajax_qsearch JSpopup"></div>
+      </form>
+    </div>
+  </div>
+  <!-- end div id=right-navigation -->
+
+</div>
+<!-- end div id=head -->
+
+<!-- start panel/sidebar -->
+<div id="panel" class="noprint">
+  <!-- start logo -->
+  <div id="p-logo">
+      <a href="http://wiki.geany.org/start" style="background-image: url(&quot;logo.png&quot;);" accesskey="h" title="[ALT+H]"></a>
+  </div>
+  <!-- end logo -->
+
+  
+  <div id="p-navigation" class="portal">
+    <h5>Navigation</h5>
+    <div class="body">
+      <div class="dokuwiki">
+
+<p>
+<a href="http://wiki.geany.org/config/start" class="wikilink1" title="config:start">Custom Configurations</a>
+</p>
+
+<p>
+<a href="http://wiki.geany.org/themes/start" class="wikilink1" title="themes:start">Color Schemes</a>
+</p>
+
+<p>
+<a href="http://wiki.geany.org/howtos/start" class="wikilink1" title="howtos:start">HowTos</a>
+</p>
+
+<p>
+<a href="http://wiki.geany.org/newsletter/start" class="wikilink1" title="newsletter:start">Newsletter</a>
+</p>
+
+<p>
+<a href="http://wiki.geany.org/plugins/start" class="wikilink1" title="plugins:start">Plugins</a>
+</p>
+
+<p>
+<a href="http://wiki.geany.org/snippets/start" class="wikilink1" title="snippets:start">Snippets</a>
+</p>
+
+<p>
+<a href="http://wiki.geany.org/tags/start" class="wikilink1" title="tags:start">Tags</a>
+</p>
+
+<p>
+<a href="http://wiki.geany.org/wiki/start" class="wikilink1" title="wiki:start">About / Help</a>
+</p>
+
+      </div>
+    </div>
+  </div>
+  <div id="p-coll-print_export" class="portal">
+    <h5>Print/export</h5>
+    <div class="body">
+      <div class="dokuwiki">
+      <ul>
+        <li id="t-print"><a href="http://wiki.geany.org/howtos/win32/build?rev=1467032016&amp;vecdo=print" rel="nofollow">Printable version</a></li>
+      </ul>
+      </div>
+    </div>
+  </div>
+  <div id="p-tb" class="portal">
+    <h5>Tools</h5>
+    <div class="body">
+      <div class="dokuwiki">
+      <ul>
+        <li id="t-whatlinkshere"><a href="http://wiki.geany.org/howtos/win32/build?do=backlink">What links here</a></li>
+        <li id="t-recentchanges"><a href="http://wiki.geany.org/start?do=recent" rel="nofollow">Recent Changes</a></li>
+        <li id="t-upload"><a href="http://wiki.geany.org/start?do=media" rel="nofollow">Media Manager</a></li>
+        <li id="t-special"><a href="http://wiki.geany.org/start?do=index" rel="nofollow">Sitemap</a></li>
+        <li id="t-permanent"><a href="http://wiki.geany.org/howtos/win32/build?rev=1467032016" rel="nofollow">Permanent link</a></li>
+        <li id="t-cite"><a href="http://wiki.geany.org/howtos/win32/build?rev=1467032016&amp;vecdo=cite" rel="nofollow">Cite this page</a></li>
+      </ul>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+<!-- end panel/sidebar -->
+</div>
+<!-- end page-container -->
+
+<!-- start footer -->
+<div id="footer" class="noprint">
+  <ul id="footer-info">
+    <li id="footer-info-lastmod">
+      <bdi>howtos/win32/build.txt</bdi> · Last modified: 2016/06/27 12:53 by <bdi>enrico</bdi><br>
+    </li>
+    <li id="footer-info-copyright">
+      <div class="dokuwiki"><div class="license">Except where otherwise noted, content on this wiki is licensed under the following license: <bdi><a href="http://creativecommons.org/licenses/by-sa/4.0/" rel="license" class="urlextern">CC Attribution-Share Alike 4.0 International</a></bdi></div></div>
+    </li>
+  </ul>
+  <ul id="footer-places">
+    <li>
+      <a href="http://wiki.geany.org/feed.php" rel="nofollow" title="Recent changes" target="_blank"><img src="button-rss.png" title="Recent changes" alt="Recent changes" width="80" border="0" height="15"></a>
+      <a href="https://www.dokuwiki.org/template:vector" rel="nofollow" title="vector template for DokuWiki" target="_blank"><img src="button-vector.png" title="vector template for DokuWiki" alt="vector template for DokuWiki" width="80" border="0" height="15"></a>
+      <a href="https://www.dokuwiki.org/" rel="nofollow" title="DokuWiki" target="_blank"><img src="button-dw.png" title="DokuWiki" alt="DokuWiki" width="80" border="0" height="15"></a>
+      <a href="http://validator.w3.org/check/referer" rel="nofollow" title="Valid XHTML" target="_blank"><img src="button-xhtml.png" title="Valid XHTML" alt="Valid XHTML" width="80" border="0" height="15"></a>
+      <a href="http://www.geany.org/" rel="nofollow" title="Geany - A fast and lightweight IDE" target="_blank"><img src="button-geany.png" title="Geany - A fast and lightweight IDE" alt="Geany - A fast and lightweight IDE" border="0"></a>
+      <a href="http://creativecommons.org/licenses/by-sa/3.0/" rel="nofollow" title="CC Attribution-Share Alike 3.0 Unported" target="_blank"><img src="cc-by-sa.png" title="CC Attribution-Share Alike 3.0 Unported" alt="CC Attribution-Share Alike 3.0 Unported" border="0"></a>
+    </li>
+  </ul>
+  <div style="clearer"></div>
+</div>
+<!-- end footer -->
+<img src="indexer.php" alt="" width="2" height="1">
+
+
+
+
+</body></html>

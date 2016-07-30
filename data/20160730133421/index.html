@@ -1,0 +1,349 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Rsync backups: excluding directories | TuxRadar Linux</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+
+
+
+
+
+<meta name="google-site-verification" content="xZ2M8SMe6WqpICqlZWgO6uMoCXkCPr3uCHD0A4u1RqA">
+
+
+
+<!--<link href="http://assets.futurecdn.net/css/future_branding.min.css" rel="stylesheet" type="text/css" > -->
+
+
+<!--DFP integration + audience_sci-->
+
+
+
+<!--END DFP integration + audience_sci-->
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+
+<body>
+
+<!-- Google Tag Manager -->
+
+
+<!-- End Google Tag Manager -->
+
+	
+<div id="masthead">
+	<div class="inner">
+		<div id="logo">
+			<a href="http://www.tuxradar.com/"><img src="tuxradar.png" alt="TuxRadar" title="TuxRadar"></a>
+		</div>
+
+		<div style="float: right; margin-top: 5px;">
+
+<!--DFP Leaderboard -->
+<div id="dfp-advert-1"></div>
+
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="top_nav">
+	<div class="inner">
+		<div id="menubar">
+			<ul class="links"><li class="first $key"><a href="http://www.tuxradar.com/" class="menu-1-1-2">Latest News</a></li>
+<li class="$key"><a href="http://www.tuxradar.com/podcast" class="menu-1-2-2">Podcast</a></li>
+<li class="$key"><a href="http://www.tuxradar.com/features" class="menu-1-3-2">Features</a></li>
+<li class="$key"><a href="http://www.tuxradar.com/distros" class="menu-1-4-2">Distros</a></li>
+<li class="$key"><a href="http://www.tuxradar.com/code" class="menu-1-5-2">Code</a></li>
+<li class="$key"><a href="http://www.tuxradar.com/apps" class="menu-1-6-2">Apps</a></li>
+<li class="$key"><a href="http://www.tuxradar.com/content/open-ballot-have-you-converted-anyone-linux" class="menu-1-7-2">Convert Corner</a></li>
+<li class="last $key"><a href="http://www.tuxradar.com/content/distro-picker-0" title="Discover your perfect distro!" class="menu-1-8-2">Distro Picker</a></li>
+</ul>		&nbsp;&nbsp;&nbsp;<a href="http://www.tuxradar.com/rss"><img src="rss-small.png" style="border: 0px none; margin-top: 16px;"></a>
+		</div>
+
+		<div id="search_box">
+			<form id="search-block-form" method="post" accept-charset="UTF-8" action="http://www.tuxradar.com/search/node">
+				<input id="searchterm" name="keys" size="10" type="text">
+				<input name="form_token" id="edit-search-form-form-token" value="dfcef1024f9430ca5a9ad728f1ca4fd7" type="hidden">
+				<input name="form_id" id="edit-search-form" value="search_form" type="hidden">
+				<input id="search_button" value="Search" type="submit">
+			</form>
+		</div>
+	</div>
+</div>
+
+<!--
+<div id="topstories">
+	<div class="inner" style="text-align: center;">
+		<p>
+
+		
+		</p>
+
+	</div>
+</div>
+//-->
+
+<div id="content">
+	<div id="left" class="inner">
+		<div id="node-312" class="node">
+
+
+	<h1>Rsync backups: excluding directories</h1><p class="answers_question">Q I've been trying to set up an rsync script to back up the important contents of my home directory to a USB drive, and I'm having great difficulty whipping it into shape. Particularly confusing is how to use --exclude-from and (even more confusing) --include-from. I'm on an Ubuntu 6.06 system, with rsync 2.6.6. Here's an outline of what I want to happen. First, all of the non-hidden files, directories and their subdirectories etc in my home directory /home/dcoldric are to be backed up, except that for the directory /home/dcoldric/MyDownloads, I don't want any subdirectories to be included, just non-directory files. Another exception is that there is a very limited number of non-hidden subdirectories - such as /home/dcoldric/cxoffice/ - that I do not want to back up. All of the hidden files and directories are to be ignored, except for a few. For example, I do want to back up /home/dcoldric/.netbeans and subdirectories, as well as .bashrc and .bash_aliases. Finally, I'd like the directory structure of the backup to mimic that of the original (except for the ignored directories). I have tried just about everything I can think of, to no avail. My latest variant looks like:</p>
+<pre class="command">rsync -a --delete --safe-links --exclude-from=/home/dcoldric/bin/backupExcludes
+/home/dcoldric/ /media/USB/backup/dcoldric
+</pre>
+<p>where the backupExcludes file currently looks like this:</p>
+<pre class="command">- /*
++ /dcoldric/
++ /dcoldric/.Creator/
++ /dcoldric/.java/
++ /dcoldric/.mozilla/
++ /dcoldric/.mozilla-thunderbird/
++ /dcoldric/.netbeans/
++ /dcoldric/.bashrc
++ /dcoldric/.bash_aliases
++ /dcoldric/MyDownloads/
+- /dcoldric/MyDownloads/*/
+- /dcoldric/.*
+- /dcoldric/cxoffice
+- /dcoldric/jdk*
+- /dcoldric/sun
+- /dcoldric/SUNW*
+</pre>
+<p>However, it appears to do nothing.</p>
+<p></p><p class="answers_answer">A The rsync command copies everything by default, so the --exclude option tells it what to skip. It may be clearer to think of --include as --do-not-exclude. The exclude-from file you have given is actually a filter file. Filtering provides control, but it does not have a --filter- from variant. The more correct way to use a filter file is with the option</p>
+<pre class="command">--filter="merge myfilterfile"
+</pre>
+<p>Your current filter file does not work because it starts with - /*, which excludes everything. So when you say it does nothing, you and the program are quite correct - because that is just what you told it to do. The first match counts, so move - /* to the end. When a filter path starts with a /, it is matched relative to the source directory, which is ~/dcoldric. So you need to remove /dcoldric from the start of each path, otherwise you are trying to match /home/dcoldric/dcoldric/.mozilla and so on. Although it doesn't affect your current filters, you should be aware that</p>
+<pre class="command">+ /foo/bar/
+- /*
+</pre>
+<p>will match nothing. Because /* excludes everything in the base directory, the contents of foo are never checked, so foo/bar is not found. You need to force rsync to scan foo with</p>
+<pre class="command">+ /foo/
++ /foo/bar/
+- /foo/*
+- /*
+</pre>
+<p>A working filter file would be</p>
+<pre class="command">+ /.netbeans/
++ /.bashrc
++ /.bash_aliases
+- /MyDownloads/*/
+- /.*
+- /cxoffice
+- /jdk*
+</pre>
+<p>Call this with</p>
+<pre class="command">rsync -a --delete --safe-links --filter="merge~dcoldric/bin/backupFilter"
+~dcoldric/ /media/USB/backup/dcoldric/
+</pre>
+<p>Note the trailing / on the destination: this can affect the result.</p>
+<p></p><div class="boxout"><h2>Related solutions</h2><ul><li><a href="#">Rsync backups: excluding directories</a></li><li><a href="http://www.tuxradar.com/answers/152">Automate backups in crontab</a></li><li><a href="http://www.tuxradar.com/answers/457">Configure Apache to have personal websites in home directories</a></li><li><a href="http://www.tuxradar.com/answers/356">Make KFind skip directories and mount points</a></li><li><a href="http://www.tuxradar.com/answers/230">Access multiple home directories with a single FTP account</a></li></ul><p>&nbsp;</p><form method="get" action="http://www.tuxradar.com/answers"><p align="center">Search the database: <input name="search" type="text"> <input value="Go" type="submit"></p></form><p>&nbsp;</p>							
+							<p align="CENTER">
+
+										
+<!--DFP MPU -->
+</p><div id="dfp-advert-2"></div>
+
+							<p></p>
+				<p align="center"><a href="http://www.tuxradar.com/answers">Back to the answers home page</a></p></div>			<p style="text-align: center; margin-top: 50px;">
+
+			<a href="http://www.stumbleupon.com/submit?url=http://www.tuxradar.com/answers/314&amp;title=Rsync+backups:+excluding+directories+|+TuxRadar+Linux"><img src="160x30_su_blue.gif" border="0"></a>
+
+			</p>
+
+			<p style="text-align: center; font-weight: bold;">Follow us on <a href="http://identi.ca/tuxradar">Identi.ca</a> or <a href="http://twitter.com/tuxradar">Twitter</a></p>
+
+			  </div>
+</div>
+<p></p>	</div>
+
+	<div id="right"> 
+
+				
+<!--DFP SKY - THIN -->
+<div id="dfp-advert-3"></div>
+
+
+
+		<!-- End ad tag -->
+
+
+
+
+	</div>
+
+
+<!--
+<div style="clear: both; margin-top: 30px; text-align: center;">
+<script type="text/javascript" language="JavaScript">
+         google_ad_client = 'ca-futurepublishing_html'; 
+         google_ad_width = 728;
+         google_ad_height = 90;
+         google_ad_format = '728x90_pas_abgc';
+         google_ad_type = 'text';
+         google_encoding = 'latin1'; 
+         google_safe = 'high';
+         google_color_bg = 'cccccc';
+         google_color_text = '000000';
+         google_color_link = '3a89af';
+         google_color_url = '3a89af'; 
+         google_color_border = '666666';
+         google_color_line = 'd3dade';
+         google_alternate_color = '00FFFF';
+</script>
+<script type="text/javascript" language="JavaScript" src='http://pagead2.googlesyndication.com/pagead/show_ads.js'></script>
+<noscript>
+    <img height="1" width="1" border="0" src="http://pagead2.googlesyndication.com/pagead/imp.gif?client=ca-futurepublishing_html&event=noscript" /> 
+</noscript>
+</div>
+-->
+
+<div id="prefooter" style="margin-top: 50px;">
+	<div class="inner" style="text-align: center;">
+
+		
+			<div style="display: inline;">	
+			<form action="http://www.tuxradar.com/frontpage?destination=frontpage" accept-charset="UTF-8" method="post" style="margin-top: 0px; padding-top: 0px; display: inline;" id="user-login-form">
+	 			Username: <input style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAALZJREFUOBFjYKAANDQ0rGWiQD9IqzgL0BQ3IKMXiB8AcSKQ/waIrYDsKUD8Fir2pKmpSf/fv3+zgPxfzMzMSbW1tbeBbAaQC+b+//9fB4h9gOwikCAQTAPyDYHYBciuBQkANfcB+WZAbPP37992kBgIUOoFBiZGRsYkIL4ExJvZ2NhAXmFgYmLKBPLPAfFuFhaWJpAYEBQC+SeA+BDQC5UQIQpJYFgdodQLLyh0w6j20RCgUggAAEREPpKMfaEsAAAAAElFTkSuQmCC&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;" maxlength="60" name="name" id="edit-name" size="15" value="" class="form-text required" type="text"> &nbsp; 
+	 			Password: <input style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAALZJREFUOBFjYKAANDQ0rGWiQD9IqzgL0BQ3IKMXiB8AcSKQ/waIrYDsKUD8Fir2pKmpSf/fv3+zgPxfzMzMSbW1tbeBbAaQC+b+//9fB4h9gOwikCAQTAPyDYHYBciuBQkANfcB+WZAbPP37992kBgIUOoFBiZGRsYkIL4ExJvZ2NhAXmFgYmLKBPLPAfFuFhaWJpAYEBQC+SeA+BDQC5UQIQpJYFgdodQLLyh0w6j20RCgUggAAEREPpKMfaEsAAAAAElFTkSuQmCC&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;" name="pass" id="edit-pass" maxlength="60" size="15" class="form-text required" type="password">
+				<input name="op" id="edit-submit" value="Log in" class="form-submit" type="submit">
+				<input name="form_id" id="edit-user-login-block" value="user_login_block" type="hidden">
+			</form>
+			</div>
+
+<!--
+			<div style="display: inline; margin-left: 100px">
+				<a href="/user/register">Create Account</a> |
+				<a href="/about">About TuxRadar</a>
+			</div>
+//-->
+			</div>
+</div>
+
+
+<div id="future_company_footer">
+
+<div>
+<ul class="foot_images">
+<li class="footer_logo" title="Future Publishing">
+<a href="http://www.futureplc.com/" class="future-logo"></a>
+</li>
+</ul>
+
+<div class="text">
+<div class="backtotop">
+<a>Top&nbsp;▲</a>
+</div>
+
+<ul class="footertext">
+<li>Linux Format&nbsp;is part of Future plc, an international media group 
+and leading digital publisher. <a href="http://www.futureplc.com/">Visit 
+our corporate site.</a></li>
+</ul>
+
+<ul class="foot_legals">
+<li title="Terms and conditions">
+<a href="http://www.futureplc.com/terms-conditions/" title="Terms and 
+conditions" rel="nofollow">Terms and conditions</a>
+</li>
+
+<li title="Privacy policy">
+<a href="http://www.futureplc.com/privacy-policy/" title="Privacy policy" rel="nofollow">Privacy policy</a>
+</li>
+
+<li title="Cookie policy">
+<a href="http://www.futureplc.com/cookies-policy/" title="Cookie policy" rel="nofollow">Cookie policy</a>
+</li>
+
+<li title="Advertise with us">
+<a href="http://www.futureplc.com/advertising/" title="Advertise with us" rel="nofollow">Advertise with us</a></li>
+
+<p>
+© Future Publishing Limited, Quay House, The Ambury, Bath BA1 1UA. 
+All rights reserved. England and Wales company registration number 
+2008885.
+</p>
+</ul></div></div>
+
+<!--DFP OOP1 -->
+<div id="dfp-advert-4-oop"></div>
+<!--DFP OOP2-->
+<div id="dfp-advert-5-oop"></div>
+
+
+<div id="wrap">
+		<div id="host_footer">
+
+<!--
+<object type="application/x-shockwave-flash"
+        data="/files/ukfast_mycloudstack3.swf"
+        width="468" height="60">
+        <param name="movie" value="/files/ukfast_mycloudstack3.swf" />
+        <param name="quality" value="high"/>
+</object>
+
+
+
+
+
+<br /><strong><a href="http://www.ukfast.co.uk/mycloudstack.html#utm_source=tux-mycloudstack-offers&utm_medium=tux-mycloudstack-offers-leader&utm_campaign=tux-mycloudstack-offers">Web hosting by UKFast</a></strong>
+		</div>
+
+</div>
+
+-->
+
+	</div>
+</div>
+
+
+
+
+<br>
+
+
+
+<!--OMNITURE CODE HBX2.5 (Universal)-->
+<!-- Copyright 1997 - 2008. Omniture, Inc. All Rights Reserved.  Omniture is a registered trademark of Omniture, Inc. in the United States, Canada, Japan, and the European Community. -->
+
+
+<!--END OMNITURE CODE-->
+
+
+<!-- Begin Google Analytics code -->
+
+
+
+
+<!-- End Google Analytics code -->
+
+<!-- Begin Sitestat4 code -->
+
+
+
+
+
+<!-- End Sitestat4 code -->
+
+	
+
+
+
+
+
+
+</div></body>
+</html>

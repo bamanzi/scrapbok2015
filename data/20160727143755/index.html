@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+
+  <title>codebrainz/geanypy @ GitHub</title>
+
+  
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+
+<body>
+  <a href="http://github.com/codebrainz/geanypy"><img style="position: absolute; top: 0px; right: 0px; border: 0px none;" src="forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+
+  <div id="container">
+
+    <div class="download">
+      <a href="http://github.com/codebrainz/geanypy/zipball/master">
+        <img src="zip.png" border="0" width="90"></a>
+      <a href="http://github.com/codebrainz/geanypy/tarball/master">
+        <img src="tar.png" border="0" width="90"></a>
+    </div>
+
+    <h1><a href="http://github.com/codebrainz/geanypy">
+		<img src="geanypy.png"> GeanyPy</a></h1>
+
+    <div class="description">
+      Write plugins in Python!
+    </div>
+
+    <p>GeanyPy is a set of Python C extensions which wrap
+    <a href="http://www.geany.org/manual/reference/index.html">Geany's regular C
+    plugin API</a>.  It allows writing custom Geany plugins in the Python
+    language and interact with Geany's exposed plugin API.</p>
+    <p>Here's the HelloWorld example plugin from
+    <a href="http://www.geany.org/manual/reference/howto.html">Geany's Plugin HowTo</a>
+     using GeanyPy:</p>
+    <pre>import gtk
+import geany
+
+class HelloWorld(geany.Plugin):
+
+    __plugin_name__ = "HelloWorld"
+    __plugin_version__ = "1.0"
+    __plugin_description__ = "Just another tool to say hello world"
+    __plugin_author__ = "John Doe (john.doe@example.org)"
+
+    def __init__(self):
+        self.menu_item = gtk.MenuItem("Hello World")
+        self.menu_item.show()
+        geany.main_widgets.tools_menu.append(self.menu_item)
+        self.menu_item.connect("activate", self.on_hello_item_clicked)
+
+    def cleanup(self):
+        self.menu_item.destroy()
+
+    def on_hello_item_clicked(widget, data):
+        geany.dialogs.show_msgbox("Hello World")</pre>
+<p></p>
+<p>For more information, see the
+<a href="https://github.com/codebrainz/geanypy/blob/master/README.markdown">README file</a>.</p>
+
+<h2>Documentation</h2>
+
+<p>GeanyPy's documentation although incomplete, can be found here:<br>
+<a href="http://readthedocs.org/docs/geanypy/en/latest/">http://readthedocs.org/docs/geanypy/en/latest/</a></p>
+
+<p>Geany's plugin API documentation is also very useful:<br>
+<a href="http://www.geany.org/manual/reference/">http://www.geany.org/manual/reference/</a></p>
+
+<h2>Dependencies</h2>
+<p>To build GeanyPy you need the following dependencies:
+
+</p><ul>
+<li><a href="http://www.python.org/download/releases/2.7.2/">Python 2.6+</a> or greater and development files.</li>
+<li><a href="http://files.uvena.de/geany/geany_svn.tar.gz">Geany 0.21</a> or greater and development files.</li>
+<li><a href="http://www.pygtk.org/downloads.html">PyGTK</a> and development files.</li>
+</ul>
+
+See <a href="http://www.geany.org/manual/current/index.html#installation">Geany's manual</a> for information on compiling it from the Subversion or Git repositories.<p></p>
+
+<p>If you're using a Debian-based distro, you can probably use the following command
+to install the dependencies (except for Geany 0.21 currently):</p>
+<br>
+<p>
+	<code class="code_block">
+		$ apt-get install <a href="apt:python,python-dev,python-gtk2,python-gtk2-dev">
+			python python-dev python-gtk2 python-gtk2-dev</a>
+	</code>
+</p>
+<br>
+    <h2>Download</h2>
+    <p>
+      You can download this project in either
+      <a href="http://github.com/codebrainz/geanypy/zipball/master">zip</a> or
+      <a href="http://github.com/codebrainz/geanypy/tarball/master">tar</a> formats.
+    </p>
+    <p>You can also clone the project with <a href="http://git-scm.com/">Git</a>
+      by running:
+      </p><pre>$ git clone git://github.com/codebrainz/geanypy</pre>
+    <p></p>
+
+
+<h2>Install</h2>
+<p>First you need to know where Geany is installed:
+
+</p><pre>$ GEANY_PREFIX=`pkg-config --variable=prefix geany`</pre>
+
+The you can install as normal:
+
+<pre>$ ./autogen.sh
+$ ./configure --prefix=$GEANY_PREFIX
+$ make
+# make install</pre>
+
+You should be able to force a specific version of Python to be used, by using the <code>PYTHON_VERSION</code> environment variable, but I've only tested with 2.6.6 so far. I imagine 2.7 series will also work fine.<p></p>
+
+<h2>License</h2>
+<p>GPLv2</p>
+<h2>Authors</h2>
+<p>Matthew Brush (codebrainz [at] codebrainz [dot] ca)
+<br>Colomban Wendling (ban [at] herbesfolles [dot] org)
+<br>
+<br>      </p>
+<h2>Contact</h2>
+<p>Matthew Brush (codebrainz [at] codebrainz [dot] ca)
+<br>      </p>
+
+    <div class="footer">
+      get the source code on GitHub : <a href="http://github.com/codebrainz/geanypy">codebrainz/geanypy</a>
+    </div>
+
+  </div>
+
+
+
+
+</body>
+</html>

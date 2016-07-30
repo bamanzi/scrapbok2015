@@ -1,0 +1,21 @@
+/* ::::: [internal] ::::: */
+
+body { margin-top: 1em; background-color: rgb(81, 91, 116); font-family: Geneva,“Lucida Sans”,“Lucida Grande”,“Lucida Sans Unicode”,Verdana,sans-serif; color: rgb(255, 255, 255); }
+#container { margin: 0px auto; width: 700px; }
+h1 { font-size: 3.8em; color: rgb(246, 233, 118); margin-bottom: 3px; font-family: Geneva,Verdana,“Lucida Sans”,“Lucida Grande”,“Lucida Sans Unicode”,sans-serif; }
+h1 a { text-decoration: none; }
+h2 { font-size: 1.5em; color: rgb(246, 233, 118); font-family: Geneva,Verdana,“Lucida Sans”,“Lucida Grande”,“Lucida Sans Unicode”,sans-serif; }
+a { color: rgb(246, 233, 118); }
+.description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic; }
+.download { float: right; }
+pre { background: none repeat scroll 0% 0% rgb(0, 0, 0); color: rgb(255, 255, 255); padding: 15px; border: 1px solid white; }
+.code_block { background: none repeat scroll 0% 0% rgb(0, 0, 0); color: rgb(255, 255, 255); padding: 15px; border: 1px solid white; }
+.footer { text-align: center; padding-top: 30px; font-style: italic; }
+/* ::::: [internal] ::::: */
+
+@media screen {
+}
+@media print {
+}
+/* ::::: [internal] ::::: */
+

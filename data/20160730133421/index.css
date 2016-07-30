@@ -1,0 +1,98 @@
+/* ::::: [internal] (@media all) ::::: */
+
+/* ::::: (import) http://www.tuxradar.com/modules/node/node.css ::::: */
+/* ::::: (end import) ::::: */
+/* ::::: [internal] (@media all) ::::: */
+
+/* ::::: (import) http://www.tuxradar.com/modules/poll/poll.css ::::: */
+/* ::::: (end import) ::::: */
+/* ::::: [internal] (@media all) ::::: */
+
+/* ::::: (import) http://www.tuxradar.com/modules/system/defaults.css ::::: */
+form { margin: 0px; padding: 0px; }
+img { border: 0px none; }
+/* ::::: (end import) ::::: */
+/* ::::: [internal] (@media all) ::::: */
+
+/* ::::: (import) http://www.tuxradar.com/modules/system/system.css ::::: */
+ul.links { margin: 0px; padding: 0px; }
+ul.links li { display: inline; list-style-type: none; padding: 0px 0.5em; }
+/* ::::: (end import) ::::: */
+/* ::::: [internal] (@media all) ::::: */
+
+/* ::::: (import) http://www.tuxradar.com/modules/taxonomy_browser/taxonomy_browser.css ::::: */
+/* ::::: (end import) ::::: */
+/* ::::: [internal] (@media all) ::::: */
+
+/* ::::: (import) http://www.tuxradar.com/modules/user/user.css ::::: */
+#user-login-form { text-align: center; }
+/* ::::: (end import) ::::: */
+/* ::::: http://www.tuxradar.com/themes/tuxradar/main.css ::::: */
+
+#left { width: 900px; float: left; margin-right: 40px; }
+#right { width: 250px; float: left; }
+body { margin: 0px; padding: 0px; cursor: default; }
+#masthead { background: url("header_bg.png") repeat-x scroll center bottom rgb(62, 62, 62); height: 100px; }
+#top_nav { height: 70px; clear: both; background: url("topnav_inner.png") repeat scroll 0% 0% transparent; margin: auto; vertical-align: middle; }
+#content { background: url("white_bg.png") repeat-x scroll 0% 0% transparent; clear: both; font-family: Sans-serif; padding: 20px; overflow: auto; width: 1200px; margin: 0px auto; }
+#prefooter { background-color: rgb(62, 62, 62); height: 35px; font-family: sans-serif; color: white; font-size: 80%; font-weight: bold; padding-top: 10px; }
+#logo { padding-top: 5px; margin-left: 8px; display: inline; float: left; }
+div#search_box { float: right; margin-top: 25px; margin-right: 0px; }
+#menubar { display: inline; }
+div#menubar ul { display: inline; margin: 0px; padding: 0px; }
+div#menubar li { display: block; font-size: 20px; float: left; padding-right: 15px; padding-top: 25px; }
+div#menubar a { color: rgb(255, 255, 255); text-decoration: none; font-family: sans-serif; font-size: 80%; font-weight: normal; }
+div#wrap { float: left; position: relative; left: 50%; }
+div#host_footer { float: left; position: relative; left: -50%; }
+h1 { margin-bottom: 0px; padding-bottom: 0px; }
+h2 { margin-top: 40px; margin-bottom: 0px; padding-bottom: 0px; }
+p { padding-top: 0px; margin-top: 0px; }
+.inner { max-width: 980px; margin: auto; }
+a { color: rgb(0, 136, 187); }
+a:visited { color: rgb(0, 136, 187); }
+pre.command, pre.code { padding: 10px; margin: 10px; border: 1px dashed rgb(187, 136, 136); background-color: rgb(255, 245, 245); }
+div.boxout { border: 3px solid rgb(0, 153, 204); margin: 30px; }
+div.boxout h2 { margin-top: 0px; background-color: rgb(0, 153, 204); color: white; padding: 5px 5px 5px 15px; }
+div.boxout p { margin: 10px; }
+p.answers_question { margin-top: 10px; }
+p.answers_question:first-letter { font-size: 200%; float: left; margin: 0px 10px 5px 0px; background-color: darkred; color: white; padding: 0px 5px; }
+p.answers_answer { margin-top: 40px; }
+p.answers_answer:first-letter { font-size: 200%; float: left; margin: 0px 10px 5px 0px; background-color: darkgreen; color: white; padding: 0px 5px; }
+/* ::::: http://www.tuxradar.com/future_branding.min.css ::::: */
+
+#future_company_footer, #future_company_header { clear: both; text-align: left; margin: 0px; padding: 0px; }
+#future_company_footer, #future_company_footer a, #future_company_footer h6, #future_company_footer li, #future_company_footer p, #future_company_header, #future_company_header a { color: rgb(166, 166, 166); font-family: Arial,Helvetica,sans-serif; font-size: 11px; }
+#future_company_footer { background: none repeat scroll 0% 0% rgb(255, 255, 255); width: 100%; }
+#future_company_footer { border-top: 1px solid rgb(221, 221, 221); }
+#future_company_footer > div { overflow: hidden; margin: 0px auto; padding: 0px 0px 10px; max-width: 960px; }
+#future_company_footer p, #future_company_footer ul { clear: left; }
+#future_company_footer ul, #future_company_header ul { list-style: none outside none; margin: 0px; padding: 0px; }
+#future_company_footer p, #future_company_footer ul { float: none; overflow: hidden; margin: 0px auto; }
+#future_company_footer ul.foot_legals { border-top: 1px solid rgb(221, 221, 221); border-bottom: 1px solid rgb(221, 221, 221); margin: 10px auto 20px; padding: 0px; }
+#future_company_footer ul.foot_legals li { margin: 20px 0px; border-right: 1px solid rgb(221, 221, 221); line-height: 1em; padding: 0px 7px; }
+#future_company_footer ul.foot_legals li:nth-child(1) { padding-left: 0px; }
+#future_company_footer ul.footertext li { clear: left; line-height: 1.5em; }
+#future_company_footer ul li { display: list-item; float: left; line-height: 2em; }
+#future_company_footer ul li:last-child { border: 0px none; }
+#future_company_footer ul li a, #future_company_header a { font-weight: 400; text-decoration: none; white-space: nowrap; }
+#future_company_footer ul li a:hover { color: rgb(166, 166, 166); }
+#future_company_footer .foot_images { width: 37px; float: left; padding-right: 20px; }
+#future_company_footer div.text { float: left; padding: 30px 10px 60px; width: auto; max-width: 860px; }
+#future_company_footer div.backtotop { float: right; padding: 0px; }
+#future_company_footer div.backtotop a { text-decoration: none; }
+#future_company_footer .future-logo, #future_company_header .future-logo { background: url("future-tag.png") no-repeat scroll 0px 0px transparent; width: 37px; height: 37px; display: block; }
+@media not all {
+  #future_company_footer .future-logo, #future_company_header .future-logo { background-image: url("future-tag@2x.png"); background-size: 37px 37px; }
+}
+@media not all {
+}
+@media screen and (max-width: 870px) {
+}
+/* ::::: [internal] ::::: */
+
+@media screen {
+}
+@media print {
+}
+/* ::::: [internal] ::::: */
+

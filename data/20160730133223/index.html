@@ -1,0 +1,639 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="x-ua-compatible" content="ie=7">
+
+<title>Rsnapshot：一款面向Linux远程文件系统备份工具 - 51CTO.COM</title>
+<meta name="description" content="基于Rsync的rsnapshot是一款开源本地/远程文件系统备份实用工具，将本地驱动器上的那些备份存放到不同的硬盘驱动器、外置USB驱动器、NFS挂载驱动器上，或者经由SSH，通过网络存放到另一台机器上。本文详解了Rsnapshot备份工具的安装和使用方法。">
+<meta name="keywords" content="Rsnapshot,Linux,远程文件,系统备份">
+<base target="_blank">
+
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body><div style="position: absolute; left: -1px; bottom: -1px; z-index: 0; width: 0px; height: 0px; overflow: hidden; visibility: hidden; display: none;" id="BAIDU_DUP_fp_wrapper"><iframe style="width: 0px; height: 0px; visibility: hidden; display: none;" src="index_1.html" id="BAIDU_DUP_fp_iframe"></iframe></div><iframe src="index_2.html" style="display: none;" frameborder="0"></iframe><div style="display: block;" id="bdshare_s"><iframe src="index_3.html" id="bdsIfr" style="position: absolute; display: none; z-index: 9999;" frameborder="0"></iframe><div style="display: none;" id="bdshare_l"><div id="bdshare_l_c"><h6>分享到</h6><ul><li><a href="#" class="bds_mshare mshare">一键分享</a></li><li><a href="#" class="bds_qzone qqkj">QQ空间</a></li><li><a href="#" class="bds_tsina xlwb">新浪微博</a></li><li><a href="#" class="bds_bdysc bdysc">百度云收藏</a></li><li><a href="#" class="bds_renren rrw">人人网</a></li><li><a href="#" class="bds_tqq txwb">腾讯微博</a></li><li><a href="#" class="bds_bdxc bdxc">百度相册</a></li><li><a href="#" class="bds_kaixin001 kxw">开心网</a></li><li><a href="#" class="bds_tqf txpy">腾讯朋友</a></li><li><a href="#" class="bds_tieba bdtb">百度贴吧</a></li><li><a href="#" class="bds_douban db">豆瓣网</a></li><li><a href="#" class="bds_tsohu shwb">搜狐微博</a></li><li><a href="#" class="bds_bdhome bdhome">百度新首页</a></li><li><a href="#" class="bds_sqq sqq">QQ好友</a></li><li><a href="#" class="bds_thx thx">和讯微博</a></li><li><a href="#" class="bds_more">更多...</a></li></ul><p><a href="#" class="goWebsite">百度分享</a></p></div></div></div>
+<!-- 导航 开始-->
+<meta http-equiv="Cache-Control" content="no-siteapp"><link rel="alternate" media="handheld" href="http://os.51cto.com/art/201311/417026.htm?utm_source=tuicool&amp;utm_medium=referral#">
+<div id="home_top">    <div class="top_nav">        <div class="left" style="width: 400px;"><div class="logo_51cto" title="51CTO.COM - 技术成就梦想 -  中国领先的IT技术网站"></div><a href="http://www.51cto.com/">首页</a><img src="top_bg_xian.gif" style="padding-top: 2px;" align="absmiddle" height="25" width="16"><a href="http://www.51cto.com/col/35/" target="_blank">技术频道<img src="nav_ico1.gif" style="padding-left: 4px;" align="absmiddle"></a><img src="top_bg_xian.gif" align="absmiddle" height="25" width="16"><a href="http://www.51cto.com/" target="_blank">51CTO旗下网站<img src="nav_ico1.gif" style="padding-left: 4px;" align="absmiddle"></a><img src="top_bg_xian.gif" align="absmiddle" height="25" width="16"><a href="http://www.51cto.com/about/map.htm" target="_blank">地图</a> <a href="http://www.51cto.com/about/rss.html" target="_blank"><img src="143749870.gif" style="vertical-align: middle; margin-bottom: 5px; margin-left: 5px;"></a>       </div>        <div class="right">            <div class="more"><img src="top_shequ.gif" align="absmiddle" height="16" width="27"><a href="http://gaozhao.51cto.com/" target="_blank" style="color: rgb(204, 0, 0);">招聘</a><a href="http://edu.51cto.com/" target="_blank" style="color: rgb(204, 0, 0);">学院</a><a href="http://down.51cto.com/" target="_blank">下载</a><a href="http://bbs.51cto.com/" target="_blank">论坛</a><a href="http://blog.51cto.com/" target="_blank">博客</a><a>更多<img src="nav_ico1.gif" style="padding-left: 4px;" align="absmiddle"></a>            </div>            <span id="login_status"><div class="login" style="padding-top: 8px; text-align: right;"><a href="http://home.51cto.com/index?reback=http://os.51cto.com/art/201311/417026.htm" target="_self">登录</a><a href="http://ucenter.51cto.com/2015/register.php?reback=http://os.51cto.com/art/201311/417026.htm" target="_self">注册</a></div></span>                </div>    </div></div>
+<div class="subMenu1" id="s1">
+<ul>
+<li><a href="http://network.51cto.com/" target="_blank">网络</a></li>
+<li><a href="http://netsecurity.51cto.com/" target="_blank">安全</a></li>
+<li><a href="http://developer.51cto.com/" target="_blank">开发</a></li>
+<li><a href="http://database.51cto.com/" target="_blank">数据库</a></li>
+<li><a href="http://server.51cto.com/" target="_blank">服务器</a></li>
+<li><a href="http://os.51cto.com/" target="_blank">系统</a></li>
+<li><a href="http://virtual.51cto.com/" target="_blank">虚拟化</a></li>
+<li><a href="http://cloud.51cto.com/" target="_blank">云计算</a></li>
+<li><a href="http://developer.51cto.com/embed/" target="_blank">嵌入式</a></li>
+<li><a href="http://mobile.51cto.com/" target="_blank">移动开发</a></li>
+</ul>
+</div> 
+<div class="subMenu2" id="s2">
+<ul>
+<li><a href="http://www.51cto.com/" target="_blank" title="中国领先的IT技术网站">51CTO.COM</a></li>
+<li><a href="http://www.cioage.com/" target="_blank" title="中国首个专门服务于CIO的专业网站">CIOage.com</a></li>
+<li><a href="http://www.watchstor.com/" target="_blank" title="领先的中文存储网络媒体">WatchStor.com</a></li>
+<li><a href="http://www.hc3i.cn/" target="_blank" title="中国首家专注于数字医疗及医疗信息化的专业网站">HC3i.cn</a></li>
+</ul>
+</div>
+
+
+
+<div class="subMenu3" id="s3" style="z-index: 9999; position: absolute;">
+<ul>
+<li><a href="http://home.51cto.com/" target="_blank">家园</a></li>
+<li><a href="http://gaozhao.51cto.com/" target="_blank" style="color: red;">招聘</a></li>
+<li><a href="http://edu.51cto.com/" target="_blank">学院</a></li>
+<li><a href="http://blog.51cto.com/" target="_blank">博客</a></li>
+<li><a href="http://bbs.51cto.com/" target="_blank">论坛</a></li>
+<li><a href="http://down.51cto.com/" target="_blank">下载</a></li>
+<li><a href="http://selftest.51cto.com/" target="_blank">自测</a></li>
+<li><a href="http://doctor.51cto.com/" target="_blank">门诊</a></li>
+<li><a href="http://blog.51cto.com/newsletter/" target="_blank">周刊</a></li>
+<li><a href="http://book.51cto.com/" target="_blank">读书</a></li>
+<li><a href="http://t.51cto.com/" target="_blank" style="color: red;">题库</a></li>
+</ul>
+</div>
+
+<!-- 登陆信息 -->
+<!-- 导航 结束--> 
+ <div class="g_39 mb10">
+	<div id="tonglanad" class="fl"><iframe noresize="" marginheight="0" marginwidth="0" src="index_4.html" align="middle" height="90" scrolling="No" width="760" frameborder="0"></iframe></div>
+	<div id="list4" class="fr">
+		<ul>
+			<li id="wordlinkad1"><a href="http://gg1.51cto.com/www/delivery/ck.php?oaparams=2__bannerid=3933__zoneid=270__cb=ae8c20a1e9__oadest=http%3A%2F%2Fedu.51cto.com%2Fzt%2Fzt_id-1.html%3Fan" target="_blank"><font color="red">网络安全一个大写的反“作死”</font></a><div id="beacon_ae8c20a1e9" style="position: absolute; left: 0px; top: 0px; visibility: hidden;"><img src="lg_001.php" alt="" style="width: 0px; height: 0px;" height="0" width="0"></div>
+</li>
+			<li id="wordlinkad2"><a href="http://gg1.51cto.com/www/delivery/ck.php?oaparams=2__bannerid=3546__zoneid=631__cb=8a9b9a7cb2__oadest=http%3A%2F%2Fedu.51cto.com%2Fpx%2Ftrain%2F88" target="_blank"><font color="red">信息安全工程师，会挣钱的考试</font></a><div id="beacon_8a9b9a7cb2" style="position: absolute; left: 0px; top: 0px; visibility: hidden;"><img src="lg_002.php" alt="" style="width: 0px; height: 0px;" height="0" width="0"></div>
+</li>
+			<li id="wordlinkad3"><a href="http://gg2.51cto.com/www/delivery/ck.php?oaparams=2__bannerid=3717__zoneid=594__cb=3e8087a6c1__oadest=http%3A%2F%2Fedu.51cto.com%2Ftraining%2Ftraining_id-18.html%3Fxiaoshou" target="_blank"><font color="red">微软企业级内训课程免费学</font></a><div id="beacon_3e8087a6c1" style="position: absolute; left: 0px; top: 0px; visibility: hidden;"><img src="lg_003.php" alt="" style="width: 0px; height: 0px;" height="0" width="0"></div>
+</li>
+			<li id="wordlinkad4"><a href="http://gg1.51cto.com/www/delivery/ck.php?oaparams=2__bannerid=3549__zoneid=636__cb=0a2a9a9bff__oadest=http%3A%2F%2Fedu.51cto.com%2Ftraining%2Ftraining_id-17.html%3Fxiaoshou" target="_blank"><font color="red">2016年备战软考-重难点解析</font></a><div id="beacon_0a2a9a9bff" style="position: absolute; left: 0px; top: 0px; visibility: hidden;"><img src="lg_004.php" alt="" style="width: 0px; height: 0px;" height="0" width="0"></div>
+</li>
+		</ul>
+	</div>
+<br class="dle">
+</div>
+
+<div class="g_39 menu">
+<div class="subNav_logo">
+<a href="http://os.51cto.com/" target="_blank"><img src="caozuoxitong_logo.gif" border="0"></a></div>
+<div class="subNav_l">
+<a href="http://os.51cto.com/col/543/" target="_blank">新闻</a> | 
+<a href="http://os.51cto.com/linux/" target="_blank">Linux</a> | 
+<a href="http://os.51cto.com/windows/" target="_blank">Windows</a> | 
+<a href="http://os.51cto.com/col/975/" target="_blank">浏览器</a> | 
+<a href="http://os.51cto.com/col/610/" target="_blank">开源</a> | 
+<a href="http://os.51cto.com/col/545/" target="_blank">运维</a> | 
+<a href="http://publish.51cto.com/list/519/" target="_blank">全部</a> | 
+<a href="http://os.51cto.com/art/201106/266501.htm" target="_blank">投稿指南</a> | 
+<a href="http://os.51cto.com/art/201109/292676.htm"><img src="143749870.gif" alt="RSS" height="16" width="15"> RSS订阅</a>
+</div>
+  
+<div class="search fr">
+<dl>
+<form name="searchform" action="http://www.51cto.com/php/search.php" target="_blank" method="post" style="margin: 0px; padding: 0px;">
+<dt class="fl"><input name="keyword" class="searchInput f14 input" value="请输入关键字" type="text"></dt>
+<dd class="fl"><input src="search.gif" type="image"></dd></form>
+</dl>
+</div>
+<br class="dle">
+</div>
+<div class="g_39 b3-s-4273B3 rel">
+<!--width : 26*25 - 15 = 635px-->
+<div class="g_26 fl m_l">
+<div class="brief bgF8F8F8">
+<p class="crumb ">您所在的位置：<a href="http://os.51cto.com/">操作系统</a> &gt; <a href="http://os.51cto.com/col/545/">运维经验&amp;工具</a> &gt;  <b>Rsnapshot：一款面向Linux远程文件系统备份工具</b> </p>
+<h1>Rsnapshot：一款面向Linux远程文件系统备份工具</h1>
+<div class="msg">
+<div>2013-11-13 13:38  布加迪编译  51CTO.com <span class="f12-a"><a href="#commment" target="_self"></a></span> 字号：<span class="f14-b"><a target="_self">T</a></span> | <span class="f16-b"><a target="_self">T</a></span></div>
+<div class="artHd" id="books" style="padding: 5px 25px; display: none;"></div>
+<div class="fav"><a title="一键收藏，随时查看，分享好友！" target="_self"><img src="Fav.gif" alt="一键收藏，随时查看，分享好友！" border="0"></a></div>
+</div>
+<div class="brieftext">
+<p class="f14 green">基于Rsync的rsnapshot是一款开源本地/远程文件系统备份实用工具，将本地驱动器上的那些备份存放到不同的硬盘驱动器、外置USB驱动器、NFS挂载驱动器上，或者经由SSH，通过网络存放到另一台机器上。本文详解了Rsnapshot备份工具的安装和使用方法。</p>
+<p class="ad">AD：<a href="http://mobile.51cto.com/mobile/mdsa12/" target="_blank" style="text-decoration: none; color: red;">51CTO 网+ 第十二期沙龙：大话数据之美_如何用数据驱动用户体验</a>
+</p>
+</div>
+</div>
+<div class="tag bgF8F8F8" id="indexlist" style="display: none;">
+<ul id="indexliststr">
+</ul>
+<br class="dle">
+</div>
+<div class="content bgF8F8F8 f14">
+<div id="content">
+<p></p><p>【51CTO精选译文】Rsnapshot是一款开源本地/远程文件系统备份实用工具，它采用Perl语言编写而成，充分利用了Rsync和SSH程序的功能，可以针对Linux/Unix文件系统创建预定的增量备份，同时只占用了一套单个完全备份的空间（外加变化的数据），并将本地驱动器上的那些备份存放到不同的硬盘驱动器、外置USB驱动器、NFS挂载驱动器上，或者干脆经由SSH，通过网络存放到另一台机器上。</p>
+<p style="text-align: center;"><a href="http://s5.51cto.com/wyfs01/M01/32/7D/wKioOVKC7VeRvO9wAAB26wdZc-c736.jpg" target="_blank"><img class="fit-image" src="wKioOVKC7VeRvO9wAAB26wdZc-c736.jpg" alt="" border="0" height="321" width="435"></a></p>
+<p><strong>安装Rsnapshot备份工具</strong></p>
+<p>本文将演示如何安装、设置及使用rsnapshot，以创建增量的每小时、每天、每周和每月的本地备份，以及创建远程备份。想执行本文中介绍的所有步骤，你必须是根用户（root user）。</p>
+<p><strong><span style="color: rgb(0, 0, 128);">第一步：在Linux下安装rsnapshot备份工具</span></strong></p>
+<p>如果你使用基于红帽和Debian的发行版，那么使用Yum和APT（高级打包工具）安装rsnapshot可能略有不同。</p>
+<p><span style="color: rgb(0, 0, 128);">在红帽企业级Linux（RHEL）/CentOS上</span></p>
+<p>首先，你得安装并启用名为EPEL的第三方软件库。请点击<a href="http://www.tecmint.com/how-to-enable-epel-repository-for-rhel-centos-6-5/" target="_blank">这个链接</a>，在你的RHEL/CentOS系统下安装并启用第三方软件库。Fedora用户不需要任何特别的软件库配置。一旦你完成了设置工作，就可以从命令行来安装rsnapshot，如下所示。</p>
+<pre><ol class="dp-xml"><li class="alt"><span><span>#&nbsp;yum&nbsp;install&nbsp;rsnapshot&nbsp;</span></span></li></ol></pre>
+<p><span style="color: rgb(0, 0, 128);">在Debian/Ubuntu/Linux Mint上</span></p>
+<p>默认情况下，rsnapshot已包含在Ubuntu的软件库中，所以你可以使用apt-get命令来安装它，如下所示。</p>
+<pre><ol class="dp-xml"><li class="alt"><span><span>#&nbsp;apt-get&nbsp;install&nbsp;rsnapshot&nbsp;</span></span></li></ol></pre>
+<p><span style="color: rgb(0, 0, 128);"><strong>第二步：设置无需密码的SSH登录机制</strong></span></p>
+<p>想备份远程Linux服务器上的内容，你的rsnapshot备份服务器就要能够通过SSH来连接，而不需要密码。为了做到这一点，你就需要创建SSH公共密钥和私有密钥，以便在rsnapshot服务器上验证身份。请点击下面这个链接，以便在你的rsnapshot备份服务器上生成公共密钥和私有密钥。</p>
+<p>《使用SSH密钥生成器，创建无需密码的SSH登录机制》（http://www.tecmint.com/ssh-passwordless-login-using-ssh-keygen-in-5-easy-steps/）</p>
+<p><span style="color: rgb(0, 0, 128);"><strong>第三步：配置rsnapshot</strong></span></p>
+<p>现在你需要编辑，并为rsnapshot配置文件添加一些参数。使用vi或nano编辑器，打开rsnapshot.conf文件。</p>
+<p></p>
+<pre><ol class="dp-xml"><li class="alt"><span><span>#&nbsp;vi&nbsp;/etc/rsnapshot.conf&nbsp;</span></span></li></ol></pre>
+<p>下一步，创建一个你想要把所有备份内容存放在其中的备份目录。以本文为例，我的备份目录位置是"/data/backup/"。寻找并编辑下面这个参数，以设定备份位置。</p>
+<p></p>
+<pre><ol class="dp-xml"><li class="alt"><span><span>snapshot_root&nbsp;&nbsp;&nbsp;&nbsp;/data/backup/&nbsp;</span></span></li></ol></pre>
+<p>另外，取消"cmd_ssh"这一行的注释，允许通过SSH进行远程备份。想取消这一行的注释，请去除下面这一行前面的"#"，那样rsnapshot就能将数据安全地传送到备份服务器上。</p>
+<p></p>
+<pre><ol class="dp-xml"><li class="alt"><span><span>cmd_ssh&nbsp;&nbsp;/usr/bin/ssh&nbsp;</span></span></li></ol></pre>
+<p>接下来，你要确定想保留多少的旧备份，因为rsnapshot不知道你想多频繁地拍取快照。你要指定保存多少数据、添加保存数据的时间间隔以及每个间隔有多久。</p>
+<p>好了，默认设置足够好了，但我还是希望你启用"monthly"（每月）时间间隔，那样你还能拥有更长期的备份。请编辑这个部分，以便看起来类似下面的设置。</p>
+<pre><ol class="dp-xml"><li class="alt"><span><span>#########################################&nbsp;</span></span></li><li><span>#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;备份间隔&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;</span></li><li class="alt"><span>#&nbsp;必须具有独特性，而且按照升序排列&nbsp;&nbsp;#&nbsp;</span></li><li><span>#&nbsp;即按照每小时、每天、每周等备份&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;</span></li><li class="alt"><span>#########################################&nbsp;</span></li><li><span>interval&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hourly&nbsp;&nbsp;&nbsp;6&nbsp;</span></li><li class="alt"><span>interval&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;daily&nbsp;&nbsp;&nbsp;&nbsp;7&nbsp;</span></li><li><span>interval&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;weekly&nbsp;&nbsp;4&nbsp;</span></li><li class="alt"><span>interval&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;monthly&nbsp;&nbsp;3&nbsp;</span></li></ol></pre>
+<p>另外你还需要编辑的是"ssh_args"这个变量。如果你将默认的SSH端口（22）改成了别的端口号，就要指定你那台远程备份服务器的那个端口号。</p>
+<pre><ol class="dp-xml"><li class="alt"><span><span>ssh_args&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-p&nbsp;7851&nbsp;</span></span></li></ol></pre>
+<p>最后，添加你想要备份的本地和远程备份目录。</p>
+<p><strong>备份本地目录</strong></p>
+<p>如果你已决定将目录本地备份到同一台机器上，备份条目应该看起来像这样。比如说，我要备份我的/tecmint目录和/etc目录。</p>
+<pre><ol class="dp-xml"><li class="alt"><span><span>backup&nbsp;&nbsp;&nbsp;/tecmint/&nbsp;&nbsp;&nbsp;localhost/&nbsp;</span></span></li><li><span>backup&nbsp;&nbsp;&nbsp;/etc/&nbsp;&nbsp;&nbsp;localhost/&nbsp;</span></li></ol></pre>
+<p><strong>备份远程目录</strong></p>
+<p>如果你想备份远程服务器目录，那么你要告诉rsnapshot服务器在哪里、你又想备份哪些目录。我在这里要备份rsnapshot服务器上"/data/backup"目录下的远程服务器"/home"目录。</p>
+<p></p>
+<pre><ol class="dp-xml"><li class="alt"><span><span>backup&nbsp;&nbsp;&nbsp;root@example.com:/home/&nbsp;/data/backup/&nbsp;</span></span></li></ol></pre>
+<p>另外请参阅：</p>
+<p>《如何使用Rsync（远程同步）工具，备份/同步目录？》（http://www.tecmint.com/rsync-local-remote-file-synchronization-commands/）</p>
+<p>《如何使用SCP命令，传送文件/文件夹？》（http://www.tecmint.com/scp-commands-examples/）</p>
+<p><strong>排除文件和文件夹</strong></p>
+<p>这里，我要排除一切内容，然后只专门定义我想要备份什么内容。为此，你需要创建一个排除文件。</p>
+<p></p>
+<pre><ol class="dp-xml"><li class="alt"><span><span>#&nbsp;vi&nbsp;/data/backup/tecmint.exclude&nbsp;</span></span></li></ol></pre>
+<p>首先获得你想要备份的目录列表，然后添加（- *），以排除其他所有目录。这只会备份你在文件中所列的内容。我的排除文件看起来像下面这样。</p>
+<pre><ol class="dp-xml"><li class="alt"><span><span>+&nbsp;/boot&nbsp;</span></span></li><li><span>+&nbsp;/data&nbsp;</span></li><li class="alt"><span>+&nbsp;/tecmint&nbsp;</span></li><li><span>+&nbsp;/etc&nbsp;</span></li><li class="alt"><span>+&nbsp;/home&nbsp;</span></li><li><span>+&nbsp;/opt&nbsp;</span></li><li class="alt"><span>+&nbsp;/root&nbsp;</span></li><li><span>+&nbsp;/usr&nbsp;</span></li><li class="alt"><span>-&nbsp;/usr/*&nbsp;</span></li><li><span>-&nbsp;/var/cache&nbsp;</span></li><li class="alt"><span>+&nbsp;/var&nbsp;</span></li><li><span>-&nbsp;/*&nbsp;</span></li></ol></pre>
+<p>由于使用了rsync递归，使用排除文件选项可能很棘手。所以，我上面这个示例可能不是你所要找的。接下来，将排除文件添加到rsnapshot.conf文件。</p>
+<pre><ol class="dp-xml"><li class="alt"><span><span>exclude_file&nbsp;&nbsp;&nbsp;&nbsp;/data/backup/tecmint.exclude&nbsp;</span></span></li></ol></pre>
+<p>最后，你的初始配置几乎已完成了。在进一步操作之前，先保存"/etc/rsnapshot.conf"配置文件。有许多选项需要解释，但下面是我的示例配置文件。</p>
+<pre><ol class="dp-xml"><li class="alt"><span><span>config_version&nbsp;&nbsp;1.2&nbsp;</span></span></li><li><span>snapshot_root&nbsp;&nbsp;&nbsp;/data/backup/&nbsp;</span></li><li class="alt"><span>cmd_cp&nbsp;&nbsp;/bin/cp&nbsp;</span></li><li><span>cmd_rm&nbsp;&nbsp;/bin/rm&nbsp;</span></li><li class="alt"><span>cmd_rsync&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/rsync&nbsp;</span></li><li><span>cmd_ssh&nbsp;/usr/bin/ssh&nbsp;</span></li><li class="alt"><span>cmd_logger&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/logger&nbsp;</span></li><li><span>cmd_du&nbsp;&nbsp;/usr/bin/du&nbsp;</span></li><li class="alt"><span>interval&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hourly&nbsp;&nbsp;6&nbsp;</span></li><li><span>interval&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;daily&nbsp;&nbsp;&nbsp;7&nbsp;</span></li><li class="alt"><span>interval&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;weekly&nbsp;&nbsp;4&nbsp;</span></li><li><span>interval&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;monthly&nbsp;3&nbsp;</span></li><li class="alt"><span>ssh_args&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-p&nbsp;25000&nbsp;</span></li><li><span>verbose&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2&nbsp;</span></li><li class="alt"><span>loglevel&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4&nbsp;</span></li><li><span>logfile&nbsp;/var/log/rsnapshot/&nbsp;</span></li><li class="alt"><span>exclude_file&nbsp;&nbsp;&nbsp;&nbsp;/data/backup/tecmint.exclude&nbsp;</span></li><li><span>rsync_long_args&nbsp;--delete&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--numeric-ids&nbsp;&nbsp;&nbsp;--delete-excluded&nbsp;</span></li><li class="alt"><span>lockfile&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/var/run/rsnapshot.pid&nbsp;</span></li><li><span>backup&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/tecmint/&nbsp;&nbsp;localhost/&nbsp;</span></li><li class="alt"><span>backup&nbsp;&nbsp;&nbsp;&nbsp;/etc/&nbsp;&nbsp;localhost/&nbsp;</span></li><li><span>backup&nbsp;&nbsp;&nbsp;&nbsp;root@example.com:/home/&nbsp;/data/backup/&nbsp;</span></li></ol></pre>
+<p>所有上述选项和参数的解释如下：</p>
+<pre><ol class="dp-xml"><li class="alt"><span><span>config_version&nbsp;</span><span class="attribute">1.2</span><span>&nbsp;=&nbsp;配置文件版本&nbsp;</span></span></li><li><span><span class="attribute">snapshot_root</span><span>&nbsp;=&nbsp;存储快照的备份目的地&nbsp;</span></span></li><li class="alt"><span><span class="attribute">cmd_cp</span><span>&nbsp;=&nbsp;拷贝命令路径&nbsp;</span></span></li><li><span><span class="attribute">cmd_rm</span><span>&nbsp;=&nbsp;删除命令路径&nbsp;</span></span></li><li class="alt"><span><span class="attribute">cmd_rsync</span><span>&nbsp;=&nbsp;rsync路径&nbsp;</span></span></li><li><span><span class="attribute">cmd_ssh</span><span>&nbsp;=&nbsp;</span><span class="attribute-value">SSH</span><span>路径&nbsp;</span></span></li><li class="alt"><span><span class="attribute">cmd_logger</span><span>&nbsp;=&nbsp;系统日志的外壳命令接口路径&nbsp;</span></span></li><li><span><span class="attribute">cmd_du</span><span>&nbsp;=&nbsp;磁盘使用命令路径&nbsp;</span></span></li><li class="alt"><span>interval&nbsp;<span class="attribute">hourly</span><span>&nbsp;=&nbsp;保留多少的每小时备份&nbsp;</span></span></li><li><span>interval&nbsp;<span class="attribute">daily</span><span>&nbsp;=&nbsp;保留多少的每天备份&nbsp;</span></span></li><li class="alt"><span>interval&nbsp;<span class="attribute">weekly</span><span>&nbsp;=&nbsp;保留多少的每周备份&nbsp;</span></span></li><li><span>interval&nbsp;<span class="attribute">monthly</span><span>&nbsp;=&nbsp;保留多少的每月备份&nbsp;</span></span></li><li class="alt"><span><span class="attribute">ssh_args</span><span>&nbsp;=&nbsp;可选的SSH变量，比如不同的端口（-p）&nbsp;</span></span></li><li><span><span class="attribute">verbose</span><span>&nbsp;=&nbsp;不需要加以说明&nbsp;</span></span></li><li class="alt"><span><span class="attribute">loglevel</span><span>&nbsp;=&nbsp;不需要加以说明&nbsp;</span></span></li><li><span><span class="attribute">logfile</span><span>&nbsp;=&nbsp;日志文件路径&nbsp;</span></span></li><li class="alt"><span><span class="attribute">exclude_file</span><span>&nbsp;=&nbsp;排除文件路径（下面会更详细地解释）&nbsp;</span></span></li><li><span><span class="attribute">rsync_long_args</span><span>&nbsp;=&nbsp;传递到rsync的长变量&nbsp;</span></span></li><li class="alt"><span><span class="attribute">lockfile</span><span>&nbsp;=&nbsp;不需要加以说明&nbsp;</span></span></li><li><span><span class="attribute">backup</span><span>&nbsp;=&nbsp;备份项的完整路径，后跟位置的相对路径&nbsp;</span></span></li></ol></pre>
+<p><span style="color: rgb(0, 0, 128);"><strong>第四步：验证rsnapshot配置</strong></span></p>
+<p>一旦你完成了所有的配置工作，就需要验证一切都按预期的那样在运作。运行下面这个命令，验证你的配置使用了正确语法。</p>
+<pre><ol class="dp-xml"><li class="alt"><span><span>#&nbsp;rsnapshot&nbsp;configtest&nbsp;</span></span></li><li><span>Syntax&nbsp;OK&nbsp;</span></li></ol></pre>
+<p>要是一切配置正确，你会收到"Syntax OK"（语法正确）的消息。要是你收到了任何错误的消息，那就意味着你需要在运行rsnapshot之前，先纠正那些错误。</p>
+<p>接下来，对其中一个快照测试一番，确保我们在生成正确的结果。我们拿"hourly"（每小时）这个参数，使用-t（测试）参数进行一番测试。下面这个命令会显示冗长列表，表明该命令要执行的一系列操作，但又不实际执行这些操作。</p>
+<p></p>
+<pre><ol class="dp-xml"><li class="alt"><span><span>#&nbsp;rsnapshot&nbsp;-t&nbsp;hourly&nbsp;</span></span></li></ol></pre>
+<p><strong>示例输出</strong></p>
+<pre><ol class="dp-xml"><li class="alt"><span><span>echo&nbsp;2028&nbsp;</span><span class="tag">&gt;</span><span>&nbsp;/var/run/rsnapshot.pid&nbsp;</span></span></li><li><span>mkdir&nbsp;-m&nbsp;0700&nbsp;-p&nbsp;/data/backup/&nbsp;</span></li><li class="alt"><span>mkdir&nbsp;-m&nbsp;0755&nbsp;-p&nbsp;/data/backup/hourly.0/&nbsp;</span></li><li><span>/usr/bin/rsync&nbsp;-a&nbsp;--delete&nbsp;--numeric-ids&nbsp;--relative&nbsp;--delete-excluded&nbsp;/home&nbsp;\&nbsp;</span></li><li class="alt"><span>/backup/hourly.0/localhost/&nbsp;</span></li><li><span>mkdir&nbsp;-m&nbsp;0755&nbsp;-p&nbsp;/backup/hourly.0/&nbsp;</span></li><li class="alt"><span>/usr/bin/rsync&nbsp;-a&nbsp;--delete&nbsp;--numeric-ids&nbsp;--relative&nbsp;--delete-excluded&nbsp;/etc&nbsp;\&nbsp;</span></li><li><span>/backup/hourly.0/localhost/&nbsp;</span></li><li class="alt"><span>mkdir&nbsp;-m&nbsp;0755&nbsp;-p&nbsp;/data/backup/hourly.0/&nbsp;</span></li><li><span>/usr/bin/rsync&nbsp;-a&nbsp;--delete&nbsp;--numeric-ids&nbsp;--relative&nbsp;--delete-excluded&nbsp;\&nbsp;</span></li><li class="alt"><span>/usr/local&nbsp;/data/backup/hourly.0/localhost/&nbsp;</span></li><li><span>touch&nbsp;/data/backup/hourly.0/&nbsp;</span></li></ol></pre>
+<p>注意：上面这个命令指令rsnapshot创建一个"hourly"备份。它实际上输出了我们在实际执行该命令时它会执行的那些命令。</p>
+<p><span style="color: rgb(0, 0, 128);"><strong>第五步：手动运行rsnapshot</strong></span></p>
+<p>验证了结果后，你可以去除"-t"选项，实际运行这个命令。</p>
+<p></p>
+<pre><ol class="dp-xml"><li class="alt"><span><span>#&nbsp;rsnapshot&nbsp;hourly&nbsp;</span></span></li></ol></pre>
+<p>上面这个命令会运行备份脚本，连同我们添加在rsnapshot.conf文件中的所有配置，创建一个"backup"目录，然后在它下面创建组织管理我们那些文件的目录结构。在运行上面这个命令后，你可以进入到备份目录来验证结果，然后使用ls -l命令列出目录结构，如下所示。</p>
+<pre><ol class="dp-xml"><li class="alt"><span><span>command&nbsp;as&nbsp;shown.&nbsp;</span></span></li><li><span>#&nbsp;cd&nbsp;/data/backup&nbsp;</span></li><li class="alt"><span>#&nbsp;ls&nbsp;-l&nbsp;</span></li><li><span>total&nbsp;4&nbsp;</span></li><li class="alt"><span>drwxr-xr-x&nbsp;3&nbsp;root&nbsp;root&nbsp;4096&nbsp;Oct&nbsp;28&nbsp;09:11&nbsp;hourly.0&nbsp;</span></li></ol></pre>
+<p><span style="color: rgb(0, 0, 128);"><strong>第六步：让过程自动化</strong></span></p>
+<p>为了让这个过程自动化，你就需要通过Cron计划任务工具，安排rsnapshot按某些时间间隔运行。默认情况下，rsnapshot在"/etc/cron.d/rsnapshot"下随带cron文件；要是这个文件不存在，就创建一个，然后将下面几行添加到该文件。</p>
+<p>默认情况下，规则被注释，所以你要去除计划部分前面的"#"，以便启用这些值。</p>
+<pre><ol class="dp-xml"><li class="alt"><span><span>#&nbsp;这是rsnapshot的示例计划任务文件。&nbsp;</span></span></li><li><span>#&nbsp;所用的值对应于/etc/rsnapshot.conf中的示例。&nbsp;</span></li><li class="alt"><span>#&nbsp;你还可以在那里设定备份点及其他许多选项。&nbsp;</span></li><li><span>#&nbsp;想激活这些计划任务文件，你就得取消下面几行的注释。&nbsp;</span></li><li class="alt"><span>#&nbsp;请随意改动，以符合你的需要。&nbsp;</span></li><li><span>0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/4&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;*&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;root&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/rsnapshot&nbsp;hourly&nbsp;</span></li><li class="alt"><span>30&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;*&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;root&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/rsnapshot&nbsp;daily&nbsp;</span></li><li><span>0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;*&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;root&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/rsnapshot&nbsp;weekly&nbsp;</span></li><li class="alt"><span>30&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;*&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;root&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/rsnapshot&nbsp;monthly&nbsp;</span></li></ol></pre>
+<p>让我具体解释一下上述的计划任务规则具体执行什么操作：</p>
+<ul>
+    <li>每隔4小时运行一次，在/backup目录下创建hourly目录。</li>
+    <li>每天凌晨3：30运行，在/backup目录下创建daily目录。</li>
+    <li>每周运行一次，具体时间是星期一凌晨3：00，在/backup目录下创建weekly目录。</li>
+    <li>每月运行一次，具体时间是凌晨2：30，在/backup目录下创建monthly目录。</li>
+</ul>
+<p>为了更深入地了解计划任务规则是如何工作的，我建议你参阅我们的<a href="http://www.tecmint.com/11-cron-scheduling-task-examples-in-linux/" target="_blank">这篇</a>描述文章。</p>
+<p><span style="color: rgb(0, 0, 128);"><strong>第七步：rsnapshot报告</strong></span></p>
+<p>rsnapshot提供了一个小巧的报告Perl脚本，它可以向你发送电子邮件提醒，并附有与你的数据备份期间出现的事情有关的所有详细信息。想创建该脚本，你就要将脚本拷贝到"/usr/local/bin"下面的某个地方，然后让它可以执行。</p>
+<pre><ol class="dp-xml"><li class="alt"><span><span>#&nbsp;cp&nbsp;/usr/share/doc/rsnapshot-1.3.1/utils/rsnapreport.pl&nbsp;/usr/local/bin&nbsp;</span></span></li><li><span>#&nbsp;chmod&nbsp;+x&nbsp;/usr/local/bin/rsnapreport.pl&nbsp;</span></li></ol></pre>
+<p>接下来，将你"rsnapshot.conf"文件中的"-stats"参数添加到rsync的长参数部分。</p>
+<pre><ol class="dp-xml"><li class="alt"><span><span>vi&nbsp;/etc/rsnapshot.conf&nbsp;</span></span></li><li><span>rsync_long_args&nbsp;--stats&nbsp;--delete&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--numeric-ids&nbsp;&nbsp;&nbsp;--delete-excluded&nbsp;</span></li></ol></pre>
+<p>现在编辑之前添加上去的crontab规则，并调用rsnapreport.pl脚本，将报告传递到指定的电子邮件地址。</p>
+<pre><ol class="dp-xml"><li class="alt"><span><span>#&nbsp;这是rsnapshot的示例计划任务文件。&nbsp;</span></span></li><li><span>#&nbsp;所用的值对应于/etc/rsnapshot.conf中的示例。&nbsp;</span></li><li class="alt"><span>#&nbsp;你还可以在那里指定备份点和另外许多选项。&nbsp;</span></li><li><span>#&nbsp;想激活这个cron文件，你得取消下面几行的注释。&nbsp;</span></li><li class="alt"><span>#&nbsp;请随意改动，以符合你的需要。&nbsp;</span></li><li><span>0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/4&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;*&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;root&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/rsnapshot&nbsp;hourly&nbsp;2<span class="tag">&gt;</span><span>&amp;1&nbsp;&nbsp;|&nbsp;\/usr/local/bin/rsnapreport.pl&nbsp;|&nbsp;mail&nbsp;-s&nbsp;"Hourly&nbsp;Backup"&nbsp;yourname@email.com&nbsp;</span></span></li><li class="alt"><span>30&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;*&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;root&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/rsnapshot&nbsp;daily&nbsp;2<span class="tag">&gt;</span><span>&amp;1&nbsp;&nbsp;|&nbsp;\/usr/local/bin/rsnapreport.pl&nbsp;|&nbsp;mail&nbsp;-s&nbsp;"Daily&nbsp;Backup"&nbsp;yourname@email.com&nbsp;</span></span></li><li><span>0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;*&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;root&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/rsnapshot&nbsp;weekly&nbsp;2<span class="tag">&gt;</span><span>&amp;1&nbsp;&nbsp;|&nbsp;\/usr/local/bin/rsnapreport.pl&nbsp;|&nbsp;mail&nbsp;-s&nbsp;"Weekly&nbsp;Backup"&nbsp;yourname@email.com&nbsp;</span></span></li><li class="alt"><span>30&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;*&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;root&nbsp;&nbsp;&nbsp;&nbsp;/usr/bin/rsnapshot&nbsp;monthly&nbsp;2<span class="tag">&gt;</span><span>&amp;1&nbsp;&nbsp;|&nbsp;\/usr/local/bin/rsnapreport.pl&nbsp;|&nbsp;mail&nbsp;-s&nbsp;"Monthly&nbsp;Backup"&nbsp;yourname@email.com&nbsp;</span></span></li></ol></pre>
+<p>一旦你正确添加了上述条目，就能将报告传递到类似下面的电子邮件地址。</p>
+<pre><ol class="dp-xml"><li class="alt"><span><span>SOURCE&nbsp;&nbsp;TOTAL&nbsp;FILES&nbsp;&nbsp;FILES&nbsp;TRANS&nbsp;TOTAL&nbsp;MB&nbsp;&nbsp;MB&nbsp;TRANS&nbsp;&nbsp;&nbsp;LIST&nbsp;GEN&nbsp;TIME&nbsp;&nbsp;FILE&nbsp;XFER&nbsp;TIME&nbsp;&nbsp;&nbsp;</span></span></li><li><span>---------------------------------------------------------------------&nbsp;&nbsp;</span></li><li class="alt"><span>localhost/&nbsp;&nbsp;185734&nbsp;&nbsp;11853&nbsp;&nbsp;2889.45&nbsp;&nbsp;6179.18&nbsp;&nbsp;40.661&nbsp;second&nbsp;&nbsp;0.000&nbsp;seconds&nbsp;&nbsp;&nbsp;</span></li></ol></pre>
+<p>参考链接：<a href="http://www.rsnapshot.org/" target="_blank">rsnapshot的主页</a></p>
+<p>暂时写到这里；要是你在安装过程中出现了什么问题，欢迎在此留言。</p>
+<p>原文链接：<a href="http://www.tecmint.com/rsnapshot-a-file-system-backup-utility-for-linux/" target="_blank">http://www.tecmint.com/rsnapshot-a-file-system-backup-utility-for-linux/</a></p><p>【编辑推荐】</p><div><ol><li><a href="http://os.51cto.com/art/201009/225693.htm" target="_blank">Linux系统备份与恢复的方法与工具介绍</a></li><li><a href="http://os.51cto.com/art/201009/226191.htm" target="_blank">企业级系统备份 BackupPC的配置与使用手册</a></li><li><a href="http://os.51cto.com/art/201009/226214.htm" target="_blank">Ubuntu服务器的系统备份实战</a></li><li><a href="http://os.51cto.com/art/201103/251081.htm" target="_blank">详解Linux下SSH远程文件传输命令scp</a></li><li><a href="http://os.51cto.com/art/201212/371903.htm" target="_blank">Ubuntu桌面生存指南四：Ubuntu系统备份恢复升级策略</a></li></ol></div><div align="right">【责任编辑：<a class="ln" href="mailto:huangdan@51cto.com">黄丹</a> TEL：（010）68476606】</div><br> 
+<p class="blank10"></p> 
+ 
+ 
+
+
+<div class="f12"> <span class="fl">原文：<a href="http://os.51cto.com/art/201311/417026.htm" class="blue"><b>Rsnapshot：一款面向Linux远程文件系统备份工具</b></a></span> <span class="fr"><a href="http://os.51cto.com/">返回操作系统首页</a></span> </div>
+<p class="blank1"></p>
+</div>
+<hr style="border-width: 1px medium medium; border-style: solid none none; border-color: rgb(85, 85, 85) -moz-use-text-color -moz-use-text-color; height: 1px;">
+<div style="width: 600px; background: none repeat scroll 0% 0% rgb(255, 255, 255);"><img alt="" src="wKioL1ZOwrbDjDqxAABJOr5GFjU021.png" border="0" height="140" width="600"></div>
+<hr style="border-width: 1px medium medium; border-style: solid none none; border-color: rgb(85, 85, 85) -moz-use-text-color -moz-use-text-color; height: 1px;">
+<iframe src="index_5.html" height="239" scrolling="no" width="600" frameborder="0"></iframe>
+<div class="tips">
+<div style="float: left;">
+<span style="float: left; margin-top: 4px;">分享到：</span>
+<!-- Baidu Button BEGIN -->
+    <div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare" style="margin-right: 5px; float: left;">
+        <a href="#" title="分享到QQ空间" class="bds_qzone"></a>
+        <a href="#" title="分享到新浪微博" class="bds_tsina"></a>
+        <a href="#" title="分享到腾讯微博" class="bds_tqq"></a>
+        <a href="#" title="分享到人人网" class="bds_renren"></a>
+        <a href="#" title="分享到网易微博" class="bds_t163"></a>
+        <span class="bds_more"></span>
+		<a title="累计分享0次" href="#" class="shareCount">0</a>
+
+</div>
+<!--<div class="fl"> 
+    </div>
+-->
+
+
+<!-- Baidu Button END -->
+
+
+
+</div><div class="fr blue"><a target="_self">收藏</a>|<a target="_self">打印</a>|<a id="msnqqcopy" title="分享本资源给好友" target="_self">复制</a></div>
+</div>
+</div>
+<!--内容 end-->
+<div class="topbiaoqing">
+<div class="biaoqing fixfloat pad">
+<ul>
+<li><a target="_self"><img src="bq1.jpg"></a>
+<div><a target="_self">给力</a></div>
+<span id="417026_1">(3票)</span></li>
+<li><a target="_self"><img src="bq2.jpg"></a>
+<div><a target="_self">动心</a></div>
+<span id="417026_2">(0票)</span></li>
+<li><a target="_self"><img src="bq3.jpg"></a>
+<div><a target="_self">废话</a></div>
+<span id="417026_3">(0票)</span></li>
+<li><a target="_self"><img src="bq4.jpg"></a>
+<div><a target="_self">专业</a></div>
+<span id="417026_4">(0票)</span></li>
+<li><a target="_self"><img src="bq5.jpg"></a>
+<div><a target="_self">标题党</a></div>
+<span id="417026_5">(0票)</span></li>
+<li><a target="_self"><img src="bq6.jpg"></a>
+<div><a target="_self">路过</a></div>
+<span id="417026_6">(0票)</span></li>
+</ul>
+</div>
+
+</div>
+<p class="blank10"></p>
+<!--reltag end-->
+
+<p class="blank10"></p>
+<div class="uyan">
+<div id="uyan_frame"><iframe src="index_6.html" style="display: block ! important; width: 100% ! important; border: 0px none ! important; overflow: hidden ! important; height: 451px;" id="uyan_ifr_7554369" scrolling="no" frameborder="0"></iframe></div>
+
+</div>
+<!--box end-->
+
+<div class="bor">
+<div class="titbg pl15">关于<a href="http://www.51cto.com/php/search.php?keyword=Rsnapshot" target="_blank" class="underline">Rsnapshot</a>&nbsp;&nbsp;<a href="http://www.51cto.com/php/search.php?keyword=Linux" target="_blank" class="underline">Linux</a>&nbsp;&nbsp;<a href="http://www.51cto.com/php/search.php?keyword=%D4%B6%B3%CC%CE%C4%BC%FE" target="_blank" class="underline">远程文件</a>&nbsp;&nbsp;<a href="http://www.51cto.com/php/search.php?keyword=%CF%B5%CD%B3%B1%B8%B7%DD" target="_blank" class="underline">系统备份</a>的更多文章</div>
+<div class="reltag">
+<ul class="fl list02">
+  <li><a href="http://os.51cto.com/art/201311/418113.htm" title="使用NoMachine NX交付远程Mac、Linux和Windows桌面">使用NoMachine NX交付远程Mac、Linux和Wind</a></li><li><a href="http://os.51cto.com/art/201311/418096.htm" title="Shell In A Box：一款访问远程Linux服务器的SSH终端">Shell In A Box：一款访问远程Linux服务器</a></li><li><a href="http://os.51cto.com/art/201311/418082.htm" title="Debian 7.2 创建无线热点的过程及方法">Debian 7.2 创建无线热点的过程及方法</a></li><li><a href="http://os.51cto.com/art/201311/417026.htm" title="Rsnapshot：一款面向Linux远程文件系统备份工具">Rsnapshot：一款面向Linux远程文件系统备份</a></li><li><a href="http://os.51cto.com/art/201311/416912.htm" title="PAC管理器：一款远程SSH/FTP/Telnet会话管理工具">PAC管理器：一款远程SSH/FTP/Telnet会话管</a></li>
+</ul>
+<div class="fr">
+<div class="h5 f12"><a href="http://os.51cto.com/art/201311/418150.htm" title="Linux远程管理工具知多少"><b>Linux远程管理工具知多少</b></a></div>
+<a href="http://os.51cto.com/art/201311/418150.htm" title="Linux远程管理工具知多少"><img src="wKioOVKMrtCid8buAACTODgvJao644.jpg" alt="Linux远程管理工具知多少" border="0" height="80" width="100"></a>
+<p class="c666">对Linux管理员们来说，远程办公不是什么新鲜事。如果管理员不在<a class="blue" href="http://os.51cto.com/art/201311/418150.htm" title="Linux远程管理工具知多少">[详细]</a></p>
+</div>
+</div></div>
+
+<p class="blank10"></p>
+
+
+
+<div class="relart fl bor">
+<div class="titbg">
+<h3 class="fl t1">栏目热门</h3>
+<a href="http://os.51cto.com/click/545" class="tmore">更多&gt;&gt;</a></div>
+<ul>
+  
+	  <li><a href="http://os.51cto.com/art/201310/412638.htm" title="Linux内存管理优化:面向低延迟/高吞吐量数据库GraphDB">Linux内存管理优化:面向低延迟/高吞吐量数</a></li>
+	  
+	  <li><a href="http://os.51cto.com/art/201311/416912.htm" title="PAC管理器：一款远程SSH/FTP/Telnet会话管理工具">PAC管理器：一款远程SSH/FTP/Telnet会话管</a></li>
+	  
+	  <li><a href="http://os.51cto.com/art/201311/416242.htm" title="NoMachine：一款高级的远程桌面访问工具">NoMachine：一款高级的远程桌面访问工具</a></li>
+	  
+	  <li><a href="http://os.51cto.com/art/201310/413111.htm" title="Ansible评测：老牌Unix管理员的梦想级方案">Ansible评测：老牌Unix管理员的梦想级方案</a></li>
+	  
+	  <li><a href="http://os.51cto.com/art/201310/414016.htm" title="预防PC故障，备用引导方案大集结">预防PC故障，备用引导方案大集结</a></li>
+	  
+</ul>
+</div>
+<div class="cathot fr bor">
+<div class="titbg">
+<h3 class="fl t1">同期最新</h3>
+<a href="http://os.51cto.com/col/545" class="tmore">更多&gt;&gt;</a></div>
+<ul>
+	
+	  <li><a href="http://os.51cto.com/art/201311/416999.htm" title="数据中心的运维管理六大原则">数据中心的运维管理六大原则</a></li>
+	  
+	  <li><a href="http://os.51cto.com/art/201311/416994.htm" title="双十一背后数据中心运维保障那些事儿">双十一背后数据中心运维保障那些事儿</a></li>
+	  
+	  <li><a href="http://os.51cto.com/art/201311/416951.htm" title="中小企业服务器如何配置？">中小企业服务器如何配置？</a></li>
+	  
+	  <li><a href="http://os.51cto.com/art/201311/416912.htm" title="PAC管理器：一款远程SSH/FTP/Telnet会话管理工具">PAC管理器：一款远程SSH/FTP/Telnet会话管</a></li>
+	  
+	  <li><a href="http://os.51cto.com/art/201311/416564.htm" title="惧怕迁移？Windows XP新工具帮你减轻痛苦">惧怕迁移？Windows XP新工具帮你减轻痛苦</a></li>
+	  
+</ul>
+</div>
+<p class="blank10"></p>
+<div class="bor">
+<div class="titbg">
+<h3 class="fl t1"><a href="http://os.51cto.com/">操作系统</a></h3>
+<span class="pl10">频道导航</span></div>
+ <ul class="xtlist">
+<li><span class="tit">生产环境</span>
+<div><a href="http://os.51cto.com/linux/">Linux</a>
+|<a href="http://os.51cto.com/windows/">Windows</a>
+|<a href="http://os.51cto.com/col/522/">Unix</a>
+|<a href="http://os.51cto.com/col/545/">运维教程</a>
+|<a href="http://os.51cto.com/art/201011/233915.htm">Linux运维趋势</a>
+</div>
+</li>
+<li class="last"><span class="tit">OS前沿</span>
+<div><a href="http://os.51cto.com/col/975/">浏览器</a>
+|<a href="http://os.51cto.com/col/610/">开源技术</a>
+|<a href="http://os.51cto.com/windows7/">Windows 7</a>
+|<a href="http://os.51cto.com/windows2008/">Server 08</a>
+|<a href="http://os.51cto.com/col/1417/">移动OS</a>
+</div>
+</li>
+</ul> 
+</div> 
+<p class="blank10"></p>
+<p class="blank10"></p>
+<div class="leftbotcon">
+<div class="bor jdlist">
+<div class="titbg">
+<h3 class="t2">热点推荐</h3></div>
+<ul>
+<li><a href="http://mobile.51cto.com/mobile-182392.htm"><img src="153546162.jpg"></a> 
+<div class="name"><a href="http://mobile.51cto.com/mobile-182392.htm">Android开发应用详解</a></div></li>
+<li><a href="http://developer.51cto.com/art/201106/266369.htm"><img src="133620622.jpg"></a> 
+<div class="name"><a href="http://developer.51cto.com/art/201106/266369.htm">那些性感的让人尖叫的程序员</a></div></li>
+<li><a href="http://developer.51cto.com/art/200907/133407.htm"><img src="134217922.jpg"></a> 
+<div class="name"><a href="http://developer.51cto.com/art/200907/133407.htm">HTML5 下一代Web开发标准详解</a></div></li>
+<li><a href="http://developer.51cto.com/art/201104/257581.htm"><img src="123123954.jpg"></a> 
+<div class="name"><a href="http://developer.51cto.com/art/201104/257581.htm">高性能WEB开发应用指南</a></div></li>
+<li><a href="http://os.51cto.com/art/200706/49181.htm"><img src="195816929.jpg"></a> 
+<div class="name"><a href="http://os.51cto.com/art/200706/49181.htm">Ubuntu开源技术交流频道</a></div></li></ul></div>
+<p class="blank10"></p>
+<div class="bor hotTag"><strong>热门标签：</strong> <a href="http://os.51cto.com/windows/">windows频道</a><a href="http://mobile.51cto.com/">移动开发</a><a href="http://cloud.51cto.com/">云计算</a><a href="http://mobile.51cto.com/mobile/objc/">objective-c</a><a href="http://network.51cto.com/art/200909/151122.htm">tp-link路由器设置图解</a><a href="http://developer.51cto.com/art/200907/133407.htm">html5</a> </div></div>
+<div class="leftbotbox"> </div>
+</div>
+<!--left end-->
+<div class="g_13 fr">
+<div style="height: 640px;" class="focus fixfloat"> 
+ <img style="border: 1px solid rgb(204, 204, 204); margin: 5px 0px;" src="weixin.jpg" width="298"><div style="top: 450px;" class="hot">
+<ul>
+<li class="tit"><em>头条</em> <a href="http://os.51cto.com/art/201603/507057.htm">如何选择最适合你的Linux发行版？</a> </li>
+<li class="con"><dl><dt><a href="http://os.51cto.com/art/201603/507057.htm"><img src="wKiom1b6KQGAGVthAABbyABK9PI856.jpg" border="0"></a></dt>
+<dd>Linux界极具活力，面向不同的用户可以使用不同的Linux发行版，比如适合新手和游戏爱好者等。</dd>
+</dl></li></ul><ol class="hotlist"><li><a href="http://os.51cto.com/art/201603/506801.htm">Zabbix监控自动化的未来如何发展</a></li><li><a href="http://os.51cto.com/art/201603/507358.htm">绝对值得你使用的75个开源移动工具</a></li></ol></div>
+<p id="hzh_one">
+<iframe noresize="" marginheight="0" marginwidth="0" src="index_7.html" align="left" height="260" scrolling="No" width="300" frameborder="0"></iframe>
+</p>
+</div>
+<div class="rank">
+<div class="tlt">
+      <h3>文章排行</h3>
+      <a id="top_3">本月</a><a id="top_2">本周</a><a class="myon" id="top_1">24小时</a> </div>
+ <div id="top10_1" style="display: block;" class="list"><ul>
+<li><a href="http://os.51cto.com/art/201607/514679.htm" target="_blank" title="Linux终于足够好，可以取代Windows了吗">Linux终于足够好，可以取代Windows了吗</a>
+</li><li><a href="http://os.51cto.com/art/201101/244090.htm" target="_blank" title="如何在Linux中查看所有正在运行的进程">如何在Linux中查看所有正在运行的进程</a>
+</li><li><a href="http://os.51cto.com/art/201607/514092.htm" target="_blank" title="在Windows 10使用上，哪些是效果最佳和">在Windows 10使用上，哪些是效果最佳和</a>
+</li><li><a href="http://os.51cto.com/art/201307/401702.htm" target="_blank" title="技术实战：基于 MHA 方式实现 MySQL 的">技术实战：基于 MHA 方式实现 MySQL 的</a>
+</li><li><a href="http://os.51cto.com/art/201205/336386.htm" target="_blank" title="OpenStack的架构详解">OpenStack的架构详解</a>
+</li><li><a href="http://os.51cto.com/art/201405/439494.htm" target="_blank" title="安装 Kali Linux 后需要做的 20 件事">安装 Kali Linux 后需要做的 20 件事</a>
+</li><li><a href="http://os.51cto.com/art/201103/249045.htm" target="_blank" title="Linux防火墙(Iptables)的开启与关闭">Linux防火墙(Iptables)的开启与关闭</a>
+</li><li><a href="http://os.51cto.com/art/201404/435279.htm" target="_blank" title="Linux服务器上监控网络带宽的18个常用">Linux服务器上监控网络带宽的18个常用</a>
+</li><li><a href="http://os.51cto.com/art/201607/514656.htm" target="_blank" title="如何在Linux上录制你的终端操作">如何在Linux上录制你的终端操作</a>
+</li><li><a href="http://os.51cto.com/art/201001/177866.htm" target="_blank" title="Linux下RPM软件包的安装及卸载">Linux下RPM软件包的安装及卸载</a>
+</li></ul></div>
+<div id="top10_2" style="display: none;" class="list"><ul>
+<li><a href="http://os.51cto.com/art/201607/514092.htm" target="_blank" title="在Windows 10使用上，哪些是效果最佳和">在Windows 10使用上，哪些是效果最佳和</a>
+</li><li><a href="http://os.51cto.com/art/201607/514006.htm" target="_blank" title="你不要升级到Windows 10的十大理由">你不要升级到Windows 10的十大理由</a>
+</li><li><a href="http://os.51cto.com/art/201607/514679.htm" target="_blank" title="Linux终于足够好，可以取代Windows了吗">Linux终于足够好，可以取代Windows了吗</a>
+</li><li><a href="http://os.51cto.com/art/201607/514651.htm" target="_blank" title="如何在Linux上永久挂载一个Windows共享">如何在Linux上永久挂载一个Windows共享</a>
+</li><li><a href="http://os.51cto.com/art/201607/514656.htm" target="_blank" title="如何在Linux上录制你的终端操作">如何在Linux上录制你的终端操作</a>
+</li><li><a href="http://os.51cto.com/art/201607/514655.htm" target="_blank" title="如何隐藏你的Linux的命令行历史">如何隐藏你的Linux的命令行历史</a>
+</li><li><a href="http://os.51cto.com/art/201607/514417.htm" target="_blank" title="“优刃有余，云维天下”优云新品发布会">“优刃有余，云维天下”优云新品发布会</a>
+</li><li><a href="http://os.51cto.com/art/201205/336386.htm" target="_blank" title="OpenStack的架构详解">OpenStack的架构详解</a>
+</li><li><a href="http://os.51cto.com/art/201405/439494.htm" target="_blank" title="安装 Kali Linux 后需要做的 20 件事">安装 Kali Linux 后需要做的 20 件事</a>
+</li><li><a href="http://os.51cto.com/art/201510/494590.htm" target="_blank" title="Windows 10重大更新11月发布 版本号识">Windows 10重大更新11月发布 版本号识</a>
+</li></ul></div>
+<div id="top10_3" style="display: none;" class="list"><ul>
+<li><a href="http://os.51cto.com/art/201606/513081.htm" target="_blank" title="每个Linux新手都应该记住的10个基本Lin">每个Linux新手都应该记住的10个基本Lin</a>
+</li><li><a href="http://os.51cto.com/art/201606/513080.htm" target="_blank" title="Linux Mint vs Ubuntu：你应该选择哪个">Linux Mint vs Ubuntu：你应该选择哪个</a>
+</li><li><a href="http://os.51cto.com/art/201606/513515.htm" target="_blank" title="你应该丢弃Windows，选择Linux的五大理">你应该丢弃Windows，选择Linux的五大理</a>
+</li><li><a href="http://os.51cto.com/art/201607/514092.htm" target="_blank" title="在Windows 10使用上，哪些是效果最佳和">在Windows 10使用上，哪些是效果最佳和</a>
+</li><li><a href="http://os.51cto.com/art/201607/514006.htm" target="_blank" title="你不要升级到Windows 10的十大理由">你不要升级到Windows 10的十大理由</a>
+</li><li><a href="http://os.51cto.com/art/201607/513964.htm" target="_blank" title="外媒速递：七款专门面向MacBook用户的">外媒速递：七款专门面向MacBook用户的</a>
+</li><li><a href="http://os.51cto.com/art/201606/513252.htm" target="_blank" title="复杂运维场景下，如何实现分钟级的故障">复杂运维场景下，如何实现分钟级的故障</a>
+</li><li><a href="http://os.51cto.com/art/201607/513796.htm" target="_blank" title="程序员喜欢的9款最佳的Linux文件比较工">程序员喜欢的9款最佳的Linux文件比较工</a>
+</li><li><a href="http://os.51cto.com/art/201606/513251.htm" target="_blank" title="DevOps之旅：运维人员阅读源代码的实用">DevOps之旅：运维人员阅读源代码的实用</a>
+</li><li><a href="http://os.51cto.com/art/201607/513649.htm" target="_blank" title="学了这四招，你在Linux上观看Netflix视">学了这四招，你在Linux上观看Netflix视</a>
+</li></ul></div>
+ 
+ </div>
+<p class="blank1"></p>
+<div class="bor">
+<div class="titbg">
+<h3 class="fl t1">热点职位</h3>
+<a href="http://gaozhao.51cto.com/job-search/list" class="tmore">更多&gt;&gt;</a></div>
+	<div class="rmzwn_xx"><dl><dt><a href="http://gaozhao.51cto.com/job/view/id-3596.html" target="_blank"> 运维工程师 </a></dt><dd><h2>全职/3-5年/本科</h2><span>12k-20k</span><a href="http://gaozhao.51cto.com/company/view/id-741.html" target="_blank">光年电商</a></dd></dl><dl><dt><a href="http://gaozhao.51cto.com/job/view/id-2867.html" target="_blank"> 运维开发工程师 </a></dt><dd><h2>全职/3-5年/本科</h2><span>15k-25k</span><a href="http://gaozhao.51cto.com/company/view/id-624.html" target="_blank">日志易</a></dd></dl><dl><dt><a href="http://gaozhao.51cto.com/job/view/id-3923.html" target="_blank"> 运维主管 </a></dt><dd><h2>全职/3-5年/本科</h2><span>8k-15k</span><a href="http://gaozhao.51cto.com/company/view/id-793.html" target="_blank">广州乐牛</a></dd></dl><dl><dt><a href="http://gaozhao.51cto.com/job/view/id-3033.html" target="_blank"> 运维工程师 </a></dt><dd><h2>全职/1-3年/大专</h2><span>6k-10k</span><a href="http://gaozhao.51cto.com/company/view/id-651.html" target="_blank">动视云科技</a></dd></dl><dl><dt><a href="http://gaozhao.51cto.com/job/view/id-3710.html" target="_blank"> linux运维工程师 </a></dt><dd><h2>全职/1-3年/大专</h2><span>5k-10k</span><a href="http://gaozhao.51cto.com/company/view/id-762.html" target="_blank">逑美</a></dd></dl></div>
+</div>
+<div class="blank10"></div>
+
+<div class="bor">
+<div class="titbg">
+<h3 class="fl t1">热点专题</h3>
+<a href="http://os.51cto.com/speclist/545" class="tmore">更多&gt;&gt;</a></div>
+<ul class="plist01">
+<li><a href="http://os.51cto.com/art/201308/409203.htm" title="系统频道8月第5周热点推荐：Velocity 2013 专访实录"><img src="wKioJlIhzXSSrJplAAAOL1AW4pc546.jpg" alt="系统频道8月第5周热点推荐：Velocity 2013 专访实录" height="80" width="100"></a>
+<h5><a href="http://os.51cto.com/art/201308/409203.htm" title="系统频道8月第5周热点推荐：Velocity 2013 专访实录">系统频道8月第5周热点</a></h5>
+<div class="c666">2013年8月21日，Velocity China 2013 Web 性能与运维</div>
+</li><li><a href="http://os.51cto.com/art/201308/408661.htm" title="Velocity China 2013：51CTO采访实录汇总"><img src="wKioJlIeFJrQnxAOAAAQUsTcSTc350.jpg" alt="Velocity China 2013：51CTO采访实录汇总" height="80" width="100"></a>
+<h5><a href="http://os.51cto.com/art/201308/408661.htm" title="Velocity China 2013：51CTO采访实录汇总">Velocity China 2013</a></h5>
+<div class="c666">Velocity China 2013 Web 性能与运维大会上，来自各种</div>
+</li><li><a href="http://os.51cto.com/art/201308/408132.htm" title="系统频道8月第4周热点推荐：你是否停止了使用Linux？"><img src="wKioJlIZ1FTgK-mhAAAMnxI66G4596.jpg" alt="系统频道8月第4周热点推荐：你是否停止了使用Linux？" height="80" width="100"></a>
+<h5><a href="http://os.51cto.com/art/201308/408132.htm" title="系统频道8月第4周热点推荐：你是否停止了使用Linux？">系统频道8月第4周热点</a></h5>
+<div class="c666">八月的天气依然那样炎热，仿佛一点星火就会引起爆炸。</div>
+</li> 
+</ul>
+</div>
+<p class="blank10"></p>
+<div class="tagCloud">
+<div class="tlt">
+<h3>热点标签</h3>
+</div>
+<div class="taglist"><a title="IIS服务" href="http://os.51cto.com/art/201104/256478.htm">IIS服务</a>
+<a title="Windows 8" href="http://os.51cto.com/art/201104/256380.htm">Windows 8</a>
+<a title="浏览器战报" href="http://os.51cto.com/art/201103/250662.htm">浏览器战报</a>
+
+<a title="Ubuntu 11.04" href="http://os.51cto.com/art/201101/244030.htm">Ubuntu 11.04</a>
+<a title="运维秘诀" href="http://os.51cto.com/art/201101/244021.htm">运维秘诀</a>
+<a title="活动目录" href="http://os.51cto.com/art/201012/236185.htm">活动目录</a>
+<a title="Linux管理员" href="http://os.51cto.com/art/201104/253193.htm">Linux管理员</a>
+<a title="Fedora 15" href="http://os.51cto.com/art/201103/246763.htm">Fedora 15</a>
+<a title="Linux运维趋势" href="http://os.51cto.com/art/201011/233915.htm">Linux运维趋势</a>
+<a title="开源社区" href="http://os.51cto.com/art/201010/230570.htm">开源社区</a>
+<a title="开源社区" href="http://gaozhao.51cto.com/job-search/list/category-0-36" class="imp">系统招聘</a></div>
+</div>
+<div class="rss">
+<ul>
+<li class="lin f12-c"><a href="http://news.51cto.com/col/1323/"><strong>点击这里查看样刊</strong></a></li>
+<li>
+<dl>
+<dt> </dt>
+<dd><a href="http://home.51cto.com/index.php?s=/Subscribe"><img src="dingy.gif"></a></dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="bor">
+<div class="titbg">
+<h3 class="t1">全站热点</h3>
+</div>
+<div class="webhot fixfloat">
+<ul>
+
+<li>
+  <a href="http://netsecurity.51cto.com/secu/qiming/waf2013/" title="重启万兆环境下的WEB防护新思路"><img src="wKioOVHSSNjiAsfuAAAWjl8-ooE882.jpg"></a>
+  <div><a href="http://netsecurity.51cto.com/secu/qiming/waf2013/" title="重启万兆环境下的WEB防护新思路">重启万兆环境下的WEB防护新思路</a></div>
+</li>
+
+<li>
+  <a href="http://os.51cto.com/art/201306/401296.htm" title="《Linux运维趋势》2013年6月号"><img src="wKioOVHOR4iBKFamAAAS0uS9NXE906.jpg"></a>
+  <div><a href="http://os.51cto.com/art/201306/401296.htm" title="《Linux运维趋势》2013年6月号">《Linux运维趋势》2013年6月号</a></div>
+</li>
+
+</ul>
+</div>
+<p class="blank1"></p>
+<ul class="list03">
+
+<li><a href="http://mobile.51cto.com/iOS7-411721.htm" title="玩转iOS7 系统使用技巧集锦">玩转iOS7 系统使用技巧集锦</a></li>
+
+<li><a href="http://developer.51cto.com/art/201309/411713.htm" title="Java之数组基础应用回顾">Java之数组基础应用回顾</a></li>
+
+<li><a href="http://book.51cto.com/art/201309/411696.htm" title="数据化决策">数据化决策</a></li>
+
+<li><a href="http://book.51cto.com/art/201309/411672.htm" title="jQuery基础教程（第4版）">jQuery基础教程（第4版）</a></li>
+
+<li><a href="http://book.51cto.com/art/201309/411605.htm" title="黑客免杀攻防">黑客免杀攻防</a></li>
+
+</ul>
+</div>
+<p class="blank10"></p>
+<div class="bor">
+<div class="titbg">
+<h3 class="t1">读书</h3>
+</div>
+  
+<div class="catbook"><a href="http://book.51cto.com/art/200707/50428.htm" title="J2EE应用开发（WebLogic+JBuilder）（第二版）"><img src="145318967.gif" border="0" height="98" width="66"></a>
+<h5><a href="http://book.51cto.com/art/200707/50428.htm">J2EE应用开发（WebLogic+JBuilder）（第二版）</a></h5>
+<div class="c666 text">本书介绍如何将最流行的J2EE应用服务器WebLogic Server和最好的Java集成开发工具JBuilder结合起来开发J2EE应用，主要内容包括：W</div>
+</div>
+
+
+<ul class="list03">
+
+<li><a href="http://book.51cto.com/art/200707/51414.htm" title="基于Project2003的项目管理">基于Project2003的项目管理</a></li>
+
+<li><a href="http://book.51cto.com/art/200707/51416.htm" title="Tomcat与Java Web开发技术详解">Tomcat与Java Web开发技术详解</a></li>
+
+<li><a href="http://book.51cto.com/art/200707/51421.htm" title="网管第一课——计算机网络原理">网管第一课——计算机网络原理</a></li>
+
+<li><a href="http://book.51cto.com/art/200707/51423.htm" title="网管第一课——网络组建与管理">网管第一课——网络组建与管理</a></li>
+
+</ul>
+</div>
+<p class="blank10"></p>
+<div class="bor">
+<div class="titbg">
+<h3 class="t1 fl">博文推荐</h3>
+<a class="tmore" href="http://blog.51cto.com/">更多&gt;&gt;</a></div>
+
+<ul class="list03">
+ <li><a href="http://j0ker.blog.51cto.com/30190/43275/" target="_blank" title="J0ker的CISSP之路:复习-Information Security Management(1)">J0ker的CISSP之路:复习-Information </a></li><li><a href="http://transinfo.blog.51cto.com/174063/43269/" target="_blank" title="SBO的查询接口详细分析解剖">SBO的查询接口详细分析解剖</a></li><li><a href="http://lavasoft.blog.51cto.com/62575/43218/" target="_blank" title="Java 反射机制深入研究">Java 反射机制深入研究</a></li><li><a href="http://angerfire.blog.51cto.com/198455/43217/" target="_blank" title="(原创)创建windows域---深入理解域概念">(原创)创建windows域---深入理解域概</a></li>
+</ul>
+</div>
+<p class="blank10"></p>
+<div class="tj">
+<div class="tlt">
+<h3>最新热帖</h3>
+<a class="more" href="http://bbs.51cto.com/hotthreads.php">更多&gt;&gt;</a></div>
+<ul>
+<li><a href="http://bbs.51cto.com/thread-944949-1.html" target="_blank" title="android 设置头像以及裁剪功能">android 设置头像以及裁剪功能</a></li><li><a href="http://bbs.51cto.com/thread-935322-1.html" target="_blank" title="【下载活动】转载资料汇总帖，奖励5-20下载豆">【下载活动】转载资料汇总帖，奖励5-</a></li><li><a href="http://bbs.51cto.com/thread-934874-1.html" target="_blank" title="【JAVA资料免费下载】158个JAVA免豆精品资料汇总">【JAVA资料免费下载】158个JAVA免豆</a></li><li><a href="http://bbs.51cto.com/thread-934780-1.html" target="_blank" title="【下载帮助】随手分享资料链接，坐等下载豆收益！">【下载帮助】随手分享资料链接，坐等</a></li><li><a href="http://bbs.51cto.com/thread-933821-1.html" target="_blank" title="拆吧，拆一CISCO电源适配器">拆吧，拆一CISCO电源适配器</a></li>
+</ul>
+</div>
+<div class="picAD">
+<div id="BAIDU_SSP__wrapper_u708626_0"><iframe id="iframeu708626_0" src="index_8.html" vspace="0" hspace="0" marginwidth="0" marginheight="0" style="border: 0px none; vertical-align: bottom; margin: 0px;" allowtransparency="true" align="center,center" height="250" scrolling="no" width="300" frameborder="0"></iframe></div>
+</div>
+</div>
+<p class="blank1"></p> 
+<!--leftbotcon end-->
+</div> 
+<div class="subweb">
+<h4>51CTO旗下网站</h4>
+<div>
+<a target="_blank" href="http://www.51cto.com/">领先的IT技术网站 51CTO</a>
+<a target="_blank" href="http://www.watchstor.com/">领先的中文存储媒体 WatchStor</a>
+<a target="_blank" href="http://www.cioage.com/">中国首个CIO网站 CIOage</a>
+<a target="_blank" href="http://www.hc3i.cn/">中国首家数字医疗网站 HC3i</a>
+</div>
+</div>
+<div id="ft"><div id="foot" align="center">Copyright©2005-2016 <a href="http://www.51cto.com/">51CTO.COM</a> 版权所有 未经许可 请勿转载<div style="display: none;"><a href="http://tongji.baidu.com/hm-web/welcome/ico?s=b6e2d52e9f0660b9fbaf0f2029c046c0" target="_blank"><img src="21.gif" border="0" height="20" width="20"></a></div></div></div>
+
+
+
+
+
+
+
+<!-- 新监测代码 -->
+<!-- 新监测代码 -->
+<div id="MyMoveAd" style="display: none; height: 2px;">
+<span id="wordlink_1"><a href="http://gg1.51cto.com/www/delivery/ck.php?oaparams=2__bannerid=3933__zoneid=270__cb=ae8c20a1e9__oadest=http%3A%2F%2Fedu.51cto.com%2Fzt%2Fzt_id-1.html%3Fan" target="_blank"><font color="red">网络安全一个大写的反“作死”</font></a><div id="beacon_ae8c20a1e9" style="position: absolute; left: 0px; top: 0px; visibility: hidden;"><img src="lg_001.php" alt="" style="width: 0px; height: 0px;" height="0" width="0"></div>
+</span>
+<span id="wordlink_2"><a href="http://gg1.51cto.com/www/delivery/ck.php?oaparams=2__bannerid=3546__zoneid=631__cb=8a9b9a7cb2__oadest=http%3A%2F%2Fedu.51cto.com%2Fpx%2Ftrain%2F88" target="_blank"><font color="red">信息安全工程师，会挣钱的考试</font></a><div id="beacon_8a9b9a7cb2" style="position: absolute; left: 0px; top: 0px; visibility: hidden;"><img src="lg_002.php" alt="" style="width: 0px; height: 0px;" height="0" width="0"></div>
+</span>
+<span id="wordlink_3"><a href="http://gg2.51cto.com/www/delivery/ck.php?oaparams=2__bannerid=3717__zoneid=594__cb=3e8087a6c1__oadest=http%3A%2F%2Fedu.51cto.com%2Ftraining%2Ftraining_id-18.html%3Fxiaoshou" target="_blank"><font color="red">微软企业级内训课程免费学</font></a><div id="beacon_3e8087a6c1" style="position: absolute; left: 0px; top: 0px; visibility: hidden;"><img src="lg_003.php" alt="" style="width: 0px; height: 0px;" height="0" width="0"></div>
+</span>
+<span id="wordlink_4"><a href="http://gg1.51cto.com/www/delivery/ck.php?oaparams=2__bannerid=3549__zoneid=636__cb=0a2a9a9bff__oadest=http%3A%2F%2Fedu.51cto.com%2Ftraining%2Ftraining_id-17.html%3Fxiaoshou" target="_blank"><font color="red">2016年备战软考-重难点解析</font></a><div id="beacon_0a2a9a9bff" style="position: absolute; left: 0px; top: 0px; visibility: hidden;"><img src="lg_004.php" alt="" style="width: 0px; height: 0px;" height="0" width="0"></div>
+</span>
+<span id="pinglun">0</span>
+<span id="tonglan"></span>
+<span id="wordlink"></span>
+
+<span id="bookss"></span>
+</div>   
+
+
+
+  
+
+
+<div style="position: absolute; left: 598px; top: 7482px; width: 34px; height: 16px; z-index: 99;"><embed id="ZeroClipboardMovie_1" src="ZeroClipboard.swf" loop="false" menu="false" quality="best" bgcolor="#ffffff" name="ZeroClipboardMovie_1" allowscriptaccess="always" allowfullscreen="false" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" flashvars="id=1&amp;width=34&amp;height=16" wmode="transparent" align="middle" height="16" width="34"></div> 
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,11 @@
+id	20160718132925
+create	20160718132925
+modify	20160718133042
+type	
+title	Build Geany on Windows (using Waf) DEPRECATED - Geany Wiki
+chars	UTF-8
+icon	favicon.ico
+source	http://wiki.geany.org/howtos/win32/build
+comment	
+lock	
+folder	geany

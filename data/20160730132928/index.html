@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=10,IE=9,IE=8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<title>inotify介绍及rsync + inotify 实时同步备份 – linux运维部落</title>
+
+		
+		
+
+
+
+<link rel="https://api.w.org/" href="http://www.178linux.com/wp-json/">
+<link rel="prev" title="【福利招聘】运维工程师/12k-18k/北京/内推" href="http://www.178linux.com/18358">
+<link rel="next" title="马哥教育网络班20期+第2周课程练习" href="http://www.178linux.com/18458">
+<link rel="canonical" href="http://www.178linux.com/18379">
+<link rel="shortlink" href="http://www.178linux.com/?p=18379">
+<link rel="alternate" type="application/json+oembed" href="http://www.178linux.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.178linux.com%2F18379">
+<link rel="alternate" type="text/xml+oembed" href="http://www.178linux.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.178linux.com%2F18379&amp;format=xml">
+<meta name="keywords" content="inotify, rsync+inotify, 运维专栏">
+<meta name="description" content="1、前言rsync&nbsp;（remote sync）是一款非常好的数据同步工具，能够通过对比同步双方的数据变动，实现增量同步，还可以通过LAN/WAN实现远程多台主机间文件的同步，还能结合crond任务计划来执行自动备份，又可以结合ssh实现远程数据备份的安全，种种特性使他看起来相当优秀。但如果需备份数据十分庞大时，它的不足之处就显现出来了，比如每次执行同步操作时，rsync都会扫描全部数据进而计算出增量部分，而后再同步增量数据，这">
+
+
+
+
+<!--[if lt IE 9]><script src="http://www.178linux.com/wp-content/themes/d8-4.0/js/html5.js"></script><![endif]-->
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body class="single single-post postid-18379 single-format-standard"><div class="navbar-wrap">
+<div class="navbar">
+		<div class="logo"><a href="http://www.178linux.com/" title="linux运维部落-|国内最专业的Linux运维博客平台">linux运维部落</a></div>
+		<ul class="nav">
+			<li id="menu-item-207" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-207"><a href="http://blog.magedu.com/">首页</a></li>
+<li id="menu-item-16454" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-16454"><a href="http://www.osstep.com/">在线课程</a></li>
+<li id="menu-item-16429" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-has-children menu-item-16429"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f">运维专栏</a>
+<ul class="sub-menu">
+	<li id="menu-item-16430" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-16430"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/devopsadmin">开发运维</a>
+	<ul class="sub-menu">
+		<li id="menu-item-16447" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-16447"><a href="http://www.178linux.com/more/devs/java">JAVA</a></li>
+		<li id="menu-item-16448" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-16448"><a href="http://www.178linux.com/more/devs/php">PHP</a></li>
+		<li id="menu-item-16449" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-16449"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/devopsadmin/django">Django</a></li>
+		<li id="menu-item-16450" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-16450"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/devopsadmin/nodejs">nodejs</a></li>
+		<li id="menu-item-16451" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-16451"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/devopsadmin/python">Python</a></li>
+		<li id="menu-item-16452" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-16452"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/devopsadmin/ruby">RUBY</a></li>
+		<li id="menu-item-16453" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-16453"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/devopsadmin/ruby-devopsadmin">ruby</a></li>
+	</ul>
+</li>
+	<li id="menu-item-16431" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-16431"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/dbadmin">数据库运维</a></li>
+	<li id="menu-item-16432" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-16432"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/monitoradmin">监控运维</a></li>
+	<li id="menu-item-16433" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-16433"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/systemadmin">系统运维</a></li>
+	<li id="menu-item-16434" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-16434"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/systemadmin/automatic">自动化</a></li>
+	<li id="menu-item-16435" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-16435"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/systemadmin/virtual">虚拟化</a></li>
+	<li id="menu-item-16436" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-16436"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/networkadmin">网络运维</a></li>
+	<li id="menu-item-19470" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-19470"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/coursestudying">课程练习</a></li>
+</ul>
+</li>
+<li id="menu-item-16444" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-16444"><a href="http://www.178linux.com/jobbers">职位推荐</a></li>
+<li id="menu-item-16456" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-16456"><a href="http://www.178linux.com/more">更多</a>
+<ul class="sub-menu">
+	<li id="menu-item-16455" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-16455"><a href="http://www.178linux.com/more/studentlife">学员风采</a></li>
+	<li id="menu-item-16457" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-16457"><a href="http://www.178linux.com/more/ts">师资力量</a></li>
+	<li id="menu-item-16458" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-16458"><a href="http://www.178linux.com/more/studentlife">学员风采</a></li>
+	<li id="menu-item-26876" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-26876"><a href="http://www.178linux.com/mjobs">面授班作业</a>
+	<ul class="sub-menu">
+		<li id="menu-item-26865" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-26865"><a href="http://www.178linux.com/m18">面授18期</a></li>
+		<li id="menu-item-26866" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-26866"><a href="http://www.178linux.com/m19">面授19期</a></li>
+		<li id="menu-item-26867" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-26867"><a href="http://www.178linux.com/m20">面授20期</a></li>
+		<li id="menu-item-26868" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-26868"><a href="http://www.178linux.com/m21">面授21期</a></li>
+		<li id="menu-item-26869" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-26869"><a href="http://www.178linux.com/m22">面授22期</a></li>
+		<li id="menu-item-26870" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-26870"><a href="http://www.178linux.com/m23">面授23期</a></li>
+	</ul>
+</li>
+	<li id="menu-item-26877" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-26877"><a href="http://www.178linux.com/njobs">网络班作业</a>
+	<ul class="sub-menu">
+		<li id="menu-item-26871" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-26871"><a href="http://www.178linux.com/n18">网络18期</a></li>
+		<li id="menu-item-26872" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-26872"><a href="http://www.178linux.com/n19">网络19期</a></li>
+		<li id="menu-item-26873" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-26873"><a href="http://www.178linux.com/n20">网络20期</a></li>
+		<li id="menu-item-26874" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-26874"><a href="http://www.178linux.com/n21">网络21期</a></li>
+		<li id="menu-item-26875" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-26875"><a href="http://www.178linux.com/n22">网络22期</a></li>
+	</ul>
+</li>
+</ul>
+</li>
+		</ul>
+		<div class="menu pull-right">
+			<form method="get" class="dropdown search-form" action="http://www.178linux.com/">
+				<input class="search-input" name="s" placeholder="输入关键字搜索" x-webkit-speech="" type="text"><input class="btn btn-success search-submit" value="搜索" type="submit">
+				<ul class="dropdown-menu search-suggest"></ul>
+			</form>
+			<div class="btn-group pull-left">
+				<button class="btn btn-primary" data-toggle="modal" data-target="#feed">订阅</button>
+								<button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">关注 <i class="caret"></i></button>
+				<ul class="dropdown-menu pull-right">
+										<li><a href="http://weibo.com/mageedu" target="_blank">新浪微博</a></li>														</ul>
+							</div>
+		</div>
+</div>
+</div>
+<header class="header">
+	<div class="speedbar">
+					<div class="pull-right">
+				<i class="icon-user icon12"></i> <a href="http://www.178linux.com/wp-login.php">登录</a>			</div>
+				<div class="toptip"><strong class="text-success">最新消息：</strong>马哥2016Linux运维实战班全新上线，详情可了解  http://www.magedu.com/</div>
+	</div>
+</header>
+<section class="container">
+	<div class="content-wrap">
+	<div class="content">
+		<div class="breadcrumbs">你的位置：<a href="http://www.178linux.com/">linux运维部落</a> <small>&gt;</small> <a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f">运维专栏</a> <small>&gt;</small> <span class="muted">inotify介绍及rsync + inotify 实时同步备份</span></div>
+				<header class="article-header">
+			<h1 class="article-title"><a href="http://www.178linux.com/18379">inotify介绍及rsync + inotify 实时同步备份</a></h1>
+			<div class="meta">
+				<span class="muted"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f"><i class="icon-list-alt icon12"></i> 运维专栏</a></span>				<span class="muted"><i class="icon-user icon12"></i> <a href="http://www.178linux.com/author/windchaser">螃蟹</a></span>
+				<time class="muted"><i class="ico icon-time icon12"></i> 1个月前 (06-15)</time>
+				<span class="muted"><i class="ico icon-eye-open icon12"></i> 225浏览</span>
+				<span class="muted"><i class="icon-comment icon12"></i> <a href="http://www.178linux.com/18379#respond">0评论</a></span>							</div>
+		</header>
+
+				
+		<article class="article-content">
+			<h2 id="1前言" style="font-family: inherit; line-height: 1.1; color: inherit; margin: 1.2em 0px 0.6em; font-size: 2.15em;">1、前言</h2>
+<blockquote><p style="margin-top: 0px; margin-bottom: 0px; font-size: 1em; line-height: 1.6;"><strong style="line-height: 1.6;">rsync&nbsp;</strong>（remote sync）是一款非常好的数据同步工具，能够通过对比同步双方的数据变动，实现增量同步，还可以通过LAN/WAN实现远程多台主机间文件的同步，还能结合crond任务计划来执行自动备份，又可以结合ssh实现远程数据备份的安全，种种特性使他看起来相当优秀。但如果需备份数据十分庞大时，它的不足之处就显现出来了，比如每次执行同步操作时，rsync都会扫描全部数据进而计算出增量部分，而后再同步增量数据，这将会十分耗时，使其变得低效；并且受限于crond计划任务最小时间间隔为一分钟，会导致同步源端和目的段数据不一致，这在高可用环境中是不被允许的。这个时候我们就可以构建rsync+Inotify架构来解决此应用瓶颈。</p>
+</blockquote>
+<p style="margin-top: 0px; margin-bottom: 1.1em; line-height: 1.6;">备注：关于rsync的使用请查阅<a href="http://windchasereric.blog.51cto.com/5419433/1711313" target="_blank">http://windchasereric.blog.51cto.com/5419433/1711313</a></p>
+<h2 id="2inotify介绍" style="font-family: inherit; line-height: 1.1; color: inherit; margin: 1.2em 0px 0.6em; font-size: 2.15em;">2、inotify介绍</h2>
+<p style="margin-top: 0px; margin-bottom: 1.1em; line-height: 1.6;">Inotify 是一个Linux特性，是一种强大的、细粒度的、异步的文件系统监控机制，linux内核从2.6.13起便加入了Inotify支持，通过Inotify可以监控文件系统中添加、修改、移动等各种细微事件，利用这个内核接口，第三方软件就可以监控文件系统下文件的各种变化情况，而Inotify-tools就是这样的一个第三方软件。Inotify反应灵敏，用法简单，并且比使用Crontab轮询高效很多。</p>
+<h3 id="21inotify常见监控事件" style="font-family: inherit; line-height: 1.6; color: inherit; margin: 1.2em 0px 0.6em; font-size: 1.7em;">2.1、inotify常见监控事件</h3>
+<ul style="margin-bottom: 1.1em; line-height: 1.6;" class=" list-paddingleft-2">
+<li>
+<p><strong style="line-height: 1.6;">IN_ACCESS</strong>&nbsp;：文件被访问</p>
+</li>
+<li>
+<p><strong style="line-height: 1.6;">IN_MODIFY</strong>&nbsp;： 文件被修改</p>
+</li>
+<li>
+<p><strong style="line-height: 1.6;">IN_ATTRIB</strong>&nbsp;： 文件属性被修改</p>
+</li>
+<li>
+<p><strong style="line-height: 1.6;">IN_CLOSE_WRITE</strong>&nbsp;： 以可写方式打开的文件被关闭</p>
+</li>
+<li>
+<p><strong style="line-height: 1.6;">IN_CLOSE_NOWRITE</strong>&nbsp;： 以不可写方式打开的文件被关闭</p>
+</li>
+<li>
+<p><strong style="line-height: 1.6;">IN_OPEN</strong>&nbsp;： 文件被打开</p>
+</li>
+<li>
+<p><strong style="line-height: 1.6;">IN_MOVED_FROM</strong>&nbsp;： 文件被移出监控的目录</p>
+</li>
+<li>
+<p><strong style="line-height: 1.6;">IN_MOVED_TO</strong>&nbsp;： 文件被移入监控着的目录</p>
+</li>
+<li>
+<p><strong style="line-height: 1.6;">IN_CREATE</strong>&nbsp;： 在监控的目录中新建文件或子目录</p>
+</li>
+<li>
+<p><strong style="line-height: 1.6;">IN_DELETE</strong>&nbsp;： 文件或目录被删除</p>
+</li>
+<li>
+<p><strong style="line-height: 1.6;">IN_DELETE_SELF</strong>&nbsp;： 自删除，即一个可执行文件在执行时删除自己</p>
+</li>
+<li>
+<p><strong style="line-height: 1.6;">IN_MOVE_SELF</strong>&nbsp;： 自移动，即一个可执行文件在执行时移动自己</p>
+</li>
+</ul>
+<h3 id="22inotify相关的内核参数" style="font-family: inherit; line-height: 1.6; color: inherit; margin: 1.2em 0px 0.6em; font-size: 1.7em;">2.2、inotify相关的内核参数</h3>
+<pre class="prettyprint hljs-dark"><code class="language-python hljs">[root@RServer ~]<span class="hljs-comment"># ll /proc/sys/fs/inotify/</span><br>-rw-r--r-- <span class="hljs-number">1</span> root root <span class="hljs-number">0</span> Jun <span class="hljs-number">13</span> <span class="hljs-number">17</span>:<span class="hljs-number">49</span> max_queued_events<br>-rw-r--r-- <span class="hljs-number">1</span> root root <span class="hljs-number">0</span> Jun <span class="hljs-number">13</span> <span class="hljs-number">17</span>:<span class="hljs-number">49</span> max_user_instances<br>-rw-r--r-- <span class="hljs-number">1</span> root root <span class="hljs-number">0</span> Jun <span class="hljs-number">13</span> <span class="hljs-number">17</span>:<span class="hljs-number">49</span> max_user_watches<br></code></pre>
+<blockquote><ul style="line-height: 1.6;" class=" list-paddingleft-2">
+<li>
+<p><strong style="line-height: 1.6;">/proc/sys/fs/inotify/max_queued_events</strong>&nbsp;<br>该参数值是调用inotify_init时分配给实例的event队列最大值，超出该值的event被丢弃，并触发IN_Q_OVERFLOW事件。默认值：16384&nbsp;<br>注意，该参数定义的是events队列长度，若文件庞大且变化频繁需调整该值以适应监控。</p>
+</li>
+<li>
+<p><strong style="line-height: 1.6;">proc/sys/fs/inotify/max_user_instances</strong>&nbsp;<br>该参数值定义了用户创建inotify实例的上限。默认值：128</p>
+</li>
+<li>
+<p><strong style="line-height: 1.6;">/proc/sys/fs/inotify/max_user_watches</strong>&nbsp;<br>该参数定义了每个inotify示例可监控的最大目录数，如果监控文件庞大需调大该值。默认值：8192&nbsp;<br>参数调整示例：&nbsp;<br>可使用重定向方式修改&nbsp;<br>echo 10000000 &gt; /proc/sys/fs/inotify/max_user_watches</p>
+</li>
+</ul>
+</blockquote>
+<h3 id="23inotify-tools介绍" style="font-family: inherit; line-height: 1.6; color: inherit; margin: 1.2em 0px 0.6em; font-size: 1.7em;">2.3、inotify-tools介绍</h3>
+<p>Inotify-tools工具安装后提供了两个命令</p>
+<ul class=" list-paddingleft-2">
+<li>
+<p><strong style="line-height: 1.6;">/usr/bin/inotifywait</strong>：监控文件系统变化</p>
+</li>
+<li>
+<p><strong style="line-height: 1.6;">/usr/bin/inotifywatch</strong>：用来统计文件系统访问的次数</p>
+</li>
+</ul>
+<p style="margin-top: 0px; margin-bottom: 1.1em; line-height: 1.6;"><span style="color: inherit; font-family: inherit; font-size: 1.25em; line-height: 1.6;">2.3.1、Inotifywait用法</span></p>
+<pre class="prettyprint hljs-dark"><code class="language-python hljs">inotifywait &nbsp;[-hcmrq] [-e &lt;event&gt; ] [-t &lt;seconds&gt; ] [--format &lt;fmt&gt; ] [--timefmt&lt;fmt&gt; ] &lt;file&gt; [ ... ]<br> &nbsp; -h,–help &nbsp; &nbsp; //输出帮助信息 <br> &nbsp; @ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;//排除不需要监视的文件，可以是相对路径，也可以是绝对路径 <br> &nbsp; –fromfile &nbsp; &nbsp;//从文件读取需要监视的文件或排除的文件，一个文件一行，排除的文件以@开头 <br> &nbsp; -m,–monitor &nbsp; //接收到一个事情而不退出，无限期地执行。默认行为是接收到一个事情后立即退出 <br> &nbsp; -d,–daemon &nbsp; &nbsp;//跟–monitor一样，除了是在后台运行，需要指定 –outfile把事情输出到一个文件。也意味着使用了–syslog <br> &nbsp; -o,–outfile &nbsp; &nbsp;//输出事情到一个文件而不是标准输出。 <br> &nbsp; -s,–syslog &nbsp; &nbsp;//输出错误信息到系统日志 <br> &nbsp; -r,–recursive &nbsp;//监视一个目录下的所有子目录。 <br> &nbsp; -q,–quiet &nbsp; &nbsp; //指定一次，不会输出详细信息，指定二次，除了致命错误，不会输出任何信息。 <br> &nbsp; –exclude &nbsp; &nbsp; &nbsp;//正则匹配需要排除的文件，大小写敏感。 <br> &nbsp; –excludei &nbsp; &nbsp; //正则匹配需要排除的文件，忽略大小写。 <br> &nbsp; -t，–timeout<span class="hljs-comment"># &nbsp;//设置超时时间，如果为0，则无限期地执行下去。 </span><br> &nbsp; -e,–event &nbsp; &nbsp;//指定监视的事件。 <br> &nbsp; -c,–csv &nbsp; &nbsp; &nbsp;//输出csv格式。 <br> &nbsp; –timefmt &nbsp; &nbsp; //指定时间格式，用于–format选项中的%T格式。 <br> &nbsp; –format &nbsp; &nbsp; &nbsp;//指定输出格式。 <br> &nbsp; %w 表示发生事件的目录 <br> &nbsp; %f 表示发生事件的文件 <br> &nbsp; %e 表示发生的事件 <br> &nbsp; %Xe 事件以“X”分隔 <br> &nbsp; %T 使用由–timefmt定义的时间格式<br></code></pre>
+<h3 id="232inotifywatch用法" style="font-family: inherit; line-height: 1.6; color: inherit; margin: 1.2em 0px 0.6em; font-size: 1.7em;">2.3.2、inotifywatch用法</h3>
+<pre class="prettyprint hljs-dark"><code class="language-python hljs">inotifywatch [-hvzrqf] [-e &lt;event&gt; ] [-t &lt;seconds&gt; ] [-a &lt;event&gt; ] [-d &lt;event&gt; ] &lt;file&gt; [ … ] &nbsp; &nbsp; &nbsp; <br> &nbsp; -h，–help &nbsp; &nbsp;<span class="hljs-comment"># 输出帮助信息 </span><br> &nbsp; -v，–verbose &nbsp;<span class="hljs-comment"># 输出详细信息 </span><br> &nbsp; @ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="hljs-comment"># 排除不需要监视的文件，可以是相对路径，也可以是绝对路径。 </span><br> &nbsp; –fromfile &nbsp; &nbsp;<span class="hljs-comment"># 从文件读取需要监视的文件或排除的文件，一个文件一行，排除的文件以@开头。 </span><br> &nbsp; -z，–zero &nbsp; &nbsp;<span class="hljs-comment"># 输出表格的行和列，即使元素为空 </span><br> &nbsp; –exclude &nbsp; &nbsp; <span class="hljs-comment"># 正则匹配需要排除的文件，大小写敏感。 </span><br> &nbsp; –excludei &nbsp; &nbsp;<span class="hljs-comment"># 正则匹配需要排除的文件，忽略大小写。 </span><br> &nbsp; -r，–recursive <span class="hljs-comment"># 监视一个目录下的所有子目录。 </span><br> &nbsp; -t，–timeout &nbsp;<span class="hljs-comment"># 设置超时时间 </span><br> &nbsp; -e，–event &nbsp; &nbsp;<span class="hljs-comment"># 只监听指定的事件。 </span><br> &nbsp; -a，–ascending <span class="hljs-comment"># 以指定事件升序排列。 </span><br> &nbsp; -d，–descending<span class="hljs-comment"># 以指定事件降序排列</span><br></code></pre>
+<h2 id="3rsync-in-otify-实时同步备份实验" style="font-family: inherit; line-height: 1.1; color: inherit; margin: 1.2em 0px 0.6em; font-size: 2.15em;">3、rsync + in otify 实时同步备份实验</h2>
+<h3 id="31实验拓扑" style="font-family: inherit; line-height: 1.6; color: inherit; margin: 1.2em 0px 0.6em; font-size: 1.7em;">3.1、实验拓扑</h3>
+<p style="margin-top: 0px; margin-bottom: 1.1em; line-height: 1.6;"><img src="1465982045878115.jpg" title="1465982045878115.jpg" alt="拓扑.jpg"></p>
+<h3 id="32服务器端" style="font-family: inherit; line-height: 1.6; color: inherit; margin: 1.2em 0px 0.6em; font-size: 1.7em;">3.2、服务器端</h3>
+<p style="margin-top: 0px; margin-bottom: 1.1em; line-height: 1.6;">1、安装超级守护进程</p>
+<pre class="prettyprint hljs-dark"><code class="language-python hljs">[root@RServer data]<span class="hljs-comment"># yum -y install xinetd</span><br></code></pre>
+<blockquote><p style="margin-top: 0px; margin-bottom: 0px; font-size: 1em; line-height: 1.6;"><strong style="line-height: 1.6;">注意</strong>：要想启动rsync服务，必须先安装此进程。rsync服务是依赖xinetd来启动</p>
+</blockquote>
+<p style="margin-top: 0px; margin-bottom: 1.1em; line-height: 1.6;">2、设置开机自动启动</p>
+<pre class="prettyprint hljs-dark"><code class="language-python hljs">[root@RServer data]<span class="hljs-comment"># chkconfig xinetd on</span><br></code></pre>
+<p style="margin-top: 0px; margin-bottom: 1.1em; line-height: 1.6;">3、安装rsync</p>
+<pre class="prettyprint hljs-dark"><code class="language-python hljs">[root@RServer data]<span class="hljs-comment"># yum -y install rsync</span><br></code></pre>
+<p style="margin-top: 0px; margin-bottom: 1.1em; line-height: 1.6;">4、查看超级守护进程下自动生成的rsync服务，并设置激活</p>
+<pre class="prettyprint hljs-dark"><code class="language-python hljs">[root@RServer data]<span class="hljs-comment"># vim /etc/xinetd.d/rsync</span><br>service rsync<br>{<br> &nbsp; &nbsp; &nbsp; &nbsp;disable = no &nbsp; &nbsp; &nbsp; <span class="hljs-comment"># 改为no ，表示启用rsync，默认是关闭的</span><br> &nbsp; &nbsp; &nbsp; &nbsp;flags &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; = IPv6<br> &nbsp; &nbsp; &nbsp; &nbsp;socket_type &nbsp; &nbsp; = stream<br> &nbsp; &nbsp; &nbsp; &nbsp;wait &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;= no<br> &nbsp; &nbsp; &nbsp; &nbsp;user &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;= root<br> &nbsp; &nbsp; &nbsp; &nbsp;server &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;= /usr/bin/rsync<br> &nbsp; &nbsp; &nbsp; &nbsp;server_args &nbsp; &nbsp; = --daemon<br> &nbsp; &nbsp; &nbsp; &nbsp;log_on_failure &nbsp;+= USERID<br></code></pre>
+<p style="margin-top: 0px; margin-bottom: 1.1em; line-height: 1.6;">5、创建共享的目录文件</p>
+<pre class="prettyprint hljs-dark"><code class="language-python hljs">[root@RServer /]<span class="hljs-comment"># mkdir /data/</span><br></code></pre>
+<p style="margin-top: 0px; margin-bottom: 1.1em; line-height: 1.6;">6、编辑配置文件/etc/rsyncd.conf</p>
+<pre class="prettyprint hljs-dark"><code class="language-python hljs">[root@RServer data]<span class="hljs-comment"># vim /etc/rsyncd.conf</span><br><span class="hljs-comment"># Global Setting</span><br>uid = nobody &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="hljs-comment">#运行rsync服务器的角色名称</span><br>gid = nobody &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="hljs-comment">#运行rsync服务器的组名称</span><br>use chroot = no &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="hljs-comment"># 是否允许使用chroot</span><br>max connections = <span class="hljs-number">10</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="hljs-comment">#最大的连接数</span><br>strict modes = yes &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="hljs-comment"># 是否启用严格检查权限，用户是否允许上传下载</span><br>pid file = /var/run/rsync.pid &nbsp; &nbsp; &nbsp; <span class="hljs-comment"># pid文件路径</span><br>log file = /var/log/rsyncd.log &nbsp; &nbsp; &nbsp;<span class="hljs-comment">#日志文件记录路径</span><br><span class="hljs-comment"># Directory to be synced </span><br>[tools] &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="hljs-comment">#共享存储的模块名称</span><br>path = /data &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="hljs-comment">#共享文件存储路径</span><br>ignore error = yes &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="hljs-comment">#传输过程出现错误处理方式，yes表示忽略</span><br>read only = no &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="hljs-comment">#是否只读</span><br>write only = no &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="hljs-comment">#是否只写，表示不允许别人看</span><br>hosts allow = <span class="hljs-number">192.168</span><span class="hljs-number">.80</span><span class="hljs-number">.0</span>/<span class="hljs-number">24</span> &nbsp; <span class="hljs-comment">#允许哪些主机来实现数据同步（类似白名单）</span><br>hosts deny = * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="hljs-comment"># 如果匹配到上面的就表示通过，否则就拒绝</span><br>list = false &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="hljs-comment">#是否允许你列出所有 {true | false}</span><br>uid = root &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="hljs-comment">#以什么身份运行，如果这里不填，将会继承上面</span><br>gid = root<br>auth users = wqp &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="hljs-comment">#认证用户</span><br>secrets file = /etc/rsyncd.passwd &nbsp; <span class="hljs-comment">#认证用户密码的文件</span><br><span class="hljs-comment"># rsyncd.passwd格式为 USERNAME:PASSWORD</span><br></code></pre>
+<blockquote><p style="margin-top: 0px; margin-bottom: 0px; font-size: 1em; line-height: 1.6;"><strong style="line-height: 1.6;">注意</strong>：（此文件需要手动创建，系统不会自动生成，请注意，文件名必须是rsyncd.conf，否则rsync会无法正常读取配置文件）</p>
+</blockquote>
+<p style="margin-top: 0px; margin-bottom: 1.1em; line-height: 1.6;">7、编辑密码文件</p>
+<pre class="prettyprint hljs-dark"><code class="language-python hljs">[root@RServer /]<span class="hljs-comment"># vim /etc/rsyncd.passwd</span><br>wqp:redhat<br></code></pre>
+<p style="margin-top: 0px; margin-bottom: 1.1em; line-height: 1.6;">8、启动服务</p>
+<pre class="prettyprint hljs-dark"><code class="language-python hljs">[root@RServer /]<span class="hljs-comment"># service xinetd start</span><br></code></pre>
+<p style="margin-top: 0px; margin-bottom: 1.1em; line-height: 1.6;">9、查看所监听的端口</p>
+<pre class="prettyprint hljs-dark"><code class="language-python hljs">[root@RServer /]<span class="hljs-comment"># netstat -tanlp | grep xinetd</span><br>tcp &nbsp; &nbsp; &nbsp; &nbsp;<span class="hljs-number">0</span> &nbsp; &nbsp; &nbsp;<span class="hljs-number">0</span> :::<span class="hljs-number">873</span> &nbsp; &nbsp; &nbsp; &nbsp; :::* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; LISTEN &nbsp; &nbsp; &nbsp;<span class="hljs-number">1362</span>/xinetd<br></code></pre>
+<p style="margin-top: 0px; margin-bottom: 1.1em; line-height: 1.6;">10、使用客户端测试连接rsync服务器</p>
+<pre class="prettyprint hljs-dark"><code class="language-python hljs">[root@RClient ~]<span class="hljs-comment"># rsync /etc/fstab wqp@192.168.80.106::tools</span><br></code></pre>
+<h3 id="33客户端配置" style="font-family: inherit; line-height: 1.6; color: inherit; margin: 1.2em 0px 0.6em; font-size: 1.7em;">3.3、客户端配置</h3>
+<p style="margin-top: 0px; margin-bottom: 1.1em; line-height: 1.6;">1、安装inotify-tools</p>
+<pre class="prettyprint hljs-dark"><code class="language-python hljs">[root@RClient ~]<span class="hljs-comment"># yum -y install inotify-tools</span><br></code></pre>
+<blockquote><p style="margin-top: 0px; margin-bottom: 0px; font-size: 1em; line-height: 1.6;"><strong style="line-height: 1.6;">备注</strong>：如果使用yum安装，需要配置好epel源</p>
+</blockquote>
+<p style="margin-top: 0px; margin-bottom: 1.1em; line-height: 1.6;">2、编辑密码文件，目的是为后面脚本自动化执行</p>
+<pre class="prettyprint hljs-dark"><code class="language-python hljs">[root@RClient ~]<span class="hljs-comment"># vim /etc/rsyncd.passwd</span><br>redhat<br></code></pre>
+<p style="margin-top: 0px; margin-bottom: 1.1em; line-height: 1.6;">3、设置密码文件权限</p>
+<pre class="prettyprint hljs-dark"><code class="language-python hljs">[root@RClient ~]<span class="hljs-comment"># chmod 600 /etc/rsyncd.passwd</span><br><span class="hljs-comment"># 设置密码文件夹权限为600，目的是为了更安全，而且如果不设置，有可能导致脚本读取密码文件出错</span><br></code></pre>
+<p style="margin-top: 0px; margin-bottom: 1.1em; line-height: 1.6;">4、创建监控脚本</p>
+<pre class="prettyprint hljs-dark"><code class="language-pyhon">[root@RClient ~]# vim rsyncInotify.sh<br>#!/bin/bash &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<br>#<br>host='192.168.80.106'<br>user='wqp'<br>src='/tmp/dir'<br>dest='tools'<br>passwdFile='/etc/rsyncd.passwd'<br>inotifywait -mrq -e modify,attrib,moved_to,moved_from,move,move_self,create,delete,delete_self --timefmt='%d/%m/%y %H:%M' --format='%T %w%f %e' $src &nbsp;| while read chgeFile<br>dorsync -avqz --delete --progress --password-file=$passwdFile $src $user@$host::$dest &amp;&gt;&gt;/var/log/rsync.log<br>done<br></code></pre>
+<p style="margin-top: 0px; margin-bottom: 1.1em; line-height: 1.6;">5、设置开机自动启动</p>
+<pre class="prettyprint hljs-dark"><code class="language-python hljs">[root@RClient ~]<span class="hljs-comment"># echo 'bash /root/rsyncInotify.sh &amp;' &gt;&gt; /etc/rc.local</span><br></code></pre>
+<h3 id="34-验证试验结果" style="font-family: inherit; line-height: 1.6; color: inherit; margin: 1.2em 0px 0.6em; font-size: 1.7em;">3.4、 验证试验结果</h3>
+<p style="margin-top: 0px; margin-bottom: 1.1em; line-height: 1.6;">1、手动启动脚本</p>
+<pre class="prettyprint hljs-dark"><code class="language-python hljs">[root@RClient ~]<span class="hljs-comment"># bash /root/rsyncInotify.sh &amp;</span><br></code></pre>
+<p style="margin-top: 0px; margin-bottom: 1.1em; line-height: 1.6;">2、在客户端上被监控的目录下创建文件</p>
+<pre class="prettyprint hljs-dark"><code class="language-python hljs">[root@RClient dir]<span class="hljs-comment"># touch file{1..10}</span><br></code></pre>
+<p style="margin-top: 0px; margin-bottom: 1.1em; line-height: 1.6;">3、查看服务器端rsyncd.log日志文件</p>
+<pre class="prettyprint hljs-dark"><code class="language-python hljs">[root@RServer data]<span class="hljs-comment"># tail /var/log/rsyncd.log</span><br></code></pre>
+<p style="margin-top: 0px; margin-bottom: 1.1em; line-height: 1.6;"><img src="1465982051512437.jpg" title="1465982051512437.jpg" alt="1.jpg"></p>
+<p style="margin-top: 0px; margin-bottom: 1.1em; line-height: 1.6;">4、查看已同步的文件</p>
+<p style="margin-top: 0px; margin-bottom: 1.1em; line-height: 1.6;"><img src="1465982059570670.jpg" title="1465982059570670.jpg" alt="2.jpg"></p>
+<p></p>
+<p>转载请注明：<a href="http://www.178linux.com/">linux运维部落</a> » <a href="http://www.178linux.com/18379">inotify介绍及rsync + inotify 实时同步备份</a></p>		</article>
+
+		
+		<footer class="article-footer">
+			<div class="article-tags">继续浏览有关 <a href="http://www.178linux.com/tag/inotify" rel="tag">inotify</a><a href="http://www.178linux.com/tag/rsyncinotify" rel="tag">rsync+inotify</a> 的文章</div>			<div class="share"><h5>分享到 </h5><div class="bdsharebuttonbox"><a class="bds_qzone" data-cmd="qzone"></a><a class="bds_tsina" data-cmd="tsina"></a><a class="bds_weixin" data-cmd="weixin"></a><a class="bds_tqq" data-cmd="tqq"></a><a class="bds_sqq" data-cmd="sqq"></a><a class="bds_renren" data-cmd="renren"></a><a class="bds_t163" data-cmd="t163"></a><a class="bds_tsohu" data-cmd="tsohu"></a><a class="bds_baidu" data-cmd="baidu"></a><a class="bds_douban" data-cmd="douban"></a><a class="bds_bdhome" data-cmd="bdhome"></a><a class="bds_youdao" data-cmd="youdao"></a><a class="bds_fbook" data-cmd="fbook"></a><a class="bds_twi" data-cmd="twi"></a><a class="bds_more" data-cmd="more"></a><a class="bds_count" data-cmd="count"></a></div></div>		</footer>
+
+		<nav class="article-nav">
+			<span class="article-nav-prev">上一篇 <a href="http://www.178linux.com/18358" rel="prev">【福利招聘】运维工程师/12k-18k/北京/内推</a></span>
+			<span class="article-nav-next"><a href="http://www.178linux.com/18458" rel="next">马哥教育网络班20期+第2周课程练习</a> 下一篇</span>
+		</nav>
+
+		<div class="relates">
+			<h3>与本文相关的文章</h3>
+			<ul>
+<li><a href="http://www.178linux.com/9084">rsync+inotify实现文件同步</a></li><li><a href="http://www.178linux.com/6318">rsync+inotify 实现数据实时同步</a></li><li><a href="http://www.178linux.com/3694">基于rsync+inotify实现数据实时同步传输</a></li><li><a href="http://www.178linux.com/25413">马哥M20-1第一周作业</a></li><li><a href="http://www.178linux.com/25293">马哥教育20期面授2班第一周课程练习1</a></li><li><a href="http://www.178linux.com/25270">如何查看当前系统版本的版本号</a></li><li><a href="http://www.178linux.com/26383">Linux程序包管理方式</a></li><li><a href="http://www.178linux.com/26272">7-26第三课-帮助和bash基础命令</a></li><li><a href="http://www.178linux.com/25418">7-22第二课-Linux入门</a></li><li><a href="http://www.178linux.com/25719">马哥教育网络班21期+第3周课程练习</a></li><li><a href="http://www.178linux.com/25860">Linux基本知识之echo命令详解</a></li><li><a href="http://www.178linux.com/26280">man和history及bashi的快捷键</a></li><li><a href="http://www.178linux.com/26271">Linux基础知识之WMware Tools的安装</a></li><li><a href="http://www.178linux.com/26274">linux文件系统目录结构</a></li></ul>		</div>
+	
+
+		
+		<div id="respond" class="no_webshot">
+		<form action="http://www.178linux.com/wp-comments-post.php" method="post" id="commentform">
+		
+		<div class="comt-title">
+			<div class="comt-avatar pull-left">
+				<img alt="" src="untitled.dat" srcset="untitled_001.dat 2x" class="avatar avatar-28 photo avatar-default" height="28" width="28">			</div>
+			<div class="comt-author pull-left">
+			发表我的评论			</div>
+			<a id="cancel-comment-reply-link" class="pull-right">取消评论</a>
+		</div>
+		
+		<div class="comt">
+			<div class="comt-box">
+				<textarea placeholder="写点什么..." class="input-block-level comt-area" name="comment" id="comment" cols="100%" rows="3" tabindex="1"></textarea>
+				<div class="comt-ctrl">
+					<button class="btn btn-primary pull-right" type="submit" name="submit" id="submit" tabindex="5"><i class="icon-ok-circle icon-white icon12"></i> 提交评论</button>
+					<div class="comt-tips pull-right"><input name="comment_post_ID" value="18379" id="comment_post_ID" type="hidden">
+<input name="comment_parent" id="comment_parent" value="0" type="hidden">
+<p style="display: none;"><input id="akismet_comment_nonce" name="akismet_comment_nonce" value="9b5cf4eb8b" type="hidden"></p><p style="display: none;"></p></div>
+					<span data-type="comment-insert-smilie" class="muted comt-smilie"><i class="icon-thumbs-up icon12"></i> 表情</span>
+					<span class="muted comt-mailme"><label for="comment_mail_notify" class="checkbox inline" style="padding-top: 0px;"><input name="comment_mail_notify" id="comment_mail_notify" value="comment_mail_notify" checked="checked" type="checkbox">有人回复时邮件通知我</label></span>
+				</div>
+			</div>
+
+												<div class="comt-comterinfo" id="comment-author-info">
+						<h4>Hi，您需要填写昵称和邮箱！</h4>
+						<ul>
+							<li class="form-inline"><label class="hide" for="author">昵称</label><input class="ipt" name="author" id="author" value="" tabindex="2" placeholder="昵称" type="text"><span class="help-inline">昵称 (必填)</span></li>
+							<li class="form-inline"><label class="hide" for="email">邮箱</label><input class="ipt" name="email" id="email" value="" tabindex="3" placeholder="邮箱" type="text"><span class="help-inline">邮箱 (必填)</span></li>
+							<li class="form-inline"><label class="hide" for="url">网址</label><input class="ipt" name="url" id="url" value="" tabindex="4" placeholder="网址" type="text"><span class="help-inline">网址</span></li>
+						</ul>
+					</div>
+									</div>
+
+		
+	<input id="ak_js" name="ak_js" value="1469856536539" type="hidden"></form>
+	</div>
+
+		
+	</div>
+</div>
+<aside class="sidebar">	
+Ansible中文权威群-2号群
+<br>
+<a target="_blank" href="http://shang.qq.com/wpa/qunwpa?idkey=72aaea3658c11875339b0f26d8af772875772acc4600865f53dc805166e9b43a"><img src="group.png" alt="Ansible中文权威-2号群" title="Ansible中文权威-2号群" border="0"></a>
+<br>
+ELK企业架构群
+<br>
+<a target="_blank" href="http://shang.qq.com/wpa/qunwpa?idkey=063c723f70c77b548f065e769cb5ea9b16e8d8e8dadf5763d58f7dcb096695c6"><img src="group.png" alt="ELK企业架构群" title="ELK企业架构群" border="0"></a>
+<br>
+AWK&amp;SED企业实战群
+<br>
+<a target="_blank" href="http://shang.qq.com/wpa/qunwpa?idkey=28a633ed53538b0d570f4dc074a7bf8ec6448a8454b805bdb6f33c010f1bda5b"><img src="group.png" alt="AWK&amp;SED企业实战" title="AWK&amp;SED企业实战" border="0"></a>
+<br>
+docker企业架构实践群
+<br>
+<a target="_blank" href="http://shang.qq.com/wpa/qunwpa?idkey=cdedb9b2618192fdc0310a8ee35140bda392247251caa0253a84cfc61c3f2839"><img src="group.png" alt="docker企业架构实践" title="docker企业架构实践" border="0"></a>
+<br>
+Jumpserver 交流群2
+<br>
+<a target="_blank" href="http://shang.qq.com/wpa/qunwpa?idkey=733e29b61fabc4e332504808ef3f236fc9ab3fb6bbf424ba524a01406ae35c21"><img src="group.png" alt="Jumpserver 交流群2" title="Jumpserver 交流群2" border="0"></a>
+<br>
+
+
+
+<div class="widget d_textbanner"><a class="style04" href="http://jq.qq.com/?_wv=1027&amp;k=Yph7JP"><strong></strong><h2>有奖征稿</h2><p>致力打造最专业的linux运维博客教程平台,欢迎各位投稿，对于录用的精品博文，将有给力的奖励和内部工会机会推荐。
+官方运营群: 372011984</p></a></div><div class="widget d_textbanner"><a class="style01" href="http://www.magedu.com/" target="_blank"><strong></strong><h2>马哥2016Linux运维、Python自动化全新实战班震撼上线</h2><p>马哥全新 2016Python3.0 实战班震撼来袭,准备了大量
+一线生产环境最实用的案例如:大众点评、饿了么、腾讯、
+陆金所、唯品会等真实项目。我们教师团队全部是 5 年以
+上的资深运维出身,更懂运维的痛点和核心需求。课程全
+部以手把手式带领大家学习,项目是从 0 开始,一步步跟
+着做,绝不像其他机构,讲一些看似高大上其实没太大实
+用价值的内容。我们所有实战内容,都是在亿级别 PV 的一
+线互联网公司多年生产环境得到验证的项目。独家课程首 次呈现,干货满满不容错过!本次课程首次推出,主要以
+感恩回馈老学员为主,跳楼价上市!(本期价格5680，下期恢复原价,可与其他机构对比课程性价比)</p></a></div><div class="widget d_postlist"><h3 class="widget_tit">文章最热</h3><ul class="nopic"><li><a href="http://www.178linux.com/17886"><span class="text">马哥教育首届IT技术博客大赛–复审阶段</span><span class="muted">2016-06-07</span><span class="muted">19评论</span></a></li>
+<li><a href="http://www.178linux.com/5984"><span class="text">Tomcat基于MSM+Memcached实现Session共享</span><span class="muted">2015-07-03</span><span class="muted">12评论</span></a></li>
+<li><a href="http://www.178linux.com/4746"><span class="text">grep的基本用法详解</span><span class="muted">2015-05-25</span><span class="muted">7评论</span></a></li>
+<li><a href="http://www.178linux.com/17222"><span class="text">安装LNMP + 搭建WordPress个人博客</span><span class="muted">2016-05-31</span><span class="muted">7评论</span></a></li>
+<li><a href="http://www.178linux.com/749"><span class="text">2015 | 月入过万，再不看你就会后悔</span><span class="muted">2015-03-09</span><span class="muted">6评论</span></a></li>
+</ul></div><div class="widget widget_categories"><h3 class="widget_tit">文章分类</h3>		<ul>
+	<li class="cat-item cat-item-3"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f">运维专栏</a> (1,246)
+</li>
+	<li class="cat-item cat-item-4"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/devopsadmin/devops-other">其它</a> (7)
+</li>
+	<li class="cat-item cat-item-5"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/systemadmin/cloud">云计算</a> (3)
+</li>
+	<li class="cat-item cat-item-6"><a href="http://www.178linux.com/jobbers">职位推荐</a> (86)
+</li>
+	<li class="cat-item cat-item-7"><a href="http://www.178linux.com/more/devs">开发专栏</a> (90)
+</li>
+	<li class="cat-item cat-item-8"><a href="http://www.178linux.com/more">更多</a> (7)
+</li>
+	<li class="cat-item cat-item-9"><a href="http://www.178linux.com/more/studentlife">学员风采</a> (13)
+</li>
+	<li class="cat-item cat-item-11"><a href="http://www.178linux.com/more/ts">师资力量</a> (14)
+</li>
+	<li class="cat-item cat-item-12"><a href="http://www.178linux.com/more/devs/ios">IOS</a> (1)
+</li>
+	<li class="cat-item cat-item-13"><a href="http://www.178linux.com/more/devs/andriod">Andriod</a> (1)
+</li>
+	<li class="cat-item cat-item-14"><a href="http://www.178linux.com/more/devs/java">JAVA</a> (29)
+</li>
+	<li class="cat-item cat-item-15"><a href="http://www.178linux.com/more/devs/cc">C/C++</a> (17)
+</li>
+	<li class="cat-item cat-item-16"><a href="http://www.178linux.com/more/devs/php">PHP</a> (26)
+</li>
+	<li class="cat-item cat-item-18"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/devopsadmin/ruby">RUBY</a> (3)
+</li>
+	<li class="cat-item cat-item-23"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/systemadmin/virtual">虚拟化</a> (4)
+</li>
+	<li class="cat-item cat-item-39"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/systemadmin/linux">LINUX</a> (694)
+</li>
+	<li class="cat-item cat-item-40"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/systemadmin/unix">UNIX</a> (114)
+</li>
+	<li class="cat-item cat-item-41"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/dbadmin/mysql">MYSQL</a> (52)
+</li>
+	<li class="cat-item cat-item-42"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/dbadmin/nosql">NOSQL</a> (27)
+</li>
+	<li class="cat-item cat-item-44"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/devopsadmin/python">Python</a> (23)
+</li>
+	<li class="cat-item cat-item-45"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/devopsadmin/django">Django</a> (2)
+</li>
+	<li class="cat-item cat-item-46"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/itperson">IT生活</a> (57)
+</li>
+	<li class="cat-item cat-item-47"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/systemadmin/webadmin">Web类</a> (286)
+</li>
+	<li class="cat-item cat-item-48"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/networkadmin/network">网络</a> (18)
+</li>
+	<li class="cat-item cat-item-49"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/systemadmin/middleware">中间件</a> (17)
+</li>
+	<li class="cat-item cat-item-50"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/bigdataadmin/bigdata-other">其它</a> (11)
+</li>
+	<li class="cat-item cat-item-51"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/systemadmin/automatic">自动化</a> (38)
+</li>
+	<li class="cat-item cat-item-52"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/systemadmin/automatic/ansible">ansible</a> (10)
+</li>
+	<li class="cat-item cat-item-54"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/systemadmin/automatic/itlife-other">其它</a> (4)
+</li>
+	<li class="cat-item cat-item-55"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/systemadmin/automatic/puppet">puppet</a> (7)
+</li>
+	<li class="cat-item cat-item-166"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/systemadmin/windows">Windows</a> (26)
+</li>
+	<li class="cat-item cat-item-232"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/monitoradmin/monitor-other">其它</a> (5)
+</li>
+	<li class="cat-item cat-item-329"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/systemadmin">系统运维</a> (661)
+</li>
+	<li class="cat-item cat-item-330"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/monitoradmin">监控运维</a> (7)
+</li>
+	<li class="cat-item cat-item-331"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/bigdataadmin">大数据运维</a> (25)
+</li>
+	<li class="cat-item cat-item-332"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/devopsadmin">开发运维</a> (17)
+</li>
+	<li class="cat-item cat-item-333"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/networkadmin">网络运维</a> (16)
+</li>
+	<li class="cat-item cat-item-334"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/dbadmin">数据库运维</a> (20)
+</li>
+	<li class="cat-item cat-item-335"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/safeadmin">安全运维</a> (13)
+</li>
+	<li class="cat-item cat-item-336"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/systemadmin/virtual/openstack">openstack</a> (2)
+</li>
+	<li class="cat-item cat-item-337"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/systemadmin/virtual/xen">xen</a> (1)
+</li>
+	<li class="cat-item cat-item-338"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/systemadmin/virtual/hypervisor">hypervisor</a> (1)
+</li>
+	<li class="cat-item cat-item-339"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/systemadmin/virtual/exsi">exsi</a> (2)
+</li>
+	<li class="cat-item cat-item-340"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/monitoradmin/zabbix">zabbix</a> (7)
+</li>
+	<li class="cat-item cat-item-343"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/bigdataadmin/hive">hive</a> (13)
+</li>
+	<li class="cat-item cat-item-344"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/bigdataadmin/storm">storm</a> (4)
+</li>
+	<li class="cat-item cat-item-345"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/bigdataadmin/hadoop">hadoop</a> (14)
+</li>
+	<li class="cat-item cat-item-346"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/bigdataadmin/spark">spark</a> (2)
+</li>
+	<li class="cat-item cat-item-349"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/networkadmin/coolber">coolber</a> (3)
+</li>
+	<li class="cat-item cat-item-350"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/networkadmin/pxe">pxe</a> (4)
+</li>
+	<li class="cat-item cat-item-351"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/networkadmin/kickstart">kickstart</a> (3)
+</li>
+	<li class="cat-item cat-item-352"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/dbadmin/mariadb">mariadb</a> (10)
+</li>
+	<li class="cat-item cat-item-353"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/safeadmin/iptables">iptables</a> (2)
+</li>
+	<li class="cat-item cat-item-354"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/safeadmin/ldap">ldap</a> (2)
+</li>
+	<li class="cat-item cat-item-355"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/systemadmin/virtual/kvm">kvm</a> (2)
+</li>
+	<li class="cat-item cat-item-1250"><a href="http://www.178linux.com/qa%e9%97%ae%e7%ad%94">qa问答</a> (3)
+</li>
+	<li class="cat-item cat-item-1251"><a href="http://www.178linux.com/www-178linux-com">magedu</a> (23)
+</li>
+	<li class="cat-item cat-item-1252"><a href="http://www.178linux.com/www-178linux-com/ansible%e4%b8%ad%e6%96%87%e6%9d%83%e5%a8%81">ansible</a> (4)
+</li>
+	<li class="cat-item cat-item-1793"><a href="http://www.178linux.com/%e8%af%95%e9%a2%98">试题</a> (5)
+</li>
+	<li class="cat-item cat-item-1922"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/coursestudying" title="课程作业练习">课程练习</a> (316)
+</li>
+	<li class="cat-item cat-item-1962"><a href="http://www.178linux.com/m20">面授20期</a> (2)
+</li>
+	<li class="cat-item cat-item-1969"><a href="http://www.178linux.com/n21">网络21期</a> (8)
+</li>
+		</ul>
+</div><div class="widget widget_archive"><h3 class="widget_tit">文章归档</h3>		<ul>
+			<li><a href="http://www.178linux.com/date/2016/07">2016年七月</a></li>
+	<li><a href="http://www.178linux.com/date/2016/06">2016年六月</a></li>
+	<li><a href="http://www.178linux.com/date/2016/05">2016年五月</a></li>
+	<li><a href="http://www.178linux.com/date/2016/04">2016年四月</a></li>
+	<li><a href="http://www.178linux.com/date/2016/03">2016年三月</a></li>
+	<li><a href="http://www.178linux.com/date/2016/02">2016年二月</a></li>
+	<li><a href="http://www.178linux.com/date/2016/01">2016年一月</a></li>
+	<li><a href="http://www.178linux.com/date/2015/12">2015年十二月</a></li>
+	<li><a href="http://www.178linux.com/date/2015/11">2015年十一月</a></li>
+	<li><a href="http://www.178linux.com/date/2015/10">2015年十月</a></li>
+	<li><a href="http://www.178linux.com/date/2015/09">2015年九月</a></li>
+	<li><a href="http://www.178linux.com/date/2015/08">2015年八月</a></li>
+	<li><a href="http://www.178linux.com/date/2015/07">2015年七月</a></li>
+	<li><a href="http://www.178linux.com/date/2015/06">2015年六月</a></li>
+	<li><a href="http://www.178linux.com/date/2015/05">2015年五月</a></li>
+	<li><a href="http://www.178linux.com/date/2015/04">2015年四月</a></li>
+	<li><a href="http://www.178linux.com/date/2015/03">2015年三月</a></li>
+	<li><a href="http://www.178linux.com/date/2015/02">2015年二月</a></li>
+		</ul>
+		</div><div class="widget widget_meta"><h3 class="widget_tit">Login</h3>			<ul>
+			<li><a href="http://www.178linux.com/wp-login.php?action=register">注册</a></li>			<li><a href="http://www.178linux.com/wp-login.php">登录</a></li>
+			<li><a href="http://www.178linux.com/feed">文章<abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="http://www.178linux.com/comments/feed">评论<abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="https://cn.wordpress.org/" title="基于WordPress，一个优美、先进的个人信息发布平台。">WordPress.org</a></li>			</ul>
+			</div>
+</aside>
+
+
+<!-- QQ客服代码开始--><div id="divStayTopright" style="position: fixed; z-index: 999999; top: 13%; right: 0px; height: 16px;"><div id="qqkefuDv" style="right: -87px; position: fixed;"><table><tbody><tr><td id="navLog"><img src="navLogo.gif" id="imgNav"></td><td><table id="__01" style="min-width: 83px;" border="0" width="83" cellpadding="0" cellspacing="0"><tbody><tr><td><div class="kefu1"></div></td></tr><tr><td><div class="kefu3"></div></td></tr><tr><td><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=453013021&amp;site=qq&amp;menu=yes"><div class="kefu4" id="qqIco0"> </div></a></td></tr><tr><td><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=453013021&amp;site=qq&amp;menu=yes"><div class="qqnum">MonitorA</div></a></td></tr><tr><td><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=2481066361&amp;site=qq&amp;menu=yes"><div class="kefu4" id="qqIco1"> </div></a></td></tr><tr><td><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=2481066361&amp;site=qq&amp;menu=yes"><div class="qqnum">MonitorB</div></a></td></tr><tr><td><div class="line"></div></td></tr><tr><td><a href="http://www.0797seo.net/" target="_blank"><div class="kefu10"></div></a></td></tr></tbody></table></td></tr></tbody></table></div></div><!-- QQ客服代码结束--></section>
+<footer class="footer">
+    <div class="footer-inner">
+        <div class="copyright pull-left">
+        <a href="http://www.miitbeian.gov.cn/" rel="external nofollow" target="_blank">
+        豫ICP备14026845号-2        </a>
+        </div>
+        
+        <div class="copyright pull-left">
+            版权所有，保留一切权利！ © 2016 <a href="http://www.178linux.com/">linux运维部落</a>　Theme <a href="http://www.daqianduan.com/" target="_blank">D8</a>
+        </div>
+        <div class="trackcode pull-right">
+            
+        </div>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

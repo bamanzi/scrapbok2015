@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="zh-TW" prefix="" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="UTF-8">
+<link rel="profile" href="http://gmpg.org/xfn/11">
+
+<link rel="pingback" href="http://blog.longwin.com.tw/xmlrpc.php">
+<!-- BEGIN Metadata added by the Add-Meta-Tags WordPress plugin -->
+<meta name="referrer" content="origin">
+<meta name="google-translate-customization" content="6fc3f188ea42926e-49f50a6ef12efa32-g6f2c68bfc6d8597e-13">
+<meta name="description" content="推薦在 Linux 的編輯器, 首選一定是 Vim, 但是對於不喜歡的人也不該強求, 之前有用過 Bluefish / Gedit / Eclipse 等, 但是確實沒那麼好用. 註: Eclipse 主要是速度上因素, 不然 Eclipse 是不錯的選擇.">
+<meta name="keywords" content="news-application">
+<!-- END Metadata added by the Add-Meta-Tags WordPress plugin -->
+<!-- Jetpack Site Verification Tags -->
+<meta name="p:domain_verify" content="6430cc7475dd0db49c299212ec727f4a">
+<!-- This site is optimized with the Yoast SEO plugin v3.4 - https://yoast.com/wordpress/plugins/seo/ -->
+<title>Linux 程式開發用編輯器 - Geany - Tsung's Blog</title>
+<link rel="canonical" href="http://blog.longwin.com.tw/2009/05/linux-develop-editor-geany-2009/">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux 程式開發用編輯器 - Geany - Tsung's Blog">
+<meta property="og:description" content="推薦在 Linux 的編輯器, 首選一定是 Vim, 但是對於不喜歡的人也不該強 … 繼續閱讀 →">
+<meta property="og:url" content="http://blog.longwin.com.tw/2009/05/linux-develop-editor-geany-2009/">
+<meta property="og:site_name" content="Tsung's Blog">
+<meta property="article:author" content="https://www.facebook.com/tsunghaolee">
+<meta property="article:section" content="News-Application">
+<meta property="article:published_time" content="2009-05-04T11:37:10+00:00">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:description" content="推薦在 Linux 的編輯器, 首選一定是 Vim, 但是對於不喜歡的人也不該強 … 繼續閱讀 →">
+<meta name="twitter:title" content="Linux 程式開發用編輯器 - Geany - Tsung's Blog">
+<meta name="twitter:site" content="@tsung">
+<meta name="twitter:creator" content="@tsung">
+<!-- / Yoast SEO plugin. -->
+<link rel="alternate" type="application/rss+xml" title="訂閱 Tsung's Blog »" href="http://blog.longwin.com.tw/feed/">
+<link rel="alternate" type="application/rss+xml" title="訂閱 Tsung's Blog » 迴響" href="http://blog.longwin.com.tw/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="訂閱 Tsung's Blog » Linux 程式開發用編輯器 - Geany 迴響" href="http://blog.longwin.com.tw/2009/05/linux-develop-editor-geany-2009/feed/">
+
+
+
+
+
+
+<!-- Inline jetpack_facebook_likebox -->
+
+
+
+
+
+
+
+
+
+<link rel="https://api.w.org/" href="http://blog.longwin.com.tw/wp-json/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://blog.longwin.com.tw/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://blog.longwin.com.tw/wp-includes/wlwmanifest.xml">
+<meta name="generator" content="WordPress 4.5.3">
+<link rel="shortlink" href="http://wp.me/p1s9D4-pI">
+<link rel="alternate" type="application/json+oembed" href="http://blog.longwin.com.tw/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fblog.longwin.com.tw%2F2009%2F05%2Flinux-develop-editor-geany-2009%2F">
+<link rel="alternate" type="text/xml+oembed" href="http://blog.longwin.com.tw/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fblog.longwin.com.tw%2F2009%2F05%2Flinux-develop-editor-geany-2009%2F&amp;format=xml">
+<!-- BEGIN License added by Creative-Commons-Configurator plugin for WordPress -->
+
+<!-- END License added by Creative-Commons-Configurator plugin for WordPress -->
+
+
+
+<!--MP Share Center Styles-->
+
+<link rel="image_src" href="http://blog.longwin.com.tw/2009/05/linux-develop-editor-geany-2009/?doing_wp_cron=1469601378.5001471042633056640625"><!-- Facebook Like Thumbnail -->
+
+
+
+<!-- WP Favicon -->
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+<link rel="icon" href="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAAgACADASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAACAcGBf/EAC8QAAEDAwIEBQEJAAAAAAAAAAECAwQFBhEAEhQhMVEHE0FhgQgiMkJxkaGxwfD/xAAVAQEBAAAAAAAAAAAAAAAAAAACBP/EABwRAAIDAAMBAAAAAAAAAAAAAAECAAMEESExIv/aAAwDAQACEQMRAD8AV1/1ORRbIrdWiJ3SYcF55oYzlaUEj99EXw6tJdatxVcr9bqTk+cFPoTxq0Y3HI5Z/wBnTQmMpkxHo6/uutqQfyIxo+VS1qew41GfQ41wTgSG0ZGAnPLHbUmp2VQFlmOtXYlpGbks+rQpq1xbgqDZS3locapStw9MZ0q/p0uWp3T4T0uo1hLnHN74zy1pwXCg4CvfIxz76iE2nwJlZkvh9RUy8QgJGArPQdNIjwopD1FsqLEf3BalLd2K/AFKyB+nP50ctruSG7j2UInDL1NLJkMx0bnXAn+dQe96y5Iu6rNTI5YZZdQW1tkjektggnHvkfGt7XxKlx5DDU1yO64diXhzUjn1Gs4iz4TbAS7IkSX07svvuFalA9QSfTI+NV35y9fC+yDNqFdvLeSNVSvM0yUhcTzJEl58eUlxWRnPU9gOulLbl30Wqwo60y22nHUA7VHkTjng9NR82S1LdUvyY8ZJ+yVoTlZB7dgddejWrDpYQzGcWGm1lWPc+n96ObMUT69MWzYLbPnwT//Z" type="image/gif">
+<!-- /WP Favicon -->
+<link rel="dns-prefetch" href="http://v0.wordpress.com/">
+<link rel="dns-prefetch" href="http://widgets.wp.com/">
+<link rel="dns-prefetch" href="http://s0.wp.com/">
+<link rel="dns-prefetch" href="http://0.gravatar.com/">
+<link rel="dns-prefetch" href="http://1.gravatar.com/">
+<link rel="dns-prefetch" href="http://2.gravatar.com/">
+<!-- Tracking code easily added by NK Google Analytics -->
+
+<link rel="amphtml" href="http://blog.longwin.com.tw/2009/05/linux-develop-editor-geany-2009/amp/">
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body class="single single-post postid-1594 single-format-standard">
+<div id="wrapper" class="hfeed">
+<div id="header">
+<div id="masthead">
+<div id="branding" role="banner">
+<div id="site-title">
+<span>
+<a href="http://blog.longwin.com.tw/" title="Tsung's Blog" rel="home">Tsung's Blog</a>
+</span>
+</div>
+<div id="site-description">個人筆記, 記錄關於 系統、程式、新聞 與 日常生活 等資訊</div>
+<img src="xinkwell.jpg.pagespeed.ic.QKR15FloCN.jpg" alt="" data-pagespeed-url-hash="3862888040" height="198" width="940">
+</div><!-- #branding -->
+<div id="access" role="navigation">
+<div class="skip-link screen-reader-text"><a href="#content" title="跳至內容">跳至內容</a></div>
+<div class="menu"><ul><li><a href="http://blog.longwin.com.tw/">首頁</a></li><li class="page_item page-item-4240"><a href="http://blog.longwin.com.tw/about/">關於我</a></li></ul></div>
+</div><!-- #access -->
+</div><!-- #masthead -->
+</div><!-- #header -->
+<div id="main">
+<div id="container">
+<div id="content" role="main">
+<div id="nav-above" class="navigation">
+<div class="nav-previous"><a href="http://blog.longwin.com.tw/2009/04/favorite-web-page-history-2009/" rel="prev"><span class="meta-nav">←</span> 好站: 網頁歷史資料庫存</a></div>
+<div class="nav-next"><a href="http://blog.longwin.com.tw/2009/05/paper-how-to-read-program-source-code-2009/" rel="next">好文: 如何閱讀他人的程式碼 <span class="meta-nav">→</span></a></div>
+</div><!-- #nav-above -->
+<div id="post-1594" class="post-1594 post type-post status-publish format-standard hentry category-news-application">
+<h1 class="entry-title">Linux 程式開發用編輯器 - Geany</h1>
+<div class="entry-meta">
+<span meta-prep="" meta-prep-author="">發表於</span> <a href="http://blog.longwin.com.tw/2009/05/linux-develop-editor-geany-2009/" title="11:37:10" rel="bookmark"><span class="entry-date">2009 年 05 月 04 日</span></a> <span class="meta-sep">由</span> <span class="author vcard"><a class="url fn n" href="http://blog.longwin.com.tw/author/jon/" title="全部文章，由 Tsung">Tsung</a></span>	</div><!-- .entry-meta -->
+<div class="entry-content">
+<div class="bottomcontainerBox" style="border: 1px solid rgb(128, 128, 128); background-color: rgb(240, 244, 249);">
+<div style="float: left; width: 85px; padding-right: 10px; margin: 4px; height: 30px;">
+<iframe src="index_1.html" allowtransparency="true" style="border: medium none; overflow: hidden; width: 85px; height: 21px;" scrolling="no" frameborder="0"></iframe></div>
+<div style="float: left; width: 80px; padding-right: 10px; margin: 4px; height: 30px;">
+<g:plusone size="medium" href="http://blog.longwin.com.tw/2009/05/linux-develop-editor-geany-2009/"></g:plusone>
+</div>
+<div style="float: left; width: 95px; padding-right: 10px; margin: 4px; height: 30px;">
+<a href="http://twitter.com/share" class="twitter-share-button" data-url="http://blog.longwin.com.tw/2009/05/linux-develop-editor-geany-2009/" data-text="Linux 程式開發用編輯器 - Geany" data-count="horizontal"></a>
+</div><div style="float: left; width: 105px; padding-right: 10px; margin: 4px; height: 30px;"></div>
+</div><div style="clear: both;"></div><div style="padding-bottom: 4px;"></div><p>
+推薦在 Linux 的編輯器, 首選一定是 Vim, 但是對於不喜歡的人也不該強求, 之前有用過 <a href="http://bluefish.openoffice.nl/" target="_blank" title="Bluefish">Bluefish</a> / Gedit / Eclipse 等, 但是確實沒那麼好用.
+</p>
+<p>
+註: Eclipse 主要是速度上因素, 不然 Eclipse 是不錯的選擇.
+</p>
+<p><span id="more-1594"></span></p>
+<p>
+感謝 Nelson 此篇文章: <a href="http://nelson.pixnet.net/blog/post/23829915" target="_blank" title="[分享] Geany - Linux 底下好用的文字編輯器">[分享] Geany - Linux 底下好用的文字編輯器</a>
+</p>
+<h4>
+安裝<br>
+</h4>
+<ol>
+<li>apt-get install geany xterm # debian / ubuntu linux</li>
+<li>註: 若不安裝 xterm, 也可於設定將 編譯 / 執行的 Terminal 換掉. </li>
+</ol>
+<h4>
+無法切換 中文輸入法 的 解法<br>
+</h4>
+<ol>
+<li>原因: 快速鍵衝突 (Ctrl + space), 下述解法是把這個快速鍵先移除.</li>
+<li>編輯 -&gt; 偏好設定(Ctrl + Alt + p)</li>
+<li>選 <q>Keybindings</q> 的 Tab</li>
+<li>找到 <q>自動補完文字</q> -&gt; <q>Change(或滑鼠點兩下)</q> -&gt; 按 <q>確定</q> (這個快速鍵就會被刪除)</li>
+<li>再按 <q>確定</q> 即可.</li>
+</ol>
+<h4>
+試用<br>
+</h4>
+<p>
+試用 <a href="http://www.geany.org/" target="_blank" title="Geany : Home Page">Geany</a>, 確實是蠻合用的, 下述是我覺得特別重要的幾項:
+</p>
+<ul>
+<li>開啟檔案時, 左邊有 Function / Variables list.</li>
+<li>Function 的自動補齊 與 參數提示功能</li>
+<li>編譯 / 執行也很方便(不止 c / c++, PHP 亦可), 對於各種程式語言整合的還不錯, 不需要特別額外設定.</li>
+<li>Tab -&gt; 4個空白的設定也拉在外面, 也有 Plugin 可以外掛.</li>
+<li>編輯器最下方就有 Terminal, 可以直接做其它操作.</li>
+<li>支援 c / c++ / PHP / Ruby / Java / D / Python</li>
+<li>對文件內指到的檔案名稱按 "Ctrl + Shift + o" 可以直接快速打開那個檔案.(類似 Vim 的 gf , Ctrl + w -&gt; f)</li>
+</ul>
+<p>
+註: 目前看到的缺點應該是沒有程式碼貼入後, 自動對齊 + 縮排功能, 不然似乎都夠用了. <img src="1f642.png" alt="🙂" class="emoji" draggable="false"></p>
+<!-- Quick Adsense WordPress Plugin: http://quicksense.net/ -->
+<div style="float: none; margin: 10px 0px; text-align: center;">
+ <!-- Blog - 336 x 280 --> <ins class="adsbygoogle" style="display: inline-block; width: 336px; height: 280px;" data-ad-client="ca-pub-2833110699572522" data-ad-slot="6353348500"></ins> 
+</div>
+<div style="font-size: 0px; height: 0px; line-height: 0px; margin: 0px; padding: 0px; clear: both;"></div>
+<div class="wp_rp_wrap  wp_rp_modern" id="wp_rp_first"><div class="wp_rp_content"><h3 class="related_post_title">延伸閱讀</h3><ul class="related_post wp_rp"><li data-position="0" data-poid="in-2442" data-post-type="none"><a href="http://blog.longwin.com.tw/2011/06/linux-sass-install-usage-2011/" class="wp_rp_thumbnail"><img src="data:image/jpeg;base64,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" alt="於 Linux 安裝 與 SASS 簡易使用紀錄" data-pagespeed-url-hash="1874348640"></a><a href="http://blog.longwin.com.tw/2011/06/linux-sass-install-usage-2011/" class="wp_rp_title">於 Linux 安裝 與 SASS 簡易使用紀錄</a></li><li data-position="1" data-poid="in-1529" data-post-type="none"><a href="http://blog.longwin.com.tw/2009/02/vim-tree-explorer-nerdtree-plugin-2009/" class="wp_rp_thumbnail"><img src="13.jpg.pagespeed.ce._r1Rx3eQQS.jpg" alt="Vim 樹狀目錄外掛: NERDTree" data-pagespeed-url-hash="2289696468" height="150" width="150"></a><a href="http://blog.longwin.com.tw/2009/02/vim-tree-explorer-nerdtree-plugin-2009/" class="wp_rp_title">Vim 樹狀目錄外掛: NERDTree</a></li><li data-position="2" data-poid="in-1621" data-post-type="none"><a href="http://blog.longwin.com.tw/2009/06/flickr-photo-backup-software-2009/" class="wp_rp_thumbnail"><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCACWAJYDASIAAhEBAxEB/8QAGgABAQEBAQEBAAAAAAAAAAAAAQACBAMFCP/EACkQAQEAAQQBBQABAwUAAAAAAAABEQIDITFBBBJRYXGBEyIzIzJCobH/xAAaAQACAwEBAAAAAAAAAAAAAAABAgADBgQF/8QAJREBAQACAQQCAgIDAAAAAAAAAAECEQMEBRIhMUETYSKBMjPR/9oADAMBAAIRAxEAPwD9jXoXoinczPMuVZL2b0PI2S/IPDXt2czp511vLc2pqnunbh5+l+8Uc6psxMUPLz3PSM2fRN6GSWoNXYN7BLU0r0zWr0zey7CxnUGrOGcch5FSpF8B5IEsINo+z0r085uzqtyy85anDkxz9xasCzy1egctZWTQYGN3RNU+3NZZcV2PPd0e+cYy4uq6ack8sflHNWbj5as7l7ZnNeFl6pl5BswCbRWDnPRGCXIBema3Zwzc5Lck0yjeshNhUkh2GnfeVp1atNzKma9Cclxu4vse+3uTV+t3tyWfFw9dvdvWqvQ4OsmXrMlj2FPczBl3yko6V5N5FmPowV47237v7tM5neHPxl3d+XNv7ft1e6dV5PcOm9fkx/sZXjbgeTceWa8O05o7XyKS0NG8eKMeV/MFtLaiv4zc/DSSUBhFLNl27L0DRl25V0q9C9dLV0iW6LW9vcunvNe8sszOnJeu29ndum41dPQ6TrPG+OV9EsdGSOLzC9cjI16czBQ2SzVK4dcum41Rm9On1Onj3SVzSsp1vDeHkuP0slApori2IU7XkzyG0H8pSTKv0bEtSSWg7ceWbwbRc/DproFGTZwz4V2obZ8i8cryLn4C5aLXv6fc/wCOq/j28uGcV17Ov36fuPa7f1XnPx5fKuxpNCvUJYzZLLL5cOvT7Nd0133pz+r08zX/ABXmd04fPj858xMfTmtxUKGXt0sVMwOcmBLtFiYV6Iq3H0UJYSeaOtIV12rzWb0ReiWoPKvQqxIrtCit7Ov265/2xWaPFy3jymULY+hP/VXn6bX7tGL3Hq13DyzkwmU+1VZY3tPu262rMzFNyYzPG437K+bq+A3vafbr1THVYYflwuOVl+lsphnYhDGIhcYV4rNvI5ZaDRzExbcpR5pp3Xv4F/T5VepVwFXkVXkgoN7Cqglq6VZpNg9PT6vbufVdvl86W5d21q92jTq+Y9/tHNvG8dV5FWeGhXtbJpx+rn+pn5jws5dfq5xprmrJ9xw8eoyPBjhfK6FcNuoI1WY4rNQrlzzQW8oXCU+SPoeVwr4FaC4rNq8MnIzwW4htY5ZaGFOWCbZF/WqzVNx0mx+Ov0l/ss+HJfp0ekuNzHy7e2Z3Dnn7Jl7dSXhNUR4eqmdvP25cuv1X+GuLVWc7v/Hl/ocRqrNVuRWfzzMqzSK57kgSRNht9AKjLR3JZpUHIvPkPINKeVOauMmSGBmyCz4enYssG8W0288PXY43NIwduX36f03Bx+PJjf2Fdk4Z8teRWnha8vVWf0a+frvLu9ZmbNcGpl++Za5ZP1/0cWbRLybnPS6Z3K2nF6HloY5JYAyjioPGhp3eWak0FWpRIIFRnhJbiWmFJ0QtHk6P98SNj/lCuuJJoEc3rf8AFP1w3tJke9/7zQLEwk8aSbMrODhJZMYjUiSWeMR//9k=" alt="Flickr 相片備份軟體(Windows、Mac、Linux 皆可使用)" data-pagespeed-url-hash="3686980060"></a><a href="http://blog.longwin.com.tw/2009/06/flickr-photo-backup-software-2009/" class="wp_rp_title">Flickr 相片備份軟體(Windows、Mac、Linux 皆可使用)</a></li><li data-position="3" data-poid="in-2939" data-post-type="none"><a href="http://blog.longwin.com.tw/2011/10/linux-music-soft-deadbeef-2011/" class="wp_rp_thumbnail"><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wAARCACWAJYDASIAAhEBAxEB/8QAGQABAQEBAQEAAAAAAAAAAAAAAQIABQQG/8QAFhABAQEAAAAAAAAAAAAAAAAAABEB/8QAGAEBAQEBAQAAAAAAAAAAAAAAAAECAwT/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwD6MpLxO6mBQJSQJDAopKBIIEpIEggSkgWZgeApNVVGpKBpSQUUkCQyCjiaQUUkCQwKKSgWDCPAUnGmlFNKCmSQUUkFFJQKksCikgopIKYMiKYMDnlJaVRQRVGppQUUkFFLAsoNRFUppBRSUFFJAsGBzjUnGlUU0gopNBVKWBbBkFFJQUUkFFJBRS1QVWDA51Kaa2KKawLpQUFKzUU0FFNNQVSmmgqlJwFFLILZNIKYMDm01JraqKaQVhSUFGprUF01BqCzUEFGppqCqamtQXTUU0FVhWQc6tU010FU1NNBVKTiCqU1qC6ag5qCzUU0FUppqCqajNNBbZqaaCqwrIObTU0uoqmopqC6ajNNBdNRTUF1qmmgrNNRTUF01FNBdaprVBdNRTQXWTWBzqazOgSzAWZkCWYCazIFmYDmlmQLVmA01mQNZmB//9k=" alt="Linux 音樂播放程式 DeadBeef" data-pagespeed-url-hash="2757848403"></a><a href="http://blog.longwin.com.tw/2011/10/linux-music-soft-deadbeef-2011/" class="wp_rp_title">Linux 音樂播放程式 DeadBeef</a></li><li data-position="4" data-poid="in-1645" data-post-type="none"><a href="http://blog.longwin.com.tw/2009/07/ubuntu-904-jaunty-install-firefox-35-2009/" class="wp_rp_thumbnail"><img src="x0.jpg.pagespeed.ic.AlPmxCQWP5.jpg" alt="Ubuntu 9.04(Jaunty Jackalope) 安裝 Firefox 3.5" data-pagespeed-url-hash="696348956" height="150" width="150"></a><a href="http://blog.longwin.com.tw/2009/07/ubuntu-904-jaunty-install-firefox-35-2009/" class="wp_rp_title">Ubuntu 9.04(Jaunty Jackalope) 安裝 Firefox 3.5</a></li></ul></div></div>
+<div class="sharedaddy sd-sharing-enabled"><div class="robots-nocontent sd-block sd-social sd-social-icon-text sd-sharing"><h3 class="sd-title">Share this:</h3><div class="sd-content"><ul><li class="share-email"><a rel="nofollow" data-shared="" class="share-email sd-button share-icon" href="http://blog.longwin.com.tw/2009/05/linux-develop-editor-geany-2009/?share=email" target="_blank" title="點這裡寄給朋友"><span>電子郵件</span></a></li><li class="share-print"><a rel="nofollow" data-shared="" class="share-print sd-button share-icon" href="http://blog.longwin.com.tw/2009/05/linux-develop-editor-geany-2009/#print" target="_blank" title="點這裡列印"><span>列印</span></a></li><li class="share-facebook"><a rel="nofollow" data-shared="sharing-facebook-1594" class="share-facebook sd-button share-icon" href="http://blog.longwin.com.tw/2009/05/linux-develop-editor-geany-2009/?share=facebook" target="_blank" title="按一下以分享至 Facebook"><span>Facebook</span></a></li><li class="share-linkedin"><a rel="nofollow" data-shared="sharing-linkedin-1594" class="share-linkedin sd-button share-icon" href="http://blog.longwin.com.tw/2009/05/linux-develop-editor-geany-2009/?share=linkedin" target="_blank" title="分享到 LinkedIn"><span>LinkedIn</span></a></li><li class="share-twitter"><a rel="nofollow" data-shared="sharing-twitter-1594" class="share-twitter sd-button share-icon" href="http://blog.longwin.com.tw/2009/05/linux-develop-editor-geany-2009/?share=twitter" target="_blank" title="分享到 Twitter"><span>Twitter</span></a></li><li class="share-google-plus-1"><a rel="nofollow" data-shared="sharing-google-1594" class="share-google-plus-1 sd-button share-icon" href="http://blog.longwin.com.tw/2009/05/linux-develop-editor-geany-2009/?share=google-plus-1" target="_blank" title="點擊分享到 Google+"><span>Google</span></a></li><li class="share-end"></li></ul></div></div></div><span id="mp-share-below-action"></span><ul class="mp-share-buttons"><li class="mp-share-buttons-fb"><iframe src="index_2.html" style="border: medium none; overflow: hidden; width: 100px; height: 21px;" allowtransparency="true" scrolling="no" frameborder="0"></iframe></li><li class="mp-share-buttons-tw"><a href="https://twitter.com/share?url=http%3A%2F%2Fwp.me%2Fp1s9D4-pI&amp;counturl=http%3A%2F%2Fblog.longwin.com.tw%2F2009%2F05%2Flinux-develop-editor-geany-2009%2F" class="twitter-share-button" data-count="horizontal" data-via="tsung"></a></li><li class="mp-share-buttons-gp"><g:plusone href="http://blog.longwin.com.tw/2009/05/linux-develop-editor-geany-2009/" size="medium"></g:plusone></li><li class="mp-share-buttons-li"></li></ul><div class="mp-share-clear-fix"></div><div class="sharedaddy sd-block sd-like jetpack-likes-widget-wrapper jetpack-likes-widget-unloaded" id="like-post-wrapper-21486538-1594-57985662df305" data-src="//widgets.wp.com/likes/#blog_id=21486538&amp;post_id=1594&amp;origin=blog.longwin.com.tw&amp;obj_id=21486538-1594-57985662df305" data-name="like-post-frame-21486538-1594-57985662df305"><h3 class="sd-title">請按讚：</h3><div class="likes-widget-placeholder post-likes-widget-placeholder" style="height: 55px;"><span class="button"><span>喜歡</span></span> <span class="loading">載入中...</span></div><span class="sd-text-color"></span><a class="sd-link-color"></a></div>
+<div id="jp-relatedposts" class="jp-relatedposts">
+<h3 class="jp-relatedposts-headline"><em>相關</em></h3>
+</div>
+<!-- BEGIN License added by Creative-Commons-Configurator plugin for WordPress -->
+<p prefix="dct: http://purl.org/dc/terms/ cc: http://creativecommons.org/ns#" class="cc-block">Copyright © 2009. All Rights Reserved.</p>
+<!-- END License added by Creative-Commons-Configurator plugin for WordPress -->
+</div><!-- .entry-content -->
+<div id="entry-author-info">
+<div id="author-avatar">
+<img alt="" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAA8ADwDASIAAhEBAxEB/8QAHAAAAQUBAQEAAAAAAAAAAAAABgEEBQcIAgMA/8QANBAAAgEDAwIEBQIEBwAAAAAAAQIDBAURAAYhEjEHE0FRFCJhcYEykQgVodEkQlKxsuHw/8QAGQEAAgMBAAAAAAAAAAAAAAAAAwUBAgQA/8QAHREAAgMBAAMBAAAAAAAAAAAAAQIAAxEEEiExBf/aAAwDAQACEQMRAD8A2V21Uv8AFXvibZXhjL8DM0NwusnwcDqcNGpUl3H2HGfTIOrbOs6/xz2O7XPZdmuFFAslHb6iRqtuoAp1hAhweSMg5xrpB3Jmzwy8P6vdHmVRM0KMfknJ75Jyf/e40Ybg8IYbUwiiulRISqt1uR7kMfsCU/fVjbJSn21tmgo6lm+SBS7RxE8kZOABqVa62a8uPIkMhQEYdSDj14P2Glb9TkkgxvVyVhQGHuZkvG0qyK5eSZiJAejLDOWHp+3I0VeD29rz4Xb+pzVGQ0c/SlVDn5Z4if8AkO4P47EjR/uafb5qiy080kwxlo4WcDHbJHGgbf236m/fyystqM9R5ywBCME9R4+3OjUdTs4Vvhmfp5ERSyfRN9U8sc8Ec8TBo5FDKw9QRkHXWNQfh/R1tu2RZaC4zRTVdNQwxSvGcqSqgcH17d9Tmdbphi6FfFK1R3fZtXA8aSBB1hHXqVuCCCPbBOinvriqhSenkgkGUkUqw+hGNVZfIZLI3iwaZ+qLNHUU8SgyqIhjEcpTPGOSOdMtt7XjtFBUIk8tRK6H5pnLsOPc6KrrTyWu4VNE2T5bkAn1Hof21AVNcYYpHpLlBG5JEiuF+bjGOTkAZzpOVw+Jj1W32IDNZJLtBARVTxtAHR0SVlQkjGSB3I7g/wDWnMlo8m3/AArdNW6shUOueo9QA/POls0lRA80stVDKX+U+UMA4J5+/wDbVjeD9iS83iSvqcmGjZHxjh3zlR/TOoqUu4Wdc6Vr5S3dr29rTt23213MjU1MkTMfUgAHUlnSnSZ06AwZEJOnTFOvOeVYIWlf9KjJ1HVV5p42McAMr449AfzoX3FuWhttP8Ve7jHRxZwokbHUfZV9T9hoi1kwL2gSuNzbskrfEW+WqpQL8HHCykLxhgeM/gaj7hT0Rt5CvDH5mSx8sN1HvznTbcNZaLnf33lZmaoo5iKKvJjZSMAFHIIB4J9uzfTTG82utx/h0Z0PIUnjSfrBS47HnC21KyH3IwR26gSWaNo4wxzI+AM40b/w373jqtxXqgklWK29SxwMxwDIi9TH85I/A1Vd/sd/rl+GhpwnHqwVFHux7AfU697A9fs74SktaU9d0ENMWRlLMSSxBz9eMjRuGosxYfJn/TvCKAT7m0opElQPG6up5BU5B11qh7PuiqWkp6y3TzwRy5doy36GzgqfQ8n9tH1BvOoNKnxFMryerAd9MihisXKYjqxyi56lHWn78jQ1uPaVBuS8x11dJJIsMfT5WcDA54/J0SqxJ6/VSca86f5bjMo7Bu33A0cHJlIBkZQWO20VG9FBSRxQSD5lUcE4xk/XUfeLQtHQ+ZTleiMAHPt27e+iUf5h/pYgabV6B/KjblTJ0kfTVLK1sGMISq16jqHIC/ya6V7eWI0pqYEN0NyXPOGb3+g7D786e0OzKCJH83M0h/U59T/bRTBzJIPQE/7nXbfJSlh3yedSqhBglWZrCWY6ZALYqQlaeL5IITkgD9R74/oNTUMEMcSqQvbPOvkULDx7aaXKV0nCqcDpGplZ/9k=" class="avatar avatar-60 photo" data-pagespeed-url-hash="1818548801">	</div><!-- #author-avatar -->
+<div id="author-description">
+<h2>關於 Tsung</h2>
+對新奇的事物都很有興趣, 喜歡簡單的東西, 過簡單的生活.	<div id="author-link">
+<a href="http://blog.longwin.com.tw/author/jon/" rel="author">
+檢視由 Tsung 發表的文章 <span class="meta-nav">→</span>	</a>
+</div><!-- #author-link	-->
+</div><!-- #author-description -->
+</div><!-- #entry-author-info -->
+<div class="entry-utility">
+本篇發表於 <a href="http://blog.longwin.com.tw/category/news-application/" rel="category tag">News-Application</a>。將<a href="http://blog.longwin.com.tw/2009/05/linux-develop-editor-geany-2009/" title="Linux 程式開發用編輯器 - Geany 的永久鏈結" rel="bookmark">永久鏈結</a>加入書籤。	</div><!-- .entry-utility -->
+</div><!-- #post-## -->
+<div id="nav-below" class="navigation">
+<div class="nav-previous"><a href="http://blog.longwin.com.tw/2009/04/favorite-web-page-history-2009/" rel="prev"><span class="meta-nav">←</span> 好站: 網頁歷史資料庫存</a></div>
+<div class="nav-next"><a href="http://blog.longwin.com.tw/2009/05/paper-how-to-read-program-source-code-2009/" rel="next">好文: 如何閱讀他人的程式碼 <span class="meta-nav">→</span></a></div>
+</div><!-- #nav-below -->
+<div id="comments">
+<h3 id="comments-title"><em>Linux 程式開發用編輯器 - Geany</em> 有 14 則回應</h3>
+<ol class="commentlist">
+<li class="comment even thread-even depth-1" id="li-comment-11930">
+<div id="comment-11930">
+<div class="comment-author vcard">
+<img alt="" src="b9776632316826ba701a366bb972aad6.dat" srcset="b9776632316826ba701a366bb972aad6_001.dat 2x" class="avatar avatar-40 photo" data-pagespeed-url-hash="812103629" height="40" width="40">	<cite class="fn"><a href="http://bu.idv.tw/blog/" rel="external nofollow" class="url">bu</a></cite> <span class="says">說道：</span>	</div><!-- .comment-author .vcard -->
+<div class="comment-meta commentmetadata"><a href="http://blog.longwin.com.tw/2009/05/linux-develop-editor-geany-2009/#comment-11930">
+2009 年 05 月 04 日 at 13:44:06</a>	</div><!-- .comment-meta .commentmetadata -->
+<div class="comment-body"><p>有沒有想試 Komodo 最近在用覺得還不錯 <img src="1f642.png" alt="🙂" class="emoji" draggable="false"></p>
+</div>
+<div class="reply">
+<a rel="nofollow" class="comment-reply-link" href="http://blog.longwin.com.tw/2009/05/linux-develop-editor-geany-2009/?replytocom=11930#respond" aria-label="回覆 bu">回覆</a>	</div><!-- .reply -->
+</div><!-- #comment-##  -->
+</li><!-- #comment-## -->
+<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-11931">
+<div id="comment-11931">
+<div class="comment-author vcard">
+<img alt="" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAAoACgDASIAAhEBAxEB/8QAGwAAAgIDAQAAAAAAAAAAAAAAAAYHCAIDBAX/xAAxEAACAQQABQMBBQkAAAAAAAABAgMABAURBhIhMUEHE1GBFBUWInEjYWKRobHB0fD/xAAXAQADAQAAAAAAAAAAAAAAAAACBAUD/8QAHhEAAgIDAAMBAAAAAAAAAAAAAQIAAwQRIRIxQSL/2gAMAwEAAhEDEQA/ALl1Q/HYy49W/VLiDiXOTEWy3LRIockqoJCKp8AKB9avgarnecGx4HK5uzxCrZrNkXuFWIcoRWC9F5SNDp8+aXybCic+xjFqFj99CRlxd6TYuATriIblQE/KDIW30G97+etJeKTN+mGYxnFWLuJI5YLkJLEx6FT3B+VIBBB+amq5ssxZ8Ox/eF68lxJMEd1c6UEHQBPXvrzSz+HbmSymiy0azhyjBWdpOYqQdaYk62Nd/NJV5Lqw2eR+3ERl/I7Lf4i+hymJs8lbncN1Ak8Z/hZQw/oaKwwcUsGFsYJ44o5Y7eNXSJQqKwUAhQOw32oqrJE7fNRz6oQwWuVt7lJUWa4jIZObqeXQ3r9CB9Kc73MW8IIhPvOPjsPrUKeqmTsMxn8fkLLLQ3E2N90XkVvIG9uOTlXmOvCsBv4BNZ31k1E6mmPaFtUA+4t8W3UslikIS9RXfmMaOh5tE9dE+d0xelFvaZXjS3gv5FPtxNLHGx6yFNfz1sE0p8QT5lQEEEkioOhRe/60ucJZHN4Hi+PijIRXKvH+xtoYtc6oxBduU/OgOv8Aqp2MhssEqZloqpJPJc+io64d9RftLQpdQrNFIgZZoxykg+SP7jpRVfxMiCxT9m29jWS2mjcnkdSjaOtqRo9f3f5rzcZw5h8VEY7GxhRXTlc8u2cHvs+aKKY3E9TgzOFVpEjs2WFQm2JXfL2A143/AN1rTbcJ42N2knVrmTX5nlO+9FFAqKu9CGzs+gx3qd1njbOCQTLCE5RpR4VaKKKKDP/Z" class="avatar avatar-40 photo" data-pagespeed-url-hash="1818548801">	<cite class="fn"><a href="http://plog.longwin.com.tw/" rel="external nofollow" class="url">Tsung</a></cite> <span class="says">說道：</span>	</div><!-- .comment-author .vcard -->
+<div class="comment-meta commentmetadata"><a href="http://blog.longwin.com.tw/2009/05/linux-develop-editor-geany-2009/#comment-11931">
+2009 年 05 月 04 日 at 13:48:21</a>	</div><!-- .comment-meta .commentmetadata -->
+<div class="comment-body"><p>厄, 暫時不考慮付費的耶. Orz..</p>
+</div>
+<div class="reply">
+<a rel="nofollow" class="comment-reply-link" href="http://blog.longwin.com.tw/2009/05/linux-develop-editor-geany-2009/?replytocom=11931#respond" aria-label="回覆 Tsung">回覆</a>	</div><!-- .reply -->
+</div><!-- #comment-##  -->
+</li><!-- #comment-## -->
+<li class="comment even thread-even depth-1" id="li-comment-11932">
+<div id="comment-11932">
+<div class="comment-author vcard">
+<img alt="" src="untitled.dat" srcset="untitled_001.dat 2x" class="avatar avatar-40 photo avatar-default" data-pagespeed-url-hash="3595079208" height="40" width="40">	<cite class="fn">qwert</cite> <span class="says">說道：</span>	</div><!-- .comment-author .vcard -->
+<div class="comment-meta commentmetadata"><a href="http://blog.longwin.com.tw/2009/05/linux-develop-editor-geany-2009/#comment-11932">
+2009 年 05 月 04 日 at 14:04:11</a>	</div><!-- .comment-meta .commentmetadata -->
+<div class="comment-body"><p>komodo edit是免費的<br>
+<a href="http://www.activestate.com/komodo_edit/downloads/" rel="nofollow">http://www.activestate.com/komodo_edit/downloads/</a></p>
+</div>
+<div class="reply">
+<a rel="nofollow" class="comment-reply-link" href="http://blog.longwin.com.tw/2009/05/linux-develop-editor-geany-2009/?replytocom=11932#respond" aria-label="回覆 qwert">回覆</a>	</div><!-- .reply -->
+</div><!-- #comment-##  -->
+</li><!-- #comment-## -->
+<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-11933">
+<div id="comment-11933">
+<div class="comment-author vcard">
+<img alt="" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAAoACgDASIAAhEBAxEB/8QAGwAAAgIDAQAAAAAAAAAAAAAAAAYHCAIDBAX/xAAxEAACAQQABQMBBQkAAAAAAAABAgMABAURBhIhMUEHE1GBFBUWInEjYWKRobHB0fD/xAAXAQADAQAAAAAAAAAAAAAAAAACBAUD/8QAHhEAAgIDAAMBAAAAAAAAAAAAAQIAAwQRIRIxQSL/2gAMAwEAAhEDEQA/ALl1Q/HYy49W/VLiDiXOTEWy3LRIockqoJCKp8AKB9avgarnecGx4HK5uzxCrZrNkXuFWIcoRWC9F5SNDp8+aXybCic+xjFqFj99CRlxd6TYuATriIblQE/KDIW30G97+etJeKTN+mGYxnFWLuJI5YLkJLEx6FT3B+VIBBB+amq5ssxZ8Ox/eF68lxJMEd1c6UEHQBPXvrzSz+HbmSymiy0azhyjBWdpOYqQdaYk62Nd/NJV5Lqw2eR+3ERl/I7Lf4i+hymJs8lbncN1Ak8Z/hZQw/oaKwwcUsGFsYJ44o5Y7eNXSJQqKwUAhQOw32oqrJE7fNRz6oQwWuVt7lJUWa4jIZObqeXQ3r9CB9Kc73MW8IIhPvOPjsPrUKeqmTsMxn8fkLLLQ3E2N90XkVvIG9uOTlXmOvCsBv4BNZ31k1E6mmPaFtUA+4t8W3UslikIS9RXfmMaOh5tE9dE+d0xelFvaZXjS3gv5FPtxNLHGx6yFNfz1sE0p8QT5lQEEEkioOhRe/60ucJZHN4Hi+PijIRXKvH+xtoYtc6oxBduU/OgOv8Aqp2MhssEqZloqpJPJc+io64d9RftLQpdQrNFIgZZoxykg+SP7jpRVfxMiCxT9m29jWS2mjcnkdSjaOtqRo9f3f5rzcZw5h8VEY7GxhRXTlc8u2cHvs+aKKY3E9TgzOFVpEjs2WFQm2JXfL2A143/AN1rTbcJ42N2knVrmTX5nlO+9FFAqKu9CGzs+gx3qd1njbOCQTLCE5RpR4VaKKKKDP/Z" class="avatar avatar-40 photo" data-pagespeed-url-hash="1818548801">	<cite class="fn"><a href="http://plog.longwin.com.tw/" rel="external nofollow" class="url">Tsung</a></cite> <span class="says">說道：</span>	</div><!-- .comment-author .vcard -->
+<div class="comment-meta commentmetadata"><a href="http://blog.longwin.com.tw/2009/05/linux-develop-editor-geany-2009/#comment-11933">
+2009 年 05 月 04 日 at 14:13:32</a>	</div><!-- .comment-meta .commentmetadata -->
+<div class="comment-body"><p>怪, 但是我在 <a href="http://www.activestate.com/komodo/" rel="nofollow">http://www.activestate.com/komodo/</a> 看到 21天試用版.<br>
+感恩, 我試試看 <img src="1f642.png" alt="🙂" class="emoji" draggable="false"></p>
+</div>
+<div class="reply">
+<a rel="nofollow" class="comment-reply-link" href="http://blog.longwin.com.tw/2009/05/linux-develop-editor-geany-2009/?replytocom=11933#respond" aria-label="回覆 Tsung">回覆</a>	</div><!-- .reply -->
+</div><!-- #comment-##  -->
+</li><!-- #comment-## -->
+<li class="comment even thread-even depth-1" id="li-comment-11935">
+<div id="comment-11935">
+<div class="comment-author vcard">
+<img alt="" src="6ed4fd602a2b0bc8e0d8e194dd6b9502.dat" srcset="6ed4fd602a2b0bc8e0d8e194dd6b9502_001.dat 2x" class="avatar avatar-40 photo" data-pagespeed-url-hash="2713295947" height="40" width="40">	<cite class="fn"><a href="http://www.fwolf.com/blog" rel="external nofollow" class="url">Fwolf</a></cite> <span class="says">說道：</span>	</div><!-- .comment-author .vcard -->
+<div class="comment-meta commentmetadata"><a href="http://blog.longwin.com.tw/2009/05/linux-develop-editor-geany-2009/#comment-11935">
+2009 年 05 月 04 日 at 17:18:02</a>	</div><!-- .comment-meta .commentmetadata -->
+<div class="comment-body"><p>嗯，我现在也开始用Geany了，<br>
+目前暂时还没发现太不适用的地方。</p>
+</div>
+<div class="reply">
+<a rel="nofollow" class="comment-reply-link" href="http://blog.longwin.com.tw/2009/05/linux-develop-editor-geany-2009/?replytocom=11935#respond" aria-label="回覆 Fwolf">回覆</a>	</div><!-- .reply -->
+</div><!-- #comment-##  -->
+</li><!-- #comment-## -->
+<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-11936">
+<div id="comment-11936">
+<div class="comment-author vcard">
+<img alt="" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAAoACgDASIAAhEBAxEB/8QAGwAAAgIDAQAAAAAAAAAAAAAAAAYHCAIDBAX/xAAxEAACAQQABQMBBQkAAAAAAAABAgMABAURBhIhMUEHE1GBFBUWInEjYWKRobHB0fD/xAAXAQADAQAAAAAAAAAAAAAAAAACBAUD/8QAHhEAAgIDAAMBAAAAAAAAAAAAAQIAAwQRIRIxQSL/2gAMAwEAAhEDEQA/ALl1Q/HYy49W/VLiDiXOTEWy3LRIockqoJCKp8AKB9avgarnecGx4HK5uzxCrZrNkXuFWIcoRWC9F5SNDp8+aXybCic+xjFqFj99CRlxd6TYuATriIblQE/KDIW30G97+etJeKTN+mGYxnFWLuJI5YLkJLEx6FT3B+VIBBB+amq5ssxZ8Ox/eF68lxJMEd1c6UEHQBPXvrzSz+HbmSymiy0azhyjBWdpOYqQdaYk62Nd/NJV5Lqw2eR+3ERl/I7Lf4i+hymJs8lbncN1Ak8Z/hZQw/oaKwwcUsGFsYJ44o5Y7eNXSJQqKwUAhQOw32oqrJE7fNRz6oQwWuVt7lJUWa4jIZObqeXQ3r9CB9Kc73MW8IIhPvOPjsPrUKeqmTsMxn8fkLLLQ3E2N90XkVvIG9uOTlXmOvCsBv4BNZ31k1E6mmPaFtUA+4t8W3UslikIS9RXfmMaOh5tE9dE+d0xelFvaZXjS3gv5FPtxNLHGx6yFNfz1sE0p8QT5lQEEEkioOhRe/60ucJZHN4Hi+PijIRXKvH+xtoYtc6oxBduU/OgOv8Aqp2MhssEqZloqpJPJc+io64d9RftLQpdQrNFIgZZoxykg+SP7jpRVfxMiCxT9m29jWS2mjcnkdSjaOtqRo9f3f5rzcZw5h8VEY7GxhRXTlc8u2cHvs+aKKY3E9TgzOFVpEjs2WFQm2JXfL2A143/AN1rTbcJ42N2knVrmTX5nlO+9FFAqKu9CGzs+gx3qd1njbOCQTLCE5RpR4VaKKKKDP/Z" class="avatar avatar-40 photo" data-pagespeed-url-hash="1818548801">	<cite class="fn"><a href="http://plog.longwin.com.tw/" rel="external nofollow" class="url">Tsung</a></cite> <span class="says">說道：</span>	</div><!-- .comment-author .vcard -->
+<div class="comment-meta commentmetadata"><a href="http://blog.longwin.com.tw/2009/05/linux-develop-editor-geany-2009/#comment-11936">
+2009 年 05 月 04 日 at 17:27:47</a>	</div><!-- .comment-meta .commentmetadata -->
+<div class="comment-body"><p>嗯嗯, 都蠻適用的, 而且連 License 都有 Template 可以直接貼出來, 很方便哩~ <img src="1f642.png" alt="🙂" class="emoji" draggable="false"></p>
+</div>
+<div class="reply">
+<a rel="nofollow" class="comment-reply-link" href="http://blog.longwin.com.tw/2009/05/linux-develop-editor-geany-2009/?replytocom=11936#respond" aria-label="回覆 Tsung">回覆</a>	</div><!-- .reply -->
+</div><!-- #comment-##  -->
+</li><!-- #comment-## -->
+<li class="comment even thread-even depth-1" id="li-comment-11938">
+<div id="comment-11938">
+<div class="comment-author vcard">
+<img alt="" src="efb727405df5a73545c0738666b23005.dat" srcset="efb727405df5a73545c0738666b23005_001.dat 2x" class="avatar avatar-40 photo" data-pagespeed-url-hash="1699543699" height="40" width="40">	<cite class="fn">tiebob</cite> <span class="says">說道：</span>	</div><!-- .comment-author .vcard -->
+<div class="comment-meta commentmetadata"><a href="http://blog.longwin.com.tw/2009/05/linux-develop-editor-geany-2009/#comment-11938">
+2009 年 05 月 05 日 at 09:49:48</a>	</div><!-- .comment-meta .commentmetadata -->
+<div class="comment-body"><p>eclipse 速度有改善一點了<br>
+pdt 用起來還蠻不錯的，推薦啦！</p>
+</div>
+<div class="reply">
+<a rel="nofollow" class="comment-reply-link" href="http://blog.longwin.com.tw/2009/05/linux-develop-editor-geany-2009/?replytocom=11938#respond" aria-label="回覆 tiebob">回覆</a>	</div><!-- .reply -->
+</div><!-- #comment-##  -->
+</li><!-- #comment-## -->
+<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-11942">
+<div id="comment-11942">
+<div class="comment-author vcard">
+<img alt="" src="untitled_002.dat" srcset="untitled_003.dat 2x" class="avatar avatar-40 photo avatar-default" data-pagespeed-url-hash="140274" height="40" width="40">	<cite class="fn">MARK</cite> <span class="says">說道：</span>	</div><!-- .comment-author .vcard -->
+<div class="comment-meta commentmetadata"><a href="http://blog.longwin.com.tw/2009/05/linux-develop-editor-geany-2009/#comment-11942">
+2009 年 05 月 07 日 at 10:15:40</a>	</div><!-- .comment-meta .commentmetadata -->
+<div class="comment-body"><p>有支援 ANDROID 嗎？</p>
+</div>
+<div class="reply">
+<a rel="nofollow" class="comment-reply-link" href="http://blog.longwin.com.tw/2009/05/linux-develop-editor-geany-2009/?replytocom=11942#respond" aria-label="回覆 MARK">回覆</a>	</div><!-- .reply -->
+</div><!-- #comment-##  -->
+</li><!-- #comment-## -->
+<li class="comment even thread-even depth-1" id="li-comment-11943">
+<div id="comment-11943">
+<div class="comment-author vcard">
+<img alt="" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAAoACgDASIAAhEBAxEB/8QAGwAAAgIDAQAAAAAAAAAAAAAAAAYHCAIDBAX/xAAxEAACAQQABQMBBQkAAAAAAAABAgMABAURBhIhMUEHE1GBFBUWInEjYWKRobHB0fD/xAAXAQADAQAAAAAAAAAAAAAAAAACBAUD/8QAHhEAAgIDAAMBAAAAAAAAAAAAAQIAAwQRIRIxQSL/2gAMAwEAAhEDEQA/ALl1Q/HYy49W/VLiDiXOTEWy3LRIockqoJCKp8AKB9avgarnecGx4HK5uzxCrZrNkXuFWIcoRWC9F5SNDp8+aXybCic+xjFqFj99CRlxd6TYuATriIblQE/KDIW30G97+etJeKTN+mGYxnFWLuJI5YLkJLEx6FT3B+VIBBB+amq5ssxZ8Ox/eF68lxJMEd1c6UEHQBPXvrzSz+HbmSymiy0azhyjBWdpOYqQdaYk62Nd/NJV5Lqw2eR+3ERl/I7Lf4i+hymJs8lbncN1Ak8Z/hZQw/oaKwwcUsGFsYJ44o5Y7eNXSJQqKwUAhQOw32oqrJE7fNRz6oQwWuVt7lJUWa4jIZObqeXQ3r9CB9Kc73MW8IIhPvOPjsPrUKeqmTsMxn8fkLLLQ3E2N90XkVvIG9uOTlXmOvCsBv4BNZ31k1E6mmPaFtUA+4t8W3UslikIS9RXfmMaOh5tE9dE+d0xelFvaZXjS3gv5FPtxNLHGx6yFNfz1sE0p8QT5lQEEEkioOhRe/60ucJZHN4Hi+PijIRXKvH+xtoYtc6oxBduU/OgOv8Aqp2MhssEqZloqpJPJc+io64d9RftLQpdQrNFIgZZoxykg+SP7jpRVfxMiCxT9m29jWS2mjcnkdSjaOtqRo9f3f5rzcZw5h8VEY7GxhRXTlc8u2cHvs+aKKY3E9TgzOFVpEjs2WFQm2JXfL2A143/AN1rTbcJ42N2knVrmTX5nlO+9FFAqKu9CGzs+gx3qd1njbOCQTLCE5RpR4VaKKKKDP/Z" class="avatar avatar-40 photo" data-pagespeed-url-hash="1818548801">	<cite class="fn"><a href="http://plog.longwin.com.tw/" rel="external nofollow" class="url">Tsung</a></cite> <span class="says">說道：</span>	</div><!-- .comment-author .vcard -->
+<div class="comment-meta commentmetadata"><a href="http://blog.longwin.com.tw/2009/05/linux-develop-editor-geany-2009/#comment-11943">
+2009 年 05 月 07 日 at 13:12:24</a>	</div><!-- .comment-meta .commentmetadata -->
+<div class="comment-body"><p>厄, 我目前還沒用過這麼高級的手機... 不曉得耶.. Orz..</p>
+</div>
+<div class="reply">
+<a rel="nofollow" class="comment-reply-link" href="http://blog.longwin.com.tw/2009/05/linux-develop-editor-geany-2009/?replytocom=11943#respond" aria-label="回覆 Tsung">回覆</a>	</div><!-- .reply -->
+</div><!-- #comment-##  -->
+</li><!-- #comment-## -->
+<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-12556">
+<div id="comment-12556">
+<div class="comment-author vcard">
+<img alt="" src="untitled_002.dat" srcset="untitled_001.dat 2x" class="avatar avatar-40 photo avatar-default" data-pagespeed-url-hash="140274" height="40" width="40">	<cite class="fn">胖虎</cite> <span class="says">說道：</span>	</div><!-- .comment-author .vcard -->
+<div class="comment-meta commentmetadata"><a href="http://blog.longwin.com.tw/2009/05/linux-develop-editor-geany-2009/#comment-12556">
+2009 年 10 月 20 日 at 02:11:53</a>	</div><!-- .comment-meta .commentmetadata -->
+<div class="comment-body"><p>請問一下~使用geany編輯php檔案或html檔時<br>
+要怎麼設定～才能按下執行時～自動呼叫瀏覽器～來看程式的執行的結果呢?</p>
+</div>
+<div class="reply">
+<a rel="nofollow" class="comment-reply-link" href="http://blog.longwin.com.tw/2009/05/linux-develop-editor-geany-2009/?replytocom=12556#respond" aria-label="回覆 胖虎">回覆</a>	</div><!-- .reply -->
+</div><!-- #comment-##  -->
+</li><!-- #comment-## -->
+<li class="comment even thread-even depth-1" id="li-comment-12558">
+<div id="comment-12558">
+<div class="comment-author vcard">
+<img alt="" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAAoACgDASIAAhEBAxEB/8QAGwAAAgIDAQAAAAAAAAAAAAAAAAYHCAIDBAX/xAAxEAACAQQABQMBBQkAAAAAAAABAgMABAURBhIhMUEHE1GBFBUWInEjYWKRobHB0fD/xAAXAQADAQAAAAAAAAAAAAAAAAACBAUD/8QAHhEAAgIDAAMBAAAAAAAAAAAAAQIAAwQRIRIxQSL/2gAMAwEAAhEDEQA/ALl1Q/HYy49W/VLiDiXOTEWy3LRIockqoJCKp8AKB9avgarnecGx4HK5uzxCrZrNkXuFWIcoRWC9F5SNDp8+aXybCic+xjFqFj99CRlxd6TYuATriIblQE/KDIW30G97+etJeKTN+mGYxnFWLuJI5YLkJLEx6FT3B+VIBBB+amq5ssxZ8Ox/eF68lxJMEd1c6UEHQBPXvrzSz+HbmSymiy0azhyjBWdpOYqQdaYk62Nd/NJV5Lqw2eR+3ERl/I7Lf4i+hymJs8lbncN1Ak8Z/hZQw/oaKwwcUsGFsYJ44o5Y7eNXSJQqKwUAhQOw32oqrJE7fNRz6oQwWuVt7lJUWa4jIZObqeXQ3r9CB9Kc73MW8IIhPvOPjsPrUKeqmTsMxn8fkLLLQ3E2N90XkVvIG9uOTlXmOvCsBv4BNZ31k1E6mmPaFtUA+4t8W3UslikIS9RXfmMaOh5tE9dE+d0xelFvaZXjS3gv5FPtxNLHGx6yFNfz1sE0p8QT5lQEEEkioOhRe/60ucJZHN4Hi+PijIRXKvH+xtoYtc6oxBduU/OgOv8Aqp2MhssEqZloqpJPJc+io64d9RftLQpdQrNFIgZZoxykg+SP7jpRVfxMiCxT9m29jWS2mjcnkdSjaOtqRo9f3f5rzcZw5h8VEY7GxhRXTlc8u2cHvs+aKKY3E9TgzOFVpEjs2WFQm2JXfL2A143/AN1rTbcJ42N2knVrmTX5nlO+9FFAqKu9CGzs+gx3qd1njbOCQTLCE5RpR4VaKKKKDP/Z" class="avatar avatar-40 photo" data-pagespeed-url-hash="1818548801">	<cite class="fn"><a href="http://plog.longwin.com.tw/" rel="external nofollow" class="url">Tsung</a></cite> <span class="says">說道：</span>	</div><!-- .comment-author .vcard -->
+<div class="comment-meta commentmetadata"><a href="http://blog.longwin.com.tw/2009/05/linux-develop-editor-geany-2009/#comment-12558">
+2009 年 10 月 20 日 at 09:47:34</a>	</div><!-- .comment-meta .commentmetadata -->
+<div class="comment-body"><p>厄, 我都沒這樣子做耶, 都是直接開一個瀏覽器, 在旁邊 reload.</p>
+</div>
+<div class="reply">
+<a rel="nofollow" class="comment-reply-link" href="http://blog.longwin.com.tw/2009/05/linux-develop-editor-geany-2009/?replytocom=12558#respond" aria-label="回覆 Tsung">回覆</a>	</div><!-- .reply -->
+</div><!-- #comment-##  -->
+</li><!-- #comment-## -->
+<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-12559">
+<div id="comment-12559">
+<div class="comment-author vcard">
+<img alt="" src="untitled_002.dat" srcset="untitled_001.dat 2x" class="avatar avatar-40 photo avatar-default" data-pagespeed-url-hash="140274" height="40" width="40">	<cite class="fn">胖虎</cite> <span class="says">說道：</span>	</div><!-- .comment-author .vcard -->
+<div class="comment-meta commentmetadata"><a href="http://blog.longwin.com.tw/2009/05/linux-develop-editor-geany-2009/#comment-12559">
+2009 年 10 月 20 日 at 15:03:36</a>	</div><!-- .comment-meta .commentmetadata -->
+<div class="comment-body"><p>我試了一下~好像geany目前只有支援 html檔案 按執行後～是直接呼叫瀏覽器<br>
+來檢視程式的結果～不支援PHP~在論壇看到的結果也是要手動開瀏覽器去 reload 檔頁 / \<br>
+不過geany還是一個很好用的IDE啦~^^ 感謝站長大人的介紹</p>
+</div>
+<div class="reply">
+<a rel="nofollow" class="comment-reply-link" href="http://blog.longwin.com.tw/2009/05/linux-develop-editor-geany-2009/?replytocom=12559#respond" aria-label="回覆 胖虎">回覆</a>	</div><!-- .reply -->
+</div><!-- #comment-##  -->
+</li><!-- #comment-## -->
+<li class="comment even thread-even depth-1" id="li-comment-13287">
+<div id="comment-13287">
+<div class="comment-author vcard">
+<img alt="" src="89537b9d91c10e64549af435c15b96ac.dat" srcset="89537b9d91c10e64549af435c15b96ac_001.dat 2x" class="avatar avatar-40 photo" data-pagespeed-url-hash="3694121447" height="40" width="40">	<cite class="fn">foxman</cite> <span class="says">說道：</span>	</div><!-- .comment-author .vcard -->
+<div class="comment-meta commentmetadata"><a href="http://blog.longwin.com.tw/2009/05/linux-develop-editor-geany-2009/#comment-13287">
+2010 年 05 月 24 日 at 23:41:52</a>	</div><!-- .comment-meta .commentmetadata -->
+<div class="comment-body"><p>真的是不錯的C ide</p>
+</div>
+<div class="reply">
+<a rel="nofollow" class="comment-reply-link" href="http://blog.longwin.com.tw/2009/05/linux-develop-editor-geany-2009/?replytocom=13287#respond" aria-label="回覆 foxman">回覆</a>	</div><!-- .reply -->
+</div><!-- #comment-##  -->
+</li><!-- #comment-## -->
+<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-45256">
+<div id="comment-45256">
+<div class="comment-author vcard">
+<img alt="" src="0eaa4e61766be6fd970727571c943f05.dat" srcset="0eaa4e61766be6fd970727571c943f05_001.dat 2x" class="avatar avatar-40 photo" data-pagespeed-url-hash="35770926" height="40" width="40">	<cite class="fn"><a href="http://chihping.aflypen.com/" rel="external nofollow" class="url">Facemaskman</a></cite> <span class="says">說道：</span>	</div><!-- .comment-author .vcard -->
+<div class="comment-meta commentmetadata"><a href="http://blog.longwin.com.tw/2009/05/linux-develop-editor-geany-2009/#comment-45256">
+2012 年 05 月 25 日 at 18:07:38</a>	</div><!-- .comment-meta .commentmetadata -->
+<div class="comment-body"><p>不知道變數會不會自動記憶...<br>
+如果會記憶..又自動補參數<br>
+應該會相當的好用</p>
+</div>
+<div class="reply">
+<a rel="nofollow" class="comment-reply-link" href="http://blog.longwin.com.tw/2009/05/linux-develop-editor-geany-2009/?replytocom=45256#respond" aria-label="回覆 Facemaskman">回覆</a>	</div><!-- .reply -->
+</div><!-- #comment-##  -->
+</li><!-- #comment-## -->
+</ol>
+<div id="respond" class="comment-respond">
+<h3 id="reply-title" class="comment-reply-title">發表迴響 <small><a rel="nofollow" id="cancel-comment-reply-link" href="#respond" style="display: none;">取消回覆</a></small></h3>	<form action="http://blog.longwin.com.tw/wp-comments-post.php" method="post" id="commentform" class="comment-form">
+<p class="comment-notes"><span id="email-notes">你的電子郵件位址並不會被公開。</span> 必要欄位標記為 <span class="required">*</span></p><p class="comment-form-comment"><label for="comment">迴響</label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" aria-required="true" required="required"></textarea></p><p class="comment-form-author"><label for="author">名稱 <span class="required">*</span></label> <input style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABHklEQVQ4EaVTO26DQBD1ohQWaS2lg9JybZ+AK7hNwx2oIoVf4UPQ0Lj1FdKktevIpel8AKNUkDcWMxpgSaIEaTVv3sx7uztiTdu2s/98DywOw3Dued4Who/M2aIx5lZV1aEsy0+qiwHELyi+Ytl0PQ69SxAxkWIA4RMRTdNsKE59juMcuZd6xIAFeZ6fGCdJ8kY4y7KAuTRNGd7jyEBXsdOPE3a0QGPsniOnnYMO67LgSQN9T41F2QGrQRRFCwyzoIF2qyBuKKbcOgPXdVeY9rMWgNsjf9ccYesJhk3f5dYT1HX9gR0LLQR30TnjkUEcx2uIuS4RnI+aj6sJR0AM8AaumPaM/rRehyWhXqbFAA9kh3/8/NvHxAYGAsZ/il8IalkCLBfNVAAAAABJRU5ErkJggg==&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;" id="author" name="author" value="" size="30" maxlength="245" aria-required="true" required="required" type="text"></p>
+<p class="comment-form-email"><label for="email">電子郵件 <span class="required">*</span></label> <input id="email" name="email" value="" size="30" maxlength="100" aria-describedby="email-notes" aria-required="true" required="required" type="text"></p>
+<p class="comment-form-url"><label for="url">個人網站</label> <input id="url" name="url" value="" size="30" maxlength="200" type="text"></p>
+<p class="cptch_block"><br>
+<span id="cptch_time_limit_notice_21" class="cptch_time_limit_notice cptch_to_remove">Time limit is exhausted. Please reload CAPTCHA.</span><span class="cptch_wrap">
+<label class="cptch_label" for="cptch_input">
+<span class="cptch_span">8</span>
+<span class="cptch_span">&nbsp;+&nbsp;</span>
+<span class="cptch_span"><img class="cptch_img " src="data:image/png;base64,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" alt="image" data-pagespeed-url-hash="3511084624"></span>
+<span class="cptch_span">&nbsp;=&nbsp;</span>
+<span class="cptch_span"><input id="cptch_input_21" class="cptch_input " autocomplete="off" name="cptch_number" value="" maxlength="2" size="2" aria-required="true" required="required" style="margin-bottom: 0px; display: inline; font-size: 12px; width: 40px;" type="text"></span>
+<input name="cptch_result" value="acXj" type="hidden">
+<input name="cptch_time" value="1469601378" type="hidden">
+<input value="Version: 4.2.2" type="hidden">
+</label><span class="cptch_reload_button_wrap hide-if-no-js">
+
+<span class="cptch_reload_button dashicons dashicons-update"></span>
+</span></span></p><p class="form-submit"><input name="submit" id="submit" class="submit" value="張貼迴響" type="submit"> <input name="comment_post_ID" value="1594" id="comment_post_ID" type="hidden">
+<input name="comment_parent" id="comment_parent" value="0" type="hidden">
+</p><p style="display: none;"><input id="akismet_comment_nonce" name="akismet_comment_nonce" value="f0b8a2796c" type="hidden"></p><p class="comment-subscription-form"><input name="subscribe_comments" id="subscribe_comments" value="subscribe" style="width: auto; -moz-appearance: checkbox;" type="checkbox"> <label class="subscribe-label" id="subscribe-label" for="subscribe_comments">用電子郵件通知我後續的迴響。</label></p><p class="comment-subscription-form"><input name="subscribe_blog" id="subscribe_blog" value="subscribe" style="width: auto; -moz-appearance: checkbox;" type="checkbox"> <label class="subscribe-label" id="subscribe-blog-label" for="subscribe_blog">新文章使用電子郵件通知我。</label></p><p style="display: none;"><input id="ak_js" name="ak_js" value="211" type="hidden"></p>	</form>
+</div><!-- #respond -->
+</div><!-- #comments -->
+</div><!-- #content -->
+</div><!-- #container -->
+<div id="primary" class="widget-area" role="complementary">
+<ul class="xoxo">
+<!-- Quick Adsense Wordpress Plugin: http://quicksense.net/ -->
+<li id="adswidget1-quick-adsense" class="widget-container ">
+<form action="http://www.google.com.tw/cse" id="cse-search-box"> <div> <input name="cx" value="partner-pub-2833110699572522:8311593703" type="hidden"> <input name="ie" value="UTF-8" type="hidden"> <input name="q" size="20" type="text"> <input name="sa" value="搜尋" type="submit"> </div> </form> </li></ul></div></div></div></body>
+</html>
