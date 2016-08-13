@@ -1,0 +1,700 @@
+<html op="item">
+<head>
+<meta charset="UTF-8">
+<meta name="referrer" content="origin"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="favicon.ico">
+        <title>Using GNU Stow to manage your dotfiles | Hacker News</title>
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head><body><center><table id="hnmain" width="85%" bgcolor="#f6f6ef" border="0" cellpadding="0" cellspacing="0">
+        <tbody><tr><td bgcolor="#ff6600"><table style="padding: 2px;" width="100%" border="0" cellpadding="0" cellspacing="0"><tbody><tr><td style="width: 18px; padding-right: 4px;"><a href="http://www.ycombinator.com/"><img src="y18.gif" style="border: 1px solid white;" width="18" height="18"></a></td>
+                  <td style="line-height: 12pt; height: 10px;"><span class="pagetop"><b class="hnname"><a href="https://news.ycombinator.com/news">Hacker News</a></b>
+              <a href="https://news.ycombinator.com/newest">new</a> | <a href="https://news.ycombinator.com/newcomments">comments</a> | <a href="https://news.ycombinator.com/show">show</a> | <a href="https://news.ycombinator.com/ask">ask</a> | <a href="https://news.ycombinator.com/jobs">jobs</a> | <a href="https://news.ycombinator.com/submit">submit</a>            </span></td><td style="text-align: right; padding-right: 4px;"><span class="pagetop">
+                              <a href="https://news.ycombinator.com/login?goto=item%3Fid%3D6331485">login</a>
+                          </span></td>
+              </tr></tbody></table></td></tr>
+<tr style="height: 10px;"></tr><tr><td><table border="0">
+        <tbody><tr class="athing" id="6331485">
+      <td class="title" valign="top" align="right"><span class="rank"></span></td>      <td class="votelinks" valign="top"><center><a id="up_6331485" href="https://news.ycombinator.com/vote?id=6331485&amp;how=up&amp;goto=item%3Fid%3D6331485"><div class="votearrow" title="upvote"></div></a></center></td><td class="title"><a href="http://brandon.invergo.net/news/2012-05-26-using-gnu-stow-to-manage-your-dotfiles.html" class="storylink">Using GNU Stow to manage your dotfiles</a><span class="sitebit comhead"> (<a href="https://news.ycombinator.com/from?site=invergo.net"><span class="sitestr">invergo.net</span></a>)</span></td></tr><tr><td colspan="2"></td><td class="subtext">
+        <span class="score" id="score_6331485">149 points</span> by <a href="https://news.ycombinator.com/user?id=dpeck" class="hnuser">dpeck</a> <span class="age"><a href="https://news.ycombinator.com/item?id=6331485">1073 days ago</a></span> <span id="unv_6331485"></span> | <a href="https://news.ycombinator.com/hide?id=6331485&amp;goto=item%3Fid%3D6331485">hide</a> | <a href="https://hn.algolia.com/?query=Using%20GNU%20Stow%20to%20manage%20your%20dotfiles&amp;sort=byDate&amp;dateRange=all&amp;type=story&amp;storyText=false&amp;prefix&amp;page=0" class="hnpast">past</a> | <a href="https://www.google.com/search?q=Using%20GNU%20Stow%20to%20manage%20your%20dotfiles">web</a> | <a href="https://news.ycombinator.com/item?id=6331485">69 comments</a> | <a href="https://news.ycombinator.com/fave?id=6331485&amp;auth=34f27f2dc746798bd3ffcfbf887a392082e73bc3">favorite</a>              </td></tr>
+        </tbody></table><br><br>
+  <table class="comment-tree" border="0">  <tbody><tr class="athing comtr " id="6331669"><td>
+            <table border="0">  <tbody><tr>    <td class="ind"><img src="s.gif" width="0" height="1"></td><td class="votelinks" valign="top"><center><a id="up_6331669" href="https://news.ycombinator.com/vote?id=6331669&amp;how=up&amp;goto=item%3Fid%3D6331485"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top: 2px; margin-bottom: -10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=e40" class="hnuser">e40</a> <span class="age"><a href="https://news.ycombinator.com/item?id=6331669">1073 days ago</a></span> <span id="unv_6331669"></span><span class="par"></span> <a class="togg" n="13">[-]</a>          <span class="storyon"></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00"><i>but many/most dotfiles reside at the top-level of your home directory, where it wouldn't be a good idea to initialize a VCS repository</i><p>I totally disagree.  I love having much of my home directory in git.  I have a .gitiignore for the stuff I don't want in there, but the rest.  Ahhhhh, so nice to be able to clone somewhere else and use.<span>
+              </span></p><div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></span></span></td></tr>
+      </tbody></table></td></tr>
+        <tr class="athing comtr " id="6331776"><td>
+            <table border="0">  <tbody><tr>    <td class="ind"><img src="s.gif" width="40" height="1"></td><td class="votelinks" valign="top"><center><a id="up_6331776" href="https://news.ycombinator.com/vote?id=6331776&amp;how=up&amp;goto=item%3Fid%3D6331485"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top: 2px; margin-bottom: -10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=pielud" class="hnuser">pielud</a> <span class="age"><a href="https://news.ycombinator.com/item?id=6331776">1073 days ago</a></span> <span id="unv_6331776"></span><span class="par"></span> <a class="togg" n="2">[-]</a>          <span class="storyon"></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">I take a similar approach. I have a dotfiles git repo in ~/dotfiles/ and have a Makefile which creates symlinks in my home directory. For example, ~/.bashrc is a symlink to ~/dotfiles/bashrc. That way, I can have a whitelist (whatever's in the Makefile) instead of a blacklist (like a .gitignore).<span>
+              </span><div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></span></span></td></tr>
+      </tbody></table></td></tr>
+        <tr class="athing comtr " id="6331913"><td>
+            <table border="0">  <tbody><tr>    <td class="ind"><img src="s.gif" width="80" height="1"></td><td class="votelinks" valign="top"><center><a id="up_6331913" href="https://news.ycombinator.com/vote?id=6331913&amp;how=up&amp;goto=item%3Fid%3D6331485"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top: 2px; margin-bottom: -10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=zeckalpha" class="hnuser">zeckalpha</a> <span class="age"><a href="https://news.ycombinator.com/item?id=6331913">1073 days ago</a></span> <span id="unv_6331913"></span><span class="par"></span> <a class="togg" n="1">[-]</a>          <span class="storyon"></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">The fake bare approach might be easier: <a href="http://mjollnir.org/blog/migrating-my-homedirectory-from-one-repo-to-many/" rel="nofollow">http://mjollnir.org/blog/migrating-my-homedirectory-from-one...</a><span>
+              </span><div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></span></span></td></tr>
+      </tbody></table></td></tr>
+      <tr class="athing comtr " id="6331965"><td>
+            <table border="0">  <tbody><tr>    <td class="ind"><img src="s.gif" width="40" height="1"></td><td class="votelinks" valign="top"><center><a id="up_6331965" href="https://news.ycombinator.com/vote?id=6331965&amp;how=up&amp;goto=item%3Fid%3D6331485"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top: 2px; margin-bottom: -10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=scottjad" class="hnuser">scottjad</a> <span class="age"><a href="https://news.ycombinator.com/item?id=6331965">1073 days ago</a></span> <span id="unv_6331965"></span><span class="par"></span> <a class="togg" n="2">[-]</a>          <span class="storyon"></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">My main problem with this is it leads to accidentally executing git commands on your dotfiles repo.<p>Like, say you thought ~/src/xulrunner was a git repo, but it was actually managed with hg or maybe was extracted from a tarball. Whereas normally executing some git command would complain that this is not a repo, if your ~ is a git repo then git will happily execute whatever you told it to on your dotfiles repo.<span>
+              </span></p><div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></span></span></td></tr>
+      </tbody></table></td></tr>
+        <tr class="athing comtr " id="6332303"><td>
+            <table border="0">  <tbody><tr>    <td class="ind"><img src="s.gif" width="80" height="1"></td><td class="votelinks" valign="top"><center><a id="up_6332303" href="https://news.ycombinator.com/vote?id=6332303&amp;how=up&amp;goto=item%3Fid%3D6331485"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top: 2px; margin-bottom: -10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=Argorak" class="hnuser">Argorak</a> <span class="age"><a href="https://news.ycombinator.com/item?id=6332303">1073 days ago</a></span> <span id="unv_6332303"></span><span class="par"></span> <a class="togg" n="1">[-]</a>          <span class="storyon"></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">For git repositories that are not touched very often, you can move the .git directory to something that isn't picket up automatically. Use it like this:<p></p><pre><code>    mv .git dot_git
+    git --git-dir="dot_git" add ...
+</code></pre>
+Thats also a nice trick if you need a git repos in a git repos, e.g. for integration test for libraries interacting with git.<span>
+              </span><div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></span></span></td></tr>
+      </tbody></table></td></tr>
+      <tr class="athing comtr " id="6333516"><td>
+            <table border="0">  <tbody><tr>    <td class="ind"><img src="s.gif" width="40" height="1"></td><td class="votelinks" valign="top"><center><a id="up_6333516" href="https://news.ycombinator.com/vote?id=6333516&amp;how=up&amp;goto=item%3Fid%3D6331485"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top: 2px; margin-bottom: -10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=16s" class="hnuser">16s</a> <span class="age"><a href="https://news.ycombinator.com/item?id=6333516">1072 days ago</a></span> <span id="unv_6333516"></span><span class="par"></span> <a class="togg" n="2">[-]</a>          <span class="storyon"></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">Be careful, this is how devs expose private ssh keys.<span>
+              </span><div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></span></span></td></tr>
+      </tbody></table></td></tr>
+        <tr class="athing comtr " id="6334488"><td>
+            <table border="0">  <tbody><tr>    <td class="ind"><img src="s.gif" width="80" height="1"></td><td class="votelinks" valign="top"><center><a id="up_6334488" href="https://news.ycombinator.com/vote?id=6334488&amp;how=up&amp;goto=item%3Fid%3D6331485"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top: 2px; margin-bottom: -10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=e40" class="hnuser">e40</a> <span class="age"><a href="https://news.ycombinator.com/item?id=6334488">1072 days ago</a></span> <span id="unv_6334488"></span><span class="par"></span> <a class="togg" n="1">[-]</a>          <span class="storyon"></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">I push it to a local git repo that has the same perms as my account and .ssh directory.  But, I agree.  You need to be careful.<span>
+              </span><div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></span></span></td></tr>
+      </tbody></table></td></tr>
+      <tr class="athing comtr " id="6331817"><td>
+            <table border="0">  <tbody><tr>    <td class="ind"><img src="s.gif" width="40" height="1"></td><td class="votelinks" valign="top"><center><a id="up_6331817" href="https://news.ycombinator.com/vote?id=6331817&amp;how=up&amp;goto=item%3Fid%3D6331485"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top: 2px; margin-bottom: -10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=cespare" class="hnuser">cespare</a> <span class="age"><a href="https://news.ycombinator.com/item?id=6331817">1073 days ago</a></span> <span id="unv_6331817"></span><span class="par"></span> <a class="togg" n="6">[-]</a>          <span class="storyon"></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">I also keep my whole homedir in git, and it's great. My approach isn't to .gitignore, because I want to ignore almost everything -- I just add and commit things when I want to track them. One of my many git aliases[1] is 'git sn' for showing status without untracked files; this helps when dealing with my homedir:<p></p><pre><code>  status --short --branch --untracked=no
+</code></pre>
+[1] <a href="https://github.com/cespare/dotfiles/blob/master/.gitconfig#L14" rel="nofollow">https://github.com/cespare/dotfiles/blob/master/.gitconfig#L...</a><span>
+              </span><div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></span></span></td></tr>
+      </tbody></table></td></tr>
+        <tr class="athing comtr " id="6332014"><td>
+            <table border="0">  <tbody><tr>    <td class="ind"><img src="s.gif" width="80" height="1"></td><td class="votelinks" valign="top"><center><a id="up_6332014" href="https://news.ycombinator.com/vote?id=6332014&amp;how=up&amp;goto=item%3Fid%3D6331485"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top: 2px; margin-bottom: -10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=oops" class="hnuser">oops</a> <span class="age"><a href="https://news.ycombinator.com/item?id=6332014">1073 days ago</a></span> <span id="unv_6332014"></span><span class="par"></span> <a class="togg" n="2">[-]</a>          <span class="storyon"></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">I have my homedir in git too and also ignore just about everything. I ended up using gitignore as a whitelist instead of a blacklist, e.g.:<p></p><pre><code>    /*
+    !/.gitignore
+    !/.gitmodules
+    !/.gitconfig
+    !/.zshrc
+    !/.zshenv
+    !/.zsh
+    !/.tmux.conf
+    !/.vimrc
+    !/.vim</code></pre><span>
+              </span><div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></span></span></td></tr>
+      </tbody></table></td></tr>
+        <tr class="athing comtr " id="6332964"><td>
+            <table border="0">  <tbody><tr>    <td class="ind"><img src="s.gif" width="120" height="1"></td><td class="votelinks" valign="top"><center><a id="up_6332964" href="https://news.ycombinator.com/vote?id=6332964&amp;how=up&amp;goto=item%3Fid%3D6331485"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top: 2px; margin-bottom: -10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=dgellow" class="hnuser">dgellow</a> <span class="age"><a href="https://news.ycombinator.com/item?id=6332964">1072 days ago</a></span> <span id="unv_6332964"></span><span class="par"></span> <a class="togg" n="1">[-]</a>          <span class="storyon"></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">I have a close setup. It just needs a little trick to add subdirectories :<p></p><pre><code>  /*
+  !/.emacs
+  !/.emacs.d/
+  /.emacs.d/*
+  !/.emacs.d/themes/
+  !/.emacs.d/functions/
+</code></pre>
+You can check my .gitignore here [0].<p>[0] <a href="https://raw.github.com/dgellow/home/master/.gitignore" rel="nofollow">https://raw.github.com/dgellow/home/master/.gitignore</a><span>
+              </span></p><div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></span></span></td></tr>
+      </tbody></table></td></tr>
+      <tr class="athing comtr " id="6331869"><td>
+            <table border="0">  <tbody><tr>    <td class="ind"><img src="s.gif" width="80" height="1"></td><td class="votelinks" valign="top"><center><a id="up_6331869" href="https://news.ycombinator.com/vote?id=6331869&amp;how=up&amp;goto=item%3Fid%3D6331485"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top: 2px; margin-bottom: -10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=JoshTriplett" class="hnuser">JoshTriplett</a> <span class="age"><a href="https://news.ycombinator.com/item?id=6331869">1073 days ago</a></span> <span id="unv_6331869"></span><span class="par"></span> <a class="togg" n="1">[-]</a>          <span class="storyon"></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">I actually prefer to .gitignore things explicitly, because then any new dotfiles show up in "git status" until I explicitly disposition them.<span>
+              </span><div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></span></span></td></tr>
+      </tbody></table></td></tr>
+    <tr class="athing comtr " id="6333818"><td>
+            <table border="0">  <tbody><tr>    <td class="ind"><img src="s.gif" width="80" height="1"></td><td class="votelinks" valign="top"><center><a id="up_6333818" href="https://news.ycombinator.com/vote?id=6333818&amp;how=up&amp;goto=item%3Fid%3D6331485"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top: 2px; margin-bottom: -10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=dhimes" class="hnuser">dhimes</a> <span class="age"><a href="https://news.ycombinator.com/item?id=6333818">1072 days ago</a></span> <span id="unv_6333818"></span><span class="par"></span> <a class="togg" n="2">[-]</a>          <span class="storyon"></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">I wondered about this, but I pose this question to you:  what happens if you have a merge problem with, say, a libreoffice doc or something.  How do you handle that?  I use hg, but I imagine my plight would be similar.  TIA.<span>
+              </span><div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></span></span></td></tr>
+      </tbody></table></td></tr>
+        <tr class="athing comtr " id="6336357"><td>
+            <table border="0">  <tbody><tr>    <td class="ind"><img src="s.gif" width="120" height="1"></td><td class="votelinks" valign="top"><center><a id="up_6336357" href="https://news.ycombinator.com/vote?id=6336357&amp;how=up&amp;goto=item%3Fid%3D6331485"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top: 2px; margin-bottom: -10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=cespare" class="hnuser">cespare</a> <span class="age"><a href="https://news.ycombinator.com/item?id=6336357">1072 days ago</a></span> <span id="unv_6336357"></span><span class="par"></span> <a class="togg" n="1">[-]</a>          <span class="storyon"></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">I don't keep anything but text files in my dotfile repo, so I haven't had to deal with this.<span>
+              </span><div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></span></span></td></tr>
+      </tbody></table></td></tr>
+          <tr class="athing comtr " id="6331736"><td>
+            <table border="0">  <tbody><tr>    <td class="ind"><img src="s.gif" width="0" height="1"></td><td class="votelinks" valign="top"><center><a id="up_6331736" href="https://news.ycombinator.com/vote?id=6331736&amp;how=up&amp;goto=item%3Fid%3D6331485"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top: 2px; margin-bottom: -10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=akkartik" class="hnuser">akkartik</a> <span class="age"><a href="https://news.ycombinator.com/item?id=6331736">1073 days ago</a></span> <span id="unv_6331736"></span><span class="par"></span> <a class="togg" n="1">[-]</a>          <span class="storyon"></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">I'm very proud of my server's top-level[1] for the past fifteen years:<p></p><pre><code>  $ ls -A
+  .gitconfig@  .hushlogin  .local/  .notes/  .ssh/  www@  .zshrc@
+</code></pre>
+All other dotfiles are configured to be picked up from somewhere inside .local either using environment variables or aliases.<p>[1] On the other hand, the laptop -- where I run X and gnome -- is a disaster.<span>
+              </span></p><div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></span></span></td></tr>
+      </tbody></table></td></tr>
+    <tr class="athing comtr " id="6331765"><td>
+            <table border="0">  <tbody><tr>    <td class="ind"><img src="s.gif" width="0" height="1"></td><td class="votelinks" valign="top"><center><a id="up_6331765" href="https://news.ycombinator.com/vote?id=6331765&amp;how=up&amp;goto=item%3Fid%3D6331485"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top: 2px; margin-bottom: -10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=dnr" class="hnuser">dnr</a> <span class="age"><a href="https://news.ycombinator.com/item?id=6331765">1073 days ago</a></span> <span id="unv_6331765"></span><span class="par"></span> <a class="togg" n="1">[-]</a>          <span class="storyon"></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">If I may, a small plug for my solution to this problem:<p><a href="https://bitbucket.org/davidn/dotstuff" rel="nofollow">https://bitbucket.org/davidn/dotstuff</a></p><p>I settled on copying rather than symlinking, which has the benefit that the source files can be passed through a simple preprocessor to do some customization for different systems. Also you can get a diff between your current files and the state that you just synced.<span>
+              </span></p><div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></span></span></td></tr>
+      </tbody></table></td></tr>
+    <tr class="athing comtr " id="6331937"><td>
+            <table border="0">  <tbody><tr>    <td class="ind"><img src="s.gif" width="0" height="1"></td><td class="votelinks" valign="top"><center><a id="up_6331937" href="https://news.ycombinator.com/vote?id=6331937&amp;how=up&amp;goto=item%3Fid%3D6331485"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top: 2px; margin-bottom: -10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=philips" class="hnuser">philips</a> <span class="age"><a href="https://news.ycombinator.com/item?id=6331937">1073 days ago</a></span> <span id="unv_6331937"></span><span class="par"></span> <a class="togg" n="6">[-]</a>          <span class="storyon"></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">The primary complaint of the article is tools that manage the files in git and symlink things into place have lots of dependencies.<p>ghar, a project I wrote, is a single standalone python file: <a href="https://github.com/philips/ghar" rel="nofollow">https://github.com/philips/ghar</a><span>
+              </span></p><div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></span></span></td></tr>
+      </tbody></table></td></tr>
+        <tr class="athing comtr " id="6332112"><td>
+            <table border="0">  <tbody><tr>    <td class="ind"><img src="s.gif" width="40" height="1"></td><td class="votelinks" valign="top"><center><a id="up_6332112" href="https://news.ycombinator.com/vote?id=6332112&amp;how=up&amp;goto=item%3Fid%3D6331485"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top: 2px; margin-bottom: -10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=Arelius" class="hnuser">Arelius</a> <span class="age"><a href="https://news.ycombinator.com/item?id=6332112">1073 days ago</a></span> <span id="unv_6332112"></span><span class="par"></span> <a class="togg" n="5">[-]</a>          <span class="storyon"></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">Python is still a pretty large dependency in itself.<span>
+              </span><div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></span></span></td></tr>
+      </tbody></table></td></tr>
+        <tr class="athing comtr " id="6332323"><td>
+            <table border="0">  <tbody><tr>    <td class="ind"><img src="s.gif" width="80" height="1"></td><td class="votelinks" valign="top"><center><a id="up_6332323" href="https://news.ycombinator.com/vote?id=6332323&amp;how=up&amp;goto=item%3Fid%3D6331485"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top: 2px; margin-bottom: -10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=keeblus" class="hnuser">keeblus</a> <span class="age"><a href="https://news.ycombinator.com/item?id=6332323">1073 days ago</a></span> <span id="unv_6332323"></span><span class="par"></span> <a class="togg" n="4">[-]</a>          <span class="storyon"></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">Not really. I've yet to see a distro in the past 10 years without it.<span>
+              </span><div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></span></span></td></tr>
+      </tbody></table></td></tr>
+        <tr class="athing comtr " id="6335503"><td>
+            <table border="0">  <tbody><tr>    <td class="ind"><img src="s.gif" width="120" height="1"></td><td class="votelinks" valign="top"><center><a id="up_6335503" href="https://news.ycombinator.com/vote?id=6335503&amp;how=up&amp;goto=item%3Fid%3D6331485"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top: 2px; margin-bottom: -10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=taylorlapeyre" class="hnuser">taylorlapeyre</a> <span class="age"><a href="https://news.ycombinator.com/item?id=6335503">1072 days ago</a></span> <span id="unv_6335503"></span><span class="par"></span> <a class="togg" n="3">[-]</a>          <span class="storyon"></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">Arch Linux, for one.<span>
+              </span><div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></span></span></td></tr>
+      </tbody></table></td></tr>
+        <tr class="athing comtr " id="6337026"><td>
+            <table border="0">  <tbody><tr>    <td class="ind"><img src="s.gif" width="160" height="1"></td><td class="votelinks" valign="top"><center><a id="up_6337026" href="https://news.ycombinator.com/vote?id=6337026&amp;how=up&amp;goto=item%3Fid%3D6331485"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top: 2px; margin-bottom: -10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=Arelius" class="hnuser">Arelius</a> <span class="age"><a href="https://news.ycombinator.com/item?id=6337026">1072 days ago</a></span> <span id="unv_6337026"></span><span class="par"></span> <a class="togg" n="2">[-]</a>          <span class="storyon"></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">Also Mac, Windows.<span>
+              </span><div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></span></span></td></tr>
+      </tbody></table></td></tr>
+        <tr class="athing comtr " id="6337223"><td>
+            <table border="0">  <tbody><tr>    <td class="ind"><img src="s.gif" width="200" height="1"></td><td class="votelinks" valign="top"><center><a id="up_6337223" href="https://news.ycombinator.com/vote?id=6337223&amp;how=up&amp;goto=item%3Fid%3D6331485"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top: 2px; margin-bottom: -10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=navs" class="hnuser">navs</a> <span class="age"><a href="https://news.ycombinator.com/item?id=6337223">1072 days ago</a></span> <span id="unv_6337223"></span><span class="par"></span> <a class="togg" n="1">[-]</a>          <span class="storyon"></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">OS X has python preinstalled. Not bleeding edge though.<span>
+              </span><div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></span></span></td></tr>
+      </tbody></table></td></tr>
+              <tr class="athing comtr " id="6331844"><td>
+            <table border="0">  <tbody><tr>    <td class="ind"><img src="s.gif" width="0" height="1"></td><td class="votelinks" valign="top"><center><a id="up_6331844" href="https://news.ycombinator.com/vote?id=6331844&amp;how=up&amp;goto=item%3Fid%3D6331485"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top: 2px; margin-bottom: -10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=staticshock" class="hnuser">staticshock</a> <span class="age"><a href="https://news.ycombinator.com/item?id=6331844">1073 days ago</a></span> <span id="unv_6331844"></span><span class="par"></span> <a class="togg" n="1">[-]</a>          <span class="storyon"></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">I use a similar method, but structured around a single Makefile: <a href="https://github.com/staticshock/seashell" rel="nofollow">https://github.com/staticshock/seashell</a><p>This lets me perform any necessary initialization (e.g. cloning submodules) via `make` and installing the actual symlinks into $HOME via `make install`.<span>
+              </span></p><div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></span></span></td></tr>
+      </tbody></table></td></tr>
+    <tr class="athing comtr " id="6332420"><td>
+            <table border="0">  <tbody><tr>    <td class="ind"><img src="s.gif" width="0" height="1"></td><td class="votelinks" valign="top"><center><a id="up_6332420" href="https://news.ycombinator.com/vote?id=6332420&amp;how=up&amp;goto=item%3Fid%3D6331485"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top: 2px; margin-bottom: -10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=rsaarelm" class="hnuser">rsaarelm</a> <span class="age"><a href="https://news.ycombinator.com/item?id=6332420">1073 days ago</a></span> <span id="unv_6332420"></span><span class="par"></span> <a class="togg" n="1">[-]</a>          <span class="storyon"></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">I use the homegit alias trick to manage my top level home directory stuff in a Git repo that doesn't reside at ~/: <a href="http://chneukirchen.org/blog/archive/2013/01/a-grab-bag-of-git-tricks.html" rel="nofollow">http://chneukirchen.org/blog/archive/2013/01/a-grab-bag-of-g...</a><span>
+              </span><div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></span></span></td></tr>
+      </tbody></table></td></tr>
+    <tr class="athing comtr " id="6331845"><td>
+            <table border="0">  <tbody><tr>    <td class="ind"><img src="s.gif" width="0" height="1"></td><td class="votelinks" valign="top"><center><a id="up_6331845" href="https://news.ycombinator.com/vote?id=6331845&amp;how=up&amp;goto=item%3Fid%3D6331485"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top: 2px; margin-bottom: -10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=nandhp" class="hnuser">nandhp</a> <span class="age"><a href="https://news.ycombinator.com/item?id=6331845">1073 days ago</a></span> <span id="unv_6331845"></span><span class="par"></span> <a class="togg" n="3">[-]</a>          <span class="storyon"></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">I would really like to have a dotfile strategy. But I have another goal beyond synchronization: I would like to be able to organize my dotfiles in a modular fashion.<p>For example, I would like to construct my bashrc using something like run-parts. This system would take bash/★.bashrc, this-machine/local-env.bashrc, and special-app/proxy-env.bashrc and compile them into a single ~/.bashrc. I would also like to be able to build a ~/.nanorc that only includes features supported by the installed version of nano. Some dotfiles include both public and private data -- I'd like to publish my git aliases, but not my GitHub authentication token.</p><p>So I basically want a dotfile manager that's a combination of PHP, run-parts, and stow: dotfiles constructed through in-line Perl code (in my nanorc or ssh_config) with assembly of multiple pieces (in my bashrc or gitconfig) and installed into the right place in my home directory.</p><p>As far as I can tell there's nothing out there that can do this. (Although I also insist it be written in something classic that I can find anywhere, like Python 2.4 or Perl or something like that. So I didn't look at any of the many dotfile managers written in Ruby or Node.)</p><p></p><pre><code>    &lt;? @NANO_VER = `nano -V` =~ m/version (\d+)\.(\d+)/ ?&gt;
+    set const
+    set cut
+    &lt;? if ( $NANO_VER[0] &gt; 2 || $NANO_VER[1] &gt;= 1 ) { # Assume nano 1.x isn't still an issue
+    ?&gt;
+    bind M-f nextword main
+    bind M-b prevword main
+    &lt;? }
+    print "include \"$_\"\n" foreach &lt;/usr/share/nano/*.nanorc&gt;;
+    # Maybe I'll have to write this myself....
+    ?&gt;</code></pre><span>
+              </span><div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></span></span></td></tr>
+      </tbody></table></td></tr>
+        <tr class="athing comtr " id="6331904"><td>
+            <table border="0">  <tbody><tr>    <td class="ind"><img src="s.gif" width="40" height="1"></td><td class="votelinks" valign="top"><center><a id="up_6331904" href="https://news.ycombinator.com/vote?id=6331904&amp;how=up&amp;goto=item%3Fid%3D6331485"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top: 2px; margin-bottom: -10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=dnr" class="hnuser">dnr</a> <span class="age"><a href="https://news.ycombinator.com/item?id=6331904">1073 days ago</a></span> <span id="unv_6331904"></span><span class="par"></span> <a class="togg" n="1">[-]</a>          <span class="storyon"></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">Hi,<p>My dotstuff script can do most of that, with a little bit of work. With the current features, you'd put all your bashrc content into a single ~/dotstuff/bashrc file, marked off with preprocessor directives that turned on and off certain sections depending on the content of the "environment" (a simple key-value file).</p><p>Adding the ability to query the version of installed software would be easy to add. Adding the ability to concatenate multiple files would be fairly easy too. Although I think an "include" directive might make more sense than run-parts style, since many dotfiles have hierarchical structure.</p><p>It's written in 2.4-compatible Python and I'm happy to accept contributions.</p><p><a href="https://bitbucket.org/davidn/dotstuff" rel="nofollow">https://bitbucket.org/davidn/dotstuff</a><span>
+              </span></p><div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></span></span></td></tr>
+      </tbody></table></td></tr>
+    <tr class="athing comtr " id="6334495"><td>
+            <table border="0">  <tbody><tr>    <td class="ind"><img src="s.gif" width="40" height="1"></td><td class="votelinks" valign="top"><center><a id="up_6334495" href="https://news.ycombinator.com/vote?id=6334495&amp;how=up&amp;goto=item%3Fid%3D6331485"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top: 2px; margin-bottom: -10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=stevekemp" class="hnuser">stevekemp</a> <span class="age"><a href="https://news.ycombinator.com/item?id=6334495">1072 days ago</a></span> <span id="unv_6334495"></span><span class="par"></span> <a class="togg" n="1">[-]</a>          <span class="storyon"></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">I hae something like this in my ~/.bashrc file:<p></p><pre><code>    for i in ~/.bash.d/* ~/.local.bash.d/; do
+         test -e $i &amp;&amp; source $i
+    done
+</code></pre>
+Which functionally does what you want, loading everything from a directory.  Though it doesn't do version-testing, or actual concatenation.<span>
+              </span><div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></span></span></td></tr>
+      </tbody></table></td></tr>
+      <tr class="athing comtr " id="6331831"><td>
+            <table border="0">  <tbody><tr>    <td class="ind"><img src="s.gif" width="0" height="1"></td><td class="votelinks" valign="top"><center><a id="up_6331831" href="https://news.ycombinator.com/vote?id=6331831&amp;how=up&amp;goto=item%3Fid%3D6331485"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top: 2px; margin-bottom: -10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=platz" class="hnuser">platz</a> <span class="age"><a href="https://news.ycombinator.com/item?id=6331831">1073 days ago</a></span> <span id="unv_6331831"></span><span class="par"></span> <a class="togg" n="1">[-]</a>          <span class="storyon"></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">also see GitMinutes #13: Richard Hartmann on Managing Your Homedir with vcsh:<p><a href="http://episodes.gitminutes.com/2013/06/gitminutes-13-richard-hartmann-on.html" rel="nofollow">http://episodes.gitminutes.com/2013/06/gitminutes-13-richard...</a></p><p><a href="https://github.com/RichiH/vcsh" rel="nofollow">https://github.com/RichiH/vcsh</a><span>
+              </span></p><div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></span></span></td></tr>
+      </tbody></table></td></tr>
+    <tr class="athing comtr " id="6332334"><td>
+            <table border="0">  <tbody><tr>    <td class="ind"><img src="s.gif" width="0" height="1"></td><td class="votelinks" valign="top"><center><a id="up_6332334" href="https://news.ycombinator.com/vote?id=6332334&amp;how=up&amp;goto=item%3Fid%3D6331485"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top: 2px; margin-bottom: -10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=Toenex" class="hnuser">Toenex</a> <span class="age"><a href="https://news.ycombinator.com/item?id=6332334">1073 days ago</a></span> <span id="unv_6332334"></span><span class="par"></span> <a class="togg" n="1">[-]</a>          <span class="storyon"></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">I've taken a different approach and store all my dotfiles on Dropbox and then symlinked them the local system.   I get synchronisation between machine almost instantaneously and can move between around half a dozen boxes Including Linux,  OSX  and cygwin with little problem.   Dropbox provide some version control which is useful If I really break something and I have a single script which can bootstrap a new machine.   A few things don't liked to be symlinked (namely ssh keys) but other than that this had worked great for several years.<span>
+              </span><div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></span></span></td></tr>
+      </tbody></table></td></tr>
+    <tr class="athing comtr " id="6333501"><td>
+            <table border="0">  <tbody><tr>    <td class="ind"><img src="s.gif" width="0" height="1"></td><td class="votelinks" valign="top"><center><a id="up_6333501" href="https://news.ycombinator.com/vote?id=6333501&amp;how=up&amp;goto=item%3Fid%3D6331485"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top: 2px; margin-bottom: -10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=jhh" class="hnuser">jhh</a> <span class="age"><a href="https://news.ycombinator.com/item?id=6333501">1072 days ago</a></span> <span id="unv_6333501"></span><span class="par"></span> <a class="togg" n="1">[-]</a>          <span class="storyon"></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">I wasn't clear to me from the article alone how GNU Stow decides where to put the files. Looking it up in the manfile stow uses the parent directory of the "stow directory" by default.<p>You can change this behaviour using the --target and --dir options, where setting --dir will set the target dir to the parent of what you set for --dir.</p><p>I don't think it's possible to configure a target in the package itself, as far as I can see from reading the man page.<span>
+              </span></p><div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></span></span></td></tr>
+      </tbody></table></td></tr>
+    <tr class="athing comtr " id="6332135"><td>
+            <table border="0">  <tbody><tr>    <td class="ind"><img src="s.gif" width="0" height="1"></td><td class="votelinks" valign="top"><center><a id="up_6332135" href="https://news.ycombinator.com/vote?id=6332135&amp;how=up&amp;goto=item%3Fid%3D6331485"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top: 2px; margin-bottom: -10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=brini" class="hnuser">brini</a> <span class="age"><a href="https://news.ycombinator.com/item?id=6332135">1073 days ago</a></span> <span id="unv_6332135"></span><span class="par"></span> <a class="togg" n="9">[-]</a>          <span class="storyon"></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">Does anyone else use RCS [1] for this?<p>[1] <a href="https://www.gnu.org/software/rcs/" rel="nofollow">https://www.gnu.org/software/rcs/</a><span>
+              </span></p><div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></span></span></td></tr>
+      </tbody></table></td></tr>
+        <tr class="athing comtr " id="6332724"><td>
+            <table border="0">  <tbody><tr>    <td class="ind"><img src="s.gif" width="40" height="1"></td><td class="votelinks" valign="top"><center><a id="up_6332724" href="https://news.ycombinator.com/vote?id=6332724&amp;how=up&amp;goto=item%3Fid%3D6331485"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top: 2px; margin-bottom: -10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=atmosx" class="hnuser">atmosx</a> <span class="age"><a href="https://news.ycombinator.com/item?id=6332724">1072 days ago</a></span> <span id="unv_6332724"></span><span class="par"></span> <a class="togg" n="1">[-]</a>          <span class="storyon"></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">I know of a guy who used to use rcs back in 2001 and he probably is today. He is one of those old-school UNIX guys who know literally <i>everything</i> about a UNIX system.<span>
+              </span><div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></span></span></td></tr>
+      </tbody></table></td></tr>
+    <tr class="athing comtr " id="6332198"><td>
+            <table border="0">  <tbody><tr>    <td class="ind"><img src="s.gif" width="40" height="1"></td><td class="votelinks" valign="top"><center><a id="up_6332198" href="https://news.ycombinator.com/vote?id=6332198&amp;how=up&amp;goto=item%3Fid%3D6331485"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top: 2px; margin-bottom: -10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=saidajigumi" class="hnuser">saidajigumi</a> <span class="age"><a href="https://news.ycombinator.com/item?id=6332198">1073 days ago</a></span> <span id="unv_6332198"></span><span class="par"></span> <a class="togg" n="7">[-]</a>          <span class="storyon"></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">WAT.  Are you trolling us, or are you that uninformed about VCS history?  Giving you the benefit of the doubt, just learn and use git[1]. Yes, there are things about the UI that suck. But the underlying machinery and power it provides is unparalleled.<p>RCS, in short, is that horrible feet-killing pair of boots that made you think you <i>hated</i> &lt;insert sport here&gt;, when in fact it was just frustration with sub-par equipment.</p><p>[1] If you need to learn git, check out Scott Chacon's excellent Pro Git, available for free online at: <a href="http://www.git-scm.com/book" rel="nofollow">http://www.git-scm.com/book</a><span>
+              </span></p><div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></span></span></td></tr>
+      </tbody></table></td></tr>
+        <tr class="athing comtr " id="6332316"><td>
+            <table border="0">  <tbody><tr>    <td class="ind"><img src="s.gif" width="80" height="1"></td><td class="votelinks" valign="top"><center><a id="up_6332316" href="https://news.ycombinator.com/vote?id=6332316&amp;how=up&amp;goto=item%3Fid%3D6331485"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top: 2px; margin-bottom: -10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=brini" class="hnuser">brini</a> <span class="age"><a href="https://news.ycombinator.com/item?id=6332316">1073 days ago</a></span> <span id="unv_6332316"></span><span class="par"></span> <a class="togg" n="4">[-]</a>          <span class="storyon"></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">Ha! Fair enough. No, I didn't intend to troll. I've found RCS useful for ad hoc versioning of configuration files on systems without git or other version control systems. Wondering whether anyone still finds it useful. I reckon not!<span>
+              </span><div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></span></span></td></tr>
+      </tbody></table></td></tr>
+        <tr class="athing comtr " id="6333524"><td>
+            <table border="0">  <tbody><tr>    <td class="ind"><img src="s.gif" width="120" height="1"></td><td class="votelinks" valign="top"><center><a id="up_6333524" href="https://news.ycombinator.com/vote?id=6333524&amp;how=up&amp;goto=item%3Fid%3D6331485"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top: 2px; margin-bottom: -10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=throwaway2048" class="hnuser">throwaway2048</a> <span class="age"><a href="https://news.ycombinator.com/item?id=6333524">1072 days ago</a></span> <span id="unv_6333524"></span><span class="par"></span> <a class="togg" n="1">[-]</a>          <span class="storyon"></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">RCS is a lot less complexity and remembering commands than a full-on VCS for a few stray config files.<span>
+              </span><div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></span></span></td></tr>
+      </tbody></table></td></tr>
+    <tr class="athing comtr " id="6333773"><td>
+            <table border="0">  <tbody><tr>    <td class="ind"><img src="s.gif" width="120" height="1"></td><td class="votelinks" valign="top"><center><a id="up_6333773" href="https://news.ycombinator.com/vote?id=6333773&amp;how=up&amp;goto=item%3Fid%3D6331485"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top: 2px; margin-bottom: -10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=seewhat" class="hnuser">seewhat</a> <span class="age"><a href="https://news.ycombinator.com/item?id=6333773">1072 days ago</a></span> <span id="unv_6333773"></span><span class="par"></span> <a class="togg" n="1">[-]</a>          <span class="storyon"></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">I've recently installed RCS on a Windows host for versioning my .emacs file, and I rely on Emacs VC to drive the tool.<p>On Solaris hosts, including locked-down "production", I use SCCS to version my dot-files because it's available by default. For development I use SVN (old too by today's standards).</p><p>I don't advocate using these old tools over modern alternatives; however I find their simplicity in the above cases to be beneficial.<span>
+              </span></p><div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></span></span></td></tr>
+      </tbody></table></td></tr>
+    <tr class="athing comtr " id="6332486"><td>
+            <table border="0">  <tbody><tr>    <td class="ind"><img src="s.gif" width="120" height="1"></td><td class="votelinks" valign="top"><center><a id="up_6332486" href="https://news.ycombinator.com/vote?id=6332486&amp;how=up&amp;goto=item%3Fid%3D6331485"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top: 2px; margin-bottom: -10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=e12e" class="hnuser">e12e</a> <span class="age"><a href="https://news.ycombinator.com/item?id=6332486">1073 days ago</a></span> <span id="unv_6332486"></span><span class="par"></span> <a class="togg" n="1">[-]</a>          <span class="storyon"></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">I used to use RCS, but these days I use mercurial. Pretty much <i>any</i> DVCS is going to be a "better RCS" than RCS (bzr, mercurial, git, fossil, monotone...). Even if you never need to pull/push.<span>
+              </span><div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></span></span></td></tr>
+      </tbody></table></td></tr>
+      <tr class="athing comtr " id="6332308"><td>
+            <table border="0">  <tbody><tr>    <td class="ind"><img src="s.gif" width="80" height="1"></td><td class="votelinks" valign="top"><center><a id="up_6332308" href="https://news.ycombinator.com/vote?id=6332308&amp;how=up&amp;goto=item%3Fid%3D6331485"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top: 2px; margin-bottom: -10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=koenigdavidmj" class="hnuser">koenigdavidmj</a> <span class="age"><a href="https://news.ycombinator.com/item?id=6332308">1073 days ago</a></span> <span id="unv_6332308"></span><span class="par"></span> <a class="togg" n="2">[-]</a>          <span class="storyon"></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">rcs doesn't have .gitignore files and accidentally running commands on your top-level repo, so I could see why one would consider it. You don't really need atomic commits for this use case, so rcs is barely worse than the alternatives.<span>
+              </span><div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></span></span></td></tr>
+      </tbody></table></td></tr>
+        <tr class="athing comtr " id="6335639"><td>
+            <table border="0">  <tbody><tr>    <td class="ind"><img src="s.gif" width="120" height="1"></td><td class="votelinks" valign="top"><center><a id="up_6335639" href="https://news.ycombinator.com/vote?id=6335639&amp;how=up&amp;goto=item%3Fid%3D6331485"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top: 2px; margin-bottom: -10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=saidajigumi" class="hnuser">saidajigumi</a> <span class="age"><a href="https://news.ycombinator.com/item?id=6335639">1072 days ago</a></span> <span id="unv_6335639"></span><span class="par"></span> <a class="togg" n="1">[-]</a>          <span class="storyon"></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">I can't say that I've ever had a problem with accidentally running commands in my top-level repo despite many years of running it under git and other VCS'es.<p>That said, using tools mentioned in this thread (esp. vcsh[1] and mr[2]) it's possible to have one's cake and eat it too w.r.t. using git for homedir version control without the worries of accidentally running VCS commands on your homedir.  They also allow some real benefits, like the ability to use and deploy subsets of your rcfiles.  For example, you could easily create profiles like: "server-side minimal core", "main personal system", "work box with employer-specific stuff".</p><p>[1] <a href="https://github.com/RichiH/vcsh" rel="nofollow">https://github.com/RichiH/vcsh</a></p><p>[2] <a href="http://myrepos.branchable.com/" rel="nofollow">http://myrepos.branchable.com/</a><span>
+              </span></p><div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></span></span></td></tr>
+      </tbody></table></td></tr>
+          <tr class="athing comtr " id="6331783"><td>
+            <table border="0">  <tbody><tr>    <td class="ind"><img src="s.gif" width="0" height="1"></td><td class="votelinks" valign="top"><center><a id="up_6331783" href="https://news.ycombinator.com/vote?id=6331783&amp;how=up&amp;goto=item%3Fid%3D6331485"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top: 2px; margin-bottom: -10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=Aaronneyer" class="hnuser">Aaronneyer</a> <span class="age"><a href="https://news.ycombinator.com/item?id=6331783">1073 days ago</a></span> <span id="unv_6331783"></span><span class="par"></span> <a class="togg" n="4">[-]</a>          <span class="storyon"></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">I've made my own similar solution. I have all mine on Github, so I git clone the repo, and run my bootstrap script, which initializes the submodules, Vundle's all my vim plugins, and symlinks all the files.<p><a href="https://github.com/Aaronneyer/dotfiles" rel="nofollow">https://github.com/Aaronneyer/dotfiles</a><span>
+              </span></p><div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></span></span></td></tr>
+      </tbody></table></td></tr>
+        <tr class="athing comtr " id="6332719"><td>
+            <table border="0">  <tbody><tr>    <td class="ind"><img src="s.gif" width="40" height="1"></td><td class="votelinks" valign="top"><center><a id="up_6332719" href="https://news.ycombinator.com/vote?id=6332719&amp;how=up&amp;goto=item%3Fid%3D6331485"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top: 2px; margin-bottom: -10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=atmosx" class="hnuser">atmosx</a> <span class="age"><a href="https://news.ycombinator.com/item?id=6332719">1072 days ago</a></span> <span id="unv_6332719"></span><span class="par"></span> <a class="togg" n="2">[-]</a>          <span class="storyon"></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">isn't that sort of info kinda <i>sensitive</i> <a href="https://github.com/Aaronneyer/dotfiles/blob/master/sshconfig" rel="nofollow">https://github.com/Aaronneyer/dotfiles/blob/master/sshconfig</a> ? I can see hosts and usernames...<span>
+              </span><div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></span></span></td></tr>
+      </tbody></table></td></tr>
+        <tr class="athing comtr " id="6333945"><td>
+            <table border="0">  <tbody><tr>    <td class="ind"><img src="s.gif" width="80" height="1"></td><td class="votelinks" valign="top"><center><a id="up_6333945" href="https://news.ycombinator.com/vote?id=6333945&amp;how=up&amp;goto=item%3Fid%3D6331485"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top: 2px; margin-bottom: -10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=Aaronneyer" class="hnuser">Aaronneyer</a> <span class="age"><a href="https://news.ycombinator.com/item?id=6333945">1072 days ago</a></span> <span id="unv_6333945"></span><span class="par"></span> <a class="togg" n="1">[-]</a>          <span class="storyon"></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">Ya, that's actually something I've been meaning to pull out, although I don't think it really matters all that much if people know what hosts/usernames I have.<span>
+              </span><div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></span></span></td></tr>
+      </tbody></table></td></tr>
+      <tr class="athing comtr " id="6332130"><td>
+            <table border="0">  <tbody><tr>    <td class="ind"><img src="s.gif" width="40" height="1"></td><td class="votelinks" valign="top"><center><a id="up_6332130" href="https://news.ycombinator.com/vote?id=6332130&amp;how=up&amp;goto=item%3Fid%3D6331485"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top: 2px; margin-bottom: -10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=jzawodn" class="hnuser">jzawodn</a> <span class="age"><a href="https://news.ycombinator.com/item?id=6332130">1073 days ago</a></span> <span id="unv_6332130"></span><span class="par"></span> <a class="togg" n="1">[-]</a>          <span class="storyon"></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">Oooh... submodules.  Yours is better than mine.  Maybe it's time I ditched my own half-baked setup...<span>
+              </span><div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></span></span></td></tr>
+      </tbody></table></td></tr>
+      <tr class="athing comtr " id="6331890"><td>
+            <table border="0">  <tbody><tr>    <td class="ind"><img src="s.gif" width="0" height="1"></td><td class="votelinks" valign="top"><center><a id="up_6331890" href="https://news.ycombinator.com/vote?id=6331890&amp;how=up&amp;goto=item%3Fid%3D6331485"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top: 2px; margin-bottom: -10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=muuck" class="hnuser">muuck</a> <span class="age"><a href="https://news.ycombinator.com/item?id=6331890">1073 days ago</a></span> <span id="unv_6331890"></span><span class="par"></span> <a class="togg" n="1">[-]</a>          <span class="storyon"></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">I use Vcsh. It allows for more than one repository. It's a Shell script, uses Git and it doesn't symlink.<span>
+              </span><div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></span></span></td></tr>
+      </tbody></table></td></tr>
+    <tr class="athing comtr " id="6333928"><td>
+            <table border="0">  <tbody><tr>    <td class="ind"><img src="s.gif" width="0" height="1"></td><td class="votelinks" valign="top"><center><a id="up_6333928" href="https://news.ycombinator.com/vote?id=6333928&amp;how=up&amp;goto=item%3Fid%3D6331485"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top: 2px; margin-bottom: -10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=4ad" class="hnuser">4ad</a> <span class="age"><a href="https://news.ycombinator.com/item?id=6333928">1072 days ago</a></span> <span id="unv_6333928"></span><span class="par"></span> <a class="togg" n="1">[-]</a>          <span class="storyon"></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">&gt; I've come across various programs which aim to manage this for you by keeping all the files in a subdirectory and then installing or linking them into their appropriate places. None of those programs ever really appealed to me. They would require a ton of dependencies (like Ruby and a ton of libraries for it) or they would require me to remember how to use them, which is difficult when really for such a task you rarely use the program.<p>Ever heard of shell scripts? This is what I use: <a href="https://code.google.com/p/aram-dotfiles/source/browse/make.unix" rel="nofollow">https://code.google.com/p/aram-dotfiles/source/browse/make.u...</a><span>
+              </span></p><div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></span></span></td></tr>
+      </tbody></table></td></tr>
+    <tr class="athing comtr " id="6334888"><td>
+            <table border="0">  <tbody><tr>    <td class="ind"><img src="s.gif" width="0" height="1"></td><td class="votelinks" valign="top"><center><a id="up_6334888" href="https://news.ycombinator.com/vote?id=6334888&amp;how=up&amp;goto=item%3Fid%3D6331485"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top: 2px; margin-bottom: -10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=fps" class="hnuser">fps</a> <span class="age"><a href="https://news.ycombinator.com/item?id=6334888">1072 days ago</a></span> <span id="unv_6334888"></span><span class="par"></span> <a class="togg" n="2">[-]</a>          <span class="storyon"></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">I keep all my dotfiles in a directory called "~/dotfiles" and symlink just my .bashrc.   everything else gets reconfigured via aliases.<p>eg.</p><p></p><pre><code>     alias vim='vim -u /home/derf/dotfiles/vim/vimrc'
+     alias tmux='tmux -f /home/derf/dotfiles/tmux/tmux.conf'
+     </code></pre>
+<a href="http://github.com/fredsmith/dotfiles" rel="nofollow">http://github.com/fredsmith/dotfiles</a><span>
+              </span><div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></span></span></td></tr>
+      </tbody></table></td></tr>
+        <tr class="athing comtr " id="6334918"><td>
+            <table border="0">  <tbody><tr>    <td class="ind"><img src="s.gif" width="40" height="1"></td><td class="votelinks" valign="top"><center><a id="up_6334918" href="https://news.ycombinator.com/vote?id=6334918&amp;how=up&amp;goto=item%3Fid%3D6331485"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top: 2px; margin-bottom: -10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=transfire" class="hnuser">transfire</a> <span class="age"><a href="https://news.ycombinator.com/item?id=6334918">1072 days ago</a></span> <span id="unv_6334918"></span><span class="par"></span> <a class="togg" n="1">[-]</a>          <span class="storyon"></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">Isn't that a lot of work? And I doubt it will work for everything. Some programs don't give you an option to get configuration from non-standard location.<span>
+              </span><div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></span></span></td></tr>
+      </tbody></table></td></tr>
+      <tr class="athing comtr " id="6332244"><td>
+            <table border="0">  <tbody><tr>    <td class="ind"><img src="s.gif" width="0" height="1"></td><td class="votelinks" valign="top"><center><a id="up_6332244" href="https://news.ycombinator.com/vote?id=6332244&amp;how=up&amp;goto=item%3Fid%3D6331485"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top: 2px; margin-bottom: -10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=wincent" class="hnuser">wincent</a> <span class="age"><a href="https://news.ycombinator.com/item?id=6332244">1073 days ago</a></span> <span id="unv_6332244"></span><span class="par"></span> <a class="togg" n="2">[-]</a>          <span class="storyon"></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">The article says the author doesn't want to depend on something like Ruby. Ruby (or Python) seem a lot more likely to be on a base install than GNU Stow, though.<span>
+              </span><div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></span></span></td></tr>
+      </tbody></table></td></tr>
+        <tr class="athing comtr " id="6332255"><td>
+            <table border="0">  <tbody><tr>    <td class="ind"><img src="s.gif" width="40" height="1"></td><td class="votelinks" valign="top"><center><a id="up_6332255" href="https://news.ycombinator.com/vote?id=6332255&amp;how=up&amp;goto=item%3Fid%3D6331485"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top: 2px; margin-bottom: -10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=jamestomasino" class="hnuser">jamestomasino</a> <span class="age"><a href="https://news.ycombinator.com/item?id=6332255">1073 days ago</a></span> <span id="unv_6332255"></span><span class="par"></span> <a class="togg" n="1">[-]</a>          <span class="storyon"></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">Or just write a shell script. This is a pretty trivial task in Bash, let alone zsh<span>
+              </span><div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></span></span></td></tr>
+      </tbody></table></td></tr>
+      <tr class="athing comtr " id="6332909"><td>
+            <table border="0">  <tbody><tr>    <td class="ind"><img src="s.gif" width="0" height="1"></td><td class="votelinks" valign="top"><center><a id="up_6332909" href="https://news.ycombinator.com/vote?id=6332909&amp;how=up&amp;goto=item%3Fid%3D6331485"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top: 2px; margin-bottom: -10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=chris_wot" class="hnuser">chris_wot</a> <span class="age"><a href="https://news.ycombinator.com/item?id=6332909">1072 days ago</a></span> <span id="unv_6332909"></span><span class="par"></span> <a class="togg" n="1">[-]</a>          <span class="storyon"></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">I gotta ask - what's with the tiny columns on this website? I'm reading on an iPhone and there's more white space than area that displays actual text!<span>
+              </span><div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></span></span></td></tr>
+      </tbody></table></td></tr>
+    <tr class="athing comtr " id="6338124"><td>
+            <table border="0">  <tbody><tr>    <td class="ind"><img src="s.gif" width="0" height="1"></td><td class="votelinks" valign="top"><center><a id="up_6338124" href="https://news.ycombinator.com/vote?id=6338124&amp;how=up&amp;goto=item%3Fid%3D6331485"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top: 2px; margin-bottom: -10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=dragonfax" class="hnuser">dragonfax</a> <span class="age"><a href="https://news.ycombinator.com/item?id=6338124">1072 days ago</a></span> <span id="unv_6338124"></span><span class="par"></span> <a class="togg" n="1">[-]</a>          <span class="storyon"></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">Back to the old "dotfiles with git Best Practices".<p>My favorite is just to alias it all to a different name.</p><p></p><pre><code>    alias dg='git --git-dir=/Users/dragonfax/.dotfiles --work-tree=/Users/dragonfax'
+</code></pre>
+now regular git doesn't overlap with my dotfiles git, and I never have to worry about mis-executing the wrong git<span>
+              </span><div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></span></span></td></tr>
+      </tbody></table></td></tr>
+    <tr class="athing comtr " id="6332442"><td>
+            <table border="0">  <tbody><tr>    <td class="ind"><img src="s.gif" width="0" height="1"></td><td class="votelinks" valign="top"><center><a id="up_6332442" href="https://news.ycombinator.com/vote?id=6332442&amp;how=up&amp;goto=item%3Fid%3D6331485"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top: 2px; margin-bottom: -10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=bigbossman" class="hnuser">bigbossman</a> <span class="age"><a href="https://news.ycombinator.com/item?id=6332442">1073 days ago</a></span> <span id="unv_6332442"></span><span class="par"></span> <a class="togg" n="1">[-]</a>          <span class="storyon"></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">I use the thoughtbot/dotfiles setup. <a href="https://github.com/thoughtbot/dotfiles" rel="nofollow">https://github.com/thoughtbot/dotfiles</a><p>Pretty good customizations by default with an elegant approach for adding local settings. The install.sh script automatically symlinks appropriate files as well as downloads vim bundles.<span>
+              </span></p><div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></span></span></td></tr>
+      </tbody></table></td></tr>
+    <tr class="athing comtr " id="6332885"><td>
+            <table border="0">  <tbody><tr>    <td class="ind"><img src="s.gif" width="0" height="1"></td><td class="votelinks" valign="top"><center><a id="up_6332885" href="https://news.ycombinator.com/vote?id=6332885&amp;how=up&amp;goto=item%3Fid%3D6331485"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top: 2px; margin-bottom: -10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=antihero" class="hnuser">antihero</a> <span class="age"><a href="https://news.ycombinator.com/item?id=6332885">1072 days ago</a></span> <span id="unv_6332885"></span><span class="par"></span> <a class="togg" n="5">[-]</a>          <span class="storyon"></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">Can Stow do hardlinks? The reason I ask is that IIRC systemd shits a brick if your service files are symlinks.<p>Conversely, I have a script that does this:</p><p><a href="https://github.com/radiosilence/dotfiles/blob/master/relink" rel="nofollow">https://github.com/radiosilence/dotfiles/blob/master/relink</a></p><p>All I have to do is maintain a MANIFEST file.<span>
+              </span></p><div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></span></span></td></tr>
+      </tbody></table></td></tr>
+        <tr class="athing comtr " id="6332952"><td>
+            <table border="0">  <tbody><tr>    <td class="ind"><img src="s.gif" width="40" height="1"></td><td class="votelinks" valign="top"><center><a id="up_6332952" href="https://news.ycombinator.com/vote?id=6332952&amp;how=up&amp;goto=item%3Fid%3D6331485"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top: 2px; margin-bottom: -10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=replax" class="hnuser">replax</a> <span class="age"><a href="https://news.ycombinator.com/item?id=6332952">1072 days ago</a></span> <span id="unv_6332952"></span><span class="par"></span> <a class="togg" n="4">[-]</a>          <span class="storyon"></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">uAs I ubderstood, systemd only uses symlinks. Any time you enable a service, systemd executes ln -s ..systemd..  ...service ...<span>
+              </span><div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></span></span></td></tr>
+      </tbody></table></td></tr>
+        <tr class="athing comtr " id="6334591"><td>
+            <table border="0">  <tbody><tr>    <td class="ind"><img src="s.gif" width="80" height="1"></td><td class="votelinks" valign="top"><center><a id="up_6334591" href="https://news.ycombinator.com/vote?id=6334591&amp;how=up&amp;goto=item%3Fid%3D6331485"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top: 2px; margin-bottom: -10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=antihero" class="hnuser">antihero</a> <span class="age"><a href="https://news.ycombinator.com/item?id=6334591">1072 days ago</a></span> <span id="unv_6334591"></span><span class="par"></span> <a class="togg" n="3">[-]</a>          <span class="storyon"></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">Yeah but the services systemd links to cannot be symlinks.<span>
+              </span><div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></span></span></td></tr>
+      </tbody></table></td></tr>
+        <tr class="athing comtr " id="6338640"><td>
+            <table border="0">  <tbody><tr>    <td class="ind"><img src="s.gif" width="120" height="1"></td><td class="votelinks" valign="top"><center><a id="up_6338640" href="https://news.ycombinator.com/vote?id=6338640&amp;how=up&amp;goto=item%3Fid%3D6331485"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top: 2px; margin-bottom: -10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=SEJeff" class="hnuser">SEJeff</a> <span class="age"><a href="https://news.ycombinator.com/item?id=6338640">1072 days ago</a></span> <span id="unv_6338640"></span><span class="par"></span> <a class="togg" n="2">[-]</a>          <span class="storyon"></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">On Fedora 18 it most certainly can. I did it yesterday with some service files under /usr/lib/systemd/system for some service files I created<span>
+              </span><div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></span></span></td></tr>
+      </tbody></table></td></tr>
+        <tr class="athing comtr " id="6339583"><td>
+            <table border="0">  <tbody><tr>    <td class="ind"><img src="s.gif" width="160" height="1"></td><td class="votelinks" valign="top"><center><a id="up_6339583" href="https://news.ycombinator.com/vote?id=6339583&amp;how=up&amp;goto=item%3Fid%3D6331485"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top: 2px; margin-bottom: -10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=antihero" class="hnuser">antihero</a> <span class="age"><a href="https://news.ycombinator.com/item?id=6339583">1071 days ago</a></span> <span id="unv_6339583"></span><span class="par"></span> <a class="togg" n="1">[-]</a>          <span class="storyon"></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">Neat! Perhaps it's been updated then.<span>
+              </span><div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></span></span></td></tr>
+      </tbody></table></td></tr>
+            <tr class="athing comtr " id="6331694"><td>
+            <table border="0">  <tbody><tr>    <td class="ind"><img src="s.gif" width="0" height="1"></td><td class="votelinks" valign="top"><center><a id="up_6331694" href="https://news.ycombinator.com/vote?id=6331694&amp;how=up&amp;goto=item%3Fid%3D6331485"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top: 2px; margin-bottom: -10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=davexunit" class="hnuser">davexunit</a> <span class="age"><a href="https://news.ycombinator.com/item?id=6331694">1073 days ago</a></span> <span id="unv_6331694"></span><span class="par"></span> <a class="togg" n="2">[-]</a>          <span class="storyon"></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">I did not know about GNU Stow. I want to try to use this for my dotfiles along with a simple Makefile to automate calling stow on all of the directories. This will also be a nice way to manage the differences between my home configuration and work configuration. One make rule per environment. Thanks for sharing.<span>
+              </span><div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></span></span></td></tr>
+      </tbody></table></td></tr>
+        <tr class="athing comtr " id="6332467"><td>
+            <table border="0">  <tbody><tr>    <td class="ind"><img src="s.gif" width="40" height="1"></td><td class="votelinks" valign="top"><center><a id="up_6332467" href="https://news.ycombinator.com/vote?id=6332467&amp;how=up&amp;goto=item%3Fid%3D6331485"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top: 2px; margin-bottom: -10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=e12e" class="hnuser">e12e</a> <span class="age"><a href="https://news.ycombinator.com/item?id=6332467">1073 days ago</a></span> <span id="unv_6332467"></span><span class="par"></span> <a class="togg" n="1">[-]</a>          <span class="storyon"></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">You might also enjoy xstow, a reimplementation in c++ -- in case you might want to use stow without having perl:<p><a href="http://xstow.sourceforge.net/" rel="nofollow">http://xstow.sourceforge.net/</a></p><p>edit: I use xstow for managing ~/opt -- putting stuff like ~/opt/xstow/golang-git, with symlinks to &nbsp;~/opt/{bin,lib,man} -- making it easy to add the relevant folders to PATH, MANPATH etc in .bashrc.<span>
+              </span></p><div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></span></span></td></tr>
+      </tbody></table></td></tr>
+      <tr class="athing comtr " id="6332059"><td>
+            <table border="0">  <tbody><tr>    <td class="ind"><img src="s.gif" width="0" height="1"></td><td class="votelinks" valign="top"><center><a id="up_6332059" href="https://news.ycombinator.com/vote?id=6332059&amp;how=up&amp;goto=item%3Fid%3D6331485"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top: 2px; margin-bottom: -10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=phormat" class="hnuser">phormat</a> <span class="age"><a href="https://news.ycombinator.com/item?id=6332059">1073 days ago</a></span> <span id="unv_6332059"></span><span class="par"></span> <a class="togg" n="1">[-]</a>          <span class="storyon"></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">I don't see dfm mentioned, curious if anyone has used that? I haven't, but may be interested in trying it out. <a href="https://github.com/justone/dfm" rel="nofollow">https://github.com/justone/dfm</a><span>
+              </span><div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></span></span></td></tr>
+      </tbody></table></td></tr>
+    <tr class="athing comtr " id="6332796"><td>
+            <table border="0">  <tbody><tr>    <td class="ind"><img src="s.gif" width="0" height="1"></td><td class="votelinks" valign="top"><center><a id="up_6332796" href="https://news.ycombinator.com/vote?id=6332796&amp;how=up&amp;goto=item%3Fid%3D6331485"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top: 2px; margin-bottom: -10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=qznc" class="hnuser">qznc</a> <span class="age"><a href="https://news.ycombinator.com/item?id=6332796">1072 days ago</a></span> <span id="unv_6332796"></span><span class="par"></span> <a class="togg" n="1">[-]</a>          <span class="storyon"></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">I use a shell script [0]. It also includes some gconf configuration etc.<p>[0] <a href="https://github.com/qznc/dot/blob/master/install.sh" rel="nofollow">https://github.com/qznc/dot/blob/master/install.sh</a><span>
+              </span></p><div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></span></span></td></tr>
+      </tbody></table></td></tr>
+    <tr class="athing comtr " id="6334848"><td>
+            <table border="0">  <tbody><tr>    <td class="ind"><img src="s.gif" width="0" height="1"></td><td class="votelinks" valign="top"><center><a id="up_6334848" href="https://news.ycombinator.com/vote?id=6334848&amp;how=up&amp;goto=item%3Fid%3D6331485"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top: 2px; margin-bottom: -10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=transfire" class="hnuser">transfire</a> <span class="age"><a href="https://news.ycombinator.com/item?id=6334848">1072 days ago</a></span> <span id="unv_6334848"></span><span class="par"></span> <a class="togg" n="1">[-]</a>          <span class="storyon"></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">Pretty neat. I may try it. I just wish there were a way for the dot files themselves to not be actual dot files while in the dofiles directory, but then become dot files when symlinked by stow.<span>
+              </span><div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></span></span></td></tr>
+      </tbody></table></td></tr>
+    <tr class="athing comtr " id="6331843"><td>
+            <table border="0">  <tbody><tr>    <td class="ind"><img src="s.gif" width="0" height="1"></td><td class="votelinks" valign="top"><center><a id="up_6331843" href="https://news.ycombinator.com/vote?id=6331843&amp;how=up&amp;goto=item%3Fid%3D6331485"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top: 2px; margin-bottom: -10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=est" class="hnuser">est</a> <span class="age"><a href="https://news.ycombinator.com/item?id=6331843">1073 days ago</a></span> <span id="unv_6331843"></span><span class="par"></span> <a class="togg" n="2">[-]</a>          <span class="storyon"></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">If you add more features, like store the settings in a sqlite, universal config r/w interface, and live config change notification to apps, you'll come up with a system like Registry.<span>
+              </span><div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></span></span></td></tr>
+      </tbody></table></td></tr>
+        <tr class="athing comtr " id="6331853"><td>
+            <table border="0">  <tbody><tr>    <td class="ind"><img src="s.gif" width="40" height="1"></td><td class="votelinks" valign="top"><center><a id="up_6331853" href="https://news.ycombinator.com/vote?id=6331853&amp;how=up&amp;goto=item%3Fid%3D6331485"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top: 2px; margin-bottom: -10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=staticshock" class="hnuser">staticshock</a> <span class="age"><a href="https://news.ycombinator.com/item?id=6331853">1073 days ago</a></span> <span id="unv_6331853"></span><span class="par"></span> <a class="togg" n="1">[-]</a>          <span class="storyon"></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">The difference is that dotfiles are simple, text based, and human readable.<p>When you re-install a Windows system, do you overwrite the registery with a backup you had? I doubt it.<span>
+              </span></p><div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></span></span></td></tr>
+      </tbody></table></td></tr>
+      <tr class="athing comtr " id="6333908"><td>
+            <table border="0">  <tbody><tr>    <td class="ind"><img src="s.gif" width="0" height="1"></td><td class="votelinks" valign="top"><center><a id="up_6333908" href="https://news.ycombinator.com/vote?id=6333908&amp;how=up&amp;goto=item%3Fid%3D6331485"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top: 2px; margin-bottom: -10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=schabernakk" class="hnuser">schabernakk</a> <span class="age"><a href="https://news.ycombinator.com/item?id=6333908">1072 days ago</a></span> <span id="unv_6333908"></span><span class="par"></span> <a class="togg" n="1">[-]</a>          <span class="storyon"></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">just for completeness sake and because no one mentioned it yet: <a href="https://github.com/technicalpickles/homesick" rel="nofollow">https://github.com/technicalpickles/homesick</a><p>yes, you need ruby for it but I dont really see that as a problem. Its a bit confusing at first (could be just me, but I still dont get why you have basically 2 repos, one managed by homesick and the one you checked out yourself) but it works fairly well. Takes care of symlinking, updating and whatever you want.<span>
+              </span></p><div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></span></span></td></tr>
+      </tbody></table></td></tr>
+    <tr class="athing comtr " id="6334889"><td>
+            <table border="0">  <tbody><tr>    <td class="ind"><img src="s.gif" width="0" height="1"></td><td class="votelinks" valign="top"><center><a id="up_6334889" href="https://news.ycombinator.com/vote?id=6334889&amp;how=up&amp;goto=item%3Fid%3D6331485"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top: 2px; margin-bottom: -10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=auvrw" class="hnuser">auvrw</a> <span class="age"><a href="https://news.ycombinator.com/item?id=6334889">1072 days ago</a></span> <span id="unv_6334889"></span><span class="par"></span> <a class="togg" n="1">[-]</a>          <span class="storyon"></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">some files i symlink, some i copy, but i prefer to use the language's import/include/source/load command if the dot file is actually a program rather than a conf file.  that way, i can add machine-specific configuration. to anyone who makes tools like gnu stow or those mentioned in the comments:<p>consider adding support to modify existing dot files as well as replace them.<span>
+              </span></p><div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></span></span></td></tr>
+      </tbody></table></td></tr>
+    <tr class="athing comtr " id="6331872"><td>
+            <table border="0">  <tbody><tr>    <td class="ind"><img src="s.gif" width="0" height="1"></td><td class="votelinks" valign="top"><center><a id="up_6331872" href="https://news.ycombinator.com/vote?id=6331872&amp;how=up&amp;goto=item%3Fid%3D6331485"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top: 2px; margin-bottom: -10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=kul_" class="hnuser">kul_</a> <span class="age"><a href="https://news.ycombinator.com/item?id=6331872">1073 days ago</a></span> <span id="unv_6331872"></span><span class="par"></span> <a class="togg" n="2">[-]</a>          <span class="storyon"></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">ln -s ~/dotfiles/.bashrc ~/.bashrc<span>
+              </span><div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></span></span></td></tr>
+      </tbody></table></td></tr>
+        <tr class="athing comtr " id="6332248"><td>
+            <table border="0">  <tbody><tr>    <td class="ind"><img src="s.gif" width="40" height="1"></td><td class="votelinks" valign="top"><center><a id="up_6332248" href="https://news.ycombinator.com/vote?id=6332248&amp;how=up&amp;goto=item%3Fid%3D6331485"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top: 2px; margin-bottom: -10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=sneak" class="hnuser">sneak</a> <span class="age"><a href="https://news.ycombinator.com/item?id=6332248">1073 days ago</a></span> <span id="unv_6332248"></span><span class="par"></span> <a class="togg" n="1">[-]</a>          <span class="storyon"></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">I keep the dotfiles in my dotfiles directory without the dots, as there's no need for them to be hidden.<span>
+              </span><div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></span></span></td></tr>
+      </tbody></table></td></tr>
+      <tr class="athing comtr " id="6334262"><td>
+            <table border="0">  <tbody><tr>    <td class="ind"><img src="s.gif" width="0" height="1"></td><td class="votelinks" valign="top"><center><a id="up_6334262" href="https://news.ycombinator.com/vote?id=6334262&amp;how=up&amp;goto=item%3Fid%3D6331485"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top: 2px; margin-bottom: -10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=seletskiy" class="hnuser">seletskiy</a> <span class="age"><a href="https://news.ycombinator.com/item?id=6334262">1072 days ago</a></span> <span id="unv_6334262"></span><span class="par"></span> <a class="togg" n="2">[-]</a>          <span class="storyon"></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">I'm using a bash script [0] too, it is bit complicated because of I've have three different workplaces and some conf files that have account information (such as email passwords) should be hidden.<p>[0] <a href="https://github.com/seletskiy/dotfiles/blob/master/dotfiles.sh" rel="nofollow">https://github.com/seletskiy/dotfiles/blob/master/dotfiles.s...</a><span>
+              </span></p><div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></span></span></td></tr>
+      </tbody></table></td></tr>
+        <tr class="athing comtr " id="6334481"><td>
+            <table border="0">  <tbody><tr>    <td class="ind"><img src="s.gif" width="40" height="1"></td><td class="votelinks" valign="top"><center><a id="up_6334481" href="https://news.ycombinator.com/vote?id=6334481&amp;how=up&amp;goto=item%3Fid%3D6331485"><div class="votearrow" title="upvote"></div></a></center></td><td class="default"><div style="margin-top: 2px; margin-bottom: -10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=stevekemp" class="hnuser">stevekemp</a> <span class="age"><a href="https://news.ycombinator.com/item?id=6334481">1072 days ago</a></span> <span id="unv_6334481"></span><span class="par"></span> <a class="togg" n="1">[-]</a>          <span class="storyon"></span>
+                  </span></div><br><span class="comment">
+                  <span class="c00">I "solved" that problem by having two repositories: dotfiles
+&amp; dotfiles-private.<p>The public repository has .bashrc, etc in it.  The private repository has ~/.mutt/work-muttrc, etc in it.<span>
+              </span></p><div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></span></span></td></tr>
+      </tbody></table></td></tr>
+    </tbody></table><br><br>
+</td></tr>
+<tr><td><img src="s.gif" width="0" height="10"><table width="100%" cellpadding="1" cellspacing="0"><tbody><tr><td bgcolor="#ff6600"></td></tr></tbody></table><br><center><span class="yclinks"><a href="https://news.ycombinator.com/newsguidelines.html">Guidelines</a>
+        | <a href="https://news.ycombinator.com/newsfaq.html">FAQ</a>
+        | <a href="mailto:hn@ycombinator.com">Support</a>
+        | <a href="https://github.com/HackerNews/API">API</a>
+        | <a href="https://news.ycombinator.com/security.html">Security</a>
+        | <a href="https://news.ycombinator.com/lists">Lists</a>
+        | <a href="https://news.ycombinator.com/bookmarklet.html">Bookmarklet</a>
+        | <a href="https://news.ycombinator.com/dmca.html">DMCA</a>
+        | <a href="http://www.ycombinator.com/apply/">Apply to YC</a>
+        | <a href="mailto:hn@ycombinator.com">Contact</a></span><br><br><form method="get" action="https://hn.algolia.com/">Search:
+          <input name="q" value="" size="17" autocorrect="off" spellcheck="false" autocapitalize="off" autocomplete="false" type="text"></form>
+            </center></td></tr>      </tbody></table></center>
+</body>
+</html>

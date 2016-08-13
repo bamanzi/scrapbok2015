@@ -1,0 +1,231 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta charset="UTF-8">
+
+    <title>XStow</title>
+  
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+
+  <body>
+      <table width="100%">
+	  <tbody><tr>
+	    <td width="33%">
+<a href="http://sourceforge.net/projects/xstow"> <img src="sflogo.php" alt="SourceForge Logo" width="210" border="0" height="62"></a> 
+	    </td>
+
+	    <td width="33%">
+
+	      <div align="center">
+		<h1>XStow</h1>
+	      </div>
+
+	    </td>
+	    <td>
+
+	      &nbsp;
+
+	    </td>
+	  </tr>
+      </tbody></table>
+
+      <div align="center">
+      <b>Current stable release: 1.0.2</b><br>
+      <b>Current stable (ancient) release: 0.5.1</b><br>
+      </div>
+
+    <blockquote>
+
+      <h2>News</h2>
+
+      <p>
+        <i>2014-04-06</i>
+      </p>
+
+      <p>
+	Fixed spelling mistakes and a warning in the configure script.
+      </p>
+
+      <p>
+
+
+      </p><p>
+        <i>2014-01-04</i>
+      </p>
+
+      <p>
+	GCC 4.8 fixes. Thanks to Robin Lee who sent me the some patches.
+	Some bugs in the configure script were fixed.
+      </p>
+
+      <p>
+
+
+      </p><p>
+        <i>2010-07-22</i>
+      </p>
+
+      <p>
+	After 2 Years of no changes at all, I've made a bugfix in the
+	unstable release. And since I've never had any problems with this
+	version I call it 1.0.0 now.	    
+	<i>Maybe it's because the ancient 0.5.1 even won't compile on my SuSE
+	10.3 box <b>:-)</b></i>
+      </p>
+
+      <p>
+
+      </p><p>
+        <i>2008-09-27</i>
+      </p>
+
+	  <p>
+		Ported the unstable release to gcc 4.x series.
+	  </p>
+
+      <p>
+        <i>2005-03-06</i>
+      </p>
+
+      <p>
+        During the last 2 years I made some small bugfixes, added
+        small features and always thought that the changes are too
+        small for publishing a new release. But all together these
+        changes are to heavy for simple publishing it as a stable
+        release.<br>
+	So here it is: a preview <b>unstable</b> release of something
+        that may will become version 1.0.0.<br>
+	From now on all unstable releases are <i>marked</i> explicit
+        as unstable!<br>
+	Sources are available on <a href="http://sourceforge.net/projects/xstow">Sourceforge
+        Download Page</a>
+      </p>
+      
+
+      <p>
+        <i>2003-03-02</i>
+      </p>
+
+      <p>
+        XStow is now integrated in the ports system of 
+	<a href="http://www.freshports.org/sysutils/xstow/">Free BSD</a>.
+	<br>
+      </p>  
+
+      <p>
+        <i>2002-12-31</i>
+      </p>
+
+      <p>
+        XStow is now available on 
+	<a href="http://packages.debian.org/lenny/xstow">debian/unstable</a>.
+	<br>
+	Thanks to Mats Rynge for uploading the package.
+
+      </p>  
+
+      <h2>About</h2>
+
+      <p>
+	XStow is a replacement of <a href="http://www.gnu.org/software/stow/">GNU Stow</a>
+	written in C++. It supports all features of Stow with some extensions.
+      </p>
+      
+      <p>
+	XStow as GNU Stow, are programs for managing the installation of
+	software packages, keeping them separate (/usr/local/stow/emacs
+	vs. /usr/local/stow/perl, for example) while making them appear to be
+	installed in the same place (/usr/local).
+      </p>
+      
+      <p>
+	Stow requires Perl. But what's on systems where no Perl is available, or not
+	yet installed? I tried compiling Stow with perlcc, but it failed.
+      </p>
+      
+      <p>
+	For compiling XStow a C++ compiler and a system with a couple of POSIX
+	functions is required. It does not depend on an interpreter. Static
+	compilation eg.: for resque disks is possible.
+      </p>
+      
+      <p>
+	XStow installs packages in exact the same way like stow, so you
+	even can start a Linux From Scratch installation with XStow and when
+	Perl is running, you can continue installation by using GNU Stow.
+      </p>
+      
+      <p>
+	Even the command line options are compatible.
+      </p>
+
+      <i>But there are:</i>
+
+      <h2>Special Features</h2>
+
+      <i>
+        All of them breaking compatibility with Stow!<br>
+        But who cares... :)
+      </i>
+
+      <ul>
+	<li>Creation of symlinks with absolute path names.</li>
+        <li>Traversal link support. <i>(create a link from /usr/share/man to /usr/man)</i></li>
+	<li>Multiple stow directories support.</li>
+	<li>Shell pattern matching.</li>
+	<li>Regular Expressions Support.</li>
+	<li>Global settings via configuration files.</li>
+	<li>Automatically merging GNU-Info's 'dir' files.</li>
+	<li>...</li>
+      </ul>      
+
+      <h2>Note</h2>
+
+      Even if there is the 'X' in XStow's name, it is a complete
+      command line based application. There is no X11 support in any way.
+
+    </blockquote>
+
+    <hr>
+
+<div align="center">
+
+<a href="http://xstow.sourceforge.net/xstow.html">Manpage XStow</a> &nbsp;
+<a href="http://xstow.sourceforge.net/xstow.ini.html">Manpage xstow.ini</a> &nbsp;
+<a href="http://xstow.sourceforge.net/merge-info.html">Manpage merge-info</a> &nbsp;
+<a href="http://sourceforge.net/projects/xstow">Sourceforge Page (download there)</a>
+
+</div>
+
+    <hr>
+
+    <table width="100%">
+	<tbody><tr>
+	  <td>
+
+    <address>Martin Oberzalek &lt;kingleo@gmx.at&gt;</address>
+<!-- Created: Thu May 30 11:47:33 CEST 2002 -->
+<!-- hhmts start -->
+Last modified: Thu Jun 27 23:15:12 CEST 2010
+<!-- hhmts end -->
+
+	  </td>
+	  <td> &nbsp; </td>
+
+	  <td> 
+	    <div align="right">
+
+	      <a href="http://kingleo.hoffer.cx/">
+		<img src="leo.gif" alt="http://kingleo.hoffer.cx" width="109" border="0" height="39">
+	      </a>
+
+	    </div>
+	  </td>
+	</tr>
+    </tbody></table>
+
+  
+
+</body>
+</html>

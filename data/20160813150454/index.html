@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en-US" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#" xmlns:addthis="http://www.addthis.com/help/api-spec" xmlns:fb="http://ogp.me/ns/fb#" class="wf-ffdinweb-i7-active wf-ffdinweb-n7-active wf-ffdinweb-n4-active wf-ffdinweb-i4-active wf-ffdinweb-i3-active wf-ffdinweb-n3-active wf-dincondensedweb-n4-active wf-active">
+<head>
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Managing Dotfile Symlinks with GNU Stow</title>
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+	<link rel="pingback" href="https://spin.atomicobject.com/xmlrpc.php">
+	<link rel="icon" type="image/x-icon" href="favicon.ico">
+
+	<!-- Styles -->
+	
+	
+	
+
+	<!-- WP Head -->
+	
+	
+
+	
+<!-- This site is optimized with the Yoast SEO plugin v3.3.4 - https://yoast.com/wordpress/plugins/seo/ -->
+<meta name="description" content="GNU Stow is a valuable tool for organizing your dotfiles.">
+<meta name="robots" content="noodp">
+<link rel="canonical" href="https://spin.atomicobject.com/2014/12/26/manage-dotfiles-gnu-stow/">
+<link rel="publisher" href="https://plus.google.com/b/110228015808150756207/+Atomicobject">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Managing Dotfile Symlinks with GNU Stow">
+<meta property="og:description" content="GNU Stow is a valuable tool for organizing your dotfiles.">
+<meta property="og:url" content="https://spin.atomicobject.com/2014/12/26/manage-dotfiles-gnu-stow/">
+<meta property="og:site_name" content="Atomic Spin">
+<meta property="article:publisher" content="https://www.facebook.com/atomicobject">
+<meta property="article:section" content="Developer Tools">
+<meta property="article:published_time" content="2014-12-26T08:00:37-04:00">
+<meta property="article:modified_time" content="2014-12-23T09:56:23-04:00">
+<meta property="og:updated_time" content="2014-12-23T09:56:23-04:00">
+<meta property="fb:admins" content="886890430">
+<meta property="og:image" content="http://spin.atomicobject.com/wp-content/uploads/AO-Logo-Wordmark-Color.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:description" content="GNU Stow is a valuable tool for organizing your dotfiles.">
+<meta name="twitter:title" content="Managing Dotfile Symlinks with GNU Stow">
+<meta name="twitter:site" content="@atomicobject">
+<meta name="twitter:image" content="http://spin.atomicobject.com/wp-content/uploads/AO-Logo-Wordmark-Color.png">
+<meta name="twitter:creator" content="@exupero">
+<!-- / Yoast SEO plugin. -->
+
+<link rel="alternate" type="application/rss+xml" title="Atomic Spin » Feed" href="https://spin.atomicobject.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="Atomic Spin » Comments Feed" href="https://spin.atomicobject.com/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="Atomic Spin » Stow Your Dotfiles – GNU Stow for Managing Symlinks Comments Feed" href="https://spin.atomicobject.com/2014/12/26/manage-dotfiles-gnu-stow/feed/">
+		
+		
+
+
+
+
+
+<!-- This site uses the Google Analytics by MonsterInsights plugin v5.5.2 - Universal disabled - https://www.monsterinsights.com/ -->
+
+<!-- / Google Analytics by MonsterInsights -->
+
+
+
+
+
+
+
+<link rel="https://api.w.org/" href="https://spin.atomicobject.com/wp-json/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://spin.atomicobject.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://spin.atomicobject.com/wp-includes/wlwmanifest.xml"> 
+<meta name="generator" content="WordPress 4.5.3">
+<link rel="shortlink" href="https://spin.atomicobject.com/?p=113109">
+<link rel="alternate" type="application/json+oembed" href="https://spin.atomicobject.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fspin.atomicobject.com%2F2014%2F12%2F26%2Fmanage-dotfiles-gnu-stow%2F">
+<link rel="alternate" type="text/xml+oembed" href="https://spin.atomicobject.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fspin.atomicobject.com%2F2014%2F12%2F26%2Fmanage-dotfiles-gnu-stow%2F&amp;format=xml">
+
+
+
+<!-- Fancybox for WordPress -->
+
+<!-- END Fancybox for WordPress -->
+<link rel="https://github.com/WP-API/WP-API" href="https://spin.atomicobject.com/wp-json">
+
+<link rel="dns-prefetch" href="https://v0.wordpress.com/">
+
+<!-- Dynamic Widgets by QURL - http://www.qurl.nl //-->
+
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+
+<body class="single single-post postid-113109 single-format-standard group-blog" data-has-drawer="true">
+
+	<div id="border-top" class="borders border-h"></div>
+	<div id="border-left" class="borders border-v"></div>
+	<div id="border-right" class="borders border-v"></div>
+	<div id="border-bottom" class="borders border-h"></div>
+
+
+	<div id="mobile-header">
+		<a href="https://atomicobject.com/">
+			<img src="ao-wordmark-logo.svg" alt="Atomic Object" class="mobile-wordmark-logo">
+		</a>
+		<a href="#mobile-nav" id="mobile-nav-trigger" data-toggle="#mobile-nav">
+			<img src="icon-mobile-menu.svg" alt="Show Nav">
+		</a>
+	</div>
+
+  <nav id="mobile-nav">
+	  <div class="mobile-nav-close-wrap">
+	    <img src="icon-mobile-close.svg" alt="Close Menu" id="icon-mobile-close" class="mobile-nav-close" data-toggle="#mobile-nav">
+	  </div>
+
+		<div class="nav-link-holder">
+			<a href="https://spin.atomicobject.com/" class="backlink">
+				&lt; Blog Home
+			</a>
+		</div>
+
+					<div class="nav-link-holder">
+				<a href="https://atomicobject.com/">
+					Atomic Object				</a>
+			</div>
+					<div class="nav-link-holder">
+				<a href="https://atomicobject.com/services">
+					Services				</a>
+			</div>
+					<div class="nav-link-holder">
+				<a href="https://atomicobject.com/team">
+					Team				</a>
+			</div>
+					<div class="nav-link-holder">
+				<a href="https://atomicobject.com/culture">
+					Culture				</a>
+			</div>
+					<div class="nav-link-holder">
+				<a href="https://atomicobject.com/portfolio">
+					Portfolio				</a>
+			</div>
+					<div class="nav-link-holder">
+				<a href="https://atomicobject.com/contact">
+					Contact				</a>
+			</div>
+		  </nav>
+
+	<nav id="main-nav" class="main-nav">
+	  <div id="top-nav">
+	    <div class="main-nav-inner">
+	      <a href="https://atomicobject.com/" class="logo wordmark">
+	        <img src="ao-wordmark-white.svg" alt="Atomic Object" class="white">
+	        <img src="ao-wordmark-logo.svg" alt="Atomic Object" class="color">
+	      </a>
+
+							<div class="nav-link-holder">
+					<a href="https://atomicobject.com/services">
+						Services					</a>
+				</div>
+							<div class="nav-link-holder">
+					<a href="https://atomicobject.com/team">
+						Team					</a>
+				</div>
+							<div class="nav-link-holder">
+					<a href="https://atomicobject.com/culture">
+						Culture					</a>
+				</div>
+							<div class="nav-link-holder">
+					<a href="https://atomicobject.com/portfolio">
+						Portfolio					</a>
+				</div>
+			
+		    <div class="nav-link-holder blog">
+		      <a href="https://spin.atomicobject.com/" class="current">
+		        Blog
+		      </a>
+		    </div>
+
+		    <div class="nav-link-holder contact">
+		      <a href="https://atomicobject.com/contact" class="button">
+		        Contact
+		      </a>
+		    </div>
+		  </div>
+	  </div><!-- /#top-nav -->
+
+    <div id="fixed-nav" class="animated">
+      <div class="main-nav-inner">
+        <a href="https://atomicobject.com/" class="logo symbol">
+	        <img src="ao-symbol-red.svg" alt="Atomic Object">
+        </a>
+
+							<div class="nav-link-holder">
+					<a href="https://atomicobject.com/services">
+						Services					</a>
+				</div>
+							<div class="nav-link-holder">
+					<a href="https://atomicobject.com/credentials">
+						Credentials					</a>
+				</div>
+							<div class="nav-link-holder">
+					<a href="https://atomicobject.com/portfolio">
+						Portfolio					</a>
+				</div>
+							<div class="nav-link-holder">
+					<a href="https://atomicobject.com/culture">
+						Culture					</a>
+				</div>
+			
+        <div class="nav-link-holder blog">
+		      <a href="https://spin.atomicobject.com/" class="current">
+            Blog
+          </a>
+        </div>
+
+        <div class="nav-link-holder contact">
+		      <a href="https://atomicobject.com/contact" class="button">
+            Contact
+          </a>
+        </div>
+      </div>
+    </div><!-- /#fixed-nav -->
+  </nav><!-- /#main-nav -->
+
+
+	<div id="page" class="hfeed site">
+
+		<header id="masthead" class="site-header" role="banner">
+			<div class="site-branding">
+				<h1 class="site-title">
+					<a href="https://spin.atomicobject.com/" rel="home">
+						Atomic Spin					</a>
+				</h1>
+				<h2 class="site-description">Atomic Object’s blog on everything we find fascinating.</h2>
+			</div>
+		</header><!-- #masthead -->
+
+		<div id="content" class="site-content">
+
+
+	
+<div id="secondary" class="secondary" role="complementary">
+	
+		<a class="secondary-close" data-toggle="#secondary">Close</a>
+
+		<div class="secondary-inner">
+			<div class="back-link-container">
+				<a href="https://spin.atomicobject.com/">&lt; back to Blog Home</a>
+			</div>
+
+			
+		<div class="author-bio">
+			<a href="https://spin.atomicobject.com/author/shull/" class="author-bio-img">
+				<img src="shull-46.jpg" alt="">
+			</a>
+			<h6 class="author-bio-name">
+				By: <a href="https://spin.atomicobject.com/author/shull/">Eric Shull</a>
+			</h6>
+			<p class="author-bio-description">Tool maker. System builder.</p>
+			<ul class="social-icon-list author-bio-links">
+				<li class="social-icon-list-item url">
+					<a href="http://exupero.org/" title="Website" target="_blank">Website</a>
+				</li>
+			
+				<li class="social-icon-list-item github">
+					<a href="http://github.com/exupero" title="GitHub" target="_blank">GitHub</a>
+				</li>
+			
+				<li class="social-icon-list-item twitter">
+					<a href="http://twitter.com/exupero" title="Twitter" target="_blank">Twitter</a>
+				</li>
+			</ul>
+		</div>
+	
+			<div class="post-categories">
+				<div class="cat-title">Posted In</div>
+				<ul class="cat-list">				<li class="cat-developer-tools cat-development">
+					<a href="https://spin.atomicobject.com/category/development/developer-tools/" class="cat-developer-tools cat-development" rel="category tag">
+						Developer Tools
+					</a>
+				</li></ul>			</div>
+		</div>
+
+	</div>
+
+<div id="primary" class="primary content-area">
+
+	
+		<a href="#secondary" data-toggle="#secondary" class="secondary-toggle btn">
+			<svg class="icon" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 32 32" enable-background="new 0 0 32 32" xml:space="preserve">
+				<g class="bookmark">
+					<polygon points="24,32 16,24 8,32 8,0 24,0 "></polygon>
+				</g>
+				<g class="close">
+					<rect x="13" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -6.6274 16)" width="6" height="32"></rect>
+					<rect x="13" transform="matrix(-0.7071 -0.7071 0.7071 -0.7071 16 38.6274)" width="6" height="32"></rect>
+				</g>
+			</svg>
+			<span class="text">About This Author</span>
+		</a>
+	
+	<main id="main" class="site-main" role="main">
+
+		<article itemscope="" itemtype="http://schema.org/BlogPosting" id="post-113109" class="entry single-article post-113109 post type-post status-publish format-standard hentry category-developer-tools">
+
+			<header class="entry-header">
+
+				<div class="entry-top-bar">
+					<div itemprop="datePublished" content="2014-12-26" class="post-date">
+						December 26, 2014					</div>
+					
+		<div class="post-author">
+			by:
+			<a href="https://spin.atomicobject.com/author/shull/">
+				<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+					<span itemprop="name">Eric Shull</span>
+				</span>
+			</a>
+		</div>
+						<div class="post-comment-count">
+						<a href="#comments" data-scroll-to-elem="">3 Comments</a>					</div>
+				</div><!-- .entry-meta -->
+
+				<h1 itemprop="name headline" class="entry-title">
+					Stow Your Dotfiles – GNU Stow for Managing Symlinks				</h1>
+
+			</header><!-- .entry-header -->
+
+			<div itemprop="articleBody" class="entry-content">
+
+				<!-- AddThis Share Buttons above via filter on the_content -->
+<div class="at-above-post" data-url="https://spin.atomicobject.com/2014/12/26/manage-dotfiles-gnu-stow/" data-title="Stow Your Dotfiles – GNU Stow for Managing Symlinks"></div><p>If you’ve done much work with command line tools, you’ve undoubtedly wrestled with dotfiles, those pesky configuration files in your home directory that are hidden from view by having a dot at the beginning of their name. Bash uses a <code>.bashrc</code> configuration file. Vim uses a <code>.vimrc</code> file and a <code>.vim</code> directory for additional scripts. Tmux uses a <code>.tmux.conf</code> file. Git uses a global <code>.gitconfig</code>. Untold other tools follow the pattern.</p>
+<p>Dotfiles are indispensable for configuring your system, so it’s helpful to have them in a single, version-controlled directory. Since Vim, Bash, Tmux, and friends don’t know to look in your dotfiles directory, you’ll need to symlink from your home directory to each file’s actual location. Managing those symlinks for all your dotfiles can be a pain, and there are several tools designed especially for helping manage your dotfiles. The best tool I’ve found so far is <a href="http://www.gnu.org/software/stow/">GNU Stow</a><sup>1</sup>.</p>
+<h2>Basics</h2>
+<p>Stow allows you to collect dotfiles into various packages that can be symlinked as a group. If you’re in a <code>~/dotfiles</code> directory with a <code>git</code> subdirectory, you can run <code>stow git</code> and Stow will symlink all the files in <code>~/dotfiles/git</code> into the home directory. </p>
+<p>In general, Stow symlinks files from packages into the their grandparent directory. If you’d like to symlink them elsewhere, use the <code>-t</code> option, which allows you to specify a target directory for creating symlinks.</p>
+<h2>Managing Project Dotfiles</h2>
+<p>Stow’s <code>-t</code> option is incredibly useful for me, because not only do I rely on dotfiles in my home directory, but in many project directories as well. I put project-specific Vim scripts alongside the source code in a <code>.vimlocal</code> file. I create a project workspace in Tmux by running a <code>.tmuxrc</code> file. I have scripts related to my workflow in a directory called (for some reason) <code>.rj</code>. </p>
+<p>All these project-specific dotfiles are scattered across my source code directories. Since they have to do with <em>my</em> preferences and not the team’s, I don’t check them into the source code, which means if I delete the project directory for any reason, I won’t have my scripts when I re-clone the repository.</p>
+<p>Thanks to Stow, I can move all these project dotfiles into one version-controlled directory and delete my complex system of scripts for backing up my precious configuration files. Here’s how.</p>
+<p>I’ve created a directory called <code>project-dotfiles</code> and within it a directory for each project with dotfiles I want to preserve. Then I moved the dotfiles from my various project directories to the corresponding subdirectory in <code>project-dotfiles</code>. For each project, I ran Stow with the project directory as the target and the project dotfiles directory as the package. For instance,</p>
+<pre lang="">stow -t ~/code/awesome-project awesome-project
+</pre>
+<p>Stow symlinked the files in <code>project-dotfiles/awesome-project</code> to <code>~/code/awesome-project</code>.</p>
+<h2>Next Steps</h2>
+<p>You can also create files that are shared between projects. Suppose you want to include a Vim script useful for Ruby on Rails projects. You can create a <code>ruby-on-rails</code> subdirectory in <code>project-dotfiles</code>, then run</p>
+<pre lang="">stow -t ~/code/ruby-on-rails-project ruby-on-rails
+stow -t ~/code/some-other-project ruby-on-rails
+</pre>
+<p>and Stow will symlink the files in your <code>ruby-on-rails</code> package into two different project directories.</p>
+<p>One of the best side-effects of using Stow and symlinked dotfiles is that you can edit dotfiles the same way you do now, and the changes show up in your centralized directory, ready to be committed to version control.</p>
+<p>Stow has not only cleaned up how my home directory dotfiles are organized, but my project dotfiles as well, and it’s allowed me to delete several scripts I was using to manage all those dotfiles. Everything is a lot more well-organized when it’s properly Stowed.</p>
+<hr>
+<p><small><br>
+<sup>1</sup> Thanks to <a href="http://brandon.invergo.net/news/2012-05-26-using-gnu-stow-to-manage-your-dotfiles.html?round=two">Brandon Invergo</a> for bringing it to my attention.<br>
+</small></p>
+<!-- AddThis Share Buttons below via filter on the_content -->
+<div class="at-below-post" data-url="https://spin.atomicobject.com/2014/12/26/manage-dotfiles-gnu-stow/" data-title="Stow Your Dotfiles – GNU Stow for Managing Symlinks"></div><!-- AddThis Share Buttons generic via filter on the_content -->
+<!-- AddThis Related Posts below via filter on the_content -->
+<div class="at-below-post-recommended"></div><!-- AddThis Related Posts generic via filter on the_content -->
+
+				
+			</div><!-- .entry-content -->
+
+			<footer class="entry-footer">
+
+				<div class="entry-share"><span class="entry-share-label">Share this article:</span><ul class="social-icon-list entry-share-links"><li class="social-icon-list-item entry-share-link hackernews"><a href="https://news.ycombinator.com/submitlink?u=https://spin.atomicobject.com/2014/12/26/manage-dotfiles-gnu-stow/%23.VNUdMcs6UCk.hackernews&amp;t=Stow%20Your%20Dotfiles%20%E2%80%93%20GNU%20Stow%20for%20Managing%20Symlinks" data-popup="social-share">Hackernews</a></li><li class="social-icon-list-item entry-share-link twitter"><a href="https://twitter.com/intent/tweet?text=Stow%20Your%20Dotfiles%20%E2%80%93%20GNU%20Stow%20for%20Managing%20Symlinks&amp;url=https://spin.atomicobject.com/2014/12/26/manage-dotfiles-gnu-stow/%23.VNUemPABEaM.twitter&amp;related=" data-popup="social-share">Twitter</a></li><li class="social-icon-list-item entry-share-link facebook"><a href="https://www.facebook.com/sharer/sharer.php?u=https://spin.atomicobject.com/2014/12/26/manage-dotfiles-gnu-stow/%23.VNUemgHMI00.facebook" data-popup="social-share">Facebook</a></li><li class="social-icon-list-item entry-share-link googleplus"><a href="https://plus.google.com/share?url=https://spin.atomicobject.com/2014/12/26/manage-dotfiles-gnu-stow/%23.VNUerUAwXzw.google_plusone_share&amp;t=Stow%20Your%20Dotfiles%20%E2%80%93%20GNU%20Stow%20for%20Managing%20Symlinks" data-popup="social-share">Googleplus</a></li><li class="social-icon-list-item entry-share-link linkedin"><a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://spin.atomicobject.com/2014/12/26/manage-dotfiles-gnu-stow/%23.VNUeuSKf2A4.linkedin&amp;title=Stow%20Your%20Dotfiles%20%E2%80%93%20GNU%20Stow%20for%20Managing%20Symlinks&amp;ro=false&amp;summary=&amp;source=" data-popup="social-share">Linkedin</a></li></ul></div>
+				<span class="posted-on">Posted on <a href="#" rel="bookmark">December 26, 2014</a></span><span class="byline"> by <span class="author vcard"><a class="url fn n" href="https://spin.atomicobject.com/author/shull/">Eric Shull</a></span></span><span class="cat-links"> in  <a href="https://spin.atomicobject.com/category/development/developer-tools/" rel="category tag" class="cat-developer-tools">Developer Tools</a></span>
+			</footer><!-- .entry-footer -->
+
+		</article><!-- #post-## -->
+
+	</main>
+
+	
+<div id="comments" class="comments-area">
+
+	
+			<h2 class="comments-title">
+			3 Comments		</h2>
+
+		
+		<ol class="comment-list">
+				<li class="comment even thread-even depth-1" id="comment-534931">
+		<div id="div-comment-534931" class="comment-body">
+		<div class="comment-author vcard">
+	<img alt="" src="ff9eefc6ed72560c262b0e125151ea7c.dat" class="avatar avatar-100 photo" width="100" height="100">	<cite class="fn"><a href="http://ruby.zigzo.com/" rel="external nofollow" class="url">Mario</a></cite> <span class="says">says:</span>	</div>
+	
+	<div class="comment-meta commentmetadata"><a href="#comment-534931">
+		August 23, 2015</a>	</div>
+
+	<p>Hey thanks for this. </p>
+<p>Your post inspired me to spend some time creating a dotfiles repo (powered by stow) and documenting how i setup a system.  </p>
+<p>Future me also thanks you :)</p>
+
+	<div class="reply">
+	<a rel="nofollow" class="comment-reply-link" href="https://spin.atomicobject.com/2014/12/26/manage-dotfiles-gnu-stow/?replytocom=534931#respond" aria-label="Reply to Mario">Reply</a>	</div>
+		</div>
+	</li><!-- #comment-## -->
+	<li class="comment odd alt thread-odd thread-alt depth-1 parent" id="comment-538663">
+		<div id="div-comment-538663" class="comment-body">
+		<div class="comment-author vcard">
+	<img alt="" src="817acf2b7930a0ea16b90f73a3c1354f.dat" class="avatar avatar-100 photo" width="100" height="100">	<cite class="fn">Alex Tran</cite> <span class="says">says:</span>	</div>
+	
+	<div class="comment-meta commentmetadata"><a href="#comment-538663">
+		November 27, 2015</a>	</div>
+
+	<p>I really do love the simplicity of stow for managing dotfiles, however, I’ve run into a potentially deal breaking situation. </p>
+<p>In the case where stow is trying to symlink a file that already exists, it gives this error: </p>
+<p>WARNING! stowing ssh would cause conflicts:<br>
+* existing target is neither a link nor a directory: .ssh/config<br>
+All operations aborted.</p>
+<p>Any suitable workaround that doesn’t involve manually deleting the files before running stow?</p>
+
+	<div class="reply">
+	<a rel="nofollow" class="comment-reply-link" href="https://spin.atomicobject.com/2014/12/26/manage-dotfiles-gnu-stow/?replytocom=538663#respond" aria-label="Reply to Alex Tran">Reply</a>	</div>
+		</div>
+	<ol class="children">
+	<li class="comment byuser comment-author-shull bypostauthor even depth-2" id="comment-539006">
+		<div id="div-comment-539006" class="comment-body">
+		<div class="comment-author vcard">
+	<img src="shull-46.jpg" class="avatar photo" alt="Eric Shull" width="100" height="100">	<cite class="fn"><a href="http://exupero.org/" rel="external nofollow" class="url">Eric Shull</a></cite> <span class="says">says:</span>	</div>
+	
+	<div class="comment-meta commentmetadata"><a href="#comment-539006">
+		December 1, 2015</a>	</div>
+
+	<p>I have a script that first moves files into a package directory, then calls stow to set up symlinks. Consider stow a tool rather than a toolchain.</p>
+
+	<div class="reply">
+	<a rel="nofollow" class="comment-reply-link" href="https://spin.atomicobject.com/2014/12/26/manage-dotfiles-gnu-stow/?replytocom=539006#respond" aria-label="Reply to Eric Shull">Reply</a>	</div>
+		</div>
+	</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		</ol><!-- .comment-list -->
+
+		
+	
+	
+
+					<div id="respond" class="comment-respond">
+			<h3 id="reply-title" class="comment-reply-title">Join the conversation <small><a rel="nofollow" id="cancel-comment-reply-link" href="#respond" style="display: none;">Cancel reply</a></small></h3>				<form action="https://spin.atomicobject.com/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate="">
+					<p class="comment-notes"><span id="email-notes">Your email address will not be published.</span> Required fields are marked <span class="required">*</span></p><p class="comment-form-comment"><label for="comment">Comment</label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" aria-required="true" required="required"></textarea></p><p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" value="" size="30" maxlength="245" aria-required="true" required="required" type="text"></p>
+<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" value="" size="30" maxlength="100" aria-describedby="email-notes" aria-required="true" required="required" type="email"></p>
+<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" value="" size="30" maxlength="200" type="url"></p>
+<p class="form-submit"><input name="submit" id="submit" class="submit" value="Submit Comment" type="submit"> <input name="comment_post_ID" value="113109" id="comment_post_ID" type="hidden">
+<input name="comment_parent" id="comment_parent" value="0" type="hidden">
+</p><p style="display: none;"><input id="akismet_comment_nonce" name="akismet_comment_nonce" value="3db7ffc0ab" type="hidden"></p><!-- Subscribe to Comments Reloaded version160115 --><!-- BEGIN: subscribe to comments reloaded --><p><label for="subscribe-reloaded"><select name="subscribe-reloaded" id="subscribe-reloaded">
+									<option value="none">Don't subscribe</option>
+									<option value="yes">All</option>
+									<option value="replies" selected="selected">Replies to my comments</option>
+								</select> Notify me of followup comments via e-mail. You can also <a href="https://spin.atomicobject.com/comment-subscriptions?srp=113109&amp;srk=788c0f0dc030a5236e2288367fd19262&amp;sra=s">subscribe</a> without commenting.</label></p><!-- END: subscribe to comments reloaded --><p style="display: none;"></p>				<input id="ak_js" name="ak_js" value="1471071876550" type="hidden"></form>
+					</div><!-- #respond -->
+		
+</div><!-- #comments -->
+
+</div>
+
+
+	</div>
+
+  
+</div> <!-- closing #page -->
+
+<footer class="call-to-action-footer red" style="background-image: url(&quot;AOWebsite-1056.jpg&quot;); background-size: cover; background-position: 50% 50%;">
+
+	<div class="trapezoid"></div>
+
+	<div class="footer-content">
+		<p>Atomic does more than talk about software. We also make it — for clients large and small in all kinds of industries.</p>
+		<a href="http://atomicobject.com/portfolio">Check out our portfolio.</a>
+	</div>
+</footer>
+
+<footer id="main-footer">
+	<div id="footer-container">
+
+		<p class="atomic-slug">
+			<img src="ao-wordmark-white.svg" width="160">
+			Atomic is a software design + development consultancy.
+		</p>
+
+		<small class="copyright">© 2016 Atomic Object LLC</small>
+
+		<div class="footer-links" id="footer-explore">
+			<h5>Explore</h5>
+			<ul>
+				<li><a href="https://atomicobject.com/careers">Careers</a></li>
+				<li><a href="https://atomicobject.com/diversity">Diversity</a></li>
+				<li><a href="https://atomicobject.com/resources">Resources</a></li>
+				<li><a href="http://spin.atomicobject.com/">Atomic Blog</a></li>
+			</ul>
+		</div>
+
+		<div class="footer-links" id="footer-offices">
+			<h5>Offices</h5>
+			<ul>
+				<li><a href="https://atomicobject.com/contact/grand-rapids">Grand Rapids</a></li>
+				<li><a href="https://atomicobject.com/contact/ann-arbor">Ann Arbor</a></li>
+			</ul>
+		</div>
+
+		<div class="footer-links" id="footer-details">
+			<h5>Details</h5>
+			<ul>
+				<li><a href="https://atomicobject.com/uploadedImages/services/atomic-fact-sheet-2014.pdf">Fact Sheet</a></li>
+				<li><a href="https://atomicobject.com/contact">Contact</a></li>
+				<li><a href="https://atomicobject.com/">+1 616 776 6020</a></li>
+			</ul>
+		</div>
+
+		<div class="social footer-links">
+			<ul>
+				<li>
+					<a href="https://twitter.com/atomicobject">
+						<img src="circle-twitter.svg">
+					</a>
+				</li>
+				<li>
+					<a href="https://www.facebook.com/atomicobject">
+						<img src="circle-facebook.svg">
+					</a>
+				</li>
+				<li>
+					<a href="https://github.com/atomicobject">
+						<img src="circle-github.svg">
+					</a>
+				</li>
+				<li>
+					<a href="https://www.linkedin.com/company/atomic-object">
+						<img src="circle-linkedin.svg">
+					</a>
+				</li>
+			</ul>
+		</div>
+
+	</div>
+</footer>
+
+
+	<div style="display: none;">
+	<div class="grofile-hash-map-ff9eefc6ed72560c262b0e125151ea7c">
+	</div>
+	<div class="grofile-hash-map-817acf2b7930a0ea16b90f73a3c1354f">
+	</div>
+	<div class="grofile-hash-map-e7f0420e94e942121f73f83d7567579e">
+	</div>
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+<div id="fancybox-tmp"></div><div id="fancybox-loading"><div></div></div><div id="fancybox-overlay"></div><div id="fancybox-wrap"><div id="fancybox-outer"><div class="fancybox-bg" id="fancybox-bg-n"></div><div class="fancybox-bg" id="fancybox-bg-ne"></div><div class="fancybox-bg" id="fancybox-bg-e"></div><div class="fancybox-bg" id="fancybox-bg-se"></div><div class="fancybox-bg" id="fancybox-bg-s"></div><div class="fancybox-bg" id="fancybox-bg-sw"></div><div class="fancybox-bg" id="fancybox-bg-w"></div><div class="fancybox-bg" id="fancybox-bg-nw"></div><div id="fancybox-content"></div><a id="fancybox-close"></a><div id="fancybox-title"></div><a id="fancybox-left"><span class="fancy-ico" id="fancybox-left-ico"></span></a><a id="fancybox-right"><span class="fancy-ico" id="fancybox-right-ico"></span></a></div></div><img id="wpstats" alt=":)" src="g.gif" width="6" height="5"></body>
+</html>

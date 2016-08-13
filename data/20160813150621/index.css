@@ -1,0 +1,53 @@
+/* ::::: http://brandon.invergo.net/css/normalize.min.css ::::: */
+
+article, aside, details, figcaption, figure, footer, header, hgroup, nav, section, summary { display: block; }
+html { font-size: 100%; }
+html, button, input, select, textarea { font-family: sans-serif; }
+body { margin: 0px; }
+a:focus { outline: thin dotted; }
+a:active, a:hover { outline: 0px none; }
+h1 { font-size: 2em; margin: 0.67em 0px; }
+h2 { font-size: 1.5em; margin: 0.83em 0px; }
+p, pre { margin: 1em 0px; }
+code, kbd, pre, samp { font-family: monospace,serif; font-size: 1em; }
+pre { white-space: pre-wrap; word-wrap: break-word; }
+dl, menu, ol, ul { margin: 1em 0px; }
+menu, ol, ul { padding: 0px 0px 0px 40px; }
+nav ul, nav ol { list-style: none outside none; }
+img { border: 0px none; }
+/* ::::: http://brandon.invergo.net/css/main.css ::::: */
+
+html, button, input, select, textarea { color: rgb(220, 220, 204); }
+body { font-size: 1em; line-height: 1.4; }
+*::-moz-selection { background: none repeat scroll 0% 0% rgb(101, 101, 85); text-shadow: none; }
+img { vertical-align: middle; }
+body { color: rgb(21, 16, 9); background-color: rgb(247, 240, 230); margin: 0px auto; font-family: Palatino Linotype,serif; font-size: large; }
+div#main { min-height: 40%; padding: 10px 20px; }
+p { text-align: justify; }
+header { margin: 0px; }
+h1 { padding: 10px 20px; margin: 0px; }
+h2 { padding: 5px 10px; }
+a { text-decoration: none; }
+a:link { color: rgb(75, 114, 212); }
+a:visited { color: rgb(61, 133, 85); }
+a:hover { text-decoration: underline; }
+ul { list-style-type: disc; }
+li { color: rgb(21, 16, 9); }
+nav { margin: 0px; padding: 0px; }
+#navmenu a, #navmenu a:visited { padding: 3px 10px; color: rgb(21, 16, 9); text-decoration: none; }
+#navmenu a:hover { color: rgb(75, 114, 212); text-decoration: underline; }
+#navmenu li { display: inline; padding: 1px; margin: 1px; }
+footer { color: rgb(21, 16, 9); font-size: small; }
+#copyright { font-size: small; text-align: left; list-style: none outside none; }
+#copyright li { display: inline; padding: 1px 8px; margin: 1px; }
+pre { font-family: monospace; font-size: medium; border: 1px none rgb(21, 16, 9); padding: 8px 25px; }
+code { font-family: monospace; font-size: medium; }
+img { border-radius: 5px 5px 5px 5px; border: 1px solid rgb(128, 128, 128); }
+/* ::::: [internal] ::::: */
+
+@media screen {
+}
+@media print {
+}
+/* ::::: [internal] ::::: */
+

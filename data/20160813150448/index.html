@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+<head>
+ 
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>使用 dotfiles 和 stow 管理你的 dotfiles</title>
+<meta name="generator" content="Org-mode">
+<meta name="author" content="欧阳继超">
+
+<link rel="apple-touch-icon" sizes="114x114" href="https://blog.oyanglul.us/assets/apple-icon-114x114.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="manifest" href="https://blog.oyanglul.us/assets/manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/assets/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="alternate" type="application/rss+xml" title="Jichao Ouyang" href="http://blog.oyanglul.us/index.xml">
+
+<!--[if lt IE 9]>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.0/gh-fork-ribbon.ie.min.css" />
+     <![endif]-->
+
+
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body>
+<div id="org-div-home-and-up">
+<a accesskey="h" href="https://blog.oyanglul.us/index.html"> UP </a>
+|
+<a accesskey="H" href="https://blog.oyanglul.us/~jichao.ouyang.html"> HOME </a>
+</div><div id="content">
+<header>
+<h1 class="title">使用 dotfiles 和 stow 管理你的 dotfiles</h1>
+</header><nav id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgheadline1">使用 stow 管理 symlink</a>
+<ul>
+<li><a href="#orgheadline2">stow 文件</a></li>
+<li><a href="#orgheadline3">stow 目录</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline4">push to github</a></li>
+<li><a href="#orgheadline5">submodule vs subtree</a></li>
+<li><a href="#orgheadline6">㊙ Sensitive dotfiles</a></li>
+</ul>
+</div>
+</nav>
+<p>
+可能看标题你觉得我疯了，什么叫用 dotfiles 管理你的 dotfiles。
+</p>
+<p>
+第一个单词 <a href="http://dotfiles.github.io/">dotfiles</a> 指将 HOME 目录下的 <code>.XXX</code> (它们是真的字面意思dotfiles) 文件同步到 Github 上的方式。
+通常情况下，我们在开发过程中装的大部分工具，都会在 HOME 目录下创建一个以 <code>.</code> 开头的文件或目录，放置配置或者状态。
+</p>
+<p>
+因此我们希望的是用 github 版本管理这些 <b>配置</b> ，而不是 <b>状态</b> 。
+</p>
+<blockquote>
+<p>
+下面例子中的 dotfiles repo 在<a href="https://github.com/jcouyang/dotfiles">这里</a>
+</p>
+</blockquote>
+<p>
+好吧，让我们来看看到底如何版本管理这些 “dotfiles”。
+</p>
+<div id="outline-container-orgheadline1" class="outline-2">
+<h2 id="orgheadline1">使用 stow 管理 symlink</h2>
+<div class="outline-text-2" id="text-orgheadline1">
+<p>
+GNU stow 是管理符号链接（symlink）的一个小公举。只需要
+</p>
+<div class="org-src-container">
+<pre class="src src-shell-script">brew install stow
+</pre>
+</div>
+<p>
+或者如果你非 mac 机器，请访问<a href="http://www.gnu.org/software/stow/">官网</a>看看如何安装
+</p>
+<p>
+安装了 stow 之后，我们可以开始 symlink 一些 dotfiles 了。以 fish 和 omf 为例，它们本来的 HOME 目录下
+的结构应该是这样的：
+</p>
+<pre class="example"><span class="linenr">1: </span>⋊&gt; ~/dotfiles on master ⨯ tree ~/.config                                             22:25:34
+<span class="linenr">2: </span>/Users/jcouyang/.config
+<span class="linenr">3: </span>├── fish
+<span class="linenr">4: </span>│&nbsp;&nbsp; ├── config.fish
+<span class="linenr">5: </span>│&nbsp;&nbsp; ├── fish_history
+<span class="linenr">6: </span>│&nbsp;&nbsp; └── fishd.a45e60d0d7e3
+<span class="linenr">7: </span>└── omf
+<span class="linenr">8: </span>    ├── bundle
+<span class="linenr">9: </span>    └── theme
+</pre>
+</div>
+<div id="outline-container-orgheadline2" class="outline-3">
+<h3 id="orgheadline2">stow 文件</h3>
+<div class="outline-text-3" id="text-orgheadline2">
+<p>
+注意看我们需要版本管理文件应该是 config.fish 和 omf 下的所有文件，于是，我将这些文件考到我新建
+的 <code>~/dotfiles</code> 目录下
+</p>
+<pre class="example">mkdir ~/dotfiles/
+cd ~/dotfiles
+mkdir -p fish/.config/fish
+mv ~/.config/fish/config.fish fish/.config/fish/
+ls fish/.config/fish/
+</pre>
+<p>
+现在可以使用 stow 创建 symlink 了。
+</p>
+<div class="org-src-container">
+<pre class="src src-shell-script">stow fish
+</pre>
+</div>
+<p>
+瞅瞅 现在 <code>~/.config</code> 变什么样了
+</p>
+<pre class="example">⋊&gt; ~/dotfiles on master ⨯ tree ~/.config                                             22:33:55
+/Users/jcouyang/.config
+├── fish
+│&nbsp;&nbsp; ├── config.fish -&gt; ../../dotfiles/fish/.config/fish/config.fish
+│&nbsp;&nbsp; ├── fish_history
+│&nbsp;&nbsp; └── fishd.a45e60d0d7e3
+</pre>
+<p>
+<code>config.fish</code> 被链到了我创建的 <code>dotfiles/fish</code> 底下同样的目录中。 重要的是两个状态文件 <code>fish_history</code> 和
+<code>fish.blahblah</code> 任然在 <code>~/.config/fish</code> 下，我们并不想要他们到我们的 dotfiles 中来。
+</p>
+<p>
+于是，这样其实每次修改 <code>config.fish</code> 都实际上是在修改 <code>~/dotfiles</code> 下的 <code>config.fish</code>
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline3" class="outline-3">
+<h3 id="orgheadline3">stow 目录</h3>
+<div class="outline-text-3" id="text-orgheadline3">
+<p>
+另外我们在试试管理 omf(oh-my-fish)，似乎 omf下面没有什么状态，bundle 和 theme 都是配置，所以
+与其 symlink 文件，不如 symlink 整个 omf 目录。同样在 <code>~/dotfiles</code> 目录下运行
+</p>
+<pre class="example">mkdir -p ~/dotfiles/omf/.config
+mv ~/.config/omf ~/dotfiles/omf/.config/omf
+stow omf
+</pre>
+<p>
+这时候再看看 <code>~/.config</code>
+</p>
+<pre class="example">/Users/jcouyang/.config
+├── fish
+│&nbsp;&nbsp; ├── config.fish -&gt; ../../dotfiles/fish/.config/fish/config.fish
+│&nbsp;&nbsp; ├── fish_history
+│&nbsp;&nbsp; └── fishd.a45e60d0d7e3
+└── omf -&gt; ../dotfiles/omf/.config/omf
+</pre>
+<p>
+我们把整个 omf 目录都链到了 dotfile 目录下
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline4" class="outline-2">
+<h2 id="orgheadline4">push to github</h2>
+<div class="outline-text-2" id="text-orgheadline4">
+<p>
+下面看如何用 github 来管理这些 dotfiles
+</p>
+<p>
+强烈推荐先安装 <a href="http://hub.github.com/">hub</a>
+</p>
+<div class="org-src-container">
+<pre class="src src-shell-script">brew install hub
+hub create dotfiles
+git add .
+git commit -m <span style="color: rgb(139, 0, 0);">"my awesome dotfiles"</span>
+git push origin master
+</pre>
+</div>
+<p>
+就这么简单，你的配置文件就安全的放到了 github 上，并且以后每一次改动都再也不怕改挂了。
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline5" class="outline-2">
+<h2 id="orgheadline5">submodule vs subtree</h2>
+<div class="outline-text-2" id="text-orgheadline5">
+<p>
+但是我有些配置文件其实在另外一个 repo 上，这时候我怎么能跟这个 <code>dotfiles</code> repo 合到一起呢？
+</p>
+<p>
+比如<a href="https://github.com/jcouyang/.emacs.d">我的 emacs 配置文件</a>，其实是单独管理在另一 repo 的。
+</p>
+<p>
+这时候 git 为我们提供了两种方式来管理 submodule 和 subtree。 我用的是后一种，至于 submodule
+为什么不适用，网上有<a href="http://blogs.atlassian.com/2013/05/alternatives-to-git-submodule-git-subtree/">大量文章</a>解释，我就懒得翻译了。
+</p>
+<div class="org-src-container">
+<pre class="src src-shell-script">⋊&gt; ~/dotfiles on master ⨯ git subtree add --prefix emacs/.emacs.d git@github.com:jcouyang/.emacs.d.git master --squash
+</pre>
+</div>
+<p>
+这行 subtree 命令把我的 emacs 配置从我的 repo 下下来作为 subtree，并 squash(合成一个) commits
+</p>
+<p>
+这时我的 git树是这样的
+</p>
+<pre class="example">\* commit b33c46bfebe4a28849aa967222555a4676fdb9f4 (HEAD -&gt; master)
+|\  Merge: 1b240f8 e6dacdc
+| | Author: Jichao Ouyang &lt;oyanglulu@gmail.com&gt;
+| | Date:   Thu Oct 29 21:33:06 2015 +0800
+| |
+| |     Merge commit 'e6dacdcd1f85cdcb3b5fa488edb7b8f31c297b3f' as 'emacs/.emacs.d'
+| |
+| * commit e6dacdcd1f85cdcb3b5fa488edb7b8f31c297b3f
+</pre>
+<p>
+可以看见把 我的 emacs repo merge 了进来，这样就跟在 <code>dotfiles</code> repo 的代码一样，该 commit 的 commit 该
+push 的 push。
+</p>
+<p>
+下面看如何 push 回我的 emacs repo。
+</p>
+<p>
+比如我现在对 subtree emacs 做了改动并 commit 了。然后
+</p>
+<pre class="example">git remote add emacs git@github.com:jcouyang/.emacs.d.git
+git subtree push --prefix emacs/.emacs.d emacs master
+</pre>
+<ol class="org-ol">
+<li>先把 emacs 的 repo 加到我的 remote 里，给个名字 emacs</li>
+<li>用 subtree push 直接 push 到 remote emacs，branch master</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-orgheadline6" class="outline-2">
+<h2 id="orgheadline6">㊙ Sensitive dotfiles</h2>
+<div class="outline-text-2" id="text-orgheadline6">
+<p>
+有些 dotfiles 中可能涉及一些 token 或者密码，如果把他们 push 到 public 的 github 上， <del>有可能</del> 肯定会对你个人或者公司造成巨大的损失（最近公司就开始扫描个人 github 账户了🙀 好紧张）。于是我们需要对这些敏感的 dotfiles 做加密。
+</p>
+<p>
+比如 <code>~/.config/hub</code> 里面，有我和公司的 github 的 token，我可不像这玩意被弄到 github 上。
+</p>
+<p>
+目前最广泛使用的加密手段是 Gnupg，简称 gpg，一样使用 brew 装就好了
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">brew install gnupg
+</pre>
+</div>
+<p>
+安装完之后需要生成一个 keypair
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">gpg --gen-key
+</pre>
+</div>
+<p>
+输入名字，邮箱，密码之后，就 ok 了
+</p>
+<p>
+然后呢，我并不希望手动的每次加密完再push 到我的私有 git 上（对，即使是私有 git，安全考虑我还是需要加密，绝对不能明文存储，就是这么任性）。
+</p>
+<p>
+那么到底去哪弄一个私有 git 呢？如果没有，dropbox 就可以，然后现在的问题是如何在 push 的时候自动的 gpg 加密。
+</p>
+<p>
+现在 git remote crypt 大法就该登场了，到这里 <a href="https://github.com/joeyh/git-remote-gcrypt">https://github.com/joeyh/git-remote-gcrypt</a> 把 repo 下下来执行 <code>./install.sh</code>, 之后就应该有 <code>git-remote-gcrypt</code> 这样一个命令，先别跑
+</p>
+<p>
+关键在于见 remote 的时候。当我在 home 目录建了一个 <code>dotfiles-private</code> 的文件夹，stow 完各种敏感 dotfiles 之后
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">git init
+git add .
+git commit -m <span style="color: rgb(139, 0, 0);">"some private dotfiles"</span>
+git remote add dropbox gcrypt::rsync:///Users/jcouyang/Dropbox/dotfiles-private.git
+git push
+</pre>
+</div>
+<p>
+你会被问到刚才创建 gpg keypair 时输入的密码，然后…
+</p>
+<p>
+看，两坨 gpg 加密过的文件
+<img src="image.png" alt="image.png">
+</p>
+<p>
+<b>LLAP 🖖</b>
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p>Author: 欧阳继超 <iframe src="index_1.html" style="width: 160px; height: 20px; border: medium none;" allowtransparency="true" scrolling="no" frameborder="0"></iframe></p>
+<p>Modified: 2016-07-24 Sun 14:12</p>
+<p>Generated by: <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.1 (<a href="http://orgmode.org/">Org</a> mode 8.3.5)</p>
+<p>&lt;Publish&gt; with _(:з」∠)_ by <a href="https://github.com/jcouyang/orgpress">OrgPress</a></p>
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/"><img alt="Creative Commons License" style="border-width: 0px;" src="88x31.png"></a><br>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/">Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License</a>.
+<p class="org-center">
+<input class="st-default-search-input" placeholder="Search" type="swiftype">
+</p>
+<p><a href="https://blog.oyanglul.us/index.xml">RSS</a> | <a href="https://blog.oyanglul.us/archive.html">ARCHIVE</a> | <a href="https://blog.oyanglul.us/theindex.html">INDEX</a> | <a href="#" id="edit-in-github">EDIT</a></p>
+<a class="github-fork-ribbon right-bottom fixed" href="https://github.com/jcouyang/blog" title="Fork me on GitHub">Fork me on GitHub</a>
+
+ 
+
+
+
+ 
+<ins class="adsbygoogle" style="display: block;" data-ad-client="ca-pub-6604550863422842" data-ad-slot="7967742338" data-ad-format="auto"></ins>
+
+ 
+<div id="disqus_thread"></div>
+
+
+ 
+
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,136 @@
+/* ::::: https://blog.oyanglul.us/style/pixyll.css ::::: */
+
+@charset "UTF-8";
+@font-face {
+  font-family: "Merriweather";
+  font-style: normal;
+  font-weight: 300;
+  src: local("Merriweather Light"), local("Merriweather-Light"), url("merriweater-light.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Merriweather";
+  font-style: normal;
+  font-weight: 900;
+  src: local("Merriweather Heavy"), local("Merriweather-Heavy"), url("merriweater-heavy.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Merriweather";
+  font-style: italic;
+  font-weight: 300;
+  src: local("Merriweather Light Italic"), local("Merriweather-LightItalic"), url("merriweater-italic.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Merriweather";
+  font-style: italic;
+  font-weight: 900;
+  src: local("Merriweather Heavy Italic"), local("Merriweather-HeavyItalic"), url("merriweater-heavy-italic.woff2") format("woff2");
+}
+body, button, input, select, textarea, pre { margin: 0px; }
+h1, h2, h3, h4, h5, h6, p, dl, ol, ul { margin-top: 0px; margin-bottom: 1rem; }
+button, input, select, textarea { font-family: inherit; font-size: 100%; }
+article, aside, details, figcaption, figure, footer, header, main, nav, section, summary { display: block; }
+body { font-family: 'Helvetica Neue',Helvetica,sans-serif; line-height: 1.5rem; font-weight: 400; }
+h1, .h1, .f1 { font-size: 2rem; line-height: 2.5rem; }
+h2, .h2, .f2 { font-size: 1.5rem; line-height: 2rem; }
+h3, .h3, .f3 { font-size: 1.25rem; line-height: 1.5rem; }
+p, .p, .f4, h4, h5, h6, dl, ol, ul { font-size: 1.125rem; line-height: 1.5rem; }
+@media screen and (min-width: 48em) {
+}
+@media screen and (min-width: 64em) {
+}
+#content, #postamble { max-width: 39rem; }
+#content, #postamble { margin-right: auto; margin-left: auto; }
+body { padding: 1.5rem; }
+@media screen and (min-width: 48em) and (max-width: 64em) {
+}
+@media screen and (min-width: 64em) {
+}
+body { color: rgb(51, 51, 51); background-color: rgb(255, 255, 255); }
+a { color: rgb(0, 150, 204); text-decoration: none; }
+a:hover { color: rgb(0, 113, 153); }
+*::-moz-focus-inner { border: 0px none; padding: 0px; }
+input, select, textarea, fieldset { font-size: 1rem; margin-top: 0px; margin-bottom: 0.5rem; }
+body, button { margin: 0px; }
+button, input, select, textarea { font-family: inherit; font-size: 100%; }
+img { max-width: 100%; }
+body { font-family: "Merriweather","PT Serif",Georgia,"Times New Roman",serif; line-height: 1.5; font-size: 100%; }
+h1, h2, h3, h4, h5, h6 { font-family: "Lato","Helvetica Neue",Helvetica,sans-serif; font-weight: 900; line-height: 1.25; margin-top: 1em; margin-bottom: 0.5em; }
+p, dl, ol, ul { font-size: 1rem; margin-top: 0px; margin-bottom: 1rem; }
+ol, ul { padding-left: 2rem; }
+pre, code, samp { font-family: "Source Code Pro",Consolas,monospace; font-size: inherit; }
+pre { margin-top: 0px; margin-bottom: 1rem; overflow-x: scroll; }
+blockquote { margin-top: 2rem; margin-bottom: 2rem; margin-left: 0px; padding-left: 1rem; padding-right: 1rem; }
+blockquote, blockquote p { font-size: 1.25rem; font-style: italic; }
+h1, .h1 { font-size: 2.998rem; }
+h2, .h2 { font-size: 1.5rem; }
+h3, .h3 { font-size: 1.25rem; }
+body { color: rgb(51, 51, 51); background-color: white; }
+a { color: rgb(0, 118, 223); text-decoration: none; }
+a:hover { text-decoration: underline; }
+pre, code { background-color: rgb(238, 238, 238); border-radius: 3px 3px 3px 3px; }
+@media (min-width: 52em) {
+}
+@media (min-width: 96em) {
+}
+html, body { height: auto; min-height: 100%; }
+img { max-width: 100%; }
+body { box-sizing: border-box; }
+a { color: rgb(0, 118, 223); }
+a:hover, a:focus, a:active { border: 0px none; color: rgb(0, 10, 19); text-decoration: none; }
+pre, pre code { background-color: transparent; border-radius: 0px 0px 0px 0px; }
+pre, code { font-family: "Source Code Pro",Consolas,monospace; }
+code { color: rgb(122, 122, 122); }
+pre { padding: 1.125em; line-height: 1.11; overflow-x: scroll; margin-bottom: 0.88em; background-color: rgb(250, 250, 250); }
+pre { counter-reset: line-numbering; white-space: pre; overflow-x: auto; word-break: inherit; word-wrap: inherit; }
+input, select, textarea, fieldset { font-size: 1rem; margin-top: 0px; }
+html { font-size: 14px; }
+p { color: rgb(51, 51, 51); line-height: 1.5; }
+@keyframes fadeInDown {
+0% { opacity: 0; transform: translateY(-20px) translate3d(0px, 0px, 0px); }
+100% { opacity: 1; transform: translateY(0px) translate3d(0px, 0px, 0px); }
+}
+blockquote { border-left: 5px solid rgb(122, 122, 122); font-style: italic; margin-left: 0.5rem; padding: 0.5rem; }
+@media screen and (min-width: 32em) {
+  html { font-size: 16px; }
+  h1, .h1 { font-size: 2.998rem; }
+  blockquote { margin-left: 2rem; padding: 2rem; }
+}
+@media screen and (min-width: 48em) {
+  html { font-size: 18px; }
+}
+@media screen and (min-width: 64em) {
+  html { font-size: 20px; }
+}
+@media screen and (min-width: 78em) {
+}
+#table-of-contents { font-size: 10pt; position: fixed; right: 0em; top: 0em; background: none repeat scroll 0% 0% rgb(249, 249, 249); line-height: 12pt; text-align: right; box-shadow: 0px 0px 1em rgb(119, 119, 119); max-height: 80%; overflow: auto; }
+#table-of-contents h2 { font-size: 13pt; max-width: 9em; border: 0px none; font-weight: normal; padding: 0.05em 0.5em; }
+#table-of-contents #text-table-of-contents { display: none; text-align: left; }
+#table-of-contents:hover #text-table-of-contents { display: block; padding: 0.5em; margin-top: -1.5em; }
+.org-center { margin-left: auto; margin-right: auto; text-align: center; }
+body { padding-top: 0.2rem; }
+blockquote { font-size: 0.9rem; margin-left: 1.5rem; padding: 1.5rem; }
+/* ::::: https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.0/gh-fork-ribbon.min.css ::::: */
+
+.github-fork-ribbon { width: 12.1em; height: 12.1em; position: absolute; overflow: hidden; top: 0px; right: 0px; z-index: 9999; pointer-events: none; font-size: 13px; text-decoration: none; text-indent: -999999px; }
+.github-fork-ribbon.fixed { position: fixed; }
+.github-fork-ribbon:before, .github-fork-ribbon:after { position: absolute; display: block; width: 15.38em; height: 1.54em; top: 3.23em; right: -3.23em; transform: rotate(45deg); }
+.github-fork-ribbon:before { content: ""; padding: 0.38em 0px; background-color: rgb(170, 0, 0); background-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.15)); box-shadow: 0px 0.15em 0.23em 0px rgba(0, 0, 0, 0.5); pointer-events: auto; }
+.github-fork-ribbon:after { content: attr(title); color: rgb(255, 255, 255); font: 700 1em/1.54em "Helvetica Neue",Helvetica,Arial,sans-serif; text-decoration: none; text-shadow: 0px -0.08em rgba(0, 0, 0, 0.5); text-align: center; text-indent: 0px; padding: 0.15em 0px; margin: 0.15em 0px; border-width: 0.08em 0px; border-style: dotted; border-color: rgba(255, 255, 255, 0.7); }
+.github-fork-ribbon.left-bottom, .github-fork-ribbon.right-bottom { top: auto; bottom: 0px; }
+.github-fork-ribbon.left-bottom:before, .github-fork-ribbon.left-bottom:after, .github-fork-ribbon.right-bottom:before, .github-fork-ribbon.right-bottom:after { top: auto; bottom: 3.23em; }
+.github-fork-ribbon.left-top:before, .github-fork-ribbon.left-top:after, .github-fork-ribbon.right-bottom:before, .github-fork-ribbon.right-bottom:after { transform: rotate(-45deg); }
+/* ::::: [internal] ::::: */
+
+@media screen {
+}
+@media print {
+}
+/* ::::: [internal] ::::: */
+
+/* ::::: [internal] ::::: */
+
+/* ::::: https://s.swiftypecdn.com/assets/new_embed-28251278dfbb54588d68fbd8d7cc72ba.css ::::: */
+
+/* ::::: [internal] ::::: */
+
