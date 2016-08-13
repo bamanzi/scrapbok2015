@@ -1,0 +1,248 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>
+      Usage – Xpra
+    </title>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--[if IE]><script type="text/javascript">
+      if (/^#__msie303:/.test(window.location.hash))
+        window.location.replace(window.location.hash.replace(/^#__msie303:/, '#'));
+    </script><![endif]-->
+        <link rel="search" href="http://www.xpra.org/trac/search">
+        <link rel="help" href="http://www.xpra.org/trac/wiki/TracGuide">
+        <link rel="alternate" href="http://www.xpra.org/trac/wiki/Usage?format=txt" type="text/x-trac-wiki" title="Plain Text">
+        <link rel="start" href="http://www.xpra.org/trac/wiki">
+        
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+        <link rel="icon" href="favicon.ico" type="image/x-icon">
+    
+      <link type="application/opensearchdescription+xml" rel="search" href="http://www.xpra.org/trac/search/opensearch" title="Search Xpra">
+      
+      
+      
+      
+      
+    
+    
+	<meta name="description" content="xpra - screen for X">
+	
+	
+	
+  
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+  <body>
+    <div id="container">
+	<div id="logoheader">
+	   <div id="logoicon">
+		   <img src="xpra-logo.png" alt="xpra icon">
+	   </div>
+	   <div id="logotitle">
+		   Bug tracker and wiki
+	   </div>
+	   <div id="logo_tr">
+		<a href="http://devloop.org.uk/"><span class="lighter">/</span>dev<span class="lighter">/</span>loop<span class="lighter">.org.uk</span></a>
+	   </div>
+	</div>
+	<div id="navigation">
+	   <ul>
+	    <li class="selected_false"><a href="http://www.xpra.org/">Xpra</a></li>
+	    <li class="selected_true"><a href="http://www.xpra.org/trac/">Wiki &amp; Bugs</a></li>
+	    <li>
+	    &nbsp;
+                <div id="plusone-div" class="plusone"></div>
+                
+    	    </li>
+	    <li>
+		<form id="search" method="get" action="http://www.google.com/search">
+			<fieldset>
+				<input name="q" size="16" maxlength="255" value="" type="text">
+				<input name="sitesearch" value="xpra.org" type="hidden">
+				<input class="submit" src="google-small.png" alt="Search with google" type="image">
+			</fieldset>
+		</form>
+	    </li>
+	   </ul>
+	</div>
+    <div id="banner">
+      <form id="search" action="http://www.xpra.org/trac/search" method="get">
+        <div>
+          <label for="proj-search">Search:</label>
+          <input id="proj-search" name="q" size="18" value="" type="text">
+          <input value="Wiki Search" type="submit">
+        </div>
+      </form>
+      <div id="metanav" class="nav">
+    <ul>
+      <li class="first"><a href="http://www.xpra.org/trac/login">Login</a></li><li><a href="http://www.xpra.org/trac/prefs">Preferences</a></li><li><a href="http://www.xpra.org/trac/wiki/TracGuide">Help/Guide</a></li><li><a href="http://www.xpra.org/trac/about">About Trac</a></li><li class="last"><a href="http://www.xpra.org/trac/register">Register</a></li>
+    </ul>
+  </div>
+    </div>
+    <div id="mainnav" class="nav">
+    <ul>
+      <li class="first active"><a href="http://www.xpra.org/trac/wiki">Wiki</a></li><li><a href="http://www.xpra.org/trac/timeline">Timeline</a></li><li><a href="http://www.xpra.org/trac/roadmap">Roadmap</a></li><li><a href="http://www.xpra.org/trac/browser">Browse Source</a></li><li><a href="http://www.xpra.org/trac/report">View Tickets</a></li><li class="last"><a href="http://www.xpra.org/trac/search">Search</a></li>
+    </ul>
+  </div>
+    <div id="main">
+      <div id="ctxtnav" class="nav">
+        <h2>Context Navigation</h2>
+          <ul>
+              <li class="first"><a href="http://www.xpra.org/trac/wiki/WikiStart">Start Page</a></li><li><a href="http://www.xpra.org/trac/wiki/TitleIndex">Index</a></li><li class="last"><a href="http://www.xpra.org/trac/wiki/Usage?action=history">History</a></li>
+          </ul>
+        <hr>
+      </div>
+    <div id="content" class="wiki">
+      <div class="wikipage searchable">
+        
+          <div id="wikipage" class="trac-content"><h1 id="Usage">Usage</h1>
+<p>
+Here are just some of the most common usage scenarios:
+</p>
+<ul><li><a class="wiki" href="#Simplesessionapplicationforwarding">Simple session / application forwarding</a>
+</li><li><a class="wiki" href="#AccesswithoutSSH">Access without SSH</a>
+</li><li><a class="wiki" href="#Forwardingawholedesktop">Forwarding a whole desktop</a>
+</li><li><a class="wiki" href="#CloningShadowinganexistingdisplay">Cloning / Shadowing an existing display</a>
+</li><li><a class="wiki" href="#Xpraasaclipboardsharingtool">Xpra as a clipboard sharing tool</a>
+</li><li><a href="http://www.xpra.org/trac/wiki/Usage/Docker">Xpra + Docker</a>
+</li><li><a href="http://www.xpra.org/trac/wiki/Usage/OpenGL">OpenGL applications</a>
+</li></ul><p>
+<br>
+<br>
+See also, <a href="http://www.xpra.org/trac/browser/xpra/trunk/src/man/xpra.1">the manual</a>. (this page is for the current development version, use <tt>man xpra</tt> to get the version corresponding to the version you have installed - *nix only..)
+<br>
+<strong>Note:</strong> we assume here that you have installed a supported and up to date version. Some distributions ship outdated versions..
+<br>
+</p>
+<div class="box"><h2 id="Simplesessionapplicationforwarding">Simple session/application forwarding</h2>
+<p>
+As per the <a href="http://xpra.org/#get_started">home page "get started"</a> instructions, this is how xpra is most often used. This will start an <tt>xterm</tt> (or any graphical application you want) on <tt>SERVERHOSTNAME</tt> and forward it to your desktop:
+</p>
+<pre class="wiki">xpra start ssh:SERVERUSERNAME@SERVERHOSTNAME:100 --start-child=xterm
+</pre><hr>
+<p>
+You can also execute each step individually:
+</p>
+<ul><li>on the server which will export the application (<tt>xterm</tt> in the example), start an xpra server instance on a free display of your choice (<tt>:100 in the example</tt>):
+<pre class="wiki">xpra start :100 --start-child=xterm
+</pre></li><li>then from the client, just connect to this xpra instance:
+<pre class="wiki">xpra attach ssh:SERVERUSERNAME@SERVERHOST:100
+</pre></li></ul><p>
+(replace <tt>SERVERHOST</tt> with the hostname or IP of the server)
+<br>
+If you are attaching from the same machine as the same user and there is only one xpra session running, this is sufficient:
+</p>
+<pre class="wiki">xpra attach
+</pre><ul><li>If the username is the same on the server, you can omit it.
+</li></ul></div><div class="box"><h2 id="AccesswithoutSSH">Access without SSH</h2>
+<p>
+SSH is great, it provides secure authentication and encryption, it is available on all platforms and is well tested.
+<br>
+However, in some cases, you may not want to give remote users shell access, or you may want to share sessions between multiple remote users.
+<br>
+In this case, use TCP sockets:
+</p>
+<pre class="wiki">xpra start :100 --start-child=xterm --bind-tcp=0.0.0.0:10000
+</pre><p>
+Then, assuming that the port you have chosen (<tt>10000</tt> in the example above) is allowed through the firewall (if any), you can connect from the client using:
+</p>
+<pre class="wiki">xpra attach tcp:SERVERHOST:10000
+</pre><p>
+Beware: by default, TCP sockets are insecure. At the very least, you should use the "<tt>--password-file</tt>" option to protect those sessions. For more information see the <a href="http://www.xpra.org/trac/wiki/ProxyServer#FileAuthentication">File Authentication</a> page for more information.
+</p>
+</div><div class="box"><h2 id="Forwardingawholedesktop">Forwarding a whole desktop</h2>
+<p>
+Xpra normally forwards just the windows of the application you are interested in. If you want to forward a full desktop instead (including its start menu, background, task bar, etc...) use a nested X11 server.
+<br>
+With <tt>Xephyr</tt>:
+</p>
+<pre class="wiki">xpra start --start-child="Xephyr :200 -ac -screen 800x600" :100
+DISPLAY=:200 fluxbox&amp;
+</pre><p>
+Or with <tt>Xnest</tt>:
+</p>
+<pre class="wiki">xpra start --start-child="Xnest :200 -ac -geometry 800x600+24" :100
+DISPLAY=:200 fluxbox&amp;
+</pre><p>
+Notes:
+</p>
+<ul><li>you can start a window manager of your choice (here <tt>fluxbox</tt>) or none at all..
+</li><li>to get the session to terminate when you exit the window manager, modify the command lines and add <tt>-terminate</tt> to <tt>Xephyr</tt>'s (or <tt>Xnest</tt>'s) and <tt>--exit-with-children</tt> to Xpra's
+</li><li>beware: some desktop environments may show options to shutdown/reboot the system from their start menu, which may or may not be appropriate
+</li><li>you can resize the desktop using the standard "randr" desktop tools (and not by resizing the window at present)
+</li><li><tt>Xephyr</tt> may not work properly on some systems as there seems to be some GL driver conflicts (ie: nvidia). You can verify by running it directly without xpra. You can also workaround this issue using <a class="ext-link" href="http://www.virtualgl.org/"><span class="icon">​</span>VirtualGL</a>'s <tt>vglrun</tt> to launch Xephyr.
+</li></ul></div><div class="box"><h2 id="CloningShadowinganexistingdisplay">Cloning / Shadowing an existing display</h2>
+<p>
+This allows you to access an existing desktop remotely. Simply:
+</p>
+<pre class="wiki">xpra shadow ssh:SERVERHOST
+</pre><p>
+<br>
+Notes:
+</p>
+<ul><li>this also works for MS Windows and OSX, in which case the display argument is mostly meaningless (only used for naming the log file and identifying the session)
+</li><li>on MS Windows, which does not have regular "unix domain sockets", you will need to use TCP sockets to connect (see above, "<tt>bind-tcp=</tt>").
+</li><li>the display being shadowed must be active (not locked or turned off)
+</li><li>On posix systems, the default X11 session is usually <tt>:0</tt> or <tt>:1</tt> and should be detected automatically if there is only one active session
+</li><li>if there is more than one display active on the server system, you can specify which one you want to shadow: <tt>xpra shadow ssh:SERVERHOST:DISPLAY</tt>
+</li></ul></div><div class="box"><h2 id="Xpraasaclipboardsharingtool">Xpra as a clipboard sharing tool</h2>
+<p>
+Xpra can forward sound, clipboard and cursors as well as the application's windows. Each one of these feature can also be disabled, so one can use xpra as a clipboard synchronization tool:
+</p>
+<ul><li>From the client system:
+<pre class="wiki">xpra shadow --no-printing --no-windows --no-speaker --no-cursors ssh:SERVERHOST
+</pre></li></ul><p>
+(also disabling sound, printing, etc is not required)
+</p>
+</div><div class="box"><h2 id="Xpraasaprinterforwarder">Xpra as a printer forwarder</h2>
+<p>
+To forward a printer to another machine, simply start a remote session without starting an application, and ensure printer forwarding is enabled or force enable it on the command line:
+</p>
+<pre class="wiki">xpra shadow --no-windows --no-speaker --no-cursors ssh:SERVERHOST --printing=yes
+</pre><p>
+For more information, see <a href="http://www.xpra.org/trac/wiki/Printing">wiki/Printing</a>.
+</p>
+</div></div>
+          
+          <div class="trac-modifiedby">
+            <span><a href="http://www.xpra.org/trac/wiki/Usage?action=diff&amp;version=29" title="Version 29 by antoine">Last modified</a> <a class="timeline" href="http://www.xpra.org/trac/timeline?from=2015-12-15T04%3A27%3A18Z&amp;precision=second" title="See timeline at 12/15/15 04:27:18">8 months ago</a></span>
+            <span class="trac-print">Last modified on 12/15/15 04:27:18</span>
+          </div>
+        
+        
+      </div>
+      
+
+    </div>
+    <div id="altlinks">
+      <h3>Download in other formats:</h3>
+      <ul>
+        <li class="last first">
+          <a rel="nofollow" href="http://www.xpra.org/trac/wiki/Usage?format=txt">Plain Text</a>
+        </li>
+      </ul>
+    </div>
+    </div>
+	<div id="sitefooter">
+		<div id="footer">
+		   <div id="validators">
+			<a href="http://validator.w3.org/check?uri=referer">
+				<img src="valid-xhtml11-blue.png" alt="Valid XHTML 1.1">
+			</a>
+			<a href="http://jigsaw.w3.org/css-validator/check/referer">
+				<img src="vcss-blue.gif" alt="Valid CSS!">
+			</a>
+		   </div>
+		   <span id="copyleft">
+			<a href="http://www.devloop.org.uk/">devloop.org.uk hosted project</a> <img src="copyleft-tiny.png" alt="copyleft"> copyleft 2010 - 2014
+		   </span>
+		   <div id="email">
+			<a href="mailto:webmaster@devloop.org.uk"><img src="message.png" alt="message"> <span>webmaster@devloop.org.uk</span></a>
+		   </div>
+		</div>
+	</div>
+    </div>
+  
+</body>
+</html>

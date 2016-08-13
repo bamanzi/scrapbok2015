@@ -1,0 +1,552 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<meta content="True" name="HandheldFriendly">
+	
+    <meta name="detectify-verification" content="d0264f228155c7a1f72c3d91c17ce8fb">
+<meta name="alexaVerifyID" content="OFc8dmwZo7ttU4UCnDh1rKDtLlY">
+<meta name="baidu-site-verification" content="D00WizvYyr">
+<meta name="msvalidate.01" content="D9B08FEA08E3DA402BF07ABAB61D77DE">
+<meta property="wb:webmaster" content="f2f4cb229bda06a4">
+<meta name="google-site-verification" content="LM_cJR94XJIqcYJeOCscGVMWdaRUvmyz6cVOqkFplaU">
+    
+    <title>刚刚发现了一个神器 xpra，从此告别了 vnc 和 ssh -X，链接地址 http://xpra.org - V2EX</title>
+    
+	   
+    
+    
+    
+    
+    
+    <link rel="shortcut icon" href="icon_rayps_64.png" type="image/png">
+    <link rel="apple-touch-icon" href="https://www.v2ex.com/static/apple-touch-icon.png">
+    
+	
+	
+	
+    
+    
+    
+    
+    
+    
+    <meta name="description" content="分享发现 - ant_sz - 情况是这样的，我有一个远程的带图形界面的计算机，是 ubuntu 14.04 ，但是由于在网关后面，vnc不是很方便（虽然也可以通过 ssh 转发）。而常用的 ssh -X 转发想要将程序切到后台一直">
+    
+    
+    <link rel="canonical" href="https://www.v2ex.com/t/132986">
+    
+    
+    
+    <link rel="top" title="回到顶部" href="https://www.v2ex.com/t/132986#">
+    
+    
+	
+    
+
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body>
+    <div id="Top">
+        <div class="content">
+            <div style="padding-top: 6px;">
+            <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                <tbody><tr>
+                    <td width="110" align="left"><a href="https://www.v2ex.com/" name="top" title="way to explore"><img src="logo@2x.png" alt="V2EX" width="94" align="default" border="0" height="30"></a></td>
+                    <td width="auto" align="left">
+                        <div id="Search"><form lpformnum="2"><div style="width: 276px; height: 28px; background-size: 276px 28px; background-image: url(&quot;qbar_light@2x.png&quot;); background-repeat: no-repeat; display: inline-block;"><input maxlength="40" name="q" id="q" value="" type="text"></div></form></div>
+                    </td>
+                    <td style="padding-top: 2px;" width="570" align="right"><a href="https://www.v2ex.com/" class="top">首页</a>&nbsp;&nbsp;&nbsp;<a href="https://www.v2ex.com/signup" class="top">注册</a>&nbsp;&nbsp;&nbsp;<a href="https://www.v2ex.com/signin" class="top">登录</a></td>
+                </tr>
+            </tbody></table>
+            </div>
+        </div>
+    </div>
+    <div id="Wrapper">
+        <div class="content">
+            
+            <div id="Leftbar"></div>
+            <div id="Rightbar">
+                <div class="sep20"></div>
+                
+                    
+                    <div class="box">
+                        <div class="cell">
+                            <strong>V2EX = way to explore</strong>
+                            <div class="sep5"></div>
+                            <span class="fade">V2EX 是一个关于分享和探索的地方</span>
+                        </div>
+                        <div class="inner">
+                            <div class="sep5"></div>
+                            <div align="center"><a href="https://www.v2ex.com/signup" class="super normal button">现在注册</a>
+                            <div class="sep5"></div>
+                            <div class="sep10"></div>
+                            已注册用户请 &nbsp;<a href="https://www.v2ex.com/signin">登录</a></div>
+                        </div>
+                    </div>
+                    
+                    
+
+    
+    <div class="sep20"></div>
+    <div class="box">
+        <div class="inner">
+            <a href="http://gold.xitu.io/welcome/?utm_source=v2ex_share&amp;utm_medium=banner&amp;utm_content=jishudiedai&amp;utm_campaign=q3_website" target="_blank"><img src="xitu_20160803.gif" alt="稀土" width="100%" border="0"></a>
+<div class="sep10"></div>
+<a href="http://rd.da.netease.com/redirect?t=7ILX4SfSGo&amp;p=null&amp;proId=1260&amp;target=https%3A%2F%2Fc.163.com%3Ftag%3Da6307d508e9020d93273a7c086d9735f" target="_blank"><img src="netease_20160717.gif" alt="网易蜂巢" width="100%" border="0"></a>
+<div class="sep10"></div>
+<a href="https://www.wilddog.com/?utm_source=v2ex.topics&amp;utm_medium=banner&amp;utm_content=right&amp;utm_campaign=0619homepage" target="_blank"><img src="v2ex-500x120-1.jpg" alt="野狗实时后端云" width="100%" border="0"></a>
+<div class="sep10"></div>
+<a href="https://shimo.im/doc/QCUNF0q9FIs1v8Vn?utm_source=v2ex&amp;utm_medium=banner&amp;utm_compaign=2016-jobs&amp;utm_content=share" target="_blank"><img src="shimo.gif" alt="石墨文档" width="100%" border="0"></a>
+<div class="sep10"></div>
+<a href="http://submail.cn/sms?s=v2ex" target="_blank"><img src="submail_20160501.gif" alt="Submail" width="100%" border="0"></a>
+<div class="sep10"></div>
+<strong class="green">探索世界的好奇心万岁</strong>
+<div class="sep5"></div>
+<span class="chevron">›</span> <a href="http://www.udacity.com/" target="_blank">Udacity</a>
+<div class="sep5"></div>
+<span class="chevron">›</span> <a href="http://open.163.com/" target="_blank">网易公开课</a>
+<div class="sep5"></div>
+<span class="chevron">›</span> <a href="http://www.amazon.cn/gp/product/0140289208/ref=as_li_ss_tl?ie=UTF8&amp;tag=v06-23&amp;linkCode=as2&amp;camp=536&amp;creative=3132&amp;creativeASIN=0140289208">Godel, Escher, Bach: An Eternal Golden Braid</a><img src="ir.dat" alt="" style="border: medium none ! important; margin: 0px ! important;" width="1" border="0" height="1">
+        </div>
+    </div>
+    
+
+
+                    
+                    <div class="sep20"></div>
+                    
+
+<div class="box">
+    <div class="inner" align="center">
+        <div style="width: 240px; margin: 0px auto; text-align: left;">
+        <span style="font-weight: bold; font-size: 10px; color: rgb(226, 226, 226);">Sponsored by</span>
+        <div class="sep10"></div>
+        <a href="https://www.wilddog.com/?utm_source=v2ex&amp;utm_medium=banner&amp;utm_content=homepageright_text&amp;utm_campaign=0619homepage" target="_blank"><img src="wilddog_20160511_small.jpg" alt="野狗科技" width="120" border="0" height="90"></a>
+        <div class="sep5"></div>
+        <span style="font-size: 12px; color: rgb(102, 102, 102);">
+            <strong style="color: rgb(0, 0, 0);"><a href="https://www.wilddog.com/?utm_source=v2ex&amp;utm_medium=banner&amp;utm_content=homepageright_text&amp;utm_campaign=0619homepage" class="black" target="_blank">野狗实时后端云</a></strong><div class="sep3"></div><span style="font-size: 12px;">国内领先的实时后端云<br>野狗 API 可用于开发即时聊天、网络游戏、实时定位等实时场景<br>传输快！响应快！入门快！</span>
+        </span>
+        <div class="sep3"></div>
+        <small class="fade">Promoted by <a href="https://www.wilddog.com/?utm_source=v2ex&amp;utm_medium=banner&amp;utm_content=homepageright_text&amp;utm_campaign=0619homepage" target="_blank">野狗科技</a></small>
+        </div>
+    </div>
+</div>
+
+
+                    <div class="sep20"></div>
+                    
+                    
+                    
+                
+            </div>
+            <div id="Main">
+                <div class="sep20"></div>
+                
+<div class="box" style="border-bottom: 0px none;">
+    <div class="header"><div class="fr"><a href="https://www.v2ex.com/member/ant_sz"><img src="15255_large.png" class="avatar" align="default" border="0"></a></div>
+    <a href="https://www.v2ex.com/">V2EX</a> <span class="chevron">&nbsp;›&nbsp;</span> <a href="https://www.v2ex.com/go/share">分享发现</a>
+    <div class="sep10"></div>
+    <h1>刚刚发现了一个神器 xpra，从此告别了 vnc 和 ssh -X，链接地址 <a target="_blank" href="http://xpra.org/" rel="nofollow">http://xpra.org</a></h1>
+    <div id="topic_132986_votes" class="votes">
+<a class="vote"><li class="fa fa-chevron-up"></li> &nbsp;1</a> &nbsp;<a class="vote"><li class="fa fa-chevron-down"></li></a></div> &nbsp; <small class="gray"><a href="https://www.v2ex.com/member/ant_sz">ant_sz</a> · 2014-09-12 00:00:36 +08:00 · 5229 次点击</small>
+    </div>
+    
+    
+    <div class="outdated">这是一个创建于 701 天前的主题，其中的信息可能已经有所发展或是发生改变。</div>
+    
+    
+    <div class="cell">
+        
+        <div class="topic_content">情况是这样的，我有一个远程的带图形界面的计算机，是 ubuntu 14.04 ，但是由于在网关后面，vnc不是很方便（虽然也可以通过 ssh 转发）。而常用的 ssh -X 转发想要将程序切到后台一直运行不是很方便。<br><br>于是就发现了这个。可以说是 screen for X.org 之类的东西，可以保持 GUI 程序在后台运行。可以选择转发方式（全屏或者单一应用），前者跟vnc类似，后者使用起来就跟 ssh -X 类似。<br><br>更关键的是 xpra 会对转发的图像进行实时编码压缩，可选 H.264、VP8 多种格式等，我的感觉是大大加强了流畅度（虽然图像质量会略有下降）。<br><br>综上，xpra 既可以当 VNC ，也可以加强和优化 ssh -X，可以说是居家旅行必备良品~</div>
+        
+    </div>
+    
+    
+    
+</div>
+
+<div class="sep20"></div>
+
+
+<div class="box">
+    <div class="cell"><div class="fr" style="margin: -3px -5px 0px 0px;"><a href="https://www.v2ex.com/tag/xpra" class="tag"><li class="fa fa-tag"></li> xpra</a><a href="https://www.v2ex.com/tag/VNC" class="tag"><li class="fa fa-tag"></li> VNC</a><a href="https://www.v2ex.com/tag/ssh" class="tag"><li class="fa fa-tag"></li> ssh</a></div><span class="gray">16 回复 &nbsp;<strong class="snow">|</strong> &nbsp;直到 2014-09-13 15:44:08 +08:00</span>
+    </div>
+    
+
+    
+        
+        
+        <div id="r_1338497" class="cell">
+        
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tbody><tr>
+                <td valign="top" width="48" align="center"><img src="56762_normal.png" class="avatar" align="default" border="0"></td>
+                <td valign="top" width="10"></td>
+                <td valign="top" width="auto" align="left"><div class="fr"> &nbsp; &nbsp; <span class="no">1</span></div>
+                    <div class="sep3"></div>
+                    <strong><a href="https://www.v2ex.com/member/Yien" class="dark">Yien</a></strong>&nbsp; &nbsp;<span class="fade small">2014-09-12 00:12:32 +08:00 via iPhone</span> 
+                    <div class="sep5"></div>
+                    <div class="reply_content">感谢分享</div>
+                </td>
+            </tr>
+        </tbody></table>
+        </div>
+    
+
+    
+        
+        
+        <div id="r_1338514" class="cell">
+        
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tbody><tr>
+                <td valign="top" width="48" align="center"><img src="67255_normal.png" class="avatar" align="default" border="0"></td>
+                <td valign="top" width="10"></td>
+                <td valign="top" width="auto" align="left"><div class="fr"> &nbsp; &nbsp; <span class="no">2</span></div>
+                    <div class="sep3"></div>
+                    <strong><a href="https://www.v2ex.com/member/izoabr" class="dark">izoabr</a></strong>&nbsp; &nbsp;<span class="fade small">2014-09-12 00:26:20 +08:00</span> 
+                    <div class="sep5"></div>
+                    <div class="reply_content">嗯，跟osx没关系就好</div>
+                </td>
+            </tr>
+        </tbody></table>
+        </div>
+    
+
+    
+        
+        
+        <div id="r_1338534" class="cell">
+        
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tbody><tr>
+                <td valign="top" width="48" align="center"><img src="15255_normal.png" class="avatar" align="default" border="0"></td>
+                <td valign="top" width="10"></td>
+                <td valign="top" width="auto" align="left"><div class="fr"> &nbsp; &nbsp; <span class="no">3</span></div>
+                    <div class="sep3"></div>
+                    <strong><a href="https://www.v2ex.com/member/ant_sz" class="dark">ant_sz</a></strong>&nbsp; &nbsp;<span class="fade small">2014-09-12 00:38:21 +08:00</span> 
+                    <div class="sep5"></div>
+                    <div class="reply_content">@<a href="https://www.v2ex.com/member/izoabr">izoabr</a>
+<br>=   =
+<br>这个还真支持osx，可以用osx连接到远程计算机上的server，也可以osx做server，别人来连。不过osx做server只支持全屏模式，应该是对vnc封装了一下。</div>
+                </td>
+            </tr>
+        </tbody></table>
+        </div>
+    
+
+    
+        
+        
+        <div id="r_1338599" class="cell">
+        
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tbody><tr>
+                <td valign="top" width="48" align="center"><img src="65000_normal.png" class="avatar" align="default" border="0"></td>
+                <td valign="top" width="10"></td>
+                <td valign="top" width="auto" align="left"><div class="fr"> &nbsp; &nbsp; <span class="no">4</span></div>
+                    <div class="sep3"></div>
+                    <strong><a href="https://www.v2ex.com/member/jokester" class="dark">jokester</a></strong>&nbsp; &nbsp;<span class="fade small">2014-09-12 02:24:05 +08:00</span> 
+                    <div class="sep5"></div>
+                    <div class="reply_content">這個好</div>
+                </td>
+            </tr>
+        </tbody></table>
+        </div>
+    
+
+    
+        
+        
+        <div id="r_1338636" class="cell">
+        
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tbody><tr>
+                <td valign="top" width="48" align="center"><img src="45682_normal.png" class="avatar" align="default" border="0"></td>
+                <td valign="top" width="10"></td>
+                <td valign="top" width="auto" align="left"><div class="fr"> &nbsp; &nbsp; <span class="no">5</span></div>
+                    <div class="sep3"></div>
+                    <strong><a href="https://www.v2ex.com/member/typcn" class="dark">typcn</a></strong>&nbsp; &nbsp;<span class="fade small">2014-09-12 05:15:20 +08:00</span> 
+                    <div class="sep5"></div>
+                    <div class="reply_content">没需求 一般挂GUI程序都用Win了</div>
+                </td>
+            </tr>
+        </tbody></table>
+        </div>
+    
+
+    
+        
+        
+        <div id="r_1338716" class="cell">
+        
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tbody><tr>
+                <td valign="top" width="48" align="center"><img src="62082_normal.png" class="avatar" align="default" border="0"></td>
+                <td valign="top" width="10"></td>
+                <td valign="top" width="auto" align="left"><div class="fr"> &nbsp; &nbsp; <span class="no">6</span></div>
+                    <div class="sep3"></div>
+                    <strong><a href="https://www.v2ex.com/member/zzutmebwd" class="dark">zzutmebwd</a></strong>&nbsp; &nbsp;<span class="fade small">2014-09-12 08:44:48 +08:00 via Android</span> 
+                    <div class="sep5"></div>
+                    <div class="reply_content">nomachine不好么</div>
+                </td>
+            </tr>
+        </tbody></table>
+        </div>
+    
+
+    
+        
+        
+        <div id="r_1338739" class="cell">
+        
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tbody><tr>
+                <td valign="top" width="48" align="center"><img src="15255_normal.png" class="avatar" align="default" border="0"></td>
+                <td valign="top" width="10"></td>
+                <td valign="top" width="auto" align="left"><div class="fr"> &nbsp; &nbsp; <span class="no">7</span></div>
+                    <div class="sep3"></div>
+                    <strong><a href="https://www.v2ex.com/member/ant_sz" class="dark">ant_sz</a></strong>&nbsp; &nbsp;<span class="fade small">2014-09-12 08:52:31 +08:00</span> 
+                    <div class="sep5"></div>
+                    <div class="reply_content">@<a href="https://www.v2ex.com/member/nomachine">nomachine</a> nomachine 差不多跟vnc一个道理。关键是我这边的远程机器在网关后面，不方便设置端口转发。xpra 帮我做好了 ssh 转发，我还可以以 ssh -X 的方式使用（只有我用到的窗口会转发过来，而不是整个桌面）</div>
+                </td>
+            </tr>
+        </tbody></table>
+        </div>
+    
+
+    
+        
+        
+        <div id="r_1338931" class="cell">
+        
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tbody><tr>
+                <td valign="top" width="48" align="center"><img src="fb1b0e60872c939d832354ddefc7f1b8.dat" class="avatar" align="default" border="0"></td>
+                <td valign="top" width="10"></td>
+                <td valign="top" width="auto" align="left"><div class="fr"> &nbsp; &nbsp; <span class="no">8</span></div>
+                    <div class="sep3"></div>
+                    <strong><a href="https://www.v2ex.com/member/andychen20121130" class="dark">andychen20121130</a></strong>&nbsp; &nbsp;<span class="fade small">2014-09-12 10:00:08 +08:00</span> 
+                    <div class="sep5"></div>
+                    <div class="reply_content">你觉得teamview怎样</div>
+                </td>
+            </tr>
+        </tbody></table>
+        </div>
+    
+
+    
+        
+        
+        <div id="r_1339011" class="cell">
+        
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tbody><tr>
+                <td valign="top" width="48" align="center"><img src="60962_normal.png" class="avatar" align="default" border="0"></td>
+                <td valign="top" width="10"></td>
+                <td valign="top" width="auto" align="left"><div class="fr"> &nbsp; &nbsp; <span class="no">9</span></div>
+                    <div class="sep3"></div>
+                    <strong><a href="https://www.v2ex.com/member/longquanwo" class="dark">longquanwo</a></strong>&nbsp; &nbsp;<span class="fade small">2014-09-12 10:35:26 +08:00</span> 
+                    <div class="sep5"></div>
+                    <div class="reply_content">xpra支持ssh远程访问不了</div>
+                </td>
+            </tr>
+        </tbody></table>
+        </div>
+    
+
+    
+        
+        
+        <div id="r_1339111" class="cell">
+        
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tbody><tr>
+                <td valign="top" width="48" align="center"><img src="62082_normal.png" class="avatar" align="default" border="0"></td>
+                <td valign="top" width="10"></td>
+                <td valign="top" width="auto" align="left"><div class="fr"> &nbsp; &nbsp; <span class="no">10</span></div>
+                    <div class="sep3"></div>
+                    <strong><a href="https://www.v2ex.com/member/zzutmebwd" class="dark">zzutmebwd</a></strong>&nbsp; &nbsp;<span class="fade small">2014-09-12 11:06:13 +08:00 via Android</span> 
+                    <div class="sep5"></div>
+                    <div class="reply_content">@<a href="https://www.v2ex.com/member/ant_sz">ant_sz</a> 嗯嗯 不过nomachine是压缩的 还可以调压缩程度，比较赞</div>
+                </td>
+            </tr>
+        </tbody></table>
+        </div>
+    
+
+    
+        
+        
+        <div id="r_1339440" class="cell">
+        
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tbody><tr>
+                <td valign="top" width="48" align="center"><img src="20669_normal.png" class="avatar" align="default" border="0"></td>
+                <td valign="top" width="10"></td>
+                <td valign="top" width="auto" align="left"><div class="fr"> &nbsp; &nbsp; <span class="no">11</span></div>
+                    <div class="sep3"></div>
+                    <strong><a href="https://www.v2ex.com/member/ioiioi" class="dark">ioiioi</a></strong>&nbsp; &nbsp;<span class="fade small">2014-09-12 13:16:13 +08:00</span> 
+                    <div class="sep5"></div>
+                    <div class="reply_content">我有个需求：
+<br>从pc上通过远程桌面协议观看在服务器（windows）上播放的网络视频，我尝试过vnc、rdp，都卡顿。
+<br>有什么解决办法吗？</div>
+                </td>
+            </tr>
+        </tbody></table>
+        </div>
+    
+
+    
+        
+        
+        <div id="r_1339479" class="cell">
+        
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tbody><tr>
+                <td valign="top" width="48" align="center"><img src="362_normal.png" class="avatar" align="default" border="0"></td>
+                <td valign="top" width="10"></td>
+                <td valign="top" width="auto" align="left"><div class="fr"> &nbsp; &nbsp; <span class="no">12</span></div>
+                    <div class="sep3"></div>
+                    <strong><a href="https://www.v2ex.com/member/est" class="dark">est</a></strong>&nbsp; &nbsp;<span class="fade small">2014-09-12 13:40:26 +08:00</span> 
+                    <div class="sep5"></div>
+                    <div class="reply_content">@<a href="https://www.v2ex.com/member/ioiioi">ioiioi</a> 没办法。视频压缩重传怎么都会卡。考虑流媒体方式吧。</div>
+                </td>
+            </tr>
+        </tbody></table>
+        </div>
+    
+
+    
+        
+        
+        <div id="r_1339485" class="cell">
+        
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tbody><tr>
+                <td valign="top" width="48" align="center"><img src="1368_normal.png" class="avatar" align="default" border="0"></td>
+                <td valign="top" width="10"></td>
+                <td valign="top" width="auto" align="left"><div class="fr"> &nbsp; &nbsp; <span class="no">13</span></div>
+                    <div class="sep3"></div>
+                    <strong><a href="https://www.v2ex.com/member/clino" class="dark">clino</a></strong>&nbsp; &nbsp;<span class="fade small">2014-09-12 13:43:43 +08:00</span> 
+                    <div class="sep5"></div>
+                    <div class="reply_content">ubuntu 12.04 自带的 xpra 版本好低,直接装最新版本的又装不上</div>
+                </td>
+            </tr>
+        </tbody></table>
+        </div>
+    
+
+    
+        
+        
+        <div id="r_1339716" class="cell">
+        
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tbody><tr>
+                <td valign="top" width="48" align="center"><img src="15255_normal.png" class="avatar" align="default" border="0"></td>
+                <td valign="top" width="10"></td>
+                <td valign="top" width="auto" align="left"><div class="fr"> &nbsp; &nbsp; <span class="no">14</span></div>
+                    <div class="sep3"></div>
+                    <strong><a href="https://www.v2ex.com/member/ant_sz" class="dark">ant_sz</a></strong>&nbsp; &nbsp;<span class="fade small">2014-09-12 15:42:06 +08:00</span> 
+                    <div class="sep5"></div>
+                    <div class="reply_content">@<a href="https://www.v2ex.com/member/ioiioi">ioiioi</a> 我也觉得这个通过远程桌面的话，没有什么好办法。如果是在一个局域网里的话，可以考虑部署 uPnP 服务。如果不是同一个局域网，可以开 http server 出来，然后有些播放器支持直接从http链接播放。</div>
+                </td>
+            </tr>
+        </tbody></table>
+        </div>
+    
+
+    
+        
+        
+        <div id="r_1341219" class="cell">
+        
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tbody><tr>
+                <td valign="top" width="48" align="center"><img src="34431_normal.png" class="avatar" align="default" border="0"></td>
+                <td valign="top" width="10"></td>
+                <td valign="top" width="auto" align="left"><div class="fr"> &nbsp; &nbsp; <span class="no">15</span></div>
+                    <div class="sep3"></div>
+                    <strong><a href="https://www.v2ex.com/member/u" class="dark">u</a></strong>&nbsp; &nbsp;<span class="fade small">2014-09-13 11:07:28 +08:00</span> 
+                    <div class="sep5"></div>
+                    <div class="reply_content">请问在网关后面如何配置呢？</div>
+                </td>
+            </tr>
+        </tbody></table>
+        </div>
+    
+
+    
+        
+        
+        <div id="r_1341668" class="cell">
+        
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tbody><tr>
+                <td valign="top" width="48" align="center"><img src="15255_normal.png" class="avatar" align="default" border="0"></td>
+                <td valign="top" width="10"></td>
+                <td valign="top" width="auto" align="left"><div class="fr"> &nbsp; &nbsp; <span class="no">16</span></div>
+                    <div class="sep3"></div>
+                    <strong><a href="https://www.v2ex.com/member/ant_sz" class="dark">ant_sz</a></strong>&nbsp; &nbsp;<span class="fade small">2014-09-13 15:44:08 +08:00</span> 
+                    <div class="sep5"></div>
+                    <div class="reply_content">@<a href="https://www.v2ex.com/member/u">u</a> xpra 么？ xpra 可以通过ssh访问啊，要看你如何ssh进去了。</div>
+                </td>
+            </tr>
+        </tbody></table>
+        </div>
+    
+
+
+</div>
+<div class="sep20"></div>
+
+
+
+
+
+
+            </div>
+            
+            
+        </div>
+        <div class="c"></div>
+        <div class="sep20"></div>
+    </div>
+    <div id="Bottom">
+        <div class="content">
+            <div class="inner">
+                <div class="sep10"></div>
+                    <div class="fr">
+                        <a href="https://www.digitalocean.com/?refcode=1b51f1a7651d" target="_blank"><img src="do.png" alt="DigitalOcean" width="64" border="0"></a>
+                    </div>
+                    <strong><a href="https://www.v2ex.com/about" class="dark" target="_self">关于</a> &nbsp; <span class="snow">·</span> &nbsp; <a href="https://www.v2ex.com/faq" class="dark" target="_self">FAQ</a> &nbsp; <span class="snow">·</span> &nbsp; <a href="https://www.v2ex.com/p/7v9TEc53" class="dark" target="_self">API</a> &nbsp; <span class="snow">·</span> &nbsp; <a href="https://www.v2ex.com/mission" class="dark" target="_self">我们的愿景</a> &nbsp; <span class="snow">·</span> &nbsp; <a href="https://www.v2ex.com/ip" class="dark" target="_self">IP 查询</a> &nbsp; <span class="snow">·</span> &nbsp; <a href="https://workspace.v2ex.com/" class="dark" target="_blank">工作空间</a> &nbsp; <span class="snow">·</span> &nbsp; <a href="https://www.v2ex.com/advertise" class="dark" target="_self">广告投放</a> &nbsp; <span class="snow">·</span> &nbsp; <a href="https://www.v2ex.com/advertise/2015.html" class="dark" target="_self">鸣谢</a> &nbsp; <span class="snow">·</span> &nbsp; <a href="https://www.v2ex.com/start" class="dark" target="_blank">上网首页</a> &nbsp; <span class="snow">·</span> &nbsp; 1110 人在线</strong> &nbsp; <span class="fade">最高记录 1893</span> &nbsp; <span class="snow">·</span> &nbsp; <a href="https://www.v2ex.com/select/language"><img src="lang_zhcn_32.png" alt="" width="20" align="absmiddle" border="0"></a>
+                    <div class="sep20"></div>
+                    创意工作者们的社区
+                    <div class="sep5"></div>
+                    World is powered by solitude
+                    <div class="sep20"></div>
+                    <span class="small fade">VERSION: 3.9.7.3 · 50ms · UTC 07:19 · PVG 15:19 · LAX 00:19 · JFK 03:19<br>♥ Do have faith in what you're doing.</span>
+                    <div class="sep20"></div>
+                    <span class="f12 gray"><a href="http://www.miibeian.gov.cn/" target="_blank" rel="nofollow">沪ICP备15015613号-1</a></span>
+                <div class="sep10"></div>
+            </div>
+        </div>
+    </div>
+    
+
+    
+
+    
+
+    
+	
+    
+
+    
+    
+
+</body>
+</html>

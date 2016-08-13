@@ -1,0 +1,214 @@
+/* ::::: http://wiki.ubuntu.org.cn/load.php?debug=false&lang=zh-hans&modules=mediawiki.legacy.commonPrint%2Cshared%7Cmediawiki.sectionAnchor%7Cskins.cavendish&only=styles&skin=cavendish ::::: */
+
+@media print {
+  .noprint, div#jump-to-nav, .mw-jump, div.top, div#column-one, .mw-editsection, .mw-editsection-like, .toctoggle, #toc.tochidden, div#f-poweredbyico, div#f-copyrightico, li#about, li#disclaimer, li#mobileview, li#privacy, #footer-places, .mw-hidden-catlinks, .usermessage, .patrollink, .ns-0 .mw-redirectedfrom, #mw-navigation, #siteNotice { display: none; }
+  .wikitable, .thumb, img { page-break-inside: avoid; }
+  h2, h3, h4, h5, h6 { page-break-after: avoid; }
+  p { widows: 3; orphans: 3; }
+  body { background: none repeat scroll 0% 0% white; color: black; margin: 0px; padding: 0px; }
+  ul { list-style-type: square; }
+  h1, h2, h3, h4, h5, h6 { font-weight: bold; }
+  p { margin: 1em 0px; line-height: 1.2em; }
+  #globalWrapper { width: 100% ! important; min-width: 0px ! important; }
+  #column-content { margin: 0px ! important; }
+  #toc { border: 1px solid rgb(170, 170, 170); background-color: rgb(249, 249, 249); padding: 5px; display: table; }
+  #footer { background: none repeat scroll 0% 0% white; color: black; margin-top: 1em; border-top: 1px solid rgb(170, 170, 170); direction: ltr; }
+  img { border: medium none; vertical-align: middle; }
+  a.stub, a.new { color: rgb(186, 0, 0); text-decoration: none; }
+  a { color: black ! important; background: none repeat scroll 0% 0% transparent ! important; padding: 0px ! important; }
+  a:link, a:visited { color: rgb(85, 34, 0); background: none repeat scroll 0% 0% transparent; text-decoration: underline; }
+  a, a.external, a.new, a.stub { color: black ! important; text-decoration: none ! important; }
+  a, a.external, a.new, a.stub { color: inherit ! important; text-decoration: inherit ! important; }
+  .catlinks ul { display: inline; margin: 0px; padding: 0px; list-style: none outside none; }
+  .catlinks li { display: inline-block; line-height: 1.15em; padding: 0px 0.4em; border-left: 1px solid rgb(170, 170, 170); margin: 0.1em 0px; }
+  .catlinks li:first-child { padding-left: 0.2em; border-left: medium none; }
+  .printfooter { padding: 1em 0px; }
+}
+@media screen {
+  .mw-content-ltr { direction: ltr; }
+  .sitedir-ltr textarea, .sitedir-ltr input { direction: ltr; }
+  input[type="submit"], input[type="button"], input[type="reset"], input[type="file"] { direction: ltr; }
+  #catlinks { text-align: left; }
+  .catlinks ul { display: inline; margin: 0px; padding: 0px; list-style: none outside none; }
+  .catlinks li { display: inline-block; line-height: 1.25em; border-left: 1px solid rgb(170, 170, 170); margin: 0.125em 0px; padding: 0px 0.5em; }
+  .catlinks li:first-child { padding-left: 0.25em; border-left: medium none; }
+  a.new { color: rgb(186, 0, 0); }
+  .visualClear { clear: both; }
+  .mw-content-ltr ul, .mw-content-rtl .mw-content-ltr ul { margin: 0.3em 0px 0px 1.6em; padding: 0px; }
+  h1:lang(anp), h1:lang(as), h1:lang(bh), h1:lang(bho), h1:lang(bn), h1:lang(gu), h1:lang(hi), h1:lang(kn), h1:lang(ks), h1:lang(ml), h1:lang(mr), h1:lang(my), h1:lang(mai), h1:lang(ne), h1:lang(new), h1:lang(or), h1:lang(pa), h1:lang(pi), h1:lang(sa), h1:lang(ta), h1:lang(te) { line-height: 1.6em ! important; }
+  h2:lang(anp), h3:lang(anp), h4:lang(anp), h5:lang(anp), h6:lang(anp), h2:lang(as), h3:lang(as), h4:lang(as), h5:lang(as), h6:lang(as), h2:lang(bho), h3:lang(bho), h4:lang(bho), h5:lang(bho), h6:lang(bho), h2:lang(bh), h3:lang(bh), h4:lang(bh), h5:lang(bh), h6:lang(bh), h2:lang(bn), h3:lang(bn), h4:lang(bn), h5:lang(bn), h6:lang(bn), h2:lang(gu), h3:lang(gu), h4:lang(gu), h5:lang(gu), h6:lang(gu), h2:lang(hi), h3:lang(hi), h4:lang(hi), h5:lang(hi), h6:lang(hi), h2:lang(kn), h3:lang(kn), h4:lang(kn), h5:lang(kn), h6:lang(kn), h2:lang(ks), h3:lang(ks), h4:lang(ks), h5:lang(ks), h6:lang(ks), h2:lang(ml), h3:lang(ml), h4:lang(ml), h5:lang(ml), h6:lang(ml), h2:lang(mr), h3:lang(mr), h4:lang(mr), h5:lang(mr), h6:lang(mr), h2:lang(my), h3:lang(my), h4:lang(my), h5:lang(my), h6:lang(my), h2:lang(mai), h3:lang(mai), h4:lang(mai), h5:lang(mai), h6:lang(mai), h2:lang(ne), h3:lang(ne), h4:lang(ne), h5:lang(ne), h6:lang(ne), h2:lang(new), h3:lang(new), h4:lang(new), h5:lang(new), h6:lang(new), h2:lang(or), h3:lang(or), h4:lang(or), h5:lang(or), h6:lang(or), h2:lang(pa), h3:lang(pa), h4:lang(pa), h5:lang(pa), h6:lang(pa), h2:lang(pi), h3:lang(pi), h4:lang(pi), h5:lang(pi), h6:lang(pi), h2:lang(sa), h3:lang(sa), h4:lang(sa), h5:lang(sa), h6:lang(sa), h2:lang(ta), h3:lang(ta), h4:lang(ta), h5:lang(ta), h6:lang(ta), h2:lang(te), h3:lang(te), h4:lang(te), h5:lang(te), h6:lang(te) { line-height: 1.2em; }
+  #toc ul, .toc ul { margin: 0.3em 0px; }
+  .mw-content-ltr .toc ul, .mw-content-ltr #toc ul, .mw-content-rtl .mw-content-ltr .toc ul, .mw-content-rtl .mw-content-ltr #toc ul { text-align: left; }
+  #toc #toctitle, .toc #toctitle, #toc .toctitle, .toc .toctitle { direction: ltr; }
+  .mw-jump, #jump-to-nav { overflow: hidden; height: 0px; }
+  .printfooter { display: none; }
+  .mw-editsection, .toctoggle, .tochidden, #jump-to-nav { -moz-user-select: none; }
+}
+@media screen {
+  #column-content, #side { background: none repeat scroll 0% 0% rgb(255, 255, 255); line-height: 1.7em; color: rgb(0, 0, 0); }
+  #column-content #content { margin-top: 0px; }
+  hr { height: 1px; background-color: rgb(170, 170, 170); color: rgb(170, 170, 170); margin: 0.2em 0px; border-right: 1px solid rgb(255, 255, 255); border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(255, 255, 255) rgb(255, 255, 255); -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; }
+  body { font-family: Verdana,"DejaVu Sans",sans-serif; background: url("subsite_back.png") repeat-x scroll 0% 0% rgb(255, 255, 255); margin: 0px 1% 20px; padding-top: 0px; color: rgb(0, 0, 0); }
+  h1, h2, h3, h4, h5, h6 { color: black; background: none repeat scroll 0% 0% transparent; font-weight: normal; margin-top: 0.5em; margin-bottom: 0.3em; padding-top: 0.5em; padding-bottom: 0.17em; border-bottom: 1px solid rgb(170, 170, 170); overflow: hidden; }
+  h3, h4, h5, h6 { border-bottom: medium none; font-weight: bold; }
+  h1 { font-size: 16pt; font-weight: normal; }
+  #firstHeading { margin-top: 0.1em; padding-top: 0.2em; }
+  h2 { font-size: 14pt; font-weight: normal; }
+  h3 { font-size: 13pt; }
+  h5 { font-size: 10.5pt; }
+  h6 { font-size: 10pt; border: 0px none; }
+  :link, a { text-decoration: none; color: rgb(0, 51, 153); }
+  :visited { color: rgb(90, 54, 150); text-decoration: none; }
+  a.new, #p-personal a.new { color: rgb(186, 0, 0); }
+  a.new:visited, #p-personal a.new:visited { color: rgb(165, 88, 88); }
+  table { line-height: 1.6em; }
+  #content table { border-radius: 6px 6px 6px 6px; }
+  #globalWrapper { margin: 0px auto; font-size: 9.5pt; }
+  #mBody { clear: both; padding: 0px; font-size: 9pt; }
+  #side { float: left; width: 15%; margin-bottom: 1em; font-size: 8.5pt; }
+  #column-content { float: right; width: 83%; margin-bottom: 1em; }
+  #header { margin-bottom: 1em; position: relative; min-height: 39px; height: 3em; padding: 18px 0px; }
+  #p-cactions { position: absolute; bottom: 0px; right: 0px; margin: 0px; padding: 0px 10px 0px 0px; overflow: hidden; z-index: 3; white-space: nowrap; }
+  #p-cactions ul { list-style: none outside none; line-height: 0.8em; }
+  #p-cactions li { float: left; margin: 0px 2px 0px 0px; padding: 0px 6px 0px 0px; overflow: visible; display: inline; white-space: nowrap; font-size: 7.5pt; border-top-right-radius: 6px; border-top-left-radius: 6px; border-top-width: 2px; border-top-style: solid; }
+  #p-cactions li a { display: block; float: left; margin: 0px; padding: 2px 2px 4px 8px; z-index: 0; color: rgb(255, 255, 255); border: medium none; text-decoration: none; }
+  #p-cactions li:hover a, #p-cactions li a:hover { text-decoration: none; border-bottom: 0px none; }
+  #p-cactions li.selected, #p-cactions li.selected:hover { border-top-color: rgb(255, 198, 0); background-color: rgb(255, 255, 255); }
+  #p-cactions li.selected { border-bottom: 1px solid rgb(255, 255, 255); font-weight: bold; }
+  #p-cactions .new a { color: rgb(255, 217, 85); }
+  #p-cactions li#ca-talk, #p-cactions li#ca-watch, #p-cactions li#ca-unwatch { margin-right: 1.6em; }
+  div#header { clear: both; border-radius: 6px 6px 6px 6px; }
+  #header h6 a { display: block; text-indent: -700em; text-decoration: none; background-size: 100% auto; }
+  #header h6 { position: absolute; top: 0px; left: 0px; margin: 0px; font-size: 2px; height: 8px; z-index: 100; padding-left: 5px; overflow: visible; }
+  #p-personal { margin-bottom: 0px; }
+  #p-personal h5 { display: none; }
+  #p-personal .pBody { line-height: 19px; margin: 0px 0px 1.4em; text-align: right; white-space: nowrap; border: medium none; z-index: 0; overflow: visible; background: none repeat scroll 0% 0% transparent; padding: 0px; }
+  #p-personal .top-nav-element { display: inline; margin: 0px; height: 25px; font-size: 10px; padding: 0px; }
+  #p-personal .top-nav-left { width: 7px; height: 25px; display: inline; background: url("top-left.png") no-repeat scroll 0% 0% transparent; padding-top: 5px; padding-right: 4px; padding-bottom: 8px; margin-left: 3px; margin-right: -1px; }
+  #p-personal .top-nav-right { width: 7px; height: 25px; display: inline; background: url("top-right.png") no-repeat scroll 0% 0% transparent; padding-top: 5px; padding-left: 4px; padding-bottom: 8px; margin-left: -1px; margin-right: 3px; }
+  #p-personal .top-nav-mid { text-decoration: none; height: 25px; display: inline; background: url("top-mid.png") repeat-x scroll 0% 0% transparent; padding: 5px 3px 8px; margin-left: -4px; margin-right: -4px; font-size: 10px; }
+  #p-personal ul { border: medium none; line-height: 22px; color: rgb(47, 111, 171); margin: 0px; text-align: right; list-style: none outside none; z-index: 0; background: none repeat scroll 0% 0% transparent; }
+  h3#siteSub { display: none; font-size: 0.75em; color: rgb(170, 170, 170); }
+  #contentSub, #contentSub2 { font-size: 8pt; line-height: 1.2em; margin: 0px 0px 0.8em; color: rgb(125, 125, 125); width: auto; }
+  #jump-to-nav { display: none; }
+  img { border: medium none; vertical-align: middle; }
+  p { margin: 0.4em 0px 0.5em; line-height: 1.6em; }
+  ul { line-height: 1.6em; list-style-type: square; margin: 0.4em 0px 0.4em 1.5em; padding: 0px; list-style-image: url("bullet.gif"); font-weight: normal; }
+  li { margin-top: 0.2em; margin-bottom: 0.2em; }
+  form { border: medium none; margin: 0px; }
+  input { margin: 2px; vertical-align: middle; }
+  input[type="submit"] { cursor: pointer; }
+  td > p, td > div { margin: 0px; padding: 0px; }
+  code, pre, tt, kbd, samp { font-size: 1em; overflow-x: auto; overflow-y: hidden; font-family: Menlo,Monaco,"Courier New","Nimbus Mono L",monospace,sans-serif; }
+  code, tt { background-color: rgb(249, 249, 249); white-space: nowrap; }
+  #catlinks, .catlinks { border: 1px solid rgb(170, 170, 170); background-color: rgb(249, 249, 249); padding: 3px 5px; margin-top: 1em; clear: both; border-radius: 6px 6px 6px 6px; box-shadow: 1px 1px 1px grey; }
+  #toc, .toc, .mw-warning { border: 1px solid rgb(170, 170, 170); background-color: rgb(249, 249, 249); padding: 5px; font-size: 9pt; border-radius: 6px 6px 6px 6px; box-shadow: 1px 1px 1px grey; }
+  #toc, .toc { display: inline-block; }
+  #toctitle h2 { display: inline; border: medium none; padding: 0px; font-size: 9.5pt; font-weight: bold; }
+  #toc #toctitle, .toc #toctitle, #toc .toctitle, .toc .toctitle { text-align: center; }
+  #toc ul, .toc ul { list-style-type: none; list-style-image: none; margin-left: 0px; padding-left: 0px; text-align: left; }
+  #toctitle .toctoggle { font-size: 8pt; }
+  #bodyContent a.external, #bodyContent a[href^="gopher://"] { background: url("external.png") no-repeat scroll right center / 12px 12px transparent; padding-right: 16px; }
+  #bodyContent a[href^="https://"], .link-https { background: url("locked.png") no-repeat scroll right center / 12px 12px transparent; padding-right: 16px; }
+  .ltr #bodyContent a.external { padding-left: 0px; }
+  #bodyContent a.external { color: rgb(51, 102, 187); }
+  .portlet { border: medium none; margin: 0px 0px 0.5em 0em; float: none; padding: 0px; overflow: hidden; }
+  .portlet h5, .portlet h3 { background: none repeat scroll 0% 0% transparent; padding: 0em 1em 0em 0.5em; display: inline; font-size: 8.5pt; height: 1em; font-weight: normal; white-space: nowrap; border-bottom: medium none; }
+  #nav { padding: 6px 0px; line-height: 1em; margin: 0px 0px 1em; border-radius: 6px 6px 6px 6px; box-shadow: 1px 1px 1px grey; }
+  #nav ul { margin: 0px; padding: 0px; list-style: none outside none; }
+  #nav div, #nav li { display: inline; padding: 0px; margin: 0px; }
+  #nav div h5, #nav div h3 { display: block; padding: 0.5em 1em; font-weight: bold; color: rgb(102, 102, 102); font-size: 8.5pt; }
+  #nav div li a { padding: 6px 8px 6px 20px; }
+  #nav .pBody { border: medium none; }
+  #nav div a, #nav div span.social { display: block; padding: 8px 10px; text-decoration: none; font-size: 8pt; }
+  #header form { display: inline; }
+  #header #p-search { position: absolute; font-size: 10pt; top: 0px; right: 0px; padding: 15px 20px 0px 0px; margin: 0px; text-align: right; white-space: nowrap; }
+  #header #p-search h3 { display: none; }
+  #searchBody { display: inline; }
+  #header form label, #header label { font-size: 8.5pt; }
+  #header form input { font-size: 8.5pt; }
+  #header form #searchInput:hover, #header form #searchInput:focus { background: none repeat scroll 0% 0% rgb(255, 255, 255); }
+  #p-search { z-index: 3; border-bottom: medium none; }
+  #searchgobutton, #searchGoButton { padding-left: 0.5em; padding-right: 0.5em; font-weight: bold; }
+  #header form #searchInput { width: 270px; font-size: 8.5pt; padding: 2px; margin: 0px 0.5em; border-radius: 6px 6px 6px 6px; }
+  .suggestions { margin-right: 142px; }
+  #footer { clear: both; margin-top: 1em; font-size: 7pt; border-top: 1px solid rgb(153, 153, 153); padding-top: 2em; color: rgb(102, 102, 102); }
+  #footer ul { margin: 0px 0px 1em; padding: 0px; line-height: 1.6em; list-style: none outside none; }
+  #footer li { margin: 0px; white-space: nowrap; }
+  #footer table { width: 100%; text-align: center; }
+  #f-list { width: 70%; }
+  #f-list #f-credits { white-space: normal; }
+  #footer td.f-iconsection { width: 5%; text-align: center; vertical-align: top; padding-right: 1em; white-space: nowrap; }
+  #f-list li { list-style: none outside none; }
+  #footer #f-poweredbyico a, #footer #f-copyrightico a { display: list-item; margin-bottom: 5px; list-style: none outside none; }
+  #footer p, #footer a { margin: 0.6em 0px; display: inline; white-space: nowrap; }
+  #f-about, #f-disclaimer, #f-privacy, #f-viewcount, #f-numberofwatchingusers { display: inline; padding-left: 5px; padding-right: 5px; }
+  .printfooter { display: none; }
+}
+@media print {
+  body { margin-left: 5em; margin-right: 5em; font-size: 11pt; }
+  #p-personal, #side, #header, #skin-info, #f-numberofwatchingusers, #f-viewcount, #f-privacy, #f-about, #f-disclaimer { display: none; }
+  #footer #f-list li { white-space: normal; }
+  #footer li { list-style-type: none; }
+  #footer table { width: 100%; }
+  #catlinks { border-top: 1px solid rgb(170, 170, 170); margin-top: 1em; padding-top: 1em; }
+  #catlinks ul li { font-style: italic; }
+  table p { margin: 0px; }
+}
+/* ::::: http://wiki.ubuntu.org.cn/skins/Cavendish/colors/brown.css?303 (@media screen) ::::: */
+
+@media screen {
+#header { background: linear-gradient(to bottom, rgb(227, 206, 173) 0%, rgb(218, 195, 158) 35%, rgb(204, 177, 134) 75%, rgb(197, 170, 125) 100%) repeat scroll 0% 0% transparent; }
+#header form label, #header label { color: rgb(119, 79, 3); }
+#header form #searchInput { border: 1px solid rgb(119, 79, 3); background-color: rgb(251, 244, 232); }
+#p-cactions li { border-bottom: 1px solid rgb(180, 138, 72); background-color: rgb(136, 94, 27); border-top-color: rgb(136, 94, 27); }
+#p-cactions li:hover { border-top-color: rgb(180, 138, 72); background-color: rgb(180, 138, 72); }
+#p-cactions li.selected a { color: rgb(120, 0, 0); }
+#nav { background: none repeat scroll 0% 0% rgb(232, 221, 202); }
+#nav div a:hover { background: none repeat scroll 0% 0% rgb(232, 221, 202); }
+#nav div a, #nav div span.social { background-color: rgb(251, 244, 232); border-bottom: 1px solid rgb(221, 221, 221); border-right: 1px solid rgb(221, 221, 221); border-top: 1px solid rgb(255, 255, 255); }
+.portlet li a:link { color: rgb(120, 0, 0); text-decoration: none; }
+.portlet li a:visited { color: rgb(119, 79, 3); text-decoration: none; }
+}
+/* ::::: http://wiki.ubuntu.org.cn/skins/Cavendish/extensions.css?303 (@media screen) ::::: */
+
+@media screen {
+/* ::::: (import) http://wiki.ubuntu.org.cn/skins/Cavendish/babel.css ::::: */
+/* ::::: (end import) ::::: */
+}
+/* ::::: http://wiki.ubuntu.org.cn/skins/Cavendish/style.php?303 (@media screen) ::::: */
+
+@media screen {
+#header h6 a { background-color: transparent; background-image: url("__.dat"); background-repeat: no-repeat; width: 322px; height: 53px; margin-top: 10px; }
+#f-poweredbyico { display: none; }
+}
+/* ::::: [internal] ::::: */
+
+.suggestions { overflow: hidden; position: absolute; top: 0px; left: 0px; width: 0px; border: medium none; z-index: 1099; padding: 0px; margin: -1px 0px 0px; }
+.suggestions-special { position: relative; background-color: white; cursor: pointer; border: 1px solid rgb(170, 170, 170); margin: -2px 0px 0px; display: none; padding: 0.25em; line-height: 1.25em; }
+.suggestions-results { background-color: white; cursor: pointer; border: 1px solid rgb(170, 170, 170); padding: 0px; margin: 0px; }
+.portlet a { text-decoration: none; }
+.portlet a:hover { text-decoration: underline; }
+#catlinks { border: 1px solid rgb(170, 170, 170); background-color: rgb(249, 249, 249); padding: 5px; margin-top: 1em; clear: both; }
+@media screen, handheld, projection {
+}
+/* ::::: [internal] ::::: */
+
+/* ::::: http://wiki.ubuntu.org.cn/load.php?debug=false&lang=zh-hans&modules=site&only=styles&skin=cavendish ::::: */
+
+.portlet a { text-decoration: none; }
+.portlet a:hover { text-decoration: underline; }
+#catlinks { border: 1px solid rgb(170, 170, 170); background-color: rgb(249, 249, 249); padding: 5px; margin-top: 1em; clear: both; }
+@media screen, handheld, projection {
+}
+/* ::::: [internal] ::::: */
+
+a:lang(ar), a:lang(kk-arab), a:lang(mzn), a:lang(ps), a:lang(ur) { text-decoration: none; }
+/* ::::: [internal] ::::: */
+
+@media screen {
+}
+@media print {
+}
+/* ::::: [internal] ::::: */
+

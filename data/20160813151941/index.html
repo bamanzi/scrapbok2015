@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en" class="client-js" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<title>Xpra - ArchWiki</title>
+
+
+
+<!--[if IE 6]><link rel="stylesheet" href="/skins/ArchLinux/IE60Fixes.css?303" media="screen" /><![endif]-->
+<!--[if IE 7]><link rel="stylesheet" href="/skins/ArchLinux/IE70Fixes.css?303" media="screen" /><![endif]-->
+<meta name="ResourceLoaderDynamicStyles" content="">
+
+
+
+<meta name="generator" content="MediaWiki 1.26.3">
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="search" type="application/opensearchdescription+xml" href="https://wiki.archlinux.org/opensearch_desc.php" title="ArchWiki (en)">
+<link rel="EditURI" type="application/rsd+xml" href="https://wiki.archlinux.org/api.php?action=rsd">
+<link rel="copyright" href="http://www.gnu.org/copyleft/fdl.html">
+<link rel="alternate" type="application/atom+xml" title="ArchWiki Atom feed" href="https://wiki.archlinux.org/index.php?title=Special:RecentChanges&amp;feed=atom">
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-Xpra skin-archlinux action-view">
+
+		<div id="archnavbar"><!-- Arch Linux global navigation bar -->
+			<div id="archnavbarlogo">
+				<p><a id="logo" href="https://www.archlinux.org/"></a></p>
+			</div>
+			<div id="archnavbarmenu">
+				<ul id="archnavbarlist">
+					<li id="anb-home"><a href="https://www.archlinux.org/">Home</a></li><li id="anb-packages"><a href="https://www.archlinux.org/packages/">Packages</a></li><li id="anb-forums"><a href="https://bbs.archlinux.org/">Forums</a></li><li id="anb-wiki" class="anb-selected"><a href="https://wiki.archlinux.org/">Wiki</a></li><li id="anb-bugs"><a href="https://bugs.archlinux.org/">Bugs</a></li><li id="anb-aur"><a href="https://aur.archlinux.org/">AUR</a></li><li id="anb-download"><a href="https://www.archlinux.org/download/">Download</a></li>				</ul>
+			</div>
+		</div><!-- #archnavbar -->
+
+		<div id="globalWrapper">
+		<div id="column-content">
+			<div id="content" class="mw-body" role="main">
+				<a id="top"></a>
+				
+				<div class="mw-indicators">
+</div>
+				<h1 id="firstHeading" class="firstHeading" lang="en">Xpra</h1>
+				
+				<div id="bodyContent" class="mw-body-content">
+					<div id="siteSub">From ArchWiki</div>
+					<div id="contentSub"></div>
+										<div id="jump-to-nav" class="mw-jump">Jump to: <a href="#column-one">navigation</a>, <a href="#searchInput">search</a></div>
+
+					<!-- start content -->
+					<div id="mw-content-text" dir="ltr" class="mw-content-ltr" lang="en"><p>From the <a rel="nofollow" class="external text" href="http://xpra.org/">Xpra website</a>:
+</p><p>Xpra is '<a href="https://wiki.archlinux.org/index.php/Screen" title="Screen" class="mw-redirect">screen</a> for X': it allows you to run X programs, usually on a remote host, direct their display to your local machine, and then to disconnect from these programs and reconnect from the same or another machine, without losing any state. It gives you remote access to individual applications. 
+</p>
+<ul><li> Xpra is "rootless" or "seamless": programs you run under it show up on your desktop as regular programs, managed by your regular window manager. </li>
+<li> Sessions can be accessed over SSH, or password protected over plain TCP sockets. </li>
+<li> Xpra is usable over reasonably slow links and does its best to adapt to changing network bandwidth limits. (see also adaptive JPEG mode) </li>
+<li> Xpra is open-source (GPLv2+), multi-platform and multi-language, with current clients written in Python and Java.</li></ul>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2><span class="toctoggle">&nbsp;[<a href="#" id="togglelink">hide</a>]&nbsp;</span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Installation"><span class="tocnumber">1</span> <span class="toctext">Installation</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Use"><span class="tocnumber">2</span> <span class="toctext">Use</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#Tips_and_tricks"><span class="tocnumber">3</span> <span class="toctext">Tips and tricks</span></a>
+<ul>
+<li class="toclevel-2 tocsection-4"><a href="#Start_at_boot"><span class="tocnumber">3.1</span> <span class="toctext">Start at boot</span></a>
+<ul>
+<li class="toclevel-3 tocsection-5"><a href="#Server"><span class="tocnumber">3.1.1</span> <span class="toctext">Server</span></a></li>
+<li class="toclevel-3 tocsection-6"><a href="#Client"><span class="tocnumber">3.1.2</span> <span class="toctext">Client</span></a>
+<ul>
+<li class="toclevel-4 tocsection-7"><a href="#Method_1:_.xinitrc"><span class="tocnumber">3.1.2.1</span> <span class="toctext">Method 1: .xinitrc</span></a></li>
+<li class="toclevel-4 tocsection-8"><a href="#Method_2:_systemd_user_session"><span class="tocnumber">3.1.2.2</span> <span class="toctext">Method 2: systemd user session</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-9"><a href="#Error:_Only_console_users_are_allowed_to_run_the_X_server"><span class="tocnumber">3.2</span> <span class="toctext">Error: Only console users are allowed to run the X server</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-10"><a href="#See_also"><span class="tocnumber">4</span> <span class="toctext">See also</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Installation">Installation</span></h2>
+<p>Install the package <span class="plainlinks archwiki-template-pkg"><a rel="nofollow" class="external text" href="https://aur.archlinux.org/packages/xpra-winswitch/">xpra-winswitch</a></span><sup><small>AUR</small></sup> from the <a href="https://wiki.archlinux.org/index.php/AUR" title="AUR" class="mw-redirect">AUR</a>, in the server and client(s) machines.
+</p>
+<div style="padding: 5px; margin: 0.5em 0px; background-color: rgb(221, 255, 221); border: thin solid rgb(187, 221, 187); overflow: hidden;"><strong> Tip: </strong>If you intend to run Xpra locally under a existing Xorg session with graphic drivers such as <code>nvidia</code> or <code>ATi</code> you will need to modify the default xpra config. Xpra fetches <code>-configdir</code> from <code>xorg-server-xvfb</code> which will be <code>/etc/X11/xorg.conf.d</code>, there for you need to change this by following the three bottom steps of <a rel="nofollow" class="external text" href="https://bbs.archlinux.org/viewtopic.php?pid=1333056#p1333056">1333056#p1333056</a> in order to run xpra locally.</div>
+<h2><span class="mw-headline" id="Use">Use</span></h2>
+<p>Start an xpra server on the machine where you want to run the applications (we are using display number <b>7</b> here):
+</p>
+<pre>$ xpra start&nbsp;:7</pre>
+<p>Now you can start an application, e.g. firefox:
+</p>
+<pre>$ DISPLAY=:7 firefox</pre>
+<p>Or, if you want to start a screen session and execute the programs from there to be able to close the console:
+</p>
+<pre>$ DISPLAY=:7 screen
+[screen starts]
+$ firefox</pre>
+<p>Note that if you start <code>screen</code> like this you don't have to specify the display number when executing programs. They will be running on the xpra display automatically.
+</p><p>After running these commands, you don't see any windows yet. To actually see the applications on your display, you have to connect to the xpra server. If you are connecting to an xpra display on the same machine, start the xpra client like this:
+</p>
+<pre>$ xpra attach&nbsp;:7</pre>
+<p>Or, if you are connecting to a remote machine over ssh:
+</p>
+<pre>$ xpra attach ssh:user@example.com:7</pre>
+<p>After starting the client, any programs running on the remote server display are displayed on your local screen. To detach, type <code>ctrl-c</code> or use the command:
+</p>
+<pre>$ xpra detach ssh:user@example.com:7</pre>
+<p>Programs continue to run on the server and you can reattach again later.
+</p><p>You can stop the server with:
+</p>
+<pre>$ xpra stop&nbsp;:7</pre>
+<p>on the machine where the server is running, or remotely:
+</p>
+<pre>$ xpra stop ssh:user@example.com:7</pre>
+<p>For a complete manual, check <code>man xpra</code>.
+</p>
+<h2><span class="mw-headline" id="Tips_and_tricks">Tips and tricks</span></h2>
+<h3><span class="mw-headline" id="Start_at_boot">Start at boot</span></h3>
+<h4><span class="mw-headline" id="Server">Server</span></h4>
+<p>It is possible to start the xpra server at boot using a <a href="https://wiki.archlinux.org/index.php/Systemd" title="Systemd">systemd</a> unit.
+</p><p>Create the unit file:
+</p>
+<pre style="margin-bottom: 0px; border-bottom: medium none; padding-bottom: 0.8em;">/etc/systemd/system/xpra@.service</pre>
+<pre style="margin-top: 0px; border-top-style: dashed; padding-top: 0.8em;">[Unit]
+Description=xpra display
+
+[Service]
+Type=simple
+User=%i
+EnvironmentFile=/etc/conf.d/xpra
+ExecStart=/usr/bin/xpra --no-daemon start ${%i}
+
+[Install]
+WantedBy=multi-user.target
+</pre>
+<p>Now create the configuration, adding a line for each username you want to have an xpra display:
+</p>
+<pre style="margin-bottom: 0px; border-bottom: medium none; padding-bottom: 0.8em;">/etc/conf.d/xpra</pre>
+<pre style="margin-top: 0px; border-top-style: dashed; padding-top: 0.8em;">myusername=:7
+</pre>
+<p><a href="https://wiki.archlinux.org/index.php/Daemons" title="Daemons">Enable the service</a> for each username that owns a display. In this example, the service would be <code>xpra@myusername.service</code>.
+</p>
+<h4><span class="mw-headline" id="Client">Client</span></h4>
+<div style="padding: 5px; margin: 0.5em 0px; background-color: rgb(221, 221, 255); border: thin solid rgb(187, 187, 221); overflow: hidden;"><strong> Note: </strong>If the client is a remote machine, first of all use SSH keys to be able to connect to the server without typing a password. Read <a href="https://wiki.archlinux.org/index.php/SSH_keys" title="SSH keys">SSH keys</a> for more details.</div>
+<h5><span class="mw-headline" id="Method_1:_.xinitrc">Method 1: .xinitrc</span></h5>
+<p>Add to your <code>~/.xinitrc</code> file the line necessary to start the connection, adding an <b>&amp;</b> at the end of the line.
+</p><p>Make sure to add such line <b>before</b> the <code>exec</code> line.
+</p><p>For example, on a remote client it could be:
+</p>
+<pre style="margin-bottom: 0px; border-bottom: medium none; padding-bottom: 0.8em;">~/.xinitrc</pre>
+<pre style="margin-top: 0px; border-top-style: dashed; padding-top: 0.8em;">xpra attach ssh:user@example.com:7 &amp;
+</pre>
+<h5><span class="mw-headline" id="Method_2:_systemd_user_session">Method 2: systemd user session</span></h5>
+<p>Configure your session to use <b>systemd user session</b>. Read <a href="https://wiki.archlinux.org/index.php/Systemd/User" title="Systemd/User">Systemd/User</a> for details.
+</p>
+<div style="padding: 5px; margin: 0.5em 0px; background-color: rgb(221, 221, 255); border: thin solid rgb(187, 187, 221); overflow: hidden;"><strong> Note: </strong>Make sure you understand the difference between <b>systemd user session</b> services, and regular <b>systemd</b> services. Again, read the <a href="https://wiki.archlinux.org/index.php/Systemd/User" title="Systemd/User">Systemd/User</a> for details.</div>
+<p>Create the following service unit:
+</p>
+<pre style="margin-bottom: 0px; border-bottom: medium none; padding-bottom: 0.8em;">$HOME/.config/systemd/user/xpra-client@.service</pre>
+<pre style="margin-top: 0px; border-top-style: dashed; padding-top: 0.8em;">[Unit]
+Description=xpra client
+
+[Service]
+Type=simple
+EnvironmentFile=%h/.config/conf/xpra_client
+ExecStart=/usr/bin/xpra attach %i $OPTS
+
+[Install]
+WantedBy=default.target
+</pre>
+<p>Create the configuration file, using the options you want:
+</p>
+<pre style="margin-bottom: 0px; border-bottom: medium none; padding-bottom: 0.8em;">$HOME/.config/conf/xpra_client</pre>
+<pre style="margin-top: 0px; border-top-style: dashed; padding-top: 0.8em;">OPTS=--encoding=jpeg --quality=90
+</pre>
+<p>The service name would be in the format of <code>xpra-client@<i>ssh:username@hostname<b>:&lt;display number&gt;</b></i>.service</code>.
+</p><p>Example:
+</p>
+<pre>xpra-client@ssh:myuser@example.com:7.service</pre>
+<p><a href="https://wiki.archlinux.org/index.php/Daemons" title="Daemons">Enable that service</a>, and remember to use the <code>--user</code> flag on <code>systemctl</code>.
+</p>
+<h3><span class="mw-headline" id="Error:_Only_console_users_are_allowed_to_run_the_X_server">Error: Only console users are allowed to run the X server</span></h3>
+<p>If the execution fails with this error message in the log file you need to make the following changes:
+</p><p>Create the file /etc/X11/Xwrapper.config with the content 
+</p>
+<pre style="margin-bottom: 0px; border-bottom: medium none; padding-bottom: 0.8em;">/etc/X11/Xwrapper.config</pre>
+<pre style="margin-top: 0px; border-top-style: dashed; padding-top: 0.8em;">allowed_users=anybody
+</pre>
+<h2><span class="mw-headline" id="See_also">See also</span></h2>
+<ul><li> <a rel="nofollow" class="external text" href="http://xpra.org/">Xpra website</a></li></ul>
+
+<!-- 
+NewPP limit report
+Cached time: 20160812073611
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.013 seconds
+Real time usage: 0.016 seconds
+Preprocessor visited node count: 392/1000000
+Preprocessor generated node count: 1199/1000000
+Post‐expand include size: 6217/2097152 bytes
+Template argument size: 3587/2097152 bytes
+Highest expansion depth: 7/40
+Expensive parser function count: 0/100
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   11.231      1 - -total
+ 30.42%    3.417      1 - Template:Tip
+ 24.08%    2.704      1 - Template:META_Box_Green
+ 20.58%    2.311      3 - Template:META_Box
+ 16.34%    1.835      2 - Template:Note
+ 13.85%    1.556     14 - Template:Ic
+ 12.80%    1.437      6 - Template:Hc
+ 11.26%    1.264      9 - Template:Bc
+ 11.00%    1.236      1 - Template:AUR
+  8.95%    1.005      2 - Template:META_Box_Blue
+-->
+
+<!-- Saved in parser cache with key archwiki:pcache:idhash:15784-0!*!0!!en!*!* and timestamp 20160812073611 and revision id 442166
+ -->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="https://wiki.archlinux.org/index.php?title=Xpra&amp;oldid=442166">https://wiki.archlinux.org/index.php?title=Xpra&amp;oldid=442166</a>"</div>
+					<div id="catlinks" class="catlinks"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="https://wiki.archlinux.org/index.php/Special:Categories" title="Special:Categories">Category</a>: <ul><li><a href="https://wiki.archlinux.org/index.php/Category:X_server" title="Category:X server">X server</a></li></ul></div></div>					<!-- end content -->
+										<div class="visualClear"></div>
+				</div>
+			</div>
+		</div>
+		<div id="column-one">
+			<h2>Navigation menu</h2>
+					<div id="p-cactions" class="portlet" role="navigation">
+			<h3>Views</h3>
+
+			<div class="pBody">
+				<ul>
+				<li id="ca-nstab-main" class="selected"><a href="#" title="View the content page [Alt+Shift+c]" accesskey="c">Page</a></li>
+				<li id="ca-talk" class="new"><a href="https://wiki.archlinux.org/index.php?title=Talk:Xpra&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [Alt+Shift+t]" accesskey="t">Discussion</a></li>
+				<li id="ca-viewsource"><a href="https://wiki.archlinux.org/index.php?title=Xpra&amp;action=edit" title="This page is protected.
+You can view its source [Alt+Shift+e]" accesskey="e">View source</a></li>
+				<li id="ca-history"><a href="https://wiki.archlinux.org/index.php?title=Xpra&amp;action=history" title="Past revisions of this page [Alt+Shift+h]" accesskey="h">History</a></li>
+				</ul>
+							</div>
+		</div>
+				<div class="portlet" id="p-personal" role="navigation">
+				<h3>Personal tools</h3>
+
+				<div class="pBody">
+					<ul>
+													<li id="pt-createaccount"><a href="https://wiki.archlinux.org/index.php?title=Special:UserLogin&amp;returnto=Xpra&amp;type=signup" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li>
+													<li id="pt-login"><a href="https://wiki.archlinux.org/index.php?title=Special:UserLogin&amp;returnto=Xpra" title="You are encouraged to log in; however, it is not mandatory [Alt+Shift+o]" accesskey="o">Log in</a></li>
+											</ul>
+				</div>
+			</div>
+			<div class="portlet" id="p-logo" role="banner">
+				<a href="https://wiki.archlinux.org/index.php/Main_page" class="mw-wiki-logo" title="Visit the main page"></a>
+			</div>
+				<div class="generated-sidebar portlet" id="p-navigation" role="navigation">
+		<h3>Navigation</h3>
+		<div class="pBody">
+							<ul>
+											<li id="n-mainpage-description"><a href="https://wiki.archlinux.org/index.php/Main_page" title="Visit the main page [Alt+Shift+z]" accesskey="z">Main page</a></li>
+											<li id="n-categories"><a href="https://wiki.archlinux.org/index.php/Table_of_contents">Categories</a></li>
+											<li id="n-portal"><a href="https://wiki.archlinux.org/index.php/Getting_involved" title="Various ways Archers can contribute to the community">Getting involved</a></li>
+											<li id="n-currentevents"><a href="https://wiki.archlinux.org/index.php/ArchWiki:News" title="The latest lowdown on the wiki">Wiki news</a></li>
+											<li id="n-randompage"><a href="https://wiki.archlinux.org/index.php/Special:Random" title="Load a random page [Alt+Shift+x]" accesskey="x">Random page</a></li>
+									</ul>
+					</div>
+		</div>
+			<div id="p-search" class="portlet" role="search">
+			<h3><label for="searchInput">Search</label></h3>
+
+			<div id="searchBody" class="pBody">
+				<form action="https://wiki.archlinux.org/index.php" id="searchform">
+					<input name="title" value="Special:Search" type="hidden">
+					<input autocomplete="off" name="search" placeholder="Search" title="Search ArchWiki [Alt+Shift+f]" accesskey="f" id="searchInput" type="search">
+					<input name="go" value="Go" title="Go to a page with this exact name if it exists" id="searchGoButton" class="searchButton" type="submit">&nbsp;
+						<input name="fulltext" value="Search" title="Search the pages for this text" id="mw-searchButton" class="searchButton" type="submit">
+				</form>
+
+							</div>
+		</div>
+		<div class="generated-sidebar portlet" id="p-interaction" role="navigation">
+		<h3>interaction</h3>
+		<div class="pBody">
+							<ul>
+											<li id="n-help"><a href="https://wiki.archlinux.org/index.php/Category:Help" title="Wiki navigation, reading, and editing help">Help</a></li>
+											<li id="n-Contributing"><a href="https://wiki.archlinux.org/index.php/ArchWiki:Contributing">Contributing</a></li>
+											<li id="n-recentchanges"><a href="https://wiki.archlinux.org/index.php/Special:RecentChanges" title="A list of recent changes in the wiki [Alt+Shift+r]" accesskey="r">Recent changes</a></li>
+											<li id="n-Recent-talks"><a href="https://wiki.archlinux.org/index.php/Special:RecentChanges?namespace=0&amp;invert=1" rel="nofollow">Recent talks</a></li>
+											<li id="n-newpages"><a href="https://wiki.archlinux.org/index.php/Special:NewPages">New pages</a></li>
+											<li id="n-Statistics"><a href="https://wiki.archlinux.org/index.php/ArchWiki:Statistics">Statistics</a></li>
+											<li id="n-Reports"><a href="https://wiki.archlinux.org/index.php/ArchWiki:Reports">Reports</a></li>
+											<li id="n-Requests"><a href="https://wiki.archlinux.org/index.php/ArchWiki:Requests">Requests</a></li>
+									</ul>
+					</div>
+		</div>
+			<div class="portlet" id="p-tb" role="navigation">
+			<h3>Tools</h3>
+
+			<div class="pBody">
+				<ul>
+											<li id="t-whatlinkshere"><a href="https://wiki.archlinux.org/index.php/Special:WhatLinksHere/Xpra" title="A list of all wiki pages that link here [Alt+Shift+j]" accesskey="j">What links here</a></li>
+											<li id="t-recentchangeslinked"><a href="https://wiki.archlinux.org/index.php/Special:RecentChangesLinked/Xpra" title="Recent changes in pages linked from this page [Alt+Shift+k]" accesskey="k">Related changes</a></li>
+											<li id="t-specialpages"><a href="https://wiki.archlinux.org/index.php/Special:SpecialPages" title="A list of all special pages [Alt+Shift+q]" accesskey="q">Special pages</a></li>
+											<li id="t-print"><a href="https://wiki.archlinux.org/index.php?title=Xpra&amp;printable=yes" rel="alternate" title="Printable version of this page [Alt+Shift+p]" accesskey="p">Printable version</a></li>
+											<li id="t-permalink"><a href="https://wiki.archlinux.org/index.php?title=Xpra&amp;oldid=442166" title="Permanent link to this revision of the page">Permanent link</a></li>
+											<li id="t-info"><a href="https://wiki.archlinux.org/index.php?title=Xpra&amp;action=info" title="More information about this page">Page information</a></li>
+									</ul>
+							</div>
+		</div>
+				<div id="p-lang" class="portlet" role="navigation">
+				<h3>In other languages</h3>
+
+				<div class="pBody">
+					<ul>
+													<li class="interlanguage-link interwiki-ja"><a href="https://wiki.archlinuxjp.org/index.php/Xpra" title="Xpra – 日本語" hreflang="ja" lang="ja">日本語</a></li>
+											</ul>
+
+									</div>
+			</div>
+				</div><!-- end of the left (by default at least) column -->
+		<div class="visualClear"></div>
+					<div id="footer" role="contentinfo">
+						<ul id="f-list">
+									<li id="lastmod"> This page was last modified on 19 July 2016, at 19:18.</li>
+									<li id="copyright">Content is available under <a class="external" rel="nofollow" href="http://www.gnu.org/copyleft/fdl.html">GNU Free Documentation License 1.3 or later</a> unless otherwise noted.</li>
+									<li id="privacy"><a href="https://wiki.archlinux.org/index.php/ArchWiki:Privacy_policy" title="ArchWiki:Privacy policy">Privacy policy</a></li>
+									<li id="about"><a href="https://wiki.archlinux.org/index.php/ArchWiki:About" title="ArchWiki:About">About ArchWiki</a></li>
+									<li id="disclaimer"><a href="https://wiki.archlinux.org/index.php/ArchWiki:General_disclaimer" title="ArchWiki:General disclaimer">Disclaimers</a></li>
+							</ul>
+		</div>
+		</div>
+		
+
+<div class="suggestions" style="display: none; font-size: 11.4667px;"><div class="suggestions-results"></div><div class="suggestions-special"></div></div></body><!-- Cached/compressed 20160812073611 -->
+</html>
