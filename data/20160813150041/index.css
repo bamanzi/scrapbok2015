@@ -1,0 +1,29 @@
+/* ::::: http://plugins.geany.org/stylesheets/mainstyle.css ::::: */
+
+body { font-family: sans-serif; width: 80%; height: 600px; margin-left: auto; margin-right: auto; margin-top: 2%; }
+img { border-width: 0px; }
+div#header { line-height: 48px; }
+div#navigation { width: 180px; float: left; margin-bottom: 10px; margin-right: 20px; padding-top: 10px; padding-bottom: 10px; padding-left: 1em; background-color: rgb(238, 238, 239); font-size: 10pt; position: static; border-radius: 20px 20px 20px 20px; }
+div#navigation h1 { font-size: 1em; }
+div#navigation hr { width: 180px; margin-left: -1em; }
+div#navigation ul { list-style-type: none; list-style-position: outside; margin-bottom: 20px; margin-left: 0px; padding-left: 10px; }
+div#navigation ul li { margin-bottom: 4px; }
+div#navigation a { display: block; text-decoration: none; }
+div#navigation a:link, a:visited { color: rgb(158, 129, 0); }
+div#navigation a:hover { color: rgb(164, 0, 0); }
+div#content { overflow: auto; }
+div#content ul { list-style-position: inside; }
+div#content a:link, a:visited { color: rgb(158, 129, 0); text-decoration: none; }
+div#content a:hover { color: rgb(164, 0, 0); text-decoration: underline; }
+code, blockquote, pre.literal-block { display: block; padding-left: 4px; margin-left: 25px; margin-top: 5px; font-family: monospace; background-color: rgb(238, 238, 239); border-left: 2px solid rgb(186, 189, 182); border-right: 0px solid rgb(186, 189, 182); border-width: 0px 0px 0px 2px; border-style: solid; border-color: rgb(186, 189, 182); overflow-x: auto; }
+hr { border-style: solid; border-color: rgb(186, 189, 182); }
+p.topic-title { font-size: 1.17em; font-weight: bold; margin: 1em 0px; }
+div#footer { clear: both; text-align: center; font-size: smaller; margin-top: 3em; }
+/* ::::: [internal] ::::: */
+
+@media screen {
+}
+@media print {
+}
+/* ::::: [internal] ::::: */
+

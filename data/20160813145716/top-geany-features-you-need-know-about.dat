@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+	<head>
+		<title>Top Geany features you need to know about | PACKT Books</title>
+		<script>
+			dataLayer = [];
+		</script>
+		<script type="text/javascript">
+			var GRANIFY_SITE_ID = 1318;(function(e,t,n){var r,i,s,o,u;u=false;try{o=new RegExp("(?:^|\\W)_gr_test_url=([^;]*)");s=document.cookie.match(o);if(s){if(s[1]==="1")u=true}else{r=Math.random();if(r>.95)u=true;i=new Date(+(new Date)+1e3*60*60*24*2);document.cookie="_gr_test_url="+ +u+";expires="+i.toGMTString()+";path=/"}}catch(a){}if(u)e.replace("javascript.js","javascript.next.js");try{o=new RegExp("(?:^|\\W)_gr_ep=([^;]*)");s=document.cookie.match(o);if(!s){document.cookie="_gr_ep_sent=;expires=Thu, 01-Jan-1970 00:00:01 GMT;path=/";document.cookie="_gr_er_sent=;expires=Thu, 01-Jan-1970 00:00:01 GMT;path=/";if(!window.location.origin){if(window.location.port)port=":"+window.location.port;else port="";window.location.origin=window.location.protocol+"//"+window.location.hostname+port}path=window.location.toString().replace(window.location.origin,"");referrer=document.referrer;i=new Date(+(new Date)+1e3*60*30);document.cookie="_gr_ep="+path+";expires="+i.toGMTString()+";path=/";document.cookie="_gr_er="+referrer+";expires="+i.toGMTString()+";path=/"}}catch(a){}a=new Date;a=""+a.getUTCFullYear()+(a.getUTCMonth()+1)+a.getUTCDate();e=e+"?id="+t+"&v="+a;window.Granify=n;n._stack=[];n.init=function(e,t,r){function i(e,t){e[t]=function(){Granify._stack.push([t].concat(Array.prototype.slice.call(arguments,0)))}}var s=n;h=["on","identify","addTag","trackPageView","trackCart","trackOrder"];for(a=0;a<h.length;a++)i(s,h[a])};n.init();var f,l,c,p=document.createElement("iframe");p.src="javascript:false";p.title="";p.role="presentation";(p.frameElement||p).style.cssText="width: 0 !important; height: 0 !important; border: 0 !important; overflow: hidden !important; position: absolute !important; top: -1000px !important; left: -1000px !important;";c=document.getElementsByTagName("script");c=c[c.length-1];c.parentNode.insertBefore(p,c);try{l=p.contentWindow.document}catch(a){f=document.domain;p.src="javascript:var d=document.open();d.domain='"+f+"';void(0);";l=p.contentWindow.document}l.open()._l=function(){var t=this.createElement("script");if(f)this.domain=f;t.id="js-iframe-async";t.src=e;this.body.appendChild(t)};l.write('<body onload="document._l();">');l.close()})("//cdn.granify.com/assets/javascript.js",GRANIFY_SITE_ID,[])
+		</script>
+
+		<link href='https://fonts.googleapis.com/css?family=Merriweather:400,700' rel='stylesheet' type='text/css'>		<script type="text/javascript">
+			Granify.trackPageView({
+			  page_type: "blog"
+			});
+		</script>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" href="//d1ldz4te4covpm.cloudfront.net/misc/favicon.ico" type="image/x-icon" />
+<meta name="description" content="Top Geany features you need to know about written by Nguyễn Hồng Quân: one of the many articles from Packt Publishing" />
+<meta name="revisit-after" content="1 day" />
+		<link rel="canonical" href="https://www.packtpub.com/books/content/top-geany-features-you-need-know-about" />
+		
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="@packtpub" />
+        <meta name="twitter:title" content="Top Geany features you need to know about | PACKT Books" />
+        <meta name="twitter:description" content="" />
+                
+                <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta id="viewport" name="viewport" content="width=320, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <!-- <link href="//fonts.googleapis.com/css?family=Ubuntu:300,400,500,700,300italic,400italic,500italic,700italic" rel="stylesheet" type="text/css">-->
+         <link href="/sites/all/themes/packt_v4/fonts/ubuntu.css" rel="stylesheet" type="text/css">
+        <!--[if lt IE 10]>
+        <link href="/sites/all/themes/packt_v4/css/core/packtpub_ie.css" rel="stylesheet" type="text/css">
+        <![endif]-->
+        <link type="text/css" rel="stylesheet" media="all" href="/sites/default/files/css/1468931374c8a4d36f/88193022b61633465ae9b864eeae61e3.css" />
+<link type="text/css" rel="stylesheet" media="print" href="/sites/default/files/css/1468931374c8a4d36f/6e295a6eb8f64cef4e07d9b1f02d46e8.css" />
+  
+        <script type="text/javascript" src="/sites/default/files/js/14689313744e5020df/a3788c8c64fd65c470e23e7534c3ebc8.js"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, { "basePath": "\u002F", "dhtmlMenu": [ "doubleclick", "clone" ] });
+//--><!]]>
+</script>
+        <script type="text/javascript">
+            var Packt = Packt || {}; Packt.user = {"cart":[],"newsletters":[],"country_code":"CN","selected_currency":"USD","currency":"USD","currency_symbol":"$","uid":0};
+        </script>
+        <link rel="alternate" type="application/rss+xml" href="/rss.xml" title="Packt Publishing News" >
+        <script>
+            (function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,"script","//www.google-analytics.com/analytics.js","ga");
+            ga("create", "UA-284627-1", "packtpub.com", {"siteSpeedSampleRate": 100});
+            ga("require", "displayfeatures");
+            ga('require', 'ec');
+            ga("send", "pageview");
+        </script>
+    </head>
+    
+    <body id="ppv4" class="with-logo">
+        <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-NJWZFW"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+            <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-NJWZFW');Packt.dataLayer.init();</script>
+
+        <div id="page" class="" checkout="">
+            <div id="page-header">
+                			<div id="account-bar" class="cf">
+				<div class="section-inner">
+					<div id="account-bar-status" class="cf">
+						<div id="account-bar-currency-selector">
+							<form accept-charset="UTF-8" method="post" id="packt-currency-select-form" class="float-left">
+								<div class="form-item" id="edit-currency-wrapper">
+									<select name="currency" class="form-select packt-currency-select-box selectBox" id="edit-currency" style="display:none">
+										<option value="GBP" >GBP &#163;</option>
+										<option value="USD" >US &#36;</option>
+										<option value="EUR" >EUR &#8364;</option>
+										<option value="AUD" >AU &#36;</option>
+									</select>
+								</div>
+								<input type="submit" name="op" value="" style="display: none;" class="form-submit">			
+								<input type="hidden" name="form_id" id="edit-packt-currency-select" value="packt_currency_select_form">
+							</form>
+						</div>				
+						<div class="account-bar-divider float-left">|</div>		
+						<div id="account-bar-status-security"></div>
+						<noscript>
+							<div id="account-bar-login-register-ns">
+								<a href="/account">My Account</a>
+							</div>
+						</noscript>
+						<div id="account-bar-login-register">
+							<a href="#" class="login-popup"><div class="float-left">Log in</div></a>
+							<div class="account-bar-divider float-left">|</div>	
+							<a href="/register"><div class="float-left">Register</div></a>
+						</div>
+						
+						<div id="account-bar-logged-in">
+							<a href="/account">
+								<div class="float-left"><strong>My Account</strong></div>
+							</a>
+							<div class="account-bar-divider float-left">|</div>	
+							<a href="/logout"><div class="float-left">Sign out</div></a>
+						</div>
+					</div>
+					<div id="account-bar-form">
+						<div id="account-bar-form-login" class="cf">
+							<div class="account-bar-form-left">
+								<h4>Log in to your account</h4>
+								<form  accept-charset="UTF-8" method="post" id="packt-user-login-form">
+<div><div id="login-form" class="cf">
+	<div id="login-form-email">
+		<div class="form-item" id="email-wrapper">
+ <input type="text" maxlength="128" name="email" id="email" size="24" value="" placeholder="E-mail address" class="form-text required" />
+</div>
+	</div>
+	<div id="login-form-pass">
+		<div class="form-item" id="password-wrapper">
+ <input type="password" name="password" id="password"  maxlength="128"  size="24"  placeholder="Password" class="form-text required" />
+</div>
+	</div>
+	<div id="login-form-submit">
+		<input type="submit" name="op" id="edit-submit-1" value="Login"  class=" form-submit" />
+	</div>
+	<br />
+</div>
+<a href="https://www.packtpub.com/account/password">Forgotten your password?</a>
+
+
+
+<input type="hidden" name="form_build_id" id="form-9d916c393fd48bc94cd217d629b0e34c" value="form-9d916c393fd48bc94cd217d629b0e34c"  />
+
+<input type="hidden" name="form_id" id="edit-packt-user-login-form" value="packt_user_login_form"  />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div></form>
+							</div>
+							<div class="account-bar-form-right">
+								<h4>Not yet a member?</h4>
+								<p>Register for an account and access leading-edge content on emerging technologies.</p>
+								<p><a class="account-bar-toggle register" href="/register">Register now</a></p>
+							</div>
+						</div>						
+						<div id="account-bar-form-close"><a href="#">Close</a></div>
+					</div>
+				</div>
+			</div>
+                						<div id="menu-bar">
+				<div class="section-inner cf">
+					<div id="menuIcon"></div>
+					<div id="menu-links" class="">
+						<a href="/">
+							<div class="menu-item-tab">
+								<div class="menu-item-text dummy" id="menu-packt-logo">
+									<span class="alt">Packt Logo</span>
+								</div>
+							</div>
+						</a>
+													<a href="/all">
+								<div class="menu-item-tab">
+									<div class="menu-item-text" id="menu-books">
+										<span class="menu-text">Books & Videos</span>
+									</div>
+								</div>
+							</a>
+							<a href="/tech">
+								<div class="menu-item-tab">
+									<div class="menu-item-text" id="menu-tech">
+										<span class="menu-text">Tech</span>
+									</div>
+								</div>
+							</a>
+							<a href="/books/info/packt/about">						
+								<div class="menu-item-tab">
+									<div class="menu-item-text" id="menu-packt">
+										<span class="menu-text">Packt</span>
+									</div>
+								</div>
+							</a>
+							<a href="/books/content/support">						
+								<div class="menu-item-tab">
+									<div class="menu-item-text" id="menu-support">
+										<span class="menu-text">Support</span>
+									</div>
+								</div>
+							</a>
+
+                            <a id='menu-packtlib-href' href="/mapt">
+                                <div class="menu-item-tab menu-item-tab pl-tab">
+                                    <div class="menu-item-text" id="menu-packtlib">
+                                        <span class="menu-text pl">
+                                            <img id="pl-img" src="//d255esdrn735hr.cloudfront.net/sites/all/themes/packt_v4/images/mapt-pplogo.png" />
+                                        </span>
+
+                                        <span class="menu-text mob-pl">
+                                            <img id="pl-img" src="//dz13w8afd47il.cloudfront.net/sites/all/themes/packt_v4/images/mapt-pplogo-white.png" />
+                                        </span>
+                                    </div>
+                                </div>
+                            </a>
+											</div>
+					<div id="menu-icons" class="">
+													<a href="#">
+								<div class="menu-item-tab">
+									<div class="menu-item-icon" id="menu-search">
+										<span class="alt">Search</span>
+									</div>
+								</div>
+							</a>
+							<a href="/collection">
+								<div class="menu-item-tab">
+									<div class="menu-item-icon dummy" id="menu-collection">
+										<span class="alt">My Collection</span>
+									</div>
+								</div>
+							</a>
+												<a href="https://www.packtpub.com/cart/checkout">
+							<div class="menu-item-tab last">
+								<div class="menu-item-icon" id="menu-cart">
+									<div id="cart-icon-count" class="cart-icon-count"></div>
+									<span class="alt">Cart</span>
+								</div>
+							</div>
+						</a>
+					</div>
+				</div>
+			</div>
+			
+			<div id="menu-bar-popup" class="cf">	
+				<div id="menu-bar-popup-inner" class="cf"></div>	
+				<div class="section-inner cf">	
+
+											<div class="menu-bar-popup-menu threecol cf" id="menu-books-popup">
+							<div class="menu-bar-popup-section-left threecol">
+								<div class="menu-bar-popup-section-left-inner cf">
+									<p class="menu-bar-popup-title">Book & Video Categories</p>
+									<div id="books-menu">
+										<div class="cf">
+											<div class='books-menu-column categories '><div class='inner'><p><a href="/web-development">Web Development</a></p><p><a href="/big-data-and-business-intelligence">Big Data & Business Intelligence</a></p><p><a href="/application-development">Application Development</a></p><p><a href="/virtualization-and-cloud">Virtualization & Cloud</a></p></div></div><div class='books-menu-column categories '><div class='inner'><p><a href="/game-development">Game Development</a></p><p><a href="/networking-and-servers">Networking & Servers</a></p><p><a href="/hardware-and-creative">Hardware & Creative</a></p><p><a href="/business">Business</a></p></div></div><div class='books-menu-column categories last'><div class='inner'><p><a href="/all">All Books</a></p><p><a href="/video">All Videos</a></p><p><a href="/latest-releases">Latest Releases</a></p></div></div>										</div>
+								</div>
+							</div>
+						</div>
+						<div class="menu-bar-popup-section-right threecol">
+															<div class="menu-bar-popup-section-right-inner cf">
+									<div id="deal-of-the-day-banner" class="cf">
+										<div id="menu-bar-dotd-preview-thumb">
+											<a href="/books/deal-of-the-day">
+												<img src="//d255esdrn735hr.cloudfront.net/sites/default/files/imagecache/featured_book_block/bookretailers/9781786466990.jpg" alt="Python Projects [Video]" title="" width="150" height="185" class="lazyload-disabled imagecache imagecache-featured_book_block"/>												<div class="menu-bar-dotd-percentage">
+													<div class="menu-bar-dotd-percentage-text">
+														80<sup class="dotd-sup">%</sup><div class="dotd-sub">off</div>
+													</div>
+												</div>
+											</a>
+										</div>
+										<div id="menu-bar-dotd-preview-text">
+											<p class="menu-bar-popup-title"><a href="/books/deal-of-the-day">Deal of the Day</a></p>
+											<p>Build fun, scalable, and robust solutions for Python applications</p>
+											
+																																		</div>
+											<div class="cf deal-of-the-day-in-header">
+												<div class="dots-main-book-price float-left">
+													<div class="book-top-pricing-main-price">
+														<div class="book-top-pricing-main-ebook-price  ">$20.00</div>
+													</div>
+                                                    <div class="dotd-rrp-price">
+                                                        RRP $99.99                                                    </div>
+												</div>
+
+												<form action="/add_to_cart/26147"  accept-charset="UTF-8" method="post" id="packt-libraries-add-to-cart-form" class="packt-libraries-add-to-cart-form">
+<div>
+<div class="book-top-addtocart-inner">	
+	<div class="book-top-addtocart-logo"></div>
+	<div class="book-top-addtocart-separator"></div>
+	
+	<input type="submit" name="submit-26147" id="submit-26147" value="Add to Cart"  class=" form-submit" />
+	<input type="hidden" name="nids" id="nids" value="26147"  />
+
+<input type="hidden" name="qtys" id="qtys" value="1"  />
+
+<input type="hidden" name="upsell" id="edit-upsell" value="1"  />
+
+
+
+
+
+
+<input type="hidden" name="form_build_id" id="form-25f7640945b4bfdbec2b718990c192a7" value="form-25f7640945b4bfdbec2b718990c192a7"  />
+
+<input type="hidden" name="form_id" id="edit-packt-libraries-add-to-cart-form" value="packt_libraries_add_to_cart_form"  />
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+</div></form>
+											</div>
+										</div>
+										<div class="cf newsletter-signup-form" newsletter_id=280>
+											<div class="dotd-signup-text"><strong>Sign up here to get these deals straight to your inbox</strong></div> 
+											<form  accept-charset="UTF-8" method="post" id="packt-v3-subscribtion-dotd-form">
+<div><div class="form-item">
+ 
+</div>
+<div class="form-item" id="edit-mail-wrapper">
+ <input type="text" maxlength="128" name="mail" id="edit-mail" size="60" value="" placeholder="Enter your email address" class="form-text" />
+</div>
+<input type="hidden" name="newsletter_id" id="edit-newsletter-id" value=""  />
+<input type="submit" name="op" id="edit-submit-3" value="Submit"  class=" form-submit" />
+<input type="hidden" name="form_build_id" id="form-812647618f889b121f48bbf1783c311c" value="form-812647618f889b121f48bbf1783c311c"  />
+<input type="hidden" name="form_id" id="edit-packt-v3-subscribtion-dotd-form" value="packt_v3_subscribtion_dotd_form"  />
+
+</div></form>
+										</div>
+									</div>
+															</div>
+						</div>
+
+						<div class="menu-bar-popup-menu fourcol cf" id="menu-tech-popup">
+							<div class="menu-bar-popup-section-left fourcol">
+								<div class="menu-bar-popup-section-left-inner cf">
+									<p class="menu-bar-popup-title">Tech</p>
+									<div class="packt-menu cf">	
+										<div class="cf">
+											<div class='books-menu-column categories '><div class='inner'>													<p><a href="/tech/android">Android</a></p>
+
+																									<p><a href="/tech/angularjs">AngularJS</a></p>
+
+																									<p><a href="/tech/arduino">Arduino</a></p>
+
+																									<p><a href="/tech/blender">Blender</a></p>
+
+																									<p><a href="/tech/bootstrap">Bootstrap</a></p>
+
+																									<p><a href="/tech/data%20analysis">Data Analysis</a></p>
+
+																									<p><a href="/tech/django">Django</a></p>
+
+																									<p><a href="/tech/docker">Docker</a></p>
+
+																									<p><a href="/tech/drupal">Drupal</a></p>
+
+												</div></div><div class='books-menu-column categories '><div class='inner'>													<p><a href="/tech/graphics%20programming">Graphics Programming</a></p>
+
+																									<p><a href="/tech/hadoop">Hadoop</a></p>
+
+																									<p><a href="/tech/Internet%20of%20Things">Internet of Things</a></p>
+
+																									<p><a href="/tech/ios">iOS</a></p>
+
+																									<p><a href="/tech/java">Java</a></p>
+
+																									<p><a href="/tech/javascript">JavaScript</a></p>
+
+																									<p><a href="/tech/jquery">jQuery</a></p>
+
+																									<p><a href="/tech/linux">Linux</a></p>
+
+												</div></div><div class='books-menu-column categories '><div class='inner'>													<p><a href="/tech/machine%20learning">Machine Learning</a></p>
+
+																									<p><a href="/tech/opencv">OpenCV</a></p>
+
+																									<p><a href="/tech/openstack">OpenStack</a></p>
+
+																									<p><a href="/tech/oracle">Oracle</a></p>
+
+																									<p><a href="/tech/penetration%20testing">Penetration Testing</a></p>
+
+																									<p><a href="/tech/php">PHP</a></p>
+
+																									<p><a href="/tech/postgresql">PostgreSQL</a></p>
+
+																									<p><a href="/tech/python">Python</a></p>
+
+												</div></div><div class='books-menu-column categories last'><div class='inner'>													<p><a href="/tech/qlikview">QlikView</a></p>
+
+																									<p><a href="/tech/r">R</a></p>
+
+																									<p><a href="/tech/scala">Scala</a></p>
+
+																									<p><a href="/tech/spark">Spark</a></p>
+
+																									<p><a href="/tech/spring">Spring</a></p>
+
+																									<p><a href="/tech/swift">Swift</a></p>
+
+																									<p><a href="/tech/unity">Unity</a></p>
+
+																									<p><a href="/tech/wordpress">WordPress</a></p>
+
+												</div></div>										</div>
+									</div>
+								</div>
+							</div>						
+						</div>
+
+						<div class="menu-bar-popup-menu cf" id="menu-packt-popup">
+							<div class="menu-bar-popup-section-left twocol">
+								<div class="menu-bar-popup-section-left-inner cf">
+									<p class="menu-bar-popup-title">Packt Publishing</p>
+									<div class="packt-menu cf">
+										<div class="books-menu-column">
+											<div class="inner">
+												<p><a href="/books/info/packt/about">About Us</a></p>
+												<p><a href="/books/info/packt/authors">Our Authors</a></p>
+												<p><a href="/books/info/packt/trade-partners">Trade & Partners</a></p>
+											<!--<p><a href="/blog-network">Blog</a></p>
+											<p><a href="/techprimer-network">Technology Primers</a></p>-->
+										</div>
+									</div>
+									<div class="books-menu-column">
+										<div class="inner">
+											<p><a href="/books/info/packt/contact-us">Contact Us</a></p>
+											<p><a href="/books/info/packt/careers-with-packt">Careers</a></p>
+											<!--<p><a href="/article-network">Articles</a></p>-->
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>						
+						<!--<div class="menu-bar-popup-section-right twocol">
+							<div class="menu-bar-popup-section-right-inner cf">
+								<div id="menu-bar-article-preview-thumb">
+									<noscript><img src="//dz13w8afd47il.cloudfront.net/sites/default/files/imagecache/ppv4_header_article_thumb/326_Cover Image.png" alt="AWS for Mobile Developers - Getting Started with Mobile Hub" title="" class=" imagecache imagecache-ppv4_header_article_thumb"/></noscript><img src="/sites/default/files/blank.gif" alt="AWS for Mobile Developers - Getting Started with Mobile Hub" title="" data-original="//dz13w8afd47il.cloudfront.net/sites/default/files/imagecache/ppv4_header_article_thumb/326_Cover Image.png" class=" imagecache imagecache-ppv4_header_article_thumb"/>								</div>
+								<div id="menu-bar-article-preview-text">
+									<p class="menu-bar-popup-title"><a href="/books/content/aws-mobile-developers-getting-started-mobile-hub">AWS for Mobile Developers - Getting Started with Mobile Hub</a></p>
+									<p id="menu-bar-article-one-liner"></p>
+									<p><a href="/articles">Read all our articles</a></p>
+								</div>
+							</div>
+						</div>-->
+					</div>
+
+
+					<div class="menu-bar-popup-menu cf" id="menu-support-popup">
+						<div class="menu-bar-popup-section-left twocol">
+							<div class="menu-bar-popup-section-left-inner cf">
+								<p class="menu-bar-popup-title">Support</p>
+								<div class="packt-menu cf">
+									<div class="books-menu-column">
+										<div class="inner">
+											<p><a href="/books/info/packt/faq">FAQs</a></p>
+											<p><a href="/books/info/packt/ordering">Ordering Information</a></p>
+											<p><a href="/books/info/packt/terms-and-conditions">Terms & Conditions</a></p>
+										</div>
+									</div>
+									<div class="books-menu-column">
+										<div class="inner">
+											<p><a href="/books/content/support">Code Downloads & Errata</a></p>
+											<p><a href="/books/content/errata">Submit Errata</a></p>
+										</div>
+									</div>
+								</div>
+							</div>							
+						</div>
+					</div>
+
+					<div class="menu-bar-popup-menu cf" id="menu-packtlib-popup">
+						<div class="menu-bar-popup-section-left twocol">
+							<div class="menu-bar-popup-section-left-inner cf">
+								<p class="menu-bar-popup-title">Mapt</p>
+								<div class="packt-menu cf">
+									<div class="books-menu-column">
+										<div class="inner">
+											<p><a href="/books/subscription/mapt">Subscribe</a></p>
+											<p><a href="/books/subscription/mapt-b2b">Mapt For Business</a></p>
+											<p><a href="/mapt">Take me to Mapt</a></p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="menu-bar-popup-menu cf" id="menu-search-popup">
+						<div class="menu-bar-popup-search-inner">
+							<form  accept-charset="UTF-8" method="post" id="packt-libraries-main-search-form">
+<div>
+<div id="menu-bar-search" class="cf">
+	<div id="menu-bar-search-title">
+		<div class="form-item">Search</div>
+	</div>
+	<div id="menu-bar-search-box">
+		<div class="form-item" id="main-search-keys-wrapper">
+ <input type="text" name="keys" id="main-search-keys" size="49" value="" placeholder="Enter your search terms..." class="form-text" />
+</div>
+	</div>
+	<div id="menu-bar-search-button">
+		<input type="submit" name="op" id="edit-submit-5" value="Search"  class=" form-submit" />
+	</div>
+	<input type="hidden" name="sort" id="edit-sort" value="0"  />
+
+<input type="hidden" name="types" id="edit-types" value="0"  />
+
+<input type="hidden" name="forthcoming" id="edit-forthcoming" value="1"  />
+
+<input type="hidden" name="available" id="edit-available" value="1"  />
+
+<input type="hidden" name="count" id="edit-count" value="20"  />
+
+
+
+
+<input type="hidden" name="form_build_id" id="form-cd35ca9bdcb3a1812246cc5e7e434239" value="form-cd35ca9bdcb3a1812246cc5e7e434239"  />
+
+<input type="hidden" name="form_id" id="edit-packt-libraries-main-search-form" value="packt_libraries_main_search_form"  />
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+</div>
+<div class="facet-search-cross facet-search-cross-autocomplete"></div>
+</div></form>
+						</div>
+					</div>
+					
+					<div class="menu-bar-popup-menu cf" id="menu-cart-popup">
+						<div class="menu-bar-popup-section-left even">
+							<div class="menu-bar-popup-section-left-inner cf">
+								<div id="menu-bar-popup-cart-preview">
+									<div id="menu-bar-popup-cart-item-preview">
+
+										<div id="menu-bar-popup-cart-item-preview-image">
+											<img src="" />
+										</div>
+										<p class="menu-bar-popup-title">Added to Cart</p>
+										<p id="menu-bar-popup-cart-item-preview-title"></p>
+										<p id="menu-bar-popup-cart-item-preview-oneliner"></p>
+										<p id="menu-bar-popup-cart-item-preview-additional">...and <span></span> more</p>
+										<p class="price"><span id="menu-bar-popup-cart-item-preview-currency"></span><span id="menu-bar-popup-cart-item-preview-price"></span></p>
+									</div>
+								</div>
+								<p id="menu-bar-popup-cart-empty-preview">
+									You don't have anything in your cart right now.
+								</p>
+							</div>
+						</div>
+						
+						<div class="menu-bar-popup-section-right even">
+							<div class="menu-bar-popup-section-right-inner cf">
+								<div id="menu-bar-popup-content">
+									<div class="cf">
+										<p id="menu-bar-popup-subtotal-title" class="menu-bar-popup-title float-left">Subtotal</p>
+										<p id="menu-bar-popup-subtotal-value" class="menu-bar-popup-title float-right price"> 0.00</p>
+										<p id="menu-bar-popup-subtotal-currency" class="menu-bar-popup-title float-right price"></p>
+									</div>
+									<p><strong>Free shipping</strong> on print orders for US, UK, Europe and selected Asian countries</p>
+									<form>
+										<a href="https://www.packtpub.com/cart/checkout" class="button-link grey">View Cart</a>
+										<span></span>
+										<a href="https://www.packtpub.com/cart/checkout/?checkout_step=payment" class="button-link">Check Out</a>
+									</form>
+								</div>
+								<div id="checkout-close" onclick="Packt.headerMenu.hideMenuPopup()"></div>
+								
+							</div>
+						</div>
+					</div>
+					<div class="menu-bar-popup-menu cf" id="menu-cart-small">
+						<div>
+							<div class="small-popup-outer float-right">
+								<div class="small-popup-tick">
+									&nbsp;
+								</div>
+								<div class="small-popup-text">
+									<strong>
+										Title added to cart
+									</strong>
+								</div>
+								<div class="small-popup-seperator">
+								</div>
+								<div class="small-popup-arrows">
+&nbsp;
+								</div>
+							</div>
+						</div>
+					</div>
+							</div>
+			<div id="menu-bar-popup-inner-bottom" class="cf"></div>
+		</div>
+            </div>
+						<div id="main-container" class="not-front not-logged-in page-node node-type-article no-sidebars page-books-content-top-geany-features-you-need-know-about section-books node-full-view ">
+				<div id="main" class="">
+					
+											 <!-- #content -->
+					 	<div id="content">
+						 	                                <div class="blue-breadcrumb">
+                                    <div class="section-inner">
+                                        <div class="breadcrumb"><a href="/">Home</a>&nbsp; > &nbsp;<a href="/all-books">Books</a>&nbsp; > &nbsp;<a href="/application-development/instant-geany-ide-instant">Instant Geany IDE</a></div>                                    </div>
+                                </div>
+                            
+					 		
+						 								 			<div class="section-inner cf">
+						 							 			<div id="messages-container">
+							 							 			</div>
+						 								 			</div>
+						 		
+
+							
+							
+							<a name="main-content" id="main-content"></a>
+							
+<div id="main-article" class="article cf section-inner" itemscope itemtype="http://schema.org/Article">
+    <div class="panel-display panel-packt-cat clear-block" >
+        <div class="panel-panel-top-wrapper">
+            <div class="blog-header">
+                                    <div class="blog-featured-book left">
+                        <a href="/application-development/instant-geany-ide-instant">
+                            <img src="//d1ldz4te4covpm.cloudfront.net/sites/default/files/9332OS_Instant Geany IDE.jpg" />
+                        </a>
+                    </div>
+                
+                <div class="blog-title">
+                    <h1>Top Geany features you need to know about</h1>
+                </div>
+            </div>
+
+            <div class="blog-author-block">
+                <div class="blog-author-block-left">
+                    <h2><a href="/books/info/authors/nguy%E1%BB%85n-h%E1%BB%93ng-qu%C3%A2n">Nguyễn Hồng Quân</a></h2>
+                    <p><span class="date-display-single">August 2013</span></p>
+                </div>
+                
+<div class="share-buttons-line ">
+	<div class="share-icon-background">
+		<a class="share-link" target="_blank" href="http://www.linkedin.com/shareArticle?mini=true&url=https://www.packtpub.com/books/content/top-geany-features-you-need-know-about&title=Top+Geany+features+you+need+to+know+about&source=Packt+Publishing&summary=Top+Geany+features+you+need+to+know+about">
+			<div class="share-icon linkedin"></div>
+		</a>
+	</div>
+	<div class="share-icon-background">
+		<a class="share-link" target="_blank" href="https://www.twitter.com/share?url=https://www.packtpub.com/books/content/top-geany-features-you-need-know-about&text=Top Geany features you need to know about">
+			<div class="share-icon twitter"></div>
+		</a>
+	</div>
+	<div class="share-icon-background">
+		<a class="share-link" target="_blank" href="http://www.facebook.com/sharer.php?u=https://www.packtpub.com/books/content/top-geany-features-you-need-know-about">
+			<div class="share-icon facebook"></div>
+		</a>
+	</div>
+	<div class="share-icon-background last">
+		<a class="share-link" target="_blank" href="https://plusone.google.com/_/+1/confirm?hl=en&url=https://www.packtpub.com/books/content/top-geany-features-you-need-know-about">
+			<div class="share-icon google-plus"></div>
+		</a>
+	</div>
+</div>            </div>
+
+            <div class="blog-content-left left">
+                <div class="inside">
+                    <div class="article-content" itemprop="articleBody">
+                        <p style="margin-left: 40px; margin-right: 40px;" align="center"><i>(For more resources related to this topic, see <a href="#more">here</a>.)</i></p>
+<h1>Quick text editing</h1>
+<p>Geany provides quick text-editing facilities. You can make use of these by going to <b>Edit | Commands</b>, <b>Edit | Format</b> and the <b>Documents</b> menu.</p>
+<p>The following are some examples; please note that there are many facilities and I cannot list all of them here:</p>
+<ul>
+<li>Use the <i>Tab</i> key to quickly indent a block of code:<br />
+<p style="text-align: center;"><img style="border: 1px solid black;" src="/sites/default/files/Article-Images/9332_01_1.png" border="0" title="Instant Geany IDE" /></p>
+</li>
+<li>Use a shortcut key or a command to quickly comment out a block of code:<br />
+<p style="text-align: center;"><img style="border: 1px solid black;" src="/sites/default/files/Article-Images/9332_01_2.png" border="0" title="Instant Geany IDE" /></p>
+</li>
+</ul>
+<p>For other tools, you can see the keyboard shortcut on the menu and you can set it by going to <b>Edit | Preferences | Keybindings:</b></p>
+<p style="text-align: center;"><img style="border: 1px solid black;" src="/sites/default/files/Article-Images/9332_01_3.png" border="0" title="Instant Geany IDE" /></p>
+<p>The <b>&lt;Primary&gt;</b> key in the preceding screenshot is the <i>Ctrl</i> key.</p>
+<h1>Navigating through the source code</h1>
+<p>I feel that navigating through source code in Geany is better and faster than any other IDE I've ever tried.</p>
+<p>To navigate in the same file, you can use the following features as shown in the following screenshot and explained thereafter:</p>
+<ol>
+<li><b>Symbol list:</b> Click on one item in the list and you will be brought to where the symbol is defined. Very few free IDEs or editors provide this feature; if they do, it is not as capable or fast as Geany</li>
+<li><b>Go to Tag Definition:</b> Clicking on this will take you to where a function is defined and from where it is used.<br />
+<p style="text-align: center;"><img style="border: 1px solid black;" src="/sites/default/files/Article-Images/9332_01_4.png" border="0" title="Instant Geany IDE" /></p>
+<p>This feature has limitations when used alone in Geany. It can only look for definitions in the files being opened. So, to enable it to look for definitions in other closed files in the same folder, you must use this feature inside a certain <b>project</b> created by Geany's built-in Project feature, with the <b>File patterns</b> defined, and combine it with other project plugins that support <b>Generate file list on load</b>.</p>
+<p style="text-align: center;"><img style="border: 1px solid black;" src="/sites/default/files/Article-Images/9332_01_5.png" border="0" title="Instant Geany IDE" /></p>
+</li>
+<li><b>Find Usage</b> and <b>Find Document Usage:</b> These features help you look for the lines in which a function/variable is used. You can also jump to these lines from the result list. These are more convenient than the usual find/search dialog.</li>
+</ol>
+<p>To navigate between files, you may find the tree browser <b>(1)</b> and addons <b>(2)</b> plugins useful, as shown in the following screenshot:</p>
+<p style="text-align: center;"><img style="border: 1px solid black;" src="/sites/default/files/Article-Images/9332_01_6.png" border="0" title="Instant Geany IDE" /></p>
+<h1>Project</h1>
+<p>Not only can Geany work with a single file on demand, but it also provides some basic management for working with a group of files in a project. This feature helps you reopen files from the last session when reopening Geany. It also helps you change some default parameters (indentation type, command to build and run, and so on) and apply those on all files. And don't forget its role in navigating through the source code, as described previously.</p>
+<p>Using the <b>Project</b> feature is easy. All things related to it can be found in the <b>Project</b> menu.</p>
+<h2>Clearing files</h2>
+<p>With the increasing use of source version control (SVN and Git), cleaning the space automatically gets important in order to avoid polluting the Commit history with meaningless changes, caused accidentally by some whitespace additions/removals.</p>
+<p>You should make Geany do this automatically, by con figuring the settings after going to <b>Edit | Preferences | Files</b> as shown in the following screenshot:</p>
+<p style="text-align: center;"><img style="border: 1px solid black;" src="/sites/default/files/Article-Images/9332_01_7.png" border="0" title="Instant Geany IDE" /></p>
+<h2></h2>
+<h2>Plugins</h2>
+<p>If you want a feature that you cannot find built in to Geany, or you want to discover something new and funny, you need to pick and turn on some Geany plugins.</p>
+<p>To see the list of installed plugins, please go to <b>Tools </b><b><b>| </b>Plugin Manager</b>.</p>
+<p style="text-align: center;"><img style="border: 1px solid black;" src="/sites/default/files/Article-Images/9332_01_8.png" border="0" title="Instant Geany IDE" /></p>
+<p>Some noteworthy plugins are as follows:</p>
+<ul>
+<li><b>Addons:</b> It shows a button with a dropdown menu displaying a list of opened files, to allow you to switch quickly between them<br />
+<p style="text-align: center;"><img style="border: 1px solid black;" src="/sites/default/files/Article-Images/9332_01_9.png" border="0" title="Instant Geany IDE" /></p>
+</li>
+<li><b>Code navigation:</b> It adds more support to the built-in code-navigation feature</li>
+<li><b>Debugger:</b> It helps to integrate with <b>GDB ( GNU Debugger)</b> and other debuggers</li>
+</ul>
+<h1></h1>
+<h1>Summary</h1>
+<p>In this article, we discussed the most commonly used tasks in Geany and how to perform them, along with the most widely used features and plugins of Geany.</p>
+<h2>Resources for Article:</h2>
+<hr size="1" noshade="noshade" />
+<p><b><a name="more"><span style="color: #000000;">Further resources on this subject:</span></a></b></p>
+<ul>
+<li><a href="http://www.packtpub.com/article/guide-enterprise-service-bus-netbeans-soa-pack" target="_blank">10 Minute Guide to the Enterprise Service Bus and the NetBeans SOA Pack</a> [Article]</li>
+<li><a href="http://www.packtpub.com/article/user-extensions-add-ons-selenium-testing-tools" target="_blank">User Extensions and Add-ons in Selenium 1.0 Testing Tools</a> [Article]</li>
+<li><a href="http://www.packtpub.com/article/installing-and-setting-javafx-netbeans-and-eclipse-ide" target="_blank">Installing and Setting up JavaFX for NetBeans and Eclipse IDE</a> [Article]</li>
+</ul>
+<hr size="1" noshade="noshade" />
+                                                                    </div>
+                                            <div class="article-featured-block">
+                            <div class="blog-featured-book left">
+                                <a href="/application-development/instant-geany-ide-instant">
+                                    <img src="//d1ldz4te4covpm.cloudfront.net/sites/default/files/9332OS_Instant Geany IDE.jpg" />
+                                </a>
+                            </div>
+                            <div class="article-book-title">
+                                <p>You've been reading an excerpt of:</p>
+                                <h2>Instant Geany IDE</h2>
+                                <a href="/application-development/instant-geany-ide-instant">
+                                    <div class="fake-button">
+                                        Explore Title
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    				</div>
+				<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'packtpub'; // required: replace example with your forum shortname
+    var disqus_identifier = window.location.hash;
+  	var disqus_url = window.location.href;
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>		 	</div>
+            <div class="blog-content-right left">
+                <div class="tech-sidebar-panel sidebar-related left">
+    <div class="related-blocks">
+                    <div class="related-block left">
+                <a href="/tech/Java">
+                    <img src="http://d3gnp09177mxuh.cloudfront.net/tech-page-images/java.png" />
+                    <p class="author">Java</p>
+                </a>
+            </div>
+                    <div class="related-block left">
+                <a href="/tech/PHP">
+                    <img src="http://d3gnp09177mxuh.cloudfront.net/tech-page-images/php.png" />
+                    <p class="author">PHP</p>
+                </a>
+            </div>
+                    <div class="related-block left">
+                <a href="/tech/C%23">
+                    <img src="http://d3gnp09177mxuh.cloudfront.net/tech-page-images/generic.png" />
+                    <p class="author">C#</p>
+                </a>
+            </div>
+                    <div class="related-block left">
+                <a href="/tech/Android">
+                    <img src="http://d3gnp09177mxuh.cloudfront.net/tech-page-images/android.png" />
+                    <p class="author">Android</p>
+                </a>
+            </div>
+                    <div class="related-block left">
+                <a href="/tech/JavaScript">
+                    <img src="http://d3gnp09177mxuh.cloudfront.net/tech-page-images/javascript.png" />
+                    <p class="author">JavaScript</p>
+                </a>
+            </div>
+            </div>
+</div>
+            </div>
+        </div>
+    </div>
+</div>
+<input type="hidden" name="freebook_category" value="273"/>
+<div id="freebook-popup">
+	<div id="freebook-popup-inner">
+		<div id="freebook-popup-close" class="cf"><div id="freebook-popup-close-icon"></div></div>
+		<a href='/packt/free-ebook/thinking-in-javascript'>
+			<div id="freebook-popup-image">
+				<img src="//d1ldz4te4covpm.cloudfront.net/sites/default/files/Thinking in JavaScript.jpg" />
+			</div>
+			<div id="freebook-popup-data">
+				<h3>Download Your Free eBook</h3>
+				<h4>Thinking in JavaScript</h4>
+				<p>Get started with JavaScript with this free eBook and learn one of the most important languages in web development today. With helpful tips and code examples, discover how you can create websites with impressive and dynamic functionality. </p>
+				
+				<button id="freebook-popup-book-link">Claim Your Free Download</button>
+			</div>
+			</a>
+	</div>
+</div>
+<div id="freebook-popup-overlay"></div>
+
+<style>
+
+#freebook-popup-overlay  {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	z-index: 997;
+	filter: alpha(opacity=50);
+	-moz-opacity: 0.5;
+	-khtml-opacity: 0.5;
+	opacity: 0.5;
+	top: 0;
+	left: 0;
+	background-color: #000;
+	display: none;
+}
+
+#freebook-popup-inner {
+	background:white;
+	width:700px;
+	height: 440px;
+	margin:auto;
+	z-index: 1000;
+	cursor: pointer;
+}
+
+#freebook-popup-inner a {
+	color: #494949;
+}
+
+#freebook-popup-border{
+	border:1px solid black;
+	height: 100%;
+}
+
+#freebook-popup-image {
+	width: 305px;
+	float: left;
+	margin-left: 20px;
+	margin-top: 30px;
+}
+
+#freebook-popup-image img {
+	width: 100%
+}
+
+#freebook-popup-data {
+	width:320px;
+	float: right;
+	margin-right: 20px;
+	text-align: left;
+	padding-left: 20px;
+}
+
+#freebook-popup-data p {
+	font-size:1em;
+}
+#freebook-popup-data h3 {
+	font-size: 3em;
+	font-weight: 500;
+	margin-bottom: 15px;
+	line-height: 40px;
+	padding-top: 20px;
+}
+
+#freebook-popup-data h4 {
+	font-size: 2.2em;
+	font-style: italic;
+	font-weight: 100;
+}
+
+#freebook-popup {
+	width: 100%;
+	z-index: 998;
+	position: fixed;
+	top: 20%;
+	left: 0;
+	display: none;
+	text-align: center;
+}
+#freebook-popup-close {
+	color: black;
+	font-size: 1.5em;
+	margin-right: 8px;
+	cursor: pointer;
+	float: right;
+	padding-top: 10px;
+}
+
+#freebook-popup-data button {
+	width: 100%;
+	display: block;
+	height: 40px;
+	text-align: center;
+	border:0px;
+	font-size: 1.2em;
+	margin-top: 30px;
+}
+#freebook-popup-close-icon {
+	background: url(/sites/all/themes/packt_v4/images/sprite-fixed.png) no-repeat;
+	background-position: -3109px 0px;
+	width: 22px;
+	height: 21px;
+}
+</style>
+
+
+
+					 								</div>
+						<!-- /#content -->
+					
+									</div>
+			</div>
+									
+						
+			<!-- #footer -->
+			<div id="footer" class="region region-footer">
+				<div class="section-inner cf">
+					<div class="footer-main-block">
+						<div class="footer-section-inner">
+														<h2>Contact Us</h2>
+							<p>Get in touch&nbsp;<a href="/books/info/packt/contact-us">here</a>&nbsp;<span style="font-family: Calibri, sans-serif; font-size: 11pt; line-height: 115%;">if you have any queries or issues.</span></p>						</div>
+					</div>
+					<div class="footer-main-block middle-footer-block">
+						<div class="footer-section-inner">
+														<h2>Help & Support</h2>
+							<p class="MsoNormal">Click&nbsp;<a href="/books/info/packt/faq">here</a>&nbsp;for FAQs, order information, T&amp;Cs, errata and code downloads.</p>						</div>
+					</div>
+					<div class="footer-main-block">
+						<div class="footer-section-inner">
+														<h2>Alerts & Offers</h2>
+							<p class="MsoNormal">Sign up to our emails for regular updates, bespoke offers, exclusive discounts and great free content.</p>							<form  accept-charset="UTF-8" method="post" id="packt-v3-subscribtion-dotd-form-1">
+<div><div class="form-item">
+ 
+</div>
+<div class="form-item" id="edit-mail-1-wrapper">
+ <input type="text" maxlength="128" name="mail" id="edit-mail-1" size="60" value="" placeholder="Enter your email address" class="form-text" />
+</div>
+<input type="hidden" name="newsletter_id" id="edit-newsletter-id-1" value=""  />
+<input type="submit" name="op" id="edit-submit-4" value="Submit"  class=" form-submit" />
+<input type="hidden" name="form_build_id" id="form-920e175e058d52aee807db5cea16098e" value="form-920e175e058d52aee807db5cea16098e"  />
+<input type="hidden" name="form_id" id="edit-packt-v3-subscribtion-dotd-form-1" value="packt_v3_subscribtion_dotd_form"  />
+
+</div></form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /#footer -->
+
+			<!-- #footer-bottom -->
+			<div id="footer-bottom" class="region region-footer-bottom">
+				<div class="section-inner cf">
+					<div class="footer-bottom-block">
+						<div class="footer-bottom-block-left">
+							&copy; Packt Publishing Limited.
+							<br />
+							All Rights Reserved
+						</div>
+					</div>
+					<div class="footer-bottom-block footer-contact-us">
+						<a href="/books/info/packt/contact-us">Contact Us</a>
+					</div>
+					<div class="footer-bottom-block">
+						View our <a href="/books/info/packt/cookies">Cookie Policy</a>
+					</div>
+					<div class="footer-bottom-block">
+						Our <a href="/books/info/packt/privacy">Privacy Policy</a>
+					</div>
+					<div class="footer-bottom-block">
+						<a target="_blank" href="http://www.linkedin.com/company/packt-publishing" class="footer-social linkedin"></a>
+						<a target="_blank" href="http://twitter.com/packtpub" class="footer-social twitter"></a>
+						<a target="_blank" href="http://www.facebook.com/packtpub" class="footer-social facebook"></a>
+						<a target="_blank" href="https://plus.google.com/112328881995125817822" class="footer-social gplus"></a>
+						<a target="_blank" href="https://www.youtube.com/user/packt1000" class="footer-social youtube"></a>
+					</div>
+				</div>
+			</div>
+			<!-- /#footer-bottom -->
+			<script>
+			(function (w,i,d,g,e,t,s)
+			{w[d] = w[d]||[];t= i.createElement(g); t.async=1;t.src=e;s=i.getElementsByTagName(g)[0];s.parentNode.insertBefore(t, s); }
+			)(window, document, '_gscq','script','//widgets.getsitecontrol.com/18511/script.js');
+			</script>
+			
+						
+						
+		</div>
+		<!-- /#page -->
+		
+		<div id="content-overlay"></div>
+		
+					<div id="book-level-overlay" style="display: none;">	
+</div>
+<div id="book-level-lightbox" class="cf" style="display: none;">
+	<div class="book-level-lightbox-inner">
+		<div class="book-level-heading section-inner">
+			<h2>Series & Level <div class="book-level-cross"></div></h2>
+		</div>
+		<div class="section-inner cf">
+			<div class="book-level-underheading">
+				We understand your time is important. Uniquely amongst the major publishers, we seek to develop and publish the broadest range of learning and information products on each technology.  Every Packt product delivers a specific learning pathway, broadly defined by the Series type.  This structured approach enables you to select the pathway which best suits your knowledge level, learning style and task objectives.			
+			</div>
+		</div>
+		<div class="book-level-series">
+			<div class="section-inner book-level-series-inner cf">
+				<div class="three-book-series-row cf">
+					<div class="book-level-series-block">
+						<div class="cf">
+							<h3 class="float-left">Learning</h3>
+						</div>
+						<div class="book-level-series-text">
+							As a new user, these step-by-step tutorial guides will give you all the practical skills necessary to become competent and efficient.
+						</div>
+					</div>
+					<div class="book-level-series-block">
+						<div class="cf">
+							<h3 class="float-left">Beginner's Guide</h3>
+						</div>
+						<div class="book-level-series-text">
+							Friendly, informal tutorials that provide a practical introduction using examples, activities, and challenges.
+						</div>
+					</div>
+					<div class="book-level-series-block">
+						<div class="cf">
+							<h3 class="float-left">Essentials</h3>
+						</div>
+						<div class="book-level-series-text">
+							Fast paced, concentrated introductions showing the quickest way to put the tool to work in the real world.
+						</div>
+					</div>					
+				</div>
+				<div class="three-book-series-row cf">
+					<div class="book-level-series-block">
+						<div class="cf">
+							<h3 class="float-left">Cookbook</h3>
+						</div>
+						<div class="book-level-series-text">
+							A collection of practical self-contained recipes that all users of the technology will find useful for building more powerful and reliable systems.
+						</div>
+					</div>
+					<div class="book-level-series-block">
+						<div class="cf">
+							<h3 class="float-left">Blueprints</h3>
+						</div>
+						<div class="book-level-series-text">
+							Guides you through the most common types of project you'll encounter, giving you end-to-end guidance on how to build your specific solution quickly and reliably.
+						</div>
+					</div>
+					<div class="book-level-series-block">
+						<div class="cf">
+							<h3 class="float-left">Mastering</h3>
+						</div>
+						<div class="book-level-series-text">
+							Take your skills to the next level with advanced tutorials that will give you confidence to master the tool's most powerful features.
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="book-level-level">
+			<div class="section-inner cf">
+				<div class="book-level-expo float-left">
+					<h3>Starting</h3>
+					<div class="book-level-text">
+						Accessible to readers adopting the topic, these titles get you into the tool or technology so that you can become an effective user.
+					</div>
+				</div>
+				<div class="book-level-gauges float-left">
+					<div class="book-level-gauge-left"></div>
+					<div class="book-level-line"></div>
+					<!--div class="book-level-gauge-middle"></div>
+					<div class="book-level-line"></div-->
+					<div class="book-level-gauge-right"></div>
+				</div>
+				<div class="book-level-expo float-left">
+					<h3>Progressing</h3>
+					<div class="book-level-text">
+						Building on core skills you already have, these titles share solutions and expertise so you become a highly productive power user.
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+				
+	</body>
+</html>

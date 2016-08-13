@@ -1,0 +1,308 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML//EN">
+<html>
+<head>
+<title>[RFC] Combining of Exuberant Ctags and GNU GLOBAL</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body>
+<center>
+<table bgcolor="#000000" border="0" cellpadding="0" cellspacing="2">
+<tbody><tr><td><table bgcolor="#FFFFCC" border="0">
+<tbody><tr><td><big><b>bug-global</b></big></td></tr></tbody></table></td></tr></tbody></table>
+<small><nobr>[<a href="http://lists.gnu.org/archive/html/bug-global/">Top</a>][<a href="http://lists.gnu.org/archive/html">All Lists</a>]</nobr></small>
+<form method="get" action="http://lists.gnu.org/archive/cgi-bin/namazu.cgi">
+<input name="query" size="30" type="text">
+<input name="submit" value="Search" type="submit">
+<input name="idxname" value="bug-global" type="hidden">
+<a href="http://lists.gnu.org/archive/cgi-bin/namazu.cgi?idxname=bug-global">Advanced</a>
+</form>
+
+</center>
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[Date Prev][<a href="http://lists.gnu.org/archive/html/bug-global/2012-09/msg00001.html">Date Next</a>][Thread Prev][<a href="http://lists.gnu.org/archive/html/bug-global/2012-09/msg00001.html">Thread Next</a>][<a href="http://lists.gnu.org/archive/html/bug-global/2012-09/index.html#00000">Date Index</a>][<a href="http://lists.gnu.org/archive/html/bug-global/2012-09/threads.html#00000">Thread Index</a>]
+
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h2>[RFC] Combining of Exuberant Ctags and GNU GLOBAL</h2>
+<hr>
+<table border="0">
+<tbody>
+<tr>
+<td valign="top" align="right">
+<b>From</b>: </td>
+<td align="left">
+Shigio YAMAGUCHI</td>
+</tr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+
+<tr>
+<td valign="top" align="right">
+<b>Subject</b>: </td>
+<td align="left">
+[RFC] Combining of Exuberant Ctags and GNU GLOBAL</td>
+</tr>
+
+<tr>
+<td valign="top" align="right">
+<b>Date</b>: </td>
+<td align="left">
+Sun, 09 Sep 2012 14:26:07 +0900</td>
+</tr>
+
+</tbody>
+</table>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>Hello all,
+I will post a proposal to the Exuberant Ctags developer's mailing list.
+The title is 'Combining of Exuberant Ctags and GNU GLOBAL'.
+Before posting, I would like to hear about whether there is any problem
+in it. If you noticed some, please let me know. Thank you in advance.
+
+Here is the proposal.
+
+---------------------------------------------------------------------------
+
+Combining of Exuberant Ctags and GNU GLOBAL     by Shigio Yamaguchi
+
+0. Introduction
+
+GNU GLOBAL is a source code tagging system. The feature of it is an
+ability to treat not only definitions but also references. Although
+it can be used independently, it can also be used in combination
+with Exuberant Ctags. This proposal is a thing about the method of
+combining two tools.
+
+1. Current Status
+
+Now, you can replace the built-in parser of GNU GLOBAL by Exuberant Ctags.
+With some setup, gtags invokes Exuberant Ctags with the --format=1 and
+--filter option, and read tag records from it.
+
+The concrete setup method is as follows.
+
+        (Installation of GLOBAL)
+        $ ./configure --with-exuberant-ctags=/usr/local/bin/ctags
+        $ sudo make install
+
+        (Execution of GLOBAL)
+        $ export GTAGSCONF=/usr/local/share/gtags/gtags.conf
+        $ export GTAGSLABEL=exuberant-ctags
+        $ gtags                         # invokes Exuberant Ctags internally
+        $ global -x func                # locate tags
+        func                5 test.c           func() {
+        $ _
+
+That is, GLOBAL already supports 41 programming languages supported
+by Exuberant Ctags.  But it cannot generate reference tags, because
+Exuberant Ctags does not pick up them. My proposal is to bury this lack.
+
+2. Adding new format to treat references.
+
+How about adding --format=3 option to Exuberant Ctags?
+
+Format3 adds a type string to the format1.
+
+        &lt;a type string&gt;    &lt;format1&gt;
+                        ^
+                        |
+                one or more blanks
+
+        The meaning of the type strings:
+
+                "D": definition
+                "R": other than definition
+
+Please assume the following source code.
+
+        [test.c]
+        +---------------------
+1       |sub() {
+2       |       ...
+3       |       return 1;
+4       |}
+5       |func() {
+6       |       strcpy(...);
+7       |       if (sub()) {
+8       |               ...
+9       |       }
+10      |}
+        +---------------------
+
+Now, Exuberant Ctags with the --format=1 option generates
+the following output.
+
+$ ctags --format=1 -x test.c
+func                5 test.c           func() {
+sub                 1 test.c           sub() {
+
+Please care about that the following symbols are ignored.
+
+'strcpy' in the 6th line
+'sub' in the 7th line
+
+When the --format=3 option is specified, Exuberant Ctags may
+pick up reference tags.
+
+$ ctags --format=3 -x test.c
+D func                5 test.c           func() {
+R strcpy              6 test.c                  strcpy(...);         &lt;=== added
+D sub                 1 test.c           sub() {
+R sub                 7 test.c                  if (sub()) {         &lt;=== added
+
+Algorithm of the parser may be like follows.
+
+        foreach of all tokens {
+                if (symbol?)
+                        if (definition?)
+                                Put a tag record with "D".
+                        else
+                                Put a tag record with "R".      &lt;= Added
+                }
+        }
+
+Rewriting GLOBAL to accept above format is easy.
+Then GLOBAL commands will work like follows.
+
+$ gtags                                                         # make tag files
+$ global -xd sub
+sub                 1 test.c           sub() {                  # show 
+definitions
+$ global -xr sub
+sub                 7 test.c                  if (sub()) {      # show 
+references
+$ global -xs strcpy
+strcpy              6 test.c                  strcpy(...);      # show other 
+symbols
+$ _
+
+        [-d] shows definitions
+        -r   shows references (defined in other places)
+        -s   shows other symbols (not defined anywhere)
+
+Please note that the definitions, references and other symbols are
+treated separately.  This means that Exuberant Ctags become a perfect
+parser of GLOBAL.  Although it is difficult for Exuberant Ctags to
+support reference tags independently, it is easy if combined with
+GNU GLOBAL. It is worthy for the users of two tools, I believe.
+
+
+3. For the parsers which don't support reference tags.
+
+The treatment of the parsers which don't generate reference tags is easy.
+What is necessary is just to add a "D" string unconditionally at the head
+of the records when the --format=3 option is specified.
+
+$ ctags --format=3 -x test.c
+D func                5 test.c           func() {
+D sub                 1 test.c           sub() {
+
+Though such output don't have "R" records, it is no problem.
+
+
+4. Is this useful?
+
+Even if this mechanism is realized, a parser does not necessarily
+increase automatically. But it will become an infrastructure for
+those who try to write a new parser, I think.
+
+What do you think?
+
+-- End of proposal
+---------------------------------------------------------------------------
+--
+Shigio YAMAGUCHI &lt;address@hidden&gt;
+PGP fingerprint: D1CB 0B89 B346 4AB6 5663  C4B6 3CA5 BBB3 57BE DDA3
+
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<form method="post" action="http://lists.gnu.org/mp/yyz.py" enctype="multipart/form-data">
+<input name="a" value="shigio" type="hidden">
+<input name="b" value="[RFC] Combining of Exuberant Ctags and GNU GLOBAL" type="hidden">
+<input name="d" value="201209090526.q895Q7GK002111@tamacom.com" type="hidden">
+<input name="c" value="gnu.org" type="hidden">
+<center>reply via email to<br><input value=" Shigio YAMAGUCHI " type="submit"></center>
+</form>
+<hr>
+<table width="100%">
+<tbody><tr><td align="left">[Prev in Thread]</td>
+<td align="center"><b>Current Thread</b></td>
+<td align="right">[<a href="http://lists.gnu.org/archive/html/bug-global/2012-09/msg00001.html">Next in Thread</a>]</td></tr></tbody></table>
+<ul>
+<li><font color="#666666"><strong>[RFC] Combining of Exuberant Ctags and GNU GLOBAL</strong>,
+<em>Shigio YAMAGUCHI</em></font>&nbsp;<b>&lt;=</b>
+<ul>
+<li><b><a name="00001" href="http://lists.gnu.org/archive/html/bug-global/2012-09/msg00001.html">Re: [RFC] Combining of Exuberant Ctags and GNU GLOBAL</a></b>, <i>Hideki IWAMOTO</i>, <tt>2012/09/09</tt>
+<ul>
+<li><b><a name="00004" href="http://lists.gnu.org/archive/html/bug-global/2012-09/msg00004.html">Re: [RFC] Combining of Exuberant Ctags and GNU GLOBAL</a></b>, <i>Shigio YAMAGUCHI</i>, <tt>2012/09/10</tt>
+<ul>
+<li><b><a name="00009" href="http://lists.gnu.org/archive/html/bug-global/2012-09/msg00009.html">Re: [RFC] Combining of Exuberant Ctags and GNU GLOBAL</a></b>, <i>Hideki IWAMOTO</i>, <tt>2012/09/11</tt>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><b><a name="00002" href="http://lists.gnu.org/archive/html/bug-global/2012-09/msg00002.html">Re: [RFC] Combining of Exuberant Ctags and GNU GLOBAL</a></b>, <i>Aneesh Kumar K.V</i>, <tt>2012/09/09</tt>
+<ul>
+<li><b><a name="00003" href="http://lists.gnu.org/archive/html/bug-global/2012-09/msg00003.html">Re: [RFC] Combining of Exuberant Ctags and GNU GLOBAL</a></b>, <i>Shigio YAMAGUCHI</i>, <tt>2012/09/10</tt>
+<ul>
+<li><b><a name="00005" href="http://lists.gnu.org/archive/html/bug-global/2012-09/msg00005.html">Re: [RFC] Combining of Exuberant Ctags and GNU GLOBAL</a></b>, <i>Aneesh Kumar K.V</i>, <tt>2012/09/10</tt>
+</li><li><b><a name="00006" href="http://lists.gnu.org/archive/html/bug-global/2012-09/msg00006.html">Re: [RFC] Combining of Exuberant Ctags and GNU GLOBAL</a></b>, <i>Shigio YAMAGUCHI</i>, <tt>2012/09/10</tt>
+</li><li><b><a name="00007" href="http://lists.gnu.org/archive/html/bug-global/2012-09/msg00007.html">Re: [RFC] Combining of Exuberant Ctags and GNU GLOBAL</a></b>, <i>Aneesh Kumar K.V</i>, <tt>2012/09/10</tt>
+</li><li><b><a name="00008" href="http://lists.gnu.org/archive/html/bug-global/2012-09/msg00008.html">Re: [RFC] Combining of Exuberant Ctags and GNU GLOBAL</a></b>, <i>Shigio YAMAGUCHI</i>, <tt>2012/09/10</tt>
+</li>
+
+
+
+</ul>
+</li>
+</ul>
+</li>
+<li><b><a name="00010" href="http://lists.gnu.org/archive/html/bug-global/2012-09/msg00010.html">Re: [RFC] Combining of Exuberant Ctags and GNU GLOBAL</a></b>, <i>Shigio YAMAGUCHI</i>, <tt>2012/09/12</tt>
+</li>
+</ul>
+</li>
+</ul>
+
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Next by Date:
+<strong><a href="http://lists.gnu.org/archive/html/bug-global/2012-09/msg00001.html">Re: [RFC] Combining of Exuberant Ctags and GNU GLOBAL</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="http://lists.gnu.org/archive/html/bug-global/2012-09/msg00001.html">Re: [RFC] Combining of Exuberant Ctags and GNU GLOBAL</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="http://lists.gnu.org/archive/html/bug-global/2012-09/index.html#00000"><strong>Date</strong></a></li>
+<li><a href="http://lists.gnu.org/archive/html/bug-global/2012-09/threads.html#00000"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+
+
+</body>
+</html>

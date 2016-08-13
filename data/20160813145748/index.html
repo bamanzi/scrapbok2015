@@ -1,0 +1,510 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="zh-cn" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Geany的"跳转到标记定义“功能如何使用 - 巴蛮子 - 博客园</title>
+
+
+
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/bamanzi/rss">
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/bamanzi/rsd.xml">
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/bamanzi/wlwmanifest.xml">
+  
+
+
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body>
+<a name="top"></a>
+<!--PageBeginHtml Block Begin-->
+
+
+
+
+<!--PageBeginHtml Block End-->
+
+<!--done-->
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+	<a id="lnkBlogLogo" href="http://www.cnblogs.com/bamanzi/"><img id="blogLogo" src="logo.gif" alt="返回主页"></a>			
+		
+<!--done-->
+<h1><a id="Header1_HeaderTitle" class="headermaintitle" href="http://www.cnblogs.com/bamanzi/">巴蛮子的烂笔头</a></h1>
+<h2>好记性不如烂笔头啊。
+<br>跟我联系: yangguilong_sz AT 163.com <u><a href="http://www.cnblogs.com/bamanzi/articles/1871009.html">更多关于巴蛮子的信息</a></u><br></h2>
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+</div><!--end: header 头部 -->
+
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		<div id="navigator">
+			
+<ul id="navList">
+	<li><a id="MyLinks1_HomeLink" class="menu" href="http://www.cnblogs.com/">博客园</a></li>
+	<li><a id="MyLinks1_MyHomeLink" class="menu" href="http://www.cnblogs.com/bamanzi/">首页</a></li>
+	<li></li>
+	<li><a id="MyLinks1_ContactLink" accesskey="9" class="menu" rel="nofollow" href="http://msg.cnblogs.com/send/%E5%B7%B4%E8%9B%AE%E5%AD%90">联系</a></li>
+	<li><a id="MyLinks1_Admin" class="menu" rel="nofollow" href="https://i.cnblogs.com/">管理</a></li>
+	<li><a id="MyLinks1_Syndication" class="menu" href="http://www.cnblogs.com/bamanzi/rss">订阅</a>
+	<a id="MyLinks1_XMLLink" class="aHeaderXML" href="http://www.cnblogs.com/bamanzi/rss"><img src="xml.gif" alt="订阅"></a></li>
+</ul>
+
+
+			<div class="blogStats">
+				
+				
+<!--done-->
+随笔- 117&nbsp;
+文章- 5&nbsp;
+评论- 552&nbsp;
+
+				
+			</div><!--end: blogStats -->
+		</div><!--end: navigator 博客导航栏 -->
+		
+<div id="post_detail">
+<!--done-->
+<div id="topics">
+	<div class="post">
+		<h1 class="postTitle">
+			<a id="cb_post_title_url" class="postTitle2" href="#">Geany的"跳转到标记定义“功能如何使用</a>
+		</h1>
+		<div class="clear"></div>
+		<div class="postBody">
+			<div id="cnblogs_post_body" class="cnblogs-markdown"><p><img src="geany.png" alt="geany logo"></p>
+<p><a href="http://www.geany.org/">Geany</a>是个比较轻量级的代码编辑器，在一些不怎么需要编辑的代码上，我比较常用它来浏览代码。不过它的 <em>跳转到标记定义(Go to tag definition)</em> 功能有点奇怪，一开始死活不知道怎么用，所以值得拿出来说一下。</p>
+<h2 id="问题">问题</h2>
+<p>其实Geany内置了分析代码文件的能力（记得是移植了ctags的代码进来），当打开代码文件的时候，能够分析文件中的tags（包括类、函数和变量）并在 <code>标记(Symbols)</code> 侧边栏列出来， <em>也能够在文件内或者已经打开的文件间进行跳转(go to tag definition)，但不能跳转到未打开的文件</em> —— Geany称这类tags为<a href="http://www.geany.org/manual/current/#workspace-tags">workspace tags</a></p>
+<p><img src="9332_01_4.png"></p>
+<blockquote>
+<p>P.S. Geany还有一类<a href="http://www.geany.org/manual/current/index.html#global-tags">Global tags</a>，按不同编程语言提供（比如 <a href="https://github.com/geany/geany/blob/master/data/php.tags">/usr/share/geany/php.tags</a>， <a href="https://github.com/geany/geany/blob/master/data/python.tags">/usr/share/geany/python.tags</a>，另外<a href="http://download.geany.org/contrib/tags/">网站上还提供了一些额外的tags包</a>），文件内容里不包含符号来源信息，所以只能用于自动补全和显示calltip，跟"跳转到标记定义"功能无关）。</p>
+</blockquote>
+<h2 id="解决方法">解决方法</h2>
+<p>如何能够实现跳转到未打开的文件呢？在网上搜到如下信息:</p>
+<blockquote>
+<p>This feature (navigating through the source code) has limitations when used alone in Geany. It can only look for definitions in the files being opened. So, to enable it to look for definitions in other closed files in the same folder, you must use this feature inside a certain project created by Geany's built-in Project feature, with the File patterns defined, and combine it with other project plugins that support Generate file list on load.<br>
+-- <a href="https://www.packtpub.com/books/content/top-geany-features-you-need-know-about">Top Geany features you need to know about</a></p>
+</blockquote>
+<p><strong>简单地说，方法是</strong>: 得定义工程，并启用<a href="http://plugins.geany.org/gproject.html">GProject插件</a>，在工程配置里配置好 <code>source files</code> 文件名匹配模式（比如<code>*.cpp *.c *.h</code>）并勾选上GProject页面的<code>Generate tags for all project files</code>。然后就可以使用了。</p>
+<p><img src="132146250048701.png"></p>
+<h2 id="解决方法2-新插件geanyctags">解决方法2: 新插件GeanyCtags</h2>
+<p>虽然用上面的方法已经可以跳转了，但有几个缺点:</p>
+<ul>
+<li>tags是每次打开工程时动态分析得到的，如果工程比较小（比如只有100个左右的文件）的话，速度还行，但如果工程比较大就悲剧了</li>
+<li>由于tags的分析完全是geany自己在玩，用户就没法用ctags的一些配置参数选项来调整或者改进了</li>
+</ul>
+<p>于是，在今年年初，Geany开发组就单独做了一个<a href="http://plugins.geany.org/geanyctags.html">GeanyCtags插件</a>。不过没想到快半年过去了，Geany还是没发布一个新版本，所以要用的朋友就只能自己编译。</p>
+<h3 id="安装方法">安装方法</h3>
+<p>推荐用Geany自带的 <code>waf</code> 来编译（至少在Windows下只能用这个。虽然 <a href="http://www.geany.org/Support/BuildingOnWin32" class="uri">http://www.geany.org/Support/BuildingOnWin32</a> 这里说的是用 <code>mingw32-make -f makefile.win32</code>， 但 geany-plugins 的daily snapshot 包并没有提供 <code>makefile.win32</code>）:</p>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash hljs">    <span class="kw">wget</span> -c http://download.geany.org/geany_plugins_git.tar.gz
+    <span class="kw">tar</span> zxf geany_plugins_git.tar.gz
+    <span class="kw"><span class="hljs-built_in">cd</span></span> geany_plugins_git
+    <span class="kw">./waf</span> configure --enable-plugins=geanyctags,automark
+    <span class="kw">./waf</span> build
+    <span class="kw">sudo</span> make install</code></pre></div>
+<p>然后在Geany的插件管理里面启用 <code>GeanyCtags</code> 插件就可以了。</p>
+<blockquote>
+<p>P.S. 一个好消息是， <em>这个插件可以在Geany 1.24下编译成功，这样你可以在Geany 1.24里面使用</em> 。但其它一些新插件不一定能行，因为可能用到了Geany主程序的新变动，比如 <code>ProjectOrganizer</code> 插件。</p>
+</blockquote>
+<h3 id="使用方法">使用方法</h3>
+<p>0.. 当然，首先得安装<a href="http://ctags.sourceforge.net/">Exuberant Ctags</a></p>
+<p>1.. 在项目属性中确保 <code>File patterns</code> 已经设置（比如设为 <code>*.rb *.rake</code>)</p>
+<p>2.. 点击菜单 <code>Project -&gt; Generate tags</code> 生成tags文件，Geany会在底部的信息栏显示生成tags文件的命令和结果</p>
+<p><img src="132153578481223.png" alt="GeanyCtags generate tags"></p>
+<p>3.. 在符号（函数名、变量名）上点击右键，可以看到顶部新增了两个菜单项目: <code>Find Tag Definition (GeanyCtags)</code> 和 <code>Find Tag Declartion (GeanyCtags)</code></p>
+<p><img src="132154099268899.png" alt="GeanyCtags context menu items"></p>
+<p>4.. 主菜单里面的 <code>Project -&gt; Find tag</code> 可以用来跳转到任意tag，自己输入就是了</p>
+<p><img src="132213256447654.png"></p>
+<h3 id="补充说明">补充说明</h3>
+<ul>
+<li>GeanyCtags生成Tags文件时会在信息栏显示生成tags文件的命令和结果:</li>
+</ul>
+<blockquote>
+<p>find . -not -path '<em>/.</em>' ( -name "<em>.c" -o -name "</em>.h" ) | ctags --totals --fields=fKsSt --extra=-fq --c-kinds=+p --sort=foldcase --excmd=number -L - -f /users/bamanzi/farm/geany_plugins_git/geany_plugins.tags (in directory: /users/bamanzi/farm/geany_plugins_git)<br>
+409 files, 117412 lines (3410 kB) scanned in 0.2 seconds (17947 kB/s)<br>
+10250 tags added to tag file<br>
+10250 tags sorted in 0.01 seconds</p>
+</blockquote>
+<ul>
+<li>从上面的信息可以看出，生成的tags文件跟工程文件在同一个目录，不过文件名并不是 <code>tags</code> ，而是 <code>prjname.tags</code>。</li>
+<li>从上面的信息可以看出，tags文件是调用ctags命令生成的，所以格式上是标准的ctags输出。如果你有特殊的配置选项（比如<a href="http://sourceforge.net/p/ctags/mailman/message/1876130/">需要增加对vbs的支持</a>），你知道怎么下手了吧</li>
+</ul>
+<h3 id="参考">参考:</h3>
+<ul>
+<li><a href="http://permalink.gmane.org/gmane.editors.geany.general/8285">GProject plugin renamed to ProjectOrganizer + new features</a></li>
+<li><a href="http://plugins.geany.org/geanyctags.html">GeanyCtags</a></li>
+</ul>
+</div><div style="display: block;" id="MySignature"><div id="wumiiRelatedItems"></div></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory">分类: <a href="http://www.cnblogs.com/bamanzi/category/559030.html">编程</a></div>
+<div id="EntryTag">标签: <a href="http://www.cnblogs.com/bamanzi/tag/geany/">geany</a>, <a href="http://www.cnblogs.com/bamanzi/tag/ctags/">ctags</a></div>
+<div id="blog_post_info"><div id="green_channel">
+        <a id="green_channel_digg">好文要顶</a>
+            <a id="green_channel_follow">关注我</a>
+    <a id="green_channel_favorite">收藏该文</a>
+    <a id="green_channel_weibo" title="分享至新浪微博"><img src="icon_weibo_24.png" alt=""></a>
+    <a id="green_channel_wechat" title="分享至微信"><img src="wechat.png" alt=""></a>
+</div>
+<div id="author_profile">
+    <div id="author_profile_info" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/bamanzi/" target="_blank"><img src="u163248.png" class="author_avatar" alt=""></a>
+        <div id="author_profile_detail" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/bamanzi/">巴蛮子</a><br>
+            <a href="http://home.cnblogs.com/u/bamanzi/followees">关注 - 34</a><br>
+            <a href="http://home.cnblogs.com/u/bamanzi/followers">粉丝 - 67</a>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div id="author_profile_honor"></div>
+    <div id="author_profile_follow">
+    </div>
+</div>
+<div id="div_digg">
+    <div class="diggit">
+        <span class="diggnum" id="digg_count">0</span>
+    </div>
+    <div class="buryit">
+        <span class="burynum" id="bury_count">0</span>
+    </div>
+    <div class="clear"></div>
+    <div class="diggword" id="digg_tips">
+    </div>
+</div>
+</div>
+<div class="clear"></div>
+<div id="post_next_prev"><a href="http://www.cnblogs.com/bamanzi/p/tmux-mouse-tips.html" class="p_n_p_prefix">« </a> 上一篇：<a href="http://www.cnblogs.com/bamanzi/p/tmux-mouse-tips.html" title="发布于2015-06-12 23:50">我在tmux中最不可少的配置: 用鼠标切换窗口/调节分屏大小</a><br><a href="http://www.cnblogs.com/bamanzi/p/mercurial-a-few-tips.html" class="p_n_p_prefix">» </a> 下一篇：<a href="http://www.cnblogs.com/bamanzi/p/mercurial-a-few-tips.html" title="发布于2015-07-13 19:32">mercurial的几个易用性小技巧</a><br></div>
+</div>
+
+
+		</div>
+		<div class="postDesc">posted @ <span id="post-date">2015-06-13 22:00</span> <a href="http://www.cnblogs.com/bamanzi/">巴蛮子</a> 阅读(<span id="post_view_count">591</span>) 评论(<span id="post_comment_count">0</span>)  <a href="https://i.cnblogs.com/EditPosts.aspx?postid=4555817" rel="nofollow">编辑</a> <a href="#">收藏</a></div>
+	</div>
+	
+	
+</div><!--end: topics 文章、评论容器-->
+</div><a name="!comments"></a><div id="blog-comments-placeholder"></div>
+<div id="comment_form" class="commentform">
+<a name="commentform"></a>
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="#">刷新页面</a><a href="#top">返回顶部</a></div>
+<div id="comment_form_container">
+<div id="commentform_title">发表评论</div>
+<span id="tip_comment" style="color: Red;"></span>
+<p>
+昵称：<input id="tbCommentAuthor" class="author" disabled="disabled" size="50" value="巴蛮子" type="text">
+</p>
+<div class="commentbox_main">
+<div class="commentbox_title">
+<div class="commentbox_title_left">评论内容：</div>
+<div class="commentbox_title_right">
+<img id="ubb_quote" class="comment_icon" src="quote.gif" alt="引用" title="添加引用">
+<img id="ubb_bold" class="comment_icon" src="b.png" alt="粗体" title="添加粗体">
+<img id="ubb_url" class="comment_icon" src="lk.png" alt="链接" title="添加链接">
+<img id="ubb_indent" class="comment_icon" src="indent.png" alt="缩进" title="添加首行缩进">
+<img id="ubb_code" class="comment_icon" src="InsertCode.gif" alt="代码" title="添加代码">
+<img id="ubb_img" class="comment_icon" src="img.gif" alt="图片" title="上传图片">
+</div>
+</div>
+<div class="clear"></div>
+<textarea id="tbCommentBody" class="comment_textarea"></textarea>
+</div>
+<p id="commentbox_opt">
+<input id="btn_comment_submit" class="comment_btn" value="提交评论" type="button">
+<span id="span_comment_canceledit" style="display: none;"><a>不改了</a></span>
+<a>退出登录</a>
+</p>
+<div id="tip_comment2" style="color: Red;"></div>
+<p>
+[Ctrl+Enter快捷键提交]
+</p>
+<div style="display: none;">
+<span id="comment_edit_id"></span><span id="span_parentcomment_id"></span>
+<span id="span_parent_id"></span>
+<span id="span_comment_replyto"></span>
+<span id="span_comment_posted"></span>
+</div>
+</div>
+<div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+<div id="ad_t2"><a href="http://www.ucancode.com/index.htm" target="_blank">【推荐】50万行VC++源码: 大型组态工控、电力仿真CAD与GIS源码库</a><br><a href="http://www.rongcloud.cn/active/live" target="_blank">【链接】融云阿里云大咖面对面 ：教你玩转直播风口</a><br><a href="http://www.gcpowertools.com.cn/products/activereports_overview.htm?utm_source=cnblogs&amp;utm_medium=blogpage&amp;utm_term=bottom&amp;utm_content=AR&amp;utm_campaign=community" target="_blank">【推荐】报表开发有捷径：快速设计轻松集成，数据可视化和交互</a><br><a href="http://cn.iforex.com/landing_pages/br1/zhns/Testimonials8/?content=Testimonials8&amp;SID=445058" target="_blank">【推荐】一个月仅用630元赚取15000元，学会投资</a><br><a href="http://click.aliyun.com/m/5646/" target="_blank">【推荐】阿里舆情首次开放，69元限量秒杀</a><br></div>
+<div id="opt_under_post"></div>
+<div id="ad_c1" class="c_ad_block"><a href="http://gold.xitu.io/welcome/?utm_source=cnblogs&amp;utm_medium=banner&amp;utm_content=gaoshou&amp;utm_campaign=q3_website" target="_blank"><img src="24442-20160805112458981-1554012564.jpg" alt="" width="300" height="250"></a></div>
+<div id="under_post_news"><div class="itnews c_ad_block"><b>最新IT新闻</b>:<br> ·  <a href="http://news.cnblogs.com/n/551437/" target="_blank">饿了么有菜或因扩张太快裁员瘦身 被指三成订单是刷出来的</a><br> ·  <a href="http://news.cnblogs.com/n/551436/" target="_blank">首家“互联网金融”咖啡店倒闭：未撑过一年</a><br> ·  <a href="http://news.cnblogs.com/n/551435/" target="_blank">滴滴之后 刘翔又把极路由告了</a><br> ·  <a href="http://news.cnblogs.com/n/551434/" target="_blank">LOL起诉外挂团队：每月超6700万玩家受害</a><br> ·  <a href="http://news.cnblogs.com/n/551433/" target="_blank">小米吹的天花乱坠，到底用的是什么材料？</a><br>» <a href="http://news.cnblogs.com/" title="IT新闻" target="_blank">更多新闻...</a></div></div>
+<div id="ad_c2" class="c_ad_block"><a href="https://www.jiguang.cn/devservice/?from=cnblogs01" target="_blank"><img src="24442-20160803181056012-1919505484.jpg" alt="" width="468" height="60"></a></div>
+<div id="under_post_kb"><div class="itnews c_ad_block" id="kb_block"><b>最新知识库文章</b>:<br><div id="kb_recent"> ·  <a href="http://kb.cnblogs.com/page/550625/" target="_blank">程序猿媳妇儿注意事项</a><br> ·  <a href="http://kb.cnblogs.com/page/540529/" target="_blank">可是姑娘，你为什么要编程呢？</a><br> ·  <a href="http://kb.cnblogs.com/page/549631/" target="_blank">知其所以然（以算法学习为例）</a><br> ·  <a href="http://kb.cnblogs.com/page/548394/" target="_blank">如何给变量取个简短且无歧义的名字</a><br> ·  <a href="http://kb.cnblogs.com/page/549080/" target="_blank">编程的智慧</a><br></div>» <a href="http://kb.cnblogs.com/" target="_blank">更多知识库文章...</a></div></div>
+<div id="HistoryToday" class="c_ad_block"></div>
+
+</div>
+
+
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+
+	<div id="sideBar">
+		<div id="sideBarMain">
+			
+<!--done-->
+<div class="newsItem">
+<h3 class="catListTitle">公告</h3>
+	<div id="blog-news"><div id="profile_block">昵称：<a href="http://home.cnblogs.com/u/bamanzi/">巴蛮子</a><br>园龄：<a href="http://home.cnblogs.com/u/bamanzi/" title="入园时间：2010-10-09">5年10个月</a><br>粉丝：<a href="http://home.cnblogs.com/u/bamanzi/followers/">67</a><br>关注：<a href="http://home.cnblogs.com/u/bamanzi/followees/">34</a><div id="p_b_follow"></div></div></div>
+</div>
+
+			<div id="calendar"><div id="blog-calendar" style=""><table id="blogCalendar" class="Cal" title="日历" cellpadding="0" cellspacing="0">
+	<tbody><tr><td colspan="7"><table class="CalTitle" cellspacing="0">
+		<tbody><tr><td class="CalNextPrev"><a>&lt;</a></td><td align="center">2016年8月</td><td class="CalNextPrev" align="right"><a>&gt;</a></td></tr>
+	</tbody></table></td></tr><tr><th class="CalDayHeader" abbr="日" scope="col" align="center">日</th><th class="CalDayHeader" abbr="一" scope="col" align="center">一</th><th class="CalDayHeader" abbr="二" scope="col" align="center">二</th><th class="CalDayHeader" abbr="三" scope="col" align="center">三</th><th class="CalDayHeader" abbr="四" scope="col" align="center">四</th><th class="CalDayHeader" abbr="五" scope="col" align="center">五</th><th class="CalDayHeader" abbr="六" scope="col" align="center">六</th></tr><tr><td class="CalOtherMonthDay" align="center">31</td><td align="center">1</td><td align="center">2</td><td align="center">3</td><td align="center">4</td><td align="center">5</td><td class="CalWeekendDay" align="center"><a href="http://www.cnblogs.com/bamanzi/archive/2016/08/06.html"><u>6</u></a></td></tr><tr><td class="CalWeekendDay" align="center">7</td><td align="center">8</td><td align="center">9</td><td align="center">10</td><td align="center">11</td><td align="center">12</td><td class="CalTodayDay" align="center">13</td></tr><tr><td class="CalWeekendDay" align="center">14</td><td align="center">15</td><td align="center">16</td><td align="center">17</td><td align="center">18</td><td align="center">19</td><td class="CalWeekendDay" align="center">20</td></tr><tr><td class="CalWeekendDay" align="center">21</td><td align="center">22</td><td align="center">23</td><td align="center">24</td><td align="center">25</td><td align="center">26</td><td class="CalWeekendDay" align="center">27</td></tr><tr><td class="CalWeekendDay" align="center">28</td><td align="center">29</td><td align="center">30</td><td align="center">31</td><td class="CalOtherMonthDay" align="center">1</td><td class="CalOtherMonthDay" align="center">2</td><td class="CalOtherMonthDay" align="center">3</td></tr><tr><td class="CalOtherMonthDay" align="center">4</td><td class="CalOtherMonthDay" align="center">5</td><td class="CalOtherMonthDay" align="center">6</td><td class="CalOtherMonthDay" align="center">7</td><td class="CalOtherMonthDay" align="center">8</td><td class="CalOtherMonthDay" align="center">9</td><td class="CalOtherMonthDay" align="center">10</td></tr>
+</tbody></table></div></div>
+			
+			<div id="leftcontentcontainer">
+				<div id="blog-sidecolumn"><div id="sidebar_search" class="sidebar-block">
+<div id="sidebar_search" class="mySearch">
+<h3 class="catListTitle">搜索</h3>
+<div id="sidebar_search_box">
+<div id="widget_my_zzk" class="div_my_zzk"><input id="q" class="input_my_zzk" type="text">&nbsp;<input value="找找看" id="btnZzk" class="btn_my_zzk" type="button"></div>
+<div id="widget_my_google" class="div_my_zzk"><input name="google_q" id="google_q" class="input_my_zzk" type="text">&nbsp;<input value="谷歌搜索" class="btn_my_zzk" type="button"></div>
+</div>
+</div>
+
+</div><div id="sidebar_shortcut" class="sidebar-block">
+<div class="catListLink">
+<h3 class="catListTitle">常用链接</h3>
+<ul>
+<li><a href="http://www.cnblogs.com/bamanzi/p/" title="我的博客的随笔列表">我的随笔</a></li><li><a href="http://www.cnblogs.com/bamanzi/MyComments.html" title="我发表过的评论列表">我的评论</a></li><li><a href="http://www.cnblogs.com/bamanzi/OtherPosts.html" title="我评论过的随笔列表">我的参与</a></li><li><a href="http://www.cnblogs.com/bamanzi/RecentComments.html" title="我的博客的评论列表">最新评论</a></li><li><a href="http://www.cnblogs.com/bamanzi/tag/" title="我的博客的标签列表">我的标签</a></li>
+<li><a id="itemListLink" href="#">更多链接</a></li>
+</ul>
+<div id="itemListLin_con" style="display: none;">
+<ul>
+
+</ul>
+</div>
+</div></div><div id="sidebar_recentposts" class="sidebar-block">
+<div class="catListEssay">
+<h3 class="catListTitle">最新随笔</h3>
+<ul>
+<li><a href="http://www.cnblogs.com/bamanzi/p/lightweight-x-window-manager-windowmaker.html">1. X下轻量级桌面WindowMaker上手指南</a></li><li><a href="http://www.cnblogs.com/bamanzi/p/switch-tmux-to-gnu-screen.html">2. 从Tmux 转到GNU Screen</a></li><li><a href="http://www.cnblogs.com/bamanzi/p/putty-transfering-files.html">3. 使用PuTTY时的文件上传下载方法</a></li><li><a href="http://www.cnblogs.com/bamanzi/p/org-indent-mode.html">4. [emacs org-mode小技巧] org-indent-mode 让文档更容易阅读</a></li><li><a href="http://www.cnblogs.com/bamanzi/p/iceweasel-2-firefox.html">5. Firefox终于返回到了Debian stable</a></li><li><a href="http://www.cnblogs.com/bamanzi/p/tldr-two-android-clients.html">6. tldr 的安卓客户端</a></li><li><a href="http://www.cnblogs.com/bamanzi/p/ssh-login-without-password.html">7. 如何配置ssh免密码登录</a></li><li><a href="http://www.cnblogs.com/bamanzi/p/colorful-shell.html">8. 彩色的Shell</a></li><li><a href="http://www.cnblogs.com/bamanzi/p/tools-to-dim-screen.html">9. 降低屏幕亮度，减缓眼疲劳 (linux/windows/firefox/android)</a></li><li><a href="http://www.cnblogs.com/bamanzi/p/install-linux-on-android.html">10. Android上面安装Linux的方法</a></li>
+</ul>
+</div>
+</div><div id="sidebar_toptags" class="sidebar-block">
+<div class="catListTag">
+<h3 class="catListTitle">我的标签</h3>
+<ul>
+<li><a href="http://www.cnblogs.com/bamanzi/tag/emacs/">emacs</a>(48)</li><li><a href="http://www.cnblogs.com/bamanzi/tag/linux/">linux</a>(14)</li><li><a href="http://www.cnblogs.com/bamanzi/tag/firefox/">firefox</a>(12)</li><li><a href="http://www.cnblogs.com/bamanzi/tag/shell/">shell</a>(11)</li><li><a href="http://www.cnblogs.com/bamanzi/tag/python/">python</a>(10)</li><li><a href="http://www.cnblogs.com/bamanzi/tag/debian/">debian</a>(10)</li><li><a href="http://www.cnblogs.com/bamanzi/tag/%E5%B7%A5%E5%85%B7%E8%BD%AF%E4%BB%B6/">工具软件</a>(9)</li><li><a href="http://www.cnblogs.com/bamanzi/tag/linuxmint/">linuxmint</a>(6)</li><li><a href="http://www.cnblogs.com/bamanzi/tag/cygwin/">cygwin</a>(6)</li><li><a href="http://www.cnblogs.com/bamanzi/tag/unix/">unix</a>(6)</li><li><a href="http://www.cnblogs.com/bamanzi/tag/">更多</a></li>
+</ul>
+</div></div><div id="sidebar_myteams" class="sidebar-block"></div><div id="sidebar_categories">
+<div class="catListPostCategory">
+<h3 class="catListTitle">随笔分类<span style="font-size: 11px; font-weight: normal;">(143)</span></h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_0_Link_0" href="http://www.cnblogs.com/bamanzi/category/559028.html">Emacs(36)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_1" href="http://www.cnblogs.com/bamanzi/category/559052.html">Firefox(13)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_2" href="http://www.cnblogs.com/bamanzi/category/711382.html">sysadmin(13)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_3" href="http://www.cnblogs.com/bamanzi/category/559032.html">Unix(38)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_4" href="http://www.cnblogs.com/bamanzi/category/559030.html">编程(20)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_5" href="http://www.cnblogs.com/bamanzi/category/786984.html">移动设备(5)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_6" href="http://www.cnblogs.com/bamanzi/category/559027.html">桌面软件(18)</a> </li>
+
+</ul>
+
+</div>
+
+<div class="catListPostArchive">
+<h3 class="catListTitle">随笔档案<span style="font-size: 11px; font-weight: normal;">(117)</span></h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_1_Link_0" href="http://www.cnblogs.com/bamanzi/archive/2016/08.html">2016年8月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_1" href="http://www.cnblogs.com/bamanzi/archive/2016/07.html">2016年7月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_2" href="http://www.cnblogs.com/bamanzi/archive/2016/06.html">2016年6月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_3" href="http://www.cnblogs.com/bamanzi/archive/2016/04.html">2016年4月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_4" href="http://www.cnblogs.com/bamanzi/archive/2016/02.html">2016年2月 (4)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_5" href="http://www.cnblogs.com/bamanzi/archive/2016/01.html">2016年1月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_6" href="http://www.cnblogs.com/bamanzi/archive/2015/12.html">2015年12月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_7" href="http://www.cnblogs.com/bamanzi/archive/2015/11.html">2015年11月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_8" href="http://www.cnblogs.com/bamanzi/archive/2015/09.html">2015年9月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_9" href="http://www.cnblogs.com/bamanzi/archive/2015/07.html">2015年7月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_10" href="http://www.cnblogs.com/bamanzi/archive/2015/06.html">2015年6月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_11" href="http://www.cnblogs.com/bamanzi/archive/2014/10.html">2014年10月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_12" href="http://www.cnblogs.com/bamanzi/archive/2014/08.html">2014年8月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_13" href="http://www.cnblogs.com/bamanzi/archive/2014/06.html">2014年6月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_14" href="http://www.cnblogs.com/bamanzi/archive/2014/03.html">2014年3月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_15" href="http://www.cnblogs.com/bamanzi/archive/2013/08.html">2013年8月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_16" href="http://www.cnblogs.com/bamanzi/archive/2013/05.html">2013年5月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_17" href="http://www.cnblogs.com/bamanzi/archive/2013/04.html">2013年4月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_18" href="http://www.cnblogs.com/bamanzi/archive/2013/02.html">2013年2月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_19" href="http://www.cnblogs.com/bamanzi/archive/2012/12.html">2012年12月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_20" href="http://www.cnblogs.com/bamanzi/archive/2012/09.html">2012年9月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_21" href="http://www.cnblogs.com/bamanzi/archive/2012/08.html">2012年8月 (8)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_22" href="http://www.cnblogs.com/bamanzi/archive/2012/07.html">2012年7月 (5)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_23" href="http://www.cnblogs.com/bamanzi/archive/2012/06.html">2012年6月 (4)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_24" href="http://www.cnblogs.com/bamanzi/archive/2012/05.html">2012年5月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_25" href="http://www.cnblogs.com/bamanzi/archive/2012/02.html">2012年2月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_26" href="http://www.cnblogs.com/bamanzi/archive/2012/01.html">2012年1月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_27" href="http://www.cnblogs.com/bamanzi/archive/2011/12.html">2011年12月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_28" href="http://www.cnblogs.com/bamanzi/archive/2011/10.html">2011年10月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_29" href="http://www.cnblogs.com/bamanzi/archive/2011/08.html">2011年8月 (4)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_30" href="http://www.cnblogs.com/bamanzi/archive/2011/07.html">2011年7月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_31" href="http://www.cnblogs.com/bamanzi/archive/2011/06.html">2011年6月 (6)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_32" href="http://www.cnblogs.com/bamanzi/archive/2011/05.html">2011年5月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_33" href="http://www.cnblogs.com/bamanzi/archive/2011/04.html">2011年4月 (8)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_34" href="http://www.cnblogs.com/bamanzi/archive/2011/03.html">2011年3月 (12)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_35" href="http://www.cnblogs.com/bamanzi/archive/2011/02.html">2011年2月 (4)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_36" href="http://www.cnblogs.com/bamanzi/archive/2010/11.html">2010年11月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_37" href="http://www.cnblogs.com/bamanzi/archive/2010/10.html">2010年10月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_38" href="http://www.cnblogs.com/bamanzi/archive/2010/06.html">2010年6月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_39" href="http://www.cnblogs.com/bamanzi/archive/2010/04.html">2010年4月 (2)</a> </li>
+
+</ul>
+
+</div>
+
+<div class="catListArticleArchive">
+<h3 class="catListTitle">文章档案<span style="font-size: 11px; font-weight: normal;">(5)</span></h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_2_Link_0" href="http://www.cnblogs.com/bamanzi/archives/2016/02.html" rel="nofollow">2016年2月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_2_Link_1" href="http://www.cnblogs.com/bamanzi/archives/2014/01.html" rel="nofollow">2014年1月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_2_Link_2" href="http://www.cnblogs.com/bamanzi/archives/2012/08.html" rel="nofollow">2012年8月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_2_Link_3" href="http://www.cnblogs.com/bamanzi/archives/2012/07.html" rel="nofollow">2012年7月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_2_Link_4" href="http://www.cnblogs.com/bamanzi/archives/2010/11.html" rel="nofollow">2010年11月 (1)</a> </li>
+
+</ul>
+
+</div>
+
+<div class="catList">
+<h3 class="catListTitle">Pages</h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_3_Link_0" href="http://www.cnblogs.com/bamanzi/articles/downloads.html" rel="nofollow">一些可下载资源</a> </li>
+
+</ul>
+
+</div>
+
+</div><div id="sidebar_scorerank" class="sidebar-block">
+<div class="catListBlogRank">
+<h3 class="catListTitle">积分与排名</h3>
+<ul>
+	<li class="liScore">
+		积分 -	128390
+	</li><li class="liRank">
+		排名 -	1550
+	</li>
+</ul>
+</div>
+
+
+</div><div id="sidebar_recentcomments" class="sidebar-block"><div id="recent_comments_wrap">
+<div class="catListComment">
+<h3 class="catListTitle">最新评论</h3>
+
+	<div id="RecentCommentsBlock"><ul>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/bamanzi/p/iceweasel-2-firefox.html#3463884">1. Re:Firefox终于返回到了Debian stable</a></li>
+        <li class="recent_comment_body">SeaMonkey的Debian分支iceape早在2013年12月就终止了Debian -- Security Information -- DSA-2819-1 iceapeDebian安全团队建......</li>
+        <li class="recent_comment_author">--巴蛮子</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/bamanzi/p/tmux-mouse-tips.html#3463289">2. Re:我在tmux中最不可少的配置: 用鼠标切换窗口/调节分屏大小</a></li>
+        <li class="recent_comment_body">@wzhd看了一下，的确比以前省事了，多谢提醒哈 ——不过我还在用1.8，还自己写了fabric脚本给我手头的CentOS 6, SLES 11, Ubuntu 12.04/14.04安装tmux-1......</li>
+        <li class="recent_comment_author">--巴蛮子</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/bamanzi/p/tmux-mouse-tips.html#3463173">3. Re:我在tmux中最不可少的配置: 用鼠标切换窗口/调节分屏大小</a></li>
+        <li class="recent_comment_body">这几个选项都不识别了呐…<br>原来在新版里合并为 mouse 选项了</li>
+        <li class="recent_comment_author">--wzhd</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/bamanzi/archive/2013/02/17/xterm-ctlseqs-and-emacs.html#3450947">4. Re:终端下如何让Emacs用上Ctrl+F1, Shift+Up等组合键</a></li>
+        <li class="recent_comment_body">&gt; 对端主机根据 TERM 在terminfo中查找翻译表，翻译为对应的按键信息，传递给应用程序（如果某些组合键在翻译表中找不到，则透传）用这个方法可以查到terminfo中的条目（前提是你得知道各个......</li>
+        <li class="recent_comment_author">--巴蛮子</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/bamanzi/archive/2012/06/24/note-taking-tool-cherrytree.html#3441839">5. Re:推荐跨平台笔记软件CherryTree</a></li>
+        <li class="recent_comment_body">用了感觉貌似不太稳定啊</li>
+        <li class="recent_comment_author">--那句诺言</li>
+</ul>
+</div>
+</div>
+</div></div><div id="sidebar_topviewedposts" class="sidebar-block"><div id="topview_posts_wrap">
+<div class="catListView">
+<h3 class="catListTitle">阅读排行榜</h3>
+	<div id="TopViewPostsBlock"><ul><li><a href="http://www.cnblogs.com/bamanzi/p/zsh-simple-guide.html">1. 我的zsh简单设置(24294)</a></li><li><a href="http://www.cnblogs.com/bamanzi/archive/2012/07/08/notes-gitlab-on-rhel.html">2. 关于gitlab搭建方法的几点补充(22678)</a></li><li><a href="http://www.cnblogs.com/bamanzi/archive/2010/10/19/iphone-chm-viewer-comparision.html">3. iPhone上面几个CHM阅读工具对比(17233)</a></li><li><a href="http://www.cnblogs.com/bamanzi/archive/2013/05/05/mobaxterm-ssh-xserver.html">4. MobaXterm: SSH/X远程客户端,  Xmanager的最佳免费替代品(11189)</a></li><li><a href="http://www.cnblogs.com/bamanzi/archive/2012/06/27/windows-console-emulater.html">5. Windows下的Console Emulator(10117)</a></li></ul></div>
+</div>
+</div></div><div id="sidebar_topcommentedposts" class="sidebar-block"><div id="topfeedback_posts_wrap">
+<div class="catListFeedback">
+<h3 class="catListTitle">评论排行榜</h3>
+	<div id="TopFeedbackPostsBlock"><ul><li><a href="http://www.cnblogs.com/bamanzi/archive/2011/03/06/emacs-elisp-snippets.html">1. 我的Emacs elisp代码搜集贴(69)</a></li><li><a href="http://www.cnblogs.com/bamanzi/archive/2011/04/12/firefox-keysnail-tips.html">2. keysnail 使用方法与一些技巧搜集贴(46)</a></li><li><a href="http://www.cnblogs.com/bamanzi/archive/2011/05/06/emacs-code-completion-for-python-methods.html">3. [emacs] Python代码补全的各种方法介绍以及对比(27)</a></li><li><a href="http://www.cnblogs.com/bamanzi/archive/2011/03/08/emacs-window-related-tips.html">4. [Emacs] 与窗口相关的笔记(22)</a></li><li><a href="http://www.cnblogs.com/bamanzi/archive/2011/04/22/choose-with-ido-or-anything.html">5. [emacs] 用 ido 或 anything 进行选择(15)</a></li></ul></div>
+</div>
+</div></div><div id="sidebar_topdiggedposts" class="sidebar-block"><div id="topdigg_posts_wrap">
+<div class="catListView">
+<h3 class="catListTitle">推荐排行榜</h3>
+<div id="TopDiggPostsBlock"><ul><li><a href="http://www.cnblogs.com/bamanzi/p/zsh-simple-guide.html">1. 我的zsh简单设置(2)</a></li><li><a href="http://www.cnblogs.com/bamanzi/archive/2012/06/27/windows-console-emulater.html">2. Windows下的Console Emulator(2)</a></li><li><a href="http://www.cnblogs.com/bamanzi/archive/2012/05/12/org-mode-so-powerful.html">3. [emacs] 为什么说org-mode是个神器(1)</a></li><li><a href="http://www.cnblogs.com/bamanzi/archive/2011/10/06/mingw-javascript-v8.html">4. 用mingw编译javascript v8(1)</a></li><li><a href="http://www.cnblogs.com/bamanzi/archive/2013/05/05/mobaxterm-ssh-xserver.html">5. MobaXterm: SSH/X远程客户端,  Xmanager的最佳免费替代品(1)</a></li></ul></div>
+</div></div></div></div>
+			</div>
+			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		
+<!--done-->
+Copyright ©2016 巴蛮子
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+
+
+</body><div class="" style="display: none; width: 24px; left: 462px; top: 2498px;" id="diigotb-imagepanel"><div class="diigotb-btn enabled" title="Save this image to Diigo" id="diigotb-quick-save"></div></div><div style="display: none; height: 272px; width: 1px; left: 39px; top: 2258px;" class="diigotb-border diigotb-left"></div><div style="display: none; width: 457px; height: 1px; left: 39px; top: 2258px;" class="diigotb-border diigotb-top"></div><div style="display: none; height: 272px; width: 1px; left: 496px; top: 2258px;" class="diigotb-border diigotb-right"></div><div style="display: none; width: 457px; height: 1px; left: 39px; top: 2530px;" class="diigotb-border diigotb-bottom"></div>
+</html>
