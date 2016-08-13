@@ -1,0 +1,563 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="zh-CN" xml:lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml" class="dj_gecko dj_contentbox">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Linux 容器的建立和简单管理</title>
+<link rel="schema.DC" href="http://purl.org/DC/elements/1.0/">
+<link rel="SHORTCUT ICON" href="favicon.ico">
+<meta name="DC.Rights" content="© Copyright&nbsp;IBM Corporation&nbsp;2013">
+<meta name="Keywords" content="Linux,虚拟化,LXC, tttlca">
+<meta name="DC.Date" scheme="iso8601" content="2013-12-30">
+<meta name="Source" content="v17 delivery:developerWorks">
+<meta name="Security" content="Public">
+<meta name="Abstract" content="LXC 中文名称就是 Linux 容器工具，容器可以提供轻量级的虚拟化，以便隔离进程和资源。使用 LXC 的优点就是不需要安装太多的软件包，使用过程也不会占用太多的资源， LXC 是在 Linux 平台上基于容器的虚拟化技术的未来标准，最初的 LXC 技术是由 IBM 研发的，目前已经进入 Linux 内核主线，这意味着 LXC 技术将是目前最有竞争力的轻量级虚拟容器技术，本文将循序渐进地介绍 Linux 容器的建立和管理方法。本文使用的 Linux 发行版本是 Ubuntu 12.04 。">
+<meta name="Description" content="LXC 中文名称就是 Linux 容器工具，容器可以提供轻量级的虚拟化，以便隔离进程和资源。使用 LXC 的优点就是不需要安装太多的软件包，使用过程也不会占用太多的资源， LXC 是在 Linux 平台上基于容器的虚拟化技术的未来标准，最初的 LXC 技术是由 IBM 研发的，目前已经进入 Linux 内核主线，这意味着 LXC 技术将是目前最有竞争力的轻量级虚拟容器技术，本文将循序渐进地介绍 Linux 容器的建立和管理方法。本文使用的 Linux 发行版本是 Ubuntu 12.04 。">
+<meta name="IBM.Effective" scheme="W3CDTF" content="2013-12-30">
+<meta name="Owner" content="developerWorks/China/IBM">
+<meta name="DC.Language" scheme="rfc1766" content="zh-CN">
+<meta name="IBM.SpecialPurpose" content="SP001">
+<meta name="IBM.Country" content="CN">
+<meta name="Robots" content="index,follow">
+<meta name="DC.Type" scheme="IBM_ContentClassTaxonomy" content="CT316">
+<meta name="DC.Subject" scheme="IBM_SubjectTaxonomy" content="SWGC0">
+<meta name="dW.ContentArea" content="2">
+<meta name="dW.Topic" content="492">
+
+<meta scheme="IBM_WTMCategory" name="IBM.WTMCategory" content="SOFDCLNXCN">
+
+<link rel="canonical" href="http://www.ibm.com/developerworks/cn/linux/1312_caojh_linuxlxc/index.html">
+<!-- HEADER_SCRIPTS_AND_CSS_INCLUDE -->
+
+
+<!-- Masthead/footer -->
+
+
+
+
+        
+<!-- BEGIN: Use this section to set page specific variables for the Unica Page Tag -->
+
+<!--END -->
+
+   
+
+  <!-- LEADSPACE_STYLES -->
+
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body aria-busy="false" class="v17" id="ibm-com">
+<div style="opacity: 1; top: 0px;" id="dw-regbar" class="dw-home-band" aria-labelledby="dw-regbar-vp" role="complementary">
+    <div class="ibm-columns">
+        <div class="ibm-col-6-6">
+            <span id="dw-regbar-bluemix">IBM <strong>Bluemix</strong></span>
+            <span id="dw-regbar-vp">点击按钮，开始云上的开发！</span>
+            <p class="ibm-button-link-alternate dw-button-green">
+                <a id="article-rbar-bmix-home-regbar" class="dw-button-large dw-regbar-btn" href="https://developer.ibm.com/sso/bmregistration?lang=zh_CN&amp;ca=dwchina-_-bluemix-_-1312_caojh_linuxlxc-_-regbar-article">开始您的试用</a>
+            </p>
+        </div>
+    </div>
+    <span>
+        <a role="button">
+            <span id="dw-close-regbar" aria-label="Close the registration bar" title="Close the registration bar" role="button">
+        </span></a>
+    </span>
+</div>
+	<div style="margin-top: 42px;" id="ibm-top" class="ibm-landing-page ibm-no-scroll"><img src="ibm_logo_print.png" id="ibm-print-masthead" alt="IBM Print" width="43" height="15">
+
+<!-- MASTHEAD_BEGIN -->		
+<div role="banner" id="ibm-masthead">
+
+    <!-- TOP ROW -->    
+	<div id="dw-masthead-top-row">
+		<ul id="ibm-mast-options-dw" role="toolbar" aria-label="Masthead navigation">
+			<li id="dw-mast-top-4" role="presentation">
+				<a href="http://www.ibm.com/developerworks/cn/" tabindex="0"><img src="dwn-dw-badge.png" alt="dW" aria-label="dW" width="43" height="22"></a>
+			</li>
+			<li id="dw-mast-top-0" role="presentation">
+				<div id="dw-mast-signin">
+					<a id="dw-mf-signin-link" class="" href="http://www.ibm.com/developerworks/dwwi/jsp/ssologin.jsp?d=http%3A%2F%2Fwww.ibm.com%2Fdeveloperworks%2Fcn%2Flinux%2F1312_caojh_linuxlxc%2Findex.html&amp;lang=zh_CN&amp;a=dwmav" title="" tabindex="2">登录</a>
+					<span class="dw-mf-signin-spacer">|</span>
+					<a id="dw-mf-reg-link" class="" href="http://www.ibm.com/developerworks/dwwi/jsp/ssoregister.jsp?d=http%3A%2F%2Fwww.ibm.com%2Fdeveloperworks%2Fcn%2Flinux%2F1312_caojh_linuxlxc%2Findex.html&amp;lang=zh_CN&amp;a=dwmav" title="" tabindex="3">注册</a>
+				</div>
+				<div id="dw-mast-auth-link" class="dw-mf-hide">
+					<a class="authenticated ibm-active" href="#" role="button" tabindex="2"></a>
+					<ul id="dw-mast-auth-menu" class="dw-mf-hide">
+						<li class="dw-mast-auth-menu-title" aria-hidden="true">developerWorks 社区</li>
+						<li>
+							<span class="dw-mast-auth-menu-arrow" aria-hidden="true">›</span><a href="http://www.ibm.com/developerworks/community/profiles/html/myProfileView.do?lang=zh" tabindex="3">我的概要信息</a>
+						</li>
+						<li>
+							<span class="dw-mast-auth-menu-arrow" aria-hidden="true">›</span><a href="http://www.ibm.com/developerworks/community/groups/service/html/mycommunities?lang=zh" tabindex="4">我的社区</a>
+						</li>
+						<li>
+							<span class="dw-mast-auth-menu-arrow" aria-hidden="true">›</span><a href="http://www.ibm.com/developerworks/community/news/?lang=zh" tabindex="5">设置</a>
+						</li>
+						<li class="dw-mast-auth-menu-divider"><hr></li>
+						<li>
+							<span class="dw-mast-auth-menu-arrow" aria-hidden="true">›</span><a id="dw-mast-signout-link" href="http://www.ibm.com/developerworks/dwwi/jsp/ssologout.jsp?d=http%3A%2F%2Fwww.ibm.com%2Fdeveloperworks%2Fcn%2F&amp;a=dwmav" tabindex="6">退出</a>
+						</li>
+					</ul>				
+				</div>
+			</li>
+			<li id="dw-mast-top-1">
+				<div></div>
+			</li>
+			<li id="dw-mast-top-3" role="presentation">
+				<a href="http://www.ibm.com/cn/zh/" tabindex="1">IBM</a>
+			</li>
+		</ul>
+	</div>
+
+    <!-- BOTTOM ROW -->
+	<div id="ibm-universal-nav-dw" aria-label="Site map">
+		<ul id="ibm-unav-links-dw">
+			<li id="ibm-unav-home-dwlogo">
+				<a href="http://www.ibm.com/developerworks/cn/"><img src="dwn-dw-wordmark.png" alt="developerWorks®" width="225" height="28"></a>
+			</li>
+		</ul>
+		<ul id="ibm-menu-links-dw" class="ibm-menu-links-dw-cn" role="toolbar" aria-label="Site map">
+			<li id="dw-mast-nav-0" role="presentation"><a href="http://www.ibm.com/developerworks/cn/topics/" tabindex="0">技术主题</a></li>
+			<li id="dw-mast-nav-1" role="presentation"><a href="http://www.ibm.com/developerworks/cn/downloads/" tabindex="0">软件下载</a></li>
+			<li id="dw-mast-nav-2" role="presentation"><a href="http://www.ibm.com/developerworks/community/?lang=zh" tabindex="0">社区</a></li>
+			<li id="dw-mast-nav-3" role="presentation"><a href="https://www.ibm.com/developerworks/community/groups/service/html/communityview?communityUuid=6d7f9e5d-5f89-4767-a006-a81b8d186370&amp;lang=zh" tabindex="0">技术讲座</a></li>
+		</ul>
+		<form id="ibm-search-form" action="http://www.ibm.com/search/csass/search/" method="get" name="form1" aria-label="搜索 developerWorks" role="search">
+			<p>
+				<label for="q"><span class="ibm-access">搜索 developerWorks</span></label>
+				<input id="q" name="q" value="搜索 developerWorks" maxlength="100" type="text">
+				<input name="sn" value="dw" type="hidden">
+				<input name="lang" value="zh" type="hidden">
+				<input name="cc" value="CN" type="hidden">
+				<input name="en" value="utf" type="hidden">
+				<input name="hpp" value="20" type="hidden">
+				<input name="dws" value="cndw" type="hidden">
+				<input name="lo" value="zh" type="hidden">
+				<input id="ibm-search" class="ibm-btn-search" value="提交" type="submit">
+			</p>
+		</form>
+	</div>    
+	
+<div aria-label="社交工具" role="navigation" style="display: block;" id="ibm-social-tools"><ul aria-label="Social tool list" role="toolbar"><li><a tabindex="0" role="button" dojoattrid="1" rel="print" href="#" title="打印本页面" class="ibm-share-print">打印本页面</a></li><li><a tabindex="-1" role="button" dojoattrid="2" rel="email" href="#" title="用电子邮件发送本页面" class="ibm-share-email">用电子邮件发送本页面</a></li><li></li><li></li><li><a class="ibm-share-weibo" tabindex="-1" role="button" dojoattrid="2" rel="新浪微博" title="新浪微博" href="http://service.weibo.com/share/share.php?title=Linux%20%E5%AE%B9%E5%99%A8%E7%9A%84%E5%BB%BA%E7%AB%8B%E5%92%8C%E7%AE%80%E5%8D%95%E7%AE%A1%E7%90%86&amp;url=http%3A%2F%2Fwww.ibm.com%2Fdeveloperworks%2Fcn%2Flinux%2F1312_caojh_linuxlxc%2Findex.html&amp;language=zh_cn">新浪微博</a></li><li><a class="ibm-share-renren" tabindex="-1" role="button" dojoattrid="3" rel="人人网" title="人人网" href="http://share.renren.com/share/buttonshare?title=Linux%20%E5%AE%B9%E5%99%A8%E7%9A%84%E5%BB%BA%E7%AB%8B%E5%92%8C%E7%AE%80%E5%8D%95%E7%AE%A1%E7%90%86&amp;link=http%3A%2F%2Fwww.ibm.com%2Fdeveloperworks%2Fcn%2Flinux%2F1312_caojh_linuxlxc%2Findex.html">人人网</a></li><li><a class="dwcn-tencent-link" tabindex="-1" role="button" dojoattrid="4" rel="腾讯微博" title="腾讯微博" href="http://v.t.qq.com/share/share.php?title=Linux%20%E5%AE%B9%E5%99%A8%E7%9A%84%E5%BB%BA%E7%AB%8B%E5%92%8C%E7%AE%80%E5%8D%95%E7%AE%A1%E7%90%86&amp;url=http%3A%2F%2Fwww.ibm.com%2Fdeveloperworks%2Fcn%2Flinux%2F1312_caojh_linuxlxc%2Findex.html">腾讯微博</a></li><li><a class="dwcn-sohu-link" tabindex="-1" role="button" dojoattrid="5" rel="搜狐微博" title="搜狐微博" href="http://t.sohu.com/third/post.jsp?title=Linux%20%E5%AE%B9%E5%99%A8%E7%9A%84%E5%BB%BA%E7%AB%8B%E5%92%8C%E7%AE%80%E5%8D%95%E7%AE%A1%E7%90%86%20&amp;link=http%3A%2F%2Fwww.ibm.com%2Fdeveloperworks%2Fcn%2Flinux%2F1312_caojh_linuxlxc%2Findex.html">搜狐微博</a></li><li><a class="dwcn-netease-link" tabindex="-1" role="button" dojoattrid="6" rel="网易微博" title="网易微博" href="http://t.163.com/article/user/checkLogin.do?info=Linux%20%E5%AE%B9%E5%99%A8%E7%9A%84%E5%BB%BA%E7%AB%8B%E5%92%8C%E7%AE%80%E5%8D%95%E7%AE%A1%E7%90%86%20http%3A%2F%2Fwww.ibm.com%2Fdeveloperworks%2Fcn%2Flinux%2F1312_caojh_linuxlxc%2Findex.html">网易微博</a></li><li><a class="ibm-share-digg" title="Digg" href="http://digg.com/submit?phase=2&amp;url=http%3A%2F%2Fwww.ibm.com%2Fdeveloperworks%2Fcn%2Flinux%2F1312_caojh_linuxlxc%2Findex.html&amp;title=Linux%20%E5%AE%B9%E5%99%A8%E7%9A%84%E5%BB%BA%E7%AB%8B%E5%92%8C%E7%AE%80%E5%8D%95%E7%AE%A1%E7%90%86" rel="digg" dojoattrid="7" role="button" tabindex="-1">Digg</a></li><li><a class="ibm-share-facebook" title="Facebook" href="http://www.facebook.com/sharer.php?u=http%3A%2F%2Fwww.ibm.com%2Fdeveloperworks%2Fcn%2Flinux%2F1312_caojh_linuxlxc%2Findex.html&amp;t=Linux%20%E5%AE%B9%E5%99%A8%E7%9A%84%E5%BB%BA%E7%AB%8B%E5%92%8C%E7%AE%80%E5%8D%95%E7%AE%A1%E7%90%86" rel="facebook" dojoattrid="8" role="button" tabindex="-1">Facebook</a></li><li><a class="ibm-share-twitter" title="Twitter" href="http://twitter.com/?status=http%3A%2F%2Fwww.ibm.com%2Fdeveloperworks%2Fcn%2Flinux%2F1312_caojh_linuxlxc%2Findex.html%20-%20Linux%20%E5%AE%B9%E5%99%A8%E7%9A%84%E5%BB%BA%E7%AB%8B%E5%92%8C%E7%AE%80%E5%8D%95%E7%AE%A1%E7%90%86" rel="twitter" dojoattrid="9" role="button" tabindex="-1">Twitter</a></li><li><a class="ibm-share-delicious" title="Delicious" href="http://delicious.com/post?url=http%3A%2F%2Fwww.ibm.com%2Fdeveloperworks%2Fcn%2Flinux%2F1312_caojh_linuxlxc%2Findex.html&amp;title=Linux%20%E5%AE%B9%E5%99%A8%E7%9A%84%E5%BB%BA%E7%AB%8B%E5%92%8C%E7%AE%80%E5%8D%95%E7%AE%A1%E7%90%86" rel="delicious" dojoattrid="10" role="button" tabindex="-1">Delicious</a></li><li><a class="ibm-share-linkedin" title="Linked In" href="http://www.linkedin.com/shareArticle?mini=true&amp;url=http%3A%2F%2Fwww.ibm.com%2Fdeveloperworks%2Fcn%2Flinux%2F1312_caojh_linuxlxc%2Findex.html&amp;title=Linux%20%E5%AE%B9%E5%99%A8%E7%9A%84%E5%BB%BA%E7%AB%8B%E5%92%8C%E7%AE%80%E5%8D%95%E7%AE%A1%E7%90%86" rel="linkedin" dojoattrid="11" role="button" tabindex="-1">Linked In</a></li></ul></div></div>
+<div id="fdiv" class="ibm-access"></div><!-- MASTHEAD_END -->
+	    
+<!-- LAYOUT -->
+<!-- LEADSPACE_BEGIN --> 
+<div role="main" id="ibm-access-cntr"><div id="ibm-leadspace-head">
+	<!-- LEADSPACE_BODY_BEGIN --> 
+	<div id="ibm-leadspace-body">
+		<!-- Navigation_Trail_BEGIN -->
+      <ul aria-label="Bread Crumbs" role="directory" id="ibm-navigation-trail"><li><a href="http://www.ibm.com/developerworks/cn/">developerWorks 中国</a></li><li><a href="http://www.ibm.com/developerworks/cn/topics/">技术主题</a></li><li><a href="http://www.ibm.com/developerworks/cn/linux/">Linux</a></li><li><a href="http://www.ibm.com/developerworks/cn/views/linux/libraryview.jsp">文档库</a></li></ul>
+		<!-- END_Navigation_Trail -->
+			<!-- Title_Subtitle -->
+			<h1>Linux 容器的建立和简单管理</h1>
+	</div>
+	<!-- LEADSPACE_BODY_END --> 
+	<!-- SUMMARY_BEGIN -->
+	<div id="dw-summary-area" class="dw-summary-columns">
+		<div class="ibm-col-6-4">
+		<p>LXC 中文名称就是 Linux 容器工具，容器可以提供轻量级的虚拟化，以便隔离进程和资源。使用 LXC 的优点就是不需要安装太多的软件包，使用过程也不会占用太多的资源， LXC 是在 Linux 平台上基于容器的虚拟化技术的未来标准，最初的 LXC 技术是由 IBM 研发的，目前已经进入 Linux 内核主线，这意味着 LXC 技术将是目前最有竞争力的轻量级虚拟容器技术，本文将循序渐进地介绍 Linux 容器的建立和管理方法。本文使用的 Linux 发行版本是 Ubuntu 12.04 。</p>
+		<p class="ibm-no-print ibm-ind-link">
+
+			
+			<span id="nCmts"><span>1</span><img class="dw-cmts-arrow" alt="" src="dw-cmts-arrow.png" width="7" height="7"> <a href="#icomments" class="dw-cmt-link">评论</a></span>
+		</p>
+		</div>
+		<div class="ibm-col-6-2 dw-toc-margin">
+			<p class="dw-summary-author"><a role="button" href="#authorN10026" class="ibm-popup-link">曹 江华</a>, 系统管理员, 中科思密达有限公司</p>
+<div id="authorN10026" class="ibm-common-overlay"><div class="ibm-head"><p><a href="#close" class="ibm-common-overlay-close">关闭 [x]</a></p></div><div class="ibm-body"><div class="ibm-main"><div class="ibm-title"><!--this is where the h2 usually goes--></div><div class="ibm-container ibm-alternate"><div class="ibm-container-body">
+<p><!--.-->
+曹江华，毕业于工科大学机电一体化专业，从事 CAD 设计。后从事小型数据库的应用。1999 年开始从事构建网络、管理维护、数据库管理工作。关注开放系统和网络安全。出版多本 Unix/Linux 安全管理书籍。</p><br><br></div></div></div></div><div class="ibm-footer"><!----></div></div>
+			<p class="dw-summary-date">2013 年 12 月 30 日</p>
+			
+
+
+			<div aria-hidden="true" class="ibm-container" id="dw-toc"><div class="ibm-container-body"><ul class="ibm-twisty"><li><a href="#toggle" class="ibm-twisty-trigger ibm-twisty-trigger-closed"><img src="c.gif" alt="expand"></a><span class="ibm-twisty-head">内容</span><div style="display: none;" class="ibm-twisty-body"><ul style="font-size: 0.8em;" class="ibm-link-list">
+<li><a class="ibm-anchor-down-em-link" href="#3.cgroups 简介 |outline">cgroups 简介</a></li>
+<li><a class="ibm-anchor-down-em-link" href="#4.搭建第一个 LXC 虚拟计算机 |outline">搭建第一个 LXC 虚拟计算机</a></li>
+<li><a class="ibm-anchor-down-em-link" href="#5.LXC 虚拟计算机的基本管理 |outline">LXC 虚拟计算机的基本管理</a></li>
+<li><a class="ibm-anchor-down-em-link" href="#6.LXC 虚拟网络接口设置 |outline">LXC 虚拟网络接口设置</a></li>
+<li><a class="ibm-anchor-down-em-link" href="#7.总结 |outline">总结</a></li>
+<li><a class="ibm-anchor-down-em-link" href="#resources">参考资料 </a></li>
+<li><a class="ibm-anchor-down-em-link" href="#icomments">评论</a></li></ul></div></li></ul></div></div>
+		</div>
+	</div>
+	<!-- SUMMARY_END -->
+</div><div id="ibm-pcon">
+
+<!-- BEGIN_IBM-CONTENT -->
+<div id="ibm-content">
+
+<!-- BEGIN_IBM-CONTENT-BODY -->
+<div id="ibm-content-body">
+
+<!-- BEGIN_IBM-CONTENT-MAIN -->
+<div id="ibm-content-main">
+
+<!-- 1_1_COLUMN_BEGIN -->
+<div class="ibm-columns">
+<div class="ibm-col-1-1"><div class="dw-article-sidebar dw-bluemix" id="dwc-exp-a"><img src="bluemix-graphic.png" alt="" width="64" height="64"><p>在 IBM Bluemix 云平台上开发并部署您的下一个应用。</p><p class="ibm-button-link-alternate dw-button-green"><a id="tutc-sbar-bmix-home-btn-ABa" href="https://developer.ibm.com/sso/bmregistration?lang=zh_CN&amp;ca=dwchina-_-bluemix-_-1312_caojh_linuxlxc-_-sidebar" class="dw-button-large">开始您的试用</a></p></div>
+
+<a id="1.|outline"></a><h2 id="3.cgroups 简介 |outline">cgroups 简介</h2><p>LXC 项目由一个 Linux 内核补丁和一些用户空间（userspace） 工具组成。这些工具使用由补丁增加的内核新特性，提供一套简化的工具来维护容器。2.6.29
+    版本后的 Linux 内核版本已经包含该补丁提供的大部分功能。所以强烈建议使用最新的内核源代码。LXC 在资源管理方面依赖 Linux 内核的 cgroups
+    (Control Groups) 系统，cgroups 系统是 Linux 内核提供的一个基于进程组的资源管理的框架，可以为特定的进程组限定可以使用的资源。它最初由 Google 的工程师提出，后来被整合进 Linux 内核。cgroups 也是 LXC 为实现虚拟化所使用的资源管理手段，可以说没有 cgroups 就没有 LXC。cgroups 文件系统结构见图 1 。</p><h5 id="3.0.1.图 1 cgroups 文件系统结构 |outline">图 1.cgroups
+    文件系统结构</h5><img alt="cgroups 文件系统结构" src="image002.jpg" width="534"><h3 id="3.1.相关名词解释 |outline">相关名词解释</h3><p>控制族群（control group）：控制族群就是一组按照某种标准划分的进程。cgroups 中的资源控制都是以控制族群为单位实现。一个进程可以加入到一个控制族群，也可以迁移到另一个控制族群。</p><p>层级（hierarchy）。控制族群可以组织成 hierarchical 的形式，既一颗控制族群树。控制族群树上的子节点控制族群是父节点控制族群的孩子，继承父控制族群的特定的属性。</p><p>子系统（subsytem）。一个子系统就是一个资源控制器，比如中央处理器子系统就是控制中央处理器时间分配的一个控制器。子系统必须附加（attach）到一个层级上才能起作用，一个子系统附加到某个层级以后，这个层级上的所有控制族群都受到这个子系统的控制。主要包括如下 9 个子系统：</p><ul class="ibm-bullet-list"><li>
+blkio ： 这个子系统为块设备设定输入/输出限制，比如物理设备（磁盘，固态硬盘，USB 等）。</li><li>
+cpu ： 这个子系统使用调度程序提供对 中央处理器的 cgroup 任务访问。</li><li>
+cpuacct ： 这个子系统自动生成 cgroup 中任务所使用的中央处理器报告。</li><li>
+cpuset ： 这个子系统为 cgroup 中的任务分配独立中央处理器（在多核系统）和内存节点。</li><li>
+devices ： 这个子系统可允许或者拒绝 cgroup 中的任务访问设备。</li><li>
+freezer ： 这个子系统挂起或者恢复 cgroup 中的任务。</li><li>
+memory ： 这个子系统设定 cgroup 中任务使用的内存限制，并自动生成由那些任务使用的内存资源报告。</li><li>
+net_cls ： 这个子系统使用等级识别符（classid）标记网络数据包，可允许 Linux 流量控制程序（tc）识别从具体 cgroup 中生成的数据包。</li><li>
+ns ：ns 子系统提供了一个将进程分组到不同名称空间的方法。在具体名称空间中，进程可彼此互动，但会与在其它名称空间中运行的进程隔绝。这些分开的名称空间在用于操作系统级别的虚拟化时，有时也称之为容器。</li></ul><div class="ibm-alternate-rule"><hr></div><p class="ibm-ind-link ibm-back-to-top"><a href="#ibm-pcon" class="ibm-anchor-up-link">回页首</a></p><h2 id="4.搭建第一个 LXC 虚拟计算机 |outline">搭建第一个 LXC 虚拟计算机</h2><p>本文使用的 Linux 发行版是 Ubuntu 12.10 ，首先安装软件包：</p><div class="codesection"><pre class="displaycode">#apt-get install lxc</pre></div><p>安装软件包后要检查 Linux 发行版的内核对 LXC 的支持情况，可以使用下面命令 lxc-checkconfig 查看，见图 2 。</p><h5 id="4.0.1.图 2 lxc-checkconfig 命令 |outline">图 2.lxc-checkconfig 命令</h5><img alt="lxc-checkconfig 命令" src="image003.jpg" width="558"><p>lxc-checkconfig 命令检查之后如果所有项目显示“enabled”表示可以直接使用 LXC。</p><h3 id="4.1.建立一个 Ubuntu Server LXC 虚拟计算机系统 |outline">建立一个 Ubuntu Server LXC 虚拟计算机系统</h3><p>使用如下命令构建（执行过程见图）3：</p><div class="codesection"><pre class="displaycode">#lxc-create  -t  ubuntu -n cjhlxc1</pre></div><p>说明这里使用的是 ubuntu 模板，模板文件保存在/usr/lib/lxc/templates/目录下，这个目录下还有其他模板，可以使用如下命令查看，命令输出如下：</p><div class="codesection"><pre class="displaycode"># tree /usr/lib/lxc/templates/
+/usr/lib/lxc/templates/
+├── lxc-busybox
+├── lxc-debian
+├── lxc-fedora
+├── lxc-opensuse
+├── lxc-sshd
+├── lxc-ubuntu
+└── lxc-ubuntu-cloud</pre></div><h5 id="4.1.1.图 3 建立一个 Ubuntu Server LXC 系统 |outline">图
+    3.建立一个 Ubuntu Server LXC 系统</h5><img alt="图 3.建立一个 Ubuntu Server LXC 系统" src="image004.jpg" width="558"><p>说明：安装过程要持续一段时间，另外安装过程要保证互联网连接。</p><p>上面命令完成后, 会在 /var/lib/lxc 目录中, 产生虚拟计算机 cjhlxc1 ，它的目录结构见图 4 。</p><h5 id="4.1.2.图 4 虚拟计算机 cjhlxc1 目录结构 |outline">图 4.虚拟计算机
+    cjhlxc1 目录结构</h5><img alt="虚拟计算机 cjhlxc1 目录结构" src="image005.jpg" width="548"><div class="ibm-alternate-rule"><hr></div><p class="ibm-ind-link ibm-back-to-top"><a href="#ibm-pcon" class="ibm-anchor-up-link">回页首</a></p><h2 id="5.LXC 虚拟计算机的基本管理 |outline">LXC 虚拟计算机的基本管理</h2><h3 id="5.1.了解 LXC 虚拟计算机的管理命令 |outline">了解 LXC 虚拟计算机的管理命令</h3><p>LXC 常见命令说明见表 1</p><h5 id="5.1.1.表 1 LXC 常见命令说明 |outline">表 1 LXC 常见命令说明</h5><table class="ibm-data-table" border="0" cellpadding="0" cellspacing="0"><thead xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><tr><th>
+命令名称
+</th><th>
+功能
+</th><th>
+使用方法
+</th></tr></thead><tbody xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><tr><td>
+lxc-create
+</td><td>
+用于创建一个容器
+</td><td>
+lxc-create -n name [-f config_file]<br>
+ -n 后面跟要创建的容器名字 例如：-n foo<br>
+-f 后面跟容器配置文件的路径<br>
+-t template 模板名称
+</td></tr><tr><td>
+lxc-destroy
+</td><td>
+用来销毁有关容器
+</td><td>
+lxc-destroy -n name<br>
+-n 后面跟容器名字
+</td></tr><tr><td>
+lxc-execute
+</td><td>
+用于在一个容器执行应用程序
+</td><td>
+lxc-execute -n name [-f config_file] [ -s KEY=VAL ]command<br>
+ -n 后面跟容器名字（容器名字用于管理容器）例如：-n foo<br>
+  -f 后面跟容器配置文件的路径（如果没有配置文件，可以直接用-s 指定配置选项，如果什么都没有，系统采用默认策略）例如：-f foo.conf<br>
+  -s 后面跟配置键值对 例如：LXC.cgroup.cpu.shares=512<br>
+command 为要执行的命令 例如：/bin/bash<br>
+这个命令会 mount /proc 并且会自动创建/销毁容器。
+</td></tr><tr><td>
+lxc-start
+</td><td>
+用于在容器中执行给定命令
+</td><td>
+lxc-start  -n name [-f config_file] [-c console_file] [-d] [-s KEY=VAL]           [command]<br>
+-d 将容器当做守护进程执行<br>
+-f  后面跟配置文件<br>
+-c 指定一个文件作为容器 console 的输出，如果不指定，将输出到终端<br>
+-s 指定配置<br>
+如果没有指定命令，lxc-start 将要运行 /sbin/init
+</td></tr><tr><td>
+lxc-console
+</td><td>
+打开容器控制台
+</td><td>
+lxc-console -n name<br>
+ -n 容器名
+</td></tr></tbody></table><p>说明：更加详细的 lxc 命令列表和使用方法请读者参考官方网站文档（<a href="http://lxc.sourceforge.net/">http://lxc.sourceforge.net/</a> ）。</p><p>图 5 是主要 LXC 命令执行过程的示意图</p><h5 id="5.1.2.图 5 LXC 命令执行过程的示意图 |outline">图 5.LXC
+    命令执行过程的示意图</h5><img alt="LXC 命令执行过程的示意图" src="image006.jpg" width="488"><h3 id="5.2.LXC 常见命令说明举例 |outline">LXC 常见命令说明举例</h3><h5 id="5.2.1.启动 LXC 虚拟计算机 |outline">启动 LXC 虚拟计算机</h5><div class="codesection"><pre class="displaycode"># lxc-start  -n  cjhlxc1</pre></div><p>确实的账号和密码都是 ubuntu 然后登录虚拟计算机见图 6</p><h5 id="N10145">图 6.登录虚拟计算机</h5><img alt="登录虚拟计算机" src="image007.jpg" width="555"><a id="5.2.2.列出当前系统所有的容器 |outline"></a><p><strong>列出当前系统所有的容器</strong></p><p>检查目前有哪几个容器启动(若没有任何结果，则目前都没有容器启动)</p><div class="codesection"><pre class="displaycode"># lxc-ls
+cjhlxc1 foo</pre></div><h5 id="5.2.3.使用 console 登入容器第 3 个控制台 |outline">使用 console 登入容器第 3 个控制台</h5><div class="codesection"><pre class="displaycode">$ lxc-console -n cjhlxc1 –t 3</pre></div><p>说明：如果没有指定 -t N 选项，则一个没有被使用的控制台将自动选择。要退出控制台，使用快捷键 Ctrl-a q 。</p><p><strong>停止运行一个容器</strong></p><div class="codesection"><pre class="displaycode"># lxc-stop -n cjhlxc1</pre></div><a id="5.2.4.获取一个容器的状态 |outline"></a><p><strong>获取一个容器的状态</strong></p><a id="5.2.5.# lxc-info -n ol6ctr1 |outline"></a><p><strong># lxc-info -n ol6ctr1 </strong></p><h5 id="5.2.6.把一个容器销毁 |outline">把一个容器销毁</h5><div class="codesection"><pre class="displaycode"># lxc-destroy -n cjhlxc11</pre></div><p><strong>复制一个容器</strong></p><div class="codesection"><pre class="displaycode"># lxc-clone -o cjhlxc1 -n ol6ctr2</pre></div><p><strong>暂停或恢复一个容器</strong></p><div class="codesection"><pre class="displaycode"># lxc-freeze -n cjhlxc1
+# lxc-unfreeze -n cjhlxc1</pre></div><div class="ibm-alternate-rule"><hr></div><p class="ibm-ind-link ibm-back-to-top"><a href="#ibm-pcon" class="ibm-anchor-up-link">回页首</a></p><h2 id="6.LXC 虚拟网络接口设置 |outline">LXC 虚拟网络接口设置</h2><h3 id="6.1.了解 LXC 内置的网络架构 |outline">了解 LXC 内置的网络架构</h3><p>不管是哪套虚拟系统，只要是运作在 Linux 系统架构之内，所使用的虚拟网络都是 Linux 系统缺省的虚拟网络架构（即 TAP/TUP, Bridge）图 7 是示意图 。</p><h5 id="6.1.1.图 7 LXC 虚拟网络接口示意图 |outline">图 7.LXC
+    虚拟网络接口示意图</h5><img alt="LXC 虚拟网络接口示意图" src="image009.jpg" width="548"><p>图 7 这个结构中两个容器使用 Veth Bridge，因为默认情况下，LXC 的模板脚本设置网络都是基于 Veth Bridge。在这种模式下，容器从 dnsmasq 服务器获取其 IP 地址。主机允许的容器连接到网络的其余部分（使用 iptables 的 NAT 规则 ，但这些规则不允许传入的连接到容器）。</p><div class="dw-sidebar ibm-inset"><p>小贴士：什么是 veth</p><p>Linux container 中用到一个叫做 veth 的东西，这是一种比较新的设备，专门为 container 所建。veth 从名字上来看是 Virtual ETHernet 的缩写，它的作用很简单，就是要把从一个网络用户空间（network namespace ）发出的数据包转发到另一个用户空间。veth 设备是成对的，一个是容器之中，另一个在容器之外，即在真实机器上能看到的。</p></div><p>除了 Veth Bridge 外，LXC 虚拟计算机还支持 Macvlan Bridge 和 Macvlan VEPA。有时我们可能需要一块物理网卡绑定多个 IP 以及多个 MAC 地址，虽然绑定多个 IP 很容易，但是这些 IP 会共享物理网卡的 MAC 地址，可能无法满足我们的设计需求，所以有了 MACVLAN 设备，其工作</p><p>MACVLAN 会根据收到包的目的 MAC 地址判断这个包需要交给哪个虚拟网卡。限于篇幅这里介绍 Macvlan Bridge 和 Macvlan VEPA，感兴趣的用户可以参考参考文献中的介绍。</p><p>与 KVM 相同 LXC 安装完成，缺省就会产生一个网络接口（包含以下功能：交换机（Switch Hub） + DHCP 服务器 + NAT + Cache DNS 服务器），网络接口名称也就是 lxcbr0，可以通过如下命令验证：</p><div class="codesection"><pre class="displaycode"># brctl show
+bridge name	bridge id		STP enabled	interfaces
+lxcbr0		8000.3eef2e882ac9	no		vetheCYpw4</pre></div><p>由上面的命令输出图就可以明显看到 lxcbr0 的相关信息，而这个网络接口，除了扮演交换机的功能之外，缺省也提供了 NAT 与 DHCP 的功能，简单来说就是 lxcbr0 除了提供交换机的功能之外，也提供了 DHCP 服务与 DNS 缓存服务 ， 再通过 iptables 启动 NAT 的功能，由以下命令可以来证明，命令输出如下：</p><div class="codesection"><pre class="displaycode"># iptables -t nat -L -n
+Chain PREROUTING (policy ACCEPT)
+target     prot opt source               destination         
+Chain INPUT (policy ACCEPT)
+target     prot opt source               destination         
+
+Chain OUTPUT (policy ACCEPT)
+target     prot opt source               destination         
+
+Chain POSTROUTING (policy ACCEPT)
+target     prot opt source               destination         
+MASQUERADE  all  --  10.0.3.0/24         !10.0.3.0/24</pre></div><p>DHCP 服务与 DNS 缓存服务的功能，可以通过如下命令验证</p><div class="codesection"><pre class="displaycode">#ps aux | grep lxc</pre></div><p>命令输出见图 8</p><h5 id="6.1.2.图 8 查看 DHCP 服务与 DNS 缓存服务 |outline">图 8.查看
+    DHCP 服务与 DNS 缓存服务</h5><img alt="查看 DHCP 服务与 DNS 缓存服务" src="image011.jpg" width="556"><h3 id="6.2.修改 LXC 网络接口的方法 |outline">修改 LXC 网络接口的方法</h3><p>一般我们是通过修改 lxcbr0 的设置文件的方法来实现的。通过〝ifconfig lxcbr0〞的命令，可以得知 lxcbr0 本身的 IP 地址，而由〝ps aux | grep dnsmasq〞的命令，也可以清楚看到 DHCP Server 分配的 IP 范围，因此可以知道 LXC 缺省虚拟网络预设的 IP 区段为 10.0.3.0/24，那么，这些信息，可以修改吗？当然可以，以上这些网络信息，是 LXC 缺省预设的网络设置，所以可以通过修改配置文件的方式，来修改相关信息，以符合实际应用的状况，可以利用编辑器来修改 LXC 的网络配置文件：</p><div class="codesection"><pre class="displaycode"># vi /etc/default/lxc</pre></div><h5 id="6.2.1.清单 1./etc/default/lxc 文件内容 |outline">清单 1./etc/default/lxc 文件内容</h5><div class="codesection"><pre class="displaycode">LXC_BRIDGE="lxcbr0"
+LXC_ADDR="10.0.3.1"
+LXC_NETMASK="255.255.255.0"
+LXC_NETWORK="10.0.3.0/24"
+LXC_DHCP_RANGE="10.0.3.2,10.0.3.254"
+LXC_DHCP_MAX="253"
+LXC_SHUTDOWN_TIMEOUT=120</pre></div><p>用户修改后要重新启动网络服务，使用如下命令：</p><div class="codesection"><pre class="displaycode">#service lxc-net restart</pre></div><h3 id="6.3.设置 LXC 使用物理网络接口 |outline">设置 LXC 使用物理网络接口</h3><p>相比 KVM 来说，LXC 可以直接使用物理网络接口（比如在本文中物理网卡是 eth0、eth1，笔者准备把 eth0 分配给 LXC 虚拟网络 ）。首先使用“ ifconfig –a”命令查看一下，其中而 eth1 为实体计算机实际对外联机所使用的网络接口，所 eth0 ，就可以拿来设定给 LXC 虚拟计算机来使用。然后修改修改 LXC 虚拟计算机的配置文件：/var/lib/lxc/cjhlxc1/config</p><div class="codesection"><pre class="displaycode">#vi /var/lib/lxc/cjhlxc1/config</pre></div><h5 id="6.3.1.清单 2 /var/lib/lxc/cjhlxc1/config 文件内容 |outline">清单 2 /var/lib/lxc/cjhlxc1/config 文件内容</h5><div class="codesection"><pre class="displaycode">lxc.network.type=phys
+lxc.network.link=eth0
+lxc.network.flags=up
+lxc.utsname = cjhlxc1
+#lxc.network.hwaddr = 00:16:3e:f9:ad:be #此行要注释掉#
+lxc.devttydir = lxc
+lxc.tty = 4
+lxc.pts = 1024
+lxc.rootfs = /var/lib/lxc/myt2/rootfs
+lxc.mount  = /var/lib/lxc/myt2/fstab
+lxc.arch = amd64
+lxc.cap.drop = sys_module mac_admin
+lxc.pivotdir = lxc_putold</pre></div><p>修改完成后存盘退出。简单说明一下以上参数：</p><p>lxc.network.type 指定用于容器的网络类型，包括四种类型：</p><ul class="ibm-bullet-list"><li>
+empty：建立一个没有使用的网络接口</li><li>
+veth：容器将链接到 lxc.network.link 定义的网桥上，从而与外部通信。之前网桥必须在预先建立。</li><li>
+macvlan：一个 macvlan 的接口会链接到 lxc.network.link 上。</li><li>
+phys： lxc.network.link 指定的物理接口分配给容器。</li></ul><p>lxc.network.flags 用于指定网络的状态，up 表示网络处于可用状态。</p><p>lxc.network.link 用于指定用于和容器接口通信的真实接口，比如一个网桥 br0 。</p><p>lxc.network.hwaddr 用于指定容器的网络接口的 mac 地址。</p><p>下面修改主机网络配置文件</p><div class="codesection"><pre class="displaycode"> #vim /etc/network/interface</pre></div><p>注意此时配置文件是空文件，没有内容。通常可以设置为固定 IP 地址模式（见清单 3）或者通过 DHCP 服务器获取 IP 地址模式（见清单 4）</p><h5 id="6.3.2.清单 3.固定 IP 地址模式 |outline">清单 3.固定 IP 地址模式</h5><div class="codesection"><pre class="displaycode">auto lo
+iface lo inet loopback
+auto eth0
+iface eth0 inet dhcp
+dns-nameservers 10.0.0.4</pre></div><h5 id="6.3.3.清单 4.通过 DHCP 服务器获取 IP 地址模式 |outline">清单 4.通过 DHCP 服务器获取 IP 地址模式</h5><div class="codesection"><pre class="displaycode">auto lo
+iface lo inet loopback
+auto eth0
+iface eth0 inet static
+        address 10.0.0.3
+        netmask 255.255.255.0
+        dns-nameservers 10.0.0.4</pre></div><p>修改完成后存盘退出。然后重新启动网络服务：</p><div class="codesection"><pre class="displaycode"> #/etc/init.d/networking restart</pre></div><p>下面启动 LXC 虚拟计算机</p><div class="codesection"><pre class="displaycode"># lxc-start  -n  cjhlxc1</pre></div><p>注意一旦 LXC 虚拟计算机启动成功，在宿主计算机上使用〝ifconfig -a〞查看主机网络接口，用户会发现此时网络接口 eth0 消失了，只有 eth1 。这是因为 eth0 已经让 LXC 虚拟计算机给使用了。然后我们使用如下命令“ lxc-console -n cjhlxc1”登录 LXC 虚拟计算机发现此时 LXC 虚拟计算机的网络接口是 eth0。然后我们可以使用 ping 命令测试一下 LXC 虚拟计算机和互联网是否联通。</p><div class="ibm-alternate-rule"><hr></div><p class="ibm-ind-link ibm-back-to-top"><a href="#ibm-pcon" class="ibm-anchor-up-link">回页首</a></p><h2 id="7.总结 |outline">总结</h2><p>LXC 中文名称就是 Linux 容器工具，容器可以提供轻量级的虚拟化，以便隔离进程和资源，使用 LXC 的优点就是不需要安装太多的软件包，使用过程也不会占用太多的资源，本文循序渐进地介绍在 Linux 容器的建立和管理方法以及虚拟网络接口的设置方法。</p><!--CMA ID: 958770--><!--Site ID: 10--><!--XSLT stylesheet used to transform this file: dw-document-html-7.0.xsl-->
+
+
+</div>
+</div>
+<!-- 1_1_COLUMN_END -->
+
+<!-- SPLIT_COLUMNS_BEGIN -->
+<div class="ibm-columns">
+
+<!-- 6_4_COLUMN_BEGIN -->
+<div class="ibm-col-6-4">
+
+<h2 id="resources" class="ibm-rule">参考资料 </h2><h3 class="dw-resources-category-heading">学习</h3><ul class="ibm-bullet-list"><li><a href="http://lxc.sourceforge.net/">访问 LXC 官方网站</a> ，可以查看更多关于 LXC 操作的信息。</li><li>关于 cgroups 的介绍，可以阅读 Fedora 项目的<a href="http://docs.fedoraproject.org/en-US/Fedora/17/html/Resource_Management_Guide/ch01.html">资源管理指南文档</a>。</li><li>关于 LXC 虚拟计算机的网络接口 Macvlan Bridge 模式，可以阅读<a href="http://docs.oracle.com/cd/E37670_01/E37355/html/ol_config_os_containers.html#ol_mcvnbr_lxc"> Oracle Linux Administrator's Solutions Guide for Release 6 的第九章 9 Linux Containers</a>。</li><li>在 <a href="http://www.ibm.com/developerworks/cn/linux/">developerWorks Linux 专区</a>寻找为 Linux 开发人员（包括 <a href="http://www.ibm.com/developerworks/cn/linux/newto/">Linux 新手入门</a>）准备的更多参考资料。</li></ul><h3 class="dw-resources-category-heading">讨论</h3><ul class="ibm-bullet-list"><li>加入 <a href="http://www.ibm.com/developerworks/cn/community/">developerWorks 中文社区</a>。查看开发人员推动的博客、论坛、组和维基，并与其他 developerWorks 用户交流。</li></ul>
+
+<!-- INLINE_COMMENTS_BEGIN -->
+<h2 id="icomments" class="ibm-alternate-rule ibm-no-print">条评论</h2>
+    
+<div class="ibm-no-print" id="dw-icomments-container">	
+	<div id="threadShow"><img style="display: none;" id="imgPlHdr" src="animated-progress-38x38c.gif" alt=""><div id="cmtTog" style=""><div class="ibm-container ibm-alternate-two dw-commentbox dw-noborder"><div class="ibm-container-body dw-commentbox dw-noborder"><p id="signInSect">请 <a href="#">登录</a> 或 <a href="http://www.ibm.com/developerworks/dwwi/jsp/ssoregister.jsp?d=http%3A%2F%2Fwww.ibm.com%2Fdeveloperworks%2Fcn%2Flinux%2F1312_caojh_linuxlxc%2Findex.html%23icomments&amp;lang=cn&amp;a=dwmav">注册</a>  后发表评论。</p><p id="cmtHead"><label for="newCmt"><strong>添加评论:</strong></label></p><p>注意：评论中不支持 HTML 语法</p><div id="infoCmt"></div><form focus="name" enctype="multipart/form-data" method="post" action="" name="form" class="ibm-column-form ibm-styled-form"><p class="6-4-textarea"><textarea rows="5" name="newCmt" id="newCmt" class="dw-inoperable" disabled=""></textarea><br></p><span class="ibm-input-group"><input value="1" name="comment_notification" id="comment_notification" disabled="disabled" type="checkbox"><label id="notifyText" class="ibm-form-note dw-btn-cancel-sec" for="comment_notification">有新评论时提醒我</label></span><span class="ibm-form-note dw-btn-cancel-sec notifySection" id="maxCharsCount">剩余 <span id="charCount">1000</span> 字符</span><p class="ibm-buttons-row"><input value="发布" name="postCmt" id="postCmt" class="ibm-btn-sec ibm-btn-small ibm-disabled" disabled="disabled" type="button"></p></form></div></div><div class="ibm-alternate-rule"><hr></div><div id="topControl" class="ibm-container ibm-alternate-two dw-comment-totals" style=""><div class="ibm-container-body"><form id="selectComments" method="get" action=""><p>&nbsp;<span class="dw-comment-totals-label"><strong>共有评论 (<span id="numCmts">1</span>)</strong></span><span class="dw-how-many-comments-label" style="display: none;" id="dropdownCmts"><label for="howManyComments"><strong>显示：</strong></label>&nbsp;<select name="comments" id="howManyComments" class="dw-how-many-comments"><option selected="selected" value="recent">最新评论 </option></select><input class="ibm-btn-go" name="ibm-go" value="Go" src="short-btn.gif" alt="Go" type="image"><br></span></p></form></div></div><div id="cmtSect"><div class="comment"><div class="dw-icomment-container"><div class="dw-icomment-body dw-noborder"><div class="dw-icomment-body dw-noborder"><p>作者公司名称很有趣！</p><p class="ibm-item-note-alternate dw-item-note-alternate-left">由 <strong><a href="https://www.ibm.com/developerworks/community/profiles/user/sunnytu">sunnytu</a></strong>  于 2014年01月08日发布 </p><p class="ibm-ind-link ibm-item-note-alternate dw-item-note-alternate-right"><a class="ibm-caution-link dw-report-abuse" href="http://www.ibm.com/developerworks/community/report?lang=zh&amp;referingURL=http://www.ibm.com/developerworks/cn/linux/1312_caojh_linuxlxc/index.html&amp;mymessage=%E8%AF%84%E8%AE%BA%EF%BC%9A%20%E4%BD%9C%E8%80%85%E5%85%AC%E5%8F%B8%E5%90%8D%E7%A7%B0%E5%BE%88%E6%9C%89%E8%B6%A3%EF%BC%81%0D%E7%94%B1%20sunnytu%20%20%E4%BA%8E%202014%E5%B9%B401%E6%9C%8808%E6%97%A5%E5%8F%91%E5%B8%83%20%0D%0D--%E5%9C%A8%E4%B8%8B%E6%96%B9%E6%B7%BB%E5%8A%A0%E8%AF%84%E8%AE%BA--" target="_self">报告滥用</a></p><div class="dw-clear-both"></div></div></div></div></div></div></div><div id="bottomControl" class="ibm-container ibm-alternate-two dw-comment-totals" style="display: none;"><div class="ibm-container-body"><form id="selectComments2" method="get" action=""><p>&nbsp;<span class="dw-comment-totals-label"><strong>共有评论 (<span id="numCmts2">1</span>)</strong></span><span class="dw-how-many-comments-label" style="display: none;" id="dropdownCmts2"><label for="howManyComments2"><strong>显示：</strong></label>&nbsp;<select name="comments" id="howManyComments2" class="dw-how-many-comments"><option selected="selected" value="recent">最新评论 </option></select><input class="ibm-btn-go" name="ibm-go" value="Go" src="short-btn.gif" alt="Go" type="image"><br></span></p></form></div></div></div>
+</div>
+<!-- Sign in OVERLAY STARTS HERE -->
+    
+<!-- Sign in OVERLAY STARTS HERE -->
+<div class="ibm-common-overlay" id="signin_overlay">
+<div class="ibm-head">
+<p><a class="ibm-common-overlay-close" href="#">关闭 [x]</a></p>
+</div>
+<div class="ibm-body">
+<div class="ibm-main">
+
+ <div class="ibm-title">
+<h2>developerWorks: 登录</h2>
+<div id="ibm-overlay-error-signin" class="no-display"></div>
+</div>
+<div class="ibm-container ibm-alternate ibm-buttons-last">
+<div class="ibm-container-body">
+<p class="ibm-overlay-intro">标有星（<span class="ibm-required">*</span>）号的字段是必填字段。</p> 
+<form class="ibm-column-form" id="sFormId" action="" method="post" name="sForm">
+<p><label for="ibmid">IBM ID:<span class="ibm-required">*</span></label><span>
+    <input style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAAVVJREFUOBGlUr9LhWAUvf5AZ6eWGt2CDEFEGjMI+id6Q9DY2xoEdWmqKYIe9Cc0NbZFQ1NIq0vx3CycDdTOpXh8+j1s8IMj5xzvvd77eYkmnDiO79UJ+Zy6oaPKAcgl8A4cQ38CAfg18PXnFWma7rRtu4D+1jRtFkVRDk7cwV3XddvAEficTZwb6F1gHzxiA8lX0B6w1zTNBXt8po5AqqIoM+ANeDAMg0chVVVPoV+BR13XU/ZwzqBfgCeMcP5rTXzirp6VYY0kSQ4x5y2wNXwnanSyRMyHLprMYS6AzaE/1PwBFFGkS1yXbNs2eZ5Hpmn26nCs1IEYgQ9QGIYUBLwWRHmeU13XYsj4b3Qch3zfp6qqekmiGO0gyzIqy5Jc1yXLssS8FZfuYPUGBDNSURSiJfHRAlL0GmNyAWmRsF28IP/uATeDv1RIHcA8AZZruu1ZHMOxP66qe9DAZLEcAAAAAElFTkSuQmCC&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;" aria-required="true" name="ibm-id" id="ibmid" size="25" value="" class="required" type="text">
+    <br><a href="#" class="ibm-forward-link">需要一个 IBM ID？</a> <br>
+    <a class="ibm-forward-link" href="http://www.ibm.com/developerworks/dwwi/jsp/WSHelp.jsp?lang=zh_CN">忘记 IBM ID？</a> 
+</span>
+</p> 
+<p><label for="password">密码：<span class="ibm-required">*</span></label><span>
+    <input style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAAVVJREFUOBGlUr9LhWAUvf5AZ6eWGt2CDEFEGjMI+id6Q9DY2xoEdWmqKYIe9Cc0NbZFQ1NIq0vx3CycDdTOpXh8+j1s8IMj5xzvvd77eYkmnDiO79UJ+Zy6oaPKAcgl8A4cQ38CAfg18PXnFWma7rRtu4D+1jRtFkVRDk7cwV3XddvAEficTZwb6F1gHzxiA8lX0B6w1zTNBXt8po5AqqIoM+ANeDAMg0chVVVPoV+BR13XU/ZwzqBfgCeMcP5rTXzirp6VYY0kSQ4x5y2wNXwnanSyRMyHLprMYS6AzaE/1PwBFFGkS1yXbNs2eZ5Hpmn26nCs1IEYgQ9QGIYUBLwWRHmeU13XYsj4b3Qch3zfp6qqekmiGO0gyzIqy5Jc1yXLssS8FZfuYPUGBDNSURSiJfHRAlL0GmNyAWmRsF28IP/uATeDv1RIHcA8AZZruu1ZHMOxP66qe9DAZLEcAAAAAElFTkSuQmCC&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;" name="password" id="password" size="25" value="" class="required" type="password">
+    <br><a class="ibm-forward-link" href="#">忘记密码？</a>
+    <br><a class="ibm-forward-link" href="#">更改您的密码</a></span></p> 
+<p class="dw-perm-box">
+	<span><input id="perm" name="perm_name" type="checkbox"><label for="perm"> 保持登录。</label></span>
+</p>
+<p>单击提交则表示您同意developerWorks 的条款和条件。 <a href="http://www.ibm.com/developerworks/community/terms?lang=zh">查看条款和条件</a>。</p>
+<div class="ibm-buttons-row">
+   <p><input class="ibm-btn-arrow-pri" name="ibm-submit" value="提交" type="submit"><span class="ibm-sep">&nbsp;</span>
+<input value="取消" name="ibm-cancel" class="ibm-btn-cancel-sec" type="button"></p>
+</div>
+</form>
+ <div class="ibm-overlay-rule"><hr></div> 
+
+<p>在您首次登录 developerWorks 时，会为您创建一份个人概要。<strong>您的个人概要中的信息（您的姓名、国家/地区，以及公司名称）是公开显示的，而且会随着您发布的任何内容一起显示，除非您选择隐藏您的公司名称。</strong>您可以随时更新您的 IBM 帐户。</p>
+<div><p class="dw-c-overlay-secure">所有提交的信息确保安全。</p></div>
+</div>
+</div>
+</div>
+</div>
+<div class="ibm-footer"></div>
+</div>
+<!-- Display name OVERLAY STARTS HERE -->
+<div class="ibm-common-overlay" id="displayname_overlay">
+<div class="ibm-head">
+<p><a class="ibm-common-overlay-close" href="#">关闭 [x]</a></p>
+</div>
+<div class="ibm-body">
+<div class="ibm-main">
+<div class="ibm-title">
+<h2>选择您的昵称</h2><br><br>
+<div id="ibm-overlay-error-dname" class="no-display"></div>
+</div>
+<div class="ibm-container ibm-alternate ibm-buttons-last">
+<div class="ibm-container-body">
+<p class="ibm-overlay-intro">当您初次登录到 developerWorks 时，将会为您创建一份概要信息，您需要指定一个昵称。您的昵称将和您在 developerWorks 发布的内容显示在一起。</p><p><strong>昵称长度在 3 至 31 个字符之间</strong>。 
+    您的昵称在 developerWorks 社区中必须是唯一的，并且出于隐私保护的原因，不能是您的电子邮件地址。</p>
+<p class="ibm-overlay-intro">标有星（<span class="ibm-required">*</span>）号的字段是必填字段。</p> 
+<form id="dFormId" method="post" action="" name="dForm" class="ibm-column-form">
+<p><label for="displayname">昵称：<span class="ibm-required">*</span></label><span>
+    <input aria-required="true" name="displayname" id="displayname" size="25" value="" type="text"></span>
+    <span class="ibm-form-note">(昵称长度在 3 至 31 个字符之间)</span>
+</p>
+<p>单击<strong>提交</strong>则表示您同意developerWorks 的条款和条件。 <a href="http://www.ibm.com/developerworks/community/terms?lang=zh">查看条款和条件</a>.</p>
+<div class="ibm-buttons-row">
+   <p><input class="ibm-btn-arrow-pri" name="ibm-submit" value="提交" type="submit"><span class="ibm-sep">&nbsp;</span>
+<input value="取消" name="ibm-cancel" class="ibm-btn-cancel-sec" type="button"></p>
+</div>
+</form>
+<div class="ibm-overlay-rule"><hr></div>
+<div><p class="dw-c-overlay-secure">所有提交的信息确保安全。</p></div>
+</div>
+</div>
+</div>
+</div>
+<div class="ibm-footer"></div>
+</div>
+
+
+<!-- INLINE_COMMENTS_END -->
+
+</div>
+<!-- 6_4_COLUMN_END -->
+
+<!-- 6_2_COLUMN_BEGIN -->
+<div class="ibm-col-6-2">
+
+<!-- Next_Steps -->
+<!-- Dig_Deeper -->
+
+
+<!-- Promotion_Module -->
+    
+<!-- PROMOTION_MODULE_START -->
+<div class="ibm-alternate-rule"><hr></div>
+<ul class="ibm-portrait-module-list">
+<li><a role="presentation" tabindex="-1" class="" href="http://www.ibm.com/developerworks/cn/cloud/bluemix/"><img src="sm-f-bluemixrobot60.png" alt="IBM Bluemix 资源中心" width="60" height="60"></a>
+<h3><a class="ibm-feature-link" href="http://www.ibm.com/developerworks/cn/cloud/bluemix/">IBM Bluemix 资源中心</a></h3>
+<p>文章、教程、演示，帮助您构建、部署和管理云应用。</p></li>
+<li><a role="presentation" tabindex="-1" class="" href="http://www.ibm.com/developerworks/cn/community/"><img src="sm-f-comcommunity60.png" alt="developerWorks 中文社区" width="60" height="60"></a>
+<h3><a class="ibm-feature-link" href="http://www.ibm.com/developerworks/cn/community/">developerWorks 中文社区</a></h3>
+<p>立即加入来自 IBM 的专业 IT 社交网络。</p></li>
+<li><a role="presentation" tabindex="-1" class="" href="http://bluemixathon.devpost.com/"><img src="sm-f-bluemixathon60.png" alt="Bluemixathon 挑战赛" width="60" height="60"></a>
+<h3><a class="ibm-feature-link" href="http://bluemixathon.devpost.com/">Bluemixathon 挑战赛</a></h3>
+<p>为灾难恢复构建应用，赢取现金大奖。</p></li>
+</ul>
+<!-- PROMOTION_MODULE_END -->
+</div>
+<!-- 6_2_COLUMN_END -->
+
+</div>
+<!-- SPLIT_COLUMNS_END -->
+
+<!-- BOTTOM_BACK_TO_TOP -->
+<div class="ibm-columns">
+<div class="ibm-col-1-1">
+	<div class="ibm-alternate-rule"><hr></div><p class="ibm-ind-link ibm-back-to-top"><a href="#ibm-pcon" class="ibm-anchor-up-link">回页首</a></p>
+</div>
+</div>
+
+<!-- Rating_Meta_BEGIN -->
+<!--Rating_Meta_BEGIN--><div class="metavalue">static.content.url=http://www.ibm.com/developerworks/js/artrating/</div><div class="metavalue">SITE_ID=10</div><div class="metavalue">Zone=Linux</div><div class="metavalue">ArticleID=958770</div><div class="metavalue">ArticleTitle=Linux 容器的建立和简单管理</div><div class="metavalue">publish-date=12302013</div><div class="metavalue">url=http://www.ibm.com/developerworks/cn/linux/1312_caojh_linuxlxc/index.html</div><!--Rating_Meta_END-->
+<!-- Rating_Meta_END -->
+
+</div>
+<!-- END_IBM_CONTENT_MAIN -->
+
+</div>
+<!-- END_IBM_CONTENT_BODY -->
+
+</div>
+<!-- END_IBM_CONTENT -->
+
+</div></div>
+<!-- LEADSPACE_END -->
+
+
+<!-- END_IBM_PCON -->
+<!-- FOOTER_BEGIN -->
+<div aria-label="页脚" id="ibm-footer"><!-- IBM footer container; disabled --></div>
+
+<div id="ibm-footer-module-dwwrapper" role="contentinfo" aria-label="developerWorks Footer">
+
+<div id="ibm-footer-module-dw">
+	<div class="dw-footer-columns">
+		<div class="dw-footer-col-6-1 dw-footer-col-6-1-cn">
+			<ul>
+				<li><a href="https://www.ibm.com/developerworks/secure/feedback.jsp?domain=dwchina" tabindex="0">帮助</a></li>
+				<li><a href="http://www.ibm.com/developerworks/cn/author/" tabindex="0">联系编辑</a></li>
+				<li><a href="https://www.ibm.com/developerworks/secure/myideas2.jsp?domain=dwchina" tabindex="0">提交内容</a></li>
+				<li><a href="http://www.ibm.com/developerworks/cn/rss/" tabindex="0">订阅源</a></li>
+			</ul>
+        </div>
+		<div class="dw-footer-col-6-2">
+			<ul>
+				<li><a class="dwcn-sina-link" href="http://weibo.com/ibmdw/" target="_blank" tabindex="0">新浪微博</a></li>
+				<li><a href="https://www.ibm.com/developerworks/community/report?lang=zh" tabindex="0">报告滥用</a></li>
+				<li><a href="https://www.ibm.com/developerworks/community/terms?lang=zh" tabindex="0">使用条款</a></li>
+				<li><a href="https://www.ibm.com/developerworks/cn/community/terms/thirdparty/" tabindex="0">第三方提示</a></li>
+			</ul>
+		</div>
+		<div class="dw-footer-col-6-3">
+			<ul>
+				<li><a href="http://www.ibm.com/privacy/cn/zh/" tabindex="0">隐私条约</a></li>
+				<li><a href="http://www.ibm.com/ibm/accessibility/cn/" tabindex="0">浏览辅助</a></li>
+				<li><a href="http://www.ibm.com/developerworks/cn/academic/" tabindex="0">IBM 教育学院教育培养计划</a></li><li><a href="http://www.ibm.com/developerworks/cn/gep/">IBM 创业企业全球扶持计划</a></li><li><a href="http://www.ibm.com/partnerworld/isv/">ISV 资源 (英语)</a></li>
+			</ul>
+		</div>
+		<div class="dw-footer-col-6-4"> 
+			<ul>
+				<li><a href="http://www.ibm.com/developerworks/cn/newsletter/" tabindex="0">dW 中国每周时事通讯</a></li>
+			</ul>
+			
+		</div>
+		<div class="dw-footer-col-6-5">
+			<ul>
+				<li class="dw-footer-lang-head">选择语言：</li>
+				<li><a href="http://www.ibm.com/developerworks/" tabindex="0">English</a></li>
+				<li><a href="http://www.ibm.com/developerworks/cn/" tabindex="0" lang="zh">中文</a></li>
+				<li><a href="http://www.ibm.com/developerworks/jp/" tabindex="0" lang="ja">日本語</a></li>
+				<li><a href="http://www.ibm.com/developerworks/ru/" tabindex="0" lang="ru">Русский</a></li>
+				<li><a href="http://www.ibm.com/developerworks/br/" tabindex="0" lang="pt">Português (Brasil)</a></li>
+				<li><a href="http://www.ibm.com/developerworks/ssa/" tabindex="0" lang="es">Español</a></li>
+				<li><a href="http://www.ibm.com/developerworks/vn/" tabindex="0" lang="vi">Việt</a></li>
+			</ul>
+		</div>
+		<div class="dw-footer-col-6-6">
+			<img alt="IBM®" src="dwn-ibm-logo-v17.png" width="223" height="46">
+			<img class="dw-preload" src="ibm_sprite_social_blue_ON.png" alt="" width="1" height="1">
+		</div>
+	</div>
+</div>
+
+</div><!-- FOOTER_END -->
+
+<!-- END_IBM-TOP -->
+</div>
+
+<!-- SCRIPTS_INCLUDE_BEGIN -->
+
+
+
+
+
+<!-- SCRIPTS_INCLUDE_END -->
+
+<div id="ibm-metrics">
+
+</div>
+
+
+
+<div id="ads"></div><div><div id="_hj_poll_container">                <div style="bottom: 0px;" id="_hj-f5b2a1eb-9b07_poll" class="_hj-f5b2a1eb-9b07_widget _hj-f5b2a1eb-9b07_ltr                         _hj-f5b2a1eb-9b07_skin_light _hj-f5b2a1eb-9b07_position_right _hj-f5b2a1eb-9b07_widget_hidden">                    <a class="_hj-f5b2a1eb-9b07_widget_open_close _hj-f5b2a1eb-9b07_action_toggle_widget"><span class="_hj-f5b2a1eb-9b07_widget_icon"></span></a>                    <div class="_hj-f5b2a1eb-9b07_widget_hidden_handle _hj-f5b2a1eb-9b07_action_toggle_widget"></div>                    <p class="_hj-f5b2a1eb-9b07_widget_title _hj-f5b2a1eb-9b07_action_open_widget">                                                    <span id="_hj-f5b2a1eb-9b07_question_text_0" class="_hj-f5b2a1eb-9b07_question_text ">您愿意将 developerWorks 推荐给您的朋友/同事吗？</span>                                                    <span id="_hj-f5b2a1eb-9b07_question_text_1" class="_hj-f5b2a1eb-9b07_question_text                                 _hj-f5b2a1eb-9b07_hidden">您给出此评分的理由是？</span>                                            </p>                    <div class="_hj-f5b2a1eb-9b07_widget_initiator">                        <button type="button" class="_hj-f5b2a1eb-9b07_btn_primary _hj-f5b2a1eb-9b07_rounded_corners _hj-f5b2a1eb-9b07_transition                             _hj-f5b2a1eb-9b07_shadow _hj-f5b2a1eb-9b07_action_open_widget">回覆</button>                    </div>                    <div class="_hj-f5b2a1eb-9b07_widget_state _hj-f5b2a1eb-9b07_widget_state_open">                                                    <div id="_hj-f5b2a1eb-9b07_question_content_0" _hj_question_type="net-promoter-score" class="_hj-f5b2a1eb-9b07_question_content ">                                                                    <div class="_hj-f5b2a1eb-9b07_widget_content _hj-f5b2a1eb-9b07_net_promoter_score">                                        <ul>                                                                                        <li class="_hj-f5b2a1eb-9b07_button_score " data-key="response" data-value="0">0</li>                                                                                        <li class="_hj-f5b2a1eb-9b07_button_score " data-key="response" data-value="1">1</li>                                                                                        <li class="_hj-f5b2a1eb-9b07_button_score " data-key="response" data-value="2">2</li>                                                                                        <li class="_hj-f5b2a1eb-9b07_button_score " data-key="response" data-value="3">3</li>                                                                                        <li class="_hj-f5b2a1eb-9b07_button_score " data-key="response" data-value="4">4</li>                                                                                        <li class="_hj-f5b2a1eb-9b07_button_score " data-key="response" data-value="5">5</li>                                                                                        <li class="_hj-f5b2a1eb-9b07_button_score " data-key="response" data-value="6">6</li>                                                                                        <li class="_hj-f5b2a1eb-9b07_button_score " data-key="response" data-value="7">7</li>                                                                                        <li class="_hj-f5b2a1eb-9b07_button_score " data-key="response" data-value="8">8</li>                                                                                        <li class="_hj-f5b2a1eb-9b07_button_score " data-key="response" data-value="9">9</li>                                                                                        <li class="_hj-f5b2a1eb-9b07_button_score                                                 _hj-f5b2a1eb-9b07_button_score_last" data-key="response" data-value="10">10</li>                                                                                    </ul>                                        <div class="_hj-f5b2a1eb-9b07_net_promoter_score_labels">                                            <div class="_hj-f5b2a1eb-9b07_pull_left">不会推荐</div>                                            <div class="_hj-f5b2a1eb-9b07_pull_right">极力推荐</div>                                            <div class="_hj-f5b2a1eb-9b07_clear_both"></div>                                        </div>                                    </div>                                                            </div>                                                    <div id="_hj-f5b2a1eb-9b07_question_content_1" _hj_question_type="single-open-ended-single-line" class="_hj-f5b2a1eb-9b07_question_content _hj-f5b2a1eb-9b07_hidden">                                                                    <div class="_hj-f5b2a1eb-9b07_widget_content">                                        <input maxlength="255" class="_hj-f5b2a1eb-9b07_input_field _hj-f5b2a1eb-9b07_rounded_corners" name="_hj-f5b2a1eb-9b07_question_1_answer" placeholder="請輸入..." type="text">                                    </div>                                                            </div>                                                <div class="_hj-f5b2a1eb-9b07_widget_footer">                                                        <div class="_hj-f5b2a1eb-9b07_pull_right">                                <button type="button" id="_hj-f5b2a1eb-9b07_action_submit" class="_hj-f5b2a1eb-9b07_btn_primary _hj-f5b2a1eb-9b07_btn_disabled _hj-f5b2a1eb-9b07_rounded_corners                                         _hj-f5b2a1eb-9b07_transition _hj-f5b2a1eb-9b07_shadow">送出                                     <span class="_hj-f5b2a1eb-9b07_widget_icon"></span>                                </button>                            </div>                            <div class="_hj-f5b2a1eb-9b07_clear_both"></div>                        </div>                    </div>                    <div class="_hj-f5b2a1eb-9b07_widget_state _hj-f5b2a1eb-9b07_widget_state_thankyou">                        <p class="_hj-f5b2a1eb-9b07_thankyou_message">                            感谢您的反馈! 您的意见对我们非常重要。<br>                            <button type="button" class="_hj-f5b2a1eb-9b07_btn_primary _hj-f5b2a1eb-9b07_rounded_corners _hj-f5b2a1eb-9b07_transition                                 _hj-f5b2a1eb-9b07_shadow _hj-f5b2a1eb-9b07_action_dismiss_widget">關閉</button>                        </p>                        <div class="_hj-f5b2a1eb-9b07_widget_footer">                                                        <div class="_hj-f5b2a1eb-9b07_pull_right">                                <button type="button" class="_hj-f5b2a1eb-9b07_btn _hj-f5b2a1eb-9b07_btn_disabled _hj-f5b2a1eb-9b07_rounded_corners                                     _hj-f5b2a1eb-9b07_transition _hj-f5b2a1eb-9b07_shadow">已送出                                     <span class="_hj-f5b2a1eb-9b07_widget_icon"></span>                                </button>                            </div>                            <div class="_hj-f5b2a1eb-9b07_clear_both"></div>                        </div>                    </div>                </div></div></div></body><div style="display: none; width: 24px;" id="diigotb-imagepanel"><div class="diigotb-btn enabled" title="Save this image to Diigo" id="diigotb-quick-save"></div></div><div style="display: none;" class="diigotb-border diigotb-left"></div><div style="display: none;" class="diigotb-border diigotb-top"></div><div style="display: none;" class="diigotb-border diigotb-right"></div><div style="display: none;" class="diigotb-border diigotb-bottom"></div>
+</html>

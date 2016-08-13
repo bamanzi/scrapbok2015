@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+<html lang="en-US" xmlns="https://www.w3.org/1999/xhtml" itemtype="http://schema.org/Article" itemscope="itemscope" class="csstransforms no-csstransforms3d csstransitions">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+          <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+          <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title itemprop="name">
+        Flockport   -  Containers, minus the hype        </title>
+                  <link rel="shortcut icon" href="favicon64.png">
+                        <link rel="apple-touch-icon-precomposed" href="https://www.flockport.com/wp-content/uploads/2014/09/favicon57.png">
+                        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://www.flockport.com/wp-content/uploads/2014/07/favicon120.png">
+                        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://www.flockport.com/wp-content/uploads/2014/09/favicon72.png">
+                        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://www.flockport.com/wp-content/uploads/2014/07/favicon152.png">
+                <link rel="alternate" type="application/rss+xml" title="Flockport RSS Feed" href="https://www.flockport.com/feed/">
+        <link rel="alternate" type="application/atom+xml" title="Flockport Atom Feed" href="https://www.flockport.com/feed/atom/">
+        <link rel="pingback" href="https://www.flockport.com/xmlrpc.php">
+
+         <!--[if lt IE 9]>
+         <script src="https://www.flockport.com/wp-content/themes/jupiter/js/html5shiv.js" type="text/javascript"></script>
+         <![endif]-->
+         <!--[if IE 7 ]>
+               <link href="https://www.flockport.com/wp-content/themes/jupiter/stylesheet/css/ie7.css" media="screen" rel="stylesheet" type="text/css" />
+               <![endif]-->
+         <!--[if IE 8 ]>
+               <link href="https://www.flockport.com/wp-content/themes/jupiter/stylesheet/css/ie8.css" media="screen" rel="stylesheet" type="text/css" />
+         <![endif]-->
+
+         <!--[if lte IE 8]>
+            <script type="text/javascript" src="https://www.flockport.com/wp-content/themes/jupiter/js/respond.js"></script>
+         <![endif]-->
+
+         
+         
+    <link rel="alternate" type="application/rss+xml" title="Flockport » Feed" href="https://www.flockport.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="Flockport » Comments Feed" href="https://www.flockport.com/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="Flockport » Containers, minus the hype Comments Feed" href="https://www.flockport.com/containers-minus-the-hype/feed/">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.flockport.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://www.flockport.com/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="LXC and LVM" href="https://www.flockport.com/lxc-and-lvm/">
+<link rel="next" title="Preview: Flockbox on New OSX Hypervisor Xhyve" href="https://www.flockport.com/using-flockbox-with-xhyve/">
+<meta name="generator" content="WordPress 3.8.3">
+<link rel="canonical" href="https://www.flockport.com/containers-minus-the-hype/">
+<link rel="shortlink" href="https://www.flockport.com/?p=871">
+
+<meta name="generator" content="Jupiter 3.9.3">
+<meta property="og:image" content="https://www.flockport.com/wp-includes/images/crystal/default.png">
+<meta property="og:url" content="https://www.flockport.com/containers-minus-the-hype/">
+<meta property="og:title" content="Containers, minus the hype">
+    
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+
+<body class="single single-post postid-871 single-format-standard  main-nav-align-center no-transform mk-responsive">
+
+<div id="mk-boxed-layout">
+<header id="mk-header" data-height="90" data-sticky-height="55" class="modern-style-nav mk-background-stretch mk-video-holder">
+
+
+
+
+
+
+
+
+
+
+<div style="" class="mk-header-inner">
+
+    <div class="mk-header-bg "></div>
+    
+
+    
+
+
+
+  <div class="mk-header-nav-container modern-style"><nav id="mk-main-navigation" class="main_menu"><ul id="menu-flockport" class="main-navigation-ul"><li id="menu-item-230" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="https://www.flockport.com/learn/">Learn More</a></li>
+<li id="menu-item-828" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="https://www.flockport.com/start/">Get Started</a></li>
+<li id="menu-item-228" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="https://www.flockport.com/store/">App Store</a></li>
+<li id="menu-item-584" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="https://www.flockport.com/documentation/">Documentation</a></li>
+<li id="menu-item-667" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="https://www.flockport.com/faqs/">Faqs</a></li>
+<li id="menu-item-231" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="https://www.flockport.com/guides/">Guides</a></li>
+<li id="menu-item-415" class="menu-item menu-item-type-custom menu-item-object-custom"><a href="http://community.flockport.com/recent/month">Community</a></li>
+</ul></nav><div class="main-nav-side-search">
+						<a class="mk-search-trigger mk-toggle-trigger" href="#"><i class="mk-icon-search"></i></a>
+							<div id="mk-nav-search-wrapper" class="mk-box-to-trigger">
+							      <form method="get" id="mk-header-navside-searchform" action="https://www.flockport.com/">
+							        <span class="ui-helper-hidden-accessible" aria-live="polite" role="status"></span><input autocomplete="off" class="ui-autocomplete-input" value="" name="s" id="mk-ajax-search-input" type="text">
+							        <i class="mk-moon-search-3 nav-side-search-icon"><input value="" type="submit"></i>
+							    </form>
+					  		<ul style="display: none;" tabindex="0" id="ui-id-1" class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content ui-corner-all"></ul></div>
+					</div></div>
+
+  <div class="mk-nav-responsive-link"><i class="mk-moon-menu-3"></i></div>
+  
+  		<div class="header-logo  left-logo">
+		    <a href="https://www.flockport.com/" title="Flockport">
+				
+				<img class="mk-desktop-logo" alt="Flockport" src="flock-logo-191.png">
+				
+
+								
+			</a>
+		</div>
+
+		
+
+  <div class="clearboth"></div>
+
+
+
+
+  
+
+
+
+  <div class="mk-header-right">
+  
+  	<div class="mk-header-login">
+    <a href="#" id="mk-header-login-button" class="mk-login-link mk-toggle-trigger"><i class="mk-moon-user-8"></i>Log In</a>
+	<div class="mk-login-register mk-box-to-trigger">
+
+		<div id="mk-login-panel">
+				<form id="mk_login_form" name="mk_login_form" method="post" class="mk-login-form" action="https://www.flockport.com/wp-login.php">
+					<span class="form-section">
+					<label for="log">Username</label>
+					<input style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAALZJREFUOBFjYKAANDQ0rGWiQD9IqzgL0BQ3IKMXiB8AcSKQ/waIrYDsKUD8Fir2pKmpSf/fv3+zgPxfzMzMSbW1tbeBbAaQC+b+//9fB4h9gOwikCAQTAPyDYHYBciuBQkANfcB+WZAbPP37992kBgIUOoFBiZGRsYkIL4ExJvZ2NhAXmFgYmLKBPLPAfFuFhaWJpAYEBQC+SeA+BDQC5UQIQpJYFgdodQLLyh0w6j20RCgUggAAEREPpKMfaEsAAAAAElFTkSuQmCC&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;" id="username" name="log" class="text-input" type="text">
+					</span>
+					<span class="form-section">
+						<label for="pwd">Password</label>
+						<input style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAALZJREFUOBFjYKAANDQ0rGWiQD9IqzgL0BQ3IKMXiB8AcSKQ/waIrYDsKUD8Fir2pKmpSf/fv3+zgPxfzMzMSbW1tbeBbAaQC+b+//9fB4h9gOwikCAQTAPyDYHYBciuBQkANfcB+WZAbPP37992kBgIUOoFBiZGRsYkIL4ExJvZ2NhAXmFgYmLKBPLPAfFuFhaWJpAYEBQC+SeA+BDQC5UQIQpJYFgdodQLLyh0w6j20RCgUggAAEREPpKMfaEsAAAAAElFTkSuQmCC&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;" id="password" name="pwd" class="text-input" type="password">
+					</span>
+										<label class="mk-login-remember">
+						<input name="rememberme" id="rememberme" value="forever" type="checkbox"> Remember Me					</label>
+
+					<input id="login" name="submit_button" class="shop-flat-btn shop-skin-btn" value="LOG IN" type="submit">
+					<input value="login" class="" name="mk_form_action" type="hidden">
+					<input value="mk_do_action" class="" name="action" type="hidden">
+					<input value="https://www.flockport.com/containers-minus-the-hype" class="mk_login_redirect" name="submit" type="hidden">
+					<div class="register-login-links">
+							<a href="#" class="mk-forget-password">Forgot</a>
+													<a href="#" class="mk-create-account">Register</a>
+											</div>
+				</form>
+		</div>
+
+					<div id="mk-register-panel">
+					<div class="mk-login-title">A password will be e-mailed to you</div>
+
+					<form id="register_form" name="login_form" method="post" class="mk-form-regsiter" action="https://www.flockport.com/wp-login.php?action=register">
+						<span class="form-section">
+							<label for="log">Username</label>
+							<input style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABHklEQVQ4EaVTO26DQBD1ohQWaS2lg9JybZ+AK7hNwx2oIoVf4UPQ0Lj1FdKktevIpel8AKNUkDcWMxpgSaIEaTVv3sx7uztiTdu2s/98DywOw3Dued4Who/M2aIx5lZV1aEsy0+qiwHELyi+Ytl0PQ69SxAxkWIA4RMRTdNsKE59juMcuZd6xIAFeZ6fGCdJ8kY4y7KAuTRNGd7jyEBXsdOPE3a0QGPsniOnnYMO67LgSQN9T41F2QGrQRRFCwyzoIF2qyBuKKbcOgPXdVeY9rMWgNsjf9ccYesJhk3f5dYT1HX9gR0LLQR30TnjkUEcx2uIuS4RnI+aj6sJR0AM8AaumPaM/rRehyWhXqbFAA9kh3/8/NvHxAYGAsZ/il8IalkCLBfNVAAAAABJRU5ErkJggg==&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;" id="reg-username" name="user_login" class="text-input" type="text">
+						</span>
+						<span class="form-section">
+							<label for="user_email">Your email</label>
+							<input style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABHklEQVQ4EaVTO26DQBD1ohQWaS2lg9JybZ+AK7hNwx2oIoVf4UPQ0Lj1FdKktevIpel8AKNUkDcWMxpgSaIEaTVv3sx7uztiTdu2s/98DywOw3Dued4Who/M2aIx5lZV1aEsy0+qiwHELyi+Ytl0PQ69SxAxkWIA4RMRTdNsKE59juMcuZd6xIAFeZ6fGCdJ8kY4y7KAuTRNGd7jyEBXsdOPE3a0QGPsniOnnYMO67LgSQN9T41F2QGrQRRFCwyzoIF2qyBuKKbcOgPXdVeY9rMWgNsjf9ccYesJhk3f5dYT1HX9gR0LLQR30TnjkUEcx2uIuS4RnI+aj6sJR0AM8AaumPaM/rRehyWhXqbFAA9kh3/8/NvHxAYGAsZ/il8IalkCLBfNVAAAAABJRU5ErkJggg==&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;" id="reg-email" name="user_email" class="text-input" type="text">
+						</span>
+						<span class="form-section">
+							<input id="signup" name="submit" class="shop-flat-btn shop-skin-btn" value="Create Account" type="submit">
+						</span>
+						<img src="admin-ajax.php"><br><label for="easy_captcha_captcha_simple">Please enter text above!</label><br><input id="easy_captcha_captcha_simple" name="easy_captcha_captcha_simple" value="" type="text"><input id="easy_captcha_sid" name="easy_captcha_sid" value="93202aed44859edbad90f4fce53acfd3" type="hidden">						<input name="user-cookie" value="1" type="hidden">
+						<input name="redirect_to" value="https://www.flockport.com/containers-minus-the-hype?register=true" type="hidden">
+						<div class="register-login-links">
+							<a class="mk-return-login" href="#">Back to Login</a>
+						</div>
+					</form>
+			</div>
+		
+		<div id="mk-forget-panel">
+				<span class="mk-login-title">Please check your email</span>
+				<form id="forgot_form" name="login_form" method="post" class="mk-forget-password-form" action="https://www.flockport.com/wp-login.php?action=lostpassword">
+					<span class="form-section">
+							<label for="user_login">Username or E-mail</label>
+						<input style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAALZJREFUOBFjYKAANDQ0rGWiQD9IqzgL0BQ3IKMXiB8AcSKQ/waIrYDsKUD8Fir2pKmpSf/fv3+zgPxfzMzMSbW1tbeBbAaQC+b+//9fB4h9gOwikCAQTAPyDYHYBciuBQkANfcB+WZAbPP37992kBgIUOoFBiZGRsYkIL4ExJvZ2NhAXmFgYmLKBPLPAfFuFhaWJpAYEBQC+SeA+BDQC5UQIQpJYFgdodQLLyh0w6j20RCgUggAAEREPpKMfaEsAAAAAElFTkSuQmCC&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;" id="forgot-email" name="user_login" class="text-input" type="text">
+					</span>
+					<span class="form-section">
+						<input id="recover" name="submit" class="shop-flat-btn shop-skin-btn" value="Get New Password" type="submit">
+					</span>
+					<div class="register-login-links">
+						<a class="mk-return-login" href="#">Back to Login</a>
+					</div>
+				</form>
+
+		</div>
+	</div>
+</div>
+
+  </div>
+  
+</div><ul id="mk-responsive-nav" class=""><li style="" id="menu-item-230" class="menu-item menu-item-type-post_type menu-item-object-page"><a style="" href="https://www.flockport.com/learn/">Learn More</a></li>
+<li style="" id="menu-item-828" class="menu-item menu-item-type-post_type menu-item-object-page"><a style="" href="https://www.flockport.com/start/">Get Started</a></li>
+<li style="" id="menu-item-228" class="menu-item menu-item-type-post_type menu-item-object-page"><a style="" href="https://www.flockport.com/store/">App Store</a></li>
+<li style="" id="menu-item-584" class="menu-item menu-item-type-post_type menu-item-object-page"><a style="" href="https://www.flockport.com/documentation/">Documentation</a></li>
+<li style="" id="menu-item-667" class="menu-item menu-item-type-post_type menu-item-object-page"><a style="" href="https://www.flockport.com/faqs/">Faqs</a></li>
+<li style="" id="menu-item-231" class="menu-item menu-item-type-post_type menu-item-object-page"><a style="" href="https://www.flockport.com/guides/">Guides</a></li>
+<li style="" id="menu-item-415" class="menu-item menu-item-type-custom menu-item-object-custom"><a style="" href="http://community.flockport.com/recent/month">Community</a></li>
+<form class="responsive-searchform" method="get" style="display: none;" action="https://www.flockport.com/">
+			        <input class="text-input" value="" name="s" id="s" placeholder="Search.." type="text">
+			        <i class="mk-icon-search"><input value="" type="submit"></i>
+			 </form></ul>
+
+  <div class="clearboth"></div>
+
+
+
+
+
+<div class="mk-header-padding-wrapper"></div>
+
+<div class="clearboth"></div>
+
+<div class="mk-zindex-fix">    
+
+</div>
+
+<div class="clearboth"></div>
+
+
+
+</header>
+
+
+
+
+
+<div id="theme-page">
+
+			
+
+	<div class="theme-page-wrapper mk-blog-single right-layout vc_row-fluid mk-grid ">
+		<div class="theme-content ">
+		<article id="871" class="post-871 post type-post status-publish format-standard hentry category-news category-start tag-lxc-3 tag-news tag-start">
+
+						<div class="blog-single-meta">
+				<div class="mk-blog-author">By <a href="https://www.flockport.com/author/admin/" title="Posts by admin" rel="author">admin</a></div>
+					<time class="mk-post-date" datetime="June 20, 2015">
+						Posted <a href="https://www.flockport.com/2015/06/">June 20, 2015</a>
+					</time>
+					<div class="mk-post-cat"> In <a href="https://www.flockport.com/category/news/" title="View all posts in news" rel="category tag">news</a>, <a href="https://www.flockport.com/category/start/" title="View all posts in start" rel="category tag">start</a></div>
+			</div>	
+			
+
+
+			<div class="single-social-section">
+				<div class="mk-love-holder"><a href="#" class="mk-love-this " id="mk-love-871"><i class="mk-icon-heart"></i> <span class="mk-love-count">4</span></a></div>
+				<a href="#comments" class="blog-modern-comment"><i class="mk-moon-bubble-9"></i><span> 0</span></a>
+				
+								<div class="blog-share-container">
+					<div class="blog-single-share mk-toggle-trigger"><i class="mk-moon-share-2"></i></div>
+					<ul class="single-share-box mk-box-to-trigger">
+						<li><a class="facebook-share" data-title="Containers, minus the hype" data-url="https://www.flockport.com/containers-minus-the-hype/" href="#"><i class="mk-jupiter-icon-simple-facebook"></i></a></li>
+						<li><a class="twitter-share" data-title="Containers, minus the hype" data-url="https://www.flockport.com/containers-minus-the-hype/" href="#"><i class="mk-jupiter-icon-simple-twitter"></i></a></li>
+						<li><a class="googleplus-share" data-title="Containers, minus the hype" data-url="https://www.flockport.com/containers-minus-the-hype/" href="#"><i class="mk-jupiter-icon-simple-googleplus"></i></a></li>
+						<li><a class="pinterest-share" data-image="https://www.flockport.com/wp-includes/images/crystal/default.png" data-title="Containers, minus the hype" data-url="https://www.flockport.com/containers-minus-the-hype/" href="#"><i class="mk-jupiter-icon-simple-pinterest"></i></a></li>
+						<li><a class="linkedin-share" data-title="Containers, minus the hype" data-url="https://www.flockport.com/containers-minus-the-hype/" href="#"><i class="mk-jupiter-icon-simple-linkedin"></i></a></li>
+					</ul>
+				</div>
+								<a class="mk-blog-print" href="#" title="Print"><i class="mk-icon-print"></i></a>
+			<div class="clearboth"></div>
+			</div>
+
+
+			<div class="clearboth"></div>
+									
+					
+ 							
+
+							<div class="clearboth"></div>
+							<div class="mk-single-content" itemprop="mainContentOfPage">
+								<div class="wpb_row  vc_row-fluid  mk-fullwidth-false add-padding-0 attched-false">
+	<div style="" class="vc_span12 wpb_column column_container ">
+			<h3 style="font-size: 35px; text-align: left; color: rgb(243, 129, 118); margin-top: 0px; margin-bottom: 50px; letter-spacing: 0px;" id="fancy-title-323" class="mk-shortcode mk-fancy-title simple-style "><span style="">Everything you need to know about containers, minus the hype</span></h3><div class="clearboth"></div><div class="mk-image-shortcode mk-shortcode  lightbox-enabled align-left simple-frame inside-image " style="max-width: 800px; margin-bottom: 50px;"><div class="mk-image-inner"><img class="lightbox-true" alt="" title="" src="lxc-vs-baremetal.png"><div class="mk-image-overlay"></div><a href="https://www.flockport.com/wp-content/uploads/2014/06/lxc-vs-baremetal.png" alt="" data-title="" class="mk-lightbox  mk-image-shortcode-lightbox"><i class="mk-jupiter-icon-plus"></i></a></div><div class="clearboth"></div></div>	<div id="mk-text-block-493" style="margin-bottom: 20px; text-align: left;" class="mk-text-block  ">Containers are like virtual machines, only more lightweight and efficient. They create an OS within your host OS in which you can install and run apps. You could run a Debian host OS with multiple Fedora, Ubuntu or CentOS containers. You can run multiple versions of apps all in their containers. This decoupling of apps from the host OS delivers an extraordinary level of flexibility and benefits.<p></p>
+<p style="font-size: 22px; line-height: 17px;">Simple</p>
+<p>Backing up your app is as simple as zipping the container folder. Moving apps across servers is as simple as moving the zip file. You can freeze and distribute state with clones and snapshots. Since the container is a folder sharing data between host and container is easy. This make running apps especially on servers extremely convenient.</p>
+<p style="font-size: 22px; line-height: 17px;">Fast</p>
+<p>Containers operate at bare-metal speed and do not have the <a title="Containers vs VMs" href="https://www.flockport.com/containers-vs-vms/">performance overhead of virtualization</a>. This is because containers do not emulate a hardware layer and use cgroups and namespaces in the Linux kernel to create lightweight virtualized OS environments.</p>
+<p>Since you are not virtualizing storage a container doesn't care about underlying storage or file systems and simply operates wherever you put it.</p>
+<p>Containers are also easier to use, storage is just a folder, you do not need to dedicate resources upfront and they startup and shut down in seconds.</p>
+<p>This fundamentally changes the way we virtualize workloads and applications, as containers are simply faster, more portable and can scale more efficiently than hardware virtualization, with the exception of workloads that require an OS other than Linux or a specific Linux kernel version.</p>
+<p style="font-size: 22px; line-height: 12px;">Portable</p>
+<p>The biggest benefit of containers apart from performance is portability. You server is basically mobile and you are not stuck to any cloud, provider or server. They make your apps and data portable across servers.&nbsp; Simply zip the container folder and move. This also makes basic management operations like backups, cloning, snapshots, deployment extremely simple.</p>
+<p>Because apps and workloads are isolated users can run multiple versions of PHP, Python, Ruby, Apache happily coexisting tucked away in their containers, and get cloud like flexibility of instances and workloads that can be easily moved across systems and cloned, backed up and deployed rapidly.</p>
+<p>Container technology is not new, FreeBSD has Jails, Solaris has Zones and there are other Linux container technologies like OpenVZ and Linux VServer. However they depend on custom kernels impeding adoption. Current Linux container technology is backed by mainstream support in the kernel paving the way for widespread adoption.</p>
+<p style="font-size: 22px; line-height: 17px;">The Genesis</p>
+<p>Containers owe their origin to the development of cgroups and namespace support in the Linux kernel. Namespaces allow you to run isolated processes. LXC is the user land part of the project to develop a container manager. Container managers like <a title="LXC Home" href="https://linuxcontainer.org/" target="_blank">LXC</a>, <a title="Docker" href="https://www.docker.com/" target="_blank">Docker</a>, <a title="Systemd Nspawn" href="http://www.freedesktop.org/software/systemd/man/systemd-nspawn.html" target="_blank">Nspawn</a> and others combine namespaces with chroots to provide end user containers. Here is an overview on <a title="How Linux Containers Work" href="https://www.flockport.com/how-linux-containers-work/" target="_blank">how Linux containers work.</a></p>
+<p>The<a title="LXC Home" href="https://linuxcontainers.org/" target="_blank"> LXC project</a>&nbsp;offers a nice set of tools for container management, advanced networking and storage support for things like cloning and snapshots and a wide choice of minimal container OS templates.&nbsp;&nbsp;So how do you use containers?</p>
+<p style="font-size: 22px; line-height: 17px;">Basics</p>
+<p>You create a container by specifying the container OS template and the name of the container. In this case we are choosing Ubuntu and calling the container P1. You can choose to use Debian, Fedora, CentOS or other OS templates.</p>
+<p><code>lxc-create -t ubuntu -n p1</code></p>
+<p>You start it with the lxc-start program</p>
+<p><code>lxc-start -n p1</code></p>
+<p>You can access the container by directly attaching to it, or over the network by ssh</p>
+<p><code>lxc-attach -n p1</code></p>
+<p>You can get information on running containers using</p>
+<p><code>lxc-ls -f</code></p>
+<p>You can poweroff or reboot the container from within the container <a title="LXC Getting Started Guide" href="https://www.flockport.com/lxc-guide/" target="_blank">or use lxc-stop from the host</a>.</p>
+<p>To clone a container simple use the lxc-clone command. If you are using the <a title="Supercharge LXC with Btrfs" href="https://www.flockport.com/supercharge-lxc-with-btrfs/" target="_blank">Btrfs</a> or <a title="LXC and LVM Thin Provisioning" href="https://www.flockport.com/lxc-and-lvm/" target="_blank">LVM Thin Pools</a> you will get efficient CoW clones.</p>
+<p><code>lxc-clone -o p1 -n p2</code></p>
+<p>You can also create snapshots of containers by using the -s flag if the system supports <a title="Container Storage" href="https://www.flockport.com/container-storage/" target="_blank">Overlayfs or LVM Thin Pools</a>.</p>
+<p><code>lxc-clone -s -o p1 -n p2</code></p>
+<p>With Overlayfs snapshots you get <a title="Experimenting with Overlayfs and LXC" href="https://www.flockport.com/experimenting-with-overlayfs-and-lxc/">'linked snapshots'</a>. The root filesystem of p1 is mounted as the read only root fs of p2 with changes going to a delta directory in the p2 container. With <a title="LXC and LVM Thin Provisioning" href="https://www.flockport.com/lxc-and-lvm/">LVM Thin Volumes</a> you get thin snapshots.</p>
+<p>To move the container simply zip it and move across servers and it will work as you left it. You can try LXC in seconds with the lightweight <a title="Flockbox" href="https://www.flockport.com/flockbox" target="_blank">Flockbox VM</a> based on Alpine Linux. It's a 80MB download and available for Virtualbox, VMWare and KVM.</p>
+<p style="font-size: 22px; line-height: 12px;">Container Networking</p>
+<p>Containers need to be on the network to be useful and accessible. Containers have a full stack networking layer in their own namespace. From <a title="LXC networking guide" href="https://www.flockport.com/lxc-networking-guide/" target="_blank">basic bridging and NAT you get a wide range of capabilities</a> from Vlans, <a title="LXC Macvlan networking" href="https://www.flockport.com/lxc-macvlan-networking/" target="_blank">Macvlans </a>and physical devices.</p>
+<p style="font-size: 22px; line-height: 17px;">Container Storage</p>
+<p>You don't need to think about <a title="Container Storage" href="https://www.flockport.com/container-storage/" target="_blank">container storage</a> since a container is just a folder on your file system. The OS, apps and data are in the folder. When combined with file systems like <a title="Supercharge LXC with Btrfs" href="https://www.flockport.com/supercharge-lxc-with-btrfs/" target="_blank">Btrfs,</a> <a title="LXC and LVM Thin Provisioning" href="https://www.flockport.com/lxc-and-lvm/" target="_blank">LVM</a> or <a title="Experimenting with Overlayfs and LXC" href="https://www.flockport.com/experimenting-with-overlayfs-and-lxc/" target="_blank">Overlayfs</a> you get the advanced features of these file systems like efficient CoW clones, disk quotas and Overlayfs snapshots.</p>
+<p style="font-size: 22px; line-height: 17px;">Unprivileged Containers</p>
+<p><a title="LXC using unprivileged containers" href="https://www.flockport.com/lxc-using-unprivileged-containers/" target="_blank">Unprivileged containers</a> use user namespace support in the kernel to give you containers that can be run by non root users. This is a big step forward for container security and paves the way for multi-tenant workloads. LXC has supported unprivileged containers since their 1.0 release in 2013.</p>
+<p>Here is a quick screencast of LXC in action</p><div class="clearboth"></div></div> 	<div id="mk-text-block-540" style="margin-bottom: 35px; text-align: left;" class="mk-text-block  "><iframe src="index_1.html" allowfullscreen="" width="780" frameborder="0" height="500"></iframe><div class="clearboth"></div></div> 	<div id="mk-text-block-507" style="margin-bottom: 20px; text-align: left;" class="mk-text-block  ">
+<p style="font-size: 22px; line-height: 12px;">Container Technology Choices</p>
+<p>The LXC project is now working on <a title="Flockport First look at LXD" href="https://www.flockport.com/flockport-first-look-at-lxd/" target="_blank">LXD which extends LXC capabilities</a> with multi-host container management and soon live migration.</p>
+<p>There are now <a title="A new users guide to container technology" href="https://www.flockport.com/a-new-users-guide-to-container-technology/" target="_blank">other container managers</a>&nbsp;like <a title="A Beginners Guide to Docker and Containers" href="https://www.flockport.com/a-beginners-guide-to-docker/" target="_blank">Docker</a>, &nbsp;<a title="A quick look at Systemd-nspawn containers" href="https://www.flockport.com/a-quick-look-at-systemd-nspawn-containers/" target="_blank">Systemd-nspawn,</a>&nbsp;Firejail, Pflask among others.</p>
+<p>The main difference between LXC and Docker is LXC is more focused on OS containers that are like lightweight VMs and Docker on single app containers targeted towards a PAAS centric use case. OS containers run an init and thus support multiple processes, and App containers don't and can only run single apps.</p>
+<p>Docker and others are pushing a PAAS centric use case of containers. Our article on <a title="Experimenting with Overlayfs and LXC" href="https://www.flockport.com/experimenting-with-overlayfs-and-lxc/" target="_blank">using Overlayfs and LXC</a> provides an overview of how layered containers work.</p>
+<p style="font-size: 22px; line-height: 17px;">The Elephant in the Room</p>
+<p>Docker has marketed itself aggressively and has got conflated to container technology rather than its specific use case of containers. This sort of led to less informed discussion and widespread misconception.</p>
+<p>Docker is a very specific PAAS centric way to use containers. You don't need to adopt Docker to get the benefits of containers. You adopt Docker to get the benefits of Docker. A lot of the messaging and marketing tends to conflate the two erroneously.</p>
+<p>Docker runs containers slightly differently than LXC. Docker runs the container OS without an init so it can only run a single app, removes storage persistence and builds the container with layers of aufs. This adds a certain amount of complexity to containers.</p>
+<p>Unless you need a container that can only run a single app without storage persistence, there is little need to deal with the additional complexity.</p>
+<p>I see users struggle with single app containers, non persistent data and layers when they simply need a container as a lightweight VM</p>
+<p>LXC containers are simpler to use and provide advanced capabilities. The fledgling <a title="Flockport App Store" href="https://www.flockport.com/store/" target="_blank">Flockport App store</a> provides easy to use apps and web stacks that can be deployed in minutes on any server, a<a title="Flockport Start" href="https://www.flockport.com/start/" target="_blank"> multi distribution LXC installer</a> and a<a title="Flockbox" href="https://www.flockport.com/flockbox/" target="_blank"> lightweight VM</a> that let's you try LXC and the app store in minutes.</p>
+<p>OS containers offer near seamless migration from your VM workloads. Whatever works for your VM deployments will work for OS containers. The ability to gain the advantages of container technology without needing to re engineer how you deploy applications is an incredible value proposition. App containers are a constrained OS environment and a lot of things don't work as you would expect and you need to expend extra effort to make them work the 'docker way'..</p>
+<p style="font-size: 22px; line-height: 17px;">Scalability</p>
+<p>The PAAS centric view of things has a disproportionate focus pure on app instances leaving app and user data to the end user to manage. The paradox is scalability is completely app and user data dependent. Simply building app instances does not address scalability.</p>
+<p>There are 3 problems of scale; storage, networking and app and user data, and these are large problems with decades of domain solutions behind them. Containers are building blocks but scaling requires a different set of technologies and skillsets independent of containers, VMs or bare metal servers.</p>
+<p style="font-size: 22px; color: rgb(243, 129, 118); line-height: 28px; margin-top: 30px;">Further Reading and Resources</p>
+<p><a title="Flockport App store" href="https://www.flockport.com/store/" target="_blank">Flockport App store</a></p>
+<p><a title="Flockport Get Started" href="https://www.flockport.com/start/" target="_blank">Flockport Get Started</a></p>
+<p><a title="LXC Get Started" href="https://www.flockport.com/tag/start" target="_blank">LXC Get Started</a></p>
+<p><a title="Container Networking Guides" href="https://www.flockport.com/tag/networking" target="_blank">Container Networking</a></p>
+<p><a title="Container Storage Options" href="https://www.flockport.com/tag/storage" target="_blank">Container Storage Options</a></p><div class="clearboth"></div></div> <div class="mk-content-box mk-shortcode  notitle"><span class="content-box-heading"><i class="mk-"></i> </span><div class="content-box-content"><h3 style="font-size: 20px; text-align: left; color: rgb(81, 81, 81); margin-top: 0px; margin-bottom: 18px; letter-spacing: 0px;" id="fancy-title-823" class="mk-shortcode mk-fancy-title simple-style "><span style="">Stay Updated on Flockport</span></h3><div class="clearboth"></div><div class="mk-button-align left"><a href="http://eepurl.com/YK_wr" target="_self" class="mk-button dark button-140 light-color  mk-shortcode flat-dimension medium  ">SUBSCRIBE</a></div>
+
+</div><div class="clearboth"></div></div>
+	</div></div>
+							</div>
+							
+							<div class="single-post-tags">
+																	<span>Tags:</span> 
+									 <a href="https://www.flockport.com/tag/lxc-3/" rel="tag">LXC</a><a href="https://www.flockport.com/tag/news/" rel="tag">news</a><a href="https://www.flockport.com/tag/start/" rel="tag">start</a>															</div>
+							<div class="single-back-top">
+								<a href="#"><i class="mk-icon-chevron-up"></i>Back to Top</a>	
+							</div>
+
+
+
+
+										<div class="mk-about-author-wrapper">
+								<div class="avatar-wrapper"><img alt="admin" src="2187e9742ad7b722b0ff6edbb4f61f97.dat" class="avatar avatar-65 photo" width="65" height="65"></div>
+								<div class="mk-about-author-meta">
+								<a class="about-author-name" href="https://www.flockport.com/author/admin/">admin</a>
+								<div class="about-author-desc"></div>
+								<ul class="about-author-social">
+									<li><a class="email-icon" title="Get in touch with me via email" href="mailto:admin@flockport.com"><i class="mk-icon-envelope-alt"></i></a></li>																											
+								</ul>
+								</div>
+								<div class="clearboth"></div>
+						</div>
+											
+
+
+						<section class="blog-similar-posts"><div class="similar-post-title">Recommended Posts</div><ul class="three-cols"><li><div class="similar-post-holder"><a class="mk-similiar-thumbnail" href="https://www.flockport.com/alternatives-to-docker-and-lxc/" title="Alternatives to Docker and LXC"><img src="empty-thumb-2wyflyko4ueih05li8ssn4.png" alt="Alternatives to Docker and LXC"><div class="image-hover-overlay"></div></a><a href="https://www.flockport.com/alternatives-to-docker-and-lxc/" class="mk-similiar-title">Alternatives to Docker and LXC</a></div></li><li><div class="similar-post-holder"><a class="mk-similiar-thumbnail" href="https://www.flockport.com/how-linux-containers-work/" title="How Linux Containers Work"><img src="empty-thumb-2wyflyko4ueih05li8ssn4.png" alt="How Linux Containers Work"><div class="image-hover-overlay"></div></a><a href="https://www.flockport.com/how-linux-containers-work/" class="mk-similiar-title">How Linux Containers Work</a></div></li><li><div class="similar-post-holder"><a class="mk-similiar-thumbnail" href="https://www.flockport.com/sleepwalking-into-a-monoculture-lock-in-with-linux-containers/" title="Sleepwalking into a Monoculture and Lock-in with Linux Containers"><img src="empty-thumb-2wyflyko4ueih05li8ssn4.png" alt="Sleepwalking into a Monoculture and Lock-in with Linux Containers"><div class="image-hover-overlay"></div></a><a href="https://www.flockport.com/sleepwalking-into-a-monoculture-lock-in-with-linux-containers/" class="mk-similiar-title">Sleepwalking into a Monoculture and Lock-in with Linux Containers</a></div></li></ul><div class="clearboth"></div></section>					
+					
+<section id="comments">
+
+ 
+
+
+	
+									<div id="respond" class="comment-respond">
+				<h3 id="reply-title" class="comment-reply-title"><div class="respond-heading">Leave a Comment</div> <small><a rel="nofollow" id="cancel-comment-reply-link" href="#respond" style="display: none;">Cancel reply</a></small></h3>
+									<p class="must-log-in">You must be <a href="https://www.flockport.com/wp-login.php?redirect_to=https%3A%2F%2Fwww.flockport.com%2Fcontainers-minus-the-hype%2F">logged in</a> to post a comment.</p>												</div><!-- #respond -->
+			
+
+
+</section>
+	
+			</article>
+			<div class="clearboth"></div>
+			</div>
+							<aside id="mk-sidebar" class="mk-builtin">
+    <div class="sidebar-wrapper">
+    <section id="tag_cloud-2" class="widget widget_tag_cloud"><div class="widgettitle">Tags</div><div class="tagcloud"><a href="https://www.flockport.com/tag/app-store/" class="tag-link-76" title="10 topics" style="font-size: 18.36pt;">app store</a>
+<a href="https://www.flockport.com/tag/btrfs/" class="tag-link-53" title="3 topics" style="font-size: 12.2pt;">btrfs</a>
+<a href="https://www.flockport.com/tag/docker/" class="tag-link-48" title="7 topics" style="font-size: 16.4pt;">docker</a>
+<a href="https://www.flockport.com/tag/failover/" class="tag-link-56" title="2 topics" style="font-size: 10.52pt;">failover</a>
+<a href="https://www.flockport.com/tag/flockbox/" class="tag-link-81" title="2 topics" style="font-size: 10.52pt;">flockbox</a>
+<a href="https://www.flockport.com/tag/gluster/" class="tag-link-50" title="2 topics" style="font-size: 10.52pt;">gluster</a>
+<a href="https://www.flockport.com/tag/gre/" class="tag-link-90" title="1 topic" style="font-size: 8pt;">GRE</a>
+<a href="https://www.flockport.com/tag/gretap/" class="tag-link-85" title="1 topic" style="font-size: 8pt;">GRETAP</a>
+<a href="https://www.flockport.com/tag/hhvm/" class="tag-link-62" title="1 topic" style="font-size: 8pt;">HHVM</a>
+<a href="https://www.flockport.com/tag/ipsec/" class="tag-link-67" title="3 topics" style="font-size: 12.2pt;">IPSEC</a>
+<a href="https://www.flockport.com/tag/l2tpv3/" class="tag-link-86" title="1 topic" style="font-size: 8pt;">L2TPV3</a>
+<a href="https://www.flockport.com/tag/load-balancing/" class="tag-link-87" title="2 topics" style="font-size: 10.52pt;">load balancing</a>
+<a href="https://www.flockport.com/tag/lvm/" class="tag-link-75" title="2 topics" style="font-size: 10.52pt;">LVM</a>
+<a href="https://www.flockport.com/tag/lvm-thin/" class="tag-link-77" title="2 topics" style="font-size: 10.52pt;">LVM Thin</a>
+<a href="https://www.flockport.com/tag/lxc-3/" class="tag-link-32" title="4 topics" style="font-size: 13.6pt;">LXC</a>
+<a href="https://www.flockport.com/tag/lxcgui/" class="tag-link-61" title="2 topics" style="font-size: 10.52pt;">LXC GUI</a>
+<a href="https://www.flockport.com/tag/lxd/" class="tag-link-57" title="2 topics" style="font-size: 10.52pt;">LXD</a>
+<a href="https://www.flockport.com/tag/macvlan/" class="tag-link-84" title="1 topic" style="font-size: 8pt;">macvlan</a>
+<a href="https://www.flockport.com/tag/mailbox/" class="tag-link-88" title="2 topics" style="font-size: 10.52pt;">mailbox</a>
+<a href="https://www.flockport.com/tag/mailserver/" class="tag-link-54" title="2 topics" style="font-size: 10.52pt;">mailserver</a>
+<a href="https://www.flockport.com/tag/micro-containers-2/" class="tag-link-65" title="3 topics" style="font-size: 12.2pt;">micro containers</a>
+<a href="https://www.flockport.com/tag/networking/" class="tag-link-41" title="17 topics" style="font-size: 21.44pt;">networking</a>
+<a href="https://www.flockport.com/tag/news/" class="tag-link-72" title="19 topics" style="font-size: 22pt;">news</a>
+<a href="https://www.flockport.com/tag/nginx/" class="tag-link-52" title="3 topics" style="font-size: 12.2pt;">nginx</a>
+<a href="https://www.flockport.com/tag/nspawn/" class="tag-link-82" title="1 topic" style="font-size: 8pt;">nspawn</a>
+<a href="https://www.flockport.com/tag/osx/" class="tag-link-92" title="2 topics" style="font-size: 10.52pt;">OSX</a>
+<a href="https://www.flockport.com/tag/overlayfs/" class="tag-link-74" title="3 topics" style="font-size: 12.2pt;">overlayfs</a>
+<a href="https://www.flockport.com/tag/reverse-proxy/" class="tag-link-89" title="1 topic" style="font-size: 8pt;">reverse proxy</a>
+<a href="https://www.flockport.com/tag/start/" class="tag-link-83" title="9 topics" style="font-size: 17.8pt;">start</a>
+<a href="https://www.flockport.com/tag/storage/" class="tag-link-69" title="8 topics" style="font-size: 17.1pt;">storage</a>
+<a href="https://www.flockport.com/tag/tinc/" class="tag-link-91" title="2 topics" style="font-size: 10.52pt;">tinc</a>
+<a href="https://www.flockport.com/tag/troubleshooting/" class="tag-link-49" title="1 topic" style="font-size: 8pt;">troubleshooting</a>
+<a href="https://www.flockport.com/tag/unprivileged/" class="tag-link-58" title="1 topic" style="font-size: 8pt;">unprivileged</a>
+<a href="https://www.flockport.com/tag/virtualization/" class="tag-link-78" title="7 topics" style="font-size: 16.4pt;">virtualization</a>
+<a href="https://www.flockport.com/tag/vpn/" class="tag-link-68" title="6 topics" style="font-size: 15.7pt;">VPN</a>
+<a href="https://www.flockport.com/tag/vxlan/" class="tag-link-71" title="2 topics" style="font-size: 10.52pt;">VXLAN</a>
+<a href="https://www.flockport.com/tag/wordpress/" class="tag-link-63" title="2 topics" style="font-size: 10.52pt;">wordpress</a></div>
+</section><section id="recent_posts-2" class="widget widget_posts_lists"><div class="widgettitle">Container Start</div>
+        <ul>
+
+		
+        <li class="post-list-image">
+                <div class="post-list-info posts-no-thumb">
+        <a href="https://www.flockport.com/how-linux-containers-work/" class="post-list-title">How Linux Containers Work</a>
+        <div class="post-list-meta">
+	       	       <time datetime="August 1, 2015">August 1, 2015</time>
+	          	   </div>	
+       </div>
+
+       <div class="clearboth"></div>
+       </li>
+        
+        
+        <li class="post-list-image">
+                <div class="post-list-info posts-no-thumb">
+        <a href="https://www.flockport.com/deploying-containerized-apps/" class="post-list-title">Deploying Containerized Apps</a>
+        <div class="post-list-meta">
+	       	       <time datetime="July 8, 2015">July 8, 2015</time>
+	          	   </div>	
+       </div>
+
+       <div class="clearboth"></div>
+       </li>
+        
+        
+        <li class="post-list-image">
+                <div class="post-list-info posts-no-thumb">
+        <a href="#" class="post-list-title">Containers, minus the hype</a>
+        <div class="post-list-meta">
+	       	       <time datetime="June 20, 2015">June 20, 2015</time>
+	          	   </div>	
+       </div>
+
+       <div class="clearboth"></div>
+       </li>
+        
+        
+        <li class="post-list-image">
+                <div class="post-list-info posts-no-thumb">
+        <a href="https://www.flockport.com/a-beginners-guide-to-docker/" class="post-list-title">A Beginners Guide to Docker and Containers</a>
+        <div class="post-list-meta">
+	       	       <time datetime="May 7, 2015">May 7, 2015</time>
+	          	   </div>	
+       </div>
+
+       <div class="clearboth"></div>
+       </li>
+        
+        
+        <li class="post-list-image">
+                <div class="post-list-info posts-no-thumb">
+        <a href="https://www.flockport.com/a-new-users-guide-to-container-technology/" class="post-list-title">A New Users Guide to Container Technology</a>
+        <div class="post-list-meta">
+	       	       <time datetime="May 5, 2015">May 5, 2015</time>
+	          	   </div>	
+       </div>
+
+       <div class="clearboth"></div>
+       </li>
+        
+        
+        <li class="post-list-image">
+                <div class="post-list-info posts-no-thumb">
+        <a href="https://www.flockport.com/lxc-using-unprivileged-containers/" class="post-list-title">LXC using unprivileged containers</a>
+        <div class="post-list-meta">
+	       	       <time datetime="November 30, 2014">November 30, 2014</time>
+	          	   </div>	
+       </div>
+
+       <div class="clearboth"></div>
+       </li>
+        
+        
+        <li class="post-list-image">
+                <div class="post-list-info posts-no-thumb">
+        <a href="https://www.flockport.com/lxc-configuration-and-troubleshooting/" class="post-list-title">LXC configuration and troubleshooting</a>
+        <div class="post-list-meta">
+	       	       <time datetime="September 28, 2014">September 28, 2014</time>
+	          	   </div>	
+       </div>
+
+       <div class="clearboth"></div>
+       </li>
+        
+        
+        <li class="post-list-image">
+                <div class="post-list-info posts-no-thumb">
+        <a href="https://www.flockport.com/using-flockport-containers/" class="post-list-title">Using Flockport containers</a>
+        <div class="post-list-meta">
+	       	       <time datetime="">September 28, 2014</time>
+	          	   </div>	
+       </div>
+
+       <div class="clearboth"></div>
+       </li>
+        
+        
+        <li class="post-list-image">
+                <div class="post-list-info posts-no-thumb">
+        <a href="https://www.flockport.com/lxc-usecases/" class="post-list-title">LXC use cases</a>
+        <div class="post-list-meta">
+	       	       <time datetime="August 20, 2014">August 20, 2014</time>
+	          	   </div>	
+       </div>
+
+       <div class="clearboth"></div>
+       </li>
+        
+        
+        <li class="post-list-image">
+                <div class="post-list-info posts-no-thumb">
+        <a href="https://www.flockport.com/lxc-advanced-guide/" class="post-list-title">LXC Getting Started Guide Part II</a>
+        <div class="post-list-meta">
+	       	       <time datetime="July 29, 2014">July 29, 2014</time>
+	          	   </div>	
+       </div>
+
+       <div class="clearboth"></div>
+       </li>
+        
+        
+        <li class="post-list-image">
+                <div class="post-list-info posts-no-thumb">
+        <a href="https://www.flockport.com/lxc-guide/" class="post-list-title">LXC getting started guide</a>
+        <div class="post-list-meta">
+	       	       <time datetime="">July 29, 2014</time>
+	          	   </div>	
+       </div>
+
+       <div class="clearboth"></div>
+       </li>
+        
+        
+        </ul>
+        </section><section id="recent_posts-6" class="widget widget_posts_lists"><div class="widgettitle">Container Networking</div>
+        <ul>
+
+		
+        <li class="post-list-image">
+                <div class="post-list-info posts-no-thumb">
+        <a href="https://www.flockport.com/build-layer2-and-layer-3-overlay-networks-with-peervpn/" class="post-list-title">Build Quick Layer 2 and Layer 3 Overlays for Containers and VMs</a>
+        <div class="post-list-meta">
+	       	       <time datetime="July 10, 2015">July 10, 2015</time>
+	          	   </div>	
+       </div>
+
+       <div class="clearboth"></div>
+       </li>
+        
+        
+        <li class="post-list-image">
+                <div class="post-list-info posts-no-thumb">
+        <a href="https://www.flockport.com/enable-lxc-networking-in-debian-jessie-fedora-and-others/" class="post-list-title">Enable LXC networking in Debian Jessie, Fedora21, CentOS7 and others</a>
+        <div class="post-list-meta">
+	       	       <time datetime="May 5, 2015">May 5, 2015</time>
+	          	   </div>	
+       </div>
+
+       <div class="clearboth"></div>
+       </li>
+        
+        
+        <li class="post-list-image">
+                <div class="post-list-info posts-no-thumb">
+        <a href="https://www.flockport.com/lxc-macvlan-networking/" class="post-list-title">LXC Macvlan networking</a>
+        <div class="post-list-meta">
+	       	       <time datetime="February 14, 2015">February 14, 2015</time>
+	          	   </div>	
+       </div>
+
+       <div class="clearboth"></div>
+       </li>
+        
+        
+        <li class="post-list-image">
+                <div class="post-list-info posts-no-thumb">
+        <a href="https://www.flockport.com/flockport-labs-lxc-and-vxlan/" class="post-list-title">LXC and VXLAN</a>
+        <div class="post-list-meta">
+	       	       <time datetime="February 7, 2015">February 7, 2015</time>
+	          	   </div>	
+       </div>
+
+       <div class="clearboth"></div>
+       </li>
+        
+        
+        <li class="post-list-image">
+                <div class="post-list-info posts-no-thumb">
+        <a href="https://www.flockport.com/flockport-labs-use-lxc-containers-as-routers/" class="post-list-title">Flockport labs - Using LXC containers as routers</a>
+        <div class="post-list-meta">
+	       	       <time datetime="January 20, 2015">January 20, 2015</time>
+	          	   </div>	
+       </div>
+
+       <div class="clearboth"></div>
+       </li>
+        
+        
+        <li class="post-list-image">
+                <div class="post-list-info posts-no-thumb">
+        <a href="https://www.flockport.com/flockport-labs-extending-layer-2-across-container-hosts/" class="post-list-title">Flockport Labs - Extending layer 2 across container hosts</a>
+        <div class="post-list-meta">
+	       	       <time datetime="January 19, 2015">January 19, 2015</time>
+	          	   </div>	
+       </div>
+
+       <div class="clearboth"></div>
+       </li>
+        
+        
+        <li class="post-list-image">
+                <div class="post-list-info posts-no-thumb">
+        <a href="https://www.flockport.com/connect-lxc-containers-with-an-ipsec-vpn/" class="post-list-title">Connect Containers with an IPSEC VPN</a>
+        <div class="post-list-meta">
+	       	       <time datetime="January 14, 2015">January 14, 2015</time>
+	          	   </div>	
+       </div>
+
+       <div class="clearboth"></div>
+       </li>
+        
+        
+        <li class="post-list-image">
+                <div class="post-list-info posts-no-thumb">
+        <a href="https://www.flockport.com/connect-lxc-hosts-with-an-ipsec-vpn/" class="post-list-title">Connect Containers across Hosts with an IPSEC VPN</a>
+        <div class="post-list-meta">
+	       	       <time datetime="">January 14, 2015</time>
+	          	   </div>	
+       </div>
+
+       <div class="clearboth"></div>
+       </li>
+        
+        
+        <li class="post-list-image">
+                <div class="post-list-info posts-no-thumb">
+        <a href="https://www.flockport.com/load-balancing-and-failover-of-lxc-containers-using-lvs/" class="post-list-title">Load balancing and failover with LXC containers using LVS</a>
+        <div class="post-list-meta">
+	       	       <time datetime="January 6, 2015">January 6, 2015</time>
+	          	   </div>	
+       </div>
+
+       <div class="clearboth"></div>
+       </li>
+        
+        
+        <li class="post-list-image">
+                <div class="post-list-info posts-no-thumb">
+        <a href="https://www.flockport.com/load-balancing-and-failover-with-lxc-containers/" class="post-list-title">Load balancing and failover with LXC containers</a>
+        <div class="post-list-meta">
+	       	       <time datetime="November 9, 2014">November 9, 2014</time>
+	          	   </div>	
+       </div>
+
+       <div class="clearboth"></div>
+       </li>
+        
+        
+        <li class="post-list-image">
+                <div class="post-list-info posts-no-thumb">
+        <a href="https://www.flockport.com/connecting-lxc-hosts-with-gre-tunnels/" class="post-list-title">Connect Containers across Hosts with GRE tunnels</a>
+        <div class="post-list-meta">
+	       	       <time datetime="September 28, 2014">September 28, 2014</time>
+	          	   </div>	
+       </div>
+
+       <div class="clearboth"></div>
+       </li>
+        
+        
+        <li class="post-list-image">
+                <div class="post-list-info posts-no-thumb">
+        <a href="https://www.flockport.com/building-distributed-mesh-networks-of-lxc-containers/" class="post-list-title">Building distributed mesh networks of LXC containers</a>
+        <div class="post-list-meta">
+	       	       <time datetime="">September 28, 2014</time>
+	          	   </div>	
+       </div>
+
+       <div class="clearboth"></div>
+       </li>
+        
+        
+        <li class="post-list-image">
+                <div class="post-list-info posts-no-thumb">
+        <a href="https://www.flockport.com/building-distributed-mesh-networks-of-lxc-hosts/" class="post-list-title">Connect Containers across Hosts with Tinc</a>
+        <div class="post-list-meta">
+	       	       <time datetime="">September 28, 2014</time>
+	          	   </div>	
+       </div>
+
+       <div class="clearboth"></div>
+       </li>
+        
+        
+        <li class="post-list-image">
+                <div class="post-list-info posts-no-thumb">
+        <a href="https://www.flockport.com/lxc-advanced-networking-guide/" class="post-list-title">LXC advanced networking guide</a>
+        <div class="post-list-meta">
+	       	       <time datetime="September 27, 2014">September 27, 2014</time>
+	          	   </div>	
+       </div>
+
+       <div class="clearboth"></div>
+       </li>
+        
+        
+        <li class="post-list-image">
+                <div class="post-list-info posts-no-thumb">
+        <a href="https://www.flockport.com/lxc-networking-guide/" class="post-list-title">LXC Networking Guide</a>
+        <div class="post-list-meta">
+	       	       <time datetime="September 11, 2014">September 11, 2014</time>
+	          	   </div>	
+       </div>
+
+       <div class="clearboth"></div>
+       </li>
+        
+        
+        </ul>
+        </section><section id="recent_posts-3" class="widget widget_posts_lists"><div class="widgettitle">Container Storage</div>
+        <ul>
+
+		
+        <li class="post-list-image">
+                <div class="post-list-info posts-no-thumb">
+        <a href="https://www.flockport.com/lxc-and-lvm/" class="post-list-title">LXC and LVM</a>
+        <div class="post-list-meta">
+	       	       <time datetime="June 13, 2015">June 13, 2015</time>
+	          	   </div>	
+       </div>
+
+       <div class="clearboth"></div>
+       </li>
+        
+        
+        <li class="post-list-image">
+                <div class="post-list-info posts-no-thumb">
+        <a href="https://www.flockport.com/container-storage/" class="post-list-title">Container Storage Options</a>
+        <div class="post-list-meta">
+	       	       <time datetime="June 10, 2015">June 10, 2015</time>
+	          	   </div>	
+       </div>
+
+       <div class="clearboth"></div>
+       </li>
+        
+        
+        <li class="post-list-image">
+                <div class="post-list-info posts-no-thumb">
+        <a href="https://www.flockport.com/experimenting-with-overlayfs-and-lxc/" class="post-list-title">Overlayfs and LXC</a>
+        <div class="post-list-meta">
+	       	       <time datetime="June 2, 2015">June 2, 2015</time>
+	          	   </div>	
+       </div>
+
+       <div class="clearboth"></div>
+       </li>
+        
+        
+        <li class="post-list-image">
+                <div class="post-list-info posts-no-thumb">
+        <a href="https://www.flockport.com/distributed-storage-options-for-containers-vms/" class="post-list-title">Distributed storage options for containers and VMs</a>
+        <div class="post-list-meta">
+	       	       <time datetime="February 1, 2015">February 1, 2015</time>
+	          	   </div>	
+       </div>
+
+       <div class="clearboth"></div>
+       </li>
+        
+        
+        <li class="post-list-image">
+                <div class="post-list-info posts-no-thumb">
+        <a href="https://www.flockport.com/supercharge-lxc-with-btrfs/" class="post-list-title">Supercharge LXC with Btrfs</a>
+        <div class="post-list-meta">
+	       	       <time datetime="October 1, 2014">October 1, 2014</time>
+	          	   </div>	
+       </div>
+
+       <div class="clearboth"></div>
+       </li>
+        
+        
+        <li class="post-list-image">
+                <div class="post-list-info posts-no-thumb">
+        <a href="https://www.flockport.com/build-distributed-storage-nodes-with-lxc-and-gluster/" class="post-list-title">Build distributed storage nodes with LXC and Gluster</a>
+        <div class="post-list-meta">
+	       	       <time datetime="September 28, 2014">September 28, 2014</time>
+	          	   </div>	
+       </div>
+
+       <div class="clearboth"></div>
+       </li>
+        
+        
+        </ul>
+        </section><section id="recent_posts-4" class="widget widget_posts_lists"><div class="widgettitle">App Store</div>
+        <ul>
+
+		
+        <li class="post-list-image">
+                <div class="post-list-info posts-no-thumb">
+        <a href="https://www.flockport.com/winebox-wine-container-preview/" class="post-list-title">Winebox Wine Container Preview</a>
+        <div class="post-list-meta">
+	       	       <time datetime="July 17, 2015">July 17, 2015</time>
+	          	   </div>	
+       </div>
+
+       <div class="clearboth"></div>
+       </li>
+        
+        
+        <li class="post-list-image">
+                <div class="post-list-info posts-no-thumb">
+        <a href="https://www.flockport.com/flockport-app-store-introducing-overlay-apps/" class="post-list-title">Flockport App Store Introducing Overlay Apps</a>
+        <div class="post-list-meta">
+	       	       <time datetime="June 10, 2015">June 10, 2015</time>
+	          	   </div>	
+       </div>
+
+       <div class="clearboth"></div>
+       </li>
+        
+        
+        <li class="post-list-image">
+                <div class="post-list-info posts-no-thumb">
+        <a href="https://www.flockport.com/new-micro-containers-based-on-alpine-linux/" class="post-list-title">NEW: Micro containers based on Alpine Linux</a>
+        <div class="post-list-meta">
+	       	       <time datetime="December 25, 2014">December 25, 2014</time>
+	          	   </div>	
+       </div>
+
+       <div class="clearboth"></div>
+       </li>
+        
+        
+        <li class="post-list-image">
+                <div class="post-list-info posts-no-thumb">
+        <a href="https://www.flockport.com/deploy-wordpress-with-hhvm-and-php-fpm-as-fallback/" class="post-list-title">Deploy a faster WordPress with HHVM and PHP-FPM as fallback</a>
+        <div class="post-list-meta">
+	       	       <time datetime="December 23, 2014">December 23, 2014</time>
+	          	   </div>	
+       </div>
+
+       <div class="clearboth"></div>
+       </li>
+        
+        
+        <li class="post-list-image">
+                <div class="post-list-info posts-no-thumb">
+        <a href="https://www.flockport.com/run-gui-apps-in-lxc-containers/" class="post-list-title">Run Accelerated GUI apps in LXC containers</a>
+        <div class="post-list-meta">
+	       	       <time datetime="December 7, 2014">December 7, 2014</time>
+	          	   </div>	
+       </div>
+
+       <div class="clearboth"></div>
+       </li>
+        
+        
+        <li class="post-list-image">
+                <div class="post-list-info posts-no-thumb">
+        <a href="https://www.flockport.com/using-the-flockport-mailserver/" class="post-list-title">Using the Flockport mailserver</a>
+        <div class="post-list-meta">
+	       	       <time datetime="October 5, 2014">October 5, 2014</time>
+	          	   </div>	
+       </div>
+
+       <div class="clearboth"></div>
+       </li>
+        
+        
+        <li class="post-list-image">
+                <div class="post-list-info posts-no-thumb">
+        <a href="https://www.flockport.com/deploying-lxc-containers-with-nginx/" class="post-list-title">Deploying LXC containers with Nginx</a>
+        <div class="post-list-meta">
+	       	       <time datetime="October 1, 2014">October 1, 2014</time>
+	          	   </div>	
+       </div>
+
+       <div class="clearboth"></div>
+       </li>
+        
+        
+        <li class="post-list-image">
+                <div class="post-list-info posts-no-thumb">
+        <a href="https://www.flockport.com/using-flockport-containers/" class="post-list-title">Using Flockport containers</a>
+        <div class="post-list-meta">
+	       	       <time datetime="September 28, 2014">September 28, 2014</time>
+	          	   </div>	
+       </div>
+
+       <div class="clearboth"></div>
+       </li>
+        
+        
+        </ul>
+        </section><section id="recent_posts-5" class="widget widget_posts_lists"><div class="widgettitle">Popular Posts</div>
+        <ul>
+
+		
+        <li class="post-list-image">
+                <div class="post-list-info posts-no-thumb">
+        <a href="https://www.flockport.com/containers-vs-virtualization/" class="post-list-title">Containers vs Virtualization</a>
+        <div class="post-list-meta">
+	       	       <time datetime="June 5, 2015">June 5, 2015</time>
+	          	   </div>	
+       </div>
+
+       <div class="clearboth"></div>
+       </li>
+        
+        
+        <li class="post-list-image">
+                <div class="post-list-info posts-no-thumb">
+        <a href="https://www.flockport.com/a-quick-look-at-systemd-nspawn-containers/" class="post-list-title">A Quick Look at Systemd Nspawn Containers</a>
+        <div class="post-list-meta">
+	       	       <time datetime="May 16, 2015">May 16, 2015</time>
+	          	   </div>	
+       </div>
+
+       <div class="clearboth"></div>
+       </li>
+        
+        
+        <li class="post-list-image">
+                <div class="post-list-info posts-no-thumb">
+        <a href="https://www.flockport.com/flockport-first-look-at-lxd/" class="post-list-title">Flockport First look at LXD</a>
+        <div class="post-list-meta">
+	       	       <time datetime="April 22, 2015">April 22, 2015</time>
+	          	   </div>	
+       </div>
+
+       <div class="clearboth"></div>
+       </li>
+        
+        
+        <li class="post-list-image">
+                <div class="post-list-info posts-no-thumb">
+        <a href="https://www.flockport.com/lxc-vs-lxd-vs-docker-making-sense-of-the-rapidly-evolving-container-ecosystem/" class="post-list-title">LXC vs LXD vs Docker - Making sense of the rapidly evolving container ecosystem</a>
+        <div class="post-list-meta">
+	       	       <time datetime="November 11, 2014">November 11, 2014</time>
+	          	   </div>	
+       </div>
+
+       <div class="clearboth"></div>
+       </li>
+        
+        
+        <li class="post-list-image">
+                <div class="post-list-info posts-no-thumb">
+        <a href="https://www.flockport.com/statelessness-and-the-swiss-engineer/" class="post-list-title">Statelessness and the swiss engineer</a>
+        <div class="post-list-meta">
+	       	       <time datetime="September 13, 2014">September 13, 2014</time>
+	          	   </div>	
+       </div>
+
+       <div class="clearboth"></div>
+       </li>
+        
+        
+        <li class="post-list-image">
+                <div class="post-list-info posts-no-thumb">
+        <a href="https://www.flockport.com/lxc-vs-docker/" class="post-list-title">LXC vs Docker</a>
+        <div class="post-list-meta">
+	       	       <time datetime="August 19, 2014">August 19, 2014</time>
+	          	   </div>	
+       </div>
+
+       <div class="clearboth"></div>
+       </li>
+        
+        
+        </ul>
+        </section>    </div>
+</aside>			<div class="clearboth"></div>	
+		</div>
+
+</div>
+<section id="mk-footer" class="">
+<div class="footer-wrapper mk-grid">
+<div class="mk-padding-wrapper">
+		<div class="mk-col-2-3">
+			<div class="mk-col-1-3"><section id="nav_menu-4" class="widget widget_nav_menu"><div class="widgettitle">FLOCKPORT</div><div class="menu-footer-container"><ul id="menu-footer" class="menu"><li id="menu-item-494" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-494"><a href="http://www.flockport.com/tos">Terms of Service</a></li>
+<li id="menu-item-464" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-464"><a href="http://www.flockport.com/about">About Us</a></li>
+<li id="menu-item-428" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-428"><a href="http://www.flockport.com/contact">Contact Us</a></li>
+<li id="menu-item-430" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-430"><a href="http://www.flockport.com/news">News</a></li>
+<li id="menu-item-435" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-435"><a href="http://www.flockport.com/press">Press</a></li>
+</ul></div></section></div>
+			<div class="mk-col-1-3"><section id="nav_menu-3" class="widget widget_nav_menu"><div class="widgettitle">HELP</div><div class="menu-footer2-container"><ul id="menu-footer2" class="menu"><li id="menu-item-433" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-433"><a href="http://www.flockport.com/wp-login.php?action=register">Register</a></li>
+<li id="menu-item-431" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-431"><a href="http://www.flockport.com/faqs">Faqs</a></li>
+<li id="menu-item-432" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-432"><a href="http://www.flockport.com/profile">Profile</a></li>
+<li id="menu-item-465" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-465"><a href="http://community.flockport.com/">Community</a></li>
+<li id="menu-item-434" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-434"><a href="http://www.flockport.com/checksum">Checksums</a></li>
+</ul></div></section></div>
+			<div class="mk-col-1-3"><section id="search-3" class="widget widget_search"><form class="mk-searchform" method="get" id="searchform" action="https://www.flockport.com/">
+	<i class="mk-icon-remove-sign"></i>
+	<input class="text-input" placeholder="Search site" value="" name="s" id="s" type="text">
+	<i class="mk-icon-search"><input value="" class="search-button" type="submit"></i>
+</form> </section></div>
+		</div>
+		<div class="mk-col-1-3"><section id="social-2" class="widget widget_social_networks"><a href="https://facebook.com/flockport" rel="nofollow" class="builtin-icons mk-circle-frame dark medium facebook-hover" target="_blank" alt=" facebook" title=" facebook"><i class="mk-jupiter-icon-simple-facebook"></i></a><a href="https://plus.google.com/104131702754807387435" rel="nofollow" class="builtin-icons mk-circle-frame dark medium googleplus-hover" target="_blank" alt=" googleplus" title=" googleplus"><i class="mk-jupiter-icon-simple-googleplus"></i></a><a href="http://twitter.com/flockport" rel="nofollow" class="builtin-icons mk-circle-frame dark medium twitter-hover" target="_blank" alt=" twitter" title=" twitter"><i class="mk-jupiter-icon-simple-twitter"></i></a><a href="https://www.youtube.com/channel/UC7EYb7n2H09hxNx8tAo-iXQ/" rel="nofollow" class="builtin-icons mk-circle-frame dark medium youtube-hover" target="_blank" alt=" youtube" title=" youtube"><i class="mk-jupiter-icon-simple-youtube"></i></a></section></div>
+ 
+<div class="clearboth"></div>      
+</div>
+</div>
+<div id="sub-footer">
+	<div class="mk-grid">
+				<div class="mk-footer-logo">
+		    <a href="https://www.flockport.com/" title="Flockport"><img alt="Flockport" src="flock-logo-footer-white.png"></a>
+		</div>
+				
+    	<span class="mk-footer-copyright">Copyright @ 2015
+Flockport
+</span>
+    		</div>
+	<div class="clearboth"></div>
+</div>
+
+</section>
+
+
+
+
+
+
+		
+	</div>
+<a href="#" class="mk-go-top on"><i class="mk-icon-chevron-up"></i></a>
+
+			<div id="login-box" class="login-popup">
+				<a href="#" class="close-btn"></a>
+
+				
+									<div class="section-container">
+
+												<div id="login" class="wpml-content">
+
+							<h2>Login</h2>
+
+							
+							<form action="https://www.flockport.com/containers-minus-the-hype/login" method="post" id="form" class="group" name="loginform">
+
+								
+								<p>
+									<label class="field-titles" for="login_user">Username</label>
+									<input style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAALZJREFUOBFjYKAANDQ0rGWiQD9IqzgL0BQ3IKMXiB8AcSKQ/waIrYDsKUD8Fir2pKmpSf/fv3+zgPxfzMzMSbW1tbeBbAaQC+b+//9fB4h9gOwikCAQTAPyDYHYBciuBQkANfcB+WZAbPP37992kBgIUOoFBiZGRsYkIL4ExJvZ2NhAXmFgYmLKBPLPAfFuFhaWJpAYEBQC+SeA+BDQC5UQIQpJYFgdodQLLyh0w6j20RCgUggAAEREPpKMfaEsAAAAAElFTkSuQmCC&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;" name="log" id="login_user" class="input" value="" size="20" type="text">
+								</p>
+
+								<p>
+									<label class="field-titles" for="login_pass">Password</label>
+									<input style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAALZJREFUOBFjYKAANDQ0rGWiQD9IqzgL0BQ3IKMXiB8AcSKQ/waIrYDsKUD8Fir2pKmpSf/fv3+zgPxfzMzMSbW1tbeBbAaQC+b+//9fB4h9gOwikCAQTAPyDYHYBciuBQkANfcB+WZAbPP37992kBgIUOoFBiZGRsYkIL4ExJvZ2NhAXmFgYmLKBPLPAfFuFhaWJpAYEBQC+SeA+BDQC5UQIQpJYFgdodQLLyh0w6j20RCgUggAAEREPpKMfaEsAAAAAElFTkSuQmCC&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;" name="pwd" id="login_pass" class="input" value="" size="20" type="password">
+								</p>
+
+								
+								<p id="forgetmenot">
+									<label class="forgetmenot-label" for="rememberme"><input name="rememberme" id="rememberme" value="forever" type="checkbox"> Remember Me</label>
+								</p>
+
+								<p class="submit">
+
+									
+									<input name="wp-sumbit" id="wp-submit" class="button button-primary button-large" value="Log In" type="submit">
+									<input name="login" value="true" type="hidden">
+									<input id="security" name="security" value="0f12ca0ed1" type="hidden"><input name="_wp_http_referer" value="/containers-minus-the-hype/" type="hidden">
+								</p><!--[END .submit]-->
+
+								
+							</form><!--[END #loginform]-->
+						</div><!--[END #login]-->
+
+																				<div id="register" class="wpml-content" style="display: none;">
+
+									<h2>Register</h2>
+
+									
+									<form action="https://www.flockport.com/containers-minus-the-hype/register" method="post" id="form" class="group" name="loginform">
+
+										
+										<p>
+											<label class="field-titles" for="reg_user">Username</label>
+											<input style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAALZJREFUOBFjYKAANDQ0rGWiQD9IqzgL0BQ3IKMXiB8AcSKQ/waIrYDsKUD8Fir2pKmpSf/fv3+zgPxfzMzMSbW1tbeBbAaQC+b+//9fB4h9gOwikCAQTAPyDYHYBciuBQkANfcB+WZAbPP37992kBgIUOoFBiZGRsYkIL4ExJvZ2NhAXmFgYmLKBPLPAfFuFhaWJpAYEBQC+SeA+BDQC5UQIQpJYFgdodQLLyh0w6j20RCgUggAAEREPpKMfaEsAAAAAElFTkSuQmCC&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;" name="user_login" id="reg_user" class="input" value="" size="20" type="text">
+										</p>
+
+										<p>
+											<label class="field-titles" for="reg_email">Email</label>
+											<input style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAALZJREFUOBFjYKAANDQ0rGWiQD9IqzgL0BQ3IKMXiB8AcSKQ/waIrYDsKUD8Fir2pKmpSf/fv3+zgPxfzMzMSbW1tbeBbAaQC+b+//9fB4h9gOwikCAQTAPyDYHYBciuBQkANfcB+WZAbPP37992kBgIUOoFBiZGRsYkIL4ExJvZ2NhAXmFgYmLKBPLPAfFuFhaWJpAYEBQC+SeA+BDQC5UQIQpJYFgdodQLLyh0w6j20RCgUggAAEREPpKMfaEsAAAAAElFTkSuQmCC&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;" name="user_email" id="reg_email" class="input" value="" size="20" type="text">
+										</p>
+
+										<img src="admin-ajax_001.php"><br><label for="easy_captcha_captcha_simple">Please enter text above!</label><br><input id="easy_captcha_captcha_simple" name="easy_captcha_captcha_simple" value="" type="text"><input id="easy_captcha_sid" name="easy_captcha_sid" value="8b8faed76ed350395bc6a9585228a0d8" type="hidden">
+										<p class="submit">
+
+											
+											<input name="user-sumbit" id="user-submit" class="button button-primary button-large" value="Sign Up" type="submit">
+											<input name="register" value="true" type="hidden">
+											<input id="security" name="security" value="0f12ca0ed1" type="hidden"><input name="_wp_http_referer" value="/containers-minus-the-hype/" type="hidden">
+										</p><!--[END .submit]-->
+
+										
+									</form>
+
+								</div><!--[END #register]-->
+							
+												<div id="forgotten" class="wpml-content" style="display: none;">
+
+							<h2>Forgotten Password?</h2>
+
+							
+							<form action="https://www.flockport.com/containers-minus-the-hype/forgotten" method="post" id="form" class="group" name="loginform">
+
+								
+								<p>
+									<label class="field-titles" for="forgot_login">Username or Email</label>
+									<input style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAALZJREFUOBFjYKAANDQ0rGWiQD9IqzgL0BQ3IKMXiB8AcSKQ/waIrYDsKUD8Fir2pKmpSf/fv3+zgPxfzMzMSbW1tbeBbAaQC+b+//9fB4h9gOwikCAQTAPyDYHYBciuBQkANfcB+WZAbPP37992kBgIUOoFBiZGRsYkIL4ExJvZ2NhAXmFgYmLKBPLPAfFuFhaWJpAYEBQC+SeA+BDQC5UQIQpJYFgdodQLLyh0w6j20RCgUggAAEREPpKMfaEsAAAAAElFTkSuQmCC&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;" name="forgot_login" id="forgot_login" class="input" value="" size="20" type="text">
+								</p>
+
+								
+								<p class="submit">
+
+									
+									<input name="user-submit" id="user-submit" class="button button-primary button-large" value="Reset Password" type="submit">
+									<input name="forgotten" value="true" type="hidden">
+									<input id="security" name="security" value="0f12ca0ed1" type="hidden"><input name="_wp_http_referer" value="/containers-minus-the-hype/" type="hidden">
+								</p>
+
+								
+							</form>
+
+						</div><!--[END #forgotten]-->
+					</div><!--[END .section-container]-->
+				
+				<div id="additional-settings"><a href="#register" class="wpml-nav">Register</a> | <a href="#forgotten" class="wpml-nav">Lost your password?</a><div class="hide-login"> | <a href="#login" class="wpml-nav">Back to Login</a></div></div>			</div><!--[END #login-box]-->
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

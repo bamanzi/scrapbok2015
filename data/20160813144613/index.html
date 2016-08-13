@@ -1,0 +1,488 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Linux 容器技术史话：从 chroot  到未来-观点 ◆ 热议|Linux.中国-开源社区</title>
+ 
+<meta name="keywords" content="Linux 容器技术史话：从 chroot  到未来">
+<meta name="description" content="简单来说，容器提供的是一种基于各种 Linux 发行版创建容器镜像的方法、一套管理容器生命周期的 API、与该 API 交互的客户端工具、保存快照的功能、在宿主机之间迁移容器实例的能力，等等。 ">
+<meta name="copyright" content="2005-2015 Linux.cn">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<meta name="applicable-device" content="pc,mobile">
+<meta name="referrer" content="always">
+<base href="">
+
+
+
+
+
+
+
+
+
+
+<link rel="alternate" type="application/rss+xml" title="Linux.中国 - 开源社区 RSS" href="https://linux.cn/rss.xml">
+<link rel="shortcut icon" href="favicon.ico" sizes="32x32">
+<link rel="canonical" href="https://linux.cn/article-6975-1.html">
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+
+<body id="nv_portal" class="pg_view">
+<div id="append_parent"></div><div id="ajaxwaitid"></div>
+<div id="toptb" class="cl">
+<div class="wp">
+<div class="z"><a href="https://linux.cn/rss.xml" target="_blank">RSS</a><a href="https://linux.cn/tag/">TAG</a><a href="http://e.cn.miaozhen.com/r/k=2022193&amp;p=70nlR&amp;dx=0&amp;rt=2&amp;ns=__IP__&amp;ni=__IESID__&amp;v=__LOC__&amp;o=http://www-03.ibm.com/systems/cn/power/hardware/linux-lc.shtml?S_TACT=C4480D5W&amp;iio=psys&amp;cmp=c4480&amp;ct=c4480d5w&amp;cr=linux%E6%97%B6%E4%BB%A3&amp;cm=b&amp;csot=-&amp;ccy=-&amp;cpb=-&amp;cd=-&amp;cpg=psys&amp;cn=2q1" target="_blank" style="color: blue;">IBM Power Systems LC 服务器</a></div>
+<div class="y">
+<a href="https://linux.cn/aboutus.html">关于我们/aboutus</a><a href="https://linux.cn/business.html">广告合作/AD</a></div>
+</div>
+</div>
+
+
+<div id="hd">
+<div class="wp">
+<div class="hdc cl"><h2 style="padding: 5px 20px 5px 0px;"><a href="https://linux.cn/" title="Linux.中国 - 开源社区"><img src="linuxcn_logo_230x80_ani2.gif" alt="Linux.中国 - 开源社区" border="0"></a></h2><div class="y">
+<form method="post" autocomplete="off" id="lsform" action="https://linux.cn/member.php?mod=logging&amp;action=login&amp;loginsubmit=yes&amp;infloat=yes&amp;lssubmit=yes">
+<div style="width: auto;" class="fastlg cl">
+<span id="return_ls" style="display: none;"></span>
+<div class="y pns">
+<table cellpadding="0" cellspacing="0">
+<tbody><tr>
+<td><label for="ls_username">帐号</label></td>
+<td><input name="username" id="ls_username" class="px vm xg1" value="用户名/Email" tabindex="901" type="text"></td>
+<td class="fastlg_l"><label for="ls_cookietime"><input name="cookietime" id="ls_cookietime" class="pc" value="2592000" tabindex="903" type="checkbox">自动登录</label></td>
+<td>&nbsp;<a>找回密码</a></td>
+</tr>
+<tr>
+<td><label for="ls_password">密码</label></td>
+<td><input name="password" id="ls_password" class="px vm" autocomplete="off" tabindex="902" type="password"></td>
+<td class="fastlg_l"><button type="submit" class="pn vm" tabindex="904"><em>登录</em></button></td>
+<td>&nbsp;<a href="https://linux.cn/member.php?mod=knight" class="xi2 xw1">骑士注册</a></td>
+</tr>
+</tbody></table>
+<input name="quickforward" value="yes" type="hidden">
+<input name="handlekey" value="ls" type="hidden">
+</div>
+
+<div class="fastlg_fm y" style="margin-right: 10px; padding-right: 10px;">
+<p><a href="https://linux.cn/connect.php?mod=login&amp;op=init&amp;referer=portal.php%3Fmod%3Dview%26aid%3D6975%26page%3D1%26ref%3D%26utm_source%3Drss%26utm_medium%3Drss&amp;statfrom=login_simple"><img src="qq_login.gif" class="vm" alt="QQ登录"></a></p>
+<p><a href="https://linux.cn/xwb.php?m=xwbAuth.login"><img src="sina_login.gif" class="vm" style="padding: 2px 0px;" alt="微博登录"></a></p>
+</div>
+
+
+</div>
+</form>
+
+
+</div>
+<h2 style="padding: 5px 20px; float: right;">
+<div class="linuxcnad">
+    <div><a href="https://linux.cn/go/vsv" target="_blank"><img src="001150mvbjqojhgb8w1zqb.png" width="100%" border="0" height="80"></a></div></div>
+</h2>
+</div>
+<div class="p_pop h_pop" id="mn_userapp_menu" style="display: none;"></div><div style="height: 33px;" id="topmenu_wrapper">
+<div style="width: 1200px;" class="affix" id="topmenu">
+<div id="nv">
+<ul><li id="mn_N6666"><a href="https://linux.cn/" hidefocus="true" style="font-weight: bold;">首页</a></li><li id="mn_P3"><a href="https://linux.cn/tech/" hidefocus="true" style="color: rgb(255, 250, 229);">技术 ◆ 学习</a></li><li id="mn_P1"><a href="https://linux.cn/news/" hidefocus="true" style="color: rgb(255, 250, 229);">新闻 ◆ 快讯</a></li><li id="mn_P4"><a href="https://linux.cn/talk/" hidefocus="true" style="color: rgb(255, 250, 229);">观点 ◆ 热议</a></li><li id="mn_P8"><a href="https://linux.cn/share/" hidefocus="true" style="color: rgb(255, 250, 229);">软件 ◆ 分享</a></li><li id="mn_N9be8"><a href="https://linux.cn/forum/" hidefocus="true" target="_blank" style="color: cyan;">论坛</a></li><li id="mn_Ne749"><a href="https://linux.cn/forum.php?mod=post&amp;action=newthread&amp;fid=119" hidefocus="true" target="_blank" style="color: red;">投稿</a></li></ul>
+</div>
+<div id="mu" class="cl">
+<ul class="cl " id="snav_mn_P3" style="display: none;">
+<li><a href="https://linux.cn/tech/desktop/" hidefocus="true">桌面应用</a></li><li><a href="https://linux.cn/tech/sa/" hidefocus="true">系统运维</a></li><li><a href="https://linux.cn/tech/program/" hidefocus="true">软件开发</a></li></ul>
+<ul class="cl " id="snav_mn_P8" style="display: none;">
+<li><a href="https://linux.cn/share/distro/" hidefocus="true">Linux 发行版</a></li></ul>
+<ul class="cl " id="snav_mn_N9be8" style="display: none;">
+<li><a href="https://linux.cn/thread/" hidefocus="true" style="color: blue;">全部话题</a></li><li><a hidefocus="true" style="color: red;">发新帖</a></li><li><a hidefocus="true">|</a></li><li><a href="https://linux.cn/forum/news/" hidefocus="true">新闻杂谈</a></li><li><a href="https://linux.cn/forum/sa/" hidefocus="true">系统运维</a></li><li><a href="https://linux.cn/forum/program/" hidefocus="true">编程开发</a></li></ul>
+<ul class="cl " id="snav_mn_N39f5" style="display: none;">
+<li><a href="https://linux.cn/space.php" hidefocus="true">首页</a></li><li><a href="https://linux.cn/home.php?mod=space&amp;do=home" hidefocus="true">动态</a></li><li><a href="https://linux.cn/home.php?mod=space&amp;do=doing" hidefocus="true">记录</a></li><li><a href="https://linux.cn/home.php?mod=space&amp;do=blog" hidefocus="true">博客</a></li><li><a href="https://linux.cn/home.php?mod=space&amp;do=album" hidefocus="true">相册</a></li><li><a href="https://linux.cn/home.php?mod=space&amp;do=favorite" hidefocus="true">收藏</a></li><li><a href="https://linux.cn/home.php?mod=space&amp;do=friend" hidefocus="true">好友</a></li><li><a href="https://linux.cn/home.php?mod=spacecp&amp;ac=invite" hidefocus="true">邀请</a></li></ul>
+<ul class="cl " id="snav_mn_userapp" style="display: none;">
+</ul>
+</div></div>
+</div>
+<div id="scbar" class="cl">
+<form id="scbar_form" method="post" autocomplete="off" action="https://linux.cn/search.php?searchsubmit=yes" target="_blank">
+<input name="mod" id="scbar_mod" value="search" type="hidden">
+<input name="formhash" value="e24be7c1" type="hidden">
+<input name="srchtype" value="title" type="hidden">
+<input name="srhfid" value="0" type="hidden">
+<input name="srhlocality" value="portal::view" type="hidden">
+<table id="scbar_table" style="float: right;" cellpadding="0" cellspacing="0">
+<tbody><tr>
+<td class="scbar_icon_td"></td>
+<td class="scbar_txt_td"><input placeholder="请注册后再搜索" class=" xg1" name="srchtxt" id="scbar_txt" value="请注册后再搜索" autocomplete="off" speech="" type="text"></td>
+<td class="scbar_type_td"><a id="scbar_type" class="xg1" hidefocus="true">搜索</a></td>
+<td class="scbar_btn_td"><button type="submit" name="searchsubmit" id="scbar_btn" sc="1" class="pn pnc" value="true"><strong class="xi2">搜索</strong></button></td>
+<td class="scbar_hot_td">
+<div id="scbar_hot">
+</div>
+</td>
+</tr>
+</tbody></table>
+</form>
+<span class="z titletext" style="padding: 0px 10px 0px 20px;">❏ <a href="http://locez.com/" target="_blank">Locez</a> 新手指南：</span>
+<ul class="cl mutag z">
+<li><a class="hidefocus" hidefocus="true" href="https://linux.cn/article-4130-1.html">下载 Linux »</a></li>
+<li><a class="hidefocus" hidefocus="true" href="https://linux.cn/article-5893-1.html">安装 Linux »</a></li>
+<li><a class="hidefocus" hidefocus="true" href="https://linux.cn/article-6042-1.html">安装软件 »</a></li>
+<li><a class="hidefocus" hidefocus="true" href="https://linux.cn/article-6160-1.html">基础命令 »</a></li>
+
+</ul>
+</div>
+<br class="clear">
+<ul id="scbar_type_menu" class="p_pop" style="display: none;"><li><a rel="search">全站</a></li></ul>
+
+
+
+</div>
+</div>
+<div id="wp" class="wp">
+<!--[name]!portalcategory_viewtplname![/name]-->
+
+
+
+
+<div class="linuxcnad">
+    </div>
+<div id="pt" class="bm cl">
+<div class="z">
+<a href="https://linux.cn/" class="nvhm" title="首页">Linux.中国 - 开源社区</a> <em>›</em><a href="https://linux.cn/talk/">观点 ◆ 热议</a> <em>›</em>
+查看内容
+</div>
+</div>
+
+<div class="linuxcnad"></div>
+
+<div class="wp">
+<!--[diy=diy1]--><div id="diy1" class="area"></div><!--[/diy]-->
+</div>
+<div id="ct" class="ct2 wp cl">
+<div class="mn">
+<div class="linuxcnad">
+    </div>
+<div class="vw">
+<div class="h hm">
+<h1 class="ph" id="article_title">Linux 容器技术史话：从 chroot  到未来 </h1>
+</div>
+<div class="h">
+<p class="copyright">
+    	 
+    		    			    			<span class="z textcut">编译自：<a href="https://dzone.com/articles/evolution-of-linux-containers-future" target="_blank">https://dzone.com/articles/evolution-of-linux-containers-future</a></span>
+    			    		    		<span class="y">作者： Imesh Gunaratne</span>    		<br class="clear">
+    	    	<span class="z">原创：<a href="http://lctt.github.io/" target="_blank">LCTT</a> <a href="https://linux.cn/article-6975-1.html" target="_blank">https://linux.cn/article-6975-1.html</a></span>
+            			<span class="y">译者： wxy</span>    		<br class="clear">
+    	    	<span class="z">本文地址：<a href="https://linux.cn/article-6975-1.html">https://linux.cn/article-6975-1.html</a></span>
+    	<span class="y"><a href="https://linux.cn/article-6975-1.html?pr" class="print" title="打印"></a></span>
+    	<br class="clear">
+    	</p>
+<p class="xg1">
+2016-2-4 08:38&nbsp;&nbsp;&nbsp;
+评论: <a href="https://linux.cn/portal.php?mod=comment&amp;id=6975&amp;idtype=aid" title="查看全部评论"><em id="_commentnum">2</em></a>&nbsp;收藏: <em id="_favtimes">5</em>&nbsp;&nbsp;&nbsp;&nbsp;
+</p>
+</div>
+
+<!--[diy=diysummarytop]--><div id="diysummarytop" class="area"></div><!--[/diy]-->
+
+
+<!--[diy=diysummarybottom]--><div id="diysummarybottom" class="area"></div><!--[/diy]-->
+
+<div class="d">
+
+<!--[diy=diycontenttop]--><div id="diycontenttop" class="area"></div><!--[/diy]-->
+
+<div id="article_content">
+<div class="linuxcnad"></div>
+<p class="article_img"><img src="001041qaejsssu4lfk49f5.jpg" alt=""></p>
+<p>Linux 容器是一个在单一 Linux 主机上提供多个隔离的 Linux 环境的<a target="_blank" rel="external nofollow" class="ext" href="https://en.wikipedia.org/wiki/Operating-system-level_virtualization#IMPLEMENTATIONS">操作系统级虚拟</a>技术。不像虚拟机（VM），容器并不需要运行专用的<ruby>访客<rp>（</rp><rt>guest</rt><rp>）</rp></ruby>操作系统。容器们共享<ruby>宿主机的<rp>（</rp><rt>host</rt><rp>）</rp></ruby>操作系统内核，并使用访客操作系统的系统库来提供所需的功能。由于不需要专用的操作系统，因此容器要比虚拟器启动快得多。</p>
+<p class="article_img"><img style="width: 734px; cursor: pointer;" src="182525u1sn21xzr8lln78r.jpg" alt=""></p>
+<p>（图片来自: Docker Inc.）</p>
+<p>容器借助 Linux 内核的&nbsp;Namespaces、Apparmor、SELinux <ruby>情景模式<rp>（</rp><rt>profile</rt><rp>）</rp></ruby>、chroot 和 CGroup 等功能来提供类似于虚拟机的隔离环境。Linux 的安全模块可以确保正确地控制容器对宿主机和内核的访问，从而避免各种入侵活动。此外，在宿主机上可以运行不同的 Linux 发行版，只要它们运行在同样的 CPU 架构下。</p>
+<p>简单来说，容器提供的是一种基于各种 Linux 发行版创建容器镜像的方法、一套管理容器生命周期的 API、与该 API 交互的客户端工具、保存快照的功能、在宿主机之间迁移容器实例的能力，等等。</p>
+<a target="_blank" rel="external nofollow" id="3_1556" class="target-fix ext"></a><h3>容器历史</h3>
+<p>以下是容器简史，内容来自维基百科及其它来源：</p>
+<h4 id="1979-chroot:ba85387dcdeb3e25471a63f45f6b923c">1979 — chroot</h4>
+<p>容器的概念始于 1979 年的 UNIX&nbsp;&nbsp;<a target="_blank" rel="external nofollow" class="ext" href="https://en.wikipedia.org/wiki/Chroot">chroot</a>，它是一个 UNIX 操作系统上的系统调用，用于将一个进程及其子进程的根目录改变到文件系统中的一个新位置，让这些进程只能访问到该目录。这个功能的想法是为每个进程提供独立的磁盘空间。其后在 1982年，它被加入到了 BSD 系统中。</p>
+<h4>2000 — FreeBSD Jails</h4>
+<p><a target="_blank" rel="external nofollow" class="ext" href="https://en.wikipedia.org/wiki/FreeBSD_jail">FreeBSD Jails</a>&nbsp;是最早的容器技术之一，它由&nbsp;R&amp;D Associates 公司的&nbsp;Derrick T. Woolworth 在 2000 年为 FreeBSD 引入。这是一个类似 chroot 的操作系统级的系统调用，但是为文件系统、用户、网络等的隔离增加了进程沙盒功能。因此，它可以为每个 jail 指定 IP 地址、可以对软件的安装和配置进行定制，等等。</p>
+<h4 id="2001-linux-vserver:ba85387dcdeb3e25471a63f45f6b923c">2001 — Linux VServer</h4>
+<p><a target="_blank" rel="external nofollow" class="ext" href="https://en.wikipedia.org/wiki/Linux-VServer">Linux VServer</a>&nbsp;是另外一种 jail 机制，它用于对计算机系统上的资源（如文件系统、CPU 处理时间、网络地址和内存等）进行安全地划分。每个所划分的分区叫做一个<ruby>安全上下文<rp>（</rp><rt>security context</rt><rp>）</rp></ruby>，在其中的虚拟系统叫做<ruby>虚拟私有服务器<rp>（</rp><rt>virtual private server，VPS</rt><rp>）</rp></ruby>。</p>
+<h4 id="2004-solaris-containers:ba85387dcdeb3e25471a63f45f6b923c">2004 — Solaris Containers</h4>
+<p><a target="_blank" rel="external nofollow" class="ext" href="https://en.wikipedia.org/wiki/Solaris_Containers">Solaris Containers</a>&nbsp;支持在 x86 和 SPARC 系统，首次出现在 2004 年 2 月发布的 Solaris 10 的 build 51 beta 上，其后完整发布在 2005 年的 Solaris 10 上。 Solaris Container 是由系统资源控制和通过 zones 提供的<ruby>边界分离<rp>（</rp><rt>boundary separation</rt><rp>）</rp></ruby>所组合而成的。zones 是一个单一操作系统实例中的完全隔离的虚拟服务器。</p>
+<h4 id="2005-openvz:ba85387dcdeb3e25471a63f45f6b923c">2005 — OpenVZ</h4>
+<p><a target="_blank" rel="external nofollow" class="ext" href="https://en.wikipedia.org/wiki/OpenVZ">OpenVZ</a>&nbsp;类似于 Solaris Containers，它通过对 Linux 内核进行补丁来提供虚拟化、隔离、资源管理和<ruby>状态检查<rp>（</rp><rt>checkpointing</rt><rp>）</rp></ruby>。每个 OpenVZ 容器都有一套隔离的文件系统、用户及用户组、进程树、网络、设备和 IPC 对象。</p>
+<h4 id="2006-process-containers:ba85387dcdeb3e25471a63f45f6b923c">2006 — Process Containers</h4>
+<p><a target="_blank" rel="external nofollow" class="ext" href="https://en.wikipedia.org/wiki/Cgroups">Process Containers</a>&nbsp;是由 Google 在 2006 年实现的，用于对一组进程进行限制、记账、隔离资源使用（CPU、内存、磁盘 I/O、网络等）。后来为了避免和 Linux 内核上下文中的“容器”一词混淆而改名为 Control Groups。它被合并到了 2.6.24 内核中。这表明 Google 很早就参与了容器技术的开发，以及它们是如何回馈到社区的。</p>
+<h4 id="2007-control-groups:ba85387dcdeb3e25471a63f45f6b923c">2007 — Control Groups</h4>
+<p>如上面所述，Control Groups （即 &nbsp;cgroups）是由 Google 实现的，并于 2007 年加到了 Linux 内核中。</p>
+<h4>2008 — LXC</h4>
+<p><a target="_blank" rel="external nofollow" class="ext" href="https://en.wikipedia.org/wiki/LXC">LXC</a>&nbsp;的意思是&nbsp;LinuX Containers，它是第一个最完善的 Linux 容器管理器的实现方案，是通过 cgroups 和 Linux <ruby>名字空间<rp>（</rp><rt>namespace</rt><rp>）</rp></ruby>实现的。LXC 存在于 liblxc 库中，提供了各种编程语言的 API 实现，包括 Python3、Python2、Lua、Go、Ruby 和 Haskell。与其它容器技术不同的是， LXC 可以工作在普通的 Linux 内核上，而不需要增加补丁。现在&nbsp;<a target="_blank" rel="external nofollow" class="ext" href="https://linuxcontainers.org/lxc/introduction/">LXC project</a>&nbsp;是由&nbsp;Canonical 公司赞助并托管的。</p>
+<h4 id="2011-warden:ba85387dcdeb3e25471a63f45f6b923c">2011 — Warden</h4>
+<p><a target="_blank" rel="external nofollow" class="ext" href="https://docs.cloudfoundry.org/concepts/architecture/warden.html">Warden</a>&nbsp;是由 CloudFoundry 在 2011 年开发的，开始阶段是使用的 LXC，之后替换为他们自己的实现方案。不像 LXC，Warden 并不紧密耦合到 Linux 上，而是可以工作在任何可以提供隔离环境的操作系统上。它以后台守护进程的方式运行，为容器管理提供了 API。请参考 <a target="_blank" rel="external nofollow" class="ext" href="https://docs.cloudfoundry.org/concepts/architecture/warden.html">Warden 文档</a>和<a target="_blank" rel="external nofollow" class="ext" href="http://blog.altoros.com/cloud-foundry-containers-warden-docker-garden.html">这个博客文章</a>了解更多。</p>
+<h4 id="2013-lmctfy:ba85387dcdeb3e25471a63f45f6b923c">2013 — LMCTFY</h4>
+<p><a target="_blank" rel="external nofollow" class="ext" href="https://github.com/google/lmctfy">lmctfy</a>&nbsp;的意思是“<ruby>让我为你包含<rp>（</rp><rt>Let Me Contain That For You</rt><rp>）</rp></ruby>”。这是一个 Google 容器技术的开源版本，提供 Linux 应用容器。Google 启动这个项目旨在提供性能可保证的、高资源利用率的、资源共享的、可超售的、接近零消耗的容器（参考自：<a target="_blank" rel="external nofollow" class="ext" href="http://www.linuxplumbersconf.org/2013/ocw//system/presentations/1239/original/lmctfy%20(1).pdf">lmctfy 演讲稿</a>）。现在为 Kubernetes 所用的 cAdvisor 工具就是从 lmctfy 项目的成果开始的。lmctfy 首次发布于 2013 年10月，在 2015 年 Google 决定贡献核心的 lmctfy 概念，并抽象成 libcontainer，因此，lmctfy 现在已经没有活跃的开发了。</p>
+<p>lincontainer 项目最初由&nbsp;&nbsp;<a target="_blank" rel="external nofollow" class="ext" href="https://github.com/docker/libcontainer">Docker</a>&nbsp;发起，现在已经被移交给了<ruby><a target="_blank" rel="external nofollow" class="ext" href="https://github.com/opencontainers/runc/tree/master/libcontainer">开放容器基金会</a><rp>（</rp><rt>Open Container Foundation</rt><rp>）</rp></ruby>。</p>
+<h4 id="2013-docker:ba85387dcdeb3e25471a63f45f6b923c">2013 — Docker</h4>
+<p><a target="_blank" rel="external nofollow" class="ext" href="https://en.wikipedia.org/wiki/Docker_(software)">Docker</a>&nbsp;是到现在为止最流行和使用广泛的容器管理系统。它最初是一个叫做 dotCloud 的 PaaS 服务公司的内部项目，后来该公司改名为 Docker。类似 Warden，Docker 开始阶段使用的也是 LXC ，之后采用自己开发的 libcontainer 替代了它。不像其它的容器平台，Docker 引入了一整个管理容器的生态系统，这包括高效、分层的容器镜像模型、全局和本地的容器注册库、清晰的 REST API、命令行等等。稍后的阶段， Docker 推动实现了一个叫做 Docker Swarm 的容器集群管理方案。</p>
+<h4 id="2014-rocket:ba85387dcdeb3e25471a63f45f6b923c">2014 — Rocket</h4>
+<p><a target="_blank" rel="external nofollow" class="ext" href="https://coreos.com/blog/rocket/">Rocket</a>&nbsp;是由 CoreOS 所启动的项目，非常类似于 Docker，但是修复了一些 Docker 中发现的问题。CoreOS 说他们的目的是提供一个比 Docker 更严格的安全性和产品需求。更重要的是，它是在一个更加开放的标准&nbsp;App Container 规范上实现的。在 Rocket 之外，CoreOS 也开发了其它几个可以用于 Docker 和 Kubernetes的容器相关的产品，如：<a target="_blank" rel="external nofollow" class="ext" href="https://en.wikipedia.org/wiki/CoreOS">CoreOS 操作系统</a>、<a target="_blank" rel="external nofollow" class="ext" href="https://coreos.com/etcd/">etcd</a>&nbsp;和&nbsp;<a target="_blank" rel="external nofollow" class="ext" href="https://github.com/coreos/flannel">flannel</a>。</p>
+<h4 id="2016-windows-containers:ba85387dcdeb3e25471a63f45f6b923c">2016 — Windows Containers</h4>
+<p>微软 2015 年也在 Windows Server 上为基于 Windows 的应用添加了容器支持，它称之为&nbsp;<a target="_blank" rel="external nofollow" class="ext" href="https://msdn.microsoft.com/en-us/virtualization/windowscontainers/about/about_overview">Windows Containers</a>。它与 Windows Server 2016 一同发布。通过该实现， Docker 可以原生地在 Windows 上运行 Docker 容器，而不需要启动一个虚拟机来运行 Docker（ Windows 上早期运行 Docker 需要使用 Linux 虚拟机）。</p>
+<a target="_blank" rel="external nofollow" id="3_9852" class="target-fix ext"></a><h3 id="the-future-of-containers:ba85387dcdeb3e25471a63f45f6b923c">容器的未来</h3>
+<p>截止到今天（2016年1月），在行业内有一个显著趋势，部署软件应用从虚拟机逐渐移到了容器。其主要的原因是容器相比于虚拟机而言更加灵活和低消耗。Google 已经使用容器技术好多年了，它在&nbsp;<a target="_blank" rel="external nofollow" class="ext" href="http://static.googleusercontent.com/media/research.google.com/en//pubs/archive/43438.pdf">Borg 和 Omega</a>&nbsp;容器集群管理平台上可以成规模地运行 Google 应用。更重要的是，Google 为容器领域贡献了 cgroups 的实现和参与了 libcontainer 项目。Google 也在过去这些年借助容器在性能、资源利用和整体效率方面取得了巨大收益。最近，一直没有操作系统级的虚拟化技术的微软，也在 Window Server 上迅速采取动作实现了对容器的原生支持。</p>
+<p>Docker 、Rocket 以及其它的容器平台并不能以一个单一主机运行在产品环境中，原因是这样面临着单点故障。当一组容器运行在一个单一宿主机时，如果宿主机失效，所有运行在该宿主机上的容器也会失效。要避免这个问题，应该使用容器宿主机集群。Google 借助其在 Borg 中取得的经验，开发了一个叫做&nbsp;&nbsp;<a target="_blank" rel="external nofollow" class="ext" href="http://kubernetes.io/">Kubernetes</a>&nbsp;的开源容器集群管理系统。Docker 也启动了一个叫做&nbsp;&nbsp;<a target="_blank" rel="external nofollow" class="ext" href="https://docs.docker.com/swarm/">Docker Swarm</a>&nbsp;的解决方案。目前这些解决方案还都处于相当早期的阶段，也许需要几个月或来年才实现完整的功能集合，才能变得稳定，从而广泛应用于行业内的产品环境中。</p>
+<p><ruby><a target="_blank" rel="external nofollow" class="ext" href="http://martinfowler.com/articles/microservices.html">微服务</a><rp>（</rp><rt>Microservices&nbsp;</rt><rp>）</rp></ruby>是另一个突破性技术，在软件架构上可以将容器用于部署。微服务并不是一个新东西，只是一个相比标准的 Web 服务超快的轻量级 Web 服务。这是通过将功能单元（也许是一个单一服务或 API 方法）打包到一个服务中，并内嵌其到一个轻量级 Web 服务器软件中实现的。</p>
+<p>通过对上面的介绍，我们可以预测接下来几年，容器也许会替代虚拟机，某些情况下也许会全部取代。去年我为一些企业在 POC 层面上实现了基于容器的解决方案。也有人想要在产品环境中尝试它们，这一天也许在容器集群管理系统进一步成熟后很快到来。</p>
+</div>
+</div>
+<div class="b">
+<div class="hm">
+<a title="分享到新浪微博" class="tsina_large"></a>
+<a class="weixin_large"></a>
+<a title="收藏" href="https://linux.cn/home.php?mod=spacecp&amp;ac=favorite&amp;type=article&amp;id=6975&amp;handlekey=favoritearticlehk_6975" id="a_favorite" class="fav_large"></a>
+</div>
+<p class="copyright">
+    	 
+    		    			    			<span class="z textcut">编译自：<a href="https://dzone.com/articles/evolution-of-linux-containers-future" target="_blank">https://dzone.com/articles/evolution-of-linux-containers-future</a></span>
+    			    		    		<span class="y">作者： Imesh Gunaratne</span>    		<br class="clear">
+    	    	<span class="z">原创：<a href="http://lctt.github.io/" target="_blank">LCTT</a> <a href="https://linux.cn/article-6975-1.html" target="_blank">https://linux.cn/article-6975-1.html</a></span>
+            			<span class="y">译者： wxy</span>    		<br class="clear">
+    	    	<br>
+    	    		<span>本文由 LCTT 原创翻译，<a href="https://linux.cn/article-6975-1.html">Linux中国首发</a>。也想加入译者行列，为开源做一些自己的贡献么？欢迎加入 <a href="http://lctt.github.io/" target="_blank">LCTT</a>！<br>翻译工作和译文发表仅用于学习和交流目的，翻译工作遵照 <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/deed.zh" target="_blank">CC-BY-NC-SA 协议规定</a>，如果我们的工作有侵犯到您的权益，请及时联系我们。</span>
+    		    		<br class="clear">
+    		<span style="color: red;">欢迎遵照 <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/deed.zh" target="_blank">CC-BY-NC-SA 协议规定</a>转载，敬请在正文中标注并保留原文/译文链接和作者/译者等信息。</span>
+                		<br class="clear">
+    	    	<span>文章仅代表作者的知识和看法，如有不同观点，请楼下排队<a>吐槽</a> :D</span>
+    	<br class="clear">
+</p>
+
+
+<div class="linuxcnad"></div>
+<!--[diy=diycontentbottom]--><div id="diycontentbottom" class="area"></div><!--[/diy]-->
+
+
+<div id="click_div"><table class="atd" cellpadding="0" cellspacing="0">
+<tbody><tr></tr>
+</tbody></table>
+
+
+</div>
+
+<!--[diy=diycontentclickbottom]--><div id="diycontentclickbottom" class="area"></div><!--[/diy]-->
+
+
+<div class="o cl ptm pbm">
+<a href="https://linux.cn/home.php?mod=spacecp&amp;ac=share&amp;type=article&amp;id=6975&amp;handlekey=sharearticlehk_6975" id="a_share" title="站内分享" class="siteshare z"></a>
+<a href="https://linux.cn/home.php?mod=spacecp&amp;ac=favorite&amp;type=article&amp;id=6975&amp;handlekey=favoritearticlehk_6975" id="a_favorite" class="favorite z" title="收藏"></a>
+<a href="https://linux.cn/misc.php?mod=invite&amp;action=article&amp;id=6975" id="a_invite" class="invite z" title="邀请"></a>
+<a href="https://linux.cn/article-6975-1.html?pr" class="print z" title="打印"></a>
+				
+</div>
+<div class="pren pbm cl">
+<em>上一篇：<a href="https://linux.cn/article-6972-1.html">每位开发人员都应该成为架构师</a></em><em>下一篇：<a href="https://linux.cn/article-6988-1.html">免费才最贵：揭露「免费」Windows 10 的真实成本</a></em></div>
+</div>
+</div>
+
+<!--[diy=diycontentrelatetop]--><div id="diycontentrelatetop" class="area"></div><!--[/diy]-->
+
+<!--[diy=diycontentrelate]--><div id="diycontentrelate" class="area"></div><!--[/diy]-->
+
+<div style="margin-right: 15px;">
+<div id="add_comment" class="bm">
+<div class="bm_h cl">
+<h3>发表评论</h3>
+</div>
+<div class="bm_c pbn">
+<form id="cform" name="cform" action="https://linux.cn/portal.php?mod=portalcp&amp;ac=comment" method="post" autocomplete="off">
+<div class="tedt">
+<div class="area">
+<textarea name="message" rows="10" class="pt" id="message"></textarea>
+</div>
+</div>
+
+<div class="mtm z"><span id="seccode_cSKKBz0J"><input name="seccodehash" value="cSKKBz0J" type="hidden"><input name="seccodemodid" value="portal::view" type="hidden">验证码 <span id="seccodecSKKBz0J"><input name="seccodeverify" id="seccodeverify_cSKKBz0J" autocomplete="off" style="ime-mode: disabled; width: 100px;" class="txt px vm" type="text"> <a class="xi2">换一个</a><span id="checkseccodeverify_cSKKBz0J"><img id="checksec_none_cSKKBz0J" src="none.gif" class="vm" width="16" height="16"></span></span><div id="seccodecSKKBz0J_menu" class="p_pop p_opt" style="display: none;"><span id="vseccode_cSKKBz0J">输入下图中的字符<br><img src="misc.php" class="vm" alt="" width="100" height="40"></span></div></span>		
+
+
+</div>
+<input name="portal_referer" value="https://linux.cn/article-6975-1.html#comment" type="hidden">
+<input name="referer" value="https://linux.cn/article-6975-1.html#comment" type="hidden">
+<input name="id" value="0" type="hidden">
+<input name="idtype" value="" type="hidden">
+<input name="aid" value="6975" type="hidden">
+<input id="reppid" name="reppid" value="" type="hidden">
+<input name="formhash" value="e24be7c1" type="hidden">
+<input name="replysubmit" value="true" type="hidden">
+<input name="commentsubmit" value="true" type="hidden">
+<p class="mtm z"><button type="submit" name="commentsubmit_btn" id="commentsubmit_btn" value="true" class="pn"><strong>评论</strong></button></p>
+<br class="clear">
+</form>
+</div>
+</div>
+</div>
+<div id="comment" class="bm" style="margin-right: 15px;">
+<div class="bm_h cl">
+<h3 class="z"><a name="comment"></a>最新评论</h3>
+<h3 class="y"><a class="y" style="color: rgb(204, 0, 0);">我也要发表评论</a></h3>
+</div>
+<div id="comment_ul" class="bm_c"><a name="comment_anchor_41552"></a>
+<dl id="comment_41552_li" class="ptm pbm bbda cl">
+<dt class="mbm">
+<span>来自福建厦门的 Firefox 47.0|Windows 7 用户</span>
+<span class="xg1 xw0 vm">2016-8-1 17:10</span>
+</dt>
+<dd>
+趋势很明显</dd>
+<dd>
+<span class="y xw0 xi2 opt">
+<a class="replyadd" href="https://linux.cn/portal.php?mod=review&amp;action=postreview&amp;do=support&amp;idtype=aid&amp;tid=6975&amp;pid=41552&amp;hash=e24be7c1">赞 <span id="review_support_41552"></span></a> 
+<!--<a href="javascript:;" onclick="portal_comment_reppost(41552, '6975');">回复</a> --><a id="reply_41552" href="https://linux.cn/portal.php?mod=portalcp&amp;ac=comment&amp;op=reply&amp;cid=41552&amp;aid=6975&amp;idtype=">回复</a> </span>
+</dd>
+</dl><a name="comment_anchor_38086"></a>
+<dl id="comment_38086_li" class="ptm pbm bbda cl">
+<dt class="mbm">
+<a mid="card_6338" href="https://linux.cn/space/18046/" class="xi2 xw1 vm" c="1" target="_blank">拿铁不加糖 [Chrome 48.0|Windows 10]</a>
+<span class="xg1 xw0 vm">2016-2-4 14:11</span>
+</dt>
+<dd>
+趋势很明显。</dd>
+<dd>
+<span class="y xw0 xi2 opt">
+<a class="replyadd" href="https://linux.cn/portal.php?mod=review&amp;action=postreview&amp;do=support&amp;idtype=aid&amp;tid=6975&amp;pid=38086&amp;hash=e24be7c1">赞 <span id="review_support_38086">3</span></a> 
+<!--<a href="javascript:;" onclick="portal_comment_reppost(38086, '6975');">回复</a> --><a id="reply_38086" href="https://linux.cn/portal.php?mod=portalcp&amp;ac=comment&amp;op=reply&amp;cid=38086&amp;aid=6975&amp;idtype=">回复</a> </span>
+</dd>
+</dl><div class="ptm pbm cl">
+</div>
+</div>
+</div>
+
+<!--[diy=diycontentcomment]--><div id="diycontentcomment" class="area"></div><!--[/diy]-->
+</div>
+<div class="sd pph">
+
+
+<div class="drag">
+<!--[diy=diyrighttop]--><div id="diyrighttop" class="area"></div><!--[/diy]-->
+</div>
+
+<div class="linuxcnad">
+    </div>
+<div class="linuxcnad">
+    </div>
+
+<!--热门评论-->
+<div id="hot_comment" class="bm">
+<div class="bm_h cl">
+<h2>热点评论</h2>
+</div>
+<div class="bm_c">
+<div class="xl cl"><dl class="ptm pbm bbda cl">
+<dt class="mbm">
+<a class="xi2 xw1 vm" href="https://linux.cn/">拿铁不加糖 [Chrome 48.0|Windows 10]</a>
+<span class="xg1 xw0 vm">2016-2-4 14:11</span>
+</dt>
+<dd>趋势很明显。</dd>
+<dd>
+<span class="y xw0 xi2 opt">
+<a class="replyadd" href="https://linux.cn/forum.php?mod=misc&amp;action=postreview&amp;do=support&amp;idtype=aid&amp;tid=6975&amp;pid=38086&amp;hash=e24be7c1">赞 <span name="review_support_rep_38086">3</span></a> 
+</span>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+
+<div class="linuxcnad"></div>
+
+<div class="affix" id="right_affix" style="width: 350px;">
+<div class="linuxcnad">
+    </div>
+<div id="inner_nav" class="bm">
+<div class="bm_h cl">
+<h3>本文导航</h3>
+</div>
+<div class="bm_c inner_menu">
+<ul class="xl cl"><li><span class="folder"><a>-</a></span><a href="https://linux.cn/article-6975-1.html#3_1556">容器历史</a></li><ul class="xl cl"><li><span class="folder">-</span><a href="https://linux.cn/article-6975-1.html#4_1654">1979 — chroot</a></li><li><span class="folder">-</span><a href="https://linux.cn/article-6975-1.html#4_2163">2000 — FreeBSD Jails</a></li><li><span class="folder">-</span><a href="https://linux.cn/article-6975-1.html#4_2670">2001 — Linux VServer</a></li><li><span class="folder">-</span><a href="https://linux.cn/article-6975-1.html#4_3254">2004 — Solaris Containers</a></li><li><span class="folder">-</span><a href="https://linux.cn/article-6975-1.html#4_3857">2005 — OpenVZ</a></li><li><span class="folder">-</span><a href="https://linux.cn/article-6975-1.html#4_4317">2006 — Process Containers</a></li><li><span class="folder">-</span><a href="https://linux.cn/article-6975-1.html#4_4903">2007 — Control Groups</a></li><li><span class="folder">-</span><a href="https://linux.cn/article-6975-1.html#4_5133">2008 — LXC</a></li><li><span class="folder">-</span><a href="https://linux.cn/article-6975-1.html#4_5817">2011 — Warden</a></li><li><span class="folder">-</span><a href="https://linux.cn/article-6975-1.html#4_6541">2013 — LMCTFY</a></li><li><span class="folder">-</span><a href="https://linux.cn/article-6975-1.html#4_7765">2013 — Docker</a></li><li><span class="folder">-</span><a href="https://linux.cn/article-6975-1.html#4_8520">2014 — Rocket</a></li><li><span class="folder">-</span><a href="https://linux.cn/article-6975-1.html#4_9269">2016 — Windows Containers</a></li></ul><li><span class="folder">-</span><a href="https://linux.cn/article-6975-1.html#3_9852">容器的未来</a></li></ul></div>
+</div>
+
+<div class="bm block">
+<div class="bm_h cl">
+<h3>相关阅读</h3>
+</div>
+<div class="bm_c pbn" id="related_tag">
+<ul class="xl xl2 cl bbs pbm" id="tag"><li><a href="https://linux.cn/tag-%E5%AE%B9%E5%99%A8.html">容器</a></li>
+<li><a href="https://linux.cn/tag-docker.html">docker</a></li>
+</ul>
+</div>
+<div class="bm_c xl xl1 cl" id="related_article">
+<ul><li><em>2015-11-27</em><a href="https://linux.cn/article-6644-1-rel.html" target="_blank">如何使用 Docker 快速配置数据科学开发环境？</a> </li>
+<li><em>2015-11-29</em><a href="https://linux.cn/article-6657-1-rel.html" target="_blank">DockerCon 欧洲大会14款最热应用程序容器产品</a> </li>
+<li><em>2015-12-15</em><a href="https://linux.cn/article-6732-1-rel.html" target="_blank">使用 docker+tmux 加强容器调度</a> </li>
+<li><em>2016-3-10</em><a href="https://linux.cn/article-7088-1-rel.html" target="_blank">Linux 容器技术的三大致命隐忧</a> </li>
+<li><em>2016-4-27</em><a href="https://linux.cn/article-7276-1-rel.html" target="_blank">从 Hello World 容器进阶是件困难的事情</a> </li>
+<li><em>2016-5-1</em><a href="https://linux.cn/article-7288-1-rel.html" target="_blank">Docker 容器互联方法</a> </li>
+</ul>
+</div>
+</div>
+</div>
+
+
+<div class="drag">
+<!--[diy=diy2]--><div id="diy2" class="area"></div><!--[/diy]-->
+</div>
+
+
+</div>
+</div>
+
+
+<div class="wp mtn">
+<!--[diy=diy3]--><div id="diy3" class="area"></div><!--[/diy]-->
+</div>
+<input id="portalview" value="1" type="hidden">
+
+
+
+
+	</div>
+
+
+    <div id="footer">
+        <p>
+            <span>Linux.CN © 2003-2016 Linux中国</span>
+            <span class="line">|</span>
+            <span>Powered by <strong>DX</strong> | 图片存储于<a href="http://www.qiniu.com/" target="_blank">七牛云存储</a></span>
+        </p>
+        <p>
+            <a href="http://www.miitbeian.gov.cn/" target="_blank">京ICP备05083684号-1</a>            京公网安备110105001595
+        </p>
+        <p>
+        <a href="https://linux.cn/legal.html">服务条款</a> |
+        除特别申明外，本站原创内容版权遵循 <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/deed.zh" target="_blank">CC-BY-NC-SA 协议规定</a></p>
+        <p>
+        <a href="https://linux.cn/"><img src="linuxcn_logo_mini.png" align="absmiddle"></a>
+        <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"><img src="cc.png" align="absmiddle"></a>
+        </p>
+<p>
+</p>
+</div>
+
+<div id="ft" class="cl"></div>
+
+<div style="left: auto; right: 0px; visibility: visible;" id="scrolltop">
+<span>
+<a class="wxicon"></a>
+<a title="分享到新浪微博" class="tsina"></a>
+<a title="收藏" href="https://linux.cn/home.php?mod=spacecp&amp;ac=favorite&amp;type=article&amp;id=6975&amp;handlekey=favoritearticlehk_6975" id="a_favorite" class="favorite"></a>
+</span>
+<span hidefocus="true"><a title="返回顶部" class="scrolltopa"><b>返回顶部</b></a></span>
+</div>
+
+<div id="qrcode">
+<p>分享到微信朋友圈</p>
+<div id="canvas"></div>
+<p><em>打开微信，点击底部的“发现”，<br>
+使用“扫一扫”将网页分享至朋友圈。</em></p></div>
+<div style="display: none;" id="pleaseRemoveOurSiteFromBlackList"></div>
+<div id="Ll92CisOsS" style="display: none; background-color: rgb(170, 0, 0); position: fixed; top: 0px; width: 100%; z-index: 9999; left: 0px; font-size: 16px; color: rgb(255, 255, 255); text-align: center; padding: 0px;">请将我们加入您的广告过滤器的白名单，请支持开源站点。谢谢您。</div>
+
+
+
+<div style="display: none; z-index: 25 ! important;" id="__lpform_ls_username_numspan"></div><div style="max-height: 16px; vertical-align: top; position: absolute; top: 45px; left: 1036px; z-index: 24;" id="__lpform_ls_username"><img style="opacity: 0.6; vertical-align: top;" id="__lpform_ls_username_icon" width="16" height="16"></div><div style="display: none; z-index: 25 ! important;" id="__lpform_ls_password_numspan"></div><div style="max-height: 16px; vertical-align: top; position: absolute; top: 73px; left: 1036px; z-index: 24;" id="__lpform_ls_password"><img style="opacity: 0.6; vertical-align: top;" id="__lpform_ls_password_icon" width="16" height="16"></div></body>
+</html>

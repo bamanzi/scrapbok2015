@@ -1,0 +1,90 @@
+/* ::::: https://feeding.cloud.geek.nz/style.css ::::: */
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; }
+.header { margin: 0px; font-size: 140%; font-weight: bold; line-height: 1em; display: block; }
+.actions ul { margin: 0px; padding: 6px 0.4em; height: 1em; list-style-type: none; }
+.actions li { display: inline; padding: 0.2em; }
+.pageheader .actions ul { border-bottom: 1px solid rgb(0, 0, 0); }
+.inlinecontent, .inlineenclosure { margin-top: 0.4em; }
+.pagefooter, .inlinefooter, .comments { clear: both; }
+#pageinfo { margin: 1em 0px; border-top: 1px solid rgb(0, 0, 0); }
+.tags { margin-top: 1em; }
+#searchform { display: inline; float: right; }
+img { border-style: none; }
+pre { overflow: auto; }
+.pagedate, .pagelicense, .pagecopyright { font-style: italic; display: block; margin-top: 1em; }
+.sidebar { width: 20ex; float: right; margin-left: 4px; margin-bottom: 4px; margin-top: -1px; padding: 0ex 2ex; background: none repeat scroll 0% 0% white; border: 1px solid black; color: black ! important; }
+.comment-header, .microblog-header { font-style: italic; margin-top: 0.3em; }
+.comment .author, .microblog .author { font-weight: bold; }
+.comment-subject { font-weight: bold; }
+.comment { border: 1px solid rgb(170, 170, 170); padding: 3px; }
+@media print {
+  .actions { display: none; }
+  .tags { display: none; }
+  .feedbutton { display: none; }
+  #searchform { display: none; }
+}
+input#searchbox { background: url("search-bg.gif") no-repeat scroll 100% 50% rgb(255, 255, 255); color: rgb(0, 0, 0); padding-right: 16px; }
+.pagecloud { float: right; width: 30%; text-align: center; padding: 10px; border: 1px solid rgb(170, 170, 170); background: none repeat scroll 0% 0% rgb(238, 238, 238); color: black ! important; }
+.smallestPC { font-size: 70%; }
+.smallPC { font-size: 85%; }
+.normalPC { font-size: 100%; }
+.bigPC { font-size: 115%; }
+.biggestPC { font-size: 130%; }
+.feedbutton { background: none repeat scroll 0% 0% rgb(255, 102, 0); color: white ! important; border-left: 1px solid rgb(204, 153, 102); border-width: 1px; border-style: solid; border-color: rgb(204, 170, 153) rgb(153, 51, 0) rgb(51, 17, 0) rgb(204, 153, 102); padding: 0px 0.5em; font-family: sans-serif; font-weight: bold; font-size: small; text-decoration: none; margin-top: 1em; }
+.feedbutton:hover { color: white ! important; background: none repeat scroll 0% 0% rgb(255, 153, 0); }
+@media (max-width: 600px) {
+  .sidebar { width: auto; float: none; margin-top: 0px; border: medium none; }
+  .page { display: flex; flex-direction: column; }
+  .sidebar, #footer { order: 1; }
+}
+a { text-decoration: none; color: rgb(0, 90, 156); }
+a:hover { text-decoration: underline; }
+code, pre { background: none repeat scroll 0% 0% rgb(238, 238, 238); }
+pre { padding: 0.5em; }
+body { margin: 0px; padding: 0px; font-family: sans-serif; color: black; background: none repeat scroll 0% 0% white; }
+.pageheader { margin: 0px; padding: 1em 2em; position: relative; overflow: hidden; background: none repeat scroll 0% 0% rgb(238, 238, 238); border-color: rgb(153, 153, 153); border-style: none none solid; border-width: 1px; }
+.pageheader .header { float: left; font-size: 120%; }
+.header { font-weight: normal; }
+.title { display: block; margin-top: 0.2em; font: 140% sans-serif; }
+#searchform { position: absolute; top: 0.5em; right: 2em; }
+.pageheader .actions { position: absolute; bottom: 0px; right: 2em; width: 100%; text-align: right; padding: 2px; }
+#content, #enclosure, #comments, #footer { margin: 1em 2em; }
+#pageinfo { border-color: rgb(153, 153, 153); }
+h1 { font: 120% sans-serif; }
+.pageheader .actions ul { border-style: none; }
+.actions ul { padding: 0px; border-style: none; }
+.actions ul li a { text-decoration: none; }
+.pageheader .actions ul li { margin: 0px; padding: 0.1em 0.5em 0px; background: none repeat scroll 0% 0% white; border-color: rgb(153, 153, 153); border-style: solid solid none; border-width: 1px; }
+.pagecloud { width: auto; }
+.sidebar { border-bottom: 0px none rgb(153, 153, 153); border-right: 0px none rgb(153, 153, 153); border-top: 0px none rgb(153, 153, 153); margin-top: 0.5em; padding: 0px 0px 0px 2ex; border-color: rgb(153, 153, 153); }
+@media (max-width: 600px) {
+  #content, #enclosure, #comments, #footer { margin: 0.5em; }
+  .pageheader .actions ul li { padding: 0.1em 0.2em 0px; font-size: 0.8em; }
+}
+/* ::::: https://feeding.cloud.geek.nz/local.css ::::: */
+
+body, .pageheader .actions ul li { background-color: rgb(238, 238, 217); text-rendering: optimizelegibility; }
+a { color: rgb(81, 135, 189); }
+code, pre { background-color: rgb(221, 221, 190); }
+.header { font-weight: bold; }
+.pageheader, .pagefooter { border: medium none; background-color: rgb(51, 85, 119); color: white; }
+.pageheader a, .pagefooter a { color: rgb(109, 182, 255); }
+#footer, #pageinfo { margin: 0px; }
+.sidebar { background-color: rgb(85, 136, 102); width: 220px; color: white ! important; }
+.sidebar a { color: rgb(101, 245, 216); }
+.sidebar img { margin: 0px 10px 0px 0px; }
+.page { max-width: 75em; }
+#pagebody { width: 60em; }
+.pageheader .actions ul li a { color: black; }
+.pagecloud { color: white ! important; border: medium none; background: none repeat scroll 0% 0% transparent; }
+/* ::::: [internal] ::::: */
+
+@media screen {
+}
+@media print {
+}
+/* ::::: [internal] ::::: */
+
+/* ::::: [internal] ::::: */
+

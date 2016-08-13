@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<meta charset="UTF-8">
+<title>LXC setup on Debian jessie</title>
+
+
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+
+
+
+
+
+
+
+
+<link rel="alternate" type="application/x-wiki" title="Edit this page" href="https://feeding.cloud.geek.nz/ikiwiki.cgi?do=edit&amp;page=posts%2Flxc-setup-on-debian-jessie">
+
+<link rel="alternate" type="application/rss+xml" title="Feeding the Cloud (RSS feed)" href="https://feeding.cloud.geek.nz/posts/lxc-setup-on-debian-jessie/comments.rss"><link rel="alternate" type="application/atom+xml" title="Feeding the Cloud (Atom feed)" href="https://feeding.cloud.geek.nz/posts/lxc-setup-on-debian-jessie/comments.atom">
+<link rel="vcs-git" href="ssh://b-feedingthecloud@feedingthecloud.branchable.com/" title="wiki git repository">
+<link rel="vcs-git" href="git://feedingthecloud.branchable.com/" title="wiki git repository">
+<meta name="date" content="2014-10-20T15:00:00.000+13:00">
+<link rel="license" href="https://feeding.cloud.geek.nz/posts/lxc-setup-on-debian-jessie/#pagelicense">
+
+
+
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body>
+
+
+<article class="page">
+
+<section class="pageheader">
+<header class="header">
+<span>
+<span class="parentlinks">
+
+<a href="https://feeding.cloud.geek.nz/">Feeding the Cloud</a>/ 
+
+<a href="https://feeding.cloud.geek.nz/posts/">posts</a>/ 
+
+</span>
+<span class="title">
+LXC setup on Debian jessie
+
+</span>
+</span>
+
+
+<form method="get" action="https://feeding.cloud.geek.nz/ikiwiki.cgi" id="searchform">
+<div>
+<input id="searchbox" name="P" value="" size="16" placeholder="search" type="text">
+</div>
+</form>
+
+
+
+</header>
+
+
+<nav class="actions">
+<ul>
+
+<li><a href="https://feeding.cloud.geek.nz/ikiwiki.cgi?do=edit&amp;page=posts%2Flxc-setup-on-debian-jessie" rel="nofollow">Edit</a></li>
+
+
+<li><a href="https://feeding.cloud.geek.nz/recentchanges/">RecentChanges</a></li>
+
+
+
+
+<li><a href="https://feeding.cloud.geek.nz/ikiwiki.cgi?do=prefs">Preferences</a></li>
+
+
+
+<li><a href="#comments">2 comments</a></li>
+
+</ul>
+</nav>
+
+
+
+
+
+
+
+
+</section>
+
+
+
+<aside class="sidebar">
+<h1 id="Subscribe_to_this_blog">Subscribe to this blog</h1>
+
+<p><a href="http://feeding.cloud.geek.nz/index.rss"><img src="feed-icon.png" width="32" align="left" height="32">Subscribe in a reader</a>
+<a href="http://www.feedburner.com/fb/a/emailverifySubmit?feedId=1839853&amp;loc=en_US">Subscribe by Email</a></p>
+
+<p><br><a href="http://flattr.com/thing/311291/Feeding-the-Cloud"><img src="flattr_button.png" alt="Flattr" width="93" border="0" height="20"></a></p>
+
+<h1 id="About_me">About me</h1>
+
+<p><a href="http://fmarier.org/"><img src="avatar.jpg" width="80" height="80"></a></p><a href="http://fmarier.org/">
+
+</a><p><a href="http://fmarier.org/"><strong>François Marier</strong></a>
+<br><a href="mailto:francois@fmarier.org">francois@fmarier.org</a>
+<br>Free and Open Source software developer
+<br>
+<br><a href="https://twitter.com/fmarier">Twitter</a> / <a href="http://identi.ca/fmarier">Identica</a>
+<br><a href="http://linkedin.com/in/fmarier">Linked In</a></p>
+
+<h1 id="More_from_this_blog">More from this blog</h1>
+
+<p><a href="https://feeding.cloud.geek.nz/archives/">Archives</a></p>
+
+<p><a href="https://feeding.cloud.geek.nz/comments/">Recent Comments</a></p>
+
+<p><a href="https://feeding.cloud.geek.nz/tags/">Tags</a>:</p>
+
+<div class="pagecloud">
+<span class="smallestPC"><a href="https://feeding.cloud.geek.nz/tags/android/">android</a></span>
+<span class="smallestPC"><a href="https://feeding.cloud.geek.nz/tags/apache/">apache</a></span>
+<span class="smallestPC"><a href="https://feeding.cloud.geek.nz/tags/backup/">backup</a></span>
+<span class="smallPC"><a href="https://feeding.cloud.geek.nz/tags/browserid/">browserid</a></span>
+<span class="smallestPC"><a href="https://feeding.cloud.geek.nz/tags/conference/">conference</a></span>
+<span class="smallestPC"><a href="https://feeding.cloud.geek.nz/tags/cryptmount/">cryptmount</a></span>
+<span class="smallestPC"><a href="https://feeding.cloud.geek.nz/tags/csp/">csp</a></span>
+<span class="smallestPC"><a href="https://feeding.cloud.geek.nz/tags/database/">database</a></span>
+<span class="smallPC"><a href="https://feeding.cloud.geek.nz/tags/django/">django</a></span>
+<span class="smallestPC"><a href="https://feeding.cloud.geek.nz/tags/dns/">dns</a></span>
+<span class="smallestPC"><a href="https://feeding.cloud.geek.nz/tags/dnssec/">dnssec</a></span>
+<span class="smallestPC"><a href="https://feeding.cloud.geek.nz/tags/emacs/">emacs</a></span>
+<span class="smallestPC"><a href="https://feeding.cloud.geek.nz/tags/fetchmail/">fetchmail</a></span>
+<span class="smallestPC"><a href="https://feeding.cloud.geek.nz/tags/firebug/">firebug</a></span>
+<span class="normalPC"><a href="https://feeding.cloud.geek.nz/tags/firefox/">firefox</a></span>
+<span class="smallestPC"><a href="https://feeding.cloud.geek.nz/tags/gaia/">gaia</a></span>
+<span class="smallestPC"><a href="https://feeding.cloud.geek.nz/tags/gaming/">gaming</a></span>
+<span class="smallestPC"><a href="https://feeding.cloud.geek.nz/tags/gargoyle/">gargoyle</a></span>
+<span class="smallestPC"><a href="https://feeding.cloud.geek.nz/tags/gearman/">gearman</a></span>
+<span class="smallestPC"><a href="https://feeding.cloud.geek.nz/tags/gecko/">gecko</a></span>
+<span class="smallestPC"><a href="https://feeding.cloud.geek.nz/tags/gerrit/">gerrit</a></span>
+<span class="bigPC"><a href="https://feeding.cloud.geek.nz/tags/git/">git</a></span>
+<span class="smallestPC"><a href="https://feeding.cloud.geek.nz/tags/github/">github</a></span>
+<span class="smallestPC"><a href="https://feeding.cloud.geek.nz/tags/gnome/">gnome</a></span>
+<span class="smallPC"><a href="https://feeding.cloud.geek.nz/tags/grub/">grub</a></span>
+<span class="smallestPC"><a href="https://feeding.cloud.geek.nz/tags/gstreamer/">gstreamer</a></span>
+<span class="smallestPC"><a href="https://feeding.cloud.geek.nz/tags/hsts/">hsts</a></span>
+<span class="smallestPC"><a href="https://feeding.cloud.geek.nz/tags/html5/">html5</a></span>
+<span class="smallestPC"><a href="https://feeding.cloud.geek.nz/tags/http/">http</a></span>
+<span class="smallestPC"><a href="https://feeding.cloud.geek.nz/tags/i3/">i3</a></span>
+<span class="smallestPC"><a href="https://feeding.cloud.geek.nz/tags/indieweb/">indieweb</a></span>
+<span class="smallestPC"><a href="https://feeding.cloud.geek.nz/tags/irc/">irc</a></span>
+<span class="smallestPC"><a href="https://feeding.cloud.geek.nz/tags/irssi/">irssi</a></span>
+<span class="smallestPC"><a href="https://feeding.cloud.geek.nz/tags/launchpad/">launchpad</a></span>
+<span class="smallestPC"><a href="https://feeding.cloud.geek.nz/tags/lenovo/">lenovo</a></span>
+<span class="normalPC"><a href="https://feeding.cloud.geek.nz/tags/libravatar/">libravatar</a></span>
+<span class="smallestPC"><a href="https://feeding.cloud.geek.nz/tags/linux/">linux</a></span>
+<span class="smallestPC"><a href="https://feeding.cloud.geek.nz/tags/lirc/">lirc</a></span>
+<span class="smallestPC"><a href="https://feeding.cloud.geek.nz/tags/lxc/">lxc</a></span>
+<span class="smallestPC"><a href="https://feeding.cloud.geek.nz/tags/mercurial/">mercurial</a></span>
+<span class="smallPC"><a href="https://feeding.cloud.geek.nz/tags/mutt/">mutt</a></span>
+<span class="smallestPC"><a href="https://feeding.cloud.geek.nz/tags/mythtv/">mythtv</a></span>
+<span class="smallestPC"><a href="https://feeding.cloud.geek.nz/tags/nginx/">nginx</a></span>
+<span class="smallestPC"><a href="https://feeding.cloud.geek.nz/tags/nodejs/">nodejs</a></span>
+<span class="smallestPC"><a href="https://feeding.cloud.geek.nz/tags/openvpn/">openvpn</a></span>
+<span class="smallestPC"><a href="https://feeding.cloud.geek.nz/tags/openwrt/">openwrt</a></span>
+<span class="smallPC"><a href="https://feeding.cloud.geek.nz/tags/optimisation/">optimisation</a></span>
+<span class="smallPC"><a href="https://feeding.cloud.geek.nz/tags/owasp/">owasp</a></span>
+<span class="smallestPC"><a href="https://feeding.cloud.geek.nz/tags/packaging/">packaging</a></span>
+<span class="smallestPC"><a href="https://feeding.cloud.geek.nz/tags/plupload/">plupload</a></span>
+<span class="smallestPC"><a href="https://feeding.cloud.geek.nz/tags/postfix/">postfix</a></span>
+<span class="smallPC"><a href="https://feeding.cloud.geek.nz/tags/postgres/">postgres</a></span>
+<span class="smallPC"><a href="https://feeding.cloud.geek.nz/tags/privacy/">privacy</a></span>
+<span class="smallPC"><a href="https://feeding.cloud.geek.nz/tags/privoxy/">privoxy</a></span>
+<span class="smallPC"><a href="https://feeding.cloud.geek.nz/tags/programming/">programming</a></span>
+<span class="smallestPC"><a href="https://feeding.cloud.geek.nz/tags/publicspeaking/">publicspeaking</a></span>
+<span class="smallPC"><a href="https://feeding.cloud.geek.nz/tags/python/">python</a></span>
+<span class="smallestPC"><a href="https://feeding.cloud.geek.nz/tags/rackspace/">rackspace</a></span>
+<span class="smallPC"><a href="https://feeding.cloud.geek.nz/tags/raid/">raid</a></span>
+<span class="smallestPC"><a href="https://feeding.cloud.geek.nz/tags/rt/">rt</a></span>
+<span class="smallestPC"><a href="https://feeding.cloud.geek.nz/tags/sane/">sane</a></span>
+<span class="biggestPC"><a href="https://feeding.cloud.geek.nz/tags/security/">security</a></span>
+<span class="smallestPC"><a href="https://feeding.cloud.geek.nz/tags/ssh/">ssh</a></span>
+<span class="smallestPC"><a href="https://feeding.cloud.geek.nz/tags/ssl/">ssl</a></span>
+<span class="smallestPC"><a href="https://feeding.cloud.geek.nz/tags/thinkpad/">thinkpad</a></span>
+<span class="smallestPC"><a href="https://feeding.cloud.geek.nz/tags/tor/">tor</a></span>
+<span class="smallestPC"><a href="https://feeding.cloud.geek.nz/tags/vlc/">vlc</a></span>
+<span class="smallestPC"><a href="https://feeding.cloud.geek.nz/tags/vnc/">vnc</a></span>
+<span class="biggestPC"><a href="https://feeding.cloud.geek.nz/tags/web/">web</a></span>
+<span class="smallestPC"><a href="https://feeding.cloud.geek.nz/tags/wine/">wine</a></span>
+<span class="smallestPC"><a href="https://feeding.cloud.geek.nz/tags/xmpp/">xmpp</a></span>
+</div>
+
+
+
+
+
+
+
+</aside>
+
+
+
+<div id="pagebody">
+
+<section id="content" role="main">
+<p>Here's how to setup LXC-based "chroots" on Debian jessie. While this is
+documented on the <a href="https://wiki.debian.org/LXC">Debian wiki</a>, I had to tweak
+a few things to get the networking to work on my machine.</p>
+
+<p>Start by installing (as root) the necessary packages:</p>
+
+<pre><code>apt install lxc libvirt-bin debootstrap
+</code></pre>
+
+<h1 id="Network_setup">Network setup</h1>
+
+<p>I decided to use the default <code>/etc/lxc/default.conf</code> configuration (no
+change needed here):</p>
+
+<pre><code>lxc.network.type = veth
+lxc.network.flags = up
+lxc.network.link = virbr0
+lxc.network.hwaddr = 00:FF:AA:xx:xx:xx
+lxc.network.ipv4 = 0.0.0.0/24
+</code></pre>
+
+<p>but I had to make sure that the "guests" could connect to the outside world
+through the "host":</p>
+
+<ol>
+<li><p>Enable IPv4 forwarding by putting this in <code>/etc/sysctl.conf</code>:</p>
+
+<pre><code>net.ipv4.ip_forward=1
+</code></pre></li>
+<li><p>and then applying it using:</p>
+
+<pre><code>sysctl -p
+</code></pre></li>
+<li><p>Ensure that the network bridge is automatically started on boot:</p>
+
+<pre><code>virsh -c lxc:/// net-start default
+virsh -c lxc:/// net-autostart default
+</code></pre></li>
+<li><p>and that it's not blocked by the host firewall, by putting this in <code>/etc/network/iptables.up.rules</code>:</p>
+
+<pre><code>-A INPUT -d 224.0.0.251 -s 192.168.122.1 -j ACCEPT
+-A INPUT -d 192.168.122.255 -s 192.168.122.1 -j ACCEPT
+-A INPUT -d 192.168.122.1 -s 192.168.122.0/24 -j ACCEPT
+</code></pre></li>
+<li><p>and applying the rules using:</p>
+
+<pre><code>iptables-apply
+</code></pre></li>
+</ol>
+
+
+<h1 id="Creating_a_container">Creating a container</h1>
+
+<p>Creating a new container (in <code>/var/lib/lxc/</code>) is simple:</p>
+
+<pre><code>sudo MIRROR=http://httpredir.debian.org/debian lxc-create -n sid64 -t debian -- -r sid -a amd64
+</code></pre>
+
+<p>You can start or stop it like this:</p>
+
+<pre><code>sudo lxc-start -n sid64 -d
+sudo lxc-stop -n sid64
+</code></pre>
+
+<h1 id="Connecting_to_a_guest_using_ssh">Connecting to a guest using ssh</h1>
+
+<p>The ssh server is configured to require pubkey-based authentication for root
+logins, so you'll need to log into the console:</p>
+
+<pre><code>sudo lxc-stop -n sid64
+sudo lxc-start -n sid64
+</code></pre>
+
+<p>then install a text editor inside the container because the root image
+doesn't have one by default:</p>
+
+<pre><code>apt install vim
+</code></pre>
+
+<p>then paste your public key in <code>/root/.ssh/authorized_keys</code>.</p>
+
+<p>Then you can exit the console (using <code>Ctrl+a q</code>) and ssh into the
+container. You can find out what IP address the container received from DHCP
+by typing this command:</p>
+
+<pre><code>sudo lxc-ls --fancy
+</code></pre>
+
+<h1 id="Fixing_locale_errors">Fixing locale errors</h1>
+
+<p>If you see a bunch of errors like these when you start your container:</p>
+
+<pre><code>perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+LANGUAGE = (unset),
+LC_ALL = (unset),
+LANG = "fr_CA.utf8"
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+</code></pre>
+
+<p>then log into the container as root and use:</p>
+
+<pre><code>dpkg-reconfigure locales
+</code></pre>
+
+<p>to enable the same locales as the ones you have configured in the host.</p>
+
+<p>If you see these errors while reconfiguring the <code>locales</code> package:</p>
+
+<pre><code>Generating locales (this might take a while)...
+  en_US.UTF-8...cannot change mode of new locale archive: No such file or directory
+ done
+  fr_CA.UTF-8...cannot change mode of new locale archive: No such file or directory
+ done
+Generation complete.
+</code></pre>
+
+<p>and see the following <code>dmesg</code> output on the host:</p>
+
+<pre><code>[235350.947808] audit: type=1400 audit(1441664940.224:225): apparmor="DENIED" operation="chmod" info="Failed name lookup - deleted entry" error=-2 profile="/usr/bin/lxc-start" name="/usr/lib/locale/locale-archive.WVNevc" pid=21651 comm="localedef" requested_mask="w" denied_mask="w" fsuid=0 ouid=0
+</code></pre>
+
+<p>then AppArmor is interfering with the <code>locale-gen</code> binary and the
+work-around I found is to temporarily shutdown AppArmor on the host:</p>
+
+<pre><code>lxc-stop -n sid64
+service apparmor teardown
+lxc-start -n sid64 -d
+</code></pre>
+
+<p>and then start up it later once the locales have been updates:</p>
+
+<pre><code>lxc-stop -n sid64
+service apparmor start
+lxc-start -n sid64 -d
+</code></pre>
+
+</section>
+
+
+
+
+
+<section id="comments" role="complementary">
+<div class="feedlink">
+
+<a class="feedbutton" type="application/rss+xml" rel="alternate" title="Feeding the Cloud (RSS feed)" href="https://feeding.cloud.geek.nz/posts/lxc-setup-on-debian-jessie/comments.rss">RSS</a>
+
+
+<a class="feedbutton" type="application/atom+xml" rel="alternate" title="Feeding the Cloud (Atom feed)" href="https://feeding.cloud.geek.nz/posts/lxc-setup-on-debian-jessie/comments.atom">Atom</a>
+
+</div>
+<article class="comment" id="comment-27a48fec080802fe630a5a0c59b42053">
+
+
+
+
+<header class="comment-subject">
+
+<a href="http://feeding.cloud.geek.nz/posts/lxc-setup-on-debian-jessie/#comment-27a48fec080802fe630a5a0c59b42053">...how to LXC other Debian flavours ?</a>
+
+</header>
+
+<section class="inlinecontent">
+<p>So useful to me, Thanks!</p>
+
+<p>BTW, Can you expando on ? :</p>
+
+<p>sudo MIRROR=http://http.debian.net/debian lxc-create -n sid64 -t debian -- -r sid -a amd64</p>
+
+<p>how could i install another Debian flavour (say Wheezy) ?</p>
+
+<p>thanks again</p>
+
+
+</section>
+
+<header class="comment-header">
+
+
+Comment by
+
+<span class="author" title="Unauthenticated, from 190.230.132.114">
+
+
+<a href="http://jordila.github.io/">jordi</a>
+
+
+</span>
+
+— <time datetime="2015-01-24T16:51:33Z" pubdate="pubdate">08:51, 24 January 2015</time>
+</header>
+
+
+<nav class="actions">
+<ul>
+
+<li><a href="https://feeding.cloud.geek.nz/ikiwiki.cgi?do=remove&amp;page=posts%2Flxc-setup-on-debian-jessie%2Fcomment_1_d5fc6018ea0ba5b87011042e5cf5747b" rel="nofollow">Remove comment</a></li>
+
+</ul>
+</nav>
+
+
+<div style="clear: both;"></div>
+</article>
+<article class="comment" id="comment-0c66603874cf9f311a617ff7ae75bdf9">
+
+
+
+
+<header class="comment-subject">
+
+<a href="http://feeding.cloud.geek.nz/posts/lxc-setup-on-debian-jessie/#comment-0c66603874cf9f311a617ff7ae75bdf9">Re: ...how to LXC other Debian flavours ?</a>
+
+</header>
+
+<section class="inlinecontent">
+<blockquote><p>BTW, Can you expando on ? :</p>
+
+<pre><code>sudo MIRROR=http://http.debian.net/debian lxc-create -n sid64 -t debian -- -r sid -a amd64
+</code></pre>
+
+<p>how could i install another Debian flavour (say Wheezy) ?</p></blockquote>
+
+<p>If you replace <code>-r sid</code> with <code>-r wheezy</code> in the above, you'll get a container running Debian stable instead of Debian unstable.</p>
+
+<p>You can also change <code>-a amd64</code> to <code>-a i386</code> if you want a 32-bit container instead of a 64-bit one.</p>
+
+
+</section>
+
+<header class="comment-header">
+
+
+Comment by
+
+<span class="author" title="Unauthenticated, from 121.99.143.172">
+
+
+<a href="http://fmarier.org/">Francois Marier</a>
+
+
+</span>
+
+— <time datetime="2015-01-24T23:06:26Z" pubdate="pubdate">15:06, 24 January 2015</time>
+</header>
+
+
+<nav class="actions">
+<ul>
+
+<li><a href="https://feeding.cloud.geek.nz/ikiwiki.cgi?do=remove&amp;page=posts%2Flxc-setup-on-debian-jessie%2Fcomment_2_9284c7e5d7eed41bd1a59c788931bcce" rel="nofollow">Remove comment</a></li>
+
+</ul>
+</nav>
+
+
+<div style="clear: both;"></div>
+</article>
+
+
+
+
+<div class="addcomment">
+<a href="https://feeding.cloud.geek.nz/ikiwiki.cgi?do=comment&amp;page=posts%2Flxc-setup-on-debian-jessie">Add a comment</a>
+</div>
+
+</section>
+
+
+
+</div>
+
+<footer id="footer" class="pagefooter" role="contentinfo">
+
+<nav id="pageinfo">
+
+
+
+
+<nav class="tags">
+Tags:
+
+<a href="https://feeding.cloud.geek.nz/tags/debian/" rel="tag">debian</a>
+
+<a href="https://feeding.cloud.geek.nz/tags/lxc/" rel="tag">lxc</a>
+
+<a href="https://feeding.cloud.geek.nz/tags/nzoss/" rel="tag">nzoss</a>
+
+</nav>
+
+
+
+
+
+
+
+<div class="pagelicense">
+<a name="pagelicense"></a>
+License: <a href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
+</div>
+
+
+<div class="pagedate">
+Last edited <time datetime="2015-09-20T22:54:51Z">15:54, 20 September 2015</time>
+<!-- Created <time datetime="2014-10-20T02:00:00Z" pubdate="pubdate">19:00, 19 October 2014</time> -->
+</div>
+
+</nav>
+
+
+<!-- from Feeding the Cloud -->
+</footer>
+
+</article>
+
+
+
+<iframe style="visibility: hidden;" src="index_1.html"></iframe></body>
+</html>

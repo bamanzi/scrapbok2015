@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="favicon.ico">
+
+
+        <title>Linux Containers - LXD - Introduction</title>
+
+
+        <!-- Bootstrap core CSS -->
+        
+        
+        
+        
+
+        <!-- Analytics -->
+        
+
+    
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+
+    <body role="document">
+<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <span class="navbar-brand" id="navbar-title">Linux Containers</span>
+        </div>
+
+        <div id="navbar" class="navbar-collapse">
+
+            <ul class="nav navbar-nav">
+    
+        
+            
+                <li><a href="https://linuxcontainers.org/">Home</a></li>
+            
+        
+    
+        
+            
+                <li class="dropdown">
+            
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">LXC <span class="caret"></span></a>
+
+                    <ul class="dropdown-menu" role="menu">
+            
+                
+                    
+                        
+                        <li><a href="https://linuxcontainers.org/lxc/introduction/">Introduction</a></li>
+                        
+                    
+                
+            
+                
+                    
+                        
+                        <li><a href="https://linuxcontainers.org/lxc/news/">News</a></li>
+                        
+                    
+                
+            
+                
+                    
+                        
+                        <li><a href="https://linuxcontainers.org/lxc/getting-started/">Getting started</a></li>
+                        
+                    
+                
+            
+                
+                    
+                        
+                        <li><a href="https://linuxcontainers.org/lxc/documentation/">Documentation</a></li>
+                        
+                    
+                
+            
+                
+                    
+                        
+                        <li class="dropdown-submenu">
+                        
+                            <a href="#">Manpages</a>
+
+                        
+                            <ul class="dropdown-menu columns" role="menu">
+                        
+                        
+                            
+                                
+                                <li><a href="https://linuxcontainers.org/lxc/manpages//man1/lxc-attach.1.html">lxc-attach.1</a></li>
+                                
+                            
+                        
+                            
+                                
+                                <li><a href="https://linuxcontainers.org/lxc/manpages//man1/lxc-autostart.1.html">lxc-autostart.1</a></li>
+                                
+                            
+                        
+                            
+                                
+                                <li><a href="https://linuxcontainers.org/lxc/manpages//man1/lxc-cgroup.1.html">lxc-cgroup.1</a></li>
+                                
+                            
+                        
+                            
+                                
+                                <li><a href="https://linuxcontainers.org/lxc/manpages//man1/lxc-checkconfig.1.html">lxc-checkconfig.1</a></li>
+                                
+                            
+                        
+                            
+                                
+                                <li><a href="https://linuxcontainers.org/lxc/manpages//man1/lxc-checkpoint.1.html">lxc-checkpoint.1</a></li>
+                                
+                            
+                        
+                            
+                                
+                                <li><a href="https://linuxcontainers.org/lxc/manpages//man1/lxc-clone.1.html">lxc-clone.1</a></li>
+                                
+                            
+                        
+                            
+                                
+                                <li><a href="https://linuxcontainers.org/lxc/manpages//man1/lxc-config.1.html">lxc-config.1</a></li>
+                                
+                            
+                        
+                            
+                                
+                                <li><a href="https://linuxcontainers.org/lxc/manpages//man1/lxc-console.1.html">lxc-console.1</a></li>
+                                
+                            
+                        
+                            
+                                
+                                <li><a href="https://linuxcontainers.org/lxc/manpages//man1/lxc-copy.1.html">lxc-copy.1</a></li>
+                                
+                            
+                        
+                            
+                                
+                                <li><a href="https://linuxcontainers.org/lxc/manpages//man1/lxc-create.1.html">lxc-create.1</a></li>
+                                
+                            
+                        
+                            
+                                
+                                <li><a href="https://linuxcontainers.org/lxc/manpages//man1/lxc-destroy.1.html">lxc-destroy.1</a></li>
+                                
+                            
+                        
+                            
+                                
+                                <li><a href="https://linuxcontainers.org/lxc/manpages//man1/lxc-device.1.html">lxc-device.1</a></li>
+                                
+                            
+                        
+                            
+                                
+                                <li><a href="https://linuxcontainers.org/lxc/manpages//man1/lxc-execute.1.html">lxc-execute.1</a></li>
+                                
+                            
+                        
+                            
+                                
+                                <li><a href="https://linuxcontainers.org/lxc/manpages//man1/lxc-freeze.1.html">lxc-freeze.1</a></li>
+                                
+                            
+                        
+                            
+                                
+                                <li><a href="https://linuxcontainers.org/lxc/manpages//man1/lxc-info.1.html">lxc-info.1</a></li>
+                                
+                            
+                        
+                            
+                                
+                                <li><a href="https://linuxcontainers.org/lxc/manpages//man1/lxc-ls.1.html">lxc-ls.1</a></li>
+                                
+                            
+                        
+                            
+                                
+                                <li><a href="https://linuxcontainers.org/lxc/manpages//man1/lxc-monitor.1.html">lxc-monitor.1</a></li>
+                                
+                            
+                        
+                            
+                                
+                                <li><a href="https://linuxcontainers.org/lxc/manpages//man1/lxc-snapshot.1.html">lxc-snapshot.1</a></li>
+                                
+                            
+                        
+                            
+                                
+                                <li><a href="https://linuxcontainers.org/lxc/manpages//man1/lxc-start-ephemeral.1.html">lxc-start-ephemeral.1</a></li>
+                                
+                            
+                        
+                            
+                                
+                                <li><a href="https://linuxcontainers.org/lxc/manpages//man1/lxc-start.1.html">lxc-start.1</a></li>
+                                
+                            
+                        
+                            
+                                
+                                <li><a href="https://linuxcontainers.org/lxc/manpages//man1/lxc-stop.1.html">lxc-stop.1</a></li>
+                                
+                            
+                        
+                            
+                                
+                                <li><a href="https://linuxcontainers.org/lxc/manpages//man1/lxc-top.1.html">lxc-top.1</a></li>
+                                
+                            
+                        
+                            
+                                
+                                <li><a href="https://linuxcontainers.org/lxc/manpages//man1/lxc-unfreeze.1.html">lxc-unfreeze.1</a></li>
+                                
+                            
+                        
+                            
+                                
+                                <li><a href="https://linuxcontainers.org/lxc/manpages//man1/lxc-unshare.1.html">lxc-unshare.1</a></li>
+                                
+                            
+                        
+                            
+                                
+                                <li><a href="https://linuxcontainers.org/lxc/manpages//man1/lxc-user-nic.1.html">lxc-user-nic.1</a></li>
+                                
+                            
+                        
+                            
+                                
+                                <li><a href="https://linuxcontainers.org/lxc/manpages//man5/lxc-usernet.5.html">lxc-usernet.5</a></li>
+                                
+                            
+                        
+                            
+                                
+                                <li><a href="https://linuxcontainers.org/lxc/manpages//man1/lxc-usernsexec.1.html">lxc-usernsexec.1</a></li>
+                                
+                            
+                        
+                            
+                                
+                                <li><a href="https://linuxcontainers.org/lxc/manpages//man1/lxc-wait.1.html">lxc-wait.1</a></li>
+                                
+                            
+                        
+                            
+                                
+                                <li><a href="https://linuxcontainers.org/lxc/manpages//man7/lxc.7.html">lxc.7</a></li>
+                                
+                            
+                        
+                            
+                                
+                                <li><a href="https://linuxcontainers.org/lxc/manpages//man5/lxc.conf.5.html">lxc.conf.5</a></li>
+                                
+                            
+                        
+                            
+                                
+                                <li><a href="https://linuxcontainers.org/lxc/manpages//man5/lxc.container.conf.5.html">lxc.container.conf.5</a></li>
+                                
+                            
+                        
+                            
+                                
+                                <li><a href="https://linuxcontainers.org/lxc/manpages//man5/lxc.system.conf.5.html">lxc.system.conf.5</a></li>
+                                
+                            
+                        
+                            </ul>
+                        </li>
+                    
+                
+            
+                
+                    
+                        
+                        <li><a href="https://linuxcontainers.org/lxc/contribute/">Contribute</a></li>
+                        
+                    
+                
+            
+                
+                    
+                        
+                        <li><a href="https://linuxcontainers.org/lxc/security/">Security</a></li>
+                        
+                    
+                
+            
+                
+                    
+                        
+                        <li><a href="https://linuxcontainers.org/lxc/downloads/">Downloads</a></li>
+                        
+                    
+                
+            
+                
+                        <li class="divider"></li>
+                    
+                        <li class="dropdown-header">External resources</li>
+                    
+                
+            
+                
+                    
+                        
+                        <li><a href="https://linuxcontainers.org/lxc/articles/">Articles</a></li>
+                        
+                    
+                
+            
+                
+                    
+                        
+                        <li><a href="https://lists.linuxcontainers.org/">Mailing lists</a></li>
+                        
+                    
+                
+            
+                
+                    
+                        
+                        <li><a href="https://webchat.freenode.net/?channels=#lxcontainers">IRC</a></li>
+                        
+                    
+                
+            
+                
+                    
+                        
+                        <li><a href="https://github.com/lxc/lxc">Github</a></li>
+                        
+                    
+                
+            
+                
+                    
+                        
+                        <li><a href="https://jenkins.linuxcontainers.org/view/LXC/">Jenkins CI</a></li>
+                        
+                    
+                
+            
+                
+                    
+                        
+                        <li><a href="https://travis-ci.org/lxc/lxc">Travis CI</a></li>
+                        
+                    
+                
+            
+                    </ul>
+                </li>
+        
+    
+        
+            
+                <li class="dropdown active">
+            
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">LXD <span class="caret"></span></a>
+
+                    <ul class="dropdown-menu" role="menu">
+            
+                
+                    
+                        
+                        <li class="active"><a href="#">Introduction</a></li>
+                        
+                    
+                
+            
+                
+                    
+                        
+                        <li><a href="https://linuxcontainers.org/lxd/news/">News</a></li>
+                        
+                    
+                
+            
+                
+                    
+                        
+                        <li><a href="https://linuxcontainers.org/lxd/getting-started-cli/">Getting started - command line</a></li>
+                        
+                    
+                
+            
+                
+                    
+                        
+                        <li><a href="https://linuxcontainers.org/lxd/getting-started-openstack/">Getting started - OpenStack</a></li>
+                        
+                    
+                
+            
+                
+                    
+                        
+                        <li><a href="https://linuxcontainers.org/lxd/rest-api/">REST API</a></li>
+                        
+                    
+                
+            
+                
+                    
+                        
+                        <li><a href="https://linuxcontainers.org/lxd/contribute/">Contribute</a></li>
+                        
+                    
+                
+            
+                
+                    
+                        
+                        <li><a href="https://linuxcontainers.org/lxd/downloads/">Downloads</a></li>
+                        
+                    
+                
+            
+                
+                    
+                        
+                        <li><a href="https://linuxcontainers.org/lxd/try-it/">Try it online</a></li>
+                        
+                    
+                
+            
+                
+                        <li class="divider"></li>
+                    
+                        <li class="dropdown-header">External resources</li>
+                    
+                
+            
+                
+                    
+                        
+                        <li><a href="http://www.ubuntu.com/cloud/tools/lxd">Product page</a></li>
+                        
+                    
+                
+            
+                
+                    
+                        
+                        <li><a href="https://linuxcontainers.org/lxd/articles/">Articles &amp; videos</a></li>
+                        
+                    
+                
+            
+                
+                    
+                        
+                        <li><a href="https://lists.linuxcontainers.org/">Mailing lists</a></li>
+                        
+                    
+                
+            
+                
+                    
+                        
+                        <li><a href="https://webchat.freenode.net/?channels=#lxcontainers">IRC</a></li>
+                        
+                    
+                
+            
+                
+                    
+                        
+                        <li><a href="https://github.com/lxc/lxd">Github</a></li>
+                        
+                    
+                
+            
+                
+                    
+                        
+                        <li><a href="https://travis-ci.org/lxc/lxd">Travis CI</a></li>
+                        
+                    
+                
+            
+                    </ul>
+                </li>
+        
+    
+        
+            
+                <li class="dropdown">
+            
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">LXCFS <span class="caret"></span></a>
+
+                    <ul class="dropdown-menu" role="menu">
+            
+                
+                    
+                        
+                        <li><a href="https://linuxcontainers.org/lxcfs/introduction/">Introduction</a></li>
+                        
+                    
+                
+            
+                
+                    
+                        
+                        <li><a href="https://linuxcontainers.org/lxcfs/news/">News</a></li>
+                        
+                    
+                
+            
+                
+                    
+                        
+                        <li><a href="https://linuxcontainers.org/lxcfs/getting-started/">Getting started</a></li>
+                        
+                    
+                
+            
+                
+                    
+                        
+                        <li class="dropdown-submenu">
+                        
+                            <a href="#">Manpages</a>
+
+                        
+                            <ul class="dropdown-menu" role="menu">
+                        
+                        
+                            
+                                
+                                <li><a href="https://linuxcontainers.org/lxcfs/manpages//man1/lxcfs.1.html">lxcfs.1</a></li>
+                                
+                            
+                        
+                            </ul>
+                        </li>
+                    
+                
+            
+                
+                    
+                        
+                        <li><a href="https://linuxcontainers.org/lxcfs/contribute/">Contribute</a></li>
+                        
+                    
+                
+            
+                
+                    
+                        
+                        <li><a href="https://linuxcontainers.org/lxcfs/downloads/">Downloads</a></li>
+                        
+                    
+                
+            
+                
+                        <li class="divider"></li>
+                    
+                        <li class="dropdown-header">External resources</li>
+                    
+                
+            
+                
+                    
+                        
+                        <li><a href="https://lists.linuxcontainers.org/">Mailing lists</a></li>
+                        
+                    
+                
+            
+                
+                    
+                        
+                        <li><a href="https://webchat.freenode.net/?channels=#lxcontainers">IRC</a></li>
+                        
+                    
+                
+            
+                
+                    
+                        
+                        <li><a href="https://github.com/lxc/lxcfs">Github</a></li>
+                        
+                    
+                
+            
+                    </ul>
+                </li>
+        
+    
+        
+            
+                <li class="dropdown">
+            
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">CGManager <span class="caret"></span></a>
+
+                    <ul class="dropdown-menu" role="menu">
+            
+                
+                    
+                        
+                        <li><a href="https://linuxcontainers.org/cgmanager/introduction/">Introduction</a></li>
+                        
+                    
+                
+            
+                
+                    
+                        
+                        <li><a href="https://linuxcontainers.org/cgmanager/news/">News</a></li>
+                        
+                    
+                
+            
+                
+                    
+                        
+                        <li><a href="https://linuxcontainers.org/cgmanager/getting-started/">Getting started</a></li>
+                        
+                    
+                
+            
+                
+                    
+                        
+                        <li><a href="https://linuxcontainers.org/cgmanager/dbus-api/">D-Bus API</a></li>
+                        
+                    
+                
+            
+                
+                    
+                        
+                        <li class="dropdown-submenu">
+                        
+                            <a href="#">Manpages</a>
+
+                        
+                            <ul class="dropdown-menu" role="menu">
+                        
+                        
+                            
+                                
+                                <li><a href="https://linuxcontainers.org/cgmanager/manpages//man1/cgm.1.html">cgm.1</a></li>
+                                
+                            
+                        
+                            
+                                
+                                <li><a href="https://linuxcontainers.org/cgmanager/manpages//man8/cgmanager.8.html">cgmanager.8</a></li>
+                                
+                            
+                        
+                            
+                                
+                                <li><a href="https://linuxcontainers.org/cgmanager/manpages//man8/cgproxy.8.html">cgproxy.8</a></li>
+                                
+                            
+                        
+                            </ul>
+                        </li>
+                    
+                
+            
+                
+                    
+                        
+                        <li><a href="https://linuxcontainers.org/cgmanager/contribute/">Contribute</a></li>
+                        
+                    
+                
+            
+                
+                    
+                        
+                        <li><a href="https://linuxcontainers.org/cgmanager/downloads/">Downloads</a></li>
+                        
+                    
+                
+            
+                
+                        <li class="divider"></li>
+                    
+                        <li class="dropdown-header">External resources</li>
+                    
+                
+            
+                
+                    
+                        
+                        <li><a href="https://linuxcontainers.org/cgmanager/articles/">Articles</a></li>
+                        
+                    
+                
+            
+                
+                    
+                        
+                        <li><a href="https://lists.linuxcontainers.org/">Mailing lists</a></li>
+                        
+                    
+                
+            
+                
+                    
+                        
+                        <li><a href="https://webchat.freenode.net/?channels=#lxcontainers">IRC</a></li>
+                        
+                    
+                
+            
+                
+                    
+                        
+                        <li><a href="https://github.com/lxc/cgmanager">Github</a></li>
+                        
+                    
+                
+            
+                
+                    
+                        
+                        <li><a href="https://travis-ci.org/lxc/cgmanager">Travis CI</a></li>
+                        
+                    
+                
+            
+                    </ul>
+                </li>
+        
+    
+            </ul>
+
+
+
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Language <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+    
+        
+                        <li class="active"><a href="#">English</a></li>
+        
+    
+        
+            
+                        <li><a href="https://linuxcontainers.org/fr/lxd/introduction/">Français</a></li>
+            
+        
+    
+        
+            
+                        <li><a href="https://linuxcontainers.org/it/lxd/introduction/">Italiano</a></li>
+            
+        
+    
+        
+            
+                        <li><a href="https://linuxcontainers.org/ja/lxd/introduction/">日本語</a></li>
+            
+        
+    
+        
+            
+                        <li><a href="https://linuxcontainers.org/ko/lxd/introduction/">한국어</a></li>
+            
+        
+    
+        
+            
+                        <li><a href="https://linuxcontainers.org/ru/lxd/introduction/">Русский</a></li>
+            
+        
+    
+                    </ul>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</nav>
+
+        <div class="container">
+            <ol class="breadcrumb">
+                <li><img id="breadcrumb-logo" src="containers.png"></li>
+
+                <li>LXD</li>
+
+                <li>Introduction</li>
+
+            </ol>
+
+    <p><img alt="Logo" src="containers.png"></p>
+<h1 id="whats-lxd">What's LXD?<a class="headerlink" href="#whats-lxd" title="Permanent link">¶</a></h1>
+<p>LXD is a container "hypervisor" and a new user experience for LXC.</p>
+<p>Specifically, it's made of three components:</p>
+<ul>
+<li>A system-wide daemon (lxd)</li>
+<li>A command line client (lxc)</li>
+<li>An OpenStack Nova plugin (nova-compute-lxd)</li>
+</ul>
+<p>The daemon exports a REST API both locally and if enabled, over the network.</p>
+<p>The command line tool is designed to be a very simple, yet very powerful tool<br>
+to manage all your containers. It can handle connect to multiple container hosts<br>
+and easily give you an overview of all the containers on your network,<br>
+let you create some more where you want them and even move them around while they're running.</p>
+<p>The OpenStack plugin then allows you to use your lxd hosts as compute nodes,<br>
+running workloads on containers rather than virtual machines.</p>
+<p>The LXD project was founded and is currently led by <a href="http://www.canonical.com/">Canonical Ltd</a><br>
+and Ubuntu with contributions from a range of other companies and individual contributors.</p>
+<h1 id="features">Features<a class="headerlink" href="#features" title="Permanent link">¶</a></h1>
+<p>Some of the biggest features of LXD are:</p>
+<ul>
+<li>Secure by design (unprivileged containers, resource restrictions and much more)</li>
+<li>Scalable (from containers on your laptop to thousand of compute nodes)</li>
+<li>Intuitive (simple, clear API and crisp command line experience)</li>
+<li>Image based (no more distribution templates, only good, trusted images)</li>
+<li>Live migration</li>
+</ul>
+<h1 id="relationship-with-lxc">Relationship with LXC<a class="headerlink" href="#relationship-with-lxc" title="Permanent link">¶</a></h1>
+<p>LXD isn't a rewrite of LXC, in fact it's building on top of LXC to provide a new,<br>
+better user experience. Under the hood, LXD uses LXC through liblxc and its Go binding<br>
+to create and manage the containers.</p>
+<p>It's basically an alternative to LXC's tools and distribution template system<br>
+with the added features that come from being controllable over the network.</p>
+<h1 id="licensing">Licensing<a class="headerlink" href="#licensing" title="Permanent link">¶</a></h1>
+<p>LXD is free software and is developed under the Apache 2 license.</p>
+<h1 id="support">Support<a class="headerlink" href="#support" title="Permanent link">¶</a></h1>
+<p>LXD's stable release support relies on the Linux distributions<br>
+and their own commitment to pushing stable fixes and security updates.</p>
+<p>Commercial support for LXD on Ubuntu LTS releases can be obtained from <a href="http://www.canonical.com/">Canonical Ltd</a>.</p>
+<p><a href="http://www.canonical.com/"><img src="canonical.png" alt="Canonical logo" style="display: block; float: none; margin-left: auto; margin-right: auto; padding-top: 1em; padding-bottom: 1em;"></a></p>
+
+
+<hr class="footer">
+<footer>
+    <p class="pull-left"><a href="https://github.com/lxc/linuxcontainers.org">Improve this website</a></p>
+    <p class="pull-right"><a href="#">Back to top</a></p>
+    <p class="text-center">
+        <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Content under Creative Commons CC BY NC SA</a><br>
+        <span class="small">Project sponsored by <a href="http://www.canonical.com/">Canonical Ltd.</a></span>
+    </p>
+</footer>
+
+            
+            
+        </div>
+    
+</body>
+</html>
