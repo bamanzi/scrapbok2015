@@ -1,0 +1,2015 @@
+<!DOCTYPE html>
+<html lang="en" class="client-js" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<title>中文书 - pcDuino</title>
+<meta name="generator" content="MediaWiki 1.24.1">
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="search" type="application/opensearchdescription+xml" href="http://www.pcduino.com/wiki/opensearch_desc.php" title="pcDuino (en)">
+<link rel="EditURI" type="application/rsd+xml" href="http://www.pcduino.com/wiki/api.php?action=rsd">
+<link rel="alternate" hreflang="x-default" href="http://www.pcduino.com/wiki/index.php?title=%E4%B8%AD%E6%96%87%E4%B9%A6">
+<link rel="alternate" type="application/atom+xml" title="pcDuino Atom feed" href="http://www.pcduino.com/wiki/index.php?title=Special:RecentChanges&amp;feed=atom">
+
+<meta name="ResourceLoaderDynamicStyles" content="">
+
+
+
+
+<!--[if lt IE 7]><style type="text/css">body{behavior:url("/wiki/skins/Vector/csshover.min.htc")}</style><![endif]-->
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-中文书 skin-vector action-view vector-animateLayout">
+		<div id="mw-page-base" class="noprint"></div>
+		<div id="mw-head-base" class="noprint"></div>
+		<div id="content" class="mw-body" role="main">
+			<a id="top"></a>
+
+						<h1 id="firstHeading" class="firstHeading" lang="en"><span dir="auto">中文书</span></h1>
+						<div id="bodyContent" class="mw-body-content">
+									<div id="siteSub">From pcDuino</div>
+								<div id="contentSub"></div>
+												<div id="jump-to-nav" class="mw-jump">
+					Jump to:					<a href="#mw-navigation">navigation</a>, 					<a href="#p-search">search</a>
+				</div>
+				<div id="mw-content-text" dir="ltr" class="mw-content-ltr" lang="en"><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2><span class="toctoggle">&nbsp;[<a href="#" id="togglelink">hide</a>]&nbsp;</span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#.E3.80.8ApcDuino.E5.BC.80.E5.8F.91.E5.AE.9E.E6.88.98.E6.8C.87.E5.8D.97.E3.80.8B"><span class="tocnumber">1</span> <span class="toctext">《pcDuino开发实战指南》</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#pcDuino1.2F2.2F3"><span class="tocnumber">2</span> <span class="toctext">pcDuino1/2/3</span></a>
+<ul>
+<li class="toclevel-2 tocsection-3"><a href="#Tutorial_Videos"><span class="tocnumber">2.1</span> <span class="toctext">Tutorial Videos</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="#Flash_New_Images"><span class="tocnumber">2.2</span> <span class="toctext">Flash New Images</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="#Quick_Start"><span class="tocnumber">2.3</span> <span class="toctext">Quick Start</span></a>
+<ul>
+<li class="toclevel-3 tocsection-6"><a href="#Power"><span class="tocnumber">2.3.1</span> <span class="toctext">Power</span></a></li>
+<li class="toclevel-3 tocsection-7"><a href="#Ubuntu"><span class="tocnumber">2.3.2</span> <span class="toctext">Ubuntu</span></a>
+<ul>
+<li class="toclevel-4 tocsection-8"><a href="#Booting_and_NAND"><span class="tocnumber">2.3.2.1</span> <span class="toctext">Booting and NAND</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-9"><a href="#pcDuino.E5.85.A5.E9.97.A8.E6.8C.87.E5.8D.97"><span class="tocnumber">2.4</span> <span class="toctext">pcDuino入门指南</span></a>
+<ul>
+<li class="toclevel-3 tocsection-10"><a href="#pcDuinoV3_.E8.AF.84.E6.B5.8B"><span class="tocnumber">2.4.1</span> <span class="toctext">pcDuinoV3 评测</span></a></li>
+<li class="toclevel-3 tocsection-11"><a href="#Ubuntu_2"><span class="tocnumber">2.4.2</span> <span class="toctext">Ubuntu</span></a>
+<ul>
+<li class="toclevel-4 tocsection-12"><a href="#.E7.94.B5.E8.B7.AF.E5.9B.BE"><span class="tocnumber">2.4.2.1</span> <span class="toctext">电路图</span></a></li>
+<li class="toclevel-4 tocsection-13"><a href="#.E4.B8.B2.E5.8F.A3.E8.B0.83.E8.AF.95"><span class="tocnumber">2.4.2.2</span> <span class="toctext">串口调试</span></a></li>
+<li class="toclevel-4 tocsection-14"><a href="#USB"><span class="tocnumber">2.4.2.3</span> <span class="toctext">USB</span></a></li>
+<li class="toclevel-4 tocsection-15"><a href="#.E5.9B.BE.E5.BD.A2.E8.BD.AC.E6.8D.A2"><span class="tocnumber">2.4.2.4</span> <span class="toctext">图形转换</span></a></li>
+<li class="toclevel-4 tocsection-16"><a href="#.E5.AF.86.E7.A0.81"><span class="tocnumber">2.4.2.5</span> <span class="toctext">密码</span></a></li>
+<li class="toclevel-4 tocsection-17"><a href="#VNC_for_pcDuino"><span class="tocnumber">2.4.2.6</span> <span class="toctext">VNC for pcDuino</span></a></li>
+<li class="toclevel-4 tocsection-18"><a href="#.E7.BA.A2.E5.A4.96"><span class="tocnumber">2.4.2.7</span> <span class="toctext">红外</span></a></li>
+<li class="toclevel-4 tocsection-19"><a href="#.E6.91.84.E5.83.8F.E5.A4.B4"><span class="tocnumber">2.4.2.8</span> <span class="toctext">摄像头</span></a></li>
+<li class="toclevel-4 tocsection-20"><a href="#.E4.B8.AD.E6.96.AD"><span class="tocnumber">2.4.2.9</span> <span class="toctext">中断</span></a></li>
+<li class="toclevel-4 tocsection-21"><a href="#.E8.AF.AD.E9.9F.B3_.26_.E9.9F.B3.E9.A2.91"><span class="tocnumber">2.4.2.10</span> <span class="toctext">语音 &amp; 音频</span></a></li>
+<li class="toclevel-4 tocsection-22"><a href="#.E6.97.B6.E9.92.9F_RTC.3D"><span class="tocnumber">2.4.2.11</span> <span class="toctext">时钟 RTC=</span></a></li>
+<li class="toclevel-4 tocsection-23"><a href="#.E9.94.AE.E7.9B.98"><span class="tocnumber">2.4.2.12</span> <span class="toctext">键盘</span></a></li>
+<li class="toclevel-4 tocsection-24"><a href="#.E5.B1.8F.E5.B9.95"><span class="tocnumber">2.4.2.13</span> <span class="toctext">屏幕</span></a></li>
+<li class="toclevel-4 tocsection-25"><a href="#OpenWRT"><span class="tocnumber">2.4.2.14</span> <span class="toctext">OpenWRT</span></a></li>
+<li class="toclevel-4 tocsection-26"><a href="#GPS"><span class="tocnumber">2.4.2.15</span> <span class="toctext">GPS</span></a></li>
+<li class="toclevel-4 tocsection-27"><a href="#3D_.E6.89.93.E5.8D.B0.E6.9C.BA"><span class="tocnumber">2.4.2.16</span> <span class="toctext">3D 打印机</span></a></li>
+<li class="toclevel-4 tocsection-28"><a href="#.E7.BD.91.E7.BB.9C.E8.BF.9E.E6.8E.A5"><span class="tocnumber">2.4.2.17</span> <span class="toctext">网络连接</span></a>
+<ul>
+<li class="toclevel-5 tocsection-29"><a href="#.E8.93.9D.E7.89.99"><span class="tocnumber">2.4.2.17.1</span> <span class="toctext">蓝牙</span></a></li>
+<li class="toclevel-5 tocsection-30"><a href="#.E7.BD.91.E7.BB.9C"><span class="tocnumber">2.4.2.17.2</span> <span class="toctext">网络</span></a></li>
+<li class="toclevel-5 tocsection-31"><a href="#Xbee"><span class="tocnumber">2.4.2.17.3</span> <span class="toctext">Xbee</span></a></li>
+<li class="toclevel-5 tocsection-32"><a href="#3G"><span class="tocnumber">2.4.2.17.4</span> <span class="toctext">3G</span></a></li>
+</ul>
+</li>
+<li class="toclevel-4 tocsection-33"><a href="#.E8.BD.AF.E4.BB.B6"><span class="tocnumber">2.4.2.18</span> <span class="toctext">软件</span></a></li>
+<li class="toclevel-4 tocsection-34"><a href="#A20"><span class="tocnumber">2.4.2.19</span> <span class="toctext">A20</span></a></li>
+<li class="toclevel-4 tocsection-35"><a href="#.E9.A1.B9.E7.9B.AEProject"><span class="tocnumber">2.4.2.20</span> <span class="toctext">项目Project</span></a>
+<ul>
+<li class="toclevel-5 tocsection-36"><a href="#.E6.A1.8C.E9.9D.A2"><span class="tocnumber">2.4.2.20.1</span> <span class="toctext">桌面</span></a></li>
+<li class="toclevel-5 tocsection-37"><a href="#.E5.9C.A8pcDuino.E4.B8.8A.E5.AD.A6.E4.B9.A0OpenCV.E7.B3.BB.E5.88.97.E6.95.99.E7.A8.8B"><span class="tocnumber">2.4.2.20.2</span> <span class="toctext">在pcDuino上学习OpenCV系列教程</span></a></li>
+<li class="toclevel-5 tocsection-38"><a href="#.E8.AF.AD.E9.9F.B3_.26_.E9.9F.B3.E9.A2.91_2"><span class="tocnumber">2.4.2.20.3</span> <span class="toctext">语音 &amp; 音频</span></a></li>
+<li class="toclevel-5 tocsection-39"><a href="#3D_.E6.89.93.E5.8D.B0.E6.9C.BA_2"><span class="tocnumber">2.4.2.20.4</span> <span class="toctext">3D 打印机</span></a></li>
+<li class="toclevel-5 tocsection-40"><a href="#.E6.B8.B8.E6.88.8F"><span class="tocnumber">2.4.2.20.5</span> <span class="toctext">游戏</span></a></li>
+<li class="toclevel-5 tocsection-41"><a href="#Arduino.E5.9F.BA.E7.A1.80.E5.99.A8.E4.BB.B6.E7.9A.84.E7.94.A8.E6.B3.95.E5.9B.BE"><span class="tocnumber">2.4.2.20.6</span> <span class="toctext">Arduino基础器件的用法图</span></a></li>
+<li class="toclevel-5 tocsection-42"><a href="#ROS.28.E6.9C.BA.E5.99.A8.E4.BA.BA.E6.93.8D.E4.BD.9C.E7.B3.BB.E7.BB.9F.29"><span class="tocnumber">2.4.2.20.7</span> <span class="toctext">ROS(机器人操作系统)</span></a></li>
+<li class="toclevel-5 tocsection-43"><a href="#pcDuino_V3.E5.BC.80.E5.8F.91BSP"><span class="tocnumber">2.4.2.20.8</span> <span class="toctext">pcDuino V3开发BSP</span></a></li>
+<li class="toclevel-5 tocsection-44"><a href="#pcDuino.E8.A7.86.E9.A2.91.E6.9C.8D.E5.8A.A1.E5.99.A8"><span class="tocnumber">2.4.2.20.9</span> <span class="toctext">pcDuino视频服务器</span></a></li>
+<li class="toclevel-5 tocsection-45"><a href="#Arduino.2FpcDuino_.E6.BB.A4.E6.B3.A2.E7.AE.97.E6.B3.95.E7.A8.8B.E5.BA.8F"><span class="tocnumber">2.4.2.20.10</span> <span class="toctext">Arduino/pcDuino 滤波算法程序</span></a></li>
+</ul>
+</li>
+<li class="toclevel-4 tocsection-46"><a href="#.E5.BA.94.E7.94.A8"><span class="tocnumber">2.4.2.21</span> <span class="toctext">应用</span></a>
+<ul>
+<li class="toclevel-5 tocsection-47"><a href="#MadPlayer_with_arduino"><span class="tocnumber">2.4.2.21.1</span> <span class="toctext">MadPlayer with arduino</span></a></li>
+<li class="toclevel-5 tocsection-48"><a href="#.E5.9C.A8Arduino.E4.B8.8A"><span class="tocnumber">2.4.2.21.2</span> <span class="toctext">在Arduino上</span></a></li>
+<li class="toclevel-5 tocsection-49"><a href="#.E4.BC.A0.E6.84.9F.E5.99.A8"><span class="tocnumber">2.4.2.21.3</span> <span class="toctext">传感器</span></a></li>
+<li class="toclevel-5 tocsection-50"><a href="#Processing"><span class="tocnumber">2.4.2.21.4</span> <span class="toctext">Processing</span></a></li>
+<li class="toclevel-5 tocsection-51"><a href="#JPEG"><span class="tocnumber">2.4.2.21.5</span> <span class="toctext">JPEG</span></a></li>
+</ul>
+</li>
+<li class="toclevel-4 tocsection-52"><a href="#Android"><span class="tocnumber">2.4.2.22</span> <span class="toctext">Android</span></a></li>
+<li class="toclevel-4 tocsection-53"><a href="#.E5.AE.9E.E9.AA.8C"><span class="tocnumber">2.4.2.23</span> <span class="toctext">实验</span></a></li>
+<li class="toclevel-4 tocsection-54"><a href="#.E5.88.9B.E9.80.A0.E5.AE.B6.E6.8C.87.E5.8D.97.E7.B3.BB.E5.88.97"><span class="tocnumber">2.4.2.24</span> <span class="toctext">创造家指南系列</span></a></li>
+<li class="toclevel-4 tocsection-55"><a href="#Scratch_for_pcDuino"><span class="tocnumber">2.4.2.25</span> <span class="toctext">Scratch for pcDuino</span></a>
+<ul>
+<li class="toclevel-5 tocsection-56"><a href="#pcDuino_Scratch_.E6.95.99.E5.AD.A6.E8.A7.86.E9.A2.91"><span class="tocnumber">2.4.2.25.1</span> <span class="toctext">pcDuino Scratch 教学视频</span></a></li>
+<li class="toclevel-5 tocsection-57"><a href="#Scratch_for_pcDuino_.E5.BF.AB.E9.80.9F.E5.85.A5.E9.97.A8"><span class="tocnumber">2.4.2.25.2</span> <span class="toctext">Scratch for pcDuino 快速入门</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-58"><a href="#Raspberry_pi_.E6.A0.91.E8.8E.93.E6.B4.BE"><span class="tocnumber">2.5</span> <span class="toctext">Raspberry pi 树莓派</span></a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+<h1><span class="mw-headline" id=".E3.80.8ApcDuino.E5.BC.80.E5.8F.91.E5.AE.9E.E6.88.98.E6.8C.87.E5.8D.97.E3.80.8B">《pcDuino开发实战指南》</span></h1>
+<table>
+<tbody><tr>
+<td> 《pcDuino开发实战》发布啦！</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=6795">http://cnlearn.linksprite.com/?p=6795</a>
+</td></tr>
+<tr>
+<td>
+</td></tr></tbody></table>
+<h1><span class="mw-headline" id="pcDuino1.2F2.2F3">pcDuino1/2/3</span></h1>
+<ul><li><a rel="nofollow" class="external text" href="http://learn.linksprite.com/pcduino/the-comparation-between-pcduino3-pcduinov1-and-pcduinov2/">The Comparation between pcDuino3, pcDuinoV1 and pcDuinoV2</a></li></ul>
+<h2><span class="mw-headline" id="Tutorial_Videos">Tutorial Videos</span></h2>
+<ul><li><a rel="nofollow" class="external text" href="http://learn.linksprite.com/pcduino/quick-start/cu-csfp-140225-pcduino-introduction-part-01-overview/">CU – CSFP – 140225 – pcDuino – Introduction – Part 01: Overview</a></li>
+<li><a rel="nofollow" class="external text" href="http://learn.linksprite.com/pcduino/quick-start/cu-csfp-140225-pcduino-introduction-part-02-setup/">CU – CSFP – 140225 – pcDuino – Introduction – Part 02: Setup</a></li>
+<li><a rel="nofollow" class="external text" href="http://learn.linksprite.com/pcduino/quick-start/cu-csfp-140225-pcduino-introduction-part-03-ide/">CU – CSFP – 140225 – pcDuino – Introduction – Part 03: IDE</a></li>
+<li><a rel="nofollow" class="external text" href="http://learn.linksprite.com/pcduino/quick-start/cu-csfp-140225-pcduino-introduction-part-04-c/">CU – CSFP – 140225 – pcDuino – Introduction – Part 04: C</a></li>
+<li><a rel="nofollow" class="external text" href="http://learn.linksprite.com/pcduino/quick-start/cu-csfp-140225-pcduino-introduction-part-05-python/">CU – CSFP – 140225 – pcDuino – Introduction – Part 05: Python</a></li></ul>
+<ul><li><a rel="nofollow" class="external text" href="http://learn.linksprite.com/pcduino/quick-start/pcduino3/video-run-built-in-arduino-ide-on-pcduino3/">Run built-in Arduino IDE on pcDuino3 </a></li></ul>
+<h2><span class="mw-headline" id="Flash_New_Images">Flash New Images</span></h2>
+<ul><li><a rel="nofollow" class="external text" href="http://learn.linksprite.com/pcduino/quick-start/steps-to-flash-ubuntu-images-to-pcduino/">Steps to Flash LUbuntu Images to pcDuino1/2/3</a></li>
+<li><a rel="nofollow" class="external text" href="http://learn.linksprite.com/pcduino/quick-start/pcduino3/video-run-built-in-arduino-ide-on-pcduino3/">Run built-in Arduino IDE on pcDuino3 </a></li>
+<li><a rel="nofollow" class="external text" href="http://learn.linksprite.com/pcduino/quick-start/pcduino2-quick-start/video-create-a-production-sd-using-pcduino/">(Video) Create a production sd using pcDuino</a></li>
+<li><a rel="nofollow" class="external text" href="http://learn.linksprite.com/pcduino/quick-start/pcduino3/how-to-use-phoenixsuit-to-flash-new-image-to-pcduino3/">How to use PhoenixSuit to Flash New Image to pcDuino3</a>
+<ul><li><a rel="nofollow" class="external text" href="http://learn.linksprite.com/pcduino/quick-start/flash-kernel-using-phoenixcard-and-got-error-card-preprocess-failed-1012/">Flash Kernel using PhoenixCard and got error: “Card preprocess failed.1012″</a></li></ul></li></ul>
+<h2><span class="mw-headline" id="Quick_Start">Quick Start</span></h2>
+<h3><span class="mw-headline" id="Power">Power</span></h3>
+<ul><li><a rel="nofollow" class="external text" href="http://learn.linksprite.com/pcduino/quick-start/use-vin-on-pcduino-to-supply-power-to-pcduino123/">Use Vin on pcDuino to supply power to pcDuino1/2/3</a></li></ul>
+<h3><span class="mw-headline" id="Ubuntu">Ubuntu</span></h3>
+<h4><span class="mw-headline" id="Booting_and_NAND">Booting and NAND</span></h4>
+<ul><li><a rel="nofollow" class="external text" href="http://learn.linksprite.com/pcduino/quick-start/how-to-use-the-4g-nand-flash-for-pcduino/">How to enable full 4GB NAND Flash Memory on new batch of pcDuino</a>  (for pcDuino2 only)</li>
+<li><a rel="nofollow" class="external text" href="http://learn.linksprite.com/pcduino/quick-start/how-can-i-use-a-sd-with-large-capacity-as-my-primary-medium/">How can I use a SD with large capacity as my primary medium?</a></li>
+<li><a rel="nofollow" class="external text" href="http://learn.linksprite.com/pcduino/quick-start/how-to-check-if-pcduino-booted-from-sd-or-nand-flash-ubuntu/">How to check if pcDuino booted from SD or NAND Flash (Ubuntu)?</a> </li>
+<li><a rel="nofollow" class="external text" href="http://learn.linksprite.com/pcduino/quick-start/how-to-manupinate-nand-when-boot-from-a-sd/">How to manupinate NAND when boot from a SD?</a></li>
+<li><a rel="nofollow" class="external text" href="http://learn.linksprite.com/pcduino/quick-start/how-to-release-yourself-pcduino-system/">How to make a production SD after we have done all the work on pcDuino NAND?</a></li>
+<li><a rel="nofollow" class="external text" href="http://learn.linksprite.com/pcduino/quick-start/pcduino3/how-to-check-the-version-of-the-installed-image-on-pcduino/">How to check the version of the installed image on pcDuino?</a></li>
+<li><a rel="nofollow" class="external text" href="http://learn.linksprite.com/pcduino/pcduino-embedded-linux-development/how-to-remote-boot-pcduino-from-nfs-server/">How to remotely boot pcDuino from a NFS server</a></li></ul>
+<p><br>
+</p>
+<h2><span class="mw-headline" id="pcDuino.E5.85.A5.E9.97.A8.E6.8C.87.E5.8D.97">pcDuino入门指南</span></h2>
+<ul><li><a rel="nofollow" class="external text" href="http://cnlearn.linksprite.com/?p=1114/">如何打开pcDuino上的4GB的nand flash</a> （pcDuino2 only）</li>
+<li><a rel="nofollow" class="external text" href="http://cnlearn.linksprite.com/?p=7312">如何设置pcDuino 3 中文语言?</a></li>
+<li><a rel="nofollow" class="external text" href="http://cnlearn.linksprite.com/?p=7315">如何设置pcDuino 3 分辨率?</a></li>
+<li><a rel="nofollow" class="external text" href="http://cnlearn.linksprite.com/?p=7348">如何修改终端上的字体？</a></li>
+<li><a rel="nofollow" class="external text" href="http://cnlearn.linksprite.com/?p=4540">如何在pcDuino上面播放视频</a></li>
+<li><a rel="nofollow" class="external text" href="http://cnlearn.linksprite.com/?p=5167">如何更换pcDuino默认的键盘布局</a></li>
+<li><a rel="nofollow" class="external text" href="http://cnlearn.linksprite.com/?p=5212">在pcDuino上面怎样解压rar文件</a></li>
+<li><a rel="nofollow" class="external text" href="http://cnlearn.linksprite.com/?p=5445">如何从TF卡启动后给nand刷机</a></li>
+<li><a rel="nofollow" class="external text" href="http://cnlearn.linksprite.com/?p=7093">win8下通过USB-OTG口VNC到pcDuino3</a></li>
+<li><a rel="nofollow" class="external text" href="http://cnlearn.linksprite.com/?p=6465">如何让桌面程序开机启动</a></li>
+<li><a rel="nofollow" class="external text" href="http://cnlearn.linksprite.com/?p=1809/">pcDuino v2 硬件接口说明</a></li>
+<li><a rel="nofollow" class="external text" href="http://cnlearn.linksprite.com/?p=1632/">实现pcDuino和电力载波模块Spyder的AT指令交互</a></li>
+<li><a rel="nofollow" class="external text" href="http://cnlearn.linksprite.com/?p=1453/">在pcDuino上搭载LoL Shield</a></li></ul>
+<h3><span class="mw-headline" id="pcDuinoV3_.E8.AF.84.E6.B5.8B">pcDuinoV3 评测</span></h3>
+<table>
+<tbody><tr>
+<td> pcDuinoV3 评测（六）</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=5974">http://cnlearn.linksprite.com/?p=5974</a>
+</td></tr>
+<tr>
+<td> pcDuinoV3 评测（五）</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=5967">http://cnlearn.linksprite.com/?p=5967</a>
+</td></tr>
+<tr>
+<td> pcDuinoV3评测（四）</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=5843">http://cnlearn.linksprite.com/?p=5843</a>
+</td></tr>
+<tr>
+<td> pcDuino V3评测（一）</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=5790">http://cnlearn.linksprite.com/?p=5790</a>
+</td></tr>
+<tr>
+<td> pcDuino V3评测（二)</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=5839">http://cnlearn.linksprite.com/?p=5839</a>
+</td></tr>
+<tr>
+<td> pcDuinoV3评测（三）</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=5841">http://cnlearn.linksprite.com/?p=5841</a>
+</td></tr>
+<tr>
+<td>
+</td></tr></tbody></table>
+<h3><span class="mw-headline" id="Ubuntu_2">Ubuntu</span></h3>
+<table>
+<tbody><tr>
+<td> 第二章：pcDuino的Ubuntu 介绍</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=586">http://cnlearn.linksprite.com/?p=586</a>
+</td></tr>
+<tr>
+<td> ubuntu常用命令（文件系统和网络）</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=4733">http://cnlearn.linksprite.com/?p=4733</a>
+</td></tr>
+<tr>
+<td> ubuntu下常用的命令（软件包管理，文档编辑）</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=4727">http://cnlearn.linksprite.com/?p=4727</a>
+</td></tr>
+<tr>
+<td> ubuntu下常用的命令（用户,文件和权限）</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=4711">http://cnlearn.linksprite.com/?p=4711</a>
+</td></tr>
+<tr>
+<td> ubuntu下常用的命令（系统和设备）</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=4704">http://cnlearn.linksprite.com/?p=4704</a>
+</td></tr>
+<tr>
+<td> ubuntu cmake教程（一）hello world</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=5249">http://cnlearn.linksprite.com/?p=5249</a>
+</td></tr>
+<tr>
+<td> ubuntu cmake教程（二）处理多源文件目录</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=5255">http://cnlearn.linksprite.com/?p=5255</a>
+</td></tr>
+<tr>
+<td> ubuntu cmake教程（三）在工程中查找并使用其他程序库</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=5260">http://cnlearn.linksprite.com/?p=5260</a>
+</td></tr>
+<tr>
+<td> ubuntu cmake教程（四）生成 debug版和release版的程序</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=5265">http://cnlearn.linksprite.com/?p=5265</a>
+</td></tr>
+<tr>
+<td> 安装Lubuntu软件中心</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=6771">http://cnlearn.linksprite.com/?p=6771</a>
+</td></tr>
+<tr>
+<td> 如何让pcDuino的Lubuntu屏幕不黑屏？</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=5944">http://cnlearn.linksprite.com/?p=5944</a>
+</td></tr>
+<tr>
+<td> Ubuntu设置静态ip</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=5273">http://cnlearn.linksprite.com/?p=5273</a>
+</td></tr>
+<tr>
+<td> 利用pcDuino的PXE服务器给电脑装ubuntu系统</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=4702">http://cnlearn.linksprite.com/?p=4702</a>
+</td></tr>
+<tr>
+<td> Ubuntu下制作deb软件包</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=4692">http://cnlearn.linksprite.com/?p=4692</a>
+</td></tr>
+<tr>
+<td> Ubuntu系统下vsftpd的安装</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=4344">http://cnlearn.linksprite.com/?p=4344</a>
+</td></tr>
+<tr>
+<td> 解决 ubuntu 下载安装软件速度很慢</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=2992">http://cnlearn.linksprite.com/?p=2992</a>
+</td></tr>
+<tr>
+<td> 给pcDuino安装ubuntu（Unity）</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=1985">http://cnlearn.linksprite.com/?p=1985</a>
+</td></tr></tbody></table>
+<h4><span class="mw-headline" id=".E7.94.B5.E8.B7.AF.E5.9B.BE">电路图</span></h4>
+<table>
+<tbody><tr>
+<td> pcDuinoV1 V2 电路图</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=3675">http://cnlearn.linksprite.com/?p=3675</a>
+</td></tr>
+<tr>
+<td> pcDuino 3 电路图</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=5466">http://cnlearn.linksprite.com/?p=5466</a>
+</td></tr>
+<tr>
+<td> 如何看懂电路图</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=5242">http://cnlearn.linksprite.com/?p=5242</a>
+</td></tr></tbody></table>
+<h4><span class="mw-headline" id=".E4.B8.B2.E5.8F.A3.E8.B0.83.E8.AF.95">串口调试</span></h4>
+<table>
+<tbody><tr>
+<td> 手把手教你如何测试SERLCD1602串口屏</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=5049">http://cnlearn.linksprite.com/?p=5049</a>
+</td></tr>
+<tr>
+<td> 通过串口工具测试JUNIPER Wifi Shield for Arduino</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=5004">http://cnlearn.linksprite.com/?p=5004</a>
+</td></tr>
+<tr>
+<td> 发一个拍照速度快的串口摄像头代码</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=3974">http://cnlearn.linksprite.com/?p=3974</a>
+</td></tr>
+<tr>
+<td> 实验8：pcDuino串口实验</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=1168">http://cnlearn.linksprite.com/?p=1168</a>
+</td></tr>
+<tr>
+<td> 在Arduino上串口芯片FT232的使用方法</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=3746">http://cnlearn.linksprite.com/?p=3746</a>
+</td></tr>
+<tr>
+<td> 关于pcDuino调试串口的一些知识（五）</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=3372">http://cnlearn.linksprite.com/?p=3372</a>
+</td></tr>
+<tr>
+<td> 关于pcDuino调试串口的一些知识（四）</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=3357">http://cnlearn.linksprite.com/?p=3357</a>
+</td></tr>
+<tr>
+<td> 关于pcDuino调试串口的一些知识（三）</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=3354">http://cnlearn.linksprite.com/?p=3354</a>
+</td></tr>
+<tr>
+<td> 关于pcDuino调试串口的一些知识（一）</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=3313">http://cnlearn.linksprite.com/?p=3313</a>
+</td></tr>
+<tr>
+<td> 关于pcDuino调试串口的一些知识（二）</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=3321">http://cnlearn.linksprite.com/?p=3321</a>
+</td></tr>
+<tr>
+<td> 通过串口连接pcDuino获得IP地址信息</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=2473">http://cnlearn.linksprite.com/?p=2473</a>
+</td></tr>
+<tr>
+<td> 给pcDuino上的Arduino串口库添加printf函数</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=1997">http://cnlearn.linksprite.com/?p=1997</a>
+</td></tr>
+<tr>
+<td> pcDuino使用串口电力载波模块Spyder进行电力载波通讯</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=1888">http://cnlearn.linksprite.com/?p=1888</a>
+</td></tr>
+<tr>
+<td> 没有HDMI显示器和串口调试线，如何使用pcDuino</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=530">http://cnlearn.linksprite.com/?p=530</a>
+</td></tr>
+<tr>
+<td>
+</td></tr></tbody></table>
+<h4><span class="mw-headline" id="USB">USB</span></h4>
+<table>
+<tbody><tr>
+<td> win8下通过USB-OTG口VNC到pcDuino3</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=7093">http://cnlearn.linksprite.com/?p=7093</a>
+</td></tr>
+<tr>
+<td> 在pcDuino上面使用USB 2.0 Ethernet Adapter</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=7039">http://cnlearn.linksprite.com/?p=7039</a>
+</td></tr>
+<tr>
+<td> USB Host Shield For Arduino</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=5035">http://cnlearn.linksprite.com/?p=5035</a>
+</td></tr>
+<tr>
+<td> pcDuino实现uspip-USB网络重定向</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=4802">http://cnlearn.linksprite.com/?p=4802</a>
+</td></tr>
+<tr>
+<td> pcDuino使用USB蓝牙适配器</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=4739">http://cnlearn.linksprite.com/?p=4739</a>
+</td></tr>
+<tr>
+<td> 【BUG】pcduino V2 TTL转USB模块的接线方式 — 林靖豪（浙江大学）</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/">http://cnlearn.linksprite.com/</a>?
+<p>p=3985
+</p>
+</td></tr>
+<tr>
+<td> pcDuino V1/RaspberryPi 迷你USB无线网卡</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=2946">http://cnlearn.linksprite.com/?p=2946</a>
+</td></tr>
+<tr>
+<td> pcDuino 2.8″USB显示屏</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=2584">http://cnlearn.linksprite.com/?p=2584</a>
+</td></tr>
+<tr>
+<td> 20131126版本后，可以从PC通过USB-OTG VNC到pcDuino</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=1537">http://cnlearn.linksprite.com/?p=1537</a>
+</td></tr>
+<tr>
+<td> 通过USB OTG 远程登录SSH 连接pcDuino</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=1417">http://cnlearn.linksprite.com/?p=1417</a>
+</td></tr>
+<tr>
+<td> ARDUINO Makey Makey-Touch key USB Shield使用示例</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=904">http://cnlearn.linksprite.com/?p=904</a>
+</td></tr>
+<tr>
+<td>
+</td></tr></tbody></table>
+<h4><span class="mw-headline" id=".E5.9B.BE.E5.BD.A2.E8.BD.AC.E6.8D.A2">图形转换</span></h4>
+<table>
+<tbody><tr>
+<td> 图像取模工具Image2LCD语言转换问题</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=6511">http://cnlearn.linksprite.com/?p=6511</a>
+</td></tr>
+<tr>
+<td>
+</td></tr></tbody></table>
+<h4><span class="mw-headline" id=".E5.AF.86.E7.A0.81">密码</span></h4>
+<table>
+<tbody><tr>
+<td> 如何修改X11VNC的密码？</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=5940">http://cnlearn.linksprite.com/?p=5940</a>
+</td></tr>
+<tr>
+<td>
+</td></tr></tbody></table>
+<p><br>
+</p>
+<h4><span class="mw-headline" id="VNC_for_pcDuino">VNC for pcDuino</span></h4>
+<table>
+<tbody><tr>
+<td> win8下通过USB-OTG口VNC到pcDuino3</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=7093">http://cnlearn.linksprite.com/?p=7093</a>
+</td></tr>
+<tr>
+<td> 如何修改X11VNC的密码？</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=5940">http://cnlearn.linksprite.com/?p=5940</a>
+</td></tr>
+<tr>
+<td> 没有HDMI显示器的情况下如何查看pcduino的IP地址用来连接VNC</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=3563">http://cnlearn.linksprite.com/?p=3563</a>
+</td></tr>
+<tr>
+<td> 20131126版本后，可以从PC通过USB-OTG VNC到pcDuino</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=1537">http://cnlearn.linksprite.com/?p=1537</a>
+</td></tr>
+<tr>
+<td>
+</td></tr></tbody></table>
+<h4><span class="mw-headline" id=".E7.BA.A2.E5.A4.96">红外</span></h4>
+<table>
+<tbody><tr>
+<td> pcDuino3C 红外测试</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=6942">http://cnlearn.linksprite.com/?p=6942</a>
+</td></tr>
+<tr>
+<td> Scratch for pcDuino 课例（二）—— 红外开灯</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=6133">http://cnlearn.linksprite.com/?p=6133</a>
+</td></tr>
+<tr>
+<td> pcDuino通过Linker infrared Receive获取红外源码</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=5646">http://cnlearn.linksprite.com/?p=5646</a>
+</td></tr>
+<tr>
+<td> arduino上实现红外接发数据</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=3222">http://cnlearn.linksprite.com/?p=3222</a>
+</td></tr>
+<tr>
+<td> 在pcDuino上实现红外遥控LED开关</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=1384">http://cnlearn.linksprite.com/?p=1384</a>
+</td></tr></tbody></table>
+<h4><span class="mw-headline" id=".E6.91.84.E5.83.8F.E5.A4.B4">摄像头</span></h4>
+<table>
+<tbody><tr>
+<td> 使用GUI工具测试JPEG_TTL摄像头</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=4659">http://cnlearn.linksprite.com/?p=4659</a>
+</td></tr>
+<tr>
+<td> 在pcDuino上学习OpenCV系列教程（九）从摄像头读取视频并保存为avi</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/">http://cnlearn.linksprite.com/</a>?
+<p>p=4141
+</p>
+</td></tr>
+<tr>
+<td> 发一个拍照速度快的串口摄像头代码</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=3974">http://cnlearn.linksprite.com/?p=3974</a>
+</td></tr>
+<tr>
+<td> pcDuino+OpenCV实现人脸追踪摄像头</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=2034">http://cnlearn.linksprite.com/?p=2034</a>
+</td></tr>
+<tr>
+<td>
+</td>
+<td> Linksprite 2M TTL Camera For Arduino</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=4473">http://cnlearn.linksprite.com/?p=4473</a>
+</td></tr>
+<tr>
+<td> RaspberryPi Camera Board</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=4002">http://cnlearn.linksprite.com/?p=4002</a>
+</td></tr>
+<tr>
+<td> 关于“Arduino上用JPEG Color Camera拍照”这个帖子的代码不能再arduino IDE 1.5版本上运行的解决方法</td>
+<td>
+<p><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=3915">http://cnlearn.linksprite.com/?p=3915</a>
+</p>
+</td></tr>
+<tr>
+<td> Arduino上用JPEG Color Camera拍照</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=2655">http://cnlearn.linksprite.com/?p=2655</a>
+</td></tr>
+<tr>
+<td>
+</td></tr></tbody></table>
+<h4><span class="mw-headline" id=".E4.B8.AD.E6.96.AD">中断</span></h4>
+<table>
+<tbody><tr>
+<td> arduino中的中断函数的使用</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=4812">http://cnlearn.linksprite.com/?p=4812</a>
+</td></tr>
+<tr>
+<td> 在pcDuino上使用定时器中断</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=1845">http://cnlearn.linksprite.com/?p=1845</a>
+</td></tr>
+<tr>
+<td> 手把手教你使用pcDuino的外部中断（1）</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=1745">http://cnlearn.linksprite.com/?p=1745</a>
+</td></tr>
+<tr>
+<td> 在pcDuino上使用Arduino风格的中断处理</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=824">http://cnlearn.linksprite.com/?p=824</a>
+</td></tr>
+<tr>
+<td> 如何在pcDuino上为外部中断做内核驱动</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=816">http://cnlearn.linksprite.com/?p=816</a>
+</td></tr>
+<tr>
+<td>
+</td></tr></tbody></table>
+<h4><span class="mw-headline" id=".E8.AF.AD.E9.9F.B3_.26_.E9.9F.B3.E9.A2.91">语音 &amp; 音频</span></h4>
+<table>
+<tbody><tr>
+<td> 修改pcDuino默认音频输出</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=7143">http://cnlearn.linksprite.com/?p=7143</a>
+</td></tr>
+<tr>
+<td> ISD1820语音模块</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=6550">http://cnlearn.linksprite.com/?p=6550</a>
+</td></tr>
+<tr>
+<td> 【原创帖子】Mac用户的福音 关于如何用Mac进行开发 – 王宇（西安邮电大学）</td>
+<td>
+<p><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=4921">http://cnlearn.linksprite.com/?p=4921</a>
+</p>
+</td></tr>
+<tr>
+<td> 在pcDuino上面控制声音</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=4208">http://cnlearn.linksprite.com/?p=4208</a>
+</td></tr>
+<tr>
+<td> pcDuino粉丝的福音–0906版本默认打开opengl</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=776">http://cnlearn.linksprite.com/?p=776</a>
+</td></tr>
+<tr>
+<td> 在pcDuino使用开源的语音识别Sphinx</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=548">http://cnlearn.linksprite.com/?p=548</a>
+</td></tr>
+<tr>
+<td>
+</td></tr></tbody></table>
+<h4><span class="mw-headline" id=".E6.97.B6.E9.92.9F_RTC.3D">时钟 RTC=</span></h4>
+<table>
+<tbody><tr>
+<td> pcDuino上使用Linker RTC</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=4024">http://cnlearn.linksprite.com/?p=4024</a>
+</td></tr>
+<tr>
+<td> arduino上使用Linker_RTC</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=3842">http://cnlearn.linksprite.com/?p=3842</a>
+</td></tr>
+<tr>
+<td> 给pcDuino加一个RTC模块</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=377">http://cnlearn.linksprite.com/?p=377</a>
+</td></tr>
+<tr>
+<td>
+</td></tr></tbody></table>
+<h4><span class="mw-headline" id=".E9.94.AE.E7.9B.98">键盘</span></h4>
+<table>
+<tbody><tr>
+<td> pcDuino上虚拟鼠标键盘编程</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=7058">http://cnlearn.linksprite.com/?p=7058</a>
+</td></tr>
+<tr>
+<td> SYNERGY共享电脑的鼠标键盘给pcDuino</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=6895">http://cnlearn.linksprite.com/?p=6895</a>
+</td></tr>
+<tr>
+<td> 如何更换pcDuino默认的键盘布局</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=5167">http://cnlearn.linksprite.com/?p=5167</a>
+</td></tr>
+<tr>
+<td> 给pcDuino装屏幕键盘–软键盘</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=1930">http://cnlearn.linksprite.com/?p=1930</a>
+</td></tr>
+<tr>
+<td> 用pcDuino的otg做鼠标键盘</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=1531">http://cnlearn.linksprite.com/?p=1531</a>
+</td></tr>
+<tr>
+<td>
+</td></tr></tbody></table>
+<h4><span class="mw-headline" id=".E5.B1.8F.E5.B9.95">屏幕</span></h4>
+<table>
+<tbody><tr>
+<td> 在pcDuino上面使用7寸电容屏</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=7174">http://cnlearn.linksprite.com/?p=7174</a>
+</td></tr>
+<tr>
+<td> 如何让pcDuino的Lubuntu屏幕不黑屏？</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=5944">http://cnlearn.linksprite.com/?p=5944</a>
+</td></tr>
+<tr>
+<td> 手把手教你如何测试SERLCD1602串口屏</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=5049">http://cnlearn.linksprite.com/?p=5049</a>
+</td></tr>
+<tr>
+<td> 给pcDuino上安装录屏软件</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=3276">http://cnlearn.linksprite.com/?p=3276</a>
+</td></tr>
+<tr>
+<td> pcDuino 2.8″USB显示屏</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=2584">http://cnlearn.linksprite.com/?p=2584</a>
+</td></tr>
+<tr>
+<td> 给pcDuino装屏幕键盘–软键盘</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=1930">http://cnlearn.linksprite.com/?p=1930</a>
+</td></tr>
+<tr>
+<td>
+</td></tr></tbody></table>
+<p><br>
+</p>
+<h4><span class="mw-headline" id="OpenWRT">OpenWRT</span></h4>
+<table>
+<tbody><tr>
+<td> 移植OpenWrt到CuHead Pro WiFi</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=4550">http://cnlearn.linksprite.com/?p=4550</a>
+</td></tr>
+<tr>
+<td> 为pcDuino安装OpenWrt</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=2724">http://cnlearn.linksprite.com/?p=2724</a>
+</td></tr>
+<tr>
+<td>
+</td></tr></tbody></table>
+<h4><span class="mw-headline" id="GPS">GPS</span></h4>
+<table>
+<tbody><tr>
+<td> GPS V2B Shield For pcDuino</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=5448">http://cnlearn.linksprite.com/?p=5448</a>
+</td></tr>
+<tr>
+<td> GPS数据格式</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=5215">http://cnlearn.linksprite.com/?p=5215</a>
+</td></tr>
+<tr>
+<td> Arduino上使用GPS shield V2-B</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=5193">http://cnlearn.linksprite.com/?p=5193</a>
+</td></tr>
+<tr>
+<td> 在pcDuino上使用GPS Shield</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=829">http://cnlearn.linksprite.com/?p=829</a>
+</td></tr>
+<tr>
+<td>
+</td></tr></tbody></table>
+<p><br>
+</p>
+<h4><span class="mw-headline" id="3D_.E6.89.93.E5.8D.B0.E6.9C.BA">3D 打印机</span></h4>
+<table>
+<tbody><tr>
+<td> 3D打印pcDuino3盒子</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=7163">http://cnlearn.linksprite.com/?p=7163</a>
+</td></tr>
+<tr>
+<td> 3D打印pcDuino V2盒子</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=7114">http://cnlearn.linksprite.com/?p=7114</a>
+</td></tr>
+<tr>
+<td> DIY的虚拟现实眼镜-3Dioo</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=6592">http://cnlearn.linksprite.com/?p=6592</a>
+</td></tr>
+<tr>
+<td> 3D打印Linker kit盒子</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=2111">http://cnlearn.linksprite.com/?p=2111</a>
+</td></tr>
+<tr>
+<td> 在pcDuino上安装3D打印机控制软件</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=1281">http://cnlearn.linksprite.com/?p=1281</a>
+</td></tr>
+<tr>
+<td> 用Solidworks制作3D打印所需STL文件</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=779">http://cnlearn.linksprite.com/?p=779</a>
+</td></tr>
+<tr>
+<td> 3D打印pcDuino盒子</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=522">http://cnlearn.linksprite.com/?p=522</a>
+</td></tr>
+<tr>
+<td> 几款主流的3D打印机控制板对比</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=236">http://cnlearn.linksprite.com/?p=236</a>
+</td></tr>
+<tr>
+<td>
+</td></tr></tbody></table>
+<h4><span class="mw-headline" id=".E7.BD.91.E7.BB.9C.E8.BF.9E.E6.8E.A5">网络连接</span></h4>
+<h5><span class="mw-headline" id=".E8.93.9D.E7.89.99">蓝牙</span></h5>
+<table>
+<tbody><tr>
+<td> pcDuino使用USB蓝牙适配器</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=4739">http://cnlearn.linksprite.com/?p=4739</a>
+</td></tr>
+<tr>
+<td> 手机与pcDuino蓝牙通讯</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=1899">http://cnlearn.linksprite.com/?p=1899</a>
+</td></tr>
+
+<tr>
+<td>
+</td></tr></tbody></table>
+<h5><span class="mw-headline" id=".E7.BD.91.E7.BB.9C">网络</span></h5>
+<table>
+<tbody><tr>
+<td> pcDuino实现uspip-USB网络重定向</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=4802">http://cnlearn.linksprite.com/?p=4802</a>
+</td></tr>
+<tr>
+<td> ubuntu常用命令（文件系统和网络）</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=4733">http://cnlearn.linksprite.com/?p=4733</a>
+</td></tr>
+<tr>
+<td> 在pcduino上实现网络打印服务器</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=4359">http://cnlearn.linksprite.com/?p=4359</a>
+</td></tr>
+<tr>
+<td> Linux网络编程</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=141">http://cnlearn.linksprite.com/?p=141</a>
+</td></tr>
+<tr>
+<td>
+</td></tr></tbody></table>
+<h5><span class="mw-headline" id="Xbee">Xbee</span></h5>
+<table>
+<tbody><tr>
+<td> Spruce+XBEE+LCD通信的UHF RFID Reader</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=2402">http://cnlearn.linksprite.com/?p=2402</a>
+</td></tr>
+<tr>
+<td> 在pcduino上搭载Xbee Shield</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=1366">http://cnlearn.linksprite.com/?p=1366</a>
+</td></tr>
+<tr>
+<td> Xbee 从Zigbee转移到 WiFi： XBee Wi-Fi S6 vs. S6B</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=232">http://cnlearn.linksprite.com/?p=232</a>
+</td></tr>
+<tr>
+<td>
+</td></tr></tbody></table>
+<h5><span class="mw-headline" id="3G">3G</span></h5>
+<table>
+<tbody><tr>
+<td> pcDuino+3G上网+AP</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=2004">http://cnlearn.linksprite.com/?p=2004</a>
+</td></tr>
+<tr>
+<td>
+</td></tr></tbody></table>
+<p><br>
+</p>
+<h4><span class="mw-headline" id=".E8.BD.AF.E4.BB.B6">软件</span></h4>
+<table>
+<tbody><tr>
+<td> 安装Lubuntu软件中心</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=6771">http://cnlearn.linksprite.com/?p=6771</a>
+</td></tr>
+<tr>
+<td> 几种软件滤波算法的比较</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=5261">http://cnlearn.linksprite.com/?p=5261</a>
+</td></tr>
+<tr>
+<td> Java为pcDuino制做简单局域网聊天软件</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=4796">http://cnlearn.linksprite.com/?p=4796</a>
+</td></tr>
+<tr>
+<td> ubuntu下常用的命令（软件包管理，文档编辑）</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=4727">http://cnlearn.linksprite.com/?p=4727</a>
+</td></tr>
+<tr>
+<td> Ubuntu下制作deb软件包</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=4692">http://cnlearn.linksprite.com/?p=4692</a>
+</td></tr>
+<tr>
+<td> 在pcDuino上学习ROS系统初级开发（四）编译ROS软件包</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=4284">http://cnlearn.linksprite.com/?p=4284</a>
+</td></tr>
+<tr>
+<td> 在pcDuino上学习ROS系统初级开发（三）创建ROS软件包</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=4272">http://cnlearn.linksprite.com/?p=4272</a>
+</td></tr>
+<tr>
+<td> 给pcDuino上安装录屏软件</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=3276">http://cnlearn.linksprite.com/?p=3276</a>
+</td></tr>
+<tr>
+<td> 解决 ubuntu 下载安装软件速度很慢</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=2992">http://cnlearn.linksprite.com/?p=2992</a>
+</td></tr>
+<tr>
+<td> 在pcDuino上安装3D打印机控制软件</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=1281">http://cnlearn.linksprite.com/?p=1281</a>
+</td></tr>
+<tr>
+<td> pcDuino 软件包更新清单 2013-08-06</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=517">http://cnlearn.linksprite.com/?p=517</a>
+</td></tr>
+<tr>
+<td> 如何用Fritzing软件来画电路</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=185">http://cnlearn.linksprite.com/?p=185</a>
+</td></tr>
+<tr>
+<td> 第一章:pcDuino的硬件和软件</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=183">http://cnlearn.linksprite.com/?p=183</a>
+</td></tr>
+<tr>
+<td>
+</td></tr></tbody></table>
+<h4><span class="mw-headline" id="A20">A20</span></h4>
+<table>
+<tbody><tr>
+<td> 发一个全志A10芯片内部的启动代码(BROM)</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=4356">http://cnlearn.linksprite.com/?p=4356</a>
+</td></tr>
+<tr>
+<td> 手把手教你用pcDuino的A10点灯</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=1556">http://cnlearn.linksprite.com/?p=1556</a>
+</td></tr>
+<tr>
+<td>
+</td></tr></tbody></table>
+<h4><span class="mw-headline" id=".E9.A1.B9.E7.9B.AEProject">项目Project</span></h4>
+<h5><span class="mw-headline" id=".E6.A1.8C.E9.9D.A2">桌面</span></h5>
+<table>
+<tbody><tr>
+<td> 如何让桌面程序开机启动</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=6465">http://cnlearn.linksprite.com/?p=6465</a>
+</td></tr>
+<tr>
+<td>
+</td></tr></tbody></table>
+<h5><span class="mw-headline" id=".E5.9C.A8pcDuino.E4.B8.8A.E5.AD.A6.E4.B9.A0OpenCV.E7.B3.BB.E5.88.97.E6.95.99.E7.A8.8B">在pcDuino上学习OpenCV系列教程</span></h5>
+<table>
+<tbody><tr>
+<td> 在pcDuino上学习OpenCV系列教程（11）点的数组</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=4152">http://cnlearn.linksprite.com/?p=4152</a>
+</td></tr>
+<tr>
+<td> 在pcDuino上学习OpenCV系列教程(十)数据类型</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=4149">http://cnlearn.linksprite.com/?p=4149</a>
+</td></tr>
+<tr>
+<td> 在pcDuino上学习OpenCV系列教程（九）从摄像头读取视频并保存为avi</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/">http://cnlearn.linksprite.com/</a>?
+<p>p=4141
+</p>
+</td></tr>
+<tr>
+<td> 在pcDuino上学习OpenCV系列教程（八）一个复杂的变换</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=4138">http://cnlearn.linksprite.com/?p=4138</a>
+</td></tr>
+<tr>
+<td> 在pcDuino上学习OpenCV系列教程（七）滤波介绍</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=4129">http://cnlearn.linksprite.com/?p=4129</a>
+</td></tr>
+<tr>
+<td> 在pcDuino上学习OpenCV系列教程(六)一个简单的变换</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=4119">http://cnlearn.linksprite.com/?p=4119</a>
+</td></tr>
+<tr>
+<td> 在pcDuino上学习OpenCV系列教程(五)开发一个视频播放器</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=4112">http://cnlearn.linksprite.com/?p=4112</a>
+</td></tr>
+<tr>
+<td> 在pcDuino上学习OpenCV系列教程（二）安装OpenCV</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=4093">http://cnlearn.linksprite.com/?p=4093</a>
+</td></tr>
+<tr>
+<td> 在pcDuino上学习OpenCV系列教程（一）安装ffmpeg</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=4084">http://cnlearn.linksprite.com/?p=4084</a>
+</td></tr>
+<tr>
+<td> 在pcDuino上学习OpenCV系列教程（四）播放avi文件</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=3355">http://cnlearn.linksprite.com/?p=3355</a>
+</td></tr>
+<tr>
+<td> 在pcDuino上学习OpenCV系列教程（三）显示图像</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=3307">http://cnlearn.linksprite.com/?p=3307</a>
+</td></tr>
+<tr>
+<td> pcDuino+OpenCV实现人脸追踪摄像头</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=2034">http://cnlearn.linksprite.com/?p=2034</a>
+</td></tr>
+<tr>
+<td> 第五章： pcDuino上面安装和测试SimpleCV以及OpenCV</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=719">http://cnlearn.linksprite.com/?p=719</a>
+</td></tr>
+<tr>
+<td>
+</td></tr></tbody></table>
+<h5><span class="mw-headline" id=".E8.AF.AD.E9.9F.B3_.26_.E9.9F.B3.E9.A2.91_2">语音 &amp; 音频</span></h5>
+<table>
+<tbody><tr>
+<td> 修改pcDuino默认音频输出</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=7143">http://cnlearn.linksprite.com/?p=7143</a>
+</td></tr>
+<tr>
+<td> ISD1820语音模块</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=6550">http://cnlearn.linksprite.com/?p=6550</a>
+</td></tr>
+<tr>
+<td> 【原创帖子】Mac用户的福音 关于如何用Mac进行开发 – 王宇（西安邮电大学）</td>
+<td>
+<p><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=4921">http://cnlearn.linksprite.com/?p=4921</a>
+</p>
+</td></tr>
+<tr>
+<td> 在pcDuino上面控制声音</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=4208">http://cnlearn.linksprite.com/?p=4208</a>
+</td></tr>
+<tr>
+<td> pcDuino粉丝的福音–0906版本默认打开opengl</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=776">http://cnlearn.linksprite.com/?p=776</a>
+</td></tr>
+<tr>
+<td> 在pcDuino使用开源的语音识别Sphinx</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=548">http://cnlearn.linksprite.com/?p=548</a>
+</td></tr>
+<tr>
+<td>
+</td></tr></tbody></table>
+<h5><span class="mw-headline" id="3D_.E6.89.93.E5.8D.B0.E6.9C.BA_2">3D 打印机</span></h5>
+<table>
+<tbody><tr>
+<td> 3D打印pcDuino3盒子</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=7163">http://cnlearn.linksprite.com/?p=7163</a>
+</td></tr>
+<tr>
+<td> 3D打印pcDuino V2盒子</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=7114">http://cnlearn.linksprite.com/?p=7114</a>
+</td></tr>
+<tr>
+<td> DIY的虚拟现实眼镜-3Dioo</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=6592">http://cnlearn.linksprite.com/?p=6592</a>
+</td></tr>
+<tr>
+<td> 3D打印Linker kit盒子</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=2111">http://cnlearn.linksprite.com/?p=2111</a>
+</td></tr>
+<tr>
+<td> 在pcDuino上安装3D打印机控制软件</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=1281">http://cnlearn.linksprite.com/?p=1281</a>
+</td></tr>
+<tr>
+<td> 用Solidworks制作3D打印所需STL文件</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=779">http://cnlearn.linksprite.com/?p=779</a>
+</td></tr>
+<tr>
+<td> 3D打印pcDuino盒子</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=522">http://cnlearn.linksprite.com/?p=522</a>
+</td></tr>
+<tr>
+<td> 几款主流的3D打印机控制板对比</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=236">http://cnlearn.linksprite.com/?p=236</a>
+</td></tr>
+<tr>
+<td>
+</td></tr></tbody></table>
+<h5><span class="mw-headline" id=".E6.B8.B8.E6.88.8F">游戏</span></h5>
+<table>
+<tbody><tr>
+<td> tty-solitaire</td>
+<td><a rel="nofollow" class="external free" href="http://learn.linksprite.com/pcduino/showcase/game/tty-solitaire/">http://learn.linksprite.com/pcduino/showcase/game/tty-solitaire/</a>
+</td></tr>
+<tr>
+<td> robotfindskitten</td>
+<td><a rel="nofollow" class="external free" href="http://learn.linksprite.com/pcduino/showcase/game/robotfindskitten/">http://learn.linksprite.com/pcduino/showcase/game/robotfindskitten/</a>
+</td></tr>
+<tr>
+<td> Bastet</td>
+<td><a rel="nofollow" class="external free" href="http://learn.linksprite.com/pcduino/showcase/game/bastet/">http://learn.linksprite.com/pcduino/showcase/game/bastet/</a>
+</td></tr>
+<tr>
+<td> Greed</td>
+<td><a rel="nofollow" class="external free" href="http://learn.linksprite.com/pcduino/showcase/game/greed/">http://learn.linksprite.com/pcduino/showcase/game/greed/</a>
+</td></tr>
+<tr>
+<td> 2048.c</td>
+<td><a rel="nofollow" class="external free" href="http://learn.linksprite.com/pcduino/showcase/game/2048/">http://learn.linksprite.com/pcduino/showcase/game/2048/</a>
+</td></tr>
+<tr>
+<td> Tetris</td>
+<td><a rel="nofollow" class="external free" href="http://learn.linksprite.com/pcduino/showcase/game/tetris/">http://learn.linksprite.com/pcduino/showcase/game/tetris/</a>
+</td></tr>
+<tr>
+<td> Worm – Snake(game)</td>
+<td><a rel="nofollow" class="external free" href="http://learn.linksprite.com/pcduino/showcase/game/worm-snakegame/">http://learn.linksprite.com/pcduino/showcase/game/worm-snakegame/</a>
+</td></tr>
+<tr>
+<td> Backgammon</td>
+<td><a rel="nofollow" class="external free" href="http://learn.linksprite.com/pcduino/showcase/game/backgammon/">http://learn.linksprite.com/pcduino/showcase/game/backgammon/</a>
+</td></tr>
+<tr>
+<td> Moon-buggy</td>
+<td><a rel="nofollow" class="external free" href="http://learn.linksprite.com/pcduino/showcase/game/moon-buggy/">http://learn.linksprite.com/pcduino/showcase/game/moon-buggy/</a>
+</td></tr>
+<tr>
+<td> nInvaders</td>
+<td><a rel="nofollow" class="external free" href="http://learn.linksprite.com/pcduino/showcase/game/how-to-play-ninvaders-on-pcduino-">http://learn.linksprite.com/pcduino/showcase/game/how-to-play-ninvaders-on-pcduino-</a>
+<p>ubuntu/
+</p>
+</td></tr>
+<tr>
+<td> How to play Pac-Man on pcDuino Ubuntu</td>
+<td><a rel="nofollow" class="external free" href="http://learn.linksprite.com/pcduino/showcase/game/how-to-">http://learn.linksprite.com/pcduino/showcase/game/how-to-</a>
+<p>play-pac-man-on-pcduino-ubuntu/
+</p>
+</td></tr>
+<tr>
+<td>
+</td></tr></tbody></table>
+<h5><span class="mw-headline" id="Arduino.E5.9F.BA.E7.A1.80.E5.99.A8.E4.BB.B6.E7.9A.84.E7.94.A8.E6.B3.95.E5.9B.BE">Arduino基础器件的用法图</span></h5>
+<table>
+<tbody><tr>
+<td> Arduino基础器件的用法图(二十六)</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=5591">http://cnlearn.linksprite.com/?p=5591</a>
+</td></tr>
+<tr>
+<td> Arduino基础器件的用法图(二十五)</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=5588">http://cnlearn.linksprite.com/?p=5588</a>
+</td></tr>
+<tr>
+<td> Arduino基础器件的用法图(二十四)</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=5585">http://cnlearn.linksprite.com/?p=5585</a>
+</td></tr>
+<tr>
+<td> Arduino基础器件的用法图(二十三)</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=5582">http://cnlearn.linksprite.com/?p=5582</a>
+</td></tr>
+<tr>
+<td>
+<pre>Arduino基础器件的用法图(二十二)||<a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=5579">http://cnlearn.linksprite.com/?p=5579</a>
+</pre>
+</td></tr>
+<tr>
+<td> Arduino基础器件的用法图(二十一)</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=5576">http://cnlearn.linksprite.com/?p=5576</a>
+</td></tr>
+<tr>
+<td> Arduino基础器件的用法图(二十)</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=5573">http://cnlearn.linksprite.com/?p=5573</a>
+</td></tr>
+<tr>
+<td> Arduino基础器件的用法图(十九)</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=5570">http://cnlearn.linksprite.com/?p=5570</a>
+</td></tr>
+<tr>
+<td> Arduino基础器件的用法图(十八)</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=5567">http://cnlearn.linksprite.com/?p=5567</a>
+</td></tr>
+<tr>
+<td> Arduino基础器件的用法图(十七)</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=5564">http://cnlearn.linksprite.com/?p=5564</a>
+</td></tr>
+<tr>
+<td> Arduino基础器件的用法图(十六)</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=5364">http://cnlearn.linksprite.com/?p=5364</a>
+</td></tr>
+<tr>
+<td> Arduino基础器件的用法图(十五)</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=5361">http://cnlearn.linksprite.com/?p=5361</a>
+</td></tr>
+<tr>
+<td> Arduino基础器件的用法图(十四)</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=5358">http://cnlearn.linksprite.com/?p=5358</a>
+</td></tr>
+<tr>
+<td> Arduino基础器件的用法图(十三)</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=5355">http://cnlearn.linksprite.com/?p=5355</a>
+</td></tr>
+<tr>
+<td> Arduino基础器件的用法图(十二)</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=5352">http://cnlearn.linksprite.com/?p=5352</a>
+</td></tr>
+<tr>
+<td> Arduino基础器件的用法图(十一)</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=5349">http://cnlearn.linksprite.com/?p=5349</a>
+</td></tr>
+<tr>
+<td> Arduino基础器件的用法图(十)</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=5346">http://cnlearn.linksprite.com/?p=5346</a>
+</td></tr>
+<tr>
+<td> Arduino基础器件的用法图(九)</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=5343">http://cnlearn.linksprite.com/?p=5343</a>
+</td></tr>
+<tr>
+<td> Arduino基础器件的用法图(八)</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=5340">http://cnlearn.linksprite.com/?p=5340</a>
+</td></tr>
+<tr>
+<td> Arduino基础器件的用法图(七)</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=5337">http://cnlearn.linksprite.com/?p=5337</a>
+</td></tr>
+<tr>
+<td> Arduino基础器件的用法图(六)</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=5141">http://cnlearn.linksprite.com/?p=5141</a>
+</td></tr>
+<tr>
+<td> Arduino基础器件的用法图(五)</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=5138">http://cnlearn.linksprite.com/?p=5138</a>
+</td></tr>
+<tr>
+<td> Arduino基础器件的用法图(四)</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=5135">http://cnlearn.linksprite.com/?p=5135</a>
+</td></tr>
+<tr>
+<td> Arduino基础器件的用法图(三)</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=5132">http://cnlearn.linksprite.com/?p=5132</a>
+</td></tr>
+<tr>
+<td> Arduino基础器件的用法图(二)</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=5127">http://cnlearn.linksprite.com/?p=5127</a>
+</td></tr>
+<tr>
+<td> Arduino基础器件的用法图(一)</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=5124">http://cnlearn.linksprite.com/?p=5124</a>
+</td></tr></tbody></table>
+<p><br>
+</p>
+<h5><span class="mw-headline" id="ROS.28.E6.9C.BA.E5.99.A8.E4.BA.BA.E6.93.8D.E4.BD.9C.E7.B3.BB.E7.BB.9F.29">ROS(机器人操作系统)</span></h5>
+<table>
+<tbody><tr>
+<td> 在pcDuino上学习ROS系统初级开发（五）理解ROS的节点</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=4336">http://cnlearn.linksprite.com/?p=4336</a>
+</td></tr>
+<tr>
+<td> 在pcDuino上学习ROS系统初级开发（四）编译ROS软件包</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=4284">http://cnlearn.linksprite.com/?p=4284</a>
+</td></tr>
+<tr>
+<td> 在pcDuino上学习ROS系统初级开发（三）创建ROS软件包</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=4272">http://cnlearn.linksprite.com/?p=4272</a>
+</td></tr>
+<tr>
+<td> 在pcDuino上学习ROS系统初级开发（二）操作ROS文件系统</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=4264">http://cnlearn.linksprite.com/?p=4264</a>
+</td></tr>
+<tr>
+<td> 在pcDuino上学习ROS系统初级开发（一）搭建开发环境</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=4257">http://cnlearn.linksprite.com/?p=4257</a>
+</td></tr>
+<tr>
+<td> 在pcDuino内安装ROS Groovy</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=4181">http://cnlearn.linksprite.com/?p=4181</a>
+</td></tr>
+<tr>
+<td>
+</td></tr></tbody></table>
+<p><br>
+</p>
+<h5><span class="mw-headline" id="pcDuino_V3.E5.BC.80.E5.8F.91BSP">pcDuino V3开发BSP</span></h5>
+<table>
+<tbody><tr>
+<td> pcDuino V3开发BSP（五）开启双核</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=7025">http://cnlearn.linksprite.com/?p=7025</a>
+</td></tr>
+<tr>
+<td> pcDuino V3开发BSP（四）用TFTP启动内核</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=7021">http://cnlearn.linksprite.com/?p=7021</a>
+</td></tr>
+<tr>
+<td> pcDuino V3开发BSP（三）构建根文件系统</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=7012">http://cnlearn.linksprite.com/?p=7012</a>
+</td></tr>
+<tr>
+<td> pcDuino V3开发BSP（二）移植linux-3.15</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=7005">http://cnlearn.linksprite.com/?p=7005</a>
+</td></tr>
+<tr>
+<td> pcDuino V3开发BSP（一）移植u-boot-2014-04</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=6997">http://cnlearn.linksprite.com/?p=6997</a>
+</td></tr></tbody></table>
+<h5><span class="mw-headline" id="pcDuino.E8.A7.86.E9.A2.91.E6.9C.8D.E5.8A.A1.E5.99.A8">pcDuino视频服务器</span></h5>
+<table>
+<tbody><tr>
+<td> pcDuino视频服务器（四）Linux V4L2编程详解</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=6923">http://cnlearn.linksprite.com/?p=6923</a>
+</td></tr>
+<tr>
+<td> pcDuino视频服务器（三）视频点播直播服务器</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=6917">http://cnlearn.linksprite.com/?p=6917</a>
+</td></tr>
+<tr>
+<td> pcDuino视频服务器（二）使用ffmpeg</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=6915">http://cnlearn.linksprite.com/?p=6915</a>
+</td></tr>
+<tr>
+<td> pcDuino视频服务器（一）搭建视频服务器</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=6908">http://cnlearn.linksprite.com/?p=6908</a>
+</td></tr>
+<tr>
+<td>
+</td></tr></tbody></table>
+<h5><span class="mw-headline" id="Arduino.2FpcDuino_.E6.BB.A4.E6.B3.A2.E7.AE.97.E6.B3.95.E7.A8.8B.E5.BA.8F">Arduino/pcDuino 滤波算法程序</span></h5>
+<table>
+<tbody><tr>
+<td> Arduino/pcDuino 滤波算法程序（十）</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=5889">http://cnlearn.linksprite.com/?p=5889</a>
+</td></tr>
+<tr>
+<td> Arduino/pcDuino 滤波算法程序（九）</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=5887">http://cnlearn.linksprite.com/?p=5887</a>
+</td></tr>
+<tr>
+<td> Arduino/pcDuino 滤波算法程序（八）</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=5885">http://cnlearn.linksprite.com/?p=5885</a>
+</td></tr>
+<tr>
+<td> Arduino/pcDuino 滤波算法程序（七）</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=5883">http://cnlearn.linksprite.com/?p=5883</a>
+</td></tr>
+<tr>
+<td> Arduino/pcDuino 滤波算法程序（六）</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=5878">http://cnlearn.linksprite.com/?p=5878</a>
+</td></tr>
+<tr>
+<td> Arduino/pcDuino 滤波算法程序（五）</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=5875">http://cnlearn.linksprite.com/?p=5875</a>
+</td></tr>
+<tr>
+<td> Arduino/pcDuino 滤波算法程序（四）</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=5873">http://cnlearn.linksprite.com/?p=5873</a>
+</td></tr>
+<tr>
+<td> Arduino/pcDuino 滤波算法程序（三）</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=5871">http://cnlearn.linksprite.com/?p=5871</a>
+</td></tr>
+<tr>
+<td> Arduino/pcDuino 滤波算法程序（二）</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=5868">http://cnlearn.linksprite.com/?p=5868</a>
+</td></tr>
+<tr>
+<td> Arduino/pcDuino 滤波算法程序（一）</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=5864">http://cnlearn.linksprite.com/?p=5864</a>
+</td></tr>
+<tr>
+<td>
+</td></tr></tbody></table>
+<h4><span class="mw-headline" id=".E5.BA.94.E7.94.A8">应用</span></h4>
+<h5><span class="mw-headline" id="MadPlayer_with_arduino">MadPlayer with arduino</span></h5>
+<table>
+<tbody><tr>
+<td> MadPlayer with arduino（八）给MadPlayer添加link kit</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=5929">http://cnlearn.linksprite.com/?p=5929</a>
+</td></tr>
+<tr>
+<td> MadPlayer with arduino（七）修改Madplayer工程</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=5925">http://cnlearn.linksprite.com/?p=5925</a>
+</td></tr>
+<tr>
+<td> MadPlayer with arduino（六）c_environment修改</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=5922">http://cnlearn.linksprite.com/?p=5922</a>
+</td></tr>
+<tr>
+<td> MadPlayer with arduino（五）歌曲控制方法</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=5916">http://cnlearn.linksprite.com/?p=5916</a>
+</td></tr>
+<tr>
+<td> MadPlayer with arduino（四）终端设置</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=5906">http://cnlearn.linksprite.com/?p=5906</a>
+</td></tr>
+<tr>
+<td> MadPlayer with arduino（三）Madplayer播放器部分</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=5895">http://cnlearn.linksprite.com/?p=5895</a>
+</td></tr>
+<tr>
+<td> MadPlayer with Arduino（二）MadPlayer整体架构</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=5882">http://cnlearn.linksprite.com/?p=5882</a>
+</td></tr>
+<tr>
+<td> MadPlayer with Arduino(一)下载安装MadPlayer</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=5870">http://cnlearn.linksprite.com/?p=5870</a>
+</td></tr></tbody></table>
+<p><br>
+</p>
+<h5><span class="mw-headline" id=".E5.9C.A8Arduino.E4.B8.8A">在Arduino上</span></h5>
+<table>
+<tbody><tr>
+<td> 在Arduino上使用电子纸模块</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=7081">http://cnlearn.linksprite.com/?p=7081</a>
+</td></tr>
+<tr>
+<td> 在Arduino上测试Circular LED</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=5652">http://cnlearn.linksprite.com/?p=5652</a>
+</td></tr>
+<tr>
+<td> 在Arduino上使用空气质量传感器</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=5486">http://cnlearn.linksprite.com/?p=5486</a>
+</td></tr>
+<tr>
+<td> 在Arduino上测试RS485模块之通讯中接收数据的控制</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=5430">http://cnlearn.linksprite.com/?p=5430</a>
+</td></tr>
+<tr>
+<td> 在Arduino上测试RS485模块之通讯测试</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=5422">http://cnlearn.linksprite.com/?p=5422</a>
+</td></tr>
+<tr>
+<td> 在Arduino_UNO上使用NFC_PN532</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=5016">http://cnlearn.linksprite.com/?p=5016</a>
+</td></tr>
+<tr>
+<td> 在arduino上使用水位传感器</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=4882">http://cnlearn.linksprite.com/?p=4882</a>
+</td></tr>
+<tr>
+<td> 在arduino上使用Color Image LCD Shield for Arduino</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=4605">http://cnlearn.linksprite.com/?p=4605</a>
+</td></tr>
+<tr>
+<td> 在Arduino上使用三轴数字加速度计（ADXL345）模块</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=4170">http://cnlearn.linksprite.com/?p=4170</a>
+</td></tr>
+<tr>
+<td> 在Arduino上使用电平转换模块</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=4075">http://cnlearn.linksprite.com/?p=4075</a>
+</td></tr>
+<tr>
+<td> 在Arduino上使用8*8*8 RGB Led cube</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=4058">http://cnlearn.linksprite.com/?p=4058</a>
+</td></tr>
+<tr>
+<td> 在Arduino上使用三轴加速度传感器（ADXL330K）模块</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=3757">http://cnlearn.linksprite.com/?p=3757</a>
+</td></tr>
+<tr>
+<td> 在Arduino上串口芯片FT232的使用方法</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=3746">http://cnlearn.linksprite.com/?p=3746</a>
+</td></tr>
+<tr>
+<td> 在Arduino上面试用路障传感器模块</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=3726">http://cnlearn.linksprite.com/?p=3726</a>
+</td></tr>
+<tr>
+<td> 在Arduino上使用路径传感器</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=3702">http://cnlearn.linksprite.com/?p=3702</a>
+</td></tr>
+<tr>
+<td> 在Arduino上面使用震动开关模块</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=3651">http://cnlearn.linksprite.com/?p=3651</a>
+</td></tr>
+<tr>
+<td> 在Arduino上使用电位器模块</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=3581">http://cnlearn.linksprite.com/?p=3581</a>
+</td></tr>
+<tr>
+<td> 在Arduino上使用光照强度传感器</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=3571">http://cnlearn.linksprite.com/?p=3571</a>
+</td></tr>
+<tr>
+<td> 在Arduino上使用火焰传感器</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=3553">http://cnlearn.linksprite.com/?p=3553</a>
+</td></tr>
+<tr>
+<td> 在Arduino上使用电位器</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=3182">http://cnlearn.linksprite.com/?p=3182</a>
+</td></tr>
+<tr>
+<td> 在Arduino上使用烟雾传感器</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=3167">http://cnlearn.linksprite.com/?p=3167</a>
+</td></tr>
+<tr>
+<td> Linksprite Lcd1602 V2 在arduino上的例子</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=3015">http://cnlearn.linksprite.com/?p=3015</a>
+</td></tr>
+<tr>
+<td> 在Arduino Due上面星星点灯</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=616">http://cnlearn.linksprite.com/?p=616</a>
+</td></tr>
+<tr>
+<td>
+</td></tr></tbody></table>
+<h5><span class="mw-headline" id=".E4.BC.A0.E6.84.9F.E5.99.A8">传感器</span></h5>
+<table>
+<tbody><tr>
+<td> 在Arduino上使用空气质量传感器</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=5486">http://cnlearn.linksprite.com/?p=5486</a>
+</td></tr>
+<tr>
+<td> 在pcduino上使用水位传感器</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=5022">http://cnlearn.linksprite.com/?p=5022</a>
+</td></tr>
+<tr>
+<td> 在arduino上使用水位传感器</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=4882">http://cnlearn.linksprite.com/?p=4882</a>
+</td></tr>
+<tr>
+<td> pcDuino创造家指南八：温度传感器实验</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=3833">http://cnlearn.linksprite.com/?p=3833</a>
+</td></tr>
+<tr>
+<td> 在Arduino上使用三轴加速度传感器（ADXL330K）模块</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=3757">http://cnlearn.linksprite.com/?p=3757</a>
+</td></tr>
+<tr>
+<td> 在Arduino上面试用路障传感器模块</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=3726">http://cnlearn.linksprite.com/?p=3726</a>
+</td></tr>
+<tr>
+<td> 在Arduino上使用路径传感器</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=3702">http://cnlearn.linksprite.com/?p=3702</a>
+</td></tr>
+<tr>
+<td> 在Arduino上使用光照强度传感器</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=3571">http://cnlearn.linksprite.com/?p=3571</a>
+</td></tr>
+<tr>
+<td> 在Arduino上使用火焰传感器</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=3553">http://cnlearn.linksprite.com/?p=3553</a>
+</td></tr>
+<tr>
+<td> 在Arduino上使用烟雾传感器</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=3167">http://cnlearn.linksprite.com/?p=3167</a>
+</td></tr>
+<tr>
+<td> pcDuino上使用压力传感器</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=3067">http://cnlearn.linksprite.com/?p=3067</a>
+</td></tr>
+<tr>
+<td> SHT10数字温湿度传感器</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=2999">http://cnlearn.linksprite.com/?p=2999</a>
+</td></tr>
+<tr>
+<td> 实验12： 温湿度传感器实验</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=1181">http://cnlearn.linksprite.com/?p=1181</a>
+</td></tr>
+<tr>
+<td> 在pcDuino上安装可燃气传感器</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=421">http://cnlearn.linksprite.com/?p=421</a>
+</td></tr>
+<tr>
+<td>
+</td></tr></tbody></table>
+<h5><span class="mw-headline" id="Processing">Processing</span></h5>
+<table>
+<tbody><tr>
+<td> 在pcDuino上面运行PROCESSING 2.2</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=6972">http://cnlearn.linksprite.com/?p=6972</a>
+</td></tr>
+<tr>
+<td> 在pcDuino上安装和运行Processing的步骤</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=1092">http://cnlearn.linksprite.com/?p=1092</a>
+</td></tr></tbody></table>
+<h5><span class="mw-headline" id="JPEG">JPEG</span></h5>
+<table>
+<tbody><tr>
+<td> 使用GUI工具测试JPEG_TTL摄像头</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=4659">http://cnlearn.linksprite.com/?p=4659</a>
+</td></tr>
+<tr>
+<td> 关于“Arduino上用JPEG Color Camera拍照”这个帖子的代码不能再arduino IDE 1.5版本上运行的解决方法</td>
+<td>
+<p><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=3915">http://cnlearn.linksprite.com/?p=3915</a>
+</p>
+</td></tr>
+<tr>
+<td> Arduino上用JPEG Color Camera拍照</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=2655">http://cnlearn.linksprite.com/?p=2655</a>
+</td></tr>
+<tr>
+<td>
+</td></tr></tbody></table>
+<p><br>
+</p><p><br>
+</p><p><br>
+</p>
+<h4><span class="mw-headline" id="Android">Android</span></h4>
+<table>
+<tbody><tr>
+<td> pcDuino V3 Android源码编译全过程</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=6853">http://cnlearn.linksprite.com/?p=6853</a>
+</td></tr>
+<tr>
+<td> 通过IOIO-OTG用Android手机点灯</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=4495">http://cnlearn.linksprite.com/?p=4495</a>
+</td></tr>
+<tr>
+<td> GPIO-Manager-Android</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=1973">http://cnlearn.linksprite.com/?p=1973</a>
+</td></tr>
+<tr>
+<td> Android用ArduinoDroid在pcDuino实现Arduino星星点灯</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=624">http://cnlearn.linksprite.com/?p=624</a>
+</td></tr>
+<tr>
+<td>
+</td></tr></tbody></table>
+<p><br>
+</p><p><br>
+</p>
+<h4><span class="mw-headline" id=".E5.AE.9E.E9.AA.8C">实验</span></h4>
+<table>
+<tbody><tr>
+<td>实验1：LED灯实验</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=1114">http://cnlearn.linksprite.com/?p=1114</a>
+</td></tr>
+<tr>
+<td> 实验2： 电位器实验</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=1123">http://cnlearn.linksprite.com/?p=1123</a>
+</td></tr>
+<tr>
+<td> 实验3： PWM控制实验</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=1131">http://cnlearn.linksprite.com/?p=1131</a>
+</td></tr>
+<tr>
+<td> 实验4： 数码管实验</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=1135">http://cnlearn.linksprite.com/?p=1135</a>
+</td></tr>
+<tr>
+<td> 实验7： 光控LED开关</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=1175">http://cnlearn.linksprite.com/?p=1175</a>
+</td></tr>
+<tr>
+<td> 实验8：pcDuino串口实验</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=1168">http://cnlearn.linksprite.com/?p=1168</a>
+</td></tr>
+<tr>
+<td> 实验9： 温度报警</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=1202">http://cnlearn.linksprite.com/?p=1202</a>
+</td></tr>
+<tr>
+<td> 实验12： 温湿度传感器实验</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=1181">http://cnlearn.linksprite.com/?p=1181</a>
+</td></tr>
+<tr>
+<td> 实验13： LCD 1602实验</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=1197">http://cnlearn.linksprite.com/?p=1197</a>
+</td></tr>
+<tr>
+<td> 实验14：舵机实验</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=1139">http://cnlearn.linksprite.com/?p=1139</a>
+</td></tr>
+<tr>
+<td> 实验15： 8×8点阵实验</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=1236">http://cnlearn.linksprite.com/?p=1236</a>
+</td></tr>
+<tr>
+<td> 实验16： 继电器模块实验</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=1223">http://cnlearn.linksprite.com/?p=1223</a>
+</td></tr>
+<tr>
+<td> 实验17：4位数码管实验</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=1214">http://cnlearn.linksprite.com/?p=1214</a>
+</td></tr>
+<tr>
+<td> 实验18： 超声波实验</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=1157">http://cnlearn.linksprite.com/?p=1157</a>
+</td></tr>
+<tr>
+<td> 实验21： 驱动步进电机</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=1147">http://cnlearn.linksprite.com/?p=1147</a>
+</td></tr></tbody></table>
+<h4><span class="mw-headline" id=".E5.88.9B.E9.80.A0.E5.AE.B6.E6.8C.87.E5.8D.97.E7.B3.BB.E5.88.97">创造家指南系列</span></h4>
+<table>
+<tbody><tr>
+<td>pcDuino创造家指南一：</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=3538">http://cnlearn.linksprite.com/?p=3538</a>
+</td></tr>
+<tr>
+<td> pcDuino创造家指南二：点亮一盏LED灯实验</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=3599">http://cnlearn.linksprite.com/?p=3599</a>
+</td></tr>
+<tr>
+<td> pcDuino创造家指南三：电位器实验</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=3715">http://cnlearn.linksprite.com/?p=3715</a>
+</td></tr>
+<tr>
+<td> pcDuino创造家指南四：RGB LED实验</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=3652">http://cnlearn.linksprite.com/?p=3652</a>
+</td></tr>
+<tr>
+<td> pcDuino创造家指南五：点亮多盏LED灯实验</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=3664">http://cnlearn.linksprite.com/?p=3664</a>
+</td></tr>
+<tr>
+<td> pcDuino创造家指南六：按键实验</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=3666">http://cnlearn.linksprite.com/?p=3666</a>
+</td></tr>
+<tr>
+<td> pcDuino创造家指南七：光敏电阻实验</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=3829">http://cnlearn.linksprite.com/?p=3829</a>
+</td></tr>
+<tr>
+<td> pcDuino创造家指南八：温度传感器实验</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=3833">http://cnlearn.linksprite.com/?p=3833</a>
+</td></tr>
+<tr>
+<td> pcDuino创造家指南九：舵机实验</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=3836">http://cnlearn.linksprite.com/?p=3836</a>
+</td></tr>
+<tr>
+<td> pcDuino创造家指南十：蜂鸣器实验</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=3839">http://cnlearn.linksprite.com/?p=3839</a>
+</td></tr>
+<tr>
+<td> pcDuino创造家指南十一：旋转马达实验</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=3844">http://cnlearn.linksprite.com/?p=3844</a>
+</td></tr>
+<tr>
+<td> pcDuino创造家指南十二：移位寄存器实验</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=3978">http://cnlearn.linksprite.com/?p=3978</a>
+</td></tr>
+<tr>
+<td> pcDuino创造家指南十三：LCD实验</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=3980">http://cnlearn.linksprite.com/?p=3980</a>
+</td></tr>
+<tr>
+<td>
+</td></tr></tbody></table>
+<h4><span class="mw-headline" id="Scratch_for_pcDuino">Scratch for pcDuino</span></h4>
+<h5><span class="mw-headline" id="pcDuino_Scratch_.E6.95.99.E5.AD.A6.E8.A7.86.E9.A2.91">pcDuino Scratch 教学视频</span></h5>
+<table>
+<tbody><tr>
+<td> [视频] 第25课 pcDuino做智能小车</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=7562">http://cnlearn.linksprite.com/?p=7562</a>
+</td></tr>
+<tr>
+<td> [视频] 第24课 数码管的解决方法（有更好方法的请告诉我）</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=7557">http://cnlearn.linksprite.com/?p=7557</a>
+</td></tr>
+<tr>
+<td> [视频] 第23课 数码管中的疑问(求高手解答)</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=7555">http://cnlearn.linksprite.com/?p=7555</a>
+</td></tr>
+<tr>
+<td> [视频] 第22课 光线折断传感器（寻求产品开发思路 ）</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=7553">http://cnlearn.linksprite.com/?p=7553</a>
+</td></tr>
+<tr>
+<td> [视频] 第21课 寻线传感器做扫描仪</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=7551">http://cnlearn.linksprite.com/?p=7551</a>
+</td></tr>
+<tr>
+<td> [视频] 第20课 两个倾斜开关的创意</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=7526">http://cnlearn.linksprite.com/?p=7526</a>
+</td></tr>
+<tr>
+<td> [视频] 第19课 避障传感器模拟避障小车</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=7524">http://cnlearn.linksprite.com/?p=7524</a>
+</td></tr>
+<tr>
+<td> [视频] 第18课 酒精报警器</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=7517">http://cnlearn.linksprite.com/?p=7517</a>
+</td></tr>
+<tr>
+<td> [视频] 第17课 远程控制指示灯</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=7515">http://cnlearn.linksprite.com/?p=7515</a>
+</td></tr>
+<tr>
+<td> [视频] 第11课 距离控制马达转停</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=7512">http://cnlearn.linksprite.com/?p=7512</a>
+</td></tr>
+<tr>
+<td> [视频] 第16课 倾斜开关做翘翘板</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=7506">http://cnlearn.linksprite.com/?p=7506</a>
+</td></tr>
+<tr>
+<td> [视频] 第15课 火焰报警器</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=7504">http://cnlearn.linksprite.com/?p=7504</a>
+</td></tr>
+<tr>
+<td> [视频] 第14课 温度报警器</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=7502">http://cnlearn.linksprite.com/?p=7502</a>
+</td></tr>
+<tr>
+<td> [视频] 第13课 土壤湿度计</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=7488">http://cnlearn.linksprite.com/?p=7488</a>
+</td></tr>
+<tr>
+<td> [视频] 第12课 水位计</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=7486">http://cnlearn.linksprite.com/?p=7486</a>
+</td></tr>
+<tr>
+<td> [视频] 第10课 红外距离传感</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=7484">http://cnlearn.linksprite.com/?p=7484</a>
+</td></tr>
+<tr>
+<td> [视频] 第九课 风扇</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=7482">http://cnlearn.linksprite.com/?p=7482</a>
+</td></tr>
+<tr>
+<td> [视频] 第八课 滑杆控制灯的亮度</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=7480">http://cnlearn.linksprite.com/?p=7480</a>
+</td></tr>
+<tr>
+<td> [视频] 第七课 流水灯</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=7478">http://cnlearn.linksprite.com/?p=7478</a>
+</td></tr>
+<tr>
+<td> [视频] 第六课 呼吸灯</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=7476">http://cnlearn.linksprite.com/?p=7476</a>
+</td></tr>
+<tr>
+<td> [视频] 第五课 用开关做逻辑开关</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=7474">http://cnlearn.linksprite.com/?p=7474</a>
+</td></tr>
+<tr>
+<td> [视频] 第四课 用开关控制灯</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=7472">http://cnlearn.linksprite.com/?p=7472</a>
+</td></tr>
+<tr>
+<td> [视频] 第三课 信号灯</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=7470">http://cnlearn.linksprite.com/?p=7470</a>
+</td></tr>
+<tr>
+<td> [视频] 第二课 逻辑开关</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=7468">http://cnlearn.linksprite.com/?p=7468</a>
+</td></tr>
+<tr>
+<td> [视频] pcduino第一课-键盘控制开关灯</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=7448">http://cnlearn.linksprite.com/?p=7448</a>
+</td></tr>
+<tr>
+<td>
+</td></tr></tbody></table>
+<h5><span class="mw-headline" id="Scratch_for_pcDuino_.E5.BF.AB.E9.80.9F.E5.85.A5.E9.97.A8">Scratch for pcDuino 快速入门</span></h5>
+<table>
+<tbody><tr>
+<td> Scratch for Arduino快速入门</td>
+<td> <a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=562">http://cnlearn.linksprite.com/?p=562</a>
+</td></tr>
+<tr>
+<td> pcDuino上使用Scratch</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=1009">http://cnlearn.linksprite.com/?p=1009</a>
+</td></tr>
+<tr>
+<td> pcDuino支持的scratch编程 (一)点亮你的灯</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=2971">http://cnlearn.linksprite.com/?p=2971</a>
+</td></tr>
+<tr>
+<td> pcDuino支持的scratch编程 (二)按钮开关控制灯</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=2976">http://cnlearn.linksprite.com/?p=2976</a>
+</td></tr>
+<tr>
+<td> pcDuino支持的scratch编程（三）用角色控制灯</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=2978">http://cnlearn.linksprite.com/?p=2978</a>
+</td></tr>
+<tr>
+<td> Scratch for pcDuino 课例（四）—— 推箱子游戏</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=6269">http://cnlearn.linksprite.com/?p=6269</a>
+</td></tr>
+<tr>
+<td> Scratch for pcDuino 课例（五）—— 钓鱼提示器</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=6223">http://cnlearn.linksprite.com/?p=6223</a>
+</td></tr>
+<tr>
+<td> Scratch for pcDuino 课例（六）—— 变色的小花</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=6251">http://cnlearn.linksprite.com/?p=6251</a>
+</td></tr>
+<tr>
+<td> Scratch for pcDuino 课例（七）—— 自我介绍（上）</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=6273">http://cnlearn.linksprite.com/?p=6273</a>
+</td></tr>
+<tr>
+<td> Scratch for pcDuino 课例（八）—— 自我介绍（下）</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=6286">http://cnlearn.linksprite.com/?p=6286</a>
+</td></tr>
+<tr>
+<td> Scratch for pcDuino 课例（九）—— 炫彩小灯（上）</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=6295">http://cnlearn.linksprite.com/?p=6295</a>
+</td></tr>
+<tr>
+<td> Scratch for pcDuino 课例（十）—— 炫彩小灯（下）</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=6317">http://cnlearn.linksprite.com/?p=6317</a>
+</td></tr>
+<tr>
+<td> Scratch for pcDuino 课例（十一）—— 测测你的指温</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=6328">http://cnlearn.linksprite.com/?p=6328</a>
+</td></tr>
+<tr>
+<td> Scratch for pcDuino 课例（十二）—— 温控风扇（上）</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=6341">http://cnlearn.linksprite.com/?p=6341</a>
+</td></tr>
+<tr>
+<td> Scratch for pcDuino 课例（十三）—— 温控风扇（下）</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=6349">http://cnlearn.linksprite.com/?p=6349</a>
+</td></tr>
+<tr>
+<td> Scratch for pcDuino 课例（十四）—— 急速停车</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=6365">http://cnlearn.linksprite.com/?p=6365</a>
+</td></tr>
+<tr>
+<td> Scratch for pcDuino 课例（十五）—— 体感乒乓球</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=6381">http://cnlearn.linksprite.com/?p=6381</a>
+</td></tr>
+<tr>
+<td> Scratch for pcDuino 课例 (十五课）</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=6414">http://cnlearn.linksprite.com/?p=6414</a>
+</td></tr>
+<tr>
+<td> Scratch for pcDuino之打乒乓球</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=3031">http://cnlearn.linksprite.com/?p=3031</a>
+</td></tr>
+<tr>
+<td> Scratch for Arduino 儿童入门套件</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=1572">http://cnlearn.linksprite.com/?p=1572</a>
+</td></tr>
+<tr>
+<td> scratch教学一变胖的刺豚</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=4734">http://cnlearn.linksprite.com/?p=4734</a>
+</td></tr>
+<tr>
+<td> scratch教学二按键开灯</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=4740">http://cnlearn.linksprite.com/?p=4740</a>
+</td></tr>
+<tr>
+<td> scratch教学三跨栏游戏</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=4746">http://cnlearn.linksprite.com/?p=4746</a>
+</td></tr>
+<tr>
+<td> scratch教学五钓鱼提示器</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=4765">http://cnlearn.linksprite.com/?p=4765</a>
+</td></tr></tbody></table>
+<h2><span class="mw-headline" id="Raspberry_pi_.E6.A0.91.E8.8E.93.E6.B4.BE">Raspberry pi 树莓派</span></h2>
+<table>
+<tbody><tr>
+<td> RaspberryPi Camera Board</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=4002">http://cnlearn.linksprite.com/?p=4002</a>
+</td></tr>
+<tr>
+<td> pcDuino V1/RaspberryPi 迷你USB无线网卡</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=2946">http://cnlearn.linksprite.com/?p=2946</a>
+</td></tr>
+<tr>
+<td> Raspberry Pi GPIO 使用入门</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=2053">http://cnlearn.linksprite.com/?p=2053</a>
+</td></tr>
+<tr>
+<td> 如何在Raspberry Pi上使用RPi_Shield的ADC</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=798">http://cnlearn.linksprite.com/?p=798</a>
+</td></tr>
+<tr>
+<td> RS232/GPIO Shield for Raspberry Pi使用说明</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=747">http://cnlearn.linksprite.com/?p=747</a>
+</td></tr>
+<tr>
+<td> 树莓派时钟扩展板显示时间</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=6733">http://cnlearn.linksprite.com/?p=6733</a>
+</td></tr>
+<tr>
+<td> RaspberryPi Camera Board</td>
+<td><a rel="nofollow" class="external free" href="http://cnlearn.linksprite.com/?p=4002">http://cnlearn.linksprite.com/?p=4002</a>
+</td>
+<td>
+</td>
+</tr>
+</tbody></table>
+
+<!-- 
+NewPP limit report
+CPU time usage: 0.200 seconds
+Real time usage: 0.216 seconds
+Preprocessor visited node count: 366/1000000
+Preprocessor generated node count: 604/1000000
+Post‐expand include size: 874/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/40
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key startupc_pdwiki:pcache:idhash:165-0!*!*!!en!*!* and timestamp 20160812222309 and revision id 702
+ -->
+</div>									<div class="printfooter">
+						Retrieved from "<a dir="ltr" href="http://www.pcduino.com/wiki/index.php?title=%E4%B8%AD%E6%96%87%E4%B9%A6&amp;oldid=702">http://www.pcduino.com/wiki/index.php?title=中文书&amp;oldid=702</a>"					</div>
+													<div id="catlinks" class="catlinks catlinks-allhidden"></div>												<div class="visualClear"></div>
+							</div>
+		</div>
+		<div id="mw-navigation">
+			<h2>Navigation menu</h2>
+
+			<div id="mw-head">
+									<div id="p-personal" role="navigation" class="" aria-labelledby="p-personal-label">
+						<h3 id="p-personal-label">Personal tools</h3>
+						<ul>
+							<li id="pt-createaccount"><a href="http://www.pcduino.com/wiki/index.php?title=Special:UserLogin&amp;returnto=%E4%B8%AD%E6%96%87%E4%B9%A6&amp;type=signup">Create account</a></li><li id="pt-login"><a href="http://www.pcduino.com/wiki/index.php?title=Special:UserLogin&amp;returnto=%E4%B8%AD%E6%96%87%E4%B9%A6" title="You are encouraged to log in; however, it is not mandatory [Alt+Shift+o]" accesskey="o">Log in</a></li>						</ul>
+					</div>
+									<div id="left-navigation">
+										<div id="p-namespaces" role="navigation" class="vectorTabs" aria-labelledby="p-namespaces-label">
+						<h3 id="p-namespaces-label">Namespaces</h3>
+						<ul>
+															<li id="ca-nstab-main" class="selected"><span><a href="#" title="View the content page [Alt+Shift+c]" accesskey="c">Page</a></span></li>
+															<li id="ca-talk" class="new"><span><a href="http://www.pcduino.com/wiki/index.php?title=Talk:%E4%B8%AD%E6%96%87%E4%B9%A6&amp;action=edit&amp;redlink=1" title="Discussion about the content page [Alt+Shift+t]" accesskey="t">Discussion</a></span></li>
+													</ul>
+					</div>
+										<div id="p-variants" role="navigation" class="vectorMenu emptyPortlet" aria-labelledby="p-variants-label">
+												<h3 tabindex="0" id="p-variants-label"><span>Variants</span><a tabindex="-1" href="#"></a></h3>
+
+						<div class="menu">
+							<ul>
+															</ul>
+						</div>
+					</div>
+									</div>
+				<div id="right-navigation">
+										<div id="p-views" role="navigation" class="vectorTabs" aria-labelledby="p-views-label">
+						<h3 id="p-views-label">Views</h3>
+						<ul>
+															<li id="ca-view" class="selected"><span><a href="#">Read</a></span></li>
+															<li id="ca-viewsource"><span><a href="http://www.pcduino.com/wiki/index.php?title=%E4%B8%AD%E6%96%87%E4%B9%A6&amp;action=edit" title="This page is protected.
+You can view its source [Alt+Shift+e]" accesskey="e">View source</a></span></li>
+															<li id="ca-history" class="collapsible"><span><a href="http://www.pcduino.com/wiki/index.php?title=%E4%B8%AD%E6%96%87%E4%B9%A6&amp;action=history" title="Past revisions of this page [Alt+Shift+h]" accesskey="h">View history</a></span></li>
+													</ul>
+					</div>
+										<div style="" id="p-cactions" role="navigation" class="vectorMenu emptyPortlet" aria-labelledby="p-cactions-label">
+						<h3 tabindex="0" id="p-cactions-label"><span>More</span><a tabindex="-1" href="#"></a></h3>
+
+						<div class="menu">
+							<ul>
+															</ul>
+						</div>
+					</div>
+										<div id="p-search" role="search">
+						<h3>
+							<label for="searchInput">Search</label>
+						</h3>
+
+						<form action="http://www.pcduino.com/wiki/index.php" id="searchform">
+														<div id="simpleSearch">
+															<input autocomplete="off" tabindex="1" name="search" placeholder="Search" title="Search pcDuino [Alt+Shift+f]" accesskey="f" id="searchInput" type="search"><input value="Special:Search" name="title" type="hidden"><input name="go" value="Go" title="Go to a page with this exact name if exists" id="searchButton" class="searchButton" type="submit">								</div>
+						</form>
+					</div>
+									</div>
+			</div>
+			<div id="mw-panel">
+				<div id="p-logo" role="banner"><a style="background-image: url(&quot;pcduino1.png&quot;);" href="http://www.pcduino.com/wiki/index.php?title=Main_Page" title="Visit the main page"></a></div>
+						<div class="portal first" role="navigation" id="p-navigation" aria-labelledby="p-navigation-label">
+			<h3 id="p-navigation-label">Navigation</h3>
+
+			<div class="body">
+									<ul>
+													<li id="n-mainpage-description"><a href="http://www.pcduino.com/wiki/index.php?title=Main_Page" title="Visit the main page [Alt+Shift+z]" accesskey="z">Main page</a></li>
+													<li id="n-Hardware"><a href="http://www.pcduino.com/wiki/index.php?title=Hardware">Hardware</a></li>
+													<li id="n-Ubuntu-Release"><a href="http://www.pcduino.com/wiki/index.php?title=Ubuntu_Release">Ubuntu Release</a></li>
+													<li id="n-Ubuntu-Commands"><a href="http://www.pcduino.com/wiki/index.php?title=Ubuntu_Commands">Ubuntu Commands</a></li>
+													<li id="n-Android-Release"><a href="http://www.pcduino.com/wiki/index.php?title=Android_Release">Android Release</a></li>
+													<li id="n-Arduino-ish-Experiments"><a href="http://www.pcduino.com/wiki/index.php?title=Arduino-ish_Experiments">Arduino-ish Experiments</a></li>
+													<li id="n-Tools"><a href="http://www.pcduino.com/wiki/index.php?title=Tools">Tools</a></li>
+													<li id="n-IDE"><a href="http://www.pcduino.com/wiki/index.php?title=IDE">IDE</a></li>
+													<li id="n-IOIO-OTG"><a href="http://www.pcduino.com/wiki/index.php?title=IOIO-OTG">IOIO-OTG</a></li>
+													<li id="n-Games"><a href="http://www.pcduino.com/wiki/index.php?title=Games">Games</a></li>
+													<li id="n-Scratch"><a href="http://www.pcduino.com/wiki/index.php?title=Scratch">Scratch</a></li>
+													<li id="n-Book"><a href="http://www.pcduino.com/wiki/index.php?title=Book">Book</a></li>
+													<li id="n-.E4.B8.AD.E6.96.87.E4.B9.A6"><a href="#">中文书</a></li>
+													<li id="n-FAQ"><a href="http://www.pcduino.com/wiki/index.php?title=FAQ">FAQ</a></li>
+													<li id="n-portal"><a href="http://www.pcduino.com/wiki/index.php?title=PcDuino:Community_portal" title="About the project, what you can do, where to find things">Community portal</a></li>
+													<li id="n-currentevents"><a href="http://www.pcduino.com/wiki/index.php?title=PcDuino:Current_events" title="Find background information on current events">Current events</a></li>
+													<li id="n-recentchanges"><a href="http://www.pcduino.com/wiki/index.php?title=Special:RecentChanges" title="A list of recent changes in the wiki [Alt+Shift+r]" accesskey="r">Recent changes</a></li>
+													<li id="n-randompage"><a href="http://www.pcduino.com/wiki/index.php?title=Special:Random" title="Load a random page [Alt+Shift+x]" accesskey="x">Random page</a></li>
+													<li id="n-help"><a href="https://www.mediawiki.org/wiki/Special:MyLanguage/Help:Contents" title="The place to find out">Help</a></li>
+											</ul>
+							</div>
+		</div>
+			<div class="portal" role="navigation" id="p-tb" aria-labelledby="p-tb-label">
+			<h3 id="p-tb-label">Tools</h3>
+
+			<div class="body">
+									<ul>
+													<li id="t-whatlinkshere"><a href="http://www.pcduino.com/wiki/index.php?title=Special:WhatLinksHere/%E4%B8%AD%E6%96%87%E4%B9%A6" title="A list of all wiki pages that link here [Alt+Shift+j]" accesskey="j">What links here</a></li>
+													<li id="t-recentchangeslinked"><a href="http://www.pcduino.com/wiki/index.php?title=Special:RecentChangesLinked/%E4%B8%AD%E6%96%87%E4%B9%A6" title="Recent changes in pages linked from this page [Alt+Shift+k]" accesskey="k">Related changes</a></li>
+													<li id="t-specialpages"><a href="http://www.pcduino.com/wiki/index.php?title=Special:SpecialPages" title="A list of all special pages [Alt+Shift+q]" accesskey="q">Special pages</a></li>
+													<li id="t-print"><a href="http://www.pcduino.com/wiki/index.php?title=%E4%B8%AD%E6%96%87%E4%B9%A6&amp;printable=yes" rel="alternate" title="Printable version of this page [Alt+Shift+p]" accesskey="p">Printable version</a></li>
+													<li id="t-permalink"><a href="http://www.pcduino.com/wiki/index.php?title=%E4%B8%AD%E6%96%87%E4%B9%A6&amp;oldid=702" title="Permanent link to this revision of the page">Permanent link</a></li>
+													<li id="t-info"><a href="http://www.pcduino.com/wiki/index.php?title=%E4%B8%AD%E6%96%87%E4%B9%A6&amp;action=info">Page information</a></li>
+											</ul>
+							</div>
+		</div>
+				</div>
+		</div>
+		<div id="footer" role="contentinfo">
+							<ul id="footer-info">
+											<li id="footer-info-lastmod"> This page was last modified on 22 October 2014, at 02:33.</li>
+											<li id="footer-info-viewcount">This page has been accessed 74,808 times.</li>
+									</ul>
+							<ul id="footer-places">
+											<li id="footer-places-privacy"><a href="http://www.pcduino.com/wiki/index.php?title=PcDuino:Privacy_policy" title="PcDuino:Privacy policy">Privacy policy</a></li>
+											<li id="footer-places-about"><a href="http://www.pcduino.com/wiki/index.php?title=PcDuino:About" title="PcDuino:About">About pcDuino</a></li>
+											<li id="footer-places-disclaimer"><a href="http://www.pcduino.com/wiki/index.php?title=PcDuino:General_disclaimer" title="PcDuino:General disclaimer">Disclaimers</a></li>
+									</ul>
+										<ul id="footer-icons" class="noprint">
+											<li id="footer-poweredbyico">
+															<a href="http://www.mediawiki.org/"><img src="poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" width="88" height="31"></a>
+													</li>
+									</ul>
+						<div style="clear: both;"></div>
+		</div>
+		
+
+
+	
+
+	<div class="suggestions" style="display: none; font-size: 13px;"><div class="suggestions-results"></div><div class="suggestions-special"></div></div></body>
+</html>

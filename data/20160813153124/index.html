@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en-US" class=" js no-touch no-ie8compat csstransforms no-csstransforms3d csstransitions">
+<!--<![endif]--><head>
+        <meta charset="UTF-8">
+        <title>Expand Android bootable SD card to fill 32GB | LinkSprite Learning Center</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <!-- Favicon and Feed -->
+        <link rel="shortcut icon" type="image/png" href="untitled.dat">
+        <link rel="alternate" type="application/rss+xml" title="LinkSprite Learning Center Feed" href="http://learn.linksprite.com/feed/">
+        <!-- Enable Startup Image for iOS Home Screen Web App -->
+        <meta name="apple-mobile-web-app-capable" content="yes">
+
+        
+        
+        <meta name="description" content="pcDuino Learning Center">
+        <meta property="fb:app_id" content=""><meta property="og:title" content="Expand Android bootable SD card to fill 32GB">
+<meta property="og:description" content="This is using Android 4.2 Bootable SD image for pcDuino3.
+
+I used dd in Ubuntu to write to the 32GB card in usb card-reader in PC.
+
+Put the SD card into the pcDuino, apply power and wait for the installation to complete.
+
+Choose your language, time, zone, etc and get wi-fi/ethernet working in  ...">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="LinkSprite Learning Center">
+<meta property="og:url" content="http://learn.linksprite.com/pcduino/android-for-pcduino/expand-android-bootable-sd-card-to-fill-32gb/">
+<link rel="alternate" type="application/rss+xml" title="LinkSprite Learning Center » Feed" href="http://learn.linksprite.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="LinkSprite Learning Center » Comments Feed" href="http://learn.linksprite.com/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="LinkSprite Learning Center » Expand Android bootable SD card to fill 32GB Comments Feed" href="http://learn.linksprite.com/pcduino/android-for-pcduino/expand-android-bootable-sd-card-to-fill-32gb/feed/">
+		<div style="display: none;" id="fit-vids-style" class="fit-vids-style">­</div>
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="https://api.w.org/" href="http://learn.linksprite.com/wp-json/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://learn.linksprite.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://learn.linksprite.com/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="How to Repair pcDuino micro SD port" href="http://learn.linksprite.com/pcduino/pcduino-hardware-basic-and-improve/how-to-repair-pcduino-micro-sd-port/">
+<link rel="next" title="Turn on Serial Debug Port: Raspberry Pi B+ to Arduino Adapter HAT for Raspberry Pi B+" href="http://learn.linksprite.com/raspberry-pi/shield/turn-on-serial-debug-port-raspberry-pi-b-to-arduino-adapter-hat-for-raspberry-pi-b/">
+<meta name="generator" content="WordPress 4.5.3">
+<link rel="canonical" href="http://learn.linksprite.com/pcduino/android-for-pcduino/expand-android-bootable-sd-card-to-fill-32gb/">
+<link rel="shortlink" href="http://learn.linksprite.com/?p=10235">
+<link rel="alternate" type="application/json+oembed" href="http://learn.linksprite.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Flearn.linksprite.com%2Fpcduino%2Fandroid-for-pcduino%2Fexpand-android-bootable-sd-card-to-fill-32gb%2F">
+<link rel="alternate" type="text/xml+oembed" href="http://learn.linksprite.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Flearn.linksprite.com%2Fpcduino%2Fandroid-for-pcduino%2Fexpand-android-bootable-sd-card-to-fill-32gb%2F&amp;format=xml">
+
+
+<!-- WP SyntaxHighlighter Ver.1.7.3 CSS for code Begin -->
+
+<!-- WP SyntaxHighlighter Ver.1.7.3 CSS for code End -->
+<!--[if lt IE 9]><link rel="stylesheet" href="http://learn.linksprite.com/wp-content/themes/flyingnews/css/ie.css"><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]--><meta name="generator" content="Powered by Visual Composer - drag and drop page builder for WordPress.">
+<!--[if lte IE 9]><link rel="stylesheet" type="text/css" href="http://learn.linksprite.com/wp-content/plugins/js_composer/assets/css/vc_lte_ie9.min.css" media="screen"><![endif]--><!--[if IE  8]><link rel="stylesheet" type="text/css" href="http://learn.linksprite.com/wp-content/plugins/js_composer/assets/css/vc-ie8.min.css" media="screen"><![endif]-->
+  
+        
+        
+                
+    
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+    
+        <body class="single single-post postid-10235 single-format-standard widget_color_template category_color_template  wpb-js-composer js-comp-ver-4.11.2.1 vc_non_responsive" itemtype="http://schema.org/WebPage" itemscope="">
+
+                <!-- Start the main container -->
+        <div id="container" class="container" role="document">
+
+            <!-- Start the template box -->
+            <div id="template-box">
+
+                <!-- Row for blog navigation -->
+                <div class="row" style="position: relative;">
+                    
+                    
+                    <div id="totop" class="totop-button">
+    <div class="totop-arrow-up"></div>
+</div>
+
+                    <header class="twelve columns" role="banner" id="header">
+                        
+                                                 <div class="clear"></div>
+
+                        
+                                                 
+                        
+                        
+                        <div class="reverie-header">
+                                                        <h1>
+                                <a href="http://learn.linksprite.com/" title="LinkSprite Learning Center">
+                                    <img class="template-logo" src="linksprite_logo.png">
+                                </a>
+                            </h1>                           
+                        </div>
+                       
+                        <div class="clear"></div>
+
+                                                    <nav class="top-bar top-bar-jw" role="navigation">
+                                <section>
+                                                                        <ul class=""><li id="menu-item-9094" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-9094 no-dropdown"><a href="http://learn.linksprite.com/">Home</a></li>
+<li id="menu-item-9093" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-9093 no-dropdown"><a href="http://www.linksprite.com/?page_id=782">pcDuino</a></li>
+<li id="menu-item-9095" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-9095 no-dropdown"><a href="http://www.linksprite.com/wiki">WiKi</a></li>
+<li id="menu-item-10938" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-10938 no-dropdown"><a href="http://store.openhapp.com/">Store</a></li>
+<li id="menu-item-9096" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-9096 no-dropdown"><a href="http://www.linksprite.com/?page_id=252">Distributors</a></li>
+</ul>                                    <div class="clear"></div>
+                                </section>
+                            </nav>
+
+                            <nav class="top-bar mobile-menu mobile-menu-visble expanded" role="navigation">
+
+
+                                
+                            <section>
+                                    <ul class="left"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-9094"><a href="http://learn.linksprite.com/">Home</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-9093"><a href="http://www.linksprite.com/?page_id=782">pcDuino</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-9095"><a href="http://www.linksprite.com/wiki">WiKi</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-10938"><a href="http://store.openhapp.com/">Store</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-9096"><a href="http://www.linksprite.com/?page_id=252">Distributors</a></li>
+</ul>                                </section></nav>
+
+                            <nav class="mobile-menu-selectbox" role="navigation">
+                                <div class="menu-menu-container"><select class="mobile-selectbox"><option>Go to ...</option><option id="menu-item-9094" value="http://learn.linksprite.com">Home</option>
+<option id="menu-item-9093" value="http://www.linksprite.com/?page_id=782">pcDuino</option>
+<option id="menu-item-9095" value="http://www.linksprite.com/wiki">WiKi</option>
+<option id="menu-item-10938" value="http://store.openhapp.com">Store</option>
+<option id="menu-item-9096" value="http://www.linksprite.com/?page_id=252">Distributors</option>
+</select></div>                            </nav>
+                                            </header>
+                </div>
+
+                <!-- Row for main content area -->
+                <div id="main" class="row">
+                    <div class="featured-area">
+                        <div class="portfolio_categories  breadcrumbs"><div class="blog-items-sortby "> <span class="breadcrumb" itemprop="breadcrumb"><a href="http://learn.linksprite.com/">Home</a><a href="http://learn.linksprite.com/category/pcduino/">pcDuino</a><a href="http://learn.linksprite.com/category/pcduino/android-for-pcduino/">Android for pcDuino</a><a href="#">Expand Android bootable SD card to fill 32GB</a></span></div><div class="blog-items-search"><div id="search_button"></div><div class="widget widget_search"><form role="search" method="get" id="searchform" action="http://learn.linksprite.com/">
+	<div class="row">
+	<div class="twelve columns">
+		<div class="row collapse">
+			
+			<div class="eight mobile-three columns">
+				<input value="" name="s" id="s" placeholder="Search" type="text">
+			</div>
+			
+			<div class="four mobile-one columns">
+				<input id="searchsubmit" value="Search" class="postfix button" type="submit">
+			</div>
+		</div>
+	</div>
+	</div>
+</form></div></div><div class="clear"></div></div>                    </div>
+                    <div class="clear"></div>
+
+<!-- Row for main content area -->
+<div id="content" class="twelve columns sidebar-none" role="main">
+    <div class="post-box">
+
+        <nav id="nav-single">
+            <span class="nav-previous"><a href="http://learn.linksprite.com/pcduino/pcduino-hardware-basic-and-improve/how-to-repair-pcduino-micro-sd-port/" rel="prev">Previous</a></span>
+            <span class="nav-next"><a href="http://learn.linksprite.com/raspberry-pi/shield/turn-on-serial-debug-port-raspberry-pi-b-to-arduino-adapter-hat-for-raspberry-pi-b/" rel="next">Next</a></span>
+        </nav><!-- #nav-single -->
+        <div class="clear"></div>
+        
+            
+    
+
+    <article class="post-10235 post type-post status-publish format-standard hentry category-android-for-pcduino" id="post-10235" itemscope="" itemtype="http://data-vocabulary.org/Review">
+
+        
+
+
+        <header class="post_title_template">
+            <h1 class="entry-title">Expand Android bootable SD card to fill 32GB</h1>
+        </header>
+
+        
+         
+
+        <div class="entry-content">
+                                <div class="meta">
+                    <span class="meta_posted_by">Posted by: </span> <span class="author vcard"><a href="http://learn.linksprite.com/author/admin/" rel="author">admin</a></span> , <time class="entry-date" datetime="2015-01-25T04:56:33+00:00">January 25, 2015</time>                </div>
+            
+            <p>This is using Android 4.2 Bootable SD image for pcDuino3.</p>
+<p>I used dd in Ubuntu to write to the 32GB card in usb card-reader in PC.</p>
+<p>Put the SD card into the pcDuino, apply power and wait for the installation to complete.</p>
+<p>Choose your language, time, zone, etc and get wi-fi/ethernet working in Settings. Make sure all is working ok.</p>
+<p>Shutdown, remove power and remove SD card.</p>
+<p>Put the SD card back in the card-reader and launch Gparted.</p>
+<p>I have to assume you know how to move/resize partitions in Gparted.</p>
+<p>The partitions shown will be as in 1st attachment.</p>
+<p>You will see that there is only 256MiB for the “SD card storage” in the fat16 partition</p>
+<p>and 1024MiB (512 + 512) for the system/data partitions.</p>
+<p>In your file manager, copy the contents of&nbsp; the fat16 volume to a temporary folder on your hard drive, ensure you are showing hidden folders, see the 2nd attachment.</p>
+<p>Using Gparted, format all the “unknown” partitions to ext4, keeping the same size. This is necessary to be able to move/resize other partitions.</p>
+<p>Move and resize the partitions to achieve that shown in 3rd attachment. Note that the fat partition needs to be recreated as a fat32 partition, because of the 2GiB (4GiB?) restriction on fat16.</p>
+<p>I resized the 512MiB ext4 partitions to 4GiB each, keeping all other ext4 partitions the original size.</p>
+<p>Lastly, paste the original fat16 contents back into the fat32 volume.</p>
+<p>&nbsp;</p>
+<p>Return the SD card to the pcDuino, switch on. In Settings -&gt; Storage you should see about 4GB in “Internal Storage” and 21GB in “SDcard”. Enjoy.</p>
+<p>&nbsp;</p>
+<p>Note: quite handy to know that if you remove the SD card, the pcDuino will boot back into the prior NAND image, which in my case is the original shipped Lubuntu.</p>
+<p>&nbsp;</p>
+<p><a href="http://learn.linksprite.com/wp-content/uploads/2015/01/post-4199-0-16325100-1422114813.png"><img class="alignnone" src="post-4199-0-16325100-1422114813.png" alt="post-4199-0-16325100-1422114813" width="601" height="335"></a> <a href="http://learn.linksprite.com/wp-content/uploads/2015/01/post-4199-0-20081200-1422116654.png"><img class="alignnone" src="post-4199-0-20081200-1422116654-1024x819.png" alt="post-4199-0-20081200-1422116654" width="601" height="481"></a> <a href="http://learn.linksprite.com/wp-content/uploads/2015/01/post-4199-0-70364200-1422116690.png"><img class="alignnone" src="post-4199-0-70364200-1422116690.png" alt="post-4199-0-70364200-1422116690" width="600" height="409"></a></p>
+
+
+        </div>
+        <div class="clear"></div>
+
+
+        <footer>
+
+            <p></p>
+        </footer>
+
+
+
+
+                <div class="share_post_arrow-up"></div>
+            <div class="share_post" role="main">
+
+                <div class="share_hearline">
+        Share!
+                </div>
+
+                        <div class="share_content">
+                                        <div class="social_button" style="width: 100px;"><a target="_blank" href="https://twitter.com/share" class="twitter-share-button">Tweet</a></div>
+                                            <div class="social_button"><div class="fb-like" data-href="http://learn.linksprite.com/pcduino/android-for-pcduino/expand-android-bootable-sd-card-to-fill-32gb/" data-send="false" data-layout="button_count" data-width="200" data-show-faces="false"></div> </div>
+                                            <div class="social_button"><div class="g-plus" data-action="share" data-annotation="bubble"></div></div>
+                                            <div class="social_button"> </div>
+                                            <div class="social_button"><span data-pin-href="https://www.pinterest.com/pin/create/button/?guid=9Dh1uL_RKaoR-1&amp;url=http%3A%2F%2Flearn.linksprite.com%2Fpcduino%2Fandroid-for-pcduino%2Fexpand-android-bootable-sd-card-to-fill-32gb%2F&amp;media=http%3A%2F%2Flearn.linksprite.com%2Fwp-content%2Fuploads%2F2013%2F10%2Flinksprite_logo.png&amp;description=Expand%20Android%20bootable%20SD%20card%20to%20fill%2032GB%20%7C%20LinkSprite%20Learning%20Center" data-pin-log="button_pinit" class="PIN_1471073426174_button_pin"></span></div>
+                            <!-- stumble upon  <div class="social_button" ><su:badge layout="1"></su:badge></div>   -->                      
+                    <div class="clear"></div>
+                </div>
+
+            </div>
+
+        
+    
+            <div id="admin_info" role="main">
+                <div class="about_author" itemtype="http://schema.org/Person" itemscope="" itemprop="author">
+                    <h3 class="author_name" itemprop="name">admin</h3>
+                    <div class="author_link"><a href="http://learn.linksprite.com/author/admin/">About the author</a></div>
+                    <a href="http://learn.linksprite.com/pcduino/android-for-pcduino/expand-android-bootable-sd-card-to-fill-32gb/?rel=author" style="display: none;"></a>
+                    <div class="clear"></div>
+                </div>
+
+                <div class="author_info">
+                    <div class="author_image">
+        <img alt="" src="246940a943e57bee866f239a3b8bf611.dat" srcset="246940a943e57bee866f239a3b8bf611_001.dat 2x" class="avatar avatar-96 photo" width="96" height="96">                    </div>
+                    <div class="author_desc"><p></p></div>
+                </div>
+                <div class="clear"></div>
+            </div><!-- End Content row -->
+
+                        
+    
+
+<!-- *******************************************************************************************************************-->
+<!-- Comments Evolved for Wordpress v1.6 ( http://wordpress.org/plugins/gplus-comments/ ) -->
+<!-- *******************************************************************************************************************-->
+
+<!-- comment-tabs -->
+
+<div class="ui-tabs ui-widget ui-widget-content ui-corner-all" id="comment-tabs">
+<a name="comments"></a>
+    <ul role="tablist" class="controls inline clearfix ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">
+    <li aria-expanded="true" aria-selected="true" aria-labelledby="ui-id-1" aria-controls="gplus-tab" tabindex="0" role="tab" class="active ui-state-default ui-corner-top ui-tabs-active ui-state-active" id="gplus-control"><a id="ui-id-1" tabindex="-1" role="presentation" class="ui-tabs-anchor" href="#gplus-tab"><img id="gplus-icon" src="gplus.png"><span id="gplus-label"></span></a></li>
+<li aria-expanded="false" aria-selected="false" aria-labelledby="ui-id-2" aria-controls="facebook-tab" tabindex="-1" role="tab" class="ui-state-default ui-corner-top" id="facebook-control"><a id="ui-id-2" tabindex="-1" role="presentation" class="ui-tabs-anchor" href="#facebook-tab"><img id="facebook-icon" src="facebook.png"><span id="facebook-label"></span></a></li>
+<li aria-expanded="false" aria-selected="false" aria-labelledby="ui-id-3" aria-controls="wordpress-tab" tabindex="-1" role="tab" class="ui-state-default ui-corner-top" id="wordpress-control"><a id="ui-id-3" tabindex="-1" role="presentation" class="ui-tabs-anchor" href="#wordpress-tab"><img id="wordpress-icon" src="wordpress.png"><span id="wordpress-label"></span></a></li>
+  </ul>
+  <!-- gplus-tab -->
+<div aria-hidden="false" role="tabpanel" aria-labelledby="ui-id-1" id="gplus-tab" class="embed-container content-tab clearfix ui-tabs-panel ui-widget-content ui-corner-bottom"><div class="g-comments" data-width="732" data-href="http://learn.linksprite.com/pcduino/android-for-pcduino/expand-android-bootable-sd-card-to-fill-32gb/" data-first_party_property="BLOGGER" data-view_type="FILTERED_POSTMOD">Loading Google+ Comments ...</div></div>
+<!-- //gplus-tab -->
+<!-- facebook-tab -->
+<div aria-hidden="true" style="display: none;" role="tabpanel" aria-labelledby="ui-id-2" id="facebook-tab" class="embed-container content-tab clearfix ui-tabs-panel ui-widget-content ui-corner-bottom">
+<div id="fb-root"></div>
+<div id="fb-comments"><div class="fb-comments" data-width="732" data-href="http://learn.linksprite.com/pcduino/android-for-pcduino/expand-android-bootable-sd-card-to-fill-32gb/" data-num-posts="20" data-colorscheme="light" data-mobile="auto"></div></div>
+
+
+
+
+
+</div>
+<!-- //facebook-tab -->
+<!-- wordpress-tab -->
+<div aria-hidden="true" style="display: none;" role="tabpanel" aria-labelledby="ui-id-3" id="wordpress-tab" class="embed-container content-tab clearfix ui-tabs-panel ui-widget-content ui-corner-bottom">
+                                                                        				<div id="respond" class="comment-respond">
+			<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="#respond" style="display: none;">Cancel reply</a></small></h3>				<form action="http://learn.linksprite.com/wp-comments-post.php" method="post" id="commentform" class="comment-form">
+					<div class="comment-twothird">
+                                                <p>
+                                                    <label for="comment">Comment</label>
+                                                    <textarea name="comment" id="comment" tabindex="4" placeholder="Comment"></textarea>
+                                                </p></div><div class="comment-onethird">
+                                                    <p>
+                                                    <label for="author">Name (required)</label> 
+                                                     <input class="five" name="author" id="author" value="" size="22" tabindex="1" aria-required="true" placeholder="Name" type="text"> </p>
+<p>
+                                                    <label for="email">E-mail (required)</label>
+                                                    <input class="five" name="email" id="email" value="" size="22" tabindex="2" aria-required="true" placeholder="youremail@yourdomain.com" type="text"> </p>
+<p>
+                                                    <label for="url">Website</label>
+                                                    <input class="five" name="url" id="url" value="" size="22" tabindex="3" placeholder="www.website.com" type="text">
+                                                    </p>
+<p style="display: none;">
+                                                    <label for="question">1+1= (required)</label>
+                                                    <input class="five" name="question" id="question" value="" size="22" tabindex="4" aria-required="true" placeholder="answer" type="text">
+                                                    </p>
+                                                    </div>
+<p class="form-submit"><input name="submit" id="submit" class="submit" value="Submit Comment" type="submit"> <input name="comment_post_ID" value="10235" id="comment_post_ID" type="hidden">
+<input name="comment_parent" id="comment_parent" value="0" type="hidden">
+<div class="contact_form_arrow"></div></p><p style="display: none;"><input id="akismet_comment_nonce" name="akismet_comment_nonce" value="0f9558869b" type="hidden"></p><p class="wysija-after-comment"><label for="wysija-box-after-comment"><input id="wysija-box-after-comment" value="1" name="wysija[comment_subscribe]" type="checkbox">Yes, add me to your mailing list.</label></p><p style="display: none;"></p>				<input id="ak_js" name="ak_js" value="1471073424085" type="hidden"></form>
+					</div><!-- #respond -->
+		</div>
+<!-- //wordpress-tab -->
+</div>
+<!-- //comment-tabs -->
+    </article>
+	
+        
+</div><!-- End Content row -->
+
+    </div>
+
+
+
+
+
+
+		
+                </div><!-- End Main row -->
+              
+		<footer id="footer-content-info" role="contentinfo">
+			<div class="row">
+                            <div class="twelve columns">
+                                <div class="footer-content">
+                                    <div class="four columns">
+                                        <article id="search-2" class="row widget widget_search"><div class="sidebar-section twelve columns"><form role="search" method="get" id="searchform" action="http://learn.linksprite.com/">
+	<div class="row">
+	<div class="twelve columns">
+		<div class="row collapse">
+			
+			<div class="eight mobile-three columns">
+				<input value="" name="s" id="s" placeholder="Search" type="text">
+			</div>
+			
+			<div class="four mobile-one columns">
+				<input id="searchsubmit" value="Search" class="postfix button" type="submit">
+			</div>
+		</div>
+	</div>
+	</div>
+</form></div></article>                                    </div>
+                                    <div class="four columns">
+                                        <article id="categories-3" class="row widget widget_categories"><div class="sidebar-section twelve columns"><h2><strong>Category</strong></h2><label class="screen-reader-text" for="cat">Category</label><select name="cat" id="cat" class="postform">
+	<option value="-1">Select Category</option>
+	<option class="level-0" value="20">3D printing&nbsp;&nbsp;(8)</option>
+	<option class="level-0" value="1744">96 board&nbsp;&nbsp;(10)</option>
+	<option class="level-0" value="1646">Acadia&nbsp;&nbsp;(10)</option>
+	<option class="level-0" value="35">Android&nbsp;&nbsp;(8)</option>
+	<option class="level-0" value="1647">Arches&nbsp;&nbsp;(7)</option>
+	<option class="level-0" value="8">Arduino&nbsp;&nbsp;(251)</option>
+	<option class="level-1" value="10">&nbsp;&nbsp;&nbsp;Advanced Learning Kit for Arduino&nbsp;&nbsp;(22)</option>
+	<option class="level-1" value="12">&nbsp;&nbsp;&nbsp;Arduino Esplora&nbsp;&nbsp;(10)</option>
+	<option class="level-1" value="1634">&nbsp;&nbsp;&nbsp;Arduino Uno&nbsp;&nbsp;(1)</option>
+	<option class="level-1" value="56">&nbsp;&nbsp;&nbsp;Introductory Kit with Clear Case for Arduino&nbsp;&nbsp;(13)</option>
+	<option class="level-1" value="47">&nbsp;&nbsp;&nbsp;LinkSprite Sensor Pack 101&nbsp;&nbsp;(9)</option>
+	<option class="level-1" value="54">&nbsp;&nbsp;&nbsp;Modules&nbsp;&nbsp;(4)</option>
+	<option class="level-1" value="57">&nbsp;&nbsp;&nbsp;Powerline Communication&nbsp;&nbsp;(1)</option>
+	<option class="level-1" value="29">&nbsp;&nbsp;&nbsp;Resources&nbsp;&nbsp;(3)</option>
+	<option class="level-1" value="70">&nbsp;&nbsp;&nbsp;Sensors Kit for Arduino&nbsp;&nbsp;(36)</option>
+	<option class="level-1" value="38">&nbsp;&nbsp;&nbsp;Shields&nbsp;&nbsp;(96)</option>
+	<option class="level-0" value="62">Beagleboard&nbsp;&nbsp;(2)</option>
+	<option class="level-0" value="1637">Drone&nbsp;&nbsp;(5)</option>
+	<option class="level-0" value="51">FPGA&nbsp;&nbsp;(6)</option>
+	<option class="level-0" value="50">Hardware Knowledge&nbsp;&nbsp;(44)</option>
+	<option class="level-1" value="282">&nbsp;&nbsp;&nbsp;Concept&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="277">IT&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="43">JPEG Camera&nbsp;&nbsp;(21)</option>
+	<option class="level-0" value="1644">Kit&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="1745">LinkNode&nbsp;&nbsp;(8)</option>
+	<option class="level-0" value="1754">LinkSprite IO&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="1753">LinkSpriteIO&nbsp;&nbsp;(8)</option>
+	<option class="level-0" value="23">Linux&nbsp;&nbsp;(43)</option>
+	<option class="level-1" value="61">&nbsp;&nbsp;&nbsp;Commands&nbsp;&nbsp;(6)</option>
+	<option class="level-1" value="24">&nbsp;&nbsp;&nbsp;TQ2440&nbsp;&nbsp;(26)</option>
+	<option class="level-0" value="1650">Minecraft&nbsp;&nbsp;(4)</option>
+	<option class="level-0" value="40">OpenGTS&nbsp;&nbsp;(7)</option>
+	<option class="level-0" value="45">OpenWRT&nbsp;&nbsp;(3)</option>
+	<option class="level-0" value="241">Papilio&nbsp;&nbsp;(5)</option>
+	<option class="level-0" value="3">pcDuino&nbsp;&nbsp;(800)</option>
+	<option class="level-1" value="206">&nbsp;&nbsp;&nbsp;A10 based pcDuino1/pcDuino2/pcDuino lite/pcDuino lite wifi&nbsp;&nbsp;(5)</option>
+	<option class="level-1" value="203">&nbsp;&nbsp;&nbsp;A20 Based pcDuino3/3S/3C/3Nano&nbsp;&nbsp;(17)</option>
+	<option class="level-1" value="63">&nbsp;&nbsp;&nbsp;Android for pcDuino&nbsp;&nbsp;(23)</option>
+	<option class="level-2" value="255">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XBMC_Android&nbsp;&nbsp;(3)</option>
+	<option class="level-1" value="4">&nbsp;&nbsp;&nbsp;Arduino-ish Program&nbsp;&nbsp;(116)</option>
+	<option class="level-2" value="9">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ADC&nbsp;&nbsp;(15)</option>
+	<option class="level-2" value="16">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;External Interruption&nbsp;&nbsp;(2)</option>
+	<option class="level-2" value="13">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GPIO&nbsp;&nbsp;(29)</option>
+	<option class="level-2" value="5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I2C&nbsp;&nbsp;(20)</option>
+	<option class="level-2" value="7">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PWM&nbsp;&nbsp;(8)</option>
+	<option class="level-2" value="14">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SPI&nbsp;&nbsp;(12)</option>
+	<option class="level-2" value="28">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Timer Interrupt&nbsp;&nbsp;(1)</option>
+	<option class="level-2" value="15">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UART&nbsp;&nbsp;(20)</option>
+	<option class="level-1" value="49">&nbsp;&nbsp;&nbsp;Book: Get Started with pcDuino&nbsp;&nbsp;(12)</option>
+	<option class="level-1" value="1645">&nbsp;&nbsp;&nbsp;Camera&nbsp;&nbsp;(6)</option>
+	<option class="level-1" value="250">&nbsp;&nbsp;&nbsp;Deep Learning&nbsp;&nbsp;(18)</option>
+	<option class="level-1" value="176">&nbsp;&nbsp;&nbsp;Desktop Virtualization&nbsp;&nbsp;(4)</option>
+	<option class="level-1" value="65">&nbsp;&nbsp;&nbsp;FAQ&nbsp;&nbsp;(2)</option>
+	<option class="level-1" value="41">&nbsp;&nbsp;&nbsp;Java&nbsp;&nbsp;(21)</option>
+	<option class="level-1" value="19">&nbsp;&nbsp;&nbsp;kernel and uboot&nbsp;&nbsp;(21)</option>
+	<option class="level-1" value="36">&nbsp;&nbsp;&nbsp;Linux Applications&nbsp;&nbsp;(175)</option>
+	<option class="level-2" value="115">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Wallpaper&nbsp;&nbsp;(3)</option>
+	<option class="level-1" value="37">&nbsp;&nbsp;&nbsp;Linux Distributions&nbsp;&nbsp;(9)</option>
+	<option class="level-1" value="1648">&nbsp;&nbsp;&nbsp;Mono .net&nbsp;&nbsp;(1)</option>
+	<option class="level-1" value="27">&nbsp;&nbsp;&nbsp;pcDuino Hardware Experiments&nbsp;&nbsp;(17)</option>
+	<option class="level-1" value="1735">&nbsp;&nbsp;&nbsp;pcDuino8&nbsp;&nbsp;(22)</option>
+	<option class="level-1" value="1746">&nbsp;&nbsp;&nbsp;pcDuino8 Uno&nbsp;&nbsp;(2)</option>
+	<option class="level-1" value="270">&nbsp;&nbsp;&nbsp;Perl&nbsp;&nbsp;(2)</option>
+	<option class="level-1" value="231">&nbsp;&nbsp;&nbsp;php&nbsp;&nbsp;(4)</option>
+	<option class="level-1" value="11">&nbsp;&nbsp;&nbsp;Processsing&nbsp;&nbsp;(4)</option>
+	<option class="level-1" value="22">&nbsp;&nbsp;&nbsp;Python&nbsp;&nbsp;(27)</option>
+	<option class="level-2" value="204">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pingo&nbsp;&nbsp;(3)</option>
+	<option class="level-1" value="34">&nbsp;&nbsp;&nbsp;Quick Start&nbsp;&nbsp;(70)</option>
+	<option class="level-2" value="253">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pcDuino2-quick start&nbsp;&nbsp;(2)</option>
+	<option class="level-2" value="72">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pcDuino3&nbsp;&nbsp;(27)</option>
+	<option class="level-1" value="17">&nbsp;&nbsp;&nbsp;Resources&nbsp;&nbsp;(3)</option>
+	<option class="level-1" value="64">&nbsp;&nbsp;&nbsp;ROS&nbsp;&nbsp;(7)</option>
+	<option class="level-1" value="42">&nbsp;&nbsp;&nbsp;Ruby&nbsp;&nbsp;(9)</option>
+	<option class="level-1" value="18">&nbsp;&nbsp;&nbsp;Schematics and Hardware Information&nbsp;&nbsp;(10)</option>
+	<option class="level-2" value="25">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fritzing&nbsp;&nbsp;(2)</option>
+	<option class="level-1" value="26">&nbsp;&nbsp;&nbsp;Showcase&nbsp;&nbsp;(114)</option>
+	<option class="level-2" value="187">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Game&nbsp;&nbsp;(13)</option>
+	<option class="level-2" value="181">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Google&nbsp;&nbsp;(3)</option>
+	<option class="level-2" value="1649">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Home Automation&nbsp;&nbsp;(20)</option>
+	<option class="level-2" value="258">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Text-To-Speech&nbsp;&nbsp;(2)</option>
+	<option class="level-1" value="21">&nbsp;&nbsp;&nbsp;USB Development&nbsp;&nbsp;(11)</option>
+	<option class="level-0" value="59">Programming Languages&nbsp;&nbsp;(4)</option>
+	<option class="level-1" value="60">&nbsp;&nbsp;&nbsp;C&nbsp;&nbsp;(4)</option>
+	<option class="level-0" value="44">Project&nbsp;&nbsp;(82)</option>
+	<option class="level-1" value="1643">&nbsp;&nbsp;&nbsp;LinkSprite&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="32">Raspberry Pi&nbsp;&nbsp;(22)</option>
+	<option class="level-1" value="39">&nbsp;&nbsp;&nbsp;Linker Kit for Raspberry Pi&nbsp;&nbsp;(3)</option>
+	<option class="level-1" value="33">&nbsp;&nbsp;&nbsp;Shield for RPi&nbsp;&nbsp;(12)</option>
+	<option class="level-0" value="48">RFID&nbsp;&nbsp;(17)</option>
+	<option class="level-0" value="46">Robot&nbsp;&nbsp;(21)</option>
+	<option class="level-0" value="52">Scratch&nbsp;&nbsp;(49)</option>
+	<option class="level-1" value="30">&nbsp;&nbsp;&nbsp;Scratch for Arduino&nbsp;&nbsp;(3)</option>
+	<option class="level-0" value="1755">Starter Kit for pcDuino8 Uno User Guide&nbsp;&nbsp;(38)</option>
+	<option class="level-1" value="1756">&nbsp;&nbsp;&nbsp;1.6.Tips&nbsp;&nbsp;(6)</option>
+	<option class="level-1" value="1768">&nbsp;&nbsp;&nbsp;1.Hardware and Software Introductions of pcDuino8 Uno&nbsp;&nbsp;(4)</option>
+	<option class="level-1" value="1757">&nbsp;&nbsp;&nbsp;2.Chapter 2 Introduction of Ubuntu for pcDuino8 Uno&nbsp;&nbsp;(6)</option>
+	<option class="level-1" value="1758">&nbsp;&nbsp;&nbsp;3.C Language and Arduino type IDE for pcDuino8 Uno&nbsp;&nbsp;(8)</option>
+	<option class="level-2" value="1759">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.2.Arduino library and samples&nbsp;&nbsp;(4)</option>
+	<option class="level-1" value="1760">&nbsp;&nbsp;&nbsp;4.Introduction of Python on pcDuino8 Uno&nbsp;&nbsp;(1)</option>
+	<option class="level-1" value="1762">&nbsp;&nbsp;&nbsp;5.JavaScript on pcDuino8 Uno&nbsp;&nbsp;(1)</option>
+	<option class="level-1" value="1763">&nbsp;&nbsp;&nbsp;6.OpenCV on pcDuino8 Uno&nbsp;&nbsp;(4)</option>
+	<option class="level-1" value="1764">&nbsp;&nbsp;&nbsp;7.Scratch on pcDuino8 Uno&nbsp;&nbsp;(2)</option>
+	<option class="level-1" value="1766">&nbsp;&nbsp;&nbsp;8.Other Topics&nbsp;&nbsp;(2)</option>
+	<option class="level-1" value="1767">&nbsp;&nbsp;&nbsp;9.Appendix A More information&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="1">Uncategorized&nbsp;&nbsp;(20)</option>
+	<option class="level-0" value="6">WiFi&nbsp;&nbsp;(11)</option>
+	<option class="level-0" value="53">WinCE&nbsp;&nbsp;(1)</option>
+</select>
+
+
+
+</div></article>                                    </div>
+                                    <div class="four columns">
+                                        <article id="colorful_tag_cloud-3" class="row widget widget_colorful_tag_cloud"><div class="sidebar-section twelve columns"><h2><strong>Tags</strong></h2></div></article>                                    </div>
+                                </div>
+                            </div>
+			</div>
+		</footer>
+                
+                <div id="footer-copyright">
+                    <div id="copyright" class="row">
+                            <div class="twelve columns">
+                                <div class="six columns">
+                                                                    </div>
+                                <div class="six columns copyright-menu">
+                                    <div class="menu-menu-container"><ul id="menu-menu-1" class="template-footer-menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-9094"><a href="http://learn.linksprite.com/">Home</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-9093"><a href="http://www.linksprite.com/?page_id=782">pcDuino</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-9095"><a href="http://www.linksprite.com/wiki">WiKi</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-10938"><a href="http://store.openhapp.com/">Store</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-9096"><a href="http://www.linksprite.com/?page_id=252">Distributors</a></li>
+</ul></div>                                </div>
+                            </div>
+                    </div>
+                </div>
+                
+                </div><!-- End the template box -->
+			
+	</div><!-- Container End -->
+        
+	        
+        	
+	<!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.
+	     chromium.org/developers/how-tos/chrome-frame-getting-started -->
+	<!--[if lt IE 7]>
+		<script defer src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+		<script defer>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+	<![endif]-->
+		
+        
+                
+                              
+                
+                
+                
+                
+                 
+            
+
+            
+         
+     
+          
+      
+       
+     <!-- Pinterest share -->
+     
+     
+     <!-- Linkedin share -->
+     
+     
+     
+     
+     
+               
+            
+        
+
+
+
+
+
+
+
+
+
+<!-- Comments Evolved plugin -->
+
+<!-- //Comments Evolved plugin -->
+<!-- AddThis Smart Layers BEGIN -->
+<!-- Go to http://www.addthis.com/get/smart-layers to customize -->
+
+
+<!-- AddThis Smart Layers END -->
+
+</body>
+</html>

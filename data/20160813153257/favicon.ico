@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+
+<html lang="en-US">
+
+<head>
+
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="profile" href="http://gmpg.org/xfn/11">
+
+<link rel="pingback" href="http://www.linksprite.com/xmlrpc.php">
+
+
+<!--[if lt IE 9]>
+<script src="http://www.linksprite.com/wp-content/themes/zerif-pro/js/html5.js"></script>
+<link rel="stylesheet" href="http://www.linksprite.com/wp-content/themes/zerif-pro/css/ie.css" type="text/css">
+<![endif]-->
+
+<title>LinkSprite pcDuino &#8211; LinkSprite</title>
+<link rel="alternate" type="application/rss+xml" title="LinkSprite &raquo; Feed" href="http://www.linksprite.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="LinkSprite &raquo; Comments Feed" href="http://www.linksprite.com/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="LinkSprite &raquo; LinkSprite pcDuino Comments Feed" href="http://www.linksprite.com/linksprite-pcduino/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/72x72\/","ext":".png","source":{"concatemoji":"http:\/\/www.linksprite.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.5.3"}};
+			!function(a,b,c){function d(a){var c,d,e,f=b.createElement("canvas"),g=f.getContext&&f.getContext("2d"),h=String.fromCharCode;if(!g||!g.fillText)return!1;switch(g.textBaseline="top",g.font="600 32px Arial",a){case"flag":return g.fillText(h(55356,56806,55356,56826),0,0),f.toDataURL().length>3e3;case"diversity":return g.fillText(h(55356,57221),0,0),c=g.getImageData(16,16,1,1).data,d=c[0]+","+c[1]+","+c[2]+","+c[3],g.fillText(h(55356,57221,55356,57343),0,0),c=g.getImageData(16,16,1,1).data,e=c[0]+","+c[1]+","+c[2]+","+c[3],d!==e;case"simple":return g.fillText(h(55357,56835),0,0),0!==g.getImageData(16,16,1,1).data[0];case"unicode8":return g.fillText(h(55356,57135),0,0),0!==g.getImageData(16,16,1,1).data[0]}return!1}function e(a){var c=b.createElement("script");c.src=a,c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i;for(i=Array("simple","flag","unicode8","diversity"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='zerif_font-css'  href='//fonts.googleapis.com/css?family=Lato%3A300%2C400%2C700%2C400italic%7CMontserrat%3A700%7CHomemade+Apple&#038;ver=4.5.3' type='text/css' media='all' />
+<link rel='stylesheet' id='zerif_font_all-css'  href='//fonts.googleapis.com/css?family=Open+Sans%3A400%2C300%2C300italic%2C400italic%2C600italic%2C600%2C700%2C700italic%2C800%2C800italic&#038;ver=4.5.3' type='text/css' media='all' />
+<link rel='stylesheet' id='zerif_bootstrap_style-css'  href='http://www.linksprite.com/wp-content/themes/zerif-pro/css/bootstrap.min.css?ver=4.5.3' type='text/css' media='all' />
+<link rel='stylesheet' id='zerif_font-awesome_style-css'  href='http://www.linksprite.com/wp-content/themes/zerif-pro/assets/css/font-awesome.min.css?ver=v1' type='text/css' media='all' />
+<link rel='stylesheet' id='zerif_style-css'  href='http://www.linksprite.com/wp-content/themes/zerif-pro/style.css?ver=v1' type='text/css' media='all' />
+<link rel='stylesheet' id='easy_table_style-css'  href='http://www.linksprite.com/wp-content/plugins/easy-table/themes/default/style.css?ver=1.4' type='text/css' media='all' />
+<!--[if lte IE 6]> <style type="text/css">.cantembedplus{display:none;}</style><![endif]-->        <script type="text/javascript">
+            var eppathtoscripts = "http://www.linksprite.com/wp-content/plugins/youtube-embed-plus/scripts/";
+            var epresponsiveselector = ["iframe.__youtube_prefs_widget__"];
+            var epdovol = true; //false;
+        </script>
+        <script type='text/javascript' src='http://www.linksprite.com/wp-content/plugins/youtube-embed-plus/scripts/ytprefs.min.js?ver=4.5.3'></script>
+<script type='text/javascript' src='http://www.linksprite.com/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+<script type='text/javascript' src='http://www.linksprite.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<link rel='https://api.w.org/' href='http://www.linksprite.com/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.linksprite.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.linksprite.com/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 4.5.3" />
+<link rel="canonical" href="http://www.linksprite.com/linksprite-pcduino/" />
+<link rel='shortlink' href='http://www.linksprite.com/?p=782' />
+<link rel="alternate" type="application/json+oembed" href="http://www.linksprite.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.linksprite.com%2Flinksprite-pcduino%2F" />
+<link rel="alternate" type="text/xml+oembed" href="http://www.linksprite.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.linksprite.com%2Flinksprite-pcduino%2F&#038;format=xml" />
+<!-- <meta name="vfb" version="2.8" /> -->
+
+
+</head>
+
+
+		<body class="page-id-782 page-template-default group-blog" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+
+		<!-- =========================
+
+		   PRE LOADER       
+
+		============================== -->
+		
+
+		<header id="home" class="header" itemscope="itemscope" itemtype="http://schema.org/WPHeader" role="banner">
+
+			<div id="main-nav" class="navbar navbar-inverse bs-docs-nav">
+
+				<div class="container">
+
+					<div class="navbar-header responsive-logo">
+
+						<button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+
+						<span class="sr-only">Toggle navigation</span>
+
+						<span class="icon-bar"></span>
+
+						<span class="icon-bar"></span>
+
+						<span class="icon-bar"></span>
+
+						</button>
+
+						
+
+						<a href="http://www.linksprite.com/" title="LinkSprite" class="navbar-brand"><img src="http://www.linksprite.com/wp-content/uploads/2016/05/linksprite_logo_1446492386__78558.png" alt="LinkSprite"></a>
+						
+
+					</div>
+
+					<nav class="navbar-collapse bs-navbar-collapse collapse" role="navigation" id="site-navigation" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+
+						<ul id="menu-main" class="nav navbar-nav navbar-right responsive-nav main-nav-list"><li id="menu-item-763" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-763"><a href="http://www.linksprite.com">Home</a></li>
+<li id="menu-item-869" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-869"><a href="http://www.linksprite.com/pcduino-download/">Download</a></li>
+<li id="menu-item-901" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-901"><a href="http://www.linksprite.com/applications/">Applications</a>
+<ul class="sub-menu">
+	<li id="menu-item-1291" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1291"><a href="http://www.linksprite.com/home-automation-using-pcduino/">Home Automation Using pcDuino</a></li>
+	<li id="menu-item-1301" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1301"><a href="http://www.linksprite.com/home-private-cloud-storage-dropbox-style-with-pcduino/">Home Private Cloud Storage (&#8216;Dropbox&#8217; style) with pcDuino</a></li>
+	<li id="menu-item-898" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-898"><a href="http://www.linksprite.com/android-smart-tv-box/">Android Smart TV Box</a></li>
+	<li id="menu-item-1040" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1040"><a href="http://www.linksprite.com/pcduino-maker-projects/">pcDuino Maker Projects</a></li>
+	<li id="menu-item-1045" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1045"><a href="http://www.linksprite.com/pcduino-in-college/">pcDuino in College</a></li>
+	<li id="menu-item-909" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-909"><a href="http://www.linksprite.com/stem/">STEM</a></li>
+</ul>
+</li>
+<li id="menu-item-63" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-63"><a href="http://www.linksprite.com/?page_id=889">Learn</a>
+<ul class="sub-menu">
+	<li id="menu-item-878" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-878"><a href="http://www.linksprite.com/quick-start/">pcDuino Quick Start</a></li>
+	<li id="menu-item-65" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-65"><a href="http://learn.linksprite.com">Learning Center</a></li>
+	<li id="menu-item-887" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-887"><a href="http://forum.linksprite.com">pcDuino community</a></li>
+	<li id="menu-item-886" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-886"><a href="http://forum.linksprite.com">LinkSprite Forum</a></li>
+	<li id="menu-item-64" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-64"><a href="http://cnlearn.linksprite.com">学习中心</a></li>
+	<li id="menu-item-888" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-888"><a href="http://www.pcduino.org/">pcDuino中文社区</a></li>
+	<li id="menu-item-1086" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1086"><a href="http://www.linksprite.com/users-blogs/">User&#8217;s Forum or Blog</a></li>
+	<li id="menu-item-1053" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1053"><a href="http://www.linksprite.com/pcduino-books/">pcDuino Books</a></li>
+	<li id="menu-item-1065" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1065"><a href="http://www.linksprite.com/pcduino-vs-raspberry-pi-vs-beagle-bone-vs-arduino/">pcDuino vs. Raspberry Pi</a></li>
+</ul>
+</li>
+<li id="menu-item-1605" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1605"><a href="http://www.linksprite.com/events/">Events</a></li>
+<li id="menu-item-267" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-267"><a href="http://www.linksprite.com/buy-2/">Buy</a></li>
+<li id="menu-item-18" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-18"><a href="http://www.linksprite.com/contact/">Contact</a>
+<ul class="sub-menu">
+	<li id="menu-item-1095" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1095"><a href="http://www.linksprite.com/post-for-linksprite-store-credit-program/">Post for LinkSprite Store Credit Program</a></li>
+	<li id="menu-item-165" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-165"><a href="http://www.linksprite.com/sponsorship/">Sponsorship</a></li>
+	<li id="menu-item-170" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-170"><a href="http://www.linksprite.com/book-writer-program/">Book Writer/ Blog Owner Program</a></li>
+	<li id="menu-item-183" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-183"><a href="http://www.linksprite.com/hackerspace-program/">HackerSpace Program</a></li>
+	<li id="menu-item-150" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-150"><a href="http://www.sloyalty.com/storefront/en-us/bigcommerce/store.linksprite.com/faqv2/">LinkSprite Rewards Program</a></li>
+	<li id="menu-item-189" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-189"><a href="http://affiliates.linksprite.com">LinkSprite Affiliate Program</a></li>
+	<li id="menu-item-1486" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1486"><a href="http://www.linksprite.com/jobs/">Jobs</a></li>
+	<li id="menu-item-129" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-129"><a href="http://store.linksprite.com/terms-and-conditions/">Terms and Conditions</a></li>
+</ul>
+</li>
+<li id="menu-item-1600" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1600"><a href="http://cn.linksprite.com">中国</a></li>
+</ul>
+					</nav>
+
+				</div>
+
+			</div>
+
+			<!-- / END TOP BAR -->
+	<div class="clear"></div>
+</header> <!-- / END HOME SECTION  -->
+	
+<div id="content" class="site-content">
+	<div class="container">
+				<div class="content-left-wrap col-md-9">	
+				<div id="primary" class="content-area">
+			<main itemscope itemtype="http://schema.org/WebPageElement" itemprop="mainContentOfPage" id="main" class="site-main" role="main">
+				<article id="post-782" class="post-782 page type-page status-publish hentry">	<header class="entry-header">		<span class="date updated published">November 28, 2014</span>		<span class="vcard author byline"><a href="http://www.linksprite.com/author/admin/" class="fn">admin</a></span>			<h1 class="entry-title" itemprop="headline">LinkSprite pcDuino</h1>			</header><!-- .entry-header -->	<div class="entry-content" itemprop="text">		<div id="featured-content" class="grid col-460">
+<h1 class="featured-title"></h1>
+<p>pcDuino is a mini PC or single board computer platform that runs PC like OS such as Ubuntu and Android ICS. It outputs screen to HDMI. Moreover, it has hardware headers interface compatible with Arduino (TM). pcDuino can be used to teach Python, C and more interesting stuff.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</div>
+<div id="featured-image" class="grid col-460 fit"></div>
+<table style="height: 202px;" width="506">
+<tbody>
+<tr>
+<td style="text-align: center;"><strong><a href="http://www.linksprite.com/?page_id=800">pcDuino1 Lite WiFi</a></strong></td>
+<td style="text-align: center;"><a href="http://www.linksprite.com/?page_id=803"><strong>pcDuino1 Lite</strong></a></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong> <a href="http://www.linksprite.com/?page_id=800"><img class="alignnone wp-image-787" src="http://www.linksprite.com/wp-content/uploads/2014/11/pcduino_lite_wifi.jpg" alt="pcduino_lite_wifi" width="241" height="203" srcset="http://www.linksprite.com/wp-content/uploads/2014/11/pcduino_lite_wifi.jpg 600w, http://www.linksprite.com/wp-content/uploads/2014/11/pcduino_lite_wifi-300x253.jpg 300w" sizes="(max-width: 241px) 100vw, 241px" /></a></strong></td>
+<td style="text-align: center;"><strong><a href="http://www.linksprite.com/?page_id=803"><img class="alignnone wp-image-788" src="http://www.linksprite.com/wp-content/uploads/2014/11/pcduino_lite.jpg" alt="pcduino_lite" width="268" height="249" srcset="http://www.linksprite.com/wp-content/uploads/2014/11/pcduino_lite.jpg 600w, http://www.linksprite.com/wp-content/uploads/2014/11/pcduino_lite-300x278.jpg 300w" sizes="(max-width: 268px) 100vw, 268px" /></a> </strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><a href="http://www.linksprite.com/?page_id=806"><strong>pcDuino1</strong></a></td>
+<td style="text-align: center;"><a href="http://www.linksprite.com/?page_id=809"><strong>pcDuino2</strong></a></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong> <a href="http://www.linksprite.com/?page_id=806"><img class="alignnone wp-image-789" src="http://www.linksprite.com/wp-content/uploads/2014/11/pcduino_v1.jpg" alt="pcduino_v1" width="228" height="263" srcset="http://www.linksprite.com/wp-content/uploads/2014/11/pcduino_v1.jpg 429w, http://www.linksprite.com/wp-content/uploads/2014/11/pcduino_v1-260x300.jpg 260w" sizes="(max-width: 228px) 100vw, 228px" /></a></strong></td>
+<td style="text-align: center;"><strong><a href="http://www.linksprite.com/?page_id=809"><img class="alignnone wp-image-790" src="http://www.linksprite.com/wp-content/uploads/2014/11/pcDuino_v2.jpg" alt="pcDuino_v2" width="278" height="185" srcset="http://www.linksprite.com/wp-content/uploads/2014/11/pcDuino_v2.jpg 800w, http://www.linksprite.com/wp-content/uploads/2014/11/pcDuino_v2-300x199.jpg 300w" sizes="(max-width: 278px) 100vw, 278px" /></a> </strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><a href="http://www.linksprite.com/?page_id=812"><strong>pcDuino3</strong></a></td>
+<td style="text-align: center;"><a href="http://www.linksprite.com/?page_id=815"><strong>pcDuino3 Nano</strong></a></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong> <a href="http://www.linksprite.com/?page_id=812"><img class="alignnone wp-image-791" src="http://www.linksprite.com/wp-content/uploads/2014/11/IMG_0242.jpg" alt="IMG_0242" width="291" height="291" srcset="http://www.linksprite.com/wp-content/uploads/2014/11/IMG_0242.jpg 1000w, http://www.linksprite.com/wp-content/uploads/2014/11/IMG_0242-150x150.jpg 150w, http://www.linksprite.com/wp-content/uploads/2014/11/IMG_0242-300x300.jpg 300w" sizes="(max-width: 291px) 100vw, 291px" /></a></strong></td>
+<td style="text-align: center;"><strong><a href="http://www.linksprite.com/?page_id=815"><img class="alignnone wp-image-793" src="http://www.linksprite.com/wp-content/uploads/2014/11/PCD-3Nano-31.jpg" alt="PCD-3Nano-3" width="319" height="216" srcset="http://www.linksprite.com/wp-content/uploads/2014/11/PCD-3Nano-31.jpg 1000w, http://www.linksprite.com/wp-content/uploads/2014/11/PCD-3Nano-31-300x203.jpg 300w" sizes="(max-width: 319px) 100vw, 319px" /></a> </strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><a href="http://www.linksprite.com/?page_id=818"><strong>pcDuino3S</strong></a></td>
+<td style="text-align: center;"><strong> <a href="http://www.linksprite.com/?page_id=822">pcDuino prodto (core board)</a></strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"> <a href="http://www.linksprite.com/?page_id=818"><img class="alignnone wp-image-795" src="http://www.linksprite.com/wp-content/uploads/2014/11/XD702297.jpg" alt="XD702297" width="284" height="213" srcset="http://www.linksprite.com/wp-content/uploads/2014/11/XD702297.jpg 900w, http://www.linksprite.com/wp-content/uploads/2014/11/XD702297-300x225.jpg 300w" sizes="(max-width: 284px) 100vw, 284px" /></a></td>
+<td style="text-align: center;"> <a href="http://www.linksprite.com/?page_id=822"><img class="alignnone wp-image-797" src="http://www.linksprite.com/wp-content/uploads/2014/11/pcduino3c_1.jpg" alt="pcduino3c_1" width="269" height="241" srcset="http://www.linksprite.com/wp-content/uploads/2014/11/pcduino3c_1.jpg 600w, http://www.linksprite.com/wp-content/uploads/2014/11/pcduino3c_1-300x268.jpg 300w" sizes="(max-width: 269px) 100vw, 269px" /></a></td>
+</tr>
+<tr>
+<td style="text-align: center;"><a href="http://www.linksprite.com/?p=1393">pcDuino4 STB</a></td>
+<td style="text-align: center;"><a href="http://www.linksprite.com/?page_id=1376">pcDuino8 STB</a></td>
+</tr>
+<tr>
+<td style="text-align: center;"><a href="http://www.linksprite.com/?p=1393"><img class="alignnone wp-image-1399" src="http://www.linksprite.com/wp-content/uploads/2014/11/pcduino4_stb_1.jpg" alt="pcduino4_stb_1" width="275" height="188" srcset="http://www.linksprite.com/wp-content/uploads/2014/11/pcduino4_stb_1.jpg 1000w, http://www.linksprite.com/wp-content/uploads/2014/11/pcduino4_stb_1-300x205.jpg 300w" sizes="(max-width: 275px) 100vw, 275px" /></a></td>
+<td style="text-align: center;"><a href="http://www.linksprite.com/?page_id=1376"><img class="alignnone wp-image-1371" src="http://www.linksprite.com/wp-content/uploads/2015/05/pcduino8_STB_1.jpg" alt="pcduino8_STB_1" width="277" height="237" srcset="http://www.linksprite.com/wp-content/uploads/2015/05/pcduino8_STB_1.jpg 800w, http://www.linksprite.com/wp-content/uploads/2015/05/pcduino8_STB_1-300x257.jpg 300w" sizes="(max-width: 277px) 100vw, 277px" /></a></td>
+</tr>
+<tr>
+<td style="text-align: center;"><a href="http://www.linksprite.com/?page_id=1477">pcDuino8 Uno</a></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;"><a href="http://www.linksprite.com/?page_id=1477"><img class="alignnone wp-image-1474" src="http://www.linksprite.com/wp-content/uploads/2014/11/pcduino8_uno_1.jpg" alt="pcduino8_uno_1" width="225" height="167" srcset="http://www.linksprite.com/wp-content/uploads/2014/11/pcduino8_uno_1.jpg 1000w, http://www.linksprite.com/wp-content/uploads/2014/11/pcduino8_uno_1-300x222.jpg 300w" sizes="(max-width: 225px) 100vw, 225px" /></a></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<h1>pcDuino Family Chart:</h1>
+<p>&nbsp;</p>
+<table class="alignleft" style="border-color: #000000; border-width: 2px; height: 544px;" border="2">
+<tbody>
+<tr>
+<td></td>
+<td><strong>pcDuino Lite</strong></td>
+<td><strong>pcDuino Lite WiFi</strong></td>
+<td><strong>pcDuino v1</strong></td>
+<td><strong>pcDuino v2</strong></td>
+<td><strong>pcDuino3</strong></td>
+</tr>
+<tr>
+<td>CPU</td>
+<td>
+<ul>
+<li style="text-align: left;"> Allwinner A10</li>
+<li style="text-align: left;">1GHz ARM Cortex A8</li>
+</ul>
+</td>
+<td style="text-align: left;">
+<ul>
+<li>Allwinner A10</li>
+<li>1GHz ARM Cortex A8</li>
+</ul>
+</td>
+<td style="text-align: left;">
+<ul>
+<li> Allwinner A10</li>
+<li>1GHz ARM Cortex A8</li>
+</ul>
+</td>
+<td style="text-align: left;">
+<ul>
+<li> Allwinner A10</li>
+<li>1GHz ARM Cortex A8</li>
+</ul>
+</td>
+<td>
+<ul>
+<li style="text-align: left;"> Allwinner A20</li>
+<li style="text-align: left;">1GHz ARM Cortex A7 Dual Core</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td>GPU</td>
+<td> OpenGL ES2.0, OpenVG 1.1 Mali 400 core</td>
+<td>OpenGL ES2.0, OpenVG 1.1 Mali 400 core</td>
+<td>OpenGL ES2.0, OpenVG 1.1 Mali 400 core</td>
+<td>OpenGL ES2.0, OpenVG 1.1 Mali 400 core</td>
+<td> OpenGL ES2.0, OpenVG 1.1, Mali 400 Dual Core</td>
+</tr>
+<tr>
+<td>DRAM</td>
+<td> <strong>512MB</strong></td>
+<td><strong>256MB</strong></td>
+<td><strong> 1GB</strong></td>
+<td> <strong> 1GB</strong></td>
+<td> <strong>1GB</strong></td>
+</tr>
+<tr>
+<td>Storage</td>
+<td> <strong>NO</strong> Flash, microSD card (TF) slot for up to 32GB</td>
+<td><b>2GB</b> Flash, microSD card (TF) slot for up to 32GB</td>
+<td> <strong>2GB</strong> Flash (4GB after 2/1/2014), microSD card (TF) slot for up to 32GB</td>
+<td> <strong>2GB</strong> Flash (4GB after 2/1/2014),<br />
+microSD card (TF) slot for up to 32GB</td>
+<td> 4<strong>GB</strong> Flash, microSD card (TF) slot for up to 32GB, SATA Host</td>
+</tr>
+<tr>
+<td>Video</td>
+<td> HDMI</td>
+<td>HDMI</td>
+<td> HDMI</td>
+<td> HDMI</td>
+<td> HDMI</td>
+</tr>
+<tr>
+<td>LVDS LCD</td>
+<td> No</td>
+<td>No</td>
+<td> No</td>
+<td> No</td>
+<td> Yes</td>
+</tr>
+<tr>
+<td>OS Support</td>
+<td>
+<ul>
+<li> Lbuntu 12.04</li>
+<li>Android</li>
+</ul>
+</td>
+<td>
+<ul>
+<li>Lbuntu 12.04</li>
+<li>Doesn&#8217;t support Android</li>
+</ul>
+</td>
+<td>
+<ul>
+<li>Lbuntu 12.04</li>
+<li>Android</li>
+</ul>
+</td>
+<td>
+<ul>
+<li>Lbuntu 12.04</li>
+<li>Android</li>
+</ul>
+</td>
+<td>
+<ul>
+<li>Lbuntu 12.04</li>
+<li>Android</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td>ExtensionInterface</td>
+<td> 2.54mm headers</td>
+<td>Arduino (TM) Headers</td>
+<td> 2.54mm headers</td>
+<td> Arduino (TM) Headers</td>
+<td>  Arduino (TM) Headers</td>
+</tr>
+<tr>
+<td>NetworkInterface</td>
+<td>
+<ul>
+<li>10/100Mbps RJ45</li>
+<li>USB WiFi extension (not included)</li>
+</ul>
+</td>
+<td>WiFi, No Ethernet</td>
+<td>
+<ul>
+<li>10/100Mbps RJ45</li>
+<li>USB WiFi extension (not included)</li>
+</ul>
+</td>
+<td>
+<ul>
+<li>10/100Mbps RJ45</li>
+<li>WiFi</li>
+</ul>
+</td>
+<td>
+<ul>
+<li>10/100Mbps RJ45</li>
+<li>WiFi</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td>Power</td>
+<td> 5V, 2000mA</td>
+<td>5V, 2000mA</td>
+<td> 5V, 2000mA</td>
+<td> 5V, 2000mA</td>
+<td>  5V, 2000mA</td>
+</tr>
+<tr>
+<td></td>
+<td><img src="http://www.pcduino.com/wp-content/uploads/2013/10/pcduino_lite.jpg" alt="" width="83" height="76" /></td>
+<td> <img class="alignnone" src="http://www.pcduino.com/wp-content/uploads/2013/11/pcduino_lite_wifi.jpg" alt="" width="73" height="60" /></td>
+<td> <img class="alignnone" src="http://www.pcduino.com/wp-content/uploads/2012/12/pcduino_v1.jpg" alt="" width="54" height="62" /></td>
+<td> <img class="alignnone" src="http://www.pcduino.com/wp-content/uploads/2013/09/pcDuino_v2.jpg" alt="" width="88" height="58" /></td>
+<td> <a href="http://www.pcduino.com/wp-content/uploads/2014/02/pcDuino3_1_n.jpg"><img class="alignnone wp-image-2008" src="http://www.pcduino.com/wp-content/uploads/2014/02/pcDuino3_1_n-150x150.jpg" alt="pcDuino3_1_n" width="72" height="72" /></a></td>
+</tr>
+</tbody>
+</table>
+<p>pcDuino3 Series</p>
+<table style="border-color: #000000; border-width: 2px; height: 544px;" border="2">
+<tbody>
+<tr>
+<td></td>
+<td><strong>pcDuino3</strong></td>
+<td><strong>pcDuino3B</strong></td>
+<td><strong>pcDuino3 Nano </strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>CPU</td>
+<td>
+<ul>
+<li> Allwinner A20</li>
+<li>1GHz ARM Cortex A7 Dual Core</li>
+</ul>
+</td>
+<td>
+<ul>
+<li>Allwinner A20</li>
+<li>1GHz ARM Cortex A7 Dual Core</li>
+</ul>
+</td>
+<td>
+<ul>
+<li>Allwinner A20</li>
+<li>1GHz ARM Cortex A7 Dual Core</li>
+</ul>
+</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>GPU</td>
+<td> OpenGL ES2.0, OpenVG 1.1, Mali 400 Dual Core</td>
+<td> OpenGL ES2.0, OpenVG 1.1, Mali 400 Dual Core</td>
+<td> OpenGL ES2.0, OpenVG 1.1, Mali 400 Dual Core</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>DRAM</td>
+<td><strong>1GB</strong></td>
+<td><strong>1GB</strong></td>
+<td><strong> 1GB</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Storage</td>
+<td>4<strong>GB</strong> Flash, microSD card (TF) slot for up to 32GB, SATA host</td>
+<td>4<strong>GB</strong> Flash, microSD card (TF) slot for up to 32GB, SATA Host</td>
+<td> 4<strong>GB</strong> Flash, microSD card (TF) slot for up to 32GB, SATA Host</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Video</td>
+<td> HDMI</td>
+<td>HDMI</td>
+<td> HDMi</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>LVDS LCD</td>
+<td>Yes</td>
+<td>Yes</td>
+<td> No</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>OS Support</td>
+<td>
+<ul>
+<li>Lubuntu 12.04</li>
+<li>Android</li>
+</ul>
+</td>
+<td>
+<ul>
+<li>Lbuntu 12.04</li>
+<li>Android</li>
+</ul>
+</td>
+<td>
+<ul>
+<li>Lbuntu 12.04</li>
+<li>Android</li>
+</ul>
+</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Extension Interface</td>
+<td>  Arduino (TM) Headers</td>
+<td>Arduino (TM) Headers</td>
+<td> Arduino (TM) Headers</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>NetworkInterface</td>
+<td>
+<ul>
+<li>10/100Mbps RJ45</li>
+<li>WiFi</li>
+</ul>
+</td>
+<td>
+<ul>
+<li>10/100/<strong><span style="color: #ff0000;">1G</span></strong> Mbps RJ45</li>
+<li>WiFi</li>
+</ul>
+</td>
+<td>
+<ul>
+<li>10/100/<strong><span style="color: #ff0000;">1G</span> </strong>Mbps RJ45</li>
+<li>No WiFi</li>
+</ul>
+</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Power</td>
+<td> 5V, 2000mA</td>
+<td>5V, 2000mA</td>
+<td> 5V, 2000mA</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+			</div><!-- .entry-content -->	</article><!-- #post-## -->
+
+<div id="comments" class="comments-area">
+	
+
+	
+
+					<div id="respond" class="comment-respond">
+			<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="/linksprite-pcduino/#respond" style="display:none;">Cancel reply</a></small></h3>				<form action="http://www.linksprite.com/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate>
+					<p class="comment-notes"><span id="email-notes">Your email address will not be published.</span> Required fields are marked <span class="required">*</span></p><p class="comment-form-comment"><label for="comment">Comment</label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" aria-required="true" required="required"></textarea></p><p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" aria-required='true' required='required' /></p>
+<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="email" value="" size="30" maxlength="100" aria-describedby="email-notes" aria-required='true' required='required' /></p>
+<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" type="url" value="" size="30" maxlength="200" /></p>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment" /> <input type='hidden' name='comment_post_ID' value='782' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+</p>				</form>
+					</div><!-- #respond -->
+		
+</div><!-- #comments -->			</main><!-- #main -->
+		</div><!-- #primary -->
+		</div><div class="sidebar-wrap col-md-3 content-left-wrap">			<div id="secondary" class="widget-area" role="complementary" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">								<aside id="search" class="widget widget_search">				<form role="search" method="get" class="search-form" action="http://www.linksprite.com/">
+				<label>
+					<span class="screen-reader-text">Search for:</span>
+					<input type="search" class="search-field" placeholder="Search &hellip;" value="" name="s" />
+				</label>
+				<input type="submit" class="search-submit" value="Search" />
+			</form>			</aside>			<aside id="archives" class="widget">				<h1 class="widget-title">Archives</h1>				<ul>						<li><a href='http://www.linksprite.com/2016/06/'>June 2016</a></li>
+	<li><a href='http://www.linksprite.com/2016/05/'>May 2016</a></li>
+	<li><a href='http://www.linksprite.com/2016/04/'>April 2016</a></li>
+	<li><a href='http://www.linksprite.com/2016/02/'>February 2016</a></li>
+	<li><a href='http://www.linksprite.com/2015/10/'>October 2015</a></li>
+	<li><a href='http://www.linksprite.com/2015/06/'>June 2015</a></li>
+	<li><a href='http://www.linksprite.com/2015/05/'>May 2015</a></li>
+	<li><a href='http://www.linksprite.com/2015/04/'>April 2015</a></li>
+	<li><a href='http://www.linksprite.com/2015/03/'>March 2015</a></li>
+	<li><a href='http://www.linksprite.com/2015/02/'>February 2015</a></li>
+	<li><a href='http://www.linksprite.com/2015/01/'>January 2015</a></li>
+	<li><a href='http://www.linksprite.com/2014/12/'>December 2014</a></li>
+	<li><a href='http://www.linksprite.com/2014/11/'>November 2014</a></li>
+	<li><a href='http://www.linksprite.com/2014/10/'>October 2014</a></li>
+	<li><a href='http://www.linksprite.com/2014/09/'>September 2014</a></li>
+	<li><a href='http://www.linksprite.com/2014/08/'>August 2014</a></li>
+	<li><a href='http://www.linksprite.com/2014/07/'>July 2014</a></li>
+	<li><a href='http://www.linksprite.com/2014/06/'>June 2014</a></li>
+	<li><a href='http://www.linksprite.com/2014/05/'>May 2014</a></li>
+	<li><a href='http://www.linksprite.com/2014/04/'>April 2014</a></li>
+	<li><a href='http://www.linksprite.com/2014/03/'>March 2014</a></li>
+	<li><a href='http://www.linksprite.com/2014/02/'>February 2014</a></li>
+	<li><a href='http://www.linksprite.com/2014/01/'>January 2014</a></li>
+	<li><a href='http://www.linksprite.com/2013/11/'>November 2013</a></li>
+	<li><a href='http://www.linksprite.com/2013/10/'>October 2013</a></li>
+	<li><a href='http://www.linksprite.com/2013/09/'>September 2013</a></li>
+				</ul>			</aside>			<aside id="meta" class="widget">				<h1 class="widget-title">Meta</h1>				<ul>					<li><a href="http://www.linksprite.com/wp-login.php?action=register">Register</a></li>					<li><a href="http://www.linksprite.com/wp-login.php">Log in</a></li>									</ul>			</aside>							</div><!-- #secondary -->		</div>	</div><!-- .container -->
+</div><!-- .site-content -->
+
+
+<footer id="footer" role="contentinfo" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
+
+
+
+	
+
+
+
+<div class="container">
+		
+
+	<div class="footer-box-wrap"><div class="col-md-3 footer-box four-cell company-details"><div class="icon-top red-text"><img src="http://www.linksprite.com/wp-content/themes/zerif-pro/images/map25-redish.png" alt="" /></div><div class="zerif-footer-address">1067 S Hover St, Unit E-186
+Longmont, CO 80501,
+USA</div></div><div class="col-md-3 footer-box four-cell company-details"><div class="icon-top green-text"><img src="http://www.linksprite.com/wp-content/themes/zerif-pro/images/envelope4-green.png" alt="" /></div><div class="zerif-footer-email"><a href="mailto:sales@linksprite.com">sales@linksprite.com</a></div></div><div class="col-md-3 footer-box four-cell company-details"><div class="icon-top blue-text"><img src="http://www.linksprite.com/wp-content/themes/zerif-pro/images/telephone65-blue.png" alt="" /></div><div class="zerif-footer-phone"><a href="tel:720-204-8599"> 720-204-8599</a></div></div><div class="col-md-3 footer-box four-cell copyright"><ul class="social"><li><a target="_blank" title="Facebook" href="#"><i class="fa fa-facebook"></i></a></li><li><a target="_blank" title="Twitter" href="#"><i class="fa fa-twitter"></i></a></li><li><a target="_blank" title="LinkedIn" href="#"><i class="fa fa-linkedin"></i></a></li><li><a target="_blank" title="Behance" href="#"><i class="fa fa-behance"></i></a></li><li><a target="_blank" title="Dribbble" href="#"><i class="fa fa-dribbble"></i></a></li></ul><p id="zerif-copyright">@LinkSprite</p></div></div>	</div> <!-- / END CONTAINER -->
+
+</footer> <!-- / END FOOOTER  -->
+
+
+ <style type="text/css">	.big-title-container .red-btn:hover { color: #fff !important }	.big-title-container .green-btn:hover { color: #fff !important }.works .red-border-bottom:before { background: #e96656 !important; }.about-us	.skills input { color: #fff !important; }.about-us .our-clients .section-footer-title { color: #fff !important; }.team-member:hover .details { background: #333 !important; }	.our-team .row > div:nth-child(4n+1) .red-border-bottom:before { background: #e96656 }	.our-team .row > div:nth-child(4n+2) .red-border-bottom:before { background: #34d293 }	.our-team .row > div:nth-child(4n+3) .red-border-bottom:before { background: #3ab0e2 }	.our-team .row > div:nth-child(4n+4) .red-border-bottom:before { background: #f7d861 }	.testimonial .feedback-box { background: #FFFFFF !important; }	.separator-one .green-btn { color: #fff !important; }	.separator-one .green-btn:hover { color: #fff !important; }	.purchase-now .red-btn { color: #fff !important; }	.purchase-now .red-btn:hover { color: #fff !important; }	.contact-us button:hover, .pirate_forms .pirate-forms-submit-button:hover { color: #fff !important; }	.packages { background: rgba(0, 0, 0, 0.5) }	#latestnews { background: rgba(255, 255, 255, 1) }	#latestnews .section-header h2 { color: #404040 }	#latestnews .section-header h6 { color: #808080 } section#subscribe { background: rgba(0, 0, 0, 0.5) !important; }	#footer .company-details:hover, #footer .company-details a:hover, #footer .footer-widget a:hover { color: #e96656 !important; }	#footer .footer-widget h1 { color: #fff !important; }	#footer .footer-widget h1:before { background: #e96656 !important; }</style><script type='text/javascript' src='http://www.linksprite.com/wp-content/plugins/youtube-embed-plus/scripts/fitvids.min.js?ver=4.5.3'></script>
+<script type='text/javascript' src='http://www.linksprite.com/wp-content/themes/zerif-pro/js/bootstrap.min.js?ver=20120206'></script>
+<script type='text/javascript' src='http://www.linksprite.com/wp-content/themes/zerif-pro/js/scrollReveal.min.js?ver=20120206'></script>
+<script type='text/javascript' src='http://www.linksprite.com/wp-content/themes/zerif-pro/js/zerif.js?ver=20120206'></script>
+<script type='text/javascript' src='http://www.linksprite.com/wp-includes/js/comment-reply.min.js?ver=4.5.3'></script>
+<script type='text/javascript' src='http://www.linksprite.com/wp-includes/js/wp-embed.min.js?ver=4.5.3'></script>
+
+</body>
+
+</html>

@@ -1,0 +1,2068 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="js no-auth  is-AppPromotionBarVisible cssanimations csstransforms csstransitions flexbox no-touchevents no-mobile" dropeffect="none" style="">
+<head>
+<meta charset="UTF-8">
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-ZA-Response-Id" content="bf72863f759d446a8cd73252a8cb8006">
+<meta http-equiv="X-ZA-Experiment" content="default:None">
+
+<title>
+
+
+cubieboard、Raspberry Pi、pcDuino、MK802 mini pc对比？ - ARM - 知乎
+
+
+</title>
+
+<meta name="apple-itunes-app" content="app-id=432274380, app-argument=zhihu://questions/24059464">
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta http-equiv="mobile-agent" content="format=html5;url=http://www.zhihu.com/question/24059464">
+<meta id="znonce" name="znonce" content="7da96525ad904bf69199f0fd77cf3147">
+
+
+
+<link rel="apple-touch-icon" href="http://static.zhihu.com/static/revved/img/ios/touch-icon-152.87c020b9.png" sizes="152x152">
+<link rel="apple-touch-icon" href="http://static.zhihu.com/static/revved/img/ios/touch-icon-120.496c913b.png" sizes="120x120">
+<link rel="apple-touch-icon" href="http://static.zhihu.com/static/revved/img/ios/touch-icon-76.dcf79352.png" sizes="76x76">
+<link rel="apple-touch-icon" href="http://static.zhihu.com/static/revved/img/ios/touch-icon-60.9911cffb.png" sizes="60x60">
+
+
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+<link rel="search" type="application/opensearchdescription+xml" href="http://static.zhihu.com/static/search.xml" title="知乎">
+
+
+
+
+<meta name="google-site-verification" content="FTeR0c8arOPKh8c5DYh_9uu98_zJbaWw53J-Sch9MTg">
+
+
+
+<!--[if lt IE 9]>
+<script src="http://static.zhihu.com/static/components/respond/dest/respond.min.js"></script>
+<link href="http://static.zhihu.com/static/components/respond/cross-domain/respond-proxy.html" id="respond-proxy" rel="respond-proxy" />
+<link href="/static/components/respond/cross-domain/respond.proxy.gif" id="respond-redirect" rel="respond-redirect" />
+<script src="/static/components/respond/cross-domain/respond.proxy.js"></script>
+<![endif]-->
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+
+<body class="zhi  no-auth">
+
+
+
+<div role="navigation" class="zu-top">
+<div class="zg-wrap modal-shifting clearfix" id="zh-top-inner">
+<a href="http://www.zhihu.com/" class="zu-top-link-logo" id="zh-top-link-logo" data-za-c="view_home" data-za-a="visit_home" data-za-l="top_navigation_zhihu_logo">知乎</a>
+
+
+
+<ul class="topnav-noauth clearfix">
+<li>
+<a class="js-signup-noauth"><i class="zg-icon zg-icon-dd-home"></i>注册知乎</a>
+</li>
+<li>
+<a class="js-signin-noauth">登录</a>
+</li>
+</ul>
+
+
+
+<button class="zu-top-add-question" id="zu-top-add-question">提问</button>
+
+
+<div role="search" id="zh-top-search" class="zu-top-search">
+<form method="GET" action="http://www.zhihu.com/search" id="zh-top-search-form" class="zu-top-search-form">
+
+
+
+<input name="type" value="content" type="hidden">
+<label for="q" class="hide-text">知乎搜索</label><input aria-autocomplete="list" role="combobox" class="zu-top-search-input" id="q" name="q" autocomplete="off" value="" placeholder="搜索你感兴趣的内容..." type="text">
+<button type="submit" class="zu-top-search-button"><span class="hide-text">搜索</span><span class="sprite-global-icon-magnifier-dark"></span></button>
+</form>
+</div>
+
+
+
+<div id="zg-top-nav" class="zu-top-nav">
+<ul class="zu-top-nav-ul zg-clear">
+
+<li class="zu-top-nav-li " id="zh-top-nav-home">
+<a class="zu-top-nav-link" href="http://www.zhihu.com/" id="zh-top-link-home" data-za-c="view_home" data-za-a="visit_home" data-za-l="top_navigation_home">首页</a>
+</li>
+
+
+
+<li class="top-nav-topic-selector zu-top-nav-li " id="zh-top-nav-topic">
+<a class="zu-top-nav-link" href="http://www.zhihu.com/topic" id="top-nav-dd-topic">话题</a>
+</li>
+
+<li class="zu-top-nav-li " id="zh-top-nav-explore">
+<a class="zu-top-nav-link" href="http://www.zhihu.com/explore">发现</a>
+</li>
+
+
+</ul>
+<div class="zu-top-nav-live zu-noti7-popup zg-r5px no-hovercard" id="zh-top-nav-live-new" role="popup" tabindex="0">
+<div class="zu-top-nav-live-inner zg-r5px">
+<div class="zu-top-live-icon">&nbsp;</div>
+<div class="zu-home-noti-inner" id="zh-top-nav-live-new-inner">
+<div class="zm-noti7-popup-tab-container clearfix" tabindex="0">
+<button class="zm-noti7-popup-tab-item message">
+<span class="icon">消息</span>
+</button>
+<button class="zm-noti7-popup-tab-item user">
+<span class="icon">用户</span>
+</button>
+<button class="zm-noti7-popup-tab-item thanks">
+<span class="icon">赞同和感谢</span>
+</button>
+</div>
+</div>
+<div class="zm-noti7-frame-border top"></div>
+<div class="zm-noti7-frame">
+<div class="zm-noti7-content message">
+<div class="zm-noti7-content-inner">
+<div class="zm-noti7-content-body">
+<div class="zm-noti7-popup-loading">
+<span class="noti-spinner-loading"></span>
+</div>
+</div>
+</div>
+</div>
+<div class="zm-noti7-content user" style="display: none;">
+<div class="zm-noti7-content-inner">
+<div class="zm-noti7-content-body">
+<div class="zm-noti7-popup-loading">
+<span class="noti-spinner-loading"></span>
+</div>
+</div>
+</div>
+</div>
+<div class="zm-noti7-content thanks" style="display: none;">
+<div class="zm-noti7-content-inner">
+<div class="zm-noti7-content-body">
+<div class="zm-noti7-popup-loading">
+<span class="noti-spinner-loading"></span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="zm-noti7-frame-border bottom"></div>
+<div class="zm-noti7-popup-footer">
+<a href="http://www.zhihu.com/notifications" class="zm-noti7-popup-footer-all zg-right">查看全部 »</a>
+<a href="http://www.zhihu.com/settings/notification" class="zm-noti7-popup-footer-set" title="通知设置"><i class="zg-icon zg-icon-settings"></i></a>
+</div>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+
+<div class="zu-global-notify" id="zh-global-message" style="display: none;">
+<div class="zg-wrap">
+<div class="zu-global-nitify-inner">
+<a class="zu-global-notify-close" title="关闭" name="close">x</a>
+<span class="zu-global-notify-icon"></span>
+<span class="zu-global-notify-msg"></span>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+<div class="zu-global-notify zu-global-notify-info" id="zh-question-redirect-info" style="display: none;"></div>
+
+
+<div class="zu-global-notify zu-global-notify-info" id="zh-question-notification-summary" style="display: none;">
+<div class="zg-wrap">
+<div class="zu-global-nitify-inner">
+<span class="zu-global-notify-icon"></span>
+<ul class="zu-question-notify-wrap">
+</ul>
+</div>
+</div>
+</div>
+
+
+<div class="zg-wrap zu-main clearfix with-indention-votebar" itemscope="" itemtype="http://schema.org/Question" id="zh-single-question-page" data-urltoken="24059464" role="main">
+<div class="zu-main-content">
+<div class="zu-main-content-inner">
+
+
+<meta itemprop="isTopQuestion" content="false">
+<meta itemprop="visitsCount" content="22577">
+
+
+<div class="zm-tag-editor zg-section">
+<div class="zm-tag-editor-labels zg-clear">
+
+<a class="zm-item-tag" href="http://www.zhihu.com/topic/19553303" data-hovercard="t$b$19553303" data-token="19553303" data-topicid="1028">
+ARM
+</a>
+
+<a class="zm-item-tag" href="http://www.zhihu.com/topic/19737690" data-hovercard="t$b$19737690" data-token="19737690" data-topicid="62643">
+树莓派 (Raspberry Pi)
+</a>
+
+<a class="zm-item-tag" href="http://www.zhihu.com/topic/19787895" data-hovercard="t$b$19787895" data-token="19787895" data-topicid="79712">
+cubieboard
+</a>
+
+</div>
+</div>
+<div id="zh-question-title" data-editable="false">
+<h2 class="zm-item-title">
+
+<span class="zm-editable-content">cubieboard、Raspberry Pi、pcDuino、MK802 mini pc对比？</span>
+
+</h2>
+</div>
+<div id="zh-question-detail" class="zm-item-rich-text" data-resourceid="1805577" data-action="/question/detail">
+
+<div class="zm-editable-content">cubieboard、<b>Raspberry Pi、</b>pcDuino、MK802他们之间有什么区别，可从功能和性能等区分，另外还有没有其他不错的mini pc可推荐</div>
+
+
+</div>
+<div data-za-module="QuestionItem" class="zm-item-meta zm-item-comment-el clearfix" id="zh-question-meta-wrap">
+<div class="zm-meta-panel goog-scrollfloater">
+
+<a href="#" name="addcomment" class="toggle-comment meta-item">
+<i class="z-icon-comment"></i>添加评论
+</a>
+<a aria-haspopup="true" tabindex="0" aria-expanded="false" style="-moz-user-select: none;" role="button" href="#" name="share" class="share meta-item goog-inline-block goog-menu-button"><div class="goog-inline-block goog-menu-button-outer-box"><div class="goog-inline-block goog-menu-button-inner-box"><div class="goog-inline-block goog-menu-button-caption"><i class="z-icon-share"></i>分享</div><div class="goog-inline-block goog-menu-button-dropdown">&nbsp;</div></div></div></a>
+
+</div>
+<div class="panel-container">
+
+<div class="question-invite-panel"></div><div style="display: none;" class="zm-comment-box"></div></div>
+</div>
+
+
+<div class="zh-answers-title clearfix">
+
+<div id="zh-answers-filter" class="Sorter">
+
+<span class="lbl">按投票排序</span>
+<a class="lbl" href="http://www.zhihu.com/question/24059464?sort=created">按时间排序</a>
+
+<i class="zg-icon zg-icon-double-arrow"></i>
+</div>
+
+<h3 data-num="15" id="zh-question-answer-num">15 个回答</h3>
+</div>
+
+<div id="zh-question-answer-wrap" data-pagesize="10" class="zh-question-answer-wrapper navigable" data-widget="navigable" data-navigable-options="{&quot;items&quot;: &quot;>.zm-item-answer&quot;}" data-init="{&quot;params&quot;: {&quot;url_token&quot;: 24059464, &quot;pagesize&quot;: 10, &quot;offset&quot;: 0}, &quot;nodename&quot;: &quot;QuestionAnswerListV2&quot;}"><div data-za-module="AnswerItem" tabindex="-1" class="zm-item-answer  zm-item-expanded" itemprop="topAnswer" itemscope="" itemtype="http://schema.org/Answer" data-aid="5935689" data-atoken="26558220" data-collapsed="0" data-created="1402153885" data-deleted="0" data-helpful="1" data-isowner="0" data-copyable="1">
+<link itemprop="url" href="http://www.zhihu.com/question/24059464/answer/26558220">
+<meta itemprop="answer-id" content="5935689">
+<meta itemprop="answer-url-token" content="26558220">
+<a class="zg-anchor-hidden" name="answer-5935689"></a>
+
+
+<div data-za-module="VoteBar" class="zm-votebar goog-scrollfloater">
+<button title="赞同" aria-pressed="false" class="up">
+<i class="icon vote-arrow"></i>
+<span class="count">378</span>
+<span class="label sr-only">赞同</span>
+</button>
+<button title="反对，不会显示你的姓名" aria-pressed="false" class="down">
+<i class="icon vote-arrow"></i>
+<span class="label sr-only">反对，不会显示你的姓名</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+
+<a class="zm-item-link-avatar avatar-link" href="http://www.zhihu.com/people/shamiaoc" target="_blank" data-hovercard="p$t$shamiaoc"><img src="ec4b9042a_s.jpg" class="zm-list-avatar avatar"></a>
+
+
+<span class="author-link-line">
+<a class="author-link" data-hovercard="p$t$shamiaoc" target="_blank" href="http://www.zhihu.com/people/shamiaoc">沙渺</a></span><span title="1998年入行，普通的电脑老玩家" class="bio">1998年入行，普通的电脑老玩家</span>
+
+</div>
+<div data-za-module="VoteInfo" class="zm-item-vote-info" data-votecount="378">
+
+
+
+<span class="voters text"><a href="#" class="more text"><span class="js-voteCount">378</span>&nbsp;人赞同</a></span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text expandable js-collapse-body" data-resourceid="1805577" data-action="/answer/content" data-author-name="沙渺" data-entry-url="/question/24059464/answer/26558220">
+
+
+<div class="zh-summary summary clearfix" style="display: none;">
+<img data-rawheight="857" data-rawwidth="1024" src="0dd7a582881f9f9c8f8ddd58c342a46a_200x112.jpg" class="origin_image inline-img zh-lightbox-thumb" data-original="https://pic3.zhimg.com/0dd7a582881f9f9c8f8ddd58c342a46a_r.jpg">
+市面上这些Mini PC，或者说是ARM嵌入式开源硬件板卡，我知道的还是比较全的。说一下吧。Mini PC板卡的要素无非4点：CPU（或者叫SoC，性能的<b>唯一</b>决定性要素）外设接口厂商支持价格在聊到所有的事情之前，请先相信我这句话：<b>淘宝上“超越XXX”的宣传口径，都…</b>
+
+<a href="http://www.zhihu.com/question/24059464/answer/26558220" class="toggle-expand">显示全部</a>
+
+</div>
+
+
+<div class="zm-editable-content clearfix">
+市面上这些Mini PC，或者说是ARM嵌入式开源硬件板卡，我知道的还是比较全的。说一下吧。<br><br>Mini PC板卡的要素无非4点：<br><ol><li>CPU（或者叫SoC，性能的<b>唯一</b>决定性要素）</li><li>外设接口</li><li>厂商支持</li><li>价格<br></li></ol><br>在聊到所有的事情之前，请先相信我这句话：<b>淘宝上“超越XXX”的宣传口径，都是扯淡</b>。<br>性能的唯一决定性因素不过是<b>CPU</b>而已。CPU一致的板子，性能不会有明显差异。<br>至于其余的厂商支持力度、维护投入、资金实力、社区讨论等软实力，往往很重要，却被厂商有意无意的全部闭口不谈。<br>关于这个话题，请参照我的文章《<a href="http://link.zhihu.com/?target=http%3A//shamiao.com/techcomment/22" class=" wrap external" target="_blank" rel="nofollow noreferrer">总是被忽略的软实力<i class="icon-external"></i></a>》。<br><br><b>别被宣传蒙骗</b>。请坚持购买在社区内有用户群、被认可、可以讨论的产品。<br>远离那些讨论不开放、社区不承认，用户掏钱之后被厂家弃如敝屣的垃圾板子。<br><br>绝大多数产品照片，由我所在公司 <a href="http://link.zhihu.com/?target=http%3A//SegmentFault.com" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">http://</span><span class="visible">SegmentFault.com</span><span class="invisible"></span><i class="icon-external"></i></a> 中文开发者社区开源硬件社区提供实拍。<br><br>【CubieBoard】（CB）<br><img data-lazyloaded="" style="width: 578px; height: 483.736px; display: block;" data-rawheight="857" data-rawwidth="1024" src="0dd7a582881f9f9c8f8ddd58c342a46a_b.jpg" class="origin_image zh-lightbox-thumb lazy" data-original="https://pic3.zhimg.com/0dd7a582881f9f9c8f8ddd58c342a46a_r.jpg" data-actualsrc="https://pic3.zhimg.com/0dd7a582881f9f9c8f8ddd58c342a46a_b.jpg" width="1024"><br>这里以主流购买的CB2为例。注意CubieTruck虽然确实是CB3，但这里不讨论。<br><br>CB2的CPU是<b>Allwinner(全志) A20</b>。其架构为ARM Cortex-A7 双核。<br>这个CPU的性能，可以类比比较廉价的安卓平板。跑Android没有那么强力，不过还是够用的。跑Linux还挺不错，轻负载不会很明显的卡顿。<br><br>其余配置为百兆以太网，板载4GB NAND存储，扩展TF存储，1G DDR3内存，3.5mm耳机+麦克复合插孔，SATA，HDMI+VGA(须外挂电路)+LCD(须外挂电路)，Camera摄像头接口(须外接电路)。价格350。<br><br>我去拜访过CubieTech(方糖科技)。他们的支持投入是持续而活跃的，可以信任。<br>CB上可以方便的刷入Android、Debian和Ubuntu (Linaro)。<br><br>CB在开源硬件中算是入场非常早的一个。CB1公布虽然晚于Raspberry Pi，但在国内的上市与推广和Raspberry Pi是同期的甚至更早（由于Raspberry Pi早期的缺货和引入中国的时间差）。所以国内拥有CB的人相对来说还是比较多的。<br><br>CB比较麻烦的地方是扩展接口全都是2.00mm而不是标准的2.54mm，可能需要扩展板一类的东西，才能用来直接连接2.54mm的各种电子模块，略显啰嗦。<br><br>CB1和CB2的电路板完全相同，所有配置也一致，只是CPU退到<b>Allwinner(全志) A10</b>（ARM Cortex-A8 单核），价格300。<br>一般认为加钱不多就可以升级到双核CPU，再购买CB1的价值就不大了，除非某些性能足够的应用下特意省一点。<br><br><blockquote>这里提一下Allwinner(全志)。珠海全志是中国本土的一家ARM芯片制造商，他们出的CPU普遍被用来制造廉价Android平板。<br>珠海全志的最大特点是：他们更多的是<b>方案</b>而非<b>产品</b>公司。全志的CPU一般为单一的Android应用场景而制造和优化，出厂时就向合作商提供使用CPU制造Android设备的全套方案和SDK，几乎不加修改就可以迅速造出产品。<br>但与此同时，这个思路也造成了芯片开发、挖掘和资料建设客观上的短视。也就是说用这个芯片做厂商调好的方案非常容易，但做别的就很容易连最基本的资料都会缺。很多人拿到全志CPU的Datasheet之后大呼“坑爹”、“山寨”，其实理由就在这里。全志并非做不好资料，而是发力点不在这里。</blockquote><br>【Raspberry Pi】（RPi）<br><img data-lazyloaded="" style="width: 578px; height: 439.709px;" data-rawheight="779" data-rawwidth="1024" src="whitedot.jpg" class="origin_image zh-lightbox-thumb lazy" data-original="https://pic3.zhimg.com/c935f16c8ffd2172ba386a4f5314b1c6_r.jpg" data-actualsrc="https://pic3.zhimg.com/c935f16c8ffd2172ba386a4f5314b1c6_b.jpg" width="1024"><br>A版货源极少，所以不讨论。这里都是只讨论B版。<br><br>让人又爱又恨的先驱者。<br><br>RPi的CPU是<b>Broadcom(博通) BCM2835</b>。其架构为ARM11单核。<br>这个架构整整落后于现在所有智能手机，以及所有其他Mini PC板卡的ARM Cortex-A架构一代，属于ARM在开启Cortex多产品线之前的最后一代经典ARM产品。<br>这个CPU的性能让人绝望。低的要死，随便动动鼠标就卡的类型。说好点是要求软件开发者注意优化，说差点儿就是偷工减料。还好SoC内置的图形处理器性能够强，并且硬解H.264也不缺，图形性能还有点指望。<br><br>其余配置为百兆以太网(共享USB带宽)，无半载存储，全部依赖SD存储，512M SDRAM内存，HDMI+模拟复合视频，CSI摄像头接口。价格210左右（疑似逃增值税）。<br><br>爱的是社区支持太充分了，不用依赖厂家就有非常丰富多样的应用和资料。<br>恨的是性能低到令人发指；博通与开源为敌，各种硬件API与驱动不放开给开发者；基金会软硬件设计漏洞百出，系统功能只宣传不证明，“挖坑不填”。<br><br>我专门在SegmentFault写过两篇文章评论过RPi：<br><a class=" wrap external" href="http://link.zhihu.com/?target=http%3A//blog.segmentfault.com/shamiao/1190000000451314" target="_blank" rel="nofollow noreferrer">开源硬件平台全新简介 (1) Raspberry Pi “树莓派”(上): 概述与优势<i class="icon-external"></i></a><br><a href="http://link.zhihu.com/?target=http%3A//blog.segmentfault.com/shamiao/1190000000465449" class=" wrap external" target="_blank" rel="nofollow noreferrer">开源硬件平台全新简介 (2) Raspberry Pi “树莓派”(下): 问题与总评<i class="icon-external"></i></a><br>可以看一下。<br><br>我的态度是：Linux新手第一块板子推荐RPi，熟练者不推荐。但既然不贵，所以总是可以作为第二块板子买来试试看。<br><br>【pcDuino】（pcD）<br><img data-lazyloaded="" style="width: 578px; height: 418.824px;" data-rawheight="742" data-rawwidth="1024" src="whitedot.jpg" class="origin_image zh-lightbox-thumb lazy" data-original="https://pic2.zhimg.com/68397d52c5caac419c4fa4fd2d8ded35_r.jpg" data-actualsrc="https://pic2.zhimg.com/68397d52c5caac419c4fa4fd2d8ded35_b.jpg" width="1024"><br>以新近发售的V3为例。<br><br>pcD-V3的CPU是<b>Allwinner(全志) A20</b>。与CB2一致而不再讨论。<br>其余配置为百兆以太网和WiFi(通过USB)，板载4GB NAND存储，扩展TF存储，1G DDR3内存，SATA，Camera摄像头接口，HDMI+LVDS液晶屏接口，IR红外输入，3.5mm耳机麦克复合插孔。<br><br>pcDuino有意思在他的扩展接口，是与Arduino完全兼容的。所以只要是3.3V版本的特殊Arduino（也就是Arduino Tre）可用的扩展板，就可以直接用于pcDuino。<br>pcDuino的软件策略也很有意思。pcDuino出厂系统是易于编程的Ubuntu (Linaro)而不是通常的Android。系统环境中内置了特殊的Arduino IDE和Scratch，可以直接用来指挥扩展引脚进行硬件编程，非常方便。<br>要我说，做为硬件开发人和硬件DIY的宣传者，可能还是pcDuino最接近我把Mini PC当做硬件开发基础设备的理想。<br><br>pcDuino厂商的更新同样是积极的，他们的那个Learn Center里攒了不少资料可以用（不是pcDuino的其他板卡用户也可以去参照）。<br>pcDuino让人恨得头发痛的是那个价格……pcD-V3套装的价格高达680，土豪消费品啊。<br>另外所有的pcDuino都是单USB口的，USB HUB几乎必要。会造成点麻烦。<br><br>pcD-V2的CPU退到<b>Allwinner(全志) A10</b>，也取消掉了SATA、LVDS、Camera、IR红外输入、3.5mm耳机麦克复合插孔这一批的接口。<br>价格400。在全志A10的板子中同样是个高消费。<br>V1似乎货源很少，不讨论。<br><br>【MK802】<br><img data-lazyloaded="" style="width: 548px; height: 348px;" data-rawheight="348" data-rawwidth="548" src="whitedot.jpg" class="origin_image zh-lightbox-thumb lazy" data-original="https://pic1.zhimg.com/7cfe4c9df8eb721c95d455676d6adb0c_r.jpg" data-actualsrc="https://pic1.zhimg.com/7cfe4c9df8eb721c95d455676d6adb0c_b.jpg" width="548">以我的了解，MK802不是一个单一的产品，而是众多的<b>安卓电视棒</b>所通用的一个名称。<br><br>可能采用瑞芯微、全志等各种CPU，多半不会高档。<br>基本上只有无线网络。Flash+TF扩展卡槽。单一HDMI输出。全部只能用4.1或4.2的旧版Android，不能刷Linux，不能编程，不能用于硬件DIY。价格200-400不等。<br><br>厂商不一，普遍三无，售后不会有人管的。<br>只能用于把普通电视变成一个性能不怎么样的Android智能电视。<br><br>没有任何购买的价值。谁买谁上当。<br><br>真想拼装Android智能电视，买这货不如买天猫、小米等各种知名的盒子。<br>虽然那些的使用体验仍然值得商榷，但肯定比这种破烂好出几条街。<br><br>--------------------------------------------------------------<br><br>其他不错的mini pc：<br><br>【CubieTruck】（CT）<br><img data-lazyloaded="" style="width: 578px; height: 447.047px;" data-rawheight="792" data-rawwidth="1024" src="whitedot.jpg" class="origin_image zh-lightbox-thumb lazy" data-original="https://pic4.zhimg.com/0e24de39d586b9e49ebdd9f7d592d1f7_r.jpg" data-actualsrc="https://pic4.zhimg.com/0e24de39d586b9e49ebdd9f7d592d1f7_b.jpg" width="1024"><br>CubieTruck就是CubieBoard3。<br>CT就是CubieBoard产品线当中的豪华版。彻底更换了前两代的电路板设计。<br>CPU仍然是全志A20。板载NAND加到8G，内存加到2G DDR3，以太网升级到千兆（重要！），增加板载WiFi，增加直接的VGA输出，增加3.5mm耳机+麦克复合插孔，增加SPDIF光纤输出，增加IR红外输入。<br>这个板子无论玩起Android和Linux来说，在外设配置上都是全功能的。<br>价格540。<br><br>【Banana Pi】（BPi）<br><img data-lazyloaded="" style="width: 578px; height: 464.545px;" data-rawheight="823" data-rawwidth="1024" src="whitedot.jpg" class="origin_image zh-lightbox-thumb lazy" data-original="https://pic2.zhimg.com/b906e5a044300c743f34b8871d60df95_r.jpg" data-actualsrc="https://pic2.zhimg.com/b906e5a044300c743f34b8871d60df95_b.jpg" width="1024"><br>今年上半年刚在国内广泛宣传的新兴产品。<br>CPU是全志A20（电路板背面）。<br>1GB DDR3。无板载存储，全部使用SD卡存储。千兆以太网（重要！）。HDMI+复合视频+LVDS液晶屏。3.5mm耳机输出，板载麦克。板载IR。Camera接口。<br>看板子的形状就知道了。这个板子的一切目标就是兼容Raspberry Pi。我和Banana Pi团队见过面，据他们自述为了这个目标，他们在板子设计上违背理想目标的牺牲很大，例如坚持使用SD而不是TF。<br>厂商甚至做到了借助ARMv7对ARMv6指令集的向下兼容，提供仅仅代换掉Kernel和Bootloader，而Rootfs与Raspberry Pi保持不变的兼容镜像。<br>价格299。A20的板子中最便宜的。<br><br>【BeagleBone Black】（BBB）<br><img data-lazyloaded="" style="width: 578px; height: 467.367px;" data-rawheight="828" data-rawwidth="1024" src="whitedot.jpg" class="origin_image zh-lightbox-thumb lazy" data-original="https://pic2.zhimg.com/29c2826f5b3ae574fe118cdc02c91705_r.jpg" data-actualsrc="https://pic2.zhimg.com/29c2826f5b3ae574fe118cdc02c91705_b.jpg" width="1024"><br>美国团队的作品。市面上少见的德州仪器（德仪、Texas Instruments、TI）方案。<br>CPU是TI AM3358，ARM Cortex-A8单核（架构等同全志A10）。<br>512MB DDR3，板载4GB eMMC存储，带TF卡扩展。micro HDMI或LCD视频输出(需要特别的Shield电路板)。百兆以太网。<br><br>TI好就好在洋人其实挺爱玩的……英文资料不少。另外TI的Datasheet做的也好一些。资深的硬件开发人会喜欢TI这种大公司推出的东西。<br>板载存储是个好东西，eMMC内置控制器，玩法和SD卡一致，省去很多麻烦。<br><br>BBB让人恨的要死的是那个Micro HDMI！接口旁边的空间做的太少了！如果用HDMI转Micro HDMI转接头，就会直接死死的挡住旁边的TF插槽和USB接口！就算用原生的Micro HDMI电缆，也会和一起插入的USB电缆互相挤占空间。哪个脑残画的板子！<br><br>价格380（深圳英蓓特获得授权生产的中国版）/430（美国进口版）。<br><br>【Radxa Rock】<br><img data-lazyloaded="" style="width: 573px; height: 472px;" data-rawheight="472" data-rawwidth="573" src="whitedot.jpg" class="origin_image zh-lightbox-thumb lazy" data-original="https://pic4.zhimg.com/58b0587564ce9b078277847f42169d03_r.jpg" data-actualsrc="https://pic4.zhimg.com/58b0587564ce9b078277847f42169d03_b.jpg" width="573"><br>瑞芯微核心的四核高配板子。四核开发板在目前的市面上屈指可数。<br>创始人曾经是CubieBoard的创造者之一。<br>Rockchip(瑞芯微)的RK3188 CPU。架构是ARM Cortex-A9 四核。<br>2GB DDR3内存。8GB NAND存储，支持TF扩展。百兆以太网（做这么高配却不上千兆太可惜!!!）。板载WiFi+BT4.0、实时时钟（极不多见）、SPDIF光纤、复合视频、3.5mm耳机+麦克复合插孔。<br>没实际用过。求更多使用体验上的补充。<br>价格600。<br><br>【WRTnode】<br><img data-lazyloaded="" style="width: 578px; height: 495.025px;" data-rawheight="877" data-rawwidth="1024" src="whitedot.jpg" class="origin_image zh-lightbox-thumb lazy" data-original="https://pic4.zhimg.com/fb47e0b75459f7a5d8aef9c84515e367_r.jpg" data-actualsrc="https://pic4.zhimg.com/fb47e0b75459f7a5d8aef9c84515e367_b.jpg" width="1024"><br>非常别致的板子。4*5cm的面积就能跑Linux的实用小物。<br>思路是把路由器芯片做成开发板。所以系统唯一支持OpenWRT这个特别的Linux发行版。<br>CPU是MT7620N，不多见的MIPS架构。<br><br>DDR2 64MB内存，16MB SPI Flash。板载802.11 bgn无线网。可扩展多至5个百兆以太网接口。30~150mA@5V低功耗。这是一个介于Arduino（单片机级别）和Raspberry Pi（ARM高性能板卡）之间的定位。在需要使用Linux的运算能力，在性能上要求不苛刻，却在空间上需要节省的场合会有大用。<br>配置低，价格也低。目前公测价格150。<br>2014年5月份刚刚开放公测，绝对的先锋板卡。献给不怕困难和挑战的玩家。<br><br>【龙芯智龙】（龙芯“开龙”开源硬件系列板卡的第一作）<br><img data-lazyloaded="" style="width: 500px; height: 276px;" data-rawheight="276" data-rawwidth="500" src="whitedot.jpg" class="origin_image zh-lightbox-thumb lazy" data-original="https://pic3.zhimg.com/c6a4c10e3522e8fae7aed28333254a92_r.jpg" data-actualsrc="https://pic3.zhimg.com/c6a4c10e3522e8fae7aed28333254a92_b.jpg" width="500"><br>龙芯。<br>就是国产的那个MIPS CPU。<br>就是RMS大神唯一使用的计算机的CPU。<br>货真价实。（不要和汉芯造假事件弄混）<br><br>龙芯也推出了他们的开源硬件板卡“开龙”计划。<br>这块板子目前已知的最大特点是扩展接口实在是丰富的过头了，几乎无所不包。连Microduino这种Arduino分支项目的接口都有。<br><br>龙芯“智龙”主板目前尚未发售，略微期待一下吧。
+</div>
+
+
+</div>
+<a class="zg-anchor-hidden ac" name="5935689-comment"></a>
+<div class="zm-item-meta answer-actions clearfix js-contentActions">
+<div class="zm-meta-panel">
+
+<a itemprop="url" class="answer-date-link meta-item" data-tooltip="s$t$发布于 2014-06-07" target="_blank" href="http://www.zhihu.com/question/24059464/answer/26558220">编辑于 2014-06-08</a>
+
+<a href="#" name="addcomment" class="meta-item toggle-comment js-toggleCommentBox">
+<i class="z-icon-comment"></i>38 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide js-thank" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a aria-haspopup="true" tabindex="0" aria-expanded="false" style="-moz-user-select: none;" role="button" href="#" class="meta-item zu-autohide js-share goog-inline-block goog-menu-button"><div class="goog-inline-block goog-menu-button-outer-box"><div class="goog-inline-block goog-menu-button-inner-box"><div class="goog-inline-block goog-menu-button-caption"><i class="z-icon-share"></i>分享</div><div class="goog-inline-block goog-menu-button-dropdown">&nbsp;</div></div></div></a>
+
+<a href="#" class="meta-item zu-autohide js-collect"><i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+
+<span class="zg-bull zu-autohide">•</span>
+
+<a href="#" class="meta-item zu-autohide js-noHelp">没有帮助</a>
+
+<span class="zg-bull zu-autohide">•</span>
+<a href="#" class="meta-item zu-autohide js-report">举报</a>
+
+
+
+
+<meta name="copyrightStatus" content="1">
+<meta name="disableCopyAvatar" content="">
+
+<span class="zg-bull">•</span>
+
+<a href="http://www.zhihu.com/terms#sec-licence-1" target="_blank" class="meta-item copyright">
+作者保留权利
+</a>
+
+
+<div style="display: block; position: absolute; top: 5px; right: 0px; bottom: 21.1px; left: 521px; float: none; visibility: hidden; width: 57px; height: 25px;"></div><button style="left: 575px; top: auto; bottom: 12px;" class="item-collapse js-collapse is-sticky"><i class="sprite-global-icon-fold-white"></i>收起</button></div>
+</div>
+</div><div data-za-module="AnswerItem" tabindex="-1" class="zm-item-answer  zm-item-expanded" itemscope="" itemtype="http://schema.org/Answer" data-aid="24121513" data-atoken="71750476" data-collapsed="0" data-created="1447227380" data-deleted="0" data-helpful="1" data-isowner="0" data-copyable="1">
+<link itemprop="url" href="http://www.zhihu.com/question/24059464/answer/71750476">
+<meta itemprop="answer-id" content="24121513">
+<meta itemprop="answer-url-token" content="71750476">
+<a class="zg-anchor-hidden" name="answer-24121513"></a>
+
+
+<div data-za-module="VoteBar" class="zm-votebar">
+<button title="赞同" aria-pressed="false" class="up">
+<i class="icon vote-arrow"></i>
+<span class="count">8</span>
+<span class="label sr-only">赞同</span>
+</button>
+<button title="反对，不会显示你的姓名" aria-pressed="false" class="down">
+<i class="icon vote-arrow"></i>
+<span class="label sr-only">反对，不会显示你的姓名</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+
+<a class="zm-item-link-avatar avatar-link" href="http://www.zhihu.com/people/james-swineson" target="_blank" data-hovercard="p$t$james-swineson"><img src="4ad478c148b4e9ccbe312cfa53402b0f_s.jpg" class="zm-list-avatar avatar"></a>
+
+
+<span class="author-link-line">
+<a class="author-link" data-hovercard="p$t$james-swineson" target="_blank" href="http://www.zhihu.com/people/james-swineson">James Swineson</a></span><span title="一切定义不精确，没有普适性的鸡汤都是耍流氓。" class="bio">一切定义不精确，没有普适性的鸡汤都是耍…</span>
+
+</div>
+<div data-za-module="VoteInfo" class="zm-item-vote-info" data-votecount="8">
+
+
+
+<span class="voters text"><a href="#" class="more text"><span class="js-voteCount">8</span>&nbsp;人赞同</a></span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text expandable js-collapse-body" data-resourceid="1805577" data-action="/answer/content" data-author-name="James Swineson" data-entry-url="/question/24059464/answer/71750476">
+
+
+<div class="zh-summary summary clearfix" style="display: none;">
+
+对于这种设备，自己想搞点开发的话，性能不是很重要，文档、资料、社区才重要。所以 RPi 系列完爆其他。
+
+<a href="http://www.zhihu.com/question/24059464/answer/71750476" class="toggle-expand">显示全部</a>
+
+</div>
+
+
+<div class="zm-editable-content clearfix">
+对于这种设备，自己想搞点开发的话，性能不是很重要，文档、资料、社区才重要。<br><br>所以 RPi 系列完爆其他。
+</div>
+
+
+</div>
+<a class="zg-anchor-hidden ac" name="24121513-comment"></a>
+<div class="zm-item-meta answer-actions clearfix js-contentActions">
+<div class="zm-meta-panel">
+
+<a itemprop="url" class="answer-date-link meta-item" target="_blank" href="http://www.zhihu.com/question/24059464/answer/71750476">发布于 2015-11-11</a>
+
+<a href="#" name="addcomment" class="meta-item toggle-comment js-toggleCommentBox">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide js-thank" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a aria-haspopup="true" tabindex="0" aria-expanded="false" style="-moz-user-select: none;" role="button" href="#" class="meta-item zu-autohide js-share goog-inline-block goog-menu-button"><div class="goog-inline-block goog-menu-button-outer-box"><div class="goog-inline-block goog-menu-button-inner-box"><div class="goog-inline-block goog-menu-button-caption"><i class="z-icon-share"></i>分享</div><div class="goog-inline-block goog-menu-button-dropdown">&nbsp;</div></div></div></a>
+
+<a href="#" class="meta-item zu-autohide js-collect"><i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+
+<span class="zg-bull zu-autohide">•</span>
+
+<a href="#" class="meta-item zu-autohide js-noHelp">没有帮助</a>
+
+<span class="zg-bull zu-autohide">•</span>
+<a href="#" class="meta-item zu-autohide js-report">举报</a>
+
+
+
+
+<meta name="copyrightStatus" content="1">
+<meta name="disableCopyAvatar" content="">
+
+<span class="zg-bull">•</span>
+
+<a href="http://www.zhihu.com/terms#sec-licence-1" target="_blank" class="meta-item copyright">
+作者保留权利
+</a>
+
+
+</div>
+</div>
+</div><div data-za-module="AnswerItem" tabindex="-1" class="zm-item-answer  zm-item-expanded" itemscope="" itemtype="http://schema.org/Answer" data-aid="10899732" data-atoken="38769645" data-collapsed="0" data-created="1422933541" data-deleted="0" data-helpful="1" data-isowner="0" data-copyable="1">
+<link itemprop="url" href="http://www.zhihu.com/question/24059464/answer/38769645">
+<meta itemprop="answer-id" content="10899732">
+<meta itemprop="answer-url-token" content="38769645">
+<a class="zg-anchor-hidden" name="answer-10899732"></a>
+
+
+<div data-za-module="VoteBar" class="zm-votebar">
+<button title="赞同" aria-pressed="false" class="up">
+<i class="icon vote-arrow"></i>
+<span class="count">5</span>
+<span class="label sr-only">赞同</span>
+</button>
+<button title="反对，不会显示你的姓名" aria-pressed="false" class="down">
+<i class="icon vote-arrow"></i>
+<span class="label sr-only">反对，不会显示你的姓名</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+
+<a class="zm-item-link-avatar avatar-link" href="http://www.zhihu.com/people/ydcool" target="_blank" data-hovercard="p$t$ydcool"><img src="3bf1bbbbda0a98a34d65f8fc05bd4764_s.jpg" class="zm-list-avatar avatar"></a>
+
+
+<span class="author-link-line">
+<a class="author-link" data-hovercard="p$t$ydcool" target="_blank" href="http://www.zhihu.com/people/ydcool">尹東</a></span><span title="INTP" class="bio">INTP</span>
+
+</div>
+<div data-za-module="VoteInfo" class="zm-item-vote-info" data-votecount="5">
+
+
+
+<span class="voters text"><a href="#" class="more text"><span class="js-voteCount">5</span>&nbsp;人赞同</a></span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text expandable js-collapse-body" data-resourceid="1805577" data-action="/answer/content" data-author-name="尹東" data-entry-url="/question/24059464/answer/38769645">
+
+
+<div class="zh-summary summary clearfix" style="display: none;">
+
+2016-03 Update: raspberry pi 3 又出了。。。---不用对比了！raspberry pi 2发布了！win 10都能上！还是35刀！
+
+<a href="http://www.zhihu.com/question/24059464/answer/38769645" class="toggle-expand">显示全部</a>
+
+</div>
+
+
+<div class="zm-editable-content clearfix">
+2016-03 Update: raspberry pi 3 又出了。。。<br>---<br>不用对比了！raspberry pi 2发布了！win 10都能上！还是35刀！
+</div>
+
+
+</div>
+<a class="zg-anchor-hidden ac" name="10899732-comment"></a>
+<div class="zm-item-meta answer-actions clearfix js-contentActions">
+<div class="zm-meta-panel">
+
+<a itemprop="url" class="answer-date-link meta-item" data-tooltip="s$t$发布于 2015-02-03" target="_blank" href="http://www.zhihu.com/question/24059464/answer/38769645">编辑于 2016-03-22</a>
+
+<a href="#" name="addcomment" class="meta-item toggle-comment js-toggleCommentBox">
+<i class="z-icon-comment"></i>9 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide js-thank" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a aria-haspopup="true" tabindex="0" aria-expanded="false" style="-moz-user-select: none;" role="button" href="#" class="meta-item zu-autohide js-share goog-inline-block goog-menu-button"><div class="goog-inline-block goog-menu-button-outer-box"><div class="goog-inline-block goog-menu-button-inner-box"><div class="goog-inline-block goog-menu-button-caption"><i class="z-icon-share"></i>分享</div><div class="goog-inline-block goog-menu-button-dropdown">&nbsp;</div></div></div></a>
+
+<a href="#" class="meta-item zu-autohide js-collect"><i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+
+<span class="zg-bull zu-autohide">•</span>
+
+<a href="#" class="meta-item zu-autohide js-noHelp">没有帮助</a>
+
+<span class="zg-bull zu-autohide">•</span>
+<a href="#" class="meta-item zu-autohide js-report">举报</a>
+
+
+
+
+<meta name="copyrightStatus" content="1">
+<meta name="disableCopyAvatar" content="">
+
+<span class="zg-bull">•</span>
+
+<a href="http://www.zhihu.com/terms#sec-licence-1" target="_blank" class="meta-item copyright">
+作者保留权利
+</a>
+
+
+</div>
+</div>
+</div><div data-za-module="AnswerItem" tabindex="-1" class="zm-item-answer  zm-item-expanded" itemscope="" itemtype="http://schema.org/Answer" data-aid="6277740" data-atoken="27353282" data-collapsed="0" data-created="1403945971" data-deleted="0" data-helpful="1" data-isowner="0" data-copyable="1">
+<link itemprop="url" href="http://www.zhihu.com/question/24059464/answer/27353282">
+<meta itemprop="answer-id" content="6277740">
+<meta itemprop="answer-url-token" content="27353282">
+<a class="zg-anchor-hidden" name="answer-6277740"></a>
+
+
+<div data-za-module="VoteBar" class="zm-votebar">
+<button title="赞同" aria-pressed="false" class="up">
+<i class="icon vote-arrow"></i>
+<span class="count">8</span>
+<span class="label sr-only">赞同</span>
+</button>
+<button title="反对，不会显示你的姓名" aria-pressed="false" class="down">
+<i class="icon vote-arrow"></i>
+<span class="label sr-only">反对，不会显示你的姓名</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+
+<a class="zm-item-link-avatar avatar-link" href="http://www.zhihu.com/people/tonyluj" target="_blank" data-hovercard="p$t$tonyluj"><img src="fe477ae57_s.jpg" class="zm-list-avatar avatar"></a>
+
+
+<span class="author-link-line">
+<a class="author-link" data-hovercard="p$t$tonyluj" target="_blank" href="http://www.zhihu.com/people/tonyluj">小黑</a></span><span title="Linux C / Python Programmer" class="bio">Linux C / Python Programmer</span>
+
+</div>
+<div data-za-module="VoteInfo" class="zm-item-vote-info" data-votecount="8">
+
+
+
+<span class="voters text"><a href="#" class="more text"><span class="js-voteCount">8</span>&nbsp;人赞同</a></span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text expandable js-collapse-body" data-resourceid="1805577" data-action="/answer/content" data-author-name="小黑" data-entry-url="/question/24059464/answer/27353282">
+
+
+<div class="zh-summary summary clearfix" style="display: none;">
+
+不知道楼主的使用环境是什么，如果是 NAS 、简易家用 Server 等的话，还是推荐 x86 架构的。比如说 mini-itx 或者 nano-itx，成品有 nuc 和 brix。拿 thin-mini-itx （简称 thin-itx ）来说，大小比手掌略大，厚度大概是两层 USB ，价格方面 DIY 的话主板th…
+
+<a href="http://www.zhihu.com/question/24059464/answer/27353282" class="toggle-expand">显示全部</a>
+
+</div>
+
+
+<div class="zm-editable-content clearfix">
+不知道楼主的使用环境是什么，如果是 NAS 、简易家用 Server 等的话，还是推荐 x86 架构的。比如说 mini-itx 或者 nano-itx，成品有 nuc 和 brix。<br>拿 thin-mini-itx （简称 thin-itx ）来说，大小比手掌略大，厚度大概是两层 USB ，价格方面 DIY 的话主板thin-itx H61 + CPUG1620 + 内存4G + 32GMSATA SSD + 适配器 + 机箱，价格在1000元+。但是性能方面至少是 ARM 的3倍。如果资金允许的话，CPU可以上 i7 4770S，16G 内存 + 512G SSD 也是可以的。<br>Intel 的 NUC 和 Gigabyte 的 Brix 体积稍小，但是价格比较贵。<br><br>目前 ARM 平台的， <a data-hash="2729826fcb2fa1bb41f690896b1bef76" href="http://www.zhihu.com/people/2729826fcb2fa1bb41f690896b1bef76" class="member_mention" data-hovercard="p$b$2729826fcb2fa1bb41f690896b1bef76">@沙渺</a> 已经介绍不少了。现在 ARM 性能价格比还是不如x86，只是适合玩玩或者特殊应用环境。
+</div>
+
+
+</div>
+<a class="zg-anchor-hidden ac" name="6277740-comment"></a>
+<div class="zm-item-meta answer-actions clearfix js-contentActions">
+<div class="zm-meta-panel">
+
+<a itemprop="url" class="answer-date-link meta-item" target="_blank" href="http://www.zhihu.com/question/24059464/answer/27353282">发布于 2014-06-28</a>
+
+<a href="#" name="addcomment" class="meta-item toggle-comment js-toggleCommentBox">
+<i class="z-icon-comment"></i>4 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide js-thank" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a aria-haspopup="true" tabindex="0" aria-expanded="false" style="-moz-user-select: none;" role="button" href="#" class="meta-item zu-autohide js-share goog-inline-block goog-menu-button"><div class="goog-inline-block goog-menu-button-outer-box"><div class="goog-inline-block goog-menu-button-inner-box"><div class="goog-inline-block goog-menu-button-caption"><i class="z-icon-share"></i>分享</div><div class="goog-inline-block goog-menu-button-dropdown">&nbsp;</div></div></div></a>
+
+<a href="#" class="meta-item zu-autohide js-collect"><i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+
+<span class="zg-bull zu-autohide">•</span>
+
+<a href="#" class="meta-item zu-autohide js-noHelp">没有帮助</a>
+
+<span class="zg-bull zu-autohide">•</span>
+<a href="#" class="meta-item zu-autohide js-report">举报</a>
+
+
+
+
+<meta name="copyrightStatus" content="1">
+<meta name="disableCopyAvatar" content="">
+
+<span class="zg-bull">•</span>
+
+<a href="http://www.zhihu.com/terms#sec-licence-1" target="_blank" class="meta-item copyright">
+作者保留权利
+</a>
+
+
+</div>
+</div>
+</div><div data-za-module="AnswerItem" tabindex="-1" class="zm-item-answer  zm-item-expanded" itemscope="" itemtype="http://schema.org/Answer" data-aid="7434550" data-atoken="30126500" data-collapsed="0" data-created="1409808990" data-deleted="0" data-helpful="1" data-isowner="0" data-copyable="1">
+<link itemprop="url" href="http://www.zhihu.com/question/24059464/answer/30126500">
+<meta itemprop="answer-id" content="7434550">
+<meta itemprop="answer-url-token" content="30126500">
+<a class="zg-anchor-hidden" name="answer-7434550"></a>
+
+
+<div data-za-module="VoteBar" class="zm-votebar">
+<button title="赞同" aria-pressed="false" class="up">
+<i class="icon vote-arrow"></i>
+<span class="count">1</span>
+<span class="label sr-only">赞同</span>
+</button>
+<button title="反对，不会显示你的姓名" aria-pressed="false" class="down">
+<i class="icon vote-arrow"></i>
+<span class="label sr-only">反对，不会显示你的姓名</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+
+<a class="zm-item-link-avatar avatar-link" href="http://www.zhihu.com/people/lu-luo-67-52" target="_blank" data-hovercard="p$t$lu-luo-67-52"><img src="d0a6bf930_s.jpg" class="zm-list-avatar avatar"></a>
+
+
+<span class="author-link-line">
+<a class="author-link" data-hovercard="p$t$lu-luo-67-52" target="_blank" href="http://www.zhihu.com/people/lu-luo-67-52">LU LUO</a></span><span title="木兰挥手" class="bio">木兰挥手</span>
+
+</div>
+<div data-za-module="VoteInfo" class="zm-item-vote-info" data-votecount="1">
+
+
+
+<span class="voters text"><a href="#" class="more text"><span class="js-voteCount">1</span>&nbsp;人赞同</a></span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text expandable js-collapse-body" data-resourceid="1805577" data-action="/answer/content" data-author-name="LU LUO" data-entry-url="/question/24059464/answer/30126500">
+
+
+<div class="zh-summary summary clearfix" style="display: none;">
+
+Raspberry Pi入手将近十块板子，每个都用的生龙活虎的。
+
+<a href="http://www.zhihu.com/question/24059464/answer/30126500" class="toggle-expand">显示全部</a>
+
+</div>
+
+
+<div class="zm-editable-content clearfix">
+Raspberry Pi入手将近十块板子，每个都用的生龙活虎的。
+</div>
+
+
+</div>
+<a class="zg-anchor-hidden ac" name="7434550-comment"></a>
+<div class="zm-item-meta answer-actions clearfix js-contentActions">
+<div class="zm-meta-panel">
+
+<a itemprop="url" class="answer-date-link meta-item" target="_blank" href="http://www.zhihu.com/question/24059464/answer/30126500">发布于 2014-09-04</a>
+
+<a href="#" name="addcomment" class="meta-item toggle-comment js-toggleCommentBox">
+<i class="z-icon-comment"></i>2 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide js-thank" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a aria-haspopup="true" tabindex="0" aria-expanded="false" style="-moz-user-select: none;" role="button" href="#" class="meta-item zu-autohide js-share goog-inline-block goog-menu-button"><div class="goog-inline-block goog-menu-button-outer-box"><div class="goog-inline-block goog-menu-button-inner-box"><div class="goog-inline-block goog-menu-button-caption"><i class="z-icon-share"></i>分享</div><div class="goog-inline-block goog-menu-button-dropdown">&nbsp;</div></div></div></a>
+
+<a href="#" class="meta-item zu-autohide js-collect"><i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+
+<span class="zg-bull zu-autohide">•</span>
+
+<a href="#" class="meta-item zu-autohide js-noHelp">没有帮助</a>
+
+<span class="zg-bull zu-autohide">•</span>
+<a href="#" class="meta-item zu-autohide js-report">举报</a>
+
+
+
+
+<meta name="copyrightStatus" content="1">
+<meta name="disableCopyAvatar" content="">
+
+<span class="zg-bull">•</span>
+
+<a href="http://www.zhihu.com/terms#sec-licence-1" target="_blank" class="meta-item copyright">
+作者保留权利
+</a>
+
+
+</div>
+</div>
+</div><div data-za-module="AnswerItem" tabindex="-1" class="zm-item-answer  zm-item-expanded" itemscope="" itemtype="http://schema.org/Answer" data-aid="24112733" data-atoken="71728486" data-collapsed="0" data-created="1447217397" data-deleted="0" data-helpful="1" data-isowner="0" data-copyable="1">
+<link itemprop="url" href="http://www.zhihu.com/question/24059464/answer/71728486">
+<meta itemprop="answer-id" content="24112733">
+<meta itemprop="answer-url-token" content="71728486">
+<a class="zg-anchor-hidden" name="answer-24112733"></a>
+
+
+<div data-za-module="VoteBar" class="zm-votebar">
+<button title="赞同" aria-pressed="false" class="up">
+<i class="icon vote-arrow"></i>
+<span class="count">1</span>
+<span class="label sr-only">赞同</span>
+</button>
+<button title="反对，不会显示你的姓名" aria-pressed="false" class="down">
+<i class="icon vote-arrow"></i>
+<span class="label sr-only">反对，不会显示你的姓名</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+
+<a class="zm-item-link-avatar avatar-link" href="http://www.zhihu.com/people/cheng-hu-43" target="_blank" data-hovercard="p$t$cheng-hu-43"><img src="ebe50d32f47f001a0b2e2f5b949776c9_s.jpg" class="zm-list-avatar avatar"></a>
+
+
+<span class="author-link-line">
+<a class="author-link" data-hovercard="p$t$cheng-hu-43" target="_blank" href="http://www.zhihu.com/people/cheng-hu-43">称呼</a></span><span title="工程师" class="bio">工程师</span>
+
+</div>
+<div data-za-module="VoteInfo" class="zm-item-vote-info" data-votecount="1">
+
+
+
+<span class="voters text"><a href="#" class="more text"><span class="js-voteCount">1</span>&nbsp;人赞同</a></span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text expandable js-collapse-body" data-resourceid="1805577" data-action="/answer/content" data-author-name="称呼" data-entry-url="/question/24059464/answer/71728486">
+
+
+<div class="zh-summary summary clearfix" style="display: none;">
+
+香橙派，全志的芯片，丧心病狂只要99元人名币。。。
+
+<a href="http://www.zhihu.com/question/24059464/answer/71728486" class="toggle-expand">显示全部</a>
+
+</div>
+
+
+<div class="zm-editable-content clearfix">
+香橙派，全志的芯片，丧心病狂只要99元人名币。。。
+</div>
+
+
+</div>
+<a class="zg-anchor-hidden ac" name="24112733-comment"></a>
+<div class="zm-item-meta answer-actions clearfix js-contentActions">
+<div class="zm-meta-panel">
+
+<a itemprop="url" class="answer-date-link meta-item" target="_blank" href="http://www.zhihu.com/question/24059464/answer/71728486">发布于 2015-11-11</a>
+
+<a href="#" name="addcomment" class="meta-item toggle-comment js-toggleCommentBox">
+<i class="z-icon-comment"></i>1 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide js-thank" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a aria-haspopup="true" tabindex="0" aria-expanded="false" style="-moz-user-select: none;" role="button" href="#" class="meta-item zu-autohide js-share goog-inline-block goog-menu-button"><div class="goog-inline-block goog-menu-button-outer-box"><div class="goog-inline-block goog-menu-button-inner-box"><div class="goog-inline-block goog-menu-button-caption"><i class="z-icon-share"></i>分享</div><div class="goog-inline-block goog-menu-button-dropdown">&nbsp;</div></div></div></a>
+
+<a href="#" class="meta-item zu-autohide js-collect"><i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+
+<span class="zg-bull zu-autohide">•</span>
+
+<a href="#" class="meta-item zu-autohide js-noHelp">没有帮助</a>
+
+<span class="zg-bull zu-autohide">•</span>
+<a href="#" class="meta-item zu-autohide js-report">举报</a>
+
+
+
+
+<meta name="copyrightStatus" content="1">
+<meta name="disableCopyAvatar" content="">
+
+<span class="zg-bull">•</span>
+
+<a href="http://www.zhihu.com/terms#sec-licence-1" target="_blank" class="meta-item copyright">
+作者保留权利
+</a>
+
+
+</div>
+</div>
+</div><div data-za-module="AnswerItem" tabindex="-1" class="zm-item-answer  zm-item-expanded" itemscope="" itemtype="http://schema.org/Answer" data-aid="11746011" data-atoken="40884744" data-collapsed="0" data-created="1425225355" data-deleted="0" data-helpful="1" data-isowner="0" data-copyable="1">
+<link itemprop="url" href="http://www.zhihu.com/question/24059464/answer/40884744">
+<meta itemprop="answer-id" content="11746011">
+<meta itemprop="answer-url-token" content="40884744">
+<a class="zg-anchor-hidden" name="answer-11746011"></a>
+
+
+<div data-za-module="VoteBar" class="zm-votebar goog-scrollfloater">
+<button title="赞同" aria-pressed="false" class="up">
+<i class="icon vote-arrow"></i>
+<span class="count">1</span>
+<span class="label sr-only">赞同</span>
+</button>
+<button title="反对，不会显示你的姓名" aria-pressed="false" class="down">
+<i class="icon vote-arrow"></i>
+<span class="label sr-only">反对，不会显示你的姓名</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+
+<a class="zm-item-link-avatar avatar-link" href="http://www.zhihu.com/people/dongyingjun" target="_blank" data-hovercard="p$t$dongyingjun"><img src="df306c497_s.jpg" class="zm-list-avatar avatar"></a>
+
+
+<span class="author-link-line">
+<a class="author-link" data-hovercard="p$t$dongyingjun" target="_blank" href="http://www.zhihu.com/people/dongyingjun">乎阮醉</a></span><span title="智能硬件定制化设计生产 / O2O地面推广App预装设备" class="bio">智能硬件定制化设计生产 / O2O地面推广Ap…</span>
+
+</div>
+<div data-za-module="VoteInfo" class="zm-item-vote-info" data-votecount="1">
+
+
+
+<span class="voters text"><a href="#" class="more text"><span class="js-voteCount">1</span>&nbsp;人赞同</a></span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text expandable js-collapse-body" data-resourceid="1805577" data-action="/answer/content" data-author-name="乎阮醉" data-entry-url="/question/24059464/answer/40884744">
+
+
+<div class="zh-summary summary clearfix" style="display: none;">
+<img src="f60d0a6ab9544812cc59495d9fbfaa19_200x112.jpg" data-rawwidth="2209" data-rawheight="2208" class="origin_image inline-img zh-lightbox-thumb" data-original="https://pic2.zhimg.com/f60d0a6ab9544812cc59495d9fbfaa19_r.jpg">
+Mixtile LOFT－Q 全志A31芯片 ，通过 千兆以太网、WiFi 802.11a/g/n 、ZigBee 连接，介绍 ➡️ <a href="http://link.zhihu.com/?target=http%3A//linux-sunxi.org/Mixtile_LOFT-Q" class=" wrap external" target="_blank" rel="nofollow noreferrer">Mixtile LOFT-Q<i class="icon-external"></i></a>
+
+<a href="http://www.zhihu.com/question/24059464/answer/40884744" class="toggle-expand">显示全部</a>
+
+</div>
+
+
+<div class="zm-editable-content clearfix">
+Mixtile LOFT－Q  全志A31芯片 ，通过 千兆以太网、WiFi 802.11a/g/n 、ZigBee 连接，介绍 ➡️ <a href="http://link.zhihu.com/?target=http%3A//linux-sunxi.org/Mixtile_LOFT-Q" class=" wrap external" target="_blank" rel="nofollow noreferrer">Mixtile LOFT-Q<i class="icon-external"></i></a><br><br><img data-lazyloaded="" style="width: 578px; height: 577.738px;" src="whitedot.jpg" data-rawwidth="2209" data-rawheight="2208" class="origin_image zh-lightbox-thumb lazy" data-original="https://pic2.zhimg.com/f60d0a6ab9544812cc59495d9fbfaa19_r.jpg" data-actualsrc="https://pic2.zhimg.com/f60d0a6ab9544812cc59495d9fbfaa19_b.jpg" width="2209">
+</div>
+
+
+</div>
+<a class="zg-anchor-hidden ac" name="11746011-comment"></a>
+<div class="zm-item-meta answer-actions clearfix js-contentActions">
+<div class="zm-meta-panel">
+
+<a itemprop="url" class="answer-date-link meta-item" target="_blank" href="http://www.zhihu.com/question/24059464/answer/40884744">发布于 2015-03-01</a>
+
+<a href="#" name="addcomment" class="meta-item toggle-comment js-toggleCommentBox">
+<i class="z-icon-comment"></i>2 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide js-thank" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a aria-haspopup="true" tabindex="0" aria-expanded="false" style="-moz-user-select: none;" role="button" href="#" class="meta-item zu-autohide js-share goog-inline-block goog-menu-button"><div class="goog-inline-block goog-menu-button-outer-box"><div class="goog-inline-block goog-menu-button-inner-box"><div class="goog-inline-block goog-menu-button-caption"><i class="z-icon-share"></i>分享</div><div class="goog-inline-block goog-menu-button-dropdown">&nbsp;</div></div></div></a>
+
+<a href="#" class="meta-item zu-autohide js-collect"><i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+
+<span class="zg-bull zu-autohide">•</span>
+
+<a href="#" class="meta-item zu-autohide js-noHelp">没有帮助</a>
+
+<span class="zg-bull zu-autohide">•</span>
+<a href="#" class="meta-item zu-autohide js-report">举报</a>
+
+
+
+
+<meta name="copyrightStatus" content="1">
+<meta name="disableCopyAvatar" content="">
+
+<span class="zg-bull">•</span>
+
+<a href="http://www.zhihu.com/terms#sec-licence-1" target="_blank" class="meta-item copyright">
+作者保留权利
+</a>
+
+
+</div>
+</div>
+</div><div data-za-module="AnswerItem" tabindex="-1" class="zm-item-answer  zm-item-expanded" itemscope="" itemtype="http://schema.org/Answer" data-aid="6259565" data-atoken="27307939" data-collapsed="0" data-created="1403840925" data-deleted="0" data-helpful="1" data-isowner="0" data-copyable="1">
+<link itemprop="url" href="http://www.zhihu.com/question/24059464/answer/27307939">
+<meta itemprop="answer-id" content="6259565">
+<meta itemprop="answer-url-token" content="27307939">
+<a class="zg-anchor-hidden" name="answer-6259565"></a>
+
+
+<div data-za-module="VoteBar" class="zm-votebar">
+<button title="赞同" aria-pressed="false" class="up">
+<i class="icon vote-arrow"></i>
+<span class="count">1</span>
+<span class="label sr-only">赞同</span>
+</button>
+<button title="反对，不会显示你的姓名" aria-pressed="false" class="down">
+<i class="icon vote-arrow"></i>
+<span class="label sr-only">反对，不会显示你的姓名</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+
+<a class="zm-item-link-avatar avatar-link" href="http://www.zhihu.com/people/wang-chao-hangzhou" target="_blank" data-hovercard="p$t$wang-chao-hangzhou"><img src="0b159c0d2_s.jpg" class="zm-list-avatar avatar"></a>
+
+
+<span class="author-link-line">
+<a class="author-link" data-hovercard="p$t$wang-chao-hangzhou" target="_blank" href="http://www.zhihu.com/people/wang-chao-hangzhou">Watcher 杭州</a></span><span title="我只是来知乎点『赞』的，碰到坏回答点赞曝光之" class="bio">我只是来知乎点『赞』的，碰到坏回答点赞…</span>
+
+</div>
+<div data-za-module="VoteInfo" class="zm-item-vote-info" data-votecount="1">
+
+
+
+<span class="voters text"><a href="#" class="more text"><span class="js-voteCount">1</span>&nbsp;人赞同</a></span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text expandable js-collapse-body" data-resourceid="1805577" data-action="/answer/content" data-author-name="Watcher 杭州" data-entry-url="/question/24059464/answer/27307939">
+
+
+<div class="zh-summary summary clearfix" style="display: none;">
+
+mini pc怎么可以没有intel指令集的atom主板，工业上用的很多啊，x86 windows xp 到处都是，体积170 毫米 X 170 毫米。
+
+<a href="http://www.zhihu.com/question/24059464/answer/27307939" class="toggle-expand">显示全部</a>
+
+</div>
+
+
+<div class="zm-editable-content clearfix">
+mini pc怎么可以没有intel指令集的atom主板，工业上用的很多啊，x86 windows xp 到处都是，体积170 毫米 X 170 毫米。
+</div>
+
+
+</div>
+<a class="zg-anchor-hidden ac" name="6259565-comment"></a>
+<div class="zm-item-meta answer-actions clearfix js-contentActions">
+<div class="zm-meta-panel">
+
+<a itemprop="url" class="answer-date-link meta-item" target="_blank" href="http://www.zhihu.com/question/24059464/answer/27307939">发布于 2014-06-27</a>
+
+<a href="#" name="addcomment" class="meta-item toggle-comment js-toggleCommentBox">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide js-thank" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a aria-haspopup="true" tabindex="0" aria-expanded="false" style="-moz-user-select: none;" role="button" href="#" class="meta-item zu-autohide js-share goog-inline-block goog-menu-button"><div class="goog-inline-block goog-menu-button-outer-box"><div class="goog-inline-block goog-menu-button-inner-box"><div class="goog-inline-block goog-menu-button-caption"><i class="z-icon-share"></i>分享</div><div class="goog-inline-block goog-menu-button-dropdown">&nbsp;</div></div></div></a>
+
+<a href="#" class="meta-item zu-autohide js-collect"><i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+
+<span class="zg-bull zu-autohide">•</span>
+
+<a href="#" class="meta-item zu-autohide js-noHelp">没有帮助</a>
+
+<span class="zg-bull zu-autohide">•</span>
+<a href="#" class="meta-item zu-autohide js-report">举报</a>
+
+
+
+
+<meta name="copyrightStatus" content="1">
+<meta name="disableCopyAvatar" content="">
+
+<span class="zg-bull">•</span>
+
+<a href="http://www.zhihu.com/terms#sec-licence-1" target="_blank" class="meta-item copyright">
+作者保留权利
+</a>
+
+
+</div>
+</div>
+</div><div data-za-module="AnswerItem" tabindex="-1" class="zm-item-answer  zm-item-expanded" itemscope="" itemtype="http://schema.org/Answer" data-aid="24178552" data-atoken="71892907" data-collapsed="0" data-created="1447313144" data-deleted="0" data-helpful="1" data-isowner="0" data-copyable="1">
+<link itemprop="url" href="http://www.zhihu.com/question/24059464/answer/71892907">
+<meta itemprop="answer-id" content="24178552">
+<meta itemprop="answer-url-token" content="71892907">
+<a class="zg-anchor-hidden" name="answer-24178552"></a>
+
+
+<div data-za-module="VoteBar" class="zm-votebar">
+<button title="赞同" aria-pressed="false" class="up">
+<i class="icon vote-arrow"></i>
+<span class="count">1</span>
+<span class="label sr-only">赞同</span>
+</button>
+<button title="反对，不会显示你的姓名" aria-pressed="false" class="down">
+<i class="icon vote-arrow"></i>
+<span class="label sr-only">反对，不会显示你的姓名</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<span class="name">匿名用户</span>
+</div>
+<div data-za-module="VoteInfo" class="zm-item-vote-info" data-votecount="1">
+
+
+
+<span class="voters text"><a href="#" class="more text"><span class="js-voteCount">1</span>&nbsp;人赞同</a></span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text expandable js-collapse-body" data-resourceid="1805577" data-action="/answer/content" data-author-name="匿名用户" data-entry-url="/question/24059464/answer/71892907">
+
+
+<div class="zh-summary summary clearfix" style="display: none;">
+
+硬件功能都差不多，主要区别就是软件开源程度，厂商支持程度和用户数量了。从以上三点，推荐程度如下：beagle bone black（ti推出，软硬件全开源，资料较多）= 树莓派（树莓派基金会，软件全开源，硬件部分开源，资料最多）&gt;树莓派2（树莓派基金会，推出没…
+
+<a href="http://www.zhihu.com/question/24059464/answer/71892907" class="toggle-expand">显示全部</a>
+
+</div>
+
+
+<div class="zm-editable-content clearfix">
+硬件功能都差不多，主要区别就是软件开源程度，厂商支持程度和用户数量了。<br>从以上三点，推荐程度如下：<br>beagle bone black（ti推出，软硬件全开源，资料较多）= 树莓派（树莓派基金会，软件全开源，硬件部分开源，资料最多）&gt;树莓派2（树莓派基金会，推出没多长时间，资料较少）≫国内各种派（多为全智芯片+android，资料少得可怜，板子做工差到极差，玩的人几乎全是国内的初学者，几乎找不到有价值的资料）
+</div>
+
+
+</div>
+<a class="zg-anchor-hidden ac" name="24178552-comment"></a>
+<div class="zm-item-meta answer-actions clearfix js-contentActions">
+<div class="zm-meta-panel">
+
+<a itemprop="url" class="answer-date-link meta-item" target="_blank" href="http://www.zhihu.com/question/24059464/answer/71892907">发布于 2015-11-12</a>
+
+<a href="#" name="addcomment" class="meta-item toggle-comment js-toggleCommentBox">
+<i class="z-icon-comment"></i>1 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide js-thank" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a aria-haspopup="true" tabindex="0" aria-expanded="false" style="-moz-user-select: none;" role="button" href="#" class="meta-item zu-autohide js-share goog-inline-block goog-menu-button"><div class="goog-inline-block goog-menu-button-outer-box"><div class="goog-inline-block goog-menu-button-inner-box"><div class="goog-inline-block goog-menu-button-caption"><i class="z-icon-share"></i>分享</div><div class="goog-inline-block goog-menu-button-dropdown">&nbsp;</div></div></div></a>
+
+<a href="#" class="meta-item zu-autohide js-collect"><i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+
+<span class="zg-bull zu-autohide">•</span>
+
+<a href="#" class="meta-item zu-autohide js-noHelp">没有帮助</a>
+
+<span class="zg-bull zu-autohide">•</span>
+<a href="#" class="meta-item zu-autohide js-report">举报</a>
+
+
+
+
+<meta name="copyrightStatus" content="1">
+<meta name="disableCopyAvatar" content="">
+
+<span class="zg-bull">•</span>
+
+<a href="http://www.zhihu.com/terms#sec-licence-1" target="_blank" class="meta-item copyright">
+作者保留权利
+</a>
+
+
+</div>
+</div>
+</div><div data-za-module="AnswerItem" tabindex="-1" class="zm-item-answer  zm-item-expanded" itemscope="" itemtype="http://schema.org/Answer" data-aid="24100345" data-atoken="71697432" data-collapsed="0" data-created="1447202751" data-deleted="0" data-helpful="1" data-isowner="0" data-copyable="1">
+<link itemprop="url" href="http://www.zhihu.com/question/24059464/answer/71697432">
+<meta itemprop="answer-id" content="24100345">
+<meta itemprop="answer-url-token" content="71697432">
+<a class="zg-anchor-hidden" name="answer-24100345"></a>
+
+
+<div data-za-module="VoteBar" class="zm-votebar goog-scrollfloater">
+<button title="赞同" aria-pressed="false" class="up">
+<i class="icon vote-arrow"></i>
+<span class="count">1</span>
+<span class="label sr-only">赞同</span>
+</button>
+<button title="反对，不会显示你的姓名" aria-pressed="false" class="down">
+<i class="icon vote-arrow"></i>
+<span class="label sr-only">反对，不会显示你的姓名</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+
+<a class="zm-item-link-avatar avatar-link" href="http://www.zhihu.com/people/wuzhangjin" target="_blank" data-hovercard="p$t$wuzhangjin"><img src="cee9e6e58_s.jpg" class="zm-list-avatar avatar"></a>
+
+
+<span class="author-link-line">
+<a class="author-link" data-hovercard="p$t$wuzhangjin" target="_blank" href="http://www.zhihu.com/people/wuzhangjin">吴章金falcon</a></span><span title="开源践行者 / Linux贡献者 / 泰晓科技 创始人" class="bio">开源践行者 / Linux贡献者 / 泰晓科技 创…</span>
+
+</div>
+<div data-za-module="VoteInfo" class="zm-item-vote-info" data-votecount="1">
+
+
+
+<span class="voters text"><a href="#" class="more text"><span class="js-voteCount">1</span>&nbsp;人赞同</a></span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text expandable js-collapse-body" data-resourceid="1805577" data-action="/answer/content" data-author-name="吴章金falcon" data-entry-url="/question/24059464/answer/71697432">
+
+
+<div class="zh-summary summary clearfix" style="display: none;">
+<img src="c083d0eabdc3c4532f676b91f7a484fd_200x112.jpg" data-rawheight="741" data-rawwidth="1000" class="origin_image inline-img zh-lightbox-thumb" data-original="https://pic2.zhimg.com/c083d0eabdc3c4532f676b91f7a484fd_r.jpg">
+pcDuino 最近基于全志的 H8 SoC 推出了 pcDuino8 Uno，其 CPU 基于台积电最新领先的 28 纳米制造工艺，采用 8 个 ARM Cortex-A7 内核，支持 8 核心同时 2.0GHz 高速运行，在性能方面的提升还是相当不错的。详细参数：<a href="http://link.zhihu.com/?target=http%3A//tinylab.org/introduction-of-pcduino8-Uno/" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">http://</span><span class="visible">tinylab.org/introductio</span><span class="invisible">n-of-pcduino8-Uno/</span><span class="ellipsis"></span><i class="icon-external"></i></a>另外，今天各平台…
+
+<a href="http://www.zhihu.com/question/24059464/answer/71697432" class="toggle-expand">显示全部</a>
+
+</div>
+
+
+<div class="zm-editable-content clearfix">
+pcDuino 最近基于全志的 H8 SoC 推出了 pcDuino8 Uno，其 CPU 基于台积电最新领先的 28 纳米制造工艺，采用 8 个 ARM Cortex-A7 内核，支持 8 核心同时 2.0GHz 高速运行，在性能方面的提升还是相当不错的。详细参数：<a href="http://link.zhihu.com/?target=http%3A//tinylab.org/introduction-of-pcduino8-Uno/" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">http://</span><span class="visible">tinylab.org/introductio</span><span class="invisible">n-of-pcduino8-Uno/</span><span class="ellipsis"></span><i class="icon-external"></i></a><br><br>另外，今天各平台推出了半价优惠，感兴趣的同学可以考虑入个：泰晓开源小店  <a href="http://link.zhihu.com/?target=http%3A//weidian.com/s/335178200%3Fwfr%3Dc" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">http://</span><span class="visible">weidian.com/s/335178200?</span><span class="invisible">wfr=c</span><span class="ellipsis"></span><i class="icon-external"></i></a><br><br><img data-lazyloaded="" style="width: 578px; height: 428.298px;" src="whitedot.jpg" data-rawheight="741" data-rawwidth="1000" class="origin_image zh-lightbox-thumb lazy" data-original="https://pic2.zhimg.com/c083d0eabdc3c4532f676b91f7a484fd_r.jpg" data-actualsrc="https://pic2.zhimg.com/c083d0eabdc3c4532f676b91f7a484fd_b.jpg" width="1000">
+</div>
+
+
+</div>
+<a class="zg-anchor-hidden ac" name="24100345-comment"></a>
+<div class="zm-item-meta answer-actions clearfix js-contentActions">
+<div class="zm-meta-panel">
+
+<a itemprop="url" class="answer-date-link meta-item" target="_blank" href="http://www.zhihu.com/question/24059464/answer/71697432">发布于 2015-11-11</a>
+
+<a href="#" name="addcomment" class="meta-item toggle-comment js-toggleCommentBox">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide js-thank" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a aria-haspopup="true" tabindex="0" aria-expanded="false" style="-moz-user-select: none;" role="button" href="#" class="meta-item zu-autohide js-share goog-inline-block goog-menu-button"><div class="goog-inline-block goog-menu-button-outer-box"><div class="goog-inline-block goog-menu-button-inner-box"><div class="goog-inline-block goog-menu-button-caption"><i class="z-icon-share"></i>分享</div><div class="goog-inline-block goog-menu-button-dropdown">&nbsp;</div></div></div></a>
+
+<a href="#" class="meta-item zu-autohide js-collect"><i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+
+<span class="zg-bull zu-autohide">•</span>
+
+<a href="#" class="meta-item zu-autohide js-noHelp">没有帮助</a>
+
+<span class="zg-bull zu-autohide">•</span>
+<a href="#" class="meta-item zu-autohide js-report">举报</a>
+
+
+
+
+<meta name="copyrightStatus" content="1">
+<meta name="disableCopyAvatar" content="">
+
+<span class="zg-bull">•</span>
+
+<a href="http://www.zhihu.com/terms#sec-licence-1" target="_blank" class="meta-item copyright">
+作者保留权利
+</a>
+
+
+</div>
+</div>
+</div><div data-za-module="AnswerItem" tabindex="-1" class="zm-item-answer  zm-item-expanded" itemprop="topAnswer" itemscope="" itemtype="http://schema.org/Answer" data-aid="32241282" data-atoken="92006677" data-collapsed="0" data-created="1458716477" data-deleted="0" data-helpful="1" data-isowner="0" data-copyable="1">
+<link itemprop="url" href="http://www.zhihu.com/question/24059464/answer/92006677">
+<meta itemprop="answer-id" content="32241282">
+<meta itemprop="answer-url-token" content="92006677">
+<a class="zg-anchor-hidden" name="answer-32241282"></a>
+
+
+<div data-za-module="VoteBar" class="zm-votebar">
+<button title="赞同" aria-pressed="false" class="up">
+<i class="icon vote-arrow"></i>
+<span class="count">0</span>
+<span class="label sr-only">赞同</span>
+</button>
+<button title="反对，不会显示你的姓名" aria-pressed="false" class="down">
+<i class="icon vote-arrow"></i>
+<span class="label sr-only">反对，不会显示你的姓名</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+
+<a class="zm-item-link-avatar avatar-link" href="http://www.zhihu.com/people/pcvc" target="_blank" data-hovercard="p$t$pcvc"><img src="239990261549e921aadfafb39fbcd606_s.jpg" class="zm-list-avatar avatar"></a>
+
+
+<span class="author-link-line">
+<a class="author-link" data-hovercard="p$t$pcvc" target="_blank" href="http://www.zhihu.com/people/pcvc">林清</a></span><span title="靠MS吃饭，现玩Linux。 爱Apple，爱Google，爱折腾 - pcvc.net" class="bio">靠MS吃饭，现玩Linux。 爱Apple，爱Googl…</span>
+
+</div>
+<div data-za-module="VoteInfo" class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text expandable js-collapse-body" data-resourceid="1805577" data-action="/answer/content" data-author-name="林清" data-entry-url="/question/24059464/answer/92006677">
+
+
+<div class="zh-summary summary clearfix" style="display: none;">
+
+了解了很多天了，到底应该选择哪一种哈。
+
+<a href="http://www.zhihu.com/question/24059464/answer/92006677" class="toggle-expand">显示全部</a>
+
+</div>
+
+
+<div class="zm-editable-content clearfix">
+了解了很多天了，到底应该选择哪一种哈。
+</div>
+
+
+</div>
+<a class="zg-anchor-hidden ac" name="32241282-comment"></a>
+<div class="zm-item-meta answer-actions clearfix js-contentActions">
+<div class="zm-meta-panel">
+
+<a itemprop="url" class="answer-date-link meta-item" target="_blank" href="http://www.zhihu.com/question/24059464/answer/92006677">发布于 2016-03-23</a>
+
+<a href="#" name="addcomment" class="meta-item toggle-comment js-toggleCommentBox">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide js-thank" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a aria-haspopup="true" tabindex="0" aria-expanded="false" style="-moz-user-select: none;" role="button" href="#" class="meta-item zu-autohide js-share goog-inline-block goog-menu-button"><div class="goog-inline-block goog-menu-button-outer-box"><div class="goog-inline-block goog-menu-button-inner-box"><div class="goog-inline-block goog-menu-button-caption"><i class="z-icon-share"></i>分享</div><div class="goog-inline-block goog-menu-button-dropdown">&nbsp;</div></div></div></a>
+
+<a href="#" class="meta-item zu-autohide js-collect"><i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+
+<span class="zg-bull zu-autohide">•</span>
+
+<a href="#" class="meta-item zu-autohide js-noHelp">没有帮助</a>
+
+<span class="zg-bull zu-autohide">•</span>
+<a href="#" class="meta-item zu-autohide js-report">举报</a>
+
+
+
+
+<meta name="copyrightStatus" content="1">
+<meta name="disableCopyAvatar" content="">
+
+<span class="zg-bull">•</span>
+
+<a href="http://www.zhihu.com/terms#sec-licence-1" target="_blank" class="meta-item copyright">
+作者保留权利
+</a>
+
+
+</div>
+</div>
+</div><div data-za-module="AnswerItem" tabindex="-1" class="zm-item-answer  zm-item-expanded" itemscope="" itemtype="http://schema.org/Answer" data-aid="6344906" data-atoken="27518506" data-collapsed="0" data-created="1404348923" data-deleted="0" data-helpful="1" data-isowner="0" data-copyable="1">
+<link itemprop="url" href="http://www.zhihu.com/question/24059464/answer/27518506">
+<meta itemprop="answer-id" content="6344906">
+<meta itemprop="answer-url-token" content="27518506">
+<a class="zg-anchor-hidden" name="answer-6344906"></a>
+
+
+<div data-za-module="VoteBar" class="zm-votebar">
+<button title="赞同" aria-pressed="false" class="up">
+<i class="icon vote-arrow"></i>
+<span class="count">0</span>
+<span class="label sr-only">赞同</span>
+</button>
+<button title="反对，不会显示你的姓名" aria-pressed="false" class="down">
+<i class="icon vote-arrow"></i>
+<span class="label sr-only">反对，不会显示你的姓名</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+
+<a class="zm-item-link-avatar avatar-link" href="http://www.zhihu.com/people/li-wei-bin-12-95" target="_blank" data-hovercard="p$t$li-wei-bin-12-95"><img src="a721a9d02a99a8d6a3d0dd320dd288f8_s.jpg" class="zm-list-avatar avatar"></a>
+
+
+<span class="author-link-line">
+<a class="author-link" data-hovercard="p$t$li-wei-bin-12-95" target="_blank" href="http://www.zhihu.com/people/li-wei-bin-12-95">李伟斌</a></span>
+</div>
+<div data-za-module="VoteInfo" class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text expandable js-collapse-body" data-resourceid="1805577" data-action="/answer/content" data-author-name="李伟斌" data-entry-url="/question/24059464/answer/27518506">
+
+
+<div class="zh-summary summary clearfix" style="display: none;">
+
+区别基本上就在生态环境和价格上吧？我个人觉得树莓派生态比cubieboard和pcdruino好，而且持续发展的势头比其他的板子更好些.关键是有资金周转和有人持续在玩儿，外设也比较多.学习用非常不错.
+
+<a href="http://www.zhihu.com/question/24059464/answer/27518506" class="toggle-expand">显示全部</a>
+
+</div>
+
+
+<div class="zm-editable-content clearfix">
+区别基本上就在生态环境和价格上吧？我个人觉得树莓派生态比cubieboard和pcdruino好，而且持续发展的势头比其他的板子更好些.关键是有资金周转和有人持续在玩儿，外设也比较多.学习用非常不错.
+</div>
+
+
+</div>
+<a class="zg-anchor-hidden ac" name="6344906-comment"></a>
+<div class="zm-item-meta answer-actions clearfix js-contentActions">
+<div class="zm-meta-panel">
+
+<a itemprop="url" class="answer-date-link meta-item" target="_blank" href="http://www.zhihu.com/question/24059464/answer/27518506">发布于 2014-07-03</a>
+
+<a href="#" name="addcomment" class="meta-item toggle-comment js-toggleCommentBox">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide js-thank" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a aria-haspopup="true" tabindex="0" aria-expanded="false" style="-moz-user-select: none;" role="button" href="#" class="meta-item zu-autohide js-share goog-inline-block goog-menu-button"><div class="goog-inline-block goog-menu-button-outer-box"><div class="goog-inline-block goog-menu-button-inner-box"><div class="goog-inline-block goog-menu-button-caption"><i class="z-icon-share"></i>分享</div><div class="goog-inline-block goog-menu-button-dropdown">&nbsp;</div></div></div></a>
+
+<a href="#" class="meta-item zu-autohide js-collect"><i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+
+<span class="zg-bull zu-autohide">•</span>
+
+<a href="#" class="meta-item zu-autohide js-noHelp">没有帮助</a>
+
+<span class="zg-bull zu-autohide">•</span>
+<a href="#" class="meta-item zu-autohide js-report">举报</a>
+
+
+
+
+<meta name="copyrightStatus" content="1">
+<meta name="disableCopyAvatar" content="">
+
+<span class="zg-bull">•</span>
+
+<a href="http://www.zhihu.com/terms#sec-licence-1" target="_blank" class="meta-item copyright">
+作者保留权利
+</a>
+
+
+</div>
+</div>
+</div><div data-za-module="AnswerItem" tabindex="-1" class="zm-item-answer  zm-item-expanded" itemscope="" itemtype="http://schema.org/Answer" data-aid="17839751" data-atoken="56081315" data-collapsed="0" data-created="1437609963" data-deleted="0" data-helpful="1" data-isowner="0" data-copyable="1">
+<link itemprop="url" href="http://www.zhihu.com/question/24059464/answer/56081315">
+<meta itemprop="answer-id" content="17839751">
+<meta itemprop="answer-url-token" content="56081315">
+<a class="zg-anchor-hidden" name="answer-17839751"></a>
+
+
+<div data-za-module="VoteBar" class="zm-votebar">
+<button title="赞同" aria-pressed="false" class="up">
+<i class="icon vote-arrow"></i>
+<span class="count">0</span>
+<span class="label sr-only">赞同</span>
+</button>
+<button title="反对，不会显示你的姓名" aria-pressed="false" class="down">
+<i class="icon vote-arrow"></i>
+<span class="label sr-only">反对，不会显示你的姓名</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+
+<a class="zm-item-link-avatar avatar-link"><img src="da8e974dc_s.jpg" class="zm-list-avatar avatar"></a>
+
+<span title="老李这人真黑。" class="bio">老李这人真黑。</span>
+
+</div>
+<div data-za-module="VoteInfo" class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text expandable js-collapse-body" data-resourceid="1805577" data-action="/answer/content" data-author-name="老李这人真黑" data-entry-url="/question/24059464/answer/56081315">
+
+
+<div class="zh-summary summary clearfix" style="display: none;">
+
+为什么不用BeagleBone Black？
+
+<a href="http://www.zhihu.com/question/24059464/answer/56081315" class="toggle-expand">显示全部</a>
+
+</div>
+
+
+<div class="zm-editable-content clearfix">
+为什么不用BeagleBone Black？
+</div>
+
+
+</div>
+<a class="zg-anchor-hidden ac" name="17839751-comment"></a>
+<div class="zm-item-meta answer-actions clearfix js-contentActions">
+<div class="zm-meta-panel">
+
+<a itemprop="url" class="answer-date-link meta-item" target="_blank" href="http://www.zhihu.com/question/24059464/answer/56081315">发布于 2015-07-23</a>
+
+<a href="#" name="addcomment" class="meta-item toggle-comment js-toggleCommentBox">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide js-thank" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a aria-haspopup="true" tabindex="0" aria-expanded="false" style="-moz-user-select: none;" role="button" href="#" class="meta-item zu-autohide js-share goog-inline-block goog-menu-button"><div class="goog-inline-block goog-menu-button-outer-box"><div class="goog-inline-block goog-menu-button-inner-box"><div class="goog-inline-block goog-menu-button-caption"><i class="z-icon-share"></i>分享</div><div class="goog-inline-block goog-menu-button-dropdown">&nbsp;</div></div></div></a>
+
+<a href="#" class="meta-item zu-autohide js-collect"><i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+
+<span class="zg-bull zu-autohide">•</span>
+
+<a href="#" class="meta-item zu-autohide js-noHelp">没有帮助</a>
+
+<span class="zg-bull zu-autohide">•</span>
+<a href="#" class="meta-item zu-autohide js-report">举报</a>
+
+
+
+
+<meta name="copyrightStatus" content="1">
+<meta name="disableCopyAvatar" content="">
+
+<span class="zg-bull">•</span>
+
+<a href="http://www.zhihu.com/terms#sec-licence-1" target="_blank" class="meta-item copyright">
+作者保留权利
+</a>
+
+
+</div>
+</div>
+</div><div data-za-module="AnswerItem" tabindex="-1" class="zm-item-answer  zm-item-expanded" itemscope="" itemtype="http://schema.org/Answer" data-aid="12209645" data-atoken="42041839" data-collapsed="0" data-created="1426388860" data-deleted="0" data-helpful="1" data-isowner="0" data-copyable="1">
+<link itemprop="url" href="http://www.zhihu.com/question/24059464/answer/42041839">
+<meta itemprop="answer-id" content="12209645">
+<meta itemprop="answer-url-token" content="42041839">
+<a class="zg-anchor-hidden" name="answer-12209645"></a>
+
+
+<div data-za-module="VoteBar" class="zm-votebar">
+<button title="赞同" aria-pressed="false" class="up">
+<i class="icon vote-arrow"></i>
+<span class="count">0</span>
+<span class="label sr-only">赞同</span>
+</button>
+<button title="反对，不会显示你的姓名" aria-pressed="false" class="down">
+<i class="icon vote-arrow"></i>
+<span class="label sr-only">反对，不会显示你的姓名</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+
+<a class="zm-item-link-avatar avatar-link"><img src="da8e974dc_s.jpg" class="zm-list-avatar avatar"></a>
+
+<span title="闷骚程序员" class="bio">闷骚程序员</span>
+
+</div>
+<div data-za-module="VoteInfo" class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text expandable js-collapse-body" data-resourceid="1805577" data-action="/answer/content" data-author-name="陈仲谋" data-entry-url="/question/24059464/answer/42041839">
+
+
+<div class="zh-summary summary clearfix" style="display: none;">
+
+楼主，我想买块板子来学习嵌入式Linux,可能需要学习些驱动开发，你觉得cubieboard怎么样？
+
+<a href="http://www.zhihu.com/question/24059464/answer/42041839" class="toggle-expand">显示全部</a>
+
+</div>
+
+
+<div class="zm-editable-content clearfix">
+楼主，我想买块板子来学习嵌入式Linux,可能需要学习些驱动开发，你觉得cubieboard怎么样？
+</div>
+
+
+</div>
+<a class="zg-anchor-hidden ac" name="12209645-comment"></a>
+<div class="zm-item-meta answer-actions clearfix js-contentActions">
+<div class="zm-meta-panel">
+
+<a itemprop="url" class="answer-date-link meta-item" target="_blank" href="http://www.zhihu.com/question/24059464/answer/42041839">发布于 2015-03-15</a>
+
+<a href="#" name="addcomment" class="meta-item toggle-comment js-toggleCommentBox">
+<i class="z-icon-comment"></i>1 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide js-thank" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a aria-haspopup="true" tabindex="0" aria-expanded="false" style="-moz-user-select: none;" role="button" href="#" class="meta-item zu-autohide js-share goog-inline-block goog-menu-button"><div class="goog-inline-block goog-menu-button-outer-box"><div class="goog-inline-block goog-menu-button-inner-box"><div class="goog-inline-block goog-menu-button-caption"><i class="z-icon-share"></i>分享</div><div class="goog-inline-block goog-menu-button-dropdown">&nbsp;</div></div></div></a>
+
+<a href="#" class="meta-item zu-autohide js-collect"><i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+
+<span class="zg-bull zu-autohide">•</span>
+
+<a href="#" class="meta-item zu-autohide js-noHelp">没有帮助</a>
+
+<span class="zg-bull zu-autohide">•</span>
+<a href="#" class="meta-item zu-autohide js-report">举报</a>
+
+
+
+
+<meta name="copyrightStatus" content="1">
+<meta name="disableCopyAvatar" content="">
+
+<span class="zg-bull">•</span>
+
+<a href="http://www.zhihu.com/terms#sec-licence-1" target="_blank" class="meta-item copyright">
+作者保留权利
+</a>
+
+
+</div>
+</div>
+</div><div data-za-module="AnswerItem" tabindex="-1" class="zm-item-answer  zm-item-expanded" itemscope="" itemtype="http://schema.org/Answer" data-aid="11147143" data-atoken="39387614" data-collapsed="0" data-created="1423542819" data-deleted="0" data-helpful="1" data-isowner="0" data-copyable="1">
+<link itemprop="url" href="http://www.zhihu.com/question/24059464/answer/39387614">
+<meta itemprop="answer-id" content="11147143">
+<meta itemprop="answer-url-token" content="39387614">
+<a class="zg-anchor-hidden" name="answer-11147143"></a>
+
+
+<div data-za-module="VoteBar" class="zm-votebar">
+<button title="赞同" aria-pressed="false" class="up">
+<i class="icon vote-arrow"></i>
+<span class="count">0</span>
+<span class="label sr-only">赞同</span>
+</button>
+<button title="反对，不会显示你的姓名" aria-pressed="false" class="down">
+<i class="icon vote-arrow"></i>
+<span class="label sr-only">反对，不会显示你的姓名</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+
+<a class="zm-item-link-avatar avatar-link" href="http://www.zhihu.com/people/cui-gang" target="_blank" data-hovercard="p$t$cui-gang"><img src="e9632ad84_s.jpg" class="zm-list-avatar avatar"></a>
+
+
+<span class="author-link-line">
+<a class="author-link" data-hovercard="p$t$cui-gang" target="_blank" href="http://www.zhihu.com/people/cui-gang">崔钢</a></span><span title="喜欢编程的普通人，顺便以此为生。" class="bio">喜欢编程的普通人，顺便以此为生。</span>
+
+</div>
+<div data-za-module="VoteInfo" class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text expandable js-collapse-body" data-resourceid="1805577" data-action="/answer/content" data-author-name="崔钢" data-entry-url="/question/24059464/answer/39387614">
+
+
+<div class="zh-summary summary clearfix" style="display: none;">
+
+我觉得，玩开源硬件关键是有一个比较好的目标。并一定要动手。不一定要追求那么强的硬件。cabieboard，性价比比较好一点。
+
+<a href="http://www.zhihu.com/question/24059464/answer/39387614" class="toggle-expand">显示全部</a>
+
+</div>
+
+
+<div class="zm-editable-content clearfix">
+我觉得，玩开源硬件关键是有一个比较好的目标。并一定要动手。不一定要追求那么强的硬件。cabieboard，性价比比较好一点。
+</div>
+
+
+</div>
+<a class="zg-anchor-hidden ac" name="11147143-comment"></a>
+<div class="zm-item-meta answer-actions clearfix js-contentActions">
+<div class="zm-meta-panel">
+
+<a itemprop="url" class="answer-date-link meta-item" target="_blank" href="http://www.zhihu.com/question/24059464/answer/39387614">发布于 2015-02-10</a>
+
+<a href="#" name="addcomment" class="meta-item toggle-comment js-toggleCommentBox">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide js-thank" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a aria-haspopup="true" tabindex="0" aria-expanded="false" style="-moz-user-select: none;" role="button" href="#" class="meta-item zu-autohide js-share goog-inline-block goog-menu-button"><div class="goog-inline-block goog-menu-button-outer-box"><div class="goog-inline-block goog-menu-button-inner-box"><div class="goog-inline-block goog-menu-button-caption"><i class="z-icon-share"></i>分享</div><div class="goog-inline-block goog-menu-button-dropdown">&nbsp;</div></div></div></a>
+
+<a href="#" class="meta-item zu-autohide js-collect"><i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+
+<span class="zg-bull zu-autohide">•</span>
+
+<a href="#" class="meta-item zu-autohide js-noHelp">没有帮助</a>
+
+<span class="zg-bull zu-autohide">•</span>
+<a href="#" class="meta-item zu-autohide js-report">举报</a>
+
+
+
+
+<meta name="copyrightStatus" content="1">
+<meta name="disableCopyAvatar" content="">
+
+<span class="zg-bull">•</span>
+
+<a href="http://www.zhihu.com/terms#sec-licence-1" target="_blank" class="meta-item copyright">
+作者保留权利
+</a>
+
+
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ </div>
+
+<div id="zh-question-collapsed-link" class="zu-question-collap-title" style="display: none;">
+<a name="expand" class="zg-link-gray" id="zh-question-collapsed-switcher">
+<span id="zh-question-collapsed-num">0</span> 个回答被折叠
+</a>
+（<a target="_blank" href="http://www.zhihu.com/question/20120168" class="zg-link-gray">为什么？</a>）
+</div>
+<div id="zh-question-collapsed-wrap" class="zh-question-answer-wrapper" style="display: none;"></div>
+<a name="draft"></a>
+<div id="zh-question-answer-form-wrap" class="zh-question-answer-form-wrap">
+<div style="display: none;" class="zm-editable-tip zu-answer-form-disabled-wrap"></div>
+<div style="display: none;" class="zm-editable-content"><p></p><a class="zu-edit-button" name="edit"><i class="zu-edit-button-icon"></i>修改</a></div><div style="" class="zm-editable-editor-wrap"><div class="zh-answer-form clearfix"><div><div class="zu-answer-form-title">我来回答这个问题<span></span></div></div></div><div class="zm-editable-editor-outer"><div class="zm-editable-toolbar-container goog-scrollfloater"><div tabindex="-1" role="toolbar" style="-moz-user-select: none;" class="goog-toolbar goog-toolbar-horizontal"><div id="toggleFullScreen" style="-moz-user-select: none;" role="button" title="写作模式" class="goog-inline-block goog-toolbar-button"><div class="goog-inline-block goog-toolbar-button-outer-box"><div class="goog-inline-block goog-toolbar-button-inner-box"><div class="tr-icon tr-max"></div></div></div></div><div id="+bold" aria-pressed="false" style="-moz-user-select: none;" role="button" title="粗体 (ctrl+b)" class="goog-inline-block goog-toolbar-button"><div class="goog-inline-block goog-toolbar-button-outer-box"><div class="goog-inline-block goog-toolbar-button-inner-box"><div class="tr-icon tr-bold"></div></div></div></div><div id="+italic" aria-pressed="false" style="-moz-user-select: none;" role="button" title="斜体 (ctrl+i)" class="goog-inline-block goog-toolbar-button"><div class="goog-inline-block goog-toolbar-button-outer-box"><div class="goog-inline-block goog-toolbar-button-inner-box"><div class="tr-icon tr-italic"></div></div></div></div><div id="+underline" aria-pressed="false" style="-moz-user-select: none;" role="button" title="下划线 (ctrl+u)" class="goog-inline-block goog-toolbar-button"><div class="goog-inline-block goog-toolbar-button-outer-box"><div class="goog-inline-block goog-toolbar-button-inner-box"><div class="tr-icon tr-underline"></div></div></div></div><div id=":2a" role="separator" aria-disabled="true" style="-moz-user-select: none;" class="goog-toolbar-separator goog-toolbar-separator-disabled goog-inline-block">&nbsp;</div><div id="+blockquote" aria-pressed="false" style="-moz-user-select: none;" role="button" title="引用内容" class="goog-inline-block goog-toolbar-button"><div class="goog-inline-block goog-toolbar-button-outer-box"><div class="goog-inline-block goog-toolbar-button-inner-box"><div class="tr-icon tr-blockquote"></div></div></div></div><div id="+code" aria-pressed="false" style="-moz-user-select: none;" role="button" title="插入代码" class="goog-inline-block goog-toolbar-button"><div class="goog-inline-block goog-toolbar-button-outer-box"><div class="goog-inline-block goog-toolbar-button-inner-box"><div class="tr-icon tr-code"></div></div></div></div><div id="+insertOrderedList" aria-pressed="false" style="-moz-user-select: none;" role="button" title="有序列表" class="goog-inline-block goog-toolbar-button"><div class="goog-inline-block goog-toolbar-button-outer-box"><div class="goog-inline-block goog-toolbar-button-inner-box"><div class="tr-icon tr-insertOrderedList"></div></div></div></div><div id="+insertUnorderedList" aria-pressed="false" style="-moz-user-select: none;" role="button" title="无序列表" class="goog-inline-block goog-toolbar-button"><div class="goog-inline-block goog-toolbar-button-outer-box"><div class="goog-inline-block goog-toolbar-button-inner-box"><div class="tr-icon tr-insertUnorderedList"></div></div></div></div><div id="+equation" style="-moz-user-select: none;" role="button" title="插入公式" class="goog-inline-block goog-toolbar-button"><div class="goog-inline-block goog-toolbar-button-outer-box"><div class="goog-inline-block goog-toolbar-button-inner-box"><div class="tr-icon tr-equation"></div></div></div></div><div id=":2b" role="separator" aria-disabled="true" style="-moz-user-select: none;" class="goog-toolbar-separator goog-toolbar-separator-disabled goog-inline-block">&nbsp;</div><div id="image" style="-moz-user-select: none;" role="button" title="插入图片" class="goog-inline-block goog-toolbar-button"><div class="goog-inline-block goog-toolbar-button-outer-box"><div class="goog-inline-block goog-toolbar-button-inner-box"><div class="tr-icon tr-image"></div></div></div></div><div id="video" style="-moz-user-select: none;" role="button" title="插入视频" class="goog-inline-block goog-toolbar-button"><div class="goog-inline-block goog-toolbar-button-outer-box"><div class="goog-inline-block goog-toolbar-button-inner-box"><div class="tr-icon tr-video"></div></div></div></div><div id=":2c" role="separator" aria-disabled="true" style="-moz-user-select: none;" class="goog-toolbar-separator goog-toolbar-separator-disabled goog-inline-block">&nbsp;</div><div id="+removeFormat" style="-moz-user-select: none;" role="button" title="清除格式" class="goog-inline-block goog-toolbar-button"><div class="goog-inline-block goog-toolbar-button-outer-box"><div class="goog-inline-block goog-toolbar-button-inner-box"><div class="tr-icon tr-removeFormat"></div></div></div></div><div class="tr-spinner spinner-gray" style="display: none;"></div></div></div><div class="zm-editable-editor-field-wrap"><div style="font-style: italic;" role="textbox" g_editable="true" class="zm-editable-editor-field-element editable" id="mock:16" contenteditable="true"><p><span style="font-style: normal; color: rgb(153, 153, 153);">写回答…</span></p></div><div class="editable-dropzone"><div class="row"><div class="cell"><div>拖拽至此处上传</div></div></div></div></div><div class="signin-mask-tip-answer"></div><div style="display: none;" class="mention-popup"><div class="writing-bg"><input autocomplete="off" aria-autocomplete="list" role="combobox"></div><div class="tip">想用 @ 提到谁？</div></div></div><div class="zm-command"><a class="zg-r3px zg-btn-blue">我要回答</a></div><div style="display: none;" class="zm-command clearfix"><label style="-moz-user-select: none;" class="zg-left anno-box"><input style="-moz-user-select: none;" name="anno-checkbox" type="checkbox"> 匿名 <span style="-moz-user-select: none;">&nbsp;</span></label> <label class="zg-left copyright-box"><input name="copyright" type="checkbox">未经许可，禁止转载<a href="http://www.zhihu.com/terms#sec-licence-6" class="demo-trigger" target="_blank"><i class="zg-icon zg-icon-question-mark" style="margin-left: 5px;" id="copyright_question_mark" data-copyright-demo="true"></i></a></label> <span class=" zg-right"><a class="submit-button zg-btn-blue" name="save">发布回答</a></span><div class="draft-controls zg-right "><span style="display: none;" class="draft-saved-info"><a class="draft-clear-button goog-inline-block" href="#" data-tooltip="s$b$删除草稿"><i class="zg-icon zg-icon-bin"></i><span class="hide-text">清除草稿</span></a><span class="draft-saved-time"></span></span></div></div></div>
+</div>
+<!-- 版权演示 -->
+
+
+
+
+
+</div>
+</div>
+
+
+<div class="zu-main-sidebar">
+
+<div class="zm-side-section">
+<div class="zm-side-section-inner">
+<div class="SignFlow SignFlow--bordered" id="SidebarSignFlow">
+<div class="SignFlow-panel">
+<div class="title register">
+<h1>加入知乎</h1>
+<h2>与世界分享你的知识、经验和见解</h2>
+</div>
+<div class="view register SignupForm">
+<form novalidate="novalidate" action="http://www.zhihu.com/register/email">
+<div class="input-wrapper">
+<input style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAAVVJREFUOBGlUr9LhWAUvf5AZ6eWGt2CDEFEGjMI+id6Q9DY2xoEdWmqKYIe9Cc0NbZFQ1NIq0vx3CycDdTOpXh8+j1s8IMj5xzvvd77eYkmnDiO79UJ+Zy6oaPKAcgl8A4cQ38CAfg18PXnFWma7rRtu4D+1jRtFkVRDk7cwV3XddvAEficTZwb6F1gHzxiA8lX0B6w1zTNBXt8po5AqqIoM+ANeDAMg0chVVVPoV+BR13XU/ZwzqBfgCeMcP5rTXzirp6VYY0kSQ4x5y2wNXwnanSyRMyHLprMYS6AzaE/1PwBFFGkS1yXbNs2eZ5Hpmn26nCs1IEYgQ9QGIYUBLwWRHmeU13XYsj4b3Qch3zfp6qqekmiGO0gyzIqy5Jc1yXLssS8FZfuYPUGBDNSURSiJfHRAlL0GmNyAWmRsF28IP/uATeDv1RIHcA8AZZruu1ZHMOxP66qe9DAZLEcAAAAAElFTkSuQmCC&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;" placeholder="姓名" name="fullname" aria-label="姓名" data-placeholder="姓名" required="" type="text">
+</div>
+<div class="input-wrapper">
+
+<input style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAAVVJREFUOBGlUr9LhWAUvf5AZ6eWGt2CDEFEGjMI+id6Q9DY2xoEdWmqKYIe9Cc0NbZFQ1NIq0vx3CycDdTOpXh8+j1s8IMj5xzvvd77eYkmnDiO79UJ+Zy6oaPKAcgl8A4cQ38CAfg18PXnFWma7rRtu4D+1jRtFkVRDk7cwV3XddvAEficTZwb6F1gHzxiA8lX0B6w1zTNBXt8po5AqqIoM+ANeDAMg0chVVVPoV+BR13XU/ZwzqBfgCeMcP5rTXzirp6VYY0kSQ4x5y2wNXwnanSyRMyHLprMYS6AzaE/1PwBFFGkS1yXbNs2eZ5Hpmn26nCs1IEYgQ9QGIYUBLwWRHmeU13XYsj4b3Qch3zfp6qqekmiGO0gyzIqy5Jc1yXLssS8FZfuYPUGBDNSURSiJfHRAlL0GmNyAWmRsF28IP/uATeDv1RIHcA8AZZruu1ZHMOxP66qe9DAZLEcAAAAAElFTkSuQmCC&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;" placeholder="手机号（仅支持中国大陆）" name="phone_num" class="account" aria-label="手机号（仅支持中国大陆）" data-placeholder="手机号（仅支持中国大陆）" required="" type="text">
+
+</div>
+<div class="input-wrapper toggle-password">
+<input style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAAVVJREFUOBGlUr9LhWAUvf5AZ6eWGt2CDEFEGjMI+id6Q9DY2xoEdWmqKYIe9Cc0NbZFQ1NIq0vx3CycDdTOpXh8+j1s8IMj5xzvvd77eYkmnDiO79UJ+Zy6oaPKAcgl8A4cQ38CAfg18PXnFWma7rRtu4D+1jRtFkVRDk7cwV3XddvAEficTZwb6F1gHzxiA8lX0B6w1zTNBXt8po5AqqIoM+ANeDAMg0chVVVPoV+BR13XU/ZwzqBfgCeMcP5rTXzirp6VYY0kSQ4x5y2wNXwnanSyRMyHLprMYS6AzaE/1PwBFFGkS1yXbNs2eZ5Hpmn26nCs1IEYgQ9QGIYUBLwWRHmeU13XYsj4b3Qch3zfp6qqekmiGO0gyzIqy5Jc1yXLssS8FZfuYPUGBDNSURSiJfHRAlL0GmNyAWmRsF28IP/uATeDv1RIHcA8AZZruu1ZHMOxP66qe9DAZLEcAAAAAElFTkSuQmCC&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;" type="password" hidden=""> 
+<input style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAAVVJREFUOBGlUr9LhWAUvf5AZ6eWGt2CDEFEGjMI+id6Q9DY2xoEdWmqKYIe9Cc0NbZFQ1NIq0vx3CycDdTOpXh8+j1s8IMj5xzvvd77eYkmnDiO79UJ+Zy6oaPKAcgl8A4cQ38CAfg18PXnFWma7rRtu4D+1jRtFkVRDk7cwV3XddvAEficTZwb6F1gHzxiA8lX0B6w1zTNBXt8po5AqqIoM+ANeDAMg0chVVVPoV+BR13XU/ZwzqBfgCeMcP5rTXzirp6VYY0kSQ4x5y2wNXwnanSyRMyHLprMYS6AzaE/1PwBFFGkS1yXbNs2eZ5Hpmn26nCs1IEYgQ9QGIYUBLwWRHmeU13XYsj4b3Qch3zfp6qqekmiGO0gyzIqy5Jc1yXLssS8FZfuYPUGBDNSURSiJfHRAlL0GmNyAWmRsF28IP/uATeDv1RIHcA8AZZruu1ZHMOxP66qe9DAZLEcAAAAAElFTkSuQmCC&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;" placeholder="密码（不少于 6 位）" name="password" aria-label="密码" data-placeholder="密码（不少于 6 位）" required="" type="password">
+<span class="z-ico-show-password"></span>
+</div>
+<div style="display: block;" class="input-wrapper captcha-module" data-type="en">
+<input id="captcha" name="captcha" placeholder="验证码" required="" data-rule-required="true" data-msg-required="请填写验证码">
+<div class="captcha-container">
+
+<img src="captcha.gif" style="display: inline;" class="js-refreshCaptcha captcha" data-tooltip="s$t$看不清楚？换一张" alt="验证码" width="120" height="30">
+</div>
+</div>
+<div class="actions">
+
+<input value="注册" class="submit zg-btn-blue" type="submit">
+
+</div>
+<div class="sns clearfix">
+<span>已有帐号？<a href="#" class="switch-to-login">登录</a></span>
+</div>
+</form>
+</div>
+</div>
+<div class="SignFlow-panel" hidden="">
+<div class="LoginForm">
+<div class="title login">
+<h1>登录知乎</h1>
+<h2>与世界分享你的知识、经验和见解</h2>
+</div>
+<div class="view login">
+<form lpformnum="3" novalidate="novalidate" method="POST">
+<div class="input-wrapper">
+<input style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAAVVJREFUOBGlUr9LhWAUvf5AZ6eWGt2CDEFEGjMI+id6Q9DY2xoEdWmqKYIe9Cc0NbZFQ1NIq0vx3CycDdTOpXh8+j1s8IMj5xzvvd77eYkmnDiO79UJ+Zy6oaPKAcgl8A4cQ38CAfg18PXnFWma7rRtu4D+1jRtFkVRDk7cwV3XddvAEficTZwb6F1gHzxiA8lX0B6w1zTNBXt8po5AqqIoM+ANeDAMg0chVVVPoV+BR13XU/ZwzqBfgCeMcP5rTXzirp6VYY0kSQ4x5y2wNXwnanSyRMyHLprMYS6AzaE/1PwBFFGkS1yXbNs2eZ5Hpmn26nCs1IEYgQ9QGIYUBLwWRHmeU13XYsj4b3Qch3zfp6qqekmiGO0gyzIqy5Jc1yXLssS8FZfuYPUGBDNSURSiJfHRAlL0GmNyAWmRsF28IP/uATeDv1RIHcA8AZZruu1ZHMOxP66qe9DAZLEcAAAAAElFTkSuQmCC&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;" name="account" class="account" aria-label="手机号或邮箱" placeholder="手机号或邮箱" required="" type="text">
+</div>
+<div class="input-wrapper toggle-password">
+<input style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAAVVJREFUOBGlUr9LhWAUvf5AZ6eWGt2CDEFEGjMI+id6Q9DY2xoEdWmqKYIe9Cc0NbZFQ1NIq0vx3CycDdTOpXh8+j1s8IMj5xzvvd77eYkmnDiO79UJ+Zy6oaPKAcgl8A4cQ38CAfg18PXnFWma7rRtu4D+1jRtFkVRDk7cwV3XddvAEficTZwb6F1gHzxiA8lX0B6w1zTNBXt8po5AqqIoM+ANeDAMg0chVVVPoV+BR13XU/ZwzqBfgCeMcP5rTXzirp6VYY0kSQ4x5y2wNXwnanSyRMyHLprMYS6AzaE/1PwBFFGkS1yXbNs2eZ5Hpmn26nCs1IEYgQ9QGIYUBLwWRHmeU13XYsj4b3Qch3zfp6qqekmiGO0gyzIqy5Jc1yXLssS8FZfuYPUGBDNSURSiJfHRAlL0GmNyAWmRsF28IP/uATeDv1RIHcA8AZZruu1ZHMOxP66qe9DAZLEcAAAAAElFTkSuQmCC&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;" name="password" aria-label="密码" placeholder="密码" required="" type="password">
+<span class="z-ico-show-password"></span>
+</div>
+<div class="input-wrapper captcha-module" data-type="en">
+<input class="is-ignoreValidation" id="captcha" name="" placeholder="验证码" required="" data-rule-required="true" data-msg-required="请填写验证码">
+<div class="captcha-container">
+
+<img class="js-refreshCaptcha captcha" data-tooltip="s$t$看不清楚？换一张" alt="验证码" width="120" height="30">
+</div>
+</div>
+<div class="actions">
+
+<input value="登录" class="submit zg-btn-blue" type="submit">
+
+</div>
+<div class="sns clearfix">
+<label class="remember-me"><input name="remember_me" checked="" value="true" type="checkbox">记住我</label>
+<span class="middot">·</span>
+<button class="unable-login" type="button">无法登录？</button>
+<button type="button" class="js-show-sns-buttons is-visible">社交帐号登录</button>
+<div class="sns-buttons">
+<button type="button" class="wechat"><span class="ico sprite-global-icon-wechat-gray"></span>微信</button>
+<button type="button" class="weibo"><span class="ico sprite-global-icon-weibo-gray"></span>微博</button>
+<button type="button" class="qq"><span class="ico sprite-global-icon-qq-gray"></span>QQ</button>
+</div>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="zm-side-section">
+<div class="DownloadApp">
+<button class="DownloadApp-button">
+<span class="sprite-global-icon-qrcode"></span>
+下载知乎 App
+</button>
+</div>
+</div>
+
+
+
+<div class="zm-side-section">
+<div class="zm-side-section-inner zg-gray-normal" id="zh-question-side-header-wrap">
+<button data-follow="q:m:button" class="follow-button zg-follow zg-btn-green" data-id="1805577">关注问题</button>
+
+548
+人关注该问题
+
+</div>
+</div>
+
+
+
+
+<div class="zm-side-section">
+<div class="zm-side-section-inner">
+<div id="zh-question-related-questions" class="zh-question-related-questions clearfix" data-za-module="RelatedQuestions">
+
+<a class="zg-right next">换一换</a>
+
+<h3>相关问题</h3>
+<ul itemprop="relatedQuestion" itemscope="" itemtype="http://schema.org/ItemList">
+
+<li data-za-module="QuestionItem" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/Question">
+<a class="question_link" href="http://www.zhihu.com/question/19902056" data-id="140872">
+在移动领域，ARM 在哪些方面领先英特尔？
+</a> <span class="num">23 个回答</span><meta itemprop="followerCount" content="432">
+</li>
+
+<li data-za-module="QuestionItem" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/Question">
+<a class="question_link" href="http://www.zhihu.com/question/22478898" data-id="1172375">
+如何评价 Intel 新发布只有 SD 卡大小的  ‘Edison’ 微型电脑？
+</a> <span class="num">12 个回答</span><meta itemprop="followerCount" content="125">
+</li>
+
+<li data-za-module="QuestionItem" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/Question">
+<a class="question_link" href="http://www.zhihu.com/question/21543079" data-id="797970">
+iPhone 5s 配备的 A7 处理器是 64 位，意味着什么？
+</a> <span class="num">25 个回答</span><meta itemprop="followerCount" content="835">
+</li>
+
+<li data-za-module="QuestionItem" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/Question">
+<a class="question_link" href="http://www.zhihu.com/question/20755144" data-id="482492">
+Arduino 与树莓派 Raspberry Pi 相比各自有什么优缺点？
+</a> <span class="num">23 个回答</span><meta itemprop="followerCount" content="1442">
+</li>
+
+<li data-za-module="QuestionItem" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/Question">
+<a class="question_link" href="http://www.zhihu.com/question/20960629" data-id="564821">
+为什么平板上已经出现了多种大陆产 CPU，而手机上却有很大差距？
+</a> <span class="num">6 个回答</span><meta itemprop="followerCount" content="48">
+</li>
+
+<li data-za-module="QuestionItem" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/Question" hidden="">
+<a class="question_link" href="http://www.zhihu.com/question/21657848" data-id="843852">
+Apple A7 芯片性能真的达到所谓『桌面级』水准吗？
+</a> <span class="num">8 个回答</span><meta itemprop="followerCount" content="63">
+</li>
+
+<li data-za-module="QuestionItem" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/Question" hidden="">
+<a class="question_link" href="http://www.zhihu.com/question/21287007" data-id="695466">
+ARM 构架比 MIPS 更适合路由吗？
+</a> <span class="num">10 个回答</span><meta itemprop="followerCount" content="244">
+</li>
+
+<li data-za-module="QuestionItem" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/Question" hidden="">
+<a class="question_link" href="http://www.zhihu.com/question/24551779" data-id="2002705">
+为什么 ARM 和 MIPS 那么多寄存器，x86 那么少？
+</a> <span class="num">6 个回答</span><meta itemprop="followerCount" content="331">
+</li>
+
+<li data-za-module="QuestionItem" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/Question" hidden="">
+<a class="question_link" href="http://www.zhihu.com/question/23534399" data-id="1595131">
+想做 C++ 方面开发，是基于 Linux 还是基于 Windows 平台？
+</a> <span class="num">54 个回答</span><meta itemprop="followerCount" content="1950">
+</li>
+
+<li data-za-module="QuestionItem" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/Question" hidden="">
+<a class="question_link" href="http://www.zhihu.com/question/21267758" data-id="687817">
+ARM 和 Intel 谁能代替 DSP？
+</a> <span class="num">19 个回答</span><meta itemprop="followerCount" content="218">
+</li>
+
+</ul>
+</div>
+</div>
+</div>
+
+
+
+
+
+</div>
+
+
+</div>
+
+
+<div id="zh-footer" class="zh-footer">
+<div class="content zg-wrap clearfix">
+<ul>
+
+<li><a href="https://liukanshan.zhihu.com/" target="_blank">刘看山</a></li>
+
+<li><a href="http://www.zhihu.com/app" target="_blank">移动应用</a></li>
+<li><a href="http://www.zhihu.com/careers">加入知乎</a></li>
+<li><a href="http://www.zhihu.com/terms" target="_blank">知乎协议</a></li>
+<li><a href="http://www.zhihu.com/contact">联系我们</a></li>
+
+</ul>
+
+<span class="copy">© 2016 知乎</span>
+
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div style="display: none;" id="zh-global-spinner">加载中…</div>
+
+
+
+
+<meta name="entry" content="ZH.entrySQ" data-module-id="page-main">
+
+
+
+<input name="_xsrf" value="ec0f8eec325facbc338c02b03c4ba7f2" type="hidden">
+
+<div class="zh-backtotop" style="display: none;"><a data-action="backtotop" data-tooltip="s$r$回到顶部" class="btn-backtotop btn-action"><div class="arrow"></div><div class="stick"></div></a></div><div id="zh-hovercard"></div><div id="copyright-demo-helper" style="display: none; position: absolute;"><p class="copyright-demo-helper-intro"> 勾选后，我们将限制其他用户的复制操作，并给予提醒 </p><p class="copyright-demo-helper-btn"> 查看演示 </p></div><div id="zh-tooltip"></div><div style="display: none;"><div class="lang-select collapsed"><div style="-moz-user-select: none;" class="title-button">选择语言</div><i class="zg-icon zg-icon-double-arrow"></i><div class="input-wrapper"><input aria-autocomplete="list" role="combobox" class="filter-input zg-form-text-input" placeholder="搜索语言"></div></div></div><div></div>
+
+
+
+
+</body>
+</html>
