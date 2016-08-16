@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+<title>GNU screen tips &amp; hacks page</title>
+<meta name="author" content="Artur Skonecki">
+<meta name="Generator" content="Vim/7.2">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+    <link rel="home" title="Home" href="http://adb.cba.pl/">
+    
+
+
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body text="#000000" bgcolor="#ffffff"><!--DOCUMENT_FRAGMENT--><h2 style="color: rgb(153, 0, 0);">move a process into a Screen session</h2>
+
+<ol>
+    <li>
+    <a title="injcode download" href="http://www.habets.pp.se/synscan/files/injcode-0.11.tar.gz">&gt;&gt; Download injcode</a> and install it in the $PATH ( <a title="blog entry about injcode" href="http://blog.habets.pp.se/2009/03/Moving-a-process-to-another-terminal">&gt;&gt; more</a> about injcode ).
+    </li>
+    <li>
+    Put this script in your path:
+    
+
+<table style="border-width: thick; background-color: rgb(219, 240, 247); border-color: rgb(116, 186, 172); border-collapse: collapse; border-style: solid;" width="100%" border="1">
+<tbody><tr>
+<td style="border-style: solid;">
+<p class="filename"><a href="http://adb.cba.pl/raw/screen-move-process">&gt;&gt; file screen-move-process
+</a>  - move a process between ttys</p>
+
+</td>
+</tr>
+<tr>
+<td style="background-color: rgb(116, 186, 172); border-style: hidden;">
+</td>
+</tr>
+<tr>
+<td> 
+<pre style="font-size:normal;"><code>
+
+</code></pre>
+</td>
+</tr>
+</tbody></table>
+
+    </li>
+    <li>
+    To move a process into Screen session:
+    <pre class="example_shell"><kbd>
+    $ screen-move-process PID
+    </kbd></pre>
+    In the process parent shell type:
+    <pre class="example_shell"><kbd>
+    $ disown</kbd></pre></li></ol><!--/DOCUMENT_FRAGMENT--></body>
+</html>

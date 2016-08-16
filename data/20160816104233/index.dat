@@ -1,0 +1,11 @@
+id	20160816104233
+create	20160816104233
+modify	20160816104233
+type	
+title	nelhage/reptyr: Reparent a running program to a new terminal
+chars	UTF-8
+icon	favicon.ico
+source	https://github.com/nelhage/reptyr/
+comment	
+lock	
+folder	dtach / xpra
