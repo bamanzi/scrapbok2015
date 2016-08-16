@@ -1,0 +1,158 @@
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<title>Tables - The compact Org-mode Guide</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="The compact Org-mode Guide">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="http://orgmode.org/guide/index.html#Top">
+<link rel="prev" href="http://orgmode.org/guide/Document-Structure.html#Document-Structure" title="Document Structure">
+<link rel="next" href="http://orgmode.org/guide/Hyperlinks.html#Hyperlinks" title="Hyperlinks">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright (C) 2010--2016 Free Software Foundation
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.3 or any later version published by the Free Software
+     Foundation; with no Invariant Sections, with the Front-Cover Texts
+     being ``A GNU Manual,'' and with the Back-Cover Texts as in (a)
+     below.  A copy of the license is included in the section entitled
+     ``GNU Free Documentation License'' in the full Org manual, which
+     is distributed together with the compact guide.
+
+     (a) The FSF's Back-Cover Text is: ``You have the freedom to copy
+     and modify this GNU manual.''
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body><div id="org-info-js_console-container" style="position: relative; margin-top: -50px; top: -50px; left: 0px; width: 100%; height: 40px; overflow: hidden; vertical-align: middle; z-index: 9; border: 1px solid rgb(204, 204, 204);"><form lpformnum="5" action="" style="margin: 0px; padding: 0px;"><table id="org-info-js_console" style="width: 100%; margin: 0px; border-style: none;" summary="minibuffer" cellpadding="0" cellspacing="0"><tbody><tr><td id="org-info-js_console-icon" style="padding: 0px; border-style: none;">&nbsp;</td><td style="width: 100%; vertical-align: middle; padding: 0px; border-style: none;"><table style="width: 100%; margin: 0px; border-style: none;" cellpadding="0" cellspacing="2"><tbody><tr><td id="org-info-js_console-label" style="white-space: nowrap; padding: 0px; border-style: none;"></td></tr><tr><td style="width: 100%; vertical-align: middle; padding: 0px; border-style: none;"><input id="org-info-js_console-input" maxlength="150" style="width: 100%; padding: 0px; margin: 0px; border-style: none;" value="" type="text"></td></tr></tbody></table></td><td style="padding: 0px; border-style: none;">&nbsp;</td></tr></tbody></table></form></div>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a name="Top" href="http://orgmode.org/guide/index.html#Top">Org Mode Compact Guide</a>
+</li><li><a name="Introduction" href="http://orgmode.org/guide/Introduction.html#Introduction">1 Introduction</a>
+</li><li><a name="Document-Structure" href="http://orgmode.org/guide/Document-Structure.html#Document-Structure">2 Document Structure</a>
+</li><li><a name="Tables" href="#Tables">3 Tables</a>
+</li><li><a name="Hyperlinks" href="http://orgmode.org/guide/Hyperlinks.html#Hyperlinks">4 Hyperlinks</a>
+</li><li><a name="TODO-Items" href="http://orgmode.org/guide/TODO-Items.html#TODO-Items">5 TODO Items</a>
+</li><li><a name="Tags" href="http://orgmode.org/guide/Tags.html#Tags">6 Tags</a>
+</li><li><a name="Properties" href="http://orgmode.org/guide/Properties.html#Properties">7 Properties</a>
+</li><li><a name="Dates-and-Times" href="http://orgmode.org/guide/Dates-and-Times.html#Dates-and-Times">8 Dates and Times</a>
+</li><li><a name="Capture" href="http://orgmode.org/guide/Capture-_002d-Refile-_002d-Archive.html#Capture-_002d-Refile-_002d-Archive">9 Capture-Refile-Archive</a>
+</li><li><a name="Agenda-Views" href="http://orgmode.org/guide/Agenda-Views.html#Agenda-Views">10 Agenda Views</a>
+</li><li><a name="Markup" href="http://orgmode.org/guide/Markup.html#Markup">11 Markup</a>
+</li><li><a name="Exporting" href="http://orgmode.org/guide/Exporting.html#Exporting">12 Exporting</a>
+</li><li><a name="Publishing" href="http://orgmode.org/guide/Publishing.html#Publishing">13 Publishing</a>
+</li><li><a name="Working-With-Source-Code" href="http://orgmode.org/guide/Working-With-Source-Code.html#Working-With-Source-Code">14 Source code</a>
+</li><li><a name="Miscellaneous" href="http://orgmode.org/guide/Miscellaneous.html#Miscellaneous">15 Miscellaneous</a>
+</li></ul>
+</div>
+</div>
+
+
+<div class="node">
+<a name="Tables"></a>
+<p>
+Next:&nbsp;<a rel="next" accesskey="n" href="http://orgmode.org/guide/Hyperlinks.html#Hyperlinks">Hyperlinks</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="http://orgmode.org/guide/Document-Structure.html#Document-Structure">Document Structure</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="http://orgmode.org/guide/index.html#Top">Top</a>
+</p><hr>
+</div>
+
+<h2 class="chapter">3 Tables</h2>
+
+<p>Org comes with a fast and intuitive table editor.  Spreadsheet-like
+calculations are supported in connection with the Emacs <samp><span class="file">calc</span></samp>
+package
+(see the Emacs Calculator manual for more information about the Emacs
+calculator).
+
+   </p><p>Org makes it easy to format tables in plain ASCII.  Any line with
+‘<samp><span class="samp">|</span></samp>’ as the first non-whitespace character is considered part of a
+table.  ‘<samp><span class="samp">|</span></samp>’ is also the column separator.  A table might look like
+this:
+
+</p><pre class="smallexample">     | Name  | Phone | Age |
+     |-------+-------+-----|
+     | Peter |  1234 |  17 |
+     | Anna  |  4321 |  25 |
+</pre>
+   <p>A table is re-aligned automatically each time you press &lt;TAB&gt; or
+&lt;RET&gt; or <kbd>C-c C-c</kbd> inside the table.  &lt;TAB&gt; also moves to
+the next field (&lt;RET&gt; to the next row) and creates new table rows
+at the end of the table or before horizontal lines.  The indentation
+of the table is set by the first line.  Any line starting with
+‘<samp><span class="samp">|-</span></samp>’ is considered as a horizontal separator line and will be
+expanded on the next re-align to span the whole table width.  So, to
+create the above table, you would only type
+
+</p><pre class="smallexample">     |Name|Phone|Age|
+     |-
+</pre>
+   <p class="noindent">and then press &lt;TAB&gt; to align the table and start filling in
+fields.  Even faster would be to type <code>|Name|Phone|Age</code> followed by
+<kbd>C-c &lt;RET&gt;</kbd>.
+
+   </p><p>When typing text into a field, Org treats &lt;DEL&gt;,
+&lt;Backspace&gt;, and all character keys in a special way, so that
+inserting and deleting avoids shifting other fields.  Also, when
+typing <em>immediately after the cursor was moved into a new field
+with </em><kbd>&lt;TAB&gt;</kbd><em>, </em><kbd>S-&lt;TAB&gt;</kbd><em> or </em><kbd>&lt;RET&gt;</kbd>, the
+field is automatically made blank.
+
+     </p><dl>
+<dt><b>Creation and conversion</b>
+<br></dt><dt><kbd>C-c |</kbd></dt><dd>Convert the active region to table.  If every line contains at least one TAB
+character, the function assumes that the material is tab separated.  If every
+line contains a comma, comma-separated values (CSV) are assumed.  If not,
+lines are split at whitespace into fields. 
+<br>
+If there is no active region, this command creates an empty Org
+table.  But it's easier just to start typing, like
+<kbd>|Name|Phone|Age C-c &lt;RET&gt;</kbd>.
+
+     <br></dd><dt><b>Re-aligning and field motion</b>
+<br></dt><dt><kbd>C-c C-c</kbd></dt><dd>Re-align the table without moving the cursor. 
+<br></dd><dt><kbd>&lt;TAB&gt;</kbd></dt><dd>Re-align the table, move to the next field.  Creates a new row if
+necessary. 
+<br></dd><dt><kbd>S-&lt;TAB&gt;</kbd></dt><dd>Re-align, move to previous field. 
+<br></dd><dt><kbd>&lt;RET&gt;</kbd></dt><dd>Re-align the table and move down to next row.  Creates a new row if
+necessary.
+
+     <br></dd><dt><b>Column and row editing</b>
+<br></dt><dt><kbd>M-&lt;left&gt;</kbd></dt><dt><kbd>M-&lt;right&gt;</kbd></dt><dd>Move the current column left/right. 
+<br></dd><dt><kbd>M-S-&lt;left&gt;</kbd></dt><dd>Kill the current column. 
+<br></dd><dt><kbd>M-S-&lt;right&gt;</kbd></dt><dd>Insert a new column to the left of the cursor position. 
+<br></dd><dt><kbd>M-&lt;up&gt;</kbd></dt><dt><kbd>M-&lt;down&gt;</kbd></dt><dd>Move the current row up/down. 
+<br></dd><dt><kbd>M-S-&lt;up&gt;</kbd></dt><dd>Kill the current row or horizontal line. 
+<br></dd><dt><kbd>M-S-&lt;down&gt;</kbd></dt><dd>Insert a new row above the current row.  With a prefix argument, the line is
+created below the current one. 
+<br></dd><dt><kbd>C-c -</kbd></dt><dd>Insert a horizontal line below current row.  With a prefix argument, the line
+is created above the current line. 
+<br></dd><dt><kbd>C-c &lt;RET&gt;</kbd></dt><dd>Insert a horizontal line below current row, and move the cursor into the row
+below that line. 
+<br></dd><dt><kbd>C-c ^</kbd></dt><dd>Sort the table lines in the region.  The position of point indicates the
+column to be used for sorting, and the range of lines is the range
+between the nearest horizontal separator lines, or the entire table.
+
+   </dd></dl>
+
+<p class="noindent"><b>Further reading</b><br><a href="http://orgmode.org/manual/Tables.html#Tables">Chapter 3 of the manual</a><br>
+<a href="http://orgmode.org/worg/org-tutorials/tables.php">Bastien's table tutorial</a><br>
+<a href="http://orgmode.org/worg/org-tutorials/org-spreadsheet-intro.php">Bastien's spreadsheet tutorial</a><br>
+<a href="http://orgmode.org/worg/org-tutorials/org-plot.php">Eric's plotting tutorial</a>
+
+   
+
+</p></body>
+</html>
