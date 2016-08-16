@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="no-js">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+		<script>(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>
+<title>未找到页面 &#8211; 穷佐罗的Linux书</title>
+<link rel="alternate" type="application/rss+xml" title="穷佐罗的Linux书 &raquo; Feed" href="http://liwei.life/feed/" />
+<link rel="alternate" type="application/rss+xml" title="穷佐罗的Linux书 &raquo; 评论Feed" href="http://liwei.life/comments/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/72x72\/","ext":".png","source":{"concatemoji":"http:\/\/liwei.life\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.5.3"}};
+			!function(a,b,c){function d(a){var c,d,e,f=b.createElement("canvas"),g=f.getContext&&f.getContext("2d"),h=String.fromCharCode;if(!g||!g.fillText)return!1;switch(g.textBaseline="top",g.font="600 32px Arial",a){case"flag":return g.fillText(h(55356,56806,55356,56826),0,0),f.toDataURL().length>3e3;case"diversity":return g.fillText(h(55356,57221),0,0),c=g.getImageData(16,16,1,1).data,d=c[0]+","+c[1]+","+c[2]+","+c[3],g.fillText(h(55356,57221,55356,57343),0,0),c=g.getImageData(16,16,1,1).data,e=c[0]+","+c[1]+","+c[2]+","+c[3],d!==e;case"simple":return g.fillText(h(55357,56835),0,0),0!==g.getImageData(16,16,1,1).data[0];case"unicode8":return g.fillText(h(55356,57135),0,0),0!==g.getImageData(16,16,1,1).data[0]}return!1}function e(a){var c=b.createElement("script");c.src=a,c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i;for(i=Array("simple","flag","unicode8","diversity"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='twentysixteen-jetpack-css'  href='http://liwei.life/wp-content/plugins/jetpack/modules/theme-tools/compat/twentysixteen.css?ver=4.0.3' type='text/css' media='all' />
+<link rel='stylesheet' id='genericons-css'  href='http://liwei.life/wp-content/plugins/jetpack/_inc/genericons/genericons/genericons.css?ver=3.1' type='text/css' media='all' />
+<link rel='stylesheet' id='twentysixteen-style-css'  href='http://liwei.life/wp-content/themes/twentysixteen/style.css?ver=4.5.3' type='text/css' media='all' />
+<!--[if lt IE 10]>
+<link rel='stylesheet' id='twentysixteen-ie-css'  href='http://liwei.life/wp-content/themes/twentysixteen/css/ie.css?ver=20160412' type='text/css' media='all' />
+<![endif]-->
+<!--[if lt IE 9]>
+<link rel='stylesheet' id='twentysixteen-ie8-css'  href='http://liwei.life/wp-content/themes/twentysixteen/css/ie8.css?ver=20160412' type='text/css' media='all' />
+<![endif]-->
+<!--[if lt IE 8]>
+<link rel='stylesheet' id='twentysixteen-ie7-css'  href='http://liwei.life/wp-content/themes/twentysixteen/css/ie7.css?ver=20160412' type='text/css' media='all' />
+<![endif]-->
+<link rel='stylesheet' id='jetpack_css-css'  href='http://liwei.life/wp-content/plugins/jetpack/css/jetpack.css?ver=4.0.3' type='text/css' media='all' />
+<script type='text/javascript' src='http://liwei.life/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+<script type='text/javascript' src='http://liwei.life/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<!--[if lt IE 9]>
+<script type='text/javascript' src='http://liwei.life/wp-content/themes/twentysixteen/js/html5.js?ver=3.7.3'></script>
+<![endif]-->
+<link rel='https://api.w.org/' href='http://liwei.life/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://liwei.life/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://liwei.life/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 4.5.3" />
+
+<link rel='dns-prefetch' href='//v0.wordpress.com'>
+<link rel='dns-prefetch' href='//i0.wp.com'>
+<link rel='dns-prefetch' href='//i1.wp.com'>
+<link rel='dns-prefetch' href='//i2.wp.com'>
+<style type='text/css'>img#wpstats{display:none}</style>		<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+		</head>
+
+<body class="error404 hfeed">
+<div id="page" class="site">
+	<div class="site-inner">
+		<a class="skip-link screen-reader-text" href="#content">跳至内容</a>
+
+		<header id="masthead" class="site-header" role="banner">
+			<div class="site-header-main">
+				<div class="site-branding">
+					
+											<p class="site-title"><a href="http://liwei.life/" rel="home">穷佐罗的Linux书</a></p>
+											<p class="site-description">Poor Zorro&#039;s Linux Book</p>
+									</div><!-- .site-branding -->
+
+							</div><!-- .site-header-main -->
+
+											<div class="header-image">
+					<a href="http://liwei.life/" rel="home">
+						<img src="http://liwei.life/wp-content/uploads/2016/01/cropped-C360_2013-03-20-07-29-28-348.jpg" srcset="http://i1.wp.com/liwei.life/wp-content/uploads/2016/01/cropped-C360_2013-03-20-07-29-28-348.jpg?w=1200 1200w, http://i1.wp.com/liwei.life/wp-content/uploads/2016/01/cropped-C360_2013-03-20-07-29-28-348.jpg?resize=300%2C107 300w, http://i1.wp.com/liwei.life/wp-content/uploads/2016/01/cropped-C360_2013-03-20-07-29-28-348.jpg?resize=768%2C275 768w, http://i1.wp.com/liwei.life/wp-content/uploads/2016/01/cropped-C360_2013-03-20-07-29-28-348.jpg?resize=1024%2C366 1024w" sizes="(max-width: 709px) 85vw, (max-width: 909px) 81vw, (max-width: 1362px) 88vw, 1200px" width="1200" height="429" alt="穷佐罗的Linux书">
+					</a>
+				</div><!-- .header-image -->
+					</header><!-- .site-header -->
+
+		<div id="content" class="site-content">
+
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main" role="main">
+
+			<section class="error-404 not-found">
+				<header class="page-header">
+					<h1 class="page-title">有点尴尬诶！该页无法显示。</h1>
+				</header><!-- .page-header -->
+
+				<div class="page-content">
+					<p>这儿似乎什么都没有，试试搜索？</p>
+
+					
+<form role="search" method="get" class="search-form" action="http://liwei.life/">
+	<label>
+		<span class="screen-reader-text">搜索：</span>
+		<input type="search" class="search-field" placeholder="搜索…" value="" name="s" />
+	</label>
+	<button type="submit" class="search-submit"><span class="screen-reader-text">搜索</span></button>
+</form>
+				</div><!-- .page-content -->
+			</section><!-- .error-404 -->
+
+		</main><!-- .site-main -->
+
+		
+	</div><!-- .content-area -->
+
+
+	<aside id="secondary" class="sidebar widget-area" role="complementary">
+		<section id="search-2" class="widget widget_search">
+<form role="search" method="get" class="search-form" action="http://liwei.life/">
+	<label>
+		<span class="screen-reader-text">搜索：</span>
+		<input type="search" class="search-field" placeholder="搜索…" value="" name="s" />
+	</label>
+	<button type="submit" class="search-submit"><span class="screen-reader-text">搜索</span></button>
+</form>
+</section>		<section id="recent-posts-2" class="widget widget_recent_entries">		<h2 class="widget-title">近期文章</h2>		<ul>
+					<li>
+				<a href="http://liwei.life/2016/08/08/share_memory/">Linux进程间通信-共享内存</a>
+							<span class="post-date">八月 8, 2016</span>
+						</li>
+					<li>
+				<a href="http://liwei.life/2016/07/31/file_and_filelock/">Linux的进程间通信-文件和文件锁</a>
+							<span class="post-date">七月 31, 2016</span>
+						</li>
+					<li>
+				<a href="http://liwei.life/2016/07/18/pipe/">Linux的进程间通信 － 管道</a>
+							<span class="post-date">七月 18, 2016</span>
+						</li>
+					<li>
+				<a href="http://liwei.life/2016/07/11/find%e5%91%bd%e4%bb%a4%e8%af%a6%e8%a7%a3/">find命令详解</a>
+							<span class="post-date">七月 11, 2016</span>
+						</li>
+					<li>
+				<a href="http://liwei.life/2016/07/04/sed/">sed命令进阶</a>
+							<span class="post-date">七月 4, 2016</span>
+						</li>
+					<li>
+				<a href="http://liwei.life/2016/06/27/linux%e7%9a%84%e5%86%85%e5%ad%98%e5%9b%9e%e6%94%b6%e5%92%8c%e4%ba%a4%e6%8d%a2/">Linux的内存回收和交换</a>
+							<span class="post-date">六月 27, 2016</span>
+						</li>
+					<li>
+				<a href="http://liwei.life/2016/06/20/shell%e7%bc%96%e7%a8%8b%e4%b9%8b%e5%b8%b8%e7%94%a8%e6%8a%80%e5%b7%a7/">SHELL编程之常用技巧</a>
+							<span class="post-date">六月 20, 2016</span>
+						</li>
+					<li>
+				<a href="http://liwei.life/2016/06/13/shell%e7%bc%96%e7%a8%8b%e4%b9%8b%e5%86%85%e5%bb%ba%e5%91%bd%e4%bb%a4/">SHELL编程之内建命令</a>
+							<span class="post-date">六月 13, 2016</span>
+						</li>
+					<li>
+				<a href="http://liwei.life/2016/06/06/shell%e7%bc%96%e7%a8%8b%e4%b9%8b%e7%89%b9%e6%ae%8a%e7%ac%a6%e5%8f%b7/">SHELL编程之特殊符号</a>
+							<span class="post-date">六月 6, 2016</span>
+						</li>
+					<li>
+				<a href="http://liwei.life/2016/05/30/shell%e7%bc%96%e7%a8%8b%e4%b9%8b%e6%89%a7%e8%a1%8c%e7%8e%af%e5%a2%83/">SHELL编程之执行环境</a>
+							<span class="post-date">五月 30, 2016</span>
+						</li>
+					<li>
+				<a href="http://liwei.life/2016/05/23/shell%e7%bc%96%e7%a8%8b%e4%b9%8b%e6%89%a7%e8%a1%8c%e8%bf%87%e7%a8%8b/">SHELL编程之执行过程</a>
+							<span class="post-date">五月 23, 2016</span>
+						</li>
+					<li>
+				<a href="http://liwei.life/2016/05/16/69/">SHELL编程之语法基础</a>
+							<span class="post-date">五月 16, 2016</span>
+						</li>
+					<li>
+				<a href="http://liwei.life/2016/04/26/linux%e5%86%85%e5%ad%98%e4%b8%ad%e7%9a%84cache%e7%9c%9f%e7%9a%84%e8%83%bd%e8%a2%ab%e5%9b%9e%e6%94%b6%e4%b9%88%ef%bc%9f/">Linux内存中的Cache真的能被回收么？</a>
+							<span class="post-date">四月 26, 2016</span>
+						</li>
+					<li>
+				<a href="http://liwei.life/2016/04/07/linux%e7%9a%84%e8%bf%9b%e7%a8%8b%e4%bc%98%e5%85%88%e7%ba%a7/">Linux的进程优先级</a>
+							<span class="post-date">四月 7, 2016</span>
+						</li>
+					<li>
+				<a href="http://liwei.life/2016/03/31/%e4%bb%80%e4%b9%88%e6%98%afdocker%ef%bc%9f/">什么是Docker？</a>
+							<span class="post-date">三月 31, 2016</span>
+						</li>
+					<li>
+				<a href="http://liwei.life/2016/03/24/%e6%88%91%e4%b8%ba%e4%bb%80%e4%b9%88%e4%b8%80%e5%ae%9a%e8%a6%81%e5%92%ac%e6%96%87%e5%9a%bc%e5%ad%97/">我为什么一定要“咬文嚼字”</a>
+							<span class="post-date">三月 24, 2016</span>
+						</li>
+					<li>
+				<a href="http://liwei.life/2016/03/14/linux_io_scheduler/">Linux的IO调度</a>
+							<span class="post-date">三月 14, 2016</span>
+						</li>
+					<li>
+				<a href="http://liwei.life/2016/02/23/%e5%85%b3%e4%ba%8e%e6%83%85%e5%95%86/">关于情商</a>
+							<span class="post-date">二月 23, 2016</span>
+						</li>
+					<li>
+				<a href="http://liwei.life/2016/02/14/%e4%bd%a0%e7%88%b1%e6%88%91%ef%bc%8c%e4%b8%8e%e6%88%91%e4%bd%95%e5%b9%b2%ef%bc%9f/">你爱我，与我何干？</a>
+							<span class="post-date">二月 14, 2016</span>
+						</li>
+					<li>
+				<a href="http://liwei.life/2016/02/05/cgroup_linux_network_traffic_control/">Cgroup &#8211; Linux的网络资源隔离</a>
+							<span class="post-date">二月 5, 2016</span>
+						</li>
+					<li>
+				<a href="http://liwei.life/2016/01/22/cgroup_io/">Cgroup &#8211; Linux的IO资源隔离</a>
+							<span class="post-date">一月 22, 2016</span>
+						</li>
+					<li>
+				<a href="http://liwei.life/2016/01/22/cgroup_memory/">Cgroup &#8211; Linux内存资源管理</a>
+							<span class="post-date">一月 22, 2016</span>
+						</li>
+					<li>
+				<a href="http://liwei.life/2016/01/22/cgroup_cpu/">Cgroup &#8211; 从CPU资源隔离说起</a>
+							<span class="post-date">一月 22, 2016</span>
+						</li>
+					<li>
+				<a href="http://liwei.life/2016/01/21/hello-world/">Hello world!</a>
+							<span class="post-date">一月 21, 2016</span>
+						</li>
+				</ul>
+		</section>		<section id="recent-comments-2" class="widget widget_recent_comments"><h2 class="widget-title">近期评论</h2><ul id="recentcomments"><li class="recentcomments"><span class="comment-author-link"><a href='http://nicksxs.me' rel='external nofollow' class='url'>Nick</a></span>发表在《<a href="http://liwei.life/2016/05/16/69/#comment-164">SHELL编程之语法基础</a>》</li><li class="recentcomments"><span class="comment-author-link">furybean</span>发表在《<a href="http://liwei.life/2016/03/24/%e6%88%91%e4%b8%ba%e4%bb%80%e4%b9%88%e4%b8%80%e5%ae%9a%e8%a6%81%e5%92%ac%e6%96%87%e5%9a%bc%e5%ad%97/#comment-158">我为什么一定要“咬文嚼字”</a>》</li><li class="recentcomments"><span class="comment-author-link"><a href='http://vivianaking7@gmail.com' rel='external nofollow' class='url'>Vivianaking</a></span>发表在《<a href="http://liwei.life/2016/02/14/%e4%bd%a0%e7%88%b1%e6%88%91%ef%bc%8c%e4%b8%8e%e6%88%91%e4%bd%95%e5%b9%b2%ef%bc%9f/#comment-157">你爱我，与我何干？</a>》</li><li class="recentcomments"><span class="comment-author-link">o~</span>发表在《<a href="http://liwei.life/2016/02/23/%e5%85%b3%e4%ba%8e%e6%83%85%e5%95%86/#comment-152">关于情商</a>》</li><li class="recentcomments"><span class="comment-author-link">Shark_坤哥</span>发表在《<a href="http://liwei.life/2016/02/14/%e4%bd%a0%e7%88%b1%e6%88%91%ef%bc%8c%e4%b8%8e%e6%88%91%e4%bd%95%e5%b9%b2%ef%bc%9f/#comment-151">你爱我，与我何干？</a>》</li></ul></section><section id="archives-2" class="widget widget_archive"><h2 class="widget-title">文章归档</h2>		<ul>
+			<li><a href='http://liwei.life/2016/08/'>2016年八月</a></li>
+	<li><a href='http://liwei.life/2016/07/'>2016年七月</a></li>
+	<li><a href='http://liwei.life/2016/06/'>2016年六月</a></li>
+	<li><a href='http://liwei.life/2016/05/'>2016年五月</a></li>
+	<li><a href='http://liwei.life/2016/04/'>2016年四月</a></li>
+	<li><a href='http://liwei.life/2016/03/'>2016年三月</a></li>
+	<li><a href='http://liwei.life/2016/02/'>2016年二月</a></li>
+	<li><a href='http://liwei.life/2016/01/'>2016年一月</a></li>
+		</ul>
+		</section><section id="categories-2" class="widget widget_categories"><h2 class="widget-title">分类目录</h2>		<ul>
+	<li class="cat-item cat-item-2"><a href="http://liwei.life/category/linux/" >Linux</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="http://liwei.life/category/shell/" >shell编程</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="http://liwei.life/category/uncategorized/" >Uncategorized</a>
+</li>
+		</ul>
+</section><section id="meta-2" class="widget widget_meta"><h2 class="widget-title">功能</h2>			<ul>
+						<li><a href="http://liwei.life/wp-login.php">登录</a></li>
+			<li><a href="http://liwei.life/feed/">文章<abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="http://liwei.life/comments/feed/">评论<abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="https://cn.wordpress.org/" title="基于WordPress，一个优美、先进的个人信息发布平台。">WordPress.org</a></li>			</ul>
+			</section>	</aside><!-- .sidebar .widget-area -->
+
+		</div><!-- .site-content -->
+
+		<footer id="colophon" class="site-footer" role="contentinfo">
+			
+			
+			<div class="site-info">
+								<span class="site-title"><a href="http://liwei.life/" rel="home">穷佐罗的Linux书</a></span>
+				<a href="https://cn.wordpress.org/">自豪地采用WordPress</a>
+			</div><!-- .site-info -->
+		</footer><!-- .site-footer -->
+	</div><!-- .site-inner -->
+</div><!-- .site -->
+
+	<div style="display:none">
+	</div>
+<script type='text/javascript' src='http://liwei.life/wp-content/plugins/jetpack/modules/photon/photon.js?ver=20130122'></script>
+<script type='text/javascript' src='http://s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=201633'></script>
+<script type='text/javascript' src='http://s.gravatar.com/js/gprofiles.js?ver=2016Augaa'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var WPGroHo = {"my_hash":""};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://liwei.life/wp-content/plugins/jetpack/modules/wpgroho.js?ver=4.5.3'></script>
+<script type='text/javascript' src='http://liwei.life/wp-content/themes/twentysixteen/js/skip-link-focus-fix.js?ver=20160412'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var screenReaderText = {"expand":"\u5c55\u5f00\u5b50\u83dc\u5355","collapse":"\u6298\u53e0\u5b50\u83dc\u5355"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://liwei.life/wp-content/themes/twentysixteen/js/functions.js?ver=20160412'></script>
+<script type='text/javascript' src='http://liwei.life/wp-includes/js/wp-embed.min.js?ver=4.5.3'></script>
+<script type='text/javascript' src='http://stats.wp.com/e-201633.js' async defer></script>
+<script type='text/javascript'>
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:4.0.3',blog:'105726521',post:'0',tz:'0',srv:'liwei.life'} ]);
+	_stq.push([ 'clickTrackerInit', '105726521', '0' ]);
+</script>
+</body>
+</html>

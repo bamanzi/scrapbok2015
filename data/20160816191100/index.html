@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en-US" prefix="og: http://ogp.me/ns#">
+<!-- Beginning of <head> --><head>
+<!-- heatmapthemead_pre_wp_head hook -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+<title>How to visualize memory usage on Linux - Xmodulo</title>
+<link rel="profile" href="http://gmpg.org/xfn/11"><link rel="pingback" href="http://xmodulo.com/xmlrpc.php">
+<!-- end of heatmapthemead_pre_wp_head hook -->
+<!-- wp_head()-->
+<!-- This site is optimized with the Yoast SEO plugin v3.4.2 - https://yoast.com/wordpress/plugins/seo/ -->
+<link rel="canonical" href="http://xmodulo.com/visualize-memory-usage-linux.html">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to visualize memory usage on Linux - Xmodulo">
+<meta property="og:description" content="Lack of sufficient physical memory can significantly hamper the performance of Linux desktop and server environments. When your desktop is sluggish, one of the first things to do is to free up RAMs. Memory usage is even more critical in multi-user shared hosting or mission-critical server environments, where different users or application threads constantly compete …Continue reading...">
+<meta property="og:url" content="http://xmodulo.com/visualize-memory-usage-linux.html">
+<meta property="og:site_name" content="Xmodulo">
+<meta property="article:author" content="https://www.facebook.com/xmodulo">
+<meta property="article:tag" content="memory">
+<meta property="article:tag" content="visualize">
+<meta property="article:section" content="System">
+<meta property="article:published_time" content="2014-11-19T06:00:59+00:00">
+<meta property="article:modified_time" content="2014-11-20T18:42:47+00:00">
+<meta property="og:updated_time" content="2014-11-20T18:42:47+00:00">
+<meta property="og:image" content="https://farm8.staticflickr.com/7498/15801819892_d017280595_z.jpg">
+<meta property="og:image" content="https://farm9.staticflickr.com/8635/15776587626_1de74c4bcd_z.jpg">
+<meta property="og:image" content="https://farm9.staticflickr.com/8543/15798375491_510698d98f_z.jpg">
+<meta property="og:image" content="https://farm6.staticflickr.com/5616/15614838448_640e850cd8_z.jpg">
+<meta property="og:image" content="https://farm8.staticflickr.com/7466/15614838428_eed7426cfe_z.jpg">
+<!-- / Yoast SEO plugin. -->
+
+<link rel="alternate" type="application/rss+xml" title="Xmodulo » Feed" href="http://xmodulo.com/feed">
+<link rel="alternate" type="application/rss+xml" title="Xmodulo » Comments Feed" href="http://xmodulo.com/comments/feed">
+<link rel="alternate" type="application/rss+xml" title="Xmodulo » How to visualize memory usage on Linux Comments Feed" href="http://xmodulo.com/visualize-memory-usage-linux.html/feed">
+
+		
+		
+
+
+
+
+
+
+
+
+
+
+
+<link rel="https://api.w.org/" href="http://xmodulo.com/wp-json/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://xmodulo.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://d2j4ekq3nza4ef.cloudfront.net/wp-includes/wlwmanifest.xml"> 
+<meta name="generator" content="WordPress 4.5.3">
+<link rel="shortlink" href="http://xmodulo.com/?p=21239">
+<link rel="alternate" type="application/json+oembed" href="http://xmodulo.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fxmodulo.com%2Fvisualize-memory-usage-linux.html">
+<link rel="alternate" type="text/xml+oembed" href="http://xmodulo.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fxmodulo.com%2Fvisualize-memory-usage-linux.html&amp;format=xml">
+<!-- 981B20F2-B00E-49C1-8FB6-C88C38B82C69 -->
+
+		
+			
+		
+				
+					
+					 
+				
+	
+<!-- End of wp_head() -->
+<!-- heatmapthemead_post_wp_head hook -->
+<!-- HEAD CSS -->
+
+<!-- end of heatmapthemead_post_wp_head hook -->
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<!-- End of <head> -->
+<body class="single single-post postid-21239 single-format-standard heatmapthemead-layout-both-sidebars  heatmapthemead-max-width-1320 heatmapthemead-long-content">
+<!-- heatmapthemead_start_body hook -->
+<!-- end of heatmapthemead_start_body hook -->
+<!-- The Header Bars -->
+<div id="heatmapthemead-header-wipe">
+<div id="heatmapthemead-header">
+<div id="heatmapthemead-header-container">
+  
+		<div id="heatmapthemead-primary-menu" class="heatmapthemead-menu">
+			<nav role="navigation" class="site-navigation main-navigation">
+				<p class="primary-small-nav-text">	
+					Menu				</p>
+				<div class="menu-menu-container"><ul id="menu-menu" class="menu"><li id="menu-item-5809" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-5809"><a href="http://xmodulo.com/">Home</a></li>
+<li id="menu-item-5811" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5811"><a href="http://xmodulo.com/about">About</a></li>
+<li id="menu-item-5814" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-5814"><a href="http://ask.xmodulo.com/">Linux Q &amp; A</a></li>
+<li id="menu-item-6965" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6965"><a href="http://list.xmodulo.com/">List</a></li>
+<li id="menu-item-5810" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5810"><a href="http://xmodulo.com/write-us">Write for Us</a></li>
+<li id="menu-item-5812" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5812"><a href="http://xmodulo.com/advertise">Advertise</a></li>
+<li id="menu-item-5813" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5813"><a href="http://xmodulo.com/contact">Contact</a></li>
+</ul></div>			</nav>
+		</div>
+			<div id="heatmapthemead-header-branding">
+		<div id="heatmapthemead-branding-container">
+							<header id="branding" role="banner">
+							<div id="heatmapthemead-header-text">
+			<aside>
+				<p id="site-title"><a href="http://xmodulo.com/" title="Xmodulo" rel="home">Xmodulo</a></p>
+				<p id="site-description">Linux FAQs, tips and tutorials</p>
+			</aside>
+		</div>
+					</header><!-- #branding -->
+			<div id="heatmapthemead-widget-position-header" class="heatmapthemead-widget-position heatmapthemead-homeheader widget-area heatmapthemead-static-header-widget" role="complementary"><aside class="widget"><div class="heatmapthemead-social-icons"><a id="heatmapthemead-fb-social-icon" class="heatmapthemead-social-icon" href="https://www.facebook.com/xmodulo" target="_blank"><img src="facebook.png" alt=""></a><a id="heatmapthemead-twitter-social-icon" class="heatmapthemead-social-icon" href="https://twitter.com/xmodulo" target="_blank"><img src="twitter.png" alt=""></a><a id="heatmapthemead-googleplus-social-icon" class="heatmapthemead-social-icon" href="http://plus.google.com/+Xmodulo" target="_blank"><img src="googleplus.png" alt=""></a><a id="heatmapthemead-linkedin-social-icon" class="heatmapthemead-social-icon" href="http://www.linkedin.com/in/xmodulo" target="_blank"><img src="linkedin.png" alt=""></a><a id="heatmapthemead-rss-social-icon" class="heatmapthemead-social-icon" href="http://xmodulo.com/feed" target="_blank"><img src="rss-feed.png" alt=""></a></div> <!--.heatmapthemead-social-icons --></aside></div> <!-- id="heatmapthemead-widget-position-header" -->
+		</div><!-- #heatmapthemead-branding-container -->
+	</div><!-- #heatmapthemead-header-branding -->		
+</div> <!-- id="heatmapthemead-header-container" -->
+</div> <!-- id="heatmapthemead-header" -->
+</div> <!-- id="heatmapthemead-header-wipe" -->
+<!-- The main part of the page (with content and sidebars) -->
+<div id="heatmapthemead-main-wipe">
+<div id="heatmapthemead-main">
+<div id="heatmapthemead-content">
+<div id="heatmapthemead-the-content" class="site-content">
+<div id="heatmapthemead-the-content-container" role="main">
+	
+	
+		<article id="post-21239" class="post-21239 post type-post status-publish format-standard hentry category-system category-sysadmin tag-memory tag-visualize">
+		
+			<div id="heatmapthemead-widget-position-blogabove" class="heatmapthemead-widget-position heatmapthemead-blogabove widget-area" role="complementary"><aside id="text-20" class="widget widget_text">			<div class="textwidget"><div id="heatmapthemead-featured-page" class="heatmapthemead-article"><h2><a target="_blank" rel="nofollow" href="http://xmodulo.com/go/noction">Boost BGP Network Performance by 42% - [Free Demo]</a></h2></div>
+</div>
+		</aside></div> <!-- id="heatmapthemead-widget-position-blogabove" -->
+		<header class="entry-header">
+			<h1 class="entry-title"><a href="#" title="Permalink to How to visualize memory usage on Linux" rel="bookmark">How to visualize memory usage on Linux</a></h1>
+		</header> <!-- heatmapthemead-entry-header -->
+	<div class="heatmapthemead-header-entry-meta entry-meta"><span class="heatmapthemead-post-details">Last updated on <a href="#" title="6:00 am" rel="bookmark"><time class="entry-date" datetime="2014-11-19T06:00:59+00:00">November 19, 2014</time></a><span class="byline"> Authored by <span class="author vcard"><a class="url fn n" href="http://xmodulo.com/author/nanni" title="View all posts by Dan Nanni" rel="author">Dan Nanni</a></span></span></span>					<span class="comments-link"><a href="#comments">6 Comments</a></span>
+								</div><!-- .heatmapthemead-entry-meta -->
+			<div class="entry-content">
+<!--Ad Injection mfunc mode ad include code--><!--mfunc include_once('/home/kimchido/public_html/wp-content/plugins/ad-injection/adshow.php') --><!--/mfunc-->
+<p>Lack of sufficient physical memory can significantly hamper the performance of Linux desktop and server environments.  When your desktop is sluggish, one of the first things to do is to free up RAMs. Memory usage is even more critical in multi-user shared hosting or mission-critical server environments, where different users or application threads constantly compete for more memory.</p>
+<p>When it comes to monitoring any type of system resources such as memory or CPUs, visualization is an effective means to help understand quickly how they are consumed by different processes and users.  In this tutorial, I describe <b>how to visualize memory usage in Linux environment</b> using a command-line tool called <a target="_blank" href="http://www.selenic.com/smem/">smem</a>.</p>
+<h2>Physical Memory Usage: RSS vs. PSS vs. USS</h2>
+<p>In the presence of virtual memory abstraction, accurately quantifying physical memory usage of a process is actually not straightforward.  The virtual memory size of a process is not meaningful because it does not tell how much of it is actually allocated physical memory.</p>
+<p><strong>Resident set size (RSS)</strong>, reported by <tt>top</tt> command, is one popular metric which captures what portion of a process' reported memory is residing in RAM.  However, aggregating RSS of existing processes can easily overestimate the overall physical memory usage of the Linux system because the same physical memory page can be shared by different processes.  <strong>Proportional set size (PSS)</strong> is a more accurate measurement of <em>effective</em> memory usage of Linux processes since PSS properly discounts the memory page shared by more than one process.  <strong>Unique set size (USS)</strong> of a process is a subset of the process' PSS, which is not shared by any other processes.</p>
+<h2>Install Smem on Linux</h2>
+<p>The command-line tool <tt>smem</tt> can generate a variety of reports related to memory PSS/USS usage by pulling information from /proc.  It comes with built-in graphical chart generation capabilities, so one can easily visualize overall memory consumption status.</p>
+<h3>Install Smem on Debian or Ubuntu</h3>
+<div class="console">
+$ sudo apt-get install smem
+</div>
+<h3>Install Smem on Linux Mint</h3>
+<div class="console">
+$ sudo apt-get install smem python-matplotlib python-tk
+</div>
+<h3>Install Smem on Fedora or CentOS/RHEL</h3>
+<p>On CentOS/RHEL, you need to <a href="http://xmodulo.com/how-to-set-up-epel-repository-on-centos.html" target="_blank">enable</a> EPEL repository first.</p>
+<div class="console">
+$ sudo yum install smem python-matplotlib
+</div>
+<h2>Check Memory Usage with Smem</h2>
+<p>When you run <tt>smem</tt> as a unprivileged user, it will report physical memory usage of every process launched by the current user, in an increasing order of PSS.</p>
+<div class="console">
+$ smem
+</div>
+<p><a target="_blank" rel="nofollow" href="https://www.flickr.com/photos/xmodulo/15801819892/"><img class="lazy lazy-hidden" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-type="image" data-lazy-src="https://farm8.staticflickr.com/7498/15801819892_d017280595_z.jpg"></a></p>
+<p>If you want to check the overall system memory usage for all users, run <tt>smem</tt> as the root.</p>
+<div class="console">
+$ sudo smem
+</div>
+<p><a target="_blank" rel="nofollow" href="https://www.flickr.com/photos/xmodulo/15776587626/"><img class="lazy lazy-hidden" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-type="image" data-lazy-src="https://farm9.staticflickr.com/8635/15776587626_1de74c4bcd_z.jpg"></a></p>
+<!--Ad Injection mfunc mode ad code--><!--mfunc adshow_display_ad_file_v2(array('ad_random_1.txt'), array(100), array('align' => '', 'clear' => '', 'margin_top' => '10', 'margin_bottom' => '10', 'padding_top' => '', 'padding_bottom' => ''), array(), array()) -->
+
+<div style="margin-top: 10px; margin-bottom: 10px;">
+<!-- xmodulolist-post-large-text -->
+<ins class="adsbygoogle" style="display: inline-block; width: 336px; height: 280px;" data-ad-client="ca-pub-7245163904660683" data-ad-slot="5795021983"></ins>
+</div><!--/mfunc-->
+
+<p>To view per-user memory usage:</p>
+<div class="console">
+$ sudo smem -u
+</div>
+<p><a target="_blank" rel="nofollow" href="https://www.flickr.com/photos/xmodulo/15798375491/"><img class="lazy lazy-hidden" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-type="image" data-lazy-src="https://farm9.staticflickr.com/8543/15798375491_510698d98f_z.jpg"></a></p>
+<p><tt>smem</tt> allows you to filter memory usage results based on mapping, processes or users in the following format:</p>
+<ul>
+<li>-M &lt;mapping-filtering-regular-expression&gt;
+</li><li>-P &lt;process-filtering-regular-expression&gt;
+</li><li>-U &lt;user-filtering-regular-expression&gt;
+</li></ul>
+<p>For a complete usage of <tt>smem</tt>, refer to its man page.</p>
+<h2>Visualize Memory Usage with Smem</h2>
+<p>Visualized reports are often easier to read to identify the memory hogs of your system quickly. <tt>smem</tt> supports two kinds of graphical reports for memory usage visualization: <strong>bar and pie graphs</strong>.  </p>
+<p>Here are examples of memory usage visualization.</p>
+<p>The following command will generate a bar graph that visualizes the PSS/USS memory usage of a user <em>alice</em>.</p>
+<div class="console">
+$ sudo smem --bar name -c "pss uss" -U alice
+</div>
+<p><a target="_blank" rel="nofollow" href="https://www.flickr.com/photos/xmodulo/15614838448/"><img class="lazy lazy-hidden" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-type="image" data-lazy-src="https://farm6.staticflickr.com/5616/15614838448_640e850cd8_z.jpg"></a></p>
+<p>The next command will plot a pie graph of the overall PSS memory usage of different processes.</p>
+<div class="console">
+$ sudo smem --pie name -c "pss"
+</div>
+<p><a target="_blank" rel="nofollow" href="https://www.flickr.com/photos/xmodulo/15614838428/"><img class="lazy lazy-hidden" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-type="image" data-lazy-src="https://farm8.staticflickr.com/7466/15614838428_eed7426cfe_z.jpg"></a></p>
+<p>As a summary, <tt>smem</tt> is a simple and effective memory analysis tool that comes in handy in various circumstances.  Using its formatted output, you can run <tt>smem</tt> to identify any memory issues and take an action in an automatic fashion.  If you know of any good memory monitoring tool, share it in the comment.</p>
+<div style="padding: 10px 10px 10px 0px;"><div style="float: left; width: 336px; margin-left: 0px; margin-right: 10px; margin-bottom: 10px;">
+
+
+</div><h3><img class="lazy lazy-hidden" style="vertical-align: middle; height: 20px;" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-type="image" data-lazy-src="/images/rss_small.png"> Subscribe to Xmodulo</h3>
+<p>Do you want to receive <strong>Linux FAQs, detailed tutorials and tips</strong> published at Xmodulo?   Enter your email address below, and we will deliver our Linux posts straight to your email box, for free.  Delivery powered by Google Feedburner.</p>
+<form id="feedburner_email_widget_sbef" action="http://feedburner.google.com/fb/a/mailverify" method="post" http:="" feedburner.google.com="" fb="" a="" mailverify?uri="linuxfaq\&quot;," \"popupwindow\",="" \"scrollbars="yes,width=550,height=520\&quot;);return" true;"="" target="popupwindow"><input id="feedburner_email_widget_bottom_email" name="email" value="Your email address" your="" email="" address\"){this.value="\&quot;\&quot;;}&quot;" type="text"><input value="linuxfaq" name="uri" type="hidden"><input value="en_US" name="loc" type="hidden"><input id="feedburner_submit" value="Subscribe" type="submit"></form><br>
+<h3><img class="lazy lazy-hidden" style="vertical-align: middle; height: 20px;" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-type="image" data-lazy-src="/images/heart_small.jpg"> Support Xmodulo</h3>
+<p>Did you find this tutorial helpful?  Then please be generous and <a target="_blank" href="http://xmodulo.com/about">support Xmodulo!</a></p></div><div id="ts-fab-below" class="ts-fab-wrapper"><span class="screen-reader-text">The following two tabs change content below.</span><ul class="ts-fab-list"><li class="ts-fab-bio-link active"><a href="#ts-fab-bio-below">Bio</a></li><li class="ts-fab-latest-posts-link"><a href="#ts-fab-latest-posts-below">Latest Posts</a></li></ul><div class="ts-fab-tabs">
+	<div style="display: block;" class="ts-fab-tab" id="ts-fab-bio-below">
+		<div class="ts-fab-avatar"><img class="lazy lazy-hidden" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-type="image" data-lazy-src="/images/author/1.jpg" width="80" height="80"><div class="ts-fab-social-links"><a href="http://twitter.com/xmodulo" title="Twitter" rel="nofollow"><img class="lazy lazy-hidden" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-type="image" data-lazy-src="http://d2j4ekq3nza4ef.cloudfront.net/wp-content/plugins/fancier-author-box/images/twitter.png" alt="My Twitter profile" width="24" height="24"></a><a href="http://facebook.com/xmodulo" title="Facebook" rel="nofollow"><img class="lazy lazy-hidden" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-type="image" data-lazy-src="http://d2j4ekq3nza4ef.cloudfront.net/wp-content/plugins/fancier-author-box/images/facebook.png" alt="My Facebook profile" width="24" height="24"></a><a href="http://plus.google.com/+DanNanni?rel=author" title="Google+"><img class="lazy lazy-hidden" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-type="image" data-lazy-src="http://d2j4ekq3nza4ef.cloudfront.net/wp-content/plugins/fancier-author-box/images/googleplus.png" alt="My Google+ profile" width="24" height="24"></a><a href="https://www.linkedin.com/in/xmodulo" title="LinkedIn" rel="nofollow"><img class="lazy lazy-hidden" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-type="image" data-lazy-src="http://d2j4ekq3nza4ef.cloudfront.net/wp-content/plugins/fancier-author-box/images/linkedin.png" alt="My LinkedIn profile" width="24" height="24"></a></div>
+		</div>
+		
+		<div class="ts-fab-text">
+			<div class="ts-fab-header"><h4><a href="http://xmodulo.com/">Dan Nanni</a></h4></div><!-- /.ts-fab-header -->
+			<div class="ts-fab-content">Dan Nanni is the founder and also a regular contributor of Xmodulo.com. He is a Linux/FOSS enthusiast who loves to get his hands dirty with his Linux box.  He likes to procrastinate when he is supposed to be busy and productive.   When he is otherwise free, he likes to watch movies and shop for the coolest gadgets.</div>
+		</div>
+	</div>
+	<div style="display: none;" class="ts-fab-tab" id="ts-fab-latest-posts-below">
+		<div class="ts-fab-avatar"><img class="lazy lazy-hidden" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-type="image" data-lazy-src="/images/author/1.jpg" width="80" height="80"><div class="ts-fab-social-links"><a href="http://twitter.com/xmodulo" title="Twitter" rel="nofollow"><img class="lazy lazy-hidden" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-type="image" data-lazy-src="http://d2j4ekq3nza4ef.cloudfront.net/wp-content/plugins/fancier-author-box/images/twitter.png" alt="My Twitter profile" width="24" height="24"></a><a href="http://facebook.com/xmodulo" title="Facebook" rel="nofollow"><img class="lazy lazy-hidden" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-type="image" data-lazy-src="http://d2j4ekq3nza4ef.cloudfront.net/wp-content/plugins/fancier-author-box/images/facebook.png" alt="My Facebook profile" width="24" height="24"></a><a href="http://plus.google.com/+DanNanni?rel=author" title="Google+" rel="nofollow"><img class="lazy lazy-hidden" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-type="image" data-lazy-src="http://d2j4ekq3nza4ef.cloudfront.net/wp-content/plugins/fancier-author-box/images/googleplus.png" alt="My Google+ profile" width="24" height="24"></a><a href="https://www.linkedin.com/in/xmodulo" title="LinkedIn" rel="nofollow"><img class="lazy lazy-hidden" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-type="image" data-lazy-src="http://d2j4ekq3nza4ef.cloudfront.net/wp-content/plugins/fancier-author-box/images/linkedin.png" alt="My LinkedIn profile" width="24" height="24"></a></div>
+		</div>
+		<div class="ts-fab-text">
+			<div class="ts-fab-header">
+				<h4>Latest posts by Dan Nanni <span class="latest-see-all">(<a href="http://xmodulo.com/author/nanni" rel="nofollow">see all</a>)</span></h4>
+			</div>
+			<div class="ts-fab-content">
+				<li>
+					<a href="http://xmodulo.com/tcp-udp-socket-bash-shell.html">How to open a TCP/UDP socket in a bash shell</a><span> - May 24, 2016</span> 
+				</li>
+				<li>
+					<a href="http://xmodulo.com/incremental-file-sync-many-users.html">How to enable incremental file sync for many users on Linux</a><span> - April 24, 2016</span> 
+				</li>
+				<li>
+					<a href="http://xmodulo.com/build-kernel-module-dkms-linux.html">How to build a kernel module with DKMS on Linux</a><span> - April 8, 2016</span> 
+				</li>
+		</div></div>
+	</div>
+		</div>
+	</div><div class="sharedaddy sd-sharing-enabled"><div class="robots-nocontent sd-block sd-social sd-social-official sd-sharing"><div class="sd-content"><ul><li class="share-google-plus-1"><div class="googleplus1_button"><div class="g-plus" data-action="share" data-annotation="bubble" data-href="http://xmodulo.com/visualize-memory-usage-linux.html"></div></div></li><li class="share-twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://xmodulo.com/visualize-memory-usage-linux.html" data-text=" How to visualize memory usage on Linux">Tweet</a></li><li class="share-facebook"><div class="fb-share-button" data-href="http://xmodulo.com/visualize-memory-usage-linux.html" data-layout="button_count"></div></li><li class="share-reddit"><div class="reddit_button"><iframe src="index_1.html" scrolling="no" width="120" frameborder="0" height="22"></iframe></div></li><li class="share-end"></li></ul></div></div></div><div class="yarpp-related">
+<br><h3>Related FAQs:</h3><ul>
+<li><a href="http://xmodulo.com/how-to-monitor-memory-usage-of-linux-process.html" rel="bookmark" title="How to monitor memory usage of a Linux process">How to monitor memory usage of a Linux process </a></li>
+<li><a href="http://xmodulo.com/install-configure-nagios-linux.html" rel="bookmark" title="How to install and configure Nagios on Linux">How to install and configure Nagios on Linux </a></li>
+<li><a href="http://xmodulo.com/monitor-common-services-nagios.html" rel="bookmark" title="How to monitor common services with Nagios">How to monitor common services with Nagios </a></li>
+<li><a href="http://xmodulo.com/nagios-remote-plugin-executor-nrpe-linux.html" rel="bookmark" title="How to set up Nagios Remote Plugin Executor (NRPE) in Linux">How to set up Nagios Remote Plugin Executor (NRPE) in Linux </a></li>
+<li><a href="http://xmodulo.com/monitor-server-memory-usage-nagios-remote-plugin-executor.html" rel="bookmark" title="How to monitor server memory usage with Nagios Remote Plugin Executor (NRPE)">How to monitor server memory usage with Nagios Remote Plugin Executor (NRPE) </a></li>
+</ul>
+</div>
+</div> <!-- .entry-content -->    
+    				<div class="heatmapthemead-footer-entry-meta">
+				<footer class="entry-meta">
+				
+										
+														<p class="heatmapthemead-cat-links">
+									Categories: <a href="http://xmodulo.com/category/system" rel="tag">System</a>, <a href="http://xmodulo.com/category/sysadmin" rel="tag">System Administration</a>								</p>
+													
+													<p class="heatmapthemead-tag-links">
+								Tags: <a href="http://xmodulo.com/tag/memory" rel="tag">memory</a>, <a href="http://xmodulo.com/tag/visualize" rel="tag">visualize</a>							</p>
+								
+								
+				</footer><!-- #heatmapthemead-article-meta -->    
+			</div><!-- #footer-entry-meta --> 
+    	<div id="comments" class="comments-area">
+	
+	
+			<h2 id="comments-title">
+			6 thoughts on “<span>How to visualize memory usage on Linux</span>”		</h2>
+
+		
+		<ol class="commentlist">
+					<li class="comment even thread-even depth-1" id="li-comment-9341">
+			<div class="heatmapthemead-comment-article">
+				<article id="comment-9341" class="comment">
+					<footer class="comment-meta">
+						<div class="reply">
+							<a rel="nofollow" class="comment-reply-link" href="http://xmodulo.com/visualize-memory-usage-linux.html?replytocom=9341#respond" aria-label="Reply to Alok">Reply</a>						</div><!-- .reply -->
+						<div class="comment-author vcard">
+							<img alt="" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-type="image" data-lazy-src="http://0.gravatar.com/avatar/0f8f1009c15867d73e0111fc5da85b4e?s=68&amp;d=mm&amp;r=g" data-lazy-srcset="http://0.gravatar.com/avatar/0f8f1009c15867d73e0111fc5da85b4e?s=136&amp;d=mm&amp;r=g 2x" class="lazy lazy-hidden avatar avatar-68 photo" width="68" height="68"><span class="fn">Alok</span> on <a href="#comment-9341"><time datetime="2014-11-19T15:32:47+00:00">November 19, 2014 at 3:32 pm</time></a> <span class="says">said:</span>		
+													</div><!-- .comment-author .vcard -->
+		
+								
+					</footer>
+		
+					<div class="comment-content"><p>Thanks Dan for an informative article. Troubleshooting memory problems is one of the biggest headaches of <a href="http://xmodulo.com/recommend/sysadminbook" style="" target="_blank" rel="nofollow">sysadmins</a>, and this visualization tool can be a life saver.</p>
+</div>
+				</article><!-- #comment-## -->
+			</div><!-- .heatmapthemead-comment-article -->
+	
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-9348">
+			<div class="heatmapthemead-comment-article">
+				<article id="comment-9348" class="comment">
+					<footer class="comment-meta">
+						<div class="reply">
+							<a rel="nofollow" class="comment-reply-link" href="http://xmodulo.com/visualize-memory-usage-linux.html?replytocom=9348#respond" aria-label="Reply to Dean M">Reply</a>						</div><!-- .reply -->
+						<div class="comment-author vcard">
+							<img alt="" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-type="image" data-lazy-src="http://0.gravatar.com/avatar/f984427b3f3302452c55a81fa5f9391c?s=68&amp;d=mm&amp;r=g" data-lazy-srcset="http://0.gravatar.com/avatar/f984427b3f3302452c55a81fa5f9391c?s=136&amp;d=mm&amp;r=g 2x" class="lazy lazy-hidden avatar avatar-68 photo" width="68" height="68"><span class="fn">Dean M</span> on <a href="#comment-9348"><time datetime="2014-11-20T08:12:58+00:00">November 20, 2014 at 8:12 am</time></a> <span class="says">said:</span>		
+													</div><!-- .comment-author .vcard -->
+		
+								
+					</footer>
+		
+					<div class="comment-content"><p>The chart feature requires matplotlib which is not installed by the apt-get command above, at least on Mint. The Synaptic Package Manager offers python3-matplotlib, but after installation, smem does not recognize it for this feature. --- Thanks.</p>
+</div>
+				</article><!-- #comment-## -->
+			</div><!-- .heatmapthemead-comment-article -->
+	
+		<ul class="children">
+		<li class="comment even depth-2" id="li-comment-9362">
+			<div class="heatmapthemead-comment-article">
+				<article id="comment-9362" class="comment">
+					<footer class="comment-meta">
+						<div class="reply">
+							<a rel="nofollow" class="comment-reply-link" href="http://xmodulo.com/visualize-memory-usage-linux.html?replytocom=9362#respond" aria-label="Reply to Bogdan P">Reply</a>						</div><!-- .reply -->
+						<div class="comment-author vcard">
+							<img alt="" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-type="image" data-lazy-src="http://0.gravatar.com/avatar/3d641a68baf00d9c183831f1b99715cc?s=39&amp;d=mm&amp;r=g" data-lazy-srcset="http://0.gravatar.com/avatar/3d641a68baf00d9c183831f1b99715cc?s=78&amp;d=mm&amp;r=g 2x" class="lazy lazy-hidden avatar avatar-39 photo" width="39" height="39"><span class="fn">Bogdan P</span> on <a href="#comment-9362"><time datetime="2014-11-20T16:23:10+00:00">November 20, 2014 at 4:23 pm</time></a> <span class="says">said:</span>		
+													</div><!-- .comment-author .vcard -->
+		
+								
+					</footer>
+		
+					<div class="comment-content"><p>Really nice and useful tool!</p>
+<p>Also, f**k you, chrome!</p>
+</div>
+				</article><!-- #comment-## -->
+			</div><!-- .heatmapthemead-comment-article -->
+	
+		<ul class="children">
+		<li class="comment odd alt depth-3" id="li-comment-9367">
+			<div class="heatmapthemead-comment-article">
+				<article id="comment-9367" class="comment">
+					<footer class="comment-meta">
+						<div class="reply">
+							<a rel="nofollow" class="comment-reply-link" href="http://xmodulo.com/visualize-memory-usage-linux.html?replytocom=9367#respond" aria-label="Reply to Angus Williams">Reply</a>						</div><!-- .reply -->
+						<div class="comment-author vcard">
+							<img alt="" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-type="image" data-lazy-src="http://2.gravatar.com/avatar/21aa7e615a54acd27af155ac15f5b2eb?s=39&amp;d=mm&amp;r=g" data-lazy-srcset="http://2.gravatar.com/avatar/21aa7e615a54acd27af155ac15f5b2eb?s=78&amp;d=mm&amp;r=g 2x" class="lazy lazy-hidden avatar avatar-39 photo" width="39" height="39"><span class="fn">Angus Williams</span> on <a href="#comment-9367"><time datetime="2014-11-20T18:21:03+00:00">November 20, 2014 at 6:21 pm</time></a> <span class="says">said:</span>		
+													</div><!-- .comment-author .vcard -->
+		
+								
+					</footer>
+		
+					<div class="comment-content"><p>Which is worse chrome or firefox. I am starting to use opera a bit more now</p>
+</div>
+				</article><!-- #comment-## -->
+			</div><!-- .heatmapthemead-comment-article -->
+	
+		</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment byuser comment-author-nanni bypostauthor even depth-2" id="li-comment-9368">
+			<div class="heatmapthemead-comment-article">
+				<article id="comment-9368" class="comment">
+					<footer class="comment-meta">
+						<div class="reply">
+							<a rel="nofollow" class="comment-reply-link" href="http://xmodulo.com/visualize-memory-usage-linux.html?replytocom=9368#respond" aria-label="Reply to Dan Nanni">Reply</a>						</div><!-- .reply -->
+						<div class="comment-author vcard">
+							<img alt="" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-type="image" data-lazy-src="http://0.gravatar.com/avatar/3a851be8f0817a4981056998f9f52562?s=39&amp;d=mm&amp;r=g" data-lazy-srcset="http://0.gravatar.com/avatar/3a851be8f0817a4981056998f9f52562?s=78&amp;d=mm&amp;r=g 2x" class="lazy lazy-hidden avatar avatar-39 photo" width="39" height="39"><span class="fn"><a href="http://xmodulo.com/" rel="external nofollow" class="url">Dan Nanni</a></span> on <a href="#comment-9368"><time datetime="2014-11-20T18:44:48+00:00">November 20, 2014 at 6:44 pm</time></a> <span class="says">said:</span>		
+													</div><!-- .comment-author .vcard -->
+		
+								
+					</footer>
+		
+					<div class="comment-content"><p>Looks like matplotlib is not added to the dependency list for smem on Linux Mint.  You need to install python-matplotlib and python-tk to make it work on Mint.  Updated the post.</p>
+</div>
+				</article><!-- #comment-## -->
+			</div><!-- .heatmapthemead-comment-article -->
+	
+		</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment odd alt thread-even depth-1" id="li-comment-9366">
+			<div class="heatmapthemead-comment-article">
+				<article id="comment-9366" class="comment">
+					<footer class="comment-meta">
+						<div class="reply">
+							<a rel="nofollow" class="comment-reply-link" href="http://xmodulo.com/visualize-memory-usage-linux.html?replytocom=9366#respond" aria-label="Reply to Angus Williams">Reply</a>						</div><!-- .reply -->
+						<div class="comment-author vcard">
+							<img alt="" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-type="image" data-lazy-src="http://2.gravatar.com/avatar/21aa7e615a54acd27af155ac15f5b2eb?s=68&amp;d=mm&amp;r=g" data-lazy-srcset="http://2.gravatar.com/avatar/21aa7e615a54acd27af155ac15f5b2eb?s=136&amp;d=mm&amp;r=g 2x" class="lazy lazy-hidden avatar avatar-68 photo" width="68" height="68"><span class="fn">Angus Williams</span> on <a href="#comment-9366"><time datetime="2014-11-20T18:19:38+00:00">November 20, 2014 at 6:19 pm</time></a> <span class="says">said:</span>		
+													</div><!-- .comment-author .vcard -->
+		
+								
+					</footer>
+		
+					<div class="comment-content"><p>On<br>
+Distributor ID:	Ubuntu<br>
+Description:	Ubuntu 12.04.5 LTS<br>
+Release:	12.04<br>
+Codename:	precise</p>
+<p>python --version<br>
+Python 2.7.3</p>
+<p>I get absolutely no displayed results when after installing and running smem or sudo smem</p>
+<p>PID User     Command                         Swap      USS      PSS      RSS</p>
+<p>I also get these errors</p>
+<p>sudo smem --bar name -c "pss uss" -U jawara<br>
+Traceback (most recent call last):<br>
+  File "/usr/bin/smem", line 660, in<br>
+    showpids()<br>
+  File "/usr/bin/smem", line 273, in showpids<br>
+    showtable(pt.keys(), fields, columns.split(), options.sort or 'pss')<br>
+  File "/usr/bin/smem", line 485, in showtable<br>
+    showbar(l, columns, sort)<br>
+  File "/usr/bin/smem", line 553, in showbar<br>
+    if (l[0][0] &lt; l[-1][0]):<br>
+IndexError: list index out of range</p>
+<p>Any clues as to why?</p>
+</div>
+				</article><!-- #comment-## -->
+			</div><!-- .heatmapthemead-comment-article -->
+	
+		</li><!-- #comment-## -->
+		</ol>
+
+		
+	
+	
+					<div id="respond" class="comment-respond">
+			<h3 id="reply-title" class="comment-reply-title">Leave a comment <small><a rel="nofollow" id="cancel-comment-reply-link" href="#respond" style="display: none;">Cancel reply</a></small></h3>				<form action="http://xmodulo.com/wp-comments-post.php" method="post" id="commentform" class="comment-form">
+					<p class="comment-notes"><span id="email-notes">Your email address will not be published.</span> Required fields are marked <span class="required">*</span></p><p class="comment-form-comment"><label for="comment">Comment</label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" aria-required="true" required="required"></textarea></p><p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABHklEQVQ4EaVTO26DQBD1ohQWaS2lg9JybZ+AK7hNwx2oIoVf4UPQ0Lj1FdKktevIpel8AKNUkDcWMxpgSaIEaTVv3sx7uztiTdu2s/98DywOw3Dued4Who/M2aIx5lZV1aEsy0+qiwHELyi+Ytl0PQ69SxAxkWIA4RMRTdNsKE59juMcuZd6xIAFeZ6fGCdJ8kY4y7KAuTRNGd7jyEBXsdOPE3a0QGPsniOnnYMO67LgSQN9T41F2QGrQRRFCwyzoIF2qyBuKKbcOgPXdVeY9rMWgNsjf9ccYesJhk3f5dYT1HX9gR0LLQR30TnjkUEcx2uIuS4RnI+aj6sJR0AM8AaumPaM/rRehyWhXqbFAA9kh3/8/NvHxAYGAsZ/il8IalkCLBfNVAAAAABJRU5ErkJggg==&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;" id="author" name="author" value="" size="30" maxlength="245" aria-required="true" required="required" type="text"></p>
+<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" value="" size="30" maxlength="100" aria-describedby="email-notes" aria-required="true" required="required" type="text"></p>
+<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" value="" size="30" maxlength="200" type="text"></p>
+<p class="form-submit"><input name="submit" id="submit" class="submit" value="Post Comment" type="submit"> <input name="comment_post_ID" value="21239" id="comment_post_ID" type="hidden">
+<input name="comment_parent" id="comment_parent" value="0" type="hidden">
+</p><p style="display: none;"><input id="akismet_comment_nonce" name="akismet_comment_nonce" value="7dd9623dad" type="hidden"></p>		<p class="antispam-group antispam-group-q" style="clear: both;">
+			<label>Current ye@r <span class="required">*</span></label>
+			<input name="antspm-a" class="antispam-control antispam-control-a" value="2016" type="hidden">
+			<input name="antspm-q" class="antispam-control antispam-control-q" value="4.2" autocomplete="off" type="text">
+		</p>
+		<p class="antispam-group antispam-group-e" style="display: none;">
+			<label>Leave this field empty</label>
+			<input name="antspm-e-email-url-website" class="antispam-control antispam-control-e" value="" autocomplete="off" type="text">
+		</p>
+<p class="comment-subscription-form"><input name="subscribe_comments" id="subscribe_comments" value="subscribe" style="width: auto; -moz-appearance: checkbox;" type="checkbox"> <label class="subscribe-label" id="subscribe-label" for="subscribe_comments">Notify me of follow-up comments by email.</label></p><p class="comment-subscription-form"><input name="subscribe_blog" id="subscribe_blog" value="subscribe" style="width: auto; -moz-appearance: checkbox;" type="checkbox"> <label class="subscribe-label" id="subscribe-blog-label" for="subscribe_blog">Notify me of new posts by email.</label></p><p style="display: none;"><input id="ak_js" name="ak_js" value="145" type="hidden"></p>				</form>
+					</div><!-- #respond -->
+		
+</div><!-- #comments .comments-area -->		</article><!-- #post-21239 -->        
+			<div id="heatmapthemead-post-navigation">
+            <nav role="navigation" id="nav-below" class="site-navigation post-navigation">
+        
+                    
+                <div class="nav-previous"><a href="http://xmodulo.com/install-xen-hypervisor.html" rel="prev"><span class="meta-nav">«</span> How to install Xen hypervisor on unused old hardware</a></div>                <div class="nav-next"><a href="http://xmodulo.com/create-dialog-boxes-interactive-shell-script.html" rel="next">How to create dialog boxes in an interactive shell script <span class="meta-nav">»</span></a></div>        
+                    
+            </nav><!-- .site-navigation post-navigation -->
+        </div><!-- #heatmapthemead-post-navigation -->
+		</div> <!-- id="heatmapthemead-the-content-container" --> 
+</div> <!-- id="heatmapthemead-the-content" --> 
+</div> <!-- id="heatmapthemead-content" --> 
+<!-- primary sidebar -->
+<div id="heatmapthemead-primary-sidebar">
+<div id="heatmapthemead-primary-sidebar-container" role="complementary">
+<div id="heatmapthemead-widget-position-primary" class="heatmapthemead-widget-position heatmapthemead-primary" role="complementary"><aside id="heatmapthemead_ad-6" class="widget heatmapthemead_ad_widget">				<div class="heatmapthemead_ad_widget">
+<!-- xmodulo-left-responsive -->
+<ins class="adsbygoogle" style="display: block;" data-ad-client="ca-pub-7245163904660683" data-ad-slot="7222393188" data-ad-format="auto"></ins>
+</div>
+			</aside><aside id="categories-5" class="widget widget_categories"><h4 class="widget-title">Linux FAQ categories</h4>		<ul>
+	<li class="cat-item cat-item-158"><a href="http://xmodulo.com/category/amazon-aws">Amazon AWS</a>
+</li>
+	<li class="cat-item cat-item-171"><a href="http://xmodulo.com/category/android">Android</a>
+</li>
+	<li class="cat-item cat-item-391"><a href="http://xmodulo.com/category/arch-linux">Arch Linux</a>
+</li>
+	<li class="cat-item cat-item-169"><a href="http://xmodulo.com/category/audio">Audio</a>
+</li>
+	<li class="cat-item cat-item-424"><a href="http://xmodulo.com/category/business">Business</a>
+</li>
+	<li class="cat-item cat-item-31"><a href="http://xmodulo.com/category/centos">CentOS</a>
+</li>
+	<li class="cat-item cat-item-310"><a href="http://xmodulo.com/category/chromium-os">Chromium OS</a>
+</li>
+	<li class="cat-item cat-item-316"><a href="http://xmodulo.com/category/cisco">Cisco</a>
+</li>
+	<li class="cat-item cat-item-194"><a href="http://xmodulo.com/category/cloud-services">Cloud Services</a>
+</li>
+	<li class="cat-item cat-item-24"><a href="http://xmodulo.com/category/cloudstack">CloudStack</a>
+</li>
+	<li class="cat-item cat-item-15"><a href="http://xmodulo.com/category/databases">Databases</a>
+</li>
+	<li class="cat-item cat-item-17"><a href="http://xmodulo.com/category/debian" title="Debian is one of the oldest Linux distributions, whose first stable release dates back to 1996. The Debian archive consists of the &quot;main&quot; area which hosts only free and open-source software, and &quot;non-free&quot; and &quot;contrib&quot; areas which contain non-free software such as proprietary firmware or drivers and packages with legally questionable licenses.  Debian is maintained as three official branches: the &quot;stable&quot; branch which contains stable and well-tested software, the &quot;testing&quot; branch which undergoes testing before being turned into the stable branch in the next release, and the &quot;unstable&quot; branch (aka &quot;sid&quot;) which contains packages contributed by developers but not yet tested.
+">Debian</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="http://xmodulo.com/category/desktop">Desktop</a>
+</li>
+	<li class="cat-item cat-item-12"><a href="http://xmodulo.com/category/development">Development</a>
+</li>
+	<li class="cat-item cat-item-14"><a href="http://xmodulo.com/category/editors">Editors</a>
+</li>
+	<li class="cat-item cat-item-222"><a href="http://xmodulo.com/category/fedora">Fedora</a>
+</li>
+	<li class="cat-item cat-item-18"><a href="http://xmodulo.com/category/filesystem">Filesystem</a>
+</li>
+	<li class="cat-item cat-item-183"><a href="http://xmodulo.com/category/games">Games</a>
+</li>
+	<li class="cat-item cat-item-189"><a href="http://xmodulo.com/category/google">Google</a>
+</li>
+	<li class="cat-item cat-item-16"><a href="http://xmodulo.com/category/graphics">Graphics</a>
+</li>
+	<li class="cat-item cat-item-27"><a href="http://xmodulo.com/category/hadoop">Hadoop</a>
+</li>
+	<li class="cat-item cat-item-143"><a href="http://xmodulo.com/category/hardware">Hardware</a>
+</li>
+	<li class="cat-item cat-item-29"><a href="http://xmodulo.com/category/java">Java</a>
+</li>
+	<li class="cat-item cat-item-26"><a href="http://xmodulo.com/category/kernel">Kernel</a>
+</li>
+	<li class="cat-item cat-item-272"><a href="http://xmodulo.com/category/kvm">KVM</a>
+</li>
+	<li class="cat-item cat-item-231"><a href="http://xmodulo.com/category/lightweight-linux">Lightweight Linux</a>
+</li>
+	<li class="cat-item cat-item-486"><a href="http://xmodulo.com/category/linux-mint">Linux Mint</a>
+</li>
+	<li class="cat-item cat-item-178"><a href="http://xmodulo.com/category/math">Math</a>
+</li>
+	<li class="cat-item cat-item-10"><a href="http://xmodulo.com/category/networking">Networking</a>
+</li>
+	<li class="cat-item cat-item-21"><a href="http://xmodulo.com/category/openvswitch">Open vSwitch</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="http://xmodulo.com/category/openstack">OpenStack</a>
+</li>
+	<li class="cat-item cat-item-25"><a href="http://xmodulo.com/category/openwrt">OpenWRT</a>
+</li>
+	<li class="cat-item cat-item-30"><a href="http://xmodulo.com/category/perl">Perl</a>
+</li>
+	<li class="cat-item cat-item-415"><a href="http://xmodulo.com/category/php-2">PHP</a>
+</li>
+	<li class="cat-item cat-item-337"><a href="http://xmodulo.com/category/productivity">Productivity</a>
+</li>
+	<li class="cat-item cat-item-286"><a href="http://xmodulo.com/category/publishing">Publishing</a>
+</li>
+	<li class="cat-item cat-item-212"><a href="http://xmodulo.com/category/python">Python</a>
+</li>
+	<li class="cat-item cat-item-280"><a href="http://xmodulo.com/category/raspberry-pi">Raspberry Pi</a>
+</li>
+	<li class="cat-item cat-item-13"><a href="http://xmodulo.com/category/security">Security</a>
+</li>
+	<li class="cat-item cat-item-23"><a href="http://xmodulo.com/category/shells">Shells</a>
+</li>
+	<li class="cat-item cat-item-11"><a href="http://xmodulo.com/category/system">System</a>
+</li>
+	<li class="cat-item cat-item-369"><a href="http://xmodulo.com/category/sysadmin">System Administration</a>
+</li>
+	<li class="cat-item cat-item-8"><a href="http://xmodulo.com/category/ubuntu">Ubuntu</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="http://xmodulo.com/category/utilities">Utilities</a>
+</li>
+	<li class="cat-item cat-item-22"><a href="http://xmodulo.com/category/video">Video</a>
+</li>
+	<li class="cat-item cat-item-201"><a href="http://xmodulo.com/category/virtualbox">VirtualBox</a>
+</li>
+	<li class="cat-item cat-item-20"><a href="http://xmodulo.com/category/virtualization">Virtualization</a>
+</li>
+	<li class="cat-item cat-item-5"><a href="http://xmodulo.com/category/vmware">VMware</a>
+</li>
+	<li class="cat-item cat-item-19"><a href="http://xmodulo.com/category/vyatta">Vyatta</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="http://xmodulo.com/category/web">Web</a>
+</li>
+	<li class="cat-item cat-item-155"><a href="http://xmodulo.com/category/windows-azure">Windows Azure</a>
+</li>
+	<li class="cat-item cat-item-28"><a href="http://xmodulo.com/category/xen">Xen</a>
+</li>
+	<li class="cat-item cat-item-6"><a href="http://xmodulo.com/category/xenserver">XenServer</a>
+</li>
+		</ul>
+</aside></div> <!-- id="heatmapthemead-widget-position-primary" -->
+</div> <!-- id="heatmapthemead-primary-sidebar-container" -->
+</div> <!-- id="heatmapthemead-primary-sidebar" -->
+<!-- secondary sidebar -->
+<div id="heatmapthemead-secondary-sidebar">
+<div id="heatmapthemead-secondary-sidebar-container" role="complementary">
+<div id="heatmapthemead-widget-position-secondary" class="heatmapthemead-widget-position heatmapthemead-secondary widget-area" role="complementary"><aside id="feedburneremailwidget-2" class="widget FeedburnerEmailWidget"><h4 class="widget-title">Subscribe to daily Linux FAQ tips</h4><form id="feedburner_email_widget_sbef" action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow"><input id="feedburner_email_widget_sbef_email" name="email" value="Enter your email address" type="text"><input value="linuxfaq" name="uri" type="hidden"><input value="en_US" name="loc" type="hidden"><input id="feedburner_email_widget_sbef_submit" value="Subscribe" type="submit"></form></aside><aside id="text-18" class="widget widget_text">			<div class="textwidget"><ul class="asdf-banner-zone" id="asdf-banner-1" style="width: 300px; height: 160px; float: left;">
+<li style="width: 140px; height: 140px; margin: 0px 20px 20px 0px;"><a rel="nofollow" target="_blank" href="http://xmodulo.com/go/digitalocean" title="SSD virtual server for $5/mon"><img class="lazy lazy-hidden" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-type="image" data-lazy-src="http://xmodulo.com/images/digitalocean_small.jpg" alt="SSD virtual server for $5/mon" style="width: 140px; height: 140px; border: 0px none;"></a></li>
+<li style="width: 140px; height: 140px; margin: 0px 0px 20px;">
+<a rel="nofollow" href="http://www.shareasale.com/r.cfm?b=768106&amp;u=1001808&amp;m=59485&amp;urllink=&amp;afftrack=" target="_blank" title="Become a Linux Certified System Administrator at Linux Foundation">
+<img class="lazy lazy-hidden" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-type="image" data-lazy-src="/images/lfcs.jpg" style="width: 140px; height: 140px; border: 1px none;" title="Become a Linux Certified System Administrator at Linux Foundation" border="1px"></a>
+</li>
+</ul></div>
+		</aside><aside id="oio-widget-3" class="widget asdf">
+<ul class="asdf-banner-zone" id="asdf-banner-1" style="width: 300px; height: 140px; float: left;">
+<li style="width: 140px; height: 140px; margin: 0px 20px 20px 0px;"><a rel="nofollow" target="_blank" href="http://xmodulo.com/advertise#banner" title="Advertise Here"><img src="asdf.png" alt="Advertise Here" style="width: 140px; height: 140px; border: 0px none;"></a></li>
+</ul>
+<hr class="asdf-clear-left">
+</aside><aside id="search-4" class="widget widget_search"><form role="search" method="get" id="searchform" class="searchform" action="http://xmodulo.com/">
+				<div>
+					<label class="screen-reader-text" for="s">Search for:</label>
+					<input value="" name="s" id="s" type="text">
+					<input id="searchsubmit" value="Search" type="submit">
+				</div>
+			</form></aside><aside id="relatedpoststhumbnailswidget-2" class="widget widget_relatedpoststhumbnailswidget"><h4 class="widget-title">Related Linux FAQs</h4><div style="clear: both;"></div><div style="border: 0pt none; margin: 0pt; padding: 0pt;"><a style="background-color: rgb(255, 255, 255); border-right: 1px solid rgb(221, 221, 221); border-bottom: medium none; margin: 0pt; padding: 6px; display: block; float: left; text-decoration: none; text-align: left; cursor: pointer;" href="http://xmodulo.com/how-to-protect-ssh-server-from-brute-force-attacks-using-fail2ban.html"><div style="border: 0pt none; margin: 0pt; padding: 0pt; width: 130px; height: 230px;"><div style="border: 0pt none; margin: 0pt; padding: 0pt; background: url(&quot;9476681097_e6fc052be9_q.jpg&quot;) no-repeat scroll 0% 0% transparent; -moz-background-inline-policy: continuous; width: 130px; height: 130px;"></div><div style="border: 0pt none; margin: 3px 0pt 0pt; padding: 0pt; font-style: normal; font-variant: normal; font-weight: normal; line-height: normal; font-size-adjust: none; font-stretch: normal; color: rgb(51, 51, 51);">How to protect SSH server from brute force attacks using fail2ban</div></div></a><a style="background-color: rgb(255, 255, 255); border-right: 1px solid rgb(221, 221, 221); border-bottom: medium none; margin: 0pt; padding: 6px; display: block; float: left; text-decoration: none; text-align: left; cursor: pointer;" href="http://xmodulo.com/install-configure-cacti-linux.html"><div style="border: 0pt none; margin: 0pt; padding: 0pt; width: 130px; height: 230px;"><div style="border: 0pt none; margin: 0pt; padding: 0pt; background: url(&quot;10973489184_c4f1940972_q.jpg&quot;) no-repeat scroll 0% 0% transparent; -moz-background-inline-policy: continuous; width: 130px; height: 130px;"></div><div style="border: 0pt none; margin: 3px 0pt 0pt; padding: 0pt; font-style: normal; font-variant: normal; font-weight: normal; line-height: normal; font-size-adjust: none; font-stretch: normal; color: rgb(51, 51, 51);">How to install and configure Cacti on Linux</div></div></a><a style="background-color: rgb(255, 255, 255); border-right: 1px solid rgb(221, 221, 221); border-bottom: medium none; margin: 0pt; padding: 6px; display: block; float: left; text-decoration: none; text-align: left; cursor: pointer;" href="http://xmodulo.com/web-based-lightweight-system-monitor-linux.html"><div style="border: 0pt none; margin: 0pt; padding: 0pt; width: 130px; height: 230px;"><div style="border: 0pt none; margin: 0pt; padding: 0pt; background: url(&quot;14009175290_6c5f9542b9_q.jpg&quot;) no-repeat scroll 0% 0% transparent; -moz-background-inline-policy: continuous; width: 130px; height: 130px;"></div><div style="border: 0pt none; margin: 3px 0pt 0pt; padding: 0pt; font-style: normal; font-variant: normal; font-weight: normal; line-height: normal; font-size-adjust: none; font-stretch: normal; color: rgb(51, 51, 51);">How to set up a web-based lightweight system monitor on Linux</div></div></a><a style="background-color: rgb(255, 255, 255); border-right: 1px solid rgb(221, 221, 221); border-bottom: medium none; margin: 0pt; padding: 6px; display: block; float: left; text-decoration: none; text-align: left; cursor: pointer;" href="http://xmodulo.com/logrotate-manage-log-files-linux.html"><div style="border: 0pt none; margin: 0pt; padding: 0pt; width: 130px; height: 230px;"><div style="border: 0pt none; margin: 0pt; padding: 0pt; background: url(&quot;15096949978_891bc86108_o.png&quot;) no-repeat scroll 0% 0% transparent; -moz-background-inline-policy: continuous; width: 130px; height: 130px;"></div><div style="border: 0pt none; margin: 3px 0pt 0pt; padding: 0pt; font-style: normal; font-variant: normal; font-weight: normal; line-height: normal; font-size-adjust: none; font-stretch: normal; color: rgb(51, 51, 51);">How to use logrotate to manage log files in Linux</div></div></a><a style="background-color: rgb(255, 255, 255); border-right: 1px solid rgb(221, 221, 221); border-bottom: medium none; margin: 0pt; padding: 6px; display: block; float: left; text-decoration: none; text-align: left; cursor: pointer;" href="http://xmodulo.com/configure-virtual-hosts-apache-http-server.html"><div style="border: 0pt none; margin: 0pt; padding: 0pt; width: 130px; height: 230px;"><div style="border: 0pt none; margin: 0pt; padding: 0pt; background: url(&quot;20811097881_862f478010_q.jpg&quot;) no-repeat scroll 0% 0% transparent; -moz-background-inline-policy: continuous; width: 130px; height: 130px;"></div><div style="border: 0pt none; margin: 3px 0pt 0pt; padding: 0pt; font-style: normal; font-variant: normal; font-weight: normal; line-height: normal; font-size-adjust: none; font-stretch: normal; color: rgb(51, 51, 51);">How to configure virtual hosts in Apache HTTP server</div></div></a><a style="background-color: rgb(255, 255, 255); border-right: 1px solid rgb(221, 221, 221); border-bottom: medium none; margin: 0pt; padding: 6px; display: block; float: left; text-decoration: none; text-align: left; cursor: pointer;" href="http://xmodulo.com/incremental-file-sync-many-users.html"><div style="border: 0pt none; margin: 0pt; padding: 0pt; width: 130px; height: 230px;"><div style="border: 0pt none; margin: 0pt; padding: 0pt; background: url(&quot;25982782024_5f2f4d8998_q.jpg&quot;) no-repeat scroll 0% 0% transparent; -moz-background-inline-policy: continuous; width: 130px; height: 130px;"></div><div style="border: 0pt none; margin: 3px 0pt 0pt; padding: 0pt; font-style: normal; font-variant: normal; font-weight: normal; line-height: normal; font-size-adjust: none; font-stretch: normal; color: rgb(51, 51, 51);">How to enable incremental file sync for many users on Linux</div></div></a></div><div style="clear: both;"></div></aside><aside id="rss-2" class="widget widget_rss"><h4 class="widget-title"><a class="rsswidget" href="http://ask.xmodulo.com/feed"><img class="rss-widget-icon" style="border: 0px none;" src="rss.png" alt="RSS" width="14" height="14"></a> <a class="rsswidget" href="http://ask.xmodulo.com/">Ask Xmodulo</a></h4><ul><li><a class="rsswidget" href="http://ask.xmodulo.com/install-device-driver-mellanox-ethernet-card-linux.html">How to install a device driver for Mellanox ConnectX-4 Ethernet card on Linux</a></li><li><a class="rsswidget" href="http://ask.xmodulo.com/configure-error-pcre-h-not-found.html">How to fix “configure: error: pcre.h not found”</a></li><li><a class="rsswidget" href="http://ask.xmodulo.com/logging-module-python.html">How to enable and use logging module in Python</a></li><li><a class="rsswidget" href="http://ask.xmodulo.com/remove-network-namespaces-linux.html">How to remove all network namespaces at once on Linux</a></li><li><a class="rsswidget" href="http://ask.xmodulo.com/plot-bar-graph-gnuplot.html">How to plot a bar graph on Gnuplot</a></li><li><a class="rsswidget" href="http://ask.xmodulo.com/disable-mac-learning-linux-bridge.html">How to disable MAC learning in a Linux bridge</a></li><li><a class="rsswidget" href="http://ask.xmodulo.com/enable-htaccess-apache.html">How to enable .htaccess in Apache HTTP server</a></li><li><a class="rsswidget" href="http://ask.xmodulo.com/add-bookmarks-pdf-document-linux.html">How to add bookmarks to a PDF document on Linux</a></li><li><a class="rsswidget" href="http://ask.xmodulo.com/record-desktop-screen-area-linux.html">How to record a particular area of desktop screen on Linux</a></li><li><a class="rsswidget" href="http://ask.xmodulo.com/add-proxy-exceptions-ubuntu-desktop.html">How to add proxy exceptions on Ubuntu desktop</a></li></ul></aside><aside id="rss-3" class="widget widget_rss"><h4 class="widget-title"><a class="rsswidget" href="http://list.xmodulo.com/feed"><img class="rss-widget-icon" style="border: 0px none;" src="rss.png" alt="RSS" width="14" height="14"></a> <a class="rsswidget" href="http://list.xmodulo.com/">Xmodulo List</a></h4><ul><li><a class="rsswidget" href="http://list.xmodulo.com/kryo.html">Kryo</a></li><li><a class="rsswidget" href="http://list.xmodulo.com/apache-maven.html">Apache Maven</a></li><li><a class="rsswidget" href="http://list.xmodulo.com/graphite.html">Graphite</a></li><li><a class="rsswidget" href="http://list.xmodulo.com/cool-reader.html">Cool Reader</a></li><li><a class="rsswidget" href="http://list.xmodulo.com/netdata.html">netdata</a></li><li><a class="rsswidget" href="http://list.xmodulo.com/anjuta.html">Anjuta</a></li><li><a class="rsswidget" href="http://list.xmodulo.com/clamav.html">ClamAV</a></li><li><a class="rsswidget" href="http://list.xmodulo.com/gnu-octave.html">GNU Octave</a></li><li><a class="rsswidget" href="http://list.xmodulo.com/audacity.html">Audacity</a></li><li><a class="rsswidget" href="http://list.xmodulo.com/codelite.html">CodeLite</a></li></ul></aside><aside id="heatmapthemead_ad-7" class="widget heatmapthemead_ad_widget">				<div class="heatmapthemead_ad_widget"><a rel="nofollow" href="http://xmodulo.com/go/digitalocean" target="_blank">
+<img src="digitalocean.jpg" alt="SSD virtual servers starting from $5/mon" border="0"></a>
+</div>
+			</aside></div> <!-- id="heatmapthemead-widget-position-secondary" -->
+</div> <!-- id="heatmapthemead-secondary-sidebar-container" -->
+</div> <!-- id="heatmapthemead-secondary-sidebar" -->
+</div> <!-- id="heatmapthemead-main" -->
+</div> <!-- id="heatmapthemead-main-wipe" -->
+<!-- Footer -->
+<div id="heatmapthemead-footer-wipe">
+<div id="heatmapthemead-footer">
+<div id="heatmapthemead-footer-container" role="complementary">
+				<div id="heatmapthemead-footer-menu" class="heatmapthemead-menu">
+					<nav role="navigation" class="site-navigation footer-navigation">
+						<div class="menu"><ul><li class="page_item page-item-5032"><a href="http://xmodulo.com/about">About</a></li><li class="page_item page-item-3805"><a href="http://xmodulo.com/advertise">Advertise</a></li><li class="page_item page-item-5367"><a href="http://xmodulo.com/write-us">Write for Us</a></li><li class="page_item page-item-574"><a href="http://xmodulo.com/contact">Contact</a></li></ul></div>
+					</nav>
+				</div>
+	<div id="heatmapthemead-credits" class="heatmapthemead-menu"><p>Hosted by <a target="_blank" rel="nofollow" href="http://xmodulo.com/go/stablehost">Stablehost</a></p></div></div> <!-- id="heatmapthemead-footer-container" -->
+</div> <!-- id="heatmapthemead-footer" -->
+</div> <!-- id="heatmapthemead-footer-wipe" -->
+<!-- wp_footer() -->
+			
+						
+					
+		<div id="fb-root"></div>
+			
+			
+			</body>
+</html>

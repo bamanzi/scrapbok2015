@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="js">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+		<link rel="pingback" href="http://liwei.life/xmlrpc.php">
+		
+<title>Linux内存中的Cache真的能被回收么？ – 穷佐罗的Linux书</title>
+<link rel="alternate" type="application/rss+xml" title="穷佐罗的Linux书 » Feed" href="http://liwei.life/feed/">
+<link rel="alternate" type="application/rss+xml" title="穷佐罗的Linux书 » 评论Feed" href="http://liwei.life/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="穷佐罗的Linux书 » Linux内存中的Cache真的能被回收么？评论Feed" href="http://liwei.life/2016/04/26/linux%e5%86%85%e5%ad%98%e4%b8%ad%e7%9a%84cache%e7%9c%9f%e7%9a%84%e8%83%bd%e8%a2%ab%e5%9b%9e%e6%94%b6%e4%b9%88%ef%bc%9f/feed/">
+		
+		
+
+
+
+<!--[if lt IE 10]>
+<link rel='stylesheet' id='twentysixteen-ie-css'  href='http://liwei.life/wp-content/themes/twentysixteen/css/ie.css?ver=20160412' type='text/css' media='all' />
+<![endif]-->
+<!--[if lt IE 9]>
+<link rel='stylesheet' id='twentysixteen-ie8-css'  href='http://liwei.life/wp-content/themes/twentysixteen/css/ie8.css?ver=20160412' type='text/css' media='all' />
+<![endif]-->
+<!--[if lt IE 8]>
+<link rel='stylesheet' id='twentysixteen-ie7-css'  href='http://liwei.life/wp-content/themes/twentysixteen/css/ie7.css?ver=20160412' type='text/css' media='all' />
+<![endif]-->
+
+
+
+
+
+<!--[if lt IE 9]>
+<script type='text/javascript' src='http://liwei.life/wp-content/themes/twentysixteen/js/html5.js?ver=3.7.3'></script>
+<![endif]-->
+<link rel="https://api.w.org/" href="http://liwei.life/wp-json/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://liwei.life/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://liwei.life/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="Linux的进程优先级" href="http://liwei.life/2016/04/07/linux%e7%9a%84%e8%bf%9b%e7%a8%8b%e4%bc%98%e5%85%88%e7%ba%a7/">
+<link rel="next" title="SHELL编程之语法基础" href="http://liwei.life/2016/05/16/69/">
+<meta name="generator" content="WordPress 4.5.3">
+<link rel="canonical" href="http://liwei.life/2016/04/26/linux%e5%86%85%e5%ad%98%e4%b8%ad%e7%9a%84cache%e7%9c%9f%e7%9a%84%e8%83%bd%e8%a2%ab%e5%9b%9e%e6%94%b6%e4%b9%88%ef%bc%9f/">
+<link rel="shortlink" href="http://wp.me/p79Cit-10">
+<link rel="alternate" type="application/json+oembed" href="http://liwei.life/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fliwei.life%2F2016%2F04%2F26%2Flinux%25e5%2586%2585%25e5%25ad%2598%25e4%25b8%25ad%25e7%259a%2584cache%25e7%259c%259f%25e7%259a%2584%25e8%2583%25bd%25e8%25a2%25ab%25e5%259b%259e%25e6%2594%25b6%25e4%25b9%2588%25ef%25bc%259f%2F">
+<link rel="alternate" type="text/xml+oembed" href="http://liwei.life/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fliwei.life%2F2016%2F04%2F26%2Flinux%25e5%2586%2585%25e5%25ad%2598%25e4%25b8%25ad%25e7%259a%2584cache%25e7%259c%259f%25e7%259a%2584%25e8%2583%25bd%25e8%25a2%25ab%25e5%259b%259e%25e6%2594%25b6%25e4%25b9%2588%25ef%25bc%259f%2F&amp;format=xml">
+
+<link rel="dns-prefetch" href="http://v0.wordpress.com/">
+<link rel="dns-prefetch" href="http://i0.wp.com/">
+<link rel="dns-prefetch" href="http://i1.wp.com/">
+<link rel="dns-prefetch" href="http://i2.wp.com/">
+		
+		
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux内存中的Cache真的能被回收么？">
+<meta property="og:url" content="http://liwei.life/2016/04/26/linux%e5%86%85%e5%ad%98%e4%b8%ad%e7%9a%84cache%e7%9c%9f%e7%9a%84%e8%83%bd%e8%a2%ab%e5%9b%9e%e6%94%b6%e4%b9%88%ef%bc%9f/">
+<meta property="og:description" content="Linux内存中的Cache真的能被回收么？ 在Linux系统中，我们经常用free命令来查看系统内存的使用状…">
+<meta property="article:published_time" content="2016-04-26T09:36:02+00:00">
+<meta property="article:modified_time" content="2016-06-08T01:16:36+00:00">
+<meta property="og:site_name" content="穷佐罗的Linux书">
+<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/6673053fgw1f31zfw1dprj20by0by0tc.jpg">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+
+<body class="single single-post postid-62 single-format-standard">
+<div id="page" class="site">
+	<div class="site-inner">
+		<a class="skip-link screen-reader-text" href="#content">跳至内容</a>
+
+		<header id="masthead" class="site-header" role="banner">
+			<div class="site-header-main">
+				<div class="site-branding">
+					
+											<p class="site-title"><a href="http://liwei.life/" rel="home">穷佐罗的Linux书</a></p>
+											<p class="site-description">Poor Zorro's Linux Book</p>
+									</div><!-- .site-branding -->
+
+							</div><!-- .site-header-main -->
+
+											<div class="header-image">
+					<a href="http://liwei.life/" rel="home">
+						<img src="cropped-C360_2013-03-20-07-29-28-348.jpg" srcset="cropped-C360_2013-03-20-07-29-28-348_001.jpg 1200w, cropped-C360_2013-03-20-07-29-28-348_002.jpg 300w, cropped-C360_2013-03-20-07-29-28-348_003.jpg 768w, cropped-C360_2013-03-20-07-29-28-348_004.jpg 1024w" sizes="(max-width: 709px) 85vw, (max-width: 909px) 81vw, (max-width: 1362px) 88vw, 1200px" alt="穷佐罗的Linux书" width="1200" height="429">
+					</a>
+				</div><!-- .header-image -->
+					</header><!-- .site-header -->
+
+		<div id="content" class="site-content">
+
+<div id="primary" class="content-area">
+	<main id="main" class="site-main" role="main">
+		
+<article id="post-62" class="post-62 post type-post status-publish format-standard hentry category-linux category-uncategorized">
+	<header class="entry-header">
+		<h1 class="entry-title">Linux内存中的Cache真的能被回收么？</h1>	</header><!-- .entry-header -->
+
+	
+	
+	<div class="entry-content">
+		<h1>Linux内存中的Cache真的能被回收么？</h1>
+<p>在Linux系统中，我们经常用free命令来查看系统内存的使用状态。在一个RHEL6的系统上，free命令的显示内容大概是这样一个状态：</p>
+<pre><code>[root@tencent64 ~]# free
+             total       used       free     shared    buffers     cached
+Mem:     132256952   72571772   59685180          0    1762632   53034704
+-/+ buffers/cache:   17774436  114482516
+Swap:      2101192        508    2100684
+</code></pre>
+<p>这里的默认显示单位是kb，我的服务器是128G内存，所以数字显得比较大。这个命令几乎是每一个使用过Linux的人必会的命令，但越是这样的命令，似乎真正明白的人越少（我是说比例越少）。一般情况下，对此命令输出的理解可以分这几个层次：</p>
+<ol>
+<li>不了解。这样的人的第一反应是：天啊，内存用了好多，70个多G，可是我几乎没有运行什么大程序啊？为什么会这样？Linux好占内存！</li>
+<li>自以为很了解。这样的人一般评估过会说：嗯，根据我专业的眼光看的出来，内存才用了17G左右，还有很多剩余内存可用。buffers/cache占用的较多，说明系统中有进程曾经读写过文件，但是不要紧，这部分内存是当空闲来用的。</li>
+<li>真的很了解。这种人的反应反而让人感觉最不懂Linux，他们的反应是：free显示的是这样，好吧我知道了。神马？你问我这些内存够不够，我当然不知道啦！我特么怎么知道你程序怎么写的？</li>
+</ol>
+<p>根据目前网络上技术文档的内容，我相信绝大多数了解一点Linux的人应该处在第二种层次。大家普遍认为，buffers和cached所占用的内存空间是可以在内存压力较大的时候被释放当做空闲空间用的。但真的是这样么？在论证这个题目之前，我们先简要介绍一下buffers和cached是什么意思：</p>
+<hr>
+<p>您的支持是我持续写下去的动力，所以本文无耻的接受捐赠。如果你觉得值得，请刷下面二维码，捐赠九毛九。</p>
+<p><img class="alignnone size-medium wp-image-94" src="mm_facetoface_collect_qrcode_1465221734716.jpg" alt="mm_facetoface_collect_qrcode_1465221734716" srcset="mm_facetoface_collect_qrcode_1465221734716.jpg 300w, mm_facetoface_collect_qrcode_1465221734716_001.jpg 768w, mm_facetoface_collect_qrcode_1465221734716_002.jpg 1024w, mm_facetoface_collect_qrcode_1465221734716_003.jpg 1080w" sizes="(max-width: 300px) 85vw, 300px" width="300" height="295"></p>
+<hr>
+<h2>什么是buffer/cache？</h2>
+<p>buffer和cache是两个在计算机技术中被用滥的名词，放在不通语境下会有不同的意义。在Linux的内存管理中，这里的buffer指Linux内存的：Buffer cache。这里的cache指Linux内存中的：Page cache。翻译成中文可以叫做缓冲区缓存和页面缓存。在历史上，它们一个（buffer）被用来当成对io设备写的缓存，而另一个（cache）被用来当作对io设备的读缓存，这里的io设备，主要指的是块设备文件和文件系统上的普通文件。<strong>但是现在，它们的意义已经不一样了。</strong>在当前的内核中，page cache顾名思义就是针对内存页的缓存，说白了就是，如果有内存是以page进行分配管理的，都可以使用page cache作为其缓存来管理使用。当然，不是所有的内存都是以页（page）进行管理的，也有很多是针对块（block）进行管理的，这部分内存使用如果要用到cache功能，则都集中到buffer cache中来使用。（从这个角度出发，是不是buffer cache改名叫做block cache更好？）然而，也不是所有块（block）都有固定长度，系统上块的长度主要是根据所使用的块设备决定的，而页长度在X86上无论是32位还是64位都是4k。</p>
+<p>明白了这两套缓存系统的区别，就可以理解它们究竟都可以用来做什么了。</p>
+<p><strong>什么是page cache</strong></p>
+<p>Page cache主要用来作为文件系统上的文件数据的缓存来用，尤其是针对当进程对文件有read／write操作的时候。如果你仔细想想的话，作为可以映射文件到内存的系统调用：mmap是不是很自然的也应该用到page cache？在当前的系统实现里，page cache也被作为其它文件类型的缓存设备来用，所以事实上page cache也负责了大部分的块设备文件的缓存工作。</p>
+<p><strong>什么是buffer cache</strong></p>
+<p>Buffer cache则主要是设计用来在系统对块设备进行读写的时候，对块进行数据缓存的系统来使用。这意味着某些对块的操作会使用buffer cache进行缓存，比如我们在格式化文件系统的时候。一般情况下两个缓存系统是一起配合使用的，比如当我们对一个文件进行写操作的时候，page cache的内容会被改变，而buffer cache则可以用来将page标记为不同的缓冲区，并记录是哪一个缓冲区被修改了。这样，内核在后续执行脏数据的回写（writeback）时，就不用将整个page写回，而只需要写回修改的部分即可。</p>
+<h2>如何回收cache？</h2>
+<p>Linux内核会在内存将要耗尽的时候，触发内存回收的工作，以便释放出内存给急需内存的进程使用。一般情况下，这个操作中主要的内存释放都来自于对buffer／cache的释放。尤其是被使用更多的cache空间。既然它主要用来做缓存，只是在内存够用的时候加快进程对文件的读写速度，那么在内存压力较大的情况下，当然有必要清空释放cache，作为free空间分给相关进程使用。所以一般情况下，我们认为buffer/cache空间可以被释放，这个理解是正确的。</p>
+<p>但是这种清缓存的工作也并不是没有成本。理解cache是干什么的就可以明白清缓存必须保证cache中的数据跟对应文件中的数据一致，才能对cache进行释放。<strong>所以伴随着cache清除的行为的，一般都是系统IO飙高。</strong>因为内核要对比cache中的数据和对应硬盘文件上的数据是否一致，如果不一致需要写回，之后才能回收。</p>
+<p>在系统中除了内存将被耗尽的时候可以清缓存以外，我们还可以使用下面这个文件来人工触发缓存清除的操作：</p>
+<pre><code>[root@tencent64 ~]# cat /proc/sys/vm/drop_caches 
+1
+</code></pre>
+<p>方法是：</p>
+<pre><code>echo 1 &gt; /proc/sys/vm/drop_caches
+</code></pre>
+<p>当然，这个文件可以设置的值分别为1、2、3。它们所表示的含义为：<br>
+<strong>echo 1 &gt; /proc/sys/vm/drop_caches</strong>:表示清除pagecache。</p>
+<p><strong>echo 2 &gt; /proc/sys/vm/drop_caches</strong>:表示清除回收slab分配器中的对象（包括目录项缓存和inode缓存）。slab分配器是内核中管理内存的一种机制，其中很多缓存数据实现都是用的pagecache。</p>
+<p><strong>echo 3 &gt; /proc/sys/vm/drop_caches</strong>:表示清除pagecache和slab分配器中的缓存对象。</p>
+<h2>cache都能被回收么？</h2>
+<p>我们分析了cache能被回收的情况，那么有没有不能被回收的cache呢？当然有。我们先来看第一种情况：</p>
+<h3>tmpfs</h3>
+<p>大家知道Linux提供一种“临时”文件系统叫做tmpfs，它可以将内存的一部分空间拿来当做文件系统使用，使内存空间可以当做目录文件来用。现在绝大多数Linux系统都有一个叫做/dev/shm的tmpfs目录，就是这样一种存在。当然，我们也可以手工创建一个自己的tmpfs，方法如下：</p>
+<pre><code>[root@tencent64 ~]# mkdir /tmp/tmpfs
+[root@tencent64 ~]# mount -t tmpfs -o size=20G none /tmp/tmpfs/
+
+[root@tencent64 ~]# df
+Filesystem           1K-blocks      Used Available Use% Mounted on
+/dev/sda1             10325000   3529604   6270916  37% /
+/dev/sda3             20646064   9595940  10001360  49% /usr/local
+/dev/mapper/vg-data  103212320  26244284  71725156  27% /data
+tmpfs                 66128476  14709004  51419472  23% /dev/shm
+none                  20971520         0  20971520   0% /tmp/tmpfs
+</code></pre>
+<p>于是我们就创建了一个新的tmpfs，空间是20G，我们可以在/tmp/tmpfs中创建一个20G以内的文件。如果我们创建的文件实际占用的空间是内存的话，那么这些数据应该占用内存空间的什么部分呢？根据pagecache的实现功能可以理解，既然是某种文件系统，那么自然该使用pagecache的空间来管理。我们试试是不是这样？</p>
+<pre><code>[root@tencent64 ~]# free -g
+             total       used       free     shared    buffers     cached
+Mem:           126         36         89          0          1         19
+-/+ buffers/cache:         15        111
+Swap:            2          0          2
+[root@tencent64 ~]# dd if=/dev/zero of=/tmp/tmpfs/testfile bs=1G count=13
+13+0 records in
+13+0 records out
+13958643712 bytes (14 GB) copied, 9.49858 s, 1.5 GB/s
+[root@tencent64 ~]# 
+[root@tencent64 ~]# free -g
+             total       used       free     shared    buffers     cached
+Mem:           126         49         76          0          1         32
+-/+ buffers/cache:         15        110
+Swap:            2          0          2
+</code></pre>
+<p>我们在tmpfs目录下创建了一个13G的文件，并通过前后free命令的对比发现，cached增长了13G，说明这个文件确实放在了内存里并且内核使用的是cache作为存储。再看看我们关心的指标： -/+ buffers/cache那一行。我们发现，在这种情况下free命令仍然提示我们有110G内存可用，但是真的有这么多么？我们可以人工触发内存回收看看现在到底能回收多少内存：</p>
+<pre><code>[root@tencent64 ~]# echo 3 &gt; /proc/sys/vm/drop_caches
+[root@tencent64 ~]# free -g
+             total       used       free     shared    buffers     cached
+Mem:           126         43         82          0          0         29
+-/+ buffers/cache:         14        111
+Swap:            2          0          2
+</code></pre>
+<p>可以看到，cached占用的空间并没有像我们想象的那样完全被释放，其中13G的空间仍然被/tmp/tmpfs中的文件占用的。当然，我的系统中还有其他不可释放的cache占用着其余16G内存空间。那么tmpfs占用的cache空间什么时候会被释放呢？是在其文件被删除的时候.如果不删除文件，无论内存耗尽到什么程度，内核都不会自动帮你把tmpfs中的文件删除来释放cache空间。</p>
+<pre><code>[root@tencent64 ~]# rm /tmp/tmpfs/testfile 
+[root@tencent64 ~]# free -g
+             total       used       free     shared    buffers     cached
+Mem:           126         30         95          0          0         16
+-/+ buffers/cache:         14        111
+Swap:            2          0          2
+</code></pre>
+<p>这是我们分析的第一种cache不能被回收的情况。还有其他情况，比如：</p>
+<h3>共享内存</h3>
+<p>共享内存是系统提供给我们的一种常用的进程间通信（IPC）方式，但是这种通信方式不能在shell中申请和使用，所以我们需要一个简单的测试程序，代码如下：</p>
+<pre><code>[root@tencent64 ~]# cat shm.c 
+
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;unistd.h&gt;
+#include &lt;sys/ipc.h&gt;
+#include &lt;sys/shm.h&gt;
+#include &lt;string.h&gt;
+
+#define MEMSIZE 2048*1024*1023
+
+int
+main()
+{
+    int shmid;
+    char *ptr;
+    pid_t pid;
+    struct shmid_ds buf;
+    int ret;
+
+    shmid = shmget(IPC_PRIVATE, MEMSIZE, 0600);
+    if (shmid&lt;0) {
+        perror("shmget()");
+        exit(1);
+    }
+
+    ret = shmctl(shmid, IPC_STAT, &amp;buf);
+    if (ret &lt; 0) {
+        perror("shmctl()");
+        exit(1);
+    }
+
+    printf("shmid: %d\n", shmid);
+    printf("shmsize: %d\n", buf.shm_segsz);
+
+    buf.shm_segsz *= 2;
+
+    ret = shmctl(shmid, IPC_SET, &amp;buf);
+    if (ret &lt; 0) {
+        perror("shmctl()");
+        exit(1);
+    }
+
+    ret = shmctl(shmid, IPC_SET, &amp;buf);
+    if (ret &lt; 0) {
+        perror("shmctl()");
+        exit(1);
+    }
+
+    printf("shmid: %d\n", shmid);
+    printf("shmsize: %d\n", buf.shm_segsz);
+
+
+    pid = fork();
+    if (pid&lt;0) {
+        perror("fork()");
+        exit(1);
+    }
+    if (pid==0) {
+        ptr = shmat(shmid, NULL, 0);
+        if (ptr==(void*)-1) {
+            perror("shmat()");
+            exit(1);
+        }
+        bzero(ptr, MEMSIZE);
+        strcpy(ptr, "Hello!");
+        exit(0);
+    } else {
+        wait(NULL);
+        ptr = shmat(shmid, NULL, 0);
+        if (ptr==(void*)-1) {
+            perror("shmat()");
+            exit(1);
+        }
+        puts(ptr);
+        exit(0);
+    }
+}
+</code></pre>
+<p>程序功能很简单，就是申请一段不到2G共享内存，然后打开一个子进程对这段共享内存做一个初始化操作，父进程等子进程初始化完之后输出一下共享内存的内容，然后退出。但是退出之前并没有删除这段共享内存。我们来看看这个程序执行前后的内存使用：</p>
+<pre><code>[root@tencent64 ~]# free -g
+             total       used       free     shared    buffers     cached
+Mem:           126         30         95          0          0         16
+-/+ buffers/cache:         14        111
+Swap:            2          0          2
+[root@tencent64 ~]# ./shm 
+shmid: 294918
+shmsize: 2145386496
+shmid: 294918
+shmsize: -4194304
+Hello!
+[root@tencent64 ~]# free -g
+             total       used       free     shared    buffers     cached
+Mem:           126         32         93          0          0         18
+-/+ buffers/cache:         14        111
+Swap:            2          0          2
+</code></pre>
+<p>cached空间由16G涨到了18G。那么这段cache能被回收么？继续测试：</p>
+<pre><code>[root@tencent64 ~]# echo 3 &gt; /proc/sys/vm/drop_caches
+[root@tencent64 ~]# free -g
+             total       used       free     shared    buffers     cached
+Mem:           126         32         93          0          0         18
+-/+ buffers/cache:         14        111
+Swap:            2          0          2
+</code></pre>
+<p>结果是仍然不可回收。大家可以观察到，这段共享内存即使没人使用，仍然会长期存放在cache中，直到其被删除。删除方法有两种，一种是程序中使用shmctl()去IPC_RMID，另一种是使用ipcrm命令。我们来删除试试：</p>
+<pre><code>[root@tencent64 ~]# ipcs -m
+
+------ Shared Memory Segments --------
+key        shmid      owner      perms      bytes      nattch     status      
+0x00005feb 0          root       666        12000      4                       
+0x00005fe7 32769      root       666        524288     2                       
+0x00005fe8 65538      root       666        2097152    2                       
+0x00038c0e 131075     root       777        2072       1                       
+0x00038c14 163844     root       777        5603392    0                       
+0x00038c09 196613     root       777        221248     0                       
+0x00000000 294918     root       600        2145386496 0                       
+
+[root@tencent64 ~]# ipcrm -m 294918
+[root@tencent64 ~]# ipcs -m
+
+------ Shared Memory Segments --------
+key        shmid      owner      perms      bytes      nattch     status      
+0x00005feb 0          root       666        12000      4                       
+0x00005fe7 32769      root       666        524288     2                       
+0x00005fe8 65538      root       666        2097152    2                       
+0x00038c0e 131075     root       777        2072       1                       
+0x00038c14 163844     root       777        5603392    0                       
+0x00038c09 196613     root       777        221248     0                       
+
+[root@tencent64 ~]# free -g
+             total       used       free     shared    buffers     cached
+Mem:           126         30         95          0          0         16
+-/+ buffers/cache:         14        111
+Swap:            2          0          2
+</code></pre>
+<p>删除共享内存后，cache被正常释放了。这个行为与tmpfs的逻辑类似。内核底层在实现共享内存（shm）、消息队列（msg）和信号量数组（sem）这些POSIX:XSI的IPC机制的内存存储时，使用的都是tmpfs。这也是为什么共享内存的操作逻辑与tmpfs类似的原因。当然，一般情况下是shm占用的内存更多，所以我们在此重点强调共享内存的使用。说到共享内存，Linux还给我们提供了另外一种共享内存的方法，就是：</p>
+<h3>mmap</h3>
+<p>mmap()是一个非常重要的系统调用，这仅从mmap本身的功能描述上是看不出来的。从字面上看，mmap就是将一个文件映射进进程的虚拟内存地址，之后就可以通过操作内存的方式对文件的内容进行操作。但是实际上这个调用的用途是很广泛的。当malloc申请内存时，小段内存内核使用sbrk处理，而大段内存就会使用mmap。当系统调用exec族函数执行时，因为其本质上是将一个可执行文件加载到内存执行，所以内核很自然的就可以使用mmap方式进行处理。我们在此仅仅考虑一种情况，就是使用mmap进行共享内存的申请时，会不会跟shmget()一样也使用cache？</p>
+<p>同样，我们也需要一个简单的测试程序：</p>
+<pre><code>[root@tencent64 ~]# cat mmap.c 
+#include &lt;stdlib.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;strings.h&gt;
+#include &lt;sys/mman.h&gt;
+#include &lt;sys/stat.h&gt;
+#include &lt;sys/types.h&gt;
+#include &lt;fcntl.h&gt;
+#include &lt;unistd.h&gt;
+
+#define MEMSIZE 1024*1024*1023*2
+#define MPFILE "./mmapfile"
+
+int main()
+{
+    void *ptr;
+    int fd;
+
+    fd = open(MPFILE, O_RDWR);
+    if (fd &lt; 0) {
+        perror("open()");
+        exit(1);
+    }
+
+    ptr = mmap(NULL, MEMSIZE, PROT_READ|PROT_WRITE, MAP_SHARED|MAP_ANON, fd, 0);
+    if (ptr == NULL) {
+        perror("malloc()");
+        exit(1);
+    }
+
+    printf("%p\n", ptr);
+    bzero(ptr, MEMSIZE);
+
+    sleep(100);
+
+    munmap(ptr, MEMSIZE);
+    close(fd);
+
+    exit(1);
+}
+</code></pre>
+<p>这次我们干脆不用什么父子进程的方式了，就一个进程，申请一段2G的mmap共享内存，然后初始化这段空间之后等待100秒，再解除影射所以我们需要在它sleep这100秒内检查我们的系统内存使用，看看它用的是什么空间？当然在这之前要先创建一个2G的文件./mmapfile。结果如下：</p>
+<pre><code>[root@tencent64 ~]# dd if=/dev/zero of=mmapfile bs=1G count=2
+[root@tencent64 ~]# echo 3 &gt; /proc/sys/vm/drop_caches
+[root@tencent64 ~]# free -g
+             total       used       free     shared    buffers     cached
+Mem:           126         30         95          0          0         16
+-/+ buffers/cache:         14        111
+Swap:            2          0          2
+</code></pre>
+<p>然后执行测试程序：</p>
+<pre><code>[root@tencent64 ~]# ./mmap &amp;
+[1] 19157
+0x7f1ae3635000
+[root@tencent64 ~]# free -g
+             total       used       free     shared    buffers     cached
+Mem:           126         32         93          0          0         18
+-/+ buffers/cache:         14        111
+Swap:            2          0          2
+
+[root@tencent64 ~]# echo 3 &gt; /proc/sys/vm/drop_caches
+[root@tencent64 ~]# free -g
+             total       used       free     shared    buffers     cached
+Mem:           126         32         93          0          0         18
+-/+ buffers/cache:         14        111
+Swap:            2          0          2
+</code></pre>
+<p>我们可以看到，在程序执行期间，cached一直为18G，比之前涨了2G，并且此时这段cache仍然无法被回收。然后我们等待100秒之后程序结束。</p>
+<pre><code>[root@tencent64 ~]# 
+[1]+  Exit 1                  ./mmap
+[root@tencent64 ~]# 
+[root@tencent64 ~]# free -g
+             total       used       free     shared    buffers     cached
+Mem:           126         30         95          0          0         16
+-/+ buffers/cache:         14        111
+Swap:            2          0          2
+</code></pre>
+<p>程序退出之后，cached占用的空间被释放。这样我们可以看到，使用mmap申请标志状态为MAP_SHARED的内存，内核也是使用的cache进行存储的。在进程对相关内存没有释放之前，这段cache也是不能被正常释放的。实际上，mmap的MAP_SHARED方式申请的内存，在内核中也是由tmpfs实现的。由此我们也可以推测，由于共享库的只读部分在内存中都是以mmap的MAP_SHARED方式进行管理，实际上它们也都是要占用cache且无法被释放的。</p>
+<h2>最后</h2>
+<p>我们通过三个测试例子，发现Linux系统内存中的cache并不是在所有情况下都能被释放当做空闲空间用的。并且也也明确了，即使可以释放cache，也并不是对系统来说没有成本的。总结一下要点，我们应该记得这样几点：</p>
+<ol>
+<li>当cache作为文件缓存被释放的时候会引发IO变高，这是cache加快文件访问速度所要付出的成本。</li>
+<li>tmpfs中存储的文件会占用cache空间，除非文件删除否则这个cache不会被自动释放。</li>
+<li>使用shmget方式申请的共享内存会占用cache空间，除非共享内存被ipcrm或者使用shmctl去IPC_RMID，否则相关的cache空间都不会被自动释放。</li>
+<li>使用mmap方法申请的MAP_SHARED标志的内存会占用cache空间，除非进程将这段内存munmap，否则相关的cache空间都不会被自动释放。</li>
+<li>实际上shmget、mmap的共享内存，在内核层都是通过tmpfs实现的，tmpfs实现的存储用的都是cache。</li>
+</ol>
+<p>当理解了这些的时候，希望大家对free命令的理解可以达到我们说的第三个层次。我们应该明白，内存的使用并不是简单的概念，cache也并不是真的可以当成空闲空间用的。如果我们要真正深刻理解你的系统上的内存到底使用的是否合理，是需要理解清楚很多更细节知识，并且对相关业务的实现做更细节判断的。我们当前实验场景是Centos 6的环境，不同版本的Linux的free现实的状态可能不一样，大家可以自己去找出不同的原因。</p>
+<p>当然，本文所述的也不是所有的cache不能被释放的情形。那么，在你的应用场景下，还有那些cache不能被释放的场景呢？</p>
+<p>您的支持是我持续写下去的动力，所以本文无耻的接受捐赠。如果你觉得值得，请刷下面二维码，捐赠九毛九。</p>
+<p><img class="alignnone size-medium wp-image-94" src="mm_facetoface_collect_qrcode_1465221734716.jpg" alt="mm_facetoface_collect_qrcode_1465221734716" srcset="mm_facetoface_collect_qrcode_1465221734716.jpg 300w, mm_facetoface_collect_qrcode_1465221734716_001.jpg 768w, mm_facetoface_collect_qrcode_1465221734716_002.jpg 1024w, mm_facetoface_collect_qrcode_1465221734716_003.jpg 1080w" sizes="(max-width: 300px) 85vw, 300px" width="300" height="295"></p>
+<hr>
+<p>Hi，我是Zorro，我会不定期的分享一些技术文章。欢迎大家扫下面二维码或搜索：<strong>Linux系统技术</strong> 关注我的公众号。</p>
+<p>这是我的<a href="http://liwei.life/">博客地址</a>，欢迎来一起探讨。</p>
+<p>我的<a href="http://weibo.com/orroz">微博地址</a>，有兴趣可以来关注我呦。</p>
+<p><img src="6673053fgw1f31zfw1dprj20by0by0tc.jpg" alt="Zorro］ icon" width="88" height="20"></p>
+<hr>
+<p>&nbsp;</p>
+<div class="sharedaddy sd-sharing-enabled"><div class="robots-nocontent sd-block sd-social sd-social-icon sd-sharing"><h3 class="sd-title">共享此文章：</h3><div class="sd-content"><ul><li class="share-twitter"><a rel="nofollow" data-shared="sharing-twitter-62" class="share-twitter sd-button share-icon no-text" href="http://liwei.life/2016/04/26/linux%e5%86%85%e5%ad%98%e4%b8%ad%e7%9a%84cache%e7%9c%9f%e7%9a%84%e8%83%bd%e8%a2%ab%e5%9b%9e%e6%94%b6%e4%b9%88%ef%bc%9f/?share=twitter&amp;nb=1" target="_blank" title="点击以在 Twitter 上共享"><span></span><span class="sharing-screen-reader-text">点击以在 Twitter 上共享（在新窗口中打开）</span></a></li><li class="share-facebook"><a rel="nofollow" data-shared="sharing-facebook-62" class="share-facebook sd-button share-icon no-text" href="http://liwei.life/2016/04/26/linux%e5%86%85%e5%ad%98%e4%b8%ad%e7%9a%84cache%e7%9c%9f%e7%9a%84%e8%83%bd%e8%a2%ab%e5%9b%9e%e6%94%b6%e4%b9%88%ef%bc%9f/?share=facebook&amp;nb=1" target="_blank" title="Click to share on Facebook"><span></span><span class="sharing-screen-reader-text">Click to share on Facebook（在新窗口中打开）</span></a></li><li class="share-google-plus-1"><a rel="nofollow" data-shared="sharing-google-62" class="share-google-plus-1 sd-button share-icon no-text" href="http://liwei.life/2016/04/26/linux%e5%86%85%e5%ad%98%e4%b8%ad%e7%9a%84cache%e7%9c%9f%e7%9a%84%e8%83%bd%e8%a2%ab%e5%9b%9e%e6%94%b6%e4%b9%88%ef%bc%9f/?share=google-plus-1&amp;nb=1" target="_blank" title="点击以在 Google+ 上共享"><span></span><span class="sharing-screen-reader-text">点击以在 Google+ 上共享（在新窗口中打开）</span></a></li><li class="share-end"></li></ul></div></div></div>
+<div id="jp-relatedposts" class="jp-relatedposts">
+	<h3 class="jp-relatedposts-headline"><em>相关</em></h3>
+</div>	</div><!-- .entry-content -->
+
+	<footer class="entry-footer">
+		<span class="byline"><span class="author vcard"><img alt="" src="48e040ad6f1ad129714656c209b39e45.dat" srcset="48e040ad6f1ad129714656c209b39e45_001.dat 2x" class="avatar avatar-49 photo" width="49" height="49"><span class="screen-reader-text">作者 </span> <a class="url fn n" href="http://liwei.life/author/zorro/">zorro</a></span></span><span class="posted-on"><span class="screen-reader-text">发布于 </span><a href="http://liwei.life/2016/04/26/linux%e5%86%85%e5%ad%98%e4%b8%ad%e7%9a%84cache%e7%9c%9f%e7%9a%84%e8%83%bd%e8%a2%ab%e5%9b%9e%e6%94%b6%e4%b9%88%ef%bc%9f/" rel="bookmark"><time class="entry-date published" datetime="2016-04-26T09:36:02+00:00">四月 26, 2016</time><time class="updated" datetime="2016-06-08T01:16:36+00:00">六月 8, 2016</time></a></span><span class="cat-links"><span class="screen-reader-text">分类 </span><a href="http://liwei.life/category/linux/" rel="category tag">Linux</a>、<a href="http://liwei.life/category/uncategorized/" rel="category tag">Uncategorized</a></span>			</footer><!-- .entry-footer -->
+</article><!-- #post-## -->
+
+<div id="comments" class="comments-area">
+
+			<h2 class="comments-title">
+			《Linux内存中的Cache真的能被回收么？》有3个想法		</h2>
+
+		
+		<ol class="comment-list">
+					<li id="comment-39" class="comment even thread-even depth-1 parent">
+			<article id="div-comment-39" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="42a3c2b8c5ef7b04bb589fdcfdc16c9f.dat" srcset="42a3c2b8c5ef7b04bb589fdcfdc16c9f_001.dat 2x" class="avatar avatar-42 photo" width="42" height="42">						<b class="fn"><a href="http://terry.im/" rel="external nofollow" class="url">Terry Wang</a></b><span class="says">说道：</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://liwei.life/2016/04/26/linux%e5%86%85%e5%ad%98%e4%b8%ad%e7%9a%84cache%e7%9c%9f%e7%9a%84%e8%83%bd%e8%a2%ab%e5%9b%9e%e6%94%b6%e4%b9%88%ef%bc%9f/#comment-39">
+							<time datetime="2016-05-17T03:59:54+00:00">
+								五月 17, 2016 3:59 上午							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>对于系统管理和运维来说，通常只关注系统是否有用到 swap 若有那就需要进一步探究是否有程序内存泄漏问题，是否需要加内存（虚拟机的话，部分 hypervisor 支持动态调整内存的分配）。</p>
+<p>另外一个要注意的是内存大的话 dirty_background_ratio 设置要合理，否则内核开始写 dirty pages 到硬盘时系统会“打嗝”。</p>
+<p>page cache VS buffer cache 是读了 Robert Love 的内核书之后才明白的 page cache/buffer cache 在 Linux 2.4 之后两者实现是统一的。用原话描述两者的关系： the buffers describe the mapping of a block onto a page which is in the page cache. Buffers act as descriptors that map pages in memory to disk blocks.</p>
+<p>另外，早在2105年11月（甚至更早） Arch Linux / Fedora 里的 free ，源于 procps-ng 这个包，去掉了 -/+ buffers/cache 用 buff/cache 和 available (/proc/meminfo -&gt; MemAvailable) 替代，个人觉得这个实现更好更容易理解。</p>
+<p>BTW: 文章普遍比较长，默认的排版看着有点累 -_-z</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://liwei.life/2016/04/26/linux%e5%86%85%e5%ad%98%e4%b8%ad%e7%9a%84cache%e7%9c%9f%e7%9a%84%e8%83%bd%e8%a2%ab%e5%9b%9e%e6%94%b6%e4%b9%88%ef%bc%9f/?replytocom=39#respond" aria-label="回复给Terry Wang">回复</a></div>			</article><!-- .comment-body -->
+<ol class="children">
+		<li id="comment-41" class="comment byuser comment-author-zorro bypostauthor odd alt depth-2">
+			<article id="div-comment-41" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="48e040ad6f1ad129714656c209b39e45_002.dat" srcset="48e040ad6f1ad129714656c209b39e45_003.dat 2x" class="avatar avatar-42 photo" width="42" height="42">						<b class="fn">zorro</b><span class="says">说道：</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://liwei.life/2016/04/26/linux%e5%86%85%e5%ad%98%e4%b8%ad%e7%9a%84cache%e7%9c%9f%e7%9a%84%e8%83%bd%e8%a2%ab%e5%9b%9e%e6%94%b6%e4%b9%88%ef%bc%9f/#comment-41">
+							<time datetime="2016-05-17T13:07:02+00:00">
+								五月 17, 2016 1:07 下午							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>对你的回复我只有赞了。。。。这个文章实际上是对我司内部的工程师普遍认为cache都是可以回收的这个观点的科普。<br>
+我在写的时候也考虑过是否要把新版内核和procps-ng的实现加上去。后来觉得没啥必要，所以就限定了系统版本。</p>
+<p>后续的文章我尽量短一点。但是呢，一写到某些环节的时候就很容易陷进去，因为不解释清楚立论很难得到支撑。so。。。。。</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://liwei.life/2016/04/26/linux%e5%86%85%e5%ad%98%e4%b8%ad%e7%9a%84cache%e7%9c%9f%e7%9a%84%e8%83%bd%e8%a2%ab%e5%9b%9e%e6%94%b6%e4%b9%88%ef%bc%9f/?replytocom=41#respond" aria-label="回复给zorro">回复</a></div>			</article><!-- .comment-body -->
+</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		<li id="comment-67" class="comment even thread-odd thread-alt depth-1">
+			<article id="div-comment-67" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="74dd3f84af8c58c1f51892829adf4ca5.dat" srcset="74dd3f84af8c58c1f51892829adf4ca5_001.dat 2x" class="avatar avatar-42 photo" width="42" height="42">						<b class="fn">anole</b><span class="says">说道：</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://liwei.life/2016/04/26/linux%e5%86%85%e5%ad%98%e4%b8%ad%e7%9a%84cache%e7%9c%9f%e7%9a%84%e8%83%bd%e8%a2%ab%e5%9b%9e%e6%94%b6%e4%b9%88%ef%bc%9f/#comment-67">
+							<time datetime="2016-06-06T14:23:03+00:00">
+								六月 6, 2016 2:23 下午							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>对于cgroup里面的内存，在mmap这种大数据场景下，如何降低direct reclaim的影响呢？</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://liwei.life/2016/04/26/linux%e5%86%85%e5%ad%98%e4%b8%ad%e7%9a%84cache%e7%9c%9f%e7%9a%84%e8%83%bd%e8%a2%ab%e5%9b%9e%e6%94%b6%e4%b9%88%ef%bc%9f/?replytocom=67#respond" aria-label="回复给anole">回复</a></div>			</article><!-- .comment-body -->
+</li><!-- #comment-## -->
+		</ol><!-- .comment-list -->
+
+		
+	
+	
+					<div id="respond" class="comment-respond">
+			<h2 id="reply-title" class="comment-reply-title">发表评论 <small><a rel="nofollow" id="cancel-comment-reply-link" href="#respond" style="display: none;">取消回复</a></small></h2>				<form action="http://liwei.life/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate="">
+					<p class="comment-notes"><span id="email-notes">电子邮件地址不会被公开。</span> 必填项已用<span class="required">*</span>标注</p><p class="comment-form-comment"><label for="comment">评论</label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" aria-required="true" required="required"></textarea></p><p class="comment-form-author"><label for="author">姓名 <span class="required">*</span></label> <input id="author" name="author" value="" size="30" maxlength="245" aria-required="true" required="required" type="text"></p>
+<p class="comment-form-email"><label for="email">电子邮件 <span class="required">*</span></label> <input id="email" name="email" value="" size="30" maxlength="100" aria-describedby="email-notes" aria-required="true" required="required" type="email"></p>
+<p class="comment-form-url"><label for="url">站点</label> <input id="url" name="url" value="" size="30" maxlength="200" type="url"></p>
+<p class="form-submit"><input name="submit" id="submit" class="submit" value="发表评论" type="submit"> <input name="comment_post_ID" value="62" id="comment_post_ID" type="hidden">
+<input name="comment_parent" id="comment_parent" value="0" type="hidden">
+</p><p style="display: none;"><input id="akismet_comment_nonce" name="akismet_comment_nonce" value="68151a03d0" type="hidden"></p><p class="comment-subscription-form"><input name="subscribe_comments" id="subscribe_comments" value="subscribe" style="width: auto; -moz-appearance: checkbox;" type="checkbox"> <label class="subscribe-label" id="subscribe-label" for="subscribe_comments">通过邮件通知我后续评论</label></p><p class="comment-subscription-form"><input name="subscribe_blog" id="subscribe_blog" value="subscribe" style="width: auto; -moz-appearance: checkbox;" type="checkbox"> <label class="subscribe-label" id="subscribe-blog-label" for="subscribe_blog">通过邮件通知我有新文章</label></p><p style="display: none;"></p>				<input id="ak_js" name="ak_js" value="1471345754892" type="hidden"></form>
+					</div><!-- #respond -->
+		
+</div><!-- .comments-area -->
+
+	<nav class="navigation post-navigation" role="navigation">
+		<h2 class="screen-reader-text">文章导航</h2>
+		<div class="nav-links"><div class="nav-previous"><a href="http://liwei.life/2016/04/07/linux%e7%9a%84%e8%bf%9b%e7%a8%8b%e4%bc%98%e5%85%88%e7%ba%a7/" rel="prev"><span class="meta-nav" aria-hidden="true">上一</span> <span class="screen-reader-text">上篇文章：</span> <span class="post-title">Linux的进程优先级</span></a></div><div class="nav-next"><a href="http://liwei.life/2016/05/16/69/" rel="next"><span class="meta-nav" aria-hidden="true">下一</span> <span class="screen-reader-text">下篇文章：</span> <span class="post-title">SHELL编程之语法基础</span></a></div></div>
+	</nav>
+	</main><!-- .site-main -->
+
+	
+</div><!-- .content-area -->
+
+
+	<aside id="secondary" class="sidebar widget-area" role="complementary">
+		<section id="search-2" class="widget widget_search">
+<form role="search" method="get" class="search-form" action="http://liwei.life/">
+	<label>
+		<span class="screen-reader-text">搜索：</span>
+		<input class="search-field" placeholder="搜索…" value="" name="s" type="search">
+	</label>
+	<button type="submit" class="search-submit"><span class="screen-reader-text">搜索</span></button>
+</form>
+</section>		<section id="recent-posts-2" class="widget widget_recent_entries">		<h2 class="widget-title">近期文章</h2>		<ul>
+					<li>
+				<a href="http://liwei.life/2016/08/08/share_memory/">Linux进程间通信-共享内存</a>
+							<span class="post-date">八月 8, 2016</span>
+						</li>
+					<li>
+				<a href="http://liwei.life/2016/07/31/file_and_filelock/">Linux的进程间通信-文件和文件锁</a>
+							<span class="post-date">七月 31, 2016</span>
+						</li>
+					<li>
+				<a href="http://liwei.life/2016/07/18/pipe/">Linux的进程间通信 － 管道</a>
+							<span class="post-date">七月 18, 2016</span>
+						</li>
+					<li>
+				<a href="http://liwei.life/2016/07/11/find%e5%91%bd%e4%bb%a4%e8%af%a6%e8%a7%a3/">find命令详解</a>
+							<span class="post-date">七月 11, 2016</span>
+						</li>
+					<li>
+				<a href="http://liwei.life/2016/07/04/sed/">sed命令进阶</a>
+							<span class="post-date">七月 4, 2016</span>
+						</li>
+					<li>
+				<a href="http://liwei.life/2016/06/27/linux%e7%9a%84%e5%86%85%e5%ad%98%e5%9b%9e%e6%94%b6%e5%92%8c%e4%ba%a4%e6%8d%a2/">Linux的内存回收和交换</a>
+							<span class="post-date">六月 27, 2016</span>
+						</li>
+					<li>
+				<a href="http://liwei.life/2016/06/20/shell%e7%bc%96%e7%a8%8b%e4%b9%8b%e5%b8%b8%e7%94%a8%e6%8a%80%e5%b7%a7/">SHELL编程之常用技巧</a>
+							<span class="post-date">六月 20, 2016</span>
+						</li>
+					<li>
+				<a href="http://liwei.life/2016/06/13/shell%e7%bc%96%e7%a8%8b%e4%b9%8b%e5%86%85%e5%bb%ba%e5%91%bd%e4%bb%a4/">SHELL编程之内建命令</a>
+							<span class="post-date">六月 13, 2016</span>
+						</li>
+					<li>
+				<a href="http://liwei.life/2016/06/06/shell%e7%bc%96%e7%a8%8b%e4%b9%8b%e7%89%b9%e6%ae%8a%e7%ac%a6%e5%8f%b7/">SHELL编程之特殊符号</a>
+							<span class="post-date">六月 6, 2016</span>
+						</li>
+					<li>
+				<a href="http://liwei.life/2016/05/30/shell%e7%bc%96%e7%a8%8b%e4%b9%8b%e6%89%a7%e8%a1%8c%e7%8e%af%e5%a2%83/">SHELL编程之执行环境</a>
+							<span class="post-date">五月 30, 2016</span>
+						</li>
+					<li>
+				<a href="http://liwei.life/2016/05/23/shell%e7%bc%96%e7%a8%8b%e4%b9%8b%e6%89%a7%e8%a1%8c%e8%bf%87%e7%a8%8b/">SHELL编程之执行过程</a>
+							<span class="post-date">五月 23, 2016</span>
+						</li>
+					<li>
+				<a href="http://liwei.life/2016/05/16/69/">SHELL编程之语法基础</a>
+							<span class="post-date">五月 16, 2016</span>
+						</li>
+					<li>
+				<a href="http://liwei.life/2016/04/26/linux%e5%86%85%e5%ad%98%e4%b8%ad%e7%9a%84cache%e7%9c%9f%e7%9a%84%e8%83%bd%e8%a2%ab%e5%9b%9e%e6%94%b6%e4%b9%88%ef%bc%9f/">Linux内存中的Cache真的能被回收么？</a>
+							<span class="post-date">四月 26, 2016</span>
+						</li>
+					<li>
+				<a href="http://liwei.life/2016/04/07/linux%e7%9a%84%e8%bf%9b%e7%a8%8b%e4%bc%98%e5%85%88%e7%ba%a7/">Linux的进程优先级</a>
+							<span class="post-date">四月 7, 2016</span>
+						</li>
+					<li>
+				<a href="http://liwei.life/2016/03/31/%e4%bb%80%e4%b9%88%e6%98%afdocker%ef%bc%9f/">什么是Docker？</a>
+							<span class="post-date">三月 31, 2016</span>
+						</li>
+					<li>
+				<a href="http://liwei.life/2016/03/24/%e6%88%91%e4%b8%ba%e4%bb%80%e4%b9%88%e4%b8%80%e5%ae%9a%e8%a6%81%e5%92%ac%e6%96%87%e5%9a%bc%e5%ad%97/">我为什么一定要“咬文嚼字”</a>
+							<span class="post-date">三月 24, 2016</span>
+						</li>
+					<li>
+				<a href="http://liwei.life/2016/03/14/linux_io_scheduler/">Linux的IO调度</a>
+							<span class="post-date">三月 14, 2016</span>
+						</li>
+					<li>
+				<a href="http://liwei.life/2016/02/23/%e5%85%b3%e4%ba%8e%e6%83%85%e5%95%86/">关于情商</a>
+							<span class="post-date">二月 23, 2016</span>
+						</li>
+					<li>
+				<a href="http://liwei.life/2016/02/14/%e4%bd%a0%e7%88%b1%e6%88%91%ef%bc%8c%e4%b8%8e%e6%88%91%e4%bd%95%e5%b9%b2%ef%bc%9f/">你爱我，与我何干？</a>
+							<span class="post-date">二月 14, 2016</span>
+						</li>
+					<li>
+				<a href="http://liwei.life/2016/02/05/cgroup_linux_network_traffic_control/">Cgroup – Linux的网络资源隔离</a>
+							<span class="post-date">二月 5, 2016</span>
+						</li>
+					<li>
+				<a href="http://liwei.life/2016/01/22/cgroup_io/">Cgroup – Linux的IO资源隔离</a>
+							<span class="post-date">一月 22, 2016</span>
+						</li>
+					<li>
+				<a href="http://liwei.life/2016/01/22/cgroup_memory/">Cgroup – Linux内存资源管理</a>
+							<span class="post-date">一月 22, 2016</span>
+						</li>
+					<li>
+				<a href="http://liwei.life/2016/01/22/cgroup_cpu/">Cgroup – 从CPU资源隔离说起</a>
+							<span class="post-date">一月 22, 2016</span>
+						</li>
+					<li>
+				<a href="http://liwei.life/2016/01/21/hello-world/">Hello world!</a>
+							<span class="post-date">一月 21, 2016</span>
+						</li>
+				</ul>
+		</section>		<section id="recent-comments-2" class="widget widget_recent_comments"><h2 class="widget-title">近期评论</h2><ul id="recentcomments"><li class="recentcomments"><span class="comment-author-link"><a href="http://nicksxs.me/" rel="external nofollow" class="url">Nick</a></span>发表在《<a href="http://liwei.life/2016/05/16/69/#comment-164">SHELL编程之语法基础</a>》</li><li class="recentcomments"><span class="comment-author-link">furybean</span>发表在《<a href="http://liwei.life/2016/03/24/%e6%88%91%e4%b8%ba%e4%bb%80%e4%b9%88%e4%b8%80%e5%ae%9a%e8%a6%81%e5%92%ac%e6%96%87%e5%9a%bc%e5%ad%97/#comment-158">我为什么一定要“咬文嚼字”</a>》</li><li class="recentcomments"><span class="comment-author-link"><a href="http://vivianaking7@gmail.com/" rel="external nofollow" class="url">Vivianaking</a></span>发表在《<a href="http://liwei.life/2016/02/14/%e4%bd%a0%e7%88%b1%e6%88%91%ef%bc%8c%e4%b8%8e%e6%88%91%e4%bd%95%e5%b9%b2%ef%bc%9f/#comment-157">你爱我，与我何干？</a>》</li><li class="recentcomments"><span class="comment-author-link">o~</span>发表在《<a href="http://liwei.life/2016/02/23/%e5%85%b3%e4%ba%8e%e6%83%85%e5%95%86/#comment-152">关于情商</a>》</li><li class="recentcomments"><span class="comment-author-link">Shark_坤哥</span>发表在《<a href="http://liwei.life/2016/02/14/%e4%bd%a0%e7%88%b1%e6%88%91%ef%bc%8c%e4%b8%8e%e6%88%91%e4%bd%95%e5%b9%b2%ef%bc%9f/#comment-151">你爱我，与我何干？</a>》</li></ul></section><section id="archives-2" class="widget widget_archive"><h2 class="widget-title">文章归档</h2>		<ul>
+			<li><a href="http://liwei.life/2016/08/">2016年八月</a></li>
+	<li><a href="http://liwei.life/2016/07/">2016年七月</a></li>
+	<li><a href="http://liwei.life/2016/06/">2016年六月</a></li>
+	<li><a href="http://liwei.life/2016/05/">2016年五月</a></li>
+	<li><a href="http://liwei.life/2016/04/">2016年四月</a></li>
+	<li><a href="http://liwei.life/2016/03/">2016年三月</a></li>
+	<li><a href="http://liwei.life/2016/02/">2016年二月</a></li>
+	<li><a href="http://liwei.life/2016/01/">2016年一月</a></li>
+		</ul>
+		</section><section id="categories-2" class="widget widget_categories"><h2 class="widget-title">分类目录</h2>		<ul>
+	<li class="cat-item cat-item-2"><a href="http://liwei.life/category/linux/">Linux</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="http://liwei.life/category/shell/">shell编程</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="http://liwei.life/category/uncategorized/">Uncategorized</a>
+</li>
+		</ul>
+</section><section id="meta-2" class="widget widget_meta"><h2 class="widget-title">功能</h2>			<ul>
+						<li><a href="http://liwei.life/wp-login.php">登录</a></li>
+			<li><a href="http://liwei.life/feed/">文章<abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="http://liwei.life/comments/feed/">评论<abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="https://cn.wordpress.org/" title="基于WordPress，一个优美、先进的个人信息发布平台。">WordPress.org</a></li>			</ul>
+			</section>	</aside><!-- .sidebar .widget-area -->
+
+		</div><!-- .site-content -->
+
+		<footer id="colophon" class="site-footer" role="contentinfo">
+			
+			
+			<div class="site-info">
+								<span class="site-title"><a href="http://liwei.life/" rel="home">穷佐罗的Linux书</a></span>
+				<a href="https://cn.wordpress.org/">自豪地采用WordPress</a>
+			</div><!-- .site-info -->
+		</footer><!-- .site-footer -->
+	</div><!-- .site-inner -->
+</div><!-- .site -->
+
+	<div style="display: none;">
+	<div class="grofile-hash-map-48e040ad6f1ad129714656c209b39e45">
+	</div>
+	<div class="grofile-hash-map-42a3c2b8c5ef7b04bb589fdcfdc16c9f">
+	</div>
+	<div class="grofile-hash-map-48e040ad6f1ad129714656c209b39e45">
+	</div>
+	<div class="grofile-hash-map-74dd3f84af8c58c1f51892829adf4ca5">
+	</div>
+	</div>
+
+	
+		
+				
+				
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<img id="wpstats" alt=":)" src="g.gif" width="6" height="5"></body>
+</html>

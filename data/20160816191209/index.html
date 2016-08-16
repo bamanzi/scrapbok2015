@@ -1,0 +1,1924 @@
+<!DOCTYPE html>
+<html itemtype="http://schema.org/QAPage" itemscope="">
+<head>
+<meta charset="UTF-8">
+
+
+<title>linux - How can I limit the cache used by copying so there is still memory available for other cache? - Stack Overflow</title>
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="apple-touch-icon image_src" href="http://cdn.sstatic.net/Sites/stackoverflow/img/apple-touch-icon.png?v=c78bd457575a">
+    <link rel="search" type="application/opensearchdescription+xml" title="Stack Overflow" href="http://stackoverflow.com/opensearch.xml">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:domain" content="stackoverflow.com">
+    <meta property="og:type" content="website">    
+    <meta property="og:image" itemprop="image primaryImageOfPage" content="http://cdn.sstatic.net/Sites/stackoverflow/img/apple-touch-icon@2.png?v=73d79a89bded&amp;a">
+    <meta name="twitter:title" property="og:title" itemprop="title name" content="How can I limit the cache used by copying so there is still memory available for other cache?">
+    <meta name="twitter:description" property="og:description" itemprop="description" content="Basic situation:
+
+I am copying some NTFS disks in openSuSE. Each one is 2TB. When I do this, the system runs slow. 
+
+My guesses:
+
+I believe it is likely due to caching. Linux decides to discard use...">
+    <meta property="og:url" content="http://stackoverflow.com/questions/10105203/how-can-i-limit-the-cache-used-by-copying-so-there-is-still-memory-available-for">
+    <link rel="canonical" href="http://stackoverflow.com/questions/10105203/how-can-i-limit-the-cache-used-by-copying-so-there-is-still-memory-available-for">
+
+    
+    
+    
+    
+    
+
+            <link rel="alternate" type="application/atom+xml" title="Feed for question 'How can I limit the cache used by copying so there is still memory available for other cache?'" href="http://stackoverflow.com/feeds/question/10105203">
+            <meta name="twitter:app:country" content="US">
+            <meta name="twitter:app:name:iphone" content="Stack Exchange iOS">
+            <meta name="twitter:app:id:iphone" content="871299723">
+            <meta name="twitter:app:url:iphone" content="se-zaphod://stackoverflow.com/questions/10105203/how-can-i-limit-the-cache-used-by-copying-so-there-is-still-memory-available-for">
+            <meta name="twitter:app:name:ipad" content="Stack Exchange iOS">
+            <meta name="twitter:app:id:ipad" content="871299723">
+            <meta name="twitter:app:url:ipad" content="se-zaphod://stackoverflow.com/questions/10105203/how-can-i-limit-the-cache-used-by-copying-so-there-is-still-memory-available-for">
+            <meta name="twitter:app:name:googleplay" content="Stack Exchange Android">
+            <meta name="twitter:app:url:googleplay" content="http://stackoverflow.com/questions/10105203/how-can-i-limit-the-cache-used-by-copying-so-there-is-still-memory-available-for">
+            <meta name="twitter:app:id:googleplay" content="com.stackexchange.marvin">
+        
+
+
+    
+    
+        
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body class="question-page new-topbar">
+    
+    
+        
+        <iframe id="adzerk-user-match" src="index_1.html" style="display: none;" marginheight="0" marginwidth="0" scrolling="no" width="0" frameborder="0" height="0"></iframe>
+
+
+
+
+    <div id="notify-container"></div>
+    <div id="custom-header"></div>
+
+
+
+
+
+<div class="topbar">
+    <div class="topbar-wrapper">
+
+        <div class="js-topbar-dialog-corral">
+
+
+<div class="topbar-dialog siteSwitcher-dialog dno">
+    <div class="header">
+        <h3><a href="http://stackoverflow.com/">current community</a></h3>
+    </div>
+    <div class="modal-content current-site-container">
+        <ul class="current-site">
+                <li>
+                        <div class="related-links">
+                    <a href="http://chat.stackoverflow.com/" class="js-gps-track" data-gps-track="site_switcher.click({ item_type:6 })">chat</a>
+            </div>
+
+
+
+
+    <a href="http://stackoverflow.com/" class="current-site-link site-link js-gps-track" data-id="1" data-gps-track="
+        site_switcher.click({ item_type:3 })">
+        <div class="site-icon favicon favicon-stackoverflow" title="Stack Overflow"></div>
+        Stack Overflow
+    </a>
+
+                </li>
+                <li class="related-site">
+                        <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                    
+
+
+
+    <a href="http://meta.stackoverflow.com/" class="site-link js-gps-track" data-id="552" data-gps-track="
+            site.switch({ target_site:552, item_type:3 }),
+        site_switcher.click({ item_type:4 })">
+        <div class="site-icon favicon favicon-stackoverflowmeta" title="Meta Stack Overflow"></div>
+        Meta Stack Overflow
+    </a>
+
+                </li>
+        </ul>
+    </div>
+    <div class="header" id="your-communities-header">
+        <h3>
+your communities        </h3>
+            
+    </div>
+    <div class="modal-content" id="your-communities-section">
+            
+            <div class="call-to-login">
+<a href="https://stackoverflow.com/users/signup?ssrc=site_switcher&amp;returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f10105203%2fhow-can-i-limit-the-cache-used-by-copying-so-there-is-still-memory-available-for" class="login-link js-gps-track" data-gps-track="site_switcher.click({ item_type:10 })">Sign up</a> or <a href="https://stackoverflow.com/users/login?ssrc=site_switcher&amp;returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f10105203%2fhow-can-i-limit-the-cache-used-by-copying-so-there-is-still-memory-available-for" class="login-link js-gps-track" data-gps-track="site_switcher.click({ item_type:11 })">log in</a> to customize your list.
+            </div>
+    </div>
+    <div class="header">
+        <h3><a href="http://stackexchange.com/sites">more stack exchange communities</a></h3>
+        <a href="http://blog.stackoverflow.com/" class="fr">company blog</a>
+    </div>
+    <div class="modal-content">
+            <div class="child-content"></div>
+    </div>
+</div>
+        </div>
+
+        <div class="network-items">
+                <a href="http://stackexchange.com/" class="topbar-icon icon-site-switcher yes-hover js-site-switcher-button js-gps-track" data-gps-track="site_switcher.show" title="A list of all 159 Stack Exchange sites">
+                    <span class="hidden-text">Stack Exchange</span>
+                </a>
+
+    <a href="#" class="topbar-icon icon-inbox yes-hover js-inbox-button" title="Recent inbox messages">
+        <span class="hidden-text">Inbox</span>
+        <span class="unread-count" style="display: none;"></span>
+    </a>
+    <a href="#" class="topbar-icon icon-achievements yes-hover js-achievements-button" data-unread-class="" title="Recent achievements: reputation, badges, and privileges earned">
+        <span class="hidden-text">Reputation and Badges</span>
+        <span class="unread-count" style="display: none;">
+            
+        </span>
+    </a>
+        </div>
+
+        <div class="topbar-links">
+
+                <div class="links-container">
+                <span class="topbar-menu-links">
+                                    <a href="https://stackoverflow.com/users/signup?ssrc=head&amp;returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f10105203%2fhow-can-i-limit-the-cache-used-by-copying-so-there-is-still-memory-available-for" class="login-link">sign up</a>
+                                <a href="https://stackoverflow.com/users/login?ssrc=head&amp;returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f10105203%2fhow-can-i-limit-the-cache-used-by-copying-so-there-is-still-memory-available-for" class="login-link">log in</a>
+
+                            <a href="http://stackoverflow.com/tour">tour</a>
+        <a href="#" class="icon-help js-help-button" title="Help Center and other resources">
+            help
+            <span class="triangle"></span>
+        </a>
+    <div class="topbar-dialog help-dialog js-help-dialog dno">
+        <div class="modal-content">
+            <ul>
+                                    <li>
+                        <a href="http://stackoverflow.com/tour" class="js-gps-track" data-gps-track="help_popup.click({ item_type:1 })">
+                            Tour
+                            <span class="item-summary">
+                                Start here for a quick overview of the site
+                            </span>
+                        </a>
+                    </li>
+                <li>
+                    <a href="http://stackoverflow.com/help" class="js-gps-track" data-gps-track="help_popup.click({ item_type:4 })">
+                        Help Center
+                        <span class="item-summary">
+                            Detailed answers to any questions you might have
+                        </span>
+                    </a>
+                </li>
+                        <li>
+                            <a href="http://meta.stackoverflow.com/" class="js-gps-track" data-gps-track="help_popup.click({ item_type:2 })">
+                                Meta
+                                <span class="item-summary">
+                                    Discuss the workings and policies of this site
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://stackoverflow.com/company/about" class="js-gps-track" data-gps-track="help_popup.click({ item_type:6 })">
+                                About Us
+                                <span class="item-summary">
+                                    Learn more about Stack Overflow the company
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://business.stackoverflow.com/?ref=topbar_help" class="js-gps-track" data-gps-track="help_popup.click({ item_type:7 })">
+                                Business
+                                <span class="item-summary">
+                                    Learn more about hiring developers or posting ads with us
+                                </span>
+                            </a>
+                        </li>
+            </ul>
+        </div>
+    </div>
+                                            </span>
+                </div>
+
+            <div class="search-container">
+                <form id="search" action="http://stackoverflow.com/search" method="get" autocomplete="off">
+                    <input name="q" placeholder="Search Q&amp;A" value="" tabindex="1" autocomplete="off" maxlength="240" type="text">
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+    
+
+    <div class="container">
+        <div id="header">
+            <br class="cbt">
+            <div id="hlogo">
+                <a href="http://stackoverflow.com/">
+                    Stack Overflow
+                </a>
+            </div>
+            <div id="hmenus">
+                <div class="nav mainnavs">
+                    <ul>
+                        <li class="youarehere"><a id="nav-questions" href="http://stackoverflow.com/questions">Questions</a></li>
+                            <li><a id="nav-jobs" href="http://stackoverflow.com/jobs?med=site-ui&amp;ref=jobs-tab">Jobs</a></li>
+                                                <li><a id="nav-docs" href="http://stackoverflow.com/documentation">Documentation</a></li>
+                        <li><a id="nav-tags" href="http://stackoverflow.com/tags">Tags</a></li>
+                        <li><a id="nav-users" href="http://stackoverflow.com/users">Users</a></li>
+                        <li><a id="nav-badges" href="http://stackoverflow.com/help/badges">Badges</a></li>
+                    </ul>
+                </div>
+                <div class="nav askquestion">
+                    <ul>
+                        <li>
+                            <a id="nav-askquestion" href="http://stackoverflow.com/questions/ask">Ask Question</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+
+
+
+        <div id="content" class="snippet-hidden">
+            
+
+<div itemscope="" itemtype="http://schema.org/Question">
+    <link itemprop="image" href="http://cdn.sstatic.net/Sites/stackoverflow/img/apple-touch-icon.png?v=c78bd457575a">
+<div class="hero-box docs-announcement">
+    <div class="hero-close js-dismiss">Dismiss</div>
+    
+    
+    <div class="hero-content text-left">
+        <div class="text-wrapper">
+            <div class="hero-title">
+                Announcing Stack Overflow Documentation
+            </div>
+
+            <p class="subtitle">
+                We started with Q&amp;A. Technical documentation is next, and we need your help.
+            </p>
+            <p class="subtitle">
+                Whether you're a beginner or an experienced developer, you <i>can</i> contribute.
+            </p>
+        </div>
+
+            <a href="http://stackoverflow.com/users/signup?ssrc=docs_hero&amp;returnurl=%2Ftour%2Fdocumentation" class="btn js-gps-track" data-gps-track="docs.hero.clicked({target: 2 })">
+                Sign up and start helping →
+            </a>
+            <a href="http://stackoverflow.com/tour/documentation" class="btn-clear js-gps-track" data-gps-track="docs.hero.clicked({target: 1 })">
+                Learn more about Documentation →
+            </a>
+
+        <div class="img"></div>
+    </div>
+</div>
+
+			<div id="question-header">
+                <h1 itemprop="name"><a href="#" class="question-hyperlink">How can I limit the cache used by copying so there is still memory available for other cache?</a></h1>
+		</div>
+			<div id="mainbar">
+
+			
+
+<div class="question" data-questionid="10105203" id="question">
+
+    
+                <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input name="_id_" value="10105203" type="hidden">
+        <a class="vote-up-off" title="This question shows research effort; it is useful and clear">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">14</span>
+        <a class="vote-down-off" title="This question does not show any research effort; it is unclear or not useful">down vote</a>
+
+        <a class="star-off" href="#">favorite</a>
+        <div class="favoritecount"><b>4</b></div>
+
+
+</div>
+
+            </td>
+            
+<td class="postcell">
+<div>
+    <div class="post-text" itemprop="text">
+
+<p><strong>Basic situation:</strong></p>
+
+<p>I am copying some NTFS disks in openSuSE. Each one is 2TB. When I do this, the system runs slow. </p>
+
+<p><strong>My guesses:</strong></p>
+
+<p>I believe it is likely due to caching. Linux decides to discard useful cache (eg. kde4 bloat, virtual machine disks, LibreOffice binaries, Thunderbird binaries, etc.) and instead fill all available memory (24 GB total) with stuff from the copying disks, which will be read only once, then written and never used again. So then any time I use these apps (or kde4), the disk needs to be read again, and reading the bloat off the disk again makes things freeze/hiccup.</p>
+
+<p>Due to the cache being gone and the fact that these bloated applications need lots of cache, this makes the system horribly slow.</p>
+
+<p>Since it is USB,the disk and disk controller are not the bottleneck, so using ionice does not make it faster.</p>
+
+<p>I believe it is the cache rather than just the motherboard going too slow, because if I stop everything copying, it still runs choppy for a while until it recaches everything. And if I restart the copying, it takes a minute before it is choppy again. But also, I can limit it to around 40 MB/s, and it runs faster again (not because it has the right things cached, but because the motherboard busses have lots of extra bandwidth for the system disks). I can fully accept a performance loss from my motherboard's IO capability being completely consumed (which is 100% used, meaning 0% wasted power which makes me happy), but I can't accept that this caching mechanism performs so terribly in this specific use case.</p>
+
+<pre><code># free
+             total       used       free     shared    buffers     cached
+Mem:      24731556   24531876     199680          0    8834056   12998916
+-/+ buffers/cache:    2698904   22032652
+Swap:      4194300      24764    4169536
+</code></pre>
+
+<p>I also tried the same thing on Ubuntu, which causes a total system hang instead. ;)</p>
+
+<p>And to clarify, I am not asking how to leave memory free for the "system", but for "cache". I know that cache memory is automatically given back to the system when needed, but my problem is that it is not reserved for caching of specific things.</p>
+
+<p><strong>Question:</strong></p>
+
+<p>Is there some way to tell these copy operations to limit memory usage so some important things remain cached, and therefore any slowdowns are a result of normal disk usage and not rereading the same commonly used files? For example, is there a setting of max memory per process/user/file system allowed to be used as cache/buffers?</p>
+    </div>
+    <div class="post-taglist">
+        <a href="http://stackoverflow.com/questions/tagged/linux" class="post-tag js-gps-track" title="show questions tagged 'linux'" rel="tag">linux</a> <a href="http://stackoverflow.com/questions/tagged/caching" class="post-tag js-gps-track" title="show questions tagged 'caching'" rel="tag">caching</a> <a href="http://stackoverflow.com/questions/tagged/filesystems" class="post-tag js-gps-track" title="show questions tagged 'filesystems'" rel="tag">filesystems</a> <a href="http://stackoverflow.com/questions/tagged/usb" class="post-tag js-gps-track" title="show questions tagged 'usb'" rel="tag">usb</a> <a href="http://stackoverflow.com/questions/tagged/file-copying" class="post-tag js-gps-track" title="show questions tagged 'file-copying'" rel="tag">file-copying</a> 
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://stackoverflow.com/q/10105203" title="short permalink to this question" class="short-link" id="link-post-10105203">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/10105203/edit" class="suggest-edit-post" title="">improve this question</a></div>        
+    </td>
+    <td class="post-signature" align="right">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="http://stackoverflow.com/posts/10105203/revisions" title="show all edits to this post">edited <span title="2012-04-11 12:19:09Z" class="relativetime">Apr 11 '12 at 12:19</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        
+        <div class="-flair">
+            
+        </div>
+    </div>
+</div>    </td>
+    <td class="post-signature owner">
+        <div class="user-info ">
+    <div class="user-action-time">
+        asked <span title="2012-04-11 11:42:15Z" class="relativetime">Apr 11 '12 at 11:42</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/1134343/peter"><div class="gravatar-wrapper-32"><img src="990b02cbe525c6407028dbd8071469da.dat" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/1134343/peter">Peter</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">663</span><span title="1 gold badge"><span class="badge1"></span><span class="badgecount">1</span></span><span title="5 silver badges"><span class="badge2"></span><span class="badgecount">5</span></span><span title="14 bronze badges"><span class="badge3"></span><span class="badgecount">14</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</div>
+</td>
+        </tr>
+                
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-10105203" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+
+    <tr id="comment-12946904" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">BTW I am using rsync, and have many disks (currently 8 at once).  Some are transferred locally, some with USB 3.0. Some are transferred over 1Gbps network.</span>
+                    –&nbsp;<a href="http://stackoverflow.com/users/1134343/peter" title="663 reputation" class="comment-user owner">Peter</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment12946904_10105203"><span title="2012-04-11 12:34:01Z" class="relativetime-clean">Apr 11 '12 at 12:34</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-12967317" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">when copying nothing:     # free                  total       used       free     shared    buffers     cached     Mem:      24731556   24474096     257460          0   16478072    6342668     -/+ buffers/cache:    1653356   23078200     Swap:      4194300      22564    4171736  Seems there is a memory leak with buffers.</span>
+                    –&nbsp;<a href="http://stackoverflow.com/users/1134343/peter" title="663 reputation" class="comment-user owner">Peter</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment12967317_10105203"><span title="2012-04-12 06:57:44Z" class="relativetime-clean">Apr 12 '12 at 6:57</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-10105203" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid answering questions in comments.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="#"></a>
+        </div>         
+    </td>
+</tr>        </tbody></table>
+</div>
+
+			<div id="answers">
+
+				<a name="tab-top"></a>
+				<div id="answers-header">
+					<div class="subheader answers-subheader">
+						<h2>
+								7 Answers
+                                <span style="display: none;" itemprop="answerCount">7</span>
+						</h2>
+						<div>
+							<div id="tabs">
+        <a href="http://stackoverflow.com/questions/10105203/how-can-i-limit-the-cache-used-by-copying-so-there-is-still-memory-available-for?answertab=active#tab-top" data-nav-xhref="" title="Answers with the latest activity first" data-value="active" data-shortcut="A">
+            active</a>
+        <a href="http://stackoverflow.com/questions/10105203/how-can-i-limit-the-cache-used-by-copying-so-there-is-still-memory-available-for?answertab=oldest#tab-top" data-nav-xhref="" title="Answers in the order they were provided" data-value="oldest" data-shortcut="O">
+            oldest</a>
+        <a class="youarehere" href="http://stackoverflow.com/questions/10105203/how-can-i-limit-the-cache-used-by-copying-so-there-is-still-memory-available-for?answertab=votes#tab-top" data-nav-xhref="" title="Answers with the highest score first" data-value="votes" data-shortcut="V">
+            votes</a>
+</div>
+						</div>
+					</div>    
+				</div>    
+
+
+
+
+  
+<a name="20817772"></a>
+<div id="answer-20817772" class="answer" data-answerid="20817772" itemscope="" itemtype="http://schema.org/Answer">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input name="_id_" value="20817772" type="hidden">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">14</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>The nocache command is the general answer to this problem! See <a href="https://github.com/Feh/nocache">https://github.com/Feh/nocache</a> or find it in Debian and Ubuntu 13.10 (saucy).</p>
+
+<p>Thanks, Peter, for alerting us to the --drop-cache" option in rsync.  But that was rejected upstream  (<a href="https://bugzilla.samba.org/show_bug.cgi?id=9560">Bug 9560 – drop-cache option</a>), in favor of a more general solution for this: the new "nocache" command based on the rsync work with fadvise.</p>
+
+<p>You just prepend "nocache" to any command you want.  It also has nice utilities for describing and modifying the cache status of files.  E.g. here are the effects with and without nocache:</p>
+
+<pre><code>$ ./cachestats ~/file.mp3
+pages in cache: 154/1945 (7.9%)  [filesize=7776.2K, pagesize=4K]
+$ ./nocache cp ~/file.mp3 /tmp
+$ ./cachestats ~/file.mp3
+pages in cache: 154/1945 (7.9%)  [filesize=7776.2K, pagesize=4K]\
+$ cp ~/file.mp3 /tmp
+$ ./cachestats ~/file.mp3
+pages in cache: 1945/1945 (100.0%)  [filesize=7776.2K, pagesize=4K]
+</code></pre>
+
+<p>So hopefully that will work for other backup programs (rsnapshot, duplicity, rdiff-backup, amanda, s3sync, s3ql, tar, etc) and other commands that you don't want trashing your cache.</p>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://stackoverflow.com/a/20817772" title="short permalink to this answer" class="short-link" id="link-post-20817772">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/20817772/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td class="post-signature" align="right">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2013-12-28 18:16:06Z" class="relativetime">Dec 28 '13 at 18:16</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/507544/nealmcb"><div class="gravatar-wrapper-32"><img src="75330946da121a9e1d905dd3f54042f6.dat" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/507544/nealmcb">nealmcb</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">2,916</span><span title="1 gold badge"><span class="badge1"></span><span class="badgecount">1</span></span><span title="20 silver badges"><span class="badge2"></span><span class="badgecount">20</span></span><span title="37 bronze badges"><span class="badge3"></span><span class="badgecount">37</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-20817772" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+
+    <tr id="comment-53198551" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@Peter I think that the answer by nealmcb with 'nocache' is more appropriate as not all rsync have the drop-cache option, and nocache is more widely used</span>
+                    –&nbsp;<a href="http://stackoverflow.com/users/48382/krzyk" title="8,542 reputation" class="comment-user">krzyk</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment53198551_20817772"><span title="2015-09-20 07:08:35Z" class="relativetime-clean">Sep 20 '15 at 7:08</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-53284160" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">from my perspective, every Linux distro I tested (except Manjaro, and also not FreeBSD) has applied the patch to rsync... and nocache wasn't in openSUSE back when I used it, and isn't in the main repos in arch/manjaro. And I like the nocache idea better (just as I like nice, ionice, trickle, etc.) but unless I see it in more main repos, it's kinda subjective which is the best solution for everyone.</span>
+                    –&nbsp;<a href="http://stackoverflow.com/users/1134343/peter" title="663 reputation" class="comment-user owner">Peter</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment53284160_20817772"><span title="2015-09-22 15:26:38Z" class="relativetime-clean">Sep 22 '15 at 15:26</span></a></span>
+                    <span class="edited-yes" title="this comment was edited 1 time"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-53591778" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@Peter Debian doesn't have it</span>
+                    –&nbsp;<a href="http://stackoverflow.com/users/48382/krzyk" title="8,542 reputation" class="comment-user">krzyk</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment53591778_20817772"><span title="2015-10-01 06:18:43Z" class="relativetime-clean">Oct 1 '15 at 6:18</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-53615465" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@krzyk Which debian is nocache not in?  Looks like it is in wheezy-backports,  jessie, stretch and sid: <a href="https://packages.debian.org/sid/utils/nocache" rel="nofollow">packages.debian.org/sid/utils/nocache</a></span>
+                    –&nbsp;<a href="http://stackoverflow.com/users/507544/nealmcb" title="2,916 reputation" class="comment-user">nealmcb</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment53615465_20817772"><span title="2015-10-01 17:00:20Z" class="relativetime-clean">Oct 1 '15 at 17:00</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-53618577" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">I was replying to @Peter about --drop-cache in rsync</span>
+                    –&nbsp;<a href="http://stackoverflow.com/users/48382/krzyk" title="8,542 reputation" class="comment-user">krzyk</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment53618577_20817772"><span title="2015-10-01 18:43:06Z" class="relativetime-clean">Oct 1 '15 at 18:43</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-20817772" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="#"></a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+
+            <div class="everyonelovesstackoverflow" id="adzerk96178093"></div>
+  
+<a name="10535108"></a>
+<div id="answer-10535108" class="answer accepted-answer" data-answerid="10535108" itemscope="" itemtype="http://schema.org/Answer" itemprop="acceptedAnswer">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input name="_id_" value="10535108" type="hidden">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">3</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+        <span class="vote-accepted-on load-accepted-answer-date" title="loading when this answer was accepted...">accepted</span>
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Kristof Provost was very close, but in my situation, I didn't want to use dd or write my own software, so the solution was to use the "--drop-cache" option in rsync.</p>
+
+<p>I have used this many times since creating this question, and it seems to fix the problem completely. One exception was when I am using rsync to copy from a FreeBSD machine, which doesn't support "--drop-cache". So I wrote a wrapper to replace the /usr/local/bin/rsync command, and remove that option, and now it works copying from there too.</p>
+
+<p>It still uses huge amount of memory for buffers, and seems to keep almost no cache, but works smoothly anyway.</p>
+
+<pre><code>$ free
+             total       used       free     shared    buffers     cached
+Mem:      24731544   24531576     199968          0   15349680     850624
+-/+ buffers/cache:    8331272   16400272
+Swap:      4194300     602648    3591652
+</code></pre>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://stackoverflow.com/a/10535108" title="short permalink to this answer" class="short-link" id="link-post-10535108">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/10535108/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td class="post-signature owner" align="right">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2012-05-10 13:33:09Z" class="relativetime">May 10 '12 at 13:33</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/1134343/peter"><div class="gravatar-wrapper-32"><img src="990b02cbe525c6407028dbd8071469da.dat" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/1134343/peter">Peter</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">663</span><span title="1 gold badge"><span class="badge1"></span><span class="badgecount">1</span></span><span title="5 silver badges"><span class="badge2"></span><span class="badgecount">5</span></span><span title="14 bronze badges"><span class="badge3"></span><span class="badgecount">14</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-10535108" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+
+    <tr id="comment-53198555" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of 'useful comment' votes received" class="cool">2</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">drop-cache is not available in the official rsync</span>
+                    –&nbsp;<a href="http://stackoverflow.com/users/48382/krzyk" title="8,542 reputation" class="comment-user">krzyk</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment53198555_10535108"><span title="2015-09-20 07:08:59Z" class="relativetime-clean">Sep 20 '15 at 7:08</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-10535108" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="#"></a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+
+  
+<a name="10105568"></a>
+<div id="answer-10105568" class="answer" data-answerid="10105568" itemscope="" itemtype="http://schema.org/Answer">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input name="_id_" value="10105568" type="hidden">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">1</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>It's not possible if you're using plain old <code>cp</code>, but if you're willing to re-implement or patch it yourself setting <code>posix_fadvise(fd, 0, 0, POSIX_FADV_NOREUSE)</code> on both input and output file will probably help.</p>
+
+<p><code>posix_fadvise()</code> tells the kernel about your intended access pattern. In this case, you'd only use the data once so there's no point in caching it. 
+The Linux kernel honours these flags, so shouldn't be caching the data any more.</p>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://stackoverflow.com/a/10105568" title="short permalink to this answer" class="short-link" id="link-post-10105568">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/10105568/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td class="post-signature" align="right">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2012-04-11 12:06:44Z" class="relativetime">Apr 11 '12 at 12:06</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/1466/kristof-provost"><div class="gravatar-wrapper-32"><img src="N4KOP.png" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/1466/kristof-provost">Kristof Provost</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score 17,953" dir="ltr">18k</span><span title="2 gold badges"><span class="badge1"></span><span class="badgecount">2</span></span><span title="17 silver badges"><span class="badge2"></span><span class="badgecount">17</span></span><span title="26 bronze badges"><span class="badge3"></span><span class="badgecount">26</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-10105568" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-10105568" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="#"></a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+
+  
+<a name="10105633"></a>
+<div id="answer-10105633" class="answer" data-answerid="10105633" itemscope="" itemtype="http://schema.org/Answer">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input name="_id_" value="10105633" type="hidden">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">1</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>try using <code>dd</code> instead of <code>cp</code> .</p>
+
+<p>Or <code>mount</code> the filesystem with the <code>sync</code> flag.</p>
+
+<p>I'm not completely sure if these methods bypass the swap, but it may be worth giving a try.</p>
+
+<p>Just my 2c.</p>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://stackoverflow.com/a/10105633" title="short permalink to this answer" class="short-link" id="link-post-10105633">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/10105633/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td class="post-signature" align="right">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2012-04-11 12:10:40Z" class="relativetime">Apr 11 '12 at 12:10</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/236871/kurzedmetal"><div class="gravatar-wrapper-32"><img src="048901e9a9591d658f2f690b71e7530c.dat" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/236871/kurzedmetal">KurzedMetal</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">6,468</span><span title="20 silver badges"><span class="badge2"></span><span class="badgecount">20</span></span><span title="38 bronze badges"><span class="badge3"></span><span class="badgecount">38</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-10105633" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+
+    <tr id="comment-12946713" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">In my experience, it is always a good idea to use rsync (without the -u option which ruins everything). If not, I'll end up with undetected partial files when the transfer is interrupted.</span>
+                    –&nbsp;<a href="http://stackoverflow.com/users/1134343/peter" title="663 reputation" class="comment-user owner">Peter</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment12946713_10105633"><span title="2012-04-11 12:26:55Z" class="relativetime-clean">Apr 11 '12 at 12:26</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-12946911" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">On first try, it didn't work on a remote copy, since the server does not support that option. (both have rsync  version 3.0.9  protocol version 30; Linux supports it, but FreeBSD 8.2 does not)  And on local transfers, it seems to limit speed quite a bit.</span>
+                    –&nbsp;<a href="http://stackoverflow.com/users/1134343/peter" title="663 reputation" class="comment-user owner">Peter</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment12946911_10105633"><span title="2012-04-11 12:34:17Z" class="relativetime-clean">Apr 11 '12 at 12:34</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-12947030" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@Peter yeah, i usually try to avoid <code>dd</code> i forgot about <code>rsync</code>... so many utilities :D</span>
+                    –&nbsp;<a href="http://stackoverflow.com/users/236871/kurzedmetal" title="6,468 reputation" class="comment-user">KurzedMetal</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment12947030_10105633"><span title="2012-04-11 12:39:49Z" class="relativetime-clean">Apr 11 '12 at 12:39</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-12947324" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of 'useful comment' votes received" class="cool">1</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Insert this comment before 2nd comment... got deleted somehow:  Thanks for the suggestion. This lead me to reading the rsync man page, in which I found the "--drop-cache" option, which actually seems to work well for local transfers.</span>
+                    –&nbsp;<a href="http://stackoverflow.com/users/1134343/peter" title="663 reputation" class="comment-user owner">Peter</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment12947324_10105633"><span title="2012-04-11 12:49:56Z" class="relativetime-clean">Apr 11 '12 at 12:49</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-12947476" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">look at the other answer, you may even speed up the syncing too.</span>
+                    –&nbsp;<a href="http://stackoverflow.com/users/236871/kurzedmetal" title="6,468 reputation" class="comment-user">KurzedMetal</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment12947476_10105633"><span title="2012-04-11 12:55:44Z" class="relativetime-clean">Apr 11 '12 at 12:55</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-10105633" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="#"></a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+
+  
+<a name="10110916"></a>
+<div id="answer-10110916" class="answer" data-answerid="10110916" itemscope="" itemtype="http://schema.org/Answer">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input name="_id_" value="10110916" type="hidden">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">1</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<blockquote>
+  <p>I am copying some NTFS disks [...] the system runs slow. [...]
+  Since it is USB [...]</p>
+</blockquote>
+
+<p>The slowdown is a <a href="http://unix.stackexchange.com/a/25691">known memory management issue</a>.</p>
+
+<p>Use a newer Linux Kernel. The older ones have a problem with USB data and "Transparent Huge Pages". See this <a href="https://lwn.net/Articles/467328/" rel="nofollow">LWN article</a>. Very recently this issue was addressed, see "Memory Management" in <a href="http://kernelnewbies.org/LinuxChanges" rel="nofollow">LinuxChanges</a>. </p>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://stackoverflow.com/a/10110916" title="short permalink to this answer" class="short-link" id="link-post-10110916">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/10110916/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td class="post-signature" align="right">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="http://stackoverflow.com/posts/10110916/revisions" title="show all edits to this post">edited <span title="2012-04-11 17:31:52Z" class="relativetime">Apr 11 '12 at 17:31</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        
+        <div class="-flair">
+            
+        </div>
+    </div>
+</div>    </td>
+            
+
+
+    <td class="post-signature" align="right">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2012-04-11 17:26:41Z" class="relativetime">Apr 11 '12 at 17:26</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/410847/turbo-j"><div class="gravatar-wrapper-32"><img src="9a354e99dd64adf823aa72c4ee22a1fc.dat" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/410847/turbo-j">Turbo J</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">4,930</span><span title="1 gold badge"><span class="badge1"></span><span class="badgecount">1</span></span><span title="11 silver badges"><span class="badge2"></span><span class="badgecount">11</span></span><span title="24 bronze badges"><span class="badge3"></span><span class="badgecount">24</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-10110916" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+
+    <tr id="comment-12967301" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">I am using openSuSE with kernel 3.1.0-1.2-desktop. I don't know if this applies; what are the symptoms of this particular issue?</span>
+                    –&nbsp;<a href="http://stackoverflow.com/users/1134343/peter" title="663 reputation" class="comment-user owner">Peter</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment12967301_10110916"><span title="2012-04-12 06:56:45Z" class="relativetime-clean">Apr 12 '12 at 6:56</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-31215626" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of 'useful comment' votes received" class="cool">1</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Interesting - but I'm confused about the status of this.  It seems to me that the patch from Mel Gorman discussed on LWN isn't in the current kernel (3.13-rc5) and I couldn't tell where it was addressed on the LinuxChanges page you reference.  What was the resolution, and which kernel did it appear in?  Thanks.</span>
+                    –&nbsp;<a href="http://stackoverflow.com/users/507544/nealmcb" title="2,916 reputation" class="comment-user">nealmcb</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment31215626_10110916"><span title="2013-12-28 17:56:38Z" class="relativetime-clean">Dec 28 '13 at 17:56</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-10110916" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="#"></a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+
+  
+<a name="14102853"></a>
+<div id="answer-14102853" class="answer" data-answerid="14102853" itemscope="" itemtype="http://schema.org/Answer">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input name="_id_" value="14102853" type="hidden">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">1</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>The kernel can not know, that you won't use the cached data from copying agains. This is your information advantage.</p>
+
+<p>But you could set the swapiness to 0: sudo sysctl vm.swappiness=0. This will cause linux to drop the cache before libraries etc. are written to the swap. </p>
+
+<p>Works nice for me too, especially very performant in combination with hugh ram (16-32 GB).</p>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://stackoverflow.com/a/14102853" title="short permalink to this answer" class="short-link" id="link-post-14102853">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/14102853/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td class="post-signature" align="right">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2012-12-31 14:38:18Z" class="relativetime">Dec 31 '12 at 14:38</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/1939795/mpw"><div class="gravatar-wrapper-32"><img src="73c90b18603f6140e93c6a520137b564.dat" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/1939795/mpw">MPW</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">11</span><span title="1 bronze badge"><span class="badge3"></span><span class="badgecount">1</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-14102853" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-14102853" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="#"></a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+
+  
+<a name="10106307"></a>
+<div id="answer-10106307" class="answer" data-answerid="10106307" itemscope="" itemtype="http://schema.org/Answer">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input name="_id_" value="10106307" type="hidden">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">0</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Ok, now that i know that your using <code>rsync</code> and i could dig a bit more:</p>
+
+<p>It seems that rsync is ineffective when used with tons of files <strong>at the same time</strong>, there's an entry in <a href="http://rsync.samba.org/FAQ.html#5" rel="nofollow">their FAQ</a>, it's not a linux/cache problem, it's an rsync problem eating too much RAM.</p>
+
+<p>Googling around <a href="http://lists.samba.org/archive/rsync/2005-July/012980.html" rel="nofollow">someone recommended to split the syncing in multiple <code>rsync</code> invocations</a></p>
+
+<p>Hope it helps.</p>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://stackoverflow.com/a/10106307" title="short permalink to this answer" class="short-link" id="link-post-10106307">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/10106307/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td class="post-signature" align="right">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2012-04-11 12:54:09Z" class="relativetime">Apr 11 '12 at 12:54</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/236871/kurzedmetal"><div class="gravatar-wrapper-32"><img src="048901e9a9591d658f2f690b71e7530c.dat" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/236871/kurzedmetal">KurzedMetal</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">6,468</span><span title="20 silver badges"><span class="badge2"></span><span class="badgecount">20</span></span><span title="38 bronze badges"><span class="badge3"></span><span class="badgecount">38</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-10106307" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+
+    <tr id="comment-12947780" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Good info, but I don't get any out of memory issues. I have 22032652 bytes free. This may be due to the fact that most of these files of mine are many GB. When rsync starts up, it says "18658 files to consider". I've also used it when I have 100s of millions of files, and it also works.  But thanks to your dd suggestion, and finding that --drop-cache option, it actually seems to be completely solved (as long as I don't do too many remote transfers when the server doesn't support --drop-cache).</span>
+                    –&nbsp;<a href="http://stackoverflow.com/users/1134343/peter" title="663 reputation" class="comment-user owner">Peter</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment12947780_10106307"><span title="2012-04-11 13:05:55Z" class="relativetime-clean">Apr 11 '12 at 13:05</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-10106307" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="#"></a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+									<a name="new-answer"></a>
+						<form id="post-form" action="http://stackoverflow.com/questions/10105203/answer/submit" method="post" class="post-form">
+						    <input id="post-id" value="10105203" type="hidden">
+                            <input id="qualityBanWarningShown" name="qualityBanWarningShown" value="false" type="hidden">
+                            <input name="referrer" value="" type="hidden">
+							<h2 class="space">Your Answer</h2>
+
+
+            
+    
+
+
+
+
+<div id="post-editor" class="post-editor js-post-editor">
+
+    <div style="position: relative;">     
+        <div class="wmd-container">
+            <div id="wmd-button-bar" class="wmd-button-bar"><ul id="wmd-button-row" class="wmd-button-row"><li style="left: 0px;" class="wmd-button" id="wmd-bold-button"><span style="background-position: 0px -20px;"></span></li><li style="left: 25px;" class="wmd-button" id="wmd-italic-button"><span style="background-position: -20px -20px;"></span></li><li style="left: 50px;" class="wmd-spacer" id="wmd-spacer1"><span style="background-position: -40px -20px;"></span></li><li style="left: 75px;" class="wmd-button" id="wmd-link-button"><span style="background-position: -40px -20px;"></span></li><li style="left: 100px;" class="wmd-button" id="wmd-quote-button"><span style="background-position: -60px -20px;"></span></li><li style="left: 125px;" class="wmd-button" id="wmd-code-button"><span style="background-position: -80px -20px;"></span></li><li style="left: 150px;" class="wmd-button" id="wmd-image-button"><span style="background-position: -100px -20px;"></span></li><li style="left: 175px;" class="wmd-spacer" id="wmd-spacer2"><span style="background-position: -120px -20px;"></span></li><li style="left: 200px;" class="wmd-button" id="wmd-olist-button"><span style="background-position: -120px -20px;"></span></li><li style="left: 225px;" class="wmd-button" id="wmd-ulist-button"><span style="background-position: -140px -20px;"></span></li><li style="left: 250px;" class="wmd-button" id="wmd-heading-button"><span style="background-position: -160px -20px;"></span></li><li style="left: 275px;" class="wmd-button" id="wmd-hr-button"><span style="background-position: -180px -20px;"></span></li><li style="left: 300px;" class="wmd-spacer" id="wmd-spacer3"><span style="background-position: -200px -20px;"></span></li><li style="left: 325px;" class="wmd-button" id="wmd-undo-button"><span style="background-position: -200px -20px;"></span></li><li style="left: 350px;" class="wmd-button" id="wmd-redo-button"><span style="background-position: -220px -20px;"></span></li></ul></div>
+            <textarea id="wmd-input" class="wmd-input" name="post-text" cols="92" rows="15" tabindex="101" data-min-length=""></textarea>
+        </div>
+    </div>
+
+    <div class="fl" style="margin-top: 8px; height: 24px;">&nbsp;</div>
+    <div id="draft-saved" class="draft-saved community-option fl" style="margin-top: 8px; height: 24px; display: none;">draft saved</div>
+
+    <div id="draft-discarded" class="draft-discarded community-option fl" style="margin-top: 8px; height: 24px; display: none;">draft discarded</div>
+
+
+
+    <div id="wmd-preview" class="wmd-preview"></div>
+    <div></div>
+    <div class="edit-block">
+        <input id="fkey" name="fkey" value="a625a401e3af43cbd0c743341194ae37" type="hidden">
+        <input id="author" name="author" type="text">
+    </div>
+
+
+
+</div>
+							<div style="position: relative;">
+								
+								            <div class="form-item new-post-login">
+        
+                <div class="new-login-form">
+                    <div class="new-login-left">
+                        <h3>Sign up or <a id="login-link" href="http://stackoverflow.com/users/login?ssrc=question_page&amp;returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f10105203%2fhow-can-i-limit-the-cache-used-by-copying-so-there-is-still-memory-available-for%23new-answer">log in</a></h3>
+                        
+                        <div class="preferred-login google-login">
+                            <p><span class="icon"></span><span>Sign up using Google</span></p>
+                        </div>
+                        <div class="preferred-login facebook-login">
+                            <p><span class="icon"></span><span>Sign up using Facebook</span></p>
+                        </div>
+                        <div class="preferred-login stackexchange-login">
+                            <p><span class="icon"></span><span>Sign up using Email and Password</span></p>
+                        </div>
+                    </div>
+                    <input name="manual-openid" class="manual-openid" type="hidden">
+                    <input name="use-facebook" class="use-facebook" value="false" type="hidden">
+                    <input name="use-google" class="use-google" value="false" type="hidden">
+                    <input class="submit-openid" value="Submit" style="display: none;" type="button">
+                    <div class="new-login-right">
+                                <h3>Post as a guest</h3>
+    <div class="form-item">
+        <table>
+        <tbody><tr>
+                    <td class="vm">
+                <div>
+                    <label for="display-name">Name</label>
+                    <input id="display-name" name="display-name" size="30" maxlength="30" value="" tabindex="105" type="text">
+                </div>
+                <div>
+                    <label for="m-address">Email</label>
+                    <input id="m-address" name="m-address" size="30" maxlength="100" value="" tabindex="106" placeholder="required, but never shown" type="email">
+                </div>
+            </td>
+        </tr>
+        </tbody></table>
+    </div>
+
+                    </div>
+                </div>
+            </div>
+            
+            
+
+							</div>
+           
+															<div class="form-submit cbt">
+									<input id="submit-button" value="Post Your Answer" tabindex="110" type="submit">
+									<a href="#" class="btn-clear discard-answer dno">discard</a>
+
+<p class="privacy-policy-agreement">
+By posting your answer, you agree to the <a href="http://stackexchange.com/legal/privacy-policy" target="_blank">privacy policy</a> and <a href="http://stackexchange.com/legal/terms-of-service" target="_blank">terms of service</a>.</p>
+<input name="legalLinksShown" value="1" type="hidden">								</div>
+						</form>
+
+
+
+						<h2 class="bottom-notice" data-loc="1">
+Not the answer you're looking for?							Browse other questions tagged <a href="http://stackoverflow.com/questions/tagged/linux" class="post-tag" title="show questions tagged 'linux'" rel="tag">linux</a> <a href="http://stackoverflow.com/questions/tagged/caching" class="post-tag" title="show questions tagged 'caching'" rel="tag">caching</a> <a href="http://stackoverflow.com/questions/tagged/filesystems" class="post-tag" title="show questions tagged 'filesystems'" rel="tag">filesystems</a> <a href="http://stackoverflow.com/questions/tagged/usb" class="post-tag" title="show questions tagged 'usb'" rel="tag">usb</a> <a href="http://stackoverflow.com/questions/tagged/file-copying" class="post-tag" title="show questions tagged 'file-copying'" rel="tag">file-copying</a>  or <a href="http://stackoverflow.com/questions/ask">ask your own question</a>.						</h2>
+			</div>
+		</div>
+				<div id="sidebar" class="show-votes">
+						    <div class="module question-stats">
+			        <table id="qinfo">
+			            <tbody><tr>
+			                <td>
+			                    <p class="label-key">asked</p>
+			                </td>
+			                <td style="padding-left: 10px;">
+			                    <p class="label-key" title="2012-04-11 11:42:15Z"><b>4 years ago</b></p>
+			                </td>
+			            </tr>
+			            <tr>
+			                <td>
+			                    <p class="label-key">viewed</p>
+			                </td>
+
+			                <td style="padding-left: 10px;">
+			                    <p class="label-key">
+			                        <b>12576 times</b>
+			                    </p>
+			                </td>
+			            </tr>
+			                <tr>
+			                    <td>
+			                        <p class="label-key">active</p>
+			                    </td>
+			                    <td style="padding-left: 10px;">
+			                        <p class="label-key"><b><a href="http://stackoverflow.com/questions/10105203/how-can-i-limit-the-cache-used-by-copying-so-there-is-still-memory-available-for?lastactivity" class="lastactivity-link" title="2013-12-28 18:16:06Z">2 years ago</a></b></p>
+			                    </td>
+			                </tr>
+			        </tbody></table>
+			    </div>
+						
+			
+            <div class="everyonelovesstackoverflow" id="adzerk478644637"></div>
+            <div id="hireme"></div>
+        
+			
+
+            <div class="module sidebar-linked">
+	<h4 id="h-linked">Linked</h4>
+	<div class="linked" data-tracker="lq=1">
+
+<div class="spacer">
+	<a href="http://stackoverflow.com/q/21577053?lq=1" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">4</div>
+	</a>
+	<a href="http://stackoverflow.com/questions/21577053/prevent-backup-reads-from-getting-into-linux-page-cache?noredirect=1&amp;lq=1" class="question-hyperlink">Prevent backup reads from getting into linux page cache</a>
+</div>			</div>
+</div>
+
+				<div class="module sidebar-related">
+					<h4 id="h-related">Related</h4>
+                    <div class="related js-gps-related-questions" data-tracker="rq=1">
+                        <div class="spacer js-gps-track"><a href="http://stackoverflow.com/q/48679?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted default">6</div></a><a href="http://stackoverflow.com/questions/48679/copy-a-file-without-using-the-windows-file-cache?rq=1" class="question-hyperlink">Copy a file without using the windows file cache</a></div><div class="spacer js-gps-track"><a href="http://stackoverflow.com/q/123198?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted large">771</div></a><a href="http://stackoverflow.com/questions/123198/how-do-i-copy-a-file-in-python?rq=1" class="question-hyperlink">How do I copy a file in python?</a></div><div class="spacer js-gps-track"><a href="http://stackoverflow.com/q/690805?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted default">10</div></a><a href="http://stackoverflow.com/questions/690805/any-java-caches-that-can-limit-memory-usage-of-in-memory-cache-not-just-instanc?rq=1" class="question-hyperlink">Any Java caches that can limit memory usage of in-memory cache, not just instance count?</a></div><div class="spacer js-gps-track"><a href="http://stackoverflow.com/q/2193953?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted extra-large">2514</div></a><a href="http://stackoverflow.com/questions/2193953/flash-cs4-refuses-to-let-go?rq=1" class="question-hyperlink">Flash CS4 refuses to let go</a></div><div class="spacer js-gps-track"><a href="http://stackoverflow.com/q/4656484?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted default">-2</div></a><a href="http://stackoverflow.com/questions/4656484/how-can-i-dump-a-fat32-file-system-in-a-usb-in-windows-linux-platform?rq=1" class="question-hyperlink">How can i dump a FAT32 file system in a USB in windows / Linux platform?</a></div><div class="spacer js-gps-track"><a href="http://stackoverflow.com/q/14657035?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes default">3</div></a><a href="http://stackoverflow.com/questions/14657035/linux-kernel-module-oom-when-there-is-memory-in-cache?rq=1" class="question-hyperlink">Linux kernel module OOM when there is memory in cache</a></div><div class="spacer js-gps-track"><a href="http://stackoverflow.com/q/19005253?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes default">0</div></a><a href="http://stackoverflow.com/questions/19005253/copying-html-file-also-copies-the-related-files-to-it-stored-in-files-folder-ca?rq=1" class="question-hyperlink">Copying HTML file also copies the related files to it stored in _files folder can it be done for other type of files?</a></div><div class="spacer js-gps-track"><a href="http://stackoverflow.com/q/25144290?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted default">0</div></a><a href="http://stackoverflow.com/questions/25144290/stack-cache-misses-and-virtual-memory?rq=1" class="question-hyperlink">stack, cache misses and virtual memory</a></div><div class="spacer js-gps-track"><a href="http://stackoverflow.com/q/30630001?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted default">0</div></a><a href="http://stackoverflow.com/questions/30630001/how-to-measure-cache-performance?rq=1" class="question-hyperlink">How to measure cache performance?</a></div><div class="spacer js-gps-track"><a href="http://stackoverflow.com/q/33546269?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes default">2</div></a><a href="http://stackoverflow.com/questions/33546269/how-can-beaglebone-black-be-used-as-mass-storage-device?rq=1" class="question-hyperlink">How can BeagleBone Black be used as Mass Storage Device?</a></div>
+                    </div>
+				</div>
+            
+<div id="hot-network-questions" class="module">
+    <h4>
+        <a href="http://stackexchange.com/questions?tab=hot" class="js-gps-track" data-gps-track="posts_hot_network.click({ item_type:1, location:11 })">
+            Hot Network Questions
+        </a>
+    </h4>
+    <ul>
+            <li>
+                <div class="favicon favicon-rpg" title="Role-playing Games Stack Exchange"></div><a href="http://rpg.stackexchange.com/questions/86702/what-is-a-plot-hook-exactly" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:122 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What is a plot hook, exactly?
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-money" title="Personal Finance &amp; Money Stack Exchange"></div><a href="http://money.stackexchange.com/questions/69546/how-to-split-rent-utilities-fairly" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:93 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How to split rent/utilities fairly
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-academia" title="Academia Stack Exchange"></div><a href="http://academia.stackexchange.com/questions/75197/is-it-a-breach-of-protocol-to-contact-people-higher-in-the-academic-hierarchy-fo" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:415 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Is it a breach of protocol to contact people higher in the academic hierarchy for social reasons?
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-mathematica" title="Mathematica Stack Exchange"></div><a href="http://mathematica.stackexchange.com/questions/123958/horizontal-line-filling-with-listplot" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:387 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Horizontal line filling with ListPlot
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-english" title="English Language &amp; Usage Stack Exchange"></div><a href="http://english.stackexchange.com/questions/342965/does-i-am-eating-vegan-cheese-in-my-underpants-really-imply-that-the-vegan-che" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:97 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Does "I am eating vegan cheese in my underpants" really imply that the vegan cheese is inside my underpants?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-english" title="English Language &amp; Usage Stack Exchange"></div><a href="http://english.stackexchange.com/questions/343006/does-the-arc-have-to-do-with-the-evolution-of-justice" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:97 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Does the arc have to do with the evolution of justice
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-ell" title="English Language Learners Stack Exchange"></div><a href="http://ell.stackexchange.com/questions/100663/some-of-you-will-have-met-me-before-vs-some-of-you-met-me-before" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:481 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Some of you will have met me before vs Some of you met me before
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-scifi" title="Science Fiction &amp; Fantasy Stack Exchange"></div><a href="http://scifi.stackexchange.com/questions/138067/what-is-a-trial-of-seven" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:186 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What is a Trial of Seven?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-mathematica" title="Mathematica Stack Exchange"></div><a href="http://mathematica.stackexchange.com/questions/124030/how-to-swap-2-colors-in-a-graphbullets" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:387 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How to swap 2 colors in a graph(bullets)?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-startups" title="Startups Stack Exchange"></div><a href="http://startups.stackexchange.com/questions/10933/what-recourse-should-i-offer-my-client-if-we-lose-user-data" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:573 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What recourse should I offer my client if we lose user data?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-mathoverflow" title="MathOverflow"></div><a href="http://mathoverflow.net/questions/247627/the-automorphism-of-a-group-with-a-given-fixed-point-set" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:504 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    The automorphism of a group with a given fixed point set
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-programmers" title="Programmers Stack Exchange"></div><a href="http://programmers.stackexchange.com/questions/328458/is-it-good-practice-to-always-have-an-autoincrement-integer-primary-key" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:131 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Is it good practice to always have an autoincrement integer primary key?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-math" title="Mathematics Stack Exchange"></div><a href="http://math.stackexchange.com/questions/1893559/why-arent-all-square-roots-irrational" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:69 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why aren't all square roots irrational?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-codegolf" title="Programming Puzzles &amp; Code Golf Stack Exchange"></div><a href="http://codegolf.stackexchange.com/questions/89952/alphabet-to-number" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:200 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Alphabet to number
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-math" title="Mathematics Stack Exchange"></div><a href="http://math.stackexchange.com/questions/1889760/example-of-a-very-simple-math-statement-in-old-literature-which-is-verbatim-a" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:69 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Example of a very simple math statement in old literature which is (verbatim) a pain to understand
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-parenting" title="Parenting Stack Exchange"></div><a href="http://parenting.stackexchange.com/questions/26824/3-year-old-boy-co-sleeps-kicks-and-hits-us-in-sleep" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:228 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    3 year old boy co sleeps - kicks and hits us in sleep
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-law" title="Law Stack Exchange"></div><a href="http://law.stackexchange.com/questions/13399/which-part-of-the-us-constitution-protects-the-life-and-safety-of-us-citizens" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:617 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Which part of the US constitution protects the life and safety of US citizens?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-academia" title="Academia Stack Exchange"></div><a href="http://academia.stackexchange.com/questions/75231/can-a-personal-meeting-with-a-scientist-be-referenced" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:415 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Can a personal meeting with a scientist be referenced?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-codegolf" title="Programming Puzzles &amp; Code Golf Stack Exchange"></div><a href="http://codegolf.stackexchange.com/questions/89944/how-many-lights-are-on" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:200 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How many lights are on?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-math" title="Mathematics Stack Exchange"></div><a href="http://math.stackexchange.com/questions/1893712/which-of-these-sets-are-equal" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:69 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Which of these sets are equal?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-puzzling" title="Puzzling Stack Exchange"></div><a href="http://puzzling.stackexchange.com/questions/40616/from-below-to-time-of-need" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:559 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    From below to time of need
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-superuser" title="Super User"></div><a href="http://superuser.com/questions/1113578/open-with-on-multiple-files" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:3 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Open With on multiple files?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-unix" title="Unix &amp; Linux Stack Exchange"></div><a href="http://unix.stackexchange.com/questions/303669/trying-to-use-pwd-inside-an-alias-giving-unexpected-results" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:106 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Trying to use `pwd` inside an alias giving unexpected results
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-codegolf" title="Programming Puzzles &amp; Code Golf Stack Exchange"></div><a href="http://codegolf.stackexchange.com/questions/89919/quick-golf-the-gold-leader" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:200 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Quick Golf: The Gold Leader
+                </a>
+
+            </li>
+    </ul>
+
+        
+</div>
+		</div>
+	
+<div id="feed-link">
+    <div id="feed-link-text">
+        <a href="http://stackoverflow.com/feeds/question/10105203" title="feed of this question and its answers">
+            <span class="feed-icon"></span>question feed
+        </a>
+    </div>
+</div>	
+<div style="display: none;" id="prettify-lang"></div></div>
+
+
+        </div>
+    </div>
+    <div id="footer" class="categories">
+        <div class="footerwrap">            
+            <div id="footer-menu">
+                <div class="top-footer-links">
+                    <a href="http://stackoverflow.com/company/about">about us</a>
+                        <a href="http://stackoverflow.com/tour">tour</a>
+                    <a href="http://stackoverflow.com/help">help</a>
+                    <a href="http://blog.stackoverflow.com/?blb=1">blog</a>
+                        <a href="http://chat.stackoverflow.com/">chat</a>
+                    <a href="http://data.stackexchange.com/">data</a>
+                    <a href="http://stackexchange.com/legal">legal</a>
+                    <a href="http://stackexchange.com/legal/privacy-policy">privacy policy</a>
+                    <a href="http://stackoverflow.com/company/work-here">work here</a>
+                    <a href="http://stackexchange.com/mediakit">advertising info</a>
+
+                    <a>mobile</a>
+                    <b><a href="http://stackoverflow.com/contact">contact us</a></b>
+                        <b><a href="http://meta.stackoverflow.com/">feedback</a></b>
+                    
+                </div>
+                <div id="footer-sites">
+                    <table>
+    <tbody><tr>
+            <th colspan="3">
+                Technology
+            </th>
+            <th>
+                Life / Arts
+            </th>
+            <th>
+                Culture / Recreation
+            </th>
+            <th>
+                Science
+            </th>
+            <th>
+                Other
+            </th>
+    </tr>
+    <tr>
+            <td>
+                <ol>
+                        <li><a href="http://stackoverflow.com/" title="professional and enthusiast programmers">Stack Overflow</a></li>
+                        <li><a href="http://serverfault.com/" title="system and network administrators">Server Fault</a></li>
+                        <li><a href="http://superuser.com/" title="computer enthusiasts and power users">Super User</a></li>
+                        <li><a href="http://webapps.stackexchange.com/" title="power users of web applications">Web Applications</a></li>
+                        <li><a href="http://askubuntu.com/" title="Ubuntu users and developers">Ask Ubuntu</a></li>
+                        <li><a href="http://webmasters.stackexchange.com/" title="pro webmasters">Webmasters</a></li>
+                        <li><a href="http://gamedev.stackexchange.com/" title="professional and independent game developers">Game Development</a></li>
+                        <li><a href="http://tex.stackexchange.com/" title="users of TeX, LaTeX, ConTeXt, and related typesetting systems">TeX - LaTeX</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="http://programmers.stackexchange.com/" title="professional programmers interested in conceptual questions about software development">Programmers</a></li>
+                        <li><a href="http://unix.stackexchange.com/" title="users of Linux, FreeBSD and other Un*x-like operating systems">Unix &amp; Linux</a></li>
+                        <li><a href="http://apple.stackexchange.com/" title="power users of Apple hardware and software">Ask Different (Apple)</a></li>
+                        <li><a href="http://wordpress.stackexchange.com/" title="WordPress developers and administrators">WordPress Development</a></li>
+                        <li><a href="http://gis.stackexchange.com/" title="cartographers, geographers and GIS professionals">Geographic Information Systems</a></li>
+                        <li><a href="http://electronics.stackexchange.com/" title="electronics and electrical engineering professionals, students, and enthusiasts">Electrical Engineering</a></li>
+                        <li><a href="http://android.stackexchange.com/" title="enthusiasts and power users of the Android operating system">Android Enthusiasts</a></li>
+                        <li><a href="http://security.stackexchange.com/" title="information security professionals">Information Security</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="http://dba.stackexchange.com/" title="database professionals who wish to improve their database skills and learn from others in the community">Database Administrators</a></li>
+                        <li><a href="http://drupal.stackexchange.com/" title="Drupal developers and administrators">Drupal Answers</a></li>
+                        <li><a href="http://sharepoint.stackexchange.com/" title="SharePoint enthusiasts">SharePoint</a></li>
+                        <li><a href="http://ux.stackexchange.com/" title="user experience researchers and experts">User Experience</a></li>
+                        <li><a href="http://mathematica.stackexchange.com/" title="users of Mathematica">Mathematica</a></li>
+                        <li><a href="http://salesforce.stackexchange.com/" title="Salesforce administrators, implementation experts, developers and anybody in-between">Salesforce</a></li>
+                        <li><a href="http://expressionengine.stackexchange.com/" title="administrators, end users, developers and designers for ExpressionEngine® CMS">ExpressionEngine® Answers</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#technology" class="more">
+                                more (13)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://photo.stackexchange.com/" title="professional, enthusiast and amateur photographers">Photography</a></li>
+                        <li><a href="http://scifi.stackexchange.com/" title="science fiction and fantasy enthusiasts">Science Fiction &amp; Fantasy</a></li>
+                        <li><a href="http://graphicdesign.stackexchange.com/" title="Graphic Design professionals, students, and enthusiasts">Graphic Design</a></li>
+                        <li><a href="http://movies.stackexchange.com/" title="movie and tv enthusiasts">Movies &amp; TV</a></li>
+                        <li><a href="http://cooking.stackexchange.com/" title="professional and amateur chefs">Seasoned Advice (cooking)</a></li>
+                        <li><a href="http://diy.stackexchange.com/" title="contractors and serious DIYers">Home Improvement</a></li>
+                        <li><a href="http://money.stackexchange.com/" title="people who want to be financially literate">Personal Finance &amp; Money</a></li>
+                        <li><a href="http://academia.stackexchange.com/" title="academics and those enrolled in higher education">Academia</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#lifearts" class="more">
+                                more (9)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://english.stackexchange.com/" title="linguists, etymologists, and serious English language enthusiasts">English Language &amp; Usage</a></li>
+                        <li><a href="http://skeptics.stackexchange.com/" title="scientific skepticism">Skeptics</a></li>
+                        <li><a href="http://judaism.stackexchange.com/" title="those who base their lives on Jewish law and tradition and anyone interested in learning more">Mi Yodeya (Judaism)</a></li>
+                        <li><a href="http://travel.stackexchange.com/" title="road warriors and seasoned travelers">Travel</a></li>
+                        <li><a href="http://christianity.stackexchange.com/" title="committed Christians, experts in Christianity and those interested in learning more">Christianity</a></li>
+                        <li><a href="http://gaming.stackexchange.com/" title="passionate videogamers on all platforms">Arqade (gaming)</a></li>
+                        <li><a href="http://bicycles.stackexchange.com/" title="people who build and repair bicycles, people who train cycling, or commute on bicycles">Bicycles</a></li>
+                        <li><a href="http://rpg.stackexchange.com/" title="gamemasters and players of tabletop, paper-and-pencil role-playing games">Role-playing Games</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#culturerecreation" class="more">
+                                more (21)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://math.stackexchange.com/" title="people studying math at any level and professionals in related fields">Mathematics</a></li>
+                        <li><a href="http://stats.stackexchange.com/" title="people interested in statistics, machine learning, data analysis, data mining, and data visualization">Cross Validated (stats)</a></li>
+                        <li><a href="http://cstheory.stackexchange.com/" title="theoretical computer scientists and researchers in related fields">Theoretical Computer Science</a></li>
+                        <li><a href="http://physics.stackexchange.com/" title="active researchers, academics and students of physics">Physics</a></li>
+                        <li><a href="http://mathoverflow.net/" title="professional mathematicians">MathOverflow</a></li>
+                        <li><a href="http://chemistry.stackexchange.com/" title="scientists, academics, teachers and students">Chemistry</a></li>
+                        <li><a href="http://biology.stackexchange.com/" title="biology researchers, academics, and students">Biology</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#science" class="more">
+                                more (5)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://stackapps.com/" title="apps, scripts, and development with the Stack Exchange API">Stack Apps</a></li>
+                        <li><a href="http://meta.stackexchange.com/" title="meta-discussion of the Stack Exchange family of Q&amp;A websites">Meta Stack Exchange</a></li>
+                        <li><a href="http://area51.stackexchange.com/" title="proposing new sites in the Stack Exchange network">Area 51</a></li>
+                        <li><a href="http://careers.stackoverflow.com/">Stack Overflow Careers</a></li>
+                    
+                </ol>
+            </td>
+    </tr>
+</tbody></table>
+                </div>
+            </div>
+            <div id="copyright">
+                site design / logo © 2016 Stack Exchange Inc; user contributions licensed under <a href="https://creativecommons.org/licenses/by-sa/3.0/" rel="license">cc by-sa 3.0</a> 
+                with <a href="http://blog.stackoverflow.com/2009/06/attribution-required/" rel="license">attribution required</a>
+            </div>
+            <div id="svnrev">
+                rev 2016.8.16.3895
+            </div>
+                </div>
+    </div>
+    
+
+
+
+    
+        
+    
+            
+    
+<img style="display: none;" src="to.gif"></body>
+</html>

@@ -1,0 +1,11 @@
+id	20160816191138
+create	20160816191138
+modify	20160816191138
+type	
+title	Feh/nocache: minimize caching effects
+chars	UTF-8
+icon	favicon.ico
+source	https://github.com/Feh/nocache
+comment	
+lock	
+folder	linux cache

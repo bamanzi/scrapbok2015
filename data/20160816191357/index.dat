@@ -1,0 +1,11 @@
+id	20160816191357
+create	20160816191357
+modify	20160816191357
+type	
+title	5.5. 调整虚拟内存
+chars	UTF-8
+icon	favicon.ico
+source	https://access.redhat.com/documentation/zh-CN/Red_Hat_Enterprise_Linux/6/html/Performance_Tuning_Guide/s-memory-tunables.html
+comment	
+lock	
+folder	linux cache

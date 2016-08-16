@@ -1,0 +1,474 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="zh-CN" xml:lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml" class="dj_gecko dj_contentbox">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Linux 内核的文件 Cache 管理机制介绍</title>
+<link rel="schema.DC" href="http://purl.org/DC/elements/1.0/">
+<link rel="SHORTCUT ICON" href="favicon.ico">
+<meta name="DC.Rights" content="© Copyright&nbsp;IBM Corporation&nbsp;2006">
+<meta name="Keywords" content="Linux, 内核, Cache, 周应超, tttlca">
+<meta name="DC.Date" scheme="iso8601" content="2006-05-11">
+<meta name="Source" content="v17 delivery:developerWorks">
+<meta name="Security" content="Public">
+<meta name="Abstract" content="文件 Cache 管理是 Linux 内核中一个很重要并且较难理解的组成部分。本文详细介绍了 Linux 内核中文件 Cache 管理的各个方面，希望能够对开发者理解相关代码有所帮助。">
+<meta name="Description" content="文件 Cache 管理是 Linux 内核中一个很重要并且较难理解的组成部分。本文详细介绍了 Linux 内核中文件 Cache 管理的各个方面，希望能够对开发者理解相关代码有所帮助。">
+<meta name="IBM.Effective" scheme="W3CDTF" content="2006-05-11">
+<meta name="Owner" content="developerWorks/China/IBM">
+<meta name="DC.Language" scheme="rfc1766" content="zh-CN">
+<meta name="IBM.SpecialPurpose" content="SP001">
+<meta name="IBM.Country" content="CN">
+<meta name="Robots" content="index,follow">
+<meta name="DC.Type" scheme="IBM_ContentClassTaxonomy" content="CT316">
+<meta name="DC.Subject" scheme="IBM_SubjectTaxonomy" content="SWGC0">
+<meta name="dW.ContentArea" content="2">
+<meta name="dW.Topic" content="87">
+
+<meta scheme="IBM_WTMCategory" name="IBM.WTMCategory" content="SOFDCLNXCN">
+
+<link rel="canonical" href="http://www.ibm.com/developerworks/cn/linux/l-cache/index.html">
+<!-- HEADER_SCRIPTS_AND_CSS_INCLUDE -->
+
+
+<!-- Masthead/footer -->
+
+
+
+
+        
+<!-- BEGIN: Use this section to set page specific variables for the Unica Page Tag -->
+
+<!--END -->
+
+   
+
+  <!-- LEADSPACE_STYLES -->
+
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body aria-busy="false" class="v17" id="ibm-com">
+
+	<div style="margin-top: 0px;" id="ibm-top" class="ibm-landing-page ibm-no-scroll"><img src="ibm_logo_print.png" id="ibm-print-masthead" alt="IBM Print" width="43" height="15">
+
+<!-- MASTHEAD_BEGIN -->		
+<div role="banner" id="ibm-masthead">
+
+    <!-- TOP ROW -->    
+	<div id="dw-masthead-top-row">
+		<ul id="ibm-mast-options-dw" role="toolbar" aria-label="Masthead navigation">
+			<li id="dw-mast-top-4" role="presentation">
+				<a href="http://www.ibm.com/developerworks/cn/" tabindex="0"><img src="dwn-dw-badge.png" alt="dW" aria-label="dW" width="43" height="22"></a>
+			</li>
+			<li id="dw-mast-top-0" role="presentation">
+				<div id="dw-mast-signin">
+					<a id="dw-mf-signin-link" class="" href="https://www.ibm.com/developerworks/dwwi/jsp/ssologin.jsp?d=https%3A%2F%2Fwww.ibm.com%2Fdeveloperworks%2Fcn%2Flinux%2Fl-cache%2F&amp;lang=zh_CN&amp;a=dwmav" title="" tabindex="2">登录</a>
+					<span class="dw-mf-signin-spacer">|</span>
+					<a id="dw-mf-reg-link" class="" href="https://www.ibm.com/developerworks/dwwi/jsp/ssoregister.jsp?d=https%3A%2F%2Fwww.ibm.com%2Fdeveloperworks%2Fcn%2Flinux%2Fl-cache%2F&amp;lang=zh_CN&amp;a=dwmav" title="" tabindex="3">注册</a>
+				</div>
+				<div id="dw-mast-auth-link" class="dw-mf-hide">
+					<a class="authenticated ibm-active" href="#" role="button" tabindex="2"></a>
+					<ul id="dw-mast-auth-menu" class="dw-mf-hide">
+						<li class="dw-mast-auth-menu-title" aria-hidden="true">developerWorks 社区</li>
+						<li>
+							<span class="dw-mast-auth-menu-arrow" aria-hidden="true">›</span><a href="https://www.ibm.com/developerworks/community/profiles/html/myProfileView.do?lang=zh" tabindex="3">我的概要信息</a>
+						</li>
+						<li>
+							<span class="dw-mast-auth-menu-arrow" aria-hidden="true">›</span><a href="https://www.ibm.com/developerworks/community/groups/service/html/mycommunities?lang=zh" tabindex="4">我的社区</a>
+						</li>
+						<li>
+							<span class="dw-mast-auth-menu-arrow" aria-hidden="true">›</span><a href="https://www.ibm.com/developerworks/community/news/?lang=zh" tabindex="5">设置</a>
+						</li>
+						<li class="dw-mast-auth-menu-divider"><hr></li>
+						<li>
+							<span class="dw-mast-auth-menu-arrow" aria-hidden="true">›</span><a id="dw-mast-signout-link" href="https://www.ibm.com/developerworks/dwwi/jsp/ssologout.jsp?d=http%3A%2F%2Fwww.ibm.com%2Fdeveloperworks%2Fcn%2F&amp;a=dwmav" tabindex="6">退出</a>
+						</li>
+					</ul>				
+				</div>
+			</li>
+			<li id="dw-mast-top-1">
+				<div></div>
+			</li>
+			<li id="dw-mast-top-3" role="presentation">
+				<a href="http://www.ibm.com/cn/zh/" tabindex="1">IBM</a>
+			</li>
+		</ul>
+	</div>
+
+    <!-- BOTTOM ROW -->
+	<div id="ibm-universal-nav-dw" aria-label="Site map">
+		<ul id="ibm-unav-links-dw">
+			<li id="ibm-unav-home-dwlogo">
+				<a href="http://www.ibm.com/developerworks/cn/"><img src="dwn-dw-wordmark.png" alt="developerWorks®" width="225" height="28"></a>
+			</li>
+		</ul>
+		<ul id="ibm-menu-links-dw" class="ibm-menu-links-dw-cn" role="toolbar" aria-label="Site map">
+			<li id="dw-mast-nav-0" role="presentation"><a href="http://www.ibm.com/developerworks/cn/topics/" tabindex="0">技术主题</a></li>
+			<li id="dw-mast-nav-1" role="presentation"><a href="http://www.ibm.com/developerworks/cn/downloads/" tabindex="0">软件下载</a></li>
+			<li id="dw-mast-nav-2" role="presentation"><a href="http://www.ibm.com/developerworks/community/?lang=zh" tabindex="0">社区</a></li>
+			<li id="dw-mast-nav-3" role="presentation"><a href="https://www.ibm.com/developerworks/community/groups/service/html/communityview?communityUuid=6d7f9e5d-5f89-4767-a006-a81b8d186370&amp;lang=zh" tabindex="0">技术讲座</a></li>
+		</ul>
+		<form id="ibm-search-form" action="https://www.ibm.com/search/csass/search/" method="get" name="form1" aria-label="搜索 developerWorks" role="search">
+			<p>
+				<label for="q"><span class="ibm-access">搜索 developerWorks</span></label>
+				<input id="q" name="q" value="搜索 developerWorks" maxlength="100" type="text">
+				<input name="sn" value="dw" type="hidden">
+				<input name="lang" value="zh" type="hidden">
+				<input name="cc" value="CN" type="hidden">
+				<input name="en" value="utf" type="hidden">
+				<input name="hpp" value="20" type="hidden">
+				<input name="dws" value="cndw" type="hidden">
+				<input name="lo" value="zh" type="hidden">
+				<input id="ibm-search" class="ibm-btn-search" value="提交" type="submit">
+			</p>
+		</form>
+	</div>    
+	
+<div aria-label="社交工具" role="navigation" style="display: block;" id="ibm-social-tools"><ul aria-label="Social tool list" role="toolbar"><li><a tabindex="0" role="button" dojoattrid="0" rel="print" href="#" title="打印本页面" class="ibm-share-print">打印本页面</a></li><li><a tabindex="-1" role="button" dojoattrid="1" rel="email" href="#" title="用电子邮件发送本页面" class="ibm-share-email">用电子邮件发送本页面</a></li><li></li><li></li><li><a class="ibm-share-weibo" tabindex="-1" role="button" dojoattrid="2" rel="新浪微博" title="新浪微博" href="http://service.weibo.com/share/share.php?title=Linux%20%E5%86%85%E6%A0%B8%E7%9A%84%E6%96%87%E4%BB%B6%20Cache%20%E7%AE%A1%E7%90%86%E6%9C%BA%E5%88%B6%E4%BB%8B%E7%BB%8D&amp;url=https%3A%2F%2Fwww.ibm.com%2Fdeveloperworks%2Fcn%2Flinux%2Fl-cache%2F&amp;language=zh_cn">新浪微博</a></li><li><a class="ibm-share-renren" tabindex="-1" role="button" dojoattrid="3" rel="人人网" title="人人网" href="http://share.renren.com/share/buttonshare?title=Linux%20%E5%86%85%E6%A0%B8%E7%9A%84%E6%96%87%E4%BB%B6%20Cache%20%E7%AE%A1%E7%90%86%E6%9C%BA%E5%88%B6%E4%BB%8B%E7%BB%8D&amp;link=https%3A%2F%2Fwww.ibm.com%2Fdeveloperworks%2Fcn%2Flinux%2Fl-cache%2F">人人网</a></li><li><a class="dwcn-tencent-link" tabindex="-1" role="button" dojoattrid="4" rel="腾讯微博" title="腾讯微博" href="http://v.t.qq.com/share/share.php?title=Linux%20%E5%86%85%E6%A0%B8%E7%9A%84%E6%96%87%E4%BB%B6%20Cache%20%E7%AE%A1%E7%90%86%E6%9C%BA%E5%88%B6%E4%BB%8B%E7%BB%8D&amp;url=https%3A%2F%2Fwww.ibm.com%2Fdeveloperworks%2Fcn%2Flinux%2Fl-cache%2F">腾讯微博</a></li><li><a class="dwcn-sohu-link" tabindex="-1" role="button" dojoattrid="5" rel="搜狐微博" title="搜狐微博" href="http://t.sohu.com/third/post.jsp?title=Linux%20%E5%86%85%E6%A0%B8%E7%9A%84%E6%96%87%E4%BB%B6%20Cache%20%E7%AE%A1%E7%90%86%E6%9C%BA%E5%88%B6%E4%BB%8B%E7%BB%8D%20&amp;link=https%3A%2F%2Fwww.ibm.com%2Fdeveloperworks%2Fcn%2Flinux%2Fl-cache%2F">搜狐微博</a></li><li><a class="dwcn-netease-link" tabindex="-1" role="button" dojoattrid="6" rel="网易微博" title="网易微博" href="http://t.163.com/article/user/checkLogin.do?info=Linux%20%E5%86%85%E6%A0%B8%E7%9A%84%E6%96%87%E4%BB%B6%20Cache%20%E7%AE%A1%E7%90%86%E6%9C%BA%E5%88%B6%E4%BB%8B%E7%BB%8D%20https%3A%2F%2Fwww.ibm.com%2Fdeveloperworks%2Fcn%2Flinux%2Fl-cache%2F">网易微博</a></li><li><a class="ibm-share-digg" title="Digg" href="http://digg.com/submit?phase=2&amp;url=https%3A%2F%2Fwww.ibm.com%2Fdeveloperworks%2Fcn%2Flinux%2Fl-cache%2F&amp;title=Linux%20%E5%86%85%E6%A0%B8%E7%9A%84%E6%96%87%E4%BB%B6%20Cache%20%E7%AE%A1%E7%90%86%E6%9C%BA%E5%88%B6%E4%BB%8B%E7%BB%8D" rel="digg" dojoattrid="7" role="button" tabindex="-1">Digg</a></li><li><a class="ibm-share-facebook" title="Facebook" href="http://www.facebook.com/sharer.php?u=https%3A%2F%2Fwww.ibm.com%2Fdeveloperworks%2Fcn%2Flinux%2Fl-cache%2F&amp;t=Linux%20%E5%86%85%E6%A0%B8%E7%9A%84%E6%96%87%E4%BB%B6%20Cache%20%E7%AE%A1%E7%90%86%E6%9C%BA%E5%88%B6%E4%BB%8B%E7%BB%8D" rel="facebook" dojoattrid="8" role="button" tabindex="-1">Facebook</a></li><li><a class="ibm-share-twitter" title="Twitter" href="http://twitter.com/?status=https%3A%2F%2Fwww.ibm.com%2Fdeveloperworks%2Fcn%2Flinux%2Fl-cache%2F%20-%20Linux%20%E5%86%85%E6%A0%B8%E7%9A%84%E6%96%87%E4%BB%B6%20Cache%20%E7%AE%A1%E7%90%86%E6%9C%BA%E5%88%B6%E4%BB%8B%E7%BB%8D" rel="twitter" dojoattrid="9" role="button" tabindex="-1">Twitter</a></li><li><a class="ibm-share-delicious" title="Delicious" href="http://delicious.com/post?url=https%3A%2F%2Fwww.ibm.com%2Fdeveloperworks%2Fcn%2Flinux%2Fl-cache%2F&amp;title=Linux%20%E5%86%85%E6%A0%B8%E7%9A%84%E6%96%87%E4%BB%B6%20Cache%20%E7%AE%A1%E7%90%86%E6%9C%BA%E5%88%B6%E4%BB%8B%E7%BB%8D" rel="delicious" dojoattrid="10" role="button" tabindex="-1">Delicious</a></li><li><a class="ibm-share-linkedin" title="Linked In" href="http://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Fwww.ibm.com%2Fdeveloperworks%2Fcn%2Flinux%2Fl-cache%2F&amp;title=Linux%20%E5%86%85%E6%A0%B8%E7%9A%84%E6%96%87%E4%BB%B6%20Cache%20%E7%AE%A1%E7%90%86%E6%9C%BA%E5%88%B6%E4%BB%8B%E7%BB%8D" rel="linkedin" dojoattrid="11" role="button" tabindex="-1">Linked In</a></li></ul></div></div>
+<div id="fdiv" class="ibm-access"></div><!-- MASTHEAD_END -->
+	    
+<!-- LAYOUT -->
+<!-- LEADSPACE_BEGIN --> 
+<div role="main" id="ibm-access-cntr"><div id="ibm-leadspace-head">
+	<!-- LEADSPACE_BODY_BEGIN --> 
+	<div id="ibm-leadspace-body">
+		<!-- Navigation_Trail_BEGIN -->
+      <ul aria-label="Bread Crumbs" role="directory" id="ibm-navigation-trail"><li><a href="http://www.ibm.com/developerworks/cn/">developerWorks 中国</a></li><li><a href="http://www.ibm.com/developerworks/cn/topics/">技术主题</a></li><li><a href="http://www.ibm.com/developerworks/cn/linux/">Linux</a></li><li><a href="http://www.ibm.com/developerworks/cn/views/linux/libraryview.jsp">文档库</a></li></ul>
+		<!-- END_Navigation_Trail -->
+			<!-- Title_Subtitle -->
+			<h1>Linux 内核的文件 Cache 管理机制介绍</h1>
+	</div>
+	<!-- LEADSPACE_BODY_END --> 
+	<!-- SUMMARY_BEGIN -->
+	<div id="dw-summary-area" class="dw-summary-columns">
+		<div class="ibm-col-6-4">
+		<p>文件 Cache 管理是 Linux 内核中一个很重要并且较难理解的组成部分。本文详细介绍了 Linux 内核中文件 Cache 管理的各个方面，希望能够对开发者理解相关代码有所帮助。</p>
+		<p class="ibm-no-print ibm-ind-link">
+
+			
+			<span id="nCmts"><span>2</span><img class="dw-cmts-arrow" alt="" src="dw-cmts-arrow.png" width="7" height="7"> <a href="#icomments" class="dw-cmt-link">评论</a></span>
+		</p>
+		</div>
+		<div class="ibm-col-6-2 dw-toc-margin">
+			<p class="dw-summary-author"><a role="button" href="#authorN10017" class="ibm-popup-link">超 周应</a> (<a href="mailto:zhou_ict@hotmail.com?subject=Linux%20%E5%86%85%E6%A0%B8%E7%9A%84%E6%96%87%E4%BB%B6%20Cache%20%E7%AE%A1%E7%90%86%E6%9C%BA%E5%88%B6%E4%BB%8B%E7%BB%8D">zhou_ict@hotmail.com</a>), 中科院计算所攻读博士学位</p>
+<div id="authorN10017" class="ibm-common-overlay"><div class="ibm-head"><p><a href="#close" class="ibm-common-overlay-close">关闭 [x]</a></p></div><div class="ibm-body"><div class="ibm-main"><div class="ibm-title"><!--this is where the h2 usually goes--></div><div class="ibm-container ibm-alternate"><div class="ibm-container-body">
+<p><!--.-->
+周应超，目前在中科院计算所攻读博士学位。主要从事 Linux 内核方面的研发。对于操作系统的高性能，高可用以及ROC计算有着浓厚的兴趣。可以通过 <a href="mailto:zhou_ict@hotmail.com">zhou_ict@hotmail.com</a>跟他联系。</p><br><br></div></div></div></div><div class="ibm-footer"><!----></div></div>
+			<p class="dw-summary-date">2006 年 5 月 11 日</p>
+			
+
+
+			<div aria-hidden="true" class="ibm-container" id="dw-toc"><div class="ibm-container-body"><ul class="ibm-twisty"><li><a href="#toggle" class="ibm-twisty-trigger ibm-twisty-trigger-closed"><img src="c.gif" alt="expand"></a><span class="ibm-twisty-head">内容</span><div style="display: none;" class="ibm-twisty-body"><ul style="font-size: 0.8em;" class="ibm-link-list">
+<li><a class="ibm-anchor-down-em-link" href="#N1002F">1	 前言</a></li>
+<li><a class="ibm-anchor-down-em-link" href="#N10038">2   操作系统和文件 Cache 管理</a></li>
+<li><a class="ibm-anchor-down-em-link" href="#N10045">2	文件 Cache 的地位和作用</a></li>
+<li><a class="ibm-anchor-down-em-link" href="#N1005A">3	文件 Cache 相关数据结构</a></li>
+<li><a class="ibm-anchor-down-em-link" href="#N10089">4	文件Cache的预读和替换</a></li>
+<li><a class="ibm-anchor-down-em-link" href="#N100A6">5	文件Cache相关API及其实现</a></li>
+<li><a class="ibm-anchor-down-em-link" href="#N100CB">6	小结</a></li>
+<li><a class="ibm-anchor-down-em-link" href="#resources">参考资料 </a></li>
+<li><a class="ibm-anchor-down-em-link" href="#icomments">评论</a></li></ul></div></li></ul></div></div>
+		</div>
+	</div>
+	<!-- SUMMARY_END -->
+</div><div id="ibm-pcon">
+
+<!-- BEGIN_IBM-CONTENT -->
+<div id="ibm-content">
+
+<!-- BEGIN_IBM-CONTENT-BODY -->
+<div id="ibm-content-body">
+
+<!-- BEGIN_IBM-CONTENT-MAIN -->
+<div id="ibm-content-main">
+
+<!-- 1_1_COLUMN_BEGIN -->
+<div class="ibm-columns">
+<div class="ibm-col-1-1"><div class="dw-article-sidebar dw-bluemix" id="dwc-exp-a"><img src="bluemix-graphic.png" alt="" width="64" height="64"><p>在 IBM Bluemix 云平台上开发并部署您的下一个应用。</p><p class="ibm-button-link-alternate dw-button-green"><a id="tutc-sbar-bmix-home-btn-ABa" href="https://developer.ibm.com/sso/bmregistration?lang=zh_CN&amp;ca=dwchina-_-bluemix-_-l-cache-_-sidebar" class="dw-button-large">开始您的试用</a></p></div>
+
+<h2 id="N1002F">1	 前言</h2><p>自从诞生以来，Linux 就被不断完善和普及，目前它已经成为主流通用操作系统之一，使用得非常广泛，它与 Windows、UNIX 一起占据了操作系统领域几乎所有的市场份额。特别是在高性能计算领域，Linux 已经成为一个占主导地位的操作系统，在2005年6月全球TOP500 计算机中，有 301 台部署的是 Linux 操作系统。因此，研究和使用 Linux 已经成为开发者的不可回避的问题了。</p><p>下面我们介绍一下 Linux 内核中文件 Cache 管理的机制。本文以 2.6 系列内核为基准，主要讲述工作原理、数据结构和算法，不涉及具体代码。</p><div class="ibm-alternate-rule"><hr></div><p class="ibm-ind-link ibm-back-to-top"><a href="#ibm-pcon" class="ibm-anchor-up-link">回页首</a></p><h2 id="N10038">2   操作系统和文件 Cache 管理</h2><p>操作系统是计算机上最重要的系统软件，它负责管理各种物理资源，并向应用程序提供各种抽象接口以便其使用这些物理资源。从应用程序的角度看，操作系统提供了一个统一的虚拟机，在该虚拟机中没有各种机器的具体细节，只有进程、文件、地址空间以及进程间通信等逻辑概念。这种抽象虚拟机使得应用程序的开发变得相对容易：开发者只需与虚拟机中的各种逻辑对象交互，而不需要了解各种机器的具体细节。此外，这些抽象的逻辑对象使得操作系统能够很容易隔离并保护各个应用程序。</p><p>对于存储设备上的数据，操作系统向应用程序提供的逻辑概念就是"文件"。应用程序要存储或访问数据时，只需读或者写"文件"的一维地址空间即可，而这个地址空间与存储设备上存储块之间的对应关系则由操作系统维护。</p><p>在 Linux 操作系统中，当应用程序需要读取文件中的数据时，操作系统先分配一些内存，将数据从存储设备读入到这些内存中，然后再将数据分发给应用程序；当需要往文件中写数据时，操作系统先分配内存接收用户数据，然后再将数据从内存写到磁盘上。文件 Cache 管理指的就是对这些由操作系统分配，并用来存储文件数据的内存的管理。
+Cache 管理的优劣通过两个指标衡量：一是 Cache 命中率，Cache 命中时数据可以直接从内存中获取，不再需要访问低速外设，因而可以显著提高性能；二是有效 Cache 的比率，有效 Cache 是指真正会被访问到的 Cache 项，如果有效 Cache 的比率偏低，则相当部分磁盘带宽会被浪费到读取无用 Cache 上，而且无用 Cache 会间接导致系统内存紧张，最后可能会严重影响性能。</p><p>下面分别介绍文件 Cache 管理在 Linux 操作系统中的地位和作用、Linux 中文件 Cache相关的数据结构、Linux 中文件 Cache 的预读和替换、Linux 中文件 Cache 相关 API 及其实现。</p><div class="ibm-alternate-rule"><hr></div><p class="ibm-ind-link ibm-back-to-top"><a href="#ibm-pcon" class="ibm-anchor-up-link">回页首</a></p><h2 id="N10045">2	文件 Cache 的地位和作用</h2><p>文件 Cache 是文件数据在内存中的副本，因此文件 Cache 管理与内存管理系统和文件系统都相关：一方面文件 Cache 作为物理内存的一部分，需要参与物理内存的分配回收过程，另一方面文件 Cache 中的数据来源于存储设备上的文件，需要通过文件系统与存储设备进行读写交互。从操作系统的角度考虑，文件 Cache 可以看做是内存管理系统与文件系统之间的联系纽带。因此，文件 Cache 管理是操作系统的一个重要组成部分，它的性能直接影响着文件系统和内存管理系统的性能。</p><p>图1描述了 Linux 操作系统中文件 Cache 管理与内存管理以及文件系统的关系示意图。从图中可以看到，在 Linux 中，具体文件系统，如 ext2/ext3、jfs、ntfs 等，负责在文件 Cache和存储设备之间交换数据，位于具体文件系统之上的虚拟文件系统VFS负责在应用程序和文件 Cache 之间通过 read/write 等接口交换数据，而内存管理系统负责文件 Cache 的分配和回收，同时虚拟内存管理系统(VMM)则允许应用程序和文件 Cache 之间通过 memory map的方式交换数据。可见，在 Linux 系统中，文件 Cache 是内存管理系统、文件系统以及应用程序之间的一个联系枢纽。</p><h5 id="N1004F"><img alt="" src="1.jpg" width="567" border="0"><div class="ibm-alternate-rule"><hr></div><p class="ibm-ind-link ibm-back-to-top"><a href="#ibm-pcon" class="ibm-anchor-up-link">回页首</a></p></h5><h2 id="N1005A">3	文件 Cache 相关数据结构</h2><p>在 Linux 的实现中，文件 Cache 分为两个层面，一是 Page Cache，另一个 Buffer Cache，每一个 Page Cache 包含若干 Buffer Cache。内存管理系统和 VFS 只与 Page Cache 交互，内存管理系统负责维护每项 Page Cache 的分配和回收，同时在使用 memory map 方式访问时负责建立映射；VFS 负责 Page Cache 与用户空间的数据交换。而具体文件系统则一般只与 Buffer Cache 交互，它们负责在外围存储设备和 Buffer Cache 之间交换数据。Page Cache、Buffer Cache、文件以及磁盘之间的关系如图 2 所示，Page 结构和 buffer_head 数据结构的关系如图 3 所示。在上述两个图中，假定了 Page 的大小是 4K，磁盘块的大小是 1K。本文所讲述的，主要是指对 Page Cache 的管理。</p><p>在 Linux 内核中，文件的每个数据块最多只能对应一个 Page Cache 项，它通过两个数据结构来管理这些 Cache 项，一个是 radix tree，另一个是双向链表。Radix tree 是一种搜索树，Linux 内核利用这个数据结构来通过文件内偏移快速定位 Cache 项，图 4 是 radix tree的一个示意图，该 radix tree 的分叉为4(22)，树高为4，用来快速定位8位文件内偏移。Linux(2.6.7) 内核中的分叉为 64(26)，树高为 6(64位系统)或者 11(32位系统)，用来快速定位 32 位或者 64 位偏移，radix tree 中的每一个叶子节点指向文件内相应偏移所对应的Cache项。</p><p>另一个数据结构是双向链表，Linux内核为每一片物理内存区域(zone)维护active_list和inactive_list两个双向链表，这两个list主要用来实现物理内存的回收。这两个链表上除了文件Cache之外，还包括其它匿名(Anonymous)内存，如进程堆栈等。</p><h5 id="N10066"><img alt="" src="2.jpg" width="389" border="0"></h5><h5 id="N10072"><img alt="" src="3.jpg" width="373" border="0"></h5><h5 id="N1007E"><img alt="" src="4.gif" width="521" border="0"><div class="ibm-alternate-rule"><hr></div><p class="ibm-ind-link ibm-back-to-top"><a href="#ibm-pcon" class="ibm-anchor-up-link">回页首</a></p></h5><h2 id="N10089">4	文件Cache的预读和替换</h2><p>Linux内核中文件预读算法的具体过程是这样的：对于每个文件的第一个读请求，系统读入所请求的页面并读入紧随其后的少数几个页面(不少于一个页面，通常是三个页面)，这时的预读称为同步预读。对于第二次读请求，如果所读页面不在Cache中，即不在前次预读的group中，则表明文件访问不是顺序访问，系统继续采用同步预读；如果所读页面在Cache中，则表明前次预读命中，操作系统把预读group扩大一倍，并让底层文件系统读入group中剩下尚不在Cache中的文件数据块，这时的预读称为异步预读。无论第二次读请求是否命中，系统都要更新当前预读group的大小。此外，系统中定义了一个window，它包括前一次预读的group和本次预读的group。任何接下来的读请求都会处于两种情况之一：第一种情况是所请求的页面处于预读window中，这时继续进行异步预读并更新相应的window和group；第二种情况是所请求的页面处于预读window之外，这时系统就要进行同步预读并重置相应的window和group。图5是Linux内核预读机制的一个示意图，其中a是某次读操作之前的情况，b是读操作所请求页面不在window中的情况，而c是读操作所请求页面在window中的情况。</p><p>Linux内核中文件Cache替换的具体过程是这样的：刚刚分配的Cache项链入到inactive_list头部，并将其状态设置为active，当内存不够需要回收Cache时，系统首先从尾部开始反向扫描active_list并将状态不是referenced的项链入到inactive_list的头部，然后系统反向扫描inactive_list，如果所扫描的项的处于合适的状态就回收该项，直到回收了足够数目的Cache项。Cache替换算法如图6的算法描述伪码所示。</p><h5 id="N10093"><img alt="" src="5.gif" width="494" border="0"></h5><h5 id="N100A0">图6  Linux的Cache替换算法描述</h5><div class="codesection"><pre class="displaycode">Mark_Accessed(b) {
+       if b.state==(UNACTIVE &amp;&amp; UNREFERENCE) 
+                b.state = REFERENCE
+                else if b.state == (UNACTIVE &amp;&amp; REFERENCE) {
+                 b.state = (ACTIVE &amp;&amp; UNREFERENCE)
+                          Add X to tail of active_list
+                 } else if b.state == (ACTIVE &amp;&amp; UNREFERENCE) 
+                   b.state = (ACTIVE &amp;&amp; REFERENCE)
+}
+Reclaim() {
+                    if active_list not empty and scan_num&lt;MAX_SCAN1
+               {
+                      X = head of active_list
+                          if (X.state &amp; REFERENCE) == 0
+                              Add X to tail of inactive_list
+                          else {
+                    X.state &amp;=  ~REFERENCE
+Move X to tail of active_list
+                                    }
+                          scan_num++
+                    }
+                    scan_num = 0
+                    if inactive_list not emptry and scan_num &lt;
+               MAX_SCAN2 {
+                          X = head of inactive_list 
+                          if (X.state &amp; REFERENCE) == 0
+                              return X
+                          else {
+                  X.state = ACTIVE | UNREFERENCE
+Move X to tail of active_list
+                                    }
+                          scan_num++
+                    }
+                    return NULL
+}
+Access(b){
+                    if b is not in cache {
+                      if slot X free
+                      put b into X
+                      else {
+                      X=Reclaim()
+                      put b into X
+                          }
+                      Add X to tail of inactive_list
+                    }
+                    Mark_Accessed(X)
+}</pre></div><div class="ibm-alternate-rule"><hr></div><p class="ibm-ind-link ibm-back-to-top"><a href="#ibm-pcon" class="ibm-anchor-up-link">回页首</a></p><h2 id="N100A6">5	文件Cache相关API及其实现</h2><p>Linux内核中与文件Cache操作相关的API有很多，按其使用方式可以分成两类：一类是以拷贝方式操作的相关接口， 如read/write/sendfile等，其中sendfile在2.6系列的内核中已经不再支持；另一类是以地址映射方式操作的相关接口，如mmap等。</p><p>第一种类型的API在不同文件的Cache之间或者Cache与应用程序所提供的用户空间buffer之间拷贝数据，其实现原理如图7所示。</p><h5 id="N100B0"><img alt="" src="7.gif" width="423" border="0"><p>第二种类型的API将Cache项映射到用户空间，使得应用程序可以像使用内存指针一样访问文件，Memory map访问Cache的方式在内核中是采用请求页面机制实现的，其工作过程如图8所示。</p></h5><h5 id="N100BE"><img alt="" src="8.gif" width="464" border="0"><p>首先，应用程序调用mmap（图中1），陷入到内核中后调用do_mmap_pgoff（图中2）。该函数从应用程序的地址空间中分配一段区域作为映射的内存地址，并使用一个VMA（vm_area_struct）结构代表该区域，之后就返回到应用程序（图中3）。当应用程序访问mmap所返回的地址指针时（图中4），由于虚实映射尚未建立，会触发缺页中断（图中5）。之后系统会调用缺页中断处理函数（图中6），在缺页中断处理函数中，内核通过相应区域的VMA结构判断出该区域属于文件映射，于是调用具体文件系统的接口读入相应的Page Cache项（图中7、8、9），并填写相应的虚实映射表。经过这些步骤之后，应用程序就可以正常访问相应的内存区域了。</p><div class="ibm-alternate-rule"><hr></div><p class="ibm-ind-link ibm-back-to-top"><a href="#ibm-pcon" class="ibm-anchor-up-link">回页首</a></p></h5><h2 id="N100CB">6	小结</h2><p>文件Cache管理是Linux操作系统的一个重要组成部分，同时也是研究领域一个很热门的研究方向。目前，Linux内核在这个方面的工作集中在开发更有效的Cache替换算法上，如LIRS(其变种ClockPro)、ARC等。相关信息可见<a href="http://linux-mm.org/AdvancedPageReplacement">http://linux-mm.org/AdvancedPageReplacement</a>。</p><!--CMA ID: 112035--><!--Site ID: 10--><!--XSLT stylesheet used to transform this file: dw-document-html-7.0.xsl-->
+
+
+</div>
+</div>
+<!-- 1_1_COLUMN_END -->
+
+<!-- SPLIT_COLUMNS_BEGIN -->
+<div class="ibm-columns">
+
+<!-- 6_4_COLUMN_BEGIN -->
+<div class="ibm-col-6-4">
+
+<h2 id="resources" class="ibm-rule">参考资料 </h2><ul class="ibm-bullet-list"><li>Understanding Linux Kernel Edition2</li><li>Linux内核源代码情景分析</li><li><a href="http://www.top500.org/">http://www.top500.org</a></li><li>R.W.Carr and J.L.Hennessy. WSCLOCK - a simple and effective algorithm for virtual mem-ory management. In Proc. ACM SOSP-08, Dec 1981.</li><li>S. Jiang, F. Chen, and X. Zhang. CLOCK-Pro: An effective improvement of the CLOCK repla-cement. In Proc. USENIX ATC, Apr. 2005.</li><li>S. Jiang and X. Zhang. LIRS: an efficient low in-terreference set replacement policy to improve buffer cache performance. In Proc. ACM SIG-METRICS, June 2002.</li><li>N. Megiddo and D. S. Modha. ARC: A Self-tun-ing, Low Overhead Replacement Cache. In Proc. 2nd USENIX FAST, Mar 2003.</li></ul>
+
+<!-- INLINE_COMMENTS_BEGIN -->
+<h2 id="icomments" class="ibm-alternate-rule ibm-no-print">条评论</h2>
+    
+<div class="ibm-no-print" id="dw-icomments-container">	
+	<div id="threadShow"><img style="display: none;" id="imgPlHdr" src="animated-progress-38x38c.gif" alt=""><div id="cmtTog" style=""><div class="ibm-container ibm-alternate-two dw-commentbox dw-noborder"><div class="ibm-container-body dw-commentbox dw-noborder"><p id="signInSect">请 <a href="#">登录</a> 或 <a href="https://www.ibm.com/developerworks/dwwi/jsp/ssoregister.jsp?d=https%3A%2F%2Fwww.ibm.com%2Fdeveloperworks%2Fcn%2Flinux%2Fl-cache%2F%23icomments&amp;lang=cn&amp;a=dwmav">注册</a>  后发表评论。</p><p id="cmtHead"><label for="newCmt"><strong>添加评论:</strong></label></p><p>注意：评论中不支持 HTML 语法</p><div id="infoCmt"></div><form focus="name" enctype="multipart/form-data" method="post" action="" name="form" class="ibm-column-form ibm-styled-form"><p class="6-4-textarea"><textarea rows="5" name="newCmt" id="newCmt" class="dw-inoperable" disabled=""></textarea><br></p><span class="ibm-input-group"><input value="1" name="comment_notification" id="comment_notification" disabled="disabled" type="checkbox"><label id="notifyText" class="ibm-form-note dw-btn-cancel-sec" for="comment_notification">有新评论时提醒我</label></span><span class="ibm-form-note dw-btn-cancel-sec notifySection" id="maxCharsCount">剩余 <span id="charCount">1000</span> 字符</span><p class="ibm-buttons-row"><input value="发布" name="postCmt" id="postCmt" class="ibm-btn-sec ibm-btn-small ibm-disabled" disabled="disabled" type="button"></p></form></div></div><div class="ibm-alternate-rule"><hr></div><div id="topControl" class="ibm-container ibm-alternate-two dw-comment-totals" style=""><div class="ibm-container-body"><form id="selectComments" method="get" action=""><p>&nbsp;<span class="dw-comment-totals-label"><strong>共有评论 (<span id="numCmts">2</span>)</strong></span><span class="dw-how-many-comments-label" style="display: none;" id="dropdownCmts"><label for="howManyComments"><strong>显示：</strong></label>&nbsp;<select name="comments" id="howManyComments" class="dw-how-many-comments"><option selected="selected" value="recent">最新评论 </option></select><input class="ibm-btn-go" name="ibm-go" value="Go" src="short-btn.gif" alt="Go" type="image"><br></span></p></form></div></div><div id="cmtSect"><div class="comment"><div class="dw-icomment-container"><div class="dw-icomment-body dw-noborder"><div class="dw-icomment-body dw-noborder"><p>一直对page cache 和 buffer cache的区别有疑问，看了“在 Linux 的实现中，文件 Cache 分为两个层面，一是 Page Cache，另一个 Buffer Cache，每一个 Page Cache 包含若干 Buffer Cache”，这句话才明白了。</p><p class="ibm-item-note-alternate dw-item-note-alternate-left">由 <strong><a href="https://www.ibm.com/developerworks/community/profiles/user/Yrpen">Yrpen</a></strong>  于 2014年04月25日发布 </p><p class="ibm-ind-link ibm-item-note-alternate dw-item-note-alternate-right"><a class="ibm-caution-link dw-report-abuse" href="https://www.ibm.com/developerworks/community/report?lang=zh&amp;referingURL=https://www.ibm.com/developerworks/cn/linux/l-cache/&amp;mymessage=%E8%AF%84%E8%AE%BA%EF%BC%9A%20%E4%B8%80%E7%9B%B4%E5%AF%B9page%20cache%20%E5%92%8C%20buffer%20cache%E7%9A%84%E5%8C%BA%E5%88%AB%E6%9C%89%E7%96%91%E9%97%AE%EF%BC%8C%E7%9C%8B%E4%BA%86%E2%80%9C%E5%9C%A8%20Linux%20%E7%9A%84%E5%AE%9E%E7%8E%B0%E4%B8%AD%EF%BC%8C%E6%96%87%E4%BB%B6%20Cache%20%E5%88%86%E4%B8%BA%E4%B8%A4%E4%B8%AA%E5%B1%82%E9%9D%A2%EF%BC%8C%E4%B8%80%E6%98%AF%20Page%20Cache%EF%BC%8C%E5%8F%A6%E4%B8%80%E4%B8%AA%20Buffer%20Cache%EF%BC%8C%E6%AF%8F%E4%B8%80%E4%B8%AA%20Page%20Cache%20%E5%8C%85%E5%90%AB%E8%8B%A5%E5%B9%B2%20Buffer%20Cache%E2%80%9D%EF%BC%8C%E8%BF%99%E5%8F%A5%E8%AF%9D%E6%89%8D%E6%98%8E%E7%99%BD%E4%BA%86%E3%80%82%0D%E7%94%B1%20Yrpen%20%20%E4%BA%8E%202014%E5%B9%B404%E6%9C%8825%E6%97%A5%E5%8F%91%E5%B8%83%20%0D%0D--%E5%9C%A8%E4%B8%8B%E6%96%B9%E6%B7%BB%E5%8A%A0%E8%AF%84%E8%AE%BA--" target="_self">报告滥用</a></p><div class="dw-clear-both"></div></div></div></div></div><div class="ibm-rule"><hr></div><div class="comment"><div class="dw-icomment-container"><div class="dw-icomment-body dw-noborder"><div class="dw-icomment-body dw-noborder"><p>"不错</p><p class="ibm-item-note-alternate dw-item-note-alternate-left">由 <strong><a href="https://www.ibm.com/developerworks/community/profiles/user/wangzongxun">wangzongxun</a></strong>  于 2013年10月10日发布 </p><p class="ibm-ind-link ibm-item-note-alternate dw-item-note-alternate-right"><a class="ibm-caution-link dw-report-abuse" href="https://www.ibm.com/developerworks/community/report?lang=zh&amp;referingURL=https://www.ibm.com/developerworks/cn/linux/l-cache/&amp;mymessage=%E8%AF%84%E8%AE%BA%EF%BC%9A%20%22%E4%B8%8D%E9%94%99%0D%E7%94%B1%20wangzongxun%20%20%E4%BA%8E%202013%E5%B9%B410%E6%9C%8810%E6%97%A5%E5%8F%91%E5%B8%83%20%0D%0D--%E5%9C%A8%E4%B8%8B%E6%96%B9%E6%B7%BB%E5%8A%A0%E8%AF%84%E8%AE%BA--" target="_self">报告滥用</a></p><div class="dw-clear-both"></div></div></div></div></div></div></div><div id="bottomControl" class="ibm-container ibm-alternate-two dw-comment-totals" style="display: none;"><div class="ibm-container-body"><form id="selectComments2" method="get" action=""><p>&nbsp;<span class="dw-comment-totals-label"><strong>共有评论 (<span id="numCmts2">2</span>)</strong></span><span class="dw-how-many-comments-label" style="display: none;" id="dropdownCmts2"><label for="howManyComments2"><strong>显示：</strong></label>&nbsp;<select name="comments" id="howManyComments2" class="dw-how-many-comments"><option selected="selected" value="recent">最新评论 </option></select><input class="ibm-btn-go" name="ibm-go" value="Go" src="short-btn.gif" alt="Go" type="image"><br></span></p></form></div></div></div>
+</div>
+<!-- Sign in OVERLAY STARTS HERE -->
+    
+<!-- Sign in OVERLAY STARTS HERE -->
+<div class="ibm-common-overlay" id="signin_overlay">
+<div class="ibm-head">
+<p><a class="ibm-common-overlay-close" href="#">关闭 [x]</a></p>
+</div>
+<div class="ibm-body">
+<div class="ibm-main">
+
+ <div class="ibm-title">
+<h2>developerWorks: 登录</h2>
+<div id="ibm-overlay-error-signin" class="no-display"></div>
+</div>
+<div class="ibm-container ibm-alternate ibm-buttons-last">
+<div class="ibm-container-body">
+<p class="ibm-overlay-intro">标有星（<span class="ibm-required">*</span>）号的字段是必填字段。</p> 
+<form class="ibm-column-form" id="sFormId" action="" method="post" name="sForm">
+<p><label for="ibmid">IBM ID:<span class="ibm-required">*</span></label><span>
+    <input aria-required="true" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAAVVJREFUOBGlUr9LhWAUvf5AZ6eWGt2CDEFEGjMI+id6Q9DY2xoEdWmqKYIe9Cc0NbZFQ1NIq0vx3CycDdTOpXh8+j1s8IMj5xzvvd77eYkmnDiO79UJ+Zy6oaPKAcgl8A4cQ38CAfg18PXnFWma7rRtu4D+1jRtFkVRDk7cwV3XddvAEficTZwb6F1gHzxiA8lX0B6w1zTNBXt8po5AqqIoM+ANeDAMg0chVVVPoV+BR13XU/ZwzqBfgCeMcP5rTXzirp6VYY0kSQ4x5y2wNXwnanSyRMyHLprMYS6AzaE/1PwBFFGkS1yXbNs2eZ5Hpmn26nCs1IEYgQ9QGIYUBLwWRHmeU13XYsj4b3Qch3zfp6qqekmiGO0gyzIqy5Jc1yXLssS8FZfuYPUGBDNSURSiJfHRAlL0GmNyAWmRsF28IP/uATeDv1RIHcA8AZZruu1ZHMOxP66qe9DAZLEcAAAAAElFTkSuQmCC&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;" name="ibm-id" id="ibmid" size="25" value="" class="required" type="text">
+    <br><a href="#" class="ibm-forward-link">需要一个 IBM ID？</a> <br>
+    <a class="ibm-forward-link" href="https://www.ibm.com/developerworks/dwwi/jsp/WSHelp.jsp?lang=zh_CN">忘记 IBM ID？</a> 
+</span>
+</p> 
+<p><label for="password">密码：<span class="ibm-required">*</span></label><span>
+    <input style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAAVVJREFUOBGlUr9LhWAUvf5AZ6eWGt2CDEFEGjMI+id6Q9DY2xoEdWmqKYIe9Cc0NbZFQ1NIq0vx3CycDdTOpXh8+j1s8IMj5xzvvd77eYkmnDiO79UJ+Zy6oaPKAcgl8A4cQ38CAfg18PXnFWma7rRtu4D+1jRtFkVRDk7cwV3XddvAEficTZwb6F1gHzxiA8lX0B6w1zTNBXt8po5AqqIoM+ANeDAMg0chVVVPoV+BR13XU/ZwzqBfgCeMcP5rTXzirp6VYY0kSQ4x5y2wNXwnanSyRMyHLprMYS6AzaE/1PwBFFGkS1yXbNs2eZ5Hpmn26nCs1IEYgQ9QGIYUBLwWRHmeU13XYsj4b3Qch3zfp6qqekmiGO0gyzIqy5Jc1yXLssS8FZfuYPUGBDNSURSiJfHRAlL0GmNyAWmRsF28IP/uATeDv1RIHcA8AZZruu1ZHMOxP66qe9DAZLEcAAAAAElFTkSuQmCC&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;" name="password" id="password" size="25" value="" class="required" type="password">
+    <br><a class="ibm-forward-link" href="#">忘记密码？</a>
+    <br><a class="ibm-forward-link" href="#">更改您的密码</a></span></p> 
+<p class="dw-perm-box">
+	<span><input id="perm" name="perm_name" type="checkbox"><label for="perm"> 保持登录。</label></span>
+</p>
+<p>单击提交则表示您同意developerWorks 的条款和条件。 <a href="https://www.ibm.com/developerworks/community/terms?lang=zh">查看条款和条件</a>。</p>
+<div class="ibm-buttons-row">
+   <p><input class="ibm-btn-arrow-pri" name="ibm-submit" value="提交" type="submit"><span class="ibm-sep">&nbsp;</span>
+<input value="取消" name="ibm-cancel" class="ibm-btn-cancel-sec" type="button"></p>
+</div>
+</form>
+ <div class="ibm-overlay-rule"><hr></div> 
+
+<p>在您首次登录 developerWorks 时，会为您创建一份个人概要。<strong>您的个人概要中的信息（您的姓名、国家/地区，以及公司名称）是公开显示的，而且会随着您发布的任何内容一起显示，除非您选择隐藏您的公司名称。</strong>您可以随时更新您的 IBM 帐户。</p>
+<div><p class="dw-c-overlay-secure">所有提交的信息确保安全。</p></div>
+</div>
+</div>
+</div>
+</div>
+<div class="ibm-footer"></div>
+</div>
+<!-- Display name OVERLAY STARTS HERE -->
+<div class="ibm-common-overlay" id="displayname_overlay">
+<div class="ibm-head">
+<p><a class="ibm-common-overlay-close" href="#">关闭 [x]</a></p>
+</div>
+<div class="ibm-body">
+<div class="ibm-main">
+<div class="ibm-title">
+<h2>选择您的昵称</h2><br><br>
+<div id="ibm-overlay-error-dname" class="no-display"></div>
+</div>
+<div class="ibm-container ibm-alternate ibm-buttons-last">
+<div class="ibm-container-body">
+<p class="ibm-overlay-intro">当您初次登录到 developerWorks 时，将会为您创建一份概要信息，您需要指定一个昵称。您的昵称将和您在 developerWorks 发布的内容显示在一起。</p><p><strong>昵称长度在 3 至 31 个字符之间</strong>。 
+    您的昵称在 developerWorks 社区中必须是唯一的，并且出于隐私保护的原因，不能是您的电子邮件地址。</p>
+<p class="ibm-overlay-intro">标有星（<span class="ibm-required">*</span>）号的字段是必填字段。</p> 
+<form id="dFormId" method="post" action="" name="dForm" class="ibm-column-form">
+<p><label for="displayname">昵称：<span class="ibm-required">*</span></label><span>
+    <input aria-required="true" name="displayname" id="displayname" size="25" value="" type="text"></span>
+    <span class="ibm-form-note">(昵称长度在 3 至 31 个字符之间)</span>
+</p>
+<p>单击<strong>提交</strong>则表示您同意developerWorks 的条款和条件。 <a href="https://www.ibm.com/developerworks/community/terms?lang=zh">查看条款和条件</a>.</p>
+<div class="ibm-buttons-row">
+   <p><input class="ibm-btn-arrow-pri" name="ibm-submit" value="提交" type="submit"><span class="ibm-sep">&nbsp;</span>
+<input value="取消" name="ibm-cancel" class="ibm-btn-cancel-sec" type="button"></p>
+</div>
+</form>
+<div class="ibm-overlay-rule"><hr></div>
+<div><p class="dw-c-overlay-secure">所有提交的信息确保安全。</p></div>
+</div>
+</div>
+</div>
+</div>
+<div class="ibm-footer"></div>
+</div>
+
+
+<!-- INLINE_COMMENTS_END -->
+
+</div>
+<!-- 6_4_COLUMN_END -->
+
+<!-- 6_2_COLUMN_BEGIN -->
+<div class="ibm-col-6-2">
+
+<!-- Next_Steps -->
+<!-- Dig_Deeper -->
+
+
+<!-- Promotion_Module -->
+    
+<!-- PROMOTION_MODULE_START -->
+<div class="ibm-alternate-rule"><hr></div>
+<ul class="ibm-portrait-module-list">
+<li><a role="presentation" tabindex="-1" class="" href="http://www.ibm.com/developerworks/cn/cloud/bluemix/"><img src="sm-f-bluemixrobot60.png" alt="IBM Bluemix 资源中心" width="60" height="60"></a>
+<h3><a class="ibm-feature-link" href="http://www.ibm.com/developerworks/cn/cloud/bluemix/">IBM Bluemix 资源中心</a></h3>
+<p>文章、教程、演示，帮助您构建、部署和管理云应用。</p></li>
+<li><a role="presentation" tabindex="-1" class="" href="http://www.ibm.com/developerworks/cn/community/"><img src="sm-f-comcommunity60.png" alt="developerWorks 中文社区" width="60" height="60"></a>
+<h3><a class="ibm-feature-link" href="http://www.ibm.com/developerworks/cn/community/">developerWorks 中文社区</a></h3>
+<p>立即加入来自 IBM 的专业 IT 社交网络。</p></li>
+<li><a role="presentation" tabindex="-1" class="" href="http://bluemixathon.devpost.com/"><img src="sm-f-bluemixathon60.png" alt="Bluemixathon 挑战赛" width="60" height="60"></a>
+<h3><a class="ibm-feature-link" href="http://bluemixathon.devpost.com/">Bluemixathon 挑战赛</a></h3>
+<p>为灾难恢复构建应用，赢取现金大奖。</p></li>
+</ul>
+<!-- PROMOTION_MODULE_END -->
+</div>
+<!-- 6_2_COLUMN_END -->
+
+</div>
+<!-- SPLIT_COLUMNS_END -->
+
+<!-- BOTTOM_BACK_TO_TOP -->
+<div class="ibm-columns">
+<div class="ibm-col-1-1">
+	<div class="ibm-alternate-rule"><hr></div><p class="ibm-ind-link ibm-back-to-top"><a href="#ibm-pcon" class="ibm-anchor-up-link">回页首</a></p>
+</div>
+</div>
+
+<!-- Rating_Meta_BEGIN -->
+<!--Rating_Meta_BEGIN--><div class="metavalue">static.content.url=http://www.ibm.com/developerworks/js/artrating/</div><div class="metavalue">SITE_ID=10</div><div class="metavalue">Zone=Linux</div><div class="metavalue">ArticleID=112035</div><div class="metavalue">ArticleTitle=Linux 内核的文件 Cache 管理机制介绍</div><div class="metavalue">publish-date=05112006</div><div class="metavalue">url=https://www.ibm.com/developerworks/cn/linux/l-cache/</div><!--Rating_Meta_END-->
+<!-- Rating_Meta_END -->
+
+</div>
+<!-- END_IBM_CONTENT_MAIN -->
+
+</div>
+<!-- END_IBM_CONTENT_BODY -->
+
+</div>
+<!-- END_IBM_CONTENT -->
+
+</div></div>
+<!-- LEADSPACE_END -->
+
+
+<!-- END_IBM_PCON -->
+<!-- FOOTER_BEGIN -->
+<div aria-label="页脚" id="ibm-footer"><!-- IBM footer container; disabled --></div>
+
+<div id="ibm-footer-module-dwwrapper" role="contentinfo" aria-label="developerWorks Footer">
+
+<div id="ibm-footer-module-dw">
+	<div class="dw-footer-columns">
+		<div class="dw-footer-col-6-1 dw-footer-col-6-1-cn">
+			<ul>
+				<li><a href="https://www.ibm.com/developerworks/secure/feedback.jsp?domain=dwchina" tabindex="0">帮助</a></li>
+				<li><a href="http://www.ibm.com/developerworks/cn/author/" tabindex="0">联系编辑</a></li>
+				<li><a href="https://www.ibm.com/developerworks/secure/myideas2.jsp?domain=dwchina" tabindex="0">提交内容</a></li>
+				<li><a href="http://www.ibm.com/developerworks/cn/rss/" tabindex="0">订阅源</a></li>
+			</ul>
+        </div>
+		<div class="dw-footer-col-6-2">
+			<ul>
+				<li><a class="dwcn-sina-link" href="http://weibo.com/ibmdw/" target="_blank" tabindex="0">新浪微博</a></li>
+				<li><a href="https://www.ibm.com/developerworks/community/report?lang=zh" tabindex="0">报告滥用</a></li>
+				<li><a href="https://www.ibm.com/developerworks/community/terms?lang=zh" tabindex="0">使用条款</a></li>
+				<li><a href="https://www.ibm.com/developerworks/cn/community/terms/thirdparty/" tabindex="0">第三方提示</a></li>
+			</ul>
+		</div>
+		<div class="dw-footer-col-6-3">
+			<ul>
+				<li><a href="http://www.ibm.com/privacy/cn/zh/" tabindex="0">隐私条约</a></li>
+				<li><a href="http://www.ibm.com/ibm/accessibility/cn/" tabindex="0">浏览辅助</a></li>
+				<li><a href="http://www.ibm.com/developerworks/cn/academic/" tabindex="0">IBM 教育学院教育培养计划</a></li><li><a href="http://www.ibm.com/developerworks/cn/gep/">IBM 创业企业全球扶持计划</a></li><li><a href="http://www.ibm.com/partnerworld/isv/">ISV 资源 (英语)</a></li>
+			</ul>
+		</div>
+		<div class="dw-footer-col-6-4"> 
+			<ul>
+				<li><a href="https://www.ibm.com/developerworks/cn/newsletter/" tabindex="0">dW 中国每周时事通讯</a></li>
+			</ul>
+			
+		</div>
+		<div class="dw-footer-col-6-5">
+			<ul>
+				<li class="dw-footer-lang-head">选择语言：</li>
+				<li><a href="http://www.ibm.com/developerworks/" tabindex="0">English</a></li>
+				<li><a href="http://www.ibm.com/developerworks/cn/" tabindex="0" lang="zh">中文</a></li>
+				<li><a href="http://www.ibm.com/developerworks/jp/" tabindex="0" lang="ja">日本語</a></li>
+				<li><a href="http://www.ibm.com/developerworks/ru/" tabindex="0" lang="ru">Русский</a></li>
+				<li><a href="http://www.ibm.com/developerworks/br/" tabindex="0" lang="pt">Português (Brasil)</a></li>
+				<li><a href="http://www.ibm.com/developerworks/ssa/" tabindex="0" lang="es">Español</a></li>
+				<li><a href="http://www.ibm.com/developerworks/vn/" tabindex="0" lang="vi">Việt</a></li>
+			</ul>
+		</div>
+		<div class="dw-footer-col-6-6">
+			<img alt="IBM®" src="dwn-ibm-logo-v17.png" width="223" height="46">
+			<img class="dw-preload" src="ibm_sprite_social_blue_ON.png" alt="" width="1" height="1">
+		</div>
+	</div>
+</div>
+
+</div><!-- FOOTER_END -->
+
+<!-- END_IBM-TOP -->
+</div>
+
+<!-- SCRIPTS_INCLUDE_BEGIN -->
+
+
+
+
+
+<!-- SCRIPTS_INCLUDE_END -->
+
+<div id="ibm-metrics">
+
+</div>
+
+
+
+<div id="ads"></div></body>
+</html>
