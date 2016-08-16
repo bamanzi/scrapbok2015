@@ -1,0 +1,149 @@
+/* ::::: [internal] ::::: */
+
+.bdcs-container .bdcs-main, .bdcs-container .bdcs-main * { box-sizing: content-box; margin: 0px; padding: 0px; float: none; clear: none; overflow: hidden; white-space: nowrap; word-wrap: normal; border: 0px none; background: none repeat scroll 0px 0px transparent; width: auto; height: auto; max-width: none; max-height: none; border-radius: 0px 0px 0px 0px; box-shadow: none; transition: none 0s ease 0s ; text-align: left; }
+.bdcs-container .bdcs-clearfix:after { content: ""; display: block; clear: both; height: 0px; }
+.bdcs-container .bdcs-clearfix {  }
+.bdcs-container .bdcs-main { overflow: visible; }
+.bdcs-container .bdcs-search { display: block; overflow: visible; position: relative; border-style: solid; }
+.bdcs-container .bdcs-search-form-input { border-width: 1px; border-style: solid; display: inline-block; vertical-align: top; text-indent: 5px; background-color: rgb(255, 255, 255); float: left; }
+.bdcs-container .bdcs-search-form-input:focus { border-width: 1px; border-style: solid; outline: 0px none; }
+.bdcs-container .bdcs-search-form-submit { display: inline-block; cursor: pointer; border-width: 1px; border-style: solid; vertical-align: top; text-align: center; width: 50px; }
+.bdcs-container .bdcs-search { width: 290px; height: 50px; overflow: visible; border-color: rgb(255, 255, 255); border-radius: 0px 0px 0px 0px; border-width: 0px; box-shadow: none; }
+.bdcs-container .bdcs-search-form-input { border-color: rgb(255, 0, 0); margin-right: 8px; width: 198px; height: 48px; line-height: 48px; font-family: Arial,Microsoft YaHei,sans-serif; color: rgb(31, 73, 125); font-size: 14px; border-radius: 0px 0px 0px 0px; background-color: rgb(255, 255, 255); }
+.bdcs-container .bdcs-search-form-input:focus { border-color: rgb(247, 150, 70); }
+.bdcs-container .bdcs-search-form-submit { border-color: rgb(255, 0, 0); height: 48px; width: 80px; background-color: rgb(245, 245, 245); color: rgb(255, 0, 0); font-family: Arial,Microsoft YaHei,sans-serif; font-size: 14px; border-radius: 0px 0px 0px 0px; }
+.bdcs-container .bdcs-hot { width: 300px; height: 25px; line-height: 25px; }
+.bdcs-container .bdcs-hot-item { color: rgb(0, 176, 80); font-family: Arial,Microsoft YaHei,sans-serif; font-size: 14px; }
+.bdcs-container .bdcs-search-form-submit {  }
+.bdcs-container .bdcs-search-form-submit { height: 50px; }
+.bdcs-container .bdcs-search-form-submit { line-height: 48px; }
+.bdcs-container .bdcs-clearfix:after { content: ""; display: block; clear: both; height: 0px; }
+.bdcs-container .bdcs-clearfix {  }
+.bdcs-container .bdcs-hot, .bdcs-container .bdcs-hot * { box-sizing: content-box; margin: 0px; padding: 0px; float: none; clear: none; overflow: hidden; white-space: nowrap; word-wrap: normal; border: 0px none; background: none repeat scroll 0px 0px transparent; width: auto; height: auto; max-width: none; max-height: none; border-radius: 0px 0px 0px 0px; box-shadow: none; transition: none 0s ease 0s ; text-align: left; }
+.bdcs-container .bdcs-hot { display: block; white-space: normal; }
+.bdcs-container .bdcs-hot-item { margin-right: 10px; }
+.bdcs-container .bdcs-hot { width: 300px; height: 25px; line-height: 25px; }
+.bdcs-container .bdcs-hot-item { color: rgb(0, 176, 80); font-family: Arial,Microsoft YaHei,sans-serif; font-size: 14px; }
+/* ::::: http://www.linuxidc.com/style/systems/style.css ::::: */
+
+body { margin: 0px; font-size: 12px; color: rgb(51, 51, 51); font-family: tahoma,宋体; }
+td, div { font-size: 12px; word-wrap: break-word; }
+input, button { font-size: 12px; border-width: 1px; }
+textarea { font-size: 12px; border: 1px solid rgb(204, 204, 204); }
+form { margin: 0px; }
+img { border: 0px none; }
+button, input.btn { background: url("btnBg.gif") repeat-x scroll 0px 0px rgb(255, 248, 197); border: 1px solid rgb(180, 201, 26); color: rgb(0, 136, 0); line-height: 20px; height: 20px; }
+.twidth { width: 1100px; background: none repeat scroll 0% 0% rgb(255, 255, 255); margin: 0px auto; overflow-x: hidden; }
+.mR { margin-right: 5px; }
+a:link, a:visited { color: rgb(96, 96, 96); text-decoration: none; }
+a:hover { text-decoration: underline; }
+ul.nl { list-style: none outside none; margin: 0px; padding: 0px; }
+ul.nl li { line-height: 22px; padding-left: 15px; background: url("iwms.gif") no-repeat scroll 0px 0px transparent; }
+a.thisclass:link, a.thisclass:visited { font-weight: bold; text-decoration: none; }
+a.thisclass:hover { font-weight: bold; text-decoration: none; }
+.aTitle { font-size: 16px; font-weight: bold; position: relative; padding-top: 10px; }
+#content { font-size: 14px; font-family: tahoma,宋体; line-height: 1.6; margin: 20px auto; width: 96%; text-align: justify; }
+#content td, #content div { font-size: 14px; font-family: tahoma,宋体; line-height: 1.6; }
+#content A:visited, #content A:link { color: rgb(179, 43, 213); text-decoration: underline; }
+#sitehead { overflow: hidden; }
+#sitehead .l { display: none; }
+#sitehead .r { display: none; }
+#middle { overflow: hidden; }
+#footer { text-align: center; line-height: 1.5; margin: 10px 0px; }
+#navbar { overflow: hidden; }
+#navbar .m { text-align: center; line-height: 30px; background: url("bg.gif") repeat-x scroll 0px -200px rgb(107, 188, 237); border: 0px solid rgb(171, 171, 171); }
+#navbar .l { display: none; }
+#navbar .r { display: none; }
+#navbar a:link, #navbar a:visited { color: rgb(255, 255, 255); text-decoration: none; background: url("iwms.gif") no-repeat scroll 0px -150px transparent; padding: 0px 6px 0px 8px; }
+#navbar a:hover {  }
+#navbar a.first { background: none repeat scroll 0% 0% transparent ! important; }
+#navsub { overflow: hidden; }
+#navsub .m { text-align: left; line-height: 25px; height: 25px; }
+#navsub .l { display: none; }
+#navsub .r { display: none; }
+.gray { color: gray ! important; text-decoration: none; font-size: 12px; }
+.time { color: red; font-size: 12px; }
+.inputbg { background: url("inputBorder.gif") no-repeat scroll left top transparent; border: 1px solid rgb(213, 222, 233); }
+.mframe { margin-bottom: 4px; }
+.mframe .tm { height: 25px; line-height: 25px; background: url("bg.gif") repeat-x scroll 0% 0% transparent; border: 1px solid rgb(171, 171, 171); }
+.mframe .tl { display: none; }
+.mframe .tr { display: none; }
+.mframe span.tt { font-size: 14px; color: rgb(96, 96, 96); font-weight: bold; padding-left: 10px; }
+.mframe .mm { background: none repeat scroll 0% 0% rgb(250, 250, 252); padding: 3px; border-right: 1px solid rgb(171, 171, 171); border-width: 0px 1px 1px; border-style: none solid solid; border-color: -moz-use-text-color rgb(171, 171, 171) rgb(171, 171, 171); -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; }
+.mframe .ml { display: none; }
+.mframe .mr { display: none; }
+.mframe .bm { display: none; }
+.mframe .bl { display: none; }
+.mframe .br { display: none; }
+.mframe ul.nl a, .mframe ul.pl a { font-size: 14px; }
+.lframe { margin-bottom: 4px; }
+.lframe .tm { height: 25px; line-height: 25px; background: url("bg.gif") repeat-x scroll 0% 0% transparent; border: 1px solid rgb(171, 171, 171); }
+.lframe .tl { display: none; }
+.lframe .tr { display: none; }
+.lframe span.tt { font-size: 14px; color: rgb(96, 96, 96); font-weight: bold; padding-left: 10px; }
+.lframe .mm { padding: 5px 3px; border-right: 1px solid rgb(171, 171, 171); border-width: 0px 1px 1px; border-style: none solid solid; border-color: -moz-use-text-color rgb(171, 171, 171) rgb(171, 171, 171); -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; }
+.lframe .ml { display: none; }
+.lframe .mr { display: none; }
+.lframe .bm { display: none; }
+.lframe .bl { display: none; }
+.lframe .br { display: none; }
+.moreR { float: right; padding-right: 8px; }
+.imgList { padding: 5px 0px; display: block; text-align: center; line-height: 1.8; overflow: hidden; }
+.imgList ul { list-style: none outside none; margin: 0px; padding: 0px; }
+.imgList li { float: left; }
+.imgList li img, a.imgLink img { background: none repeat scroll 0% 0% rgb(255, 255, 255); padding: 3px; border: 1px solid rgb(221, 221, 221); margin: auto; display: block; }
+.imgList li a:hover img, a.imgLink:hover img { background: none repeat scroll 0% 0% rgb(246, 246, 246); padding: 3px; }
+.wrapper { overflow: hidden; }
+.tl, .bl { float: left; }
+.tr, .br { float: right; }
+.ml, .l { float: left; padding-bottom: 10000px; margin-bottom: -10000px; }
+.mr, .r { float: right; padding-bottom: 10000px; margin-bottom: -10000px; }
+.face1, .face2, .face3, .face4, .face5, .face6, .face7, .face8, .face9, .face10, .face11, .face12, .face13, .face14, .face15, .face16, .face17, .face18 { background: url("face.gif") no-repeat scroll 0px 0px transparent; width: 15px; height: 15px; }
+#digg { float: right; clear: both; padding: 10px 5px; }
+.digg { width: 51px; margin: 0px; text-align: center; list-style: none outside none; padding: 0px; }
+.digg1 { background: url("digg.gif") repeat scroll 0% 0% transparent; height: 52px; line-height: 52px; font-size: 16px; color: rgb(115, 105, 72); font-family: sans-serif; font-weight: bold; }
+.digg2 { margin-top: 2px; height: 25px; line-height: 25px; font-size: 12px; float: left; width: 51px; }
+.digg2 a { display: block; background: url("digg.gif") repeat scroll -100px 0px transparent; color: rgb(15, 92, 195); text-decoration: none; }
+.digg2 a:hover { background: url("digg.gif") repeat scroll -200px 0px transparent; color: rgb(51, 51, 51); }
+.nearNews { color: rgb(153, 153, 153); padding: 5px 0px; clear: both; overflow: hidden; }
+.nextNews, .prevNews { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.prevNews { float: left; width: 50%; }
+.nextNews { text-align: right; }
+.prevNews a { background: url("iwms.gif") no-repeat scroll 0px -400px transparent; padding: 0px 20px; float: left; }
+.nextNews a { background: url("iwms.gif") no-repeat scroll right -450px transparent; padding: 0px 20px; float: right; }
+.topBar { width: 100%; background: url("bg.gif") repeat scroll 0px -600px transparent; border-bottom: 1px solid rgb(230, 230, 230); height: 28px; line-height: 28px; }
+.topBar .twidth { height: 100%; background: none repeat scroll 0% 0% transparent; }
+#topUser a { padding-left: 15px; background: url("iwms.gif") no-repeat scroll 0px -750px transparent; }
+#li_all { clear: both; padding: 0px; margin: 0px; overflow: hidden; width: 600px; }
+.linux8 { text-align: center; }
+.linux801 { text-align: center; }
+.linux3 { text-align: center; }
+.linux901 { border-style: solid; border-width: 1px; border-color: rgb(255, 0, 0); height: 80px; width: 298px; }
+.linux903 { text-align: center; height: 302px; }
+#li_all { clear: both; padding: 20px; margin: 0px; overflow: hidden; width: 680px; }
+#li_1 { padding: 0px; float: left; width: 300px; margin: 0px; overflow: hidden; text-align: left; }
+#li_2 { padding: 0px; float: right; margin: 0px; overflow: hidden; text-align: left; }
+/* ::::: [internal] ::::: */
+
+/* ::::: [internal] ::::: */
+
+@media screen {
+}
+@media print {
+}
+/* ::::: [internal] ::::: */
+
+/* ::::: http://bdimg.share.baidu.com/static/api/css/share_style0_24.css ::::: */
+
+.bdshare-button-style0-24 .bds_qzone { background-position: 0px -52px; }
+.bdshare-button-style0-24 .bds_tsina { background-position: 0px -104px; }
+.bdshare-button-style0-24 .bds_renren { background-position: 0px -208px; }
+.bdshare-button-style0-24 .bds_tqq { background-position: 0px -260px; }
+.bdshare-button-style0-24 .bds_bdhome { background-position: 0px -156px; }
+.bdshare-button-style0-24 .bds_more { background-position: 0px 0px; }
+.bdshare-button-style0-24 .bds_weixin { background-position: 0px -1612px; }
+.bdshare-button-style0-24 {  }
+.bdshare-button-style0-24:after { content: "."; visibility: hidden; display: block; height: 0px; clear: both; }
+.bdshare-button-style0-24 a, .bdshare-button-style0-24 .bds_more { float: left; font-size: 18px; padding-left: 25px; line-height: 24px; height: 24px; background-image: url("icons_0_24.png"); background-repeat: no-repeat; cursor: pointer; margin: 6px 6px 6px 0px; }
+.bdshare-button-style0-24 a:hover { color: rgb(51, 51, 51); opacity: 0.8; }
+.bdshare-button-style0-24 .bds_more { color: rgb(51, 51, 51); float: left; }

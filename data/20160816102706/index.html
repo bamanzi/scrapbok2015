@@ -1,0 +1,385 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="zh" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>rsync+inotify实现数据同步及常见问题_服务器应用_Linux公社-Linux系统门户网站</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+<meta name="description" content="rsync：Remote Sync，是类Unix系统下的数据镜像备份工具。通过rsync可以解决对实时性要求不高的数据进行备份需求；例如：指定的备">
+<meta name="keywords" content="rsync,inotify,rsync数据同步,rsync+inotify实现数据同步及常见问题,服务器,Linux服务器,Apache,Hadoop,集群,分布式,Nginx,Tomcat,分布式系统">
+<link rel="canonical" href="http://www.linuxidc.com/Linux/2016-08/134027.htm">
+<meta name="generator" content="Linux公社">
+<meta name="generator" content="Linux">
+
+<meta name="generator" content="专业的Linux网站">
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body>
+<div class="topBar">
+	<div class="twidth">
+	
+	<div style="float: right;">
+		 <a title="點擊以繁體中文方式浏覽" id="StranLink">繁體</a>
+	</div>
+	
+	<div id="topUser">你好，游客 <a href="#">登录</a>
+	<a href="http://www.linuxidc.com/memberreg.aspx" rel="nofollow">注册</a>
+	<a href="http://www.linuxidc.com/search.aspx" rel="nofollow">搜索</a>
+	</div>
+	</div>
+</div>
+<div class="twidth">
+<div id="sitehead">
+<div class="l"></div>
+<div class="r"></div>
+<div class="m">
+	<table width="100%">
+	<tbody><tr align="center"><td width="160">
+	<a href="http://www.linuxidc.com/"><img style="filter: chroma(color=#FFFFFF);" src="logo.jpg" alt="Linux公社" width="155" border="0" height="53"></a>
+	</td><td>
+	<div align="center"><a href="http://www.yutianedu.cn/news/rhceks.html" target="_blank"><img src="yutian1.gif" alt="" width="500" height="60"></a>
+</div>
+	</td>
+	</tr></tbody></table>
+</div>
+</div>
+<div id="navbar">
+<div class="l"></div>
+<div class="r"></div>
+<div class="m">
+	<a href="http://www.linuxidc.com/index.htm" class="first">首页</a><a href="http://www.linuxidc.com/it/">Linux新闻</a><a href="http://www.linuxidc.com/Linuxit/">Linux教程</a><a href="http://www.linuxidc.com/MySql/">数据库技术</a><a href="http://www.linuxidc.com/RedLinux/">Linux编程</a><a href="http://www.linuxidc.com/Apache/" class="thisclass">服务器应用</a><a href="http://www.linuxidc.com/Unix/">Linux安全</a><a href="http://www.linuxidc.com/download/">Linux下载</a><a href="http://www.linuxidc.com/Linuxrz/">Linux认证</a><a href="http://www.linuxidc.com/theme/">Linux主题</a><a href="http://www.linuxidc.com/Linuxwallpaper/">Linux壁纸</a><a href="http://www.linuxidc.com/linuxsoft/">Linux软件</a><a href="http://www.linuxidc.com/digi/">数码</a><a href="http://www.linuxidc.com/mobile/">手机</a><a href="http://www.linuxidc.com/diannao/">电脑</a>
+
+</div>
+</div>
+
+<div id="navsub">
+<div class="l"></div>
+<div class="r"></div>
+<div class="m">
+	<a href="http://www.linuxidc.com/index.htm">首页</a> → <a href="http://www.linuxidc.com/Apache/">服务器应用</a>
+</div>
+</div>
+<div class="linuxe1"></div>
+<div class="linux1"></div>
+<div class="linuxa"></div>
+<div class="linuxa1"></div>
+<table id="middle" style="table-layout: fixed;" width="100%" cellpadding="0" cellspacing="0">
+<tbody><tr valign="top"><td>
+
+	<div class="mframe mR">
+	<div class="tl"></div>
+	<div class="tr"></div>
+	<div class="tm">
+		<div class="moreR">
+			背景：<img src="b.gif" style="cursor: pointer; width: 7px; height: 6px; border: 1px solid rgb(153, 153, 153); background: none repeat scroll 0% 0% rgb(237, 240, 245);" alt="#EDF0F5"> <img src="b.gif" style="cursor: pointer; width: 7px; height: 6px; border: 1px solid rgb(153, 153, 153); background: none repeat scroll 0% 0% rgb(250, 251, 230);" alt="#FAFBE6"> <img src="b.gif" style="cursor: pointer; width: 7px; height: 6px; border: 1px solid rgb(153, 153, 153); background: none repeat scroll 0% 0% rgb(255, 242, 226);" alt="#FFF2E2"> <img src="b.gif" style="cursor: pointer; width: 7px; height: 6px; border: 1px solid rgb(153, 153, 153); background: none repeat scroll 0% 0% rgb(253, 230, 224);" alt="#FDE6E0"> <img src="b.gif" style="cursor: pointer; width: 7px; height: 6px; border: 1px solid rgb(153, 153, 153); background: none repeat scroll 0% 0% rgb(243, 255, 225);" alt="#F3FFE1"> <img src="b.gif" style="cursor: pointer; width: 7px; height: 6px; border: 1px solid rgb(153, 153, 153); background: none repeat scroll 0% 0% rgb(218, 250, 243);" alt="#DAFAF3"> <img src="b.gif" style="cursor: pointer; width: 7px; height: 6px; border: 1px solid rgb(153, 153, 153); background: none repeat scroll 0% 0% rgb(234, 234, 239);" alt="#EAEAEF"> <img src="b.gif" style="cursor: pointer; width: 7px; height: 6px; border: 1px solid rgb(153, 153, 153); background: none repeat scroll 0% 0% rgb(255, 255, 255);" alt="默认"> 
+		</div>
+		<span class="tt">阅读新闻</span>
+	</div>
+	<div class="wrapper">
+	<div class="ml"></div>
+	<div class="mr"></div>
+	<div class="mm" id="bodyTd">
+		<div id="printBody" style="word-break: break-all;">
+			<div style="text-align: center;"><h1 class="aTitle">rsync+inotify实现数据同步及常见问题</h1></div>
+			
+			<table width="97%" align="center">
+				<tbody><tr>
+				<td width="140">[日期：2016-08-08]</td>
+				<td align="center">来源：Linux社区&nbsp;
+				作者：Linux</td>
+				<td width="160" align="right">[字体：<a>大</a> <a>中</a> <a>小</a>]
+				</td></tr>
+			</tbody></table>
+<div id="li_all">
+<div id="li_1">
+<div id="BAIDU_SSP__wrapper_u2726899_0"><iframe id="iframeu2726899_0" src="index_1.html" vspace="0" hspace="0" marginwidth="0" marginheight="0" style="border: 0px none; vertical-align: bottom; margin: 0px;" allowtransparency="true" scrolling="no" width="300" align="center,center" frameborder="0" height="250"></iframe></div>
+</div>
+<div id="li_2">
+<!-- Linux��������ҳ���300x250, ������ 09-12-6 -->
+<ins class="adsbygoogle" style="display: inline-block; width: 300px; height: 250px;" data-ad-client="ca-pub-5195587195407606" data-ad-slot="6879159141"></ins>
+
+</div>
+</div>
+			<div style="overflow-x: hidden; word-break: break-all;" id="content"><div class="linux19"></div> <p>rsync：Remote Sync，是类Unix系统下的数据镜像备份工具。通过rsync可以解决对实时性要求不高的数据进行备份需求；例如：指定的备份文件服务器数据到指定的远端服务器，对本地磁盘定期做数据镜像等。</p>
+<p>inotify：inotify是一种文件变化通知机制；通过inotify可以在监控文件系统中添加、删除、修改、移动等各种操作。</p>
+<p>准备环境：</p>
+<table>
+<tbody>
+<tr>
+<td valign="top" width="347">主服务器（inotify-Master）</td>
+<td valign="top" width="347">IP：172.18.42.201</td>
+</tr>
+<tr>
+<td valign="top" width="347">从服务器（inotify-Slave）</td>
+<td valign="top" width="347">IP：172.18.42.200</td>
+</tr>
+</tbody>
+</table>
+<p>一、部署inotify-Slave<br>1、安装rsync程序<br>[root@inotify-slave ~]# yum install rsync</p>
+<p>2、创建rsync用户<br>[root@inotify-slave ~]# useradd -s /bin/nologin -M rsync</p>
+<p>3、创建rsync工作模块的目录<br>[root@inotify-slave ~]# mkdir /mydata/&nbsp;  ##创建rsync工作模式的模块目录 <br>[root@inotify-slave ~]# chown rsync.rsync /mydata/&nbsp;  ##更改属主、主组；使rsync用户有权限更改数据 <br>[root@inotify-slave ~]# ls -ld /mydata/ <br>drwxr-xr-x 2 rsync rsync 6 May 19 21:02 /mydata/</p>
+<p>4、配置虚拟用户的密码文件/etc/rsync.password<br>[root@inotify-slave ~]# vim /etc/rsync.password <br>linuxidc:linux&nbsp;  ##“linuxidc”为虚拟用户用户名；“linux”为虚拟用户密码 <br>[root@inotify-slave ~]# chmod 600 /etc/rsync.password&nbsp; &nbsp; ##为密码文件增加安全性 <br>[root@inotify-slave ~]# ll /etc/rsync.password&nbsp; <br>-rw------- 1 root root 12 May 18 21:54 /etc/rsync.password</p>
+<p>5、配置rsync配置文件/etc/rsyncd.conf<br>[root@inotify-slave ~]# vim /etc/rsyncd.conf <br>uid = rsync<br>gid = rsync<br>user chroot = no <br>max connections = 200 <br>timeout = 300 <br>read only = no <br>[rsync]&nbsp; &nbsp; ##定义模块名，名字可随意 <br>path = /mydata&nbsp;  ##指定rsync用户的模块目录 <br>auth users = linuxidc&nbsp;  ##指定虚拟用户名 <br>secrets file = /etc/rsync.password&nbsp;  ##指定虚拟用户的密码文件路径 <br>ignore errors&nbsp;  ##表示忽略错误</p>
+<p>6、启动rsync服务<br>[root@inotify-slave ~]# rsync --daemon --config=/etc/rsyncd.conf&nbsp; &nbsp; ##rsync监听在tcp协议的873端口 <br>[root@inotify-slave ~]# ps aux | grep rsync <br>root&nbsp; &nbsp; &nbsp;  1330&nbsp; 0.0&nbsp; 0.0 114640&nbsp;  328 ?&nbsp; &nbsp; &nbsp; &nbsp; Ss&nbsp;  21:13&nbsp;  0:00 rsync --daemon --config=/etc/rsyncd.conf <br>root&nbsp; &nbsp; &nbsp;  1338&nbsp; 0.0&nbsp; 0.1 112644&nbsp;  952 pts/0&nbsp; &nbsp; R+&nbsp;  21:13&nbsp;  0:00 grep --color=auto rsync</p>
+<p>二、配置inotify-master的密码文件<br>1、配置虚拟用户的密码文件<br>[root@inotify-master ~]# echo "linux" &gt; /etc/rsync.password&nbsp; &nbsp;  <br>[root@inotify-master ~]# cat /etc/rsync.password <br>linux&nbsp; &nbsp;  ##注意：只需要写出虚拟用户的密码；不用写出用户名 <br>[root@inotify-master ~]# chmod 600 /etc/rsync.password&nbsp; &nbsp;  <br>[root@inotify-master ~]# ls -ld /etc/rsync.password <br>-rw------- 1 root root 6 May 19 21:18 /etc/rsync.password</p>
+<p>三、通过inotify-master测试推送文件<br>[root@inotify-master ~]# echo "Hello Word" &gt; linuxidc.txt <br>[root@inotify-master ~]# rsync -avz linuxidc.txt lweim@172.18.42.200::rsync --password-file=/etc/rsync.password <br>sending incremental file list <br>linuxidc.txt <br>&nbsp; <br>sent 81 bytes&nbsp; received 27 bytes&nbsp; 216.00 bytes/sec<br>total size is 11&nbsp; speedup is 0.10</p>
+<p>四、检查inotify-slave的工作模块目录<br>[root@inotify-slave ~]# ll /mydata/ <br>total 4 <br>-rw-r--r-- 1 rsync rsync 11 May 19 21:21 linuxidc.txt <br>[root@inotify-slave ~]# cat /mydata/linuxidc.txt&nbsp; <br>Hello Word&nbsp; &nbsp; ##推送成功</p>
+<p>五、部署rsync-master<br>1、通过inofity源码包编译安装<br>[root@inotify-master ~]# tar -xf inotify-tools-3.13.tar <br>[root@inotify-master ~]# cd inotify-tools-3.13/ <br>[root@inotify-master inotify-tools-3.13]# ./ configure --prefix=/usr/local/inotify&nbsp;  ##指明安装路径 <br>[root@inotify-master ~]# make -j 4 &amp;&amp; make install</p>
+<p>2、编写监控脚本<br>12345678910111213141516171819202122 [root@inotify-master ~]# vim inotify.sh <br>#!/bin/bash <br>&nbsp; <br>host=172.18.42.200&nbsp;  ##指明inotify-slave的ip地址 <br>src=/www/linuxidc&nbsp; &nbsp; ##本机监控的目录，可随意定义 <br>dst=rsync&nbsp; &nbsp; &nbsp;  ##inotify-slave的rsync用户的模块目录 <br>user=linuxidc&nbsp; &nbsp; &nbsp; ##虚拟用户的用户名 <br>passfile=/etc/rsync.password&nbsp;  ##调用本地的密码文件 <br>inotify_home=/usr/local/inotify&nbsp;  ##指明inotify的安装目录 <br>&nbsp; <br>if [ ! -e "$src" ] || [ ! -e "${inotify_home}/bin/inotifywait" ] || [ ! -e "/usr/bin/rsync" ] || [ ! -e "/etc/rsync.password" ]; then<br>#if&nbsp; [ ! -e "${inotify_home}/bin/inotifywait" ] || [ ! -e "/usr/bin/rsync" ] || [ ! -e "/etc/rsync.password" ]; then <br>echo "Check File and Folder"<br>exit 1 <br>fi<br>&nbsp; <br>&nbsp; <br>${inotify_home}/bin/inotifywait -mrq -e close_write,delete,create,attrib $src | while read file <br>do<br>cd $src &amp;&amp; rsync -arvz -P ./ --timeout=100 $user@$host::$dst --password-file=$passfile &amp;&gt;/dev/null<br>done<br>exit 0</p>
+<p>六、执行inotify-master上的inotify.sh脚本<br>[root@inotify-master ~]# bash -x inotify.sh&nbsp;  ##运行脚本 <br>+ host=172.18.42.200 <br>+ src=/web/linuxidc/<br>+ dst=rsync<br>+ user=linuxidc&nbsp;  <br>+ passfile=/etc/rsync.password <br>+ inotify_home=/usr/local/inotify<br>+ '[' '!' -e /web/linuxidc/ ']'<br>+ '[' '!' -e /usr/local/inotify/bin/inotifywait ']'<br>+ '[' '!' -e /usr/bin/rsync ']'<br>+ '[' '!' -e /etc/rsync.password ']'<br>+ read file<br>+ /usr/local/inotify/bin/inotifywait -mrq -e close_write,delete,create,attrib /web/linuxidc/</p>
+<p>七、在inotify-master本机监控的目录下创建文件<br>[root@inotify-master linuxidc]# pwd <br>/www/linuxidc<br>[root@inotify-master linuxidc]# touch a aa aaa aaaa <br>[root@inotify-master linuxidc]# ll <br>total 0 <br>-rw-r--r-- 1 root root 0 May 19 22:54 a <br>-rw-r--r-- 1 root root 0 May 19 22:54 aa <br>-rw-r--r-- 1 root root 0 May 19 22:54 aaa <br>-rw-r--r-- 1 root root 0 May 19 22:54 aaaa</p>
+<p>八、在inotify-slave的rsync工作模块目录下查看<br>[root@inotify-slave mydata]# ll <br>total 0 <br>-rw-r--r-- 1 rsync rsync 0 May 19 22:54 a <br>-rw-r--r-- 1 rsync rsync 0 May 19 22:54 aa <br>-rw-r--r-- 1 rsync rsync 0 May 19 22:54 aaa <br>-rw-r--r-- 1 rsync rsync 0 May 19 22:54 aaaa <br>[root@inotify-slave mydata]# pwd <br>/mydata</p>
+<p><strong>以下是为配置rsync时的常见问题：</strong></p>
+<p>问题一： <br>@ERROR: chroot failed <br>rsync error: error starting client-server protocol (code 5) at main.c(1522) [receiver=3.0.3]</p>
+<p>原因： <br>服务器端的目录不存在或无权限，创建目录并修正权限可解决问题。</p>
+<p>问题二： <br>@ERROR: auth failed on module tee <br>rsync error: error starting client-server protocol (code 5) at main.c(1522) [receiver=3.0.3]</p>
+<p>原因： <br>服务器端该模块（tee）需要验证用户名密码，但客户端没有提供正确的用户名密码，认证失败。 <br>提供正确的用户名密码解决此问题。</p>
+<p>问题三： <br>@ERROR: Unknown module ‘tee_nonexists' <br>rsync error: error starting client-server protocol (code 5) at main.c(1522) [receiver=3.0.3]</p>
+<p>原因： <br>服务器不存在指定模块。提供正确的模块名或在服务器端修改成你要的模块以解决问题。</p>
+<p><br>问题1： <br>在client上遇到问题： <br>rsync -auzv --progress --password-file=/etc/rsync.pas root@192.168.133.128::backup /home/ <br>rsync: could not open password file "/etc/rsync.pas": No such file or directory (2) <br>Password: <br>@ERROR: auth failed on module backup <br>rsync error: error starting client-server protocol (code 5) at main.c(1506) [Receiver=3.0.7] <br>遇到这个问题：client端没有设置/etc/rsync.pas这个文件，而在使用rsync命令的时候，加了这个参数-- <br>password-file=/etc/rsync.pas</p>
+<p>问题2： <br>rsync -auzv --progress --password-file=/etc/rsync.pas root@192.168.133.128::backup /home/ <br>@ERROR: auth failed on module backup <br>rsync error: error starting client-server protocol (code 5) at main.c(1506) [Receiver=3.0.7] <br>遇到这个问题：client端已经设置/etc/rsync.pas这个文件，里面也设置了密码111111，和服务器一致，但是 <br>服务器段设置有错误，服务器端应该设置/etc/rsync.pas ，里面内容root:111111 ,这里登陆名不可缺少</p>
+<p>问题3： <br>rsync -auzv --progress --password-file=/etc/rsync.pas root@192.168.133.128::backup /home/ <br>@ERROR: chdir failed <br>rsync error: error starting client-server protocol (code 5) at main.c(1506) [Receiver=3.0.7] <br>遇到这个问题，是因为服务器端的/home/backup 其中backup这个目录并没有设置，所以提示：chdir failed</p>
+<p>问题4： <br>rsync: write failed on "/home/backup2010/wensong": No space left on device (28) <br>rsync error: error in file IO (code 11) at receiver.c(302) [receiver=3.0.7] <br>rsync: connection unexpectedly closed (2721 bytes received so far) [generator] <br>rsync error: error in rsync protocol data stream (code 12) at io.c(601) [generator=3.0.7] <br>磁盘空间不够，所以无法操作。 <br>可以通过df /home/backup2010 来查看可用空间和已用空间</p>
+<p>问题5：网络收集问题 <br>1、权限问题 <br>类似如下的提示：rsync: opendir "/kexue" (in dtsChannel) failed: Permission denied (13)注意查看同步的目录权限是否为755 <br>2、time out <br>rsync: failed to connect to 203.100.192.66: Connection timed out (110) <br>rsync error: error in socket IO (code 10) at clientserver.c(124) [receiver=3.0.5] <br>检查服务器的端口netstat –tunlp，远程telnet测试。 <br>可能因为客户端或者服务端的防火墙开启 导致无法通信，可以设置规则放行 rsync（873端口） 或者直接关闭防火墙。</p>
+<p>还有一种在同步过程中可能会提示没有权限 （将同步目录加上SvcwRsync全部权限即可，更简单的方法就是将SvcwRsync设为管理员即可）</p>
+<p><br>3、服务未启动 <br>rsync: failed to connect to 10.10.10.170: Connection refused (111) <br>rsync error: error in socket IO (code 10) at clientserver.c(124) [receiver=3.0.5] <br>启动服务：rsync --daemon --config=/etc/rsyncd.conf <br>4、磁盘空间满 <br>rsync: recv_generator: mkdir "/teacherclubBackup/rsync……" failed: No space left on device (28) <br>*** Skipping any contents from this failed directory *** <br>5、Ctrl+C或者大量文件 <br>rsync error: received SIGINT, SIGTERM, or SIGHUP (code 20) at rsync.c(544) [receiver=3.0.5] <br>rsync error: received SIGINT, SIGTERM, or SIGHUP (code 20) at rsync.c(544) [generator=3.0.5] <br>说明：导致此问题多半是服务端服务没有被正常启动，到服务器上去查查服务是否有启动，然后查看下 /var/run/rsync.pid 文件是否存在，最干脆的方法是杀死已经启动了服务，然后再次启动服务或者让脚本加入系统启动服务级别然后shutdown -r now服务器</p>
+<p>6、xnetid启动 <br>rsync: read error: Connection reset by peer (104) <br>rsync error: error in rsync protocol data stream (code 12) at io.c(759) [receiver=3.0.5] <br>查看rsync日志 <br>rsync: unable to open configuration file "/etc/rsyncd.conf": No such file or directory <br>xnetid查找的配置文件位置默认是/etc下，根据具体情况创建软链接。例如： <br>ln -s /etc/rsyncd/rsyncd.conf /etc/rsyncd.conf <br>或者更改指定默认的配置文件路径，在/etc/xinetd.d/rsync配置文件中。 <br>Rsync configure:<br>配置一：<br>ignore errors<br>说明：这个选项最好加上，否则再很多crontab的时候往往发生错误你也未可知，因为你不可能天天去看每时每刻去看log，不加上这个出现错误的几率相对会很高，因为任何大点的项目和系统，磁盘IO都是一个瓶颈</p>
+<p>Rsync error： <br>错误一： <br>@ERROR: auth failed on module xxxxx <br>rsync: connection unexpectedly closed (90 bytes read so far) <br>rsync error: error in rsync protocol data stream (code 12) at io.c(150) <br>说明：这是因为密码设置错了，无法登入成功，检查一下rsync.pwd，看客服是否匹配。还有服务器端没启动rsync 服务也会出现这种情况。<br>错误二： <br>password file must not be other-accessible <br>continuing without password file <br>Password: <br>说明：这是因为rsyncd.pwd rsyncd.sec的权限不对，应该设置为600。如：chmod 600 rsyncd.pwd<br>错误三： <br>@ERROR: chroot failed <br>rsync: connection unexpectedly closed (75 bytes read so far) <br>rsync error: error in rsync protocol data stream (code 12) at io.c(150) <br>说明：这是因为你在 rsync.conf 中设置的 path 路径不存在，要新建目录才能开启同步<br>错误四： <br>rsync: failed to connect to 218.107.243.2: No route to host (113) <br>rsync error: error in socket IO (code 10) at clientserver.c(104) [receiver=2.6.9] <br>说明：防火墙问题导致，这个最好先彻底关闭防火墙，排错的基本法就是这样，无论是S还是C，还有ignore errors选项问题也会导致</p>
+<p>错误五：<br>@ERROR: access denied to www from unknown (192.168.1.123)<br>rsync: connection unexpectedly closed (0 bytes received so far) [receiver]<br>rsync error: error in rsync protocol data stream (code 12) at io.c(359)<br>说明：此问题很明显，是配置选项host allow的问题，初学者喜欢一个允许段做成一个配置，然后模块又是同一个，致使导致<br>错误六：<br>rsync error: received SIGINT, SIGTERM, or SIGHUP (code 20) at rsync.c(244) [generator=2.6.9]<br>rsync error: received SIGUSR1 (code 19) at main.c(1182) [receiver=2.6.9]<br>说明：导致此问题多半是服务端服务没有被正常启动，到服务器上去查查服务是否有启动，然后查看下 /var/run/rsync.pid 文件是否存在，最干脆的方法是杀死已经启动了服务，然后再次启动服务或者让脚本加入系统启动服务级别然后shutdown -r now服务器<br>错误七：<br>rsync: read error: Connection reset by peer (104)<br>rsync error: error in rsync protocol data stream (code 12) at io.c(604) [sender=2.6.9]<br>说明：原数据目录里没有数据存在</p>
+<p>RSync实现文件备份同步详解&nbsp; &nbsp;<a href="http://www.linuxidc.com/Linux/2014-09/106967.htm">http://www.linuxidc.com/Linux/2014-09/106967.htm</a></p>
+<p>利用inotifywait监控主机文件和目录 <a href="http://www.linuxidc.com/Linux/2013-03/81075.htm">http://www.linuxidc.com/Linux/2013-03/81075.htm</a></p>
+<p>利用inotify+rsync实现Linux文件批量更新 <a href="http://www.linuxidc.com/Linux/2012-01/52132.htm">http://www.linuxidc.com/Linux/2012-01/52132.htm</a></p>
+<p>inotify-tools+rsync实时同步文件安装和配置 <a href="http://www.linuxidc.com/Linux/2012-06/63624.htm">http://www.linuxidc.com/Linux/2012-06/63624.htm</a></p>
+<p>rsync同步完整配置 <a href="http://www.linuxidc.com/Linux/2013-06/85781.htm">http://www.linuxidc.com/Linux/2013-06/85781.htm</a></p>
+<p><a href="http://www.linuxidc.com/topicnews.aspx?tid=14" target="_blank" title="CentOS">CentOS</a> 6.5下Rsync远程同步 <a href="http://www.linuxidc.com/Linux/2014-05/101084.htm">http://www.linuxidc.com/Linux/2014-05/101084.htm</a></p>
+<p>Linux文件夹对比并提取的差分文件技巧-rsync的妙用 <a href="http://www.linuxidc.com/Linux/2016-02/128307.htm">http://www.linuxidc.com/Linux/2016-02/128307.htm</a></p>
+<p><span style="color: rgb(255, 0, 0);"><strong>Rsync 的详细介绍</strong></span>：<a title="Rsync" href="http://www.linuxidc.com/Linux/2013-10/90806.htm">请点这里</a><br><span style="color: rgb(255, 0, 0);"><strong>Rsync 的下载地址</strong></span>：<a href="http://www.linuxidc.com/down.aspx?id=992" target="_blank">请点这里</a></p>
+<p><span style="font-size: small;"><strong>本文永久更新链接地址</strong></span>：<a href="http://www.linuxidc.com/Linux/2016-08/134027.htm">http://www.linuxidc.com/Linux/2016-08/134027.htm</a></p><a href="http://www.linuxidc.com/" target="_blank"><img src="logo.gif" alt="linux" width="15" height="17"></a></div><a href="http://www.linuxidc.com/" target="_blank">
+<div class="linux301"></div>
+<div class="linux3">
+<!-- Linux��������ҳ336*280 -->
+<ins class="adsbygoogle" style="display: inline-block; width: 336px; height: 280px;" data-ad-client="ca-pub-5195587195407606" data-ad-slot="7284216523"></ins>
+
+</div>
+<div class="linux302"></div>		
+			
+			
+		</a></div><a href="http://www.linuxidc.com/" target="_blank">
+		</a><div style="padding: 0px 15px;"><a href="http://www.linuxidc.com/" target="_blank">
+			</a><ul id="digg" class="digg"><a href="http://www.linuxidc.com/" target="_blank">
+				<li class="digg1">0</li>
+				</a><li class="digg2"><a href="http://www.linuxidc.com/" target="_blank"></a><a href="###">顶一下</a></li>
+			</ul>	
+		</div>
+<div class="linuxfx"><div data-bd-bind="1471314341687" class="bdsharebuttonbox bdshare-button-style0-24"><a class="bds_more" href="http://share.baidu.com/code#" data-cmd="more"></a><a title="分享到QQ空间" class="bds_qzone" href="http://share.baidu.com/code#" data-cmd="qzone"></a><a title="分享到新浪微博" class="bds_tsina" href="http://share.baidu.com/code#" data-cmd="tsina"></a><a title="分享到腾讯微博" class="bds_tqq" href="http://share.baidu.com/code#" data-cmd="tqq"></a><a title="分享到人人网" class="bds_renren" href="http://share.baidu.com/code#" data-cmd="renren"></a><a title="分享到百度新首页" class="bds_bdhome" href="http://share.baidu.com/code#" data-cmd="bdhome"></a><a title="分享到微信" class="bds_weixin" href="http://share.baidu.com/code#" data-cmd="weixin"></a></div>
+
+</div>	
+<div class="linux8"><br>
+<p style="text-align: center;"><a href="http://www.linuxidc.com/Linux/2014-08/106019.htm" target="_blank"><span style="color: rgb(255, 0, 0); font-size: medium;"><strong>关注Linux公社（LinuxIDC.com）官方微信与QQ群，随机发放邀请码</strong></span></a></p>
+</div>
+<div class="linux801"><br>
+<div id="hm_t_3126"><div style="display: block; margin: 0px; padding: 0px; float: none; clear: none; overflow: hidden; position: relative; border: 0px none; background: none repeat scroll 0% 0% transparent; max-width: none; max-height: none; border-radius: 0px 0px 0px 0px; box-shadow: none; transition: none 0s ease 0s ; text-align: left; box-sizing: content-box; width: 602px; height: 223px;"><iframe src="index_2.html" style="display: block; margin: 0px; padding: 0px; float: none; clear: none; overflow: hidden; position: relative; border: 0px none; background: none repeat scroll 0% 0% transparent; max-width: none; max-height: none; border-radius: 0px 0px 0px 0px; box-shadow: none; transition: none 0s ease 0s ; text-align: left; box-sizing: content-box; width: 100%; height: 100%;" scrolling="no" frameborder="0"></iframe></div></div>
+ <!-- 广告位：linux公社linuxidc.com（600*60） -->
+
+<div id="BAIDU_SSP__wrapper_961561_0"></div><div class="bd-hl-box" data-id="contentunion1088"><iframe src="index_3.html" marginwidth="0" marginheight="0" allowtransparency="true" scrolling="no" width="600" align="center,center" frameborder="0" height="60"></iframe></div> 
+
+
+</div>
+		<div class="nearNews">
+			<div class="prevNews"><a href="http://www.linuxidc.com/Linux/2016-08/134026.htm">Nginx基础应用详解</a></div>
+			<div class="nextNews"><a href="http://www.linuxidc.com/Linux/2016-08/134028.htm">rsync+inotify实现实时数据同步案例</a></div>
+		</div>
+	</div>
+	</div>
+	<div class="bl"></div>
+	<div class="br"></div>
+	<div class="bm"></div>
+	</div>
+	
+	<div class="mframe mR">
+	<div class="tl"></div>
+	<div class="tr"></div>
+	<div class="tm">
+		<span class="tt">相关资讯</span> &nbsp; &nbsp; &nbsp;
+		<a href="http://www.linuxidc.com/search.aspx?where=nkey&amp;keyword=3374" target="_blank">rsync</a>&nbsp; <a href="http://www.linuxidc.com/search.aspx?where=nkey&amp;keyword=8303" target="_blank">inotify</a>&nbsp; <a href="http://www.linuxidc.com/search.aspx?where=nkey&amp;keyword=45029" target="_blank">rsync数据同步</a>&nbsp; 
+	</div>
+	<div class="wrapper">
+	<div class="ml"></div>
+	<div class="mr"></div>
+	<div class="mm">
+		<table width="100%"><tbody><tr><td valign="top" width="50%"><ul class="nl"><li><a href="http://www.linuxidc.com/Linux/2016-08/134028.htm" target="_blank" title="rsync+inotify实现实时数据同步案例">rsync+inotify实现实时数据同步案</a>&nbsp; <span class="gray">(<span class="time">今 17:24</span>)</span></li>
+<li><a href="http://www.linuxidc.com/Linux/2016-05/131565.htm" target="_blank">svn 结合rsync 的代码发布系统</a>&nbsp; <span class="gray">(05月20日)</span></li>
+<li><a href="http://www.linuxidc.com/Linux/2016-04/130609.htm" target="_blank">Linux 安装配置 rsync服务</a>&nbsp; <span class="gray">(04月24日)</span></li>
+</ul></td><td valign="top" width="50%"><ul class="nl"><li><a href="http://www.linuxidc.com/Linux/2016-05/131691.htm" target="_blank" title="Unison+inotify实现文件双向自动同步">Unison+inotify实现文件双向自动同</a>&nbsp; <span class="gray">(05月23日)</span></li>
+<li><a href="http://www.linuxidc.com/Linux/2016-05/131230.htm" target="_blank">rsync命令详解</a>&nbsp; <span class="gray">(05月10日)</span></li>
+<li><a href="http://www.linuxidc.com/Linux/2016-03/128938.htm" target="_blank">inotify+rsync实现实时同步部署</a>&nbsp; <span class="gray">(03月05日)</span></li>
+</ul></td></tr></tbody></table>
+	</div>
+	</div>
+	<div class="bl"></div>
+	<div class="br"></div>
+	<div class="bm"></div>
+	</div>
+
+	<div class="mframe mR">
+	<div class="tl"></div>
+	<div class="tr"></div>
+	<div class="tm">
+		<span class="tt">图片资讯</span> &nbsp; &nbsp; &nbsp;
+	</div>
+	<div class="wrapper">
+	<div class="ml"></div>
+	<div class="mr"></div>
+	<div class="mm">
+<div class="imgList"><ul><li style="width: 25%;"><a href="http://www.linuxidc.com/Linux/2016-08/134028.htm" target="_blank" title="rsync+inotify实现实时数据同步案例"><img src="160808172880431t.jpg" alt="rsync+inotify实现实时数据同步案例" width="120" height="90">rsync+inotify实现实</a></li><li style="width: 25%;"><a href="http://www.linuxidc.com/Linux/2015-10/123842.htm" target="_blank" title="CentOS 6.3下rsync服务器的安装与配置"><img src="151006101772833t.jpg" alt="CentOS 6.3下rsync服务器的安装与配置" width="120" height="90">CentOS 6.3下rsync服</a></li><li style="width: 25%;"><a href="http://www.linuxidc.com/Linux/2015-08/121900.htm" target="_blank" title="sersync：基于 rsync + inotify 实现数据实时同步"><img src="150819125859911t.jpg" alt="sersync：基于 rsync + inotify 实现数据实时同步" width="120" height="90">sersync：基于 rsync </a></li><li style="width: 25%;"><a href="http://www.linuxidc.com/Linux/2014-12/110754.htm" target="_blank" title="如何在Linux下使用rsync"><img src="141223075458821t.jpg" alt="如何在Linux下使用rsync" width="120" height="90">如何在Linux下使用</a></li><li style="width: 25%;"><a href="http://www.linuxidc.com/Linux/2014-11/108883.htm" target="_blank" title="Rsync+Linux客户端+Windows客户端配置"><img src="14110309159496t.jpg" alt="Rsync+Linux客户端+Windows客户端配置" width="120" height="90">Rsync+Linux客户端+</a></li><li style="width: 25%;"><a href="http://www.linuxidc.com/Linux/2014-09/106967.htm" target="_blank" title="RSync实现文件备份同步详解"><img src="140920130682671t.jpg" alt="RSync实现文件备份同步详解" width="120" height="90">RSync实现文件备份同</a></li><li style="width: 25%;"><a href="http://www.linuxidc.com/Linux/2014-08/105851.htm" target="_blank" title="rsync+inotify实时数据的同步实例"><img src="14082621118558t.jpg" alt="rsync+inotify实时数据的同步实例" width="120" height="90">rsync+inotify实时数</a></li><li style="width: 25%;"><a href="http://www.linuxidc.com/Linux/2014-08/105514.htm" target="_blank" title="cwRsyncServer实现从Windows下数据实时同步到Linux服务器"><img src="14081315333139t.jpg" alt="cwRsyncServer实现从Windows下数据实时同步到Linux服务器" width="120" height="90">cwRsyncServer实现从</a></li></ul></div>
+	</div>
+	</div>
+	<div class="bl"></div>
+	<div class="br"></div>
+	<div class="bm"></div>
+	</div>
+	
+	
+	<div class="mframe mR">
+	<div class="tl"></div>
+	<div class="tr"></div>
+	<div class="tm">
+		<span class="tt">本文评论</span>
+		 	　　<a href="http://www.linuxidc.com/remark.aspx?id=134027" target="_blank">查看全部评论</a> <span class="gray">(0)</span>
+	</div>
+	<div class="wrapper">
+	<div class="ml"></div>
+	<div class="mr"></div>
+	<div class="mm">
+		<table style="margin: 6px;" width="100%">		
+		<tbody><tr><td width="100%">
+			<form action="" name="fmRemarkSt">
+			<input disabled="disabled" value="1" name="face" type="hidden">
+			表情： <img src="b.gif" alt="表情" class="face1" style="cursor: pointer; vertical-align: middle;">
+			姓名： <input disabled="disabled" name="username" value="" maxlength="15" style="width: 60px;" class="inputbg" type="text">
+			<input disabled="disabled" id="rmAnonymitySt" type="checkbox"><label for="rmAnonymitySt">匿名</label>
+			字数 <input disabled="disabled" id="bodyLen" size="3" readonly="readonly" style="border-width: 0px; background: none repeat scroll 0% 0% transparent; vertical-align: middle;" value="0" type="text">
+			<br>
+			<textarea disabled="disabled" name="body" cols="40" rows="4" style="width: 40em; height: 100px; margin: 3px 0px; overflow-y: auto;"></textarea>
+				<br>
+		　　　<input disabled="disabled" checked="checked" id="rmAgreeSt" type="checkbox"><label for="rmAgreeSt">同意评论声明</label>
+		　　　<button disabled="disabled" type="submit" style="width: 50px; padding: 0px;">请登录</button>
+			</form>
+		</td></tr>
+		<tr><td width="100%">
+			评论声明
+			<ul style="list-style-type: square; margin: 5px 0px 0px 1em; padding: 0px;">
+			<li>尊重网上道德，遵守中华人民共和国的各项有关法律法规</li>
+			<li>承担一切因您的行为而直接或间接导致的民事或刑事法律责任</li>
+			<li>本站管理人员有权保留或删除其管辖留言中的任意内容</li>
+			<li>本站有权在网站内转载或引用您的评论</li>
+			<li>参与本评论即表明您已经阅读并接受上述条款</li>
+			</ul>
+		</td></tr>
+		</tbody></table>
+		
+		
+		
+		<div class="reCont" id="reContainer"></div>
+	</div>
+	</div>
+	<div class="bl"></div>
+	<div class="br"></div>
+	<div class="bm"></div>
+	</div>
+	
+</td><td valign="top" width="300">
+<div class="linux901"><div id="bdcs"><div class="bdcs-container"><meta http-equiv="x-ua-compatible" content="IE=9">   <!-- 嵌入式 -->  <div class="bdcs-main bdcs-clearfix" id="default-searchbox">      <div class="bdcs-search bdcs-clearfix" id="bdcs-search-inline">          <form action="http://so.linuxidc.com/cse/search" method="get" target="_blank" class="bdcs-search-form" autocomplete="off" id="bdcs-search-form">              <input name="s" value="6547409854000425422" type="hidden">              <input name="entry" value="1" type="hidden">                                                                        <input style="height: 50px; line-height: 50px;" name="q" class="bdcs-search-form-input" id="bdcs-search-form-input" placeholder="试试看神奇的Linux公社搜索" type="text">              <input class="bdcs-search-form-submit " id="bdcs-search-form-submit" value="Linux搜索" type="submit">                       </form>      </div>                     <div class="bdcs-hot" id="bdcs-hot"><a href="http://so.linuxidc.com/cse/search?s=6547409854000425422&amp;entry=1&amp;q=Linux%E6%95%99%E7%A8%8B" title="Linux教程" class="bdcs-hot-item" target="_blank">Linux教程</a><a href="http://so.linuxidc.com/cse/search?s=6547409854000425422&amp;entry=1&amp;q=Ubuntu%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B" title="Ubuntu安装教程" class="bdcs-hot-item" target="_blank">Ubuntu安装教程</a><a href="http://so.linuxidc.com/cse/search?s=6547409854000425422&amp;entry=1&amp;q=Linux%E5%91%BD%E4%BB%A4%E6%95%99%E7%A8%8B" title="Linux命令教程" class="bdcs-hot-item" target="_blank">Linux命令教程</a><a href="http://so.linuxidc.com/cse/search?s=6547409854000425422&amp;entry=1&amp;q=Ubuntu%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B" title="Ubuntu安装教程" class="bdcs-hot-item" target="_blank">Ubuntu安装教程</a><a href="http://so.linuxidc.com/cse/search?s=6547409854000425422&amp;entry=1&amp;q=Linux%E5%91%BD%E4%BB%A4%E6%95%99%E7%A8%8B" title="Linux命令教程" class="bdcs-hot-item" target="_blank">Linux命令教程</a></div>       </div>                           </div></div>
+</div>
+<div class="linux902"></div>
+<div class="linux903">
+<div id="BAIDU_SSP__wrapper_u1930231_0"></div>
+</div>
+<div class="linux905"></div>
+	
+	<div class="lframe">
+	<div class="tl"></div>
+	<div class="tr"></div>
+	<div class="tm">
+		<span class="tt">最新资讯</span>
+	</div>
+	<div class="wrapper">
+	<div class="ml"></div>
+	<div class="mr"></div>
+	<div class="mm">
+		<ul class="nl">
+<li><a href="http://www.linuxidc.com/Linux/2016-08/134028.htm" target="_blank">rsync+inotify实现实时数据同步案例</a></li>
+<li><a href="http://www.linuxidc.com/Linux/2016-08/134027.htm" target="_blank">rsync+inotify实现数据同步及常见问题</a></li>
+<li><a href="http://www.linuxidc.com/Linux/2016-08/134026.htm" target="_blank">Nginx基础应用详解</a></li>
+<li><a href="http://www.linuxidc.com/Linux/2016-08/134025.htm" target="_blank">Linux中Varnish基础应用</a></li>
+<li><a href="http://www.linuxidc.com/Linux/2016-08/134024.htm" target="_blank">利用Openfiler配置基于文件系统的网络存储</a></li>
+<li><a href="http://www.linuxidc.com/Linux/2016-08/134023.htm" target="_blank">HTTP返回状态码中301和302的区别</a></li>
+<li><a href="http://www.linuxidc.com/Linux/2016-08/134022.htm" target="_blank">Linux下NFS搭建步骤</a></li>
+<li><a href="http://www.linuxidc.com/Linux/2016-08/134021.htm" target="_blank">Openfire的启动过程与session管理</a></li>
+<li><a href="http://www.linuxidc.com/Linux/2016-08/134020.htm" target="_blank">GoPro Hero5 通过 FCC，可能内建 GPS</a></li>
+<li><a href="http://www.linuxidc.com/Linux/2016-08/134019.htm" target="_blank">Cisco IOS拒绝服务漏洞(CVE-2016-1478)</a></li>
+</ul>
+	</div>
+	</div>
+	<div class="bl"></div>
+	<div class="br"></div>
+	<div class="bm"></div>
+	</div>
+
+	<div class="lframe">
+	<div class="tl"></div>
+	<div class="tr"></div>
+	<div class="tm">
+		<span class="tt">本周热门</span>
+	</div>
+	<div class="wrapper">
+	<div class="ml"></div>
+	<div class="mr"></div>
+	<div class="mm">
+		<ul class="nl">
+<li><a href="http://www.linuxidc.com/Linux/2013-08/88186.htm" target="_blank">OpenStack云计算快速入门教程</a></li>
+<li><a href="http://www.linuxidc.com/Linux/2014-07/104470.htm" target="_blank">Kafka使用入门教程</a></li>
+<li><a href="http://www.linuxidc.com/Linux/2014-01/95493.htm" target="_blank">实例讲解Nginx下的rewrite规则</a></li>
+<li><a href="http://www.linuxidc.com/Linux/2015-03/114988.htm" target="_blank">详解Linux下安装配置Nginx</a></li>
+<li><a href="http://www.linuxidc.com/Linux/2015-03/115207.htm" target="_blank">Nginx配置upstream实现负载均衡</a></li>
+<li><a href="http://www.linuxidc.com/Linux/2014-07/104563.htm" target="_blank">CentOS 6.5使用yum快速搭建LAMP环境</a></li>
+<li><a href="http://www.linuxidc.com/Linux/2015-08/120946.htm" target="_blank">分别用Eclipse和IDEA搭建Scala+Spark开发环境</a></li>
+<li><a href="http://www.linuxidc.com/Linux/2014-12/110034.htm" target="_blank">CentOS 7 上安装 Docker 详解</a></li>
+<li><a href="http://www.linuxidc.com/Linux/2014-03/98978.htm" target="_blank" title="Hadoop生态上几个技术的关系与区别：hive、pig、hbase 关系与区别">Hadoop生态上几个技术的关系与区别：hive、pig</a></li>
+<li><a href="http://www.linuxidc.com/Linux/2014-11/109235.htm" target="_blank">CentOS 7安装配置Apache HTTP Server</a></li>
+</ul>
+	</div>
+	</div>
+	<div class="bl"></div>
+	<div class="br"></div>
+	<div class="bm"></div>
+	</div>
+	<div class="linuxy9">
+<div style="width: 300px; height: 250px; margin: 0px; padding: 0px; background: none repeat scroll 0% 0% transparent; border: medium none; display: inline-block;" id="BAIDU_SSP__wrapper_u1650512_0_placeholder"></div><div style="width: 300px; height: 250px; display: inline-block; z-index: 2147483646; position: fixed; left: 866px; top: 5px;" id="BAIDU_SSP__wrapper_u1650512_0"><iframe id="iframeu1650512_0" src="index_4.html" vspace="0" hspace="0" marginwidth="0" marginheight="0" style="border: 0px none; vertical-align: bottom; margin: 0px;" allowtransparency="true" scrolling="no" width="300" align="center,center" frameborder="0" height="250"></iframe></div>
+
+</div>	
+</td></tr>
+</tbody></table>
+<div class="linux906"></div>
+<div id="footer">
+<a href="http://www.linuxidc.com/aboutus.htm">Linux公社简介</a> - <a href="http://www.linuxidc.com/adsense.htm">广告服务</a> - <a href="http://www.linuxidc.com/sitemap.aspx">网站地图</a> - <a href="http://www.linuxidc.com/help.htm">帮助信息</a> - <a href="http://www.linuxidc.com/contactus.htm">联系我们</a><br>本站（LinuxIDC）所刊载文章不代表同意其说法或描述，仅为提供更多信息，也不构成任何建议。<br>主编：漏网的鱼 (QQ:3165270) 联系邮箱:<img src="email.png" alt="" width="138" height="20"> (如有版权及广告合作请联系)
+<br>
+本站带宽由[<a href="http://www.muu.cc/"><font color="red">MUU.CC</font></a>]友情提供<br>关注Linux，关注LinuxIDC.com，<font color="red">请向您的QQ好友宣传LinuxIDC.com</font>，多谢支持！
+<br>Copyright © 2006-2015　<a href="http://www.linuxidc.com/">Linux公社</a>　All rights reserved 沪ICP备15008072号-1号
+	
+	
+</div>
+</div>
+
+
+
+
+
+</body>
+</html>

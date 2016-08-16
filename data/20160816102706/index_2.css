@@ -1,0 +1,43 @@
+/* ::::: [internal] ::::: */
+
+html, body { margin: 0px; overflow: hidden; }
+/* ::::: [internal] ::::: */
+
+.hm-t-container, .hm-t-container * { box-sizing: content-box; margin: 0px; padding: 0px; float: none; clear: none; overflow: hidden; white-space: nowrap; word-wrap: normal; border: 0px none; background: none repeat scroll 0% 0% transparent; width: auto; height: auto; max-width: none; max-height: none; border-radius: 0px 0px 0px 0px; box-shadow: none; transition: none 0s ease 0s ; }
+a { display: inline-block; }
+.hm-t-header { position: relative; }
+.hm-t-list { position: relative; }
+.hm-t-list-txt { padding: 12px 12px 0px 0px; }
+.hm-t-item { position: relative; display: list-item; text-align: left; float: left; list-style: none outside none ! important; }
+.hm-t-txt-wrapper { padding-left: 20px; background-color: transparent; background-repeat: no-repeat; background-attachment: scroll; background-position: 0% 0%; background-clip: border-box; background-origin: padding-box; background-size: auto auto; background-image: url("t-list-styles.svg"), none; }
+.hm-t-txt { white-space: normal; text-overflow: ellipsis; overflow: hidden; }
+.hm-t-footer { position: relative; height: 22px; margin-top: 5px; }
+.hm-t-footer a { position: absolute; top: 0px; right: 5px; font-family: arial,sans-serif; font-size: 12px; color: rgb(174, 174, 174); text-decoration: none; line-height: 22px; }
+.hm-t-container { position: relative; border: 1px solid rgb(204, 204, 204); }
+.hm-t-header { width: auto ! important; padding-left: 12px; text-align: left; border-bottom: 1px solid rgb(204, 204, 204); }
+.hm-t-container { background-color: rgb(255, 255, 255); border-color: rgb(255, 0, 0); height: 217px; width: 600px; }
+.hm-t-header { background-color: rgb(107, 188, 237); color: rgb(255, 0, 0); font-family: arial,Microsoft YaHei,sans-serif; font-size: 16px; font-weight: bold; height: 33px; line-height: 33px; }
+.hm-t-item { list-style: square inside none; }
+.hm-t-txt { line-height: 30px; }
+.hm-t-txt, .hm-t-img-title { color: rgb(237, 28, 36); font-family: arial,Microsoft YaHei,sans-serif; font-size: 14px; font-weight: normal; text-decoration: none; }
+.hm-t-txt:active, .hm-t-img-title:active { color: rgb(0, 0, 139); text-decoration: none; }
+.hm-t-txt:hover, .hm-t-img-title:hover { color: rgb(0, 0, 139); text-decoration: underline; }
+.hm-t-txt-wrapper { background-position: 12px 13px; height: 30px; }
+.hm-t-item-txt { width: 50%; }
+.hm-t-change, .hm-t-carousel { position: absolute; top: 0px; right: 5px; height: 20px; font-size: 12px; font-weight: 400; color: rgb(148, 148, 148); }
+.hm-t-change, .hm-t-carousel-digit {  }
+.hm-t-carousel { line-height: 20px; }
+.hm-t-carousel-digit, .hm-t-carousel-dot { display: inline-block; cursor: pointer; }
+.hm-t-carousel-digit { width: 18px; height: 18px; color: rgb(255, 255, 255); font-size: 16px; line-height: 18px; border: 1px solid rgb(255, 255, 255); font-weight: 700; text-align: center; vertical-align: text-bottom; }
+.hm-t-carousel-digit { transform: scale(0.7); }
+:root .hm-t-carousel-digit {  }
+.hm-t-carousel-digit-active { background: none repeat scroll 0% 0% rgb(255, 255, 255); }
+.hm-t-change, .hm-t-carousel-digit-active { color: rgb(107, 188, 237); }
+/* ::::: [internal] ::::: */
+
+@media screen {
+}
+@media print {
+}
+/* ::::: [internal] ::::: */
+

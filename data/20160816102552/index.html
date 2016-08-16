@@ -1,0 +1,573 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html dir="ltr" xml:lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Rsync、Unison及DRBD的比较 -  - ITeye技术网站</title>
+    <meta name="description" content=" 一、Rsync  Rsync（remote synchronize），顾名思义，可以知道这是一个远程数据同步工具，可通过LAN/WAN快速同步多台主机间的文件。Rsync使用所谓的 “Rsync算法”来使本地和远程两个主机之间的文件达到同步，这个算法只传送两个文件的不同部分，而不是每次都整份传送，因此速度相当快。  Rsync 本来是用于替代rcp的一个工具，目前由rsync.samba.org维 ...">
+    <meta name="keywords" content=" Rsync、Unison及DRBD的比较">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="search" type="application/opensearchdescription+xml" href="http://qq85609655.iteye.com/open_search.xml" title="ITeye">
+    <link href="http://qq85609655.iteye.com/rss" rel="alternate" title="" type="application/rss+xml">
+    
+
+        
+    
+
+
+      
+  
+
+  
+
+    
+  
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+  <body>
+    <div id="header">
+	      <div id="blog_site_nav">
+  <a href="http://www.iteye.com/" class="homepage">首页</a>
+  <a href="http://www.iteye.com/news">资讯</a>
+  <a href="http://www.iteye.com/magazines">精华</a>
+  <a href="http://www.iteye.com/forums">论坛</a>
+  <a href="http://www.iteye.com/ask">问答</a>
+  <a href="http://www.iteye.com/blogs">博客</a>
+  <a href="http://www.iteye.com/blogs/subjects">专栏</a>
+  <a href="http://www.iteye.com/groups">群组</a>
+  <a href="#" id="msna"><u>更多</u> <small>▼</small></a>
+  <div class="quick_menu" style="display: none;">
+    <a target="_blank" href="http://job.iteye.com/iteye">知识库</a>
+    <a href="http://www.iteye.com/search">搜索</a>
+  </div>
+</div>
+
+	      <div id="user_nav">
+      <a href="http://qq85609655.iteye.com/login" class="welcome" title="登录">您还未登录 !</a>
+    <a href="http://qq85609655.iteye.com/login">登录</a>
+    <a href="http://qq85609655.iteye.com/signup" class="nobg">注册</a>
+  </div>
+
+	    
+    </div>
+
+    <div id="page">
+        <div id="branding" class="clearfix" style="overflow: hidden; background: none repeat scroll 0% 0% transparent; padding: 0px 0px 2px;">
+        	<ins id="revive-0-0" data-revive-zoneid="184" data-revive-id="8c38e720de1c90a6f6ff52f3f89c4d57"></ins>
+        </div>
+      <div id="branding" class="clearfix">
+        <div id="blog_name">
+          <h1><a href="http://qq85609655.iteye.com/">qq85609655</a></h1>
+        </div>
+        <div id="fd"></div>
+        <div id="blog_navbar">
+          <ul>
+            <li class="blog_navbar_for"><a href="http://qq85609655.iteye.com/"><strong>博客</strong></a></li>
+            <li><a href="http://qq85609655.iteye.com/weibo">微博</a></li>
+            <li><a href="http://qq85609655.iteye.com/album">相册</a></li>
+            <li><a href="http://qq85609655.iteye.com/link">收藏</a></li>
+            <li><a href="http://qq85609655.iteye.com/blog/guest_book">留言</a></li>
+            <li><a href="http://qq85609655.iteye.com/blog/profile">关于我</a></li>
+          </ul>
+    
+          <div class="search">
+            <form action="http://qq85609655.iteye.com/blog/search" method="get">
+              <input class="search_text" id="query" name="query" style="margin-left: 10px; width: 110px;" value="" type="text">
+              <input class="submit_search" value="" type="submit">
+            </form>
+          </div> 
+          <div id="fd"></div>         
+        </div>
+      </div>
+      
+      <div id="content" class="clearfix">
+        <div id="main">
+          
+
+
+
+          
+
+
+<div class="h-entry" style="display: none;">
+  <a href="http://qq85609655.iteye.com/" class="p-author" target="_blank">qq85609655</a>
+</div>
+
+
+<div class="blog_main">
+  <div class="blog_title">
+    <h3>
+      <a href="#">Rsync、Unison及DRBD的比较</a>
+      <em class="actions">      </em>
+    </h3>
+    <ul class="blog_categories"><strong>博客分类：</strong> <li><a href="http://qq85609655.iteye.com/category/210556">linux</a></li> </ul>
+        <div class="news_tag">&nbsp;</div>
+    	  
+    	
+    	
+  		
+      </div>
+
+  <div id="blog_content" class="blog_content">
+    <div style="font-size: 14px;" class="iteye-blog-content-contain">
+<div style="color: rgb(51, 51, 51); font-family: arial,宋体,sans-serif;"><strong>一、Rsync</strong></div>
+<div style="color: rgb(51, 51, 51); font-family: arial,宋体,sans-serif;">Rsync（remote synchronize），顾名思义，可以知道这是一个远程数据同步工具，可通过LAN/WAN快速同步多台主机间的文件。Rsync使用所谓的 “Rsync算法”来使本地和远程两个主机之间的文件达到同步，这个算法只传送两个文件的不同部分，而不是每次都整份传送，因此速度相当快。</div>
+<div style="color: rgb(51, 51, 51); font-family: arial,宋体,sans-serif;">Rsync 本来是用于替代rcp的一个工具，目前由rsync.samba.org维护，所以rsync.conf文件的格式类似于samba 的主配置文件。Rsync可以通过rsh或ssh使用，也能以daemon模式去运行，在以daemon方式运行时Rsync server会打开一个873端口，等待客户端去连接。连接时，Rsync server会检查口令是否相符，若通过口令查核，则可以开始进行文件传输。第一次连通完成时，会把整份文件传输一次，以后则就只需进行增量备份。</div>
+<div style="color: rgb(51, 51, 51); font-family: arial,宋体,sans-serif;">Rsync支持大多数的类Unix系统，无论是Linux、Solaris还是BSD上都经过了良好的测试。此外，它在windows平台下也有相应的版本，如cwRsync和Sync2NAS等工具。</div>
+<div style="color: rgb(51, 51, 51); font-family: arial,宋体,sans-serif;">Rsync的基本特点如下：</div>
+<div style="color: rgb(51, 51, 51); font-family: arial,宋体,sans-serif;">1.可以镜像保存整个目录树和文件系统；</div>
+<div style="color: rgb(51, 51, 51); font-family: arial,宋体,sans-serif;">2.可以很容易做到保持原来文件的权限、时间、软硬链接等；</div>
+<div style="color: rgb(51, 51, 51); font-family: arial,宋体,sans-serif;">3.无须特殊权限即可安装；</div>
+<div style="color: rgb(51, 51, 51); font-family: arial,宋体,sans-serif;">4.优化的流程，文件传输效率高；</div>
+<div style="color: rgb(51, 51, 51); font-family: arial,宋体,sans-serif;">5.可以使用rsh、ssh等方式来传输文件，当然也可以通过直接的socket连接；</div>
+<div style="color: rgb(51, 51, 51); font-family: arial,宋体,sans-serif;">6.支持匿名传输。</div>
+<div style="color: rgb(51, 51, 51); font-family: arial,宋体,sans-serif;">&nbsp;</div>
+<div style="color: rgb(51, 51, 51); font-family: arial,宋体,sans-serif;"><strong>二、Unison</strong></div>
+<div style="color: rgb(51, 51, 51); font-family: arial,宋体,sans-serif;">Unison是windows和unix平台下都可以使用的双向文件同步工具，它能使两个文件夹（本地或网络 上的）保持内容的一致。 unison 拥有其它一些同步工具或文件系统 的相同特性，但也有自己的特点：</div>
+<div style="color: rgb(51, 51, 51); font-family: arial,宋体,sans-serif;">1、跨平台使用；</div>
+<div style="color: rgb(51, 51, 51); font-family: arial,宋体,sans-serif;">2、对内核和用户 权限 没有特别要求；</div>
+<div style="color: rgb(51, 51, 51); font-family: arial,宋体,sans-serif;">3、unison 是双向的，它能自动 处理两分拷贝中更新没有冲突的部分，有冲突的部分将会显示出来让用户选择更新策略；</div>
+<div style="color: rgb(51, 51, 51); font-family: arial,宋体,sans-serif;">只要是能连通的两台主机 ，就可以运行 unison ，可以直接使用 socket 连接或安全的 ssh 连接方式，对带宽 的要求不高，使用类似 rsync 的压缩传输协议。</div>
+<div style="color: rgb(51, 51, 51); font-family: arial,宋体,sans-serif;">Unison双向同步的一个缺点是,对于同名文件在两个同步文件夹中都被修改时,unison是不会去同步的,因为unison无法判断以那个为准.</div>
+<div style="color: rgb(51, 51, 51); font-family: arial,宋体,sans-serif;">&nbsp;</div>
+<div style="color: rgb(51, 51, 51); font-family: arial,宋体,sans-serif;"><strong>三、DRBD</strong></div>
+<div style="color: rgb(51, 51, 51); font-family: arial,宋体,sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+<div style="color: rgb(51, 51, 51); font-family: arial,宋体,sans-serif;">DRBD的特点：</div>
+<div style="color: rgb(51, 51, 51); font-family: arial,宋体,sans-serif;">1、&nbsp;&nbsp;DRBD是一种块设备&nbsp;&nbsp;</div>
+<div style="color: rgb(51, 51, 51); font-family: arial,宋体,sans-serif;">2、&nbsp;可用于高可用集群（HA）&nbsp;</div>
+<div style="color: rgb(51, 51, 51); font-family: arial,宋体,sans-serif;">3、&nbsp;&nbsp;通过网络实现块设备数据实时镜像</div>
+<div style="color: rgb(51, 51, 51); font-family: arial,宋体,sans-serif;">4、&nbsp;&nbsp;类似于一个网络RAID-1 &nbsp;&nbsp;</div>
+<div style="color: rgb(51, 51, 51); font-family: arial,宋体,sans-serif;">&nbsp;&nbsp; &nbsp;&nbsp;</div>
+<div style="color: rgb(51, 51, 51); font-family: arial,宋体,sans-serif;">所 谓DRBD，是分布式复制块设备，是一种通过TCP/IP网络实现块设备数据实时镜像的方案。,可以被用于高可用(HA)之中.它类似于一个网络 RAID-1功能.当你将数据写入本地文件系统时,数据还将会被发送到网络中另一台主机上.以相同的形式记录在一个文件系统中.</div>
+<div style="color: rgb(51, 51, 51); font-family: arial,宋体,sans-serif;">本地(主节点)与远程主机(备节点)的数据可以保证实时同步.当本地系统出现故障时,远程主机上还会保留有一份相同的数据,可以继续使用.</div>
+<div style="color: rgb(51, 51, 51); font-family: arial,宋体,sans-serif;">在高可用(HA)中使用DRBD功能,可以代替使用一个共享盘阵.因为数据同时存在于本地主机和远程主机上,</div>
+<div style="color: rgb(51, 51, 51); font-family: arial,宋体,sans-serif;">切换时,远程主机只要使用它上面的那份备份数据,就可以继续进行服务了。</div>
+<div style="color: rgb(51, 51, 51); font-family: arial,宋体,sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp;</div>
+<div style="color: rgb(51, 51, 51); font-family: arial,宋体,sans-serif;">&nbsp;</div>
+<table style="border-collapse: collapse; border-spacing: 0px; border-bottom: 1px solid rgb(221, 221, 221); width: 644px; color: rgb(51, 51, 51); font-family: arial,宋体,sans-serif;" border="1" cellpadding="4" cellspacing="0">
+
+
+
+
+
+
+
+<tbody><tr>
+<td style="margin: 0px; padding: 6px 10px 6px 0px; border-top: 1px solid rgb(221, 221, 221);">&nbsp;</td>
+<td style="margin: 0px; padding: 6px 10px 6px 0px; border-top: 1px solid rgb(221, 221, 221);">Rsync</td>
+<td style="margin: 0px; padding: 6px 10px 6px 0px; border-top: 1px solid rgb(221, 221, 221);">Unison</td>
+<td style="margin: 0px; padding: 6px 10px 6px 0px; border-top: 1px solid rgb(221, 221, 221);">DRBD</td>
+</tr>
+<tr>
+<td style="margin: 0px; padding: 6px 10px 6px 0px; border-top: 1px solid rgb(221, 221, 221);">简介</td>
+<td style="margin: 0px; padding: 6px 10px 6px 0px; border-top: 1px solid rgb(221, 221, 221);">远程数据同步工具，可通过LAN/WAN快速同步多台主机间的文件。 目前由rsync.samba.org维护</td>
+<td style="margin: 0px; padding: 6px 10px 6px 0px; border-top: 1px solid rgb(221, 221, 221);">Unison是windows和unix平台下都可以使用的双向文件同步工具，它能使两个文件夹（本地或网络 上的）保持内容的一致。目前已停止开发。</td>
+<td style="margin: 0px; padding: 6px 10px 6px 0px; border-top: 1px solid rgb(221, 221, 221);">DRBD，是分布式复制块设备，是一种通过TCP/IP网络实现块设备数据实时镜像的方案。,可以被用于高可用(HA)之中.它类似于一个网络RAID-1功能.</td>
+</tr>
+<tr>
+<td style="margin: 0px; padding: 6px 10px 6px 0px; border-top: 1px solid rgb(221, 221, 221);">功能及特点</td>
+<td style="margin: 0px; padding: 6px 10px 6px 0px; border-top: 1px solid rgb(221, 221, 221);">
+<div>1.镜像保存整个目录树和文件系统；</div>
+<div>2.保持原来文件的权限、时间、软硬链接等；</div>
+<div>3.无须特殊权限即可安装；</div>
+<div>4.优化的流程，文件传输效率高；使用“Rsync算法”同步两个文件的不同部分，而不是每次都整份传送；</div>
+<div>5.可以使用rsh、ssh等方式来传输文件，也可以通过直接的socket连接；</div>
+<div>6.支持匿名传输。</div>
+</td>
+<td style="margin: 0px; padding: 6px 10px 6px 0px; border-top: 1px solid rgb(221, 221, 221);">
+<div>1、跨平台使用；</div>
+<div>2、对内核和用户 权限 没有特别要求；<br>3、支持双向同步，能自动处理两份拷贝中更新没有冲突的部分，有冲突的部分将会显示出来让用户选择更新策略；</div>
+<div>4、可以直接使用 socket 连接或安全的 ssh 连接方式，对带宽的要求不高，使用类似 rsync 的压缩传输协议。</div>
+</td>
+<td style="margin: 0px; padding: 6px 10px 6px 0px; border-top: 1px solid rgb(221, 221, 221);">
+<div>1、DRBD是一种块设备</div>
+<div>2、可用于高可用集群（HA）</div>
+<div>3、通过网络实现块设备数据实时镜像</div>
+<div>4、类似于一个网络RAID-1</div>
+</td>
+</tr>
+<tr>
+<td style="margin: 0px; padding: 6px 10px 6px 0px; border-top: 1px solid rgb(221, 221, 221);">使用平台</td>
+<td style="margin: 0px; padding: 6px 10px 6px 0px; border-top: 1px solid rgb(221, 221, 221);">
+<div>类unix平台(Linux、Solaris、BSD)</div>
+<div>Windows平台相应版本：cwRsync</div>
+</td>
+<td style="margin: 0px; padding: 6px 10px 6px 0px; border-top: 1px solid rgb(221, 221, 221);">
+<div>Windows平台</div>
+<div>Unix/Linux平台</div>
+</td>
+<td style="margin: 0px; padding: 6px 10px 6px 0px; border-top: 1px solid rgb(221, 221, 221);">Linux平台</td>
+</tr>
+<tr>
+<td style="margin: 0px; padding: 6px 10px 6px 0px; border-top: 1px solid rgb(221, 221, 221);">依赖性</td>
+<td style="margin: 0px; padding: 6px 10px 6px 0px; border-top: 1px solid rgb(221, 221, 221);">无</td>
+<td style="margin: 0px; padding: 6px 10px 6px 0px; border-top: 1px solid rgb(221, 221, 221);">无</td>
+<td style="margin: 0px; padding: 6px 10px 6px 0px; border-top: 1px solid rgb(221, 221, 221);">需要内核支持</td>
+</tr>
+<tr>
+<td style="margin: 0px; padding: 6px 10px 6px 0px; border-top: 1px solid rgb(221, 221, 221);">传输方式</td>
+<td style="margin: 0px; padding: 6px 10px 6px 0px; border-top: 1px solid rgb(221, 221, 221);">rsh、ssh、socket连接、daemon模式</td>
+<td style="margin: 0px; padding: 6px 10px 6px 0px; border-top: 1px solid rgb(221, 221, 221);">socket 连接或安全的 ssh 连接方式</td>
+<td style="margin: 0px; padding: 6px 10px 6px 0px; border-top: 1px solid rgb(221, 221, 221);">通过TCP/IP网络实现块设备数据实时镜像</td>
+</tr>
+<tr>
+<td style="margin: 0px; padding: 6px 10px 6px 0px; border-top: 1px solid rgb(221, 221, 221);">稳定性</td>
+<td style="margin: 0px; padding: 6px 10px 6px 0px; border-top: 1px solid rgb(221, 221, 221);">高</td>
+<td style="margin: 0px; padding: 6px 10px 6px 0px; border-top: 1px solid rgb(221, 221, 221);">一般（超时严重）</td>
+<td style="margin: 0px; padding: 6px 10px 6px 0px; border-top: 1px solid rgb(221, 221, 221);">高</td>
+</tr>
+<tr>
+<td style="margin: 0px; padding: 6px 10px 6px 0px; border-top: 1px solid rgb(221, 221, 221);">同步速度</td>
+<td style="margin: 0px; padding: 6px 10px 6px 0px; border-top: 1px solid rgb(221, 221, 221);">快</td>
+<td style="margin: 0px; padding: 6px 10px 6px 0px; border-top: 1px solid rgb(221, 221, 221);">
+<div>小文件同步速度：快</div>
+<div>大文件同步速度：一般</div>
+</td>
+<td style="margin: 0px; padding: 6px 10px 6px 0px; border-top: 1px solid rgb(221, 221, 221);">
+<div>小文件同步速度：快</div>
+<div>大文件同步速度：慢</div>
+</td>
+</tr>
+<tr>
+<td style="margin: 0px; padding: 6px 10px 6px 0px; border-top: 1px solid rgb(221, 221, 221);">缺点</td>
+<td style="margin: 0px; padding: 6px 10px 6px 0px; border-top: 1px solid rgb(221, 221, 221);">不支持双向传输</td>
+<td style="margin: 0px; padding: 6px 10px 6px 0px; border-top: 1px solid rgb(221, 221, 221);">超时严重</td>
+<td style="margin: 0px; padding: 6px 10px 6px 0px; border-top: 1px solid rgb(221, 221, 221);">不支持双向传输，传输速度慢</td>
+</tr>
+
+</tbody></table>
+<div style="color: rgb(51, 51, 51); font-family: arial,宋体,sans-serif; text-align: center;">Rsync、Unison及DRBD的比较</div>
+<div style="color: rgb(51, 51, 51); font-family: arial,宋体,sans-serif;"><strong>&nbsp;</strong></div>
+<div style="color: rgb(51, 51, 51); font-family: arial,宋体,sans-serif;"><strong>总结：</strong></div>
+<div style="color: rgb(51, 51, 51); font-family: arial,宋体,sans-serif;">Rsync、Unison和DRBD三个软件，虽然都是同步备份数据的工具，但是各有其功能。</div>
+<div style="color: rgb(51, 51, 51); font-family: arial,宋体,sans-serif;">Rsync只支持单向同步，但是其同步速度是三者之中最快的，正确的说其同步速度是其他两者所无法比拟的。同时，rsync+inotify的搭配使用可以达到实时触控同步更新文件。</div>
+<div style="color: rgb(51, 51, 51); font-family: arial,宋体,sans-serif;">Unison支持双向同步，对内核和用户权限没有要求，但是其同步速度特别慢，经常出现超时情况。</div>
+<div style="color: rgb(51, 51, 51); font-family: arial,宋体,sans-serif;">DRBD用于高可用（HA），类似于一个网络RAID－1功能，速度也比较慢。</div>
+<div style="color: rgb(51, 51, 51); font-family: arial,宋体,sans-serif;">通过安装配置rsync、unison和drbd三个软件，同时测试其功能，发现三者各有其优势。不能单纯的评价谁优谁劣，应该针对用户的用途进行选择使用工具。</div>
+<p>&nbsp;</p>
+</div>
+  </div>
+
+  
+
+  
+  <ins id="revive-0-1" data-revive-zoneid="171" data-revive-id="8c38e720de1c90a6f6ff52f3f89c4d57"></ins>
+  
+
+  <div id="bottoms" class="clearfix">
+    
+    <div id="share_weibo">分享到：
+      <a data-type="sina" title="分享到新浪微博"><img src="sina.jpg"></a>
+      <a data-type="qq" title="分享到腾讯微博"><img src="tec.jpg"></a>
+    </div>
+  </div>
+
+  <div class="blog_nav">
+    <div class="pre_next">
+      <a href="http://qq85609655.iteye.com/blog/1880345" class="next" title="tddl sample">tddl sample</a>
+      |
+      <a href="http://qq85609655.iteye.com/blog/1876124" class="pre" title="opensuse cacti snmpd.conf的配置">opensuse cacti snmpd.conf的配置</a>
+    </div>
+  </div>
+  <div class="blog_bottom">
+    <ul>
+      <li>2013-05-29 15:02</li>
+      <li>浏览 4357</li>
+      <li><a href="#comments">评论(0)</a></li>
+      
+      
+      <li>分类:<a href="http://www.iteye.com/blogs/category/opensource">开源软件</a></li>      
+      <li class="last"><a href="http://www.iteye.com/wiki/blog/1879416" target="_blank" class="more">相关推荐</a></li>
+    </ul>    
+  </div>
+  
+		    
+		
+<div class="boutique-curr-box blog_comment">
+	  <div class="boutique-curr clearfix">
+	    <h5 class="h3titles">参考知识库</h5>
+	    
+	    <dl class="dlnewlist">
+	    
+          <dd><a target="_blank" href="http://lib.csdn.net/base/machinelearning"><img src="1452498104247_247.jpg" alt="" width="58" height="58"></a></dd>
+          <dt>
+              <a target="_blank" href="http://lib.csdn.net/base/machinelearning" classs="title">机器学习知识库</a>
+              <span>
+                 <em>7567</em>&nbsp;&nbsp;关注 <i>|</i> <em>1202</em>&nbsp;&nbsp;收录                  
+              </span>
+          </dt>
+      
+	    </dl>
+	    
+	    <dl class="dlnewlist">
+	    
+          <dd><a target="_blank" href="http://lib.csdn.net/base/unity3d"><img src="1470302448213_213.jpg" alt="" width="58" height="58"></a></dd>
+          <dt>
+              <a target="_blank" href="http://lib.csdn.net/base/unity3d" classs="title">Unity3D知识库</a>
+              <span>
+                 <em>254</em>&nbsp;&nbsp;关注 <i>|</i> <em>159</em>&nbsp;&nbsp;收录                  
+              </span>
+          </dt>
+      
+	    </dl>
+	    
+	    <dl class="dlnewlist">
+	    
+          <dd><a target="_blank" href="http://lib.csdn.net/base/docker"><img src="1452500466484_484.jpg" alt="" width="58" height="58"></a></dd>
+          <dt>
+              <a target="_blank" href="http://lib.csdn.net/base/docker" classs="title">Docker知识库</a>
+              <span>
+                 <em>3350</em>&nbsp;&nbsp;关注 <i>|</i> <em>199</em>&nbsp;&nbsp;收录                  
+              </span>
+          </dt>
+      
+	    </dl>
+	    
+	    <dl class="dlnewlist">
+	    
+          <dd><a target="_blank" href="http://lib.csdn.net/base/spark"><img src="1453368118762_762.jpg" alt="" width="58" height="58"></a></dd>
+          <dt>
+              <a target="_blank" href="http://lib.csdn.net/base/spark" classs="title">Apache Spark知识库</a>
+              <span>
+                 <em>4037</em>&nbsp;&nbsp;关注 <i>|</i> <em>335</em>&nbsp;&nbsp;收录                  
+              </span>
+          </dt>
+      
+	    </dl>
+	    
+	  </div>
+</div>
+ 		
+      
+  <div class="blog_comment">
+    <h5>评论</h5>
+    <a id="comments" name="comments"></a>
+    
+    
+    
+  </div>
+
+  <div class="blog_comment">
+    <h5>发表评论</h5>
+            <p style="text-align: center; margin-top: 30px; margin-bottom: 0px;"><a href="http://qq85609655.iteye.com/login" style="background-color: white;"> <img src="login_icon.png" style="vertical-align: middle; margin-right: 10px;"></a><a href="http://qq85609655.iteye.com/login">  您还没有登录,请您登录后再发表评论 </a></p>
+      </div>
+</div>
+
+
+
+
+
+
+
+        </div>
+
+        <div id="local">
+          <div class="local_top"></div>
+          <div id="blog_owner">
+  <div id="blog_owner_logo"><a href="http://qq85609655.iteye.com/"><img alt="qq85609655的博客" class="logo" src="user-logo.gif" title="qq85609655的博客: " width=""></a></div>
+  <div id="blog_owner_name">qq85609655</div>
+</div>
+
+          <div id="blog_actions">
+            <ul>
+              <li>浏览: 336888 次</li>
+              <li>性别: <img alt="Icon_minigender_1" src="icon_minigender_1.gif" title="男"></li>
+              <li>来自: 北京</li>
+              <li><img src="offline.gif"></li>
+              
+            </ul>
+          </div>
+          <div id="user_visits" class="clearfix">
+            <h5>最近访客 <span style="font-weight: normal; font-size: 12px; padding-left: 30px;"><a href="http://qq85609655.iteye.com/blog/user_visits">更多访客&gt;&gt;</a></span></h5>
+            
+              <div class="user_visit">
+                <div class="logo"><a href="http://damit126.iteye.com/" target="_blank"><img alt="damit126的博客" class="logo" src="user-logo-thumb.gif" title="damit126的博客: " width="48px"></a></div>
+                <div class="left"><a href="http://damit126.iteye.com/" target="_blank" title="damit126">damit126</a></div>
+              </div>
+            
+              <div class="user_visit">
+                <div class="logo"><a href="http://ths-hnx.iteye.com/" target="_blank"><img alt="ths_hnx的博客" class="logo" src="user-logo-thumb.gif" title="ths_hnx的博客: " width="48px"></a></div>
+                <div class="left"><a href="http://ths-hnx.iteye.com/" target="_blank" title="ths_hnx">ths_hnx</a></div>
+              </div>
+            
+              <div class="user_visit">
+                <div class="logo"><a href="http://ite-kevin.iteye.com/" target="_blank"><img alt="ite_kevin的博客" class="logo" src="user-logo-thumb.gif" title="ite_kevin的博客: " width="48px"></a></div>
+                <div class="left"><a href="http://ite-kevin.iteye.com/" target="_blank" title="ite_kevin">ite_kevin</a></div>
+              </div>
+            
+              <div class="user_visit">
+                <div class="logo"><a href="http://heizihai.iteye.com/" target="_blank"><img alt="heizihai的博客" class="logo" src="user-logo-thumb.gif" title="heizihai的博客: " width="48px"></a></div>
+                <div class="left"><a href="http://heizihai.iteye.com/" target="_blank" title="heizihai">heizihai</a></div>
+              </div>
+            
+          </div>
+
+          
+
+                      <div id="blog_menu">
+              <h5>文章分类</h5>
+              <ul>
+                <li><a href="http://qq85609655.iteye.com/">全部博客 (344)</a></li>
+                
+                  <li><a href="http://qq85609655.iteye.com/category/164879">eclipse (6)</a></li>
+                
+                  <li><a href="http://qq85609655.iteye.com/category/166783">java基础 (21)</a></li>
+                
+                  <li><a href="http://qq85609655.iteye.com/category/176657">opencms (4)</a></li>
+                
+                  <li><a href="http://qq85609655.iteye.com/category/177510">tomcat (10)</a></li>
+                
+                  <li><a href="http://qq85609655.iteye.com/category/194902">kettle (13)</a></li>
+                
+                  <li><a href="http://qq85609655.iteye.com/category/197920">spring (7)</a></li>
+                
+                  <li><a href="http://qq85609655.iteye.com/category/202325">生活点滴 (3)</a></li>
+                
+                  <li><a href="http://qq85609655.iteye.com/category/210556">linux (58)</a></li>
+                
+                  <li><a href="http://qq85609655.iteye.com/category/219219">database (1)</a></li>
+                
+                  <li><a href="http://qq85609655.iteye.com/category/249032">php (4)</a></li>
+                
+                  <li><a href="http://qq85609655.iteye.com/category/269154">mac (3)</a></li>
+                
+                  <li><a href="http://qq85609655.iteye.com/category/270597">mysql (36)</a></li>
+                
+                  <li><a href="http://qq85609655.iteye.com/category/278561">maven (5)</a></li>
+                
+                  <li><a href="http://qq85609655.iteye.com/category/278954">Asterisk (2)</a></li>
+                
+                  <li><a href="http://qq85609655.iteye.com/category/279707">android (4)</a></li>
+                
+                  <li><a href="http://qq85609655.iteye.com/category/284281">birt (1)</a></li>
+                
+                  <li><a href="http://qq85609655.iteye.com/category/285431">hadoop (52)</a></li>
+                
+                  <li><a href="http://qq85609655.iteye.com/category/292982">pentaho (30)</a></li>
+                
+                  <li><a href="http://qq85609655.iteye.com/category/308342">distributed (2)</a></li>
+                
+                  <li><a href="http://qq85609655.iteye.com/category/308414">Storm (2)</a></li>
+                
+                  <li><a href="http://qq85609655.iteye.com/category/321437">数据挖掘 (1)</a></li>
+                
+                  <li><a href="http://qq85609655.iteye.com/category/324615">cassandra (0)</a></li>
+                
+                  <li><a href="http://qq85609655.iteye.com/category/324616">spark (0)</a></li>
+                
+                  <li><a href="http://qq85609655.iteye.com/category/351825">greenplum (2)</a></li>
+                
+                  <li><a href="http://qq85609655.iteye.com/category/357796">R (0)</a></li>
+                
+                  <li><a href="http://qq85609655.iteye.com/category/361977">liferay (1)</a></li>
+                
+              </ul>
+            </div>
+            <div id="month_blogs">
+              <h5>社区版块</h5>
+              <ul>
+                <li><a href="http://qq85609655.iteye.com/blog/news">我的资讯</a> (0)</li>
+                <li>
+                  <a href="http://qq85609655.iteye.com/blog/post">我的论坛</a> (8)
+                </li>
+                <li><a href="http://qq85609655.iteye.com/blog/answered_problems">我的问答</a> (0)</li>
+              </ul>
+            </div>
+            <div id="month_blogs">
+              <h5>存档分类</h5>
+              <ul>
+                
+                  <li><a href="http://qq85609655.iteye.com/blog/monthblog/2016-08">2016-08</a> (1)</li>
+                
+                  <li><a href="http://qq85609655.iteye.com/blog/monthblog/2016-06">2016-06</a> (2)</li>
+                
+                  <li><a href="http://qq85609655.iteye.com/blog/monthblog/2016-05">2016-05</a> (1)</li>
+                
+                <li><a href="http://qq85609655.iteye.com/blog/monthblog_more">更多存档...</a></li>
+              </ul>
+            </div>
+            
+            
+              <div id="comments_top">
+                <h5>评论排行榜</h5>
+                <ul>
+                  
+                    <li><a href="http://qq85609655.iteye.com/blog/2260728" title="hbase的sql工具phoenix整合到pentaho中">hbase的sql工具phoenix整合到pentaho中</a></li>
+                  
+                </ul>
+              </div>
+            
+
+            <div id="guest_books">
+              <h5>最新评论</h5>
+              <ul>
+                
+                <li>
+                  <a href="http://hunter123456.iteye.com/" target="_blank" title="hunter123456">hunter123456</a>： 
+                  你好！pentaho5上 cas 单点登录，除了 修改appl ...<br>
+                  <a href="http://qq85609655.iteye.com/blog/2224647#bc2392216">作为一个BI开发人员，我要发布报表，元数据，OLAP的模型到BI服务器</a>
+                </li>
+                
+                <li>
+                  <a href="http://1321941138.iteye.com/" target="_blank" title="1321941138">1321941138</a>： 
+                  1282265122@qq.com 求楼主一份源码，非常感谢。 ...<br>
+                  <a href="http://qq85609655.iteye.com/blog/1306555#bc2387318">在Web中集成Kettle</a>
+                </li>
+                
+                <li>
+                  <a href="http://fenggenqi.iteye.com/" target="_blank" title="fenggenqi">fenggenqi</a>： 
+                  545862701@qq.com 求楼主一份源码<br>
+                  <a href="http://qq85609655.iteye.com/blog/1306555#bc2386420">在Web中集成Kettle</a>
+                </li>
+                
+                <li>
+                  <a href="http://k830530.iteye.com/" target="_blank" title="k830530">k830530</a>： 
+                  phoenix的驱动放入到kettle的lib文件夹下，连接时 ...<br>
+                  <a href="http://qq85609655.iteye.com/blog/2260728#bc2386066">hbase的sql工具phoenix整合到pentaho中</a>
+                </li>
+                
+                <li>
+                  <a href="http://lijunwyf.iteye.com/" target="_blank" title="lijunwyf">lijunwyf</a>： 
+                  tddl不好，请问有什么替代品？你们现在用什么？<br>
+                  <a href="http://qq85609655.iteye.com/blog/2035176#bc2383267">剖析淘宝TDDL（TAOBAO DISTRIBUTE DATA LAYER）</a>
+                </li>
+                
+              </ul>
+            </div>
+
+            <div class="local_bottom"></div>
+          
+        </div>
+        <div style="margin-top: 10px; float: left; clear: left;">
+					<ins id="revive-0-2" data-revive-zoneid="185" data-revive-id="8c38e720de1c90a6f6ff52f3f89c4d57"></ins>
+				</div>
+      </div>    
+
+      <div id="footer" class="clearfix">
+        <div id="copyright">
+          <hr>
+          声明：ITeye文章版权属于作者，受法律保护。没有作者书面许可不得转载。若作者同意转载，必须以超链接形式标明文章原始出处和作者。<br>
+          © 2003-2016 ITeye.com.   All rights reserved.  [ 京ICP证110151号  京公网安备110105010620 ]
+        </div>
+        <ins id="revive-0-3" data-revive-zoneid="186" data-revive-id="8c38e720de1c90a6f6ff52f3f89c4d57"></ins>
+      </div>
+    </div>
+    <img src="untitled.dat" width="0" height="0">
+
+
+
+    
+    
+    
+
+
+
+    
+	    
+	    
+	    
+    
+    
+  
+
+</body>
+</html>

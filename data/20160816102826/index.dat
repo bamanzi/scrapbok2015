@@ -1,0 +1,10 @@
+id	20160816102826
+create	20160816102826
+modify	20160816102826
+type	
+title	axkibe/lsyncd: Lsyncd (Live Syncing Daemon) synchronizes local directories with remote targets
+chars	UTF-8
+icon	favicon.ico
+source	https://github.com/axkibe/lsyncd
+comment	
+lock	
