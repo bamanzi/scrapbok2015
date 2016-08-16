@@ -1,0 +1,2547 @@
+<!DOCTYPE html>
+<html itemtype="http://schema.org/QAPage" itemscope="">
+<head>
+<meta charset="UTF-8">
+
+
+<title>Why is Mercurial considered to be easier than Git? - Programmers Stack Exchange</title>
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="apple-touch-icon image_src" href="http://cdn.sstatic.net/Sites/programmers/img/apple-touch-icon.png?v=4ce8e2685a35">
+    <link rel="search" type="application/opensearchdescription+xml" title="Programmers Stack Exchange" href="http://programmers.stackexchange.com/opensearch.xml">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@StackProgrammer">
+    <meta name="twitter:domain" content="programmers.stackexchange.com">
+    <meta property="og:type" content="website">    
+    <meta property="og:image" itemprop="image primaryImageOfPage" content="http://cdn.sstatic.net/Sites/programmers/img/apple-touch-icon@2.png?v=8a6d048f3c78&amp;a">
+    <meta name="twitter:title" property="og:title" itemprop="title name" content="Why is Mercurial considered to be easier than Git?">
+    <meta name="twitter:description" property="og:description" itemprop="description" content="When looking at comparisons, it seems to me that there could be a 1:1 mapping between their feature sets. Yet, an often cited statement is that &quot;Mercurial is easier&quot;. What is the basis of this stat...">
+    <meta property="og:url" content="http://programmers.stackexchange.com/questions/87217/why-is-mercurial-considered-to-be-easier-than-git">
+    <link rel="canonical" href="http://programmers.stackexchange.com/questions/87217/why-is-mercurial-considered-to-be-easier-than-git">
+
+    
+    
+    
+    
+    
+
+            <meta name="twitter:app:country" content="US">
+            <meta name="twitter:app:name:iphone" content="Stack Exchange iOS">
+            <meta name="twitter:app:id:iphone" content="871299723">
+            <meta name="twitter:app:url:iphone" content="se-zaphod://programmers.stackexchange.com/questions/87217/why-is-mercurial-considered-to-be-easier-than-git">
+            <meta name="twitter:app:name:ipad" content="Stack Exchange iOS">
+            <meta name="twitter:app:id:ipad" content="871299723">
+            <meta name="twitter:app:url:ipad" content="se-zaphod://programmers.stackexchange.com/questions/87217/why-is-mercurial-considered-to-be-easier-than-git">
+            <meta name="twitter:app:name:googleplay" content="Stack Exchange Android">
+            <meta name="twitter:app:url:googleplay" content="http://programmers.stackexchange.com/questions/87217/why-is-mercurial-considered-to-be-easier-than-git">
+            <meta name="twitter:app:id:googleplay" content="com.stackexchange.marvin">
+        
+
+
+    
+    
+    
+        
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body class="question-page new-topbar">
+    
+    
+
+
+
+
+    <div id="notify-container"></div>
+    <div id="custom-header"></div>
+
+
+
+
+
+<div class="topbar">
+    <div class="topbar-wrapper">
+
+        <div class="js-topbar-dialog-corral">
+
+
+<div class="topbar-dialog siteSwitcher-dialog dno">
+    <div class="header">
+        <h3><a href="http://programmers.stackexchange.com/">current community</a></h3>
+    </div>
+    <div class="modal-content current-site-container">
+        <ul class="current-site">
+                <li>
+                        <div class="related-links">
+            <a href="http://programmers.blogoverflow.com/" class="js-gps-track" data-gps-track="site_switcher.click({ item_type:7 })">blog</a>
+                    <a href="http://chat.stackexchange.com/?tab=site&amp;host=programmers.stackexchange.com" class="js-gps-track" data-gps-track="site_switcher.click({ item_type:6 })">chat</a>
+            </div>
+
+
+
+
+    <a href="http://programmers.stackexchange.com/" class="current-site-link site-link js-gps-track" data-id="131" data-gps-track="
+        site_switcher.click({ item_type:3 })">
+        <div class="site-icon favicon favicon-programmers" title="Programmers"></div>
+        Programmers
+    </a>
+
+                </li>
+                <li class="related-site">
+                        <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                    
+
+
+
+    <a href="http://meta.programmers.stackexchange.com/" class="site-link js-gps-track" data-id="133" data-gps-track="
+            site.switch({ target_site:133, item_type:3 }),
+        site_switcher.click({ item_type:4 })">
+        <div class="site-icon favicon favicon-programmersmeta" title="Programmers Meta"></div>
+        Programmers Meta
+    </a>
+
+                </li>
+        </ul>
+    </div>
+    <div class="header" id="your-communities-header">
+        <h3>
+your communities        </h3>
+            
+    </div>
+    <div class="modal-content" id="your-communities-section">
+            
+            <div class="call-to-login">
+<a href="https://programmers.stackexchange.com/users/signup?ssrc=site_switcher&amp;returnurl=http%3a%2f%2fprogrammers.stackexchange.com%2fquestions%2f87217%2fwhy-is-mercurial-considered-to-be-easier-than-git" class="login-link js-gps-track" data-gps-track="site_switcher.click({ item_type:10 })">Sign up</a> or <a href="https://programmers.stackexchange.com/users/login?ssrc=site_switcher&amp;returnurl=http%3a%2f%2fprogrammers.stackexchange.com%2fquestions%2f87217%2fwhy-is-mercurial-considered-to-be-easier-than-git" class="login-link js-gps-track" data-gps-track="site_switcher.click({ item_type:11 })">log in</a> to customize your list.
+            </div>
+    </div>
+    <div class="header">
+        <h3><a href="http://stackexchange.com/sites">more stack exchange communities</a></h3>
+        <a href="http://blog.stackoverflow.com/" class="fr">company blog</a>
+    </div>
+    <div class="modal-content">
+            <div class="child-content"></div>
+    </div>
+</div>
+        </div>
+
+        <div class="network-items">
+                <a href="http://stackexchange.com/" class="topbar-icon icon-site-switcher yes-hover js-site-switcher-button js-gps-track" data-gps-track="site_switcher.show" title="A list of all 159 Stack Exchange sites">
+                    <span class="hidden-text">Stack Exchange</span>
+                </a>
+
+    <a href="#" class="topbar-icon icon-inbox yes-hover js-inbox-button" title="Recent inbox messages">
+        <span class="hidden-text">Inbox</span>
+        <span class="unread-count" style="display: none;"></span>
+    </a>
+    <a href="#" class="topbar-icon icon-achievements yes-hover js-achievements-button " data-unread-class="" title="Recent achievements: reputation, badges, and privileges earned">
+        <span class="hidden-text">Reputation and Badges</span>
+        <span class="unread-count" style="display: none;">
+            
+        </span>
+    </a>
+        </div>
+
+        <div class="topbar-links">
+
+                <div class="links-container">
+                <span class="topbar-menu-links">
+                                    <a href="https://programmers.stackexchange.com/users/signup?ssrc=head&amp;returnurl=http%3a%2f%2fprogrammers.stackexchange.com%2fquestions%2f87217%2fwhy-is-mercurial-considered-to-be-easier-than-git" class="login-link">sign up</a>
+                                <a href="https://programmers.stackexchange.com/users/login?ssrc=head&amp;returnurl=http%3a%2f%2fprogrammers.stackexchange.com%2fquestions%2f87217%2fwhy-is-mercurial-considered-to-be-easier-than-git" class="login-link">log in</a>
+
+                            <a href="http://programmers.stackexchange.com/tour">tour</a>
+        <a href="#" class="icon-help js-help-button" title="Help Center and other resources">
+            help
+            <span class="triangle"></span>
+        </a>
+    <div class="topbar-dialog help-dialog js-help-dialog dno">
+        <div class="modal-content">
+            <ul>
+                                    <li>
+                        <a href="http://programmers.stackexchange.com/tour" class="js-gps-track" data-gps-track="help_popup.click({ item_type:1 })">
+                            Tour
+                            <span class="item-summary">
+                                Start here for a quick overview of the site
+                            </span>
+                        </a>
+                    </li>
+                <li>
+                    <a href="http://programmers.stackexchange.com/help" class="js-gps-track" data-gps-track="help_popup.click({ item_type:4 })">
+                        Help Center
+                        <span class="item-summary">
+                            Detailed answers to any questions you might have
+                        </span>
+                    </a>
+                </li>
+                        <li>
+                            <a href="http://meta.programmers.stackexchange.com/" class="js-gps-track" data-gps-track="help_popup.click({ item_type:2 })">
+                                Meta
+                                <span class="item-summary">
+                                    Discuss the workings and policies of this site
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://stackoverflow.com/company/about" class="js-gps-track" data-gps-track="help_popup.click({ item_type:6 })">
+                                About Us
+                                <span class="item-summary">
+                                    Learn more about Stack Overflow the company
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://business.stackoverflow.com/?ref=topbar_help" class="js-gps-track" data-gps-track="help_popup.click({ item_type:7 })">
+                                Business
+                                <span class="item-summary">
+                                    Learn more about hiring developers or posting ads with us
+                                </span>
+                            </a>
+                        </li>
+            </ul>
+        </div>
+    </div>
+                                            </span>
+                </div>
+
+            <div class="search-container">
+                <form id="search" action="http://programmers.stackexchange.com/search" method="get" autocomplete="off">
+                    <input name="q" placeholder="Search Q&amp;A" value="" tabindex="1" autocomplete="off" maxlength="240" type="text">
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+    
+
+    <div class="container">
+        <div id="header">
+            <br class="cbt">
+            <div id="hlogo">
+                <a href="http://programmers.stackexchange.com/">
+                    Programmers
+                </a>
+            </div>
+            <div id="hmenus">
+                <div class="nav mainnavs">
+                    <ul>
+                        <li class="youarehere"><a id="nav-questions" href="http://programmers.stackexchange.com/questions">Questions</a></li>
+                                                <li><a id="nav-tags" href="http://programmers.stackexchange.com/tags">Tags</a></li>
+                        <li><a id="nav-users" href="http://programmers.stackexchange.com/users">Users</a></li>
+                        <li><a id="nav-badges" href="http://programmers.stackexchange.com/help/badges">Badges</a></li>
+                        <li><a id="nav-unanswered" href="http://programmers.stackexchange.com/unanswered">Unanswered</a></li>
+                    </ul>
+                </div>
+                <div class="nav askquestion">
+                    <ul>
+                        <li>
+                            <a id="nav-askquestion" href="http://programmers.stackexchange.com/questions/ask">Ask Question</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+
+
+
+        <div id="content">
+            
+
+<div itemscope="" itemtype="http://schema.org/Question">
+    <link itemprop="image" href="http://cdn.sstatic.net/Sites/programmers/img/apple-touch-icon.png?v=4ce8e2685a35">
+
+
+    <div id="herobox">
+        <div id="hero-content">
+                <div id="close"><a title="click to minimize">_</a></div>
+            <div id="blurb">
+                Programmers Stack Exchange is a question and answer site for professional programmers interested in conceptual questions about software development. Join them; it only takes a minute:
+                <br>
+                <br>
+                <a href="http://programmers.stackexchange.com/users/signup?ssrc=hero&amp;returnurl=http%3a%2f%2fprogrammers.stackexchange.com%2fquestions%2f87217%2fwhy-is-mercurial-considered-to-be-easier-than-git" id="tell-me-more" class="button">Sign up</a>
+            </div>
+            <div id="desc">
+                <b>Here's how it works:</b>
+                <ol id="hiw">
+                    <li id="q">Anybody can ask a question
+                    </li>
+                    <li id="an">Anybody can answer
+                    </li>
+                    <li id="b">The best answers are voted up and rise to the top
+                    </li>
+                </ol>
+            </div>
+            <div style="clear: both;"></div>
+        </div>
+    </div>
+			<div id="question-header">
+                <h1 itemprop="name"><a href="#" class="question-hyperlink">Why is Mercurial considered to be easier than Git?</a></h1>
+		</div>
+			<div id="mainbar">
+
+			
+
+<div class="question ice-ice-baby" data-questionid="87217" id="question">
+
+        <input id="87217-only-allow-inform-moderator-flagging" value="true" type="hidden">
+    
+            <div class="everyonelovesstackoverflow" id="adzerk2074048036"></div>    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input name="_id_" value="87217" type="hidden">
+        <a class="vote-up-off" title="This question shows research effort; it is useful and clear">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">204</span>
+        <a class="vote-down-off" title="This question does not show any research effort; it is unclear or not useful">down vote</a>
+
+        <a class="star-off" href="#">favorite</a>
+        <div class="favoritecount"><b>112</b></div>
+
+
+</div>
+
+            </td>
+            
+<td class="postcell">
+<div>
+    <div class="post-text" itemprop="text">
+
+<p>When looking at comparisons, it seems to me that there could be a 1:1 mapping between their feature sets. Yet, an often cited statement is that "Mercurial is easier". What is the basis of this statement? (if any)</p>
+    </div>
+    <div class="post-taglist">
+        <a href="http://programmers.stackexchange.com/questions/tagged/git" class="post-tag js-gps-track" title="show questions tagged 'git'" rel="tag">git</a> <a href="http://programmers.stackexchange.com/questions/tagged/mercurial" class="post-tag js-gps-track" title="show questions tagged 'mercurial'" rel="tag">mercurial</a> 
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://programmers.stackexchange.com/q/87217" title="short permalink to this question" class="short-link" id="link-post-87217">share</a></div>        
+    </td>
+    <td class="post-signature" align="right">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="http://programmers.stackexchange.com/posts/87217/revisions" title="show all edits to this post">edited <span title="2014-05-25 11:26:49Z" class="relativetime">May 25 '14 at 11:26</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        
+        <div class="-flair">
+            
+        </div>
+    </div>
+</div>    </td>
+    <td class="post-signature">
+        <div class="user-info">
+    <div class="user-details">
+        <span class="community-wiki" title="This post is community owned as of Oct 1 '11 at 20:27. Votes do not generate reputation, and it can be edited by users with 100 rep">
+            community wiki
+        </span>
+    </div><br>
+    <div class="user-details">
+        <a id="history-87217" href="http://programmers.stackexchange.com/posts/87217/revisions" title="show revision history for this post">
+        2 revs, 2 users 67%<br></a><a href="http://programmers.stackexchange.com/users/3530">Tamás Szelei</a>
+        
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</div>
+</td>
+        </tr>
+        
+            <tr>
+            <td class="special-status" colspan="2">
+                <div class="question-status">
+        <h2>                    <b>locked</b> by <a href="http://programmers.stackexchange.com/users/4/thomas-owens">Thomas Owens</a><span class="mod-flair" title="moderator">♦</span> <span dir="ltr"><span title="2014-05-26 15:39:57Z" class="relativetime">May 26 '14 at 15:39</span></span>
+</h2>
+        <p>This question exists because it has historical significance, but <b>it is not considered a good, on-topic question for this site</b>,   so please do not use it as evidence that you can ask similar questions here.  This question and its answers are frozen and cannot be changed.  More info: <a href="http://programmers.stackexchange.com/help">help center</a>.</p>
+    </div>
+            </td>
+        </tr>
+    
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-87217" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="19" data-canpost="false" data-cansee="false" data-comments-unavailable="true" data-addlink-disabled="true">
+
+
+
+    <tr id="comment-157231" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of 'useful comment' votes received" class="hot">21</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Weird, I never heard Mercurial was easier. I found more documentation for Git (may have been perception) so I learned that.</span>
+                    –&nbsp;<a href="http://programmers.stackexchange.com/users/2327/nic" title="1,193 reputation" class="comment-user">Nic</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment157231_87217"><span title="2011-06-26 23:54:24Z" class="relativetime-clean">Jun 26 '11 at 23:54</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-157248" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of 'useful comment' votes received" class="hot">16</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Because it was made by Linus?</span>
+                    –&nbsp;<a href="http://programmers.stackexchange.com/users/934/job" title="5,099 reputation" class="comment-user">Job</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment157248_87217"><span title="2011-06-27 01:43:11Z" class="relativetime-clean">Jun 27 '11 at 1:43</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-157250" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of 'useful comment' votes received" class="supernova">124</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Veering into holy war territory here, but I found Mercurial easier to use than Git because, as a Windows user, I felt welcomed by Mercurial, and treated like a freak and a loser by Git. I know I'm anthropomorphizing software, and I know that both are perfectly capable of being used just fine under Windows, but that's the impression given off by the two of them.</span>
+                    –&nbsp;<a href="http://programmers.stackexchange.com/users/4217/carson63000" title="9,632 reputation" class="comment-user">Carson63000</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment157250_87217"><span title="2011-06-27 01:56:40Z" class="relativetime-clean">Jun 27 '11 at 1:56</span></a></span>
+                    <span class="edited-yes" title="this comment was edited 1 time"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-157297" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of 'useful comment' votes received" class="hot">24</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy"><a href="http://hginit.com/" rel="nofollow">hginit.com</a></span>
+                    –&nbsp;<a href="http://programmers.stackexchange.com/users/633/svish" title="703 reputation" class="comment-user">Svish</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment157297_87217"><span title="2011-06-27 08:36:07Z" class="relativetime-clean">Jun 27 '11 at 8:36</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-157430" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of 'useful comment' votes received" class="warm">11</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">I wonder how many people would be using Git if Github didn't exist, or didn't have so many high-profile projects on it?</span>
+                    –&nbsp;<a href="http://programmers.stackexchange.com/users/1923/chris-s" title="774 reputation" class="comment-user">Chris S</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment157430_87217"><span title="2011-06-27 13:16:16Z" class="relativetime-clean">Jun 27 '11 at 13:16</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-87217" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link " title="Use comments to ask for more information or suggest improvements. Avoid answering questions in comments.">comments disabled on deleted / locked posts / reviews</a><span class="js-link-separator ">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link " title="expand to show all comments on this post" href="#">show <b>19</b> more comments</a>
+        </div>         
+    </td>
+</tr>        </tbody></table>
+</div>
+
+			<div id="answers">
+
+				<a name="tab-top"></a>
+				<div id="answers-header">
+					<div class="subheader answers-subheader">
+						<h2>
+								9 Answers
+                                <span style="display: none;" itemprop="answerCount">9</span>
+						</h2>
+						<div>
+							<div id="tabs">
+        <a href="http://programmers.stackexchange.com/questions/87217/why-is-mercurial-considered-to-be-easier-than-git?answertab=active#tab-top" data-nav-xhref="" title="Answers with the latest activity first" data-value="active" data-shortcut="A">
+            active</a>
+        <a href="http://programmers.stackexchange.com/questions/87217/why-is-mercurial-considered-to-be-easier-than-git?answertab=oldest#tab-top" data-nav-xhref="" title="Answers in the order they were provided" data-value="oldest" data-shortcut="O">
+            oldest</a>
+        <a class="youarehere" href="http://programmers.stackexchange.com/questions/87217/why-is-mercurial-considered-to-be-easier-than-git?answertab=votes#tab-top" data-nav-xhref="" title="Answers with the highest score first" data-value="votes" data-shortcut="V">
+            votes</a>
+</div>
+						</div>
+					</div>    
+				</div>    
+
+
+
+
+  
+<a name="87245"></a>
+<div id="answer-87245" class="answer ice-ice-baby accepted-answer" data-answerid="87245" itemscope="" itemtype="http://schema.org/Answer" itemprop="acceptedAnswer">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input name="_id_" value="87245" type="hidden">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">242</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+        <span class="vote-accepted-on load-accepted-answer-date" title="loading when this answer was accepted...">accepted</span>
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Case in point: Lets say that you want to change the username on all your previous commits. I've needed to do this several times for various reason.</p>
+
+<p>Git Version</p>
+
+<pre><code>git filter-branch --commit-filter '
+        if [ "$GIT_COMMITTER_NAME" = "&lt;Old Name&gt;" ];
+        then
+                GIT_COMMITTER_NAME="&lt;New Name&gt;";
+                GIT_AUTHOR_NAME="&lt;New Name&gt;";
+                GIT_COMMITTER_EMAIL="&lt;New Email&gt;";
+                GIT_AUTHOR_EMAIL="&lt;New Email&gt;";
+                git commit-tree "$@";
+        else
+                git commit-tree "$@";
+        fi' HEAD
+</code></pre>
+
+<p>Mercurial Version:</p>
+
+<p>authors.convert.list file:</p>
+
+<pre><code>&lt;oldname&gt;=&lt;newname&gt;
+</code></pre>
+
+<p>Command line:</p>
+
+<pre><code>hg convert --authors authors.convert.list SOURCE DEST
+</code></pre>
+
+<p>Now, which one looks easier to use?</p>
+
+<hr>
+
+<p>Note: I spent 2 years working solely with Git, so this isn't a "I hate it, I didn't get it in 2 seconds" rant. </p>
+
+<p>For me, it's the usability. Git is very linux oriented with a linux way of doing things. That means command line, man pages, and figuring it out for yourself. It had a very poor GUI (note: I'm basing this off of msysGit from about a year ago), that seemed to just get in my way. I could barely use it</p>
+
+<p>The command line was worse. Being a Linux oriented program, on Windows it was very difficult to use. Instead of a native port they simply wrapped git with MinGW (Think cygwin), which made working with it much more difficult. MinGW isn't Windows Command Prompt, and just acts different. It's crazy that this is the only way to work with Git. Even in Linux it seemed the only way was to work with straight command line. Projects like RabbitVCS helped some, but weren't very powerful. </p>
+
+<p>The command line oriented approach and being a linux program meant that almost all the howto guides, help documentation, and forum/QA questions relied on running monstrous commands like above. The basic SCM commands (commit, pull, push) aren't as complex, but any more and complexity grows exponentially. </p>
+
+<p>I also hate the one place that lots of OSS git users seem to hang around: Github. When you first go to a github page, it slams you with everything you can possibly do. To me, <a href="https://github.com/rzwitserloot/lombok">a projects git page</a> looks chaotic, scary, and overly powerful. Even the explanation of what the project is, is pushed down to the bottom. Github really hurts people who don't have a full website already setup. Its issue tracker is also terrible and confusing. Feature overload. </p>
+
+<p>Git users also seemed to be very cult like. Git users seem to always be the ones starting "holy wars" over which DVCS is better, which then forces Mercurial users to defend themselves. Sites like <a href="http://whygitisbetterthanx.com/">http://whygitisbetterthanx.com/</a> show arrogance and an almost "Use my software or die" mentality. Many times I've gone into various places of help only to be flamed for not knowing X, using X beforehand, using Windows, etc. It's crazy.</p>
+
+<hr>
+
+<p>Mercurial on the other hand seems to go towards the kinder approach. Their own <a href="http://mercurial.selenic.com/">home page</a> seems much more friendly to new users than <a href="http://git-scm.com/">Git's</a>. In a simple Google search the 5th result is TortoiseHg, a very nice GUI for Mercurial. Their entire approach seems to be simplicity first, power later. </p>
+
+<p>With Mercurial I don't have SSH nonsense (SSH is hell on Windows), I don't have stupidly complex commands, I don't have a cult user following, I don't have craziness. Mercurial just works.</p>
+
+<p>TortoiseHg provides an actually usable interface (although lately it seems to be growing) that provides actually useful features. Options are limited to what you need, removing clutter and options that are rarely used. It also provides many decent defaults</p>
+
+<p>Mercurial, being very friendly to new comers, was very easy to pick up. Even some of the more complex topics like the different branching model and history editing were very easy to follow. I picked up Mercurial quickly and painlessly.</p>
+
+<p>Mercurial also just works the first time with little setup. On ANY OS I can just install TortoiseHg and get all the features I want (mainly context menu commands) without having to hunt for different Guis. Also missing is setting up SSH (half of the guides out there say to use Putty, Plink, and Pagent while the other half says to use ssh-keygen). For new users, TortoiseHg takes minutes to setup while Git takes 30 minutes to an hour with lots of googling. </p>
+
+<p>Lastly you have the online repos. Githubs equivalent is BitBucket, which has some of the issues I outlined above. However there's also Google Code. When I go to <a href="http://code.google.com/p/maven-license-plugin/">a Google Code project</a>, I don't get feature overload, I get a nice clean interface. Google Code is more of a online repo/website combo, which really helps OSS projects who don't have an existing site setup. I would feel very comfortable using Google Code as my projects website for quite some time, only building a website when absolutely necessary. Its issue tracker is also powerful, fitting nicely in between Github's almost useless Issue Tracker and <a href="http://i.stack.imgur.com/cMojI.png" title="image from ostatic.com/files/images/bugzilla_image_17.png">Bugzilla's monstrosity</a>.     </p>
+
+<p>Mercurial just works, first time, every time. Git gets in my way and only angers me the more I use it.</p>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://programmers.stackexchange.com/a/87245" title="short permalink to this answer" class="short-link" id="link-post-87245">share</a></div>                    </td>
+    <td class="post-signature" align="right">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="http://programmers.stackexchange.com/posts/87245/revisions" title="show all edits to this post">edited <span title="2012-03-24 06:33:52Z" class="relativetime">Mar 24 '12 at 6:33</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        
+        <div class="-flair">
+            
+        </div>
+    </div>
+</div>    </td>
+            
+
+
+    <td class="post-signature" align="right">   
+       
+
+    <div class="user-info">
+    <div class="user-details">
+        <span class="community-wiki" title="This post is community owned as of Oct 1 '11 at 20:27. Votes do not generate reputation, and it can be edited by users with 100 rep">
+            community wiki
+        </span>
+    </div><br>
+    <div class="user-details">
+        <a id="history-87245" href="http://programmers.stackexchange.com/posts/87245/revisions" title="show revision history for this post">
+        4 revs, 4 users 92%<br></a><a href="http://programmers.stackexchange.com/users/66">TheLQ</a>
+
+        
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-87245" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="5" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+
+    <tr id="comment-159580" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of 'useful comment' votes received" class="warm">6</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy"><b>Commenters:</b> comments are meant for seeking clarification, not for extended discussion. If you have a solution, leave an answer. If your solution is already posted, please upvote it. If you'd like to discuss this question with others, please use <a href="http://chat.stackexchange.com/rooms/21/programmers">chat</a>. See <a href="http://programmers.stackexchange.com/faq">the FAQ</a> for more information.</span>
+		            –&nbsp;<span class="comment-user">user8</span>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment159580_87245"><span title="2011-06-30 00:27:50Z" class="relativetime-clean">Jun 30 '11 at 0:27</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-198565" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of 'useful comment' votes received" class="cool">1</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">IntelliJ IDEA and Xcode 4 have wonderful integration with Git on their respective platforms and for day to day tasks you never have to use the command line.</span>
+                    –&nbsp;<a href="http://programmers.stackexchange.com/users/7519/jarrod-roberson" title="17,538 reputation" class="comment-user">Jarrod Roberson</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment198565_87245"><span title="2011-09-19 01:06:00Z" class="relativetime-clean">Sep 19 '11 at 1:06</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-203830" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of 'useful comment' votes received" class="cool">4</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">I would like to add that tortoiseGIT is a lot better now when you want to use GIT on windows. You still have to deal with the SSL keys and the installation process is not smooth, but when done it works easily.</span>
+                    –&nbsp;<a href="http://programmers.stackexchange.com/users/32497/arkh" title="571 reputation" class="comment-user">Arkh</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment203830_87245"><span title="2011-10-01 22:14:05Z" class="relativetime-clean">Oct 1 '11 at 22:14</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-221400" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of 'useful comment' votes received" class="cool">2</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Git Extensions I personally find much easier to navigate and work with than TortoiseHG on windows, and I have only used 1 command line ever with git.</span>
+                    –&nbsp;<a href="http://programmers.stackexchange.com/users/4798/kalldrexx" title="311 reputation" class="comment-user">KallDrexx</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment221400_87245"><span title="2011-11-18 18:26:06Z" class="relativetime-clean">Nov 18 '11 at 18:26</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-361460" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of 'useful comment' votes received" class="cool">1</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">I'm sort of baffled by this line: "MinGW isn't Windows Command Prompt, and just acts different. It's crazy that this is the only way to work with Git."  I use the msysgit installation and option 2, to run from the Windows command line.  It works fine.  There are a few things that don't work (like the caret, a line-continuation character in DOS) but there are alternatives to those (like the tilde) that work fine.  I'm not a command-line enthusiast (or at least I wasn't before I started learning Git) but using Git with the command line is really easy.  Am I missing something?</span>
+                    –&nbsp;<a href="http://programmers.stackexchange.com/users/3963/kyralessa" title="1,918 reputation" class="comment-user">Kyralessa</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment361460_87245"><span title="2013-02-19 21:05:47Z" class="relativetime-clean">Feb 19 '13 at 21:05</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-87245" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link  dno" title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."></a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link " title="expand to show all comments on this post" href="#">show <b>5</b> more comments</a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+
+            <div class="everyonelovesstackoverflow" id="adzerk1997434187"></div>
+  
+<a name="87225"></a>
+<div id="answer-87225" class="answer ice-ice-baby" data-answerid="87225" itemscope="" itemtype="http://schema.org/Answer">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input name="_id_" value="87225" type="hidden">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">80</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p><a href="http://www.wikivs.com/wiki/Git_vs_Mercurial">Git versus Mercurial</a></p>
+
+<blockquote>
+  <p>Mercurial is generally believed to be
+  simpler and easier to learn than Git.
+  In turn, there is often the perception
+  that Git is more flexible and
+  powerful. This is due, in part,
+  because Git tends to provide more
+  low-level commands, but also in part
+  because the default Mercurial <em>tends to
+  hide advanced features</em>, leaving it to
+  users to edit the mercurial config
+  file to activate the advanced features
+  they like. This often leads to the
+  perception that advanced features are
+  not available in Mercurial.</p>
+</blockquote>
+
+<p><a href="http://mercurial.selenic.com/wiki/GitConcepts">Git Concepts</a></p>
+
+<blockquote>
+  <p>Mercurial has always focused more on
+  interface aspects, which made it
+  originally easier to learn. In
+  comparison to Git, a shallower
+  understanding is required to operate
+  with Mercurial in a useful manner. In
+  the long run, such <em>encapsulation</em> has
+  given Mercurial the false appearance
+  of being less powerful and featureful
+  than it really is.</p>
+</blockquote>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://programmers.stackexchange.com/a/87225" title="short permalink to this answer" class="short-link" id="link-post-87225">share</a></div>                    </td>
+    <td class="post-signature" align="right">
+<div class="user-info ">
+    <div class="user-action-time">
+        answered <a href="http://programmers.stackexchange.com/posts/87225/revisions" title="show all edits to this post"><span title="2011-06-27 00:08:10Z" class="relativetime">Jun 27 '11 at 0:08</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        
+        <div class="-flair">
+            
+        </div>
+    </div>
+</div>    </td>
+            
+
+
+    <td class="post-signature" align="right">   
+       
+
+    <div class="user-info">
+    <div class="user-details">
+        <span class="community-wiki" title="This post is community owned as of Oct 1 '11 at 20:27. Votes do not generate reputation, and it can be edited by users with 100 rep">
+            community wiki
+        </span>
+    </div><br>
+    <div class="user-details">
+        <a id="history-87225" href="http://programmers.stackexchange.com/posts/87225/revisions" title="show revision history for this post">
+        Cyclops
+        </a>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-87225" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+
+    <tr id="comment-157308" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of 'useful comment' votes received" class="supernova">73</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">So Mercurial hides only the advanced functionality, while GIT hides <b>all</b> functionality ... ;-)</span>
+                    –&nbsp;<a href="http://programmers.stackexchange.com/users/7768/awe" title="257 reputation" class="comment-user">awe</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment157308_87225"><span title="2011-06-27 08:56:48Z" class="relativetime-clean">Jun 27 '11 at 8:56</span></a></span>
+                    <span class="edited-yes" title="this comment was edited 1 time"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-158013" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of 'useful comment' votes received" class="cool">4</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Git <i>does</i> have more power. For example there is no equivalent to git's <i>HEAD~1</i>. Mercurial has p(x) which spans across branches, how useless. There is no stage in Hg. All branches must be pushed when you push. Mercurial is just not as flexible, even with all the plugins like histedit, shelf and rebase. Git's command line is also better, it gives the user hints, mercurials does not. I am forced to use this slightly crippled DVCS at work and I have come into situations where mercurial lacks the power to do what I want.</span>
+                    –&nbsp;<a href="http://programmers.stackexchange.com/users/5678/keyo" title="836 reputation" class="comment-user">Keyo</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment158013_87225"><span title="2011-06-28 05:09:15Z" class="relativetime-clean">Jun 28 '11 at 5:09</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-158030" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of 'useful comment' votes received" class="hot">22</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@Keyo: Mercurial has <code>~</code>, see <a href="http://www.selenic.com/mercurial/hg.1.html#specifying-revision-sets" rel="nofollow">revsets</a>. It doesn't have a staging area, but you can emulate it with MQ, which is so much more powerful. Learn to use the tool rather than sticking to what you know from git, it'll pay off.</span>
+                    –&nbsp;<a href="http://programmers.stackexchange.com/users/29206/idan-k" title="176 reputation" class="comment-user">Idan K</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment158030_87225"><span title="2011-06-28 06:50:59Z" class="relativetime-clean">Jun 28 '11 at 6:50</span></a></span>
+                    <span class="edited-yes" title="this comment was edited 1 time"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-158091" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of 'useful comment' votes received" class="hot">22</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@Keyo: You don't have to push all branches with Mercurial when you push. You can push a specific branch (<code>hg push --branch BRANCH</code>) or up to a specific revision (<code>hg push --rev REV</code>). Please see <code>hg help push</code> for more options.</span>
+                    –&nbsp;<a href="http://programmers.stackexchange.com/users/132/regent" title="103 reputation" class="comment-user">Regent</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment158091_87225"><span title="2011-06-28 08:46:56Z" class="relativetime-clean">Jun 28 '11 at 8:46</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-294914" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of 'useful comment' votes received" class="cool">1</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">FYI, one can get a considerable subset of the staging area using the <a href="http://mercurial.selenic.com/wiki/RecordExtension" rel="nofollow">record extension</a>. OTOH, I think the <a href="http://mercurial.selenic.com/wiki/ShelveExtension" rel="nofollow">shelve extension</a> (modelled after the "shelve" command from Baazar, and close to "git stash") serves much better most of the purposes of using the staging area.</span>
+                    –&nbsp;<a href="http://programmers.stackexchange.com/users/27229/brandizzi" title="58 reputation" class="comment-user">brandizzi</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment294914_87225"><span title="2012-06-30 00:00:14Z" class="relativetime-clean">Jun 30 '12 at 0:00</span></a></span>
+                    <span class="edited-yes" title="this comment was edited 1 time"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-87225" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="#"></a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+
+  
+<a name="87335"></a>
+<div id="answer-87335" class="answer ice-ice-baby" data-answerid="87335" itemscope="" itemtype="http://schema.org/Answer">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input name="_id_" value="87335" type="hidden">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">47</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Context: I use both Mercurial (for work) and Git (for side projects and open source) on a daily basis.  I primarily use text-based tools with both (not IDEs) and I am on a Mac.  </p>
+
+<p>In general, I find Mercurial easier to work with.  A few things that I find make Mercurial easier:</p>
+
+<ol>
+<li><strong>Lack of the index.</strong>  The index is a powerful tool enabling many of Git's features but it's also an extra layer that adds a step into many things I do regularly.  Mercurial's workflow is more similar to something like svn. </li>
+<li><strong>Revision numbers instead of shas.</strong>  This is a small thing that I find makes working with every day commands a lot easier in Mercurial.  It's way easier to push a few revision numbers into your head during a rebase, merge, etc while writing a command than to do the same with even shortened shas.</li>
+<li><strong>Branches.</strong>  Git's approach to branches by naming commits is powerful and substantially different than other version control systems.  It makes certain things a lot easier.  I find that Mercurial's approach matches svn thinking a bit better and makes it easier to visually understand the branch history.  This may just be a preference.</li>
+</ol>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://programmers.stackexchange.com/a/87335" title="short permalink to this answer" class="short-link" id="link-post-87335">share</a></div>                    </td>
+    <td class="post-signature" align="right">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="http://programmers.stackexchange.com/posts/87335/revisions" title="show all edits to this post">edited <span title="2011-06-27 14:33:32Z" class="relativetime">Jun 27 '11 at 14:33</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        
+        <div class="-flair">
+            
+        </div>
+    </div>
+</div>    </td>
+            
+
+
+    <td class="post-signature" align="right">   
+       
+
+    <div class="user-info">
+    <div class="user-details">
+        <span class="community-wiki" title="This post is community owned as of Oct 1 '11 at 20:27. Votes do not generate reputation, and it can be edited by users with 100 rep">
+            community wiki
+        </span>
+    </div><br>
+    <div class="user-details">
+        <a id="history-87335" href="http://programmers.stackexchange.com/posts/87335/revisions" title="show revision history for this post">
+        2 revs<br></a><a href="http://programmers.stackexchange.com/users/29099">Alex Miller</a>
+        
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-87335" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="3" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+
+    <tr id="comment-157725" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of 'useful comment' votes received" class="warm">6</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">+1 for mentioning the index; I think the index and its interactions are <i>the</i> thing that makes git more difficult to learn than mercurial.</span>
+                    –&nbsp;<a href="http://programmers.stackexchange.com/users/27253/sean-mcmillan" title="3,995 reputation" class="comment-user">Sean McMillan</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment157725_87335"><span title="2011-06-27 18:56:34Z" class="relativetime-clean">Jun 27 '11 at 18:56</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-157731" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of 'useful comment' votes received" class="hot">18</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">The <code>hg</code> equivalent to <code>git</code> branches are actually called <code>bookmarks</code>. As far as I know, <code>hg</code> branches don't have an equivalent in <code>git</code>.</span>
+                    –&nbsp;<a href="http://programmers.stackexchange.com/users/663/hank-gay" title="336 reputation" class="comment-user">Hank Gay</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment157731_87335"><span title="2011-06-27 19:10:59Z" class="relativetime-clean">Jun 27 '11 at 19:10</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-158011" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of 'useful comment' votes received" class="warm">6</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">I'm in the same situation, with mercurial at work and git at home. Mercurial branching is rather annoying to me, I like to have private branches and push them when I like. Mercurial forces me to use shelves or additional repos. Revision numbers are silly, give me the hash. The stage is great in git, I miss this. I'm really missing the power of git. I did around a few things with some plugins but the branching really annoys me.</span>
+                    –&nbsp;<a href="http://programmers.stackexchange.com/users/5678/keyo" title="836 reputation" class="comment-user">Keyo</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment158011_87335"><span title="2011-06-28 04:57:33Z" class="relativetime-clean">Jun 28 '11 at 4:57</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-158953" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of 'useful comment' votes received" class="warm">6</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@Keyo - In my experience, <code>git</code> branching is a subset of <code>hg</code> branching. In <code>hg</code> you can have both named and unnamed (topological) branches, and can even manage unnamed branches in the same way as <code>git</code> using bookmarks. I've never really seen the point in the staging area. I would much rather shelve unwanted changes and then make sure that my code compiles &amp; completes my tests before committing it. I can then un-shelve and continue. Also, Charles Bailey's "Massaging Hunks" (p90+) scares me *8') : <a href="http://accu.org/content/conf2011/accu2011LT_fri_share_v2.pdf" rel="nofollow">accu.org/content/conf2011/accu2011LT_fri_share_v2.pdf</a></span>
+                    –&nbsp;<a href="http://programmers.stackexchange.com/users/22493/mark-booth" title="11,215 reputation" class="comment-user">Mark Booth</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment158953_87335"><span title="2011-06-29 10:27:04Z" class="relativetime-clean">Jun 29 '11 at 10:27</span></a></span>
+                    <span class="edited-yes" title="this comment was edited 2 times"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-161599" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of 'useful comment' votes received" class="warm">7</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@Keyo: In Mercurial, private branches are called 'bookmarks': update to the root revision, <code>hg bookmark keyo-stuff</code>, do things, <code>hg commit</code>, then eventually <code>hg push -B keyo-stuff</code>. If you don't like revision numbers, don't use them; Mercurial will accept a hash anywhere it will accept a revision number, i think. I have to say, your comments bashing Mercurial for a lack of features it does in fact have come across as ignorant and a little aggressive; you are not doing a lot of good for the stereotype of Git users!</span>
+                    –&nbsp;<a href="http://programmers.stackexchange.com/users/854/tom-anderson" title="2,338 reputation" class="comment-user">Tom Anderson</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment161599_87335"><span title="2011-07-03 15:02:03Z" class="relativetime-clean">Jul 3 '11 at 15:02</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-87335" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link  dno" title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."></a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link " title="expand to show all comments on this post" href="#">show <b>3</b> more comments</a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+
+  
+<a name="87235"></a>
+<div id="answer-87235" class="answer ice-ice-baby" data-answerid="87235" itemscope="" itemtype="http://schema.org/Answer">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input name="_id_" value="87235" type="hidden">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">29</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>This is very subjective and depends from one person to another, but yes, I would go that to someone completely new to VCS or someone coming from one of the "old school" VCSs, Mercurial will seem easier.</p>
+
+<p>For example, adding files, the non-existence of the index in Hg, the ease of going back to some old revision and branching from there (just update and commit) as some of the most "obvious" examples. Now most of features of one system can be emulated in another and vice versa, but that requires some knowledge in Git, while in Mercurial the defaults (if you'll allow me to call them that) are rather "user friendly". Those little things - the switch here and there, the non-obvious behaviour in one command and so on ... these things add up, and in the end, one system seems more easy to use than the other.</p>
+
+<p>Just to make the answer complete; I use git, but when recommending a VCS for someone who's "new to them", I almost always recommend Mercurial. I remember, when it first came into my hands, it felt very intuitive. It is my experience that Mercurial produces less wtf/minute than Git.</p>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://programmers.stackexchange.com/a/87235" title="short permalink to this answer" class="short-link" id="link-post-87235">share</a></div>                    </td>
+    <td class="post-signature" align="right">
+<div class="user-info ">
+    <div class="user-action-time">
+        answered <a href="http://programmers.stackexchange.com/posts/87235/revisions" title="show all edits to this post"><span title="2011-06-27 00:53:09Z" class="relativetime">Jun 27 '11 at 0:53</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        
+        <div class="-flair">
+            
+        </div>
+    </div>
+</div>    </td>
+            
+
+
+    <td class="post-signature" align="right">   
+       
+
+    <div class="user-info">
+    <div class="user-details">
+        <span class="community-wiki" title="This post is community owned as of Oct 1 '11 at 20:27. Votes do not generate reputation, and it can be edited by users with 100 rep">
+            community wiki
+        </span>
+    </div><br>
+    <div class="user-details">
+        <a id="history-87235" href="http://programmers.stackexchange.com/posts/87235/revisions" title="show revision history for this post">
+        Rook
+        </a>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-87235" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+
+    <tr id="comment-418471" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">+1 for "less wtf/minute" -1 for "this is very subjective". It's not very subjective... I don't know why people still think differences of UI are subjective. If I take mercurial and md5 hash its commands, you wouldn't make the argument that some people might find an md5 hash more intuitive than the original, would you? (I hope not). The same is true of Git. Git is only easier than mercurial if your experience with git is considerably more substantial than mercurial.</span>
+                    –&nbsp;<a href="http://programmers.stackexchange.com/users/55255/weberc2" title="172 reputation" class="comment-user">weberc2</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment418471_87235"><span title="2013-09-21 17:35:01Z" class="relativetime-clean">Sep 21 '13 at 17:35</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-87235" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="#"></a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+
+  
+<a name="87223"></a>
+<div id="answer-87223" class="answer ice-ice-baby" data-answerid="87223" itemscope="" itemtype="http://schema.org/Answer">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input name="_id_" value="87223" type="hidden">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">17</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>I think it's as simple as this: Mercurial has a more familiar syntax (particularly for SVN users) and is fairly well documented. Once you get used to the Git syntax, you'll find it as easy to use as anything else.</p>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://programmers.stackexchange.com/a/87223" title="short permalink to this answer" class="short-link" id="link-post-87223">share</a></div>                    </td>
+    <td class="post-signature" align="right">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="http://programmers.stackexchange.com/posts/87223/revisions" title="show all edits to this post">edited <span title="2011-06-27 15:59:07Z" class="relativetime">Jun 27 '11 at 15:59</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        
+        <div class="-flair">
+            
+        </div>
+    </div>
+</div>    </td>
+            
+
+
+    <td class="post-signature" align="right">   
+       
+
+    <div class="user-info">
+    <div class="user-details">
+        <span class="community-wiki" title="This post is community owned as of Oct 1 '11 at 20:27. Votes do not generate reputation, and it can be edited by users with 100 rep">
+            community wiki
+        </span>
+    </div><br>
+    <div class="user-details">
+        <a id="history-87223" href="http://programmers.stackexchange.com/posts/87223/revisions" title="show revision history for this post">
+        2 revs, 2 users 57%<br></a><a href="http://programmers.stackexchange.com/users/12828">pdr</a>
+
+        
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-87223" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+
+    <tr id="comment-336995" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of 'useful comment' votes received" class="warm">7</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Nope. There are too many more workflow steps for you to call it just "different syntax".  You have to understand the underlying model you are manipulating, and all the state of the git index, in order to use Git.  Saying SQL and Pascal are two different syntaxes for the same thing would be equally wrong.  Git is a file-system-content-‌​versioning system with DVCS features. Mercurial is a DVCS that does not do every file-system-content-‌​versioning operation GIT does, only the subset that DVCS users all require.</span>
+                    –&nbsp;<a href="http://programmers.stackexchange.com/users/14245/warren-p" title="725 reputation" class="comment-user">Warren  P</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment336995_87223"><span title="2012-11-20 19:55:37Z" class="relativetime-clean">Nov 20 '12 at 19:55</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-87223" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="#"></a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+
+  
+<a name="88945"></a>
+<div id="answer-88945" class="answer ice-ice-baby" data-answerid="88945" itemscope="" itemtype="http://schema.org/Answer">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input name="_id_" value="88945" type="hidden">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">9</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Perceptions might be changing over time, on this.  Mercurial is very well designed, and so is Git.  Mercurial seems to be easier to learn (at least it was for me), and there have been difficulties that I encountered in Git, that I have no parallel for in Mercurial.  I tried to learn Python, and Ruby, and got farther, faster with Python.  That doesn't mean Python is always and everywhere better than Ruby, or even that it's better for me. It's just what I  learned and stuck with.  Programmers often make holy wars out of personal preference. Other human beings do that too.</p>
+
+<p>I am a mercurial user who tries to keep an open mind about Git, and I freely admit that it hasn't "become my new favorite thing" to the same extent as Mercurial has. I think Git is really really nice though.</p>
+
+<p>A counter example for GIT/mercurial complexity: Nice GIT support is built into XCode, on Mac.  Less easy to use XCode with Mercurial than GIT.  </p>
+
+<p>My experience with GIT so far has been that I get confused and lost and need to go consult the documentation more while using it. I believe that a lot of documentation has been written, but nothing that has enabled me to "grok" it.   Secondly, I can modify and extend Mercurial easily in Python, and as I am adept in Python, and as anyone really could learn python quickly, it seems an advantage to me.  I also know C, and write Python extensions in C, so I suppose some day, if I needed one, I could easily write a Git extension in C.   </p>
+
+<p>Ease-of-use is not something that is easy to quantify.  It's there, and I don't think it's entirely subjective, but we don't have good objective measurement techniques.  What would the units for ease-of-use be? Milli-iPods?</p>
+
+<p>I am not so partisan as to be 100% pro-mercurial, and 100% anti-git. I'm more comfortable on Mercurial right now, on Windows and on Linux, and when I start doing more Mac work, I expect that I'll try to stick with XCode+GIT.</p>
+
+<p><strong>Update 2013:</strong> I have now used Mercurial AND GIT long enough to find some features that I wish it had that Git has, such as <a href="http://stackoverflow.com/questions/366860/when-would-you-use-the-different-git-merge-strategies">this</a> question about merge strategies.  Really Git is amazing, if difficult to learn, and sometimes maddeningly complex.</p>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://programmers.stackexchange.com/a/88945" title="short permalink to this answer" class="short-link" id="link-post-88945">share</a></div>                    </td>
+    <td class="post-signature" align="right">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="http://programmers.stackexchange.com/posts/88945/revisions" title="show all edits to this post">edited <span title="2013-06-06 12:47:57Z" class="relativetime">Jun 6 '13 at 12:47</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        
+        <div class="-flair">
+            
+        </div>
+    </div>
+</div>    </td>
+            
+
+
+    <td class="post-signature" align="right">   
+       
+
+    <div class="user-info">
+    <div class="user-details">
+        <span class="community-wiki" title="This post is community owned as of Oct 1 '11 at 20:27. Votes do not generate reputation, and it can be edited by users with 100 rep">
+            community wiki
+        </span>
+    </div><br>
+    <div class="user-details">
+        <a id="history-88945" href="http://programmers.stackexchange.com/posts/88945/revisions" title="show revision history for this post">
+        3 revs<br></a><a href="http://programmers.stackexchange.com/users/14245">Warren  P</a>
+        
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-88945" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-88945" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="#"></a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+
+  
+<a name="111874"></a>
+<div id="answer-111874" class="answer ice-ice-baby" data-answerid="111874" itemscope="" itemtype="http://schema.org/Answer">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input name="_id_" value="111874" type="hidden">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">7</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>There are a few things that IMO are likely to put new users off Git:</p>
+
+<ol>
+<li><p>The Git culture is more command-line centric. While both tools do tend to focus too much on the command line (as I've said several times, command line instructions may be powerful and more fluent, but <a href="http://jamesmckay.net/2010/03/command-line-instructions-are-not-a-good-marketing-strategy/">they are not a good marketing strategy</a>) this is much more the case with Git. Whereas Mercurial has a de facto standard GUI tool in TortoiseHg, which is even the default download option for Windows users on the Mercurial homepage, Git has several competing GUI front ends (TortoiseGit, Git Extensions, gitk, etc) which aren't well advertised on the Git website, and which are all a complete eyesore anyway. (Black text on red labels? C'mon, TortoiseGit, you can do better than that!) There's also a much more pervasive attitude in the Git community that people who use GUI tools are not proper software developers.</p></li>
+<li><p>Git has several out-of-the-box defaults that make perfect sense to advanced users, but are likely to be surprising if not intimidating to new users. For instance, it is much more aggressive about automating tasks such as merging (for example, git pull automatically merges and commits where possible). <a href="http://jamesmckay.net/2011/04/why-merges-can-and-should-be-automated/">There is a case for fully automated merges</a>, but most inexperienced users are terrified of merging, and need to be given the opportunity to gain confidence in their tools before unleashing their full power on their source code.</p></li>
+<li><p>Documentation and inherent complexity:</p>
+
+<pre><code>$ hg help log | wc -l
+64
+$ git help log | wc -l
+912
+</code></pre></li>
+</ol>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://programmers.stackexchange.com/a/111874" title="short permalink to this answer" class="short-link" id="link-post-111874">share</a></div>                    </td>
+    <td class="post-signature" align="right">
+<div class="user-info ">
+    <div class="user-action-time">
+        answered <a href="http://programmers.stackexchange.com/posts/111874/revisions" title="show all edits to this post"><span title="2011-10-01 20:27:27Z" class="relativetime">Oct 1 '11 at 20:27</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        
+        <div class="-flair">
+            
+        </div>
+    </div>
+</div>    </td>
+            
+
+
+    <td class="post-signature" align="right">   
+       
+
+    <div class="user-info">
+    <div class="user-details">
+        <span class="community-wiki" title="This post is community owned as of Oct 1 '11 at 20:27. Votes do not generate reputation, and it can be edited by users with 100 rep">
+            community wiki
+        </span>
+    </div><br>
+    <div class="user-details">
+        <a id="history-111874" href="http://programmers.stackexchange.com/posts/111874/revisions" title="show revision history for this post">
+        jammycakes
+        </a>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-111874" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+
+    <tr id="comment-203819" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of 'useful comment' votes received" class="cool">3</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Actually, I prefer a help that is 912 lines long to a help that is 64.</span>
+                    –&nbsp;<a href="http://programmers.stackexchange.com/users/1495/dysaster" title="815 reputation" class="comment-user">Dysaster</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment203819_111874"><span title="2011-10-01 21:15:40Z" class="relativetime-clean">Oct 1 '11 at 21:15</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-203824" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of 'useful comment' votes received" class="warm">10</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Actually, I prefer a UI that is so intuitive and seamless that you don't need a help in the first place.</span>
+                    –&nbsp;<a href="http://programmers.stackexchange.com/users/1206/jammycakes" title="820 reputation" class="comment-user">jammycakes</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment203824_111874"><span title="2011-10-01 21:40:35Z" class="relativetime-clean">Oct 1 '11 at 21:40</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-203825" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of 'useful comment' votes received" class="cool">2</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">I want both the GUI and the help. :) What seems intuitive to me is a mess for someone else.</span>
+                    –&nbsp;<a href="http://programmers.stackexchange.com/users/1495/dysaster" title="815 reputation" class="comment-user">Dysaster</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment203825_111874"><span title="2011-10-01 21:47:39Z" class="relativetime-clean">Oct 1 '11 at 21:47</span></a></span>
+                    <span class="edited-yes" title="this comment was edited 1 time"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-203836" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of 'useful comment' votes received" class="cool">1</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Sure, but when help is necessary, it should be easy to follow.</span>
+                    –&nbsp;<a href="http://programmers.stackexchange.com/users/1206/jammycakes" title="820 reputation" class="comment-user">jammycakes</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment203836_111874"><span title="2011-10-01 22:42:08Z" class="relativetime-clean">Oct 1 '11 at 22:42</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-390698" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of 'useful comment' votes received" class="cool">3</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">I have thought of a new analogy;  Git is like C++ (sorry Linus!) and Mercurial is like Pascal.   What is implicit and can only be done one way in Pascal (or Mercurial) can be done explicitly, nineteen different ways in C++ (and Git).  Some people prefer powertools with more buttons and levers, and Git is that.</span>
+                    –&nbsp;<a href="http://programmers.stackexchange.com/users/14245/warren-p" title="725 reputation" class="comment-user">Warren  P</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment390698_111874"><span title="2013-06-06 12:50:16Z" class="relativetime-clean">Jun 6 '13 at 12:50</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-111874" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="#"></a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+
+  
+<a name="87305"></a>
+<div id="answer-87305" class="answer ice-ice-baby" data-answerid="87305" itemscope="" itemtype="http://schema.org/Answer">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input name="_id_" value="87305" type="hidden">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">3</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>One thing I can think of is </p>
+
+<pre><code>git add .
+git commit -am "message"
+</code></pre>
+
+<p>vs.</p>
+
+<pre><code>hg ci -Am "message"
+</code></pre>
+
+<p><code>git commit -a</code> doesn't add newly created files, <code>hg ci -A</code> does, which means that something that requires two commands with git can be done with one command in Mercurial. Then again, "less typing" doesn't necessarily mean "more user friendly".</p>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://programmers.stackexchange.com/a/87305" title="short permalink to this answer" class="short-link" id="link-post-87305">share</a></div>                    </td>
+    <td class="post-signature" align="right">
+<div class="user-info ">
+    <div class="user-action-time">
+        answered <a href="http://programmers.stackexchange.com/posts/87305/revisions" title="show all edits to this post"><span title="2011-06-27 12:05:35Z" class="relativetime">Jun 27 '11 at 12:05</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        
+        <div class="-flair">
+            
+        </div>
+    </div>
+</div>    </td>
+            
+
+
+    <td class="post-signature" align="right">   
+       
+
+    <div class="user-info">
+    <div class="user-details">
+        <span class="community-wiki" title="This post is community owned as of Oct 1 '11 at 20:27. Votes do not generate reputation, and it can be edited by users with 100 rep">
+            community wiki
+        </span>
+    </div><br>
+    <div class="user-details">
+        <a id="history-87305" href="http://programmers.stackexchange.com/posts/87305/revisions" title="show revision history for this post">
+        Zhehao Mao
+        </a>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-87305" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="2" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+
+    <tr id="comment-157591" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of 'useful comment' votes received" class="warm">11</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">I often find that in my workflow, automatically adding new files is actually <i>undesirable.</i> I've come to prefer how <code>git commit -a</code> works simply because it makes it easier to control what does and doesn't get added for a given commit. (It's actually not unusual for me to specify individual pathnames for every <code>svn ci</code> to avoid adding unrelated material to a commit.)</span>
+                    –&nbsp;<a href="http://programmers.stackexchange.com/users/83/greyfade" title="9,274 reputation" class="comment-user">greyfade</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment157591_87305"><span title="2011-06-27 16:30:45Z" class="relativetime-clean">Jun 27 '11 at 16:30</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-157618" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of 'useful comment' votes received" class="cool">3</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Fair enough, but I believe that <code>hg ci</code> without the <code>-A</code> flag does the equivalent of <code>git commit -a</code>. I've used git a lot more than hg, so I'm not 100% sure.</span>
+                    –&nbsp;<a href="http://programmers.stackexchange.com/users/21932/zhehao-mao" title="873 reputation" class="comment-user">Zhehao Mao</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment157618_87305"><span title="2011-06-27 17:10:04Z" class="relativetime-clean">Jun 27 '11 at 17:10</span></a></span>
+                    <span class="edited-yes" title="this comment was edited 1 time"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-157628" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">I've checked, <code>hg ci</code> == <code>git commit -a</code>.</span>
+                    –&nbsp;<a href="http://programmers.stackexchange.com/users/21932/zhehao-mao" title="873 reputation" class="comment-user">Zhehao Mao</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment157628_87305"><span title="2011-06-27 17:19:22Z" class="relativetime-clean">Jun 27 '11 at 17:19</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-157642" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">but if you specify specific files with hg commit, you can avoid pulling in ones you don't want. In the infrequent cases where I want this control, I find this works well.</span>
+                    –&nbsp;<a href="http://programmers.stackexchange.com/users/29099/alex-miller" title="447 reputation" class="comment-user">Alex Miller</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment157642_87305"><span title="2011-06-27 17:33:17Z" class="relativetime-clean">Jun 27 '11 at 17:33</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-157718" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of 'useful comment' votes received" class="cool">1</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">why would you "git add ." and then "git commit -am"? Wouldn't everything already be added to the index?</span>
+                    –&nbsp;<a href="http://programmers.stackexchange.com/users/29152/jacobangel" title="101 reputation" class="comment-user">jacobangel</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment157718_87305"><span title="2011-06-27 18:42:43Z" class="relativetime-clean">Jun 27 '11 at 18:42</span></a></span>
+                    <span class="edited-yes" title="this comment was edited 1 time"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-87305" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link  dno" title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."></a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link " title="expand to show all comments on this post" href="#">show <b>2</b> more comments</a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+
+  
+<a name="122887"></a>
+<div id="answer-122887" class="answer ice-ice-baby" data-answerid="122887" itemscope="" itemtype="http://schema.org/Answer">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input name="_id_" value="122887" type="hidden">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">3</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Because it is.</p>
+
+<p>Git exposes far more of it's guts than mercurial. You can happily use mercurial within a few minutes of picking it up but I find git still very hard to grapple with after a couple of months of wrestling with it (I have done very little over the last couple of months other than try to learn git). I am using both from the command line and mostly on Linux so this is not just an aversion to the command line interface.</p>
+
+<p>One simple example is the relatively few flags and command line arguments needed for mercurial compared to git.  The staging area and the behavior of the add command in git also adds more complexity than is necessary. The trio of reset, checkout and revert and their multiple permutations adds enormous complexity, which was quite unnecessary when you witness the straightforward nature of revert and update on mercurial.</p>
+
+<p>I agree with the above comment also about <a href="http://hginit.com/" rel="nofollow">Hginit</a>, it definitely made mercurial much easier to comprehend. Well written and very easy to understand. None of the documentation written for git comes close. I for one, find most of what is written by Scott Chacone (who has singlehandedly written most of the documentation/books about git) particularly confusing.</p>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://programmers.stackexchange.com/a/122887" title="short permalink to this answer" class="short-link" id="link-post-122887">share</a></div>                    </td>
+    <td class="post-signature" align="right">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="http://programmers.stackexchange.com/posts/122887/revisions" title="show all edits to this post">edited <span title="2011-12-04 20:24:53Z" class="relativetime">Dec 4 '11 at 20:24</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        
+        <div class="-flair">
+            
+        </div>
+    </div>
+</div>    </td>
+            
+
+
+    <td class="post-signature" align="right">   
+       
+
+    <div class="user-info">
+    <div class="user-details">
+        <span class="community-wiki" title="This post is community owned as of Dec 2 '11 at 12:40. Votes do not generate reputation, and it can be edited by users with 100 rep">
+            community wiki
+        </span>
+    </div><br>
+    <div class="user-details">
+        <a id="history-122887" href="http://programmers.stackexchange.com/posts/122887/revisions" title="show revision history for this post">
+        4 revs<br></a><a href="http://programmers.stackexchange.com/users/23606">haziz</a>
+        
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-122887" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-122887" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="#"></a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+				    <div class="question-status">
+        <h2>                    <b>protected</b> by <a href="http://programmers.stackexchange.com/users/25476/maple-shaft">maple_shaft</a><span class="mod-flair" title="moderator">♦</span> <span dir="ltr"><span title="2014-05-25 12:44:37Z" class="relativetime">May 25 '14 at 12:44</span></span>
+</h2>
+        <p>
+Thank you for your interest in this question. 
+Because it has attracted low-quality or spam answers that had to be removed, posting an answer now requires 10 <a href="http://programmers.stackexchange.com/help/whats-reputation">reputation</a> on this site (the <a href="http://programmers.stackexchange.com/help/privileges/new-user">association bonus does not count</a>).
+<br><br>
+Would you like to answer one of these <a href="http://programmers.stackexchange.com/unanswered?fromProtectedNotice=true">unanswered questions</a> instead?
+</p>
+    </div>
+
+
+
+
+
+						<h2 class="bottom-notice" data-loc="1">
+Not the answer you're looking for?							Browse other questions tagged <a href="http://programmers.stackexchange.com/questions/tagged/git" class="post-tag" title="show questions tagged 'git'" rel="tag">git</a> <a href="http://programmers.stackexchange.com/questions/tagged/mercurial" class="post-tag" title="show questions tagged 'mercurial'" rel="tag">mercurial</a>  or <a href="http://programmers.stackexchange.com/questions/ask">ask your own question</a>.						</h2>
+			</div>
+		</div>
+				<div id="sidebar" class="show-votes">
+						    <div class="module question-stats">
+			        <table id="qinfo">
+			            <tbody><tr>
+			                <td>
+			                    <p class="label-key">asked</p>
+			                </td>
+			                <td style="padding-left: 10px;">
+			                    <p class="label-key" title="2011-06-26 23:01:10Z"><b>5 years ago</b></p>
+			                </td>
+			            </tr>
+			            <tr>
+			                <td>
+			                    <p class="label-key">viewed</p>
+			                </td>
+
+			                <td style="padding-left: 10px;">
+			                    <p class="label-key">
+			                        <b>36428 times</b>
+			                    </p>
+			                </td>
+			            </tr>
+			                <tr>
+			                    <td>
+			                        <p class="label-key">active</p>
+			                    </td>
+			                    <td style="padding-left: 10px;">
+			                        <p class="label-key"><b><a href="http://programmers.stackexchange.com/questions/87217/why-is-mercurial-considered-to-be-easier-than-git?lastactivity" class="lastactivity-link" title="2014-05-25 11:26:49Z">2 years ago</a></b></p>
+			                    </td>
+			                </tr>
+			        </tbody></table>
+			    </div>
+						
+			
+            <div class="everyonelovesstackoverflow" id="adzerk1947872241"></div>
+			
+
+            <div class="module sidebar-linked">
+	<h4 id="h-linked">Linked</h4>
+	<div class="linked" data-tracker="lq=1">
+
+<div class="spacer">
+	<a href="http://programmers.stackexchange.com/q/96933?lq=1" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">93</div>
+	</a>
+	<a href="http://programmers.stackexchange.com/questions/96933/why-did-git-get-so-much-hype-while-others-dont?noredirect=1&amp;lq=1" class="question-hyperlink">Why did Git get so much hype? …while others don't?</a>
+</div>
+<div class="spacer">
+	<a href="http://programmers.stackexchange.com/q/177875?lq=1" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">83</div>
+	</a>
+	<a href="http://programmers.stackexchange.com/questions/177875/why-is-the-sudden-increase-in-number-of-git-submitters-on-debian-popcon-graph-in?noredirect=1&amp;lq=1" class="question-hyperlink">Why is the sudden increase in number of Git submitters on Debian popcon graph in 2010-01?</a>
+</div>
+<div class="spacer">
+	<a href="http://programmers.stackexchange.com/q/145359?lq=1" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">5</div>
+	</a>
+	<a href="http://programmers.stackexchange.com/questions/145359/which-revision-control-system-to-use-for-2-semester-capstone-course?noredirect=1&amp;lq=1" class="question-hyperlink">Which revision control system to use for 2 semester capstone course?</a>
+</div>
+<div class="spacer">
+	<a href="http://programmers.stackexchange.com/q/127446?lq=1" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">1</div>
+	</a>
+	<a href="http://programmers.stackexchange.com/questions/127446/version-control-workflow-for-environment-with-shared-code?noredirect=1&amp;lq=1" class="question-hyperlink">version control workflow for environment with shared code</a>
+</div>			</div>
+</div>
+
+				<div class="module sidebar-related">
+					<h4 id="h-related">Related</h4>
+                    <div class="related js-gps-related-questions" data-tracker="rq=1">
+                        <div class="spacer js-gps-track"><a href="http://programmers.stackexchange.com/q/35074?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted large">279</div></a><a href="http://programmers.stackexchange.com/questions/35074/im-a-subversion-geek-why-should-i-consider-or-not-consider-mercurial-or-git-or?rq=1" class="question-hyperlink">I'm a Subversion geek, why should I consider or not consider Mercurial or Git or any other DVCS?</a></div><div class="spacer js-gps-track"><a href="http://programmers.stackexchange.com/q/77475?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted default">27</div></a><a href="http://programmers.stackexchange.com/questions/77475/how-to-choose-between-git-and-mercurial?rq=1" class="question-hyperlink">How to choose between git and Mercurial</a></div><div class="spacer js-gps-track"><a href="http://programmers.stackexchange.com/q/104786?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted default">8</div></a><a href="http://programmers.stackexchange.com/questions/104786/having-a-git-repo-and-mercurial-in-the-same-directory?rq=1" class="question-hyperlink">Having a Git repo and mercurial in the same directory</a></div><div class="spacer js-gps-track"><a href="http://programmers.stackexchange.com/q/128851?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes default">33</div></a><a href="http://programmers.stackexchange.com/questions/128851/empirical-evidence-of-popularity-of-git-and-mercurial?rq=1" class="question-hyperlink">Empirical Evidence of Popularity of Git and Mercurial</a></div><div class="spacer js-gps-track"><a href="http://programmers.stackexchange.com/q/129890?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted default">11</div></a><a href="http://programmers.stackexchange.com/questions/129890/is-there-a-difference-between-merges-in-svn-compared-to-git-or-mercurial?rq=1" class="question-hyperlink">Is there a difference between merges in svn compared to git or mercurial?</a></div><div class="spacer js-gps-track"><a href="http://programmers.stackexchange.com/q/148434?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted default">10</div></a><a href="http://programmers.stackexchange.com/questions/148434/why-do-git-mercurial-repositories-use-less-space?rq=1" class="question-hyperlink">Why do Git/Mercurial repositories use less space?</a></div><div class="spacer js-gps-track"><a href="http://programmers.stackexchange.com/q/157771?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted default">27</div></a><a href="http://programmers.stackexchange.com/questions/157771/i-am-a-git-user-confused-by-mercurials-branching-how-am-i-supposed-to-track-sm?rq=1" class="question-hyperlink">I am a git user confused by mercurial's branching. How am I supposed to track small changes?</a></div><div class="spacer js-gps-track"><a href="http://programmers.stackexchange.com/q/170345?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted default">4</div></a><a href="http://programmers.stackexchange.com/questions/170345/what-is-the-point-to-namespaces-in-branches-in-git?rq=1" class="question-hyperlink">What is the point to namespaces in branches in git?</a></div><div class="spacer js-gps-track"><a href="http://programmers.stackexchange.com/q/224478?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes default">1</div></a><a href="http://programmers.stackexchange.com/questions/224478/should-i-use-git-and-mercurial-in-the-same-directory?rq=1" class="question-hyperlink">Should I use git and mercurial in the same directory?</a></div><div class="spacer js-gps-track"><a href="http://programmers.stackexchange.com/q/290407?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes default">2</div></a><a href="http://programmers.stackexchange.com/questions/290407/party-on-my-branch-workflow-support-in-mercurial?rq=1" class="question-hyperlink">“Party on my branch” workflow support in mercurial</a></div>
+                    </div>
+				</div>
+            
+<div id="hot-network-questions" class="module">
+    <h4>
+        <a href="http://stackexchange.com/questions?tab=hot" class="js-gps-track" data-gps-track="posts_hot_network.click({ item_type:1, location:11 })">
+            Hot Network Questions
+        </a>
+    </h4>
+    <ul>
+            <li>
+                <div class="favicon favicon-puzzling" title="Puzzling Stack Exchange"></div><a href="http://puzzling.stackexchange.com/questions/40616/from-below-to-time-of-need" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:559 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    From below to time of need
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-boardgames" title="Board &amp; Card Games Stack Exchange"></div><a href="http://boardgames.stackexchange.com/questions/32088/in-mtg-can-you-counter-a-spell-that-requires-cards-to-be-revealed-after-they-ar" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:147 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    In MTG, can you counter a spell that requires cards to be revealed after they are revealed?
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-bicycles" title="Bicycles Stack Exchange"></div><a href="http://bicycles.stackexchange.com/questions/41891/which-cassette-removal-tool-do-i-need" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:126 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Which cassette removal tool do I need?
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-puzzling" title="Puzzling Stack Exchange"></div><a href="http://puzzling.stackexchange.com/questions/40586/i-have-three-fingers-what-is-this" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:559 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    I have three fingers. What is this?
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-ell" title="English Language Learners Stack Exchange"></div><a href="http://ell.stackexchange.com/questions/100590/you-better-did-is-this-acceptable" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:481 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    "You better did" - is this acceptable?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-mechanics" title="Motor Vehicle Maintenance &amp; Repair Stack Exchange"></div><a href="http://mechanics.stackexchange.com/questions/35260/how-important-is-bulb-grease-when-changing-low-beam-or-high-beam-headlights" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:224 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How important is bulb grease when changing low-beam or high-beam headlights?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-electronics" title="Electrical Engineering Stack Exchange"></div><a href="http://electronics.stackexchange.com/questions/252431/measure-both-positive-and-negative-voltages-using-adc" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:135 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Measure both positive and negative voltages using ADC
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-codegolf" title="Programming Puzzles &amp; Code Golf Stack Exchange"></div><a href="http://codegolf.stackexchange.com/questions/89919/quick-golf-the-gold-leader" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:200 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Quick Golf: The Gold Leader
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-english" title="English Language &amp; Usage Stack Exchange"></div><a href="http://english.stackexchange.com/questions/342965/does-i-am-eating-vegan-cheese-in-my-underpants-really-imply-that-the-vegan-che" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:97 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Does "I am eating vegan cheese in my underpants" really imply that the vegan cheese is inside my underpants?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-academia" title="Academia Stack Exchange"></div><a href="http://academia.stackexchange.com/questions/75212/removing-outliers-would-it-be-called-cherrypicking-data" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:415 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Removing outliers. Would it be called cherrypicking data?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-travel" title="Travel Stack Exchange"></div><a href="http://travel.stackexchange.com/questions/76775/buying-a-phone-for-using-in-both-france-and-canada" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:273 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Buying a phone for using in both France and Canada
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-worldbuilding" title="Worldbuilding Stack Exchange"></div><a href="http://worldbuilding.stackexchange.com/questions/51210/if-time-travel-is-possible-in-the-future-no-matter-how-distant-why-havent-the" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:579 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    If time travel is possible in the future, no matter how distant, why haven't they come back to tell us?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-monero" title="Monero Stack Exchange"></div><a href="http://monero.stackexchange.com/questions/1145/is-it-possible-to-increase-the-total-supply-and-perhaps-the-emission-curve" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:656 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Is it possible to increase the total supply and perhaps the emission curve?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-judaism" title="Mi Yodeya"></div><a href="http://judaism.stackexchange.com/questions/75458/counting-error-in-genesis-4615" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:248 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Counting error in Genesis 46:15?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-photo" title="Photography Stack Exchange"></div><a href="http://photo.stackexchange.com/questions/81966/is-there-a-black-and-white-physical-filter" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:61 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Is there a black and white physical filter?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-astronomy" title="Astronomy Stack Exchange"></div><a href="http://astronomy.stackexchange.com/questions/17939/explosions-of-black-holes" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:514 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Explosions of black holes
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-movies" title="Movies &amp; TV Stack Exchange"></div><a href="http://movies.stackexchange.com/questions/59194/why-did-bran-not-tell-anyone-who-pushed-him" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:367 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why did Bran not tell anyone who pushed him?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-unix" title="Unix &amp; Linux Stack Exchange"></div><a href="http://unix.stackexchange.com/questions/303549/filter-lines-that-contain-a-fixed-number-of-pattern-occurrences" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:106 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Filter lines that contain a fixed number of pattern occurrences
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-mathoverflow" title="MathOverflow"></div><a href="http://mathoverflow.net/questions/247578/original-reference-for-riemanns-inequality" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:504 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Original reference for Riemann's inequality
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-ell" title="English Language Learners Stack Exchange"></div><a href="http://ell.stackexchange.com/questions/100600/she-speaks-an-impeccable-english-vs-she-speaks-impeccable-english" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:481 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    "She speaks an impeccable English" vs "She speaks impeccable English"
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-physics" title="Physics Stack Exchange"></div><a href="http://physics.stackexchange.com/questions/274508/how-can-an-electron-shell-hold-more-than-two-electrons" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:151 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How can an electron shell hold more than two electrons?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-rpg" title="Role-playing Games Stack Exchange"></div><a href="http://rpg.stackexchange.com/questions/86590/can-you-drink-a-potion-one-handed-underwater" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:122 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Can you drink a potion one-handed underwater?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-english" title="English Language &amp; Usage Stack Exchange"></div><a href="http://english.stackexchange.com/questions/342273/are-whores-and-horse-homophones" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:97 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Are "whores" and "horse" homophones?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-codegolf" title="Programming Puzzles &amp; Code Golf Stack Exchange"></div><a href="http://codegolf.stackexchange.com/questions/89877/evaluate-an-expression-of-ternary-operators" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:200 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Evaluate an expression of ternary operators
+                </a>
+
+            </li>
+    </ul>
+
+        
+</div>
+		</div>
+		
+<div style="display: none;" id="prettify-lang"></div></div>
+
+
+        </div>
+    </div>
+    <div id="footer" class="categories">
+        <div class="footerwrap">            
+            <div id="footer-menu">
+                <div class="top-footer-links">
+                    <a href="http://stackoverflow.com/company/about">about us</a>
+                        <a href="http://programmers.stackexchange.com/tour">tour</a>
+                    <a href="http://programmers.stackexchange.com/help">help</a>
+                    <a href="http://programmers.blogoverflow.com/?blb=1">blog</a>
+                        <a href="http://chat.stackexchange.com/?tab=site&amp;host=programmers.stackexchange.com">chat</a>
+                    <a href="http://data.stackexchange.com/">data</a>
+                    <a href="http://stackexchange.com/legal">legal</a>
+                    <a href="http://stackexchange.com/legal/privacy-policy">privacy policy</a>
+                    <a href="http://stackoverflow.com/company/work-here">work here</a>
+                    <a href="http://stackexchange.com/mediakit">advertising info</a>
+
+                    <a>mobile</a>
+                    <b><a href="http://programmers.stackexchange.com/contact">contact us</a></b>
+                        <b><a href="http://meta.programmers.stackexchange.com/">feedback</a></b>
+                    
+                </div>
+                <div id="footer-sites">
+                    <table>
+    <tbody><tr>
+            <th colspan="3">
+                Technology
+            </th>
+            <th>
+                Life / Arts
+            </th>
+            <th>
+                Culture / Recreation
+            </th>
+            <th>
+                Science
+            </th>
+            <th>
+                Other
+            </th>
+    </tr>
+    <tr>
+            <td>
+                <ol>
+                        <li><a href="http://stackoverflow.com/" title="professional and enthusiast programmers">Stack Overflow</a></li>
+                        <li><a href="http://serverfault.com/" title="system and network administrators">Server Fault</a></li>
+                        <li><a href="http://superuser.com/" title="computer enthusiasts and power users">Super User</a></li>
+                        <li><a href="http://webapps.stackexchange.com/" title="power users of web applications">Web Applications</a></li>
+                        <li><a href="http://askubuntu.com/" title="Ubuntu users and developers">Ask Ubuntu</a></li>
+                        <li><a href="http://webmasters.stackexchange.com/" title="pro webmasters">Webmasters</a></li>
+                        <li><a href="http://gamedev.stackexchange.com/" title="professional and independent game developers">Game Development</a></li>
+                        <li><a href="http://tex.stackexchange.com/" title="users of TeX, LaTeX, ConTeXt, and related typesetting systems">TeX - LaTeX</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="http://programmers.stackexchange.com/" title="professional programmers interested in conceptual questions about software development">Programmers</a></li>
+                        <li><a href="http://unix.stackexchange.com/" title="users of Linux, FreeBSD and other Un*x-like operating systems">Unix &amp; Linux</a></li>
+                        <li><a href="http://apple.stackexchange.com/" title="power users of Apple hardware and software">Ask Different (Apple)</a></li>
+                        <li><a href="http://wordpress.stackexchange.com/" title="WordPress developers and administrators">WordPress Development</a></li>
+                        <li><a href="http://gis.stackexchange.com/" title="cartographers, geographers and GIS professionals">Geographic Information Systems</a></li>
+                        <li><a href="http://electronics.stackexchange.com/" title="electronics and electrical engineering professionals, students, and enthusiasts">Electrical Engineering</a></li>
+                        <li><a href="http://android.stackexchange.com/" title="enthusiasts and power users of the Android operating system">Android Enthusiasts</a></li>
+                        <li><a href="http://security.stackexchange.com/" title="information security professionals">Information Security</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="http://dba.stackexchange.com/" title="database professionals who wish to improve their database skills and learn from others in the community">Database Administrators</a></li>
+                        <li><a href="http://drupal.stackexchange.com/" title="Drupal developers and administrators">Drupal Answers</a></li>
+                        <li><a href="http://sharepoint.stackexchange.com/" title="SharePoint enthusiasts">SharePoint</a></li>
+                        <li><a href="http://ux.stackexchange.com/" title="user experience researchers and experts">User Experience</a></li>
+                        <li><a href="http://mathematica.stackexchange.com/" title="users of Mathematica">Mathematica</a></li>
+                        <li><a href="http://salesforce.stackexchange.com/" title="Salesforce administrators, implementation experts, developers and anybody in-between">Salesforce</a></li>
+                        <li><a href="http://expressionengine.stackexchange.com/" title="administrators, end users, developers and designers for ExpressionEngine® CMS">ExpressionEngine® Answers</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#technology" class="more">
+                                more (13)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://photo.stackexchange.com/" title="professional, enthusiast and amateur photographers">Photography</a></li>
+                        <li><a href="http://scifi.stackexchange.com/" title="science fiction and fantasy enthusiasts">Science Fiction &amp; Fantasy</a></li>
+                        <li><a href="http://graphicdesign.stackexchange.com/" title="Graphic Design professionals, students, and enthusiasts">Graphic Design</a></li>
+                        <li><a href="http://movies.stackexchange.com/" title="movie and tv enthusiasts">Movies &amp; TV</a></li>
+                        <li><a href="http://cooking.stackexchange.com/" title="professional and amateur chefs">Seasoned Advice (cooking)</a></li>
+                        <li><a href="http://diy.stackexchange.com/" title="contractors and serious DIYers">Home Improvement</a></li>
+                        <li><a href="http://money.stackexchange.com/" title="people who want to be financially literate">Personal Finance &amp; Money</a></li>
+                        <li><a href="http://academia.stackexchange.com/" title="academics and those enrolled in higher education">Academia</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#lifearts" class="more">
+                                more (9)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://english.stackexchange.com/" title="linguists, etymologists, and serious English language enthusiasts">English Language &amp; Usage</a></li>
+                        <li><a href="http://skeptics.stackexchange.com/" title="scientific skepticism">Skeptics</a></li>
+                        <li><a href="http://judaism.stackexchange.com/" title="those who base their lives on Jewish law and tradition and anyone interested in learning more">Mi Yodeya (Judaism)</a></li>
+                        <li><a href="http://travel.stackexchange.com/" title="road warriors and seasoned travelers">Travel</a></li>
+                        <li><a href="http://christianity.stackexchange.com/" title="committed Christians, experts in Christianity and those interested in learning more">Christianity</a></li>
+                        <li><a href="http://gaming.stackexchange.com/" title="passionate videogamers on all platforms">Arqade (gaming)</a></li>
+                        <li><a href="http://bicycles.stackexchange.com/" title="people who build and repair bicycles, people who train cycling, or commute on bicycles">Bicycles</a></li>
+                        <li><a href="http://rpg.stackexchange.com/" title="gamemasters and players of tabletop, paper-and-pencil role-playing games">Role-playing Games</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#culturerecreation" class="more">
+                                more (21)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://math.stackexchange.com/" title="people studying math at any level and professionals in related fields">Mathematics</a></li>
+                        <li><a href="http://stats.stackexchange.com/" title="people interested in statistics, machine learning, data analysis, data mining, and data visualization">Cross Validated (stats)</a></li>
+                        <li><a href="http://cstheory.stackexchange.com/" title="theoretical computer scientists and researchers in related fields">Theoretical Computer Science</a></li>
+                        <li><a href="http://physics.stackexchange.com/" title="active researchers, academics and students of physics">Physics</a></li>
+                        <li><a href="http://mathoverflow.net/" title="professional mathematicians">MathOverflow</a></li>
+                        <li><a href="http://chemistry.stackexchange.com/" title="scientists, academics, teachers and students">Chemistry</a></li>
+                        <li><a href="http://biology.stackexchange.com/" title="biology researchers, academics, and students">Biology</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#science" class="more">
+                                more (5)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://stackapps.com/" title="apps, scripts, and development with the Stack Exchange API">Stack Apps</a></li>
+                        <li><a href="http://meta.stackexchange.com/" title="meta-discussion of the Stack Exchange family of Q&amp;A websites">Meta Stack Exchange</a></li>
+                        <li><a href="http://area51.stackexchange.com/" title="proposing new sites in the Stack Exchange network">Area 51</a></li>
+                        <li><a href="http://careers.stackoverflow.com/">Stack Overflow Careers</a></li>
+                    
+                </ol>
+            </td>
+    </tr>
+</tbody></table>
+                </div>
+            </div>
+            <div id="copyright">
+                site design / logo © 2016 Stack Exchange Inc; user contributions licensed under <a href="https://creativecommons.org/licenses/by-sa/3.0/" rel="license">cc by-sa 3.0</a> 
+                with <a href="http://blog.stackoverflow.com/2009/06/attribution-required/" rel="license">attribution required</a>
+            </div>
+            <div id="svnrev">
+                rev 2016.8.15.3894
+            </div>
+                </div>
+    </div>
+    
+
+
+
+    
+        
+    
+            
+    
+</body>
+</html>

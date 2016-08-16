@@ -1,0 +1,720 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>团队协作 — hginit.com 中文版</title>
+    
+    
+    
+    
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="underscore.js"></script>
+    <script type="text/javascript" src="doctools.js"></script>
+    <script type="text/javascript" src="readthedocs-doc-embed.js"></script>
+    <link rel="top" title="hginit.com 中文版" href="http://zh-hginit.readthedocs.io/en/latest/">
+    <link rel="next" title="失误补救" href="http://zh-hginit.readthedocs.io/en/latest/fixing/">
+    <link rel="prev" title="Mercurial 从零开始" href="http://zh-hginit.readthedocs.io/en/latest/groundup/">
+ 
+<!-- RTD Extra Head -->
+
+    
+    
+
+<!-- 
+Always link to the latest version, as canonical.
+http://docs.readthedocs.org/en/latest/canonical.html
+-->
+<link rel="canonical" href="http://zh-hginit.readthedocs.org/en/latest/setting-up/">
+<script type="text/javascript">
+  // This is included here because other places don't have access to the pagename variable.
+  var READTHEDOCS_DATA = {
+    project: "zh-hginit",
+    version: "latest",
+    language: "en",
+    page: "setting-up",
+    builder: "sphinx",
+    theme: "haiku",
+    docroot: "/./",
+    
+    source_suffix: ".rst",
+    
+    api_host: "https://readthedocs.org/",
+    commit: "b51d3f9b"
+  }
+  // Old variables
+  var doc_version = "latest";
+  var doc_slug = "zh-hginit";
+  var page_name = "setting-up";
+  var html_theme = "haiku";
+</script>
+<!-- RTD Analytics Code -->
+<!-- Included in the header because you don't have a footer block. -->
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-17997319-1']);
+  _gaq.push(['_trackPageview']);
+
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<!-- end RTD Analytics Code -->
+<!-- end RTD <extrahead> -->
+
+  
+<link rel="stylesheet" type="text/css" href="default_002.css" media="all">
+</head>
+  <body role="document">
+      <div class="header" role="banner"><h1 class="heading"><a href="http://zh-hginit.readthedocs.io/en/latest/">
+          <span>hginit.com 中文版</span></a></h1>
+        <h2 class="heading"><span>团队协作</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&nbsp;&nbsp;<a data-sb-indepth="true" href="default_001.html">Mercurial 从零开始</a>
+        &nbsp;&nbsp;::&nbsp;&nbsp;
+        <a class="uplink" href="http://zh-hginit.readthedocs.io/en/latest/">Contents</a>
+        &nbsp;&nbsp;::&nbsp;&nbsp;
+        <a data-sb-indepth="true" href="default_003.html">失误补救</a>&nbsp;&nbsp;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <blockquote class="epigraph">
+<div><strong>使用 Mercurial 的一个好处是团队能够进行协作开发. Mercurial 让你能够独立工作, 又能随时合并变更.</strong></div></blockquote>
+<div class="section" id="id1">
+<h1>团队协作</h1>
+<p>用 Mercurial 进行协作开发最常用的方法是建立一个中央库, 同时我们各自的 PC 上也都有一份私有版本库. 我们可以把中央库当作交换中心, 相当于我们聚在一起交换我们所做变更的地方.</p>
+<img alt="../_images/02-repo.png" src="02-repo.png">
+<div class="section" id="hg-serve">
+<h2><code class="docutils literal"><span class="pre">hg</span> <span class="pre">serve</span></code></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p><code class="docutils literal"><span class="pre">hg</span> <span class="pre">serve</span></code></p>
+<p class="last">启动一个 WEB 服务器以便当前版本库能通过 Internet 访问</p>
+</div>
+<p>快速建立中央库最简陋的方法是使用 Mercurial 内置的 WEB 服务器 –  你所作的仅仅是用 <strong>hg init</strong> 创建一个版本库, 然后用 <strong>hg serve</strong> 启动 WEB 服务. 默认情况下, 它会占用 8000 端口.</p>
+<div class="highlight-python"><div class="highlight"><pre>C:\&gt; mkdir CentralRepo
+
+C:\&gt; cd CentralRepo
+
+C:\CentralRepo&gt; hg init
+
+C:\CentralRepo&gt; hg serve
+</pre></div>
+</div>
+<p>这台 PC 的主机名是 <strong>joel.example.com</strong>, 我只要用浏览器登录 <strong>http://joel.example.com:8000/</strong> 便可看到服务器已经启动并正在运行, 虽然版本库还是空白一片.</p>
+<img alt="../_images/02-web.png" src="02-web.png">
+</div>
+<div class="section" id="hg-clone">
+<h2><code class="docutils literal"><span class="pre">hg</span> <span class="pre">clone</span></code></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p><code class="docutils literal"><span class="pre">hg</span> <span class="pre">clone</span></code></p>
+<p class="last">获取版本库的完整副本</p>
+</div>
+<p>一旦中央 WEB 服务器开始服务, 我可以从服务器 <em>克隆 (clone)</em> 版本库到我的个人 PC 自主使用. 这个版本库现在还是空的, 所以我克隆后得到的也是空白库.</p>
+<div class="highlight-python"><div class="highlight"><pre>C:\Users\joel&gt; hg clone http://joel.example.com:8000/ recipes
+no changes found
+updating to branch default
+0 files updated, 0 files merged, 0 files removed, 0 files unresolved
+
+C:\Users\joel&gt; cd recipes
+
+C:\Users\joel\recipes&gt; dir
+ Volume in drive C has no label.
+ Volume Serial Number is 84BD-9C2C
+
+ Directory of C:\Users\joel\recipes
+
+02/08/2010  02:46 PM    &lt;DIR&gt;          .
+02/08/2010  02:46 PM    &lt;DIR&gt;          ..
+02/08/2010  02:46 PM    &lt;DIR&gt;          .hg
+               0 File(s)              0 bytes
+               3 Dir(s)  41,852,125,184 bytes free
+</pre></div>
+</div>
+<p>现在, 我们新建一个名为 <strong>guac</strong> 的文件, 记录本人有名的鳄梨酱配方.</p>
+<p><strong>guac</strong>:</p>
+<div class="highlight-python"><div class="highlight"><pre>* 2 ripe avocados
+* 1/2 red onion, minced (about 1/2 cup)
+* 1-2 serrano chiles, stems and seeds removed, minced
+* 2 tablespoons cilantro leaves, finely chopped
+* 1 tablespoon of fresh lime or lemon juice
+* 1/2 teaspoon coarse salt
+* A dash of freshly grated black pepper
+* 1/2 ripe tomato, seeds and pulp removed, chopped
+
+Crunch all ingredients together.
+Serve with tortilla chips.
+</pre></div>
+</div>
+<p>我将添加这个文件, 并作为我的第一个官方版本提交:</p>
+<div class="highlight-python"><div class="highlight"><pre>C:\Users\joel\recipes&gt; hg add
+adding guac
+
+C:\Users\joel\recipes&gt; hg commit
+</pre></div>
+</div>
+<p>以及提交摘要:</p>
+<img alt="../_images/02-commit0.png" src="02-commit0.png">
+<p>现在, 我要编辑这个文件, 做些小改动, 这样版本库里就会留下些历史记录了.</p>
+<img alt="../_images/02-00.png" src="02-00.png">
+<p>接着提交这次变更:</p>
+<div class="highlight-python"><div class="highlight"><pre>C:\Users\joel\recipes&gt; hg status
+M guac
+
+C:\Users\joel\recipes&gt; hg diff guac
+diff -r c1fb7e7fbe50 guac
+--- a/guac      Mon Feb 08 14:50:08 2010 -0500
++++ b/guac      Mon Feb 08 14:51:08 2010 -0500
+@@ -7,5 +7,5 @@
+ * A dash of freshly grated black pepper
+ * 1/2 ripe tomato, seeds and pulp removed, chopped
+
+-Crunch all ingredients together.
++Smoosh all ingredients together.
+ Serve with tortilla chips.
+
+C:\Users\joel\recipes&gt; hg com -m "Change crunch to smoosh"
+
+C:\Users\joel\recipes&gt; hg log
+changeset:   1:a52881ed530d
+tag:         tip
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Mon Feb 08 14:51:18 2010 -0500
+summary:     Change crunch to smoosh
+
+changeset:   0:c1fb7e7fbe50
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Mon Feb 08 14:50:08 2010 -0500
+summary:     Initial version of guacamole recipe
+</pre></div>
+</div>
+<p>注意我这次提交的时候, 头一次使用了 <strong>-m</strong> 参数. 这只是在命令行下, 不通过编辑器输入提交摘要的一个方法.</p>
+<p>OK, 我们在哪儿? 到目前为止, 我能访问中央库, 还克隆了一份本地库. 我已经做了两次变更并提交到本地库, 但是这些变更只存在于我的本地库 – 它们还没有进入中央库. 所以现在的状况是:</p>
+<img alt="../_images/02-repo-2.png" src="02-repo-2.png">
+</div>
+<div class="section" id="hg-push">
+<h2><code class="docutils literal"><span class="pre">hg</span> <span class="pre">push</span></code></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p><code class="docutils literal"><span class="pre">hg</span> <span class="pre">push</span></code></p>
+<p class="last">把一个版本库的新增变更推送到另一个版本库</p>
+</div>
+<p>现在我将使用 <strong>hg push</strong> 命令, 把我的变更从我的本地库 <strong>推入</strong> 到中央库:</p>
+<div class="highlight-python"><div class="highlight"><pre>C:\Users\joel\recipes&gt; hg push
+pushing to http://joel.example.com:8000/
+searching for changes
+ssl required
+</pre></div>
+</div>
+<p>我靠, 居然报错. 我暂时不考虑随便运行一个 WEB 服务器, 还允许任何人把他们那愚蠢的变更推到中央库所带来的安全问题. 忍耐一小会; 我要去配置一下服务器, 让任何人都可以为所欲为. 这需要编辑一下 <code class="docutils literal"><span class="pre">.hg\hgrc</span></code> 文件.</p>
+<p><code class="docutils literal"><span class="pre">.hg\hgrc</span></code>:</p>
+<div class="highlight-python"><div class="highlight"><pre>[web]
+push_ssl=False
+allow_push=*
+</pre></div>
+</div>
+<p>显然, 这是很危险的, 但是如果你处在一个安全的局域网环境下工作, 有一个优秀的防火墙, 而且你信任局域网中的每个人, 这样的话是安全的. 否则, 你可能要去看看手册中关于安全的进阶章节.</p>
+<p>好, 我们重新启动服务器:</p>
+<div class="highlight-python"><div class="highlight"><pre>C:\CentralRepo&gt; hg serve
+</pre></div>
+</div>
+<p>现在我应该可以 push 变更集了:</p>
+<div class="highlight-python"><div class="highlight"><pre>C:\Users\joel\recipes&gt; hg push
+pushing to http://joel.example.com:8000/
+searching for changes
+adding changesets
+adding manifests
+adding file changes
+added 2 changesets with 2 changes to 1 files
+</pre></div>
+</div>
+<p>Yay! 现在的状况变成这样了:</p>
+<img alt="../_images/02-repo-3.png" src="02-repo-3.png">
+<p>我知道你在想什么. 你在想, “喔呦, Joel, 太奇怪了. 为什么这些版本库里包含的是 <em>变更</em> 而不是 <em>文件</em> 呢? <strong>guac</strong> 文件在哪儿?”</p>
+<p>是的, 很诡异. 但这就是分布式版本控制的工作方式. 版本库就是一个包含大量变更的堆栈. 把变更想象成一块干净的透明毯子. 现在你有一捆这样的透明毯子, 你把它们按顺序堆叠起来, 最新变更放在最上面, 然后从上往下俯视, 注意! – 你看到的便是当前最新版本的文件. 随着你从栈顶慢慢掀走透明毯, 你会看到越来越老的版本.</p>
+<p>现在, 我们可以通过浏览器感受一下中央版本库:</p>
+<img alt="../_images/02-web-2.png" src="02-web-2.png">
+<p>正如你所预料的那样.</p>
+<p>现在, 我想让 Rose 帮我一起写配方. ... (译注: 有意略掉了一段, 不影响教程内容) ...</p>
+<div class="highlight-bash"><div class="highlight"><pre>C:<span class="se">\U</span>sers<span class="se">\r</span>ose&gt; hg clone http://joel.example.com:8000/ recipes
+requesting all changes
+adding changesets
+adding manifests
+adding file changes
+added <span class="m">2</span> changesets with <span class="m">2</span> changes to <span class="m">1</span> files
+updating to branch default
+<span class="m">1</span> files updated, <span class="m">0</span> files merged, <span class="m">0</span> files removed, <span class="m">0</span> files unresolved
+</pre></div>
+</div>
+<p>Rose 使用 <strong>hg clone</strong> 命令获取了一份完整的版本库副本. <strong>hg clone</strong> 接受两个参数: 版本库的 URL 和本地副本的目录. Rose <code class="docutils literal"><span class="pre">clone</span></code> 到她本地的 <strong>recipes</strong> 目录.</p>
+<div class="highlight-bash"><div class="highlight"><pre>C:<span class="se">\U</span>sers<span class="se">\r</span>ose&gt; <span class="nb">cd </span>recipes
+
+C:<span class="se">\U</span>sers<span class="se">\r</span>ose<span class="se">\r</span>ecipes&gt; dir
+ Volume in drive C has no label.
+ Volume Serial Number is 84BD-9C2C
+
+ Directory of C:<span class="se">\U</span>sers<span class="se">\r</span>ose<span class="se">\r</span>ecipes
+
+02/08/2010  03:23 PM    &lt;DIR&gt;          .
+02/08/2010  03:23 PM    &lt;DIR&gt;          ..
+02/08/2010  03:23 PM    &lt;DIR&gt;          .hg
+02/08/2010  03:23 PM               <span class="m">394</span> guac
+               <span class="m">1</span> File<span class="o">(</span>s<span class="o">)</span>            <span class="m">394</span> bytes
+               <span class="m">3</span> Dir<span class="o">(</span>s<span class="o">)</span>  41,871,872,000 bytes free
+
+C:<span class="se">\U</span>sers<span class="se">\r</span>ose<span class="se">\r</span>ecipes&gt; hg log
+changeset:   1:a52881ed530d
+tag:         tip
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Mon Feb <span class="m">08</span> 14:51:18 <span class="m">2010</span> -0500
+summary:     Change crunch to smoosh
+
+changeset:   0:c1fb7e7fbe50
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Mon Feb <span class="m">08</span> 14:50:08 <span class="m">2010</span> -0500
+summary:     Initial version of guacamole recipe
+</pre></div>
+</div>
+<p>注意键入 <strong>hg log</strong> 后她看到的是整个历史记录. 实际上她下载了整个版本库, 包括所有完整的历史记录.</p>
+<p>Rose 打算做些改动, 然后提交至版本库:</p>
+<img alt="../_images/02-01.png" src="02-01.png">
+<p>注意, 即使服务器没在运行, 她仍然可以做提交操作: 提交动作完全发生在本机上.</p>
+<div class="highlight-bash"><div class="highlight"><pre>C:<span class="se">\U</span>sers<span class="se">\r</span>ose<span class="se">\r</span>ecipes&gt; hg diff
+diff -r a52881ed530d guac
+--- a/guac      Mon Feb <span class="m">08</span> 14:51:18 <span class="m">2010</span> -0500
++++ b/guac      Mon Feb <span class="m">08</span> 15:28:57 <span class="m">2010</span> -0500
+@@ -1,6 +1,6 @@
+ * <span class="m">2</span> ripe avocados
+ * 1/2 red onion, minced <span class="o">(</span>about 1/2 cup<span class="o">)</span>
+-* 1-2 serrano chiles, stems and seeds removed, minced
++* 1-2 habanero chiles, stems and seeds removed, minced
+ * <span class="m">2</span> tablespoons cilantro leaves, finely chopped
+ * <span class="m">1</span> tablespoon of fresh lime or lemon juice
+ * 1/2 teaspoon coarse salt
+
+C:<span class="se">\U</span>sers<span class="se">\r</span>ose<span class="se">\r</span>ecipes&gt; hg com -m <span class="s2">"spicier kind of chile"</span>
+
+C:<span class="se">\U</span>sers<span class="se">\r</span>ose<span class="se">\r</span>ecipes&gt; hg log
+changeset:   2:689026657682
+tag:         tip
+user:        Rose Hillman &lt;rose@example.com&gt;
+date:        Mon Feb <span class="m">08</span> 15:29:09 <span class="m">2010</span> -0500
+summary:     spicier kind of chile
+
+changeset:   1:a52881ed530d
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Mon Feb <span class="m">08</span> 14:51:18 <span class="m">2010</span> -0500
+summary:     Change crunch to smoosh
+
+changeset:   0:c1fb7e7fbe50
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Mon Feb <span class="m">08</span> 14:50:08 <span class="m">2010</span> -0500
+summary:     Initial version of guacamole recipe
+</pre></div>
+</div>
+<p>当 Rose 在做修改的时候, 与此同时, 我也可以做些改动.</p>
+<img alt="../_images/02-02.png" src="02-02.png">
+<p>你会看到我提交之后, 日志显示 #2 变更集和 Rose 的不太一样.</p>
+<div class="highlight-python"><div class="highlight"><pre>C:\Users\joel\recipes&gt; hg com -m "potato chips. No one can eat just one."
+
+C:\Users\joel\recipes&gt; hg log
+changeset:   2:4ecdb2401ab4
+tag:         tip
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Mon Feb 08 15:32:01 2010 -0500
+summary:     potato chips. No one can eat just one.
+
+changeset:   1:a52881ed530d
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Mon Feb 08 14:51:18 2010 -0500
+summary:     Change crunch to smoosh
+
+changeset:   0:c1fb7e7fbe50
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Mon Feb 08 14:50:08 2010 -0500
+summary:     Initial version of guacamole recipe
+</pre></div>
+</div>
+<p>我们的版本历史开始分道扬镳.</p>
+<img alt="../_images/02-repo-4.png" src="02-repo-4.png">
+<p>别担心... 很快我们就会看到如何把这些各自奔天涯的变更重新聚集在一起.</p>
+</div>
+<div class="section" id="hg-outgoing">
+<h2><code class="docutils literal"><span class="pre">hg</span> <span class="pre">outgoing</span></code></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p><code class="docutils literal"><span class="pre">hg</span> <span class="pre">outgoing</span></code></p>
+<p class="last">列出当前版本库等待推送的变更列表</p>
+</div>
+<p>Rose 可以继续离线工作, 只要她愿意, 可以在她的本地版本库中做任何修改, 可以 <code class="docutils literal"><span class="pre">commit</span></code>, 也可以 <code class="docutils literal"><span class="pre">revert</span></code>. 到了一定阶段, 她想到要把她所做的变更和其他人分享. 她可以键入 <strong>hg outgoing</strong>, 然后得到等待发送到中央库的变更列表. 这个列表就是如果她执行 <strong>hg push</strong> 将会被送出的那些变更.</p>
+<div class="highlight-bash"><div class="highlight"><pre>C:<span class="se">\U</span>sers<span class="se">\r</span>ose<span class="se">\r</span>ecipes&gt; hg outgoing
+comparing with http://joel.example.com:8000/
+searching <span class="k">for</span> changes
+changeset:   2:689026657682
+tag:         tip
+user:        Rose Hillman &lt;rose@example.com&gt;
+date:        Mon Feb <span class="m">08</span> 15:29:09 <span class="m">2010</span> -0500
+summary:     spicier kind of chile
+</pre></div>
+</div>
+<p>你可以把 <strong>hg outgoing</strong> 想象成: 它只是简单的列出本地库中 <em>中央库</em> 没有的那些变更.</p>
+<p>好的, Rose 决定推送她的变更.</p>
+<div class="highlight-bash"><div class="highlight"><pre>C:<span class="se">\U</span>sers<span class="se">\r</span>ose<span class="se">\r</span>ecipes&gt; hg push
+pushing to http://joel.example.com:8000/
+searching <span class="k">for</span> changes
+adding changesets
+adding manifests
+adding file changes
+added <span class="m">1</span> changesets with <span class="m">1</span> changes to <span class="m">1</span> files
+</pre></div>
+</div>
+<p>现在的状况是这样子的:</p>
+<img alt="../_images/02-repo-5.png" src="02-repo-5.png">
+<p>喝完今天第四杯拿铁咖啡, 我也准备推送我的变更了.</p>
+<div class="highlight-python"><div class="highlight"><pre>C:\Users\joel\recipes&gt; hg outgoing
+comparing with http://joel.example.com:8000/
+searching for changes
+changeset:   2:4ecdb2401ab4
+tag:         tip
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Mon Feb 08 15:32:01 2010 -0500
+summary:     potato chips. No one can eat just one.
+
+
+C:\Users\joel\recipes&gt; hg push
+pushing to http://joel.example.com:8000/
+searching for changes
+abort: push creates new remote heads!
+(did you forget to merge? use push -f to force)
+</pre></div>
+</div>
+<p>啊哈! 失败鸟! 顺便提一下... 你看到那条消息了吗? 就是提示 <strong>use push -f to force?</strong> 的那条. 那是个极其糟糕的建议. 千万不要使用 <strong>push -f</strong> 来强制推送. 相信我, 你会为此后悔的.</p>
+<p>推送失败是因为我们同时做了修改, 所以它们需要做合并操作, 而 Mercurial 很清楚这一点.</p>
+<p>我首先需要做的是, 获取中央库中我所没有的所有变更, 以便我进行合并操作.</p>
+<div class="highlight-python"><div class="highlight"><pre>C:\Users\joel\recipes&gt; hg incoming
+comparing with http://joel.example.com:8000/
+searching for changes
+changeset:   3:689026657682
+tag:         tip
+parent:      1:a52881ed530d
+user:        Rose Hillman &lt;rose@example.com&gt;
+date:        Mon Feb 08 15:29:09 2010 -0500
+summary:     spicier kind of chile
+
+
+C:\Users\joel\recipes&gt; hg pull
+pulling from http://joel.example.com:8000/
+searching for changes
+adding changesets
+adding manifests
+adding file changes
+added 1 changesets with 1 changes to 1 files (+1 heads)
+(run 'hg heads' to see heads, 'hg merge' to merge)
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">(+1</span> <span class="pre">heads)</span></code> 的提示有些莫名其妙. 这是因为我的本地库里, 原本只有 3 个变更整齐的堆叠着, 现在却成了个双头怪, 两个不同的变更并行堆叠在栈顶, 看上去很不牢靠:</p>
+<img alt="../_images/02-repo-6.png" src="02-repo-6.png">
+<p>现在在我的本地库有两个版本... 我的那份:</p>
+<div class="highlight-python"><div class="highlight"><pre>C:\Users\joel\recipes&gt; type guac
+* 2 ripe avocados
+* 1/2 red onion, minced (about 1/2 cup)
+* 1-2 serrano chiles, stems and seeds removed, minced
+* 2 tablespoons cilantro leaves, finely chopped
+* 1 tablespoon of fresh lime or lemon juice
+* 1/2 teaspoon coarse salt
+* A dash of freshly grated black pepper
+* 1/2 ripe tomato, seeds and pulp removed, chopped
+
+Smoosh all ingredients together.
+Serve with potato chips.
+</pre></div>
+</div>
+<p>以及 Rose 的那份:</p>
+<div class="highlight-bash"><div class="highlight"><pre>C:<span class="se">\U</span>sers<span class="se">\j</span>oel<span class="se">\r</span>ecipes&gt; hg cat -r <span class="m">3</span> guac
+* <span class="m">2</span> ripe avocados
+* 1/2 red onion, minced <span class="o">(</span>about 1/2 cup<span class="o">)</span>
+* 1-2 habanero chiles, stems and seeds removed, minced
+* <span class="m">2</span> tablespoons cilantro leaves, finely chopped
+* <span class="m">1</span> tablespoon of fresh lime or lemon juice
+* 1/2 teaspoon coarse salt
+* A dash of freshly grated black pepper
+* 1/2 ripe tomato, seeds and pulp removed, chopped
+
+Smoosh all ingredients together.
+Serve with tortilla chips.
+</pre></div>
+</div>
+</div>
+<div class="section" id="hg-merge">
+<h2><code class="docutils literal"><span class="pre">hg</span> <span class="pre">merge</span></code></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p><code class="docutils literal"><span class="pre">hg</span> <span class="pre">merge</span></code></p>
+<p class="last">合并两个版本头</p>
+</div>
+<p>现在我要决定是否合并. 幸运的是, 合并过程很简单.</p>
+<div class="highlight-python"><div class="highlight"><pre>C:\Users\joel\recipes&gt; hg merge
+merging guac
+0 files updated, 1 files merged, 0 files removed, 0 files unresolved
+(branch merge, don't forget to commit)
+
+C:\Users\joel\recipes&gt; type guac
+* 2 ripe avocados
+* 1/2 red onion, minced (about 1/2 cup)
+* 1-2 habanero chiles, stems and seeds removed, minced
+* 2 tablespoons cilantro leaves, finely chopped
+* 1 tablespoon of fresh lime or lemon juice
+* 1/2 teaspoon coarse salt
+* A dash of freshly grated black pepper
+* 1/2 ripe tomato, seeds and pulp removed, chopped
+
+Smoosh all ingredients together.
+Serve with potato chips.
+</pre></div>
+</div>
+<p>瞧! <strong>hg merge</strong> 命令把两个版本头合二为一了. 在本例中, 因为我们没有编辑文件的同一行, 所以完全没有冲突, 合并因此也就没有任何障碍.</p>
+<p>我依然需要 <code class="docutils literal"><span class="pre">commit</span></code>. 这很重要. 如果合并失败了, 我随时可以 <code class="docutils literal"><span class="pre">revert</span></code> 然后重试. 因为我们成功合并, 所以我决定把我的变更提交到中央库.</p>
+<div class="highlight-python"><div class="highlight"><pre>C:\Users\joel\recipes&gt; hg commit -m "merge"
+
+C:\Users\joel\recipes&gt; hg log
+changeset:   4:0849ca96c304
+tag:         tip
+parent:      2:4ecdb2401ab4
+parent:      3:689026657682
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Mon Feb 08 16:07:23 2010 -0500
+summary:     merge
+
+changeset:   3:689026657682
+parent:      1:a52881ed530d
+user:        Rose Hillman &lt;rose@example.com&gt;
+date:        Mon Feb 08 15:29:09 2010 -0500
+summary:     spicier kind of chile
+
+changeset:   2:4ecdb2401ab4
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Mon Feb 08 15:32:01 2010 -0500
+summary:     potato chips. No one can eat just one.
+
+changeset:   1:a52881ed530d
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Mon Feb 08 14:51:18 2010 -0500
+summary:     Change crunch to smoosh
+
+changeset:   0:c1fb7e7fbe50
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Mon Feb 08 14:50:08 2010 -0500
+summary:     Initial version of guacamole recipe
+
+
+C:\Users\joel\recipes&gt; hg out
+comparing with http://joel.example.com:8000/
+searching for changes
+changeset:   2:4ecdb2401ab4
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Mon Feb 08 15:32:01 2010 -0500
+summary:     potato chips. No one can eat just one.
+
+changeset:   4:0849ca96c304
+tag:         tip
+parent:      2:4ecdb2401ab4
+parent:      3:689026657682
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Mon Feb 08 16:07:23 2010 -0500
+summary:     merge
+
+
+C:\Users\joel\recipes&gt; hg push
+pushing to http://joel.example.com:8000/
+searching for changes
+adding changesets
+adding manifests
+adding file changes
+added 2 changesets with 2 changes to 1 files
+</pre></div>
+</div>
+<p>现在中央库和我的本地库是一模一样的:</p>
+<img alt="../_images/02-repo-7.png" src="02-repo-7.png">
+<p>OK, 现在我的本地库包含 Rose 和我的变更, 但是 Rose 却还没有拿到我的变更.</p>
+<p>... (译注: 再次有意忽略一段) ...</p>
+<p>为此, Rose 需要从中央库取出新增的变更.</p>
+<div class="highlight-bash"><div class="highlight"><pre>C:<span class="se">\U</span>sers<span class="se">\r</span>ose<span class="se">\r</span>ecipes&gt; hg pull
+pulling from http://joel.example.com:8000/
+searching <span class="k">for</span> changes
+adding changesets
+adding manifests
+adding file changes
+added <span class="m">2</span> changesets with <span class="m">2</span> changes to <span class="m">1</span> files
+<span class="o">(</span>run <span class="s1">'hg update'</span> to get a working copy<span class="o">)</span>
+</pre></div>
+</div>
+<p>搞定. 现在你可能留意到某些异样, 即使 Rose 已经把新的变更取至她的本地库, <em>这些变更仍然没有在她的工作目录生效.</em></p>
+<div class="highlight-bash"><div class="highlight"><pre>C:<span class="se">\U</span>sers<span class="se">\r</span>ose<span class="se">\r</span>ecipes&gt; <span class="nb">type </span>guac
+* <span class="m">2</span> ripe avocados
+* 1/2 red onion, minced <span class="o">(</span>about 1/2 cup<span class="o">)</span>
+* 1-2 habanero chiles, stems and seeds removed, minced
+* <span class="m">2</span> tablespoons cilantro leaves, finely chopped
+* <span class="m">1</span> tablespoon of fresh lime or lemon juice
+* 1/2 teaspoon coarse salt
+* A dash of freshly grated black pepper
+* 1/2 ripe tomato, seeds and pulp removed, chopped
+
+Smoosh all ingredients together.
+Serve with tortilla chips.
+</pre></div>
+</div>
+<p>看到没? 文件没有发生任何变化!</p>
+<p>但是她的本地库中某个地方 <em>的确</em> 有我的变更...</p>
+<div class="highlight-bash"><div class="highlight"><pre>C:<span class="se">\U</span>sers<span class="se">\r</span>ose<span class="se">\r</span>ecipes&gt; hg log
+changeset:   4:0849ca96c304
+tag:         tip
+parent:      3:4ecdb2401ab4
+parent:      2:689026657682
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Mon Feb <span class="m">08</span> 16:07:23 <span class="m">2010</span> -0500
+summary:     merge
+
+changeset:   3:4ecdb2401ab4
+parent:      1:a52881ed530d
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Mon Feb <span class="m">08</span> 15:32:01 <span class="m">2010</span> -0500
+summary:     potato chips. No one can eat just one.
+
+changeset:   2:689026657682
+user:        Rose Hillman &lt;rose@example.com&gt;
+date:        Mon Feb <span class="m">08</span> 15:29:09 <span class="m">2010</span> -0500
+summary:     spicier kind of chile
+
+changeset:   1:a52881ed530d
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Mon Feb <span class="m">08</span> 14:51:18 <span class="m">2010</span> -0500
+summary:     Change crunch to smoosh
+
+changeset:   0:c1fb7e7fbe50
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Mon Feb <span class="m">08</span> 14:50:08 <span class="m">2010</span> -0500
+summary:     Initial version of guacamole recipe
+</pre></div>
+</div>
+</div>
+<div class="section" id="hg-parent">
+<h2><code class="docutils literal"><span class="pre">hg</span> <span class="pre">parent</span></code></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p><code class="docutils literal"><span class="pre">hg</span> <span class="pre">parent</span></code></p>
+<p class="last">显示工作目录当前的变更集</p>
+</div>
+<p>变更只不过没有在工作目录下生效. 这是因为她还是在基于 <code class="docutils literal"><span class="pre">changeset</span> <span class="pre">#2</span></code> 工作. 你可以使用 “parent” 命令确认:</p>
+<div class="highlight-python"><div class="highlight"><pre>C:\Users\rose\recipes&gt; hg parent
+changeset:   2:689026657682
+user:        Rose Hillman &lt;rose@example.com&gt;
+date:        Mon Feb 08 15:29:09 2010 -0500
+summary:     spicier kind of chile
+</pre></div>
+</div>
+<p>Mercurial 太友好了. 每次 <code class="docutils literal"><span class="pre">pull</span></code> 都是安全的; 它所做的只是让我们得到其他人的变更. 我们可以随时切换到新的变更下工作.</p>
+<p>记住, 不带任何参数的 <strong>hg up</strong> 命令会把工作目录更新到 <em>tip</em> (始终为最新的变更集), 本例中, <em>tip</em> 是 4:</p>
+<div class="highlight-python"><div class="highlight"><pre>C:\Users\rose\recipes&gt; hg up
+1 files updated, 0 files merged, 0 files removed, 0 files unresolved
+
+C:\Users\rose\recipes&gt; type guac
+* 2 ripe avocados
+* 1/2 red onion, minced (about 1/2 cup)
+* 1-2 habanero chiles, stems and seeds removed, minced
+* 2 tablespoons cilantro leaves, finely chopped
+* 1 tablespoon of fresh lime or lemon juice
+* 1/2 teaspoon coarse salt
+* A dash of freshly grated black pepper
+* 1/2 ripe tomato, seeds and pulp removed, chopped
+
+Smoosh all ingredients together.
+Serve with potato chips.
+</pre></div>
+</div>
+<p>现在, Rose 正在看着合并了所有人改动后的最新版本呢.</p>
+<p>如果你作为团队协作的一员, 你的工作流大概会是这个样子:</p>
+<ol class="arabic simple">
+<li>如果你有一段时间没有更新代码, 你需要获取其他人已经完成的代码:</li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li><code class="docutils literal"><span class="pre">hg</span> <span class="pre">pull</span></code></li>
+<li><code class="docutils literal"><span class="pre">hg</span> <span class="pre">up</span></code></li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple">
+<li>修改代码</li>
+<li>提交代码 (本地提交)</li>
+<li>重复步骤 2~3 直到你的代码完成度还不错, 你决定让其他人都来 “享受” 你的成果</li>
+<li>一旦你准备分享你的代码:</li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li>用 <code class="docutils literal"><span class="pre">hg</span> <span class="pre">pull</span></code> 获得其他所有人的变更 (如果有的话)</li>
+<li>用 <code class="docutils literal"><span class="pre">hg</span> <span class="pre">merge</span></code> 将这些变更合并到你的代码中</li>
+<li>测试! 以确保合并操作没有出乱子</li>
+<li><code class="docutils literal"><span class="pre">hg</span> <span class="pre">commit</span></code> (合并结果)</li>
+<li><code class="docutils literal"><span class="pre">hg</span> <span class="pre">push</span></code></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id2">
+<h2>小测验</h2>
+<p>下面的一些操作是学完本章教程后, 你应该要学会的:</p>
+<ol class="arabic simple">
+<li>建立一个中央版本库, 让团队成员从中央库 <code class="docutils literal"><span class="pre">clone</span></code></li>
+<li>把变更推送 (push) 到中央库</li>
+<li>从中央库取出 (pull) 变更</li>
+<li>合并不同代码提交人的变更</li>
+</ol>
+</div>
+<div class="section" id="next">
+<h2>Next</h2>
+<p><a data-sb-indepth="true" class="reference internal" href="default_003.html"><em>接下来, 我们探讨一下如何修正 *錯误* 错误</em></a></p>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&nbsp;&nbsp;<a data-sb-indepth="true" href="default_001.html">Mercurial 从零开始</a>
+        &nbsp;&nbsp;::&nbsp;&nbsp;
+        <a class="uplink" href="http://zh-hginit.readthedocs.io/en/latest/">Contents</a>
+        &nbsp;&nbsp;::&nbsp;&nbsp;
+        <a data-sb-indepth="true" href="default_003.html">失误补救</a>&nbsp;&nbsp;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        © Copyright .
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+    </div>
+  
+
+
+</body></html>

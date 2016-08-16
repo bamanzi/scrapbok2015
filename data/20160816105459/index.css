@@ -1,0 +1,188 @@
+/* ::::: http://s.dreamwidth.org/stc/??lj_base.css,esn.css,jquery/jquery.ui.core.css,jquery/jquery.ui.tooltip.css,jquery.contextualhover.css?v=1448242038 ::::: */
+
+form { margin: 0px; padding: 0px; }
+.invisible { position: absolute; left: -10000px; top: auto; }
+.tag-nav-trigger { vertical-align: bottom; border: 0px none; }
+.tag-nav-trigger, .tag-nav-actions input { width: 16px; height: 16px; border: 0px none; }
+/* ::::: http://s.dreamwidth.org/stc/??jquery/jquery.ui.theme.smoothness.css,jquery/jquery.ui.button.css,jquery/jquery.ui.dialog.css,jquery.commentmanage.css,controlstrip.css,controlstrip-dark.css?v=1405326997 ::::: */
+
+html body { padding-top: 0px; margin: 0px; }
+#lj_controlstrip { top: 0px; left: 0px; width: 100%; margin: 0px; padding: 0px; position: relative; background-repeat: repeat-x; background-position: center bottom; text-align: left; }
+#lj_controlstrip table { margin: 0px; padding: 0px; width: auto; }
+#lj_controlstrip td { font-family: Arial,sans-serif; font-size: 11px; line-height: 16.5px; letter-spacing: normal; padding: 0.4045em 0.809em; white-space: normal; display: inline-block; }
+#lj_controlstrip a { font-family: Arial,sans-serif; font-weight: normal; letter-spacing: normal; text-decoration: none; font-variant: normal; border: 0px none; margin: 0px; padding: 0px; }
+#lj_controlstrip a:hover { text-decoration: underline; }
+#lj_controlstrip img { background: none repeat scroll 0px center transparent; margin: 0px; padding: 0px; border: 0px none; }
+#lj_controlstrip a img { padding: 0px; margin: 0px; border: 0px none; }
+#lj_controlstrip form { padding: 0px; margin: 0px; border: 0px none; }
+#lj_controlstrip input { font-family: Arial,sans-serif; font-size: 11px; line-height: 16.5px; background-color: buttonface; color: buttontext; padding: 0px; margin: 0px; width: auto; text-transform: none; }
+#lj_controlstrip select, #lj_controlstrip input#xc_user, #lj_controlstrip input#xc_password, #lj_controlstrip input#xc_remember, #lj_controlstrip input#search { font-family: Arial,sans-serif; font-size: 11px; line-height: 16.5px; background-color: rgb(247, 247, 247); color: rgb(51, 51, 51); padding: 0px; margin: 0px; }
+#lj_controlstrip_userpic { vertical-align: middle; width: 43px; }
+#lj_controlstrip_actionlinks { text-align: left; vertical-align: middle; padding: 0px 1em; width: auto; }
+#lj_controlstrip_statustext { font-size: 12px; font-weight: bold; }
+#lj_controlstrip_search { vertical-align: middle; padding: 0px 1em; white-space: nowrap; }
+#lj_controlstrip_login { vertical-align: middle; padding-left: 1em; width: 28em; white-space: nowrap; }
+#lj_controlstrip { background-color: rgb(46, 44, 44); background-image: url("bg-dark.gif"); }
+#lj_controlstrip td { color: rgb(152, 152, 152); }
+#lj_controlstrip a { color: rgb(245, 245, 245); }
+#lj_controlstrip_user, #lj_controlstrip_login, #lj_controlstrip_loggedout_userpic, #lj_controlstrip_actionlinks { border-right: 1px solid rgb(135, 128, 128); }
+#lj_controlstrip_statustext { color: rgb(245, 245, 245); }
+/* ::::: http://jhw.dreamwidth.org/res/176091/stylesheet?1460260094 ::::: */
+
+H1, H2, H3 { margin: 0.25em 0px; padding: 0.25em 0px; }
+img { border: medium none; }
+hr { display: none; }
+body { font-family: "NimbusRoman No9 L",Rekha,Georgia,serif; font-size: 100%; padding: 0px; background: none repeat scroll 0% 0% rgb(253, 253, 253); color: rgb(0, 0, 0); border: 1px solid rgb(85, 228, 186); }
+html body { margin-left: 0em; margin-right: 0em; }
+a { color: rgb(61, 121, 192); }
+a:visited { color: rgb(15, 65, 124); }
+a:hover { color: rgb(247, 162, 27); }
+a:active {  }
+#content { float: none; }
+@media only screen and (min-width: 45em) {
+  .two-columns-left #content, .three-columns-sides #content { border-left: 15em solid transparent; }
+  .two-columns-right #content, .three-columns-sides #content { border-right: 15em solid transparent; }
+  .column-right #content { min-width: 15em; }
+}
+#content-footer { height: 0px; font-size: 0px; clear: both; }
+#header, #footer { margin: 0px; clear: both; padding: 0.5em; }
+#header { background: none repeat scroll 0% 0% rgb(9, 124, 93); color: rgb(253, 253, 253); }
+h1#title { font-family: Loma,Verdana,Geneva,sans-serif,"NimbusRoman No9 L",Rekha,Georgia,serif; font-size: 2em; }
+h2#subtitle, h2#pagetitle { font-family: Loma,Verdana,Geneva,sans-serif,"NimbusRoman No9 L",Rekha,Georgia,serif; font-size: 1.5em; }
+#footer { background: none repeat scroll 0% 0% transparent; }
+#footer a { color: rgb(247, 162, 27); }
+#footer a:visited {  }
+#footer a:hover { color: rgb(247, 162, 27); }
+#footer a:active {  }
+#primary { width: 100%; margin-right: -100%; margin-left: 0px; }
+#primary > .inner:first-child, #secondary > .inner:first-child, #tertiary > .inner:first-child { padding: 1em; }
+#primary { float: none; }
+#secondary, #tertiary { width: 100%; }
+@media only screen and (min-width: 45em) {
+  .multiple-columns #primary { float: left; }
+  .two-columns-left #secondary, .three-columns-sides #secondary { float: left; width: 15em; margin-left: -15em; }
+  .three-columns-sides #tertiary { float: right; width: 15em; margin-right: -15em; }
+}
+.entry { background: none repeat scroll 0% 0% rgb(253, 253, 253); color: rgb(13, 13, 13); border: 1px solid rgb(85, 228, 186); }
+.entry .entry-title { font-family: "NimbusRoman No9 L",Rekha,Georgia,"NimbusRoman No9 L",Rekha,Georgia,serif; font-size: 1em; }
+.entry .entry-title, .entry .entry-title a { color: rgb(9, 124, 93); }
+.entry a {  }
+.entry a:visited {  }
+.entry a:hover { color: rgb(247, 162, 27); }
+.entry a:active {  }
+.comment-content:before { content: ""; display: block; overflow: hidden; width: 10em; }
+.comment-content { border-top: 1px solid transparent; }
+@media only screen and (min-width: 60em) {
+}
+.tag ul { display: inline; margin-left: 0px; padding-left: 0px; }
+.tag ul li { display: inline; }
+ul.entry-management-links { margin-left: 0px; padding-left: 0px; }
+ul.entry-management-links li { display: inline; padding: 0px 0.25em; }
+ul.entry-interaction-links { margin-left: 0px; padding-left: 0px; text-align: right; }
+.entry-interaction-links a, .entry-management-links a { color: rgb(247, 162, 27); }
+.entry-interaction-links a:visited, .entry-management-links a:visited {  }
+.entry-interaction-links a:hover, .entry-management-links a:hover {  }
+.entry-interaction-links a:active, .entry-management-links a:active {  }
+ul.entry-interaction-links li { display: inline; padding: 0px 0.25em; }
+.comment-wrapper { padding: 0.5em 0px; min-width: 15em; }
+.comment .comment-title { font-family: "NimbusRoman No9 L",Rekha,Georgia,serif; margin: 0px; }
+.comment .comment-title, .comment .comment-title a { background-color: rgb(253, 253, 253); }
+.no-subject .comment .comment-title { background: none repeat scroll 0% 0% transparent; border: medium none; }
+ul.comment-interaction-links { margin-left: 0px; padding-left: 0px; }
+ul.comment-interaction-links li { display: inline; padding: 0px 0.25em; }
+.module { background: none repeat scroll 0% 0% transparent; border: 1px solid rgb(253, 253, 253); }
+.module a {  }
+.module a:visited {  }
+.module a:hover { color: rgb(247, 162, 27); }
+.module a:active {  }
+.module h2 { color: rgb(9, 124, 93); font-family: Loma,Verdana,Geneva,sans-serif,"NimbusRoman No9 L",Rekha,Georgia,serif; font-size: 1.1em; }
+.module-content { font-family: Loma,Verdana,Geneva,sans-serif,"NimbusRoman No9 L",Rekha,Georgia,serif; font-size: 0.83em; }
+.module-content ul { list-style: disc outside none; margin-left: 1em; padding-left: 0px; }
+.module-content li { margin: 0.5em 0px; }
+.any-column .module-calendar table { margin: 0px; }
+.module-calendar .module-content { text-align: left; }
+@media only screen and (min-width: 45em) {
+  .multiple-columns .module-calendar .module-content { text-align: center; }
+  .multiple-columns .module-calendar table { margin: 0px auto; }
+}
+.module-calendar td { padding: 1px; }
+.module-calendar td a { display: block; padding: 2px; }
+.module-pagesummary .ljuser { white-space: normal ! important; }
+.module-pagesummary .module-content { word-wrap: break-word; }
+.module-credit .category-title { font-weight: bold; }
+a { text-decoration: none; }
+a:active { text-decoration: underline; }
+a:hover { text-decoration: underline; }
+body { border-width: 0px; margin: 0px; padding: 0px; }
+#content { color: rgb(13, 13, 13); }
+p, td, tr, table, hr, br, ul, ol, li { line-height: 1.5em; text-align: justify; }
+h1, h2, h3, h4, h5, h6 { font-family: Loma,Verdana,Geneva,sans-serif; }
+#canvas { border-top: 20px solid rgb(85, 228, 186); }
+h1#title, h2#subtitle { font-weight: 900; letter-spacing: 0.1em; margin: 0px auto; padding-bottom: 0px; }
+h1#title { line-height: 1em; }
+h1#title:after { content: ": "; }
+#header { border-bottom: 2px solid rgb(253, 253, 253); border-top: 3px solid rgb(253, 253, 253); }
+h2#pagetitle { font-family: Loma,Verdana,Geneva,sans-serif,"NimbusRoman No9 L",Rekha,Georgia,serif; font-size: 1.25em; clear: both; color: rgb(0, 0, 0); font-weight: bold; letter-spacing: 0.2em; padding-right: 5em; padding-top: 0px; text-transform: uppercase; }
+h2#pagetitle:after { content: " PAGE"; }
+.page-entry h2#pagetitle:after, .page-read h2#pagetitle:after { content: ""; }
+.tag, .metadata, .entry .inner .header, .entry .inner .poster, .entry .inner .userpic, .entry-title { color: rgb(9, 124, 93); font-family: "NimbusRoman No9 L",Rekha,Georgia,"NimbusRoman No9 L",Rekha,Georgia,serif; font-size: 1em; font-weight: bold; line-height: 1.4em; }
+h3.entry-title:before { content: "Subject: "; }
+h3.entry-title { font-family: "NimbusRoman No9 L",Rekha,Georgia,"NimbusRoman No9 L",Rekha,Georgia,serif; font-size: 1em; margin-bottom: 0px; padding-bottom: 0px; }
+.entry .header .datetime:before { content: "Date: "; }
+.security-public .entry .header:after { clear: left; content: "Security: Public"; display: block; }
+.entry .poster:before { content: "Poster: "; }
+.entry .inner .userpic { margin-bottom: 1em; }
+.tags { margin-bottom: 0px; }
+.inner > ul { margin-top: 0px; }
+.entry-management-links { display: inline; float: right; }
+.entry-wrapper { border-bottom: 1px solid rgb(85, 228, 186); margin-bottom: 1.5em; padding-bottom: 1em; }
+.entry { border: medium none; }
+.entry .inner { position: relative; }
+.has-userpic .entry .header, .has-userpic .entry .poster { position: relative; }
+.entry .inner .userpic { position: absolute; top: -4em; }
+.entry .entry-content { margin-bottom: 5em; position: relative; top: 5em; }
+.entry .inner { margin-bottom: 1em; }
+.entry .header .inner { margin-bottom: 0px; }
+ul.entry-interaction-links { text-align: left; }
+ul.entry-interaction-links li { color: rgb(9, 124, 93); font-family: Loma,Verdana,Geneva,sans-serif; font-size: 0.8em; line-height: 1.4em; text-transform: uppercase; }
+ul.entry-interaction-links li:before { content: "| "; }
+ul.entry-interaction-links li:first-child:before { content: ""; }
+.module { border-top: 2px none; border-width: 2px; }
+h2.module-header { border-bottom: 2px solid rgb(253, 253, 253); font-weight: bold; letter-spacing: 0.1em; margin: 0px; padding: 0px 1em 0.25em; text-transform: lowercase; }
+.module:first-child h2.module-header { border-top: 2px solid rgb(253, 253, 253); }
+.module-navlinks.module:first-child, .module-time.module:first-child, .module-powered.module:first-child { border-top: 2px solid rgb(253, 253, 253); }
+@media only screen and (min-width: 45em) {
+  .multiple-columns .module:first-child h2.module-header, .multiple-columns .module-navlinks.module:first-child, .multiple-columns .module-time.module:first-child, .multiple-columns .module-powered.module:first-child { border-top: medium none; }
+}
+#secondary { padding: 0px; }
+#secondary .inner:first-child { padding: 0px; }
+@media only screen and (min-width: 45em) {
+  .three-columns #tertiary .inner:first-child { padding-top: 0px; }
+}
+.module-content { padding: 1em; }
+.module-content ul { margin: 0px 0.5em; }
+@media only screen and (min-width: 45em) {
+  .multiple-columns .module-content table { margin: 0px 0.5em; }
+}
+.module-content ul { list-style: none outside none; text-align: left; }
+@media only screen and (min-width: 45em) {
+}
+#primary, #secondary, #tertiary { padding: 5%; width: 90%; }
+#tertiary > .inner:first-child { padding: 0px; }
+@media only screen and (min-width: 45em) {
+  .multiple-columns #primary { padding: 0px; width: 100%; }
+  .multiple-columns #secondary, .multiple-columns #tertiary { padding: 0px; }
+}
+.comment-wrapper { border-bottom: thin inset rgb(85, 228, 186); }
+.comment .inner .header, .comment .inner .contents .poster, .comment .inner .contents .poster-ip { color: rgb(9, 124, 93); font-family: "NimbusRoman No9 L",Rekha,Georgia,"NimbusRoman No9 L",Rekha,Georgia,serif; font-size: 1em; line-height: 1.4em; font-weight: bold; }
+.has-userpic .entry .header, .has-userpic .entry .poster { left: 105px; margin-right: 105px; }
+.entry .inner .userpic { float: left; }
+h2#pagetitle { color: rgb(253, 253, 253); }
+/* ::::: [internal] ::::: */
+
+@media screen {
+}
+@media print {
+}
+/* ::::: [internal] ::::: */
+

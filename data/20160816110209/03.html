@@ -1,0 +1,704 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>HgInit: Fixing Goofs</title>
+
+<script src="jquery-1.4.1.js"></script>
+<script src="basic.js"></script>
+
+<link href="Hg.ico" rel="shortcut icon">
+
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-225715-20");
+pageTracker._setDomainName("none");
+pageTracker._setAllowLinker(true);
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+	<!-- Google Website Optimizer Control Script -->
+	<script>
+	function utmx_section(){}function utmx(){}
+	(function(){var k='2687020024',d=document,l=d.location,c=d.cookie;function f(n){
+	if(c){var i=c.indexOf(n+'=');if(i>-1){var j=c.indexOf(';',i);return c.substring(i+n.
+	length+1,j<0?c.length:j)}}}var x=f('__utmx'),xx=f('__utmxx'),h=l.hash;
+	d.write('<sc'+'ript src="'+
+	'http'+(l.protocol=='https:'?'s://ssl':'://www')+'.google-analytics.com'
+	+'/siteopt.js?v=1&utmxkey='+k+'&utmx='+(x?x:'')+'&utmxx='+(xx?xx:'')+'&utmxtime='
+	+new Date().valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
+	'" type="text/javascript" charset="utf-8"></sc'+'ript>')})();
+	</script><script>utmx("url",'A/B');</script>
+	<!-- End of Google Website Optimizer Control Script -->
+
+<link rel="stylesheet" type="text/css" href="03.css" media="all">
+</head>
+<body>
+	<div id="kilnFlyOut">
+		<div class="flyouttext">
+		<strong>Kiln gives you:</strong><br>
+
+		• A complete version control system based on <a href="http://mercurial.selenic.com/" target="_blank" onclick="javascript: pageTracker._trackPageview('/outbound/flyout/mercurial.selenic.com');">Mercurial</a> and <a href="http://git-scm.com/">Git</a><br>
+	  • <a href="http://www.fogcreek.com/kiln/features/team-up/" target="_blank" onclick="javascript: pageTracker._trackPageview('/outbound/flyout/branchandmerge.kilnhg.com');">Branching and merging</a> that really works 
+	  </div>
+	  
+	 <div class="flyouttext">
+	  • Secure hosting on our servers<br>
+	  • Seamlessly integrated <a href="http://www.fogcreek.com/kiln/features/code-reviews" target="_blank" onclick="javascript: pageTracker._trackPageview('/outbound/flyout/startreviews.kilnhg.com');">code review</a>
+	  </div>
+	 <div class="flyouttext"> <a href="https://secure.fogcreek.com/kiln/try/?fccmp=hginit" target="_blank" onclick="javascript: pageTracker._trackPageview('/outbound/flyout/freetrial.shop.fogcreek.com');"><img src="getstarted.gif" width="182" border="0" height="24"></a>
+	 </div>
+	 <div class="flyoutteaser"><nobr><strong>Try Kiln free!</strong> Mercurial hosting and more.</nobr></div>
+	</div>
+
+<div class="toptop" align="left">
+    <ul>
+        <li align="center"><a href="http://www.joelonsoftware.com/" onclick="javascript: pageTracker._trackPageview('/outbound/toptop/joelonsoftware.com');">Joel on Software</a></li>
+        <li align="center"><a href="http://mercurial.selenic.com/" onclick="javascript: pageTracker._trackPageview('/outbound/toptop/mercurial.selenic.com');">Mercurial</a></li>
+        <li align="center"><a href="http://hginit.com/index.html">Home</a></li>
+    </ul>
+</div>
+<div id="dropshadow"></div>
+<div id="topnav">
+  <div class="tInterior">
+      <a href="http://hginit.com/index.html">
+        <img src="logo.png" alt="HgInit Home" border="0">
+      </a>
+  
+One of the biggest benefits of Mercurial is that you can
+use private clones to try experiments and develop new
+features… if they don’t work out, you can
+reverse them in a second.
+
+  </div>
+</div>
+<div class="main">
+  <h1>Fixing Goofs</h1>
+  <div class="content">
+  
+<p>Mercurial lets you experiment freely. Imagine that during the course of normal editing, you get into trouble with your editor and do something catastrophic:</p>
+
+<div class="edit1">
+                <div class="edittopbefore">
+                guac </div>
+                <div class="editcontent">
+* 2 ripe avocados<br>
+* 1/2 red onion, minced (about 1/2 cup)<br>
+* 1-2 habanero chiles, stems and seeds removed, minced<br>
+* 2 tablespoons cilantro leaves, finely chopped<br>
+* 1 tablespoon of fresh lime or lemon juice<br>
+* 1/2 teaspoon coarse salt<br>
+* A dash of freshly grated black pepper<br>
+* 1/2 ripe tomato, seeds and pulp removed, chopped<br><br>
+
+Smoosh all ingredients together.<br>
+Serve with potato chips.<br>
+                </div>
+                <img src="edit-bot.gif" width="387" height="76">
+    </div>
+
+
+<div class="edit2">
+	<img src="arrow2.gif" class="editArrow" width="83" height="97">
+	<div class="edittopafter">    
+		guac
+	</div>
+  <div class="editcontent">
+ * 2 iperay avocadosway<br>
+* 1/2 edray onionway, incedmay (aboutway 1/2 upcay)<br>
+* 1-2 abanerohay ileschay, emsstay andway eedssay <br>
+  emovedray, incedmay<br>
+* 2 ablespoonstay ilantrocay eaveslay, inelyfay oppedchay<br>
+* 1 ablespoontay ofway eshfray imelay orway emonlay <br>
+  uicejay
+* 1/2 easpoontay oarsecay altsay<br>
+* Away ashday ofway eshlyfray atedgray ackblay epperpay<br>
+* 1/2 iperay omatotay, eedssay andway ulppay emovedray, <br>
+  oppedchay<br><br>
+
+Ooshsmay allway ingredientsway ogethertay.<br>
+Ervesay ithway otatopay ipschay.<br>
+   </div>
+  <img src="edit-bot.gif" width="387" height="76">
+ </div>
+ 
+ <div style="clear: both;">&nbsp;</div>
+
+
+
+
+<p>Gotta love emacs. Anyway, all is not lost. The most common way to recover from these things is just to <strong>hg revert</strong> them:</p>
+
+<div class="cheatcontent" style="margin-top: -65px;">
+<div class="cheattop">
+	<div class="command">hg revert</div>
+</div>
+<p class="cheattext">revert changed files back to committed version </p>
+<img src="cheatbot.png" width="241" height="41">
+</div>
+
+
+<div class="codesnippet">
+<div class="codetop"> </div>
+<pre>C:\Users\joel\recipes&gt; <strong>hg revert guac</strong>
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+<p>That’ll put the files back exactly the way they were at the time of the last commit. Mercurial doesn’t like to delete anything, so instead of zapping the <a href="http://en.wikipedia.org/wiki/Pig_Latin" target="_blank">Pig Latin</a> recipe, it renamed it:</p>
+
+<div class="codesnippet">
+<div class="codetop"> </div>
+<pre>C:\Users\joel\recipes&gt; <strong>dir</strong>
+ Volume in drive C has no label.
+ Volume Serial Number is 84BD-9C2C
+
+ Directory of C:\Users\joel\recipes
+
+02/11/2010  11:16 AM    &lt;DIR&gt;          .
+02/11/2010  11:16 AM    &lt;DIR&gt;          ..
+02/11/2010  11:16 AM    &lt;DIR&gt;          .hg
+02/11/2010  11:16 AM               393 guac
+02/11/2010  11:15 AM               510 guac.orig
+               2 File(s)            903 bytes
+               3 Dir(s)  40,958,005,248 bytes free
+
+C:\Users\joel\recipes&gt; <strong>del guac</strong>
+
+C:\Users\joel\recipes&gt; <strong>rename guac.orig guac</strong>
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+<p>What if you had gone one step too far and actually committed?</p>
+
+<div class="codesnippet">
+<div class="codetop"> </div>
+<pre>C:\Users\joel\recipes&gt; <strong>hg com -m "Pig Latin ftw"</strong>
+
+C:\Users\joel\recipes&gt; <strong>hg log -l 3</strong>
+changeset:   5:c7af1973de6d
+tag:         tip
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Thu Feb 11 11:32:27 2010 -0500
+summary:     Pig Latin ftw
+
+changeset:   4:0849ca96c304
+parent:      2:4ecdb2401ab4
+parent:      3:689026657682
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Mon Feb 08 16:07:23 2010 -0500
+summary:     merge
+
+changeset:   3:689026657682
+parent:      1:a52881ed530d
+user:        Rose Hillman &lt;rose@example.com&gt;
+date:        Mon Feb 08 15:29:09 2010 -0500
+summary:     spicier kind of chile
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+
+<div class="cheatcontent" style="margin-top: 0px;">
+<div class="cheattop">
+	<div class="command">hg rollback</div>
+</div>
+<p class="cheattext">undoes one commit, as long as you haven’t pushed it to anyone else. </p>
+<img src="cheatbot.png" width="241" height="41">
+</div>
+
+
+
+<p>There’s a command called <strong>hg rollback</strong> which will save your skin, but only if you haven’t pushed this change to anyone else. It only undoes <em>one</em> commit.</p>
+
+<div class="codesnippet">
+<div class="codetop"> </div>
+<pre>C:\Users\joel\recipes&gt; <strong>hg rollback</strong>
+rolling back last transaction
+
+C:\Users\joel\recipes&gt; <strong>hg log -l 3</strong>
+changeset:   4:0849ca96c304
+tag:         tip
+parent:      2:4ecdb2401ab4
+parent:      3:689026657682
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Mon Feb 08 16:07:23 2010 -0500
+summary:     merge
+
+changeset:   3:689026657682
+parent:      1:a52881ed530d
+user:        Rose Hillman &lt;rose@example.com&gt;
+date:        Mon Feb 08 15:29:09 2010 -0500
+summary:     spicier kind of chile
+
+changeset:   2:4ecdb2401ab4
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Mon Feb 08 15:32:01 2010 -0500
+summary:     potato chips. No one can eat just one.
+
+
+C:\Users\joel\recipes&gt; <strong>hg stat</strong>
+M guac
+
+C:\Users\joel\recipes&gt; <strong>hg revert guac</strong>
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+<p>Imagine you want to do a major experiment on the side. Your boss hired a new designer, Jim, and lately the specs you’ve been getting from him are just absurd. There’s fluorescent green text, nothing lines up (for “artistic” reasons), and the usability is awful. You want to come in one weekend and redo the whole thing, but you’re afraid to commit it because you’re not really 100% sure that your ideas are better than this nutty graphic designer. Jim is basically smoking a joint from the moment he wakes up until he goes to bed. You don’t want to hold that against him, and everybody else thinks that it’s nobody’s business as long as his designs are good, but really, there’s a limit. Right? And his designs aren’t good. Plus he’s kind of offensive.</p>
+
+<p>With Mercurial, you can just make an experimental clone of the entire repository:</p>
+
+<div class="codesnippet">
+<div class="codetop"> </div>
+<pre>C:\Users\joel\recipes&gt; <strong>cd ..</strong>
+
+C:\Users\joel&gt; <strong>hg clone recipes recipes-experiment</strong>
+updating to branch default
+1 files updated, 0 files merged, 0 files removed, 0 files unresolved
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+<p>This isn’t as inefficient as it seems. Because both <strong>recipes</strong> and <strong>recipes-experiment</strong> share all their history (so far), Mercurial will use a file system trick called “hard links” so that the copy can be created very quickly, without taking up a lot of extra space on disk.</p>
+
+<p>Now we can make a bunch of changes in the experimental branch:</p>
+
+<div class="codesnippet">
+<div class="codetop"> </div>
+<pre>C:\Users\joel&gt; <strong>cd recipes-experiment</strong>
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+<p>Here’s my grand guacamole experiment:</p>
+ <!-- edit text file module -->
+   <div class="edit1">
+                <div class="edittopbefore">
+                guac </div>
+                <div class="editcontent">
+                …<br><br>
+
+Smoosh all ingredients together.<br>
+Serve with potato chips.<br>
+                </div>
+                <img src="edit-bot.gif" width="387" height="76">
+    </div>
+
+
+<div class="edit2">
+	<img src="arrow2.gif" class="editArrow" width="83" height="97">
+	<div class="edittopafter">    
+		guac
+	</div>
+  <div class="editcontent">
+…<br><br>
+
+Smoosh all ingredients together.<br>
+Serve with potato chips.<br><br>
+
+<strong>This recipe is really good served with QUESO.<br><br>
+
+QUESO is Spanish for "cheese," but in Texas,
+it's just Kraft Slices melted in the microwave 
+with some salsa from a jar. MMM!</strong><br>
+
+   </div>
+  <img src="edit-bot.gif" width="387" height="76">
+ </div>
+ 
+ <div style="clear: both;">&nbsp;</div>
+
+
+<p>Here in the experimental repository, we can commit freely.</p>
+
+<div class="codesnippet">
+<div class="codetop"> </div>
+<pre>C:\Users\joel\recipes-experiment&gt; <strong>hg com -m "Queso = Cheese!"</strong>
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+<p>You can make changes and work freely, committing whenever you want. That gives you all the power of source control even for your crazy experiment, without infecting anyone else.</p>
+
+<p>If you decide that the experiment was misguided, you can just delete the whole experimental directory. Problem solved. It’s gone.</p>
+
+<p>But if it worked, all you have to do is push your new changes:</p>
+
+<div class="codesnippet">
+<div class="codetop"> </div>
+<pre>C:\Users\joel\recipes-experiment&gt; <strong>hg push</strong>
+pushing to c:\Users\joel\recipes
+searching for changes
+adding changesets
+adding manifests
+adding file changes
+added 1 changesets with 1 changes to 1 files
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+<p>Where did they go?</p>
+
+<div class="cheatcontent" style="margin-top: 0px;">
+<div class="cheattop">
+	<div class="command">hg paths</div>
+</div>
+<p class="cheattext">shows a list of known remote repositories  </p>
+<img src="cheatbot.png" width="241" height="41">
+</div>
+
+<div class="codesnippet">
+<div class="codetop"> </div>
+<pre>C:\Users\joel\recipes-experiment&gt; <strong>hg paths</strong>
+default = c:\Users\joel\recipes
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+<p>The “default” entry there shows you the path to the repository that <strong>hg push</strong> will push changes to, if you don’t specify any other repository. Normally, that’s the repository that you cloned off of. In this case, it’s a local directory, but you could also have a URL there.</p>
+
+<div class="codesnippet">
+<div class="codetop"> </div>
+<pre>C:\Users\joel\recipes-experiment&gt; <strong>cd ..\recipes</strong>
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+<p>Don’t forget, just because the change has been pushed into this <em>repository</em>…</p>
+
+<div class="codesnippet">
+<div class="codetop"> </div>
+<pre>C:\Users\joel\recipes&gt; <strong>hg log -l 3</strong>
+changeset:   5:9545248f3fc9
+tag:         tip
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Thu Feb 11 12:59:11 2010 -0500
+summary:     Queso = Cheese!
+
+changeset:   4:0849ca96c304
+parent:      2:4ecdb2401ab4
+parent:      3:689026657682
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Mon Feb 08 16:07:23 2010 -0500
+summary:     merge
+
+changeset:   3:689026657682
+parent:      1:a52881ed530d
+user:        Rose Hillman &lt;rose@example.com&gt;
+date:        Mon Feb 08 15:29:09 2010 -0500
+summary:     spicier kind of chile
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+<p>… doesn’t mean we’re working off that version yet.</p>
+
+<div class="codesnippet">
+<div class="codetop"> </div>
+<pre>C:\Users\joel\recipes&gt; <strong>type guac</strong>
+* 2 ripe avocados
+* 1/2 red onion, minced (about 1/2 cup)
+* 1-2 habanero chiles, stems and seeds removed, minced
+* 2 tablespoons cilantro leaves, finely chopped
+* 1 tablespoon of fresh lime or lemon juice
+* 1/2 teaspoon coarse salt
+* A dash of freshly grated black pepper
+* 1/2 ripe tomato, seeds and pulp removed, chopped
+
+Smoosh all ingredients together.
+Serve with potato chips.
+
+C:\Users\joel\recipes&gt; <strong>hg parent</strong>
+changeset:   4:0849ca96c304
+parent:      2:4ecdb2401ab4
+parent:      3:689026657682
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Mon Feb 08 16:07:23 2010 -0500
+summary:     merge
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+<div class="cheatcontent" style="margin-top: 0px;">
+<div class="cheattop">
+	<div class="command">hg parent</div>
+</div>
+<p class="cheattext">shows which changeset(s) you’re working off of </p>
+<img src="cheatbot.png" width="241" height="41">
+</div>
+
+<p>See? That “Queso” stuff is in changeset 5. But my main repository was working off of changeset 4, and just because someone pushed new changes into the <em>repository</em>, doesn’t mean they’ve showed up in my working directory yet, so I’m still working off of changeset 4.</p>
+
+
+<img src="03-repo.png">
+
+
+<p>If I want to see what’s in changeset 5, I have to use the <strong>hg update</strong> command:</p>
+
+<div class="codesnippet">
+<div class="codetop"> </div>
+<pre>C:\Users\joel\recipes&gt; <strong>hg up</strong>
+1 files updated, 0 files merged, 0 files removed, 0 files unresolved
+
+C:\Users\joel\recipes&gt; <strong>hg parent</strong>
+changeset:   5:9545248f3fc9
+tag:         tip
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Thu Feb 11 12:59:11 2010 -0500
+summary:     Queso = Cheese!
+
+
+C:\Users\joel\recipes&gt; <strong>type guac</strong>
+* 2 ripe avocados
+* 1/2 red onion, minced (about 1/2 cup)
+* 1-2 habanero chiles, stems and seeds removed, minced
+* 2 tablespoons cilantro leaves, finely chopped
+* 1 tablespoon of fresh lime or lemon juice
+* 1/2 teaspoon coarse salt
+* A dash of freshly grated black pepper
+* 1/2 ripe tomato, seeds and pulp removed, chopped
+
+Smoosh all ingredients together.
+Serve with potato chips.
+
+This recipe is really good served with QUESO.
+
+QUESO is Spanish for "cheese," but in Texas,
+it's just Kraft Slices melted in the microwave
+with some salsa from a jar. MMM!
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+
+<p>See what happened here? The changes came in, but they were on top of the version I was working on. <strong>push</strong> and <strong>pull</strong> just send changes from one repo to another—they don’t affect the files I’m working on at the moment.</p>
+
+<p>Right now here’s the state of repositories:</p>
+
+
+<img src="03-repo-2.png">
+
+
+<p>Mercurial is flexible about moving changes around from repository to repository. You can push straight from the experimental repository into the central repository:</p>
+
+<div class="codesnippet">
+<div class="codetop"> </div>
+<pre>C:\Users\joel\recipes&gt; <strong>cd ..\recipes-experiment</strong>
+
+C:\Users\joel\recipes-experiment&gt; <strong>hg outgoing http://joel.example.com:8000/</strong>
+comparing with http://joel.example.com:8000/
+searching for changes
+changeset:   5:9545248f3fc9
+tag:         tip
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Thu Feb 11 12:59:11 2010 -0500
+summary:     Queso = Cheese!
+
+
+C:\Users\joel\recipes-experiment&gt; <strong>hg push http://joel.example.com:8000/</strong>
+pushing to http://joel.example.com:8000/
+searching for changes
+adding changesets
+adding manifests
+adding file changes
+added 1 changesets with 1 changes to 1 files
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+<p>That pushed change 5 from the experimental repo directly into the central repository. Now, if I go back to my repository, there’s nothing left to push!</p>
+
+<div class="codesnippet">
+<div class="codetop"> </div>
+<pre>C:\Users\joel\recipes-experiment&gt; <strong>cd ..\recipes</strong>
+
+C:\Users\joel\recipes&gt; <strong>hg out</strong>
+comparing with http://joel.example.com:8000/
+searching for changes
+no changes found
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+<p>That’s because Mercurial knows that the central repo already got this particular changeset from somewhere else. That’s really useful, because otherwise it would try to apply it again, and it would be massively confused.</p>
+
+<p>After they made a job offer to designer Jim, he said he would start work right away, but then he didn’t show up for two months. People had mostly forgotten about him and about the job offer, and when he showed up at the office for the first time to start work, looking rather sunburned, to be honest, nobody quite knew who he was or what was going on. It was pretty funny. He is kind of a generic looking guy. Eventually they figured it out, but since he was new, nobody had the guts to ask him what the hell had happened. Just like they never ask him about the bruises and scratches on his face. Whatever. We hate that guy.</p>
+
+<p>Sometimes it may happen that you discover that, months earlier, you made a mistake.</p>
+
+<div class="codesnippet">
+<div class="codetop"> </div>
+<pre>C:\Users\joel\recipes&gt; <strong>hg diff -r 1:2 guac</strong>
+diff -r a52881ed530d -r 4ecdb2401ab4 guac
+--- a/guac      Mon Feb 08 14:51:18 2010 -0500
++++ b/guac      Mon Feb 08 15:32:01 2010 -0500
+@@ -8,4 +8,4 @@
+ * 1/2 ripe tomato, seeds and pulp removed, chopped
+
+ Smoosh all ingredients together.
+-Serve with tortilla chips.
++Serve with potato chips.
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+<p>Potato chips? WTF?!</p>
+
+<p>Mercurial can backout an old changeset from the past for you. It looks at the changeset, figures out the <em>opposite</em>, and does that to your current working directory. Let’s try backing out that old revision 2.</p>
+
+<div class="codesnippet">
+<div class="codetop"> </div>
+<pre>C:\Users\joel\recipes&gt; <strong>hg backout -r 2 --merge</strong>
+reverting guac
+created new head
+changeset 6:d828920f7f85 backs out changeset 2:4ecdb2401ab4
+merging with changeset 6:d828920f7f85
+merging guac
+0 files updated, 1 files merged, 0 files removed, 0 files unresolved
+(branch merge, don't forget to commit)
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+<p>Holy crap, what just happened?</p>
+
+<div class="codesnippet">
+<div class="codetop"> </div>
+<pre>C:\Users\joel\recipes&gt; <strong>hg diff</strong>
+diff -r 9545248f3fc9 guac
+--- a/guac      Thu Feb 11 12:59:11 2010 -0500
++++ b/guac      Thu Feb 11 14:19:34 2010 -0500
+@@ -8,7 +8,7 @@
+ * 1/2 ripe tomato, seeds and pulp removed, chopped
+
+ Smoosh all ingredients together.
+-Serve with potato chips.
++Serve with tortilla chips.
+
+ This recipe is really good served with QUESO.
+
+C:\Users\joel\recipes&gt; <strong>hg com -m "undo thing from the past"</strong>
+
+C:\Users\joel\recipes&gt; <strong>hg push</strong>
+pushing to http://joel.example.com:8000/
+searching for changes
+adding changesets
+adding manifests
+adding file changes
+added 2 changesets with 2 changes to 1 files
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+<p>Now, a lot of time may have passed. The chips might already be gone from the recipe. All kinds of spooky stuff might have happened that makes it impossible to merge in this change. In that case, you’re going to get merge conflicts, which you’re going to have to resolve somehow. We’ll talk about that in the next tutorial.</p>
+
+<h2>Test yourself</h2>
+
+<p>Here are the things you should know how to do after reading this tutorial:</p>
+
+<ol>
+  <li>Revert accidental changes, before and after checking in</li>
+  <li>Clone a repository locally for experiments</li>
+  <li>Push between repositories</li>
+  <li>Revert an old mistake that’s been in the repository for ages</li>
+
+</ol>
+
+<div class="footer">
+ <div class="footernav" id="home" align="center"><a href="http://hginit.com/index.html"><span class="angleQuote">«</span> Home</a></div>
+ 
+ <div class="footernav" id="comingup">Next, we talk about how to<br> merge in Mercurial</div>
+ <div class="footernav" id="next" align="center"><a data-sb-indepth="true" href="04.html">Next <span class="angleQuote">»</span></a></div>
+
+
+ 
+ 
+ </div>    
+
+<div class="pagebottom">
+
+        <div class="bottomimg">
+		<a href="http://www.kilnhg.com/" target="_blank" id="logoLink" title="KilnHg.com" onclick="javascript: pageTracker._trackPageview('/outbound/bottom/klinhg.com');">&nbsp;</a>
+		<div class="bottomtext">This tutorial was brought to you by the fine folks at Fog Creek Software, makers of Kiln, a version control system powered by Mercurial</div>
+        
+        <div class="bottomtext"><strong>Kiln gives you:</strong><br>
+
+• A complete version control system based on <a href="http://mercurial.selenic.com/" target="_blank" onclick="javascript: pageTracker._trackPageview('/outbound/bottom/mercurial.selenic.com');">Mercurial</a> and <a href="http://git-scm.com/">Git</a><br>
+• <a href="http://www.fogcreek.com/kiln/features/team-up" target="_blank" onclick="javascript: pageTracker._trackPageview('/outbound/bottom/branchandmerge.kilnhg.com');">Branching and merging</a> that really works<br>
+• Secure hosting on our servers<br>
+• Seamlessly integrated <a href="http://www.fogcreek.com/kiln/features/code-reviews" target="_blank" onclick="javascript: pageTracker._trackPageview('/outbound/bottom/startreviews.kilnhg.com');">code review</a><br>
+</div>
+      
+      <div class="bottomtext getStarted">
+      <a href="https://secure.fogcreek.com/kiln/try/?fccmp=hginit" target="_blank" onclick="javascript: pageTracker._trackPageview('/outbound/bottom/freetrial.shop.fogcreek.com');"><img src="getstarted.gif" width="182" border="0" height="24"></a>
+      </div>  
+        
+      </div>             
+        <div class="about">
+          <p>
+            <strong>Looking for more?</strong>
+          </p>
+          
+          <p>
+            Fog Creek offers free monthly webinars that go over the basics of Mercurial. Sign up
+            at <a href="http://www.fogcreek.com/kiln/training/#training">fogcreek.com</a>.
+          </p>
+
+          <p>
+            <strong>Any questions?</strong>
+          </p>
+          
+          <p>
+            Looking for help with <a href="http://fogcreek.com/kiln">Kiln</a>? Check out the <a href="http://help.fogcreek.com/kiln">Kiln Knowledge Base</a>.
+          </p>
+
+          <p>
+            <strong>About the author.</strong>
+          </p> 
+        
+          <p>
+Joel Spolsky is the founder of <a href="http://fogcreek.com/" onclick="javascript: pageTracker._trackPageview('/outbound/bottom/fogcreek.com');">Fog Creek Software</a>, a New York company that proves that you can treat programmers well and still be profitable. Programmers get private offices, free lunch, and work 40 hours a week. Customers only pay for software if they’re delighted. Fog Creek makes <a href="http://www.fogbugz.com/" onclick="javascript: pageTracker._trackPageview('/outbound/bottom/fogbugz.com');">FogBugz</a>, <a href="http://www.kilnhg.com/" onclick="javascript: pageTracker._trackPageview('/outbound/bottom/text.kilnhg.com');">Kiln</a>, and <a href="https://www.copilot.com/" onclick="javascript: pageTracker._trackPageview('/outbound/bottom/copilot.com');">Fog Creek Copilot</a>. Joel's blog <a href="http://www.joelonsoftware.com/" onclick="javascript: pageTracker._trackPageview('/outbound/bottom/joelonsoftware.com');">Joel on Software</a> is read by programmers everywhere.
+            
+           </p>
+        
+        </div>
+
+
+<!-- close bottom div -->
+</div>
+    
+    
+<!-- close "content" column -->     
+</div>
+
+<!-- close "main" div -->
+</div>
+
+<!-- bottom grey bar -->
+<div class="botbot" align="left">
+</div>
+
+<!-- Google Website Optimizer Tracking Script -->
+<script type="text/javascript">
+if(typeof(_gat)!='object')document.write('<sc'+'ript src="http'+
+(document.location.protocol=='https:'?'s://ssl':'://www')+
+'.google-analytics.com/ga.js"></sc'+'ript>')</script>
+<script type="text/javascript">
+try {
+var gwoTracker=_gat._getTracker("UA-225715-15");
+gwoTracker._trackPageview("/2687020024/test");
+}catch(err){}</script>
+<!-- End of Google Website Optimizer Tracking Script -->
+
+
+
+
+
+</body></html>

@@ -1,0 +1,7 @@
+http://zh-hginit.readthedocs.io/en/latest/index.html	index
+http://zh-hginit.readthedocs.io/en/latest/re-education/	default
+http://zh-hginit.readthedocs.io/en/latest/groundup/	default_001
+http://zh-hginit.readthedocs.io/en/latest/setting-up/	default_002
+http://zh-hginit.readthedocs.io/en/latest/fixing/	default_003
+http://zh-hginit.readthedocs.io/en/latest/merging/	default_004
+http://zh-hginit.readthedocs.io/en/latest/architecture/	default_005

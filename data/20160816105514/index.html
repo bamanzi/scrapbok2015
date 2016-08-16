@@ -1,0 +1,175 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<link rel="icon" href="hgicon.png" type="image/png"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="index,nofollow">
+
+<title>ExtdiffExtension - Mercurial</title>
+
+
+
+
+
+
+
+
+
+
+<!-- css only for MS IE6/IE7 browsers -->
+<!--[if lt IE 8]>
+   <link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="/moin-static/modernized/css/msie.css">
+<![endif]-->
+
+
+<link rel="alternate" title="Mercurial: ExtdiffExtension" href="https://www.mercurial-scm.org/wiki/ExtdiffExtension?diffs=1&amp;show_att=1&amp;action=rss_rc&amp;unique=0&amp;page=ExtdiffExtension&amp;ddiffs=1" type="application/rss+xml">
+
+
+<link rel="Start" href="https://www.mercurial-scm.org/wiki/Mercurial">
+<link rel="Alternate" title="Wiki Markup" href="https://www.mercurial-scm.org/wiki/ExtdiffExtension?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="https://www.mercurial-scm.org/wiki/ExtdiffExtension?action=print">
+<link rel="Search" href="https://www.mercurial-scm.org/wiki/FindPage">
+<link rel="Index" href="https://www.mercurial-scm.org/wiki/TitleIndex">
+<link rel="Glossary" href="https://www.mercurial-scm.org/wiki/WordIndex">
+<link rel="Help" href="https://www.mercurial-scm.org/wiki/HelpOnFormatting">
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+
+<body dir="ltr" lang="en">
+
+<div id="header">
+
+<form id="searchform" method="get" action="https://www.mercurial-scm.org/wiki/ExtdiffExtension">
+<div>
+<input name="action" value="fullsearch" type="hidden">
+<input name="context" value="180" type="hidden">
+<label style="display: none;" for="searchinput">Search:</label>
+<input class="disabled" id="searchinput" name="value" value="" size="20" alt="Search" type="text">
+<input disabled="" id="titlesearch" name="titlesearch" value="Titles" alt="Search Titles" type="submit">
+<input disabled="" id="fullsearch" name="fullsearch" value="Text" alt="Search Full Text" type="submit">
+</div>
+</form>
+
+
+<div id="logo"><a href="https://www.mercurial-scm.org/wiki/Mercurial"><img src="logo-droplets-50.png" alt="Mercurial" style="margin-right: 1em;" width="50" border="0" height="60"></a></div>
+<div id="username"><a href="https://www.mercurial-scm.org/wiki/ExtdiffExtension?action=login" id="login" rel="nofollow">Login</a></div>
+<h1 id="locationline">
+
+<span id="pagelocation"><a href="#">ExtdiffExtension</a></span>
+</h1>
+
+
+<ul id="navibar">
+<li class="wikilink"><a href="https://www.mercurial-scm.org/wiki/RecentChanges">RecentChanges</a></li><li class="wikilink"><a href="https://www.mercurial-scm.org/wiki/FindPage">FindPage</a></li><li class="wikilink"><a href="https://www.mercurial-scm.org/wiki/HelpContents">HelpContents</a></li><li class="current"><a href="#">ExtdiffExtension</a></li>
+</ul>
+
+<div id="pageline"><hr style="display: none;"></div>
+
+<ul class="editbar"><li><span class="disabled">Immutable Page</span></li><li class="toggleCommentsButton" style="display: none;"><a href="#" class="nbcomment">Comments</a></li><li><a class="nbinfo" href="https://www.mercurial-scm.org/wiki/ExtdiffExtension?action=info" rel="nofollow">Info</a></li><li><a class="nbattachments" href="https://www.mercurial-scm.org/wiki/ExtdiffExtension?action=AttachFile" rel="nofollow">Attachments</a></li><li>
+<form class="actionsmenu" method="GET" action="https://www.mercurial-scm.org/wiki/ExtdiffExtension">
+<div>
+    
+    <select name="action">
+        <option value="show">More Actions:</option><option value="raw">Raw Text</option>
+<option value="print">Print View</option>
+<option value="RenderAsDocbook">Render as Docbook</option>
+<option value="refresh">Delete Cache</option>
+<option value="show" disabled="" class="disabled">------------------------</option>
+<option value="SpellCheck">Check Spelling</option>
+<option value="LikePages">Like Pages</option>
+<option value="LocalSiteMap">Local Site Map</option>
+<option value="show" disabled="" class="disabled">------------------------</option>
+<option value="RenamePage" disabled="" class="disabled">Rename Page</option>
+<option value="DeletePage" disabled="" class="disabled">Delete Page</option>
+<option value="show" disabled="" class="disabled">------------------------</option>
+<option value="show" disabled="" class="disabled">Subscribe User</option>
+<option value="show" disabled="" class="disabled">------------------------</option>
+<option value="show" disabled="" class="disabled">Remove Spam</option>
+<option value="show" disabled="" class="disabled">Revert to this revision</option>
+<option value="PackagePages">Package Pages</option>
+<option value="SyncPages">Sync Pages</option>
+<option value="show" disabled="" class="disabled">------------------------</option>
+<option value="Load">Load</option>
+<option value="Save">Save</option>
+<option value="SlideShow">SlideShow</option>
+    </select>
+    
+    
+</div>
+
+</form>
+</li></ul>
+
+</div>
+
+<div id="page" dir="ltr" lang="en">
+<div dir="ltr" id="content" lang="en"><span class="anchor" id="top"></span>
+<span class="anchor" id="line-1"></span><span class="anchor" id="line-2"></span><p class="line867">
+</p><h2 id="Extdiff_extension">Extdiff extension</h2>
+<span class="anchor" id="line-3"></span><p class="line867"><strong>This extension is currently being distributed along with Mercurial.</strong> <span class="anchor" id="line-4"></span><span class="anchor" id="line-5"></span></p><p class="line867"><em>Author: Vadim Gelfer</em> <span class="anchor" id="line-6"></span><span class="anchor" id="line-7"></span></p><p class="line867">
+</p><h3 id="Overview">Overview</h3>
+<span class="anchor" id="line-8"></span><p class="line862">The <tt>extdiff</tt> Mercurial extension allows you to use external programs <span class="anchor" id="line-9"></span>to compare revisions, or revision with working dir. <span class="anchor" id="line-10"></span>The external diff programs are called with a configurable set of options and two <span class="anchor" id="line-11"></span>non-option arguments: paths to directories containing snapshots of files to compare. <span class="anchor" id="line-12"></span><span class="anchor" id="line-13"></span></p><p class="line867">
+</p><h3 id="Configuration">Configuration</h3>
+<span class="anchor" id="line-14"></span><p class="line874">To enable this extension (in ~/.hgrc): <span class="anchor" id="line-15"></span><span class="anchor" id="line-16"></span></p><p class="line867"><span class="anchor" id="line-17"></span><span class="anchor" id="line-18"></span><span class="anchor" id="line-19"></span></p><pre><span class="anchor" id="line-1"></span>  [extensions]
+<span class="anchor" id="line-2"></span>  hgext.extdiff =</pre><span class="anchor" id="line-20"></span><span class="anchor" id="line-21"></span><p class="line862">Then, the <tt>extdiff</tt> command should be available: <span class="anchor" id="line-22"></span><span class="anchor" id="line-23"></span></p><p class="line867"><span class="anchor" id="line-24"></span><span class="anchor" id="line-25"></span><span class="anchor" id="line-26"></span><span class="anchor" id="line-27"></span><span class="anchor" id="line-28"></span><span class="anchor" id="line-29"></span><span class="anchor" id="line-30"></span><span class="anchor" id="line-31"></span><span class="anchor" id="line-32"></span><span class="anchor" id="line-33"></span></p><pre><span class="anchor" id="line-1-1"></span>$ hg extdiff -h
+<span class="anchor" id="line-2-1"></span>hg extdiff [OPT]... [FILE]...
+<span class="anchor" id="line-3"></span>
+<span class="anchor" id="line-4"></span>use external program to diff repository (or selected files)
+<span class="anchor" id="line-5"></span>
+<span class="anchor" id="line-6"></span>    Show differences between revisions for the specified files, using
+<span class="anchor" id="line-7"></span>    an external program.  The default program used is diff, with
+<span class="anchor" id="line-8"></span>    default options "-Npru".
+<span class="anchor" id="line-9"></span>...</pre><span class="anchor" id="line-34"></span><span class="anchor" id="line-35"></span><p class="line867">
+</p><h3 id="Use">Use</h3>
+<span class="anchor" id="line-36"></span><span class="anchor" id="line-37"></span><p class="line862">You can run <tt>extdiff</tt> with default settings (<tt>diff&nbsp;-Npru</tt>): <span class="anchor" id="line-38"></span><span class="anchor" id="line-39"></span></p><p class="line867"><span class="anchor" id="line-40"></span><span class="anchor" id="line-41"></span><span class="anchor" id="line-42"></span><span class="anchor" id="line-43"></span><span class="anchor" id="line-44"></span><span class="anchor" id="line-45"></span><span class="anchor" id="line-46"></span><span class="anchor" id="line-47"></span><span class="anchor" id="line-48"></span></p><pre><span class="anchor" id="line-1-2"></span>$ hg extdiff
+<span class="anchor" id="line-2-2"></span>making snapshot of 1 files from rev dfe87137ed14
+<span class="anchor" id="line-3-1"></span>making snapshot of 1 files from working dir
+<span class="anchor" id="line-4-1"></span>diff -Npru crew.dfe87137ed14/mercurial/localrepo.py crew/mercurial/localrepo.py
+<span class="anchor" id="line-5-1"></span>--- crew.dfe87137ed14/mercurial/localrepo.py    2007-01-18 16:04:59.795697215 -0600
+<span class="anchor" id="line-6-1"></span>+++ crew/mercurial/localrepo.py 2007-01-18 16:04:59.805704181 -0600
+<span class="anchor" id="line-7-1"></span>@@ -990,10 +990,12 @@ class localrepository(repo.repository):
+<span class="anchor" id="line-8-1"></span>...</pre><span class="anchor" id="line-49"></span><span class="anchor" id="line-50"></span><p class="line874">Or, use the -p option specify an external diff utility for comparing files: <span class="anchor" id="line-51"></span><span class="anchor" id="line-52"></span></p><p class="line867"><span class="anchor" id="line-53"></span><span class="anchor" id="line-54"></span></p><pre><span class="anchor" id="line-1-3"></span>$ hg extdiff -p kdiff3</pre><span class="anchor" id="line-55"></span><span class="anchor" id="line-56"></span><p class="line874">Please note that the external diff utility of your choice must be able to compare directories. <span class="anchor" id="line-57"></span><span class="anchor" id="line-58"></span></p><p class="line862">You may use the <tt>-o</tt> option to specify options to the external diff utility: <span class="anchor" id="line-59"></span><span class="anchor" id="line-60"></span></p><p class="line867"><span class="anchor" id="line-61"></span><span class="anchor" id="line-62"></span></p><pre><span class="anchor" id="line-1-4"></span>$ hg extdiff -p diff -o -Npruw</pre><span class="anchor" id="line-63"></span><span class="anchor" id="line-64"></span><p class="line862">You may also use <tt>--rev/-r</tt> and <tt>-I/-X</tt> options, as well as the list of file or <span class="anchor" id="line-65"></span>directory names like normal <tt>hg&nbsp;diff</tt> command.  The <tt>extdiff</tt> extension <span class="anchor" id="line-66"></span>makes snapshots of only needed files, so running the external diff program will actually be <span class="anchor" id="line-67"></span>pretty fast (at least faster than having to compare the entire tree). <span class="anchor" id="line-68"></span><span class="anchor" id="line-69"></span></p><p class="line867">
+</p><h3 id="Create_Custom_extdiff_Commands">Create Custom extdiff Commands</h3>
+<span class="anchor" id="line-70"></span><p class="line862">The <tt>extdiff</tt> extension also allows users to configure new diff commands in the hgrc files, <span class="anchor" id="line-71"></span>so you do not need to type <tt>hg&nbsp;extdiff&nbsp;-p&nbsp;kdiff3</tt> always. <span class="anchor" id="line-72"></span><span class="anchor" id="line-73"></span></p><p class="line867"><span class="anchor" id="line-74"></span><span class="anchor" id="line-75"></span><span class="anchor" id="line-76"></span><span class="anchor" id="line-77"></span><span class="anchor" id="line-78"></span><span class="anchor" id="line-79"></span><span class="anchor" id="line-80"></span><span class="anchor" id="line-81"></span><span class="anchor" id="line-82"></span><span class="anchor" id="line-83"></span><span class="anchor" id="line-84"></span><span class="anchor" id="line-85"></span><span class="anchor" id="line-86"></span><span class="anchor" id="line-87"></span><span class="anchor" id="line-88"></span><span class="anchor" id="line-89"></span><span class="anchor" id="line-90"></span><span class="anchor" id="line-91"></span><span class="anchor" id="line-92"></span><span class="anchor" id="line-93"></span><span class="anchor" id="line-94"></span><span class="anchor" id="line-95"></span><span class="anchor" id="line-96"></span><span class="anchor" id="line-97"></span><span class="anchor" id="line-98"></span><span class="anchor" id="line-99"></span><span class="anchor" id="line-100"></span><span class="anchor" id="line-101"></span><span class="anchor" id="line-102"></span><span class="anchor" id="line-103"></span><span class="anchor" id="line-104"></span><span class="anchor" id="line-105"></span><span class="anchor" id="line-106"></span><span class="anchor" id="line-107"></span><span class="anchor" id="line-108"></span></p><pre><span class="anchor" id="line-1-5"></span>  [extdiff]
+<span class="anchor" id="line-2-3"></span>  # add new command that runs GNU diff(1) in 'context diff' mode
+<span class="anchor" id="line-3-2"></span>  cmd.cdiff = gdiff
+<span class="anchor" id="line-4-2"></span>  opts.cdiff = -Nprc5
+<span class="anchor" id="line-5-2"></span>
+<span class="anchor" id="line-6-2"></span>  # similarly, a command that runs GNU diff(1) in 'side-by-side' mode
+<span class="anchor" id="line-7-2"></span>  cmd.ydiff = gdiff
+<span class="anchor" id="line-8-2"></span>  opts.ydiff = -Npry
+<span class="anchor" id="line-9-1"></span>
+<span class="anchor" id="line-10"></span>  # add new command called vdiff, runs kdiff3
+<span class="anchor" id="line-11"></span>  cmd.vdiff = kdiff3
+<span class="anchor" id="line-12"></span>
+<span class="anchor" id="line-13"></span>  # add new command called meld, runs meld (no need to name twice)
+<span class="anchor" id="line-14"></span>  cmd.meld =
+<span class="anchor" id="line-15"></span>
+<span class="anchor" id="line-16"></span>  # add new command called vimdiff, runs gvimdiff with DirDiff plugin
+<span class="anchor" id="line-17"></span>  #(see http://www.vim.org/scripts/script.php?script_id=102)
+<span class="anchor" id="line-18"></span>  # Non english user, be sure to put "let g:DirDiffDynamicDiffText = 1" in
+<span class="anchor" id="line-19"></span>  # your .vimrc
+<span class="anchor" id="line-20"></span>  cmd.vimdiff = gvim
+<span class="anchor" id="line-21"></span>  opts.vimdiff = -f '+next' '+execute "DirDiff" fnameescape(argv(0)) fnameescape(argv(1))'
+<span class="anchor" id="line-22"></span>
+<span class="anchor" id="line-23"></span>  # add new command called ediff, runs emacs diff
+<span class="anchor" id="line-24"></span>  cmd.ediff = sh
+<span class="anchor" id="line-25"></span>  opts.ediff = -c 'if [ -d $0 ]; then emacs --eval "(ediff-directories \"$0\" \"$1\" \"\")"; else emacs --eval "(ediff-files \"$0\" \"$1\")"; fi'
+<span class="anchor" id="line-26"></span>
+<span class="anchor" id="line-27"></span>
+<span class="anchor" id="line-28"></span>  # add new command to run ImageMagick compare (image diff).  Does not work on directories.
+<span class="anchor" id="line-29"></span>
+<span class="anchor" id="line-30"></span>  # note:  could subsitute ImageMagick's "display" call instead of "gqview" for
+<span class="anchor" id="line-31"></span>  # greater portability, but gqview is nicer
+<span class="anchor" id="line-32"></span>
+<span class="anchor" id="line-33"></span>  cmd.imdiff = sh  
+<span class="anchor" id="line-34"></span>  opts.imdiff = -c 'compare $0 $1 compared.png; gqview compared.png'</pre><span class="anchor" id="line-109"></span><span class="anchor" id="line-110"></span><p class="line862">Each custom diff commands can have two parts: a <tt>'cmd'</tt> and an <tt>'opts'</tt> <span class="anchor" id="line-111"></span>part.  The <tt>cmd.xxx</tt> option defines the name of an executable program <span class="anchor" id="line-112"></span>that will be run, and <tt>opts.xxx</tt> defines a set of command-line options <span class="anchor" id="line-113"></span>which will be inserted to the command between the program name and <span class="anchor" id="line-114"></span>the files/directories to <tt>diff</tt> (i.e. the <tt>cdiff</tt> example above). <span class="anchor" id="line-115"></span><span class="anchor" id="line-116"></span></p><p class="line874">With the sample configuration above, you may now invoke the new commands: <span class="anchor" id="line-117"></span><span class="anchor" id="line-118"></span></p><p class="line867"><span class="anchor" id="line-119"></span><span class="anchor" id="line-120"></span><span class="anchor" id="line-121"></span><span class="anchor" id="line-122"></span><span class="anchor" id="line-123"></span><span class="anchor" id="line-124"></span></p><pre><span class="anchor" id="line-1-6"></span>$ hg vdiff    # call kdiff3
+<span class="anchor" id="line-2-4"></span>$ hg cdiff    # call gdiff with -Nprc5 option
+<span class="anchor" id="line-3-3"></span>$ hg meld     # call meld
+<span class="anchor" id="line-4-3"></span>$ hg ediff    # call emacs diff
+<span class="anchor" id="line-5-3"></span>$ hg imdiff   # call compare for an image diff  (don't invoke on directories)</pre><span class="anchor" id="line-125"></span><span class="anchor" id="line-126"></span><p class="line867">
+</p><h3 id="FileMerge_on_Mac_OS_X">FileMerge on Mac OS X</h3>
+<span class="anchor" id="line-127"></span><span class="anchor" id="line-128"></span><p class="line862">To use FileMerge with extdiff on Mac OS X, <span class="anchor" id="line-129"></span>create the following shell <span class="anchor" id="line-130"></span><a class="http" href="http://hints.macworld.com/article.php?story=20070220223441729">script</a> <span class="anchor" id="line-131"></span>called <tt>opendiff-w</tt> somewhere in your $PATH <span class="anchor" id="line-132"></span>(remember to make the script executable: <tt>chmod&nbsp;a+x&nbsp;opendiff-w</tt>): <span class="anchor" id="line-133"></span><span class="anchor" id="line-134"></span><span class="anchor" id="line-135"></span><span class="anchor" id="line-136"></span><span class="anchor" id="line-137"></span><span class="anchor" id="line-138"></span></p><pre><span class="anchor" id="line-1-7"></span># opendiff returns immediately, without waiting for FileMerge to exit.
+<span class="anchor" id="line-2-5"></span># Piping the output makes opendiff wait for FileMerge.
+<span class="anchor" id="line-3-4"></span>opendiff "$@" | cat</pre><span class="anchor" id="line-139"></span></div></div></body>
+</html>

@@ -1,0 +1,59 @@
+/* ::::: http://hgtip.com/media/css/aal.css (@media screen) ::::: */
+
+@media screen {
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, header, nav, section, article, aside, footer { border: 0px none; margin: 0px; outline: 0px none; padding: 0px; background: none repeat scroll 0% 0% transparent; vertical-align: baseline; }
+body { background: none repeat scroll 0% 0% rgb(255, 255, 255); color: rgb(0, 0, 0); font: 1em/1.5em "Helvetica Neue",Helvetica,Arial,"Liberation Sans","Bitstream Vera Sans",sans-serif; }
+html > body { font-size: 16px; }
+img { display: inline-block; vertical-align: bottom; }
+h1, h2, h3, h4, h5, h6, strong, b, dt, th { font-weight: 700; }
+h1 { margin: 0px 0px 0.75em; font-size: 2em; }
+h2 { margin: 0px 0px 1em; font-size: 1.5em; }
+p, ul, ol, dl, blockquote, pre { margin: 0px 0px 1.5em; }
+ul { list-style: disc outside none; }
+li { margin: 0px 0px 0px 2em; }
+a { text-decoration: underline; }
+a:hover { text-decoration: none; }
+tt, code, kbd, samp, pre { font-size: 1em; font-family: "Courier New",Courier,monospace; }
+}
+/* ::::: http://hgtip.com/media/css/calluna.css (@media screen) ::::: */
+
+@media screen {
+@font-face {
+  font-family: "Calluna-Exljbris";
+  src: url("Calluna-Regular.otf") format("opentype");
+}
+}
+/* ::::: http://hgtip.com/media/css/style.css (@media screen) ::::: */
+
+@media screen {
+html, body { background-color: rgb(251, 251, 251); color: rgb(17, 17, 17); font-family: "Palatino Linotype",Calluna-Exljbris,Georgia,"Times New Roman",Times,serif; }
+div#main-wrap { width: 38em; margin: 1.5em auto; }
+div#content { margin: 1.5em 0em; }
+div#excerpt { display: none; }
+h1, h2, h3, h4, h5, h6 { font-weight: normal; }
+div.screenshot { text-align: center; margin-bottom: 1.5em; }
+div.screenshot img { padding: 1em; background-color: rgb(238, 238, 238); }
+tt, code, kbd, samp, pre { line-height: 24px; font-size: 12px; font-family: Consolas,Monaco,"Courier New",Courier,monospace; }
+pre { background-color: rgb(245, 245, 245); padding: 11px; line-height: 0px; border: 1px solid rgb(204, 204, 204); margin-bottom: 24px; overflow: auto; }
+p code, li code { background-color: rgb(245, 245, 245); border: 1px solid rgb(204, 204, 204); padding: 2px 6px; line-height: 0px; white-space: nowrap; }
+div#header h1 { font-size: 4em; line-height: 1.125em; margin: 0px; text-align: center; }
+div#header h1 a { color: rgb(17, 17, 17); font-weight: normal; text-shadow: 0px 1px 1px rgb(255, 255, 255); }
+div#header h1 a:hover { text-decoration: none; color: rgb(255, 0, 127); }
+p#tagline { color: rgb(102, 102, 102); text-align: center; margin: 0px; }
+p#navigation { text-align: center; margin-bottom: 3em; }
+div#footer { color: rgb(102, 102, 102); text-align: center; margin-top: 3em; margin-bottom: 6em; }
+a { color: rgb(255, 0, 127); text-decoration: none; }
+a:hover { text-decoration: underline; }
+p#tip-info { color: rgb(102, 102, 102); font-style: italic; margin-top: -1.5em; }
+div#tip-comments { margin-top: 3em; }
+div.toc ul { list-style-type: none; }
+div.toc ul:first-child > li { margin-left: 0px; }
+}
+/* ::::: [internal] ::::: */
+
+@media screen {
+}
+@media print {
+}
+/* ::::: [internal] ::::: */
+

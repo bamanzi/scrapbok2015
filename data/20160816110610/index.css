@@ -1,0 +1,24 @@
+/* ::::: http://hgbook.red-bean.com/support/styles.css ::::: */
+
+body { background: none repeat scroll 0% 0% rgb(242, 241, 240); font-family: verdana,sans-serif; }
+.navheader, .book, .preface, .chapter, .appendix, .bibliography, .navfooter, .basetemplate { width: 50em; margin-left: auto; margin-right: auto; }
+a:hover, a:active { border-bottom: 1px solid rgb(170, 170, 170); }
+.book, .preface, .chapter, .appendix, .bibliography, .basetemplate { background: none repeat scroll 0% 0% white; padding: 2em; }
+h1 { margin-top: 1.5em; }
+h2, h3 { margin-top: 2em; }
+h1, h2, h3 { font-family: georgia,serif; font-weight: normal; margin-bottom: 0.5em; }
+h1.booktitle { margin-bottom: 0px; }
+div.authors { font-size: 80%; margin-bottom: 1em; padding-left: 0.25em; }
+pre.screen { background-image: url("shell.png"); }
+pre.programlisting, pre.screen, p.remark { border-style: solid; border-width: 1px; font-size: medium; padding: 1em 1em 1em 70px; background-repeat: no-repeat; background-position: 10px 10px; }
+strong.command, code, pre, span.type { font-family: monospace; font-weight: normal; }
+pre.programlisting, pre.screen, p.remark { overflow: hidden; }
+.screen { background: none repeat scroll 0% 50% rgb(231, 255, 199); border-color: rgb(148, 218, 58); }
+/* ::::: [internal] ::::: */
+
+@media screen {
+}
+@media print {
+}
+/* ::::: [internal] ::::: */
+

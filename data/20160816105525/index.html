@@ -1,0 +1,235 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<link rel="icon" href="hgicon.png" type="image/png"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="index,nofollow">
+
+<title>MergingWithVim - Mercurial</title>
+
+
+
+
+
+
+
+
+
+
+<!-- css only for MS IE6/IE7 browsers -->
+<!--[if lt IE 8]>
+   <link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="/moin-static/modernized/css/msie.css">
+<![endif]-->
+
+
+<link rel="alternate" title="Mercurial: MergingWithVim" href="https://www.mercurial-scm.org/wiki/MergingWithVim?diffs=1&amp;show_att=1&amp;action=rss_rc&amp;unique=0&amp;page=MergingWithVim&amp;ddiffs=1" type="application/rss+xml">
+
+
+<link rel="Start" href="https://www.mercurial-scm.org/wiki/Mercurial">
+<link rel="Alternate" title="Wiki Markup" href="https://www.mercurial-scm.org/wiki/MergingWithVim?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="https://www.mercurial-scm.org/wiki/MergingWithVim?action=print">
+<link rel="Search" href="https://www.mercurial-scm.org/wiki/FindPage">
+<link rel="Index" href="https://www.mercurial-scm.org/wiki/TitleIndex">
+<link rel="Glossary" href="https://www.mercurial-scm.org/wiki/WordIndex">
+<link rel="Help" href="https://www.mercurial-scm.org/wiki/HelpOnFormatting">
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+
+<body dir="ltr" lang="en">
+
+<div id="header">
+
+<form id="searchform" method="get" action="https://www.mercurial-scm.org/wiki/MergingWithVim">
+<div>
+<input name="action" value="fullsearch" type="hidden">
+<input name="context" value="180" type="hidden">
+<label style="display: none;" for="searchinput">Search:</label>
+<input class="disabled" id="searchinput" name="value" value="" size="20" alt="Search" type="text">
+<input disabled="" id="titlesearch" name="titlesearch" value="Titles" alt="Search Titles" type="submit">
+<input disabled="" id="fullsearch" name="fullsearch" value="Text" alt="Search Full Text" type="submit">
+</div>
+</form>
+
+
+<div id="logo"><a href="https://www.mercurial-scm.org/wiki/Mercurial"><img src="logo-droplets-50.png" alt="Mercurial" style="margin-right: 1em;" width="50" border="0" height="60"></a></div>
+<div id="username"><a href="https://www.mercurial-scm.org/wiki/MergingWithVim?action=login" id="login" rel="nofollow">Login</a></div>
+<h1 id="locationline">
+
+<span id="pagelocation"><a href="#">MergingWithVim</a></span>
+</h1>
+
+
+<ul id="navibar">
+<li class="wikilink"><a href="https://www.mercurial-scm.org/wiki/RecentChanges">RecentChanges</a></li><li class="wikilink"><a href="https://www.mercurial-scm.org/wiki/FindPage">FindPage</a></li><li class="wikilink"><a href="https://www.mercurial-scm.org/wiki/HelpContents">HelpContents</a></li><li class="current"><a href="#">MergingWithVim</a></li>
+</ul>
+
+<div id="pageline"><hr style="display: none;"></div>
+
+<ul class="editbar"><li><span class="disabled">Immutable Page</span></li><li class="toggleCommentsButton" style="display: none;"><a href="#" class="nbcomment">Comments</a></li><li><a class="nbinfo" href="https://www.mercurial-scm.org/wiki/MergingWithVim?action=info" rel="nofollow">Info</a></li><li><a class="nbattachments" href="https://www.mercurial-scm.org/wiki/MergingWithVim?action=AttachFile" rel="nofollow">Attachments</a></li><li>
+<form class="actionsmenu" method="GET" action="https://www.mercurial-scm.org/wiki/MergingWithVim">
+<div>
+    
+    <select name="action">
+        <option value="show">More Actions:</option><option value="raw">Raw Text</option>
+<option value="print">Print View</option>
+<option value="RenderAsDocbook">Render as Docbook</option>
+<option value="refresh">Delete Cache</option>
+<option value="show" disabled="" class="disabled">------------------------</option>
+<option value="SpellCheck">Check Spelling</option>
+<option value="LikePages">Like Pages</option>
+<option value="LocalSiteMap">Local Site Map</option>
+<option value="show" disabled="" class="disabled">------------------------</option>
+<option value="RenamePage" disabled="" class="disabled">Rename Page</option>
+<option value="DeletePage" disabled="" class="disabled">Delete Page</option>
+<option value="show" disabled="" class="disabled">------------------------</option>
+<option value="show" disabled="" class="disabled">Subscribe User</option>
+<option value="show" disabled="" class="disabled">------------------------</option>
+<option value="show" disabled="" class="disabled">Remove Spam</option>
+<option value="show" disabled="" class="disabled">Revert to this revision</option>
+<option value="PackagePages">Package Pages</option>
+<option value="SyncPages">Sync Pages</option>
+<option value="show" disabled="" class="disabled">------------------------</option>
+<option value="Load">Load</option>
+<option value="Save">Save</option>
+<option value="SlideShow">SlideShow</option>
+    </select>
+    
+    
+</div>
+
+</form>
+</li></ul>
+
+</div>
+
+<div id="page" dir="ltr" lang="en">
+<div dir="ltr" id="content" lang="en"><span class="anchor" id="top"></span>
+<span class="anchor" id="line-1"></span><p class="line867"></p><div class="table-of-contents"><p class="table-of-contents-heading">Contents</p><ol><li>
+<a href="#Using_Vim_as_a_Merge_Program_for_Mercurial">Using Vim as a Merge Program for Mercurial</a><ol><li>
+<a href="#VIM_internal_vimdiff_mode">VIM internal vimdiff mode</a></li><li>
+<a href="#Splice_extension">Splice extension</a></li><li>
+<a href="#DirDiff_and_merging">DirDiff and merging</a></li></ol></li></ol></div> <span class="anchor" id="line-2"></span><span class="anchor" id="line-3"></span><p class="line867">
+</p><h1 id="Using_Vim_as_a_Merge_Program_for_Mercurial">Using Vim as a Merge Program for Mercurial</h1>
+<span class="anchor" id="line-4"></span><span class="anchor" id="line-5"></span><p class="line867">
+</p><h2 id="VIM_internal_vimdiff_mode">VIM internal vimdiff mode</h2>
+<span class="anchor" id="line-6"></span><span class="anchor" id="line-7"></span><p class="line862">Vim's <a class="http" href="http://www.vim.org/htmldoc/diff.html">diff mode</a> (aka <tt class="backtick">vimdiff</tt>) allows Vim to be used to do a <tt class="backtick">hg&nbsp;merge</tt>. <span class="anchor" id="line-8"></span><span class="anchor" id="line-9"></span></p><p class="line874">Here's one way to use Vim to do Mercurial merges. <span class="anchor" id="line-10"></span><span class="anchor" id="line-11"></span></p><p class="line862">To configure, add the following to your <tt class="backtick">~/.hgrc</tt> file: <span class="anchor" id="line-12"></span><span class="anchor" id="line-13"></span></p><p class="line867"><span class="anchor" id="line-14"></span><span class="anchor" id="line-15"></span><span class="anchor" id="line-16"></span><span class="anchor" id="line-17"></span><span class="anchor" id="line-18"></span><span class="anchor" id="line-19"></span><span class="anchor" id="line-20"></span></p><pre><span class="anchor" id="line-1"></span>[ui]
+<span class="anchor" id="line-2"></span>merge = vimdiff
+<span class="anchor" id="line-3"></span>
+<span class="anchor" id="line-4"></span>[merge-tools]
+<span class="anchor" id="line-5"></span>vimdiff.executable = vim
+<span class="anchor" id="line-6"></span>vimdiff.args = -d $base $local $output $other +close +close</pre><span class="anchor" id="line-21"></span><span class="anchor" id="line-22"></span><p class="line874">When presenting a merge, Vim will show two windows side by side (unless the configuration has been changed to show them stacked vertically). You may even get Vim's exuberant colour choices: <span class="anchor" id="line-23"></span><span class="anchor" id="line-24"></span></p><div><table><tbody><tr>  <td><p class="line862"> <strong>The merge result</strong>                                                   </p></td>
+  <td><p class="line862"> <strong>The "other" version</strong> </p></td>
+</tr>
+<tr>  <td><span class="anchor" id="line-25"></span><p class="line862"> <em>This window will be the one you work in to get the desired merge</em>     </p></td>
+  <td><p class="line862"> <em>This window provides desirable content from the other version</em> </p></td>
+</tr>
+<tr>  <td style="background-color: rgb(0, 221, 221); color: rgb(0, 0, 221);"><span class="anchor" id="line-26"></span><p class="line862">     </p></td>
+  <td style="background-color: rgb(221, 0, 0); color: rgb(255, 255, 255);"><p class="line862">content provided by this version </p></td>
+  <td><p class="line862"> <em>additions to consider</em> </p></td>
+</tr>
+<tr>  <td style="background-color: rgb(221, 0, 0); color: rgb(255, 255, 255);"><span class="anchor" id="line-27"></span><p class="line862">content provided by this version </p></td>
+  <td style="background-color: rgb(0, 221, 221); color: rgb(0, 0, 221);"><p class="line862">     </p></td>
+  <td><p class="line862"> <em>deletions to consider</em> </p></td>
+</tr>
+<tr>  <td style="background-color: rgb(221, 0, 221); color: rgb(255, 255, 255);"><span class="anchor" id="line-28"></span><p class="line862">changed content </p></td>
+  <td style="background-color: rgb(221, 0, 221); color: rgb(255, 255, 255);"><p class="line862"> modified content     </p></td>
+  <td><p class="line862"> <em>character-level changes to consider</em> </p></td>
+</tr>
+</tbody></table></div><span class="anchor" id="line-29"></span><span class="anchor" id="line-30"></span><p class="line874">In preparing the merge result, the objective is to copy differing regions from the other version. This can be done by navigating to a region in a window and then... <span class="anchor" id="line-31"></span><span class="anchor" id="line-32"></span></p><div><table><tbody><tr>  <td colspan="3"><p class="line862">                                                                             </p></td>
+  <td><p class="line862"> <strong>In the merge result window</strong> </p></td>
+  <td><p class="line862"> <strong>In the other version window</strong> </p></td>
+</tr>
+<tr>  <td colspan="1" rowspan="2" style="text-align: center;"><span class="anchor" id="line-33"></span><p class="line862"> </p></td>
+  <td colspan="1" rowspan="2" style="text-align: center;"><p class="line862"> </p></td>
+  <td colspan="1" rowspan="2" style="text-align: center;"><p class="line862"> </p></td>
+  <td><p class="line862"> Use the <tt class="backtick">do</tt> (<tt class="backtick">:diffget</tt>) command to get the region from the other version. </p></td>
+  <td colspan="1" rowspan="2" style="text-align: center;"><p class="line862"> </p></td>
+</tr>
+<tr>  <td><span class="anchor" id="line-34"></span><p class="line862"> This is useful when either accepting character-level changes or deletions from the other version... </p></td>
+</tr>
+<tr>  <td colspan="1" rowspan="2" style="text-align: center;"><span class="anchor" id="line-35"></span><p class="line862"> </p></td>
+  <td colspan="1" rowspan="2" style="text-align: center;"><p class="line862"> </p></td>
+  <td colspan="1" rowspan="2" style="text-align: center;"><p class="line862"> </p></td>
+  <td colspan="1" rowspan="2" style="text-align: center;"><p class="line862"> </p></td>
+  <td><p class="line862"> Use the <tt class="backtick">dp</tt> (<tt class="backtick">:diffput</tt>) command to put the region into the merge result. </p></td>
+</tr>
+<tr>  <td><span class="anchor" id="line-36"></span><p class="line862"> This is useful when either accepting character-level changes or additions from the other version. </p></td>
+</tr>
+<tr>  <td colspan="1" rowspan="3" style="text-align: center;"><span class="anchor" id="line-37"></span><p class="line862"> </p></td>
+  <td colspan="1" rowspan="3" style="text-align: center;"><p class="line862"> </p></td>
+  <td colspan="1" rowspan="3" style="text-align: center;"><p class="line862"> </p></td>
+  <td><p class="line862"> When you want to keep one or more lines of a diff... </p></td>
+  <td colspan="1" rowspan="3" style="text-align: center;"><p class="line862"> </p></td>
+</tr>
+<tr>  <td><span class="anchor" id="line-38"></span><p class="line862"> Either use <tt class="backtick">:M,Ndiffput</tt> (where <tt class="backtick">M</tt> and <tt class="backtick">N</tt> are start and end line numbers) to put the good lines in the other version. Then use <tt class="backtick">do</tt> (<tt class="backtick">:diffget</tt>) to get the resulting "good" diff. </p></td>
+</tr>
+<tr>  <td><span class="anchor" id="line-39"></span><p class="line862"> Or first copy the good lines, use <tt class="backtick">do</tt> (<tt class="backtick">:diffget</tt>) to get the other version's region, then reintroduce the good lines. </p></td>
+</tr>
+</tbody></table></div><span class="anchor" id="line-40"></span><span class="anchor" id="line-41"></span><p class="line874">To navigate: <span class="anchor" id="line-42"></span><span class="anchor" id="line-43"></span></p><ul><li><p class="line862">To move between windows use <tt class="backtick">Ctrl-W</tt> and a cursor key. <span class="anchor" id="line-44"></span></p></li><li><p class="line862">Where text has been folded, possibly after regions have been copied, use <tt class="backtick">zo</tt> to open the fold (and show the hidden text) and <tt class="backtick">zc</tt> to close the fold (and hide the text again). <span class="anchor" id="line-45"></span><span class="anchor" id="line-46"></span></p></li></ul><p class="line874">Once the merge operations have been performed, the buffers can be written out. <span class="anchor" id="line-47"></span><span class="anchor" id="line-48"></span></p><p class="line867">
+</p><h3 id="A3_way_diffs">3 way diffs</h3>
+<span class="anchor" id="line-49"></span><p class="line874">If you'd like your diff window to look like a kdiff3 merge window (showing base, local, other, and merged... with one of them stretching across the bottom), use the following line <span class="anchor" id="line-50"></span><span class="anchor" id="line-51"></span><span class="anchor" id="line-52"></span></p><pre><span class="anchor" id="line-1-1"></span>vimdiff.args = -d $base $local $output $other -c "wincmd J"</pre><span class="anchor" id="line-53"></span><p class="line874">The first version listed (in this case $base) will be placed at the bottom of the screen. All four vim windows will be linked. <span class="anchor" id="line-54"></span><span class="anchor" id="line-55"></span></p><p class="line867">
+</p><h3 id="The_technical_details">The technical details</h3>
+<span class="anchor" id="line-56"></span><span class="anchor" id="line-57"></span><p class="line862">The <tt class="backtick">args</tt> command opens all 4 versions of <tt class="backtick">file</tt>, defined as follows: <span class="anchor" id="line-58"></span><span class="anchor" id="line-59"></span></p><ul><li><p class="line891"><tt class="backtick">file~base</tt> - the common ancestor <span class="anchor" id="line-60"></span></p></li><li><p class="line891"><tt class="backtick">file.orig</tt> - the local tree's version <span class="anchor" id="line-61"></span></p></li><li><p class="line891"><tt class="backtick">file</tt>  - the merge result (you resolve your conflicts into this file: it's the one that <tt class="backtick">hg</tt> considers the 'fixed' version when you're done) <span class="anchor" id="line-62"></span></p></li><li><p class="line891"><tt class="backtick">file~other</tt> - the version from the other tree that you're merging from <span class="anchor" id="line-63"></span><span class="anchor" id="line-64"></span></p></li></ul><p class="line862">Since you are typically most interested in the <tt class="backtick">file</tt> and <tt class="backtick">file~other</tt> buffers (and since Vim's keyboard shortcuts for <tt class="backtick">:diffget</tt> (<tt class="backtick">do</tt>) and <tt class="backtick">:diffput</tt> (<tt class="backtick">dp</tt>) only work when two buffers are open), we close the windows for the other two buffers (but see below).   They're still around, though: if the merge is complex and you want to see them, use <tt class="backtick">:bnext</tt> and <tt class="backtick">:bprev</tt>. <span class="anchor" id="line-65"></span><span class="anchor" id="line-66"></span></p><p class="line862">If you are unfamiliar with Vim's diff mode, you may find <tt class="backtick">:help&nbsp;diff</tt> useful to read (see in particular the <tt class="backtick">:diffget</tt> and <tt class="backtick">:diffput</tt> commands).  Also, diff mode by default uses folds, so <tt class="backtick">:help&nbsp;folding</tt> may be useful. <span class="anchor" id="line-67"></span><span class="anchor" id="line-68"></span></p><p class="line867">
+</p><h3 id="More_Useful_3-Way_Diff">More Useful 3-Way Diff</h3>
+<span class="anchor" id="line-69"></span><span class="anchor" id="line-70"></span><p class="line874">The following config makes vimdiff works nicely (and maybe git-like) out of the box: <span class="anchor" id="line-71"></span><span class="anchor" id="line-72"></span></p><p class="line867"><span class="anchor" id="line-73"></span><span class="anchor" id="line-74"></span><span class="anchor" id="line-75"></span><span class="anchor" id="line-76"></span><span class="anchor" id="line-77"></span></p><pre><span class="anchor" id="line-1-2"></span>[merge-tools]
+<span class="anchor" id="line-2-1"></span>vimdiff.executable = vimdiff
+<span class="anchor" id="line-3-1"></span>vimdiff.args = -f -d $output -M $local $base $other -c "wincmd J" -c "set modifiable" -c "set write"
+<span class="anchor" id="line-4-1"></span>vimdiff.premerge = keep</pre><span class="anchor" id="line-78"></span><span class="anchor" id="line-79"></span><p class="line874">The right settings are: <span class="anchor" id="line-80"></span><span class="anchor" id="line-81"></span></p><ol type="1"><li><p class="line891"><tt class="backtick">-M</tt> -- makes all opened files unmodifiable <span class="anchor" id="line-82"></span><span class="anchor" id="line-83"></span></p></li><li class="gap"><p class="line891"><tt class="backtick">-c&nbsp;"set&nbsp;modifiable"&nbsp;-c&nbsp;"set&nbsp;write"</tt> enables modifications of only single file which is a result of merge, in combination with #1 it makes <tt class="backtick">:diffput</tt> work <span class="anchor" id="line-84"></span><span class="anchor" id="line-85"></span></p></li><li class="gap"><p class="line891"><tt class="backtick">vimdiff.premerge&nbsp;=&nbsp;keep</tt> -- does initial merge and leaves <tt class="backtick">&lt;&lt;&lt;&lt;</tt> and <tt class="backtick">&gt;&gt;&gt;&gt;</tt> markers in conflict areas <span class="anchor" id="line-86"></span><span class="anchor" id="line-87"></span></p></li></ol><p class="line867">
+</p><h3 id="If_things_go_terribly_wrong">If things go terribly wrong</h3>
+<span class="anchor" id="line-88"></span><span class="anchor" id="line-89"></span><p class="line862">Quit Vim via <tt class="backtick">:cq</tt>. It won't save, and it will return an error code, so Mercurial will not consider the file merged yet, and you can try again via <tt class="backtick">hg&nbsp;resolve&nbsp;filename</tt>  (<tt class="backtick">hg&nbsp;resolve&nbsp;-l</tt> to see list of files, in case you get <strong>really</strong> confused). <span class="anchor" id="line-90"></span><span class="anchor" id="line-91"></span></p><p class="line862">If you decide you hate using <tt class="backtick">vimdiff</tt>, for instance, you can issue a <tt class="backtick">:cq</tt>, set... <span class="anchor" id="line-92"></span><span class="anchor" id="line-93"></span></p><p class="line867"><span class="anchor" id="line-94"></span><span class="anchor" id="line-95"></span></p><pre><span class="anchor" id="line-1-3"></span>ui.merge = internal:merge</pre><span class="anchor" id="line-96"></span><span class="anchor" id="line-97"></span><p class="line862">...in your <tt class="backtick">.hgrc</tt>, and run <tt class="backtick">hg&nbsp;resolve</tt>, and you'll be back to merging via <tt class="backtick">&lt;&lt;&lt;&lt;&lt;&lt;&lt;</tt> and <tt class="backtick">&gt;&gt;&gt;&gt;&gt;&gt;&gt;</tt> marks in the file.  So you can try <tt class="backtick">vimdiff</tt> out as a merge tool without getting into a world of pain if you don't like/understand it. <span class="anchor" id="line-98"></span><span class="anchor" id="line-99"></span><span class="anchor" id="line-100"></span></p><p class="line867">
+</p><h2 id="Splice_extension">Splice extension</h2>
+<span class="anchor" id="line-101"></span><p class="line862">VIM's vimdiff mode is not primarily meant to be used as a merge program and thus has some drawbacks. Even during simple merge it's not easy to tell which window is which (where is the result of the merge, what is common ancestor, etc.). Once the merge is more complicated, viewing four files at once in diff mode is very confusing too. Fortunately Steve Losh has written VIM plugin called <strong>splice</strong> <a class="http" href="http://www.vim.org/scripts/script.php?script_id=4026">http://www.vim.org/scripts/script.php?script_id=4026</a>. It helps you to cope with complex merge easier by allowing you to intuitively switch between various views of the merge in progress and by providing navigation toolbar you are always sure to know what file you are looking at. The homepage contains introductory video (just be warned, <strong>splice</strong> was named "threesome" in the past and the video does not reflect the name change). <strong>Splice</strong> can be used for merging conflicts in many other version control systems too. <span class="anchor" id="line-102"></span><span class="anchor" id="line-103"></span></p><p class="line867">
+</p><h2 id="DirDiff_and_merging">DirDiff and merging</h2>
+<span class="anchor" id="line-104"></span><span class="anchor" id="line-105"></span><p class="line862">There has been some confusion about using Vim's <a class="http" href="http://www.vim.org/scripts/script.php?script_id=102">DirDiff</a> extension to do a <tt class="backtick">hg&nbsp;merge</tt>. DirDiff can be used for <a href="https://www.mercurial-scm.org/wiki/ExtdiffExtension">fancy "hg diff" browsing</a> (a great way to look at patches), but will not work with <tt class="backtick">hg&nbsp;merge</tt>. <span class="anchor" id="line-106"></span><span class="anchor" id="line-107"></span></p><p class="line867"><img alt="(!)" src="idea.png" title="(!)" width="16" height="16"> See <tt class="backtick">man&nbsp;hgrc</tt> for a full explanation of configuring <tt class="backtick">hgrc</tt> files. <span class="anchor" id="line-108"></span><span class="anchor" id="bottom"></span></p></div><p id="pageinfo" class="info" dir="ltr" lang="en">MergingWithVim  (last edited 2016-07-24 18:47:02 by <span title="ThomasDeSchampheleire @ ptr-2hj4tbgv5k011c9o6p31cuk74.ip6.access.telenet.be[2a02:1810:50f:9900:9743:7833:864b:61c0]"><a class="nonexistent" href="https://www.mercurial-scm.org/wiki/ThomasDeSchampheleire" title="ThomasDeSchampheleire @ ptr-2hj4tbgv5k011c9o6p31cuk74.ip6.access.telenet.be[2a02:1810:50f:9900:9743:7833:864b:61c0]">ThomasDeSchampheleire</a></span>)</p>
+
+<div id="pagebottom"></div>
+</div>
+
+
+<div id="footer">
+<ul class="editbar"><li><span class="disabled">Immutable Page</span></li><li class="toggleCommentsButton" style="display: none;"><a href="#" class="nbcomment">Comments</a></li><li><a class="nbinfo" href="https://www.mercurial-scm.org/wiki/MergingWithVim?action=info" rel="nofollow">Info</a></li><li><a class="nbattachments" href="https://www.mercurial-scm.org/wiki/MergingWithVim?action=AttachFile" rel="nofollow">Attachments</a></li><li>
+<form class="actionsmenu" method="GET" action="https://www.mercurial-scm.org/wiki/MergingWithVim">
+<div>
+    
+    <select name="action">
+        <option value="show">More Actions:</option><option value="raw">Raw Text</option>
+<option value="print">Print View</option>
+<option value="RenderAsDocbook">Render as Docbook</option>
+<option value="refresh">Delete Cache</option>
+<option value="show" disabled="" class="disabled">------------------------</option>
+<option value="SpellCheck">Check Spelling</option>
+<option value="LikePages">Like Pages</option>
+<option value="LocalSiteMap">Local Site Map</option>
+<option value="show" disabled="" class="disabled">------------------------</option>
+<option value="RenamePage" disabled="" class="disabled">Rename Page</option>
+<option value="DeletePage" disabled="" class="disabled">Delete Page</option>
+<option value="show" disabled="" class="disabled">------------------------</option>
+<option value="show" disabled="" class="disabled">Subscribe User</option>
+<option value="show" disabled="" class="disabled">------------------------</option>
+<option value="show" disabled="" class="disabled">Remove Spam</option>
+<option value="show" disabled="" class="disabled">Revert to this revision</option>
+<option value="PackagePages">Package Pages</option>
+<option value="SyncPages">Sync Pages</option>
+<option value="show" disabled="" class="disabled">------------------------</option>
+<option value="Load">Load</option>
+<option value="Save">Save</option>
+<option value="SlideShow">SlideShow</option>
+    </select>
+    
+    
+</div>
+
+</form>
+</li></ul>
+
+<ul id="credits">
+<li><a href="http://moinmo.in/" title="This site uses the MoinMoin Wiki software.">MoinMoin Powered</a></li><li><a href="http://moinmo.in/Python" title="MoinMoin is written in Python.">Python Powered</a></li><li><a href="http://moinmo.in/GPL" title="MoinMoin is GPL licensed.">GPL licensed</a></li><li><a href="http://validator.w3.org/check?uri=referer" title="Click here to validate this page.">Valid HTML 4.01</a></li>
+</ul>
+
+
+</div>
+
+
+
+</body>
+</html>

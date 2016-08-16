@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="../../sitemap.xsl" type="text/xsl" media="all"?>
+<site>
+<page file="index.html" text="Hg Init: a Mercurial tutorial by Joel Spolsky" title="Hg Init: a Mercurial tutorial by Joel Spolsky">
+<page file="00.html" text="" title="HgInit: Subversion Re-education"/>
+<page file="01.html" text="" title="HgInit: Ground Up Mercurial"/>
+<page file="02.html" text="" title="HgInit: Setting up for a Team"/>
+<page file="03.html" text="" title="HgInit: Fixing Goofs"/>
+<page file="04.html" text="" title="HgInit: Merging"/>
+<page file="05.html" text="" title="HgInit: Repository Architecture"/>
+</page>
+</site>

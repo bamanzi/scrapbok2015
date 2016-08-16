@@ -1,0 +1,263 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<link rel="icon" href="hgicon.png" type="image/png"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="index,nofollow">
+
+<title>MergingWithEmacs - Mercurial</title>
+
+
+
+
+
+
+
+
+
+
+<!-- css only for MS IE6/IE7 browsers -->
+<!--[if lt IE 8]>
+   <link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="/moin-static/modernized/css/msie.css">
+<![endif]-->
+
+
+<link rel="alternate" title="Mercurial: MergingWithEmacs" href="https://www.mercurial-scm.org/wiki/MergingWithEmacs?diffs=1&amp;show_att=1&amp;action=rss_rc&amp;unique=0&amp;page=MergingWithEmacs&amp;ddiffs=1" type="application/rss+xml">
+
+
+<link rel="Start" href="https://www.mercurial-scm.org/wiki/Mercurial">
+<link rel="Alternate" title="Wiki Markup" href="https://www.mercurial-scm.org/wiki/MergingWithEmacs?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="https://www.mercurial-scm.org/wiki/MergingWithEmacs?action=print">
+<link rel="Search" href="https://www.mercurial-scm.org/wiki/FindPage">
+<link rel="Index" href="https://www.mercurial-scm.org/wiki/TitleIndex">
+<link rel="Glossary" href="https://www.mercurial-scm.org/wiki/WordIndex">
+<link rel="Help" href="https://www.mercurial-scm.org/wiki/HelpOnFormatting">
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+
+<body dir="ltr" lang="en">
+
+<div id="header">
+
+<form id="searchform" method="get" action="https://www.mercurial-scm.org/wiki/MergingWithEmacs">
+<div>
+<input name="action" value="fullsearch" type="hidden">
+<input name="context" value="180" type="hidden">
+<label style="display: none;" for="searchinput">Search:</label>
+<input class="disabled" id="searchinput" name="value" value="" size="20" alt="Search" type="text">
+<input disabled="" id="titlesearch" name="titlesearch" value="Titles" alt="Search Titles" type="submit">
+<input disabled="" id="fullsearch" name="fullsearch" value="Text" alt="Search Full Text" type="submit">
+</div>
+</form>
+
+
+<div id="logo"><a href="https://www.mercurial-scm.org/wiki/Mercurial"><img src="logo-droplets-50.png" alt="Mercurial" style="margin-right: 1em;" width="50" border="0" height="60"></a></div>
+<div id="username"><a href="https://www.mercurial-scm.org/wiki/MergingWithEmacs?action=login" id="login" rel="nofollow">Login</a></div>
+<h1 id="locationline">
+
+<span id="pagelocation"><a href="#">MergingWithEmacs</a></span>
+</h1>
+
+
+<ul id="navibar">
+<li class="wikilink"><a href="https://www.mercurial-scm.org/wiki/RecentChanges">RecentChanges</a></li><li class="wikilink"><a href="https://www.mercurial-scm.org/wiki/FindPage">FindPage</a></li><li class="wikilink"><a href="https://www.mercurial-scm.org/wiki/HelpContents">HelpContents</a></li><li class="current"><a href="#">MergingWithEmacs</a></li>
+</ul>
+
+<div id="pageline"><hr style="display: none;"></div>
+
+<ul class="editbar"><li><span class="disabled">Immutable Page</span></li><li class="toggleCommentsButton" style="display: none;"><a href="#" class="nbcomment">Comments</a></li><li><a class="nbinfo" href="https://www.mercurial-scm.org/wiki/MergingWithEmacs?action=info" rel="nofollow">Info</a></li><li><a class="nbattachments" href="https://www.mercurial-scm.org/wiki/MergingWithEmacs?action=AttachFile" rel="nofollow">Attachments</a></li><li>
+<form class="actionsmenu" method="GET" action="https://www.mercurial-scm.org/wiki/MergingWithEmacs">
+<div>
+    
+    <select name="action">
+        <option value="show">More Actions:</option><option value="raw">Raw Text</option>
+<option value="print">Print View</option>
+<option value="RenderAsDocbook">Render as Docbook</option>
+<option value="refresh">Delete Cache</option>
+<option value="show" disabled="" class="disabled">------------------------</option>
+<option value="SpellCheck">Check Spelling</option>
+<option value="LikePages">Like Pages</option>
+<option value="LocalSiteMap">Local Site Map</option>
+<option value="show" disabled="" class="disabled">------------------------</option>
+<option value="RenamePage" disabled="" class="disabled">Rename Page</option>
+<option value="DeletePage" disabled="" class="disabled">Delete Page</option>
+<option value="show" disabled="" class="disabled">------------------------</option>
+<option value="show" disabled="" class="disabled">Subscribe User</option>
+<option value="show" disabled="" class="disabled">------------------------</option>
+<option value="show" disabled="" class="disabled">Remove Spam</option>
+<option value="show" disabled="" class="disabled">Revert to this revision</option>
+<option value="PackagePages">Package Pages</option>
+<option value="SyncPages">Sync Pages</option>
+<option value="show" disabled="" class="disabled">------------------------</option>
+<option value="Load">Load</option>
+<option value="Save">Save</option>
+<option value="SlideShow">SlideShow</option>
+    </select>
+    
+    
+</div>
+
+</form>
+</li></ul>
+
+</div>
+
+<div id="page" dir="ltr" lang="en">
+<div dir="ltr" id="content" lang="en"><span class="anchor" id="top"></span>
+<span class="anchor" id="line-1"></span><span class="anchor" id="line-2"></span><p class="line867"></p><div dir="ltr" id="A:dated.content" lang="en"><span class="anchor" id="A:dated.top"></span>
+<span class="anchor" id="A:dated.line-1"></span><span class="anchor" id="A:dated.line-2"></span><span class="anchor" id="A:dated.line-3"></span><div><table style="&amp;quot; background-color:#eeeeff&amp;quot; ; width: &amp;quot;875px&amp;quot"><tbody><tr>  <td><p class="line862"> <img alt="{i}" src="icon-info.png" title="{i}" width="16" height="16"> This page appears to contain material that is no longer relevant. Please <a href="https://www.mercurial-scm.org/wiki/WikiCleanup">help improve this page</a> by updating its content. </p></td>
+</tr>
+</tbody></table></div><span class="anchor" id="A:dated.line-4"></span><span class="anchor" id="A:dated.bottom"></span></div> <span class="anchor" id="line-3"></span><div dir="ltr" id="A:style.content" lang="en"><span class="anchor" id="A:style.top"></span>
+<span class="anchor" id="A:style.line-1"></span><span class="anchor" id="A:style.line-2"></span><span class="anchor" id="A:style.line-3"></span><div><table style="&amp;quot; background-color:#eeeeff&amp;quot; ; width: &amp;quot;825px&amp;quot"><tbody><tr>  <td><p class="line862"> <img alt="{i}" src="icon-info.png" title="{i}" width="16" height="16"> This page does not meet our <a href="https://www.mercurial-scm.org/wiki/WikiStyleGuide">wiki style guidelines</a>. Please <a href="https://www.mercurial-scm.org/wiki/WikiCleanup">help improve this page</a> by cleaning up its formatting. </p></td>
+</tr>
+</tbody></table></div><span class="anchor" id="A:style.line-4"></span><span class="anchor" id="A:style.bottom"></span></div> <span class="anchor" id="line-4"></span><span class="anchor" id="line-5"></span><p class="line867">
+</p><h2 id="Using_Emacs_as_a_merge_program">Using Emacs as a merge program</h2>
+<span class="anchor" id="line-6"></span><p class="line867"><a class="http" href="http://www.gnu.org/software/emacs/">Emacs</a> is bundled with an elisp program called Ediff whose purpose is to help developers to visually apply patches. One of the ediff commands is well-suited to three-way merging and can be used as a merge program with Mercurial. <span class="anchor" id="line-7"></span><span class="anchor" id="line-8"></span></p><p class="line862">Note that emacs comes with a <a class="http" href="http://www.emacswiki.org/emacs/VersionControl">version control</a> wrapper that works with mercurial and other systems.  See particularly its special dired mode for operations on the whole repository, rather than individual files.  C-x v m does a merge. <span class="anchor" id="line-9"></span><span class="anchor" id="line-10"></span></p><p class="line867"></p><div class="table-of-contents"><p class="table-of-contents-heading">Contents</p><ol><li>
+<a href="#Mercurial_1.0_and_later">Mercurial 1.0 and later</a></li><li>
+<a href="#Mercurial_0.9.5_and_earlier:__Wrap_Emacs.2B-Ediff_call_in_a_script">Mercurial 0.9.5 and earlier:  Wrap Emacs+Ediff call in a script</a><ol><li><ol><li>
+<a href="#How_the_script_works">How the script works</a></li><li>
+<a href="#Enabling_the_script_usage">Enabling the script usage</a></li></ol></li></ol></li><li>
+<a href="#All_Mercurial_versions:_using_emacsclient">All Mercurial versions: using emacsclient</a><ol><li>
+<a href="#With_emacs_24_or_later">With emacs 24 or later</a></li><li>
+<a href="#With_emacs_23_or_earlier">With emacs 23 or earlier</a></li></ol></li></ol></div> <span class="anchor" id="line-11"></span><span class="anchor" id="line-12"></span><p class="line867">
+</p><h3 id="Mercurial_1.0_and_later">Mercurial 1.0 and later</h3>
+<span class="anchor" id="line-13"></span><p class="line862">Add the following to your ~/.hgrc file (see <a href="https://www.mercurial-scm.org/wiki/MergeToolConfiguration">MergeToolConfiguration</a>): <span class="anchor" id="line-14"></span><span class="anchor" id="line-15"></span></p><p class="line867"><span class="anchor" id="line-16"></span><span class="anchor" id="line-17"></span><span class="anchor" id="line-18"></span><span class="anchor" id="line-19"></span><span class="anchor" id="line-20"></span><span class="anchor" id="line-21"></span></p><pre><span class="anchor" id="line-1"></span>[ui]
+<span class="anchor" id="line-2"></span>merge = emacs
+<span class="anchor" id="line-3"></span>
+<span class="anchor" id="line-4"></span>[merge-tools]
+<span class="anchor" id="line-5"></span>emacs.args = -q --eval "(ediff-merge-with-ancestor \""$local"\" \""$other"\" \""$base"\" nil \""$output"\")"</pre><span class="anchor" id="line-22"></span><p class="line874">If you want to use the plain emerge tool in emacs, the following line works instead in the merge-tools section: <span class="anchor" id="line-23"></span><span class="anchor" id="line-24"></span></p><p class="line867"><span class="anchor" id="line-25"></span><span class="anchor" id="line-26"></span></p><pre><span class="anchor" id="line-1-1"></span>emacs.args = -q --eval "(emerge-files-with-ancestor nil \""$local"\" \""$other"\" \""$base"\" \"$output\" nil 'kill-emacs)"</pre><span class="anchor" id="line-27"></span><span class="anchor" id="line-28"></span><p class="line874">A more elaborate version that puts the ediff control window inside the main frame: <span class="anchor" id="line-29"></span><span class="anchor" id="line-30"></span></p><p class="line867"><span class="anchor" id="line-31"></span><span class="anchor" id="line-32"></span></p><pre><span class="anchor" id="line-1-2"></span>emacs.args = -q --eval "(require 'ediff)" --eval "(setq ediff-window-setup-function 'ediff-setup-windows-plain)" --eval "(add-hook 'ediff-quit-hook 'save-buffers-kill-emacs)" --eval "(ediff-merge-with-ancestor \""$local"\" \""$other"\" \""$base"\" nil \""$output"\")"</pre><span class="anchor" id="line-33"></span><span class="anchor" id="line-34"></span><p class="line867">
+</p><h3 id="Mercurial_0.9.5_and_earlier:__Wrap_Emacs.2B-Ediff_call_in_a_script">Mercurial 0.9.5 and earlier:  Wrap Emacs+Ediff call in a script</h3>
+<span class="anchor" id="line-35"></span><p class="line874">Dump the following content into a file in your PATH (don't forget to turn on the execute bit): <span class="anchor" id="line-36"></span><span class="anchor" id="line-37"></span></p><p class="line867"><span class="anchor" id="line-38"></span><span class="anchor" id="line-39"></span><span class="anchor" id="line-40"></span><span class="anchor" id="line-41"></span><span class="anchor" id="line-42"></span><span class="anchor" id="line-43"></span><span class="anchor" id="line-44"></span><span class="anchor" id="line-45"></span><span class="anchor" id="line-46"></span><span class="anchor" id="line-47"></span><span class="anchor" id="line-48"></span><span class="anchor" id="line-49"></span><span class="anchor" id="line-50"></span><span class="anchor" id="line-51"></span><span class="anchor" id="line-52"></span><span class="anchor" id="line-53"></span><span class="anchor" id="line-54"></span><span class="anchor" id="line-55"></span><span class="anchor" id="line-56"></span><span class="anchor" id="line-57"></span><span class="anchor" id="line-58"></span><span class="anchor" id="line-59"></span><span class="anchor" id="line-60"></span><span class="anchor" id="line-61"></span><span class="anchor" id="line-62"></span><span class="anchor" id="line-63"></span><span class="anchor" id="line-64"></span><span class="anchor" id="line-65"></span><span class="anchor" id="line-66"></span><span class="anchor" id="line-67"></span><span class="anchor" id="line-68"></span><span class="anchor" id="line-69"></span><span class="anchor" id="line-70"></span><span class="anchor" id="line-71"></span><span class="anchor" id="line-72"></span><span class="anchor" id="line-73"></span><span class="anchor" id="line-74"></span><span class="anchor" id="line-75"></span><span class="anchor" id="line-76"></span><span class="anchor" id="line-77"></span><span class="anchor" id="line-78"></span><span class="anchor" id="line-79"></span><span class="anchor" id="line-80"></span><span class="anchor" id="line-81"></span><span class="anchor" id="line-82"></span><span class="anchor" id="line-83"></span><span class="anchor" id="line-84"></span><span class="anchor" id="line-85"></span></p><pre><span class="anchor" id="line-1-3"></span> #!/bin/sh
+<span class="anchor" id="line-2-1"></span>
+<span class="anchor" id="line-3-1"></span> set -e # bail out quickly on failure
+<span class="anchor" id="line-4-1"></span>
+<span class="anchor" id="line-5-1"></span> LOCAL="$1"
+<span class="anchor" id="line-6"></span> BASE="$2"
+<span class="anchor" id="line-7"></span> OTHER="$3"
+<span class="anchor" id="line-8"></span>
+<span class="anchor" id="line-9"></span> BACKUP="$LOCAL.orig"
+<span class="anchor" id="line-10"></span>
+<span class="anchor" id="line-11"></span> Restore ()
+<span class="anchor" id="line-12"></span> {
+<span class="anchor" id="line-13"></span>   cp "$BACKUP" "$LOCAL"
+<span class="anchor" id="line-14"></span> }
+<span class="anchor" id="line-15"></span>
+<span class="anchor" id="line-16"></span> ExitOK ()
+<span class="anchor" id="line-17"></span> {
+<span class="anchor" id="line-18"></span>   exit $?
+<span class="anchor" id="line-19"></span> }
+<span class="anchor" id="line-20"></span>
+<span class="anchor" id="line-21"></span> # Back up our file
+<span class="anchor" id="line-22"></span> cp "$LOCAL" "$BACKUP"
+<span class="anchor" id="line-23"></span>
+<span class="anchor" id="line-24"></span> # Attempt to do a non-interactive merge
+<span class="anchor" id="line-25"></span> if which merge &gt; /dev/null 2&gt;&amp;1 ; then
+<span class="anchor" id="line-26"></span>   if merge "$LOCAL" "$BASE" "$OTHER" 2&gt; /dev/null; then
+<span class="anchor" id="line-27"></span>       # success!
+<span class="anchor" id="line-28"></span>       ExitOK
+<span class="anchor" id="line-29"></span>   fi
+<span class="anchor" id="line-30"></span>   Restore
+<span class="anchor" id="line-31"></span> elif which diff3 &gt; /dev/null 2&gt;&amp;1 ; then
+<span class="anchor" id="line-32"></span>   if diff3 -m "$BACKUP" "$BASE" "$OTHER" &gt; "$LOCAL" ; then
+<span class="anchor" id="line-33"></span>       # success
+<span class="anchor" id="line-34"></span>       ExitOK
+<span class="anchor" id="line-35"></span>   fi
+<span class="anchor" id="line-36"></span>   Restore
+<span class="anchor" id="line-37"></span> fi
+<span class="anchor" id="line-38"></span>
+<span class="anchor" id="line-39"></span> if emacs -q --no-site-file --eval "(ediff-merge-with-ancestor \"$BACKUP\" \"$OTHER\" \"$BASE\" nil \"$LOCAL\")"
+<span class="anchor" id="line-40"></span> then
+<span class="anchor" id="line-41"></span>   ExitOK
+<span class="anchor" id="line-42"></span> fi
+<span class="anchor" id="line-43"></span>
+<span class="anchor" id="line-44"></span> echo "emacs-merge: failed to merge files"
+<span class="anchor" id="line-45"></span> exit 1
+<span class="anchor" id="line-46"></span>
+<span class="anchor" id="line-47"></span> # End of file</pre><span class="anchor" id="line-86"></span><span class="anchor" id="line-87"></span><p class="line867"><em>Considering Mercurial is now able to premerge before running the merge tool and even does it by default (see hgrc(5)), I feel that attempts of merge with merge and diff3 are not needed anymore.</em> <span class="anchor" id="line-88"></span><span class="anchor" id="line-89"></span></p><p class="line867">
+</p><h5 id="How_the_script_works">0.1. How the script works</h5>
+<span class="anchor" id="line-90"></span><p class="line874">This script tries first to automatically merge the files using the RCS merge program or the diff3 program. If the automatic merger fails merging the files because of a conflict or, neither merge nor diff3 are available on the system, then emacs is launched to let the developer resolve the conflicts. <span class="anchor" id="line-91"></span><span class="anchor" id="line-92"></span></p><p class="line867">
+</p><h5 id="Enabling_the_script_usage">0.2. Enabling the script usage</h5>
+<span class="anchor" id="line-93"></span><p class="line862">Don't forget to add an entry in your hgrc file (either ~/.hgrc or the local working copy .hg/hgrc) to point <a href="https://www.mercurial-scm.org/wiki/Mercurial">Mercurial</a> at your merge command (let's call it emacs-merge) <span class="anchor" id="line-94"></span><span class="anchor" id="line-95"></span></p><p class="line867"><span class="anchor" id="line-96"></span><span class="anchor" id="line-97"></span><span class="anchor" id="line-98"></span></p><pre><span class="anchor" id="line-1-4"></span>[ui]
+<span class="anchor" id="line-2-2"></span>merge = emacs-merge</pre><span class="anchor" id="line-99"></span><span class="anchor" id="line-100"></span><p class="line867">
+</p><h3 id="All_Mercurial_versions:_using_emacsclient">All Mercurial versions: using emacsclient</h3>
+<span class="anchor" id="line-101"></span><p class="line874">You may want to use 'emacsclient' to reuse an already running Emacs session. <span class="anchor" id="line-102"></span><span class="anchor" id="line-103"></span></p><p class="line867">
+</p><h4 id="With_emacs_24_or_later">1. With emacs 24 or later</h4>
+<span class="anchor" id="line-104"></span><p class="line874">This works on a Linux system under a shell running in emacs.  Windows users will have to adjust. <span class="anchor" id="line-105"></span><span class="anchor" id="line-106"></span></p><p class="line862">1.  In <tt class="backtick">.emacs.d/init_bash.sh</tt> include <span class="anchor" id="line-107"></span><span class="anchor" id="line-108"></span><span class="anchor" id="line-109"></span><span class="anchor" id="line-110"></span></p><pre><span class="anchor" id="line-1-5"></span>export EDITOR=emacsclient
+<span class="anchor" id="line-2-3"></span>export HGMERGE=emacsclient</pre><span class="anchor" id="line-111"></span><span class="anchor" id="line-112"></span><p class="line874">The first line is not necessary for merges, but will help with, e.g., commit messages. <span class="anchor" id="line-113"></span><span class="anchor" id="line-114"></span></p><p class="line862">See the emacs help for the <tt class="backtick">shell</tt> command  on alternative ways to set the environment variables.  If your shell is not bash, you will need to change the name of the startup file. <span class="anchor" id="line-115"></span><span class="anchor" id="line-116"></span></p><p class="line862">2. In <tt class="backtick">~/.hgrc</tt>: <span class="anchor" id="line-117"></span><span class="anchor" id="line-118"></span><span class="anchor" id="line-119"></span><span class="anchor" id="line-120"></span><span class="anchor" id="line-121"></span></p><pre><span class="anchor" id="line-1-6"></span>[merge-tools]
+<span class="anchor" id="line-2-4"></span>emacsclient.args = --eval "(ediff-merge-with-ancestor \"$local\" \"$other\" \"$base\" nil \"$outp\
+<span class="anchor" id="line-3-2"></span>ut\")"</pre><span class="anchor" id="line-122"></span><span class="anchor" id="line-123"></span><p class="line862">3. Start the emacs server.  You can do this by executing <tt class="backtick">start-server</tt> once you have started emacs, or you can put <tt class="backtick">(start-server)</tt> in your emacs initialization file. <span class="anchor" id="line-124"></span><span class="anchor" id="line-125"></span></p><p class="line874">4. In the shell, do an hg merge.  This will launch you into an ediff session.  Adjust the C buffer until it is OK and then save it and exit the ediff session.  The C-x # command doesn't seem to work in its usual way for emacsclient. <span class="anchor" id="line-126"></span><span class="anchor" id="line-127"></span></p><p class="line867">
+</p><h4 id="With_emacs_23_or_earlier">2. With emacs 23 or earlier</h4>
+<span class="anchor" id="line-128"></span><span class="anchor" id="line-129"></span><p class="line862">Until the trunk was patched (on 02 Oct 2010), emacsclient did not relay errors from the server process properly (it always exited with status 0), so hg had no way to know if an error occurred, <strong>and would happily commit the merge, possibly without you ever noticing something is amiss</strong>. <span class="anchor" id="line-130"></span><span class="anchor" id="line-131"></span></p><p class="line874">As a workaround if the fix isn't in the version of emacs you use, you'll need a wrapper script like the one below to supply the error handling. <span class="anchor" id="line-132"></span><span class="anchor" id="line-133"></span></p><ul><li style="list-style-type: none;"><p class="line862">(<a class="http" href="http://debbugs.gnu.org/cgi/bugreport.cgi?bug=6963">Emacs Bug #6963</a> has been resolved in the trunk on 02 Oct 2010, so you'll need Emacs 24, at least. (Check etc/NEWS for "If emacsclient shuts down as ... its exit status is 1") <span class="anchor" id="line-134"></span><span class="anchor" id="line-135"></span></p></li></ul><p class="line874">(save it as e. g. 'emacsclient-merge' and configure it like this) <span class="anchor" id="line-136"></span><span class="anchor" id="line-137"></span></p><p class="line867"><span class="anchor" id="line-138"></span><span class="anchor" id="line-139"></span><span class="anchor" id="line-140"></span></p><pre><span class="anchor" id="line-1-7"></span>[ui]
+<span class="anchor" id="line-2-5"></span>merge = emacsclient-merge</pre><span class="anchor" id="line-141"></span><span class="anchor" id="line-142"></span><p class="line867"><span class="anchor" id="line-143"></span><span class="anchor" id="line-144"></span><span class="anchor" id="line-145"></span><span class="anchor" id="line-146"></span><span class="anchor" id="line-147"></span><span class="anchor" id="line-148"></span><span class="anchor" id="line-149"></span><span class="anchor" id="line-150"></span><span class="anchor" id="line-151"></span><span class="anchor" id="line-152"></span><span class="anchor" id="line-153"></span><span class="anchor" id="line-154"></span><span class="anchor" id="line-155"></span><span class="anchor" id="line-156"></span><span class="anchor" id="line-157"></span><span class="anchor" id="line-158"></span><span class="anchor" id="line-159"></span><span class="anchor" id="line-160"></span><span class="anchor" id="line-161"></span></p><pre><span class="anchor" id="line-1-8"></span> #!/bin/bash
+<span class="anchor" id="line-2-6"></span>
+<span class="anchor" id="line-3-3"></span> if [ $# -lt 1 ]; then
+<span class="anchor" id="line-4-2"></span>    echo 1&gt;&amp;2 "Usage: $0 local other base output"
+<span class="anchor" id="line-5-2"></span>    exit 1
+<span class="anchor" id="line-6-1"></span> fi
+<span class="anchor" id="line-7-1"></span>
+<span class="anchor" id="line-8-1"></span> local=$1
+<span class="anchor" id="line-9-1"></span> other=$2
+<span class="anchor" id="line-10-1"></span> base=$3
+<span class="anchor" id="line-11-1"></span> output=$4
+<span class="anchor" id="line-12-1"></span>
+<span class="anchor" id="line-13-1"></span> OUTPUT=`emacsclient --no-wait --eval "(ediff-merge-with-ancestor \"$local\" \"$other\" \"$base\" nil \"$output\")" 2&gt;&amp;1`
+<span class="anchor" id="line-14-1"></span> echo $OUTPUT | grep -v "Ediff Control Panel"
+<span class="anchor" id="line-15-1"></span>
+<span class="anchor" id="line-16-1"></span> if echo "$OUTPUT" | grep -q '^*ERROR*'; then
+<span class="anchor" id="line-17-1"></span>    exit 1
+<span class="anchor" id="line-18-1"></span> fi</pre><span class="anchor" id="line-162"></span><p class="line862">Q (28 Jun, 2011): This currently does not work. Seems that others are having the same problem (<a class="https" href="https://identi.ca/notice/71698204">https://identi.ca/notice/71698204</a>). The error message is: <tt class="backtick">*ERROR*:&nbsp;The&nbsp;merge&nbsp;buffer&nbsp;file&nbsp;~/path&nbsp;must&nbsp;not&nbsp;be&nbsp;a&nbsp;directory</tt> <span class="anchor" id="line-163"></span><span class="anchor" id="line-164"></span></p><p class="line862">A (July, 2013): The issue appears to be with how the arguments are passed to the merge.  I found that the following <tt class="backtick">.hgrc</tt> stanza fixed the issue: <span class="anchor" id="line-165"></span><span class="anchor" id="line-166"></span><span class="anchor" id="line-167"></span><span class="anchor" id="line-168"></span><span class="anchor" id="line-169"></span><span class="anchor" id="line-170"></span></p><pre><span class="anchor" id="line-1-9"></span>[ui]
+<span class="anchor" id="line-2-7"></span>merge = emacsclient-merge
+<span class="anchor" id="line-3-4"></span>[merge-tools]
+<span class="anchor" id="line-4-3"></span>emacsclient-merge.args=$local $other $base $output</pre><span class="anchor" id="line-171"></span><span class="anchor" id="bottom"></span></div><p id="pageinfo" class="info" dir="ltr" lang="en">MergingWithEmacs  (last edited 2015-08-18 22:49:33 by <span title="mpm @ mercurial.selenic.com[173.11.57.242]"><a href="https://www.mercurial-scm.org/wiki/mpm" title="mpm @ mercurial.selenic.com[173.11.57.242]">mpm</a></span>)</p>
+
+<div id="pagebottom"></div>
+</div>
+
+
+<div id="footer">
+<ul class="editbar"><li><span class="disabled">Immutable Page</span></li><li class="toggleCommentsButton" style="display: none;"><a href="#" class="nbcomment">Comments</a></li><li><a class="nbinfo" href="https://www.mercurial-scm.org/wiki/MergingWithEmacs?action=info" rel="nofollow">Info</a></li><li><a class="nbattachments" href="https://www.mercurial-scm.org/wiki/MergingWithEmacs?action=AttachFile" rel="nofollow">Attachments</a></li><li>
+<form class="actionsmenu" method="GET" action="https://www.mercurial-scm.org/wiki/MergingWithEmacs">
+<div>
+    
+    <select name="action">
+        <option value="show">More Actions:</option><option value="raw">Raw Text</option>
+<option value="print">Print View</option>
+<option value="RenderAsDocbook">Render as Docbook</option>
+<option value="refresh">Delete Cache</option>
+<option value="show" disabled="" class="disabled">------------------------</option>
+<option value="SpellCheck">Check Spelling</option>
+<option value="LikePages">Like Pages</option>
+<option value="LocalSiteMap">Local Site Map</option>
+<option value="show" disabled="" class="disabled">------------------------</option>
+<option value="RenamePage" disabled="" class="disabled">Rename Page</option>
+<option value="DeletePage" disabled="" class="disabled">Delete Page</option>
+<option value="show" disabled="" class="disabled">------------------------</option>
+<option value="show" disabled="" class="disabled">Subscribe User</option>
+<option value="show" disabled="" class="disabled">------------------------</option>
+<option value="show" disabled="" class="disabled">Remove Spam</option>
+<option value="show" disabled="" class="disabled">Revert to this revision</option>
+<option value="PackagePages">Package Pages</option>
+<option value="SyncPages">Sync Pages</option>
+<option value="show" disabled="" class="disabled">------------------------</option>
+<option value="Load">Load</option>
+<option value="Save">Save</option>
+<option value="SlideShow">SlideShow</option>
+    </select>
+    
+    
+</div>
+
+</form>
+</li></ul>
+
+<ul id="credits">
+<li><a href="http://moinmo.in/" title="This site uses the MoinMoin Wiki software.">MoinMoin Powered</a></li><li><a href="http://moinmo.in/Python" title="MoinMoin is written in Python.">Python Powered</a></li><li><a href="http://moinmo.in/GPL" title="MoinMoin is GPL licensed.">GPL licensed</a></li><li><a href="http://validator.w3.org/check?uri=referer" title="Click here to validate this page.">Valid HTML 4.01</a></li>
+</ul>
+
+
+</div>
+
+
+
+</body>
+</html>

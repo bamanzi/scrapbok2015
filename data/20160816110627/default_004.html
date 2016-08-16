@@ -1,0 +1,465 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>合并 — hginit.com 中文版</title>
+    
+    
+    
+    
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="underscore.js"></script>
+    <script type="text/javascript" src="doctools.js"></script>
+    <script type="text/javascript" src="readthedocs-doc-embed.js"></script>
+    <link rel="top" title="hginit.com 中文版" href="http://zh-hginit.readthedocs.io/en/latest/">
+    <link rel="next" title="版本库组织方式" href="http://zh-hginit.readthedocs.io/en/latest/architecture/">
+    <link rel="prev" title="失误补救" href="http://zh-hginit.readthedocs.io/en/latest/fixing/">
+ 
+<!-- RTD Extra Head -->
+
+    
+    
+
+<!-- 
+Always link to the latest version, as canonical.
+http://docs.readthedocs.org/en/latest/canonical.html
+-->
+<link rel="canonical" href="http://zh-hginit.readthedocs.org/en/latest/merging/">
+<script type="text/javascript">
+  // This is included here because other places don't have access to the pagename variable.
+  var READTHEDOCS_DATA = {
+    project: "zh-hginit",
+    version: "latest",
+    language: "en",
+    page: "merging",
+    builder: "sphinx",
+    theme: "haiku",
+    docroot: "/./",
+    
+    source_suffix: ".rst",
+    
+    api_host: "https://readthedocs.org/",
+    commit: "b51d3f9b"
+  }
+  // Old variables
+  var doc_version = "latest";
+  var doc_slug = "zh-hginit";
+  var page_name = "merging";
+  var html_theme = "haiku";
+</script>
+<!-- RTD Analytics Code -->
+<!-- Included in the header because you don't have a footer block. -->
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-17997319-1']);
+  _gaq.push(['_trackPageview']);
+
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<!-- end RTD Analytics Code -->
+<!-- end RTD <extrahead> -->
+
+  
+<link rel="stylesheet" type="text/css" href="default_004.css" media="all">
+</head>
+  <body role="document">
+      <div class="header" role="banner"><h1 class="heading"><a href="http://zh-hginit.readthedocs.io/en/latest/">
+          <span>hginit.com 中文版</span></a></h1>
+        <h2 class="heading"><span>合并</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&nbsp;&nbsp;<a data-sb-indepth="true" href="default_003.html">失误补救</a>
+        &nbsp;&nbsp;::&nbsp;&nbsp;
+        <a class="uplink" href="http://zh-hginit.readthedocs.io/en/latest/">Contents</a>
+        &nbsp;&nbsp;::&nbsp;&nbsp;
+        <a data-sb-indepth="true" href="default_005.html">版本库组织方式</a>&nbsp;&nbsp;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <blockquote class="epigraph">
+<div><strong>合并有时会产生冲突. 通常这些冲突很容易解决, 你也必须得去解决, 不然你的版本库就会变成多头怪 (多个最新版本). 有谁希望自己肩膀上扛着好几个脑袋?</strong></div></blockquote>
+<div class="section" id="id1">
+<h1>合并</h1>
+<p>版本管理的一个重要功能是帮助多人团队进行协同代码开发.</p>
+<p>假设 Rose 和我都想修改鳄梨酱的配方. Rose 想提高鳄梨的品质标准. 于是她把中央库最新的变更都获取了下来, 现在她的本地库是最新的:</p>
+<div class="highlight-bash"><div class="highlight"><pre>C:<span class="se">\U</span>sers<span class="se">\r</span>ose<span class="se">\r</span>ecipes&gt; hg pull
+pulling from http://joel.example.com:8000/
+searching <span class="k">for</span> changes
+adding changesets
+adding manifests
+adding file changes
+added <span class="m">2</span> changesets with <span class="m">2</span> changes to <span class="m">1</span> files
+<span class="o">(</span>run <span class="s1">'hg update'</span> to get a working copy<span class="o">)</span>
+
+C:<span class="se">\U</span>sers<span class="se">\r</span>ose<span class="se">\r</span>ecipes&gt; hg up
+<span class="m">1</span> files updated, <span class="m">0</span> files merged, <span class="m">0</span> files removed, <span class="m">0</span> files unresolved
+</pre></div>
+</div>
+<p>然后编辑:</p>
+<img alt="../_images/04-00.png" src="04-00.png">
+<p>(译注: Hass avocados - 哈斯鳄梨)</p>
+<p>接着, 她提交改动并把变更推送到中央版本库:</p>
+<div class="highlight-bash"><div class="highlight"><pre>C:<span class="se">\U</span>sers<span class="se">\r</span>ose<span class="se">\r</span>ecipes&gt; hg diff
+diff -r 549d45f24c37 guac
+--- a/guac      Thu Feb <span class="m">11</span> 17:07:41 <span class="m">2010</span> -0500
++++ b/guac      Thu Feb <span class="m">11</span> 17:10:40 <span class="m">2010</span> -0500
+@@ -1,4 +1,4 @@
+-* <span class="m">2</span> ripe avocados
++* <span class="m">2</span> ripe Hass avocados <span class="o">(</span>not Haas<span class="o">)</span>
+ * 1/2 red onion, minced <span class="o">(</span>about 1/2 cup<span class="o">)</span>
+ * 1-2 habanero chiles, stems and seeds removed, minced
+ * <span class="m">2</span> tablespoons cilantro leaves, finely chopped
+
+C:<span class="se">\U</span>sers<span class="se">\r</span>ose<span class="se">\r</span>ecipes&gt; hg com -m <span class="s2">"better avocados"</span>
+
+C:<span class="se">\U</span>sers<span class="se">\r</span>ose<span class="se">\r</span>ecipes&gt; hg push
+pushing to http://joel.example.com:8000/
+searching <span class="k">for</span> changes
+adding changesets
+adding manifests
+adding file changes
+added <span class="m">1</span> changesets with <span class="m">1</span> changes to <span class="m">1</span> files
+</pre></div>
+</div>
+<p>而与此同时, 我在文件的另外一处也做了修改:</p>
+<img alt="../_images/04-01.png" src="04-01.png">
+<p>提交没问题, 但是我不能推送到中央库.</p>
+<div class="highlight-python"><div class="highlight"><pre>C:\Users\joel\recipes&gt; hg diff
+diff -r 549d45f24c37 guac
+--- a/guac      Thu Feb 11 17:07:41 2010 -0500
++++ b/guac      Thu Feb 11 17:12:09 2010 -0500
+@@ -1,6 +1,6 @@
+ * 2 ripe avocados
+ * 1/2 red onion, minced (about 1/2 cup)
+-* 1-2 habanero chiles, stems and seeds removed, minced
++* 1-2 jalapeno chiles, stems and seeds removed, minced
+ * 2 tablespoons cilantro leaves, finely chopped
+ * 1 tablespoon of fresh lime or lemon juice
+ * 1/2 teaspoon coarse salt
+
+C:\Users\joel\recipes&gt; hg com -m "better chile"
+
+C:\Users\joel\recipes&gt; hg push
+pushing to http://joel.example.com:8000/
+searching for changes
+abort: push creates new remote heads!
+(did you forget to merge? use push -f to force)
+</pre></div>
+</div>
+<p>这可以说是 Mercurial 里面最没有意义的错误提示. 它应该这么说:</p>
+<div class="highlight-python"><div class="highlight"><pre>C:\Users\joel\recipes&gt; hg push
+pushing to http://joel.example.com:8000/
+searching for changes
+ZOMG!!! There are changes in that repo that you don't have yet.
+Don't push now. Pull the latest changes and merge them first.
+</pre></div>
+</div>
+<p>而且我的确打算这么做:</p>
+<div class="highlight-python"><div class="highlight"><pre>C:\Users\joel\recipes&gt; hg pull
+pulling from http://joel.example.com:8000/
+searching for changes
+adding changesets
+adding manifests
+adding file changes
+added 1 changesets with 1 changes to 1 files (+1 heads)
+(run 'hg heads' to see heads, 'hg merge' to merge)
+</pre></div>
+</div>
+<p>想知道获取了哪些东西? <strong>hg log -P .</strong> 命令可以方便的让你知道.</p>
+<div class="highlight-python"><div class="highlight"><pre>C:\Users\joel\recipes&gt; hg log -P .
+changeset:   9:44aefdeef9e0
+tag:         tip
+parent:      7:549d45f24c37
+user:        Rose Hillman &lt;rose@example.com&gt;
+date:        Thu Feb 11 17:10:48 2010 -0500
+summary:     better avocados
+</pre></div>
+</div>
+<p>实际上获取下来的是 Rose 之前所作的变更. 我的本地库现在是什么状态?</p>
+<div class="highlight-python"><div class="highlight"><pre>C:\Users\joel\recipes&gt; hg heads
+changeset:   9:44aefdeef9e0
+tag:         tip
+parent:      7:549d45f24c37
+user:        Rose Hillman &lt;rose@example.com&gt;
+date:        Thu Feb 11 17:10:48 2010 -0500
+summary:     better avocados
+
+changeset:   8:bf5854ca20f7
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Thu Feb 11 17:12:23 2010 -0500
+summary:     better chile
+
+
+C:\Users\joel\recipes&gt; hg parent
+changeset:   8:bf5854ca20f7
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Thu Feb 11 17:12:23 2010 -0500
+summary:     better chile
+</pre></div>
+</div>
+<p>我有 “多个版本头 (multiple heads)”. 我的本地库现在应该是这个样子地:</p>
+<div class="highlight-python"><div class="highlight"><pre>.. image:: _images/04-repo.png
+</pre></div>
+</div>
+<p>看到 “双头” 了吗? 这是因为我和 Rose 都是在工作目录下的 7 号变更集的基础上进行修改. <em>所以现在必须要合并</em>.</p>
+<div class="highlight-python"><div class="highlight"><pre>C:\Users\joel\recipes&gt; hg merge
+merging guac
+0 files updated, 1 files merged, 0 files removed, 0 files unresolved
+(branch merge, don't forget to commit)
+
+C:\Users\joel\recipes&gt; hg log -l 4
+changeset:   10:8646f8cd7154
+tag:         tip
+parent:      8:bf5854ca20f7
+parent:      9:44aefdeef9e0
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Thu Feb 11 21:51:26 2010 -0500
+summary:     merge
+
+changeset:   9:44aefdeef9e0
+parent:      7:549d45f24c37
+user:        Rose Hillman &lt;rose@example.com&gt;
+date:        Thu Feb 11 17:10:48 2010 -0500
+summary:     better avocados
+
+changeset:   8:bf5854ca20f7
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Thu Feb 11 17:12:23 2010 -0500
+summary:     better chile
+
+changeset:   7:549d45f24c37
+parent:      5:d8b5146ab630
+parent:      6:470aea67ee96
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Thu Feb 11 17:07:41 2010 -0500
+summary:     undo thing from the past
+</pre></div>
+</div>
+<p>合并命令 - <strong>hg merge</strong> 把两个栈顶变更集进行合并. 然后它会把合并结果保存到工作目录. 它不会尝试提交, 留给我一个检查合并是否正确的机会:</p>
+<div class="highlight-python"><div class="highlight"><pre>C:\Users\joel\recipes&gt; type guac
+* 2 ripe Hass avocados (not Haas)
+* 1/2 red onion, minced (about 1/2 cup)
+* 1-2 jalapeno chiles, stems and seeds removed, minced
+* 2 tablespoons cilantro leaves, finely chopped
+* 1 tablespoon of fresh lime or lemon juice
+* 1/2 teaspoon coarse salt
+* A dash of freshly grated black pepper
+* 1/2 ripe tomato, seeds and pulp removed, chopped
+
+Smoosh all ingredients together.
+Serve with tortilla chips.
+
+This recipe is really good served with QUESO.
+
+QUESO is Spanish for "cheese," but in Texas,
+it's just Kraft Slices melted in the microwave
+with some salsa from a jar. MMM!
+</pre></div>
+</div>
+<p>嗯, 没错; 鳄梨是哈斯的 (Hass avocados), 红番椒是墨西哥的 (Jalapeno chiles). 我决定提交合并, 并推送到中央库服务器.</p>
+<div class="highlight-python"><div class="highlight"><pre>C:\Users\joel\recipes&gt; hg com -m "merge"
+
+C:\Users\joel\recipes&gt; hg push
+pushing to http://joel.example.com:8000/
+searching for changes
+adding changesets
+adding manifests
+adding file changes
+added 2 changesets with 2 changes to 1 files
+</pre></div>
+</div>
+<p>我推送了两个变更集: 我原来的 “墨西哥红番椒” (Jalapeno chiles) 改动, 以及后来的合并结果 (也被当作独立的变更集).</p>
+<p>注意我们两次变更并没有冲突, 因为 Rose 和我修改的不是同一个地方. 所以合并过程超级简单. 这是最常见的情况, 大部分团队, 每个开发人员一般都会分配到不同的模块代码.</p>
+<p>如果你不幸处在一个奇怪的团队, 没人愿意承担明确的开发职责. 这会导致开发人员之间常常出现突发性的悲观情绪. 这种情绪很难被察觉. 临床症状包括: 开发人员把自个儿锁在浴室; 或者锁在机房; 人员流失严重; 在小隔间里默默啜泣; 以及长时间处于军用来复枪枪击声场下引起突发性的耳膜损伤.</p>
+<p>但即便你身处最伟大, 最健全的组织, 合并冲突有时还是会发生, Mercurial 会要求你解决冲突. 让我们看看应该怎么做.</p>
+<p>首先... 我让 Rose 继续改进我的 “墨西哥红番椒” (Jalapeno chiles) 变更:</p>
+<div class="highlight-bash"><div class="highlight"><pre>C:<span class="se">\U</span>sers<span class="se">\r</span>ose<span class="se">\r</span>ecipes&gt; hg in
+comparing with http://joel.example.com:8000/
+searching <span class="k">for</span> changes
+changeset:   9:bf5854ca20f7
+parent:      7:549d45f24c37
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Thu Feb <span class="m">11</span> 17:12:23 <span class="m">2010</span> -0500
+summary:     better chile
+
+changeset:   10:8646f8cd7154
+tag:         tip
+parent:      9:bf5854ca20f7
+parent:      8:44aefdeef9e0
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Thu Feb <span class="m">11</span> 21:51:26 <span class="m">2010</span> -0500
+summary:     merge
+
+
+C:<span class="se">\U</span>sers<span class="se">\r</span>ose<span class="se">\r</span>ecipes&gt; hg pull
+pulling from http://joel.example.com:8000/
+searching <span class="k">for</span> changes
+adding changesets
+adding manifests
+adding file changes
+added <span class="m">2</span> changesets with <span class="m">2</span> changes to <span class="m">1</span> files
+<span class="o">(</span>run <span class="s1">'hg update'</span> to get a working copy<span class="o">)</span>
+
+C:<span class="se">\U</span>sers<span class="se">\r</span>ose<span class="se">\r</span>ecipes&gt; hg up
+<span class="m">1</span> files updated, <span class="m">0</span> files merged, <span class="m">0</span> files removed, <span class="m">0</span> files unresolved
+</pre></div>
+</div>
+<p>现在我们看看当碰到该死的冲突时会发生些什么: 我们将在配料上动点手脚.</p>
+<p>我先往配方中添加一个香蕉:</p>
+<img alt="../_images/04-02.png" src="04-02.png">
+<p>紧接着提交本次变更:</p>
+<div class="highlight-python"><div class="highlight"><pre>C:\Users\joel\recipes&gt; hg diff
+diff -r 8646f8cd7154 guac
+--- a/guac      Thu Feb 11 21:51:26 2010 -0500
++++ b/guac      Thu Feb 11 22:46:27 2010 -0500
+@@ -6,6 +6,7 @@
+ * 1/2 teaspoon coarse salt
+ * A dash of freshly grated black pepper
+ * 1/2 ripe tomato, seeds and pulp removed, chopped
++* 1 delicious, yellow BANANA.
+
+ Smoosh all ingredients together.
+ Serve with tortilla chips.
+
+C:\Users\joel\recipes&gt; hg com -m "bananas YUM"
+
+C:\Users\joel\recipes&gt; hg push
+pushing to http://joel.example.com:8000/
+searching for changes
+adding changesets
+adding manifests
+adding file changes
+added 1 changesets with 1 changes to 1 files
+</pre></div>
+</div>
+<p>然后 Rose, OMG, 她在 <strong>同一行</strong> 添加了 <strong>芒果</strong>.</p>
+<img alt="../_images/04-03.png" src="04-03.png">
+<p>确切的说, 是 “成熟新鲜的 (ripe young)” 芒果.</p>
+<div class="highlight-ruby"><div class="highlight"><pre>C:\Users\rose\recipes&gt; hg diff
+diff -r 8646f8cd7154 guac
+--- a/guac      Thu Feb 11 21:51:26 2010 -0500
++++ b/guac      Thu Feb 11 22:49:26 2010 -0500
+@@ -6,6 +6,7 @@
+ * 1/2 teaspoon coarse salt
+ * A dash of freshly grated black pepper
+ * 1/2 ripe tomato, seeds and pulp removed, chopped
++* 1 ripe young Mango, in season.
+
+ Smoosh all ingredients together.
+ Serve with tortilla chips.
+
+C:\Users\rose\recipes&gt; hg com -m "mmmmango"
+</pre></div>
+</div>
+<p>这次是我先提交的变更, 所以轮到 Rose 做合并了. 哈哈!</p>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="ss">C</span><span class="p">:\</span><span class="no">Users</span><span class="p">\</span><span class="n">rose</span><span class="p">\</span><span class="n">recipes</span><span class="o">&gt;</span> <span class="n">hg</span> <span class="n">pull</span>
+<span class="n">pulling</span> <span class="n">from</span> <span class="ss">http</span><span class="p">:</span><span class="sr">//</span><span class="n">joel</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="p">:</span><span class="mi">8000</span><span class="o">/</span>
+<span class="n">searching</span> <span class="k">for</span> <span class="n">changes</span>
+<span class="n">adding</span> <span class="n">changesets</span>
+<span class="n">adding</span> <span class="n">manifests</span>
+<span class="n">adding</span> <span class="n">file</span> <span class="n">changes</span>
+<span class="n">added</span> <span class="mi">1</span> <span class="n">changesets</span> <span class="n">with</span> <span class="mi">1</span> <span class="n">changes</span> <span class="n">to</span> <span class="mi">1</span> <span class="n">files</span> <span class="p">(</span><span class="o">+</span><span class="mi">1</span> <span class="n">heads</span><span class="p">)</span>
+<span class="p">(</span><span class="n">run</span> <span class="s1">'hg heads'</span> <span class="n">to</span> <span class="n">see</span> <span class="n">heads</span><span class="p">,</span> <span class="s1">'hg merge'</span> <span class="n">to</span> <span class="n">merge</span><span class="p">)</span>
+
+<span class="ss">C</span><span class="p">:\</span><span class="no">Users</span><span class="p">\</span><span class="n">rose</span><span class="p">\</span><span class="n">recipes</span><span class="o">&gt;</span> <span class="n">hg</span> <span class="n">merge</span>
+</pre></div>
+</div>
+<p>Mercurial 立马检测到了冲突, 并弹出一个 GUI 界面的冲突解决工具, 它的用户界面估计没人会喜欢, 但是一旦你搞清楚了, 它们是很能胜任这项任务的. 我们常用的一个合并冲突解决工具是 KDiff3, 下图就是 Rose 看到的用户界面:</p>
+<img alt="../_images/04-kdiff3.png" src="04-kdiff3.png">
+<p>KDiff3 界面中包含了 4 个面板. 左上角是原始文件. 上方居中的是 Rose 自己修改后提交的版本. 右上方是我同步后的版本. 下方面板则是一个编辑器, Rose 将用它来解决冲突并手工合并文件.</p>
+<p>修正冲突是件相对简单的事情 - 逐个检查冲突, 然后决定如何解决它. Rose 太疯狂了, 居然认为 香蕉芒果鳄梨酱 也行得通:</p>
+<img alt="../_images/04-kdiff3-after.png" src="04-kdiff3-after.png">
+<p>对了, 我还没告诉你 Rose 好像在约会吧? 前些天有内部八卦说她下班后和一个长得像 Dennis Franz 的家伙在一起. 总之, 她最近的情绪之佳前所未有.</p>
+<p>Rose 保存了所作的改动, 并退出 KDiff3.</p>
+<div class="highlight-ruby"><div class="highlight"><pre>merging guac
+0 files updated, 1 files merged, 0 files removed, 0 files unresolved
+(branch merge, don't forget to commit)
+
+C:\Users\rose\recipes&gt; hg diff
+diff -r f923c9049234 guac
+--- a/guac      Thu Feb 11 22:49:31 2010 -0500
++++ b/guac      Thu Feb 11 23:01:45 2010 -0500
+@@ -7,6 +7,7 @@
+ * A dash of freshly grated black pepper
+ * 1/2 ripe tomato, seeds and pulp removed, chopped
+ * 1 ripe young Mango, in season.
++* 1 delicious, yellow BANANA.
+
+ Smoosh all ingredients together.
+ Serve with tortilla chips.
+
+C:\Users\rose\recipes&gt; hg com -m "merge"
+
+C:\Users\rose\recipes&gt; hg push
+pushing to http://joel.example.com:8000/
+searching for changes
+adding changesets
+adding manifests
+adding file changes
+added 2 changesets with 2 changes to 1 files
+</pre></div>
+</div>
+<p>至此冲突已经被解决了.</p>
+<p>还有一件事你应该谨记: 你无须依照其他人的 <strong>push</strong> 进度安排做合并. 你可以在任何时候选择执行 <strong>hg pull</strong>, 如果你暂时不想合并冲突, 你可以继续开发, 提交, 并沉浸于其中, 直到你有时间思考合并的事情.</p>
+<div class="section" id="id2">
+<h2>小测验</h2>
+<p>下面的一些操作是学完本章教程后, 你应该要学会的:</p>
+<ol class="arabic simple">
+<li>和其他人编写同一份代码</li>
+<li>获得他们的变更</li>
+<li>推送你所作的变更</li>
+<li>解决时不时冒出来的合并冲突</li>
+<li>诊断某些类型的开发人员职业抑郁症</li>
+</ol>
+</div>
+<div class="section" id="next">
+<h2>Next</h2>
+<p><a data-sb-indepth="true" class="reference internal" href="default_005.html"><em>接下来, 我们将探讨版本库的组织方式</em></a></p>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&nbsp;&nbsp;<a data-sb-indepth="true" href="default_003.html">失误补救</a>
+        &nbsp;&nbsp;::&nbsp;&nbsp;
+        <a class="uplink" href="http://zh-hginit.readthedocs.io/en/latest/">Contents</a>
+        &nbsp;&nbsp;::&nbsp;&nbsp;
+        <a data-sb-indepth="true" href="default_005.html">版本库组织方式</a>&nbsp;&nbsp;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        © Copyright .
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+    </div>
+  
+
+
+</body></html>

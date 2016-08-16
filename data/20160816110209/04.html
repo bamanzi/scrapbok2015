@@ -1,0 +1,725 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>HgInit: Merging</title>
+
+<script src="jquery-1.4.1.js"></script>
+<script src="basic.js"></script>
+
+<link href="Hg.ico" rel="shortcut icon">
+
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-225715-20");
+pageTracker._setDomainName("none");
+pageTracker._setAllowLinker(true);
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+	<!-- Google Website Optimizer Control Script -->
+	<script>
+	function utmx_section(){}function utmx(){}
+	(function(){var k='2687020024',d=document,l=d.location,c=d.cookie;function f(n){
+	if(c){var i=c.indexOf(n+'=');if(i>-1){var j=c.indexOf(';',i);return c.substring(i+n.
+	length+1,j<0?c.length:j)}}}var x=f('__utmx'),xx=f('__utmxx'),h=l.hash;
+	d.write('<sc'+'ript src="'+
+	'http'+(l.protocol=='https:'?'s://ssl':'://www')+'.google-analytics.com'
+	+'/siteopt.js?v=1&utmxkey='+k+'&utmx='+(x?x:'')+'&utmxx='+(xx?xx:'')+'&utmxtime='
+	+new Date().valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
+	'" type="text/javascript" charset="utf-8"></sc'+'ript>')})();
+	</script><script>utmx("url",'A/B');</script>
+	<!-- End of Google Website Optimizer Control Script -->
+
+<link rel="stylesheet" type="text/css" href="04.css" media="all">
+</head>
+<body>
+	<div id="kilnFlyOut">
+		<div class="flyouttext">
+		<strong>Kiln gives you:</strong><br>
+
+		• A complete version control system based on <a href="http://mercurial.selenic.com/" target="_blank" onclick="javascript: pageTracker._trackPageview('/outbound/flyout/mercurial.selenic.com');">Mercurial</a> and <a href="http://git-scm.com/">Git</a><br>
+	  • <a href="http://www.fogcreek.com/kiln/features/team-up/" target="_blank" onclick="javascript: pageTracker._trackPageview('/outbound/flyout/branchandmerge.kilnhg.com');">Branching and merging</a> that really works 
+	  </div>
+	  
+	 <div class="flyouttext">
+	  • Secure hosting on our servers<br>
+	  • Seamlessly integrated <a href="http://www.fogcreek.com/kiln/features/code-reviews" target="_blank" onclick="javascript: pageTracker._trackPageview('/outbound/flyout/startreviews.kilnhg.com');">code review</a>
+	  </div>
+	 <div class="flyouttext"> <a href="https://secure.fogcreek.com/kiln/try/?fccmp=hginit" target="_blank" onclick="javascript: pageTracker._trackPageview('/outbound/flyout/freetrial.shop.fogcreek.com');"><img src="getstarted.gif" width="182" border="0" height="24"></a>
+	 </div>
+	 <div class="flyoutteaser"><nobr><strong>Try Kiln free!</strong> Mercurial hosting and more.</nobr></div>
+	</div>
+
+<div class="toptop" align="left">
+    <ul>
+        <li align="center"><a href="http://www.joelonsoftware.com/" onclick="javascript: pageTracker._trackPageview('/outbound/toptop/joelonsoftware.com');">Joel on Software</a></li>
+        <li align="center"><a href="http://mercurial.selenic.com/" onclick="javascript: pageTracker._trackPageview('/outbound/toptop/mercurial.selenic.com');">Mercurial</a></li>
+        <li align="center"><a href="http://hginit.com/index.html">Home</a></li>
+    </ul>
+</div>
+<div id="dropshadow"></div>
+<div id="topnav">
+  <div class="tInterior">
+      <a href="http://hginit.com/index.html">
+        <img src="logo.png" alt="HgInit Home" border="0">
+      </a>
+  
+  Sometimes merges cause conflicts. Usually they’re 
+  easy to fix, but you do need to resolve them or you’ll
+  have multiple heads. And who wants multiple heads?
+
+  </div>
+</div>
+<div class="main">
+  <h1>Merging</h1>
+  <div class="content">
+  
+<p>An important part of version control is coordinating the work of multiple people on the same code base.</p>
+
+<p>Imagine that Rose and I both want to make a change to the guacamole recipe. Rose is improving the avocado quality. Before she starts, she’s going to pull all the latest changes from the central repository so that she’s totally up to date.</p>
+
+<div class="codesnippetrose">
+<div class="codetop"> </div>
+<pre class="rose">C:\Users\rose\recipes&gt; <strong>hg pull</strong>
+pulling from http://joel.example.com:8000/
+searching for changes
+adding changesets
+adding manifests
+adding file changes
+added 2 changesets with 2 changes to 1 files
+(run 'hg update' to get a working copy)
+
+C:\Users\rose\recipes&gt; <strong>hg up</strong>
+1 files updated, 0 files merged, 0 files removed, 0 files unresolved
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+<p>Now an edit:</p>
+
+
+<div class="edit1">
+                <div class="edittopbefore">
+                guac </div>
+                <div class="editcontent">
+* 2 ripe avocados<br>
+* 1/2 red onion, minced (about 1/2 cup)<br>
+* 1-2 habanero chiles, stems and seeds removed, minced<br>
+…
+                </div>
+                <img src="edit-bot.gif" width="387" height="76">
+    </div>
+
+
+<div class="edit2">
+	<img src="arrow2.gif" class="editArrow" width="83" height="97">
+	<div class="edittopafter">    
+		guac
+	</div>
+  <div class="editcontent">
+* 2 ripe <strong>Hass </strong>avocados<strong> (not Haas)</strong><br>
+* 1/2 red onion, minced (about 1/2 cup)<br>
+* 1-2 habanero chiles, stems and seeds removed, minced<br>
+…
+   </div>
+  <img src="edit-bot.gif" width="387" height="76">
+ </div>
+ 
+ <div style="clear: both;">&nbsp;</div>
+
+<p>She commits and pushes the change off to the central repository:</p>
+
+<div class="codesnippetrose">
+<div class="codetop"> </div>
+<pre class="rose">C:\Users\rose\recipes&gt; <strong>hg diff</strong>
+diff -r 549d45f24c37 guac
+--- a/guac      Thu Feb 11 17:07:41 2010 -0500
++++ b/guac      Thu Feb 11 17:10:40 2010 -0500
+@@ -1,4 +1,4 @@
+-* 2 ripe avocados
++* 2 ripe Hass avocados (not Haas)
+ * 1/2 red onion, minced (about 1/2 cup)
+ * 1-2 habanero chiles, stems and seeds removed, minced
+ * 2 tablespoons cilantro leaves, finely chopped
+
+C:\Users\rose\recipes&gt; <strong>hg com -m "better avocados"</strong>
+
+C:\Users\rose\recipes&gt; <strong>hg push</strong>
+pushing to http://joel.example.com:8000/
+searching for changes
+adding changesets
+adding manifests
+adding file changes
+added 1 changesets with 1 changes to 1 files
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+<p>Simultaneously, I make a change in a different part of the file:</p>
+
+<div class="edit1">
+                <div class="edittopbefore">
+                guac </div>
+                <div class="editcontent">
+* 2 ripe avocados<br>
+* 1/2 red onion, minced (about 1/2 cup)<br>
+* 1-2 habanero chiles, stems and seeds removed, minced<br>
+…
+                </div>
+                <img src="edit-bot.gif" width="387" height="76">
+    </div>
+
+
+<div class="edit2">
+	<img src="arrow2.gif" class="editArrow" width="83" height="97">
+	<div class="edittopafter">    
+		guac
+	</div>
+  <div class="editcontent">
+* 2 ripe avocados<br>
+* 1/2 red onion, minced (about 1/2 cup)<br>
+* 1-2 <strong>jalapeno</strong> chiles, stems and seeds removed, minced<br>
+…
+   </div>
+  <img src="edit-bot.gif" width="387" height="76">
+ </div>
+ 
+ <div style="clear: both;">&nbsp;</div>
+
+
+<p>I can commit, but I can’t push to the central repository.</p>
+
+<div class="codesnippetjoel">
+<div class="codetop"> </div>
+<pre class="joel">C:\Users\joel\recipes&gt; <strong>hg diff</strong>
+diff -r 549d45f24c37 guac
+--- a/guac      Thu Feb 11 17:07:41 2010 -0500
++++ b/guac      Thu Feb 11 17:12:09 2010 -0500
+@@ -1,6 +1,6 @@
+ * 2 ripe avocados
+ * 1/2 red onion, minced (about 1/2 cup)
+-* 1-2 habanero chiles, stems and seeds removed, minced
++* 1-2 jalapeno chiles, stems and seeds removed, minced
+ * 2 tablespoons cilantro leaves, finely chopped
+ * 1 tablespoon of fresh lime or lemon juice
+ * 1/2 teaspoon coarse salt
+
+C:\Users\joel\recipes&gt; <strong>hg com -m "better chile"</strong>
+
+C:\Users\joel\recipes&gt; <strong>hg push</strong>
+pushing to http://joel.example.com:8000/
+searching for changes
+abort: push creates new remote heads!
+(did you forget to merge? use push -f to force)
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+<p>This is probably the least useful error message in Mercurial. What it should say is:</p>
+
+<div class="codesnippetjoel">
+<div class="codetop"> </div>
+<pre class="joel">C:\Users\joel\recipes&gt; <strong>hg push</strong>
+pushing to http://joel.example.com:8000/
+searching for changes
+ZOMG!!! There are changes in that repo that you don't have yet.
+Don't push now. Pull the latest changes and merge them first.
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+<p>And indeed that is what I will do:</p>
+
+<div class="codesnippetjoel">
+<div class="codetop"> </div>
+<pre class="joel">C:\Users\joel\recipes&gt; <strong>hg pull</strong>
+pulling from http://joel.example.com:8000/
+searching for changes
+adding changesets
+adding manifests
+adding file changes
+added 1 changesets with 1 changes to 1 files (+1 heads)
+(run 'hg heads' to see heads, 'hg merge' to merge)
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+<p>Wondering what just arrived? The <strong>hg log -P .</strong> command is a handy way to find out.</p>
+
+<div class="codesnippetjoel">
+<div class="codetop"> </div>
+<pre class="joel">C:\Users\joel\recipes&gt; <strong>hg log -P .</strong>
+changeset:   9:44aefdeef9e0
+tag:         tip
+parent:      7:549d45f24c37
+user:        Rose Hillman &lt;rose@example.com&gt;
+date:        Thu Feb 11 17:10:48 2010 -0500
+summary:     better avocados
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+<p>Indeed, it’s Rose’s change from earlier. What’s going on with my repository right now?</p>
+
+<div class="codesnippetjoel">
+<div class="codetop"> </div>
+<pre class="joel">C:\Users\joel\recipes&gt; <strong>hg heads</strong>
+changeset:   9:44aefdeef9e0
+tag:         tip
+parent:      7:549d45f24c37
+user:        Rose Hillman &lt;rose@example.com&gt;
+date:        Thu Feb 11 17:10:48 2010 -0500
+summary:     better avocados
+
+changeset:   8:bf5854ca20f7
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Thu Feb 11 17:12:23 2010 -0500
+summary:     better chile
+
+
+C:\Users\joel\recipes&gt; <strong>hg parent</strong>
+changeset:   8:bf5854ca20f7
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Thu Feb 11 17:12:23 2010 -0500
+summary:     better chile
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+<p>I have “multiple heads.” Essentially, my repository looks like this:</p>
+
+
+<img src="04-repo.png">
+
+
+<p>See the two heads? They came about because when Rose made her change, she was working off of changeset 7, and when I made my change, I was working off of changeset 7, too. So now a merge is needed. [Ed: Never use passive voice!] <em>I need to merge.</em></p>
+
+<div class="codesnippetjoel">
+<div class="codetop"> </div>
+<pre class="joel">C:\Users\joel\recipes&gt; <strong>hg merge</strong>
+merging guac
+0 files updated, 1 files merged, 0 files removed, 0 files unresolved
+(branch merge, don't forget to commit)
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+<p>The merge command, <strong>hg merge</strong>, took the two heads and combined them. Then it left the result in my working directory. It did not commit it. That gives me a chance to check that the merge is correct:</p>
+
+<div class="codesnippetjoel">
+<div class="codetop"> </div>
+<pre class="joel">C:\Users\joel\recipes&gt; <strong>type guac</strong>
+* 2 ripe Hass avocados (not Haas)
+* 1/2 red onion, minced (about 1/2 cup)
+* 1-2 jalapeno chiles, stems and seeds removed, minced
+* 2 tablespoons cilantro leaves, finely chopped
+* 1 tablespoon of fresh lime or lemon juice
+* 1/2 teaspoon coarse salt
+* A dash of freshly grated black pepper
+* 1/2 ripe tomato, seeds and pulp removed, chopped
+
+Smoosh all ingredients together.
+Serve with tortilla chips.
+
+This recipe is really good served with QUESO.
+
+QUESO is Spanish for "cheese," but in Texas,
+it's just Kraft Slices melted in the microwave
+with some salsa from a jar. MMM!
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+<p>That looks right; the avocados are Hass and the chiles are Jalapenos. So I’ll go ahead and commit and push that to the server.</p>
+
+<div class="codesnippetjoel">
+<div class="codetop"> </div>
+<pre class="joel">C:\Users\joel\recipes&gt; <strong>hg com -m "merge"</strong>
+
+C:\Users\joel\recipes&gt; <strong>hg push</strong>
+pushing to http://joel.example.com:8000/
+searching for changes
+adding changesets
+adding manifests
+adding file changes
+added 2 changesets with 2 changes to 1 files
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+<p>I’m pushing two changesets: my original jalapeno change, and then the merge, which is its own changeset.</p>
+
+<p>Notice that nothing about our two changes conflicted, since Rose and I were working on different parts of the recipe. So the merge was super duper easy. That’s the most common case, because in most organizations, each programmer is assigned to work on a different part of the code.</p>
+
+<p>Sometimes you have a dysfunctional organization where nobody is willing to really put their foot down about who is supposed to work on what. This can cause sudden and often unexplained feelings of sadness among the programming staff. This is hard to detect. Symptoms can include: programmers locking themselves in bathrooms, programmers locking themselves in the server closet, high turnover, muted sobbing sounds in the cube farm, and sudden eardrum trauma caused by the sound of repeated firing of a military-class assault rifle.</p>
+
+<p>BUT, even in the best-managed and healthiest organizations, merge conflicts do sometimes occur, and Mercurial will require the merging person to resolve the conflict. Let’s see what that looks like.</p>
+
+<p>First… I want to bring Rose up to speed with my jalapeno changes:</p>
+
+<div class="codesnippetrose">
+<div class="codetop"> </div>
+<pre class="rose">C:\Users\rose\recipes&gt; <strong>hg in</strong>
+comparing with http://joel.example.com:8000/
+searching for changes
+changeset:   9:bf5854ca20f7
+parent:      7:549d45f24c37
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Thu Feb 11 17:12:23 2010 -0500
+summary:     better chile
+
+changeset:   10:8646f8cd7154
+tag:         tip
+parent:      9:bf5854ca20f7
+parent:      8:44aefdeef9e0
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Thu Feb 11 21:51:26 2010 -0500
+summary:     merge
+
+
+C:\Users\rose\recipes&gt; <strong>hg pull</strong>
+pulling from http://joel.example.com:8000/
+searching for changes
+adding changesets
+adding manifests
+adding file changes
+added 2 changesets with 2 changes to 1 files
+(run 'hg update' to get a working copy)
+
+C:\Users\rose\recipes&gt; <strong>hg up</strong>
+1 files updated, 0 files merged, 0 files removed, 0 files unresolved
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+<p>Now we’re going to see what happens when you have a gen-yoo-ine conflict: we’re both going to muck with the ingredients a bit.</p>
+
+<p>I added a banana:</p>
+
+
+<div class="edit1">
+                <div class="edittopbefore">
+                guac </div>
+                <div class="editcontent">
+* 2 ripe Hass avocados (not Haas)<br>
+* 1/2 red onion, minced (about 1/2 cup)<br>
+* 1-2 jalapeno chiles, stems and seeds removed, minced<br>
+* 2 tablespoons cilantro leaves, finely chopped<br>
+* 1 tablespoon of fresh lime or lemon juice<br>
+* 1/2 teaspoon coarse salt<br>
+* A dash of freshly grated black pepper<br>
+* 1/2 ripe tomato, seeds and pulp removed, chopped<br><br>
+
+Smoosh all ingredients together.<br>
+Serve with tortilla chips.<br>
+                </div>
+                <img src="edit-bot.gif" width="387" height="76">
+    </div>
+
+
+<div class="edit2">
+	<img src="arrow2.gif" class="editArrow" width="83" height="97">
+	<div class="edittopafter">    
+		guac
+	</div>
+  <div class="editcontent">
+* 2 ripe Hass avocados (not Haas)<br>
+* 1/2 red onion, minced (about 1/2 cup)<br>
+* 1-2 jalapeno chiles, stems and seeds removed, minced<br>
+* 2 tablespoons cilantro leaves, finely chopped<br>
+* 1 tablespoon of fresh lime or lemon juice<br>
+* 1/2 teaspoon coarse salt<br>
+* A dash of freshly grated black pepper<br>
+* 1/2 ripe tomato, seeds and pulp removed, chopped<br>
+ <strong>* 1 delicious, yellow BANANA.
+</strong><br><br>
+Smoosh all ingredients together.<br>
+Serve with tortilla chips.
+   </div>
+  <img src="edit-bot.gif" width="387" height="76">
+ </div>
+ 
+ <div style="clear: both;">&nbsp;</div>
+
+
+<p>I checked in the banana change first:</p>
+
+<div class="codesnippetjoel">
+<div class="codetop"> </div>
+<pre class="joel">C:\Users\joel\recipes&gt; <strong>hg diff</strong>
+diff -r 8646f8cd7154 guac
+--- a/guac      Thu Feb 11 21:51:26 2010 -0500
++++ b/guac      Thu Feb 11 22:46:27 2010 -0500
+@@ -6,6 +6,7 @@
+ * 1/2 teaspoon coarse salt
+ * A dash of freshly grated black pepper
+ * 1/2 ripe tomato, seeds and pulp removed, chopped
++* 1 delicious, yellow BANANA.
+
+ Smoosh all ingredients together.
+ Serve with tortilla chips.
+
+C:\Users\joel\recipes&gt; <strong>hg com -m "bananas YUM"</strong>
+
+C:\Users\joel\recipes&gt; <strong>hg push</strong>
+pushing to http://joel.example.com:8000/
+searching for changes
+adding changesets
+adding manifests
+adding file changes
+added 1 changesets with 1 changes to 1 files
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+<p>And Rose, bless her heart, added a MANGO on the EXACT SAME LINE.</p>
+
+<div class="edit1">
+                <div class="edittopbefore">
+                guac </div>
+                <div class="editcontent">
+ * 2 ripe Hass avocados (not Haas)<br>
+* 1/2 red onion, minced (about 1/2 cup)<br>
+* 1-2 jalapeno chiles, stems and seeds removed, minced<br>
+* 2 tablespoons cilantro leaves, finely chopped<br>
+* 1 tablespoon of fresh lime or lemon juice<br>
+* 1/2 teaspoon coarse salt<br>
+* A dash of freshly grated black pepper<br>
+* 1/2 ripe tomato, seeds and pulp removed, chopped<br><br>
+
+Smoosh all ingredients together.<br>
+Serve with tortilla chips.<br>
+                </div>
+                <img src="edit-bot.gif" width="387" height="76">
+    </div>
+
+
+<div class="edit2">
+	<img src="arrow2.gif" class="editArrow" width="83" height="97">
+	<div class="edittopafter">    
+		guac
+	</div>
+  <div class="editcontent">
+* 2 ripe Hass avocados (not Haas)<br>
+* 1/2 red onion, minced (about 1/2 cup)<br>
+* 1-2 jalapeno chiles, stems and seeds removed, minced<br>
+* 2 tablespoons cilantro leaves, finely chopped<br>
+* 1 tablespoon of fresh lime or lemon juice<br>
+* 1/2 teaspoon coarse salt<br>
+* A dash of freshly grated black pepper<br>
+* 1/2 ripe tomato, seeds and pulp removed, chopped<br>
+<strong>* 1 ripe young Mango, in season.<br><br>
+</strong>
+Smoosh all ingredients together.<br>
+Serve with tortilla chips.<br>
+   </div>
+  <img src="edit-bot.gif" width="387" height="76">
+ </div>
+ 
+ <div style="clear: both;">&nbsp;</div>
+
+
+<p>“Ripe young” mango, indeed.</p>
+
+<div class="codesnippetrose">
+<div class="codetop"> </div>
+<pre class="rose">C:\Users\rose\recipes&gt; <strong>hg diff</strong>
+diff -r 8646f8cd7154 guac
+--- a/guac      Thu Feb 11 21:51:26 2010 -0500
++++ b/guac      Thu Feb 11 22:49:26 2010 -0500
+@@ -6,6 +6,7 @@
+ * 1/2 teaspoon coarse salt
+ * A dash of freshly grated black pepper
+ * 1/2 ripe tomato, seeds and pulp removed, chopped
++* 1 ripe young Mango, in season.
+
+ Smoosh all ingredients together.
+ Serve with tortilla chips.
+
+C:\Users\rose\recipes&gt; <strong>hg com -m "mmmmango"</strong>
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+<p>This time I got my change in first so Rose is going to have to merge. HA!</p>
+
+<div class="codesnippetrose">
+<div class="codetop"> </div>
+<pre class="rose">C:\Users\rose\recipes&gt; <strong>hg pull</strong>
+pulling from http://joel.example.com:8000/
+searching for changes
+adding changesets
+adding manifests
+adding file changes
+added 1 changesets with 1 changes to 1 files (+1 heads)
+(run 'hg heads' to see heads, 'hg merge' to merge)
+
+C:\Users\rose\recipes&gt; <strong>hg merge</strong>
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+<p>And suddenly, the conflict is detected, and up pops some kind of a graphical merge-conflict-resolution tool, with a user interface that only its mother could love, but they are usually quite good at what they do once you figure it out. A common merge conflict resolution tool these days is KDiff3, which shows Rose the following:</p>
+
+
+<img src="04-kdiff3.png">
+
+
+<p>In KDiff3, you see four panes. The top left is the original file. Top center shows Rose her version. Top right shows Rose my version. The bottom pane is an editor where Rose constructs a merged file with the conflicts resolved.</p>
+
+<p>Fixing conflicts is a relatively simple matter of going through each conflict and choosing how to resolve it. Rose goes crazy and decides that Banana Mango Guacamole couldn’t be that bad:</p>
+
+
+<img src="04-kdiff3-after.png">
+
+
+<p>By the way, did I tell you that Rose seems to be dating? The other day she was seen leaving work with a guy that sort-of looked like Dennis Franz. She’s been in the best mood anyone has seen her in years.</p>
+
+<p>Rose saves her changes and exits KDiff3.</p>
+
+<div class="codesnippetrose">
+<div class="codetop"> </div>
+<pre class="rose">merging guac
+0 files updated, 1 files merged, 0 files removed, 0 files unresolved
+(branch merge, don't forget to commit)
+
+C:\Users\rose\recipes&gt; <strong>hg diff</strong>
+diff -r f923c9049234 guac
+--- a/guac      Thu Feb 11 22:49:31 2010 -0500
++++ b/guac      Thu Feb 11 23:01:45 2010 -0500
+@@ -7,6 +7,7 @@
+ * A dash of freshly grated black pepper
+ * 1/2 ripe tomato, seeds and pulp removed, chopped
+ * 1 ripe young Mango, in season.
++* 1 delicious, yellow BANANA.
+
+ Smoosh all ingredients together.
+ Serve with tortilla chips.
+
+C:\Users\rose\recipes&gt; <strong>hg com -m "merge"</strong>
+
+C:\Users\rose\recipes&gt; <strong>hg push</strong>
+pushing to http://joel.example.com:8000/
+searching for changes
+adding changesets
+adding manifests
+adding file changes
+added 2 changesets with 2 changes to 1 files
+</pre>
+<div class="codebottom"> </div>
+</div>
+
+<p>And the conflict is resolved.</p>
+
+<p>One thing you should keep in mind: you do not have to merge on anybody’s schedule. You can <strong>hg pull</strong> whenever you want, and if you don’t feel like merging the conflicts, you’re free to keep working, and committing, happily, until you have time to think about the merge.</p>
+
+<h2>Test yourself</h2>
+
+<p>Here are the things you should know how to do after reading this tutorial:</p>
+
+<ol>
+  <li>Work on a code base with other people</li>
+  <li>Get their changes</li>
+  <li>Push your changes</li>
+  <li>Resolve merge conflicts that may come up from time to time</li>
+  <li>Diagnose certain classes of programmer melancholy</li>
+
+</ol>
+
+<div class="footer">
+ <div class="footernav" id="home" align="center"><a href="http://hginit.com/index.html"><span class="angleQuote">«</span> Home</a></div>
+ 
+ <div class="footernav" id="comingup">Next, we talk about<br> repository architecture</div>
+ <div class="footernav" id="next" align="center"><a data-sb-indepth="true" href="05.html">Next <span class="angleQuote">»</span></a></div>
+
+
+ 
+ 
+ </div>    
+
+<div class="pagebottom">
+
+        <div class="bottomimg">
+		<a href="http://www.kilnhg.com/" target="_blank" id="logoLink" title="KilnHg.com" onclick="javascript: pageTracker._trackPageview('/outbound/bottom/klinhg.com');">&nbsp;</a>
+		<div class="bottomtext">This tutorial was brought to you by the fine folks at Fog Creek Software, makers of Kiln, a version control system powered by Mercurial</div>
+        
+        <div class="bottomtext"><strong>Kiln gives you:</strong><br>
+
+• A complete version control system based on <a href="http://mercurial.selenic.com/" target="_blank" onclick="javascript: pageTracker._trackPageview('/outbound/bottom/mercurial.selenic.com');">Mercurial</a> and <a href="http://git-scm.com/">Git</a><br>
+• <a href="http://www.fogcreek.com/kiln/features/team-up" target="_blank" onclick="javascript: pageTracker._trackPageview('/outbound/bottom/branchandmerge.kilnhg.com');">Branching and merging</a> that really works<br>
+• Secure hosting on our servers<br>
+• Seamlessly integrated <a href="http://www.fogcreek.com/kiln/features/code-reviews" target="_blank" onclick="javascript: pageTracker._trackPageview('/outbound/bottom/startreviews.kilnhg.com');">code review</a><br>
+</div>
+      
+      <div class="bottomtext getStarted">
+      <a href="https://secure.fogcreek.com/kiln/try/?fccmp=hginit" target="_blank" onclick="javascript: pageTracker._trackPageview('/outbound/bottom/freetrial.shop.fogcreek.com');"><img src="getstarted.gif" width="182" border="0" height="24"></a>
+      </div>  
+        
+      </div>             
+        <div class="about">
+          <p>
+            <strong>Looking for more?</strong>
+          </p>
+          
+          <p>
+            Fog Creek offers free monthly webinars that go over the basics of Mercurial. Sign up
+            at <a href="http://www.fogcreek.com/kiln/training/#training">fogcreek.com</a>.
+          </p>
+
+          <p>
+            <strong>Any questions?</strong>
+          </p>
+          
+          <p>
+            Looking for help with <a href="http://fogcreek.com/kiln">Kiln</a>? Check out the <a href="http://help.fogcreek.com/kiln">Kiln Knowledge Base</a>.
+          </p>
+
+          <p>
+            <strong>About the author.</strong>
+          </p> 
+        
+          <p>
+Joel Spolsky is the founder of <a href="http://fogcreek.com/" onclick="javascript: pageTracker._trackPageview('/outbound/bottom/fogcreek.com');">Fog Creek Software</a>, a New York company that proves that you can treat programmers well and still be profitable. Programmers get private offices, free lunch, and work 40 hours a week. Customers only pay for software if they’re delighted. Fog Creek makes <a href="http://www.fogbugz.com/" onclick="javascript: pageTracker._trackPageview('/outbound/bottom/fogbugz.com');">FogBugz</a>, <a href="http://www.kilnhg.com/" onclick="javascript: pageTracker._trackPageview('/outbound/bottom/text.kilnhg.com');">Kiln</a>, and <a href="https://www.copilot.com/" onclick="javascript: pageTracker._trackPageview('/outbound/bottom/copilot.com');">Fog Creek Copilot</a>. Joel's blog <a href="http://www.joelonsoftware.com/" onclick="javascript: pageTracker._trackPageview('/outbound/bottom/joelonsoftware.com');">Joel on Software</a> is read by programmers everywhere.
+            
+           </p>
+        
+        </div>
+
+
+<!-- close bottom div -->
+</div>
+    
+    
+<!-- close "content" column -->     
+</div>
+
+<!-- close "main" div -->
+</div>
+
+<!-- bottom grey bar -->
+<div class="botbot" align="left">
+</div>
+
+<!-- Google Website Optimizer Tracking Script -->
+<script type="text/javascript">
+if(typeof(_gat)!='object')document.write('<sc'+'ript src="http'+
+(document.location.protocol=='https:'?'s://ssl':'://www')+
+'.google-analytics.com/ga.js"></sc'+'ript>')</script>
+<script type="text/javascript">
+try {
+var gwoTracker=_gat._getTracker("UA-225715-15");
+gwoTracker._trackPageview("/2687020024/test");
+}catch(err){}</script>
+<!-- End of Google Website Optimizer Tracking Script -->
+
+
+
+
+
+</body></html>

@@ -1,0 +1,7 @@
+http://hginit.com/	index
+http://hginit.com/00.html	00
+http://hginit.com/01.html	01
+http://hginit.com/02.html	02
+http://hginit.com/03.html	03
+http://hginit.com/04.html	04
+http://hginit.com/05.html	05

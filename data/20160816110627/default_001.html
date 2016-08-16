@@ -1,0 +1,572 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>Mercurial 从零开始 — hginit.com 中文版</title>
+    
+    
+    
+    
+    
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="underscore.js"></script>
+    <script type="text/javascript" src="doctools.js"></script>
+    <script type="text/javascript" src="readthedocs-doc-embed.js"></script>
+    <link rel="top" title="hginit.com 中文版" href="http://zh-hginit.readthedocs.io/en/latest/">
+    <link rel="next" title="团队协作" href="http://zh-hginit.readthedocs.io/en/latest/setting-up/">
+    <link rel="prev" title="重新审视 Subversion" href="http://zh-hginit.readthedocs.io/en/latest/re-education/">
+ 
+<!-- RTD Extra Head -->
+
+    
+    
+
+<!-- 
+Always link to the latest version, as canonical.
+http://docs.readthedocs.org/en/latest/canonical.html
+-->
+<link rel="canonical" href="http://zh-hginit.readthedocs.org/en/latest/groundup/">
+<script type="text/javascript">
+  // This is included here because other places don't have access to the pagename variable.
+  var READTHEDOCS_DATA = {
+    project: "zh-hginit",
+    version: "latest",
+    language: "en",
+    page: "groundup",
+    builder: "sphinx",
+    theme: "haiku",
+    docroot: "/./",
+    
+    source_suffix: ".rst",
+    
+    api_host: "https://readthedocs.org/",
+    commit: "b51d3f9b"
+  }
+  // Old variables
+  var doc_version = "latest";
+  var doc_slug = "zh-hginit";
+  var page_name = "groundup";
+  var html_theme = "haiku";
+</script>
+<!-- RTD Analytics Code -->
+<!-- Included in the header because you don't have a footer block. -->
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-17997319-1']);
+  _gaq.push(['_trackPageview']);
+
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<!-- end RTD Analytics Code -->
+<!-- end RTD <extrahead> -->
+
+  
+<link rel="stylesheet" type="text/css" href="default_001.css" media="all">
+</head>
+  <body role="document">
+      <div class="header" role="banner"><h1 class="heading"><a href="http://zh-hginit.readthedocs.io/en/latest/">
+          <span>hginit.com 中文版</span></a></h1>
+        <h2 class="heading"><span>Mercurial 从零开始</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&nbsp;&nbsp;<a data-sb-indepth="true" href="default.html">重新审视 Subversion</a>
+        &nbsp;&nbsp;::&nbsp;&nbsp;
+        <a class="uplink" href="http://zh-hginit.readthedocs.io/en/latest/">Contents</a>
+        &nbsp;&nbsp;::&nbsp;&nbsp;
+        <a data-sb-indepth="true" href="default_002.html">团队协作</a>&nbsp;&nbsp;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <blockquote class="epigraph">
+<div><strong>即便你是一个人在战斗, 你也应该使用 Mercurial 并从版本控制中获益. 下面的指南会告诉你把一个目录提交到 Mercurial 并追根溯源, 是一件多么简单的事情.</strong></div></blockquote>
+<div class="section" id="mercurial">
+<h1>Mercurial 从零开始</h1>
+<p>Mercurial 是一个 <em>版本控制系统</em>. 开发者可以用它来管理源代码. 它的主要有两大功能:</p>
+<ol class="arabic simple">
+<li>它保留每个文件的所有变更/编辑历史</li>
+<li>它能够合并源码的改动, 这样你的队友可以各自编码, 然后合并他们的变更</li>
+</ol>
+<p>如果不用 Mercurial, 你就得很土的去保存 N 多份代码拷贝:</p>
+<img alt="../_images/01-copies.png" src="01-copies.png">
+<p>这么做太土了, 占用了大量的硬盘空间, 而且混乱不堪. 使用版本控制会是更好的方法.</p>
+<p>大部分人在命令行下使用 Mercurial, 命令行在 Windows, Unix, 和 Mac 下都可以很好的工作. 执行 Mercurial 的命令是 <strong>hg</strong>:</p>
+<div class="highlight-python"><div class="highlight"><pre>c:\hginit&gt; hg
+Mercurial Distributed SCM
+
+basic commands:
+
+add        add the specified files on the next commit
+annotate   show changeset information by line for each file
+clone      make a copy of an existing repository
+commit     commit the specified files or all outstanding changes
+diff       diff repository (or selected files)
+export     dump the header and diffs for one or more changesets
+forget     forget the specified files on the next commit
+init       create a new repository in the given directory
+log        show revision history of entire repository or files
+merge      merge working directory with another revision
+pull       pull changes from the specified source
+push       push changes to the specified destination
+remove     remove the specified files on the next commit
+serve      export the repository via HTTP
+status     show changed files in the working directory
+summary    summarize working directory state
+update     update working directory
+
+use "hg help" for the full list of commands or "hg -v" for details
+</pre></div>
+</div>
+<p>单单输入 <strong>hg</strong> 不加任何选项, 会列出最常用的命令. 你也可以试试 <strong>hg help</strong> 来得到完整的命令列表.</p>
+<p>要利用版本控制的优势, 你需要一个 <em>版本库</em>. 版本库保存了每个文件的所有历史版本. 为了节约硬盘空间, 它实际上不会保存所有的历史版本 – 它只是保存了一份紧凑的变更列表.</p>
+<p>在以往的岁月, 要创建一个版本库可是件大事. 你需要一个中央服务器, 还要在它上面装上相应的软件. Mercurial 是 <em>分布式</em> 的, 所以你不用买昂贵的中央服务器就可以使用它. 你能在自己的 PC 上使用它的全部功能. 而且创建一个版本库也超级简单: 只需要切换到源码所在的根目录...:</p>
+<div class="highlight-python"><div class="highlight"><pre>c:\hginit&gt; cd CountDown
+
+c:\hginit\CountDown&gt; dir /w
+ Volume in drive C has no label.
+ Volume Serial Number is 9862-36C5
+
+ Directory of c:\hginit\CountDown
+
+[.]                       [..]                      a.txt
+AlternateMessages.xml     App.config                App.xaml
+App.xaml.cs               CountDown.xaml            CountDown.xaml.cs
+DevDaysCountDown.csproj   favicon.ico               [Images]
+[Properties]              [TweetSharp]
+               9 File(s)        155,932 bytes
+               5 Dir(s)  76,083,609,600 bytes free
+</pre></div>
+</div>
+<div class="section" id="hg-init">
+<h2><code class="docutils literal"><span class="pre">hg</span> <span class="pre">init</span></code></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p><code class="docutils literal"><span class="pre">hg</span> <span class="pre">init</span></code></p>
+<p class="last">创建一个版本库</p>
+</div>
+<p>... 这就是我的代码, 然后键入 <strong>hg init</strong>:</p>
+<div class="highlight-python"><div class="highlight"><pre>c:\hginit\CountDown&gt; hg init
+
+c:\hginit\CountDown&gt;
+</pre></div>
+</div>
+<p>等一下, 你做了什么? 看上去啥事都没干啊? 如果你有仔细观察, 你会发现已经创建了一个新的隐藏目录 – <strong>.hg</strong>:</p>
+<div class="highlight-python"><div class="highlight"><pre>c:\hginit\CountDown&gt; dir /w
+ Volume in drive C has no label.
+ Volume Serial Number is 9862-36C5
+
+ Directory of c:\hginit\CountDown
+
+[.]                       [..]                      [.hg]
+a.txt                     AlternateMessages.xml     App.config
+App.xaml                  App.xaml.cs               CountDown.xaml
+CountDown.xaml.cs         DevDaysCountDown.csproj   favicon.ico
+[Images]                  [Properties]              [TweetSharp]
+               9 File(s)        155,932 bytes
+               6 Dir(s)  76,083,650,560 bytes free
+</pre></div>
+</div>
+<p>那个目录就是版本库! 这个目录包含了 Mercurial 所需要的一切. 配置, 文件的历史版本, 标签, 雨天的备用袜之类的. <em>别到那个目录搞破坏</em>. 你可能永远都不会想到去乱操作那个目录.</p>
+</div>
+<div class="section" id="hg-add">
+<h2><code class="docutils literal"><span class="pre">hg</span> <span class="pre">add</span></code></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p><code class="docutils literal"><span class="pre">hg</span> <span class="pre">add</span></code></p>
+<p class="last">将文件放到入库等候队列中. 它们在你执行 <code class="docutils literal"><span class="pre">commit</span></code> 操作之前实际上是不会入版本库的</p>
+</div>
+<p>好, 现在我们有一个全新的版本库, 我们准备把所有源文件添加进去. 这很简单: 只需要键入 <strong>hg add</strong>.</p>
+<div class="highlight-python"><div class="highlight"><pre>c:\hginit\CountDown&gt; hg add
+adding AlternateMessages.xml
+adding App.config
+adding App.xaml
+adding App.xaml.cs
+adding CountDown.xaml
+adding CountDown.xaml.cs
+adding DevDaysCountDown.csproj
+adding Images\background_city.jpg
+adding Images\carsonified_presents.png
+adding Images\darkpanel.png
+adding Images\devdays.png
+adding Images\failwhale.png
+adding Images\holding_image.jpg
+adding Images\jeff_atwood.jpg
+adding Images\joel_spolsky.jpg
+adding Images\logo_stackoverflow.png
+adding Images\matt_lacey.jpg
+adding Images\sideDarkpanel.png
+adding Images\vertical_lines2.png
+adding Properties\AssemblyInfo.cs
+adding Properties\Resources.Designer.cs
+adding Properties\Resources.resx
+adding Properties\Settings.Designer.cs
+adding Properties\Settings.settings
+adding TweetSharp\Dimebrain.TweetSharp.dll
+adding TweetSharp\Dimebrain.TweetSharp.xml
+adding TweetSharp\Newtonsoft.Json.dll
+adding a.txt
+adding favicon.ico
+</pre></div>
+</div>
+<p>还有一个额外的步骤... 你需要 <em>提交</em> 你的变更. 什么变更? 添加所有这些文件即为一次变更.</p>
+</div>
+<div class="section" id="hg-commit">
+<h2><code class="docutils literal"><span class="pre">hg</span> <span class="pre">commit</span></code></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p><code class="docutils literal"><span class="pre">hg</span> <span class="pre">commit</span></code></p>
+<p class="last">把当前所有文件的状态保存到版本库</p>
+</div>
+<p>为什么你必须提交? 对于 Mercurial, 提交意味着 “嘿, 这些文件现在是这个状态 – 请记牢咯.” 这就像是备份了整个目录... 每次你做了类似的变更, 都需要提交.</p>
+<div class="highlight-python"><div class="highlight"><pre>c:\hginit\CountDown&gt; hg commit
+</pre></div>
+</div>
+<p>Mercurial 会弹出一个编辑器让你输入提交摘要. 提交摘要只是方便日后提示你本次提交做了哪些改动.</p>
+<img alt="../_images/01-commit0.png" src="01-commit0.png">
+<p>当你保存并退出后, 你所有的源文件都将被提交.</p>
+</div>
+<div class="section" id="hg-log">
+<h2><code class="docutils literal"><span class="pre">hg</span> <span class="pre">log</span></code></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p><code class="docutils literal"><span class="pre">hg</span> <span class="pre">log</span></code></p>
+<p class="last">显示已经提交到版本库的变更历史</p>
+</div>
+<p>你可以键入 <strong>hg log</strong> 查看提交历史. 你可以把它想象成版本库的 Blog:</p>
+<div class="highlight-python"><div class="highlight"><pre>c:\hginit\CountDown&gt; hg log
+changeset:   0:da5f372c3901
+tag:         tip
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Fri Feb 05 13:04:30 2010 -0500
+summary:     Initial version of the CountDown code
+</pre></div>
+</div>
+<p>我们编辑一个文件, 然后看看会发生什么.</p>
+<img alt="../_images/01-00.png" src="01-00.png">
+<p>现在, 我们修改了文件 <code class="docutils literal"><span class="pre">a.txt</span></code>, 可以用 <strong>hg commit</strong> 进行提交:</p>
+<div class="highlight-python"><div class="highlight"><pre>c:\hginit\CountDown&gt; hg commit
+</pre></div>
+</div>
+<p>注意 Mercurial 检查到只有一个文件 <code class="docutils literal"><span class="pre">a.txt</span></code> 被修改了:</p>
+<img alt="../_images/01-commit1.png" src="01-commit1.png">
+<p>让我们看看提交后, 日志的显示情况:</p>
+<div class="highlight-python"><div class="highlight"><pre>c:\hginit\CountDown&gt; hg log
+changeset:   1:a9497f468dc3
+tag:         tip
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Fri Feb 05 13:26:13 2010 -0500
+summary:     Capitalized "Scott Adams"
+
+changeset:   0:da5f372c3901
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Fri Feb 05 13:04:30 2010 -0500
+summary:     Initial version of the CountDown code
+</pre></div>
+</div>
+<p>和现在流行的 Blog 系统一样, Mercurial 把最新的内容放在最上面.</p>
+<p>接下来我还要做一个变更, 就当是自娱自乐吧.</p>
+<img alt="../_images/01-01.png" src="01-01.png">
+<p>提交:</p>
+<div class="highlight-python"><div class="highlight"><pre>c:\hginit\CountDown&gt; hg commit
+</pre></div>
+</div>
+<p>我的提交摘要:</p>
+<img alt="../_images/01-commit2.png" src="01-commit2.png">
+<p>现在日志显示成啥样?</p>
+<div class="highlight-python"><div class="highlight"><pre>c:\hginit\CountDown&gt; hg log
+changeset:   2:55490459b740
+tag:         tip
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Fri Feb 05 13:47:43 2010 -0500
+summary:     Fixed some grammar
+
+changeset:   1:a9497f468dc3
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Fri Feb 05 13:26:13 2010 -0500
+summary:     Capitalized "Scott Adams"
+
+changeset:   0:da5f372c3901
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Fri Feb 05 13:04:30 2010 -0500
+summary:     Initial version of the CountDown code
+</pre></div>
+</div>
+<p>OK, 这很有趣. 我做了一些变更, 并且每次我做了一个有意义的变更, 我便提交到版本库.</p>
+<p>我知道你在想什么. 你在想, “JOEL, 这整一个就是浪费时间.” 为什么提交的时候尽是些罗里罗嗦的废话?</p>
+<p>耐心, 年轻人. 你马上就会学到如何从中获益.</p>
+<p>NO1. 我们假设你编辑的时候犯了一个重大失误.</p>
+<img alt="../_images/01-02.png" src="01-02.png">
+<p>接着, 我嘞个去, 你又删掉了几个非常重要的文件.</p>
+<div class="highlight-python"><div class="highlight"><pre>c:\hginit\CountDown&gt; del favicon.ico
+
+c:\hginit\CountDown&gt; del App.xaml
+</pre></div>
+</div>
+<p>在没有 Mercurial 的那些岁月, 这是一个跑去向系统管理哭诉大好机会, 你还可以凄惨的质问 <em>为什么</em> 备份系统 “临时” 罢工了, 而且已经八个月了.</p>
+<p>系统管理员 (大家都叫他 Taco), 很害羞一小伙, 从不和团队的其他成员共进午餐. 偶尔他离开他那心爱的办公转椅, 你会看到座位上有个三角形状的沙司色的污渍, 那是他经常吃墨西哥午餐, 掉在他两腿间油滴... 肯定没人会拖走他的椅子, 即使它是公司创始人给自己买的 Herman Miller 公司豪配系列, 而不是把其他人弄得背痛的 Staples $99 标配特价版.</p>
+<p>反正, 就是没有备份.</p>
+</div>
+<div class="section" id="hg-revert">
+<h2><code class="docutils literal"><span class="pre">hg</span> <span class="pre">revert</span></code></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p><code class="docutils literal"><span class="pre">hg</span> <span class="pre">revert</span></code></p>
+<p class="last">将变更的文件恢复到最近一次提交后的状态</p>
+</div>
+<p>感谢 Mercurial, 当你想反悔时, 你可以使用快捷的 <strong>hg revert</strong> 命令, 立刻将你的目录恢复到最后一次提交之后的状态.</p>
+<div class="highlight-python"><div class="highlight"><pre>c:\hginit\CountDown&gt; hg revert --all
+reverting App.xaml
+reverting a.txt
+reverting favicon.ico
+
+c:\hginit\CountDown&gt; type a.txt
+SCOTT ADAMS: Normal people believe that if it isn't
+broken, don't fix it. Engineers believe that if it
+isn't broken, it doesn't have enough features yet.
+</pre></div>
+</div>
+<p>我使用了命令行参数 <strong>–all</strong>, 这是因为我希望把 <em>所有</em> 文件都恢复到原来的状态.</p>
+<p>所以, 用 Mercurial 管理代码时:</p>
+<ol class="arabic simple">
+<li>做些代码修改</li>
+<li>看是否能正常运行</li>
+<li>可以, 则 <strong>commit</strong> 变更</li>
+<li>不行, 则 <strong>revert</strong> 它们</li>
+<li>GOTO 1</li>
+</ol>
+<p>(我明白. 还停留在 Windows 命令提示符和 GOTO 语句, 我是有史以来最矬的程序员)</p>
+</div>
+<div class="section" id="hg-status">
+<h2><code class="docutils literal"><span class="pre">hg</span> <span class="pre">status</span></code></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p><code class="docutils literal"><span class="pre">hg</span> <span class="pre">status</span></code></p>
+<p class="last">显示改动过的文件列表</p>
+</div>
+<p>随着时间推移, 你可能会困惑现在身处何处, 还有自从最后一次提交, 你做了哪些变更. Mercurial 帮你追踪所有操作. 你所需要做的只是键入 <strong>hg status</strong>, Mercurial 便会为你提供一份变更的文件列表.</p>
+<p>假如我创建了一个文件, 编辑了一个文件, 同时删除了一个文件.</p>
+<div class="highlight-python"><div class="highlight"><pre>c:\hginit\CountDown&gt; copy a.txt b.txt
+        1 file(s) copied.
+
+c:\hginit\CountDown&gt; notepad2 a.txt
+
+c:\hginit\CountDown&gt; del favicon.ico
+
+c:\hginit\CountDown&gt; hg status
+M a.txt
+! favicon.ico
+? b.txt
+</pre></div>
+</div>
+<p><strong>hg status</strong> 会列出所有改动过的文件, 并在每行用一个字符指代变更类型. “M” 表示 “Modified” – 文件已经被修改. ”!” 表示丢失 – 文件原本应该在那儿, 但是不见了. ”?” 表示未知 – 该文件尚未被 Mercurial 管理, 版本库里没有任何信息.</p>
+<p>让我们逐个处理这些变更. 那个被修改的文件, <strong>a.txt</strong>. 做了哪些改动? 你可能已经忘记的一干二净了! 嘿, 我有几天连我早餐吃了些啥都不记得. 更令我焦虑的实际上是每天都是麦片. 反正, a.txt 就是被修改了. 那到底改了些啥?</p>
+</div>
+<div class="section" id="hg-diff">
+<h2><code class="docutils literal"><span class="pre">hg</span> <span class="pre">diff</span></code></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p><code class="docutils literal"><span class="pre">hg</span> <span class="pre">diff</span></code></p>
+<p class="last">显示一个文件的改动详情</p>
+</div>
+<p>有条命令可以为你提供答案: <strong>hg diff</strong> 会告诉你文件自最后一次提交后具体做了哪些改动.</p>
+<div class="highlight-python"><div class="highlight"><pre>c:\hginit\CountDown&gt; hg diff a.txt
+diff -r 55490459b740 a.txt
+--- a/a.txt     Fri Feb 05 13:47:43 2010 -0500
++++ b/a.txt     Fri Feb 05 14:31:18 2010 -0500
+@@ -1,3 +1,3 @@
+-SCOTT ADAMS: Normal people believe that if it isn't
++SCOTT ADAMS: Civilians believe that if it isn't
+ broken, don't fix it. Engineers believe that if it
+ isn't broken, it doesn't have enough features yet.
+</pre></div>
+</div>
+<p>格式看上去挺神秘的, 但更有意思的是: 以减号开头的是那些被删除的行, 以加号开头的则是增加的行, 所以上面的信息表明 “Normal people” 被修改成 “Civilians”.</p>
+</div>
+<div class="section" id="hg-remove">
+<h2><code class="docutils literal"><span class="pre">hg</span> <span class="pre">remove</span></code></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p><code class="docutils literal"><span class="pre">hg</span> <span class="pre">remove</span></code></p>
+<p class="last">将文件放到出库等候队列中. 它们在你执行 <code class="docutils literal"><span class="pre">commit</span></code> 操作之前实际上是不会从版本库移除的</p>
+</div>
+<p>我们再来看看那个丢失的文件, <code class="docutils literal"><span class="pre">favicon.ico</span></code>. 如之前所说, 如果你没打算删除它, 你可以用 <strong>hg revert</strong> 命令. 我们假设你就是想移除它. 每当移除 (或添加) 一个文件, 你都需要通知到 Mercurial:</p>
+<div class="highlight-python"><div class="highlight"><pre>c:\hginit\CountDown&gt; hg remove favicon.ico
+
+c:\hginit\CountDown&gt; hg status
+M a.txt
+R favicon.ico
+? b.txt
+</pre></div>
+</div>
+<p>“R” 表示 “Removed”, 这样下次我们执行提交操作, <code class="docutils literal"><span class="pre">favicon.ico</span></code> 便会从 Mercurial 版本库中删除. (文件的 <em>历史数据</em> 仍然保存在版本库中, 自然我们可以随时把它恢复回来).</p>
+<p>最后, 我们再来处理那个新增的文件 <strong>b.txt</strong>:</p>
+<div class="highlight-python"><div class="highlight"><pre>c:\hginit\CountDown&gt; hg add
+adding b.txt
+
+c:\hginit\CountDown&gt; hg st
+M a.txt
+A b.txt
+R favicon.ico
+</pre></div>
+</div>
+<p>“A” 表示 “Added”. 另外你注意到了吗? 我已经懒得每次都完整的键入 <strong>hg status</strong> 了. 只要不产生冲突, Mercurial 不需要键入完整的命令 – 除了 <strong>status</strong> 没有其它命令是以 <strong>st</strong> 开头的.</p>
+<p>在解决完所有的 <code class="docutils literal"><span class="pre">?</span></code> 和 <code class="docutils literal"><span class="pre">!</span></code> 后, 我们可以继续提交变更了:</p>
+<div class="highlight-python"><div class="highlight"><pre>c:\hginit\CountDown&gt; hg commit
+
+c:\hginit\CountDown&gt; hg log
+changeset:   3:2f4718ee168e
+tag:         tip
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Fri Feb 05 14:54:45 2010 -0500
+summary:     A few highly meaningful changes. No favicon.ico no more.
+
+changeset:   2:55490459b740
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Fri Feb 05 13:47:43 2010 -0500
+summary:     Fixed some grammar
+
+changeset:   1:a9497f468dc3
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Fri Feb 05 13:26:13 2010 -0500
+summary:     Capitalized "Scott Adams"
+
+changeset:   0:da5f372c3901
+user:        Joel Spolsky &lt;joel@joelonsoftware.com&gt;
+date:        Fri Feb 05 13:04:30 2010 -0500
+summary:     Initial version of the CountDown code
+</pre></div>
+</div>
+<p><strong>hg log</strong> 的输出结果带来另外一个问题: 每次提交 <em>changeset</em> 一行都会显示一个编号... 事实上是两个: 一个比较直观简洁, 比如初始版本编号 “0”, 但另外一个是冗长, 诡异的十六进制编码, 不过你可以暂时无视它.</p>
+<p>谨记 Mercurial 在版本库中存储了足够的信息来重建任何文件的历史版本.</p>
+</div>
+<div class="section" id="hg-cat">
+<h2><code class="docutils literal"><span class="pre">hg</span> <span class="pre">cat</span></code></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p><code class="docutils literal"><span class="pre">hg</span> <span class="pre">cat</span></code></p>
+<p class="last">显示任何文件的任何版本</p>
+</div>
+<p>首先, 一条简单的 <strong>hg cat</strong> 命令可以用来显示一个文件的任何历史版本. 比如, 想知道 <code class="docutils literal"><span class="pre">a.txt</span></code> 有啥内容:</p>
+<div class="highlight-python"><div class="highlight"><pre>c:\hginit\CountDown&gt; hg cat a.txt
+SCOTT ADAMS: Civilians believe that if it isn't
+broken, don't fix it. Engineers believe that if it
+isn't broken, it doesn't have enough features yet.
+</pre></div>
+</div>
+<p>要想知道它以往的内容, 我们可以从日志里挑一个变更集编号. 然后用 <strong>-r</strong> (“revision”) 参数配合 <strong>cat</strong> 命令:</p>
+<div class="highlight-python"><div class="highlight"><pre>c:\hginit\CountDown&gt; hg cat -r 0 a.txt
+Scott Adams: Normal people believe that if it ain't
+broke, don't fix it. Engineers believe that if it
+ain't broke, it doesn't have enough features yet.
+</pre></div>
+</div>
+<p>如果文件冗长复杂, 而且只做了非常小的改动, 我们可以用 <strong>-r</strong> 参数配合 <strong>hg diff</strong> 命令, 输出任意两个版本之间的区别. 比如, 让我们看看版本 0 和 1 之间做了哪些修改:</p>
+<div class="highlight-python"><div class="highlight"><pre>c:\hginit\CountDown&gt; hg diff -r 0:1 a.txt
+diff -r da5f372c3901 -r a9497f468dc3 a.txt
+--- a/a.txt     Fri Feb 05 13:04:30 2010 -0500
++++ b/a.txt     Fri Feb 05 13:26:13 2010 -0500
+@@ -1,3 +1,3 @@
+-Scott Adams: Normal people believe that if it ain't
++SCOTT ADAMS: Normal people believe that if it ain't
+ broke, don't fix it. Engineers believe that if it
+ ain't broke, it doesn't have enough features yet.
+</pre></div>
+</div>
+</div>
+<div class="section" id="hg-update">
+<h2><code class="docutils literal"><span class="pre">hg</span> <span class="pre">update</span></code></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p><code class="docutils literal"><span class="pre">hg</span> <span class="pre">update</span></code></p>
+<p class="last">将工作目录更新到指定版本</p>
+</div>
+<p>最后, 如果你还没有精疲力尽到昏厥, 我在本章结束前还想讲讲 <em>另外一个小功能</em>: 你可以用 <strong>hg update</strong> 命令在任何历史版本间来回时空穿梭. 当然, <em>本质上</em> 你是不能飞跃到未来的, 虽然我们都知道这肯定是一件非常酷的事儿. 如果你只有四个版本, 在敲入 <strong>hg update -r 103994</strong> 后立马得到一些很酷的, 反万有引力, 科幻式的未来版本源码. 别做梦了, 这是不可能的.</p>
+<p>但追溯任何版本都是可能的. 比如:</p>
+<div class="highlight-python"><div class="highlight"><pre>c:\hginit\CountDown&gt; hg update -r 0
+2 files updated, 0 files merged, 1 files removed, 0 files unresolved
+
+c:\hginit\CountDown&gt; type a.txt
+Scott Adams: Normal people believe that if it ain't
+broke, don't fix it. Engineers believe that if it
+ain't broke, it doesn't have enough features yet.
+
+c:\hginit\CountDown&gt; hg up -r 1
+1 files updated, 0 files merged, 0 files removed, 0 files unresolved
+
+c:\hginit\CountDown&gt; type a.txt
+SCOTT ADAMS: Normal people believe that if it ain't
+broke, don't fix it. Engineers believe that if it
+ain't broke, it doesn't have enough features yet.
+
+c:\hginit\CountDown&gt; hg up
+2 files updated, 0 files merged, 1 files removed, 0 files unresolved
+
+c:\hginit\CountDown&gt; type a.txt
+SCOTT ADAMS: Civilians believe that if it isn't
+broken, don't fix it. Engineers believe that if it
+isn't broken, it doesn't have enough features yet.
+</pre></div>
+</div>
+<p><strong>hg update</strong> 命令实际上是修改目录下的所有文件内容达到按时间来回穿梭的效果. 如果需要添加或移除一个文件, <strong>hg update</strong> 命令也会照做. <strong>hg update</strong> 不带任何参数的话, 即默认为最新版本.</p>
+</div>
+<div class="section" id="id1">
+<h2>小测验</h2>
+<p>OK! 以上就是本章的教程. 接下来的几个知识点你现在应该都知道怎么操作了:</p>
+<ol class="arabic simple">
+<li>创建一个版本库</li>
+<li>从版本库中添加和移除文件</li>
+<li>做些修改, 然后看看你做了哪些尚未提交的改动, 然后</li>
+<li>... 如果你愿意, 就提交这些变更.</li>
+<li>... 或者你也可以不提交, 恢复 (revert) 这些变更</li>
+<li>查看一下这些文件历史版本, 甚至让你的目录来个时空穿梭</li>
+</ol>
+</div>
+<div class="section" id="next">
+<h2>Next</h2>
+<p><a data-sb-indepth="true" class="reference internal" href="default_002.html"><em>接下来, 我们将会看到整个团队如何使用 Mercurial 协作开发</em></a></p>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&nbsp;&nbsp;<a data-sb-indepth="true" href="default.html">重新审视 Subversion</a>
+        &nbsp;&nbsp;::&nbsp;&nbsp;
+        <a class="uplink" href="http://zh-hginit.readthedocs.io/en/latest/">Contents</a>
+        &nbsp;&nbsp;::&nbsp;&nbsp;
+        <a data-sb-indepth="true" href="default_002.html">团队协作</a>&nbsp;&nbsp;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        © Copyright .
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+    </div>
+  
+
+
+</body></html>

@@ -1,0 +1,93 @@
+/* ::::: http://hginit.com/c/styles.css ::::: */
+
+@charset "UTF-8";
+html > body { overflow-x: auto; overflow-y: scroll; }
+body { margin: 0px; padding: 0px; background-image: url("background.png"); background-repeat: repeat-y; background-color: rgb(247, 250, 236); }
+a { color: rgb(15, 84, 145); }
+h1 { border-top: 1px solid rgb(204, 204, 204); border-bottom: 1px solid rgb(204, 204, 204); color: rgb(181, 129, 69); font-size: 39px; font-weight: bold; padding: 7px 0px; }
+h2 { padding-top: 1em; color: rgb(181, 129, 69); }
+body img { max-width: 700px; }
+div#dropshadow { background: url("top-dropshadow.png") repeat-x scroll 0% 0% transparent; height: 10px; }
+div#topnav { background: url("hg-panel.png") no-repeat scroll 65px 0px transparent; width: 1024px; height: 180px; position: relative; top: -10px; }
+div#topnav div.t { padding-left: 310px; padding-top: 30px; width: 600px; font-size: 18px; line-height: 25px; color: rgb(0, 0, 0); }
+div#topnav div.tInterior { padding-left: 310px; padding-top: 70px; width: 600px; font-size: 18px; line-height: 25px; color: rgb(0, 0, 0); }
+div.tInterior a img { position: absolute; top: 0px; left: 69px; }
+div#topnav div.t div.h { font-size: 45px; font-weight: bold; line-height: 65px; }
+* { font-family: Helvetica; }
+.mainnav { width: 920px; height: auto; margin-top: 60px; }
+.mainnav a { display: block; float: left; height: 176px; width: 151px; padding: 0px; text-decoration: none; }
+.mainnav .button a.zero { background: url("homenav-1-1.png") no-repeat scroll left bottom transparent; }
+.mainnav .button a.zero:hover { background-position: left top; }
+.mainnav .button a.one { background: url("homenav-2-1.png") no-repeat scroll left bottom transparent; }
+.mainnav .button a.one:hover { background-position: left top; }
+.mainnav .button a.two { background: url("homenav-3-1.png") no-repeat scroll left bottom transparent; }
+.mainnav .button a.two:hover { background-position: left top; }
+.mainnav .button a.three { background: url("homenav-4-1.png") no-repeat scroll left bottom transparent; }
+.mainnav .button a.three:hover { background-position: left top; }
+.mainnav .button a.four { background: url("homenav-5-1.png") no-repeat scroll left bottom transparent; }
+.mainnav .button a.four:hover { background-position: left top; }
+.mainnav .button a.five { background: url("homenav-6-1.png") no-repeat scroll left bottom transparent; }
+.mainnav .button a.five:hover { background-position: left top; }
+.toptop { background-color: rgb(51, 51, 51); height: 25px; width: 100%; margin: 0px; position: relative; z-index: 100; }
+.toptop ul { background-color: rgb(51, 51, 51); height: 25px; margin: 0px; }
+.toptop ul li { text-indent: 0px; background-color: rgb(51, 51, 51); float: right; color: rgb(255, 255, 255); font-size: 12px; width: 100px; list-style: none outside none; padding-top: 5px; padding-right: 5px; text-align: center; vertical-align: middle; }
+.toptop ul li a { text-decoration: none; color: rgb(255, 255, 255); }
+.toptop ul li a:link { text-decoration: none; color: rgb(255, 255, 255); }
+.toptop ul li a:hover { text-decoration: none; color: rgb(153, 153, 153); }
+div#shortcuts { position: absolute; top: 25px; left: 320px; }
+div.topcontainer { height: 190px; clear: both; }
+.navholder { width: 103px; float: left; }
+.bottom { position: relative; top: 30px; }
+.top { position: relative; top: -45px; }
+#kilnFlyOut { position: absolute; top: -57px; right: 3px; background: url("flyout.gif") no-repeat scroll 0% 0% transparent; width: 511px; height: 117px; overflow: hidden; cursor: pointer; z-index: 50; }
+#kilnFlyOut .flyouttext { font-size: 11px; width: 140px; height: 55px; padding-top: 5px; padding-left: 15px; float: left; cursor: auto; }
+#kilnFlyOut .flyouttext a { color: rgb(15, 84, 145); }
+#kilnFlyOut .flyoutteaser { clear: both; text-align: right; padding: 0px 55px 0px 230px; font-size: 12px; position: relative; top: 25px; overflow: hidden; }
+div.main { width: 900px; margin-left: 70px; height: auto; }
+div.intro { width: 600px; font-size: 18px; line-height: 25px; color: rgb(0, 0, 0); margin-left: 240px; }
+div.cheat { width: 241px; height: auto; float: left; }
+.cheattitle { font-size: 18px; font-weight: bold; padding-top: 5px; padding-left: 40px; color: red; }
+div.cheatcontent { margin: auto 0px 0px -240px; position: absolute; width: 240px; }
+div.cheattop { width: 241px; height: 58px; background: url("cheattop.png") no-repeat scroll 0% 0% transparent; }
+div.cheattop .command { font-size: 18px; font-weight: bold; padding: 25px 0px 0px 40px; color: rgb(181, 129, 69); }
+p.cheattext { background: url("cheatmiddle.png") repeat-y scroll 0px 0px transparent; font-size: 13px; line-height: 18px; padding: 10px 40px 10px 20px; margin: 0px; }
+div.content { width: 642px; font-size: 14px; line-height: 18px; float: left; margin-left: 240px; }
+div.i { text-align: left; }
+.codesnippet pre, .codesnippetjoel pre, .codesnippetrose pre { margin: 0px; padding: 0px 9px; font-family: Consolas,monospace; font-size: 14px; }
+.codesnippet pre { background: url("code-anonymous-middle.png") repeat-y scroll 0% 0% transparent; }
+.codesnippetjoel pre { background: url("code-joel-middle.png") repeat-y scroll 0% 0% transparent; }
+.codesnippetrose pre { background: url("code-rose-middle.png") repeat-y scroll 0% 0% transparent; }
+.codesnippet pre strong, .codesnippetjoel pre strong, .codesnippetrose pre strong { font-size: larger; }
+.codesnippet .codetop { background: url("code-anonymous-top.png") no-repeat scroll 0% 0% transparent; height: 41px; width: 642px; }
+.codesnippetjoel .codetop { background: url("code-joel-top.png") no-repeat scroll 0% 0% transparent; height: 40px; width: 642px; }
+.codesnippetrose .codetop { background: url("code-rose-top.png") no-repeat scroll 0% 0% transparent; height: 40px; width: 642px; }
+.codesnippet .codebottom, .codesnippetjoel .codebottom, .codesnippetrose .codebottom { height: 37px; width: 642px; }
+.codesnippet .codebottom { background: url("code-anonymous-bottom.png") no-repeat scroll 0% 0% transparent; }
+.codesnippetjoel .codebottom { background: url("code-joel-bottom.png") no-repeat scroll 0% 0% transparent; }
+.codesnippetrose .codebottom { background: url("code-rose-bottom.png") no-repeat scroll 0% 0% transparent; }
+div.edit1 { z-index: -1; float: left; margin-top: 0px; margin-left: 10px; width: 384px; }
+div.edit2 { float: left; margin-top: -70px; margin-left: 100px; z-index: 1; width: 384px; }
+div.edittopbefore { font-family: Consolas,monospace; font-size: 14px; margin-left: 1px; height: 21px; background-color: rgb(102, 102, 102); border: 1px solid black; color: rgb(255, 255, 255); font-weight: bold; padding-left: 15px; }
+div.editcontent { font-family: Consolas,monospace; font-size: 14px; margin-left: 1px; height: auto; background-color: rgb(255, 255, 255); border-left: 1px solid black; border-right: 1px solid black; color: rgb(0, 0, 0); padding-top: 5px; padding-left: 15px; }
+div.editcontent strong { font-weight: normal; background-color: yellow; font-family: Consolas,monospace; }
+div.edittopafter { font-family: Consolas,monospace; font-size: 14px; margin-left: 1px; height: 21px; background: url("editTopAfter.gif") repeat-x scroll 0% 0% transparent; border: 1px solid black; color: rgb(255, 255, 255); font-weight: bold; padding-left: 15px; margin-top: -97px; }
+img.editArrow { left: -80px; position: relative; z-index: 2; }
+div.footer { margin-top: 40px; width: 630px; height: 65px; border-top: 1px solid rgb(204, 204, 204); border-bottom: 1px solid rgb(204, 204, 204); padding-top: 10px; }
+div.footernav { float: left; height: 35px; }
+#home, #next { background-color: rgb(102, 102, 102); border: 1px solid rgb(102, 102, 102); font-size: 35px; font-weight: 800; padding: 17px 0px 0px; }
+#next { float: right; }
+#next:hover, #home:hover { background-color: rgb(155, 155, 155); }
+.footer #home a, .footer #next a { text-decoration: none; color: rgb(255, 255, 255); padding: 8px 10px; }
+.footer #next a { padding: 8px 20px; }
+.footer a span.angleQuote { position: relative; top: -2px; }
+#comingup { padding-left: 10px; font-size: 17px; line-height: 20px; color: rgb(181, 129, 69); height: auto; width: 310px; text-align: center; font-weight: bold; }
+div.pagebottom { margin-top: 25px; width: 650px; clear: both; }
+div.bottomimg { background: url("footer.png") no-repeat scroll 0% 0% transparent; width: 237px; height: 409px; float: left; }
+div.bottomimg a#logoLink { display: block; padding-top: 90px; text-decoration: none; }
+div.bottomtext { font-size: 13px; line-height: 15px; padding: 0px 30px 20px; }
+div.bottomtext.getStarted { padding-bottom: 5px; }
+.bottomtext a { color: rgb(15, 84, 145); }
+div.about { float: left; width: 350px; margin-left: 30px; }
+.botbot { background: none repeat scroll 0% 0% rgb(51, 51, 51); height: 20px; width: 100%; clear: both; }
+div.content p, div.content p em, div.content p strong, div.content p a, div.content ul li, div.content ol li { font-family: Georgia,serif; font-size: 17px; line-height: 27px; }
+div.about p, div.about p a, div.about p strong { font-family: Helvetica,sans-serif; font-size: 15px; line-height: 21px; }

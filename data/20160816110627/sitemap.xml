@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="../../sitemap.xsl" type="text/xsl" media="all"?>
+<site>
+<page file="index.html" text="HgInit (中文版) — hginit.com 中文版" title="HgInit (中文版) — hginit.com 中文版">
+<page file="default.html" text="重新审视 Subversion" title="重新审视 Subversion — hginit.com 中文版"/>
+<page file="default_001.html" text="Mercurial 从零开始" title="Mercurial 从零开始 — hginit.com 中文版"/>
+<page file="default_002.html" text="团队协作" title="团队协作 — hginit.com 中文版"/>
+<page file="default_003.html" text="失误补救" title="失误补救 — hginit.com 中文版"/>
+<page file="default_004.html" text="合并" title="合并 — hginit.com 中文版"/>
+<page file="default_005.html" text="版本库组织方式" title="版本库组织方式 — hginit.com 中文版"/>
+</page>
+</site>

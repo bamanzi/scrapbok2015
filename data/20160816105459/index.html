@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head profile="http://www.w3.org/2006/03/hcard http://purl.org/uF/hAtom/0.1/ http://gmpg.org/xfn/11">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="meta" type="application/rdf+xml" title="FOAF" href="http://jhw.dreamwidth.org/data/foaf">
+<link rel="help" href="http://www.dreamwidth.org/support/faq">
+<link rel="apple-touch-icon" href="http://www.dreamwidth.org/apple-touch-icon.png">
+<meta property="og:image" content="http://www.dreamwidth.org/img/Swirly-d-square.png">
+<meta property="og:image:width" content="363">
+<meta property="og:image:height" content="363">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="prev" href="http://www.dreamwidth.org/go?dir=prev&amp;itemid=1868&amp;journal=jhw">
+<link rel="next" href="http://www.dreamwidth.org/go?dir=next&amp;itemid=1868&amp;journal=jhw">
+<link rel="canonical" href="http://jhw.dreamwidth.org/1868.html">
+
+            
+        
+
+
+
+
+
+<title>jhw | Why I Like Mercurial More Than Git</title>
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head><body class="page-entry three-columns column-left column-right any-column multiple-columns three-columns-sides  logged-out  not-subscribed no-access  has-navstrip">
+<table summary="" id="lj_controlstrip" cellpadding="0" cellspacing="0"><tbody><tr valign="top">                <td id="lj_controlstrip_userpic">&nbsp;</td>
+                <td id="lj_controlstrip_login" style="background-image: none;" nowrap="nowrap"><form id="login" class="lj_login_form" action="http://www.dreamwidth.org/login?ret=1" method="post"><div>
+                <input name="mode" value="login" type="hidden">
+                <input name="chal" id="login_chal" class="lj_login_chal" value="c0:1471312800:3135:300:qgF8UtCYryhVFg7La06V:0878bdb4d6e687221ce75a5e44c9962e" type="hidden">
+                <input name="response" id="login_response" class="lj_login_response" value="" type="hidden">
+                <table summary="" style="margin-right: 1em;" cellpadding="0" cellspacing="0"><tbody><tr><td>
+                <label for="xc_user">Account name:</label> <input style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAALZJREFUOBFjYKAANDQ0rGWiQD9IqzgL0BQ3IKMXiB8AcSKQ/waIrYDsKUD8Fir2pKmpSf/fv3+zgPxfzMzMSbW1tbeBbAaQC+b+//9fB4h9gOwikCAQTAPyDYHYBciuBQkANfcB+WZAbPP37992kBgIUOoFBiZGRsYkIL4ExJvZ2NhAXmFgYmLKBPLPAfFuFhaWJpAYEBQC+SeA+BDQC5UQIQpJYFgdodQLLyh0w6j20RCgUggAAEREPpKMfaEsAAAAAElFTkSuQmCC&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: contain; background-position: 98% 50%;" name="user" size="7" maxlength="27" tabindex="1" id="xc_user" value="" type="text">
+                </td><td>
+                <label style="margin-left: 3px;" for="xc_password">Password:</label> <input style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAALZJREFUOBFjYKAANDQ0rGWiQD9IqzgL0BQ3IKMXiB8AcSKQ/waIrYDsKUD8Fir2pKmpSf/fv3+zgPxfzMzMSbW1tbeBbAaQC+b+//9fB4h9gOwikCAQTAPyDYHYBciuBQkANfcB+WZAbPP37992kBgIUOoFBiZGRsYkIL4ExJvZ2NhAXmFgYmLKBPLPAfFuFhaWJpAYEBQC+SeA+BDQC5UQIQpJYFgdodQLLyh0w6j20RCgUggAAEREPpKMfaEsAAAAAElFTkSuQmCC&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: contain; background-position: 98% 50%;" name="password" size="7" tabindex="2" id="xc_password" class="lj_login_password" type="password">
+<input value="Log in" tabindex="4" type="submit"></td></tr><tr><td valign="top"><a href="http://www.dreamwidth.org/openid/" tabindex="5">(OpenID?)</a> <a href="http://www.dreamwidth.org/lostinfo" tabindex="6">(Forgot it?)</a></td><td style="font: 10px Arial,Helvetica,sans-serif;" colspan="2" valign="top" align="right"><input id="xc_remember" name="remember_me" style="height: 10px; width: 10px;" tabindex="3" type="checkbox"><label for="xc_remember">Remember Me</label></td></tr></tbody></table></div></form></td><td id="lj_controlstrip_actionlinks" nowrap="nowrap"><span id="lj_controlstrip_statustext">You're viewing <span lj:user="jhw" style="white-space: nowrap;" class="ljuser"><a href="http://jhw.dreamwidth.org/profile"><img class="ContextualPopup-trigger" src="user.png" alt="[personal profile] " style="vertical-align: text-bottom; border: 0px none; padding-right: 1px;" width="17" height="17"></a><a href="http://jhw.dreamwidth.org/"><b>jhw</b></a></span>'s journal</span><br><a href="http://www.dreamwidth.org/create">Create a Dreamwidth Account</a>&nbsp;&nbsp; <a href="http://www.dreamwidth.org/">Learn More</a></td><td id="lj_controlstrip_search"><div class="appwidget appwidget-search" id="LJWidget_43">
+<form action="http://www.dreamwidth.org/multisearch" method="post">
+<input class="text" id="search" name="q" size="20" title="Search" type="text"> <select class="select" name="type">
+<option value="int" selected="selected">Interest</option>
+<option value="region">Region</option>
+<option value="nav_and_user">Site and Account</option>
+<option value="faq">FAQ</option>
+<option value="email">Email</option>
+<option value="im">IM Info</option>
+</select> <input value="Go" type="submit"></form></div><!-- end .appwidget-search -->
+Reload page in style:&nbsp;&nbsp; <a href="http://jhw.dreamwidth.org/1868.html?style=site">site</a>&nbsp;&nbsp; <a href="http://jhw.dreamwidth.org/1868.html?style=light">light</a></td></tr></tbody></table>
+    <div id="canvas">
+        <div class="inner">
+            <div id="header">
+                <div class="inner">
+                    <h1 id="title"><span>pragmatic dæmonology</span></h1><h2 id="pagetitle"><span>Why I Like Mercurial More Than Git</span></h2>
+
+                </div><!-- end header>inner -->
+            </div><!-- end header -->
+            <div id="content">
+                <div class="inner">
+    
+                    <div id="primary"><div class="inner">
+                        <div class="entry-wrapper entry-wrapper-odd security-public restrictions-none journal-type-P poster-jhw journal-jhw has-userpic has-subject" id="entry-wrapper-1868">
+<div class="separator separator-before"><div class="inner"></div></div>
+<div class="entry" id="entry-1868">
+<div class="inner">
+<div class="header">
+<div class="inner">
+<h3 class="entry-title"><a title="Why I Like Mercurial More Than Git" href="#">Why I Like Mercurial More Than Git</a></h3><span class="datetime"><span class="date"><a href="http://jhw.dreamwidth.org/2011/03/">Mar</a>. <a href="http://jhw.dreamwidth.org/2011/03/29/">29th</a>, <a href="http://jhw.dreamwidth.org/2011/">2011</a></span> <span class="time">09:31 am</span></span></div>
+</div>
+<div>
+<div class="contents">
+<div class="inner">
+<div class="userpic"><a class="ContextualPopup-trigger" href="http://jhw.dreamwidth.org/icons"><img src="629980.dat" title="jhw: (Default) (baleful eye)" alt="jhw: baleful eye (Default)" width="100" height="98"></a></div>
+<span class="poster entry-poster "><span lj:user="jhw" style="white-space: nowrap;" class="ljuser"><a href="http://jhw.dreamwidth.org/profile"><img class="ContextualPopup-trigger" src="user.png" alt="[personal profile] " style="vertical-align: text-bottom; border: 0px none; padding-right: 1px;" width="17" height="17"></a><a href="http://jhw.dreamwidth.org/"><b>jhw</b></a></span></span><div class="entry-content">After working for over a year alternating between two projects, one that uses <a href="http://git-scm.com/">Git</a> for its version control and another that uses <a href="http://mercurial.selenic.com/">Mercurial</a>, I have finally achieved sufficient mastery of both toolchains that I now feel comfortable defending my judgment that Mercurial is the superior of the two systems.  I think Git has one glaring deficiency that makes it the inferior tool, and I hope to describe the required remedy in this weblog posting.<br><br>The tools are very similar, and many of the distinguishing differences come down to a matter of taste in my opinion.  Some may consider it a deal-breaker that Mercurial expects its extensions to be written in Python, whereas Git admits extensions written in just about any language you care to imagine, but the usual approach is to write them in a shell language.  That's not a deal-breaker for me.  Many other differences are either consequences of that fundamental distinction, or they are cosmetic in nature.  It also bothers me not at all neither that Mercurial has no index, nor that Git has the index.  The difference between the Git stash and Mercurial patch queues is similarly trivial to me.<br><br>The big difference, the deal-maker for me, is in how each tool goes about meeting the fundamental requirement for any version control system: how it handles source code merging.  Quite simply, Mercurial is better at merging than Git.<br><br>I need to introduce a bit of terminology here to make my point.  Because the literature for Git and Mercurial use the word <i>branch</i> to mean crucially different things, I'm going to avoid the word here entirely so as to prevent confusion.  For the concept described in the Git literature with the word <i>branch</i> and in the Mercurial literature with the word <i>head</i>, I shall use the word <i>lineage</i>.  I shall use the word <i>family</i> when referring to the concept the Mercurial literature uses <i>branch</i> to describe, which is a name that distinguishes <i>a related set of lineages</i>.<br><br>Mercurial is superior to Git because it records <i>family</i> history in the repository, while Git does not.  In every other significant respect, a Git repository stores the same information as a Mercurial repository.  This is why it is possible to convert a Git repository into a Mercurial repository then back into a Git repository without losing any information.  It is not possible to perform this round-trip starting with a Mercurial repository (in the general case) because the <i>family</i> history must be discarded in the conversion to Git.  (In the conversion to Mercurial, the entire Git repository can be regarded as one monolithic <i>family</i>, and indeed this is how the excellent <a href="http://hg-git.github.com/">Hg-Git</a> tool presents its Mercurial view of Git repositories.)<br><br>It turns out that having the <i>family</i> history recorded in the repository— and thereby copied around with clones, pushes and pulls—&nbsp;is really important when reviewing the history of a project.  A hint of this importance shows up in the cultural difference one observes between Git and Mercurial users.<br><br>Among Git users, it's common to see people arguing vociferously that proper workflows involve judicious use of the "rebase" command to reduce the incidence of merging in the repository history.  This is because Git only records the <i>lineage</i> of every change, not its <i>family</i>.  When all you have to review in the history of a change is its <i>lineage</i>, you don't want to be distracted by a lot of merges between different <i>lineages</i> in the same <i>family</i>.  In a Mercurial repository, because the <i>family</i> history is recorded in the repository with every changeset, the urge to keep every <i>lineage</i> <a href="http://stackoverflow.com/questions/457927/git-workflow-and-rebase-vs-merge-questions">pure</a> from ancestor to descendant isn't quite as strong.<br><br>In any sane Git workflow, there are two different ways to join a pair of divergent <i>lineages</i>, "merge" and "rebase," and you'd better choose the right one at every opportunity or your whole team will lose valuable momentum dealing with their frustration with your bad version control hygiene.  Always use "rebase" when the <i>lineage</i> in your local clone is divergent from the <i>lineage</i> in the upstream, i.e. more authoritative, clone.  You do this so that the upstream clone can do a "fast-forward" merge when it pulls your change.  It's important in Git for the merge not just to proceed without conflict; it must be a fast-forward merge in order to keep the authoritative <i>lineage</i> "clean" of any evidence of your divergence.<br><br>Basically, what's going on here is that Git encourages its users to adhere to a convention whereby <i>lineage</i> and <i>family</i> are equivalent concepts.  This leads to an aesthetic concern for "clean history" where every merge of two or more <i>lineages</i> is a record of the merging of the <i>families</i> corresponding to the <i>lineages</i>.  Any <i>family</i> with more than one <i>lineage</i> has a "dirty" or "unclean" history.  Figuring out the <i>family</i> history of any change in a Git repository where developers have not strictly adhered to this policy means a lot of guesswork.  Consequently, some Git repository administrators set flags that enforce this convention, which leads to further confusion among users.  "Why can't I push?  Oh, you mean I should have rebased instead of merging?  Foo."<br><br>If you have a fetish for clean pedigrees, or you are using the Hg-Git bidirectional bridge, there is the standard "rebase" extension.  It allows you to adopt a workflow that minimizes the incidence of merging between <i>lineages</i> in the same <i>family</i>.  There is, however, not any compelling reason to do so: the repository retains the <i>family</i> history.  It's easy to review which changes belong to which <i>family</i> whatever <i>lineage</i> they may have.  Mercurial users therefore have no reason to be particularly diligent about maintaining "purity" of <i>lineage</i> histories, as Git users do.<br><br>I wrote at the outset of this article that I believe Git should be improved to remedy the deficiency I'm describing here.  There are couple ways it could be done.  One way would be to adopt Mercurial's style of annotating every node in the graph with a <i>family</i> name.  Another way— perhaps a more straightforward and "git-like" way— of dealing with it would be to annotate every edge in the graph with the <i>family</i> name (derived from the branch name of the ancestor node in the repository where the commit occurred).  You'd probably need a distinguished name for the case where the <i>family</i> history is lost to antiquity.<br><br>In any case, this is my argument for why Mercurial is superior to Git.  You're welcome to your opinions, of course, but this one is mine.  I'm open to persuasion that I'm DoingItWrong™, but it took me a long time to arrive at my judgment here, so please think through the arguments you want to make to me before you comment.  Thanks.<br><br>[Note: this article has been revised for clarity since its initial publication.  The original draft improperly assumed the reader has a familiarity with Mercurial "branch" semantics.  Some redundant assertions have been removed.]</div></div>
+</div>
+</div>
+<div class="footer">
+<div class="inner">
+<div class="tag"><span class="tag-text" data-journal="jhw" data-ditemid="1868">Tags:</span><input src="add.png" title="Tag navigation: Select this button, then a tag, then use the arrows displayed to navigate through entries with that tag." alt="Show tag navigation" aria-expanded="false" class="tag-nav-trigger" type="image"><ul>
+<li><a rel="tag" href="http://jhw.dreamwidth.org/tag/coding">coding</a>,</li>
+<li><a rel="tag" href="http://jhw.dreamwidth.org/tag/flamebait">flamebait</a></li>
+</ul></div><ul class="entry-management-links icon-links"><li class="link link_prev first-item"> <a href="http://www.dreamwidth.org/go?dir=prev&amp;itemid=1868&amp;journal=jhw"><img alt="Previous Entry" title="Previous Entry" src="previous.png" width="16" border="0" height="16"></a></li>
+<li class="link mem_add"><a href="http://www.dreamwidth.org/tools/memadd?journal=jhw&amp;itemid=1868"><img alt="Add Memory" title="Add Memory" src="memories_add.png" width="16" border="0" height="16"></a></li>
+<li class="link tell_friend"><a href="http://www.dreamwidth.org/tools/tellafriend?journal=jhw&amp;itemid=1868"><img alt="Share This Entry" title="Share This Entry" src="tellafriend.png" width="16" border="0" height="16"></a></li>
+<li class="link link_next"> <a href="http://www.dreamwidth.org/go?dir=next&amp;itemid=1868&amp;journal=jhw"><img alt="Next Entry" title="Next Entry" src="next.png" width="16" border="0" height="16"></a></li>
+</ul><hr class="above-entry-interaction-links"><ul class="entry-interaction-links text-links"><li class="entry-readlink first-item"><a href="#comments" data-sing="1 comment" data-dual="2 comments" data-plur="3 comments">32 comments</a></li>
+<li class="entry-replylink"><a href="http://jhw.dreamwidth.org/1868.html?mode=reply">Reply</a></li>
+</ul><div id="ljqrttopcomment" data-quickreply-container="topcomment" style="display: none;"></div><hr class="below-reply-container"></div>
+</div>
+</div>
+</div>
+<div class="separator separator-after"><div class="inner"></div></div>
+</div>
+<div id="comments"><div class="inner"><div class="comment-pages toppages"><span class="view-flat"><a href="http://jhw.dreamwidth.org/1868.html?view=flat#comments">Flat</a></span> | <span class="view-top-only"><a href="http://jhw.dreamwidth.org/1868.html?view=top-only#comments">Top-Level Comments Only</a></span></div><div class="comment-thread comment-depth-odd comment-depth-1">
+<div id="cmt1356" class="dwexpcomment" style="margin-left: 0px; margin-top: 5px;">
+<div class="comment-wrapper comment-wrapper-odd visible    poster-ext_753161  full has-userpic  has-subject">
+<div class="separator separator-before"><div class="inner"></div></div>
+<div class="comment" id="comment-cmt1356">
+<div class="inner">
+<div class="header">
+<div class="inner">
+<h4 class="comment-title"><a title="family == branch labels" href="http://jhw.dreamwidth.org/1868.html?thread=1356#cmt1356">family == branch labels</a></h4><span class="datetime"><span class="comment-date-text">Date: </span> <span title="22 days after journal entry, 09:47 pm (jnareb.openid.pl's time)">2011-04-20 07:47 pm (UTC)</span></span></div>
+</div>
+<div class="contents">
+<div class="inner">
+<div class="userpic"><a class="ContextualPopup-trigger" href="http://ext-753161.dreamwidth.org/icons"><img src="869994.dat" title="ext_753161: (Default) (Photo of me from 2005 reunion)" alt="ext_753161: Photo of me from 2005 reunion (Default)" width="64" height="64"></a></div>
+<span class="poster comment-poster"><span class="comment-from-text">From:</span> <span lj:user="jnareb.openid.pl" style="white-space: nowrap;" class="ljuser"><a href="http://www.dreamwidth.org/profile?userid=869994&amp;t=I"><img class="ContextualPopup-trigger" src="openid.png" alt="[identity profile] " style="vertical-align: text-bottom; border: 0px none; padding-right: 1px;" width="16" height="16"></a><a href="http://jnareb.openid.pl/" rel="nofollow"><b>jnareb.openid.pl</b></a></span></span>
+<div class="comment-content">What you call <i>family</i>, and what I understand so-called <i>named branches</i> in Mercurial terminology (<b>A Guide to Branching in Mercurial</b> (http://stevelosh.com/blog/2009/08/a-guide-to-branching-in-mercurial) blog post by Steve Losh from 2009 has <b>Branching with Named Branches</b> (http://stevelosh.com/blog/2009/08/a-guide-to-branching-in-mercurial/#branching-with-named-branches) section) <b>I like to call</b> (http://stackoverflow.com/questions/1598759/git-and-mercurial-compare-and-contrast/1599930#1599930) <b><i>branch labels</i></b>.  I think it describes the concept better.<br><br>Named branches / family / branch labels perhaps solve the issue with rebase / transplant and merge... but they have one serious disadvantage: name clashes.  Your "for-john" branch might not be the same as mine "for-john" branch... and John would want to have it as "from-jhw" and "from-jn", or equivalent.<br><br>Note also that people usually don't rebase because of some notion of purity, but because either the fact that straight linear history is easier to bisect, or the fact that rebased commits would not conflict (if sending patches via email).</div></div>
+</div>
+<div class="footer">
+<div class="inner">
+<ul class="comment-interaction-links text-links"><li class="link commentpermalink"><a href="http://jhw.dreamwidth.org/1868.html?thread=1356#cmt1356">Link</a></li>
+<li class="link reply first-item"><a href="http://jhw.dreamwidth.org/1868.html?replyto=1356">Reply</a></li>
+<li class="link thread"><a href="http://jhw.dreamwidth.org/1868.html?thread=1356#cmt1356">Thread</a></li>
+<li class="link cmt_hide cmt_show_hide_default" style="" id="cmt1356_hide"><a href="#cmt1356">Hide 5 comments</a></li>
+<li class="link cmt_unhide" style="display: none;" id="cmt1356_unhide"><a href="http://jhw.dreamwidth.org/1868.html?thread=1356#cmt1356">Show 5 comments</a></li>
+</ul><div id="ljqrt1356" data-quickreply-container="1356" style="display: none;"></div></div>
+</div>
+</div>
+</div>
+<div class="separator separator-after"><div class="inner"></div></div>
+</div>
+</div><div class="comment-thread comment-depth-even comment-depth-2">
+<div id="cmt1612" class="dwexpcomment" style="margin-left: 25px; margin-top: 5px;">
+<div class="comment-wrapper comment-wrapper-even visible    poster-jhw entry-author full has-userpic  has-subject">
+<div class="separator separator-before"><div class="inner"></div></div>
+<div class="comment" id="comment-cmt1612">
+<div class="inner">
+<div class="header">
+<div class="inner">
+<h4 class="comment-title"><a title="Re: family == branch labels" href="http://jhw.dreamwidth.org/1868.html?thread=1612#cmt1612">Re: family == branch labels</a></h4><span class="datetime"><span class="comment-date-text">Date: </span> <span title="22 days after journal entry, 12:55 pm (jhw's time)">2011-04-20 07:55 pm (UTC)</span></span></div>
+</div>
+<div class="contents">
+<div class="inner">
+<div class="userpic"><a class="ContextualPopup-trigger" href="http://jhw.dreamwidth.org/icons"><img src="629980.dat" title="jhw: (Default) (baleful eye)" alt="jhw: baleful eye (Default)" width="100" height="98"></a></div>
+<span class="poster comment-poster"><span class="comment-from-text">From:</span> <span lj:user="jhw" style="white-space: nowrap;" class="ljuser"><a href="http://jhw.dreamwidth.org/profile"><img class="ContextualPopup-trigger" src="user.png" alt="[personal profile] " style="vertical-align: text-bottom; border: 0px none; padding-right: 1px;" width="17" height="17"></a><a href="http://jhw.dreamwidth.org/"><b>jhw</b></a></span></span>
+<div class="comment-content">Family names don't clash because each family comprises multiple lineages, or in Mercurial terms: each branch can have zero, one or many heads.  Also, good Mercurial hygiene uses MQ instead of rebasing for the purpose of staging patches prior to committing them to the persistent global history.</div></div>
+</div>
+<div class="footer">
+<div class="inner">
+<ul class="comment-interaction-links text-links"><li class="link commentpermalink"><a href="http://jhw.dreamwidth.org/1868.html?thread=1612#cmt1612">Link</a></li>
+<li class="link reply first-item"><a href="http://jhw.dreamwidth.org/1868.html?replyto=1612">Reply</a></li>
+<li class="link threadroot"><a href="http://www.dreamwidth.org/go?redir_type=threadroot&amp;journal=jhw&amp;talkid=1612">Thread from start</a></li>
+<li class="link commentparent"><a href="http://jhw.dreamwidth.org/1868.html?thread=1356#cmt1356">Parent</a></li>
+<li class="link thread"><a href="http://jhw.dreamwidth.org/1868.html?thread=1612#cmt1612">Thread</a></li>
+<li class="link cmt_hide cmt_show_hide_default" style="" id="cmt1612_hide"><a href="#cmt1612">Hide 4 comments</a></li>
+<li class="link cmt_unhide" style="display: none;" id="cmt1612_unhide"><a href="http://jhw.dreamwidth.org/1868.html?thread=1612#cmt1612">Show 4 comments</a></li>
+</ul><div id="ljqrt1612" data-quickreply-container="1612" style="display: none;"></div></div>
+</div>
+</div>
+</div>
+<div class="separator separator-after"><div class="inner"></div></div>
+</div>
+</div><div class="comment-thread comment-depth-odd comment-depth-3">
+<div id="cmt1868" class="dwexpcomment" style="margin-left: 50px; margin-top: 5px;">
+<div class="comment-wrapper comment-wrapper-odd visible    poster-ext_753161  full has-userpic  has-subject">
+<div class="separator separator-before"><div class="inner"></div></div>
+<div class="comment" id="comment-cmt1868">
+<div class="inner">
+<div class="header">
+<div class="inner">
+<h4 class="comment-title"><a title="Re: family == branch labels" href="http://jhw.dreamwidth.org/1868.html?thread=1868#cmt1868">Re: family == branch labels</a></h4><span class="datetime"><span class="comment-date-text">Date: </span> <span title="22 days after journal entry, 10:13 pm (jnareb.openid.pl's time)">2011-04-20 08:13 pm (UTC)</span></span></div>
+</div>
+<div class="contents">
+<div class="inner">
+<div class="userpic"><a class="ContextualPopup-trigger" href="http://ext-753161.dreamwidth.org/icons"><img src="869994.dat" title="ext_753161: (Default) (Photo of me from 2005 reunion)" alt="ext_753161: Photo of me from 2005 reunion (Default)" width="64" height="64"></a></div>
+<span class="poster comment-poster"><span class="comment-from-text">From:</span> <span lj:user="jnareb.openid.pl" style="white-space: nowrap;" class="ljuser"><a href="http://www.dreamwidth.org/profile?userid=869994&amp;t=I"><img class="ContextualPopup-trigger" src="openid.png" alt="[identity profile] " style="vertical-align: text-bottom; border: 0px none; padding-right: 1px;" width="16" height="16"></a><a href="http://jnareb.openid.pl/" rel="nofollow"><b>jnareb.openid.pl</b></a></span></span>
+<div class="comment-content">I'm sorry, I was not clear enough.  By "name clashes" I mean that one branch label / family name ('for-john' in john's repository from two different repositories) might contain disconnected and unrelated commits.<br><br>BTW. an equivalent to MQ in Git is not rebase / interactive rebase, but tools such as StGit or Guilt.</div></div>
+</div>
+<div class="footer">
+<div class="inner">
+<ul class="comment-interaction-links text-links"><li class="link commentpermalink"><a href="http://jhw.dreamwidth.org/1868.html?thread=1868#cmt1868">Link</a></li>
+<li class="link reply first-item"><a href="http://jhw.dreamwidth.org/1868.html?replyto=1868">Reply</a></li>
+<li class="link threadroot"><a href="http://www.dreamwidth.org/go?redir_type=threadroot&amp;journal=jhw&amp;talkid=1868">Thread from start</a></li>
+<li class="link commentparent"><a href="http://jhw.dreamwidth.org/1868.html?thread=1612#cmt1612">Parent</a></li>
+<li class="link thread"><a href="http://jhw.dreamwidth.org/1868.html?thread=1868#cmt1868">Thread</a></li>
+<li class="link cmt_hide cmt_show_hide_default" style="" id="cmt1868_hide"><a href="#cmt1868">Hide 3 comments</a></li>
+<li class="link cmt_unhide" style="display: none;" id="cmt1868_unhide"><a href="http://jhw.dreamwidth.org/1868.html?thread=1868#cmt1868">Show 3 comments</a></li>
+</ul><div id="ljqrt1868" data-quickreply-container="1868" style="display: none;"></div></div>
+</div>
+</div>
+</div>
+<div class="separator separator-after"><div class="inner"></div></div>
+</div>
+</div><div class="comment-thread comment-depth-even comment-depth-4">
+<div id="cmt2124" class="dwexpcomment" style="margin-left: 75px; margin-top: 5px;">
+<div class="comment-wrapper comment-wrapper-even visible    poster-jhw entry-author full has-userpic  has-subject">
+<div class="separator separator-before"><div class="inner"></div></div>
+<div class="comment" id="comment-cmt2124">
+<div class="inner">
+<div class="header">
+<div class="inner">
+<h4 class="comment-title"><a title="Re: family == branch labels" href="http://jhw.dreamwidth.org/1868.html?thread=2124#cmt2124">Re: family == branch labels</a></h4><span class="datetime"><span class="comment-date-text">Date: </span> <span title="22 days after journal entry, 03:01 pm (jhw's time)">2011-04-20 10:01 pm (UTC)</span></span></div>
+</div>
+<div class="contents">
+<div class="inner">
+<div class="userpic"><a class="ContextualPopup-trigger" href="http://jhw.dreamwidth.org/icons"><img src="629980.dat" title="jhw: (Default) (baleful eye)" alt="jhw: baleful eye (Default)" width="100" height="98"></a></div>
+<span class="poster comment-poster"><span class="comment-from-text">From:</span> <span lj:user="jhw" style="white-space: nowrap;" class="ljuser"><a href="http://jhw.dreamwidth.org/profile"><img class="ContextualPopup-trigger" src="user.png" alt="[personal profile] " style="vertical-align: text-bottom; border: 0px none; padding-right: 1px;" width="17" height="17"></a><a href="http://jhw.dreamwidth.org/"><b>jhw</b></a></span></span>
+<div class="comment-content">The canonical response to concerns about namespace management, in every case where names can clash, is to set a policy that encompasses the scope of the namespace.  This isn't a problem unless you try too hard to make it one.<br><br>I'll look into StGit and Guilt.  I've not heard of them before.</div></div>
+</div>
+<div class="footer">
+<div class="inner">
+<ul class="comment-interaction-links text-links"><li class="link commentpermalink"><a href="http://jhw.dreamwidth.org/1868.html?thread=2124#cmt2124">Link</a></li>
+<li class="link reply first-item"><a href="http://jhw.dreamwidth.org/1868.html?replyto=2124">Reply</a></li>
+<li class="link threadroot"><a href="http://www.dreamwidth.org/go?redir_type=threadroot&amp;journal=jhw&amp;talkid=2124">Thread from start</a></li>
+<li class="link commentparent"><a href="http://jhw.dreamwidth.org/1868.html?thread=1868#cmt1868">Parent</a></li>
+<li class="link thread"><a href="http://jhw.dreamwidth.org/1868.html?thread=2124#cmt2124">Thread</a></li>
+<li class="link cmt_hide cmt_show_hide_default" style="" id="cmt2124_hide"><a href="#cmt2124">Hide 2 comments</a></li>
+<li class="link cmt_unhide" style="display: none;" id="cmt2124_unhide"><a href="http://jhw.dreamwidth.org/1868.html?thread=2124#cmt2124">Show 2 comments</a></li>
+</ul><div id="ljqrt2124" data-quickreply-container="2124" style="display: none;"></div></div>
+</div>
+</div>
+</div>
+<div class="separator separator-after"><div class="inner"></div></div>
+</div>
+</div><div class="comment-thread comment-depth-odd comment-depth-5">
+<div id="cmt2380" class="dwexpcomment" style="margin-left: 100px; margin-top: 5px;">
+<div class="comment-wrapper comment-wrapper-odd visible    poster-ext_753161  full has-userpic  has-subject">
+<div class="separator separator-before"><div class="inner"></div></div>
+<div class="comment" id="comment-cmt2380">
+<div class="inner">
+<div class="header">
+<div class="inner">
+<h4 class="comment-title"><a title="Re: family == branch labels" href="http://jhw.dreamwidth.org/1868.html?thread=2380#cmt2380">Re: family == branch labels</a></h4><span class="datetime"><span class="comment-date-text">Date: </span> <span title="24 days after journal entry, 06:27 pm (jnareb.openid.pl's time)">2011-04-23 04:27 pm (UTC)</span></span></div>
+</div>
+<div class="contents">
+<div class="inner">
+<div class="userpic"><a class="ContextualPopup-trigger" href="http://ext-753161.dreamwidth.org/icons"><img src="869994.dat" title="ext_753161: (Default) (Photo of me from 2005 reunion)" alt="ext_753161: Photo of me from 2005 reunion (Default)" width="64" height="64"></a></div>
+<span class="poster comment-poster"><span class="comment-from-text">From:</span> <span lj:user="jnareb.openid.pl" style="white-space: nowrap;" class="ljuser"><a href="http://www.dreamwidth.org/profile?userid=869994&amp;t=I"><img class="ContextualPopup-trigger" src="openid.png" alt="[identity profile] " style="vertical-align: text-bottom; border: 0px none; padding-right: 1px;" width="16" height="16"></a><a href="http://jnareb.openid.pl/" rel="nofollow"><b>jnareb.openid.pl</b></a></span></span>
+<div class="comment-content"><b>Centralized</b> policy for a <b>distributed</b> version control system?  If I am to rely on branch naming policy, then Subversion is just as good, at least with respect to creating branches...<br><br>Besides with "named branches" / family names / branch labels you have to come with good name for a branch <i>upfront</i> (or rewrite history).  With Git I could be working e.g. on branch 'subsystem' in my private working repository, then push this branch (perhaps after rebase and cleanup) into branch 'subsystem-feature' to my public bare publishing repository.  From there maintainer can fetch it into e.g. 'jn/feature' branch in his/her repository.  Note that bookmark extension (lightweight branches) has similar problem as "named" branches: they are for some time transferrable, but to avoid difficulty with mapping branch names (Git's "refspecs") 'bookmark' branch names are <i>global</i>.<br><br>BTW for proper <i>merging</i> you should need only 3 versions: ours (current branch you are merging into), theirs (branch being merged) and ancestor (merge base), for 3-way merge.  All history, including family history, is irrelevant...</div></div>
+</div>
+<div class="footer">
+<div class="inner">
+<ul class="comment-interaction-links text-links"><li class="link commentpermalink"><a href="http://jhw.dreamwidth.org/1868.html?thread=2380#cmt2380">Link</a></li>
+<li class="link reply first-item"><a href="http://jhw.dreamwidth.org/1868.html?replyto=2380">Reply</a></li>
+<li class="link threadroot"><a href="http://www.dreamwidth.org/go?redir_type=threadroot&amp;journal=jhw&amp;talkid=2380">Thread from start</a></li>
+<li class="link commentparent"><a href="http://jhw.dreamwidth.org/1868.html?thread=2124#cmt2124">Parent</a></li>
+<li class="link thread"><a href="http://jhw.dreamwidth.org/1868.html?thread=2380#cmt2380">Thread</a></li>
+<li class="link cmt_hide cmt_show_hide_default" style="" id="cmt2380_hide"><a href="#cmt2380">Hide 1 comment</a></li>
+<li class="link cmt_unhide" style="display: none;" id="cmt2380_unhide"><a href="http://jhw.dreamwidth.org/1868.html?thread=2380#cmt2380">Show 1 comment</a></li>
+</ul><div id="ljqrt2380" data-quickreply-container="2380" style="display: none;"></div></div>
+</div>
+</div>
+</div>
+<div class="separator separator-after"><div class="inner"></div></div>
+</div>
+</div><div class="comment-thread comment-depth-even comment-depth-6">
+<div id="cmt3148" class="dwexpcomment" style="margin-left: 125px; margin-top: 5px;">
+<div class="comment-wrapper comment-wrapper-even visible    poster-jhw entry-author full has-userpic  has-subject">
+<div class="separator separator-before"><div class="inner"></div></div>
+<div class="comment" id="comment-cmt3148">
+<div class="inner">
+<div class="header">
+<div class="inner">
+<h4 class="comment-title"><a title="Re: family == branch labels" href="http://jhw.dreamwidth.org/1868.html?thread=3148#cmt3148">Re: family == branch labels</a></h4><span class="datetime"><span class="comment-date-text">Date: </span> <span title="28 days after journal entry, 01:17 pm (jhw's time)">2011-04-26 08:17 pm (UTC)</span></span></div>
+</div>
+<div class="contents">
+<div class="inner">
+<div class="userpic"><a class="ContextualPopup-trigger" href="http://jhw.dreamwidth.org/icons"><img src="629980.dat" title="jhw: (Default) (baleful eye)" alt="jhw: baleful eye (Default)" width="100" height="98"></a></div>
+<span class="poster comment-poster"><span class="comment-from-text">From:</span> <span lj:user="jhw" style="white-space: nowrap;" class="ljuser"><a href="http://jhw.dreamwidth.org/profile"><img class="ContextualPopup-trigger" src="user.png" alt="[personal profile] " style="vertical-align: text-bottom; border: 0px none; padding-right: 1px;" width="17" height="17"></a><a href="http://jhw.dreamwidth.org/"><b>jhw</b></a></span></span>
+<div class="comment-content">There is no requirement for branch naming policy to be centralized with Mercurial.  It's perfectly possible to devise a federated naming policy.  Mercurial is agnostic about the naming policy; it reserves only one name from the namespace: "default".</div></div>
+</div>
+<div class="footer">
+<div class="inner">
+<ul class="comment-interaction-links text-links"><li class="link commentpermalink"><a href="http://jhw.dreamwidth.org/1868.html?thread=3148#cmt3148">Link</a></li>
+<li class="link reply first-item"><a href="http://jhw.dreamwidth.org/1868.html?replyto=3148">Reply</a></li>
+<li class="link threadroot"><a href="http://www.dreamwidth.org/go?redir_type=threadroot&amp;journal=jhw&amp;talkid=3148">Thread from start</a></li>
+<li class="link commentparent"><a href="http://jhw.dreamwidth.org/1868.html?thread=2380#cmt2380">Parent</a></li>
+</ul><div id="ljqrt3148" data-quickreply-container="3148" style="display: none;"></div></div>
+</div>
+</div>
+</div>
+<div class="separator separator-after"><div class="inner"></div></div>
+</div>
+</div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="comment-thread comment-depth-odd comment-depth-1">
+<div id="cmt2636" class="dwexpcomment" style="margin-left: 0px; margin-top: 5px;">
+<div class="comment-wrapper comment-wrapper-odd visible    poster-ext_764303  full no-userpic  has-subject">
+<div class="separator separator-before"><div class="inner"></div></div>
+<div class="comment" id="comment-cmt2636">
+<div class="inner">
+<div class="header">
+<div class="inner">
+<h4 class="comment-title"><a title="Deal-braker: Mercurial can't store empty directories" href="http://jhw.dreamwidth.org/1868.html?thread=2636#cmt2636">Deal-braker: Mercurial can't store empty directories</a></h4><span class="datetime"><span class="comment-date-text">Date: </span> <span title="27 days after journal entry">2011-04-26 06:14 pm (UTC)</span></span></div>
+</div>
+<div class="contents">
+<div class="inner">
+<div class="userpic"></div>
+<span class="poster comment-poster"><span class="comment-from-text">From:</span> <span lj:user="trsdomain.dk" style="white-space: nowrap;" class="ljuser"><a href="http://www.dreamwidth.org/profile?userid=882214&amp;t=I"><img class="ContextualPopup-trigger" src="openid.png" alt="[identity profile] " style="vertical-align: text-bottom; border: 0px none; padding-right: 1px;" width="16" height="16"></a><a href="http://trsdomain.dk/" rel="nofollow"><b>trsdomain.dk</b></a></span></span>
+<div class="comment-content">Having never tried a distributed source control system I decided to try out Mercurial after reading this article. I was fairly disappointed when I found out it is not able to store an empty directory... I know there are a lot of workarounds:<br><br>- Adding the creation of the dirs to build script: <br>  Brittle - someone will rewrite the script and forget it or deploy the project without the build script.<br><br>- Creating dummy files in the directory: <br>  Yikes !<br><br>- Ensuring the code creates the dirs at runtime:<br>  Doable, but having to change code, and make coworkers do it as well is not cool<br><br>The bottom line is that I should be able to take an existing project and import it to Mercurial. No "buts", "ifs" or excuses. I'm sticking to subversion for the time being (although it is not perfect either).</div></div>
+</div>
+<div class="footer">
+<div class="inner">
+<ul class="comment-interaction-links text-links"><li class="link commentpermalink"><a href="http://jhw.dreamwidth.org/1868.html?thread=2636#cmt2636">Link</a></li>
+<li class="link reply first-item"><a href="http://jhw.dreamwidth.org/1868.html?replyto=2636">Reply</a></li>
+<li class="link thread"><a href="http://jhw.dreamwidth.org/1868.html?thread=2636#cmt2636">Thread</a></li>
+<li class="link cmt_hide cmt_show_hide_default" style="" id="cmt2636_hide"><a href="#cmt2636">Hide 2 comments</a></li>
+<li class="link cmt_unhide" style="display: none;" id="cmt2636_unhide"><a href="http://jhw.dreamwidth.org/1868.html?thread=2636#cmt2636">Show 2 comments</a></li>
+</ul><div id="ljqrt2636" data-quickreply-container="2636" style="display: none;"></div></div>
+</div>
+</div>
+</div>
+<div class="separator separator-after"><div class="inner"></div></div>
+</div>
+</div><div class="comment-thread comment-depth-even comment-depth-2">
+<div id="cmt2892" class="dwexpcomment" style="margin-left: 25px; margin-top: 5px;">
+<div class="comment-wrapper comment-wrapper-even visible    poster-jhw entry-author full has-userpic  has-subject">
+<div class="separator separator-before"><div class="inner"></div></div>
+<div class="comment" id="comment-cmt2892">
+<div class="inner">
+<div class="header">
+<div class="inner">
+<h4 class="comment-title"><a title="Re: Deal-braker: Mercurial can't store empty directories" href="http://jhw.dreamwidth.org/1868.html?thread=2892#cmt2892">Re: Deal-braker: Mercurial can't store empty directories</a></h4><span class="datetime"><span class="comment-date-text">Date: </span> <span title="28 days after journal entry, 01:14 pm (jhw's time)">2011-04-26 08:14 pm (UTC)</span></span></div>
+</div>
+<div class="contents">
+<div class="inner">
+<div class="userpic"><a class="ContextualPopup-trigger" href="http://jhw.dreamwidth.org/icons"><img src="629980.dat" title="jhw: (Default) (baleful eye)" alt="jhw: baleful eye (Default)" width="100" height="98"></a></div>
+<span class="poster comment-poster"><span class="comment-from-text">From:</span> <span lj:user="jhw" style="white-space: nowrap;" class="ljuser"><a href="http://jhw.dreamwidth.org/profile"><img class="ContextualPopup-trigger" src="user.png" alt="[personal profile] " style="vertical-align: text-bottom; border: 0px none; padding-right: 1px;" width="17" height="17"></a><a href="http://jhw.dreamwidth.org/"><b>jhw</b></a></span></span>
+<div class="comment-content">Sure.  I'll admit that others may have different concerns, all perfectly legitimate.  I can live without empty directories in exchange for all the other benefits, but I can see how others might weigh their concerns differently.</div></div>
+</div>
+<div class="footer">
+<div class="inner">
+<ul class="comment-interaction-links text-links"><li class="link commentpermalink"><a href="http://jhw.dreamwidth.org/1868.html?thread=2892#cmt2892">Link</a></li>
+<li class="link reply first-item"><a href="http://jhw.dreamwidth.org/1868.html?replyto=2892">Reply</a></li>
+<li class="link threadroot"><a href="http://www.dreamwidth.org/go?redir_type=threadroot&amp;journal=jhw&amp;talkid=2892">Thread from start</a></li>
+<li class="link commentparent"><a href="http://jhw.dreamwidth.org/1868.html?thread=2636#cmt2636">Parent</a></li>
+</ul><div id="ljqrt2892" data-quickreply-container="2892" style="display: none;"></div></div>
+</div>
+</div>
+</div>
+<div class="separator separator-after"><div class="inner"></div></div>
+</div>
+</div></div>
+<div class="comment-thread comment-depth-even comment-depth-2">
+<div id="cmt17484" class="dwexpcomment" style="margin-left: 25px; margin-top: 5px;">
+<div class="comment-wrapper comment-wrapper-odd visible    poster-redpill39  full no-userpic  has-subject">
+<div class="separator separator-before"><div class="inner"></div></div>
+<div class="comment" id="comment-cmt17484">
+<div class="inner">
+<div class="header">
+<div class="inner">
+<h4 class="comment-title"><a title="Re: INVALID: Deal-braker: Mercurial can't store empty directories" href="http://jhw.dreamwidth.org/1868.html?thread=17484#cmt17484">Re: INVALID: Deal-braker: Mercurial can't store empty directories</a></h4><span class="datetime"><span class="comment-date-text">Date: </span> <span title="1819 days after journal entry">2016-03-22 12:37 pm (UTC)</span></span></div>
+</div>
+<div class="contents">
+<div class="inner">
+<div class="userpic"></div>
+<span class="poster comment-poster"><span class="comment-from-text">From:</span> <span lj:user="redpill39" style="white-space: nowrap;" class="ljuser"><a href="http://redpill39.dreamwidth.org/profile"><img class="ContextualPopup-trigger" src="user.png" alt="[personal profile] " style="vertical-align: text-bottom; border: 0px none; padding-right: 1px;" width="17" height="17"></a><a href="http://redpill39.dreamwidth.org/"><b>redpill39</b></a></span></span>
+<div class="comment-content">This post was about **git versus mercurial**, not subversion versus mercurial.<br><br>There is NO(!) difference for empty directory handling between git and merc. <br><br>PS: Opinionated view follows:<br>I'm returning to this page after 4 years, was checking arguments for both, having gotten angry about the inconsistencies of git, which we were using back then solely.<br>I must admit that I did not really fully understand the author's argument - but went to mercurial for our PaaS offering with my team simply for merc's clear benefits on the command line, while other teams in the company continued to use git.<br>After years with both and many k commits later, I'm now 100% sharing the author's argument: the problems in our companies git repos really accumulated over time, their histories are often a mess.<br>We never looked back: Mercurial is 100% perfectly designed ready to use application for the purpose, while git remains to feel to me like a platform, with no clear governance/vision/leadership governing the design decisions. Mercurial is being handled even by operations at our customers in CI setups, unthinkable with git.<br></div></div>
+</div>
+<div class="footer">
+<div class="inner">
+<ul class="comment-interaction-links text-links"><li class="link commentpermalink"><a href="http://jhw.dreamwidth.org/1868.html?thread=17484#cmt17484">Link</a></li>
+<li class="link reply first-item"><a href="http://jhw.dreamwidth.org/1868.html?replyto=17484">Reply</a></li>
+<li class="link threadroot"><a href="http://www.dreamwidth.org/go?redir_type=threadroot&amp;journal=jhw&amp;talkid=17484">Thread from start</a></li>
+<li class="link commentparent"><a href="http://jhw.dreamwidth.org/1868.html?thread=2636#cmt2636">Parent</a></li>
+</ul><div id="ljqrt17484" data-quickreply-container="17484" style="display: none;"></div></div>
+</div>
+</div>
+</div>
+<div class="separator separator-after"><div class="inner"></div></div>
+</div>
+</div></div>
+</div>
+<div class="comment-thread comment-depth-odd comment-depth-1">
+<div id="cmt5452" class="dwexpcomment" style="margin-left: 0px; margin-top: 5px;">
+<div class="comment-wrapper comment-wrapper-even visible    poster-ext_793239  full no-userpic  has-subject">
+<div class="separator separator-before"><div class="inner"></div></div>
+<div class="comment" id="comment-cmt5452">
+<div class="inner">
+<div class="header">
+<div class="inner">
+<h4 class="comment-title"><a title="Git &amp; rebase" href="http://jhw.dreamwidth.org/1868.html?thread=5452#cmt5452">Git &amp; rebase</a></h4><span class="datetime"><span class="comment-date-text">Date: </span> <span title="83 days after journal entry">2011-06-21 02:36 pm (UTC)</span></span></div>
+</div>
+<div class="contents">
+<div class="inner">
+<div class="userpic"></div>
+<span class="poster comment-poster"><span class="comment-from-text">From:</span> <span lj:user="https://www.google.com/accounts/o8/id?id=AItOawllJaD1TSNJZdyl6vgYfQTMEg16W_l4gSo" style="white-space: nowrap;" class="ljuser"><a href="http://www.dreamwidth.org/profile?userid=916086&amp;t=I"><img class="ContextualPopup-trigger" src="openid.png" alt="[identity profile] " style="vertical-align: text-bottom; border: 0px none; padding-right: 1px;" width="16" height="16"></a><a href="https://www.google.com/accounts/o8/id?id=AItOawllJaD1TSNJZdyl6vgYfQTMEg16W_l4gSo" rel="nofollow"><b>https://www.google.com/accounts/o8/id?id=AItOawllJaD1TSNJZdyl6vgYfQTMEg16W_l4gSo</b></a></span></span>
+<div class="comment-content">I'm no expert in either system, but it's fair to point out that rebase is not a requirement in git.  It's there if you want it, but under normal circumstances you're certainly not required to use it.  If you don't rebase or merge with no-ff commits, you'll preserve a lot more history.  The question is, at the end of the day, will that history be useful and do you want to see it?  Your choice.</div></div>
+</div>
+<div class="footer">
+<div class="inner">
+<ul class="comment-interaction-links text-links"><li class="link commentpermalink"><a href="http://jhw.dreamwidth.org/1868.html?thread=5452#cmt5452">Link</a></li>
+<li class="link reply first-item"><a href="http://jhw.dreamwidth.org/1868.html?replyto=5452">Reply</a></li>
+<li class="link thread"><a href="http://jhw.dreamwidth.org/1868.html?thread=5452#cmt5452">Thread</a></li>
+<li class="link cmt_hide cmt_show_hide_default" style="" id="cmt5452_hide"><a href="#cmt5452">Hide 12 comments</a></li>
+<li class="link cmt_unhide" style="display: none;" id="cmt5452_unhide"><a href="http://jhw.dreamwidth.org/1868.html?thread=5452#cmt5452">Show 12 comments</a></li>
+</ul><div id="ljqrt5452" data-quickreply-container="5452" style="display: none;"></div></div>
+</div>
+</div>
+</div>
+<div class="separator separator-after"><div class="inner"></div></div>
+</div>
+</div><div class="comment-thread comment-depth-even comment-depth-2">
+<div id="cmt5708" class="dwexpcomment" style="margin-left: 25px; margin-top: 5px;">
+<div class="comment-wrapper comment-wrapper-odd visible    poster-jhw entry-author full has-userpic  has-subject">
+<div class="separator separator-before"><div class="inner"></div></div>
+<div class="comment" id="comment-cmt5708">
+<div class="inner">
+<div class="header">
+<div class="inner">
+<h4 class="comment-title"><a title="Re: Git &amp; rebase" href="http://jhw.dreamwidth.org/1868.html?thread=5708#cmt5708">Re: Git &amp; rebase</a></h4><span class="datetime"><span class="comment-date-text">Date: </span> <span title="83 days after journal entry, 10:55 am (jhw's time)">2011-06-21 05:55 pm (UTC)</span></span></div>
+</div>
+<div class="contents">
+<div class="inner">
+<div class="userpic"><a class="ContextualPopup-trigger" href="http://jhw.dreamwidth.org/icons"><img src="629980.dat" title="jhw: (Default) (baleful eye)" alt="jhw: baleful eye (Default)" width="100" height="98"></a></div>
+<span class="poster comment-poster"><span class="comment-from-text">From:</span> <span lj:user="jhw" style="white-space: nowrap;" class="ljuser"><a href="http://jhw.dreamwidth.org/profile"><img class="ContextualPopup-trigger" src="user.png" alt="[personal profile] " style="vertical-align: text-bottom; border: 0px none; padding-right: 1px;" width="17" height="17"></a><a href="http://jhw.dreamwidth.org/"><b>jhw</b></a></span></span>
+<div class="comment-content">Yeah, it's not like Git <i>requires</i> you use 'rebase' to get anything done, but I've seen multiple working groups adopt policies that make using it mandatory, i.e. you do not get your code pulled onto the upstream master branch unless it's a fast-forward.  They've made the choice to elide a whole bunch of history that isn't terribly useful, because it's incomplete due to the deficiencies in Git that I'm writing about in this article.  This requires a complicated workflow with Git that experience shows me novices find terribly frustrating to learn, whereas if they had simply chosen Mercurial instead of Git, the simple workflow would have sufficed, novices would not be as frustrated by the version control system, and the history that Git users can't figure out how to use would be available under Mercurial and useful because it is complete.<br><br>Git could be improved.  I'm sad that it won't be.</div></div>
+</div>
+<div class="footer">
+<div class="inner">
+<ul class="comment-interaction-links text-links"><li class="link commentpermalink"><a href="http://jhw.dreamwidth.org/1868.html?thread=5708#cmt5708">Link</a></li>
+<li class="link reply first-item"><a href="http://jhw.dreamwidth.org/1868.html?replyto=5708">Reply</a></li>
+<li class="link threadroot"><a href="http://www.dreamwidth.org/go?redir_type=threadroot&amp;journal=jhw&amp;talkid=5708">Thread from start</a></li>
+<li class="link commentparent"><a href="http://jhw.dreamwidth.org/1868.html?thread=5452#cmt5452">Parent</a></li>
+<li class="link thread"><a href="http://jhw.dreamwidth.org/1868.html?thread=5708#cmt5708">Thread</a></li>
+<li class="link cmt_hide cmt_show_hide_default" style="" id="cmt5708_hide"><a href="#cmt5708">Hide 11 comments</a></li>
+<li class="link cmt_unhide" style="display: none;" id="cmt5708_unhide"><a href="http://jhw.dreamwidth.org/1868.html?thread=5708#cmt5708">Show 11 comments</a></li>
+</ul><div id="ljqrt5708" data-quickreply-container="5708" style="display: none;"></div></div>
+</div>
+</div>
+</div>
+<div class="separator separator-after"><div class="inner"></div></div>
+</div>
+</div><div class="comment-thread comment-depth-odd comment-depth-3">
+<div id="cmt5964" class="dwexpcomment" style="margin-left: 50px; margin-top: 5px;">
+<div class="comment-wrapper comment-wrapper-even visible    poster-ext_793239  full no-userpic  has-subject">
+<div class="separator separator-before"><div class="inner"></div></div>
+<div class="comment" id="comment-cmt5964">
+<div class="inner">
+<div class="header">
+<div class="inner">
+<h4 class="comment-title"><a title="Re: Git &amp; rebase" href="http://jhw.dreamwidth.org/1868.html?thread=5964#cmt5964">Re: Git &amp; rebase</a></h4><span class="datetime"><span class="comment-date-text">Date: </span> <span title="83 days after journal entry">2011-06-21 06:16 pm (UTC)</span></span></div>
+</div>
+<div class="contents">
+<div class="inner">
+<div class="userpic"></div>
+<span class="poster comment-poster"><span class="comment-from-text">From:</span> <span lj:user="https://www.google.com/accounts/o8/id?id=AItOawllJaD1TSNJZdyl6vgYfQTMEg16W_l4gSo" style="white-space: nowrap;" class="ljuser"><a href="http://www.dreamwidth.org/profile?userid=916086&amp;t=I"><img class="ContextualPopup-trigger" src="openid.png" alt="[identity profile] " style="vertical-align: text-bottom; border: 0px none; padding-right: 1px;" width="16" height="16"></a><a href="https://www.google.com/accounts/o8/id?id=AItOawllJaD1TSNJZdyl6vgYfQTMEg16W_l4gSo" rel="nofollow"><b>https://www.google.com/accounts/o8/id?id=AItOawllJaD1TSNJZdyl6vgYfQTMEg16W_l4gSo</b></a></span></span>
+<div class="comment-content">The assertion that git won't be improved is silly.  Git has undergone tremendous improvement to get to where it is today.  So has Mercurial.<br><br>I'm sure there are people who can argue why Mercurial's way of doing it is bad or the choices available in git are better.  Unfortunately, that's not me.  <br><br>The question that hopefully will come out of this discussion is, why do others not see this as such a glaring omission that it needs to be fixed immediately?</div></div>
+</div>
+<div class="footer">
+<div class="inner">
+<ul class="comment-interaction-links text-links"><li class="link commentpermalink"><a href="http://jhw.dreamwidth.org/1868.html?thread=5964#cmt5964">Link</a></li>
+<li class="link reply first-item"><a href="http://jhw.dreamwidth.org/1868.html?replyto=5964">Reply</a></li>
+<li class="link threadroot"><a href="http://www.dreamwidth.org/go?redir_type=threadroot&amp;journal=jhw&amp;talkid=5964">Thread from start</a></li>
+<li class="link commentparent"><a href="http://jhw.dreamwidth.org/1868.html?thread=5708#cmt5708">Parent</a></li>
+<li class="link thread"><a href="http://jhw.dreamwidth.org/1868.html?thread=5964#cmt5964">Thread</a></li>
+<li class="link cmt_hide cmt_show_hide_default" style="" id="cmt5964_hide"><a href="#cmt5964">Hide 7 comments</a></li>
+<li class="link cmt_unhide" style="display: none;" id="cmt5964_unhide"><a href="http://jhw.dreamwidth.org/1868.html?thread=5964#cmt5964">Show 7 comments</a></li>
+</ul><div id="ljqrt5964" data-quickreply-container="5964" style="display: none;"></div></div>
+</div>
+</div>
+</div>
+<div class="separator separator-after"><div class="inner"></div></div>
+</div>
+</div><div class="comment-thread comment-depth-even comment-depth-4">
+<div id="cmt6220" class="dwexpcomment" style="margin-left: 75px; margin-top: 5px;">
+<div class="comment-wrapper comment-wrapper-odd visible    poster-jhw entry-author full has-userpic  has-subject">
+<div class="separator separator-before"><div class="inner"></div></div>
+<div class="comment" id="comment-cmt6220">
+<div class="inner">
+<div class="header">
+<div class="inner">
+<h4 class="comment-title"><a title="Re: Git &amp; rebase" href="http://jhw.dreamwidth.org/1868.html?thread=6220#cmt6220">Re: Git &amp; rebase</a></h4><span class="datetime"><span class="comment-date-text">Date: </span> <span title="83 days after journal entry, 11:25 am (jhw's time)">2011-06-21 06:25 pm (UTC)</span></span></div>
+</div>
+<div class="contents">
+<div class="inner">
+<div class="userpic"><a class="ContextualPopup-trigger" href="http://jhw.dreamwidth.org/icons"><img src="629980.dat" title="jhw: (Default) (baleful eye)" alt="jhw: baleful eye (Default)" width="100" height="98"></a></div>
+<span class="poster comment-poster"><span class="comment-from-text">From:</span> <span lj:user="jhw" style="white-space: nowrap;" class="ljuser"><a href="http://jhw.dreamwidth.org/profile"><img class="ContextualPopup-trigger" src="user.png" alt="[personal profile] " style="vertical-align: text-bottom; border: 0px none; padding-right: 1px;" width="17" height="17"></a><a href="http://jhw.dreamwidth.org/"><b>jhw</b></a></span></span>
+<div class="comment-content">I assert that Git won't be improved to address the problem I'm writing about because the core developers do not perceive the issue to be a problem.<br><br>If they were at all concerned about the cognitive burden of their human interface, then Git would have a completely different command set.  In fact, for too many of those core developers, the fact that Git has a high cognitive burden and requires its users to master a lot of arcane knowledge even to do ordinary things is a <i>feature</i>.<br><br>Sure, I suppose some of them might eventually feel moved to construct a coherent argument for why Mercurial's way of recording named lineages is an actively bad idea.  More likely, however, they will be satisfied with achieving the comparatively easier objective of satisfying themselves that it isn't a good enough idea for them to care about it.  They have a system, and it works for them, so long as you obey all its fiddly rules and secret handshakes.  Problem solved.</div></div>
+</div>
+<div class="footer">
+<div class="inner">
+<ul class="comment-interaction-links text-links"><li class="link commentpermalink"><a href="http://jhw.dreamwidth.org/1868.html?thread=6220#cmt6220">Link</a></li>
+<li class="link reply first-item"><a href="http://jhw.dreamwidth.org/1868.html?replyto=6220">Reply</a></li>
+<li class="link threadroot"><a href="http://www.dreamwidth.org/go?redir_type=threadroot&amp;journal=jhw&amp;talkid=6220">Thread from start</a></li>
+<li class="link commentparent"><a href="http://jhw.dreamwidth.org/1868.html?thread=5964#cmt5964">Parent</a></li>
+<li class="link thread"><a href="http://jhw.dreamwidth.org/1868.html?thread=6220#cmt6220">Thread</a></li>
+<li class="link cmt_hide cmt_show_hide_default" style="" id="cmt6220_hide"><a href="#cmt6220">Hide 6 comments</a></li>
+<li class="link cmt_unhide" style="display: none;" id="cmt6220_unhide"><a href="http://jhw.dreamwidth.org/1868.html?thread=6220#cmt6220">Show 6 comments</a></li>
+</ul><div id="ljqrt6220" data-quickreply-container="6220" style="display: none;"></div></div>
+</div>
+</div>
+</div>
+<div class="separator separator-after"><div class="inner"></div></div>
+</div>
+</div><div class="comment-thread comment-depth-odd comment-depth-5">
+<div id="cmt6476" class="dwexpcomment" style="margin-left: 100px; margin-top: 5px;">
+<div class="comment-wrapper comment-wrapper-even visible    poster-ext_795158  full no-userpic  has-subject">
+<div class="separator separator-before"><div class="inner"></div></div>
+<div class="comment" id="comment-cmt6476">
+<div class="inner">
+<div class="header">
+<div class="inner">
+<h4 class="comment-title"><a title="Re: Git &amp; rebase" href="http://jhw.dreamwidth.org/1868.html?thread=6476#cmt6476">Re: Git &amp; rebase</a></h4><span class="datetime"><span class="comment-date-text">Date: </span> <span title="91 days after journal entry">2011-06-29 05:02 am (UTC)</span></span></div>
+</div>
+<div class="contents">
+<div class="inner">
+<div class="userpic"></div>
+<span class="poster comment-poster"><span class="comment-from-text">From:</span> <span lj:user="https://www.google.com/accounts/o8/id?id=AItOawni8VvVcImNktTYFWQtJyNBBRCkrrQdIdY" style="white-space: nowrap;" class="ljuser"><a href="http://www.dreamwidth.org/profile?userid=918598&amp;t=I"><img class="ContextualPopup-trigger" src="openid.png" alt="[identity profile] " style="vertical-align: text-bottom; border: 0px none; padding-right: 1px;" width="16" height="16"></a><a href="https://www.google.com/accounts/o8/id?id=AItOawni8VvVcImNktTYFWQtJyNBBRCkrrQdIdY" rel="nofollow"><b>https://www.google.com/accounts/o8/id?id=AItOawni8VvVcImNktTYFWQtJyNBBRCkrrQdIdY</b></a></span></span>
+<div class="comment-content">I feel like this post is from someone who was using git back in the early days, when you had to do a lot of plumbing commands yourself.  Today's Git has a very similar command set for the average user's needs.  The free book Pro Git gives you enough information in a single chapter to use Git very well day to day (chapter 2, if you're wondering).  I feel like it's very straightforward and quite polished under most circumstances, but has power if you want to delve a little deeper.  I submit that anyone who wants to compare Git to Mercurial, or point out any fault of Git, needs to have read that book from cover to cover.<br><br>Anyway, going back to what you call the single greatest failing of Git, which is not recording branch information on the commits themselves.  I don't want branch information recorded.  I may make a temporary branch named something ridiculous or uninformative (and I'm speaking of lightweight branches, or Mercurial's bookmark extension), implement a feature, and decide that it's worth keeping.  I then merge this feature into a more "mainstream" branch (or rebase, if that's how I want to work -- both workflows are valid).  I don't want my old temporary branch name to stick to those commits.  It's unhelpful information.  However, giving this temporary branch an important or mainstream name is not ideal, because I may not want to merge the contents of that branch into the mainstream workflow, and then those commits are floating around with seemingly important labels, when they're garbage.<br><br>I'm rambling, so here's the point -- I don't see the importance of knowing under which branch a certain commit was developed.  That's useless information, in my opinion.  Rather, I want to know what a single commit does.  (Which should be documented in a well-written commit message)  Assuming everyone is writing good commit messages, then it doesn't matter under which branch some code was written -- what matters is the code itself.<br><br>Now, I have to end with a confession:  I don't know mercurial very well.  Every time I try to pick it up, I miss my integrated lightweight branching.  (I don't want to use an extension -- it's the most important part of my workflow, and what makes Git so awesome in my opinion, its branching model)  Every time I hear someone mention heavy branching (cloning into a new directory), I shudder, thinking of the SVN branching model.  I admit, though, I need to learn more about Mercurial and really try it.<br><br>But I will say this:  the author has stated that he has worked on projects using both Mercurial and Git; I submit that the author has not learned to properly use a Git workflow, based on what I've read here.  Please go read Pro Git (http://progit.org/book/) from cover to cover.  It's not very long, and really explains a Git workflow and the power of the Git branching model.  After reading this book, I submit that no one could point at Git and call it arcane or a cognitive burden -- it's progressed a lot in the last few years.  If, at that point, you still miss your Mercurial branches (er, families, I guess), then by all means use Mercurial.  But I love Git, and just want people to realize that it's easy to use when you have the right resources to learn from, and just encourages a different workflow from Mercurial.</div></div>
+</div>
+<div class="footer">
+<div class="inner">
+<ul class="comment-interaction-links text-links"><li class="link commentpermalink"><a href="http://jhw.dreamwidth.org/1868.html?thread=6476#cmt6476">Link</a></li>
+<li class="link reply first-item"><a href="http://jhw.dreamwidth.org/1868.html?replyto=6476">Reply</a></li>
+<li class="link threadroot"><a href="http://www.dreamwidth.org/go?redir_type=threadroot&amp;journal=jhw&amp;talkid=6476">Thread from start</a></li>
+<li class="link commentparent"><a href="http://jhw.dreamwidth.org/1868.html?thread=6220#cmt6220">Parent</a></li>
+<li class="link thread"><a href="http://jhw.dreamwidth.org/1868.html?thread=6476#cmt6476">Thread</a></li>
+<li class="link cmt_hide cmt_show_hide_default" style="" id="cmt6476_hide"><a href="#cmt6476">Hide 4 comments</a></li>
+<li class="link cmt_unhide" style="display: none;" id="cmt6476_unhide"><a href="http://jhw.dreamwidth.org/1868.html?thread=6476#cmt6476">Show 4 comments</a></li>
+</ul><div id="ljqrt6476" data-quickreply-container="6476" style="display: none;"></div></div>
+</div>
+</div>
+</div>
+<div class="separator separator-after"><div class="inner"></div></div>
+</div>
+</div><div class="comment-thread comment-depth-even comment-depth-6">
+<div id="cmt6732" class="dwexpcomment" style="margin-left: 125px; margin-top: 5px;">
+<div class="comment-wrapper comment-wrapper-odd visible    poster-jhw entry-author full has-userpic  has-subject">
+<div class="separator separator-before"><div class="inner"></div></div>
+<div class="comment" id="comment-cmt6732">
+<div class="inner">
+<div class="header">
+<div class="inner">
+<h4 class="comment-title"><a title="Re: Git &amp; rebase" href="http://jhw.dreamwidth.org/1868.html?thread=6732#cmt6732">Re: Git &amp; rebase</a></h4><span class="datetime"><span class="comment-date-text">Date: </span> <span title="91 days after journal entry, 2011-06-28 10:55 pm (jhw's time)">2011-06-29 05:55 am (UTC)</span></span></div>
+</div>
+<div class="contents">
+<div class="inner">
+<div class="userpic"><a class="ContextualPopup-trigger" href="http://jhw.dreamwidth.org/icons"><img src="629980.dat" title="jhw: (Default) (baleful eye)" alt="jhw: baleful eye (Default)" width="100" height="98"></a></div>
+<span class="poster comment-poster"><span class="comment-from-text">From:</span> <span lj:user="jhw" style="white-space: nowrap;" class="ljuser"><a href="http://jhw.dreamwidth.org/profile"><img class="ContextualPopup-trigger" src="user.png" alt="[personal profile] " style="vertical-align: text-bottom; border: 0px none; padding-right: 1px;" width="17" height="17"></a><a href="http://jhw.dreamwidth.org/"><b>jhw</b></a></span></span>
+<div class="comment-content">&gt; I feel like this post is from someone who was using git back in the early days...<br><br>I currently use both Git and Subversion on a daily basis in a large, well-respected software organization with a source code base that numbers into the hundreds of millions of lines of code with a history going back at least thirty years in the case of the main body of code in my principle area of responsibility.  The sun never sets on the data centers where these repositories and their mirrors are hosted.  I'm not in a position to argue with a whole building full of people who insist on using "the wrong workflow" with Git, whatever that happens to be from your point of view.<br><br>I routinely use Mercurial as front-end to both of Git and Subversion, because I'm willing to pay for a bit of added round-trip time when pushing to and pulling from the integration repositories in exchange for a simplified workflow in my day-to-day development work.  This makes me acutely aware of the shortcomings in both Git and Subversion, which are different&nbsp;in each case, worse in the case of Subversion to be sure, but Git has at least one serious flaw as well, as I write above.<br><br>&gt; I miss my integrated lightweight branching. (I don't want to use an extension...<br><br>It's not an extension in Mercurial.  Bookmarks are a core feature of the tool, present without you even having to add a single line to your .hgrc file or install anything separately.  Moreover, you can even dispense with bookmarks and work with anonymous heads if you're really pressed for time.<br><br>Look, I wasn't kidding when I said that you can do a round-trip conversion of a Git repository into and back out of Mercurial without losing any data.  There's even a way to do that in the other direction as long as the Git commit logs adhere to the convention required my Mercurial for storing the branch name.<br><br>I've read the Pro Git book.  It doesn't tell me anything I don't already know.  High on the list of what I want it to tell me, which it doesn't say a damned thing about, is why on Carlin's Green Earth there should be any good reason to use the receive.denyNonFastForwards setting on the server.</div></div>
+</div>
+<div class="footer">
+<div class="inner">
+<ul class="comment-interaction-links text-links"><li class="link commentpermalink"><a href="http://jhw.dreamwidth.org/1868.html?thread=6732#cmt6732">Link</a></li>
+<li class="link reply first-item"><a href="http://jhw.dreamwidth.org/1868.html?replyto=6732">Reply</a></li>
+<li class="link threadroot"><a href="http://www.dreamwidth.org/go?redir_type=threadroot&amp;journal=jhw&amp;talkid=6732">Thread from start</a></li>
+<li class="link commentparent"><a href="http://jhw.dreamwidth.org/1868.html?thread=6476#cmt6476">Parent</a></li>
+<li class="link thread"><a href="http://jhw.dreamwidth.org/1868.html?thread=6732#cmt6732">Thread</a></li>
+<li class="link cmt_hide cmt_show_hide_default" style="" id="cmt6732_hide"><a href="#cmt6732">Hide 2 comments</a></li>
+<li class="link cmt_unhide" style="display: none;" id="cmt6732_unhide"><a href="http://jhw.dreamwidth.org/1868.html?thread=6732#cmt6732">Show 2 comments</a></li>
+</ul><div id="ljqrt6732" data-quickreply-container="6732" style="display: none;"></div></div>
+</div>
+</div>
+</div>
+<div class="separator separator-after"><div class="inner"></div></div>
+</div>
+</div><div class="comment-thread comment-depth-odd comment-depth-7">
+<div id="cmt14412" class="dwexpcomment" style="margin-left: 150px; margin-top: 5px;">
+<div class="comment-wrapper comment-wrapper-even visible    poster-ext_1572584  full no-userpic  has-subject">
+<div class="separator separator-before"><div class="inner"></div></div>
+<div class="comment" id="comment-cmt14412">
+<div class="inner">
+<div class="header">
+<div class="inner">
+<h4 class="comment-title"><a title="Re: Git &amp; rebase" href="http://jhw.dreamwidth.org/1868.html?thread=14412#cmt14412">Re: Git &amp; rebase</a></h4><span class="datetime"><span class="comment-date-text">Date: </span> <span title="702 days after journal entry">2013-02-28 10:37 pm (UTC)</span></span></div>
+</div>
+<div class="contents">
+<div class="inner">
+<div class="userpic"></div>
+<span class="poster comment-poster"><span class="comment-from-text">From:</span> <span lj:user="https://www.google.com/accounts/o8/id?id=AItOawmzwP5jmwisow1kYx9X2bSQvYUy-HqA3j0" style="white-space: nowrap;" class="ljuser"><a href="http://www.dreamwidth.org/profile?userid=1976081&amp;t=I"><img class="ContextualPopup-trigger" src="openid.png" alt="[identity profile] " style="vertical-align: text-bottom; border: 0px none; padding-right: 1px;" width="16" height="16"></a><a href="https://www.google.com/accounts/o8/id?id=AItOawmzwP5jmwisow1kYx9X2bSQvYUy-HqA3j0" rel="nofollow"><b>https://www.google.com/accounts/o8/id?id=AItOawmzwP5jmwisow1kYx9X2bSQvYUy-HqA3j0</b></a></span></span>
+<div class="comment-content">First of all, I'm biased towards git. Second of all, this is a late reply, so you might already know. Just for consistency about this.<br>You wonder why you want to set receive.denyNonFastForwards on the server.<br>I wonder why this is not the default.<br>The point is, this flag is set on the server to ensure the server will not _lose_ history.<br>It is not telling the client it should rebase upon the upstream the changes. It tells the client to not push a ref which does not have the upstream ref as a parent. Think about the last sentence for a while.<br>The client might however have this upstream ref in a random 'lineage', so it could just have merged it, or rebased upon it. It must however have pulled it in somehow. You cannot push before you pulled it with this flag set.</div></div>
+</div>
+<div class="footer">
+<div class="inner">
+<ul class="comment-interaction-links text-links"><li class="link commentpermalink"><a href="http://jhw.dreamwidth.org/1868.html?thread=14412#cmt14412">Link</a></li>
+<li class="link reply first-item"><a href="http://jhw.dreamwidth.org/1868.html?replyto=14412">Reply</a></li>
+<li class="link threadroot"><a href="http://www.dreamwidth.org/go?redir_type=threadroot&amp;journal=jhw&amp;talkid=14412">Thread from start</a></li>
+<li class="link commentparent"><a href="http://jhw.dreamwidth.org/1868.html?thread=6732#cmt6732">Parent</a></li>
+</ul><div id="ljqrt14412" data-quickreply-container="14412" style="display: none;"></div></div>
+</div>
+</div>
+</div>
+<div class="separator separator-after"><div class="inner"></div></div>
+</div>
+</div></div>
+<div class="comment-thread comment-depth-odd comment-depth-7">
+<div id="cmt17228" class="dwexpcomment" style="margin-left: 150px; margin-top: 5px;">
+<div class="comment-wrapper comment-wrapper-odd visible    poster-shelby3  full no-userpic  has-subject">
+<div class="separator separator-before"><div class="inner"></div></div>
+<div class="comment" id="comment-cmt17228">
+<div class="inner">
+<div class="header">
+<div class="inner">
+<h4 class="comment-title"><a title="Re: Git &amp; rebase" href="http://jhw.dreamwidth.org/1868.html?thread=17228#cmt17228">Re: Git &amp; rebase</a></h4><span class="datetime"><span class="comment-date-text">Date: </span> <span title="1701 days after journal entry">2015-11-25 04:00 pm (UTC)</span></span></div>
+</div>
+<div class="contents">
+<div class="inner">
+<div class="userpic"></div>
+<span class="poster comment-poster"><span class="comment-from-text">From:</span> <span lj:user="shelby3" style="white-space: nowrap;" class="ljuser"><a href="http://shelby3.dreamwidth.org/profile"><img class="ContextualPopup-trigger" src="user.png" alt="[personal profile] " style="vertical-align: text-bottom; border: 0px none; padding-right: 1px;" width="17" height="17"></a><a href="http://shelby3.dreamwidth.org/"><b>shelby3</b></a></span></span>
+<div class="comment-content">&gt; is why on Carlin's Green Earth there should be any good reason to use the receive.denyNonFastForwards setting on the server<br><br><a href="http://www.randyfay.com/node/89">http://www.randyfay.com/node/89</a><br><br>"How do you prevent git push --force? (thanks to sdboyer!)<br><br>In the bare authoritative repository,<br><br>git config --system receive.denyNonFastForwards true"</div></div>
+</div>
+<div class="footer">
+<div class="inner">
+<ul class="comment-interaction-links text-links"><li class="link commentpermalink"><a href="http://jhw.dreamwidth.org/1868.html?thread=17228#cmt17228">Link</a></li>
+<li class="link reply first-item"><a href="http://jhw.dreamwidth.org/1868.html?replyto=17228">Reply</a></li>
+<li class="link threadroot"><a href="http://www.dreamwidth.org/go?redir_type=threadroot&amp;journal=jhw&amp;talkid=17228">Thread from start</a></li>
+<li class="link commentparent"><a href="http://jhw.dreamwidth.org/1868.html?thread=6732#cmt6732">Parent</a></li>
+</ul><div id="ljqrt17228" data-quickreply-container="17228" style="display: none;"></div></div>
+</div>
+</div>
+</div>
+<div class="separator separator-after"><div class="inner"></div></div>
+</div>
+</div></div>
+</div>
+<div class="comment-thread comment-depth-even comment-depth-6">
+<div id="cmt14668" class="dwexpcomment" style="margin-left: 125px; margin-top: 5px;">
+<div class="comment-wrapper comment-wrapper-even visible    poster-mikeschinkel  full no-userpic  has-subject">
+<div class="separator separator-before"><div class="inner"></div></div>
+<div class="comment" id="comment-cmt14668">
+<div class="inner">
+<div class="header">
+<div class="inner">
+<h4 class="comment-title"><a title="Re: Git &amp; rebase" href="http://jhw.dreamwidth.org/1868.html?thread=14668#cmt14668">Re: Git &amp; rebase</a></h4><span class="datetime"><span class="comment-date-text">Date: </span> <span title="705 days after journal entry">2013-03-04 01:59 am (UTC)</span></span></div>
+</div>
+<div class="contents">
+<div class="inner">
+<div class="userpic"></div>
+<span class="poster comment-poster"><span class="comment-from-text">From:</span> <span lj:user="mikeschinkel" style="white-space: nowrap;" class="ljuser"><a href="http://mikeschinkel.dreamwidth.org/profile"><img class="ContextualPopup-trigger" src="user.png" alt="[personal profile] " style="vertical-align: text-bottom; border: 0px none; padding-right: 1px;" width="17" height="17"></a><a href="http://mikeschinkel.dreamwidth.org/"><b>mikeschinkel</b></a></span></span>
+<div class="comment-content">One this to consider about Mercurial vs. Git is that with Mercurial most people don't have to read a book cover to cover in order to be able to use it because, in general, Mercurial is logical and intuitive and Git, is, well it's not either of those.</div></div>
+</div>
+<div class="footer">
+<div class="inner">
+<ul class="comment-interaction-links text-links"><li class="link commentpermalink"><a href="http://jhw.dreamwidth.org/1868.html?thread=14668#cmt14668">Link</a></li>
+<li class="link reply first-item"><a href="http://jhw.dreamwidth.org/1868.html?replyto=14668">Reply</a></li>
+<li class="link threadroot"><a href="http://www.dreamwidth.org/go?redir_type=threadroot&amp;journal=jhw&amp;talkid=14668">Thread from start</a></li>
+<li class="link commentparent"><a href="http://jhw.dreamwidth.org/1868.html?thread=6476#cmt6476">Parent</a></li>
+</ul><div id="ljqrt14668" data-quickreply-container="14668" style="display: none;"></div></div>
+</div>
+</div>
+</div>
+<div class="separator separator-after"><div class="inner"></div></div>
+</div>
+</div></div>
+</div>
+<div class="comment-thread comment-depth-odd comment-depth-5">
+<div id="cmt12108" class="dwexpcomment" style="margin-left: 100px; margin-top: 5px;">
+<div class="comment-wrapper comment-wrapper-odd visible    poster-ext_954060  full no-userpic  has-subject">
+<div class="separator separator-before"><div class="inner"></div></div>
+<div class="comment" id="comment-cmt12108">
+<div class="inner">
+<div class="header">
+<div class="inner">
+<h4 class="comment-title"><a title="Re: Git &amp; rebase" href="http://jhw.dreamwidth.org/1868.html?thread=12108#cmt12108">Re: Git &amp; rebase</a></h4><span class="datetime"><span class="comment-date-text">Date: </span> <span title="423 days after journal entry">2012-05-26 11:18 am (UTC)</span></span></div>
+</div>
+<div class="contents">
+<div class="inner">
+<div class="userpic"></div>
+<span class="poster comment-poster"><span class="comment-from-text">From:</span> <span lj:user="felipec.myopenid.com" style="white-space: nowrap;" class="ljuser"><a href="http://www.dreamwidth.org/profile?userid=1090287&amp;t=I"><img class="ContextualPopup-trigger" src="openid.png" alt="[identity profile] " style="vertical-align: text-bottom; border: 0px none; padding-right: 1px;" width="16" height="16"></a><a href="http://felipec.myopenid.com/" rel="nofollow"><b>felipec.myopenid.com</b></a></span></span>
+<div class="comment-content">&gt; I assert that Git won't be improved to address the problem I'm writing about because the core developers do not perceive the issue to be a problem.<br><br>That's because there is no problem.<br><br>You are saying that the problem with git is that it doesn't have mercurial "branches". How is that a problem?<br><br>What is it _exactly_ that you cannot do in git?<br><br>Hint: you can do everything in git.</div></div>
+</div>
+<div class="footer">
+<div class="inner">
+<ul class="comment-interaction-links text-links"><li class="link commentpermalink"><a href="http://jhw.dreamwidth.org/1868.html?thread=12108#cmt12108">Link</a></li>
+<li class="link reply first-item"><a href="http://jhw.dreamwidth.org/1868.html?replyto=12108">Reply</a></li>
+<li class="link threadroot"><a href="http://www.dreamwidth.org/go?redir_type=threadroot&amp;journal=jhw&amp;talkid=12108">Thread from start</a></li>
+<li class="link commentparent"><a href="http://jhw.dreamwidth.org/1868.html?thread=6220#cmt6220">Parent</a></li>
+</ul><div id="ljqrt12108" data-quickreply-container="12108" style="display: none;"></div></div>
+</div>
+</div>
+</div>
+<div class="separator separator-after"><div class="inner"></div></div>
+</div>
+</div></div>
+</div>
+</div>
+<div class="comment-thread comment-depth-odd comment-depth-3">
+<div id="cmt7244" class="dwexpcomment" style="margin-left: 50px; margin-top: 5px;">
+<div class="comment-wrapper comment-wrapper-even visible    poster-ext_795927  full no-userpic  has-subject">
+<div class="separator separator-before"><div class="inner"></div></div>
+<div class="comment" id="comment-cmt7244">
+<div class="inner">
+<div class="header">
+<div class="inner">
+<h4 class="comment-title"><a title="Re: Git &amp; rebase" href="http://jhw.dreamwidth.org/1868.html?thread=7244#cmt7244">Re: Git &amp; rebase</a></h4><span class="datetime"><span class="comment-date-text">Date: </span> <span title="96 days after journal entry">2011-07-04 03:17 am (UTC)</span></span></div>
+</div>
+<div class="contents">
+<div class="inner">
+<div class="userpic"></div>
+<span class="poster comment-poster"><span class="comment-from-text">From:</span> <span lj:user="j16sdiz.myopenid.com" style="white-space: nowrap;" class="ljuser"><a href="http://www.dreamwidth.org/profile?userid=919801&amp;t=I"><img class="ContextualPopup-trigger" src="openid.png" alt="[identity profile] " style="vertical-align: text-bottom; border: 0px none; padding-right: 1px;" width="16" height="16"></a><a href="http://j16sdiz.myopenid.com/" rel="nofollow"><b>j16sdiz.myopenid.com</b></a></span></span>
+<div class="comment-content">&gt; you do not get your code pulled onto the upstream master branch unless it's a fast-forward.<br><br>I think Linus oppose to this workflow. <br><br>People wants to stick to the old SVN mindset and git make it possible, so some people are enforcing this.<br><br>This is not the git community recommand.</div></div>
+</div>
+<div class="footer">
+<div class="inner">
+<ul class="comment-interaction-links text-links"><li class="link commentpermalink"><a href="http://jhw.dreamwidth.org/1868.html?thread=7244#cmt7244">Link</a></li>
+<li class="link reply first-item"><a href="http://jhw.dreamwidth.org/1868.html?replyto=7244">Reply</a></li>
+<li class="link threadroot"><a href="http://www.dreamwidth.org/go?redir_type=threadroot&amp;journal=jhw&amp;talkid=7244">Thread from start</a></li>
+<li class="link commentparent"><a href="http://jhw.dreamwidth.org/1868.html?thread=5708#cmt5708">Parent</a></li>
+<li class="link thread"><a href="http://jhw.dreamwidth.org/1868.html?thread=7244#cmt7244">Thread</a></li>
+<li class="link cmt_hide cmt_show_hide_default" style="" id="cmt7244_hide"><a href="#cmt7244">Hide 2 comments</a></li>
+<li class="link cmt_unhide" style="display: none;" id="cmt7244_unhide"><a href="http://jhw.dreamwidth.org/1868.html?thread=7244#cmt7244">Show 2 comments</a></li>
+</ul><div id="ljqrt7244" data-quickreply-container="7244" style="display: none;"></div></div>
+</div>
+</div>
+</div>
+<div class="separator separator-after"><div class="inner"></div></div>
+</div>
+</div><div class="comment-thread comment-depth-even comment-depth-4">
+<div id="cmt7500" class="dwexpcomment" style="margin-left: 75px; margin-top: 5px;">
+<div class="comment-wrapper comment-wrapper-odd visible    poster-jhw entry-author full has-userpic  has-subject">
+<div class="separator separator-before"><div class="inner"></div></div>
+<div class="comment" id="comment-cmt7500">
+<div class="inner">
+<div class="header">
+<div class="inner">
+<h4 class="comment-title"><a title="Re: Git &amp; rebase" href="http://jhw.dreamwidth.org/1868.html?thread=7500#cmt7500">Re: Git &amp; rebase</a></h4><span class="datetime"><span class="comment-date-text">Date: </span> <span title="96 days after journal entry, 2011-07-03 08:41 pm (jhw's time)">2011-07-04 03:41 am (UTC)</span></span></div>
+</div>
+<div class="contents">
+<div class="inner">
+<div class="userpic"><a class="ContextualPopup-trigger" href="http://jhw.dreamwidth.org/icons"><img src="629980.dat" title="jhw: (Default) (baleful eye)" alt="jhw: baleful eye (Default)" width="100" height="98"></a></div>
+<span class="poster comment-poster"><span class="comment-from-text">From:</span> <span lj:user="jhw" style="white-space: nowrap;" class="ljuser"><a href="http://jhw.dreamwidth.org/profile"><img class="ContextualPopup-trigger" src="user.png" alt="[personal profile] " style="vertical-align: text-bottom; border: 0px none; padding-right: 1px;" width="17" height="17"></a><a href="http://jhw.dreamwidth.org/"><b>jhw</b></a></span></span>
+<div class="comment-content">No, Linus prefers a slightly modified version of this workflow, i.e. he'll pull your non-fastforward patch if he otherwise like the cut of your jib, but he'll bitch and moan about it.  And if he doesn't know you and trust you already, then he'll just reject you out of hand without even looking at the diff.  It's like the brown M&amp;M's in clause 27 of the Van Halen technical crew contract.  It's the same basic process, just not formalized into a hard-coded service configuration.<br><br>Which ought to tell you something important.  When you make a tool and you later find out that more people are using it differently than you intended than there are people who are following your careful instructions for proper use, the traditional thing that good engineers do is figure out what's wrong with their expectations of how people will be using the tool and adjust accordingly in the next iteration.  Instead, the Git community decides that people are stupid, whines piteously that people aren't moar smarterz, and secretly regrets trying to help people in the first place.  That's <i>not</i> sound engineering principles in action—&nbsp;that's misanthropy.</div></div>
+</div>
+<div class="footer">
+<div class="inner">
+<ul class="comment-interaction-links text-links"><li class="link commentpermalink"><a href="http://jhw.dreamwidth.org/1868.html?thread=7500#cmt7500">Link</a></li>
+<li class="link reply first-item"><a href="http://jhw.dreamwidth.org/1868.html?replyto=7500">Reply</a></li>
+<li class="link threadroot"><a href="http://www.dreamwidth.org/go?redir_type=threadroot&amp;journal=jhw&amp;talkid=7500">Thread from start</a></li>
+<li class="link commentparent"><a href="http://jhw.dreamwidth.org/1868.html?thread=7244#cmt7244">Parent</a></li>
+<li class="link thread"><a href="http://jhw.dreamwidth.org/1868.html?thread=7500#cmt7500">Thread</a></li>
+<li class="link cmt_hide cmt_show_hide_default" style="" id="cmt7500_hide"><a href="#cmt7500">Hide 1 comment</a></li>
+<li class="link cmt_unhide" style="display: none;" id="cmt7500_unhide"><a href="http://jhw.dreamwidth.org/1868.html?thread=7500#cmt7500">Show 1 comment</a></li>
+</ul><div id="ljqrt7500" data-quickreply-container="7500" style="display: none;"></div></div>
+</div>
+</div>
+</div>
+<div class="separator separator-after"><div class="inner"></div></div>
+</div>
+</div><div class="comment-thread comment-depth-odd comment-depth-5">
+<div id="cmt7756" class="dwexpcomment" style="margin-left: 100px; margin-top: 5px;">
+<div class="comment-wrapper comment-wrapper-even visible    poster-ext_795927  full no-userpic  has-subject">
+<div class="separator separator-before"><div class="inner"></div></div>
+<div class="comment" id="comment-cmt7756">
+<div class="inner">
+<div class="header">
+<div class="inner">
+<h4 class="comment-title"><a title="Re: Git &amp; rebase" href="http://jhw.dreamwidth.org/1868.html?thread=7756#cmt7756">Re: Git &amp; rebase</a></h4><span class="datetime"><span class="comment-date-text">Date: </span> <span title="96 days after journal entry">2011-07-04 06:09 am (UTC)</span></span></div>
+</div>
+<div class="contents">
+<div class="inner">
+<div class="userpic"></div>
+<span class="poster comment-poster"><span class="comment-from-text">From:</span> <span lj:user="j16sdiz.myopenid.com" style="white-space: nowrap;" class="ljuser"><a href="http://www.dreamwidth.org/profile?userid=919801&amp;t=I"><img class="ContextualPopup-trigger" src="openid.png" alt="[identity profile] " style="vertical-align: text-bottom; border: 0px none; padding-right: 1px;" width="16" height="16"></a><a href="http://j16sdiz.myopenid.com/" rel="nofollow"><b>j16sdiz.myopenid.com</b></a></span></span>
+<div class="comment-content">On Linus:<br>It is "clean" and "readability" that matters, not "rebasing" and "linearization". The history should be bisectable and easy for later debug session. If you rebase everything you send, you are doing it wrong.<br><br>I think linus don't ask you to rebase -- he ask you to send patch in email, not a git-pull request (unless you are a trusted subsystem maintainer).<br>This is for easier code reviewing. Would you rather reviewing (1) two patches: one with bugs and one fix it; or (2) just one patch?<br><br>Consider git as a patch exchange tool with version control as a feature, then the rewriting history thing will start making sense.<br><br>See this LWN.net article for some elaboration https://lwn.net/Articles/328436/<br><br><br><br>On tools design:<br>This is the unix philosophy of "gives you more than enough rope to hang yourself".<br>Variant of this appears everywhere, e.g. in C vs Java, KDE vs Gnome, etc. This is an eternal problem. I have nothing to add to this debate.</div></div>
+</div>
+<div class="footer">
+<div class="inner">
+<ul class="comment-interaction-links text-links"><li class="link commentpermalink"><a href="http://jhw.dreamwidth.org/1868.html?thread=7756#cmt7756">Link</a></li>
+<li class="link reply first-item"><a href="http://jhw.dreamwidth.org/1868.html?replyto=7756">Reply</a></li>
+<li class="link threadroot"><a href="http://www.dreamwidth.org/go?redir_type=threadroot&amp;journal=jhw&amp;talkid=7756">Thread from start</a></li>
+<li class="link commentparent"><a href="http://jhw.dreamwidth.org/1868.html?thread=7500#cmt7500">Parent</a></li>
+</ul><div id="ljqrt7756" data-quickreply-container="7756" style="display: none;"></div></div>
+</div>
+</div>
+</div>
+<div class="separator separator-after"><div class="inner"></div></div>
+</div>
+</div></div>
+</div>
+</div>
+</div>
+</div>
+<div class="comment-thread comment-depth-odd comment-depth-1">
+<div id="cmt9036" class="dwexpcomment" style="margin-left: 0px; margin-top: 5px;">
+<div class="comment-wrapper comment-wrapper-odd visible    poster-ext_891078  full no-userpic  has-subject">
+<div class="separator separator-before"><div class="inner"></div></div>
+<div class="comment" id="comment-cmt9036">
+<div class="inner">
+<div class="header">
+<div class="inner">
+<h4 class="comment-title"><a title="Bang on!" href="http://jhw.dreamwidth.org/1868.html?thread=9036#cmt9036">Bang on!</a></h4><span class="datetime"><span class="comment-date-text">Date: </span> <span title="126 days after journal entry">2011-08-03 08:00 am (UTC)</span></span></div>
+</div>
+<div class="contents">
+<div class="inner">
+<div class="userpic"></div>
+<span class="poster comment-poster"><span class="comment-from-text">From:</span> <span lj:user="sidk.info" style="white-space: nowrap;" class="ljuser"><a href="http://www.dreamwidth.org/profile?userid=1023051&amp;t=I"><img class="ContextualPopup-trigger" src="openid.png" alt="[identity profile] " style="vertical-align: text-bottom; border: 0px none; padding-right: 1px;" width="16" height="16"></a><a href="http://sidk.info/" rel="nofollow"><b>sidk.info</b></a></span></span>
+<div class="comment-content">I think you've hit the nail on the head. I like to think of it this way: Git branches are just simple pointers while Mercurial branches are "lines". Every mercurial commit "belongs" to a branch while every git commit just has parent commit(s).<br><br>You really cant follow a line of development back in git especially if there are merges. Hence the whole emphasis on rebasing as you quite nicely point out.<br><br>It took me sometime to understand your article. I visited it a few months ago. At that point my knowledge of git was not sufficient to totally understand what you had written. Today was the day of the ah-hah moment!<br><br>Git creates complexity and solves it. Mercurial avoids the complexity all together.<br><br>Maybe it might be a good idea to graphically show what you've written for other people who visit this page?</div></div>
+</div>
+<div class="footer">
+<div class="inner">
+<ul class="comment-interaction-links text-links"><li class="link commentpermalink"><a href="http://jhw.dreamwidth.org/1868.html?thread=9036#cmt9036">Link</a></li>
+<li class="link reply first-item"><a href="http://jhw.dreamwidth.org/1868.html?replyto=9036">Reply</a></li>
+<li class="link thread"><a href="http://jhw.dreamwidth.org/1868.html?thread=9036#cmt9036">Thread</a></li>
+<li class="link cmt_hide cmt_show_hide_default" style="" id="cmt9036_hide"><a href="#cmt9036">Hide 1 comment</a></li>
+<li class="link cmt_unhide" style="display: none;" id="cmt9036_unhide"><a href="http://jhw.dreamwidth.org/1868.html?thread=9036#cmt9036">Show 1 comment</a></li>
+</ul><div id="ljqrt9036" data-quickreply-container="9036" style="display: none;"></div></div>
+</div>
+</div>
+</div>
+<div class="separator separator-after"><div class="inner"></div></div>
+</div>
+</div><div class="comment-thread comment-depth-even comment-depth-2">
+<div id="cmt9548" class="dwexpcomment" style="margin-left: 25px; margin-top: 5px;">
+<div class="comment-wrapper comment-wrapper-even visible    poster-jhw entry-author full has-userpic  has-subject">
+<div class="separator separator-before"><div class="inner"></div></div>
+<div class="comment" id="comment-cmt9548">
+<div class="inner">
+<div class="header">
+<div class="inner">
+<h4 class="comment-title"><a title="Re: Bang on!" href="http://jhw.dreamwidth.org/1868.html?thread=9548#cmt9548">Re: Bang on!</a></h4><span class="datetime"><span class="comment-date-text">Date: </span> <span title="142 days after journal entry, 10:04 am (jhw's time)">2011-08-19 05:04 pm (UTC)</span></span></div>
+</div>
+<div class="contents">
+<div class="inner">
+<div class="userpic"><a class="ContextualPopup-trigger" href="http://jhw.dreamwidth.org/icons"><img src="629980.dat" title="jhw: (Default) (baleful eye)" alt="jhw: baleful eye (Default)" width="100" height="98"></a></div>
+<span class="poster comment-poster"><span class="comment-from-text">From:</span> <span lj:user="jhw" style="white-space: nowrap;" class="ljuser"><a href="http://jhw.dreamwidth.org/profile"><img class="ContextualPopup-trigger" src="user.png" alt="[personal profile] " style="vertical-align: text-bottom; border: 0px none; padding-right: 1px;" width="17" height="17"></a><a href="http://jhw.dreamwidth.org/"><b>jhw</b></a></span></span>
+<div class="comment-content">See the followup post.</div></div>
+</div>
+<div class="footer">
+<div class="inner">
+<ul class="comment-interaction-links text-links"><li class="link commentpermalink"><a href="http://jhw.dreamwidth.org/1868.html?thread=9548#cmt9548">Link</a></li>
+<li class="link reply first-item"><a href="http://jhw.dreamwidth.org/1868.html?replyto=9548">Reply</a></li>
+<li class="link threadroot"><a href="http://www.dreamwidth.org/go?redir_type=threadroot&amp;journal=jhw&amp;talkid=9548">Thread from start</a></li>
+<li class="link commentparent"><a href="http://jhw.dreamwidth.org/1868.html?thread=9036#cmt9036">Parent</a></li>
+</ul><div id="ljqrt9548" data-quickreply-container="9548" style="display: none;"></div></div>
+</div>
+</div>
+</div>
+<div class="separator separator-after"><div class="inner"></div></div>
+</div>
+</div></div>
+</div>
+<div class="comment-thread comment-depth-odd comment-depth-1">
+<div id="cmt9292" class="dwexpcomment" style="margin-left: 0px; margin-top: 5px;">
+<div class="comment-wrapper comment-wrapper-odd visible    poster-ext_631586  full no-userpic  no-subject">
+<div class="separator separator-before"><div class="inner"></div></div>
+<div class="comment" id="comment-cmt9292">
+<div class="inner">
+<div class="header">
+<div class="inner">
+<h4 class="comment-title"><a title="no subject" href="http://jhw.dreamwidth.org/1868.html?thread=9292#cmt9292" class=" invisible">no subject</a></h4><span class="datetime"><span class="comment-date-text">Date: </span> <span title="139 days after journal entry">2011-08-15 09:14 pm (UTC)</span></span></div>
+</div>
+<div class="contents">
+<div class="inner">
+<div class="userpic"></div>
+<span class="poster comment-poster"><span class="comment-from-text">From:</span> <span lj:user="max630.net" style="white-space: nowrap;" class="ljuser"><a href="http://www.dreamwidth.org/profile?userid=744363&amp;t=I"><img class="ContextualPopup-trigger" src="openid.png" alt="[identity profile] " style="vertical-align: text-bottom; border: 0px none; padding-right: 1px;" width="16" height="16"></a><a href="http://max630.net/" rel="nofollow"><b>max630.net</b></a></span></span>
+<div class="comment-content">There are reflogs in git. They can play a role analogous to what you are calling "family". But they exist only locally and do not move to other repositories during fetch and push.</div></div>
+</div>
+<div class="footer">
+<div class="inner">
+<ul class="comment-interaction-links text-links"><li class="link commentpermalink"><a href="http://jhw.dreamwidth.org/1868.html?thread=9292#cmt9292">Link</a></li>
+<li class="link reply first-item"><a href="http://jhw.dreamwidth.org/1868.html?replyto=9292">Reply</a></li>
+</ul><div id="ljqrt9292" data-quickreply-container="9292" style="display: none;"></div></div>
+</div>
+</div>
+</div>
+<div class="separator separator-after"><div class="inner"></div></div>
+</div>
+</div></div>
+<div class="comment-thread comment-depth-odd comment-depth-1">
+<div id="cmt10828" class="dwexpcomment" style="margin-left: 0px; margin-top: 5px;">
+<div class="comment-wrapper comment-wrapper-even visible    poster-friendly12345  full no-userpic  has-subject">
+<div class="separator separator-before"><div class="inner"></div></div>
+<div class="comment" id="comment-cmt10828">
+<div class="inner">
+<div class="header">
+<div class="inner">
+<h4 class="comment-title"><a title="Git have it good side" href="http://jhw.dreamwidth.org/1868.html?thread=10828#cmt10828">Git have it good side</a></h4><span class="datetime"><span class="comment-date-text">Date: </span> <span title="262 days after journal entry">2011-12-17 09:14 am (UTC)</span></span></div>
+</div>
+<div class="contents">
+<div class="inner">
+<div class="userpic"></div>
+<span class="poster comment-poster"><span class="comment-from-text">From:</span> <span lj:user="friendly12345" style="white-space: nowrap;" class="ljuser"><a href="http://friendly12345.dreamwidth.org/profile"><img class="ContextualPopup-trigger" src="user.png" alt="[personal profile] " style="vertical-align: text-bottom; border: 0px none; padding-right: 1px;" width="17" height="17"></a><a href="http://friendly12345.dreamwidth.org/"><b>friendly12345</b></a></span></span>
+<div class="comment-content">I have work with Mercurial for a while now.<br>I just started learning about it.<br>In some aspect I think that Git Concept is better than Mercurial.<br>- First is the Stage Area. I like this feature a lot.<br>- And second is about the remote. You can save all the remote to pull from and track which commit the remote branch current is. That is something currently missing in Mercurial.<br>- Also I like the workflow in Git with branch.<br>But one thing that I don't like about Git is.<br>Need a lot of knowledge to do a simple task.<br>As I'm not good at bash script.<br>So it is a little hard for me.<br>Also the tag in git is not very friendly.<br>It should display in the log like in hg log.<br>Summary, I think Git have it advantage. But still need to improve the user friendly.</div></div>
+</div>
+<div class="footer">
+<div class="inner">
+<ul class="comment-interaction-links text-links"><li class="link commentpermalink"><a href="http://jhw.dreamwidth.org/1868.html?thread=10828#cmt10828">Link</a></li>
+<li class="link reply first-item"><a href="http://jhw.dreamwidth.org/1868.html?replyto=10828">Reply</a></li>
+<li class="link thread"><a href="http://jhw.dreamwidth.org/1868.html?thread=10828#cmt10828">Thread</a></li>
+<li class="link cmt_hide cmt_show_hide_default" style="" id="cmt10828_hide"><a href="#cmt10828">Hide 1 comment</a></li>
+<li class="link cmt_unhide" style="display: none;" id="cmt10828_unhide"><a href="http://jhw.dreamwidth.org/1868.html?thread=10828#cmt10828">Show 1 comment</a></li>
+</ul><div id="ljqrt10828" data-quickreply-container="10828" style="display: none;"></div></div>
+</div>
+</div>
+</div>
+<div class="separator separator-after"><div class="inner"></div></div>
+</div>
+</div><div class="comment-thread comment-depth-even comment-depth-2">
+<div id="cmt15948" class="dwexpcomment" style="margin-left: 25px; margin-top: 5px;">
+<div class="comment-wrapper comment-wrapper-odd visible    poster-ext_128854  full no-userpic  has-subject">
+<div class="separator separator-before"><div class="inner"></div></div>
+<div class="comment" id="comment-cmt15948">
+<div class="inner">
+<div class="header">
+<div class="inner">
+<h4 class="comment-title"><a title="Re: Git have it good side" href="http://jhw.dreamwidth.org/1868.html?thread=15948#cmt15948">Re: Git have it good side</a></h4><span class="datetime"><span class="comment-date-text">Date: </span> <span title="1019 days after journal entry">2014-01-11 11:33 pm (UTC)</span></span></div>
+</div>
+<div class="contents">
+<div class="inner">
+<div class="userpic"></div>
+<span class="poster comment-poster"><span class="comment-from-text">From:</span> <span lj:user="arnebab.livejournal.com" style="white-space: nowrap;" class="ljuser"><a href="http://www.dreamwidth.org/profile?userid=135239&amp;t=I"><img class="ContextualPopup-trigger" src="openid.png" alt="[identity profile] " style="vertical-align: text-bottom; border: 0px none; padding-right: 1px;" width="16" height="16"></a><a href="http://arnebab.livejournal.com/" rel="nofollow"><b>arnebab.livejournal.com</b></a></span></span>
+<div class="comment-content">What you list are not features git has over Mercurial, but simply different exposition to features:<br><br>- If you want a stage area, you can simply activate the mq extension. That even gives you an infinite number of staging areas which can contain multiple unfinished commits.<br><br>- Remotes in hg are simply entries in the .hg/hgrc under the heading [paths].<br><br>- Git-like branches are called bookmarks in hg.</div></div>
+</div>
+<div class="footer">
+<div class="inner">
+<ul class="comment-interaction-links text-links"><li class="link commentpermalink"><a href="http://jhw.dreamwidth.org/1868.html?thread=15948#cmt15948">Link</a></li>
+<li class="link reply first-item"><a href="http://jhw.dreamwidth.org/1868.html?replyto=15948">Reply</a></li>
+<li class="link threadroot"><a href="http://www.dreamwidth.org/go?redir_type=threadroot&amp;journal=jhw&amp;talkid=15948">Thread from start</a></li>
+<li class="link commentparent"><a href="http://jhw.dreamwidth.org/1868.html?thread=10828#cmt10828">Parent</a></li>
+</ul><div id="ljqrt15948" data-quickreply-container="15948" style="display: none;"></div></div>
+</div>
+</div>
+</div>
+<div class="separator separator-after"><div class="inner"></div></div>
+</div>
+</div></div>
+</div>
+<div class="comment-thread comment-depth-odd comment-depth-1">
+<div id="cmt11852" class="dwexpcomment" style="margin-left: 0px; margin-top: 5px;">
+<div class="comment-wrapper comment-wrapper-even visible    poster-rich_pixley_hp  full no-userpic  no-subject">
+<div class="separator separator-before"><div class="inner"></div></div>
+<div class="comment" id="comment-cmt11852">
+<div class="inner">
+<div class="header">
+<div class="inner">
+<h4 class="comment-title"><a title="no subject" href="http://jhw.dreamwidth.org/1868.html?thread=11852#cmt11852" class=" invisible">no subject</a></h4><span class="datetime"><span class="comment-date-text">Date: </span> <span title="400 days after journal entry">2012-05-02 07:03 pm (UTC)</span></span></div>
+</div>
+<div class="contents">
+<div class="inner">
+<div class="userpic"></div>
+<span class="poster comment-poster"><span class="comment-from-text">From:</span> <span lj:user="rich_pixley_hp" style="white-space: nowrap;" class="ljuser"><a href="http://rich-pixley-hp.dreamwidth.org/profile"><img class="ContextualPopup-trigger" src="user.png" alt="[personal profile] " style="vertical-align: text-bottom; border: 0px none; padding-right: 1px;" width="17" height="17"></a><a href="http://rich-pixley-hp.dreamwidth.org/"><b>rich_pixley_hp</b></a></span></span>
+<div class="comment-content">My argument is simpler, but comparable, and boils down to the same thing.<br><br>I want to be able to push.  Git can't push shared branches because in the case of a potential collision, it has no recourse.  The UI, "git push" is simple and the semantic is straightforward and obvious - I want my changes in that repository.  Rather than do that, git simply throws up it's hands and refuses, (in the case where the destination has that branch checked out, or that branch has other changes that are not mine).<br><br>So... there's an obvious semantic, an obvious interpretation, and git doesn't do it.  That's a pretty big and scarey culture shock coming from pretty much any source code control system developed in the last decade.  With git, we're back to the geographic branches of clearcase multisite where each repository owns a branch and the other branches show up as read only.  This doesn't scale very well, as we learned a couple of decades ago. It's a lot of extra work to manage all those potentially-automatic-but-failing merges.<br><br>The multiple hg heads are the natural conclusion to this problem of how to handle collisions in the repository.  Hg can then propagate them anywhere and anyone in any repository can merge them.  Not so in git.  In git, you're reduced to sending random emails trying to find the person with whom you need to coordinate.<br><br>This isn't unique to hg, btw.  Other systems do this as well.</div></div>
+</div>
+<div class="footer">
+<div class="inner">
+<ul class="comment-interaction-links text-links"><li class="link commentpermalink"><a href="http://jhw.dreamwidth.org/1868.html?thread=11852#cmt11852">Link</a></li>
+<li class="link reply first-item"><a href="http://jhw.dreamwidth.org/1868.html?replyto=11852">Reply</a></li>
+<li class="link thread"><a href="http://jhw.dreamwidth.org/1868.html?thread=11852#cmt11852">Thread</a></li>
+<li class="link cmt_hide cmt_show_hide_default" style="" id="cmt11852_hide"><a href="#cmt11852">Hide 1 comment</a></li>
+<li class="link cmt_unhide" style="display: none;" id="cmt11852_unhide"><a href="http://jhw.dreamwidth.org/1868.html?thread=11852#cmt11852">Show 1 comment</a></li>
+</ul><div id="ljqrt11852" data-quickreply-container="11852" style="display: none;"></div></div>
+</div>
+</div>
+</div>
+<div class="separator separator-after"><div class="inner"></div></div>
+</div>
+</div><div class="comment-thread comment-depth-even comment-depth-2">
+<div id="cmt16716" class="dwexpcomment" style="margin-left: 25px; margin-top: 5px;">
+<div class="comment-wrapper comment-wrapper-odd visible    poster-jhw entry-author full has-userpic  no-subject">
+<div class="separator separator-before"><div class="inner"></div></div>
+<div class="comment" id="comment-cmt16716">
+<div class="inner">
+<div class="header">
+<div class="inner">
+<h4 class="comment-title"><a title="no subject" href="http://jhw.dreamwidth.org/1868.html?thread=16716#cmt16716" class=" invisible">no subject</a></h4><span class="datetime"><span class="comment-date-text">Date: </span> <span title="1380 days after journal entry, 08:23 am (jhw's time)">2015-01-08 04:23 pm (UTC)</span></span></div>
+</div>
+<div class="contents">
+<div class="inner">
+<div class="userpic"><a class="ContextualPopup-trigger" href="http://jhw.dreamwidth.org/icons"><img src="629980.dat" title="jhw: (Default) (baleful eye)" alt="jhw: baleful eye (Default)" width="100" height="98"></a></div>
+<span class="poster comment-poster"><span class="comment-from-text">From:</span> <span lj:user="jhw" style="white-space: nowrap;" class="ljuser"><a href="http://jhw.dreamwidth.org/profile"><img class="ContextualPopup-trigger" src="user.png" alt="[personal profile] " style="vertical-align: text-bottom; border: 0px none; padding-right: 1px;" width="17" height="17"></a><a href="http://jhw.dreamwidth.org/"><b>jhw</b></a></span></span>
+<div class="comment-content">Well the other side of this is worth a remark.<br><br>Yes, when you push with Mercurial, you will silently get a new anonymous head if there are upstream children of your current change, whereas Git will throw a rock at you and refuse to push. This can make Git users feel nauseated because of their need for every lineage to have a carefully manicured pedigree. Indeed Git makes you expressly create the lineage with a distinguished name and go through a registration process before you can push it upstream.<br><br>I still like Mercurial better. You pushed something and, oh, that meant creating a new lineage. So we did that. Maybe you want to give it a name, maybe it won't be around long enough to deserve one. If it needs a name, then you do that with a bookmark on the new head. Pushing the bookmark is optional. What's important here is that Mercurial didn't throw any rocks at you and no history got destroyed. That seems obviously superior to me, but whatever.</div></div>
+</div>
+<div class="footer">
+<div class="inner">
+<ul class="comment-interaction-links text-links"><li class="link commentpermalink"><a href="http://jhw.dreamwidth.org/1868.html?thread=16716#cmt16716">Link</a></li>
+<li class="link reply first-item"><a href="http://jhw.dreamwidth.org/1868.html?replyto=16716">Reply</a></li>
+<li class="link threadroot"><a href="http://www.dreamwidth.org/go?redir_type=threadroot&amp;journal=jhw&amp;talkid=16716">Thread from start</a></li>
+<li class="link commentparent"><a href="http://jhw.dreamwidth.org/1868.html?thread=11852#cmt11852">Parent</a></li>
+</ul><div id="ljqrt16716" data-quickreply-container="16716" style="display: none;"></div></div>
+</div>
+</div>
+</div>
+<div class="separator separator-after"><div class="inner"></div></div>
+</div>
+</div></div>
+</div>
+<div class="comment-thread comment-depth-odd comment-depth-1">
+<div id="cmt15692" class="dwexpcomment" style="margin-left: 0px; margin-top: 5px;">
+<div class="comment-wrapper comment-wrapper-even visible    poster-ext_1630024  full no-userpic  has-subject">
+<div class="separator separator-before"><div class="inner"></div></div>
+<div class="comment" id="comment-cmt15692">
+<div class="inner">
+<div class="header">
+<div class="inner">
+<h4 class="comment-title"><a title="Mercurial .vx. Bazaar?" href="http://jhw.dreamwidth.org/1868.html?thread=15692#cmt15692">Mercurial .vx. Bazaar?</a></h4><span class="datetime"><span class="comment-date-text">Date: </span> <span title="967 days after journal entry">2013-11-20 08:59 pm (UTC)</span></span></div>
+</div>
+<div class="contents">
+<div class="inner">
+<div class="userpic"></div>
+<span class="poster comment-poster"><span class="comment-from-text">From:</span> <span lj:user="frgomes [launchpad.net]" style="white-space: nowrap;" class="ljuser"><a href="http://www.dreamwidth.org/profile?userid=2121877&amp;t=I"><img class="ContextualPopup-trigger" src="openid.png" alt="[identity profile] " style="vertical-align: text-bottom; border: 0px none; padding-right: 1px;" width="16" height="16"></a><a href="https://launchpad.net/~frgomes" rel="nofollow"><b>frgomes [launchpad.net]</b></a></span></span>
+<div class="comment-content">Thank you for your excellent comparison between git and hg. It's definitely rare to find an article of such quality.<br><br>By any chance, do you have experience with Bazaar too?<br><br>Thanks<br><br>Richard Gomes<br>http://rgomes.info/</div></div>
+</div>
+<div class="footer">
+<div class="inner">
+<ul class="comment-interaction-links text-links"><li class="link commentpermalink"><a href="http://jhw.dreamwidth.org/1868.html?thread=15692#cmt15692">Link</a></li>
+<li class="link reply first-item"><a href="http://jhw.dreamwidth.org/1868.html?replyto=15692">Reply</a></li>
+<li class="link thread"><a href="http://jhw.dreamwidth.org/1868.html?thread=15692#cmt15692">Thread</a></li>
+<li class="link cmt_hide cmt_show_hide_default" style="" id="cmt15692_hide"><a href="#cmt15692">Hide 1 comment</a></li>
+<li class="link cmt_unhide" style="display: none;" id="cmt15692_unhide"><a href="http://jhw.dreamwidth.org/1868.html?thread=15692#cmt15692">Show 1 comment</a></li>
+</ul><div id="ljqrt15692" data-quickreply-container="15692" style="display: none;"></div></div>
+</div>
+</div>
+</div>
+<div class="separator separator-after"><div class="inner"></div></div>
+</div>
+</div><div class="comment-thread comment-depth-even comment-depth-2">
+<div id="cmt16460" class="dwexpcomment" style="margin-left: 25px; margin-top: 5px;">
+<div class="comment-wrapper comment-wrapper-odd visible    poster-jhw entry-author full has-userpic  has-subject">
+<div class="separator separator-before"><div class="inner"></div></div>
+<div class="comment" id="comment-cmt16460">
+<div class="inner">
+<div class="header">
+<div class="inner">
+<h4 class="comment-title"><a title="Re: Mercurial .vx. Bazaar?" href="http://jhw.dreamwidth.org/1868.html?thread=16460#cmt16460">Re: Mercurial .vx. Bazaar?</a></h4><span class="datetime"><span class="comment-date-text">Date: </span> <span title="1380 days after journal entry, 08:13 am (jhw's time)">2015-01-08 04:13 pm (UTC)</span></span></div>
+</div>
+<div class="contents">
+<div class="inner">
+<div class="userpic"><a class="ContextualPopup-trigger" href="http://jhw.dreamwidth.org/icons"><img src="629980.dat" title="jhw: (Default) (baleful eye)" alt="jhw: baleful eye (Default)" width="100" height="98"></a></div>
+<span class="poster comment-poster"><span class="comment-from-text">From:</span> <span lj:user="jhw" style="white-space: nowrap;" class="ljuser"><a href="http://jhw.dreamwidth.org/profile"><img class="ContextualPopup-trigger" src="user.png" alt="[personal profile] " style="vertical-align: text-bottom; border: 0px none; padding-right: 1px;" width="17" height="17"></a><a href="http://jhw.dreamwidth.org/"><b>jhw</b></a></span></span>
+<div class="comment-content">Nope. I have no opinion of Bazaar, other than a vague expectation that I'd probably like it better than Git.  I understand it has an interestingly pedantic approach to computing differences that can show up in merge operations, i.e. it will merge some rare conflicts cleanly that both Mercurial and Git will silently fail to flag as conflicts and proceed to merge wrong.</div></div>
+</div>
+<div class="footer">
+<div class="inner">
+<ul class="comment-interaction-links text-links"><li class="link commentpermalink"><a href="http://jhw.dreamwidth.org/1868.html?thread=16460#cmt16460">Link</a></li>
+<li class="link reply first-item"><a href="http://jhw.dreamwidth.org/1868.html?replyto=16460">Reply</a></li>
+<li class="link threadroot"><a href="http://www.dreamwidth.org/go?redir_type=threadroot&amp;journal=jhw&amp;talkid=16460">Thread from start</a></li>
+<li class="link commentparent"><a href="http://jhw.dreamwidth.org/1868.html?thread=15692#cmt15692">Parent</a></li>
+</ul><div id="ljqrt16460" data-quickreply-container="16460" style="display: none;"></div></div>
+</div>
+</div>
+</div>
+<div class="separator separator-after"><div class="inner"></div></div>
+</div>
+</div></div>
+</div>
+<div class="comment-thread comment-depth-odd comment-depth-1">
+<div id="cmt16204" class="dwexpcomment" style="margin-left: 0px; margin-top: 5px;">
+<div class="comment-wrapper comment-wrapper-even visible    poster-fmccann  full no-userpic  has-subject">
+<div class="separator separator-before"><div class="inner"></div></div>
+<div class="comment" id="comment-cmt16204">
+<div class="inner">
+<div class="header">
+<div class="inner">
+<h4 class="comment-title"><a title="Absolutely Correct" href="http://jhw.dreamwidth.org/1868.html?thread=16204#cmt16204">Absolutely Correct</a></h4><span class="datetime"><span class="comment-date-text">Date: </span> <span title="1379 days after journal entry">2015-01-07 06:19 pm (UTC)</span></span></div>
+</div>
+<div class="contents">
+<div class="inner">
+<div class="userpic"></div>
+<span class="poster comment-poster"><span class="comment-from-text">From:</span> <span lj:user="fmccann" style="white-space: nowrap;" class="ljuser"><a href="http://fmccann.dreamwidth.org/profile"><img class="ContextualPopup-trigger" src="user.png" alt="[personal profile] " style="vertical-align: text-bottom; border: 0px none; padding-right: 1px;" width="17" height="17"></a><a href="http://fmccann.dreamwidth.org/"><b>fmccann</b></a></span></span>
+<div class="comment-content">Bazaar out of the box and Mercurial with named branches makes tracking work extremely easy, and most of the work that git users do to "clean" their histories is just a complete waste of time compared to these workflows. Git by design discards branch history. It seems unintuitive, but the way to compensate for Git tracking less information is to lose even MORE information via rebases and squashing to "clean" the history. Bzr and hg track enough information to easily show you branch histories so you always get the level of detail you want without having to manually hack up the DAG.<br><br>See <a href="http://duckrowing.com/2013/12/26/bzr-init-a-bazaar-tutorial/">http://duckrowing.com/2013/12/26/bzr-in<wbr>it-a-bazaar-tutorial/</a></div></div>
+</div>
+<div class="footer">
+<div class="inner">
+<ul class="comment-interaction-links text-links"><li class="link commentpermalink"><a href="http://jhw.dreamwidth.org/1868.html?thread=16204#cmt16204">Link</a></li>
+<li class="link reply first-item"><a href="http://jhw.dreamwidth.org/1868.html?replyto=16204">Reply</a></li>
+</ul><div id="ljqrt16204" data-quickreply-container="16204" style="display: none;"></div></div>
+</div>
+</div>
+</div>
+<div class="separator separator-after"><div class="inner"></div></div>
+</div>
+</div></div>
+<div class="bottomcomment"><ul class="entry-management-links icon-links"><li class="link link_prev first-item"> <a href="http://www.dreamwidth.org/go?dir=prev&amp;itemid=1868&amp;journal=jhw"><img alt="Previous Entry" title="Previous Entry" src="previous.png" width="16" border="0" height="16"></a></li>
+<li class="link mem_add"><a href="http://www.dreamwidth.org/tools/memadd?journal=jhw&amp;itemid=1868"><img alt="Add Memory" title="Add Memory" src="memories_add.png" width="16" border="0" height="16"></a></li>
+<li class="link tell_friend"><a href="http://www.dreamwidth.org/tools/tellafriend?journal=jhw&amp;itemid=1868"><img alt="Share This Entry" title="Share This Entry" src="tellafriend.png" width="16" border="0" height="16"></a></li>
+<li class="link link_next"> <a href="http://www.dreamwidth.org/go?dir=next&amp;itemid=1868&amp;journal=jhw"><img alt="Next Entry" title="Next Entry" src="next.png" width="16" border="0" height="16"></a></li>
+</ul><ul class="entry-interaction-links text-links"><li class="entry-readlink first-item"><a href="#comments" data-sing="1 comment" data-dual="2 comments" data-plur="3 comments">32 comments</a></li>
+<li class="entry-replylink"><a href="http://jhw.dreamwidth.org/1868.html?mode=reply">Reply</a></li>
+</ul><div id="ljqrtbottomcomment" data-quickreply-container="bottomcomment" style="display: none;"></div></div><div class="comment-pages bottompages"><span class="view-flat"><a href="http://jhw.dreamwidth.org/1868.html?view=flat#comments">Flat</a></span> | <span class="view-top-only"><a href="http://jhw.dreamwidth.org/1868.html?view=top-only#comments">Top-Level Comments Only</a></span></div></div></div>
+                    </div></div><!-- end primary and primary>inner -->
+    
+                    <div id="secondary"><div class="inner">
+    <div class="module-wrapper"><div class="separator separator-before"><div class="inner"></div></div>
+<div class="module-section-one">
+<div class="inner"><div class="module-userprofile module"><h2 class="module-header"><a href="http://jhw.dreamwidth.org/profile">Profile</a></h2>
+<div class="module-content">
+<div class="userpic"><a class="ContextualPopup-trigger" href="http://jhw.dreamwidth.org/icons"><img src="629980.dat" title="jhw: (Default) (baleful eye)" alt="jhw: baleful eye (Default)" width="100" height="98"></a></div><div class="journal-name">j h woodyatt</div>
+</div>
+</div>
+<div class="module-navlinks module"><div class="module-content">
+<ul class="module-list">
+<li class="module-list-item"><a href="http://jhw.dreamwidth.org/" class="recent">Recent Entries</a></li>
+<li class="module-list-item"><a href="http://jhw.dreamwidth.org/archive" class="archive">Archive</a></li>
+<li class="module-list-item"><a href="http://jhw.dreamwidth.org/read" class="read">Reading</a></li>
+<li class="module-list-item"><a href="http://jhw.dreamwidth.org/tag/" class="tags">Tags</a></li>
+<li class="module-list-item"><a href="http://www.dreamwidth.org/tools/memories?user=jhw" class="memories">Memories</a></li>
+<li class="module-list-item"><a href="http://jhw.dreamwidth.org/profile" class="userinfo">Profile</a></li>
+</ul>
+</div>
+</div>
+<div class="module-calendar module"><h2 class="module-header"><a href="http://jhw.dreamwidth.org/2012/08/">August</a> <a href="http://jhw.dreamwidth.org/2012/">2012</a></h2>
+<div class="module-content">
+<table summary="Monthly calendar with links to each day's entries">
+<tbody><tr>
+<th>S</th>
+<th>M</th>
+<th>T</th>
+<th>W</th>
+<th>T</th>
+<th>F</th>
+<th>S</th>
+</tr>
+<tr>
+<td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td class="empty-day">1</td><td class="empty-day">2</td><td class="empty-day">3</td><td class="empty-day">4</td></tr>
+<tr>
+<td class="empty-day">5</td><td class="empty-day">6</td><td class="empty-day">7</td><td class="empty-day">8</td><td class="empty-day">9</td><td class="empty-day">10</td><td class="empty-day">11</td></tr>
+<tr>
+<td class="empty-day">12</td><td class="empty-day">13</td><td class="empty-day">14</td><td class="entry-day"> <a href="http://jhw.dreamwidth.org/2012/08/15/" title="2 entries">15</a></td><td class="empty-day">16</td><td class="empty-day">17</td><td class="empty-day">18</td></tr>
+<tr>
+<td class="empty-day">19</td><td class="empty-day">20</td><td class="empty-day">21</td><td class="empty-day">22</td><td class="empty-day">23</td><td class="empty-day">24</td><td class="empty-day">25</td></tr>
+<tr>
+<td class="empty-day">26</td><td class="empty-day">27</td><td class="empty-day">28</td><td class="empty-day">29</td><td class="empty-day">30</td><td class="empty-day">31</td><td>&nbsp;</td></tr>
+</tbody></table>
+</div>
+</div>
+<div class="module-tags_list module"><h2 class="module-header"><a href="http://jhw.dreamwidth.org/tag/">Most Popular Tags</a></h2>
+<div class="module-content">
+<ul class="module-list">
+<li class="visibility-public module-list-item"><a href="http://jhw.dreamwidth.org/tag/coding">coding</a> - 6 uses</li>
+
+<li class="visibility-public module-list-item"><a href="http://jhw.dreamwidth.org/tag/compsci">compsci</a> - 2 uses</li>
+
+<li class="visibility-public module-list-item"><a href="http://jhw.dreamwidth.org/tag/cookies">cookies</a> - 1 use</li>
+
+<li class="visibility-public module-list-item"><a href="http://jhw.dreamwidth.org/tag/flamebait">flamebait</a> - 2 uses</li>
+
+<li class="visibility-public module-list-item"><a href="http://jhw.dreamwidth.org/tag/fury">fury</a> - 6 uses</li>
+
+<li class="visibility-public module-list-item"><a href="http://jhw.dreamwidth.org/tag/git">git</a> - 1 use</li>
+
+<li class="visibility-public module-list-item"><a href="http://jhw.dreamwidth.org/tag/humor">humor</a> - 1 use</li>
+
+<li class="visibility-public module-list-item"><a href="http://jhw.dreamwidth.org/tag/ietf">ietf</a> - 1 use</li>
+
+<li class="visibility-public module-list-item"><a href="http://jhw.dreamwidth.org/tag/ipv6">ipv6</a> - 1 use</li>
+
+<li class="visibility-public module-list-item"><a href="http://jhw.dreamwidth.org/tag/language+design">language design</a> - 1 use</li>
+
+<li class="visibility-public module-list-item"><a href="http://jhw.dreamwidth.org/tag/meme">meme</a> - 1 use</li>
+
+<li class="visibility-public module-list-item"><a href="http://jhw.dreamwidth.org/tag/mercurial">mercurial</a> - 1 use</li>
+
+<li class="visibility-public module-list-item"><a href="http://jhw.dreamwidth.org/tag/networking">networking</a> - 1 use</li>
+
+<li class="visibility-public module-list-item"><a href="http://jhw.dreamwidth.org/tag/personal">personal</a> - 1 use</li>
+
+<li class="visibility-public module-list-item"><a href="http://jhw.dreamwidth.org/tag/pragmatism">pragmatism</a> - 1 use</li>
+
+<li class="visibility-public module-list-item"><a href="http://jhw.dreamwidth.org/tag/recipes">recipes</a> - 1 use</li>
+
+<li class="visibility-public module-list-item"><a href="http://jhw.dreamwidth.org/tag/sigplan">sigplan</a> - 5 uses</li>
+
+<li class="visibility-public module-list-item"><a href="http://jhw.dreamwidth.org/tag/timewaste">timewaste</a> - 1 use</li>
+
+</ul>
+</div>
+</div>
+<div class="module-pagesummary module"><h2 class="module-header">Page Summary</h2>
+<div class="module-content">
+<ul class="module-list">
+<li class="module-list-item"><span class="pagesummary-poster"><span lj:user="jnareb.openid.pl" style="white-space: nowrap;" class="ljuser"><a href="http://www.dreamwidth.org/profile?userid=869994&amp;t=I"><img class="ContextualPopup-trigger" src="openid.png" alt="[identity profile] " style="vertical-align: text-bottom; border: 0px none; padding-right: 1px;" width="16" height="16"></a><a href="http://jnareb.openid.pl/" rel="nofollow"><b>jnareb.openid.pl</b></a></span></span> - <span class="pagesummary-subject"><a href="#cmt1356" title="5 responses">family == branch labels</a></span></li>
+<li class="module-list-item"><span class="pagesummary-poster"><span lj:user="trsdomain.dk" style="white-space: nowrap;" class="ljuser"><a href="http://www.dreamwidth.org/profile?userid=882214&amp;t=I"><img class="ContextualPopup-trigger" src="openid.png" alt="[identity profile] " style="vertical-align: text-bottom; border: 0px none; padding-right: 1px;" width="16" height="16"></a><a href="http://trsdomain.dk/" rel="nofollow"><b>trsdomain.dk</b></a></span></span> - <span class="pagesummary-subject"><a href="#cmt2636" title="2 responses">Deal-braker: Mercurial can't store empty directories</a></span></li>
+<li class="module-list-item"><span class="pagesummary-poster"><span lj:user="https://www.google.com/accounts/o8/id?id=AItOawllJaD1TSNJZdyl6vgYfQTMEg16W_l4gSo" style="white-space: nowrap;" class="ljuser"><a href="http://www.dreamwidth.org/profile?userid=916086&amp;t=I"><img class="ContextualPopup-trigger" src="openid.png" alt="[identity profile] " style="vertical-align: text-bottom; border: 0px none; padding-right: 1px;" width="16" height="16"></a><a href="https://www.google.com/accounts/o8/id?id=AItOawllJaD1TSNJZdyl6vgYfQTMEg16W_l4gSo" rel="nofollow"><b>https://www.google.com/accounts/o8/id?id=AItOawllJaD1TSNJZdyl6vgYfQTMEg16W_l4gSo</b></a></span></span> - <span class="pagesummary-subject"><a href="#cmt5452" title="12 responses">Git &amp; rebase</a></span></li>
+<li class="module-list-item"><span class="pagesummary-poster"><span lj:user="sidk.info" style="white-space: nowrap;" class="ljuser"><a href="http://www.dreamwidth.org/profile?userid=1023051&amp;t=I"><img class="ContextualPopup-trigger" src="openid.png" alt="[identity profile] " style="vertical-align: text-bottom; border: 0px none; padding-right: 1px;" width="16" height="16"></a><a href="http://sidk.info/" rel="nofollow"><b>sidk.info</b></a></span></span> - <span class="pagesummary-subject"><a href="#cmt9036" title="1 response">Bang on!</a></span></li>
+<li class="module-list-item"><span class="pagesummary-poster"><span lj:user="max630.net" style="white-space: nowrap;" class="ljuser"><a href="http://www.dreamwidth.org/profile?userid=744363&amp;t=I"><img class="ContextualPopup-trigger" src="openid.png" alt="[identity profile] " style="vertical-align: text-bottom; border: 0px none; padding-right: 1px;" width="16" height="16"></a><a href="http://max630.net/" rel="nofollow"><b>max630.net</b></a></span></span> - <span class="pagesummary-subject"><a href="#cmt9292" title="0 responses"><em>(no subject)</em></a></span></li>
+<li class="module-list-item"><span class="pagesummary-poster"><span lj:user="friendly12345" style="white-space: nowrap;" class="ljuser"><a href="http://friendly12345.dreamwidth.org/profile"><img class="ContextualPopup-trigger" src="user.png" alt="[personal profile] " style="vertical-align: text-bottom; border: 0px none; padding-right: 1px;" width="17" height="17"></a><a href="http://friendly12345.dreamwidth.org/"><b>friendly12345</b></a></span></span> - <span class="pagesummary-subject"><a href="#cmt10828" title="1 response">Git have it good side</a></span></li>
+<li class="module-list-item"><span class="pagesummary-poster"><span lj:user="rich_pixley_hp" style="white-space: nowrap;" class="ljuser"><a href="http://rich-pixley-hp.dreamwidth.org/profile"><img class="ContextualPopup-trigger" src="user.png" alt="[personal profile] " style="vertical-align: text-bottom; border: 0px none; padding-right: 1px;" width="17" height="17"></a><a href="http://rich-pixley-hp.dreamwidth.org/"><b>rich_pixley_hp</b></a></span></span> - <span class="pagesummary-subject"><a href="#cmt11852" title="1 response"><em>(no subject)</em></a></span></li>
+<li class="module-list-item"><span class="pagesummary-poster"><span lj:user="frgomes [launchpad.net]" style="white-space: nowrap;" class="ljuser"><a href="http://www.dreamwidth.org/profile?userid=2121877&amp;t=I"><img class="ContextualPopup-trigger" src="openid.png" alt="[identity profile] " style="vertical-align: text-bottom; border: 0px none; padding-right: 1px;" width="16" height="16"></a><a href="https://launchpad.net/~frgomes" rel="nofollow"><b>frgomes [launchpad.net]</b></a></span></span> - <span class="pagesummary-subject"><a href="#cmt15692" title="1 response">Mercurial .vx. Bazaar?</a></span></li>
+<li class="module-list-item"><span class="pagesummary-poster"><span lj:user="fmccann" style="white-space: nowrap;" class="ljuser"><a href="http://fmccann.dreamwidth.org/profile"><img class="ContextualPopup-trigger" src="user.png" alt="[personal profile] " style="vertical-align: text-bottom; border: 0px none; padding-right: 1px;" width="17" height="17"></a><a href="http://fmccann.dreamwidth.org/"><b>fmccann</b></a></span></span> - <span class="pagesummary-subject"><a href="#cmt16204" title="0 responses">Absolutely Correct</a></span></li>
+</ul>
+</div>
+</div>
+<div class="module-credit module"><h2 class="module-header">Style Credit</h2>
+<div class="module-content">
+<ul class="module-list"><li class="module-list-item"><span class="category-title">Base style:</span> <span class="style-name"><a href="http://www.dreamwidth.org/customize/?layoutid=97958">Refried Tablet</a></span> by <span class="style-author"><span lj:user="zvi" style="white-space: nowrap;" class="ljuser"><a href="http://zvi.dreamwidth.org/profile"><img class="ContextualPopup-trigger" src="user.png" alt="[personal profile] " style="vertical-align: text-bottom; border: 0px none; padding-right: 1px;" width="17" height="17"></a><a href="http://zvi.dreamwidth.org/"><b>zvi</b></a></span></span> and <span class="style-author"><a href="http://lostentropy.com/">Aaron B. Russell</a></span></li>
+<li class="module-list-item"><span class="category-title">Theme:</span> <span class="theme-name">Teals</span> by <span class="style-author"><span lj:user="rising" style="white-space: nowrap;" class="ljuser"><a href="http://rising.dreamwidth.org/profile"><img class="ContextualPopup-trigger" src="user.png" alt="[personal profile] " style="vertical-align: text-bottom; border: 0px none; padding-right: 1px;" width="17" height="17"></a><a href="http://rising.dreamwidth.org/"><b>rising</b></a></span></span></li>
+</ul></div>
+</div>
+<div class="module-cuttagcontrols module"><h2 class="module-header">Expand Cut Tags</h2>
+<div class="module-content">
+<span class="cutTagControls"><span style="font-size: smaller;">No cut tags</span></span></div>
+</div>
+</div>
+</div><div class="separator separator-after"><div class="inner"></div></div>
+</div>
+                    </div></div><!--  end secondary and secondary>inner -->
+    
+                    <div id="invisible-separator" style="float: left; width: 1px;"></div> <!-- this is a hack for IE7 + two-columns-right -->
+                    <div id="tertiary"><div class="inner">
+                        <div class="module-wrapper"><div class="separator separator-before"><div class="inner"></div></div>
+<div class="module-section-two">
+<div class="inner"><div class="module-time module"><div class="module-content">
+<span id="load-time">Page generated Aug. 16th, 2016 02:52 am</span></div>
+</div>
+<div class="module-powered module"><div class="module-content">
+<span id="site-branding">Powered by <a href="http://www.dreamwidth.org/">Dreamwidth Studios</a></span></div>
+</div>
+</div>
+</div><div class="separator separator-after"><div class="inner"></div></div>
+</div>
+                    </div></div><!-- end tertiary and tertiary>inner -->
+                    <div id="content-footer"></div>
+                </div><!-- end content>inner -->
+            </div> <!-- end content -->
+        </div> <!-- end canvas>inner -->
+    
+    <div id="footer">
+        <div class="inner">
+            
+                <div class="page-top"><a href="#">Top of page</a></div>
+        </div>
+    </div>
+
+    </div> 
+    <div id="statistics" style="text-align: left; font-size: 0px; line-height: 0; height: 0px; overflow: hidden;"></div></body>
+</html>

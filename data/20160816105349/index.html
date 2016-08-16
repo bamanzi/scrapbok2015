@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en" style="background: none repeat scroll 0% 0% rgb(67, 72, 76); margin-top: 18px;" itemtype="http://schema.org/WebSite" itemscope="">
+<head>
+<title>Nine Features of Mercurial | zeroturnaround.com</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="shortcut icon" href="favicon-rl.ico">
+<link rel="alternate" type="application/rss+xml" title="ZeroTurnaround feed" href="http://zeroturnaround.com/feed/">
+
+<!-- All in One SEO Pack 2.3.8 by Michael Torbert of Semper Fi Web Design[114,199] -->
+<link rel="author" href="https://plus.google.com/113457864957289075144/">
+<meta name="description" itemprop="description" content="Nine awesome features and extensions for Mercurial (Hg)">
+
+<link rel="canonical" href="http://zeroturnaround.com/rebellabs/nine-awesome-features-and-extensions-for-mercurial-hg/">
+<meta property="og:title" content="Nine Features of Mercurial | zeroturnaround.com">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://zeroturnaround.com/rebellabs/nine-awesome-features-and-extensions-for-mercurial-hg/">
+<meta property="og:image" content="http://zeroturnaround.com/wp-content/uploads/2015/01/zt-ring.png?1501151127">
+<meta property="og:site_name" content="ZeroTurnaround">
+<meta property="og:description" content="Nine awesome features and extensions for Mercurial (Hg)">
+<meta property="article:publisher" content="ZeroTurnaround">
+<meta property="article:published_time" content="2013-12-03T15:14:55Z">
+<meta property="article:modified_time" content="2016-01-14T11:19:54Z">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@zeroturnaround">
+<meta name="twitter:creator" content="@toomasr">
+<meta name="twitter:domain" content="zeroturnaround.com">
+<meta name="twitter:title" content="Nine Features of Mercurial | zeroturnaround.com">
+<meta name="twitter:description" content="Nine awesome features and extensions for Mercurial (Hg)">
+<meta name="twitter:image" content="http://zeroturnaround.com/wp-content/uploads/2015/01/zt-ring.png?1501151127">
+<meta itemprop="image" content="http://zeroturnaround.com/wp-content/uploads/2015/01/zt-ring.png?1501151127">
+<!-- /all in one seo pack -->
+<link rel="alternate" type="application/rss+xml" title="zeroturnaround.com » Nine awesome features and extensions for Mercurial (Hg) Comments Feed" href="http://zeroturnaround.com/rebellabs/nine-awesome-features-and-extensions-for-mercurial-hg/feed/">
+
+
+
+
+
+
+
+<link rel="https://api.w.org/" href="http://zeroturnaround.com/wp-json/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://zeroturnaround.com/xmlrpc.php?rsd">
+<link rel="shortlink" href="http://zeroturnaround.com/?p=38827">
+<link rel="alternate" type="application/json+oembed" href="http://zeroturnaround.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fzeroturnaround.com%2Frebellabs%2Fnine-awesome-features-and-extensions-for-mercurial-hg%2F">
+
+
+
+	<link rel="apple-touch-icon-precomposed" href="http://static.zeroturnaround.com/img/icons/touch-icon-precomposed-144.png" sizes="144x144">
+	<link rel="apple-touch-icon-precomposed" href="http://static.zeroturnaround.com/img/icons/touch-icon-precomposed-114.png" sizes="114x114">
+	<link rel="apple-touch-icon-precomposed" href="http://static.zeroturnaround.com/img/icons/touch-icon-precomposed-72.png" sizes="72x72">
+	<link rel="apple-touch-icon-precomposed" href="http://static.zeroturnaround.com/img/icons/touch-icon-precomposed.png">
+	
+	
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body class="single single-rl-report postid-38827 ztwp slug-nine-awesome-features-and-extensions-for-mercurial-hg ztwp-rebellabs">
+<div id="viewport">
+<header>
+	<div id="top">
+		<div class="wrapper">
+			<a id="main-logo" class="logo zt-logo" href="http://zeroturnaround.com/" title="zeroturnaround.com">
+	<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAmIAAABMCAMAAAD5sSu7AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyhpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTExIDc5LjE1ODMyNSwgMjAxNS8wOS8xMC0wMToxMDoyMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NDQ0N0E2NDZBMDNBMTFFNUI5NEFCNDk3NTM4MTlGQzIiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NDQ0N0E2NDdBMDNBMTFFNUI5NEFCNDk3NTM4MTlGQzIiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo0NDQ3QTY0NEEwM0ExMUU1Qjk0QUI0OTc1MzgxOUZDMiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo0NDQ3QTY0NUEwM0ExMUU1Qjk0QUI0OTc1MzgxOUZDMiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PleFxPAAAAAwUExURVte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" alt="ZeroTurnaround logo">
+</a>
+<form id="main-search" action="http://zeroturnaround.com/search/">
+    <label for="search-q" class="label"><span class="icon icon-search">Search the site</span></label>
+    <div class="fields">
+        <input id="search-q" name="q" value="" placeholder="Search" type="text">
+        <button type="submit">Find it!</button>
+    </div>
+</form><ul id="top-menu" class="menu"><li id="menu-item-27789" class="alt menu-item menu-item-type-post_type menu-item-object-page menu-item-27789"><a href="http://zeroturnaround.com/software/jrebel/">JRebel</a></li>
+<li id="menu-item-43225" class="alt menu-item menu-item-type-post_type menu-item-object-page menu-item-43225"><a href="http://zeroturnaround.com/software/xrebel/">XRebel</a></li>
+<li id="menu-item-31162" class="small menu-item menu-item-type-custom menu-item-object-custom highlight menu-item-31162"><a href="http://zeroturnaround.com/rebellabs/">RebelLabs</a></li>
+<li id="menu-item-56469" class="small menu-item menu-item-type-custom menu-item-object-custom menu-item-56469"><a href="http://zeroturnaround.com/tag/zeroturnaround">Blog</a></li>
+<li id="menu-item-11822" class="small item-forum menu-item menu-item-type-custom menu-item-object-custom menu-item-11822"><a href="http://zeroturnaround.com/forums/">Forum</a></li>
+<li id="menu-item-43776" class="small menu-item menu-item-type-post_type menu-item-object-page menu-item-43776"><a href="http://zeroturnaround.com/company/">Company</a></li>
+</ul><ul id="user-menu" class="menu">
+	</ul>
+		</div>
+	</div>
+	</header>
+
+<div id="content">
+
+<section><div id="blog-content" class="content-body">
+<div style="min-height: 1177px;" class="content">
+    <div class="card intro zebra-alternate-0">
+	
+<div class="card-row left two-col">
+	
+	
+	
+	<div class="card-col center bottom-img" style="margin-top: 48px; float: left;">
+	
+	
+	<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAbEAAACxCAMAAAB9eXM3AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2hpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTExIDc5LjE1ODMyNSwgMjAxNS8wOS8xMC0wMToxMDoyMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpGRTdGMTE3NDA3MjA2ODExQUIwOEJFMkQ1Mzc1Q0M0NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpFOTk1N0EwQ0EwNDIxMUU1Qjk0QUI0OTc1MzgxOUZDMiIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpFOTk1N0EwQkEwNDIxMUU1Qjk0QUI0OTc1MzgxOUZDMiIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1LjEgTWFjaW50b3NoIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6NzMxNzU1MkUxRTBEMTFFMzkxQThDRkVGREM2QjQ3MkQiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6NzMxNzU1MkYxRTBEMTFFMzkxQThDRkVGREM2QjQ3MkQiLz4gPC9yZGY6RGVzY3Jp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"></div>
+
+	<div class="card-col" style="margin-top: 30px;">
+	
+	
+	
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPoAAABBCAMAAADPP0m5AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTExIDc5LjE1ODMyNSwgMjAxNS8wOS8xMC0wMToxMDoyMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NDQ0N0E2NDNBMDNBMTFFNUI5NEFCNDk3NTM4MTlGQzIiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NDQ0N0E2NDJBMDNBMTFFNUI5NEFCNDk3NTM4MTlGQzIiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNS4xIE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjYwNEM4Q0FCNkJCOTExRTM5MENFRDI0QUFBQjlGODg4IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjYwNEM4Q0FDNkJCOTExRTM5MENFRDI0QUFBQjlGODg4Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+FXrrWQAAADBQTFRFh73Zn6GiRlBW6+vram1vjMPhgISHxMbHUWdzdJ+2XnyMPkRIU1pfhLjU////Q0hMrpX42AAABV1JREFUeNrsmmm3qyoMhgGZwfr//+2VeYpT23vOOtp82bssbX0ISV6CaHmsoR/6D/2H/mh0ggUmj0Qn0+v1msgT0R35yv5AdPsKZn/oD0InEf2JsY49OX1kcePTJO5NviNpzLruxWviz1Rz4tarfhfdB7x4Ljp+JDq+dYHbRncCnuIb72HQdoq7bZAfoNO7a7ltdPtc9MVi+1T0+9uIbjp7DDqZUWczeQa6UWjujZlnoI/kT0FfNGMNPWJMAemfUu6s2dVZ3psPFZqtUg3DpWYh7k9fVaSz7amXmoyXOyP9PcQP2900Z62u2JG2Y42bXsUmnIn4qze6lDafv1jwajfcmPEi6tV3B2a22iY6YWzuPmeblaygVBrVZq+4SVahQz87tU8tKgG4j+7o7SV0tfUMYYmimZEGvVmvioxETJmd4lY5nenlGD2160+hh8Evoa9ESPXoa4jGmEVxXmQaduPlhhFdHzl9QI9b+oA+FSvoAnMspjJRYrj0HXSPxDp0pLXUag4QKs3QPGtppXT1i8kt9GOnB3S+qh1Lo/tIRse9HLKln29Fcrv/x7ZXXkdX/hllix4ygyG+SjObZqiESHY7uhzpEZ3Wuc1mdA7tg/JRhohrRAA9kMvoKbIh9Hir9906CShnBPfBwOhmPnR6gx4o+El0Gle8yEvlA/QYmVWia9C9D52Hm+lZi3e6AV13eouOc7CfQLffRE9PqWB0G9G9M02zQ4HR6+qw4fQP0L/pdZuchA68vn4HksdqrnY6I8vZBU//Qqy7PKZkk+jaWEfRe06iMU2O0Gunq+UEOu0yvLDJAHTeZHieriRvoftCtjQPWqGbUPlsqfarujM76KecHotbkO2VnqOQzgno2OlzPHV1PRl/B937kqQ/dV13Yl3PvkYH6RZ3o07GbqOfcnp65cIpkaqsd+iiRt9Xc2+hx7oWaHs1F+VcmpMZFXFrYXRyyumDmrPLBXS+fAU9IZs60TUaPi738DWsggfRqz7FjtM7dGGXK+j4O+gqLXS/4m3r9YhR5XWi5zyqgOJ20uktumhTNAYzvMCrhJ8KaHuEa95AZ0moEJa1etLwq4QPGr4WuSbTQ5LmpNMDOqYUt+/bHBU3EzX88oXiJnOI+xXPtjR8q1SJRtXeDV13eiluonnD7ERdT7XhU0ljVHlGjXKi8+h1HmQSCpTZ9uij0zd60lO7F8fn0XkMkU/Rg5ekVwWhqWQG9Dwlpqnn7mraoQNOr/cyBJI0eMjwf0bDB9zQc0IlmTfoScPbWc2ydXCPDkV6kTh18Fdqbuq7NH8GnfVd4/B4MDprHh5AhyO9ampJCJ0eVaf/ZcGXjlPoNaaENix4v3NDdYV3RLFnhwCnz6pbWcEMpOFxp+F30enrO9uXbl+Z20719iVoeJkYqiOWdCcohBSUAMpvNTu3KRf3sH2htG2821gJKecii7+wfWkvHWWBieh9uiVdT06mIu/rukt+UipWlq8bXcPdddT8LHWSRjcHD1rqYPVaYBZCL0t+7MhaSMMLqCM7Qbfz2H6rDgCZW3sadcKDRcqi4UPyixf5do7vxjJU9Z4QqH6rw8baDIAeMchZ9Gm5jN4/A+ortopz0Wv4JFkVAwYTugbO2sbDNwuhk+TLU+h4+Rh96EHnkRp9dX45aUnHaavbdbdzI/MZSzPdoscGBAcOnlr0acJ8WS6idyfebsGrNh3lvCfXOpZXqtLtUZ1WIZCH/fo1dJ+XqtLkP9uF0N7CdwN60AKXmtGgwaaz2L4OUevPBXxlAurSqFPotzxktuww2NFWW/5fP18nWh2YvtsbVdX25cBu/1bFg+yH/kT7T4ABALS4bgNDmopTAAAAAElFTkSuQmCC"> <br>
+<div style="font-size: 1.2em;">Imagine a bacon-wrapped Ferrari. Still not better than our free technical reports.</div>
+<a class="em upper bigger button" href="http://zeroturnaround.com/rebellabs/reports/" style="margin-left: 5px; margin-top: 20px;">See all our reports</a>
+</div>
+
+</div>
+
+</div>
+
+    	<div id="rebellabs-sidebar" class="sidebar">
+	<div id="zt-blog-sidebar-3" class="widget widget_zt_blog_sidebar">		<div class="textwidget">
+			<p><a href="http://zeroturnaround.com/software/jrebel/trial/?utm_source=blog&amp;utm_medium=sidebar&amp;utm_campaign=lightspeed_free"><img src="rl-206x206-jr-lightspeed-v2.png"></a></p>
+		</div>
+		</div><div id="text-17" class="widget widget_text">			<div class="textwidget"><div>
+		<a class="twitter-timeline" href="https://twitter.com/zeroturnaround" data-widget-id="357070320970117120">Tweets by @zeroturnaround</a>
+       
+
+</div></div>
+		</div>			<div id="zt-promoted-posts-2" class="widget widget_zt_promoted_entries">						<ul class="tab-switcher">
+									<li class="tab active">
+						<a class="tab-title" href="#">Reports</a>
+						<ul class="tab-content">
+															<li class="item">
+									<a href="http://zeroturnaround.com/rebellabs/the-curious-coders-java-web-frameworks-comparison-spring-mvc-grails-vaadin-gwt-wicket-play-struts-and-jsf/" title="The Ultimate Java Web Frameworks Comparison: Spring MVC, Grails, Vaadin, GWT, Wicket, Play, Struts and JSF">The Ultimate Java Web Frameworks Comparison: Spring MVC, Grails, Vaadin, GWT, Wicket, Play, Struts and JSF</a>
+									<span class="note">30 July 2013</span>
+								</li>
+													<li class="item">
+									<a href="http://zeroturnaround.com/rebellabs/the-great-java-application-server-debate-with-tomcat-jboss-glassfish-jetty-and-liberty-profile/" title="The Great Java Application Server Debate with Tomcat, JBoss, GlassFish, Jetty and Liberty Profile">The Great Java Application Server Debate with Tomcat, JBoss, GlassFish, Jetty and Liberty Profile</a>
+									<span class="note">21 May 2013</span>
+								</li>
+													<li class="item">
+									<a href="http://zeroturnaround.com/rebellabs/java-8-revealed-lambdas-default-methods-and-bulk-data-operations/" title="Java 8 Revealed: Lambdas, Default Methods and Bulk Data Operations">Java 8 Revealed: Lambdas, Default Methods and Bulk Data Operations</a>
+									<span class="note">25 June 2013</span>
+								</li>
+											</ul>
+					</li>
+								<li class="tab ">
+						<a class="tab-title" href="#">Posts</a>
+						<ul class="tab-content">
+															<li class="item">
+									<a href="http://zeroturnaround.com/rebellabs/speeding-up-android-builds-with-an-incremental-java-compiler/" title="Speeding up Android builds with an incremental Java compiler">Speeding up Android builds with an incremental Java compiler</a>
+									<span class="note">11 August 2016</span>
+								</li>
+													<li class="item">
+									<a href="http://zeroturnaround.com/rebellabs/spring-and-java-ee-head-to-head/" title="Spring and Java EE – Head to Head">Spring and Java EE – Head to Head</a>
+									<span class="note">9 August 2016</span>
+								</li>
+													<li class="item">
+									<a href="http://zeroturnaround.com/rebellabs/most-popular-java-frameworks-tools-and-libraries-2016/" title="Most popular and the best Java Frameworks, Tools, and Libraries 2016">Most popular and the best Java Frameworks, Tools, and Libraries 2016</a>
+									<span class="note">1 August 2016</span>
+								</li>
+											</ul>
+					</li>
+						</ul>
+			</div>			<div id="tag_cloud-3" class="widget widget_tag_cloud"><h2 class="widgettitle">Tags</h2>
+<div class="tagcloud"><a href="http://zeroturnaround.com/tag/continuous-delivery/" class="tag-link-94 tag-link-position-1" title="23" style="font-size: 1em;">continuous delivery</a>
+<a href="http://zeroturnaround.com/tag/developers/" class="tag-link-15 tag-link-position-2" title="37" style="font-size: 1em;">developers</a>
+<a href="http://zeroturnaround.com/tag/development/" class="tag-link-16 tag-link-position-3" title="49" style="font-size: 1em;">development</a>
+<a href="http://zeroturnaround.com/tag/devops/" class="tag-link-17 tag-link-position-4" title="28" style="font-size: 1em;">DevOps</a>
+<a href="http://zeroturnaround.com/tag/eclipse/" class="tag-link-20 tag-link-position-5" title="35" style="font-size: 1em;">eclipse</a>
+<a href="http://zeroturnaround.com/tag/java/" class="tag-link-32 tag-link-position-6" title="181" style="font-size: 1em;">java</a>
+<a href="http://zeroturnaround.com/tag/java-8/" class="tag-link-1882 tag-link-position-7" title="45" style="font-size: 1em;">java 8</a>
+<a href="http://zeroturnaround.com/tag/java-ee/" class="tag-link-33 tag-link-position-8" title="45" style="font-size: 1em;">Java EE</a>
+<a href="http://zeroturnaround.com/tag/jboss/" class="tag-link-35 tag-link-position-9" title="31" style="font-size: 1em;">JBoss</a>
+<a href="http://zeroturnaround.com/tag/jrebel/" class="tag-link-38 tag-link-position-10" title="135" style="font-size: 1em;">JRebel</a>
+<a href="http://zeroturnaround.com/tag/jvm/" class="tag-link-90 tag-link-position-11" title="41" style="font-size: 1em;">JVM</a>
+<a href="http://zeroturnaround.com/tag/liverebel/" class="tag-link-109 tag-link-position-12" title="51" style="font-size: 1em;">LiveRebel</a>
+<a href="http://zeroturnaround.com/tag/maven/" class="tag-link-41 tag-link-position-13" title="24" style="font-size: 1em;">Maven</a>
+<a href="http://zeroturnaround.com/tag/productivity/" class="tag-link-49 tag-link-position-14" title="61" style="font-size: 1em;">productivity</a>
+<a href="http://zeroturnaround.com/tag/rebellabs/" class="tag-link-16392 tag-link-position-15" title="417" style="font-size: 1em;">RebelLabs</a>
+<a href="http://zeroturnaround.com/tag/spring/" class="tag-link-55 tag-link-position-16" title="47" style="font-size: 1em;">spring</a>
+<a href="http://zeroturnaround.com/tag/tools/" class="tag-link-60 tag-link-position-17" title="41" style="font-size: 1em;">Tools</a>
+<a href="http://zeroturnaround.com/tag/vjug/" class="tag-link-8625 tag-link-position-18" title="43" style="font-size: 1em;">vJUG</a>
+<a href="http://zeroturnaround.com/tag/xrebel-2/" class="tag-link-10526 tag-link-position-19" title="42" style="font-size: 1em;">xrebel</a>
+<a href="http://zeroturnaround.com/tag/zeroturnaround/" class="tag-link-16393 tag-link-position-20" title="443" style="font-size: 1em;">ZeroTurnaround</a></div>
+</div>	</div>
+	
+    
+                <ul class="rebellabs-blog-header-tags">
+                                                <li><a href="http://zeroturnaround.com/rebellabs/" class="tag-link-showall current-tag-link">All Posts</a></li>
+                                                                <li><a href="http://zeroturnaround.com/tag/rebellabs/" class="tag-link-rebellabs">RebelLabs</a></li>
+                                                                <li><a href="http://zeroturnaround.com/tag/zeroturnaround/" class="tag-link-zeroturnaround">ZeroTurnaround</a></li>
+                                                                <li><a href="http://zeroturnaround.com/tag/android/" class="tag-link-android">Android</a></li>
+                                                                <li><a href="http://zeroturnaround.com/tag/vjug/" class="tag-link-vjug">Virtual JUG</a></li>
+                                    </ul>
+    
+                    <div class="post single">
+
+        <h1 class="title"><a href="#" title="Nine awesome features and extensions for Mercurial (Hg)">Nine awesome features and extensions for Mercurial (Hg)</a></h1>
+        <ul class="meta head">
+            <li class="date">
+                <span class="icon icon-calendar"></span>
+                December 3, 2013            </li>
+            <li class="author">
+                <span class="icon icon-user"></span>
+                <a href="http://zeroturnaround.com/author/toomasr/" title="Posts by Toomas Römer" rel="author">Toomas Römer</a>            </li>
+            <li class="comments">
+                <span class="icon icon-comments"></span>
+                <a href="#disqus_thread">15 comments</a>
+            </li>
+                    </ul>
+                <ul class="social-buttons">
+            <li>
+                <a href="https://twitter.com/share" class="twitter-share-button" data-via="zeroturnaround">Tweet</a>
+            </li>
+            <li>
+                <div class="fb-like" data-href="http://zeroturnaround.com/rebellabs/nine-awesome-features-and-extensions-for-mercurial-hg/" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+            </li>
+            <li>
+                
+            </li>
+            <li>
+                <div class="g-plusone" data-size="medium" data-href="http://zeroturnaround.com/rebellabs/nine-awesome-features-and-extensions-for-mercurial-hg/"></div>
+            </li>
+        </ul>
+                <div class="excerpt">
+            <p style="float: left; margin: 1px 20px 1px 1px;"><a href="http://www.selenic.com/hg-logo/logo-droplets-200.png"><img src="logo-droplets-200.png" alt="logo-droplets-200" class="alignnone size-full wp-image-38872" srcset="logo-droplets-200.png 200w, logo-droplets-200-166x200.png 166w" sizes="(max-width: 160px) 100vw, 160px" width="160" height="192"></a></p>
+<p>Years and years ago, ZeroTurnaround’s small, geeky engineering team started looking into Git and Mercurial. We had been using Subversion for ages, and felt like it was time to look into other alternatives, namely to migrate to a decentralized version control system (DVCS) so that we could alienate our partners in life by committing code while on vacation with them. This was back when it wasn’t possible to use Git on our Windows workstations and recently-released <a href="http://www.fogcreek.com/kiln/">Kiln</a> was supporting only Mercurial. So, not wanting to wait for things to improve on their own, we chose to use Mercurial rather than Git.</p>
+<p>Now, years later, I can’t tell you if we made the right decision but I do know that a lot has changed on how source code is managed. DVCS systems have made the life of developers just so much simpler and pack so much power that it would be a shame not to take advantage of it. Also, I’ve noticed that developers very often use only a subset of features of their version control systems.</p>
+<p>After some preaching around the office and emails to the engineering team, I got this urge to share my experiences with Mercurial. I chose a list of 9 Mercurial features/extensions that I find useful, powerful or just like and I really do have them enabled in my <a href="https://gist.github.com/toomasr/142ffc6c206430a9e6fe">.hgrc</a> file.</p>
+<h3>Rebase</h3>
+<p>The <a href="http://mercurial.selenic.com/wiki/RebaseExtension">Rebase extension</a> is a very powerful one and great for productivity. I personally use this daily, since the repository I work with gets a lot of heat, with dozens of added changesets a day in at least in 4 different branches. Most of the time, when I want to push something I already need to pull a little.</p>
+<p>There is a <b>deprecated extension</b> that makes this pulling a less cumbersome: the <code>fetch</code> extension. It will pull and then do a merge for you with a message “Automated merge with ….”. These will litter your changeset history with merge messages!</p>
+<p>Another option would be to <code>pull</code> and rebase. Or in short <code>hg pull --rebase</code>. The result is that it will move your local changes onto to the most recent head of the checked-out branch. If it doesn’t succeed, you need to manually merge but that is always the case when you have conflicts. Most of the time you will save a merge!</p>
+<h3>Histedit</h3>
+<p>The <a href="http://mercurial.selenic.com/wiki/HisteditExtension">Histedit extension</a> is probably the most powerful of all the extensions mentioned here. The usage scenario for this plugin is to go over your commits and reorder them and/or fold them into fewer ones. Imagine you were working on feature X and made some commits to implement it. Later on you feel that it would be really nice if these commits would be just a single commit for easier reviewing.</p>
+<p>This is where the extension comes to play. You can fire up for example <code>hg histedit -o</code> and it will drop you into an editor with the list of outgoing changesets and you can pick an action what to do with each of them. You can reorder, pick, fold, edit or drop them as you please.</p>
+<p>You can do these operations on local changes and not on the permanent history of the repository (see <a href="http://mercurial.selenic.com/wiki/Phases">Mercurial Phases</a> for more).</p>
+<h3>Shelve</h3>
+<p>This is <a href="http://mercurial.selenic.com/wiki/ShelveExtension">an extension</a> that is bundled with Mercurial 2.8 and offers an easy way to shelve away your local changes so that you can either be interrupted with other work or you can go back to the branch you were thinking you were at :).</p>
+<p>For example, let’s say you have made some local changes that you don’t want to commit yet but at the same time you want to do a quick bug fix. Shelve comes in helpful here.</p>
+<pre class="hljs groovy" lang="bash">toomasr<span class="hljs-meta">@cigarillo</span> <span class="hljs-regexp">~/tmp/</span>tmp » hg shelve
+shelved <span class="hljs-keyword">as</span> <span class="hljs-keyword">default</span>
+<span class="hljs-number">1</span> files updated, <span class="hljs-number">0</span> files merged, <span class="hljs-number">0</span> files removed, <span class="hljs-number">0</span> files unresolved
+</pre>
+<p>Now your work has been shelved away under a name <em>default</em>. Later on you can call <code>unshelve</code></p>
+<pre class="hljs typescript" lang="bash">toomasr@cigarillo<span class="hljs-number">-2</span> ~<span class="hljs-regexp">/tmp/</span>tmp » hg unshelve <span class="hljs-keyword">default</span>
+adding changesets
+adding manifests
+adding file changes
+added <span class="hljs-number">1</span> changesets <span class="hljs-keyword">with</span> <span class="hljs-number">1</span> changes to <span class="hljs-number">1</span> files (+<span class="hljs-number">1</span> heads)
+</pre>
+<p>And voila! You have your old state back and you can continue from where you left off. Handy, right?</p>
+<h3>Unbundle</h3>
+<p>Have you seen the message <code>saved backup bundle to projectX/.hg/strip-backup/7bf31c6f3fec-backup.hg</code>? Well, nice to know, but what do you do with it? These are the Mercurial backup files and you can restore your previous state by issuing <code>hg unbundle</code> and specifying which backup bundle you want to unbundle. This is the undo mechanism for tasks that change and destroy history.</p>
+<h3>Purge</h3>
+<p><a href="http://mercurial.selenic.com/wiki/PurgeExtension">Purge is another extension</a> that I use daily. I don’t know if I’m super sloppy but I very often have some files lying around in my repository that are not supposed to be there. Maybe they are some temporary files that I haven’t put into <code>.hgignore</code> or just some data files that I’ve used but have not intended to keep.</p>
+<p>This is where <code>hg purge</code> comes into play. This command will remove all files and directories that are not being tracked in the current repository.</p>
+<h3>Alias</h3>
+<p>Mercurial has <a href="http://mercurial.selenic.com/wiki/AliasExtension">built in aliases</a> so that you don’t have to rely on your system aliases. You can define your Hg aliases in a section in your configuration file.</p>
+<pre class="hljs bash" lang="python">[<span class="hljs-built_in">alias</span>]
+<span class="hljs-comment"># lets introduce hg blame</span>
+blame = annotate --user -c
+<span class="hljs-comment"># short log</span>
+llog = <span class="hljs-built_in">log</span> --limit 10
+</pre>
+<h3>Color</h3>
+<p>You like terminal colours? Well go and <a href="http://mercurial.selenic.com/wiki/ColorExtension">enable the extension</a>. Quick! I have no idea why this isn’t enabled by default.</p>
+<p><img src="color.png" alt="Color" class="alignnone size-full wp-image-38840" srcset="color.png 600w, color-320x111.png 320w, color-200x69.png 200w" sizes="(max-width: 600px) 100vw, 600px" width="600" height="209"></p>
+<h3>Progress</h3>
+<p>So now you have color in your terminal, so how about some progress bars? Sure thing, go enable <a href="http://mercurial.selenic.com/wiki/ProgressExtension">the progress extension</a> and you’ll get your progress bars.</p>
+<h3>Pager</h3>
+<p>Are you tired of piping Hg commands to less or more or what not? Well there is <a href="http://mercurial.selenic.com/wiki/PagerExtension">an extension for that</a>. After 4 lines of configuration you will have a pager for your commands. It also supports having a pager for only couple of the commands. It actually has more options that you would think a pager could have :)</p>
+<h3>Conclusions</h3>
+<p>Needless to say, Mercurial has a <a href="http://mercurial.selenic.com/wiki/UsingExtensions">lot of extensions</a>. These are only the best 9 that I could think of, but if my “grepping” skills are correct, then there are 193 as of today. What extensions do you like? Please share them with us in the comments section below, or by tweeting <a href="http://twitter.com/toomasr">@toomasr</a> or <a href="http://twitter.com/ZeroTurnaround">@ZeroTurnaround</a>!</p>
+<p>&nbsp;</p>
+<ul class="social-buttons">
+            <li>
+                <a href="https://twitter.com/share" class="twitter-share-button" data-via="zeroturnaround">Tweet</a>
+            </li>
+            <li>
+                <div class="fb-like" data-href="http://zeroturnaround.com/rebellabs/nine-awesome-features-and-extensions-for-mercurial-hg/" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+            </li>
+            <li>
+                
+            </li>
+            <li>
+                <div class="g-plusone" data-size="medium" data-href="http://zeroturnaround.com/rebellabs/nine-awesome-features-and-extensions-for-mercurial-hg/"></div>
+            </li>
+        </ul><section class="post-authors post-authors-1 "><div class="author active"><a href="http://zeroturnaround.com/author/toomasr/" class="picture"><span class="name">Toomas Römer</span><img alt="" src="12d48338738293775ee1b09f17fef6b1.dat" srcset="12d48338738293775ee1b09f17fef6b1_001.dat 2x" class="avatar avatar-96 photo" width="96" height="96"></a>
+				<div class="details">
+				<h4 class="title"><a href="http://zeroturnaround.com/author/toomasr/" rel="author"><span class="name">Toomas Römer</span></a></h4>
+				<div class="bio">Toomas Römer is the co-founder and head of engineering at ZeroTurnaround. Once a Linux junkie, he was fooled by Apple into proprietary OS and devices. He is a big fan of JUGs, OSS communities and beer. He blogs at <a href="http://toomasr.com/">toomasr.com</a>, tweets from <a href="http://twitter.com/toomasr">@toomasr</a> and also runs the non-profit <a href="http://chesspastebin.com/">chesspastebin.com</a> website. In his spare time he plays Go and is obsessed with Tennis. You can connect with Toomas on LinkedIn.</div>
+				</div>
+				<div class="connect"><a class="item more-posts" href="http://zeroturnaround.com/author/toomasr/" title="More posts"><span class="icon icon-ellipsis-horizontal">More posts</span></a> <a class="item twitter" href="https://twitter.com/toomasr" title="Twitter" target="_blank"><span class="icon icon-twitter">https://twitter.com/toomasr</span></a> <a class="item googleplus" href="https://plus.google.com/113457864957289075144/" title="Google+" target="_blank"><span class="icon icon-google-plus">https://plus.google.com/113457864957289075144/</span></a></div></div></section>
+                            <ul class="meta">
+                    <li class="tags">
+                        <span class="icon icon-tag"></span>
+                                                    <a class="tag" href="http://zeroturnaround.com/tag/hg/">hg</a>
+                                                    <a class="tag" href="http://zeroturnaround.com/tag/mercurial/">Mercurial</a>
+                                                    <a class="tag" href="http://zeroturnaround.com/tag/rebellabs/">RebelLabs</a>
+                                            </li>
+                </ul>
+                    </div>
+        
+<div id="disqus_thread">
+            <div id="dsq-content">
+
+
+            <ul id="dsq-comments">
+                    <li class="comment even thread-even depth-1" id="dsq-comment-2364">
+        <div id="dsq-comment-header-2364" class="dsq-comment-header">
+            <cite id="dsq-cite-2364">
+                <span id="dsq-author-user-2364">Oleg Šelajev</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-2364" class="dsq-comment-body">
+            <div id="dsq-comment-message-2364" class="dsq-comment-message"><p>I can also recommend graphlog: <a href="http://mercurial.selenic.com/wiki/GraphlogExtension" rel="nofollow">http://mercurial.selenic.com/wiki/GraphlogExtension</a></p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment odd alt thread-odd thread-alt depth-1" id="dsq-comment-2367">
+        <div id="dsq-comment-header-2367" class="dsq-comment-header">
+            <cite id="dsq-cite-2367">
+                <a id="dsq-author-user-2367" href="http://www.zeroturnaround.com/" target="_blank" rel="nofollow">Toomas Römer</a>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-2367" class="dsq-comment-body">
+            <div id="dsq-comment-message-2367" class="dsq-comment-message"><p>I have it enabled but when writing this post I realised I don’t use it! Do you use it regularly?</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment even thread-even depth-1" id="dsq-comment-2368">
+        <div id="dsq-comment-header-2368" class="dsq-comment-header">
+            <cite id="dsq-cite-2368">
+                <span id="dsq-author-user-2368">Oleg Šelajev</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-2368" class="dsq-comment-body">
+            <div id="dsq-comment-message-2368" class="dsq-comment-message"><p>Not directly, but I have it in an alias, so whenever I ask for a log, I use that.<br>
+Something like: alias lh=’hg glog -b “`hg branch`” -l’</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment odd alt thread-odd thread-alt depth-1" id="dsq-comment-2369">
+        <div id="dsq-comment-header-2369" class="dsq-comment-header">
+            <cite id="dsq-cite-2369">
+                <a id="dsq-author-user-2369" href="http://blog.blzr.me/" target="_blank" rel="nofollow">Constantine</a>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-2369" class="dsq-comment-body">
+            <div id="dsq-comment-message-2369" class="dsq-comment-message"><p>We store docs next to the code in our repository and render markdown using <a href="https://bitbucket.org/celdredge/hgext.markdown" rel="nofollow">https://bitbucket.org/celdredge/hgext.markdown</a></p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment even thread-even depth-1" id="dsq-comment-2371">
+        <div id="dsq-comment-header-2371" class="dsq-comment-header">
+            <cite id="dsq-cite-2371">
+                <a id="dsq-author-user-2371" href="http://www.zeroturnaround.com/" target="_blank" rel="nofollow">Toomas Römer</a>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-2371" class="dsq-comment-body">
+            <div id="dsq-comment-message-2371" class="dsq-comment-message"><p>Cool, the DIY solution if not using BitBucket or similar service.</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment odd alt thread-odd thread-alt depth-1" id="dsq-comment-2372">
+        <div id="dsq-comment-header-2372" class="dsq-comment-header">
+            <cite id="dsq-cite-2372">
+                <span id="dsq-author-user-2372">Allan Peda</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-2372" class="dsq-comment-body">
+            <div id="dsq-comment-message-2372" class="dsq-comment-message"><p>hg purge looks scary to me.</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment even thread-even depth-1" id="dsq-comment-2373">
+        <div id="dsq-comment-header-2373" class="dsq-comment-header">
+            <cite id="dsq-cite-2373">
+                <span id="dsq-author-user-2373">Bryan</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-2373" class="dsq-comment-body">
+            <div id="dsq-comment-message-2373" class="dsq-comment-message"><p>it was useful for our automated build server to make sure you have a clean directory to build from</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment odd alt thread-odd thread-alt depth-1" id="dsq-comment-2374">
+        <div id="dsq-comment-header-2374" class="dsq-comment-header">
+            <cite id="dsq-cite-2374">
+                <a id="dsq-author-user-2374" href="http://www.zeroturnaround.com/" target="_blank" rel="nofollow">Toomas Römer</a>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-2374" class="dsq-comment-body">
+            <div id="dsq-comment-message-2374" class="dsq-comment-message"><p>Don’t run it without “hg st” before. There you’ll see what is not considered part of the repository and that will get purged.</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment even thread-even depth-1" id="dsq-comment-2375">
+        <div id="dsq-comment-header-2375" class="dsq-comment-header">
+            <cite id="dsq-cite-2375">
+                <span id="dsq-author-user-2375">panzi</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-2375" class="dsq-comment-body">
+            <div id="dsq-comment-message-2375" class="dsq-comment-message"><p>For these things I use thg <a href="http://tortoisehg.bitbucket.org/" rel="nofollow">http://tortoisehg.bitbucket.org/</a>. I use it to view the graph and browse files at different versions.</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment odd alt thread-odd thread-alt depth-1" id="dsq-comment-2377">
+        <div id="dsq-comment-header-2377" class="dsq-comment-header">
+            <cite id="dsq-cite-2377">
+                <span id="dsq-author-user-2377">SteveFink</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-2377" class="dsq-comment-body">
+            <div id="dsq-comment-message-2377" class="dsq-comment-message"><p>I prefer ‘hg purge -p’ for the pre-check.</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment even thread-even depth-1" id="dsq-comment-2378">
+        <div id="dsq-comment-header-2378" class="dsq-comment-header">
+            <cite id="dsq-cite-2378">
+                <span id="dsq-author-user-2378">Nick</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-2378" class="dsq-comment-body">
+            <div id="dsq-comment-message-2378" class="dsq-comment-message"><p>How about crecord?</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment odd alt thread-odd thread-alt depth-1" id="dsq-comment-2380">
+        <div id="dsq-comment-header-2380" class="dsq-comment-header">
+            <cite id="dsq-cite-2380">
+                <span id="dsq-author-user-2380">Martin Geisler</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-2380" class="dsq-comment-body">
+            <div id="dsq-comment-message-2380" class="dsq-comment-message"><p>Just use “.” for the current branch name: “hg log -b .”.</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment even thread-even depth-1" id="dsq-comment-2381">
+        <div id="dsq-comment-header-2381" class="dsq-comment-header">
+            <cite id="dsq-cite-2381">
+                <span id="dsq-author-user-2381">Martin Geisler</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-2381" class="dsq-comment-body">
+            <div id="dsq-comment-message-2381" class="dsq-comment-message"><p>The graphlog extension is now part of core Mercurial, so “hg log -G” always works now.</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment odd alt thread-odd thread-alt depth-1" id="dsq-comment-2383">
+        <div id="dsq-comment-header-2383" class="dsq-comment-header">
+            <cite id="dsq-cite-2383">
+                <span id="dsq-author-user-2383">Oleg Šelajev</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-2383" class="dsq-comment-body">
+            <div id="dsq-comment-message-2383" class="dsq-comment-message"><p>Thanks for the tip. I guess, I’ve had that alias since forever.</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment even thread-even depth-1" id="dsq-comment-2384">
+        <div id="dsq-comment-header-2384" class="dsq-comment-header">
+            <cite id="dsq-cite-2384">
+                <a id="dsq-author-user-2384" href="http://www.zeroturnaround.com/" target="_blank" rel="nofollow">Toomas Römer</a>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-2384" class="dsq-comment-body">
+            <div id="dsq-comment-message-2384" class="dsq-comment-message"><p>Looks awesome, have to check it out. How is your experience with it?</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+            </ul>
+
+
+        </div>
+
+    </div>
+
+
+
+    </div>
+    
+    <div class="pages-nav">
+            </div>
+</div>
+
+</div></section>
+
+
+<div id="fb-root"></div>
+
+
+
+
+		
+		<div id="sticky-footer"></div>
+	</div>
+</div>
+
+<footer>
+	<div id="footer">
+		<div class="wrapper fat-footer">
+					<div class="col">
+			<div id="nav_menu-3" class="widget widget_nav_menu"><h2 class="widgettitle">Company</h2>
+<div class="menu-footer-company-container"><ul id="menu-footer-company" class="menu"><li id="menu-item-11355" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-11355"><a href="http://zeroturnaround.com/company/careers/">Careers</a></li>
+<li id="menu-item-11388" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-11388"><a href="http://zeroturnaround.com/company/contact/">Contact Us</a></li>
+<li id="menu-item-34909" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-34909"><a href="http://zeroturnaround.com/company/">Our story</a></li>
+</ul></div></div>			</div>
+					<div class="col">
+			<div id="nav_menu-7" class="widget widget_nav_menu"><h2 class="widgettitle">Resources</h2>
+<div class="menu-footer-resources-container"><ul id="menu-footer-resources" class="menu"><li id="menu-item-11464" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-11464"><a target="_blank" href="http://files.zeroturnaround.com/pdf/JRebelWhitePaper2014.pdf">JRebel White Paper (PDF)</a></li>
+<li id="menu-item-11369" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-11369"><a href="http://zeroturnaround.com/rebellabs/developer-productivity-report-2012-java-tools-tech-devs-and-data/">Devs Productivity Report</a></li>
+<li id="menu-item-33627" class="menu-item menu-item-type-post_type menu-item-object-rl-report menu-item-33627"><a href="http://zeroturnaround.com/rebellabs/rebel-labs-release-it-ops-devops-productivity-report-2013/">IT Ops &amp; DevOps Productivity Report</a></li>
+<li id="menu-item-52081" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-52081"><a href="http://files.zeroturnaround.com/pdf/JRebelXRebelRocketPowered.pdf">Rocket powered Java development</a></li>
+<li id="menu-item-52753" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-52753"><a href="http://files.zeroturnaround.com/pdf/XRebelROIWhitePaper.pdf">XRebel ROI White Paper</a></li>
+</ul></div></div>			</div>
+					<div class="col">
+						</div>
+				</div>
+		<div class="wrapper footer-strip">
+			<div class="col copyright">
+				<div id="text-13" class="widget widget_text">			<div class="textwidget">All rights reserved. Copyright © 2007-2015 ZeroTurnaround.
+<br>
+<a href="http://zeroturnaround.com/terms-and-conditions/">Website Terms &amp; Conditions</a>
+/
+<a href="http://zeroturnaround.com/trademarks/">Trademarks</a></div>
+		</div>			</div>
+			<div class="col social">
+				<div id="text-6" class="widget widget_text">			<div class="textwidget"><ul class="social-badges">
+<li class="footer-badge"><a class="dark-twitter-badge" title="Twitter" href="https://twitter.com/zeroturnaround" rel="nofollow"><span class="icon icon-twitter">Twitter</span></a></li>
+<li class="footer-badge"><a class="dark-facebook-badge" title="Facebook" href="https://www.facebook.com/ZeroTurnaround" rel="nofollow"><span class="icon icon-facebook">Facebook</span></a></li>
+<li class="footer-badge"><a class="dark-linkedin-badge" title="LinkedIn" href="http://www.linkedin.com/company/zeroturnaround" rel="nofollow"><span class="icon icon-linkedin">LinkedIn</span></a></li>
+<li class="footer-badge"><a class="dark-rss-badge" title="RSS" href="http://zeroturnaround.com/feed/" rel="nofollow"><span class="icon icon-rss">RSS</span></a></li>
+</ul></div>
+		</div>			</div>
+		</div>
+	</div>
+</footer>
+
+<div id="hud">
+	<div class="wrapper">
+		<ul class="site-hud">													<li style="display: list-item;" id="zthud-db00a38825edfe2061a66f8f0b52621c" class="item headsup-notice hidden center">
+						<p style="font-size: 0.9em; margin: 0.5em;">By using our site you understand and agree that zeroturnaround.com website uses various cookies. More info available in <a href="http://zeroturnaround.com/terms-and-conditions/">website terms and conditions</a>. <button style="padding: 0.2em 0.5em; margin-left: 0.5em;" class="button">OK</button></p>						
+											</li>
+												</ul>	</div>
+</div>
+
+ 
+        
+        
+
+
+
+
+<!-- Twitter universal website tag code -->
+			
+			
+			
+		<!-- End Twitter universal website tag code --><!--twttrpxl:blog-->
+
+
+<!--twttrpxl:blog-->
+<img src="pixel.dat" style="position: fixed; z-index: -1000;" width="1" height="1">			
+			
+<!-- WP-FFPC cache generation stats
+	generation time: 0.455 seconds
+	generaton UNIX timestamp: 1471271906
+	generaton date: 2016-08-15T14:38:26+00:00
+	generator server: 172.30.0.30 -->
+
+<!-- WP-FFPC cache output stats
+	cache engine: memcache
+	UNIX timestamp: 1471315906
+	date: 2016-08-16T02:51:46+00:00
+	from server: 172.30.0.250 -->
+
+<div style="display: none;" id="cboxOverlay"></div><div style="display: none;" tabindex="-1" role="dialog" class="" id="colorbox"><div id="cboxWrapper"><div><div style="float: left;" id="cboxTopLeft"></div><div style="float: left;" id="cboxTopCenter"></div><div style="float: left;" id="cboxTopRight"></div></div><div style="clear: left;"><div style="float: left;" id="cboxMiddleLeft"></div><div style="float: left;" id="cboxContent"><div style="float: left;" id="cboxTitle"></div><div style="float: left;" id="cboxCurrent"></div><button id="cboxPrevious" type="button"></button><button id="cboxNext" type="button"></button><button id="cboxSlideshow"></button><div style="float: left;" id="cboxLoadingOverlay"></div><div style="float: left;" id="cboxLoadingGraphic"></div></div><div style="float: left;" id="cboxMiddleRight"></div></div><div style="clear: left;"><div style="float: left;" id="cboxBottomLeft"></div><div style="float: left;" id="cboxBottomCenter"></div><div style="float: left;" id="cboxBottomRight"></div></div></div><div style="position: absolute; width: 9999px; visibility: hidden; display: none; max-width: none;"></div></div></body><div style="display: none; width: 24px;" id="diigotb-imagepanel"><div class="diigotb-btn enabled" title="Save this image to Diigo" id="diigotb-quick-save"></div></div><div style="display: none;" class="diigotb-border diigotb-left"></div><div style="display: none;" class="diigotb-border diigotb-top"></div><div style="display: none;" class="diigotb-border diigotb-right"></div><div style="display: none;" class="diigotb-border diigotb-bottom"></div>
+</html>

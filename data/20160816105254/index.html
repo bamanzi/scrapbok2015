@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A guide to getting the hg-git Mercurial plugin to work on a Windows machine | Faster App Development with Ruby on Rails</title>
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="pingback" href="https://candidcode.com/xmlrpc.php">
+
+
+	
+
+		
+		
+		<link rel="alternate" type="application/rss+xml" title="Faster App Development with Ruby on Rails » Feed" href="https://candidcode.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="Faster App Development with Ruby on Rails » Comments Feed" href="https://candidcode.com/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="Faster App Development with Ruby on Rails » A guide to getting the hg-git Mercurial plugin to work on a Windows&nbsp;machine Comments Feed" href="https://candidcode.com/2010/01/12/a-guide-to-converting-from-mercurial-hg-to-git-on-a-windows-client/feed/">
+	
+	
+
+
+
+
+
+
+
+
+
+<!--[if lt IE 8]>
+<link rel='stylesheet' id='highlander-comments-ie7-css'  href='https://s1.wp.com/wp-content/mu-plugins/highlander-comments/style-ie7.css?m=1351637563h&#038;ver=20110606' type='text/css' media='all' />
+<![endif]-->
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://candidcode.wordpress.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://s1.wp.com/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="Paginating multiple models using will_paginate on the same&nbsp;page" href="https://candidcode.com/2009/11/03/paginating-multiple-models-using-will_paginate-on-the-same-page/">
+<link rel="next" title="A guide to using Facebook OAuth on localhost for testing during&nbsp;development" href="https://candidcode.com/2012/07/26/a-guide-to-using-facebook-oauth-on-localhost-for-testing-during-development/">
+<meta name="generator" content="WordPress.com">
+<link rel="canonical" href="https://candidcode.com/2010/01/12/a-guide-to-converting-from-mercurial-hg-to-git-on-a-windows-client/">
+<link rel="shortlink" href="http://wp.me/pDECV-1b">
+<link rel="alternate" type="application/json+oembed" href="https://public-api.wordpress.com/oembed/1.0/?format=json&amp;url=https%3A%2F%2Fcandidcode.com%2F2010%2F01%2F12%2Fa-guide-to-converting-from-mercurial-hg-to-git-on-a-windows-client%2F&amp;for=wpcom-auto-discovery"><link rel="alternate" type="application/xml+oembed" href="https://public-api.wordpress.com/oembed/1.0/?format=xml&amp;url=https%3A%2F%2Fcandidcode.com%2F2010%2F01%2F12%2Fa-guide-to-converting-from-mercurial-hg-to-git-on-a-windows-client%2F&amp;for=wpcom-auto-discovery">
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="A guide to getting the hg-git Mercurial plugin to work on a Windows machine">
+<meta property="og:url" content="https://candidcode.com/2010/01/12/a-guide-to-converting-from-mercurial-hg-to-git-on-a-windows-client/">
+<meta property="og:description" content="When you’re developing a Ruby on Rails application on Windows, you have to learn to deal with a lot of minor issues. I used Mercurial (Hg) initially as my source control. However when time ca…">
+<meta property="article:published_time" content="2010-01-12T23:27:30+00:00">
+<meta property="article:modified_time" content="2016-03-16T16:26:56+00:00">
+<meta property="og:site_name" content="Faster App Development with Ruby on Rails">
+<meta property="og:image" content="https://s0.wp.com/i/blank.jpg">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:site" content="@wordpressdotcom">
+<meta name="twitter:card" content="summary">
+<meta property="article:publisher" content="https://www.facebook.com/WordPresscom">
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" sizes="16x16 24x24 32x32 48x48">
+<link rel="icon" type="image/x-icon" href="favicon.ico" sizes="16x16 24x24 32x32 48x48">
+<link rel="apple-touch-icon-precomposed" href="https://s0.wp.com/i/webclip.png">
+<link rel="openid.server" href="https://candidcode.wordpress.com/?openidserver=1">
+<link rel="openid.delegate" href="https://candidcode.wordpress.com/">
+<link rel="search" type="application/opensearchdescription+xml" href="https://candidcode.com/osd.xml" title="Faster App Development with Ruby on Rails">
+<link rel="search" type="application/opensearchdescription+xml" href="https://s1.wp.com/opensearch.xml" title="WordPress.com">
+<meta name="application-name" content="Faster App Development with Ruby on Rails"><meta name="msapplication-window" content="width=device-width;height=device-height"><meta name="msapplication-task" content="name=Subscribe;action-uri=https://candidcode.com/feed/;icon-uri=https://s2.wp.com/i/favicon.ico"><meta name="msapplication-task" content="name=Sign up for a free blog;action-uri=http://wordpress.com/signup/;icon-uri=https://s2.wp.com/i/favicon.ico"><meta name="msapplication-task" content="name=WordPress.com Support;action-uri=http://support.wordpress.com/;icon-uri=https://s2.wp.com/i/favicon.ico"><meta name="msapplication-task" content="name=WordPress.com Forums;action-uri=http://forums.wordpress.com/;icon-uri=https://s2.wp.com/i/favicon.ico"><meta name="title" content="A guide to getting the hg-git Mercurial plugin to work on a Windows&nbsp;machine | Faster App Development with Ruby on Rails on WordPress.com">
+<meta name="description" content="When you're developing a Ruby on Rails application on Windows, you have to learn to deal with a lot of minor issues. I used Mercurial (Hg) initially as my source control. However when time came to deploy my application, I found out that Git would have been a much better choice. Both Heroku and Engine…">
+		
+		
+				<!-- IPONWEB header script -->
+		
+		<link rel="amphtml" href="https://candidcode.com/2010/01/12/a-guide-to-converting-from-mercurial-hg-to-git-on-a-windows-client/amp/">
+
+
+
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+
+<body class="single single-post postid-73 single-format-standard mp6 customizer-styles-applied group-blog widgets-hidden highlander-enabled highlander-light">
+
+<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+
+<div class="sidebar-nav">
+	<button class="menu-toggle x" title="Menu">
+		<span class="lines"></span>
+		<span class="screen-reader-text">Primary Menu</span>
+	</button>
+	</div>
+<div class="slide-menu">
+		<h1 class="site-title">
+		<a href="https://candidcode.com/" rel="home">Faster App Development with Ruby on Rails</a>
+	</h1>
+	<nav id="site-navigation" class="main-navigation" role="navigation">
+		<div class="menu"><ul><li><a href="https://candidcode.com/">Home</a></li><li class="page_item page-item-2"><a href="https://candidcode.com/about/">About</a></li></ul></div>
+	</nav><!-- #site-navigation -->
+
+		<div id="secondary" class="widget-area" role="complementary">
+		<aside id="archives-3" class="widget widget_archive"><h1 class="widget-title">Archives</h1>		<ul>
+			<li><a href="https://candidcode.com/2014/07/">July 2014</a>&nbsp;(1)</li>
+	<li><a href="https://candidcode.com/2012/07/">July 2012</a>&nbsp;(1)</li>
+	<li><a href="https://candidcode.com/2010/01/">January 2010</a>&nbsp;(1)</li>
+	<li><a href="https://candidcode.com/2009/11/">November 2009</a>&nbsp;(1)</li>
+	<li><a href="https://candidcode.com/2009/09/">September 2009</a>&nbsp;(2)</li>
+		</ul>
+		</aside><aside id="categories-2" class="widget widget_categories"><h1 class="widget-title">Categories</h1>		<ul>
+	<li class="cat-item cat-item-3280335"><a href="https://candidcode.com/category/ruby-on-rails-2/">Ruby on Rails</a> (3)
+</li>
+	<li class="cat-item cat-item-1"><a href="https://candidcode.com/category/uncategorized/">Uncategorized</a> (3)
+</li>
+		</ul>
+</aside><aside id="meta-3" class="widget widget_meta"><h1 class="widget-title">Meta</h1>			<ul>
+			<li><a href="https://wordpress.com/start?ref=wplogin">Register</a></li>			<li><a href="https://candidcode.wordpress.com/wp-login.php">Log in</a></li>
+			<li><a href="https://candidcode.com/feed/">Entries <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="https://candidcode.com/comments/feed/">Comments <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="https://wordpress.com/" title="Powered by WordPress, state-of-the-art semantic personal publishing platform.">WordPress.com</a></li>			</ul>
+			</aside>	</div><!-- #secondary -->
+</div><!-- .slide-menu -->
+<div id="page" class="hfeed site">
+	<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+		<div class="site-inner-wrapper">
+
+		<header id="masthead" class="site-header" role="banner">
+
+			<div class="site-branding">
+								<h1 class="site-title">
+					<a href="https://candidcode.com/" rel="home">Faster App Development with Ruby on Rails</a>
+				</h1>
+				<h2 class="site-description"></h2>
+			</div>
+		</header><!-- #masthead -->
+
+		
+		<div id="content" class="site-content">
+
+
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main" role="main">
+
+		
+			<article id="post-73" class="post-73 post type-post status-publish format-standard hentry category-uncategorized">
+			<header class="entry-header">
+			<div class="entry-categories"><a href="https://candidcode.com/category/uncategorized/" rel="category tag">Uncategorized</a></div>			<h1 class="entry-title">A guide to getting the hg-git Mercurial plugin to work on a Windows&nbsp;machine</h1>			<span class="entry-meta"><span class="posted-on">Posted on <a href="#" rel="bookmark"><time class="entry-date published" datetime="2010-01-12T23:27:30+00:00">January 12, 2010</time><time class="updated" datetime="2016-03-16T16:26:56+00:00">March 16, 2016</time></a></span><span class="byline"> by <span class="author vcard"><a class="url fn n" href="https://candidcode.com/author/praveendiangy/">Praveen Angyan</a></span></span><span class="category-links"> in <a href="https://candidcode.com/category/uncategorized/" rel="category tag">Uncategorized</a></span></span>
+		</header><!-- .entry-header -->
+		<div class="content-wrapper">
+		<div class="entry-content">
+			<p>When you’re developing a Ruby on Rails application on Windows, you have to learn to deal with a lot of minor issues. I used Mercurial (Hg) initially as my source control. However when time came to deploy my application, I found out that Git would have been a much better choice. Both <a title="Heroku" href="http://heroku.com/" target="_blank">Heroku</a> and <a title="Engine Yard" href="http://www.engineyard.com/" target="_blank">Engine Yard</a> make Ruby on Rails so easy to deploy that it would be crazy not to use them. However they integrate with Git and Mercurial support seems a long way off.</p>
+<p>So I decided to convert my Mercurial repository to Git using the hg-git Mercurial plugin and ran into a lot of issues along the way. Here is a guide to successfully getting the hg-git plugin to work on a Windows machine:</p>
+<h2>Install TortoiseHg if you haven’t already</h2>
+<p>If you’re developing on Windows and using Hg, you probably already have TortoiseHg installed. If not, go ahead and <a title="Download TortoiseHg" href="http://tortoisehg.bitbucket.org/" target="_blank">download and install TortoiseHg</a>. Make a note of where you install TortoiseHg, since you need to make some modifications in this directory.</p>
+<h2>Install the prerequisites for the hg-git plugin</h2>
+<p>We’re going to use the hg-git Mercurial plugin to allow us to pull from and push to any Git repository. This has a dependence on Mercurial (which is handled by installing TortoiseHg in the previous step) and <a title="dulwich" href="http://github.com/jelmer/dulwich" target="_blank">dulwich</a> which is a library that provides an interface to git repos using pure Python code.</p>
+<p>However since you most probably don’t have Python installed on your Windows machine, follow these steps to “install” the dulwich library for use by the hg-git plugin:</p>
+<ol>
+<li><a href="http://github.com/jelmer/dulwich/downloads" target="_blank">Download the latest source code</a> for dulwich (version 0.4.0 or above) and unzip it to a temporary directory</li>
+<li>IMPORTANT: Read the note at the bottom of the post for troubleshooting. You might need to make a change to a file in the dulwich folder in order for it to work on Windows.</li>
+<li>Under the newly unzipped folder, you should see a directory called “dulwich” which contains all the Python code (you should see a bunch of files with the .py extension)</li>
+<li>In the installation directory for your TortoiseHg installation, you should see a zip file called library.zip. Copy the dulwich folder into this zip file in the root of the zip file.</li>
+</ol>
+<h2>Download the source code for the hg-git Mercurial plugin</h2>
+<p>Clone the repository at <a href="http://bitbucket.org/durin42/hg-git/" rel="nofollow">http://bitbucket.org/durin42/hg-git/</a> to a location on your hard drive, say C:\hg\hg-git</p>
+<h2>Setup .hgrc to use the hg-git plugin</h2>
+<p>Navigate to the hg repository on your hard drive that you want to convert to Git. Under the .hg directory, edit the hgrc file to contain the following three lines:</p>
+<p>[extensions]<br>
+hgext.bookmarks =<br>
+hggit = C:\hg\hg-git\hggit</p>
+<p>You need to point hggit in your hgrc file to point to the subdirectory called “hggit” located in the cloned repository (see step 3 above). This folder usually only contains Python code files (with a .py extension)</p>
+<h2>Pull and push from a Git repository</h2>
+<p>That’s it! Provided your current working directory is inside the hg repository that you set up, you should be able to pull from and push to any Git repository.</p>
+<h2>Troubleshooting</h2>
+<p>1. If you’re getting a error about a function called build_tree in index.py, you need to add the line&nbsp; to the very top of the build_tree(path) method as follows. Once you’ve added this line, you can add the dulwich folder to zip file as in step 2:</p>
+<pre class="brush: python; title: ; notranslate" title="">def build_tree(path)
+    path = path.replace (&amp;quot;\\&amp;quot;, &amp;quot;/&amp;quot;)
+</pre>
+<p>2. If you’re getting an error like “abort: The system cannot find the file specified”</p>
+<ul>
+<li>Dulwich most probably cannot find ssh in your PATH. You need to make sure to install Cygwin’s OpenSSH and that you can run “ssh” from the command line.</li>
+<li>Make sure that you are using the Git Bash shell as you work through this guide (Credit goes to SPR in the comments for this tip)</li>
+</ul>
+<p>3. If you get “Permission denied (publickey)”, it just means that the public key required to access and push to the server cannot be found. To get around this we’re going to run the following commands:</p>
+<pre class="brush: bash; title: ; notranslate" title="">ssh-agent
+ssh-add &amp;lt;full path to your key file&amp;gt;
+</pre>
+		<div class="wpcnt">
+			<div class="wpa wpmrec">
+				<a class="wpa-about" href="https://wordpress.com/about-these-ads/" rel="nofollow"></a>
+				<div class="u">
+					<div id="automattic-id-7584" data-section="26942" style="width: 300px; height: 250px;"><iframe src="index_1.html" id="fif_slot_automattic-id-_automattic-id-7584" name="fif_slot_automattic-id-_automattic-id-7584" style="border: medium none; width: 300px; height: 250px;" scrolling="no" width="300" frameborder="0" height="250"></iframe></div>
+				</div>
+			</div>
+		</div><div id="jp-post-flair" class="sharedaddy sd-like-enabled sd-sharing-enabled"><div class="sharedaddy sd-sharing-enabled"><div class="robots-nocontent sd-block sd-social sd-social-icon-text sd-sharing"><h3 class="sd-title">Share this:</h3><div class="sd-content"><ul><li class="share-email"><a rel="nofollow" data-shared="" class="share-email sd-button share-icon" href="https://candidcode.com/2010/01/12/a-guide-to-converting-from-mercurial-hg-to-git-on-a-windows-client/?share=email" target="_blank" title="Click to email"><span>Email</span></a></li><li class="share-print"><a rel="nofollow" data-shared="" class="share-print sd-button share-icon" href="#print" target="_blank" title="Click to print"><span>Print</span></a></li><li class="share-google-plus-1"><a rel="nofollow" data-shared="sharing-google-73" class="share-google-plus-1 sd-button share-icon" href="https://candidcode.com/2010/01/12/a-guide-to-converting-from-mercurial-hg-to-git-on-a-windows-client/?share=google-plus-1" target="_blank" title="Click to share on Google+"><span>Google</span></a></li><li class="share-pocket"><a rel="nofollow" data-shared="" class="share-pocket sd-button share-icon" href="https://candidcode.com/2010/01/12/a-guide-to-converting-from-mercurial-hg-to-git-on-a-windows-client/?share=pocket" target="_blank" title="Click to share on Pocket"><span>Pocket</span></a></li><li class="share-end"></li></ul></div></div></div><div class="sharedaddy sd-block sd-like jetpack-likes-widget-wrapper jetpack-likes-widget-unloaded" id="like-post-wrapper-9450965-73-57b27fea29dfb" data-src="//widgets.wp.com/likes/#blog_id=9450965&amp;post_id=73&amp;origin=candidcode.wordpress.com&amp;obj_id=9450965-73-57b27fea29dfb" data-name="like-post-frame-9450965-73-57b27fea29dfb"><h3 class="sd-title">Like this:</h3><div class="likes-widget-placeholder post-likes-widget-placeholder" style="height: 55px;"><span class="button"><span>Like</span></span> <span class="loading">Loading...</span></div><span class="sd-text-color"></span><a class="sd-link-color"></a></div></div>					</div><!-- .entry-content -->
+
+		<footer class="entry-footer">
+						<div class="entry-meta clear">
+				<span class="comments-link"><a href="#comments">14</a></span>											</div><!-- .entry-meta -->
+		</footer><!-- .entry-footer -->
+	</div><!-- .content-wrapper -->
+</article><!-- #post-## -->
+
+			
+	<nav class="navigation post-navigation" role="navigation">
+		<h2 class="screen-reader-text">Post navigation</h2>
+		<div class="nav-links"><div class="nav-previous"><a href="https://candidcode.com/2009/11/03/paginating-multiple-models-using-will_paginate-on-the-same-page/" rel="prev"><span class="title">Previous post</span>Paginating multiple models using will_paginate on the same&nbsp;page</a></div><div class="nav-next"><a href="https://candidcode.com/2012/07/26/a-guide-to-using-facebook-oauth-on-localhost-for-testing-during-development/" rel="next"><span class="title">Next post</span>A guide to using Facebook OAuth on localhost for testing during&nbsp;development</a></div></div>
+	</nav>
+			
+<div id="comments" class="comments-area">
+
+	
+			<h2 class="comments-title">
+			14 thoughts on “<span>A guide to getting the hg-git Mercurial plugin to work on a Windows&nbsp;machine</span>”		</h2>
+
+		<ol class="comment-list">
+					<li id="comment-20" class="comment even thread-even depth-1 highlander-comment">
+			<article id="div-comment-20" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="ef926f44777bf3084bcec1d23577a8ff.dat" class="avatar avatar-64" width="64" height="64">						<b class="fn"><a href="http://www.pano360.hu/" rel="external nofollow" class="url">SzRudi</a></b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="#comment-20">
+							<time datetime="2010-02-15T20:30:41+00:00">
+								February 15, 2010 at 8:30 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Thanks a lot! (especially for step 2.)</p>
+<p>I just didn’t know what to do after reading the official pages of hg-git.. Why couldn’t they just write it simply like you did.. Thanks again!</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="https://candidcode.com/2010/01/12/a-guide-to-converting-from-mercurial-hg-to-git-on-a-windows-client/?replytocom=20#respond" aria-label="Reply to SzRudi">Reply</a></div>			</article><!-- .comment-body -->
+</li><!-- #comment-## -->
+		<li id="comment-27" class="comment odd alt thread-odd thread-alt depth-1 highlander-comment">
+			<article id="div-comment-27" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="1018b29e2da89f5920a58482e17a1948.dat" class="avatar avatar-64" width="64" height="64">						<b class="fn">jbochi</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="#comment-27">
+							<time datetime="2010-07-07T00:28:59+00:00">
+								July 7, 2010 at 12:28 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Thank you! I was receiveing the “File not found.” error because Cygwin’s OpenSSH was not installed</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="https://candidcode.com/2010/01/12/a-guide-to-converting-from-mercurial-hg-to-git-on-a-windows-client/?replytocom=27#respond" aria-label="Reply to jbochi">Reply</a></div>			</article><!-- .comment-body -->
+</li><!-- #comment-## -->
+		<li id="comment-28" class="comment even thread-even depth-1 highlander-comment">
+			<article id="div-comment-28" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="5b4efe9cac144bda678fc82af4ad53d7.dat" class="avatar avatar-64" width="64" height="64">						<b class="fn"><a href="http://www.lisantra.com/" rel="external nofollow" class="url">Michael Gatto</a></b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="#comment-28">
+							<time datetime="2010-07-21T18:23:15+00:00">
+								July 21, 2010 at 6:23 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>I use Bitvise’s Tunnelier and it seems one could alias ‘ssh’ to Tunnelier’s ‘sexec’ instead of having to install Cygwin, which I really don’t want to do. I’ll try it and report back unless anyone knows a really good reason not to.</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="https://candidcode.com/2010/01/12/a-guide-to-converting-from-mercurial-hg-to-git-on-a-windows-client/?replytocom=28#respond" aria-label="Reply to Michael Gatto">Reply</a></div>			</article><!-- .comment-body -->
+</li><!-- #comment-## -->
+		<li id="comment-51" class="comment odd alt thread-odd thread-alt depth-1 highlander-comment">
+			<article id="div-comment-51" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="bc59023f01f291e10dfa7e7324f51c77.dat" class="avatar avatar-64" width="64" height="64">						<b class="fn"><a href="http://ghostednotes.com/" rel="external nofollow" class="url">Brian Panulla</a></b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="#comment-51">
+							<time datetime="2011-01-12T18:04:42+00:00">
+								January 12, 2011 at 6:04 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Thanks for this post! One update: looks like Dulwich is included in recent builds of TortoiseHg. All I needed to do was clone hg-git, add it to hgrc, and go.</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="https://candidcode.com/2010/01/12/a-guide-to-converting-from-mercurial-hg-to-git-on-a-windows-client/?replytocom=51#respond" aria-label="Reply to Brian Panulla">Reply</a></div>			</article><!-- .comment-body -->
+</li><!-- #comment-## -->
+		<li id="comment-64" class="pingback even thread-even depth-1 highlander-comment">
+			<div class="comment-body">
+				Pingback: <a href="http://vandragt.com/2012/02/a-guide-to-getting-the-hg-git-mercurial-plugin-to-work-on-a-windows-machine/" rel="external nofollow" class="url">A guide to getting the hg-git Mercurial plugin to work on a Windows machine at VanDragt.com</a> 			</div>
+</li><!-- #comment-## -->
+		<li id="comment-65" class="pingback odd alt thread-odd thread-alt depth-1 highlander-comment">
+			<div class="comment-body">
+				Pingback: <a href="http://www.rasmuskl.dk/post/Converting-a-Mercurial-repository-into-a-Git-repository-(Windows).aspx" rel="external nofollow" class="url">RasmusKL's Blog | Converting a Mercurial repository into a Git repository (Windows)</a> 			</div>
+</li><!-- #comment-## -->
+		<li id="comment-66" class="pingback even thread-even depth-1 highlander-comment">
+			<div class="comment-body">
+				Pingback: <a href="http://www.rasmuskl.dk/post/Converting-a-Mercurial-repository-to-Git-(Windows).aspx" rel="external nofollow" class="url">RasmusKL's Blog | Converting a Mercurial repository to Git (Windows)</a> 			</div>
+</li><!-- #comment-## -->
+		<li id="comment-68" class="comment odd alt thread-odd thread-alt depth-1 parent highlander-comment">
+			<article id="div-comment-68" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="d0701b95a7f3ebb2e0a367090f3f7342.dat" class="avatar avatar-64" width="64" height="64">						<b class="fn">SPR</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="#comment-68">
+							<time datetime="2012-05-15T15:12:15+00:00">
+								May 15, 2012 at 3:12 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Was banging my head against the “abort: The system cannot find the file specified” error. Followed this excellent article to the letter. Tried a couple of others which all suggested a similar approach. No joy. Then, finally, squirreled away in a google discussion group – the answer…</p>
+<p>I was using the Windows command line dialog. This was the problem. Try typing ‘git’ and it works. Try typing ‘git.exe’ and it fails because the git installation actually uses ‘git.cmd’ to fire off instructions. But hggit / Dulwich / Python goes looking for ‘git.exe’, cannot find it and blows up with the all too familiar error (if only it could have displayed which file it could not find).</p>
+<p>The solution is to use the Git Bash shell which does recognize ‘git.exe’.</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="https://candidcode.com/2010/01/12/a-guide-to-converting-from-mercurial-hg-to-git-on-a-windows-client/?replytocom=68#respond" aria-label="Reply to SPR">Reply</a></div>			</article><!-- .comment-body -->
+<ol class="children">
+		<li id="comment-69" class="comment byuser comment-author-praveendiangy bypostauthor even depth-2 highlander-comment">
+			<article id="div-comment-69" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="686dbb8c68aa12ec355495849d1eeff5.dat" class="avatar avatar-64" width="64" height="64">						<b class="fn">Blog Author</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="#comment-69">
+							<time datetime="2012-05-15T16:25:42+00:00">
+								May 15, 2012 at 4:25 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Thanks, I’ve updated the article and credited you in the troubleshooting section.</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="https://candidcode.com/2010/01/12/a-guide-to-converting-from-mercurial-hg-to-git-on-a-windows-client/?replytocom=69#respond" aria-label="Reply to Blog Author">Reply</a></div>			</article><!-- .comment-body -->
+</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		<li id="comment-130" class="pingback odd alt thread-even depth-1 highlander-comment">
+			<div class="comment-body">
+				Pingback: <a href="http://peppwords.wordpress.com/2012/06/26/mercurial-to-git-repository-in-windows/" rel="external nofollow" class="url">Mercurial to git repository in windows « Pepptastic</a> 			</div>
+</li><!-- #comment-## -->
+		<li id="comment-460" class="comment even thread-odd thread-alt depth-1 highlander-comment">
+			<article id="div-comment-460" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="31667c41c7c4accb7d8c0a9e53c1e434.dat" class="avatar avatar-64" width="64" height="64">						<b class="fn">hollov</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="#comment-460">
+							<time datetime="2014-08-15T14:24:25+00:00">
+								August 15, 2014 at 2:24 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Hi!<br>
+I followed this tutorial, and I still get the “abort: The system cannot find the file specified” error when try to work with a repository located on my filesystem (well, an SFTP drive mounted with WebDrive to be exact).</p>
+<p>If I use the full ssh path: “git+ssh://username@address:port/folder1/folder2/” it is working then but I get the error when using the mounted drive “W:\folder1\folder2\”</p>
+<p>I’ve installed Cygwin, but I don’t get the use Git Bash shell.<br>
+I’ve tried to install Git from “github.com” and from “git-scm.com” too. But I can’t select Git Bash shell in TortoiseHg settings (I can select cygwin_terminal though).</p>
+<p>So how can I use Git Bash shell with TortoiseHg?</p>
+<p>Thanks</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="https://candidcode.com/2010/01/12/a-guide-to-converting-from-mercurial-hg-to-git-on-a-windows-client/?replytocom=460#respond" aria-label="Reply to hollov">Reply</a></div>			</article><!-- .comment-body -->
+</li><!-- #comment-## -->
+		<li id="comment-1127" class="pingback odd alt thread-even depth-1 highlander-comment">
+			<div class="comment-body">
+				Pingback: <a href="http://sevennet.org/2014/12/14/how-to-git-interoperability-with-a-mercurial-repository/" rel="external nofollow" class="url">How to: Git interoperability with a Mercurial Repository | SevenNet</a> 			</div>
+</li><!-- #comment-## -->
+		<li id="comment-1261" class="pingback even thread-odd thread-alt depth-1 highlander-comment">
+			<div class="comment-body">
+				Pingback: <a href="http://iust.pp.ua/2015/01/19/fixed-git-interoperability-with-a-mercurial-repository-development-answer-fix/" rel="external nofollow" class="url">Fixed: Git interoperability with a Mercurial Repository #development #answer #fix | IT Info</a> 			</div>
+</li><!-- #comment-## -->
+		<li id="comment-1618" class="pingback odd alt thread-even depth-1 highlander-comment">
+			<div class="comment-body">
+				Pingback: <a href="http://www.itsprite.com/pythonhow-do-i-correctly-install-dulwich-to-get-hg-git-working-on-windows/" rel="external nofollow" class="url">» Python:How do I correctly install dulwich to get hg-git working on Windows?</a> 			</div>
+</li><!-- #comment-## -->
+		</ol><!-- .comment-list -->
+
+		
+	
+	
+					<div id="respond" class="comment-respond">
+			<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" title="Cancel reply" href="#respond" style="display: none;"><span class="screen-reader-text">Cancel reply</span></a></small></h3>				<form action="https://candidcode.com/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate="">
+					<input id="highlander_comment_nonce" name="highlander_comment_nonce" value="d16f0b9714" type="hidden"><input name="_wp_http_referer" value="/2010/01/12/a-guide-to-converting-from-mercurial-hg-to-git-on-a-windows-client/" type="hidden">
+<input name="hc_post_as" id="hc_post_as" value="guest" type="hidden">
+
+<div class="comment-form-field comment-textarea">
+	<label for="comment">Enter your comment here...</label>
+	<div id="comment-form-comment"><textarea id="comment" name="comment" title="Enter your comment here..."></textarea></div>
+</div>
+
+<div id="comment-form-identity">
+
+	<div id="comment-form-nascar">
+		<p>Fill in your details below or click an icon to log in:</p>
+		<ul>
+			<li class="selected" style="display: none;">
+				<a href="#comment-form-guest" id="postas-guest" title="Guest">
+					<span></span>
+				</a>
+			</li>
+			<li>
+				<a href="#comment-form-load-service:WordPress.com" id="postas-wordpress" title="WordPress.com">
+					<span></span>
+				</a>
+			</li>
+			<li>
+				<a href="#comment-form-load-service:Twitter" id="postas-twitter" title="Twitter">
+					<span></span>
+				</a>
+			</li>
+			<li>
+				<a href="#comment-form-load-service:Facebook" id="postas-facebook" title="Facebook">
+					<span></span>
+				</a>
+			</li>
+			<li>
+		</li></ul>
+	</div>
+
+	<div id="comment-form-guest" class="comment-form-service selected">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+<a href="https://gravatar.com/site/signup/" target="_blank">				<img src="ad516503a11cd5ca435acc9bb6523536.dat" alt="Gravatar" class="no-grav" width="25">
+</a>			</div>
+
+				<div class="comment-form-fields">
+				<div class="comment-form-field comment-form-email">
+					<label for="email">Email <span class="required">(required)</span> <span class="nopublish">(Address never made public)</span></label>
+					<div class="comment-form-input"><input id="email" name="email" value="" type="email"></div>
+				</div>
+				<div class="comment-form-field comment-form-author">
+					<label for="author">Name <span class="required">(required)</span></label>
+					<div class="comment-form-input"><input id="author" name="author" value="" type="text"></div>
+				</div>
+				<div class="comment-form-field comment-form-url">
+					<label for="url">Website</label>
+					<div class="comment-form-input"><input id="url" name="url" value="" type="text"></div>
+				</div>
+			</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-wordpress" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="ad516503a11cd5ca435acc9bb6523536.dat" alt="WordPress.com Logo" class="no-grav" width="25">
+			</div>
+
+				<div class="comment-form-fields">
+				<input name="wp_avatar" id="wordpress-avatar" class="comment-meta-wordpress" value="" type="hidden">
+				<input name="wp_user_id" id="wordpress-user_id" class="comment-meta-wordpress" value="" type="hidden">
+				<input name="wp_access_token" id="wordpress-access_token" class="comment-meta-wordpress" value="" type="hidden">
+				<p class="comment-form-posting-as pa-wordpress"><strong></strong> You are commenting using your WordPress.com account. <span class="comment-form-log-out">(&nbsp;<a>Log&nbsp;Out</a>&nbsp;/&nbsp;<a href="#">Change</a>&nbsp;)</span></p>
+			</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-twitter" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="ad516503a11cd5ca435acc9bb6523536.dat" alt="Twitter picture" class="no-grav" width="25">
+			</div>
+
+				<div class="comment-form-fields">
+				<input name="twitter_avatar" id="twitter-avatar" class="comment-meta-twitter" value="" type="hidden">
+				<input name="twitter_user_id" id="twitter-user_id" class="comment-meta-twitter" value="" type="hidden">
+				<input name="twitter_access_token" id="twitter-access_token" class="comment-meta-twitter" value="" type="hidden">
+				<p class="comment-form-posting-as pa-twitter"><strong></strong> You are commenting using your Twitter account. <span class="comment-form-log-out">(&nbsp;<a>Log&nbsp;Out</a>&nbsp;/&nbsp;<a href="#">Change</a>&nbsp;)</span></p>
+			</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-facebook" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="ad516503a11cd5ca435acc9bb6523536.dat" alt="Facebook photo" class="no-grav" width="25">
+			</div>
+
+				<div class="comment-form-fields">
+				<input name="fb_avatar" id="facebook-avatar" class="comment-meta-facebook" value="" type="hidden">
+				<input name="fb_user_id" id="facebook-user_id" class="comment-meta-facebook" value="" type="hidden">
+				<input name="fb_access_token" id="facebook-access_token" class="comment-meta-facebook" value="" type="hidden">
+				<p class="comment-form-posting-as pa-facebook"><strong></strong> You are commenting using your Facebook account. <span class="comment-form-log-out">(&nbsp;<a>Log&nbsp;Out</a>&nbsp;/&nbsp;<a href="#">Change</a>&nbsp;)</span></p>
+			</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-googleplus" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="ad516503a11cd5ca435acc9bb6523536.dat" alt="Google+ photo" class="no-grav" width="25">
+			</div>
+
+				<div class="comment-form-fields">
+				<input name="googleplus_avatar" id="googleplus-avatar" class="comment-meta-googleplus" value="" type="hidden">
+				<input name="googleplus_user_id" id="googleplus-user_id" class="comment-meta-googleplus" value="" type="hidden">
+				<input name="googleplus_access_token" id="googleplus-access_token" class="comment-meta-googleplus" value="" type="hidden">
+				<p class="comment-form-posting-as pa-googleplus"><strong></strong> You are commenting using your Google+ account. <span class="comment-form-log-out">(&nbsp;<a>Log&nbsp;Out</a>&nbsp;/&nbsp;<a href="#">Change</a>&nbsp;)</span></p>
+			</div>
+	
+		</div>
+	</div>
+
+
+	<div id="comment-form-load-service" class="comment-form-service">
+		<div class="comment-form-posting-as-cancel"><a>Cancel</a></div>
+		<p>Connecting to %s</p>
+	</div>
+
+</div>
+
+
+
+<div id="comment-form-subscribe">
+	<p class="comment-subscription-form"><input name="subscribe" id="subscribe" value="subscribe" style="width: auto;" type="checkbox"> <label class="subscribe-label" id="subscribe-label" for="subscribe" style="display: inline;">Notify me of new comments via email.</label></p></div>
+
+
+
+
+<p class="form-submit"><input name="submit" id="comment-submit" class="submit" value="Post Comment" type="submit"> <input name="comment_post_ID" value="73" id="comment_post_ID" type="hidden">
+<input name="comment_parent" id="comment_parent" value="0" type="hidden">
+</p><p style="display: none;"><input id="akismet_comment_nonce" name="akismet_comment_nonce" value="bd9c7ee3c3" type="hidden"></p>
+<input name="genseq" value="1471315946" type="hidden">
+<p style="display: none;"><input id="ak_js" name="ak_js" value="187" type="hidden"></p>				</form>
+					</div><!-- #respond -->
+		<div style="clear: both;"></div>
+</div><!-- #comments -->
+		
+		</main><!-- #main -->
+	</div><!-- #primary -->
+
+		</div><!-- #content -->
+
+		<footer id="colophon" class="site-footer" role="contentinfo">
+			<div class="site-info">
+				<a href="https://wordpress.com/?ref=footer_website">Create a free website or blog at WordPress.com.</a>
+				
+							</div><!-- .site-info -->
+		</footer><!-- #colophon -->
+	</div><!-- .site-inner-wrapper -->
+</div><!-- #page -->
+
+<!-- wpcom_wp_footer -->
+</body>
+</html>
