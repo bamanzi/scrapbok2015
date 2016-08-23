@@ -1,0 +1,120 @@
+/* ::::: https://www.mercurial-scm.org/moin-static/modernized/css/common.css (@media all) ::::: */
+
+html { background-color: white; color: black; font-family: sans-serif; font-size: 1em; }
+body { margin: 0px; }
+a { color: rgb(0, 68, 179); }
+a:visited { color: rgb(255, 123, 179); }
+a.nonexistent:visited, a.nonexistent, a.badinterwiki:visited, a.badinterwiki { color: gray; }
+a.http:before { content: url("moin-www.png"); margin: 0px 0.2em; }
+a, img, img.drawing { border: 0px none; }
+pre { border: 1pt solid rgb(174, 189, 204); background-color: rgb(243, 245, 247); padding: 5pt; font-family: courier,monospace; white-space: pre-wrap; word-wrap: break-word; }
+.info { float: right; font-size: 0.7em; color: gray; }
+#pageinfo { margin-top: 2em; }
+#pagebottom { clear: both; }
+hr { height: 1pt; background-color: rgb(156, 156, 156); border: 0px none; }
+/* ::::: https://www.mercurial-scm.org/moin-static/modernized/css/screen.css (@media screen) ::::: */
+
+@media screen {
+body { padding: 0px; border: 0px none; }
+a:link { color: rgb(68, 119, 255); text-decoration: none; }
+a:link:hover, a:link:active { text-decoration: underline; color: green; }
+a:visited { text-decoration: none; color: rgb(0, 68, 170); }
+a:visited:hover { text-decoration: none; color: red; }
+a.nonexistent:link { color: rgb(102, 102, 102); }
+a.nonexistent:hover { color: black; text-decoration: underline; }
+input {  }
+.disabled { color: gray; }
+#header { margin: 1px; padding: 1px; background: none repeat scroll 0% 0% rgb(230, 234, 240); line-height: 1.1em; }
+#logo { float: left; margin: 5px 10px; padding: 0px; font-size: 1.4em; line-height: 1em; font-weight: bold; }
+#logo img { vertical-align: middle; }
+#logo a { color: black; text-decoration: none; }
+#username { display: block; margin: 8px 12px 4px; padding: 0px; font-size: 0.82em; }
+#searchform { margin: 4px 0.5em 8px; padding: 0px; font-size: 0.82em; float: right; clear: right; text-align: right; }
+#searchform input { font-size: 100%; vertical-align: middle; }
+#locationline { padding: 0px; font-size: 100%; font-weight: normal; margin: 0.25em 12px 5px; clear: right; }
+#pagelocation { font-size: 1.5em; letter-spacing: 0.05em; }
+#navibar { clear: both; display: block; margin: 0px; padding: 0px 10px; font-size: 0.82em; }
+#navibar li { float: left; display: inline; margin: 0px 2px; padding: 2px 5px; border-width: 1px 1px medium; border-style: solid solid none; border-color: rgb(170, 204, 221) rgb(170, 204, 221) -moz-use-text-color; -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; white-space: nowrap; }
+#navibar li.wikilink { background: none repeat scroll 0% 0% white; }
+#navibar a, #navibar a:visited { color: black; text-decoration: none; }
+#navibar li.current a { font-weight: bold; }
+#navibar li:hover { background: none repeat scroll 0% 0% rgb(214, 228, 249); }
+#navibar li.current, #navibar li.current:hover { background: none repeat scroll 0% 0% rgb(129, 187, 242); border-width: 1px; border-style: solid; border-color: rgb(77, 125, 169) rgb(77, 125, 169) rgb(129, 187, 242); -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; margin-bottom: -1px; }
+#pageline { clear: both; margin: 0px; padding: 0px; width: 100%; height: 4px; line-height: 4px; border-bottom: 1px solid rgb(77, 125, 169); border-top: 1px solid rgb(77, 125, 169); background: none repeat scroll 0% 0% rgb(129, 187, 242); }
+.editbar { clear: both; display: block; margin: -1px 0px 0px; padding: 2px 8px; background: none repeat scroll 0% 0% rgb(214, 228, 249); font-size: 0.8em; border-bottom: 1px solid rgb(77, 125, 169); border-top: 1px solid rgb(77, 125, 169); }
+.editbar form, .editbar form div { display: inline; margin: 0px; }
+.editbar select { font-size: 100%; vertical-align: middle; }
+.editbar li { display: inline; padding: 0px; margin: 4px 6px; }
+.editbar a, .editbar a:visited { color: rgb(0, 68, 179); }
+#page { background-color: white; margin: 0px; padding: 2px 20px 20px; }
+#footer { clear: both; margin: 0px; padding: 0px; }
+#credits, #version, #timings { margin: 5px 10px; padding: 0px; text-align: center; font-size: 0.88em; color: rgb(108, 118, 128); }
+#credits li, #timings li { display: inline; padding: 0px 2px; margin: 0px 4px; }
+}
+/* ::::: https://www.mercurial-scm.org/moin-static/modernized/css/print.css (@media print) ::::: */
+
+@media print {
+html { font-family: Times,serif; font-size: 12pt; }
+body { margin: 1.5cm; }
+a, a:visited, a.nonexistent, a.badinterwiki { color: black; text-decoration: none; }
+a:hover { text-decoration: underline; }
+.info a { color: gray; }
+pre { font-size: 10pt; }
+#header, #sidebar, #footer, #timings, #credits, #interwiki, #pagelocation { display: none; }
+}
+/* ::::: https://www.mercurial-scm.org/moin-static/modernized/css/projection.css (@media projection) ::::: */
+
+@media projection {
+/* ::::: (import) https://www.mercurial-scm.org/moin-static/modernized/css/screen.css ::::: */
+body { padding: 0px; border: 0px none; }
+a:link { color: rgb(68, 119, 255); text-decoration: none; }
+a:link:hover, a:link:active { text-decoration: underline; color: green; }
+a:visited { text-decoration: none; color: rgb(0, 68, 170); }
+a:visited:hover { text-decoration: none; color: red; }
+a.nonexistent:link { color: rgb(102, 102, 102); }
+a.nonexistent:hover { color: black; text-decoration: underline; }
+input {  }
+.disabled { color: gray; }
+#header { margin: 1px; padding: 1px; background: none repeat scroll 0% 0% rgb(230, 234, 240); line-height: 1.1em; }
+#logo { float: left; margin: 5px 10px; padding: 0px; font-size: 1.4em; line-height: 1em; font-weight: bold; }
+#logo img { vertical-align: middle; }
+#logo a { color: black; text-decoration: none; }
+#username { display: block; margin: 8px 12px 4px; padding: 0px; font-size: 0.82em; }
+#searchform { margin: 4px 0.5em 8px; padding: 0px; font-size: 0.82em; float: right; clear: right; text-align: right; }
+#searchform input { font-size: 100%; vertical-align: middle; }
+#locationline { padding: 0px; font-size: 100%; font-weight: normal; margin: 0.25em 12px 5px; clear: right; }
+#pagelocation { font-size: 1.5em; letter-spacing: 0.05em; }
+#navibar { clear: both; display: block; margin: 0px; padding: 0px 10px; font-size: 0.82em; }
+#navibar li { float: left; display: inline; margin: 0px 2px; padding: 2px 5px; border-width: 1px 1px medium; border-style: solid solid none; border-color: rgb(170, 204, 221) rgb(170, 204, 221) -moz-use-text-color; -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; white-space: nowrap; }
+#navibar li.wikilink { background: none repeat scroll 0% 0% white; }
+#navibar a, #navibar a:visited { color: black; text-decoration: none; }
+#navibar li.current a { font-weight: bold; }
+#navibar li:hover { background: none repeat scroll 0% 0% rgb(214, 228, 249); }
+#navibar li.current, #navibar li.current:hover { background: none repeat scroll 0% 0% rgb(129, 187, 242); border-width: 1px; border-style: solid; border-color: rgb(77, 125, 169) rgb(77, 125, 169) rgb(129, 187, 242); -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; margin-bottom: -1px; }
+#pageline { clear: both; margin: 0px; padding: 0px; width: 100%; height: 4px; line-height: 4px; border-bottom: 1px solid rgb(77, 125, 169); border-top: 1px solid rgb(77, 125, 169); background: none repeat scroll 0% 0% rgb(129, 187, 242); }
+.editbar { clear: both; display: block; margin: -1px 0px 0px; padding: 2px 8px; background: none repeat scroll 0% 0% rgb(214, 228, 249); font-size: 0.8em; border-bottom: 1px solid rgb(77, 125, 169); border-top: 1px solid rgb(77, 125, 169); }
+.editbar form, .editbar form div { display: inline; margin: 0px; }
+.editbar select { font-size: 100%; vertical-align: middle; }
+.editbar li { display: inline; padding: 0px; margin: 4px 6px; }
+.editbar a, .editbar a:visited { color: rgb(0, 68, 179); }
+#page { background-color: white; margin: 0px; padding: 2px 20px 20px; }
+#footer { clear: both; margin: 0px; padding: 0px; }
+#credits, #version, #timings { margin: 5px 10px; padding: 0px; text-align: center; font-size: 0.88em; color: rgb(108, 118, 128); }
+#credits li, #timings li { display: inline; padding: 0px 2px; margin: 0px 4px; }
+/* ::::: (end import) ::::: */
+html { line-height: 1.8em; }
+body, b, em, a, span, div, p, td { font-size: 18pt; }
+h1 { font-size: 26pt; }
+h2 { font-size: 22pt; }
+h3 { font-size: 20pt; }
+tt, pre { font-size: 16pt; }
+#interwiki, #pagelocation, #pageinfo { display: none; }
+}
+/* ::::: [internal] ::::: */
+
+@media screen {
+}
+@media print {
+}
+/* ::::: [internal] ::::: */
+
