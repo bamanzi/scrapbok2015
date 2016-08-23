@@ -1,0 +1,2392 @@
+<!DOCTYPE html>
+<html dir="ltr">
+<!--_________________________________.,,uod8B8bou,,.____________________________________--><!--______________________..,uod8BBBBBBBBBBBBBBBBRPFT?l!i:._____________________________--><!--_________________,=m8BBBBBBBBBBBBBBBRPFT?!||||||||||||||____________________________--><!--_________________!...:!TVBBBRPFT||||||||||!!^^""'___||||____________________________--><!--_________________!.......:!?|||||!!^^""'____________||||____________________________--><!--_________________!.........||||_____________________||||____________________________--><!--_________________!.........||||_$_kitploit.com______||||____________________________--><!--_________________!.........||||_____________________||||____________________________--><!--_________________!.........||||_____________________||||____________________________--><!--_________________!.........||||_____________________||||____________________________--><!--_________________!.........||||_____________________||||____________________________--><!--_________________`.........||||____________________,||||____________________________--><!--__________________.;.......||||________________.-!!|||||____________________________--><!--___________.,uodWBBBBb.....||||________.-!!|||||||||!:'_____________________________--><!--________!YBBBBBBBBBBBBBBb..!|||:..-!!|||||||!iof68BBBBBb....________________________--><!--________!..YBBBBBBBBBBBBBBb!!||||||||!iof68BBBBBBRPFT?!::___`.______________________--><!--________!....YBBBBBBBBBBBBBBbaaitf68BBBBBBRPFT?!:::::::::_____`.____________________--><!--________!......YBBBBBBBBBBBBBBBBBBBRPFT?!::::::;:!^"`;:::_______`.__________________--><!--________!........YBBBBBBBBBBRPFT?!::::::::::^''...::::::;_________iBBbo.____________--><!--________`..........YBRPFT?!::::::::::::::::::::::::;iof68bo.______WBBBBbo.__________--><!--__________`..........:::::::::::::::::::::::;iof688888888888b._____`YBBBP^'_________--><!--____________`........::::::::::::::::;iof688888888888888888888b._____`______________--><!--______________`......:::::::::;iof688888888888888888888888888888b.__________________--><!--________________`....:::;iof688888888888888888888888888888888899fT!_________________--><!--__________________`..::!8888888888888888888888888888888899fT|!^"'___________________--><!--____________________`'_!!988888888888888888888888899fT|!^"'_________________________--><!--________________________`!!8888888888888888899fT|!^"'_______________________________--><!--__________________________`!988888888899fT|!^"'_____________________________________--><!--____________________________`!9899fT|!^"'___________________________________________--><!--: [START] BLocK :--><head>
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head><body itemscope="" itemtype="http://schema.org/WebPage"><div class="section" id="meta1"><div class="widget Blog" data-version="1" id="Blog2">
+
+              <meta name="keywords" content="htop, Killing processes, Linux, Mac, Process, Processes">
+              <meta name="description" content="    htop  is an interactive system-monitor process-viewer. It is designed as an alternative to the U...">
+            
+</div></div>
+
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="blogger" name="generator">
+<link href="favicon.ico" rel="icon" type="image/x-icon">
+<link href="http://www.kitploit.com/2016/02/htop-20-interactive-process-viewer-for.html" rel="canonical">
+<link rel="alternate" type="application/atom+xml" title="KitPloit - PenTest Tools for your Security Arsenal ☣ - Atom" href="http://www.kitploit.com/feeds/posts/default">
+<link rel="alternate" type="application/rss+xml" title="KitPloit - PenTest Tools for your Security Arsenal ☣ - RSS" href="http://www.kitploit.com/feeds/posts/default?alt=rss">
+<link rel="service.post" type="application/atom+xml" title="KitPloit - PenTest Tools for your Security Arsenal ☣ - Atom" href="https://www.blogger.com/feeds/8317222231133660547/posts/default">
+
+<link rel="alternate" type="application/atom+xml" title="KitPloit - PenTest Tools for your Security Arsenal ☣ - Atom" href="http://www.kitploit.com/feeds/6771694294596444553/comments/default">
+<link href="https://3.bp.blogspot.com/-CNwzc0MhTAE/Vr1ujzQ4Z7I/AAAAAAAAFJw/dKsvG2ALVcs/s640/htop-2.0.png" rel="image_src">
+<meta content="http://www.kitploit.com/2016/02/htop-20-interactive-process-viewer-for.html" property="og:url">
+<meta content="https://3.bp.blogspot.com/-CNwzc0MhTAE/Vr1ujzQ4Z7I/AAAAAAAAFJw/dKsvG2ALVcs/w1200-h630-p-nu/htop-2.0.png" property="og:image">
+<!--[if IE]> <script> (function() { var html5 = ("abbr,article,aside,audio,canvas,datalist,details," + "figure,footer,header,hgroup,mark,menu,meter,nav,output," + "progress,section,time,video").split(','); for (var i = 0; i < html5.length; i++) { document.createElement(html5[i]); } try { document.execCommand('BackgroundImageCache', false, true); } catch(e) {} })(); </script> <![endif]-->
+<title>htop 2.0 - An Interactive Process Viewer for Unix</title>
+<!--: [END] BLocK :-->
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="blogger" name="generator">
+<link href="favicon.ico" rel="icon" type="image/x-icon">
+<link href="http://www.kitploit.com/2016/02/htop-20-interactive-process-viewer-for.html" rel="canonical">
+<link rel="alternate" type="application/atom+xml" title="KitPloit - PenTest Tools for your Security Arsenal ☣ - Atom" href="http://www.kitploit.com/feeds/posts/default">
+<link rel="alternate" type="application/rss+xml" title="KitPloit - PenTest Tools for your Security Arsenal ☣ - RSS" href="http://www.kitploit.com/feeds/posts/default?alt=rss">
+<link rel="service.post" type="application/atom+xml" title="KitPloit - PenTest Tools for your Security Arsenal ☣ - Atom" href="https://www.blogger.com/feeds/8317222231133660547/posts/default">
+
+<link rel="alternate" type="application/atom+xml" title="KitPloit - PenTest Tools for your Security Arsenal ☣ - Atom" href="http://www.kitploit.com/feeds/6771694294596444553/comments/default">
+<link href="https://3.bp.blogspot.com/-CNwzc0MhTAE/Vr1ujzQ4Z7I/AAAAAAAAFJw/dKsvG2ALVcs/s640/htop-2.0.png" rel="image_src">
+<meta content="http://www.kitploit.com/2016/02/htop-20-interactive-process-viewer-for.html" property="og:url">
+<meta content="https://3.bp.blogspot.com/-CNwzc0MhTAE/Vr1ujzQ4Z7I/AAAAAAAAFJw/dKsvG2ALVcs/w1200-h630-p-nu/htop-2.0.png" property="og:image">
+<!--[if IE]> <script> (function() { var html5 = ("abbr,article,aside,audio,canvas,datalist,details," + "figure,footer,header,hgroup,mark,menu,meter,nav,output," + "progress,section,time,video").split(','); for (var i = 0; i < html5.length; i++) { document.createElement(html5[i]); } try { document.execCommand('BackgroundImageCache', false, true); } catch(e) {} })(); </script> <![endif]-->
+<meta content="Dump3R" name="Author">
+<meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
+<meta content="english" name="language">
+<meta content="2 days" name="Revisit-After">
+<meta content="all" name="robots">
+<meta content="all, index, follow" name="robots">
+<meta content="all" name="googlebot">
+<meta content="all, index, follow" name="googlebot">
+<meta content="all" name="yahoo-slurp">
+<meta content="all, index, follow" name="yahoo-slurp">
+<meta content="index, follow" name="msnbot">
+<meta content="all" name="googlebot-image">
+<meta content="on" name="twitter:widgets:csp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="http://www.kitploit.com/" hreflang="en" rel="alternate">
+
+
+<div id="fb-root"></div>
+
+<!-- ADS MORE -->
+<div style="display: none;">
+<div id="MBB-Ads">
+<br><center>
+<a href="https://www.netsparker.com/online-web-application-security-scanner/launch-vulnerability-scan/?utm_source=easyauto&amp;utm_medium=ad4&amp;utm_campaign=kitploitnc" imageanchor="1" style="margin-left: 1em; margin-right: 1em;" target="_blank"><img style="width: 728px; height: 90px;" src="728x90_retina.png" border="0"></a></center>
+
+<div class="pagefair-acceptable" id="c8b108fb61"></div>
+</div>
+</div>
+
+<!-- END ADS MORE -->
+
+<div id="outer-wrapper">
+<div id="headwrna">
+<div id="isihead">
+<nav id="nav-top">
+<div class="menutopx">
+<ul class="menuhlng" id="topnav">
+<li>
+<a href="http://www.kitploit.com/2012/11/contacto.html">
+<b>Contact</b>
+</a>
+</li>
+<li>
+<a href="http://www.kitploit.com/2012/11/afiliate-pentest-tools.html">
+<b>Affiliate</b>
+</a>
+</li>
+<li>
+<a href="http://www.blackploit.com/">
+<b>Blackploit</b>
+</a>
+</li>
+<li>
+<a href="http://www.kitploit.com/p/submit-tool.html">
+<b>Submit a Tool</b>
+</a>
+</li>
+</ul>
+</div>
+<div id="navmobitop">
+<a href="#" id="mobilenavtop">
+                Menu
+              </a>
+</div>
+</nav>
+<header id="header-wrapper" itemscope="" itemtype="http://schema.org/WPHeader">
+<div class="header section" id="header"><div class="widget Header" data-version="1" id="Header1">
+<div id="header-inner">
+<a href="http://www.kitploit.com/" itemprop="url" style="display: block;">
+<img alt="KitPloit - PenTest Tools for your Security Arsenal ☣" id="Header1_headerimg" src="kitploit-Logo-2015-04-27+-+%25283%2529.png" style="display: block;" width="236px; " height="65px; ">
+</a>
+</div>
+</div></div>
+</header>
+<div id="socialnya">
+<ul class="socialxx">
+<li>
+<a class="ikon fb" href="https://www.facebook.com/KitPloit" target="_blank" title="Facebook">
+                  Facebook
+                </a>
+</li>
+<li>
+<a class="ikon twtr" href="https://twitter.com/KitPloit" target="_blank" title="Twitter">
+                  Twitter
+                </a>
+</li>
+<li>
+<a class="ikon rssx" href="http://feeds.feedburner.com/PentestTools" target="_blank" title="RSS">
+                  RSS
+                </a>
+</li>
+<li>
+<a class="ikon rcpostnya" href="#" title="Recent Posts">
+                  Recent
+                </a>
+<div class="recntsposts" id="rcentpost">
+<span class="loadnya">
+                    loading...
+                  </span>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="navwarna">
+<div id="naviga">
+<nav id="navigx">
+<div id="nav">
+<ul id="navnyaa">
+<li>
+<a href="http://www.kitploit.com/">
+<img src="Places-user-home-icon.png" width="15" border="0" height="15">
+					
+                    Home
+                    
+                  </a>
+</li>
+<li>
+<a href="http://www.kitploit.com/search/label/Windows">
+<img src="icon_windows.png" width="15" border="0" height="15">
+                    
+                    	Windows
+                    
+                   	</a>
+</li>
+<li>
+<a href="http://www.kitploit.com/search/label/Linux">
+<img src="linux32.png" width="15" border="0" height="15">
+                        
+                          GNU/Linux
+                        
+                      </a>
+</li>
+<li>
+<a href="http://www.kitploit.com/search/label/Mac">
+<img src="mac_icon.png" width="15" border="0" height="15">
+                        
+                          OS X
+                        
+                      </a>
+</li>
+<li>
+<a href="http://www.kitploit.com/search/label/Android">
+<img src="androidgame.png" width="15" border="0" height="15">
+                        
+                          Android
+                        
+                      </a>
+</li>
+<li>
+<a href="http://www.kitploit.com/search/label/iPhone">
+<img src="iphone_apple_phone_mobile-24.png" width="15" border="0" height="15">
+                       	
+                          iPhone
+                        
+                      </a>
+</li>
+<li class="dgnsub">
+<a href="#">
+                    Categories ▼
+                  </a>
+<ul class="sub-menux">
+<li>
+<a href="http://www.kitploit.com/search/label/Distro">
+<b>Linux Distribution</b>
+</a>
+</li>
+<li>
+<a href="http://www.kitploit.com/search/label/SQLi">
+<b>SQLi</b>
+</a>
+</li>
+<li>
+<a href="http://www.kitploit.com/search/label/Cheat%20Sheet">
+<b>Cheat Sheet</b>
+</a>
+</li>
+<li>
+<a href="http://www.kitploit.com/search/label/Malware%20Analysis">
+<b>Malware Analysis</b>
+</a>
+</li>
+<li>
+<a href="http://www.kitploit.com/search/label/Scanner">
+<b>Scanners</b>
+</a>
+</li>
+<li>
+<a href="http://www.kitploit.com/search/label/Hash%20Cracker">
+<b>Hash Cracker</b>
+</a>
+</li>
+<li>
+<a href="http://www.kitploit.com/search/label/Wireless">
+<b>Wireless</b>
+</a>
+</li>
+<li>
+<a href="http://www.kitploit.com/search/label/Bluetooth">
+<b>Bluetooth</b>
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="navmobi">
+<a href="#" id="mobilenav">
+                Menu
+              </a>
+</div>
+</nav>
+</div>
+</div>
+
+<div id="content-wrapper">
+<!-- ADS top start -->
+<center>
+
+<!-- 970x90 kitploit -->
+
+
+</center>
+<!-- ADS top end -->
+<div id="main-wrapper">
+<div id="menulabel">
+<div id="labelxnya">
+<span>
+                Loading...
+              </span>
+</div>
+<div id="searchnya">
+<form action="http://www.kitploit.com/search" id="ajax-search-form">
+<input name="q" type="text">
+<input value="Search" type="submit">
+</form>
+</div>
+</div>
+<div class="main section" id="main"><div class="widget Blog" data-version="1" id="Blog1">
+<div class="blog-posts hfeed">
+
+
+
+                      <div style="text-align: center;">
+
+
+<br>
+<a href="http://www.acunetix.com/run-a-free-network-security-scan-from-the-cloud/?utm_source=hacktools&amp;utm_medium=banner&amp;utm_term=trojan&amp;utm_campaign=hacktools" imageanchor="1" style="margin-left: 1em; margin-right: 1em;" target="_blank"><img style="width: 728px; height: 90px;" src="acx_TrojanHorse-720x90-coloured.gif" border="0"></a>
+		
+<center><div class="pagefair-acceptable" id="d3623c46f0"></div></center>
+
+
+
+
+                      </div>
+
+
+                    
+
+                        <div class="date-outer">
+                      
+<div class="date-header">
+Friday, February 12, 2016
+</div>
+
+                        <div class="date-posts">
+                      
+<div class="post-outer">
+<div class="breadcrumbs">
+<span itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+<a href="http://www.kitploit.com/" itemprop="url">
+<span itemprop="title">
+                          Home
+                        </span>
+</a>
+</span>
+                    »
+                    
+<span itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+<a href="http://www.kitploit.com/search/label/htop" itemprop="url" rel="tag">
+<span itemprop="title">
+htop
+</span>
+</a>
+</span>
+
+                            » 
+                          
+<span itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+<a href="http://www.kitploit.com/search/label/Killing%20processes" itemprop="url" rel="tag">
+<span itemprop="title">
+Killing processes
+</span>
+</a>
+</span>
+
+                            » 
+                          
+<span itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+<a href="http://www.kitploit.com/search/label/Linux" itemprop="url" rel="tag">
+<span itemprop="title">
+Linux
+</span>
+</a>
+</span>
+
+                            » 
+                          
+<span itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+<a href="http://www.kitploit.com/search/label/Mac" itemprop="url" rel="tag">
+<span itemprop="title">
+Mac
+</span>
+</a>
+</span>
+
+                            » 
+                          
+<span itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+<a href="http://www.kitploit.com/search/label/Process" itemprop="url" rel="tag">
+<span itemprop="title">
+Process
+</span>
+</a>
+</span>
+
+                            » 
+                          
+<span itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+<a href="http://www.kitploit.com/search/label/Processes" itemprop="url" rel="tag">
+<span itemprop="title">
+Processes
+</span>
+</a>
+</span>
+
+                      » 
+                      <span>
+htop 2.0 - An Interactive Process Viewer for Unix
+</span>
+</div>
+<article class="post hentry" id="6771694294596444553" itemscope="" itemtype="http://schema.org/BlogPosting">
+<h1 class="post-title entry-title" itemprop="name headline">
+<a href="#" itemprop="url">
+htop 2.0 - An Interactive Process Viewer for Unix
+</a>
+</h1>
+<div class="infox">
+<div class="post-author vcard">
+<span class="fn">
+<a href="https://plus.google.com/103046163034471730698" itemprop="author" rel="author" title="author profile">
+Lydecker Black
+</a>
+</span>
+</div>
+<div class="d-header">
+                        on 
+                        <span class="timestamp-link">
+<span class="published updated" itemprop="datePublished" title="2016-02-12T17:23:00-03:00">
+5:23 PM
+</span>
+
+                          | Post sponsored by <a href="https://www.netsparker.com/" target="_blank">Netsparker Web Application Security Scanner</a>
+</span>
+</div>
+</div>
+<div class="post-header" style="position: absolute; left: -9999px;">
+<div class="post-header-line-1"></div>
+</div>
+<div class="post-body entry-content" id="post-body-6771694294596444553" itemprop="articleBody">
+<div class="separator" style="clear: both; text-align: center;">
+<a href="https://3.bp.blogspot.com/-CNwzc0MhTAE/Vr1ujzQ4Z7I/AAAAAAAAFJw/dKsvG2ALVcs/s1600/htop-2.0.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img src="htop-2.0.png" width="640" border="0" height="374"></a></div>
+<br>
+<div style="text-align: justify;">
+<b>htop</b> is an interactive system-monitor process-viewer. It is designed as an alternative to the Unix program top. It shows a frequently updated list of the processes running on a computer, normally ordered by the amount of CPU usage. Unlike top, htop provides a full list of processes running, instead of the top resource-consuming processes. Htop uses color and gives visual information about processor, swap and memory status.</div>
+<a name="more"></a><br>
+<div style="text-align: justify;">
+Users often deploy htop in cases where Unix top does not provide enough information about the system's processes. htop is also popularly used interactively as a system monitor. Compared to top, it provides a more convenient, cursor-controlled interface for sending signals to processes.</div>
+<div style="text-align: justify;">
+<br></div>
+<div style="text-align: justify;">
+htop is written in the C programming language using the ncurses library. Its name is derived from the original author's first name, as a nod to pinfo, an info-replacement program that does the same.</div>
+<div style="text-align: justify;">
+<br></div>
+<div style="text-align: justify;">
+Because system monitoring interfaces are not standardized among Unix-like operating systems, much of htop's code must be rewritten for each operating system.</div>
+<div style="text-align: justify;">
+<br></div>
+<h3 style="text-align: justify;">
+<b>What's new in htop 2.0</b></h3>
+<div style="text-align: justify;">
+Since version 2.0, htop is now cross-platform! </div>
+<div style="text-align: justify;">
+<br></div>
+<div style="text-align: justify;">
+This release includes code supporting Linux, FreeBSD, OpenBSD and Mac OS X.
+</div>
+<div style="text-align: justify;">
+<br></div>
+<div style="text-align: justify;">
+There are also, of course, some new features:
+</div>
+<br>
+<ul>
+<li style="text-align: justify;">If you're using NCurses 6, htop will also support your mouse wheel for scrolling.</li>
+<li style="text-align: justify;">Moving meters and columns around in the setup screen is a lot more comfortable now.</li>
+<li style="text-align: justify;">You can now press "e" to see the set of environment variables for a process.</li>
+<li style="text-align: justify;">The "graph" mode for meters was revamped, inspired by James Hall's <a href="https://github.com/MrRio/vtop">vtop</a>.</li>
+</ul>
+<br>
+<br>
+<div style="text-align: center;">
+<b><span style="font-size: x-large;"><a href="http://hisham.hm/htop/index.php?page=downloads" target="_blank">Download&nbsp;htop 2.0</a></span></b></div>
+
+
+<div style="text-align: center;">
+
+
+<a href="http://www.kitploit.com/" target="_blank" title="Kitploit Home"><img src="Categories-applications-utilities-icon.png" width="2"></a>
+
+
+<a href="https://www.netsparker.com/netsparker-web-application-security-scanner/website-vulnerable-xss-sql-injection-vulnerability-scanner/?utm_source=scan4xsql&amp;utm_medium=ad5&amp;utm_campaign=kitploit" imageanchor="1" style="margin-left: 1em; margin-right: 1em;" target="_blank"><img style="width: 336px; height: 280px;" src="336x280.gif" border="0"></a>
+
+
+<br><br>
+
+
+<form style="border: 1px solid rgb(204, 204, 204); padding: 3px; text-align: center;" action="http://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow">Subscribe via e-mail for updates! <input style="width: 140px;" name="email" type="text"><input value="PentestTools" name="uri" type="hidden"><input name="loc" value="en_US" type="hidden"><input value="Subscribe" type="submit"></form>
+
+<br>
+</div>
+                    
+<div style="clear: both;"></div>
+</div>
+<div class="post-footer">
+<div class="post-footer-line post-footer-line-1">
+<span class="post-author vcard">
+Posted by
+<span class="fn">
+<a href="https://plus.google.com/103046163034471730698" rel="author" title="author profile">
+Lydecker Black
+</a>
+</span>
+</span>
+<span class="post-timestamp">
+at
+<a class="timestamp-link" href="#" rel="bookmark" title="permanent link">
+<abbr class="updated published" title="2016-02-12T17:23:00-03:00">
+5:23 PM
+</abbr>
+</a>
+</span>
+<span class="post-comment-link">
+</span>
+<span class="post-icons">
+<span class="item-control blog-admin pid-549989274">
+<a href="https://www.blogger.com/post-edit.g?blogID=8317222231133660547&amp;postID=6771694294596444553&amp;from=pencil" title="Edit Post">
+<img alt="" class="icon-action" src="icon18_edit_allbkg.gif" width="18" height="18">
+</a>
+</span>
+</span>
+<div class="post-share-buttons goog-inline-block">
+<a class="goog-inline-block share-button sb-email" href="https://www.blogger.com/share-post.g?blogID=8317222231133660547&amp;postID=6771694294596444553&amp;target=email" target="_blank" title="Email This">
+<span class="share-button-link-text">
+Email This
+</span>
+</a>
+<a class="goog-inline-block share-button sb-blog" href="https://www.blogger.com/share-post.g?blogID=8317222231133660547&amp;postID=6771694294596444553&amp;target=blog" target="_blank" title="BlogThis!">
+<span class="share-button-link-text">
+BlogThis!
+</span>
+</a>
+<a class="goog-inline-block share-button sb-twitter" href="https://www.blogger.com/share-post.g?blogID=8317222231133660547&amp;postID=6771694294596444553&amp;target=twitter" target="_blank" title="Share to Twitter">
+<span class="share-button-link-text">
+Share to Twitter
+</span>
+</a>
+<a class="goog-inline-block share-button sb-facebook" href="https://www.blogger.com/share-post.g?blogID=8317222231133660547&amp;postID=6771694294596444553&amp;target=facebook" target="_blank" title="Share to Facebook">
+<span class="share-button-link-text">
+Share to Facebook
+</span>
+</a>
+<div class="goog-inline-block dummy-container">
+<g:plusone source="blogger:blog:plusone" href="http://www.kitploit.com/2016/02/htop-20-interactive-process-viewer-for.html" size="medium" width="300" annotation="inline">
+</g:plusone></div>
+</div>
+</div>
+<div class="post-footer-line post-footer-line-3">
+<span class="post-location">
+</span>
+</div>
+</div>
+<div class="addthis_toolbox addthis_default_style">
+<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+<a class="addthis_button_tweet"></a>
+<a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+<a class="addthis_button_linkedin_counter"></a>
+</div>
+
+<div class="ikonz-social">
+<span>
+                        Share:
+                      </span>
+<ul class="social-ikonz" id="social-ikonzs">
+<li class="facebookx">
+<a href="http://www.facebook.com/share.php?v=4&amp;src=bm&amp;u=http://www.kitploit.com/2016/02/htop-20-interactive-process-viewer-for.html&amp;t=htop%202.0%20-%20An%20Interactive%20Process%20Viewer%20for%20Unix" rel="nofollow" title="Share this on Facebook">
+<strong>
+                              Facebook
+                            </strong>
+</a>
+</li>
+<li class="twitterx">
+<a href="http://twitter.com/home?status=htop%202.0%20-%20An%20Interactive%20Process%20Viewer%20for%20Unix%20--%20http://www.kitploit.com/2016/02/htop-20-interactive-process-viewer-for.html" rel="nofollow" title="Tweet This!">
+<strong>
+                              Twitter
+                            </strong>
+</a>
+</li>
+<li class="googlex">
+<a href="https://plus.google.com/share?url=http://www.kitploit.com/2016/02/htop-20-interactive-process-viewer-for.html" rel="nofollow" title="Share this on Google+">
+<strong>
+                              Google+
+                            </strong>
+</a>
+</li>
+<li class="stumbleuponx">
+<a href="http://www.stumbleupon.com/submit?url=http://www.kitploit.com/2016/02/htop-20-interactive-process-viewer-for.html&amp;title=htop%202.0%20-%20An%20Interactive%20Process%20Viewer%20for%20Unix" rel="nofollow" title="Stumble upon something good? Share it on StumbleUpon">
+<strong>
+                              StumbleUpon
+                            </strong>
+</a>
+</li>
+<li class="diggx">
+<a href="http://digg.com/submit?phase=2&amp;url=http://www.kitploit.com/2016/02/htop-20-interactive-process-viewer-for.html&amp;title=htop%202.0%20-%20An%20Interactive%20Process%20Viewer%20for%20Unix" rel="nofollow" title="Digg this!">
+<strong>
+                              Digg
+                            </strong>
+</a>
+</li>
+<li class="deliciousx">
+<a href="http://delicious.com/post?url=http://www.kitploit.com/2016/02/htop-20-interactive-process-viewer-for.html&amp;title=htop%202.0%20-%20An%20Interactive%20Process%20Viewer%20for%20Unix" rel="nofollow" title="Share this on del.icio.us">
+<strong>
+                              Delicious
+                            </strong>
+</a>
+</li>
+<li class="linkedinx">
+<a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=http://www.kitploit.com/2016/02/htop-20-interactive-process-viewer-for.html&amp;title=htop%202.0%20-%20An%20Interactive%20Process%20Viewer%20for%20Unix&amp;summary=&amp;source=" rel="nofollow" title="Share this on LinkedIn">
+<strong>
+                              LinkedIn
+                            </strong>
+</a>
+</li>
+<li class="redditx">
+<a href="http://reddit.com/submit?url=http://www.kitploit.com/2016/02/htop-20-interactive-process-viewer-for.html&amp;title=htop%202.0%20-%20An%20Interactive%20Process%20Viewer%20for%20Unix" rel="nofollow" title="Share this on Reddit">
+<strong>
+                              Reddit
+                            </strong>
+</a>
+</li>
+</ul>
+</div>
+</article>
+<div class="blog-pager" id="blog-pager">
+<div class="pager-isi">
+<a class="blog-pager-newer-link" href="http://www.kitploit.com/2016/02/maybe-see-what-program-does-before.html" id="Blog1_blog-pager-newer-link" title="Newer Post">
+Newer Post
+</a>
+<a class="blog-pager-older-link" href="http://www.kitploit.com/2016/02/crackmapexecwin-great-crackmapexec-tool.html" id="Blog1_blog-pager-older-link" title="Older Post">
+Older Post
+</a>
+</div>
+</div>
+
+<div id="related_posts2">
+</div>
+<div class="comments" id="comments">
+<a name="comments"></a>
+<h4>
+0
+comments
+                        :
+                      
+</h4>
+<div id="Blog1_comments-block-wrapper">
+<dl class="avatar-comment-indent" id="comments-block">
+</dl>
+</div>
+<p class="comment-footer">
+<a href="https://www.blogger.com/comment.g?blogID=8317222231133660547&amp;postID=6771694294596444553&amp;isPopup=true">
+Post a Comment
+</a>
+</p>
+<div id="backlinks-container">
+<div id="Blog1_backlinks-container">
+</div>
+</div>
+</div>
+</div>
+
+                      </div></div>
+                    
+</div>
+<div class="post-feeds">
+<div class="feed-links">
+Subscribe to:
+<a class="feed-link" href="http://www.kitploit.com/feeds/6771694294596444553/comments/default" target="_blank" type="application/atom+xml">
+Post Comments
+                      (
+                      Atom
+                      )
+                    </a>
+</div>
+</div>
+
+</div></div>
+</div>
+<aside id="sidebar-wrapper" itemscope="" itemtype="http://schema.org/WPSideBar">
+<div id="sibebar-atas">
+<div class="sidebar section" id="sidebar-atas1"><div class="widget HTML" data-version="1" id="HTML10">
+<h2 class="title">Subscribe via e-mail</h2>
+<div class="widget-content">
+<form style="border: 1px solid rgb(204, 204, 204); padding: 3px; text-align: center;" action="http://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow"><img src="logo-18-12-2013.png" width="15" border="0" height="15"> Subscribe via e-mail <input style="width: 140px;" name="email" type="text"><input value="PentestTools" name="uri" type="hidden"><input name="loc" value="en_US" type="hidden"><input value="Subscribe" type="submit"></form>
+
+<br>
+<div style="clear: both; text-align: center;">
+<a href="https://goo.gl/6M9ISb" imageanchor="1" style="margin-left: 1em; margin-right: 1em;" target="_blank"><img src="Python.jpg" border="0"></a></div>
+<center>
+<div id="832a4567ff" style="text-align: center;" class="pagefair-acceptable"></div></center>
+</div>
+<div class="clear"></div>
+<span class="widget-item-control">
+<span class="item-control blog-admin">
+<a class="quickedit" href="http://www.blogger.com/rearrange?blogID=8317222231133660547&amp;widgetType=HTML&amp;widgetId=HTML10&amp;action=editWidget&amp;sectionId=sidebar-atas1" target="configHTML10" title="Edit">
+<img alt="" src="icon18_wrench_allbkg.png" width="18" height="18">
+</a>
+</span>
+</span>
+<div class="clear"></div>
+</div><div class="widget HTML" data-version="1" id="HTML8">
+<div class="widget-content">
+<div id="marcadores-sociales" style="text-align: center;">
+
+<a class="facebook" href="http://www.kitploit.com/" target="_blank" title="Kitploit Home"><img src="logo-18-12-2013.png" width="5"></a>
+
+<a class="facebook" href="https://www.facebook.com/Kitploit" target="_blank" title="Follow Facebook"><img src="Facebook+alt+4.png" width="87"></a>
+
+<a class="twitter" href="https://twitter.com/KitPloit" target="_blank" title="Follow Twitter"><img src="Twitter+alt+4.png" width="87"></a>
+
+
+<a class="igoogle" href="https://plus.google.com/+KitploitWeb/posts" target="_blank" title="Follow Google+"><img src="google-plus-icon.png" width="87"></a>
+
+<a class="rss" href="http://feeds.feedburner.com/PentestTools" target="_blank" title="Feed RSS"><img src="RSS+Feed.png" width="87"></a>
+
+</div>
+
+
+
+
+
+<center><a href="http://www.kitploit.com/p/submit-tool.html" class="Sumit01"><h3>Submit a Tool <img src="icon18_wrench_allbkg_001.png" border="0"></h3> </a></center>
+
+
+
+<center>
+
+<!-- 336x280 kitploit -->
+</center>
+
+
+
+
+<center>
+<div id="cf93799b79" class="pagefair-acceptable"></div>
+</center>
+</div>
+<div class="clear"></div>
+<span class="widget-item-control">
+<span class="item-control blog-admin">
+<a class="quickedit" href="http://www.blogger.com/rearrange?blogID=8317222231133660547&amp;widgetType=HTML&amp;widgetId=HTML8&amp;action=editWidget&amp;sectionId=sidebar-atas1" target="configHTML8" title="Edit">
+<img alt="" src="icon18_wrench_allbkg.png" width="18" height="18">
+</a>
+</span>
+</span>
+<div class="clear"></div>
+</div><div class="widget HTML" data-version="1" id="HTML6">
+<h2 class="title">Follow us!</h2>
+<div class="widget-content">
+<center>
+
+<!-- 336x280 kitploit -->
+</center>
+
+
+
+<br>
+
+<div style="text-align: center;">
+<div class="fb-page" data-href="https://www.facebook.com/kitploit" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false" data-show-posts="false"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/kitploit"><a href="https://www.facebook.com/kitploit">PenTest Tools</a></blockquote></div></div>
+
+<br><br>
+
+<a href="http://twitter.com/KitPloit" class="twitter-follow-button">Follow @KitPloit</a>
+
+
+<br><br>
+
+<!-- Gplus -->
+<div class="g-page" data-width="273" data-href="//plus.google.com/u/0/106095770424927345842" data-layout="landscape" data-rel="publisher"></div>
+
+<!-- Inserta esta etiqueta después de la última etiqueta de widget. -->
+
+
+<br>
+
+<p><a href="http://feeds.feedburner.com/PentestTools"><img src="PentestTools.dat" style="border: 0px none;" alt="" width="88" height="26"></a></p>
+</div>
+
+<div class="separator" style="clear: both; text-align: center;">
+
+<a href="https://goo.gl/wb0yt6">
+<img src="g2a.jpg" border="0">
+</a>
+
+</div>
+</div>
+<div class="clear"></div>
+<span class="widget-item-control">
+<span class="item-control blog-admin">
+<a class="quickedit" href="http://www.blogger.com/rearrange?blogID=8317222231133660547&amp;widgetType=HTML&amp;widgetId=HTML6&amp;action=editWidget&amp;sectionId=sidebar-atas1" target="configHTML6" title="Edit">
+<img alt="" src="icon18_wrench_allbkg.png" width="18" height="18">
+</a>
+</span>
+</span>
+<div class="clear"></div>
+</div><div class="widget Navbar" data-version="1" id="Navbar1">
+<div id="navbar-iframe-container"></div>
+
+
+</div><div class="widget HTML" data-version="1" id="HTML1">
+
+
+
+
+
+</div></div>
+</div>
+<div id="sibebar-tengah">
+<div id="tab">
+<div class="tab-widget-menu clear">
+<ul id="tebslect">
+<li class="tab1">
+<a href="#tab1">
+                      Populars
+                    </a>
+</li>
+<li class="tab2">
+<a href="#tab2">
+                      Comments
+                    </a>
+</li>
+<li class="tab3">
+<a href="#tab3">
+                      Archive
+                    </a>
+</li>
+</ul>
+<div class="clear"></div>
+</div>
+<div id="bungkusside">
+<div class="widget1" id="tab1">
+<div class="sidebar section" id="tab1-popular"><div class="widget PopularPosts" data-version="1" id="PopularPosts1">
+<h2>Popular Posts</h2>
+<div class="widget-content popular-posts">
+<ul>
+<li>
+<div class="item-content">
+<div class="item-thumbnail">
+<a href="http://www.kitploit.com/2016/08/raptor-web-based-source-code.html" target="_blank">
+<img alt="" src="raptor_logo.png" border="0">
+</a>
+</div>
+<div class="item-title"><a href="http://www.kitploit.com/2016/08/raptor-web-based-source-code.html">Raptor -  Web-based Source Code Vulnerability Scanner</a></div>
+<div class="item-snippet">    Raptor is a web-based (web-serivce + UI) github centric source-vulnerability scanner i.e. it scans a repository with just the github rep...</div>
+</div>
+<div style="clear: both;"></div>
+</li>
+<li>
+<div class="item-content">
+<div class="item-thumbnail">
+<a href="http://www.kitploit.com/2016/08/macroshop-collection-of-scripts-to-aid.html" target="_blank">
+<img alt="" src="macro.png" border="0">
+</a>
+</div>
+<div class="item-title"><a href="http://www.kitploit.com/2016/08/macroshop-collection-of-scripts-to-aid.html">MacroShop - Collection of scripts to aid in delivering payloads via Office Macros</a></div>
+<div class="item-snippet">   Collection of scripts to aid in delivering payloads via Office Macros.  Most are python.  </div>
+</div>
+<div style="clear: both;"></div>
+</li>
+<li>
+<div class="item-content">
+<div class="item-thumbnail">
+<a href="http://www.kitploit.com/2016/08/hydra-83-network-logon-cracker.html" target="_blank">
+<img alt="" src="THC-Hydra.png" border="0">
+</a>
+</div>
+<div class="item-title"><a href="http://www.kitploit.com/2016/08/hydra-83-network-logon-cracker.html">Hydra 8.3 - Network Logon Cracker</a></div>
+<div class="item-snippet">   &nbsp;A very fast network logon cracker which support many different services.      See feature sets and services coverage page  - incl. a spe...</div>
+</div>
+<div style="clear: both;"></div>
+</li>
+<li>
+<div class="item-content">
+<div class="item-thumbnail">
+<a href="http://www.kitploit.com/2016/08/ps-inject-inject-shellcode-on-linux-pid.html" target="_blank">
+<img alt="" src="ps-inject.png" border="0">
+</a>
+</div>
+<div class="item-title"><a href="http://www.kitploit.com/2016/08/ps-inject-inject-shellcode-on-linux-pid.html">ps-inject - Inject Shellcode on Linux PID</a></div>
+<div class="item-snippet">   Inject shellcode on linux PID          How use:        $ make gcc -Wall -Wextra -O3 -c -o lib/file.o src/file.c gcc -Wall -Wextra -O3 -c ...</div>
+</div>
+<div style="clear: both;"></div>
+</li>
+<li>
+<div class="item-content">
+<div class="item-thumbnail">
+<a href="http://www.kitploit.com/2016/08/rupture-framework-for-breach-and-other.html" target="_blank">
+<img alt="" src="rupture.png" border="0">
+</a>
+</div>
+<div class="item-title"><a href="http://www.kitploit.com/2016/08/rupture-framework-for-breach-and-other.html">Rupture - A framework for BREACH and other compression-based crypto attacks</a></div>
+<div class="item-snippet">   Rupture is a framework for easily conducting BREACH and other compression-based  attacks.    For more information, please visit Rupture&amp;#...</div>
+</div>
+<div style="clear: both;"></div>
+</li>
+<li>
+<div class="item-content">
+<div class="item-thumbnail">
+<a href="http://www.kitploit.com/2016/08/manalyze-static-analyzer-for-pe.html" target="_blank">
+<img alt="" src="manalyze.png" border="0">
+</a>
+</div>
+<div class="item-title"><a href="http://www.kitploit.com/2016/08/manalyze-static-analyzer-for-pe.html">Manalyze -  A static analyzer for PE executables</a></div>
+<div class="item-snippet">    Manalyzer is a free service which performs static analysis on PE executables to detect undesirable behavior.  </div>
+</div>
+<div style="clear: both;"></div>
+</li>
+<li>
+<div class="item-content">
+<div class="item-thumbnail">
+<a href="http://www.kitploit.com/2016/08/brutexss-cross-site-scripting.html" target="_blank">
+<img alt="" src="BruteXSS.png" border="0">
+</a>
+</div>
+<div class="item-title"><a href="http://www.kitploit.com/2016/08/brutexss-cross-site-scripting.html">BruteXSS - Cross-Site Scripting Bruteforcer</a></div>
+<div class="item-snippet">   BruteXSS - Cross-Site Scripting BruteForcer   Author:       Shawar Khan          The BruteXSS project is sponsored and supported by      ...</div>
+</div>
+<div style="clear: both;"></div>
+</li>
+</ul>
+<div class="clear"></div>
+<span class="widget-item-control">
+<span class="item-control blog-admin">
+<a class="quickedit" href="http://www.blogger.com/rearrange?blogID=8317222231133660547&amp;widgetType=PopularPosts&amp;widgetId=PopularPosts1&amp;action=editWidget&amp;sectionId=tab1-popular" target="configPopularPosts1" title="Edit">
+<img alt="" src="icon18_wrench_allbkg.png" width="18" height="18">
+</a>
+</span>
+</span>
+<div class="clear"></div>
+</div>
+</div></div>
+</div>
+<div class="widget1" id="tab2">
+<div class="sidebar section" id="tab2-comments"><div class="widget HTML" data-version="1" id="HTML21">
+<h2 class="title">
+Comments
+</h2>
+<div class="widget-content">
+<div id="RecentComments" class="dsq-widget">
+ 
+</div>
+</div>
+<div class="clear"></div>
+<span class="widget-item-control">
+<span class="item-control blog-admin">
+<a class="quickedit" href="http://www.blogger.com/rearrange?blogID=8317222231133660547&amp;widgetType=HTML&amp;widgetId=HTML21&amp;action=editWidget&amp;sectionId=tab2-comments" target="configHTML21" title="Edit">
+<img alt="" src="icon18_wrench_allbkg.png" width="18" height="18">
+</a>
+</span>
+</span>
+<div class="clear"></div>
+</div></div>
+</div>
+<div class="widget1" id="tab3">
+<div class="sidebar section" id="tab3-Archive"><div class="widget BlogArchive" data-version="1" id="BlogArchive1">
+<h2>
+Archive
+</h2>
+<div class="widget-content">
+<div id="ArchiveList">
+<div id="BlogArchive1_ArchiveList">
+<ul class="hierarchy">
+<li class="archivedate expanded">
+<a class="toggle">
+<span class="zippy toggle-open">
+                                ▼&nbsp;
+                              </span>
+</a>
+<a class="post-count-link" href="http://www.kitploit.com/search?updated-min=2016-01-01T00:00:00-03:00&amp;updated-max=2017-01-01T00:00:00-03:00&amp;max-results=50">
+2016
+</a>
+<span class="post-count" dir="ltr">
+                                (
+                                207
+                                )
+                              </span>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+                                  ►&nbsp;
+                                
+</span>
+</a>
+<a class="post-count-link" href="http://www.kitploit.com/2016_08_01_archive.html">
+August
+</a>
+<span class="post-count" dir="ltr">
+                                (
+                                21
+                                )
+                              </span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+                                  ►&nbsp;
+                                
+</span>
+</a>
+<a class="post-count-link" href="http://www.kitploit.com/2016_07_01_archive.html">
+July
+</a>
+<span class="post-count" dir="ltr">
+                                (
+                                23
+                                )
+                              </span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+                                  ►&nbsp;
+                                
+</span>
+</a>
+<a class="post-count-link" href="http://www.kitploit.com/2016_06_01_archive.html">
+June
+</a>
+<span class="post-count" dir="ltr">
+                                (
+                                27
+                                )
+                              </span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+                                  ►&nbsp;
+                                
+</span>
+</a>
+<a class="post-count-link" href="http://www.kitploit.com/2016_05_01_archive.html">
+May
+</a>
+<span class="post-count" dir="ltr">
+                                (
+                                26
+                                )
+                              </span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+                                  ►&nbsp;
+                                
+</span>
+</a>
+<a class="post-count-link" href="http://www.kitploit.com/2016_04_01_archive.html">
+April
+</a>
+<span class="post-count" dir="ltr">
+                                (
+                                26
+                                )
+                              </span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+                                  ►&nbsp;
+                                
+</span>
+</a>
+<a class="post-count-link" href="http://www.kitploit.com/2016_03_01_archive.html">
+March
+</a>
+<span class="post-count" dir="ltr">
+                                (
+                                27
+                                )
+                              </span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate expanded">
+<a class="toggle">
+<span class="zippy toggle-open">
+                                ▼&nbsp;
+                              </span>
+</a>
+<a class="post-count-link" href="http://www.kitploit.com/2016_02_01_archive.html">
+February
+</a>
+<span class="post-count" dir="ltr">
+                                (
+                                25
+                                )
+                              </span>
+<ul class="posts">
+<li>
+<a href="http://www.kitploit.com/2016/02/sftpfuzzer-simple-ftp-fuzzer.html">
+SFTPfuzzer - Simple FTP Fuzzer
+</a>
+</li>
+<li>
+<a href="http://www.kitploit.com/2016/02/faraday-1017-collaborative-penetration.html">
+Faraday 1.0.17 - Collaborative Penetration Test an...
+</a>
+</li>
+<li>
+<a href="http://www.kitploit.com/2016/02/iis-short-name-scanner-scanner-for-iis.html">
+IIS Short Name Scanner - Scanner For IIS Short Fil...
+</a>
+</li>
+<li>
+<a href="http://www.kitploit.com/2016/02/appie-v3-android-pentesting-portable.html">
+Appie v3 - Android Pentesting Portable Integrated ...
+</a>
+</li>
+<li>
+<a href="http://www.kitploit.com/2016/02/atscan-v62-search-site-server-scanner.html">
+ATSCAN v6.2 - Search / Site / Server Scanner
+</a>
+</li>
+<li>
+<a href="http://www.kitploit.com/2016/02/audit-couchdb-simple-clear-couchdb.html">
+Audit CouchDB - The Simple, Clear, CouchDB Securit...
+</a>
+</li>
+<li>
+<a href="http://www.kitploit.com/2016/02/sqlmap-automatic-sql-injection-and.html">
+SQLMap - Automatic SQL Injection And Database Take...
+</a>
+</li>
+<li>
+<a href="http://www.kitploit.com/2016/02/smod-modbus-penetration-testing.html">
+Smod - MODBUS Penetration Testing Framework
+</a>
+</li>
+<li>
+<a href="http://www.kitploit.com/2016/02/foolav-pentest-tool-for-antivirus.html">
+Foolav - Pentest Tool For Antivirus Evasion and Ru...
+</a>
+</li>
+<li>
+<a href="http://www.kitploit.com/2016/02/how-often-should-you-scan-websites-and.html">
+How Often Should You Scan Websites and Web Applica...
+</a>
+</li>
+<li>
+<a href="http://www.kitploit.com/2016/02/pyscan-scanner-vulnerability-scanner.html">
+PyScan-Scanner - Vulnerability Scanner With Custom...
+</a>
+</li>
+<li>
+<a href="http://www.kitploit.com/2016/02/nosqlmap-v06-automated-nosql-database.html">
+NoSQLMap v0.6 - Automated NoSQL Database Pwnage
+</a>
+</li>
+<li>
+<a href="http://www.kitploit.com/2016/02/venom-metasploit-shellcode-generator.html">
+Venom - Metasploit Shellcode Generator / Compiler ...
+</a>
+</li>
+<li>
+<a href="http://www.kitploit.com/2016/02/jreframeworker-practical-managed-code.html">
+JReFrameworker - Practical Managed Code Rootkits f...
+</a>
+</li>
+<li>
+<a href="http://www.kitploit.com/2016/02/maybe-see-what-program-does-before.html">
+Maybe - See What A Program Does Before Deciding Wh...
+</a>
+</li>
+<li>
+<a href="#">
+htop 2.0 - An Interactive Process Viewer for Unix
+</a>
+</li>
+<li>
+<a href="http://www.kitploit.com/2016/02/crackmapexecwin-great-crackmapexec-tool.html">
+CrackMapExecWin - The great CrackMapExec tool comp...
+</a>
+</li>
+<li>
+<a href="http://www.kitploit.com/2016/02/sidedoor-debianubuntu-backdoor-using.html">
+SideDoor - Debian/Ubuntu Backdoor Using A Reverse ...
+</a>
+</li>
+<li>
+<a href="http://www.kitploit.com/2016/02/networkminer-20-network-forensic.html">
+NetworkMiner 2.0 - Network Forensic Analysis Tool ...
+</a>
+</li>
+<li>
+<a href="http://www.kitploit.com/2016/02/gophish-open-source-phishing-toolkit.html">
+Gophish - Open-Source Phishing Toolkit
+</a>
+</li>
+<li>
+<a href="http://www.kitploit.com/2016/02/vbscan-014-black-box-vbulletin.html">
+VBScan 0.1.4 - Black Box vBulletin Vulnerability S...
+</a>
+</li>
+<li>
+<a href="http://www.kitploit.com/2016/02/arpy-mac-osx-arp-spoof-mitm-tool.html">
+Arpy - Mac OSX Arp Spoof (MITM) Tool
+</a>
+</li>
+<li>
+<a href="http://www.kitploit.com/2016/02/androl4b-virtual-machine-for-assessing.html">
+AndroL4b - A Virtual Machine For Assessing Android...
+</a>
+</li>
+<li>
+<a href="http://www.kitploit.com/2016/02/routerhunterbr-20-automated-tool-for.html">
+RouterhunterBR 2.0 - Automated Tool for Testing in...
+</a>
+</li>
+<li>
+<a href="http://www.kitploit.com/2016/02/raptor-waf-web-applicaiton-to-train.html">
+Raptor WAF - Web Application firewall to Train Att...
+</a>
+</li>
+</ul>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+                                  ►&nbsp;
+                                
+</span>
+</a>
+<a class="post-count-link" href="http://www.kitploit.com/2016_01_01_archive.html">
+January
+</a>
+<span class="post-count" dir="ltr">
+                                (
+                                32
+                                )
+                              </span>
+</li>
+</ul>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+                                  ►&nbsp;
+                                
+</span>
+</a>
+<a class="post-count-link" href="http://www.kitploit.com/search?updated-min=2015-01-01T00:00:00-03:00&amp;updated-max=2016-01-01T00:00:00-03:00&amp;max-results=50">
+2015
+</a>
+<span class="post-count" dir="ltr">
+                                (
+                                301
+                                )
+                              </span>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+                                  ►&nbsp;
+                                
+</span>
+</a>
+<a class="post-count-link" href="http://www.kitploit.com/2015_12_01_archive.html">
+December
+</a>
+<span class="post-count" dir="ltr">
+                                (
+                                29
+                                )
+                              </span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+                                  ►&nbsp;
+                                
+</span>
+</a>
+<a class="post-count-link" href="http://www.kitploit.com/2015_11_01_archive.html">
+November
+</a>
+<span class="post-count" dir="ltr">
+                                (
+                                23
+                                )
+                              </span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+                                  ►&nbsp;
+                                
+</span>
+</a>
+<a class="post-count-link" href="http://www.kitploit.com/2015_10_01_archive.html">
+October
+</a>
+<span class="post-count" dir="ltr">
+                                (
+                                20
+                                )
+                              </span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+                                  ►&nbsp;
+                                
+</span>
+</a>
+<a class="post-count-link" href="http://www.kitploit.com/2015_09_01_archive.html">
+September
+</a>
+<span class="post-count" dir="ltr">
+                                (
+                                21
+                                )
+                              </span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+                                  ►&nbsp;
+                                
+</span>
+</a>
+<a class="post-count-link" href="http://www.kitploit.com/2015_08_01_archive.html">
+August
+</a>
+<span class="post-count" dir="ltr">
+                                (
+                                29
+                                )
+                              </span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+                                  ►&nbsp;
+                                
+</span>
+</a>
+<a class="post-count-link" href="http://www.kitploit.com/2015_07_01_archive.html">
+July
+</a>
+<span class="post-count" dir="ltr">
+                                (
+                                23
+                                )
+                              </span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+                                  ►&nbsp;
+                                
+</span>
+</a>
+<a class="post-count-link" href="http://www.kitploit.com/2015_06_01_archive.html">
+June
+</a>
+<span class="post-count" dir="ltr">
+                                (
+                                37
+                                )
+                              </span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+                                  ►&nbsp;
+                                
+</span>
+</a>
+<a class="post-count-link" href="http://www.kitploit.com/2015_05_01_archive.html">
+May
+</a>
+<span class="post-count" dir="ltr">
+                                (
+                                33
+                                )
+                              </span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+                                  ►&nbsp;
+                                
+</span>
+</a>
+<a class="post-count-link" href="http://www.kitploit.com/2015_04_01_archive.html">
+April
+</a>
+<span class="post-count" dir="ltr">
+                                (
+                                19
+                                )
+                              </span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+                                  ►&nbsp;
+                                
+</span>
+</a>
+<a class="post-count-link" href="http://www.kitploit.com/2015_03_01_archive.html">
+March
+</a>
+<span class="post-count" dir="ltr">
+                                (
+                                16
+                                )
+                              </span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+                                  ►&nbsp;
+                                
+</span>
+</a>
+<a class="post-count-link" href="http://www.kitploit.com/2015_02_01_archive.html">
+February
+</a>
+<span class="post-count" dir="ltr">
+                                (
+                                20
+                                )
+                              </span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+                                  ►&nbsp;
+                                
+</span>
+</a>
+<a class="post-count-link" href="http://www.kitploit.com/2015_01_01_archive.html">
+January
+</a>
+<span class="post-count" dir="ltr">
+                                (
+                                31
+                                )
+                              </span>
+</li>
+</ul>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+                                  ►&nbsp;
+                                
+</span>
+</a>
+<a class="post-count-link" href="http://www.kitploit.com/search?updated-min=2014-01-01T00:00:00-03:00&amp;updated-max=2015-01-01T00:00:00-03:00&amp;max-results=50">
+2014
+</a>
+<span class="post-count" dir="ltr">
+                                (
+                                438
+                                )
+                              </span>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+                                  ►&nbsp;
+                                
+</span>
+</a>
+<a class="post-count-link" href="http://www.kitploit.com/2014_12_01_archive.html">
+December
+</a>
+<span class="post-count" dir="ltr">
+                                (
+                                16
+                                )
+                              </span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+                                  ►&nbsp;
+                                
+</span>
+</a>
+<a class="post-count-link" href="http://www.kitploit.com/2014_11_01_archive.html">
+November
+</a>
+<span class="post-count" dir="ltr">
+                                (
+                                17
+                                )
+                              </span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+                                  ►&nbsp;
+                                
+</span>
+</a>
+<a class="post-count-link" href="http://www.kitploit.com/2014_10_01_archive.html">
+October
+</a>
+<span class="post-count" dir="ltr">
+                                (
+                                13
+                                )
+                              </span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+                                  ►&nbsp;
+                                
+</span>
+</a>
+<a class="post-count-link" href="http://www.kitploit.com/2014_09_01_archive.html">
+September
+</a>
+<span class="post-count" dir="ltr">
+                                (
+                                18
+                                )
+                              </span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+                                  ►&nbsp;
+                                
+</span>
+</a>
+<a class="post-count-link" href="http://www.kitploit.com/2014_08_01_archive.html">
+August
+</a>
+<span class="post-count" dir="ltr">
+                                (
+                                30
+                                )
+                              </span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+                                  ►&nbsp;
+                                
+</span>
+</a>
+<a class="post-count-link" href="http://www.kitploit.com/2014_07_01_archive.html">
+July
+</a>
+<span class="post-count" dir="ltr">
+                                (
+                                40
+                                )
+                              </span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+                                  ►&nbsp;
+                                
+</span>
+</a>
+<a class="post-count-link" href="http://www.kitploit.com/2014_06_01_archive.html">
+June
+</a>
+<span class="post-count" dir="ltr">
+                                (
+                                41
+                                )
+                              </span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+                                  ►&nbsp;
+                                
+</span>
+</a>
+<a class="post-count-link" href="http://www.kitploit.com/2014_05_01_archive.html">
+May
+</a>
+<span class="post-count" dir="ltr">
+                                (
+                                29
+                                )
+                              </span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+                                  ►&nbsp;
+                                
+</span>
+</a>
+<a class="post-count-link" href="http://www.kitploit.com/2014_04_01_archive.html">
+April
+</a>
+<span class="post-count" dir="ltr">
+                                (
+                                44
+                                )
+                              </span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+                                  ►&nbsp;
+                                
+</span>
+</a>
+<a class="post-count-link" href="http://www.kitploit.com/2014_03_01_archive.html">
+March
+</a>
+<span class="post-count" dir="ltr">
+                                (
+                                63
+                                )
+                              </span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+                                  ►&nbsp;
+                                
+</span>
+</a>
+<a class="post-count-link" href="http://www.kitploit.com/2014_02_01_archive.html">
+February
+</a>
+<span class="post-count" dir="ltr">
+                                (
+                                54
+                                )
+                              </span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+                                  ►&nbsp;
+                                
+</span>
+</a>
+<a class="post-count-link" href="http://www.kitploit.com/2014_01_01_archive.html">
+January
+</a>
+<span class="post-count" dir="ltr">
+                                (
+                                73
+                                )
+                              </span>
+</li>
+</ul>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+                                  ►&nbsp;
+                                
+</span>
+</a>
+<a class="post-count-link" href="http://www.kitploit.com/search?updated-min=2013-01-01T00:00:00-03:00&amp;updated-max=2014-01-01T00:00:00-03:00&amp;max-results=50">
+2013
+</a>
+<span class="post-count" dir="ltr">
+                                (
+                                412
+                                )
+                              </span>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+                                  ►&nbsp;
+                                
+</span>
+</a>
+<a class="post-count-link" href="http://www.kitploit.com/2013_12_01_archive.html">
+December
+</a>
+<span class="post-count" dir="ltr">
+                                (
+                                72
+                                )
+                              </span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+                                  ►&nbsp;
+                                
+</span>
+</a>
+<a class="post-count-link" href="http://www.kitploit.com/2013_11_01_archive.html">
+November
+</a>
+<span class="post-count" dir="ltr">
+                                (
+                                39
+                                )
+                              </span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+                                  ►&nbsp;
+                                
+</span>
+</a>
+<a class="post-count-link" href="http://www.kitploit.com/2013_10_01_archive.html">
+October
+</a>
+<span class="post-count" dir="ltr">
+                                (
+                                35
+                                )
+                              </span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+                                  ►&nbsp;
+                                
+</span>
+</a>
+<a class="post-count-link" href="http://www.kitploit.com/2013_09_01_archive.html">
+September
+</a>
+<span class="post-count" dir="ltr">
+                                (
+                                27
+                                )
+                              </span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+                                  ►&nbsp;
+                                
+</span>
+</a>
+<a class="post-count-link" href="http://www.kitploit.com/2013_08_01_archive.html">
+August
+</a>
+<span class="post-count" dir="ltr">
+                                (
+                                43
+                                )
+                              </span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+                                  ►&nbsp;
+                                
+</span>
+</a>
+<a class="post-count-link" href="http://www.kitploit.com/2013_07_01_archive.html">
+July
+</a>
+<span class="post-count" dir="ltr">
+                                (
+                                16
+                                )
+                              </span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+                                  ►&nbsp;
+                                
+</span>
+</a>
+<a class="post-count-link" href="http://www.kitploit.com/2013_06_01_archive.html">
+June
+</a>
+<span class="post-count" dir="ltr">
+                                (
+                                18
+                                )
+                              </span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+                                  ►&nbsp;
+                                
+</span>
+</a>
+<a class="post-count-link" href="http://www.kitploit.com/2013_05_01_archive.html">
+May
+</a>
+<span class="post-count" dir="ltr">
+                                (
+                                24
+                                )
+                              </span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+                                  ►&nbsp;
+                                
+</span>
+</a>
+<a class="post-count-link" href="http://www.kitploit.com/2013_04_01_archive.html">
+April
+</a>
+<span class="post-count" dir="ltr">
+                                (
+                                46
+                                )
+                              </span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+                                  ►&nbsp;
+                                
+</span>
+</a>
+<a class="post-count-link" href="http://www.kitploit.com/2013_03_01_archive.html">
+March
+</a>
+<span class="post-count" dir="ltr">
+                                (
+                                34
+                                )
+                              </span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+                                  ►&nbsp;
+                                
+</span>
+</a>
+<a class="post-count-link" href="http://www.kitploit.com/2013_02_01_archive.html">
+February
+</a>
+<span class="post-count" dir="ltr">
+                                (
+                                26
+                                )
+                              </span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+                                  ►&nbsp;
+                                
+</span>
+</a>
+<a class="post-count-link" href="http://www.kitploit.com/2013_01_01_archive.html">
+January
+</a>
+<span class="post-count" dir="ltr">
+                                (
+                                32
+                                )
+                              </span>
+</li>
+</ul>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+                                  ►&nbsp;
+                                
+</span>
+</a>
+<a class="post-count-link" href="http://www.kitploit.com/search?updated-min=2012-01-01T00:00:00-03:00&amp;updated-max=2013-01-01T00:00:00-03:00&amp;max-results=50">
+2012
+</a>
+<span class="post-count" dir="ltr">
+                                (
+                                70
+                                )
+                              </span>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+                                  ►&nbsp;
+                                
+</span>
+</a>
+<a class="post-count-link" href="http://www.kitploit.com/2012_12_01_archive.html">
+December
+</a>
+<span class="post-count" dir="ltr">
+                                (
+                                26
+                                )
+                              </span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+                                  ►&nbsp;
+                                
+</span>
+</a>
+<a class="post-count-link" href="http://www.kitploit.com/2012_11_01_archive.html">
+November
+</a>
+<span class="post-count" dir="ltr">
+                                (
+                                44
+                                )
+                              </span>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="clear"></div>
+<span class="widget-item-control">
+<span class="item-control blog-admin">
+<a class="quickedit" href="http://www.blogger.com/rearrange?blogID=8317222231133660547&amp;widgetType=BlogArchive&amp;widgetId=BlogArchive1&amp;action=editWidget&amp;sectionId=tab3-Archive" target="configBlogArchive1" title="Edit">
+<img alt="" src="icon18_wrench_allbkg.png" width="18" height="18">
+</a>
+</span>
+</span>
+<div class="clear"></div>
+</div>
+</div></div>
+</div>
+</div>
+</div>
+<div style="clear: both;"></div>
+</div>
+<div id="sibebar-bawah">
+<div class="sidebar section" id="sidebar-bawah1"><div class="widget Label" data-version="1" id="Label1">
+<h2>Labels</h2>
+<div class="widget-content list-label-widget-content">
+<ul>
+<li>
+<a href="http://www.kitploit.com/feeds/posts/default/-/Linux" target="_blank"><img alt="Suscribir" src="rss-feed-icon.png" style="vertical-align: middle; border: 0px none;"></a>
+<a dir="ltr" href="http://www.kitploit.com/search/label/Linux">Linux</a>
+</li>
+<li>
+<a href="http://www.kitploit.com/feeds/posts/default/-/Windows" target="_blank"><img alt="Suscribir" src="rss-feed-icon.png" style="vertical-align: middle; border: 0px none;"></a>
+<a dir="ltr" href="http://www.kitploit.com/search/label/Windows">Windows</a>
+</li>
+<li>
+<a href="http://www.kitploit.com/feeds/posts/default/-/Mac" target="_blank"><img alt="Suscribir" src="rss-feed-icon.png" style="vertical-align: middle; border: 0px none;"></a>
+<a dir="ltr" href="http://www.kitploit.com/search/label/Mac">Mac</a>
+</li>
+<li>
+<a href="http://www.kitploit.com/feeds/posts/default/-/Scanner" target="_blank"><img alt="Suscribir" src="rss-feed-icon.png" style="vertical-align: middle; border: 0px none;"></a>
+<a dir="ltr" href="http://www.kitploit.com/search/label/Scanner">Scanner</a>
+</li>
+<li>
+<a href="http://www.kitploit.com/feeds/posts/default/-/Android" target="_blank"><img alt="Suscribir" src="rss-feed-icon.png" style="vertical-align: middle; border: 0px none;"></a>
+<a dir="ltr" href="http://www.kitploit.com/search/label/Android">Android</a>
+</li>
+<li>
+<a href="http://www.kitploit.com/feeds/posts/default/-/Wireless" target="_blank"><img alt="Suscribir" src="rss-feed-icon.png" style="vertical-align: middle; border: 0px none;"></a>
+<a dir="ltr" href="http://www.kitploit.com/search/label/Wireless">Wireless</a>
+</li>
+<li>
+<a href="http://www.kitploit.com/feeds/posts/default/-/Malware%20Analysis" target="_blank"><img alt="Suscribir" src="rss-feed-icon.png" style="vertical-align: middle; border: 0px none;"></a>
+<a dir="ltr" href="http://www.kitploit.com/search/label/Malware%20Analysis">Malware Analysis</a>
+</li>
+<li>
+<a href="http://www.kitploit.com/feeds/posts/default/-/Malware" target="_blank"><img alt="Suscribir" src="rss-feed-icon.png" style="vertical-align: middle; border: 0px none;"></a>
+<a dir="ltr" href="http://www.kitploit.com/search/label/Malware">Malware</a>
+</li>
+<li>
+<a href="http://www.kitploit.com/feeds/posts/default/-/SQLi" target="_blank"><img alt="Suscribir" src="rss-feed-icon.png" style="vertical-align: middle; border: 0px none;"></a>
+<a dir="ltr" href="http://www.kitploit.com/search/label/SQLi">SQLi</a>
+</li>
+<li>
+<a href="http://www.kitploit.com/feeds/posts/default/-/Facebook" target="_blank"><img alt="Suscribir" src="rss-feed-icon.png" style="vertical-align: middle; border: 0px none;"></a>
+<a dir="ltr" href="http://www.kitploit.com/search/label/Facebook">Facebook</a>
+</li>
+<li>
+<a href="http://www.kitploit.com/feeds/posts/default/-/iPhone" target="_blank"><img alt="Suscribir" src="rss-feed-icon.png" style="vertical-align: middle; border: 0px none;"></a>
+<a dir="ltr" href="http://www.kitploit.com/search/label/iPhone">iPhone</a>
+</li>
+<li>
+<a href="http://www.kitploit.com/feeds/posts/default/-/Cheat%20Sheet" target="_blank"><img alt="Suscribir" src="rss-feed-icon.png" style="vertical-align: middle; border: 0px none;"></a>
+<a dir="ltr" href="http://www.kitploit.com/search/label/Cheat%20Sheet">Cheat Sheet</a>
+</li>
+<li>
+<a href="http://www.kitploit.com/feeds/posts/default/-/Keylogger" target="_blank"><img alt="Suscribir" src="rss-feed-icon.png" style="vertical-align: middle; border: 0px none;"></a>
+<a dir="ltr" href="http://www.kitploit.com/search/label/Keylogger">Keylogger</a>
+</li>
+<li>
+<a href="http://www.kitploit.com/feeds/posts/default/-/RAT" target="_blank"><img alt="Suscribir" src="rss-feed-icon.png" style="vertical-align: middle; border: 0px none;"></a>
+<a dir="ltr" href="http://www.kitploit.com/search/label/RAT">RAT</a>
+</li>
+</ul>
+<div class="clear"></div>
+<span class="widget-item-control">
+<span class="item-control blog-admin">
+<a class="quickedit" href="http://www.blogger.com/rearrange?blogID=8317222231133660547&amp;widgetType=Label&amp;widgetId=Label1&amp;action=editWidget&amp;sectionId=sidebar-bawah1" target="configLabel1" title="Edit">
+<img alt="" src="icon18_wrench_allbkg.png" width="18" height="18">
+</a>
+</span>
+</span>
+<div class="clear"></div>
+</div>
+</div><div class="widget PlusFollowers" data-version="1" id="PlusFollowers1">
+<h2 class="title">Google+ Followers</h2>
+<div class="widget-content">
+<div class="g-plus" data-action="followers" data-height="300" data-href="https://plus.google.com/106095770424927345842" data-source="blogger:blog:followers" data-theme="DARK" data-width="360"></div>
+
+</div>
+</div><div class="widget HTML" data-version="1" id="HTML5">
+<div class="widget-content">
+<div style="text-align: center;">
+<a href="https://goo.gl/1kYDWf" target="_blank" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img src="Contributor_Ad_B2_300x250.png" border="0"></a>
+
+<br><br>
+<div class="fb-page" data-href="https://www.facebook.com/kitploit" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true" data-show-posts="false"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/kitploit"><a href="https://www.facebook.com/kitploit">PenTest Tools</a></blockquote></div></div>
+</div>
+</div>
+<div class="clear"></div>
+<span class="widget-item-control">
+<span class="item-control blog-admin">
+<a class="quickedit" href="http://www.blogger.com/rearrange?blogID=8317222231133660547&amp;widgetType=HTML&amp;widgetId=HTML5&amp;action=editWidget&amp;sectionId=sidebar-bawah1" target="configHTML5" title="Edit">
+<img alt="" src="icon18_wrench_allbkg.png" width="18" height="18">
+</a>
+</span>
+</span>
+<div class="clear"></div>
+</div><div class="widget HTML" data-version="1" id="HTML11">
+<div class="widget-content">
+<center>
+<a class="twitter-timeline" href="https://twitter.com/KitPloit" data-widget-id="413038749694439424">Tweets por @KitPloit</a>
+
+</center>
+</div>
+<div class="clear"></div>
+<span class="widget-item-control">
+<span class="item-control blog-admin">
+<a class="quickedit" href="http://www.blogger.com/rearrange?blogID=8317222231133660547&amp;widgetType=HTML&amp;widgetId=HTML11&amp;action=editWidget&amp;sectionId=sidebar-bawah1" target="configHTML11" title="Edit">
+<img alt="" src="icon18_wrench_allbkg.png" width="18" height="18">
+</a>
+</span>
+</span>
+<div class="clear"></div>
+</div></div>
+</div>
+</aside>
+
+<!-- spacer for skins that want sidebar and main to be the same height-->
+<div class="clear">
+          &nbsp;
+        </div>
+</div>
+<!-- end content-wrapper -->
+<footer id="footer-wrapper" itemscope="" itemtype="http://schema.org/WPFooter">
+<div id="isifooter">
+<div class="footer-wrap" id="footer-kiri">
+<div class="footer section" id="footer-kiri1"><div class="widget ContactForm" data-version="1" id="ContactForm1">
+<h2 class="title">
+Contact Form
+</h2>
+<div class="contact-form-widget">
+<div class="form">
+<form name="contact-form">
+<p></p>
+Name
+<br>
+<input class="contact-form-name" id="ContactForm1_contact-form-name" name="name" size="30" value="" type="text">
+<p></p>
+Email
+<span style="font-weight: bolder;">
+                          *
+                        </span>
+<br>
+<input class="contact-form-email" id="ContactForm1_contact-form-email" name="email" size="30" value="" type="text">
+<p></p>
+Message
+<span style="font-weight: bolder;">
+                          *
+                        </span>
+<br>
+<textarea class="contact-form-email-message" cols="25" id="ContactForm1_contact-form-email-message" name="email-message" rows="5"></textarea>
+<p></p>
+<input class="contact-form-button contact-form-button-submit" id="ContactForm1_contact-form-submit" value="Send" type="button">
+<p></p>
+<div style="text-align: center; max-width: 222px; width: 100%;">
+<p class="contact-form-error-message" id="ContactForm1_contact-form-error-message"></p>
+<p class="contact-form-success-message" id="ContactForm1_contact-form-success-message"></p>
+</div>
+</form>
+</div>
+</div>
+<div class="clear"></div>
+<span class="widget-item-control">
+<span class="item-control blog-admin">
+<a class="quickedit" href="http://www.blogger.com/rearrange?blogID=8317222231133660547&amp;widgetType=ContactForm&amp;widgetId=ContactForm1&amp;action=editWidget&amp;sectionId=footer-kiri1" target="configContactForm1" title="Edit">
+<img alt="" src="icon18_wrench_allbkg.png" width="18" height="18">
+</a>
+</span>
+</span>
+<div class="clear"></div>
+</div>
+</div>
+</div>
+<div class="footer-wrap tengahfoot" id="footer-tengah">
+<div class="footer section" id="footer-tengah1"><div class="widget HTML" data-version="1" id="HTML2">
+<h2 class="title">
+Recommended:
+</h2>
+<div class="widget-content">
+
+
+<center>
+<ul>
+
+<li><a class="ButtonBlack200" href="http://fails.youtubers.club/" target="_blank" title="Best Fails">Best Fails</a></li>
+
+<li><a class="ButtonBlack200" href="http://www.blackploit.com/" target="_blank" title="Blackploit [Pentest]">Blackploit [Pentest]</a></li>
+
+<li><a class="ButtonBlack200" href="http://goo.gl/N1o1JY" target="_blank" title="DedicatedSolutions.com - Private Cloud">DedicatedSolutions (Private Cloud)</a></li>
+
+<li><a class="ButtonBlack200" href="http://goo.gl/PW5MkB" target="_blank" title="DedicatedSolutions.com - Server Products">DedicatedSolutions (Server Products)</a></li>
+
+
+<li><a class="ButtonBlack200" href="https://www.digitalocean.com/?refcode=bbe2bf982cda" target="_blank" title="DigitalOcean">DigitalOcean</a></li>
+
+
+<li><a class="ButtonBlack200" href="http://www.exoclick.com/?login=Zion3R" target="_blank" title="ExoClick - The innovative ad network">ExoClick</a></li>
+
+
+<li><a class="ButtonBlack200" href="http://www.funeek.com/" target="_blank" title="Funeek!">Funeek!</a></li>
+
+<li><a class="ButtonBlack200" href="http://th3-r4v3n.blogspot.com/" target="_blank" title="Th3 R4v3n">Th3 R4v3n</a></li>
+
+<li><a class="ButtonBlack200" href="http://7pro.cl/" target="_blank" title="Asesorías y Servicios Tecnológicos">7PRO</a></li>
+
+<li><a class="ButtonBlack200" href="https://underc0de.org/foro/" target="_blank" title="Forum Underc0de">Underc0de</a></li>
+
+<li><a class="ButtonBlack200" href="http://www.sunploit.com/" target="_blank" title="Sunploit | Ingeniería de Software">Sunploit</a></li>
+</ul>
+</center>
+</div>
+<div class="clear"></div>
+<span class="widget-item-control">
+<span class="item-control blog-admin">
+<a class="quickedit" href="http://www.blogger.com/rearrange?blogID=8317222231133660547&amp;widgetType=HTML&amp;widgetId=HTML2&amp;action=editWidget&amp;sectionId=footer-tengah1" target="configHTML2" title="Edit">
+<img alt="" src="icon18_wrench_allbkg.png" width="18" height="18">
+</a>
+</span>
+</span>
+<div class="clear"></div>
+</div><div class="widget HTML" data-version="1" id="HTML9">
+<div class="widget-content">
+<center><a href="http://www.alexa.com/siteinfo/http://www.kitploit.com"></a>
+<br>
+
+
+
+</center>
+</div>
+<div class="clear"></div>
+<span class="widget-item-control">
+<span class="item-control blog-admin">
+<a class="quickedit" href="http://www.blogger.com/rearrange?blogID=8317222231133660547&amp;widgetType=HTML&amp;widgetId=HTML9&amp;action=editWidget&amp;sectionId=footer-tengah1" target="configHTML9" title="Edit">
+<img alt="" src="icon18_wrench_allbkg.png" width="18" height="18">
+</a>
+</span>
+</span>
+<div class="clear"></div>
+</div></div>
+</div>
+<div class="footer-wrap" id="footer-kanan">
+<div class="footer section" id="footer-kanan1"><div class="widget HTML" data-version="1" id="HTML4">
+<h2 class="title">
+Follow us!
+</h2>
+<div class="widget-content">
+<div id="marcadores-sociales" style="text-align: center;">
+
+<a class="facebook" href="https://www.facebook.com/Kitploit" target="_blank" title="Follow Facebook"><img src="Facebook+alt+4.png" width="87"></a>
+
+<a class="twitter" href="https://twitter.com/KitPloit" target="_blank" title="Follow Twitter"><img src="Twitter+alt+4.png" width="87"></a>
+
+
+<a class="igoogle" href="https://plus.google.com/+KitploitWeb/posts" target="_blank" title="Follow Google+"><img src="google-plus-icon.png" width="87"></a>
+
+<a class="rss" href="http://feeds.feedburner.com/PentestTools" target="_blank" title="Feed RSS"><img src="RSS+Feed.png" width="87"></a>
+
+</div>
+
+
+
+<div style="text-align: center;">
+<iframe src="index_1.html" style="border: medium none; overflow: hidden; width: 200px; height: 70px;" allowtransparency="true" scrolling="no" frameborder="0"></iframe>
+
+<br>
+
+<a href="http://twitter.com/KitPloit" class="twitter-follow-button">Follow @KitPloit</a>
+
+
+<br><br>
+
+<!-- Inserta esta etiqueta donde quieras que aparezca widget. -->
+<div class="g-page" data-width="316" data-href="//plus.google.com/u/0/106095770424927345842" data-rel="publisher"></div>
+
+<!-- Inserta esta etiqueta después de la última etiqueta de widget. -->
+
+
+
+<br>
+<p><a href="http://feeds.feedburner.com/PentestTools"><img src="PentestTools.dat" style="border: 0px none;" alt="" width="88" height="26"></a></p>
+</div>
+</div>
+<div class="clear"></div>
+<span class="widget-item-control">
+<span class="item-control blog-admin">
+<a class="quickedit" href="http://www.blogger.com/rearrange?blogID=8317222231133660547&amp;widgetType=HTML&amp;widgetId=HTML4&amp;action=editWidget&amp;sectionId=footer-kanan1" target="configHTML4" title="Edit">
+<img alt="" src="icon18_wrench_allbkg.png" width="18" height="18">
+</a>
+</span>
+</span>
+<div class="clear"></div>
+</div></div>
+</div>
+</div>
+<div id="creditxx">
+<div class="cpright">
+            Copyright © 2012 
+            <a href="http://www.kitploit.com/">
+KitPloit - PenTest Tools for your Security Arsenal ☣
+</a>
+            All Right Reserved
+          </div>
+<div class="kreditx">
+            Designed by 
+            <a href="http://www.ivythemes.com/">
+              IVYthemes
+            </a>
+            | 
+            <a class="mkr" href="http://mkr-site.blogspot.com/">
+              MKR Site
+            </a>
+</div>
+</div>
+</footer>
+</div>
+<!-- end outer-wrapper -->
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

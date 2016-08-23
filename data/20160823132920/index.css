@@ -1,0 +1,44 @@
+/* ::::: http://www.monitorix.org/styles.css (@media screen) ::::: */
+
+@media screen {
+body { font-family: Verdana,sans-serif; padding: 0px; margin: 0px; font-size: 10pt; color: black; background-color: rgb(238, 238, 238); }
+h1, h3 { color: rgb(0, 0, 102); }
+h2 { color: rgb(136, 136, 102); border-bottom: 1px solid rgb(187, 187, 187); }
+code { border: 1px solid rgb(204, 204, 204); padding-left: 1px; padding-right: 1px; background-color: rgb(232, 232, 232); font-size: 9pt; border-radius: 3px 3px 3px 3px; }
+a:visited { color: rgb(128, 0, 128); }
+.header { position: absolute; top: 0px; left: 0px; right: 0px; width: 100%; height: 120px; border-bottom: 1px solid rgb(187, 187, 187); background-image: url("bg_header.png"); }
+.header .image { position: absolute; top: 0px; left: 30px; width: 106px; height: 93px; }
+.header .image_10years { position: absolute; top: 5px; left: 135px; width: 106px; height: 93px; }
+.header .text { position: relative; float: right; top: 32px; right: 150px; text-align: right; font-size: 13pt; font-weight: bold; color: rgb(136, 136, 102); }
+.header h1 { top: 32px; right: 55px; font-size: 28pt; vertical-align: bottom; font-weight: bold; margin: 0px; color: rgb(0, 0, 102); }
+.content { position: relative; margin-top: 120px; }
+.content .left { float: left; width: 17%; margin-bottom: 10px; }
+.content .left .block { float: left; margin-top: 10px; margin-left: 10px; padding-top: 10px; padding-bottom: 10px; padding-left: 15px; width: 100%; background-color: rgb(216, 216, 216); border-bottom: 1px solid rgb(187, 187, 187); border-right: 1px solid rgb(187, 187, 187); }
+.content .left .block A { font-weight: bold; }
+.content .left .block .menu { font-weight: bold; color: rgb(8, 240, 0); }
+.content .left .block .menu A { text-decoration: none; color: blue; }
+.content .left .block .menu A:hover { text-decoration: underline; color: rgb(8, 240, 0); }
+.radio { font-size: 8pt; }
+.content .text { margin-left: 21%; margin-right: 10px; margin-bottom: 7%; padding-top: 1px; }
+.footer { position: fixed; width: 100%; clear: both; bottom: 0px; height: 73px; padding-top: 5px; padding-left: 5px; padding-right: 5px; font-size: 7pt; color: rgb(68, 68, 68); border-top: 1px solid rgb(187, 187, 187); background-image: url("bg_footer.png"); }
+.footer .fibranet { position: absolute; float: left; }
+.footer .img { border: 0px none; }
+.footer .img_mini { border: 0px none; margin-top: 4px; }
+.footer .monitorix { position: absolute; float: left; margin-left: 13%; }
+.footer .author { position: relative; float: right; text-align: right; margin-right: 10px; }
+}
+/* ::::: http://www.monitorix.org/print.css (@media print) ::::: */
+
+@media print {
+body { color: rgb(0, 0, 0); background: none repeat scroll 0% 0% rgb(255, 255, 255); font-family: "Times New Roman",Times,serif; font-size: 12pt; }
+a { text-decoration: underline; color: rgb(0, 0, 255); }
+.menu, .block, .fibranet, .monitorix, .openhub, .img_mini { display: none; }
+}
+/* ::::: [internal] ::::: */
+
+@media screen {
+}
+@media print {
+}
+/* ::::: [internal] ::::: */
+

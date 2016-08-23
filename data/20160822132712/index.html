@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en-US" xmlns:addthis="http://www.addthis.com/help/api-spec" xmlns:fb="http://ogp.me/ns/fb#">
+<!--<![endif]--><head>
+<meta charset="UTF-8">
+
+<link rel="pingback" href="http://linuxaria.com/xmlrpc.php">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1,maximum-scale=1,user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="HandheldFriendly" content="true">
+<!--[if lt IE 9]>
+	<script src="http://cdn.linuxaria.com/wp-content/themes/suffusion/scripts/html5.js" type="text/javascript"></script>
+	<![endif]-->
+<title>Linux Terminal: Dstat monitoring tools | Linuxaria</title>
+ 
+<link rel="author" href="https://plus.google.com/100563597940685405833">
+<meta name="description" itemprop="description" content="Dstat is a versatile replacement for vmstat, iostat, netstat and ifstat. Dstat overcomes some of their limitations and adds some extra features, more counters">
+<meta name="keywords" itemprop="keywords" content="csv,dstat,install,linux,repository,system resources,terminal">
+<link rel="canonical" href="https://linuxaria.com/howto/linux-terminal-dstat-monitoring-tools">
+
+ 
+<link rel="alternate" type="application/rss+xml" title="Linuxaria » Feed" href="https://linuxaria.com/feed">
+<link rel="alternate" type="application/rss+xml" title="Linuxaria » Comments Feed" href="https://linuxaria.com/comments/feed">
+<link rel="alternate" type="application/rss+xml" title="Linuxaria » Linux Terminal: Dstat monitoring tools Comments Feed" href="https://linuxaria.com/howto/linux-terminal-dstat-monitoring-tools/feed">
+
+
+
+
+
+
+
+
+<!--[if !IE]>-->
+<!--<![endif]-->
+<!--[if gt IE 8]><link rel='stylesheet' id='suffusion-rounded-css'  href='http://cdn.linuxaria.com/wp-content/themes/suffusion/rounded-corners.css?ver=4.4.9' type='text/css' media='all' />
+<![endif]-->
+<!--[if lt IE 8]><link rel='stylesheet' id='suffusion-ie-css'  href='http://cdn.linuxaria.com/wp-content/themes/suffusion/ie-fix.css?ver=4.4.9' type='text/css' media='all' />
+<![endif]-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="https://api.w.org/" href="https://linuxaria.com/wp-json/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://linuxaria.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://cdn.linuxaria.com/wp-includes/wlwmanifest.xml">
+<link rel="prev" title="How to access Google Drive on Linux" href="https://linuxaria.com/article/how-to-access-google-drive-on-linux">
+<link rel="next" title="Linux Subnet Calculator (CIDR)" href="https://linuxaria.com/howto/linux-subnet-calculator-cidr">
+<link rel="shortlink" href="https://linuxaria.com/?p=8071">
+<link rel="alternate" type="application/json+oembed" href="https://linuxaria.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Flinuxaria.com%2Fhowto%2Flinux-terminal-dstat-monitoring-tools">
+<link rel="alternate" type="text/xml+oembed" href="https://linuxaria.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Flinuxaria.com%2Fhowto%2Flinux-terminal-dstat-monitoring-tools&amp;format=xml">
+<link rel="payment" type="text/html" title="Flattr this!" href="https://flattr.com/submit/auto?user_id=linuxaria&amp;popout=1&amp;url=https%3A%2F%2Flinuxaria.com%2Fhowto%2Flinux-terminal-dstat-monitoring-tools&amp;language=en_GB&amp;category=text&amp;title=Linux+Terminal%3A+Dstat+monitoring+tools&amp;description=Popular+Posts%3A+None+Found&amp;tags=CSV%2Cdstat%2Cinstall%2Clinux%2Crepository%2Csystem+resources%2Cterminal%2Cblog">
+ 
+
+
+
+
+ 
+ 
+
+ 
+
+<link hreflang="en" href="http://linuxaria.com/howto/linux-terminal-dstat-monitoring-tools?lang=en" rel="alternate">
+<link hreflang="it" href="http://linuxaria.com/howto/linux-terminal-dstat-monitoring-tools?lang=it" rel="alternate">
+<link hreflang="x-default" href="http://linuxaria.com/howto/linux-terminal-dstat-monitoring-tools" rel="alternate">
+<meta name="generator" content="qTranslate-X 3.4.6.8">
+ 
+ 
+
+ 
+
+ 
+ 
+
+ 
+
+<!-- begin SI CAPTCHA Anti-Spam - comment form style --><!-- end SI CAPTCHA Anti-Spam - comment form style -->
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body class="single single-post postid-8071 single-format-standard light-theme-orange suffusion-custom device-desktop">
+<div id="wrapper" class="fix">
+<div id="header-container" class="custom-header fix">
+<header id="header" class="fix">
+<h2 class="blogtitle left"><a href="https://linuxaria.com/">Linuxaria</a></h2>
+<div class="description right">Everything about Linux</div>
+</header> 
+<nav id="nav" class="tab fix">
+<div class="col-control left">
+ 
+<div id="right-header-widgets" class="warea">
+ <div id="text-11" class="widget_text"> <div class="textwidget"><form action="https://www.google.com/" id="cse-search-box" target="_blank">
+<div>
+<input name="cx" value="partner-pub-2431705124166952:4754734936" type="hidden">
+<input name="ie" value="UTF-8" type="hidden">
+<input name="q" size="23" type="text">
+<input name="sa" value="Search" type="submit">
+</div>
+</form>
+</div>
+</div>  </div>
+ 
+<ul class="sf-menu l_tinynav1">
+<li class="regular-tab"><a href="https://linuxaria.com/"><img src="home-light.png" alt="Home" class="home-icon"></a></li> <li class="cat-item cat-item-10 dd-tab"><a class="with-arrow" href="https://linuxaria.com/category/article"><!--[if !IE]>--><span class="down-ptr">&nbsp;</span><!--<![endif]-->Articles<!--[if lt IE 7]>&nbsp;&nbsp;&darr;<![endif]--> <!--[if (!IE)|(gte IE 7)]><span class='down-ptr'>&nbsp;</span><![endif]--></a>
+<ul style="display: none; visibility: hidden;" class="children">
+<li class="cat-item cat-item-24"><a href="https://linuxaria.com/category/article/news">News</a>
+</li>
+</ul>
+</li>
+<li class="cat-item cat-item-27 dd-tab"><a href="https://linuxaria.com/category/howto">Guides</a>
+</li>
+<li class="cat-item cat-item-261 dd-tab"><a href="https://linuxaria.com/category/interviste">Interview</a>
+</li>
+<li class="cat-item cat-item-11 dd-tab"><a href="https://linuxaria.com/category/pills">Pills</a>
+</li>
+<li class="cat-item cat-item-13 dd-tab"><a href="https://linuxaria.com/category/recensioni">Reviews</a>
+</li>
+<li class="pagenav dd-tab"><a class="with-arrow" href="#"><!--[if !IE]>--><span class="down-ptr">&nbsp;</span><!--<![endif]-->Information<!--[if lt IE 7]>&nbsp;&nbsp;&darr;<![endif]--> <!--[if (!IE)|(gte IE 7)]><span class='down-ptr'>&nbsp;</span><![endif]--></a><ul style="display: none; visibility: hidden;"><li class="page_item page-item-943"><a href="https://linuxaria.com/collabora">Contribute</a></li>
+<li class="page_item page-item-61"><a href="https://linuxaria.com/contattami">Contact me</a></li>
+<li class="page_item page-item-44"><a href="https://linuxaria.com/info">Info</a></li>
+<li class="page_item page-item-221"><a href="https://linuxaria.com/privacy-policy">Privacy Policy</a></li>
+</ul></li><li id="linkcat-" class="linkcat dd-tab"><a class="with-arrow" href="#"><!--[if !IE]>--><span class="down-ptr">&nbsp;</span><!--<![endif]-->Links<!--[if lt IE 7]>&nbsp;&nbsp;&darr;<![endif]--> <!--[if (!IE)|(gte IE 7)]><span class='down-ptr'>&nbsp;</span><![endif]--></a>
+<ul style="display: none; visibility: hidden;" class="xoxo blogroll">
+<li><a href="http://gmstyle.org/">GMStyle</a></li>
+<li><a href="http://www.ilbloggatore.com/" target="_blank">Il Bloggatore</a></li>
+<li><a href="http://www.linux.com/" target="_blank">Linux</a></li>
+<li><a href="http://www.linuxtoday.com/" target="_blank">Linux Today</a></li>
+<li><a href="http://www.linuxfeed.org/" target="_blank">Linuxfeed</a></li>
+<li><a href="http://www.linuxinsight.com/">LinuxInsight</a></li>
+<li><a href="http://lxer.com/" target="_blank">Lxer</a></li>
+<li><a href="http://ziobudda.net/" target="_blank">ZioBudda</a></li>
+</ul>
+</li>
+</ul><select class="tinynav tinynav1"><option value="https://linuxaria.com"></option><option value="https://linuxaria.com/category/article">&nbsp;Articles </option><option value="https://linuxaria.com/category/article/news">— News</option><option value="https://linuxaria.com/category/howto">Guides</option><option value="https://linuxaria.com/category/interviste">Interview</option><option value="https://linuxaria.com/category/pills">Pills</option><option value="https://linuxaria.com/category/recensioni">Reviews</option><option value="#">&nbsp;Information </option><option value="https://linuxaria.com/collabora">— Contribute</option><option value="https://linuxaria.com/contattami">— Contact me</option><option value="https://linuxaria.com/info">— Info</option><option value="https://linuxaria.com/privacy-policy">— Privacy Policy</option><option value="#">&nbsp;Links </option><option value="http://gmstyle.org/">— GMStyle</option><option value="http://www.ilbloggatore.com/">— Il Bloggatore</option><option value="http://www.linux.com/">— Linux</option><option value="http://www.linuxtoday.com/">— Linux Today</option><option value="http://www.linuxfeed.org/">— Linuxfeed</option><option value="http://www.linuxinsight.com/">— LinuxInsight</option><option value="http://lxer.com/">— Lxer</option><option selected="selected" value="http://ziobudda.net/">— ZioBudda</option></select>
+</div> 
+</nav> 
+</div> 
+ 
+<div id="horizontal-outer-widgets-1" class="dbx-group boxed warea fix">
+ <aside id="text-6" class="suf-widget suf-horizontal-widget suf-widget-1c widget_text"><h3 class="dbx-handle plain">sponsored links</h3><div class="dbx-content"> <div class="textwidget">
+</div>
+</div></aside> </div>
+  <div id="container" class="fix">
+<div id="main-col">
+<div id="content">
+<article class="post-8071 post type-post status-publish format-standard hentry category-howto tag-csv tag-dstat tag-install tag-linux tag-repository tag-system-resources tag-terminal category-27-id full-content meta-position-corners fix" id="post-8071">
+<header class="post-header title-container fix">
+<div class="title">
+<h1 class="posttitle"><a href="https://linuxaria.com/howto/linux-terminal-dstat-monitoring-tools" class="entry-title" rel="bookmark" title="Linux Terminal: Dstat monitoring tools">Linux Terminal: Dstat monitoring tools</a></h1>
+<div class="postdata fix">
+<span class="category"><span class="icon">&nbsp;</span><a href="https://linuxaria.com/category/howto" rel="category tag">Guides</a></span>
+<span class="comments"><span class="icon">&nbsp;</span><a href="#respond">Add comments</a></span>
+</div> 
+</div> 
+<div class="date"><span class="month">May</span> <span class="day">19</span><span class="year">2014</span></div>
+</header> 
+<span class="post-format-icon">&nbsp;</span><span class="updated" title="2014-05-19T22:44:23+00:00"></span> <div class="entry-container fix">
+<div class="entry fix">
+ 
+<div class="at-above-post" data-url="https://linuxaria.com/howto/linux-terminal-dstat-monitoring-tools" data-title="Linux Terminal: Dstat monitoring tools"></div><p>Dstat is a versatile replacement for vmstat, iostat, netstat and ifstat. Dstat overcomes some of their limitations and adds some extra features, more counters and flexibility. Dstat is handy for monitoring systems during performance tuning tests, benchmarks or troubleshooting.</p>
+<p>Dstat allows you to view all of your system resources in real-time, you can eg. compare disk utilization in combination with interrupts from your IDE controller, or compare the network bandwidth numbers directly with the disk throughput (in the same interval).</p>
+<p>Dstat gives you detailed selective information in columns and clearly indicates in what magnitude and unit the output is displayed. Less confusion, less mistakes. And most importantly, it makes it very easy to write plugins to collect your own counters and extend in ways you never expected.</p>
+<p>Dstat’s output by default is designed for being interpreted by humans in real-time, however you can export details to CSV output to a file to be imported later into Gnumeric or Excel to generate graphs.<br>
+<span id="more-8071"></span><br>
+<br>
+</p>
+<h2>Features</h2>
+<ul>
+<li>Combines vmstat, iostat, ifstat, netstat information and more</li>
+<li>Shows stats in exactly the same timeframe</li>
+<li>Enable/order counters as they make most sense during analysis/troubleshooting</li>
+<li>Modular design</li>
+<li>Written in python so easily extendable for the task at hand</li>
+<li>Easy to extend, add your own counters (please contribute those)</li>
+<li>Includes many external plugins to show how easy it is to add counters</li>
+<li>Can summarize grouped block/network devices and give total numbers</li>
+<li>Can show interrupts per device</li>
+<li>Very accurate timeframes, no timeshifts when system is stressed</li>
+<li>Shows exact units and limits conversion mistakes</li>
+<li>Indicate different units with different colors</li>
+<li>Show intermediate results when delay &gt; 1</li>
+<li>Allows to export CSV output, which can be imported in Gnumeric and Excel to make graphs</li>
+</ul>
+<h3>Installation</h3>
+<p>Ubuntu/Mint and Debian:<br>
+The package it’s available on the repository, so you can easily install it with the command:</p>
+<div class="wp_syntax"><table><tbody><tr><td class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(102, 102, 102);"># </span><span style="color: rgb(194, 12, 185); font-weight: bold;">sudo</span> <span style="color: rgb(194, 12, 185); font-weight: bold;">apt-get install</span> dstat</pre></td></tr></tbody></table></div>
+<p>RHEL/Centos and Fedora:<br>
+The package it’s available in the rpmforge repository, so you can add it, see <a href="http://www.tecmint.com/install-and-enable-rpmforge-repository-in-rhel-centos-6-5-4/" target="_blank">this guide</a>, and after that install it easily with the command:</p>
+<div class="wp_syntax"><table><tbody><tr><td class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(102, 102, 102);"># </span><span style="color: rgb(194, 12, 185); font-weight: bold;">yum install</span> dstat</pre></td></tr></tbody></table></div>
+<p>ArchLinux:<br>
+The package it’s available in the community repository, so it can be easily installed with the command:</p>
+<div class="wp_syntax"><table><tbody><tr><td class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(102, 102, 102);"># </span>pacman <span style="color: rgb(102, 0, 51);">-S</span> dstat</pre></td></tr></tbody></table></div>
+<h3>Usage</h3>
+<p>The basic usage of dstat it’s just the command <code>dstat</code> that produces an output like this one:</p>
+<p><a href="http://cdn.linuxaria.com/wp-content/uploads/2014/05/dstat.png" rel="lightbox[8071]"><img class="aligncenter size-full wp-image-8074" src="dstat.png" alt="dstat" srcset="dstat.png 636w, dstat-300x163.png 300w" sizes="(max-width: 636px) 100vw, 636px" width="636"></a></p>
+<p>The default will show you these information:</p>
+<p><strong>CPU stats</strong>: What percentage of the CPU is in use. The more interesting sections of this report are user, system, and idle, which should break down most of the current CPU use. If you see high CPU use in the “wait” column there might be a problem elsewhere in the system. When a cpu “waits” it’s because it’s expecting a response from an I/O device (like memory, disk, or network) and hasn’t received it yet.</p>
+<p><strong>Disk stats</strong>: Read and write activity to disks, this is the total for all of your disks.</p>
+<p><strong>Net stats</strong>: Data sent and received on network devices, this is the total of all of your network devices.</p>
+<p><strong>Paging stats</strong>: Paging activity on the system. Paging refers to a memory management technique used behind the scenes on your system. A high level of paging can indicate that the system is using a lot of swap space, or it could mean that memory is very fragmented, in general you want to see 0 0 for pages/in page/out.</p>
+<p><strong>System stats</strong>: This shows interrupts (int) and context switches (csw). These stats are usually only useful if you have a baseline to compare them to. Higher stats in these columns usually indicate a large number of processes jostling for the CPU’s attention. Since your server is likely running many processes by default, there will always be some numbers there.</p>
+<p>By default dstat reports new figures every second. To quit dstat you can use “control-C”.<br>
+Note that the first line of the report is typically going to show nothing for all stats.<br>
+That’s because dstat operates by summarizing what it saw since its last report. When it first runs there’s no data to average or sum.</p>
+<p>It’s possible to control the delay between reports and the number of reports dstat will output in a run by passing 2 options. As example if you want dstat to run with default stats, wait 3 seconds between reports, and only report 10 results, you could run:</p>
+<div class="wp_syntax"><table><tbody><tr><td class="code"><pre class="bash" style="font-family: monospace;">dstat <span style="color: rgb(0, 0, 0);">3</span> <span style="color: rgb(0, 0, 0);">10</span></pre></td></tr></tbody></table></div>
+<p>In dstat there are a lot of options, you can see all with the command <code>man dstat</code>, some of the most useful parameters are:</p>
+<ul>
+<li>-l&nbsp;= shows load statistics</li>
+<li>-m&nbsp;= shows the memory usage (used, buffer, cache, free)</li>
+<li>-r&nbsp;= displays I/O statistics,</li>
+<li>-s&nbsp;= shows the swap usage</li>
+<li>-t&nbsp;= puts the current time in the first column</li>
+<li>–fs&nbsp;= displays file system stats (includes amount of files and used inodes)</li>
+<li>–nocolor&nbsp;= sometimes very useful…</li>
+<li>–socket&nbsp;= shows interesting network statistics</li>
+<li>–tcp&nbsp;= displays common TCP stats</li>
+<li>–udp&nbsp;= shows you the listen and active figures for the UDP usage</li>
+</ul>
+<p>And that’s not all, dstat ships with a number of <strong>plugins</strong>&nbsp;that extend its capabilities greatly. It’s possible to check the directory&nbsp;/usr/share/dstat in order to view a list of them. Some of the most useful are:</p>
+<ul>
+<li>–disk-util&nbsp;= shows how much the disks are busy at the moment</li>
+<li>–freespace&nbsp;= shows the current disk usage</li>
+<li>–proc-count&nbsp;= displays the number of running processes</li>
+<li>–top-bio&nbsp;= points to the most expensive block I/O process</li>
+<li>–top-cpu&nbsp;= draws the attention on the most expensive CPU process</li>
+<li>–top-io&nbsp;= shows the most expensive “normal” I/O process</li>
+<li>–top-mem&nbsp;= displays the process using the most memory</li>
+</ul>
+<p>Some examples:</p>
+<p>To see who is eating all the memory:</p>
+<div class="wp_syntax"><table><tbody><tr><td class="code"><pre class="bash" style="font-family: monospace;">dstat <span style="color: rgb(102, 0, 51);">-g</span> <span style="color: rgb(102, 0, 51);">-l</span> <span style="color: rgb(102, 0, 51);">-m</span> <span style="color: rgb(102, 0, 51);">-s</span> <span style="color: rgb(102, 0, 51);">--top-mem</span></pre></td></tr></tbody></table></div>
+<p>To shows some stats about&nbsp;the CPU resource consumption:</p>
+<div class="wp_syntax"><table><tbody><tr><td class="code"><pre class="bash" style="font-family: monospace;">dstat <span style="color: rgb(102, 0, 51);">-c</span> <span style="color: rgb(102, 0, 51);">-y</span> <span style="color: rgb(102, 0, 51);">-l</span> <span style="color: rgb(102, 0, 51);">--proc-count</span> <span style="color: rgb(102, 0, 51);">--top-cpu</span></pre></td></tr></tbody></table></div>
+<p><strong>How to send to a csv file</strong></p>
+<p>To send the output to a csv file for later use we can issue the following command:</p>
+<ol class="linenums">
+<li class="L0" value="1"><span class="com"># dstat –output /tmp/sampleoutput.csv -cdn</span></li>
+</ol>
+<p><br>
+<br>
+</p><h3>Popular Posts:</h3>
+<ul class="popular-posts">None Found
+</ul>
+<p> </p>
+ 
+<div class="at-below-post" data-url="https://linuxaria.com/howto/linux-terminal-dstat-monitoring-tools" data-title="Linux Terminal: Dstat monitoring tools"></div> 
+ 
+<div class="at-below-post-recommended"></div> <p class="wp-flattr-button"><a href="http://linuxaria.com/?flattrss_redirect&amp;id=8071&amp;md5=7c0dff60280e5a83b30f2b6e7e63999d" title="Flattr" target="_blank"><img src="flattr-badge-large.png" srcset="flattr-badge-large.png" alt="Flattr this!"></a></p> </div> 
+</div> 
+<footer class="post-footer postdata fix">
+<span class="author"><span class="icon">&nbsp;</span>Posted by <span class="vcard"><a href="https://linuxaria.com/author/riccardo" class="url fn" rel="author">Riccardo</a></span> at 22:44</span> <span class="tags tax"><span class="icon">&nbsp;</span>Tagged with: <a href="https://linuxaria.com/tag/csv" rel="tag">CSV</a>, <a href="https://linuxaria.com/tag/dstat" rel="tag">dstat</a>, <a href="https://linuxaria.com/tag/install" rel="tag">install</a>, <a href="https://linuxaria.com/tag/linux" rel="tag">linux</a>, <a href="https://linuxaria.com/tag/repository" rel="tag">repository</a>, <a href="https://linuxaria.com/tag/system-resources" rel="tag">system resources</a>, <a href="https://linuxaria.com/tag/terminal" rel="tag">terminal</a></span>
+</footer> 
+<section id="comments">
+<div id="respond" class="comment-respond">
+<h3 id="reply-title" class="comment-reply-title"><span class="icon">&nbsp;</span>Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="#respond" style="display: none;">Cancel reply</a></small></h3> <form action="http://linuxaria.com/wp-comments-post.php" method="post" id="commentform" class="comment-form">
+<span></span>
+<p>
+<label for="comment" class="textarea suf-comment-label">Your Comment</label>
+<textarea name="comment" id="comment" cols="60" rows="10" tabindex="4" class="textarea"></textarea>
+</p><p class="form-allowed-tags">You may use these <abbr title="HyperText Markup Language">HTML</abbr> tags and attributes: <code>&lt;a href="" title=""&gt; &lt;abbr title=""&gt; &lt;acronym title=""&gt; &lt;b&gt; &lt;blockquote cite=""&gt; &lt;cite&gt; &lt;code&gt; &lt;del datetime=""&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=""&gt; &lt;s&gt; &lt;strike&gt; &lt;strong&gt; </code></p>
+<p>
+<label for="author" class="suf-comment-label">Name</label>
+<input style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABHklEQVQ4EaVTO26DQBD1ohQWaS2lg9JybZ+AK7hNwx2oIoVf4UPQ0Lj1FdKktevIpel8AKNUkDcWMxpgSaIEaTVv3sx7uztiTdu2s/98DywOw3Dued4Who/M2aIx5lZV1aEsy0+qiwHELyi+Ytl0PQ69SxAxkWIA4RMRTdNsKE59juMcuZd6xIAFeZ6fGCdJ8kY4y7KAuTRNGd7jyEBXsdOPE3a0QGPsniOnnYMO67LgSQN9T41F2QGrQRRFCwyzoIF2qyBuKKbcOgPXdVeY9rMWgNsjf9ccYesJhk3f5dYT1HX9gR0LLQR30TnjkUEcx2uIuS4RnI+aj6sJR0AM8AaumPaM/rRehyWhXqbFAA9kh3/8/NvHxAYGAsZ/il8IalkCLBfNVAAAAABJRU5ErkJggg==&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;" name="author" id="author" class="textarea" value="" size="28" tabindex="1" type="text"> (required)
+</p>
+<p>
+<label for="email" class="suf-comment-label">E-mail</label>
+<input name="email" id="email" value="" size="28" tabindex="2" class="textarea" type="text"> (required)
+</p>
+<p>
+<label for="url" class="suf-comment-label">URI</label>
+<input name="url" id="url" value="" size="28" tabindex="3" class="textarea" type="text">
+</p>
+<div class="captchaSizeDivLarge"><img id="si_image_com" class="si-captcha" src="securimage_show.php" alt="CAPTCHA Image" title="CAPTCHA Image" width="175" height="60">
+<input id="si_code_com" name="si_code_com" value="vfHcTdn83FUmU5Im" type="hidden">
+<div id="si_refresh_com">
+<a href="#" rel="nofollow" title="Refresh Image">
+<img class="captchaImgRefresh" src="refresh.png" alt="Refresh Image" width="22" height="20"></a>
+</div>
+</div>
+<br>
+<p><input id="captcha_code" name="captcha_code" size="6" type="text">
+<label id="captcha_code_label" for="captcha_code">CAPTCHA Code</label><span class="required"> *</span>
+</p><p class="form-submit"><input name="submit" id="submit" class="submit" value="Submit Comment" type="submit"> <input name="comment_post_ID" value="8071" id="comment_post_ID" type="hidden">
+<input name="comment_parent" id="comment_parent" value="0" type="hidden">
+</p><p style="display: none;"><input id="akismet_comment_nonce" name="akismet_comment_nonce" value="6a5315fe22" type="hidden"></p><p style="display: none;"></p> <input id="ak_js" name="ak_js" value="1471843620782" type="hidden"></form>
+</div> 
+</section>   </article> 
+<nav class="post-nav fix">
+<table>
+<tbody><tr>
+<td class="previous"><a href="https://linuxaria.com/article/how-to-access-google-drive-on-linux" rel="prev"><span class="icon">&nbsp;</span> How to access Google Drive on Linux</a></td>
+<td class="next"><a href="https://linuxaria.com/howto/linux-subnet-calculator-cidr" rel="next"><span class="icon">&nbsp;</span> Linux Subnet Calculator (CIDR)</a></td>
+</tr>
+</tbody></table>
+</nav>
+</div> 
+</div> 
+<div id="sidebar-shell-1" class="sidebar-shell sidebar-shell-right">
+<div class="dbx-group right boxed warea" id="sidebar">
+
+ <aside id="qtranslate-4" class="dbx-box suf-widget qtranxs_widget"><h3 class="dbx-handle plain">Language:</h3><div class="dbx-content">
+<ul class="language-chooser language-chooser-both qtranxs_language_chooser" id="qtranslate-4-chooser">
+<li class="active"><a href="http://linuxaria.com/howto/linux-terminal-dstat-monitoring-tools?lang=en" class="qtranxs_flag_en qtranxs_flag_and_text" title="English (en)"><span>English</span></a></li>
+<li><a href="http://linuxaria.com/howto/linux-terminal-dstat-monitoring-tools?lang=it" class="qtranxs_flag_it qtranxs_flag_and_text" title="Italiano (it)"><span>Italiano</span></a></li>
+</ul><div class="qtranxs_widget_end"></div>
+</div></aside>  <aside id="facebooklikebox-4" class="dbx-box suf-widget widget_FacebookLikeBox"><div class="dbx-content"><div id="fb-root"></div>
+
+<div class="fb-page" data-href="https://www.facebook.com/linuxaria/" data-width="250" data-height="250" data-hide-cover="true" data-show-facepile="true" data-show-posts="false"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/linuxaria/"><a href="https://www.facebook.com/linuxaria/">Facebook</a></blockquote></div></div>
+</div></aside>  <aside id="text-5" class="dbx-box suf-widget widget_text"><h3 class="dbx-handle plain">Sponsor</h3><div class="dbx-content"> <div class="textwidget"><table>
+<tbody><tr>
+<td>
+<a href="http://www.dhgate.com/wholesale+tablet+pc.html"> <img alt="buy tablet pc" title="Buy tablet pc on DHgate.com" src="dhgate.jpg"></a>
+</td>
+<td><a href="http://www.pcs4you.co.uk/"><img class="alignnone" src="pcs-ad.jpg" ;="" alt="" width="125" height="125"></a>
+</td></tr>
+<tr>
+<td>
+<a title="ssd vps" href="https://schnellno.de/"> <img alt="ssd vps" src="125x125_linuxaria.gif"> </a> 
+</td>
+<td>
+<a href="http://www.curtainhomesale.com/blog/" title="curtains"><img src="curtains.jpg" ;="" alt="" height="125"></a>
+</td>
+</tr><tr>
+<td>
+<a href="https://www.udemy.com/secure-your-network-like-a-furtune-500-company/"> <img src="secureyournetwork.jpg"> </a> 
+</td>
+<td>
+<a href="http://www.kazila.com/xen-vps-hosting.html"> <img src="kazilagif1.png"> </a> 
+</td></tr>
+<tr>
+<td>
+<a title="apk monk" href="http://www.apkmonk.com/"> <img alt="apk monk" src="rsz_weborial.png"> </a>
+</td>
+</tr>
+</tbody></table></div>
+		</div></aside><!--widget end --><!--widget start --><aside id="suf-subscription-5" class="dbx-box suf-widget widget-suf-subscription"><h3 class="dbx-handle plain">Follow Me</h3><div class="dbx-content">    <form class="aligncenter" action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow">
+            <p>
+                <input name="email" value="Enter email address" class="subscription-email" type="text">
+                <input value="Linuxaria_En" name="uri" type="hidden">
+                <input name="loc" value="en_US" type="hidden">
+                <input value="Subscribe" type="submit">
+            </p>
+    </form>
+    <p>
+        <a href="https://feeds.feedburner.com/Linuxaria_En">
+            <img src="Linuxaria_En.dat" class="subscription-stats-icon" alt="">
+        </a>
+    </p>
+    <div class="fix">
+        <a href="http://feeds.feedburner.com/Linuxaria_En" class="follow-icon-and-tag" title="RSS">
+            <img src="RSS-09.png" alt="RSS" style="width: 48px; height: 48px;">
+        </a>
+        <a href="http://twitter.com/linuxaria" class="follow-icon-and-tag" title="Twitter">
+            <img src="Twitter-07.png" alt="Twitter" style="width: 48px; height: 48px;">
+        </a>
+        <a href="http://www.facebook.com/linuxaria" class="follow-icon-and-tag" title="Facebook">
+            <img src="Facebook-04.png" alt="Facebook" style="width: 48px; height: 48px;">
+        </a>
+        <a href="https://plus.google.com/101727609700016666852" class="follow-icon-and-tag" title="Google+">
+            <img src="Google+-05.png" alt="Google+" style="width: 48px; height: 48px;">
+        </a>
+    </div>
+</div></aside><!--widget end --><!--widget start --><aside id="popular-posts" class="dbx-box suf-widget widget_rrm_popular_posts"><h3 class="dbx-handle plain">Popular posts</h3><div class="dbx-content"><ul>None Found
+</ul><!-- popular Posts took 0.792 ms --></div></aside><!--widget end --><!--widget start --><aside id="text-4" class="dbx-box suf-widget widget_text"><h3 class="dbx-handle plain">Subscribe by Email</h3><div class="dbx-content">			<div class="textwidget"><p><a href="https://feedburner.google.com/fb/a/mailverify?uri=Linuxaria_En&amp;loc=en_US">Subscribe to RSS» English by mail</a></p>
+<p><a href="https://feedburner.google.com/fb/a/mailverify?uri=Linuxaria_It&amp;loc=en_US">Iscriviti agli RSS» Italiano via Email</a></p>
+</div>
+		</div></aside><!--widget end --></div><!--/sidebar -->
+		<!-- #sidebar-b -->
+		<div id="sidebar-b" class="dbx-group right boxed warea">
+<!--widget start --><aside id="recent-comments-5" class="dbx-box suf-widget widget_recent_comments"><h3 class="dbx-handle plain">Recent Comments</h3><div class="dbx-content"><ul id="recentcomments"><li class="recentcomments"><span class="comment-author-link">ravi</span> on <a href="https://linuxaria.com/howto/permanent-ssh-tunnels-with-autossh#comment-69521">Permanent SSH Tunnels with autossh</a></li><li class="recentcomments"><span class="comment-author-link"><a href="http://kalfcomputertechniek.nl/" rel="external nofollow" class="url">FrankK</a></span> on <a href="https://linuxaria.com/recensioni/symphytum-a-personal-database-for-linux#comment-68941">Symphytum, a Personal database for Linux</a></li><li class="recentcomments"><span class="comment-author-link">Arnisong</span> on <a href="https://linuxaria.com/recensioni/4-linux-programs-to-open-a-remote-desktop-on-windows#comment-68693">4 Linux programs to open a Remote Desktop on Windows</a></li><li class="recentcomments"><span class="comment-author-link">yomm</span> on <a href="https://linuxaria.com/howto/how-to-remove-zeitgeist-in-ubuntu-and-why#comment-68660">How to remove Zeitgeist in Ubuntu and why</a></li><li class="recentcomments"><span class="comment-author-link">Ajtak</span> on <a href="https://linuxaria.com/howto/how-to-anonymize-the-programs-from-your-terminal-with-torify#comment-68638">How to anonymize the programs from your terminal with torify</a></li></ul></div></aside><!--widget end --><!--widget start --><aside id="rss-3" class="dbx-box suf-widget widget_rss"><h3 class="dbx-handle plain"><a class="rsswidget" href="http://www.scoop.it/t/linux-and-open-source/rss.xml"><img class="rss-widget-icon" style="border: 0px none;" src="rss.png" alt="RSS" width="14" height="14"></a> <a class="rsswidget" href="http://www.scoop.it/t/linux-and-open-source">My scoop.it feed</a></h3><div class="dbx-content"><ul><li><a class="rsswidget" href="http://www.scoop.it/t/linux-and-open-source/p/4067458026/2016/08/11/docker-and-public-interface">Docker and Public Interface</a></li><li><a class="rsswidget" href="http://www.scoop.it/t/linux-and-open-source/p/4067317308/2016/08/08/easy-docker-orchestration-with-docker-1-12-aws-efs-and-the-swarm-mode-medium">Easy Docker Orchestration With Docker 1.12, AWS EFS And The Swarm Mode — Medium</a></li><li><a class="rsswidget" href="http://www.scoop.it/t/linux-and-open-source/p/4067052334/2016/08/01/an-introduction-to-iridium-an-open-source-selenium-and-cucumber-testing-tool-dzone-web-dev">An Introduction to Iridium, an Open Source Selenium and Cucumber Testing Tool - DZone Web Dev</a></li><li><a class="rsswidget" href="http://www.scoop.it/t/linux-and-open-source/p/4066956573/2016/07/29/docker-built-in-orchestration-ready-for-production-docker-1-12-goes-ga">Docker Built-in Orchestration Ready for Production: Docker 1.12 Goes GA</a></li><li><a class="rsswidget" href="http://www.scoop.it/t/linux-and-open-source/p/4066919614/2016/07/28/books-for-devops-reading-devops-consultant">Books For DevOps Reading | DevOps Consultant</a></li></ul></div></aside><!--widget end -->		</div>
+		<!-- /#sidebar-b -->
+</div>
+	</div><!-- /container -->
+
+</div><!--/wrapper -->
+<footer>
+	<div id="page-footer">
+		<div class="col-control">
+		<div id="cred">
+		<table>
+			<tbody><tr>
+				<td class="cred-left">© 2013 <a href="http://www.linuxaria.com/">Linuxaria</a></td>
+				<td class="cred-center">All site content, except where otherwise noted, is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</td>
+				<td class="cred-right"><a href="http://aquoid.com/news/themes/suffusion/">Suffusion theme by Sayontan Sinha</a></td>
+			</tr>
+		</tbody></table>
+	</div>
+		</div>
+	</div>
+	</footer>
+<!-- 48 queries, 8MB in 0.958 seconds. -->
+<!-- location footer -->
+<div style="display: block; background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); font-family: inherit; bottom: 0px; border-top: 4px solid rgb(68, 68, 68); position: fixed;" id="cookie-law-info-bar"><span>This website uses cookies to improve your experience. We'll assume you're ok with this, but you can opt-out if you wish.<a style="color: rgb(255, 255, 255); background-color: rgb(0, 0, 0);" href="#" id="cookie_action_close_header" class="medium cli-plugin-button cli-plugin-main-button">Accept</a> <a style="color: rgb(68, 68, 68);" href="http://linuxaria.com/privacy-policy" id="CONSTANT_OPEN_URL" target="_blank" class="cli-plugin-main-link">Read More</a></span></div><div style="background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); position: fixed; font-family: inherit; border-width: 1px 1px medium; border-style: solid solid none; border-color: rgb(68, 68, 68) rgb(68, 68, 68) -moz-use-text-color; -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; bottom: 0px; right: 100px; display: none;" id="cookie-law-info-again"><span id="cookie_hdr_showagain">Privacy &amp; Cookies Policy</span></div>		
+		
+		
+		
+
+
+
+                
+                
+            
+
+
+
+
+
+
+
+
+</body><iframe src="index_1.html" style="display: none;"></iframe>
+</html>

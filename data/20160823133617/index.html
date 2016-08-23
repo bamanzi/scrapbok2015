@@ -1,0 +1,821 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<meta http-equiv="Cache-Control" content="no-siteapp"><link rel="alternate" media="handheld" href="http://shanker.blog.51cto.com/#">
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>性能调优之综合篇 - Linux系统性能监控和故障排查利器Sysdig - 天涯海阁 - 51CTO技术博客</title>
+<meta name="description" content="Sysdig绝对是可以跟SystemTap相媲美的工具，都是系统故障排查的利器，不论是开发人员还是运维人员都必须要掌握的一个工具。今天先介绍一下Sysdig的一些特性。官网上说Sysdig是Strace,Tcpdump,Lsof,Htop,Iftop等工..">
+<meta name="keywords" content="故障排除,性能调优,systemtap">
+<meta http-equiv="Cache-Control" content="private">
+<base href="">
+
+
+
+
+
+
+<link rel="alternate" href="http://shanker.blog.51cto.com/rss.php?uid=1189689" type="application/rss+xml" title="RSS 2.0">
+<link rel="edituri" type="application/rsd+xml" title="rsd" href="http://shanker.blog.51cto.com/xmlrpc.php?rsd=1">
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+
+<body>
+
+<div id="home_top">
+<div class="top_nav" style="width: 990px;">
+<div class="left" style="margin-top: 10px; width: 440px;"><a href="http://blog.51cto.com/" target="_blank"><img src="head_blog_sibebar_logo.gif" style="margin-top: -4px;" align="absmiddle"></a><a target="_blank" href="http://www.51cto.com/">51CTO首页</a><img src="top_bg_xian.gif" style="margin-top: -4px;" width="16" align="absmiddle" height="25"><a href="http://blog.51cto.com/" target="_blank">51CTO博客</a><img src="top_bg_xian.gif" style="margin-top: -4px;" width="16" align="absmiddle" height="25"><a href="http://home.51cto.com/?reback=http%253A%252F%252Fshanker.blog.51cto.com%252F1189689%252F1768735">我的博客</a><img src="top_bg_xian.gif" style="margin-top: -4px;" width="16" align="absmiddle" height="25">
+
+<a target="_blank" href="http://blog.51cto.com/search.php">搜索</a>
+<a style="color: rgb(255, 0, 0); text-decoration: underline;" id="showMessagerDim">每日博报</a>
+</div>
+
+<div class="right" style="width: 550px;">
+<div class="more"><img src="top_shequ.gif" width="27" align="absmiddle" height="16"><a target="_blank" style="color: rgb(204, 0, 0);" href="http://gaozhao.51cto.com/">招聘</a><a style="color: rgb(204, 0, 0);" target="_blank" href="http://edu.51cto.com/">学院</a><a target="_blank" href="http://bbs.51cto.com/">论坛</a><a target="_blank" href="http://blog.51cto.com/">博客</a><a target="_blank" href="http://down.51cto.com/">下载</a><a>更多<img style="padding-left: 4px;" src="nav_ico1.gif" align="absmiddle"></a>            </div>            <span id="login_status"><div class="login" style="padding-top: 8px; text-align: right;"><a href="http://home.51cto.com/index?reback=http://shanker.blog.51cto.com/1189689/1768735" target="_self">登录</a><a href="http://ucenter.51cto.com/2015/register.php?reback=http://shanker.blog.51cto.com/1189689/1768735" target="_self">注册</a></div></span>                </div>    </div></div>
+
+
+
+<div class="subMenu3" id="s3">
+<ul>
+<li><a href="http://home.51cto.com/" target="_blank">家园</a></li>
+<li><a href="http://edu.51cto.com/" target="_blank">学院</a></li>
+<li><a href="http://blog.51cto.com/" target="_blank">博客</a></li>
+<li><a href="http://bbs.51cto.com/" target="_blank">论坛</a></li>
+<li><a href="http://down.51cto.com/" target="_blank">下载</a></li>
+
+<li><a href="http://selftest.51cto.com/" target="_blank">自测</a></li>
+<li><a href="http://doctor.51cto.com/" target="_blank">门诊</a></li>
+<li><a href="http://blog.51cto.com/newsletter/" target="_blank">周刊</a></li>
+<li><a href="http://book.51cto.com/" target="_blank">读书</a></li>
+<li><a href="http://t.51cto.com/" style="color: red;" target="_blank">题库</a></li>
+<li><a href="http://gaozhao.51cto.com/" target="_blank">招聘</a></li>
+</ul>
+</div>
+<!--简导航end-->
+
+
+
+<div class="headerBox">
+<div class="header">
+<div class="header_l">
+<div class="logo_blogname">
+
+
+
+<div class="blogName">
+<a href="http://shanker.blog.51cto.com/"><h1>天涯海阁</h1></a>
+</div>
+</div><!--logo_blogname end-->
+<div class="blogLink">
+
+<a href="http://shanker.blog.51cto.com/">http://shanker.blog.51cto.com</a> <input id="txtUser" size="32" value="http://shanker.blog.51cto.com" type="hidden">   <a>【复制】</a> <a href="http://shanker.blog.51cto.com/rss.php?uid=1189689" target="_blank"></a><a href="http://shanker.blog.51cto.com/rss.php?uid=1189689" target="_blank">【订阅】</a>
+
+</div>
+
+
+
+</div><!--header_l end-->
+<div class="header_r">
+<div class="blogInfo"><span><a href="http://shanker.blog.51cto.com/1189689/o" title="察看shanker所有原创文章">原创</a>:67</span><span><a href="http://shanker.blog.51cto.com/1189689/t" title="察看shanker所有翻译文章">翻译</a>:3</span><span><a href="http://shanker.blog.51cto.com/1189689/c" title="察看shanker所有转载文章">转载</a>:18</span></div>
+<div class="blogNav"><a href="http://shanker.blog.51cto.com/">博 客</a>|<a href="http://home.51cto.com/apps/photo/index.php?s=/Index/photos/uid/1189689">图库</a>|<a href="http://blog.51cto.com/user_index.php?action=addblog_new">写博文</a>|<a href="http://51ctoblog.blog.51cto.com/all/26414/4" target="_blank">帮 助</a></div>
+</div>
+</div>
+<!--header end-->
+</div><!--headerBox end-->
+<div class="mainNav">
+<span class="mainNavT"></span>
+<ul>
+<li><a href="http://shanker.blog.51cto.com/">首页</a></li>|<li><a href="http://shanker.blog.51cto.com/1189689/d-1">Linux Operation</a></li>|<li><a href="http://shanker.blog.51cto.com/1189689/d-11">Performance Tun</a></li>|<li><a href="http://shanker.blog.51cto.com/1189689/d-4">Shell</a></li>|<li><a href="http://shanker.blog.51cto.com/1189689/d-8">Ansible</a></li>|<li><a href="http://shanker.blog.51cto.com/1189689/d-13">Docker + Mesos</a></li>|<li><a href="http://shanker.blog.51cto.com/1189689/d-12">Hadoop</a></li>|<li><a href="http://shanker.blog.51cto.com/1189689/d-2">Networking</a></li>|<li><a href="http://shanker.blog.51cto.com/1189689/d-9">OpenWrt</a></li>|<li><a href="http://shanker.blog.51cto.com/1189689/d-7">Database</a></li>|<li><a href="http://shanker.blog.51cto.com/1189689/d-3">Follow Ur Heart</a></li>
+</ul>
+<span class="mainNavB"></span>
+</div>
+<!--mainNav end-->
+
+
+
+
+<!--[if IE 6]>
+  <script type="text/javascript" src="http://images.watchstor.com/newhomes/png.js"></script>
+  <script>
+    DD_belatedPNG.fix('img,input,ul,li, .get-box, div, .add, .sub, .ui-slider-handle, .footer-chopper');
+  </script>
+<![endif]-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="add_sys_type_div" style="width: 600px; border: 1px solid rgb(88, 176, 221); background-color: rgb(255, 255, 255); position: absolute; left: 30%; top: 300px; display: none; z-index: 255;"></div>
+<div id="add_sys_type_dvs" style="width: 550px; border: 1px solid rgb(88, 176, 221); background-color: rgb(255, 255, 255); position: absolute; left: 30%; top: 300px; display: none; z-index: 255;"></div>
+	
+
+
+
+<div class="blogMain">
+<div class="blogLeft">
+
+
+<div class="box moduleUser">
+<div class="title">
+<h2><strong>shanker</strong> 的BLOG  </h2>
+</div>
+<div class="modCon">
+
+<div class="userImage" style="margin: 10px auto 5px; text-align: center; width: 130px; border: 1px solid rgb(212, 212, 212);">
+	<table width="100%" cellpadding="0" cellspacing="0">
+		<tbody><tr>
+			<td valign="middle" align="center" height="130"><img src="avatar.php" id="userface"></td>
+		</tr>
+	</tbody></table>
+</div>
+<div class="photo_links">
+</div>
+
+
+
+
+
+
+
+
+
+<div class="crumbs">
+<a href="http://home.51cto.com/index.php?s=/space/1189689#message" class="writeMessage" target="_blank">写留言</a><a href="http://edu.51cto.com/" class="inCircle" target="_blank">去学院学习</a><a href="http://home.51cto.com/index.php?s=/Notify/write/uid/1189689" class="message" target="_blank">发消息</a>
+ <a href="http://shanker.blog.51cto.com/" class="joinLinks">加友情链接</a><a href="http://home.51cto.com/index.php?s=/space/1189689" class="joinFriends" target="_blank">进家园 加好友</a>
+</div>
+
+<div style="width: 239px; height: 64px; display: none;">
+
+
+<div style="float: left;"><p style="padding: 15px 0px 0px 28px; line-height: 20px;">2012年度IT博客大赛<br><a target="_blank" href="http://blog.51cto.com/contest2012/#top10000" style="color: rgb(255, 0, 0); text-decoration: underline;">十大杰出IT博客诞生</a></p></div>
+<div style="float: right;"><a target="_blank" href="http://blog.51cto.com/contest2012/"><img src="blog_match_endlook.jpg" style="margin: 23px 20px 0px 0px;" width="57" height="27"></a></div>
+<!-- <div style="float:left;"><p style="padding:15px 0 0 28px; line-height:20px;">星光评委正在评选<br><a target="_blank" href="http://blog.51cto.com/contest2012/index.php?mod=userlist_sec" style="color:#F00; text-decoration:underline;">2012年度IT博客大赛50强</a></p></div>
+<div style="float:right;"><img class="blog_match_yq" width="57" height="27" src="http://img1.51cto.com/images/blog_match_invite.jpg" style="margin:23px 20px 0 0;"></div> -->
+
+
+
+<div class="clear"></div>
+</div>
+
+
+</div><!--modCon end-->
+<span class="modBot"></span>
+</div>
+
+
+<div class="infoList box">
+<div class="title">
+<h2>博客统计信息</h2>
+</div>
+<div class="modCon">
+<p>
+<span class="infoListHead"></span>
+用户名：shanker<br>
+文章数：88<br>
+评论数：51<br>
+访问量：71822<br>
+<a href="http://home.51cto.com/index.php?s=/Account/credit" target="_blank">无忧币</a>：1311<br>
+<a href="http://51ctoblog.blog.51cto.com/26414/5591" target="_blank">博客积分</a>：1140<br>
+<a href="http://51ctoblog.blog.51cto.com/26414/5591" target="_blank">博客等级</a>：5<br>
+注册日期：2010-01-20<br>
+</p>
+</div>
+<span class="modBot"></span>
+</div>
+
+
+<div class="infoList box">
+	<div class="title">
+		<h2 class="fl">热门专题</h2>
+		<a target="_blank" class="fr" href="http://blog.51cto.com/zt">更多&gt;&gt;</a>
+	</div>
+	<div class="modCon" style="height: 348px;">
+
+	
+		<div class="vlist">
+		  <a href="http://blog.51cto.com/zt/692" target="_blank"><img src="wKioL1c5llLwKSo3AAAbx5aBW1Q413.jpg" width="63" height="63"></a>
+		<dl>
+		<dt>
+		  <a href="http://blog.51cto.com/zt/692" target="_blank" title="每天5分钟玩转 OpenStack">每天5分钟玩转 OpenStack</a></dt>
+		<dd>阅读量：5863</dd>
+		</dl>
+		</div>
+	
+		<div class="vlist">
+		  <a href="http://blog.51cto.com/zt/693" target="_blank"><img src="wKiom1dVDr7javamAABB79u01lo798.jpg" width="63" height="63"></a>
+		<dl>
+		<dt>
+		  <a href="http://blog.51cto.com/zt/693" target="_blank" title="【51CTO三周年】我在学院不得不说的收获">【51CTO三周年】我在学院不得不说的收获</a></dt>
+		<dd>阅读量：12276</dd>
+		</dl>
+		</div>
+	
+		<div class="vlist">
+		  <a href="http://blog.51cto.com/zt/14" target="_blank"><img src="1304672337_index.jpg" width="63" height="63"></a>
+		<dl>
+		<dt>
+		  <a href="http://blog.51cto.com/zt/14" target="_blank" title="从菜鸟到老鸟-教你玩转Mac操作系统">从菜鸟到老鸟-教你玩转Mac操作系统</a></dt>
+		<dd>阅读量：319474</dd>
+		</dl>
+		</div>
+	
+		<div class="vlist">
+		  <a href="http://blog.51cto.com/zt/20" target="_blank"><img src="1306310178_index.jpg" width="63" height="63"></a>
+		<dl>
+		<dt>
+		  <a href="http://blog.51cto.com/zt/20" target="_blank" title="QT学习之路：从入门到精通">QT学习之路：从入门到精通</a></dt>
+		<dd>阅读量：1030862</dd>
+		</dl>
+		</div>
+		
+		
+	</div>
+	<span class="modBot"></span>
+</div>
+
+
+<div class="hotArt box">
+<div class="title">
+<h2>热门文章</h2>
+</div>
+<div class="modCon">
+<ul>
+<li><a href="http://shanker.blog.51cto.com/1189689/815984">linux kill命令参数及用..</a></li>
+<li><a href="http://shanker.blog.51cto.com/1189689/782556">centOS6.2搭建DNS(bind 9..</a></li>
+<li><a href="http://shanker.blog.51cto.com/1189689/831708">CentOS6.0 + Windows7 + ..</a></li>
+<li><a href="http://shanker.blog.51cto.com/1189689/815403">vmware+CentOS6.2+PXE+Ap..</a></li>
+<li><a href="http://shanker.blog.51cto.com/1189689/831010">Win7 +CentOS + Openfile..</a></li>
+<li><a href="http://shanker.blog.51cto.com/1189689/817088">运维工程师的职责和前景</a></li>
+<li><a href="http://shanker.blog.51cto.com/1189689/1734690">Linux内核TCP/IP参数分析..</a></li>
+<li><a href="http://shanker.blog.51cto.com/1189689/817773">raid5 + lvm 实验</a></li>
+
+</ul>
+</div>
+<span class="modBot"></span>
+</div>
+<div class="search box">
+<div class="title"><h2>搜索BLOG文章</h2></div>
+<div class="modCon">
+<form method="post" action="http://shanker.blog.51cto.com/search.php?" tabindex="99">
+<input name="step" value="2" type="hidden">
+<input name="authorid" value="1189689" type="hidden">
+<input name="sch_area" value="S" type="hidden">
+<input value="" name="keyword" class="searchInput" type="text">
+<input value="搜 索" class="searchBtn" type="submit">
+</form>
+</div><!--modCon end-->
+<span class="modBot"></span>
+</div>
+
+
+<div class="box recentGuests">
+<div class="title">
+<h2>最近访客</h2>
+</div>
+<div class="modCon">
+<ul>
+
+<li><a href="http://manna.blog.51cto.com/"><img src="avatar_001.php"></a>
+<p><a href="http://manna.blog.51cto.com/">foxba..</a></p>
+
+</li><li><a href="http://11907464.blog.51cto.com/"><img src="avatar_002.php"></a>
+<p><a href="http://11907464.blog.51cto.com/">o_xue_o</a></p>
+
+</li><li><a href="http://11808782.blog.51cto.com/"><img src="avatar_003.php"></a>
+<p><a href="http://11808782.blog.51cto.com/">wqeqwda</a></p>
+
+</li><li><a href="http://7832881.blog.51cto.com/"><img src="avatar_004.php"></a>
+<p><a href="http://7832881.blog.51cto.com/">LeoLi..</a></p>
+
+</li><li><a href="http://renzhenxing.blog.51cto.com/"><img src="avatar_005.php"></a>
+<p><a href="http://renzhenxing.blog.51cto.com/">zhenx..</a></p>
+
+</li><li><a href="http://hanxiong.blog.51cto.com/"><img src="avatar_006.php"></a>
+<p><a href="http://hanxiong.blog.51cto.com/">小雄free</a></p>
+
+</li><li><a href="http://aaronxiao.blog.51cto.com/"><img src="avatar_007.php"></a>
+<p><a href="http://aaronxiao.blog.51cto.com/">xxl78..</a></p>
+
+</li><li><a href="http://7938217.blog.51cto.com/"><img src="avatar_008.php"></a>
+<p><a href="http://7938217.blog.51cto.com/">吃遍</a></p>
+
+</li><li><a href="http://msiyuetian.blog.51cto.com/"><img src="avatar_009.php"></a>
+<p><a href="http://msiyuetian.blog.51cto.com/">M四月天</a></p>
+
+</li><li><a href="http://541049166.blog.51cto.com/"><img src="avatar_010.php"></a>
+<p><a href="http://541049166.blog.51cto.com/">se541..</a></p>
+
+</li><li><a href="http://4785617.blog.51cto.com/"><img src="avatar_011.php"></a>
+<p><a href="http://4785617.blog.51cto.com/">15900..</a></p>
+
+</li><li><a href="http://ciscozjg.blog.51cto.com/"><img src="avatar_012.php"></a>
+<p><a href="http://ciscozjg.blog.51cto.com/">ciscozjg</a></p>
+
+</li></ul>
+<span class="clear"></span>
+</div>
+<span class="modBot"></span>
+</div>
+
+
+<div class="newComments box">
+<div class="title">
+<h2>最新评论 
+
+</h2>
+
+
+
+</div>
+<div class="modCon">
+<ul>
+
+<li><a href="http://shanker.blog.51cto.com/" class="operlink" target="_blank"><b>shanker</b></a>：<a href="http://shanker.blog.51cto.com/1189689/1785185" target="_blank">回复 mologa: 您还需要哪些细节呢..</a></li>
+
+<li><a href="http://11486601.blog.51cto.com/" class="operlink" target="_blank"><b>mologa</b></a>：<a href="http://shanker.blog.51cto.com/1189689/1785185" target="_blank">希望楼主将博客细节都写出  详细倒..</a></li>
+
+<li><a href="http://shanker.blog.51cto.com/" class="operlink" target="_blank"><b>shanker</b></a>：<a href="http://shanker.blog.51cto.com/1189689/1787008" target="_blank">回复 renIT87: ：)</a></li>
+
+<li><a href="http://renzhiyuan.blog.51cto.com/" class="operlink" target="_blank"><b>renIT87</b></a>：<a href="http://shanker.blog.51cto.com/1189689/1787008" target="_blank">辛苦，有时间学习。</a></li>
+
+<li><a href="http://shanker.blog.51cto.com/" class="operlink" target="_blank"><b>shanker</b></a>：<a href="http://shanker.blog.51cto.com/1189689/1787008" target="_blank">回复 vbbb625: 多谢</a></li>
+
+
+</ul>
+</div>
+<span class="modBot"></span>
+</div>
+
+
+<div class="hotBlogArt box">
+<div class="title">
+  <h2 class="fl">51CTO推荐博文</h2>
+  <a href="http://blog.51cto.com/artcommend" class="fr">更多&gt;&gt;</a></div>
+<div class="modCon">
+<ul>
+<li><a href="http://qicheng0211.blog.51cto.com/3958621/1840316" title="OpenVPN应用案例" target="_blank">OpenVPN应用案例</a></li>
+<li><a href="http://chawan.blog.51cto.com/9179874/1840895" title="Linux基础之文件系统简介及其系统管理工具" target="_blank">Linux基础之文件系统简介及其系统..</a></li>
+<li><a href="http://allenyang.blog.51cto.com/10991027/1840830" title="HAProxy+Varnish+LNMP实现高可用、负载均衡、动静分离集群部署" target="_blank">HAProxy+Varnish+LNMP实现高可用..</a></li>
+<li><a href="http://xsllqs.blog.51cto.com/2308669/1840693" title="Centos6.5利用RubyGems的fpm制作zabbix_agent的rpm包，并使用ansible批量部署" target="_blank">Centos6.5利用RubyGems的fpm制作z..</a></li>
+<li><a href="http://tsykl2008.blog.51cto.com/3973591/1840645" title="Rsync企业实战之自动异地备份" target="_blank">Rsync企业实战之自动异地备份</a></li>
+<li><a href="http://11971592.blog.51cto.com/11961592/1840628" title="linux实战题" target="_blank">linux实战题</a></li>
+<li><a href="http://lilongzi.blog.51cto.com/5519072/1840595" title="企业iptables Filter NAT表链功能及应用实例" target="_blank">企业iptables Filter NAT表链功能..</a></li>
+<li><a href="http://sunshyfangtian.blog.51cto.com/1405751/1840421" title="vSphere部署系列之09——HA和DRS群集管理" target="_blank">vSphere部署系列之09——HA和DRS..</a></li>
+<li><a href="http://yangjunfeng.blog.51cto.com/539796/1840350" title="Oracle Goldengate在HP平台裸设备文件系统OGG-01028处理" target="_blank">Oracle Goldengate在HP平台裸设备..</a></li>
+<li><a href="http://pimg2005.blog.51cto.com/842469/1840338" title="CISCO 交换设备IOS 备份/恢复操作" target="_blank">CISCO 交换设备IOS 备份/恢复操作</a></li>
+<li><a href="http://icenycmh.blog.51cto.com/4077647/1839566" title="nginx代理websocket配置" target="_blank">nginx代理websocket配置</a></li>
+
+</ul>
+</div><!--modCon end-->
+<span class="modBot"></span>
+</div>
+
+
+<div class="friendLink box">
+<div class="title">
+  <h2>友情链接</h2>
+</div>
+<div class="modCon">
+<ul>
+
+<li><a href="http://edu.51cto.com/" title="IT精品课程" target="_blank">IT精品课程</a></li>
+
+<li><a href="http://oldboy.blog.51cto.com/" title="" target="_blank">老男孩</a></li>
+
+<li><a href="http://www.ibm.com/developerworks/cn/linux/" title="" target="_blank">IBM developer Works</a></li>
+
+<li><a href="http://www.linuxquestions.org/" title="" target="_blank">linuxquestions</a></li>
+
+<li><a href="http://www.backtrack-linux.org/" title="Best test Linux" target="_blank">BackTrack</a></li>
+
+<li><a href="http://ixdba.blog.51cto.com/" title="" target="_blank">南非蚂蚁</a></li>
+
+<li><a href="http://andrewyu.blog.51cto.com/" title="" target="_blank"> 抚琴煮酒</a></li>
+
+<li><a href="http://www.sub-273.com/" title="精湛的前台技术" target="_blank">和尚的博客</a></li>
+
+<li><a href="http://gaozhao.51cto.com/" title="技术人才招聘" target="_blank">技术人才招聘 </a></li>
+
+</ul>
+</div><!--modCon end-->
+<span class="modBot"></span>
+</div>
+
+
+
+</div>
+<!--left end-->
+
+
+
+
+
+<div class="blogRight" rel="1189689######故障排除 性能调优 systemtap" id="article_edu_void">
+<input value="12" id="edu_jia" type="hidden">
+			
+	<p style="clear: both;" class="edu_insert"></p>
+	<!--modCon end-->
+	<div class="artShow box" style="margin-top: 5px;">
+   	  <div class="share" id="share">
+
+    <div class="shareItem">
+		<div class="m_sharelinks"><a target="_blank" href="http://shanker.blog.51cto.com/" style="color: red;"></a><a target="_blank" href="http://shanker.blog.51cto.com/" style="color: blue;"></a><a target="_blank" href="http://shanker.blog.51cto.com/" style="color: blue;"></a></div>
+		<p class="shareMored"><a href="http://shanker.blog.51cto.com/all/1189689">博主的更多文章&gt;&gt;</a></p>
+	</div>
+      </div>
+       <div class="modCon">
+   	  <div class="showBox" style="margin: 0px 0px 10px;">
+      <div class="line_hd_r"></div>
+      <div class="art_tj">
+
+      <a href="http://blog.51cto.com/artcommend" target="_blank"><img src="tj.png"></a>
+
+      </div>
+
+ 
+    		<div class="showHead">
+    		  <div class="showTitleBOx" style="text-align: center;">
+              <div class="showTitle">
+
+             <img src="artType01.jpg">
+
+
+    		    性能调优之综合篇 - Linux系统性能监控和故障排查利器Sysdig
+                </div>
+  		    </div>
+   		    <span class="artTime">2016-04-28 17:48:37</span></div><!--showHead end-->
+    <div class="showTags">标签：<a href="http://blog.51cto.com/tag-%E6%95%85%E9%9A%9C%E6%8E%92%E9%99%A4.html" target="_blank" class="operlink">故障排除</a> <a href="http://blog.51cto.com/tag-%E6%80%A7%E8%83%BD%E8%B0%83%E4%BC%98.html" target="_blank" class="operlink">性能调优</a> <a href="http://blog.51cto.com/tag-systemtap.html" target="_blank" class="operlink">systemtap</a>
+
+	</div>
+
+			<div class="CopyrightStatement lh22">
+            原创作品，允许转载，转载时请务必以超链接形式标明文章 <a href="#" target="_blank" style="text-decoration: underline;">原始出处</a> 、作者信息和本声明。否则将追究法律责任。<a href="#">http://shanker.blog.51cto.com/1189689/1768735</a>
+            </div>
+
+
+            <!--正文 begin-->
+    		<div class="showContent">
+    		  <p>Sysdig绝对是可以跟SystemTap相媲美的工具，都是系统故障排查的利器，不论是开发人员还是运维人员都必须要掌握的一个工具。今天先介绍一下Sysdig的一些特性。官网上说Sysdig是Strace, Tcpdump, Lsof, Htop, Iftop等工具的合体，至于你信不信只有使用之后才能来惊叹我说的到底对不对。这里官网总结了sysdig命令对于strace, tcpdump, lsof, iftop的对比：https://sysdig.com/blog/linux-troubleshooting-cheatsheet/。所以Sysdig主要功能就是系统级别的探测，捕捉服务器上的应用程序对CPU, Memory, I/O, Network的状况。&nbsp;</p><p><br></p><p>Sysdig最新版提供了Docker容器镜像，可以很方便的直接拉取Docker镜像，另一方它提供容器级别的信息采集指令（sysdig -pc container.name=your_container_name），支持查询指定容器之间的网络流量、指定容器的CPU使用率等。</p><p><br></p><p>公司旗下的商用软件Sysdig Cloud则是容器级别的系统信息和网络流量监控、调试软件，这个在CoreOS Fest 大会上有介绍，它支持Real-Time Dashboard, Historical Replay, Dynamic Topology and Intelligent Alert, 可以想象成Nagios对系统的监控。</p><p><br></p><p style="text-align: left;">软件安装请参考官方文档：<a href="http://www.sysdig.org/install/" target="_blank">http://www.sysdig.org/install/</a>&nbsp;相对于SystemTap的安装Sysdig更容易些，本篇文章有点长就不浪费在安装上了，熟悉Ansible的可以去直接用sysdig的Galaxy：<a href="https://galaxy.ansible.com/detail#/role/692" target="_blank">https://galaxy.ansible.com/detail#/role/692</a></p><p><br></p><p>Sysdig的语法在record 和replay系统跟踪方面跟Tcpdump和perf很像；在系统性能分析方面的语法chisels又跟SystemTap和dstat的--top*很像，只不过SystemTap需要自己写tap（代码写好了，比Sysdig强大）, Sysdig是已经帮你写好了；在交互式使用方面又跟htop很像。</p><p><br></p><p>不废话了，下面介绍一下基本的使用方法。</p><p><br></p><p><strong><span style="font-size: 20px;">一，基础功能介绍：</span></strong></p><p><br></p><p>最简单的使用方法是直接输入sysdig, 他会捕获系统的每一个事件并且直接输出到屏幕。</p><p><br></p><p><a href="http://s3.51cto.com/wyfs02/M01/7F/88/wKioL1chxa2ivZPEAAdCNLgHDUQ609.jpg" target="_blank"><img src="wKioL1chxa2ivZPEAAdCNLgHDUQ609.jpg" title="1.jpg" alt="wKioL1chxa2ivZPEAAdCNLgHDUQ609.jpg" width="650"></a></p><p>每一个event都是一行信息，输出的格式如下：</p><p><span style="color: rgb(199, 37, 78); font-family: 'droid-sans-mono',monospace,sans-serif; font-size: 16.2px; line-height: 25px; background-color: rgb(249, 242, 244);">*%evt.num %evt.time %evt.cpu %proc.name (%thread.tid) %evt.dir %evt.type %evt.args</span></p><p><br></p><p>evt.num 是一个自动增长的event number</p><p>evt.time 是时间戳</p><p>evt.cpu 是捕获到的在用的哪颗CPU</p><p>proc.name 是process name</p><p>thread.tid 是thread id,如果不是多线程，就是pid</p><p>evt.dir 是event方向，&gt;代表进入events,&lt;代表退出events</p><p>evt.type 是event的操作名称，e.g. open or read</p><p>evt.args 是event 调用命令参数的列表</p><p><br></p><p>如果要保存信息的话，可以加上-w选项,限制捕捉行数用-n：</p><p><br></p><div><div id="highlighter_925704" class="syntaxhighlighter  bash"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="bash plain">sysdig&nbsp;-n&nbsp;100&nbsp;-w&nbsp;firstcapture.scap</code></div></div></td></tr></tbody></table></div></div><p><br></p><p>如果是按大小区分捕获文件的话，可以用-C 1 默认捕获1M文件就分割到下一个文件，-W 5 参数只捕获5个文件</p><div><div id="highlighter_345914" class="syntaxhighlighter  bash"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="bash plain">sysdig&nbsp;-C&nbsp;1&nbsp;-W&nbsp;5&nbsp;-w&nbsp;secondcapture.scap</code></div></div></td></tr></tbody></table></div></div><p>生成的文件名是secondcapture.scap.{1..5}。</p><p><br></p><p>要阅读刚才捕获的文件，用-r参数：</p><p><br></p><div><div id="highlighter_19553" class="syntaxhighlighter  bash"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="bash plain">sysdig&nbsp;-r&nbsp;firstcapture.scap</code></div></div></td></tr></tbody></table></div></div><p><br></p><p>如果要对捕获的内容做具体的事件查询呢？请看下面</p><p><br></p><p>查询进程是mysqld的event：</p><p><br></p><div><div id="highlighter_581585" class="syntaxhighlighter  bash"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="bash plain">sysdig&nbsp;-r&nbsp;firstcapture.scap&nbsp;proc.name=mysqld</code></div></div></td></tr></tbody></table></div></div><p><br></p><p><a href="http://s3.51cto.com/wyfs02/M02/7F/8B/wKiom1chzx_Co3yPAACbEqTMWH4253.png" target="_blank"><img src="wKiom1chzx_Co3yPAACbEqTMWH4253.png" title="2.png" alt="wKiom1chzx_Co3yPAACbEqTMWH4253.png" width="650"></a></p><p>看proc.name 是mysql 或者nginx的，并且event是read的event</p><div><div id="highlighter_923859" class="syntaxhighlighter  bash"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="bash plain">sysdig&nbsp;-r&nbsp;firstcapture.scap&nbsp;proc.name=mysqld&nbsp;or&nbsp;proc.name=nginx&nbsp;and&nbsp;</code><code class="bash functions">env</code><code class="bash plain">.</code><code class="bash functions">type</code><code class="bash plain">=</code><code class="bash functions">read</code></div></div></td></tr></tbody></table></div></div><p>筛选的关键字可以用sysdig -l 来获得，他支持以下12中Field Class：</p><ol class="list-paddingleft-2" style="list-style-type: decimal;"><li><p>fd<br></p></li><li><p>process</p></li><li><p>evt</p></li><li><p>user</p></li><li><p>group</p></li><li><p>syslog</p></li><li><p>container</p></li><li><p>fdlist</p></li><li><p>k8s</p></li><li><p>mesos</p></li><li><p>span</p></li><li><p>evtin</p></li></ol><div><div id="highlighter_616237" class="syntaxhighlighter  bash"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div><div class="line number16 index15 alt1">16</div><div class="line number17 index16 alt2">17</div><div class="line number18 index17 alt1">18</div><div class="line number19 index18 alt2">19</div><div class="line number20 index19 alt1">20</div><div class="line number21 index20 alt2">21</div><div class="line number22 index21 alt1">22</div><div class="line number23 index22 alt2">23</div><div class="line number24 index23 alt1">24</div><div class="line number25 index24 alt2">25</div><div class="line number26 index25 alt1">26</div><div class="line number27 index26 alt2">27</div><div class="line number28 index27 alt1">28</div><div class="line number29 index28 alt2">29</div><div class="line number30 index29 alt1">30</div><div class="line number31 index30 alt2">31</div><div class="line number32 index31 alt1">32</div><div class="line number33 index32 alt2">33</div><div class="line number34 index33 alt1">34</div><div class="line number35 index34 alt2">35</div><div class="line number36 index35 alt1">36</div><div class="line number37 index36 alt2">37</div><div class="line number38 index37 alt1">38</div><div class="line number39 index38 alt2">39</div><div class="line number40 index39 alt1">40</div><div class="line number41 index40 alt2">41</div><div class="line number42 index41 alt1">42</div><div class="line number43 index42 alt2">43</div><div class="line number44 index43 alt1">44</div><div class="line number45 index44 alt2">45</div><div class="line number46 index45 alt1">46</div><div class="line number47 index46 alt2">47</div><div class="line number48 index47 alt1">48</div><div class="line number49 index48 alt2">49</div><div class="line number50 index49 alt1">50</div><div class="line number51 index50 alt2">51</div><div class="line number52 index51 alt1">52</div><div class="line number53 index52 alt2">53</div><div class="line number54 index53 alt1">54</div><div class="line number55 index54 alt2">55</div><div class="line number56 index55 alt1">56</div><div class="line number57 index56 alt2">57</div><div class="line number58 index57 alt1">58</div><div class="line number59 index58 alt2">59</div><div class="line number60 index59 alt1">60</div><div class="line number61 index60 alt2">61</div><div class="line number62 index61 alt1">62</div><div class="line number63 index62 alt2">63</div><div class="line number64 index63 alt1">64</div><div class="line number65 index64 alt2">65</div><div class="line number66 index65 alt1">66</div><div class="line number67 index66 alt2">67</div><div class="line number68 index67 alt1">68</div><div class="line number69 index68 alt2">69</div><div class="line number70 index69 alt1">70</div><div class="line number71 index70 alt2">71</div><div class="line number72 index71 alt1">72</div><div class="line number73 index72 alt2">73</div><div class="line number74 index73 alt1">74</div><div class="line number75 index74 alt2">75</div><div class="line number76 index75 alt1">76</div><div class="line number77 index76 alt2">77</div><div class="line number78 index77 alt1">78</div><div class="line number79 index78 alt2">79</div><div class="line number80 index79 alt1">80</div><div class="line number81 index80 alt2">81</div><div class="line number82 index81 alt1">82</div><div class="line number83 index82 alt2">83</div><div class="line number84 index83 alt1">84</div><div class="line number85 index84 alt2">85</div><div class="line number86 index85 alt1">86</div><div class="line number87 index86 alt2">87</div><div class="line number88 index87 alt1">88</div><div class="line number89 index88 alt2">89</div><div class="line number90 index89 alt1">90</div><div class="line number91 index90 alt2">91</div><div class="line number92 index91 alt1">92</div><div class="line number93 index92 alt2">93</div><div class="line number94 index93 alt1">94</div><div class="line number95 index94 alt2">95</div><div class="line number96 index95 alt1">96</div><div class="line number97 index96 alt2">97</div><div class="line number98 index97 alt1">98</div><div class="line number99 index98 alt2">99</div><div class="line number100 index99 alt1">100</div><div class="line number101 index100 alt2">101</div><div class="line number102 index101 alt1">102</div><div class="line number103 index102 alt2">103</div><div class="line number104 index103 alt1">104</div><div class="line number105 index104 alt2">105</div><div class="line number106 index105 alt1">106</div><div class="line number107 index106 alt2">107</div><div class="line number108 index107 alt1">108</div><div class="line number109 index108 alt2">109</div><div class="line number110 index109 alt1">110</div><div class="line number111 index110 alt2">111</div><div class="line number112 index111 alt1">112</div><div class="line number113 index112 alt2">113</div><div class="line number114 index113 alt1">114</div><div class="line number115 index114 alt2">115</div><div class="line number116 index115 alt1">116</div><div class="line number117 index116 alt2">117</div><div class="line number118 index117 alt1">118</div><div class="line number119 index118 alt2">119</div><div class="line number120 index119 alt1">120</div><div class="line number121 index120 alt2">121</div><div class="line number122 index121 alt1">122</div><div class="line number123 index122 alt2">123</div><div class="line number124 index123 alt1">124</div><div class="line number125 index124 alt2">125</div><div class="line number126 index125 alt1">126</div><div class="line number127 index126 alt2">127</div><div class="line number128 index127 alt1">128</div><div class="line number129 index128 alt2">129</div><div class="line number130 index129 alt1">130</div><div class="line number131 index130 alt2">131</div><div class="line number132 index131 alt1">132</div><div class="line number133 index132 alt2">133</div><div class="line number134 index133 alt1">134</div><div class="line number135 index134 alt2">135</div><div class="line number136 index135 alt1">136</div><div class="line number137 index136 alt2">137</div><div class="line number138 index137 alt1">138</div><div class="line number139 index138 alt2">139</div><div class="line number140 index139 alt1">140</div><div class="line number141 index140 alt2">141</div><div class="line number142 index141 alt1">142</div><div class="line number143 index142 alt2">143</div><div class="line number144 index143 alt1">144</div><div class="line number145 index144 alt2">145</div><div class="line number146 index145 alt1">146</div><div class="line number147 index146 alt2">147</div><div class="line number148 index147 alt1">148</div><div class="line number149 index148 alt2">149</div><div class="line number150 index149 alt1">150</div><div class="line number151 index150 alt2">151</div><div class="line number152 index151 alt1">152</div><div class="line number153 index152 alt2">153</div><div class="line number154 index153 alt1">154</div><div class="line number155 index154 alt2">155</div><div class="line number156 index155 alt1">156</div><div class="line number157 index156 alt2">157</div><div class="line number158 index157 alt1">158</div><div class="line number159 index158 alt2">159</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="bash comments">#&nbsp;sysdig&nbsp;-l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code></div><div class="line number2 index1 alt1"><code class="bash plain">----------------------</code></div><div class="line number3 index2 alt2"><code class="bash plain">Field&nbsp;Class:&nbsp;fd</code></div><div class="line number4 index3 alt1"><code class="bash plain">fd.num&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;unique&nbsp;number&nbsp;identifying&nbsp;the&nbsp;</code><code class="bash functions">file</code>&nbsp;<code class="bash plain">descriptor.</code></div><div class="line number5 index4 alt2"><code class="bash plain">fd.</code><code class="bash functions">type</code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code class="bash functions">type</code>&nbsp;<code class="bash plain">of&nbsp;FD.&nbsp;Can&nbsp;be&nbsp;</code><code class="bash string">'file'</code><code class="bash plain">,&nbsp;</code><code class="bash string">'directory'</code><code class="bash plain">,&nbsp;</code><code class="bash string">'ipv4'</code><code class="bash plain">,&nbsp;</code><code class="bash string">'ipv6'</code><code class="bash plain">,&nbsp;</code><code class="bash string">'unix'</code><code class="bash plain">,</code></div><div class="line number6 index5 alt1"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash string">'pipe'</code><code class="bash plain">,&nbsp;</code><code class="bash string">'event'</code><code class="bash plain">,&nbsp;</code><code class="bash string">'signalfd'</code><code class="bash plain">,&nbsp;</code><code class="bash string">'eventpoll'</code><code class="bash plain">,&nbsp;</code><code class="bash string">'inotify'</code>&nbsp;<code class="bash plain">or&nbsp;'signal</code></div><div class="line number7 index6 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">fd'.</code></div><div class="line number8 index7 alt1"><code class="bash plain">fd.typechar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash functions">type</code>&nbsp;<code class="bash plain">of&nbsp;FD&nbsp;as&nbsp;a&nbsp;single&nbsp;character.&nbsp;Can&nbsp;be&nbsp;</code><code class="bash string">'f'</code>&nbsp;<code class="bash keyword">for</code>&nbsp;<code class="bash functions">file</code><code class="bash plain">,&nbsp;4&nbsp;</code><code class="bash keyword">for</code>&nbsp;<code class="bash plain">IP</code></div><div class="line number9 index8 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">v4&nbsp;socket,&nbsp;6&nbsp;</code><code class="bash keyword">for</code>&nbsp;<code class="bash plain">IPv6&nbsp;socket,&nbsp;</code><code class="bash string">'u'</code>&nbsp;<code class="bash keyword">for</code>&nbsp;<code class="bash plain">unix&nbsp;socket,&nbsp;p&nbsp;</code><code class="bash keyword">for</code>&nbsp;<code class="bash plain">pipe,&nbsp;</code></div><div class="line number10 index9 alt1"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash string">'e'</code>&nbsp;<code class="bash keyword">for</code>&nbsp;<code class="bash plain">eventfd,&nbsp;</code><code class="bash string">'s'</code>&nbsp;<code class="bash keyword">for</code>&nbsp;<code class="bash plain">signalfd,&nbsp;</code><code class="bash string">'l'</code>&nbsp;<code class="bash keyword">for</code>&nbsp;<code class="bash plain">eventpoll,&nbsp;</code><code class="bash string">'i'</code>&nbsp;<code class="bash keyword">for</code>&nbsp;<code class="bash plain">i</code></div><div class="line number11 index10 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">notify,&nbsp;</code><code class="bash string">'o'</code>&nbsp;<code class="bash keyword">for</code>&nbsp;<code class="bash plain">uknown.</code></div><div class="line number12 index11 alt1"><code class="bash plain">fd.name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FD&nbsp;full&nbsp;name.&nbsp;If&nbsp;the&nbsp;fd&nbsp;is&nbsp;a&nbsp;</code><code class="bash functions">file</code><code class="bash plain">,&nbsp;this&nbsp;field&nbsp;contains&nbsp;the&nbsp;full</code></div><div class="line number13 index12 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">path.&nbsp;If&nbsp;the&nbsp;FD&nbsp;is&nbsp;a&nbsp;socket,&nbsp;this&nbsp;field&nbsp;contain&nbsp;the&nbsp;connection</code></div><div class="line number14 index13 alt1"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">tuple.</code></div><div class="line number15 index14 alt2">&nbsp;</div><div class="line number16 index15 alt1"><code class="bash plain">----------------------</code></div><div class="line number17 index16 alt2"><code class="bash plain">Field&nbsp;Class:&nbsp;process</code></div><div class="line number18 index17 alt1"><code class="bash plain">proc.pid&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;</code><code class="bash functions">id</code>&nbsp;<code class="bash plain">of&nbsp;the&nbsp;process&nbsp;generating&nbsp;the&nbsp;event.</code></div><div class="line number19 index18 alt2"><code class="bash plain">proc.exe&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;first&nbsp;</code><code class="bash functions">command</code>&nbsp;<code class="bash plain">line&nbsp;argument&nbsp;(usually&nbsp;the&nbsp;executable&nbsp;name&nbsp;or</code></div><div class="line number20 index19 alt1"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">a&nbsp;custom&nbsp;one).</code></div><div class="line number21 index20 alt2"><code class="bash plain">proc.name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;name&nbsp;(excluding&nbsp;the&nbsp;path)&nbsp;of&nbsp;the&nbsp;executable&nbsp;generating&nbsp;the&nbsp;</code></div><div class="line number22 index21 alt1"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">event.</code></div><div class="line number23 index22 alt2"><code class="bash plain">proc.args&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;arguments&nbsp;passed&nbsp;on&nbsp;the&nbsp;</code><code class="bash functions">command</code>&nbsp;<code class="bash plain">line&nbsp;when&nbsp;starting&nbsp;the&nbsp;proc</code></div><div class="line number24 index23 alt1"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">ess&nbsp;generating&nbsp;the&nbsp;event.</code></div><div class="line number25 index24 alt2"><code class="bash plain">proc.</code><code class="bash functions">env</code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code class="bash plain">the&nbsp;environment&nbsp;variables&nbsp;of&nbsp;the&nbsp;process&nbsp;generating&nbsp;the&nbsp;event.</code></div><div class="line number26 index25 alt1"><code class="bash plain">proc.cmdline&nbsp;&nbsp;&nbsp;&nbsp;full&nbsp;process&nbsp;</code><code class="bash functions">command</code>&nbsp;<code class="bash plain">line,&nbsp;i.e.&nbsp;proc.name&nbsp;+&nbsp;proc.args.</code></div><div class="line number27 index26 alt2"><code class="bash plain">proc.exeline&nbsp;&nbsp;&nbsp;&nbsp;full&nbsp;process&nbsp;</code><code class="bash functions">command</code>&nbsp;<code class="bash plain">line,&nbsp;with&nbsp;exe&nbsp;as&nbsp;first&nbsp;argument,&nbsp;i.e.&nbsp;pro</code></div><div class="line number28 index27 alt1"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">c.exe&nbsp;+&nbsp;proc.args.</code></div><div class="line number29 index28 alt2"><code class="bash plain">proc.cwd&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;current&nbsp;working&nbsp;directory&nbsp;of&nbsp;the&nbsp;event.</code></div><div class="line number30 index29 alt1"><code class="bash plain">proc.nthreads&nbsp;&nbsp;&nbsp;the&nbsp;number&nbsp;of&nbsp;threads&nbsp;that&nbsp;the&nbsp;process&nbsp;generating&nbsp;the&nbsp;event&nbsp;cur</code></div><div class="line number31 index30 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">rently&nbsp;has,&nbsp;including&nbsp;the&nbsp;main&nbsp;process&nbsp;thread.</code></div><div class="line number32 index31 alt1"><code class="bash plain">proc.nchilds&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;number&nbsp;of&nbsp;child&nbsp;threads&nbsp;that&nbsp;the&nbsp;process&nbsp;generating&nbsp;the&nbsp;eve</code></div><div class="line number33 index32 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">nt&nbsp;currently&nbsp;has.&nbsp;This&nbsp;excludes&nbsp;the&nbsp;main&nbsp;process&nbsp;thread.</code></div><div class="line number34 index33 alt1">&nbsp;</div><div class="line number35 index34 alt2"><code class="bash plain">----------------------</code></div><div class="line number36 index35 alt1"><code class="bash plain">Field&nbsp;Class:&nbsp;evt</code></div><div class="line number37 index36 alt2"><code class="bash plain">evt.num&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;event&nbsp;number.</code></div><div class="line number38 index37 alt1"><code class="bash plain">evt.</code><code class="bash functions">time</code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code class="bash plain">event&nbsp;timestamp&nbsp;as&nbsp;a&nbsp;</code><code class="bash functions">time</code>&nbsp;<code class="bash plain">string&nbsp;that&nbsp;includes&nbsp;the&nbsp;nanosecond&nbsp;p</code></div><div class="line number39 index38 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">art.</code></div><div class="line number40 index39 alt1"><code class="bash plain">evt.</code><code class="bash functions">time</code><code class="bash plain">.s&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;event&nbsp;timestamp&nbsp;as&nbsp;a&nbsp;</code><code class="bash functions">time</code>&nbsp;<code class="bash plain">string&nbsp;with&nbsp;no&nbsp;nanoseconds.</code></div><div class="line number41 index40 alt2"><code class="bash plain">evt.datetime&nbsp;&nbsp;&nbsp;&nbsp;event&nbsp;timestamp&nbsp;as&nbsp;a&nbsp;</code><code class="bash functions">time</code>&nbsp;<code class="bash plain">string&nbsp;that&nbsp;includes&nbsp;the&nbsp;</code><code class="bash functions">date</code><code class="bash plain">.</code></div><div class="line number42 index41 alt1"><code class="bash plain">evt.rawtime&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;absolute&nbsp;event&nbsp;timestamp,&nbsp;i.e.&nbsp;nanoseconds&nbsp;from&nbsp;epoch.</code></div><div class="line number43 index42 alt2"><code class="bash plain">evt.rawtime.s&nbsp;&nbsp;&nbsp;integer&nbsp;part&nbsp;of&nbsp;the&nbsp;event&nbsp;timestamp&nbsp;(e.g.&nbsp;seconds&nbsp;since&nbsp;epoch).</code></div><div class="line number44 index43 alt1"><code class="bash plain">evt.rawtime.ns&nbsp;&nbsp;fractional&nbsp;part&nbsp;of&nbsp;the&nbsp;absolute&nbsp;event&nbsp;timestamp.</code></div><div class="line number45 index44 alt2"><code class="bash plain">evt.reltime&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;number&nbsp;of&nbsp;nanoseconds&nbsp;from&nbsp;the&nbsp;beginning&nbsp;of&nbsp;the&nbsp;capture.</code></div><div class="line number46 index45 alt1"><code class="bash plain">evt.reltime.s&nbsp;&nbsp;&nbsp;number&nbsp;of&nbsp;seconds&nbsp;from&nbsp;the&nbsp;beginning&nbsp;of&nbsp;the&nbsp;capture.</code></div><div class="line number47 index46 alt2"><code class="bash plain">evt.reltime.ns&nbsp;&nbsp;fractional&nbsp;part&nbsp;(</code><code class="bash keyword">in</code>&nbsp;<code class="bash plain">ns)&nbsp;of&nbsp;the&nbsp;</code><code class="bash functions">time</code>&nbsp;<code class="bash plain">from&nbsp;the&nbsp;beginning&nbsp;of&nbsp;the&nbsp;c</code></div><div class="line number48 index47 alt1"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">apture.</code></div><div class="line number49 index48 alt2"><code class="bash plain">evt.latency&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;delta&nbsp;between&nbsp;an&nbsp;</code><code class="bash functions">exit</code>&nbsp;<code class="bash plain">event&nbsp;and&nbsp;the&nbsp;correspondent&nbsp;enter&nbsp;event,&nbsp;</code></div><div class="line number50 index49 alt1"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash keyword">in</code>&nbsp;<code class="bash plain">nanoseconds.</code></div><div class="line number51 index50 alt2">&nbsp;</div><div class="line number52 index51 alt1"><code class="bash plain">----------------------</code></div><div class="line number53 index52 alt2"><code class="bash plain">Field&nbsp;Class:&nbsp;user</code></div><div class="line number54 index53 alt1"><code class="bash plain">user.uid&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;user&nbsp;ID.</code></div><div class="line number55 index54 alt2"><code class="bash plain">user.name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;user&nbsp;name.</code></div><div class="line number56 index55 alt1"><code class="bash plain">user.homedir&nbsp;&nbsp;&nbsp;&nbsp;home&nbsp;directory&nbsp;of&nbsp;the&nbsp;user.</code></div><div class="line number57 index56 alt2"><code class="bash plain">user.shell&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;user's&nbsp;shell.</code></div><div class="line number58 index57 alt1"><code class="bash plain">----------------------</code></div><div class="line number59 index58 alt2"><code class="bash plain">Field&nbsp;Class:&nbsp;group</code></div><div class="line number60 index59 alt1"><code class="bash plain">group.gid&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;group&nbsp;ID.</code></div><div class="line number61 index60 alt2"><code class="bash plain">group.name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;group&nbsp;name.</code></div><div class="line number62 index61 alt1"><code class="bash plain">----------------------</code></div><div class="line number63 index62 alt2"><code class="bash plain">Field&nbsp;Class:&nbsp;syslog</code></div><div class="line number64 index63 alt1"><code class="bash plain">syslog.facility.str</code></div><div class="line number65 index64 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">facility&nbsp;as&nbsp;a&nbsp;string.</code></div><div class="line number66 index65 alt1"><code class="bash plain">syslog.facility&nbsp;facility&nbsp;as&nbsp;a&nbsp;number&nbsp;(0-23).</code></div><div class="line number67 index66 alt2"><code class="bash plain">syslog.severity.str</code></div><div class="line number68 index67 alt1"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">severity&nbsp;as&nbsp;a&nbsp;string.&nbsp;Can&nbsp;have&nbsp;one&nbsp;of&nbsp;these&nbsp;values:&nbsp;emerg,&nbsp;aler</code></div><div class="line number69 index68 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">t,&nbsp;crit,&nbsp;err,&nbsp;warn,&nbsp;notice,&nbsp;info,&nbsp;debug</code></div><div class="line number70 index69 alt1"><code class="bash plain">syslog.severity&nbsp;severity&nbsp;as&nbsp;a&nbsp;number&nbsp;(0-7).</code></div><div class="line number71 index70 alt2"><code class="bash plain">syslog.message&nbsp;&nbsp;message&nbsp;sent&nbsp;to&nbsp;syslog.</code></div><div class="line number72 index71 alt1"><code class="bash plain">----------------------</code></div><div class="line number73 index72 alt2"><code class="bash plain">Field&nbsp;Class:&nbsp;container</code></div><div class="line number74 index73 alt1"><code class="bash plain">container.</code><code class="bash functions">id</code>&nbsp;&nbsp;&nbsp;&nbsp;<code class="bash plain">the&nbsp;container&nbsp;</code><code class="bash functions">id</code><code class="bash plain">.</code></div><div class="line number75 index74 alt2"><code class="bash plain">container.name&nbsp;&nbsp;the&nbsp;container&nbsp;name.</code></div><div class="line number76 index75 alt1"><code class="bash plain">container.image&nbsp;the&nbsp;container&nbsp;image.</code></div><div class="line number77 index76 alt2"><code class="bash plain">container.</code><code class="bash functions">type</code>&nbsp;&nbsp;<code class="bash plain">the&nbsp;container&nbsp;</code><code class="bash functions">type</code><code class="bash plain">,&nbsp;eg:&nbsp;docker&nbsp;or&nbsp;rkt</code></div><div class="line number78 index77 alt1"><code class="bash plain">----------------------</code></div><div class="line number79 index78 alt2"><code class="bash plain">Field&nbsp;Class:&nbsp;fdlist</code></div><div class="line number80 index79 alt1"><code class="bash plain">fdlist.nums&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash keyword">for</code>&nbsp;<code class="bash plain">poll&nbsp;events,&nbsp;this&nbsp;is&nbsp;a&nbsp;comma-separated&nbsp;list&nbsp;of&nbsp;the&nbsp;FD&nbsp;numbe</code></div><div class="line number81 index80 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">rs&nbsp;</code><code class="bash keyword">in</code>&nbsp;<code class="bash plain">the&nbsp;</code><code class="bash string">'fds'</code>&nbsp;<code class="bash plain">argument,&nbsp;returned&nbsp;as&nbsp;a&nbsp;string.</code></div><div class="line number82 index81 alt1"><code class="bash plain">fdlist.names&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash keyword">for</code>&nbsp;<code class="bash plain">poll&nbsp;events,&nbsp;this&nbsp;is&nbsp;a&nbsp;comma-separated&nbsp;list&nbsp;of&nbsp;the&nbsp;FD&nbsp;names</code></div><div class="line number83 index82 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash keyword">in</code>&nbsp;<code class="bash plain">the&nbsp;</code><code class="bash string">'fds'</code>&nbsp;<code class="bash plain">argument,&nbsp;returned&nbsp;as&nbsp;a&nbsp;string.</code></div><div class="line number84 index83 alt1"><code class="bash plain">fdlist.cips&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash keyword">for</code>&nbsp;<code class="bash plain">poll&nbsp;events,&nbsp;this&nbsp;is&nbsp;a&nbsp;comma-separated&nbsp;list&nbsp;of&nbsp;the&nbsp;client&nbsp;I</code></div><div class="line number85 index84 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">P&nbsp;addresses&nbsp;</code><code class="bash keyword">in</code>&nbsp;<code class="bash plain">the&nbsp;</code><code class="bash string">'fds'</code>&nbsp;<code class="bash plain">argument,&nbsp;returned&nbsp;as&nbsp;a&nbsp;string.</code></div><div class="line number86 index85 alt1"><code class="bash plain">fdlist.sips&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash keyword">for</code>&nbsp;<code class="bash plain">poll&nbsp;events,&nbsp;this&nbsp;is&nbsp;a&nbsp;comma-separated&nbsp;list&nbsp;of&nbsp;the&nbsp;server&nbsp;I</code></div><div class="line number87 index86 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">P&nbsp;addresses&nbsp;</code><code class="bash keyword">in</code>&nbsp;<code class="bash plain">the&nbsp;</code><code class="bash string">'fds'</code>&nbsp;<code class="bash plain">argument,&nbsp;returned&nbsp;as&nbsp;a&nbsp;string.</code></div><div class="line number88 index87 alt1"><code class="bash plain">fdlist.cports&nbsp;&nbsp;&nbsp;</code><code class="bash keyword">for</code>&nbsp;<code class="bash plain">TCP</code><code class="bash plain">/UDP</code>&nbsp;<code class="bash plain">FDs,&nbsp;</code><code class="bash keyword">for</code>&nbsp;<code class="bash plain">poll&nbsp;events,&nbsp;this&nbsp;is&nbsp;a&nbsp;comma-separated&nbsp;lis</code></div><div class="line number89 index88 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">t&nbsp;of&nbsp;the&nbsp;client&nbsp;TCP</code><code class="bash plain">/UDP</code>&nbsp;<code class="bash plain">ports&nbsp;</code><code class="bash keyword">in</code>&nbsp;<code class="bash plain">the&nbsp;</code><code class="bash string">'fds'</code>&nbsp;<code class="bash plain">argument,&nbsp;returned&nbsp;a</code></div><div class="line number90 index89 alt1"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">s&nbsp;a&nbsp;string.</code></div><div class="line number91 index90 alt2"><code class="bash plain">fdlist.sports&nbsp;&nbsp;&nbsp;</code><code class="bash keyword">for</code>&nbsp;<code class="bash plain">poll&nbsp;events,&nbsp;this&nbsp;is&nbsp;a&nbsp;comma-separated&nbsp;list&nbsp;of&nbsp;the&nbsp;server&nbsp;T</code></div><div class="line number92 index91 alt1"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">CP</code><code class="bash plain">/UDP</code>&nbsp;<code class="bash plain">ports&nbsp;</code><code class="bash keyword">in</code>&nbsp;<code class="bash plain">the&nbsp;</code><code class="bash string">'fds'</code>&nbsp;<code class="bash plain">argument,&nbsp;returned&nbsp;as&nbsp;a&nbsp;string.</code></div><div class="line number93 index92 alt2"><code class="bash plain">----------------------</code></div><div class="line number94 index93 alt1"><code class="bash plain">Field&nbsp;Class:&nbsp;k8s</code></div><div class="line number95 index94 alt2"><code class="bash plain">k8s.pod.name&nbsp;&nbsp;&nbsp;&nbsp;Kubernetes&nbsp;pod&nbsp;name.</code></div><div class="line number96 index95 alt1"><code class="bash plain">k8s.pod.</code><code class="bash functions">id</code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code class="bash plain">Kubernetes&nbsp;pod&nbsp;</code><code class="bash functions">id</code><code class="bash plain">.</code></div><div class="line number97 index96 alt2"><code class="bash plain">k8s.pod.label&nbsp;&nbsp;&nbsp;Kubernetes&nbsp;pod&nbsp;label.&nbsp;E.g.&nbsp;</code><code class="bash string">'k8s.pod.label.foo'</code><code class="bash plain">.</code></div><div class="line number98 index97 alt1"><code class="bash plain">k8s.pod.labels&nbsp;&nbsp;Kubernetes&nbsp;pod&nbsp;comma-separated&nbsp;key</code><code class="bash plain">/value</code>&nbsp;<code class="bash plain">labels.&nbsp;E.g.&nbsp;'foo1:bar</code></div><div class="line number99 index98 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">1,foo2:bar2'.</code></div><div class="line number100 index99 alt1"><code class="bash plain">k8s.rc.name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Kubernetes&nbsp;replication&nbsp;controller&nbsp;name.</code></div><div class="line number101 index100 alt2"><code class="bash plain">k8s.rc.</code><code class="bash functions">id</code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code class="bash plain">Kubernetes&nbsp;replication&nbsp;controller&nbsp;</code><code class="bash functions">id</code><code class="bash plain">.</code></div><div class="line number102 index101 alt1"><code class="bash plain">k8s.rc.label&nbsp;&nbsp;&nbsp;&nbsp;Kubernetes&nbsp;replication&nbsp;controller&nbsp;label.&nbsp;E.g.&nbsp;'k8s.rc.label.foo</code></div><div class="line number103 index102 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">'.</code></div><div class="line number104 index103 alt1"><code class="bash plain">k8s.rc.labels&nbsp;&nbsp;&nbsp;Kubernetes&nbsp;replication&nbsp;controller&nbsp;comma-separated&nbsp;key</code><code class="bash plain">/value</code>&nbsp;<code class="bash plain">lab</code></div><div class="line number105 index104 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">els.&nbsp;E.g.&nbsp;</code><code class="bash string">'foo1:bar1,foo2:bar2'</code><code class="bash plain">.</code></div><div class="line number106 index105 alt1"><code class="bash plain">k8s.svc.name&nbsp;&nbsp;&nbsp;&nbsp;Kubernetes&nbsp;service&nbsp;name&nbsp;(can&nbsp;</code><code class="bash keyword">return</code>&nbsp;<code class="bash functions">more</code>&nbsp;<code class="bash plain">than&nbsp;one&nbsp;value,&nbsp;concat</code></div><div class="line number107 index106 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">enated).</code></div><div class="line number108 index107 alt1"><code class="bash plain">k8s.svc.</code><code class="bash functions">id</code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code class="bash plain">Kubernetes&nbsp;service&nbsp;</code><code class="bash functions">id</code>&nbsp;<code class="bash plain">(can&nbsp;</code><code class="bash keyword">return</code>&nbsp;<code class="bash functions">more</code>&nbsp;<code class="bash plain">than&nbsp;one&nbsp;value,&nbsp;concaten</code></div><div class="line number109 index108 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">ated).</code></div><div class="line number110 index109 alt1">&nbsp;</div><div class="line number111 index110 alt2"><code class="bash plain">----------------------</code></div><div class="line number112 index111 alt1"><code class="bash plain">Field&nbsp;Class:&nbsp;mesos</code></div><div class="line number113 index112 alt2"><code class="bash plain">mesos.task.name&nbsp;Mesos&nbsp;task&nbsp;name.</code></div><div class="line number114 index113 alt1"><code class="bash plain">mesos.task.</code><code class="bash functions">id</code>&nbsp;&nbsp;&nbsp;<code class="bash plain">Mesos&nbsp;task&nbsp;</code><code class="bash functions">id</code><code class="bash plain">.</code></div><div class="line number115 index114 alt2"><code class="bash plain">mesos.task.label</code></div><div class="line number116 index115 alt1"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">Mesos&nbsp;task&nbsp;label.&nbsp;E.g.&nbsp;</code><code class="bash string">'mesos.task.label.foo'</code><code class="bash plain">.</code></div><div class="line number117 index116 alt2"><code class="bash plain">mesos.task.labels</code></div><div class="line number118 index117 alt1"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">Mesos&nbsp;task&nbsp;comma-separated&nbsp;key</code><code class="bash plain">/value</code>&nbsp;<code class="bash plain">labels.&nbsp;E.g.&nbsp;'foo1:bar1,fo</code></div><div class="line number119 index118 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">o2:bar2'.</code></div><div class="line number120 index119 alt1"><code class="bash plain">mesos.framework.name</code></div><div class="line number121 index120 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">Mesos&nbsp;framework&nbsp;name.</code></div><div class="line number122 index121 alt1"><code class="bash plain">mesos.framework.</code><code class="bash functions">id</code></div><div class="line number123 index122 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">Mesos&nbsp;framework&nbsp;</code><code class="bash functions">id</code><code class="bash plain">.</code></div><div class="line number124 index123 alt1"><code class="bash plain">marathon.app.name</code></div><div class="line number125 index124 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">Marathon&nbsp;app&nbsp;name.</code></div><div class="line number126 index125 alt1"><code class="bash plain">marathon.app.</code><code class="bash functions">id</code>&nbsp;<code class="bash plain">Marathon&nbsp;app&nbsp;</code><code class="bash functions">id</code><code class="bash plain">.</code></div><div class="line number127 index126 alt2"><code class="bash plain">marathon.app.label</code></div><div class="line number128 index127 alt1"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">Marathon&nbsp;app&nbsp;label.&nbsp;E.g.&nbsp;</code><code class="bash string">'marathon.app.label.foo'</code><code class="bash plain">.</code></div><div class="line number129 index128 alt2">&nbsp;</div><div class="line number130 index129 alt1"><code class="bash plain">----------------------</code></div><div class="line number131 index130 alt2"><code class="bash plain">Field&nbsp;Class:&nbsp;span</code></div><div class="line number132 index131 alt1"><code class="bash plain">span.</code><code class="bash functions">id</code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code class="bash plain">tracer&nbsp;ID.&nbsp;This&nbsp;is&nbsp;a&nbsp;unique&nbsp;identifier&nbsp;that&nbsp;is&nbsp;used&nbsp;to&nbsp;match&nbsp;th</code></div><div class="line number133 index132 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">e&nbsp;enter&nbsp;and&nbsp;</code><code class="bash functions">exit</code>&nbsp;<code class="bash plain">tracer&nbsp;events&nbsp;</code><code class="bash keyword">for</code>&nbsp;<code class="bash plain">this&nbsp;span.&nbsp;It&nbsp;can&nbsp;also&nbsp;be&nbsp;us</code></div><div class="line number134 index133 alt1"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">ed&nbsp;to&nbsp;match&nbsp;different&nbsp;spans&nbsp;belonging&nbsp;to&nbsp;a&nbsp;trace.</code></div><div class="line number135 index134 alt2"><code class="bash plain">span.</code><code class="bash functions">time</code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code class="bash functions">time</code>&nbsp;<code class="bash plain">of&nbsp;the&nbsp;span&nbsp;enter&nbsp;tracer&nbsp;as&nbsp;a&nbsp;</code><code class="bash functions">time</code>&nbsp;<code class="bash plain">string&nbsp;that&nbsp;includes&nbsp;th</code></div><div class="line number136 index135 alt1"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">e&nbsp;nanosecond&nbsp;part.</code></div><div class="line number137 index136 alt2"><code class="bash plain">span.ntags&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;number&nbsp;of&nbsp;tags&nbsp;that&nbsp;this&nbsp;span&nbsp;has.</code></div><div class="line number138 index137 alt1"><code class="bash plain">span.nargs&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;number&nbsp;of&nbsp;arguments&nbsp;that&nbsp;this&nbsp;span&nbsp;has.</code></div><div class="line number139 index138 alt2"><code class="bash plain">span.tags&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dot-separated&nbsp;list&nbsp;of&nbsp;the&nbsp;span's&nbsp;tags.</code></div><div class="line number140 index139 alt1"><code class="bash plain">span.tag&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;one&nbsp;of&nbsp;the&nbsp;span</code><code class="bash string">'s&nbsp;tags,&nbsp;specified&nbsp;by&nbsp;0-based&nbsp;offset,&nbsp;e.g.&nbsp;'</code><code class="bash plain">span</code></div><div class="line number141 index140 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">.tag[1]'.&nbsp;You&nbsp;can&nbsp;use&nbsp;a&nbsp;negative&nbsp;offset&nbsp;to&nbsp;pick&nbsp;elements&nbsp;from&nbsp;t</code></div><div class="line number142 index141 alt1"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">he&nbsp;end&nbsp;of&nbsp;the&nbsp;tag&nbsp;list.&nbsp;For&nbsp;example,&nbsp;</code><code class="bash string">'span.tag[-1]'</code>&nbsp;<code class="bash plain">returns&nbsp;the</code></div><div class="line number143 index142 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">last&nbsp;tag.</code></div><div class="line number144 index143 alt1">&nbsp;</div><div class="line number145 index144 alt2"><code class="bash plain">----------------------</code></div><div class="line number146 index145 alt1"><code class="bash plain">Field&nbsp;Class:&nbsp;evt</code></div><div class="line number147 index146 alt2"><code class="bash plain">evtin.span.</code><code class="bash functions">id</code>&nbsp;&nbsp;&nbsp;<code class="bash plain">(FILTER&nbsp;ONLY)&nbsp;the&nbsp;ID&nbsp;of&nbsp;the&nbsp;trace&nbsp;span&nbsp;containing&nbsp;the&nbsp;event.</code></div><div class="line number148 index147 alt1"><code class="bash plain">evtin.span.ntags</code></div><div class="line number149 index148 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">(FILTER&nbsp;ONLY)&nbsp;the&nbsp;number&nbsp;of&nbsp;tags&nbsp;of&nbsp;the&nbsp;trace&nbsp;span&nbsp;containing&nbsp;t</code></div><div class="line number150 index149 alt1"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">he&nbsp;event.</code></div><div class="line number151 index150 alt2"><code class="bash plain">evtin.span.nargs</code></div><div class="line number152 index151 alt1"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">(FILTER&nbsp;ONLY)&nbsp;the&nbsp;number&nbsp;of&nbsp;arguments&nbsp;of&nbsp;the&nbsp;trace&nbsp;span&nbsp;contain</code></div><div class="line number153 index152 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">ing&nbsp;the&nbsp;event.</code></div><div class="line number154 index153 alt1"><code class="bash plain">evtin.span.tags&nbsp;(FILTER&nbsp;ONLY)&nbsp;the&nbsp;comma-separated&nbsp;list&nbsp;of&nbsp;tags&nbsp;of&nbsp;the&nbsp;trace&nbsp;spa</code></div><div class="line number155 index154 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">n&nbsp;containing&nbsp;the&nbsp;event.</code></div><div class="line number156 index155 alt1"><code class="bash plain">evtin.span.tag&nbsp;&nbsp;(FILTER&nbsp;ONLY)&nbsp;one&nbsp;of&nbsp;the&nbsp;tags&nbsp;of&nbsp;the&nbsp;trace&nbsp;span&nbsp;containing&nbsp;the&nbsp;</code></div><div class="line number157 index156 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">event,&nbsp;specified&nbsp;by&nbsp;offset.&nbsp;E.g.&nbsp;</code><code class="bash string">'evtin.span.tag[1]'</code><code class="bash plain">.&nbsp;You&nbsp;can&nbsp;u</code></div><div class="line number158 index157 alt1"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">se&nbsp;a&nbsp;negative&nbsp;offset&nbsp;to&nbsp;pick&nbsp;elements&nbsp;from&nbsp;the&nbsp;end&nbsp;of&nbsp;the&nbsp;tag&nbsp;l</code></div><div class="line number159 index158 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">ist.&nbsp;For&nbsp;example,&nbsp;</code><code class="bash string">'evtin.span.tag[-1]'</code>&nbsp;<code class="bash plain">returns&nbsp;the&nbsp;last&nbsp;tag.</code></div></div></td></tr></tbody></table></div></div><p><br></p><p>如果不想要sysdig默认的输出格式，也可以自己定制，类似于top的定制。变量名必须用%开头。</p><p><br></p><div><div id="highlighter_920061" class="syntaxhighlighter  bash"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="bash comments">#&nbsp;sysdig&nbsp;-r&nbsp;sysdigdump.sap&nbsp;-p&nbsp;"user:%user.name&nbsp;dir:%evt.arg.path"&nbsp;&nbsp;evt.type=chdir</code></div><div class="line number2 index1 alt1"><code class="bash plain">user:root&nbsp;</code><code class="bash functions">dir</code><code class="bash plain">:/</code></div><div class="line number3 index2 alt2"><code class="bash plain">user:root&nbsp;</code><code class="bash functions">dir</code><code class="bash plain">:/</code></div></div></td></tr></tbody></table></div></div><p><br></p><p>输出一个程序正在被哪个用户使用，被调用的命令参数是怎样的：</p><p><br></p><div><div id="highlighter_799898" class="syntaxhighlighter  bash"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="bash comments">#&nbsp;sysdig&nbsp;-p"%user.name)&nbsp;%proc.name&nbsp;%proc.args"&nbsp;evt.type=execve&nbsp;and&nbsp;evt.arg.ptid=zsh&nbsp;&nbsp;&nbsp;</code></div><div class="line number2 index1 alt1"><code class="bash plain">root)&nbsp;git&nbsp;config&nbsp;--get&nbsp;oh-my-zsh.hide-status</code></div><div class="line number3 index2 alt2"><code class="bash plain">root)&nbsp;git&nbsp;symbolic-ref&nbsp;HEAD</code></div><div class="line number4 index3 alt1"><code class="bash plain">root)&nbsp;git&nbsp;rev-parse&nbsp;--short&nbsp;HEAD</code></div><div class="line number5 index4 alt2"><code class="bash plain">root)&nbsp;</code><code class="bash functions">ls</code>&nbsp;<code class="bash plain">--color=</code><code class="bash functions">tty</code>&nbsp;<code class="bash plain">--color=auto&nbsp;-hltr</code></div><div class="line number6 index5 alt1"><code class="bash plain">root)&nbsp;git&nbsp;config&nbsp;--get&nbsp;oh-my-zsh.hide-status</code></div><div class="line number7 index6 alt2"><code class="bash plain">root)&nbsp;git&nbsp;symbolic-ref&nbsp;HEAD</code></div><div class="line number8 index7 alt1"><code class="bash plain">root)&nbsp;git&nbsp;rev-parse&nbsp;--short&nbsp;HEAD</code></div></div></td></tr></tbody></table></div></div><p><br></p><p>可以我在zsh的命令行上执行了ls 命令， 并且oh-my-zsh在后台悄悄地执行git config 命令，没有sysdig工具你是没法知道oh-my-zsh在没执行一次命令都在后台执行git config的，果断把oh-my-zsh自动更新给禁掉，以后可以每隔一段时间手动去更新oh-my-zsh。</p><p><br></p><p>查看哪个进程在/etc下写文件，同样效果lsof也可以实现，只是显示不如sysdig，而且sysdig还可以定制显示内容。</p><p><br></p><div><div id="highlighter_929039" class="syntaxhighlighter  bash"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div><div class="line number16 index15 alt1">16</div><div class="line number17 index16 alt2">17</div><div class="line number18 index17 alt1">18</div><div class="line number19 index18 alt2">19</div><div class="line number20 index19 alt1">20</div><div class="line number21 index20 alt2">21</div><div class="line number22 index21 alt1">22</div><div class="line number23 index22 alt2">23</div><div class="line number24 index23 alt1">24</div><div class="line number25 index24 alt2">25</div><div class="line number26 index25 alt1">26</div><div class="line number27 index26 alt2">27</div><div class="line number28 index27 alt1">28</div><div class="line number29 index28 alt2">29</div><div class="line number30 index29 alt1">30</div><div class="line number31 index30 alt2">31</div><div class="line number32 index31 alt1">32</div><div class="line number33 index32 alt2">33</div><div class="line number34 index33 alt1">34</div><div class="line number35 index34 alt2">35</div><div class="line number36 index35 alt1">36</div><div class="line number37 index36 alt2">37</div><div class="line number38 index37 alt1">38</div><div class="line number39 index38 alt2">39</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="bash comments">#&nbsp;root&nbsp;at&nbsp;shanker&nbsp;in&nbsp;~/.oh-my-zsh&nbsp;on&nbsp;git:master&nbsp;o&nbsp;[9:22:59]</code></div><div class="line number2 index1 alt1"><code class="bash comments">#&nbsp;sysdig&nbsp;-p&nbsp;"user:%user.name&nbsp;process:%proc.name&nbsp;file:%fd.name"&nbsp;"evt.type=write&nbsp;and&nbsp;fd.name&nbsp;contains&nbsp;/etc"</code></div><div class="line number3 index2 alt2"><code class="bash plain">user:root&nbsp;process:vim&nbsp;</code><code class="bash functions">file</code><code class="bash plain">:</code><code class="bash plain">/etc/ansible/</code><code class="bash plain">.hosts.swp</code></div><div class="line number4 index3 alt1"><code class="bash plain">user:root&nbsp;process:vim&nbsp;</code><code class="bash functions">file</code><code class="bash plain">:</code><code class="bash plain">/etc/ansible/</code><code class="bash plain">.hosts.swp</code></div><div class="line number5 index4 alt2"><code class="bash plain">user:root&nbsp;process:vim&nbsp;</code><code class="bash functions">file</code><code class="bash plain">:</code><code class="bash plain">/etc/ansible/</code><code class="bash plain">.hosts.swp</code></div><div class="line number6 index5 alt1">&nbsp;</div><div class="line number7 index6 alt2"><code class="bash plain">^C</code><code class="bash comments">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code></div><div class="line number8 index7 alt1"><code class="bash comments">#&nbsp;root&nbsp;at&nbsp;shanker&nbsp;in&nbsp;~/.oh-my-zsh&nbsp;on&nbsp;git:master&nbsp;o&nbsp;[9:27:32]</code></div><div class="line number9 index8 alt2"><code class="bash comments">#&nbsp;lsof&nbsp;-cv&nbsp;/etc</code></div><div class="line number10 index9 alt1"><code class="bash plain">COMMAND&nbsp;&nbsp;&nbsp;PID&nbsp;USER&nbsp;&nbsp;&nbsp;FD&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TYPE&nbsp;DEVICE&nbsp;SIZE</code><code class="bash plain">/OFF</code>&nbsp;&nbsp;&nbsp;<code class="bash plain">NODE&nbsp;NAME</code></div><div class="line number11 index10 alt2"><code class="bash plain">vmstat&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;59&nbsp;root&nbsp;&nbsp;cwd&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DIR&nbsp;&nbsp;202,1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4096&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2&nbsp;/</code></div><div class="line number12 index11 alt1"><code class="bash plain">vmstat&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;59&nbsp;root&nbsp;&nbsp;rtd&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DIR&nbsp;&nbsp;202,1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4096&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2&nbsp;/</code></div><div class="line number13 index12 alt2"><code class="bash plain">vmstat&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;59&nbsp;root&nbsp;&nbsp;txt&nbsp;&nbsp;&nbsp;unknown&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">/proc/59/exe</code></div><div class="line number14 index13 alt1"><code class="bash plain">vim&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;11547&nbsp;root&nbsp;&nbsp;cwd&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DIR&nbsp;&nbsp;202,1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4096&nbsp;&nbsp;16386&nbsp;</code><code class="bash plain">/root</code></div><div class="line number15 index14 alt2"><code class="bash plain">vim&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;11547&nbsp;root&nbsp;&nbsp;rtd&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DIR&nbsp;&nbsp;202,1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4096&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2&nbsp;/</code></div><div class="line number16 index15 alt1"><code class="bash plain">vim&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;11547&nbsp;root&nbsp;&nbsp;txt&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;REG&nbsp;&nbsp;202,1&nbsp;&nbsp;2191736&nbsp;&nbsp;&nbsp;1026&nbsp;</code><code class="bash plain">/usr/bin/vim</code><code class="bash plain">.basic</code></div><div class="line number17 index16 alt2"><code class="bash plain">vim&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;11547&nbsp;root&nbsp;&nbsp;mem&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;REG&nbsp;&nbsp;202,1&nbsp;&nbsp;&nbsp;&nbsp;47712&nbsp;418583&nbsp;</code><code class="bash plain">/lib/x86_64-linux-gnu/libnss_files-2</code><code class="bash plain">.19.so</code></div><div class="line number18 index17 alt1"><code class="bash plain">vim&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;11547&nbsp;root&nbsp;&nbsp;mem&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;REG&nbsp;&nbsp;202,1&nbsp;&nbsp;&nbsp;&nbsp;47760&nbsp;418575&nbsp;</code><code class="bash plain">/lib/x86_64-linux-gnu/libnss_nis-2</code><code class="bash plain">.19.so</code></div><div class="line number19 index18 alt2"><code class="bash plain">vim&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;11547&nbsp;root&nbsp;&nbsp;mem&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;REG&nbsp;&nbsp;202,1&nbsp;&nbsp;&nbsp;&nbsp;97296&nbsp;418568&nbsp;</code><code class="bash plain">/lib/x86_64-linux-gnu/libnsl-2</code><code class="bash plain">.19.so</code></div><div class="line number20 index19 alt1"><code class="bash plain">vim&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;11547&nbsp;root&nbsp;&nbsp;mem&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;REG&nbsp;&nbsp;202,1&nbsp;&nbsp;&nbsp;&nbsp;39824&nbsp;418566&nbsp;</code><code class="bash plain">/lib/x86_64-linux-gnu/libnss_compat-2</code><code class="bash plain">.19.so</code></div><div class="line number21 index20 alt2"><code class="bash plain">vim&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;11547&nbsp;root&nbsp;&nbsp;mem&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;REG&nbsp;&nbsp;202,1&nbsp;&nbsp;&nbsp;&nbsp;10680&nbsp;418582&nbsp;</code><code class="bash plain">/lib/x86_64-linux-gnu/libutil-2</code><code class="bash plain">.19.so</code></div><div class="line number22 index21 alt1"><code class="bash plain">vim&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;11547&nbsp;root&nbsp;&nbsp;mem&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;REG&nbsp;&nbsp;202,1&nbsp;&nbsp;&nbsp;100728&nbsp;396113&nbsp;</code><code class="bash plain">/lib/x86_64-linux-gnu/libz</code><code class="bash plain">.so.1.2.8</code></div><div class="line number23 index22 alt2"><code class="bash plain">vim&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;11547&nbsp;root&nbsp;&nbsp;mem&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;REG&nbsp;&nbsp;202,1&nbsp;&nbsp;&nbsp;&nbsp;18624&nbsp;396035&nbsp;</code><code class="bash plain">/lib/x86_64-linux-gnu/libattr</code><code class="bash plain">.so.1.1.0</code></div><div class="line number24 index23 alt1"><code class="bash plain">vim&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;11547&nbsp;root&nbsp;&nbsp;mem&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;REG&nbsp;&nbsp;202,1&nbsp;&nbsp;&nbsp;252032&nbsp;397658&nbsp;</code><code class="bash plain">/lib/x86_64-linux-gnu/libpcre</code><code class="bash plain">.so.3.13.1</code></div><div class="line number25 index24 alt2"><code class="bash plain">vim&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;11547&nbsp;root&nbsp;&nbsp;mem&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;REG&nbsp;&nbsp;202,1&nbsp;&nbsp;1840928&nbsp;418580&nbsp;</code><code class="bash plain">/lib/x86_64-linux-gnu/libc-2</code><code class="bash plain">.19.so</code></div><div class="line number26 index25 alt1"><code class="bash plain">vim&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;11547&nbsp;root&nbsp;&nbsp;mem&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;REG&nbsp;&nbsp;202,1&nbsp;&nbsp;&nbsp;141574&nbsp;418570&nbsp;</code><code class="bash plain">/lib/x86_64-linux-gnu/libpthread-2</code><code class="bash plain">.19.so</code></div><div class="line number27 index26 alt2"><code class="bash plain">vim&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;11547&nbsp;root&nbsp;&nbsp;mem&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;REG&nbsp;&nbsp;202,1&nbsp;&nbsp;3480880&nbsp;&nbsp;&nbsp;&nbsp;895&nbsp;</code><code class="bash plain">/usr/lib/x86_64-linux-gnu/libpython2</code><code class="bash plain">.7.so.1.0</code></div><div class="line number28 index27 alt1"><code class="bash plain">vim&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;11547&nbsp;root&nbsp;&nbsp;mem&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;REG&nbsp;&nbsp;202,1&nbsp;&nbsp;&nbsp;&nbsp;14664&nbsp;418562&nbsp;</code><code class="bash plain">/lib/x86_64-linux-gnu/libdl-2</code><code class="bash plain">.19.so</code></div><div class="line number29 index28 alt2"><code class="bash plain">vim&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;11547&nbsp;root&nbsp;&nbsp;mem&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;REG&nbsp;&nbsp;202,1&nbsp;&nbsp;&nbsp;&nbsp;27080&nbsp;&nbsp;&nbsp;8084&nbsp;</code><code class="bash plain">/usr/lib/x86_64-linux-gnu/libgpm</code><code class="bash plain">.so.2</code></div><div class="line number30 index29 alt1"><code class="bash plain">vim&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;11547&nbsp;root&nbsp;&nbsp;mem&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;REG&nbsp;&nbsp;202,1&nbsp;&nbsp;&nbsp;&nbsp;31168&nbsp;396033&nbsp;</code><code class="bash plain">/lib/x86_64-linux-gnu/libacl</code><code class="bash plain">.so.1.1.0</code></div><div class="line number31 index30 alt2"><code class="bash plain">vim&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;11547&nbsp;root&nbsp;&nbsp;mem&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;REG&nbsp;&nbsp;202,1&nbsp;&nbsp;&nbsp;134296&nbsp;396097&nbsp;</code><code class="bash plain">/lib/x86_64-linux-gnu/libselinux</code><code class="bash plain">.so.1</code></div><div class="line number32 index31 alt1"><code class="bash plain">vim&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;11547&nbsp;root&nbsp;&nbsp;mem&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;REG&nbsp;&nbsp;202,1&nbsp;&nbsp;&nbsp;167096&nbsp;396105&nbsp;</code><code class="bash plain">/lib/x86_64-linux-gnu/libtinfo</code><code class="bash plain">.so.5.9</code></div><div class="line number33 index32 alt2"><code class="bash plain">vim&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;11547&nbsp;root&nbsp;&nbsp;mem&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;REG&nbsp;&nbsp;202,1&nbsp;&nbsp;1071552&nbsp;418560&nbsp;</code><code class="bash plain">/lib/x86_64-linux-gnu/libm-2</code><code class="bash plain">.19.so</code></div><div class="line number34 index33 alt1"><code class="bash plain">vim&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;11547&nbsp;root&nbsp;&nbsp;mem&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;REG&nbsp;&nbsp;202,1&nbsp;&nbsp;&nbsp;149120&nbsp;418572&nbsp;</code><code class="bash plain">/lib/x86_64-linux-gnu/ld-2</code><code class="bash plain">.19.so</code></div><div class="line number35 index34 alt2"><code class="bash plain">vim&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;11547&nbsp;root&nbsp;&nbsp;mem&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;REG&nbsp;&nbsp;202,1&nbsp;&nbsp;1607664&nbsp;&nbsp;&nbsp;1578&nbsp;</code><code class="bash plain">/usr/lib/locale/locale-archive</code></div><div class="line number36 index35 alt1"><code class="bash plain">vim&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;11547&nbsp;root&nbsp;&nbsp;&nbsp;&nbsp;0u&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CHR&nbsp;&nbsp;136,7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0t0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10&nbsp;</code><code class="bash plain">/dev/pts/7</code></div><div class="line number37 index36 alt2"><code class="bash plain">vim&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;11547&nbsp;root&nbsp;&nbsp;&nbsp;&nbsp;1u&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CHR&nbsp;&nbsp;136,7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0t0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10&nbsp;</code><code class="bash plain">/dev/pts/7</code></div><div class="line number38 index37 alt1"><code class="bash plain">vim&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;11547&nbsp;root&nbsp;&nbsp;&nbsp;&nbsp;2u&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CHR&nbsp;&nbsp;136,7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0t0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10&nbsp;</code><code class="bash plain">/dev/pts/7</code></div><div class="line number39 index38 alt2"><code class="bash plain">vim&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;11547&nbsp;root&nbsp;&nbsp;&nbsp;&nbsp;4u&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;REG&nbsp;&nbsp;202,1&nbsp;&nbsp;&nbsp;&nbsp;12288&nbsp;131619&nbsp;</code><code class="bash plain">/etc/ansible/</code><code class="bash plain">.hosts.swp</code></div></div></td></tr></tbody></table></div></div><p><br></p><p>想要看网络连接，使用文件描述法是ipv4即可：</p><p><br></p><div><div id="highlighter_286204" class="syntaxhighlighter  bash"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="bash plain">sysdig&nbsp;&nbsp;fd.</code><code class="bash functions">type</code><code class="bash plain">=ipv4&nbsp;and&nbsp;evt.</code><code class="bash functions">type</code><code class="bash plain">=write</code></div></div></td></tr></tbody></table></div></div><p><br></p><p>如果使用container的情况下，输出格式需要重新格式化才能友好阅读，根据自己container的类型选择命令参数：</p><div><div id="highlighter_373867" class="syntaxhighlighter  bash"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="bash plain">Using&nbsp;-pc&nbsp;or&nbsp;-pcontainer,&nbsp;the&nbsp;default&nbsp;</code><code class="bash functions">format</code>&nbsp;<code class="bash plain">will&nbsp;be&nbsp;changed&nbsp;to&nbsp;a&nbsp;container-friendly&nbsp;one:</code></div><div class="line number2 index1 alt1"><code class="bash plain">%evt.num&nbsp;%evt.outputtime&nbsp;%evt.cpu&nbsp;%container.name&nbsp;(%container.</code><code class="bash functions">id</code><code class="bash plain">)&nbsp;%proc.name&nbsp;(%thread.tid:%thread.vtid)&nbsp;%evt.</code><code class="bash functions">dir</code>&nbsp;<code class="bash plain">%evt.</code><code class="bash functions">type</code>&nbsp;<code class="bash plain">%evt.info</code></div><div class="line number3 index2 alt2"><code class="bash plain">Using&nbsp;-pk&nbsp;or&nbsp;-pkubernetes,&nbsp;the&nbsp;default&nbsp;</code><code class="bash functions">format</code>&nbsp;<code class="bash plain">will&nbsp;be&nbsp;changed&nbsp;to&nbsp;a&nbsp;kubernetes-friendly&nbsp;one:</code></div><div class="line number4 index3 alt1"><code class="bash plain">%evt.num&nbsp;%evt.outputtime&nbsp;%evt.cpu&nbsp;%k8s.pod.name&nbsp;(%container.</code><code class="bash functions">id</code><code class="bash plain">)&nbsp;%proc.name&nbsp;(%thread.tid:%thread.vtid)&nbsp;%evt.</code><code class="bash functions">dir</code>&nbsp;<code class="bash plain">%evt.</code><code class="bash functions">type</code>&nbsp;<code class="bash plain">%evt.info</code></div><div class="line number5 index4 alt2"><code class="bash plain">Using&nbsp;-pm&nbsp;or&nbsp;-pmesos,&nbsp;the&nbsp;default&nbsp;</code><code class="bash functions">format</code>&nbsp;<code class="bash plain">will&nbsp;be&nbsp;changed&nbsp;to&nbsp;a&nbsp;mesos-friendly&nbsp;one:</code></div><div class="line number6 index5 alt1"><code class="bash plain">%evt.num&nbsp;%evt.outputtime&nbsp;%evt.cpu&nbsp;%mesos.task.name&nbsp;(%container.</code><code class="bash functions">id</code><code class="bash plain">)&nbsp;%proc.name&nbsp;(%thread.tid:%thread.vtid)&nbsp;%evt.</code><code class="bash functions">dir</code>&nbsp;<code class="bash plain">%evt.</code><code class="bash functions">type</code>&nbsp;<code class="bash plain">%evt.info</code></div></div></td></tr></tbody></table></div></div><p><br></p><p><br></p><p><strong><span style="font-size: 20px;">二，Chisels用法简介：</span></strong></p><p><span style="font-size: 16px;">因为sysdig的图标是铲子，这个Chisel字面翻译是凿子，铲子加上凿子可以帮你挖的更深。</span></p><p><span style="font-size: 16px;"><br></span></p><p><span style="font-size: 16px;">用过SystemTap（Dtrace Solaris的叫法）工具的朋友一定熟悉他的stap脚本，这个脚本语言需要单独去学习，使用成本比较高，sysdig呢直接提供了很多chisels共大家使用，免去了自己开发脚本的时间，它是用Lua脚本语言开发的。他俩的功能都是挖掘系统层的调用事件，挖的很深很深......</span></p><p><span style="font-size: 16px;"><br></span></p><p><span style="font-size: 16px;">引用一下官网的“自吹”：</span></p><p><span style="font-size: 16px;"><br></span></p><p><span style="font-size: 16px;"></span></p><p style="margin-top: 0px; margin-bottom: 10px; color: rgb(63, 63, 63); font-family: 'proxima-nova',sans-serif; font-size: 18px; line-height: 25px; white-space: normal; background-color: rgb(255, 255, 255);">Sysdig’s chisels are little scripts that analyze the sysdig event stream to perform useful actions. If you’ve used system tracing tools like dtrace, you’re probably familiar with running scripts that trace OS events. Usually, with dtrace-like tools you write your scripts using a domain-specific language that gets compiled into bytecode and injected in the kernel. Sysdig uses a different approach: events are efficiently brought to user-level, enriched with context, and then scripts can be applied to them. This brings several benefits:</p><ul style="margin-bottom: 10px; color: rgb(63, 63, 63); font-family: 'proxima-nova',sans-serif; font-size: 18px; line-height: 25px; white-space: normal; background-color: rgb(255, 255, 255);" class="list-paddingleft-2"><li><p>A well known scripting language can be used instead of a custom one. In fact, sysdig’s chisels are Lua scripts. Lua is well known, powerful, stable and extremely efficient.</p></li><li><p>Chisels can leverage the broad collection of Lua libraries.</p></li><li><p>Chisels work well on live systems, but can also be used with capture files for offline analysis.</p></li></ul><p><br></p><p><span style="font-size: 16px;">下面是一个SystemTap的stap脚本，这个工具会单独开一篇文章来介绍，也是史诗级的。</span></p><p><span style="font-size: 16px;"><br></span></p><div><div id="highlighter_964048" class="syntaxhighlighter  bash"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div><div class="line number16 index15 alt1">16</div><div class="line number17 index16 alt2">17</div><div class="line number18 index17 alt1">18</div><div class="line number19 index18 alt2">19</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="bash comments">#&nbsp;cat&nbsp;nginx.stap&nbsp;</code></div><div class="line number2 index1 alt1"><code class="bash plain">global&nbsp;s;&nbsp;</code></div><div class="line number3 index2 alt2"><code class="bash plain">global&nbsp;quit&nbsp;=&nbsp;0;&nbsp;</code></div><div class="line number4 index3 alt1"><code class="bash plain">probe&nbsp;timer.profile&nbsp;{&nbsp;</code></div><div class="line number5 index4 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash keyword">if</code>&nbsp;<code class="bash plain">(pid()&nbsp;==&nbsp;target())&nbsp;{&nbsp;</code></div><div class="line number6 index5 alt1"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash keyword">if</code>&nbsp;<code class="bash plain">(quit)&nbsp;{&nbsp;</code></div><div class="line number7 index6 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">foreach&nbsp;(i&nbsp;</code><code class="bash keyword">in</code>&nbsp;<code class="bash plain">s-)&nbsp;{&nbsp;</code></div><div class="line number8 index7 alt1"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">print_ustack(i);&nbsp;</code></div><div class="line number9 index8 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash functions">printf</code><code class="bash plain">(</code><code class="bash string">"\t%d\n"</code><code class="bash plain">,&nbsp;@count(s[i]));&nbsp;</code></div><div class="line number10 index9 alt1"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">}&nbsp;</code></div><div class="line number11 index10 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash functions">exit</code><code class="bash plain">()&nbsp;</code></div><div class="line number12 index11 alt1"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">}&nbsp;</code><code class="bash keyword">else</code>&nbsp;<code class="bash plain">{&nbsp;</code></div><div class="line number13 index12 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">s[ubacktrace()]&nbsp;&lt;&lt;&lt;&nbsp;1;&nbsp;</code></div><div class="line number14 index13 alt1"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">}&nbsp;</code></div><div class="line number15 index14 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">}&nbsp;</code></div><div class="line number16 index15 alt1"><code class="bash plain">}&nbsp;</code></div><div class="line number17 index16 alt2"><code class="bash plain">probe&nbsp;timer.s(20)&nbsp;{&nbsp;</code></div><div class="line number18 index17 alt1"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">quit&nbsp;=&nbsp;1&nbsp;</code></div><div class="line number19 index18 alt2"><code class="bash plain">}</code></div></div></td></tr></tbody></table></div></div><p><span style="font-size: 16px;"><br></span></p><p><span style="font-size: 16px;">要使用sysdig的chisels, 用-cl参数来查看，如果想对其中的某一个感兴趣，使用-i来详细查看，sysdig源码在github上，您也可以自己去创造自己的chisel。</span></p><p><span style="font-size: 16px;"><br></span></p><div><div id="highlighter_780" class="syntaxhighlighter  bash"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div><div class="line number16 index15 alt1">16</div><div class="line number17 index16 alt2">17</div><div class="line number18 index17 alt1">18</div><div class="line number19 index18 alt2">19</div><div class="line number20 index19 alt1">20</div><div class="line number21 index20 alt2">21</div><div class="line number22 index21 alt1">22</div><div class="line number23 index22 alt2">23</div><div class="line number24 index23 alt1">24</div><div class="line number25 index24 alt2">25</div><div class="line number26 index25 alt1">26</div><div class="line number27 index26 alt2">27</div><div class="line number28 index27 alt1">28</div><div class="line number29 index28 alt2">29</div><div class="line number30 index29 alt1">30</div><div class="line number31 index30 alt2">31</div><div class="line number32 index31 alt1">32</div><div class="line number33 index32 alt2">33</div><div class="line number34 index33 alt1">34</div><div class="line number35 index34 alt2">35</div><div class="line number36 index35 alt1">36</div><div class="line number37 index36 alt2">37</div><div class="line number38 index37 alt1">38</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="bash comments">#&nbsp;sysdig&nbsp;-cl</code></div><div class="line number2 index1 alt1"><code class="bash plain">Category:&nbsp;Application</code></div><div class="line number3 index2 alt2"><code class="bash plain">---------------------</code></div><div class="line number4 index3 alt1"><code class="bash plain">httplog&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HTTP&nbsp;requests&nbsp;log</code></div><div class="line number5 index4 alt2"><code class="bash plain">httptop&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Top&nbsp;HTTP&nbsp;requests</code></div><div class="line number6 index5 alt1"><code class="bash plain">memcachelog&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;memcached&nbsp;requests&nbsp;log</code></div><div class="line number7 index6 alt2"><code class="bash plain">Category:&nbsp;CPU&nbsp;Usage</code></div><div class="line number8 index7 alt1"><code class="bash plain">-------------------</code></div><div class="line number9 index8 alt2"><code class="bash plain">spectrogram&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Visualize&nbsp;OS&nbsp;latency&nbsp;</code><code class="bash keyword">in</code>&nbsp;<code class="bash plain">real&nbsp;</code><code class="bash functions">time</code><code class="bash plain">.</code></div><div class="line number10 index9 alt1"><code class="bash plain">subsecoffset&nbsp;&nbsp;&nbsp;&nbsp;Visualize&nbsp;subsecond&nbsp;offset&nbsp;execution&nbsp;</code><code class="bash functions">time</code><code class="bash plain">.</code></div><div class="line number11 index10 alt2"><code class="bash plain">topcontainers_cpu</code></div><div class="line number12 index11 alt1"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">Top&nbsp;containers&nbsp;by&nbsp;CPU&nbsp;usage</code></div><div class="line number13 index12 alt2"><code class="bash plain">topprocs_cpu&nbsp;&nbsp;&nbsp;&nbsp;Top&nbsp;processes&nbsp;by&nbsp;CPU&nbsp;usage</code></div><div class="line number14 index13 alt1"><code class="bash plain">Category:&nbsp;Errors</code></div><div class="line number15 index14 alt2"><code class="bash plain">----------------</code></div><div class="line number16 index15 alt1"><code class="bash plain">topcontainers_error</code></div><div class="line number17 index16 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">Top&nbsp;containers&nbsp;by&nbsp;number&nbsp;of&nbsp;errors</code></div><div class="line number18 index17 alt1"><code class="bash plain">topfiles_errors&nbsp;Top&nbsp;files&nbsp;by&nbsp;number&nbsp;of&nbsp;errors</code></div><div class="line number19 index18 alt2"><code class="bash plain">topprocs_errors&nbsp;</code><code class="bash functions">top</code>&nbsp;<code class="bash plain">processes&nbsp;by&nbsp;number&nbsp;of&nbsp;errors</code></div><div class="line number20 index19 alt1"><code class="bash plain">Category:&nbsp;I</code><code class="bash plain">/O</code></div><div class="line number21 index20 alt2"><code class="bash plain">-------------</code></div><div class="line number22 index21 alt1"><code class="bash plain">echo_fds&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Print&nbsp;the&nbsp;data&nbsp;</code><code class="bash functions">read</code>&nbsp;<code class="bash plain">and&nbsp;written&nbsp;by&nbsp;processes.</code></div><div class="line number23 index22 alt2"><code class="bash plain">.....</code></div><div class="line number24 index23 alt1"><code class="bash comments">#&nbsp;root&nbsp;at&nbsp;shanker&nbsp;in&nbsp;~&nbsp;[1:52:57]</code></div><div class="line number25 index24 alt2"><code class="bash comments">#&nbsp;sysdig&nbsp;-i&nbsp;echo_fds&nbsp;</code></div><div class="line number26 index25 alt1"><code class="bash plain">Category:&nbsp;I</code><code class="bash plain">/O</code></div><div class="line number27 index26 alt2"><code class="bash plain">-------------</code></div><div class="line number28 index27 alt1"><code class="bash plain">echo_fds&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Print&nbsp;the&nbsp;data&nbsp;</code><code class="bash functions">read</code>&nbsp;<code class="bash plain">and&nbsp;written&nbsp;by&nbsp;processes.</code></div><div class="line number29 index28 alt2"><code class="bash plain">Print&nbsp;the&nbsp;data&nbsp;</code><code class="bash functions">read</code>&nbsp;<code class="bash plain">and&nbsp;written&nbsp;</code><code class="bash keyword">for</code>&nbsp;<code class="bash plain">any&nbsp;FD.&nbsp;Combine&nbsp;this&nbsp;script&nbsp;with&nbsp;a&nbsp;filter&nbsp;t</code></div><div class="line number30 index29 alt1"><code class="bash plain">o&nbsp;restrict&nbsp;what&nbsp;it&nbsp;shows.&nbsp;This&nbsp;chisel&nbsp;is&nbsp;compatible&nbsp;with&nbsp;containers&nbsp;using&nbsp;the&nbsp;s</code></div><div class="line number31 index30 alt2"><code class="bash plain">ysdig&nbsp;-pc&nbsp;or&nbsp;-pcontainer&nbsp;argument,&nbsp;otherwise&nbsp;no&nbsp;container&nbsp;information&nbsp;will&nbsp;be&nbsp;s</code></div><div class="line number32 index31 alt1"><code class="bash plain">hown.&nbsp;(Blue&nbsp;represents&nbsp;&nbsp;[Write],&nbsp;and&nbsp;Red&nbsp;represents&nbsp;[Read]&nbsp;</code><code class="bash keyword">for</code>&nbsp;<code class="bash plain">all&nbsp;data&nbsp;except&nbsp;</code></div><div class="line number33 index32 alt2"><code class="bash plain">when&nbsp;the&nbsp;-pc&nbsp;or&nbsp;-pcontainer&nbsp;argument&nbsp;is&nbsp;used.&nbsp;If&nbsp;used&nbsp;the&nbsp;container.name&nbsp;and&nbsp;co</code></div><div class="line number34 index33 alt1"><code class="bash plain">ntainer.</code><code class="bash functions">id</code>&nbsp;<code class="bash plain">will&nbsp;be&nbsp;represented&nbsp;as:&nbsp;Green&nbsp;[host],&nbsp;and&nbsp;Cyan&nbsp;[container])&nbsp;Containe</code></div><div class="line number35 index34 alt2"><code class="bash plain">r&nbsp;information&nbsp;will&nbsp;contain&nbsp;</code><code class="bash string">'[]'</code>&nbsp;<code class="bash plain">around&nbsp;container.name&nbsp;and&nbsp;container.</code><code class="bash functions">id</code><code class="bash plain">.</code></div><div class="line number36 index35 alt1"><code class="bash plain">Args:</code></div><div class="line number37 index36 alt2"><code class="bash plain">[string]&nbsp;disable_color&nbsp;-&nbsp;Set&nbsp;to&nbsp;</code><code class="bash string">'disable_colors'</code>&nbsp;<code class="bash keyword">if</code>&nbsp;<code class="bash plain">you&nbsp;want&nbsp;to</code></div><div class="line number38 index37 alt1"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">disable&nbsp;color&nbsp;output</code></div></div></td></tr></tbody></table></div></div><p><span style="font-size: 16px;"><br></span>如果要运行某一个chisel，直接跟-c即可，比如查看top process by CPU, Network I/O, File I/O：<br></p><p><br></p><div><div id="highlighter_475090" class="syntaxhighlighter  bash"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="bash plain">sysdig&nbsp;-c&nbsp;topprocs_cpu{topprocs_file,topprocs_net}</code></div><div class="line number2 index1 alt1"><code class="bash plain">Bytes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Process&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code></div><div class="line number3 index2 alt2"><code class="bash plain">--------------------------------------------------------------------------------</code></div><div class="line number4 index3 alt1"><code class="bash plain">488B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sshd&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;18115</code></div></div></td></tr></tbody></table></div></div><p><span style="font-size: 16px;"></span><br></p><p>如何查询一个特定进程的所有网络流量呢？拿nginx为例，以ASCII字符显示nginx进程的所有网络流量，回显蓝色字体是写，红色字体是read：</p><p><br></p><div><div id="highlighter_757301" class="syntaxhighlighter  bash"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="bash comments">#&nbsp;root&nbsp;at&nbsp;shanker&nbsp;in&nbsp;~&nbsp;[2:00:35]</code></div><div class="line number2 index1 alt1"><code class="bash comments">#&nbsp;sysdig&nbsp;-A&nbsp;-c&nbsp;echo_fds&nbsp;proc.name=nginx&nbsp;</code></div><div class="line number3 index2 alt2"><code class="bash plain">------&nbsp;Read&nbsp;73B&nbsp;from&nbsp;&nbsp;&nbsp;127.0.0.1:54811-&gt;127.0.0.1:http&nbsp;(nginx)</code></div><div class="line number4 index3 alt1"><code class="bash plain">GET&nbsp;/&nbsp;HTTP</code><code class="bash plain">/1</code><code class="bash plain">.1</code></div><div class="line number5 index4 alt2"><code class="bash plain">User-Agent:&nbsp;curl</code><code class="bash plain">/7</code><code class="bash plain">.35.0</code></div><div class="line number6 index5 alt1"><code class="bash plain">Host:&nbsp;localhost</code></div><div class="line number7 index6 alt2"><code class="bash plain">Accept:&nbsp;*/*</code></div><div class="line number8 index7 alt1"><code class="bash plain">------&nbsp;Write&nbsp;504B&nbsp;to&nbsp;&nbsp;&nbsp;ffff880007b07080-&gt;ffff880007b05640&nbsp;</code><code class="bash plain">/var/run/php5-fpm</code><code class="bash plain">.sock&nbsp;(nginx)</code></div><div class="line number9 index8 alt2"><code class="bash plain">QUERY_STRINGREQUEST_METHODGETCONTENT_TYPECONTENT_LENGTHSCRIPT_FILENAME</code><code class="bash plain">/var/www/html/index</code><code class="bash plain">.php</code></div><div class="line number10 index9 alt1"><code class="bash plain">SCRIPT_NAME</code><code class="bash plain">/index</code><code class="bash plain">.phpREQUEST_URI/</code></div><div class="line number11 index10 alt2"><code class="bash plain">DOCUMENT_URI</code><code class="bash plain">/index</code><code class="bash plain">.php</code></div><div class="line number12 index11 alt1"><code class="bash plain">DOCUMENT_ROOT</code><code class="bash plain">/var/www/htmlSERVER_PROTOCOLHTTP/1</code><code class="bash plain">.1GATEWAY_INTERFACECGI</code><code class="bash plain">/1</code><code class="bash plain">.1SERVER_SOFTWAREnginx</code><code class="bash plain">/1</code><code class="bash plain">.4.6REMOTE_ADDR127.0.0.1REMOTE_PORT54811SERVER_ADDR127.0.0.1SERVER_PORT80SERVER_NAMEshanker.heyoa.comREDIRECT_STATUS200HTTP_USER_AGENTcurl</code><code class="bash plain">/7</code><code class="bash plain">.35.0HTTP_HOSTlocalhostHTTP_ACCEPT*/*</code></div><div class="line number13 index12 alt2"><code class="bash plain">------&nbsp;Read&nbsp;4.00KB&nbsp;from&nbsp;&nbsp;&nbsp;ffff880007b07080-&gt;ffff880007b05640&nbsp;</code><code class="bash plain">/var/run/php5-fpm</code><code class="bash plain">.sock&nbsp;(nginx)</code></div><div class="line number14 index13 alt1"><code class="bash plain">X-Powered-By:&nbsp;PHP</code><code class="bash plain">/5</code><code class="bash plain">.5.9-1ubuntu4.16</code></div><div class="line number15 index14 alt2"><code class="bash plain">Content-Type:&nbsp;text</code><code class="bash plain">/html</code><code class="bash plain">;&nbsp;charset=UTF-8</code></div></div></td></tr></tbody></table></div></div><p><span style="font-size: 16px;">如果把proc.name=nginx换成fd.sport=80是一样的效果。</span><strong><span style="font-size: 20px;"><br></span></strong><br></p><p>如果想查看sshd进程交互的，server ip 是172.31.23.95的流量：</p><p><br></p><div><div id="highlighter_561221" class="syntaxhighlighter  bash"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="bash plain">sysdig&nbsp;-A&nbsp;-s&nbsp;65000&nbsp;-n&nbsp;1000&nbsp;-c&nbsp;echo_fds&nbsp;fd.sip=172.31.23.95&nbsp;and&nbsp;proc.name=sshd</code></div></div></td></tr></tbody></table></div></div><p><br></p><p>我们在拿官网的topfiles_bytes chisel来学习一下。如果不接任何参数就显示的就是读写磁盘字节数最高的那些进程：</p><p><br></p><p><a href="http://s1.51cto.com/wyfs02/M00/7F/8E/wKioL1ciyZGAXAepAAA7TMBEgG4687.png" target="_blank"><img src="wKioL1ciyZGAXAepAAA7TMBEgG4687.png" title="3.png" alt="wKioL1ciyZGAXAepAAA7TMBEgG4687.png"></a></p><p><br></p><div><div id="highlighter_697751" class="syntaxhighlighter  bash"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="bash plain">$&nbsp;sysdig&nbsp;-c&nbsp;topfiles_bytes&nbsp;&nbsp;</code></div><div class="line number2 index1 alt1"><code class="bash plain">Bytes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Filename&nbsp;&nbsp;</code></div><div class="line number3 index2 alt2"><code class="bash plain">------------------------------</code></div><div class="line number4 index3 alt1"><code class="bash plain">23.32KB&nbsp;&nbsp;&nbsp;</code><code class="bash plain">/proc/net/unix</code>&nbsp;&nbsp;</div><div class="line number5 index4 alt2"><code class="bash plain">9.11KB&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">/usr/share/icons/hicolor/16x16/actions/terminator_receive_off</code><code class="bash plain">.png&nbsp;&nbsp;</code></div><div class="line number6 index5 alt1"><code class="bash plain">5.64KB&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">/etc/localtime</code>&nbsp;&nbsp;</div><div class="line number7 index6 alt2"><code class="bash plain">4.92KB&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">/proc/interrupts</code>&nbsp;&nbsp;</div><div class="line number8 index7 alt1"><code class="bash plain">4.38KB&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">/dev/input/event2</code>&nbsp;&nbsp;</div><div class="line number9 index8 alt2"><code class="bash plain">4.37KB&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">/etc/wgetrc</code>&nbsp;&nbsp;</div><div class="line number10 index9 alt1"><code class="bash plain">2.88KB&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">/proc/stat</code>&nbsp;&nbsp;</div><div class="line number11 index10 alt2"><code class="bash plain">2.39KB&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">/usr/share/locale/locale</code><code class="bash plain">.</code><code class="bash functions">alias</code>&nbsp;&nbsp;</div><div class="line number12 index11 alt1"><code class="bash plain">1.85KB&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">/proc/18263/status</code></div></div></td></tr></tbody></table></div></div><p><br></p><p>如果不想看访问/dev的进程，可以这样：</p><p><br></p><div><div id="highlighter_827044" class="syntaxhighlighter  bash"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="bash plain">sysdig&nbsp;-c&nbsp;topfiles_bytes&nbsp;</code><code class="bash string">"not&nbsp;fd.name&nbsp;contains&nbsp;/dev"</code></div></div></td></tr></tbody></table></div></div><p><br></p><p>如果只想看/root目录下读写比较高的进程，可以这样：</p><p><br></p><pre style="font-family: 'droid-sans-mono',monospace,sans-serif; font-size: 13px; padding: 9.5px; margin-top: 0px; margin-bottom: 10px; line-height: 1.42857; color: rgb(51, 51, 51); border: 1px solid rgb(204, 204, 204); background-color: rgb(245, 245, 245);">$&nbsp;sysdig&nbsp;-c&nbsp;topfiles_bytes&nbsp;"fd.name&nbsp;contains&nbsp;/root"&nbsp;&nbsp;
+Bytes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Filename
+------------------------------
+1.29KB&nbsp;&nbsp;&nbsp;&nbsp;/root/agent/build/debug/test/index.html.93
+1.10KB&nbsp;&nbsp;&nbsp;&nbsp;/root/.dropbox/PENDING_aWX7WU
+1.10KB&nbsp;&nbsp;&nbsp;&nbsp;/root/.dropbox/UPDATED_UsxrsX
+16B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/root/.dropbox/filecache.dbx```</pre><p><br></p><p>如果想看某个进程对文件的读写，还可以这样：<br></p><p><br></p><pre style="font-family: 'droid-sans-mono',monospace,sans-serif; font-size: 13px; padding: 9.5px; margin-top: 0px; margin-bottom: 10px; line-height: 1.42857; color: rgb(51, 51, 51); border: 1px solid rgb(204, 204, 204); background-color: rgb(245, 245, 245);">$&nbsp;sysdig&nbsp;-c&nbsp;topfiles_bytes&nbsp;"proc.name=vi"&nbsp;&nbsp;
+Bytes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Filename
+------------------------------
+4.00KB&nbsp;&nbsp;&nbsp;&nbsp;/root/agent/build/debug/test/.lo.txt.swp&nbsp;&nbsp;
+3.36KB&nbsp;&nbsp;&nbsp;&nbsp;/usr/share/terminfo/x/xterm-256color&nbsp;&nbsp;
+2.18KB&nbsp;&nbsp;&nbsp;&nbsp;/etc/passwd&nbsp;&nbsp;
+1.98KB&nbsp;&nbsp;&nbsp;&nbsp;/root/agent/build/debug/test/lo.txt&nbsp;&nbsp;
+1.92KB&nbsp;&nbsp;&nbsp;&nbsp;/etc/virc&nbsp;&nbsp;
+1.66KB&nbsp;&nbsp;&nbsp;&nbsp;/etc/nsswitch.conf&nbsp;&nbsp;
+832B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/lib64/libpcre.so.1&nbsp;&nbsp;
+832B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/lib64/libc.so.6&nbsp;&nbsp;
+832B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/lib64/libnss_files.so.2</pre><p><br></p><p>或者针对某个用户的：</p><p><br></p><pre style="font-family: 'droid-sans-mono',monospace,sans-serif; font-size: 13px; padding: 9.5px; margin-top: 0px; margin-bottom: 10px; line-height: 1.42857; color: rgb(51, 51, 51); border: 1px solid rgb(204, 204, 204); background-color: rgb(245, 245, 245);">$&nbsp;sysdig&nbsp;-c&nbsp;topfiles_bytes&nbsp;"user.name=loris"&nbsp;&nbsp;
+Bytes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Filename
+------------------------------
+3.31KB&nbsp;&nbsp;&nbsp;&nbsp;/etc/nsswitch.conf&nbsp;&nbsp;
+2.18KB&nbsp;&nbsp;&nbsp;&nbsp;/etc/passwd&nbsp;&nbsp;
+1.62KB&nbsp;&nbsp;&nbsp;&nbsp;/lib64/libselinux.so.1&nbsp;&nbsp;
+1.62KB&nbsp;&nbsp;&nbsp;&nbsp;/lib64/libc.so.6&nbsp;&nbsp;
+1.62KB&nbsp;&nbsp;&nbsp;&nbsp;/lib64/libpcre.so.1&nbsp;&nbsp;
+1.62KB&nbsp;&nbsp;&nbsp;&nbsp;/lib64/libdl.so.2&nbsp;&nbsp;
+1.62KB&nbsp;&nbsp;&nbsp;&nbsp;/lib64/libnss_files.so.2&nbsp;&nbsp;
+898B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/etc/group&nbsp;&nbsp;
+54B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/proc/self/task/30414/attr/current</pre><p><br></p><p><strong><span style="font-size: 20px;">三，csysdig简介</span></strong></p><p><span style="line-height: 0px;"></span><span style="font-size: 16px;"><strong><br></strong></span></p><p><span style="line-height: 0px;"></span><span style="font-size: 16px;">csysdig的用法就有点类似htop了，是sysdig交互式的用户界面，在熟悉了sysdig的用法的基础上，用csysdig就轻车熟路了，在这里就不详细介绍了，大家可以参考官方文档<span style="font-size: 20px;"><a href="http://www.sysdig.org/wiki/csysdig-overview/" target="_blank">h<span style="font-size: 16px;">ttp://www.sysdig.org/wiki/csysdig-overview/</span></a><span style="font-size: 16px;">&nbsp;</span></span></span></p><p><span style="font-size: 16px;"><span style="font-size: 20px;"><span style="font-size: 16px;"><a href="https://github.com/draios/sysdig/blob/dev/userspace/sysdig/man/csysdig.md" target="_blank">https://github.com/draios/sysdig/blob/dev/userspace/sysdig/man/csysdig.md</a></span></span></span></p><p><span style="font-size: 16px;"><span style="font-size: 20px;"><span style="font-size: 16px;">和youtube上的视频介绍：</span></span></span></p><p><span style="font-size: 16px;"><span style="font-size: 20px;"><span style="font-size: 16px;"><a href="https://www.youtube.com/watch?v=UJ4wVrbP-Q8" target="_blank">https://www.youtube.com/watch?v=UJ4wVrbP-Q8</a> </span></span></span></p><p><span style="font-size: 16px;"><strong><span style="font-size: 20px;"><br></span></strong></span></p><p><strong><span style="font-size: 20px;"></span></strong></p><p>最后总结一下，sysdig真的是一款非常强大的系统分析工具，本文只是抛砖引玉，希望大家多多挖掘，分享更深层的东西来分析服务器的瓶颈和故障。</p><p><br></p><p><br></p><p>参考连接：</p><p><br></p><p><a href="http://www.sysdig.org/wiki/sysdig-user-guide/" target="_blank">http://www.sysdig.org/wiki/sysdig-user-guide/</a> </p><p><a href="http://www.sysdig.org/wiki/chisels-user-guide/" target="_blank">http://www.sysdig.org/wiki/chisels-user-guide/</a> </p><p><a href="http://bencane.com/2014/04/18/using-sysdig-to-troubleshoot-like-a-boss/" target="_blank">http://bencane.com/2014/04/18/using-sysdig-to-troubleshoot-like-a-boss/</a> </p><p><a href="http://xmodulo.com/monitor-troubleshoot-linux-server-sysdig.html" target="_blank">http://xmodulo.com/monitor-troubleshoot-linux-server-sysdig.html</a><br></p><p><br></p><p>本文出自 “<a href="http://shanker.blog.51cto.com/">天涯海阁</a>” 博客，请务必保留此出处<a href="#">http://shanker.blog.51cto.com/1189689/1768735</a></p>
+    		</div><!--正文 end-->
+
+		
+<div class="m_sharebtn clear">
+	<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	  <tbody><tr>
+		<td valign="middle" width="11%" align="center" height="43"><img src="ssk.png" alt="分享至"></td>
+		<td valign="top" width="77%" align="left">
+<!-- 			
+<div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_mshare" data-cmd="mshare" title="分享到一键分享"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_bdhome" data-cmd="bdhome" title="分享到百度新首页"></a><a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a><a href="#" class="bds_youdao" data-cmd="youdao" title="分享到有道云笔记"></a><a href="#" class="bds_bdysc" data-cmd="bdysc" title="分享到百度云收藏"></a><a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a></div>
+<script>
+var bds_config = {'wbUid':1706976420};
+window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false, 'bdPic':'http://blog.51cto.com/attachment/201305/173413310.jpg',"bdStyle":"1","bdSize":"32"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+ -->
+
+<div class="bdsharebuttonbox"><a href="http://shanker.blog.51cto.com/#" class="bds_more" data-cmd="more"></a><a href="http://shanker.blog.51cto.com/#" class="bds_mshare" data-cmd="mshare" title="分享到一键分享"></a><a href="http://shanker.blog.51cto.com/#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="http://shanker.blog.51cto.com/#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a><a href="http://shanker.blog.51cto.com/#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="http://shanker.blog.51cto.com/#" class="bds_bdhome" data-cmd="bdhome" title="分享到百度新首页"></a><a href="http://shanker.blog.51cto.com/#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a><a href="http://shanker.blog.51cto.com/#" class="bds_youdao" data-cmd="youdao" title="分享到有道云笔记"></a><a href="http://shanker.blog.51cto.com/#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a><a href="http://shanker.blog.51cto.com/#" class="bds_bdysc" data-cmd="bdysc" title="分享到百度云收藏"></a><a href="http://shanker.blog.51cto.com/#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a></div>
+
+
+	<!-- Baidu Button END --></td>
+		<td valign="middle" width="12%" align="right"><a title="一键收藏，随时查看，分享好友！"><img src="favorite_add_small.gif" alt="一键收藏，随时查看，分享好友！" border="0"></a></td>
+	  </tr>
+	</tbody></table>
+
+</div>			
+    		<div class="showBottom">
+            <!--<div class="reviews"><span class="fl" style="cursor:pointer;"><a onclick="openFavoulist();" id="favourer">linuxzkq、eysdo、youerning</a>
+
+            </span><div id="favourdiv" class="support01">3人</div>
+              <span class="fl">了这篇文章</span></div>-->
+              <table width="720" border="0" cellpadding="0" cellspacing="0">
+  <tbody><tr>
+    <td align="right"><img src="icon01.png" width="15" height="16"> <span style="cursor: pointer;"><a id="favourer">linuxzkq、eysdo、youerning</a></span></td>
+    <td width="70" align="left"><div style="line-height: 28px;" id="favourdiv" class="support01">3人</div></td>
+    <td width="60" align="left">了这篇文章</td>
+  </tr>
+</tbody></table>
+
+
+
+
+            <div class="showType">类别：<a href="http://shanker.blog.51cto.com/1189689/d-11" class="operlink">Performance Tun</a>┆阅读(<span id="readNum">0</span>)┆评论(<span id="cmtNum">0</span>)
+
+┆
+<a href="http://shanker.blog.51cto.com/">返回博主首页</a>┆<a href="http://blog.51cto.com/">返回博客首页</a></div>
+            <div class="prevNext">
+
+			上一篇 <a href="http://shanker.blog.51cto.com/1189689/1768347" class="operlink" title="轻量级网络流量转发工具 - Balance">轻量级网络流量转发工具 - Balance</a>
+
+
+			下一篇 <a href="http://shanker.blog.51cto.com/1189689/1768828" class="operlink" title="sysdig案例分析 - 哪些文件正在被进程访问">sysdig案例分析 - 哪些文件正在被进程访问</a>
+
+
+            </div>
+
+            </div>
+
+	  </div><!--showBottom end-->
+      </div><!--modCon-->
+    <span class="modBot"></span>
+    </div><!--artShow end-->
+    <span class="blank"></span>
+	
+	<div class="relatedArt box">
+<a href="http://x.51cto.com/act/cto/pc/page/course_detail_shh_1?blogbanner" target="_blank"><img src="wKioL1esNQOCU7VCAAEwz6aDWnA280.jpg"></a>
+</div>
+
+<div class="artComm " style="height: 170px;">
+   <div class="relatedArt box1 mr10">
+    <div class="title" name="zhuanti" id="zhuanti"><h2>相关文章</h2></div>
+    <div class="modCon">
+<ul>
+
+
+<li><a href="http://shanker.blog.51cto.com/1189689/1768828" title="sysdig案例分析 - 哪些文件正在被进程访问" target="_blank">sysdig案例分析 - 哪些文件正在被进程访问</a></li>
+
+
+<li><a href="http://xiaoxiaozhou.blog.51cto.com/4681537/1267002" title="Linux系统故障排除" target="_blank">Linux系统故障排除</a></li>
+
+
+<li><a href="http://imace.blog.51cto.com/2975576/1540741" title="性能调优－跟踪事件" target="_blank">性能调优－跟踪事件</a></li>
+
+
+<li><a href="http://supercharles888.blog.51cto.com/609344/1213150" title="Liferay  前端性能调优(6)  总结" target="_blank">Liferay  前端性能调优(6)  总结</a></li>
+
+
+<li><a href="http://freeloda.blog.51cto.com/2033581/1346789" title="Linux 服务器故障排除的前五分钟 (First 5 Minutes Troubleshooting A Linux Server)" target="_blank">Linux 服务器故障排除的前五分钟 (First 5 M..</a></li>
+
+
+
+
+
+
+</ul>
+
+
+
+<span class="blank6"></span>
+</div><!--modCon end-->
+<span class="modBot"></span>
+</div>
+
+<!--相关文章 end-->
+        <div class="relatedArt box1">
+    <div class="title" name="zhuanti" id="zhuanti"><h2>职位推荐</h2></div>
+    <div class="modCon">
+
+<ul>
+
+
+<li><a href="http://gaozhao.51cto.com/job/view/id-3596.html" target="_blank">运维工程师</a></li>
+
+<li><a href="http://gaozhao.51cto.com/job/view/id-2549.html" target="_blank">高级运维工程师（高级讲师）</a></li>
+
+<li><a href="http://gaozhao.51cto.com/job/view/id-4327.html" target="_blank">中科信软招聘ansible兼职讲师</a></li>
+
+<li><a href="http://gaozhao.51cto.com/job/view/id-4323.html" target="_blank">微信开发项目经理</a></li>
+
+<li><a href="http://gaozhao.51cto.com/job/view/id-3033.html" target="_blank">运维工程师</a></li>
+
+
+
+</ul>
+
+
+
+
+<span class="blank6"></span>
+</div><!--modCon end-->
+<span class="modBot"></span>
+</div><!--职位推荐 end-->
+
+</div>
+
+
+<div class="artComm box">
+    <div class="title"><a name="replay"></a><h2>文章评论</h2></div>
+    <div class="modCon" id="artcomment">
+		<div>  &nbsp;</div><div>  &nbsp;</div>
+    </div><!--modCon-->
+        <span class="modBot"></span>
+</div><!--commBox end-->
+<a href="http://shanker.blog.51cto.com/" id="com_top_top"></a>
+<!--<div class="artComm box" style="750px;height:90px;">
+<script type="text/javascript">
+    var cpro_id = "u2386995";
+</script>
+<script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script>
+</div>--><form action="http://shanker.blog.51cto.com/comment.php?" method="post" name="form1" id="form1">
+<span class="blank1"></span>
+<div class="box writeComm" style="min-height: 30px;">
+<a name="comment"></a>
+<input name="action" value="comment" type="hidden">
+<input id="commenttid" name="tid" value="1768735" type="hidden">
+<input name="com_count_ajax" id="com_count_ajax" value="1" type="hidden">
+
+ <div class="title">
+	<h2 class="fl">发表评论&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h2>
+	<span class="fl" id="messageTj">
+<div style="color: red; font-family: 微软雅黑;"></div><div id="beacon_52a0adf3fa" style="position: absolute; left: 0px; top: 0px; visibility: hidden;"><img src="lg.php" alt="" style="width: 0px; height: 0px;" width="0" height="0"></div>
+
+</span>
+	
+</div>
+<div style="display: none;" rel="" id="ggBox">
+<div style="color: red; font-family: 微软雅黑;"></div><div id="beacon_52a0adf3fa" style="position: absolute; left: 0px; top: 0px; visibility: hidden;"><img src="lg.php" alt="" style="width: 0px; height: 0px;" width="0" height="0"></div>
+
+</div>
+
+ <div class="modCon">
+
+ <div class="commForm">
+<dl>
+<dt>昵&nbsp;&nbsp;称：</dt>
+<dd>
+
+<input id="commentusername" name="username" value="" class="commInput fl" type="text"><span><a href="http://home.51cto.com/index.php?reback=http%253A%252F%252Fshanker.blog.51cto.com%252F1189689%252F1768735" style="text-decoration: underline;">登录</a>&nbsp;&nbsp;<a href="http://ucenter.51cto.com/reg_01.php?reback=http://blog.51cto.com" target="_blank" style="text-decoration: underline;">快速注册</a></span>
+
+
+
+</dd>
+</dl>
+
+
+
+<dl id="commentyanzheng">
+
+
+<dt>验证码：</dt>
+<dd><input class="code" value="" id="commentauthnum" name="authnum" type="text">
+
+  <img class="fl" id="secunum" style="display: none;" width="78" height="29"><p class="fl"><span style="display: none;" id="spanfont">点击图片可刷新验证码</span><span style="display: inline;" id="clickfont">请点击后输入验证码</span><span class="pl5"><a href="http://51ctoblog.blog.51cto.com/26414/5591" target="_blank" style="text-decoration: underline;">博客过2级，无需填写验证码</a></span></p></dd>
+</dl>
+<dl>
+<dt>内&nbsp;&nbsp;容：</dt>
+<dd>
+<textarea class="writeCommCon f12" id="commentcontent" name="content"></textarea>
+</dd>
+</dl>
+</div>
+<div class="writeCommBot">
+  <input name="parentid" value="" id="parentid" type="hidden">
+  <input class="commBtn fl" name="submit" id="commentsubmit" value="" type="button">
+
+ <p class="fl" style="display: none;"><input class="fl" name="favour" id="favour" checked="" value="1" type="checkbox"><span class="fl">同时赞一个</span></p>
+
+</div>
+<span class="blank"></span>
+
+</div><!--modCon-->
+<span class="modBot"></span>
+</div>
+</form>
+<div style="display: none;">
+<a href="http://tongji.baidu.com/hm-web/welcome/ico?s=2283d46608159c3b39fc9f1178809c21" target="_blank"><img src="21.gif" width="20" border="0" height="20"></a>
+
+
+
+</div>
+<iframe src="index_1.html" id="iframe1" name="iframe1" width="0" height="0"></iframe>
+<!--发表评论 end-->
+</div>
+</div>
+<div id="f_close_box" style="width: 150px; height: 300px; position: fixed; top: 42%; left: 0px; z-index: 100;">
+
+	<img src="wKioL1VHFCjRwiyNAAB-jIackwQ674.jpg" usemap="#Map1" border="0">
+    <map name="Map1" id="Map1">
+      <area shape="rect" coords="124,7,143,25">
+    </map>
+    
+</div>
+
+
+
+
+
+<!-- <script src="http://blog.51cto.com/js/blog_top_list.php" type="text/javascript" language="javascript"></script> -->
+
+<div id="message" class="blogpop" style="background-color: rgb(255, 255, 255); z-index: 100; width: 389px; height: 196px; position: absolute; bottom: 0px; right: 0px; overflow: hidden; top: 1446px;"><iframe src="index_2.html" style="width: 800px; height: 536px; top: 0px; left: 0px; position: absolute; visibility: inherit; z-index: -1;" frameborder="0"></iframe>
+<div style="height: 36px; background: url(&quot;popbgx.jpg&quot;) repeat-x scroll 0% 0% transparent; position: relative; width: 387px; border-right-color: rgb(38, 104, 183); border-right-width: 2px;"><span style="right: 10px; padding: 12px 0px 0px; position: absolute; top: 0px;"><span style="margin-right: 80px; color: rgb(130, 130, 130); width: 190px; padding: 10px 0px 0px 10px; font-size: 14px;">每日博报 精彩不止一点</span><img title="关闭" id="message_close" src="close.jpg" alt="关闭"></span><div style="width: 387px; height: 36px; left: 0px; overflow: hidden; text-indent: -999em; background: url(&quot;hdtit.jpg&quot;) no-repeat scroll 0% 0% transparent; border-right: 2px solid rgb(38, 104, 183);"><a style="display: block; height: 36px; width: 138px;" target="_blank" href="http://blog.51cto.com/"></a>
+</div>
+<div style="clear: both;"></div>
+</div>
+	<div id="message_content" style="border-top: medium none; font-family: Microsoft YaHei; font-size: 12px; width: 389px; text-align: left; overflow: hidden;">
+	<div class="blogpopMain">
+<div class="l">
+<a target="_blank" href="http://blog.51cto.com/zt/695"><img src="wKioL1ea8kqzmp9sAAAqluZQmDk045.jpg" width="105" height="105"></a>
+<p>
+<a target="_blank" href="http://blog.51cto.com/zt/695"> Lync Server 2013部署 </a></p>
+</div>
+<div class="r">
+<h4 style="text-align: left;">
+<a target="_blank" href="http://lavenliu.blog.51cto.com/5060944/1836500">  Python开发环境之pyenv搭建</a>
+</h4>
+<ul>
+<li>
+<a target="_blank" href="http://chawan.blog.51cto.com/9179874/1836438">Linux之sed流编辑器详解</a>
+</li>
+<li>
+<a target="_blank" href="http://yangsir.blog.51cto.com/1549/1813902" style="color: red;">总编下午茶：技术老男人的创业经</a>
+</li>
+<li>
+<a target="_blank" href="http://gaowenlong.blog.51cto.com/451336/1835545"> Linux 下Shell脚本回滚删除数据 </a></li>
+<li><a target="_blank" href="http://bbs.51cto.com/thread-1435374-1.html" style="color: red;">【小编赠书】Scala编程实战
+</a></li>
+</ul>
+</div>
+</div><div id="beacon_8b9c1a1c31" style="position: absolute; left: 0px; top: 0px; visibility: hidden;"><img src="lg_001.php" alt="" style="width: 0px; height: 0px;" width="0" height="0"></div>
+
+	</div>
+</div>
+
+
+<div style="display: block;" title="返回顶部" class="backToTop tops">返回顶部</div>
+
+
+
+
+
+
+<div class="clear"></div>
+<!-- <script>
+jQuery(function(){
+	var html= "<div id=\"sogou_se_tgbar\" style=\"text-align:center;margin:0px auto 2px auto;clear:both;background:url(http://home.51cto.com/public/images/notice/sogou_se_tgbar_bg_final1.gif) repeat-x;width:950px;color:#000;font-size:13px;height:36px;z-index:21474836471\"><div style=\"float:left;cursor:pointer;width:910px;text-align:center;border-left:solid #efbf00 1px;height:32px; line-height:32px;txt-align:center;\"><span style=\"\">	<a href=\"http://51ctoblog.blog.51cto.com/26414/1093282\">【新年祝福征集】51CTO社区年底嘉年华活动正在征集博主祝福语，祝福以红包的形式随机的赠送给访问51CTO的网友 点此送祝福>></a></span></div><div onclick=\"document.getElementById('sogou_se_tgbar').style.display = 'none';\" style=\"float:right;width:20px;cursor:pointer;height:28px;padding:4px 8px 0px 8px;border-right:solid #efbf00 1px\"><img style=\"border:none;margin:4px 0px 0px 0px;\" src=\"http://home.51cto.com/public/images/notice/sogou_se_tgbar_close_final1.gif\"></div></div>"
+	jQuery('body').prepend(html);
+})
+</script> -->
+
+<div id="footer">
+  <div id="innerFooter">
+	<center>
+		<small>
+			Copyright By 51CTO.COM 版权所有<br><br>
+			<a href="http://blog.51cto.com/" target="_blank"><img src="copyright.jpg"></a>
+	  </small>
+	</center>
+  </div>
+</div>
+
+<div style="display: none;">
+
+
+<div style="display: none;">
+
+
+
+
+</div>
+<iframe src="index_3.html" scrolling="no" width="0" frameborder="0" height="0"></iframe>
+</div>
+<div style="display: none;"><div>
+
+
+
+
+</div></div></body><div style="display: none; width: 24px;" id="diigotb-imagepanel"><div class="diigotb-btn enabled" title="Save this image to Diigo" id="diigotb-quick-save"></div></div><div style="display: none;" class="diigotb-border diigotb-left"></div><div style="display: none;" class="diigotb-border diigotb-top"></div><div style="display: none;" class="diigotb-border diigotb-right"></div><div style="display: none;" class="diigotb-border diigotb-bottom"></div>
+</html>

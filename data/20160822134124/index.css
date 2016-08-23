@@ -1,0 +1,216 @@
+/* ::::: https://linuxtoy.org/theme/css/main.css ::::: */
+
+html { font-family: sans-serif; }
+body { margin: 0px; }
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary { display: block; }
+a { background-color: transparent; }
+a:active, a:hover { outline: 0px none; }
+h1 { font-size: 2em; margin: 0.67em 0px; }
+img { border: 0px none; }
+pre { overflow: auto; }
+code, kbd, pre, samp { font-family: monospace,monospace; font-size: 1em; }
+.pure-g { letter-spacing: -0.31em; text-rendering: optimizespeed; font-family: FreeSans,Arimo,"Droid Sans",Helvetica,Arial,sans-serif; align-content: flex-start; }
+.pure-g [class*="pure-u"] { font-family: sans-serif; }
+.pure-u-1, .pure-u-1-1, .pure-u-1-2, .pure-u-1-3, .pure-u-2-3, .pure-u-1-4, .pure-u-3-4, .pure-u-1-5, .pure-u-2-5, .pure-u-3-5, .pure-u-4-5, .pure-u-5-5, .pure-u-1-6, .pure-u-5-6, .pure-u-1-8, .pure-u-3-8, .pure-u-5-8, .pure-u-7-8, .pure-u-1-12, .pure-u-5-12, .pure-u-7-12, .pure-u-11-12, .pure-u-1-24, .pure-u-2-24, .pure-u-3-24, .pure-u-4-24, .pure-u-5-24, .pure-u-6-24, .pure-u-7-24, .pure-u-8-24, .pure-u-9-24, .pure-u-10-24, .pure-u-11-24, .pure-u-12-24, .pure-u-13-24, .pure-u-14-24, .pure-u-15-24, .pure-u-16-24, .pure-u-17-24, .pure-u-18-24, .pure-u-19-24, .pure-u-20-24, .pure-u-21-24, .pure-u-22-24, .pure-u-23-24, .pure-u-24-24 { display: inline-block; letter-spacing: normal; word-spacing: normal; vertical-align: top; text-rendering: auto; }
+.pure-u-1, .pure-u-1-1, .pure-u-5-5, .pure-u-24-24 { width: 100%; }
+@media only screen and (max-width: 480px) {
+}
+.pure-menu { box-sizing: border-box; }
+.pure-menu-list, .pure-menu-item { position: relative; }
+.pure-menu-list { list-style: none outside none; margin: 0px; padding: 0px; }
+.pure-menu-item { padding: 0px; margin: 0px; height: 100%; }
+.pure-menu-link, .pure-menu-heading { display: block; text-decoration: none; white-space: nowrap; }
+.pure-menu-heading { text-transform: uppercase; color: rgb(86, 93, 100); }
+.pure-menu-link { color: rgb(119, 119, 119); }
+.pure-menu-link, .pure-menu-disabled, .pure-menu-heading { padding: 0.5em 1em; }
+.pure-menu-active > .pure-menu-link, .pure-menu-link:hover, .pure-menu-link:focus { background-color: rgb(238, 238, 238); }
+/* ::::: https://linuxtoy.org/theme/css/grids-responsive-min.css ::::: */
+
+@media screen and (min-width: 35.5em) {
+}
+@media screen and (min-width: 48em) {
+  .pure-u-md-1, .pure-u-md-1-1, .pure-u-md-1-2, .pure-u-md-1-3, .pure-u-md-2-3, .pure-u-md-1-4, .pure-u-md-3-4, .pure-u-md-1-5, .pure-u-md-2-5, .pure-u-md-3-5, .pure-u-md-4-5, .pure-u-md-5-5, .pure-u-md-1-6, .pure-u-md-5-6, .pure-u-md-1-8, .pure-u-md-3-8, .pure-u-md-5-8, .pure-u-md-7-8, .pure-u-md-1-12, .pure-u-md-5-12, .pure-u-md-7-12, .pure-u-md-11-12, .pure-u-md-1-24, .pure-u-md-2-24, .pure-u-md-3-24, .pure-u-md-4-24, .pure-u-md-5-24, .pure-u-md-6-24, .pure-u-md-7-24, .pure-u-md-8-24, .pure-u-md-9-24, .pure-u-md-10-24, .pure-u-md-11-24, .pure-u-md-12-24, .pure-u-md-13-24, .pure-u-md-14-24, .pure-u-md-15-24, .pure-u-md-16-24, .pure-u-md-17-24, .pure-u-md-18-24, .pure-u-md-19-24, .pure-u-md-20-24, .pure-u-md-21-24, .pure-u-md-22-24, .pure-u-md-23-24, .pure-u-md-24-24 { display: inline-block; letter-spacing: normal; word-spacing: normal; vertical-align: top; text-rendering: auto; }
+  .pure-u-md-1-5 { width: 20%; }
+  .pure-u-md-3-5 { width: 60%; }
+}
+@media screen and (min-width: 64em) {
+}
+@media screen and (min-width: 80em) {
+}
+/* ::::: https://linuxtoy.org/theme/css/side-menu.css ::::: */
+
+body { color: rgb(119, 119, 119); background-color: rgb(255, 255, 255); }
+html, button, input, select, textarea, .pure-g [class*="pure-u"] { font-family: Aller,"Noto Sans","DejaVu Sans",sans-serif; }
+a { text-decoration: none; color: rgb(61, 146, 201); }
+a:hover, a:focus { text-decoration: underline; }
+#layout, #menu, .menu-link { transition: all 0.2s ease-out 0s; }
+#layout { position: relative; padding-left: 0px; }
+.content { margin: 0px auto 50px; padding: 0px 2em; max-width: 800px; line-height: 1.6em; }
+.header { margin: 0px; color: rgb(51, 51, 51); padding: 2.5em 2em 0px; }
+.content-subhead { text-transform: uppercase; color: rgb(170, 170, 170); border-bottom: 1px solid rgb(238, 238, 238); padding: 0.4em 0px; font-size: 80%; font-weight: 500; letter-spacing: 0.1em; }
+.posts { font-family: Aller,"Noto Sans","DejaVu Sans",sans-serif; }
+.post { padding-bottom: 2em; }
+.post-title { font-size: 1.5em; color: rgb(34, 34, 34); margin-bottom: 0.2em; }
+.post-description { font-family: Aller,"Noto Sans","DejaVu Sans",sans-serif; color: rgb(68, 68, 68); line-height: 1.8em; }
+.post-meta { color: rgb(153, 153, 153); font-size: 90%; margin: 0px; }
+.footer { text-align: center; padding: 1em 0px; }
+.footer a { font-size: 90%; }
+pre, code { font-family: "Source Code Pro","DejaVu Sans Mono",Consolas,Courier,monospace; font-size: 90%; padding: 0.2em 0.4em; color: rgb(51, 51, 51); background: none repeat scroll 0% 0% rgb(250, 250, 250); }
+code { white-space: nowrap; }
+.content p code { font-size: 90%; }
+.nav-left { float: left; margin-right: 40px; }
+.nav-right { float: right; }
+#menu { margin-left: -150px; width: 150px; position: fixed; top: 0px; left: 0px; bottom: 0px; z-index: 1000; background: none repeat scroll 0% 0% rgb(25, 24, 24); overflow-y: auto; }
+#menu a { color: rgb(153, 153, 153); border: medium none; padding: 0.6em 0px 0.6em 0.6em; }
+#menu .pure-menu-heading { font-size: 110%; color: rgb(255, 255, 255); margin: 0px; }
+#menu .pure-menu-heading:hover, #menu .pure-menu-heading:focus { color: rgb(153, 153, 153); }
+.menu-link { position: fixed; display: block; top: 0px; left: 0px; background: none repeat scroll 0% 0% rgba(0, 0, 0, 0.7); font-size: 10px; z-index: 10; width: 2em; height: auto; padding: 2.1em 1.6em; }
+.menu-link:hover, .menu-link:focus { background: none repeat scroll 0% 0% rgb(0, 0, 0); }
+.menu-link span { position: relative; display: block; }
+.menu-link span, .menu-link span:before, .menu-link span:after { background-color: rgb(255, 255, 255); width: 100%; height: 0.2em; }
+.menu-link span:before, .menu-link span:after { position: absolute; margin-top: -0.6em; content: " "; }
+.menu-link span:after { margin-top: 0.6em; }
+@media (min-width: 48em) {
+  .header, .content { padding-left: 2em; padding-right: 2em; }
+  #layout { padding-left: 150px; left: 0px; }
+  #menu { left: 150px; }
+  .menu-link { position: fixed; left: 150px; display: none; }
+}
+@media (max-width: 48em) {
+}
+/* ::::: https://linuxtoy.org/theme/css/pygments.css ::::: */
+
+.k { color: rgb(0, 112, 32); font-weight: bold; }
+.kn { color: rgb(0, 112, 32); font-weight: bold; }
+.s { color: rgb(64, 112, 160); }
+.no { color: rgb(96, 173, 213); }
+.nv { color: rgb(187, 96, 213); }
+.mi { color: rgb(64, 160, 112); }
+/* ::::: [internal] ::::: */
+
+@media screen {
+  #diigotb-imagepanel { height: 22px ! important; position: absolute ! important; z-index: 11000022 ! important; margin: 0px ! important; }
+  #diigotb-imagepanel .diigotb-btn { cursor: pointer ! important; width: 20px ! important; height: 20px ! important; margin: 2px ! important; float: left ! important; background: url("chrome://diigotb/skin/save-image-action-icons.png") no-repeat scroll 0% 0% transparent ! important; }
+  #diigotb-imagepanel #diigotb-quick-save { background-position: 0px 0px ! important; }
+  .diigotb-border { position: absolute ! important; z-index: 11000000 ! important; margin: 0px ! important; background-color: rgb(75, 140, 220) ! important; }
+  .diigotb-left { width: 1px ! important; }
+  .diigotb-right { width: 1px ! important; }
+  .diigotb-top { height: 1px ! important; }
+  .diigotb-bottom { height: 1px ! important; }
+}
+@media print {
+}
+/* ::::: [internal] ::::: */
+
+/* ::::: https://s.swiftypecdn.com/assets/new_embed-28251278dfbb54588d68fbd8d7cc72ba.css ::::: */
+
+@font-face {
+  font-family: "National";
+  font-weight: 100;
+  src: url("nat_thin-388d29fe3bcc126a4a9dc3418fa40c4e.woff") format("woff");
+}
+@font-face {
+  font-family: "National";
+  font-weight: 200;
+  src: url("nat_light-093b9834dbb0257c0ceb77150f20a9b8.woff") format("woff");
+}
+@font-face {
+  font-family: "National";
+  font-weight: normal;
+  src: url("nat_reg-22dcc0ae0b5718ef7847901ca86575d8.woff") format("woff");
+}
+@font-face {
+  font-family: "National";
+  font-weight: bold;
+  src: url("nat_bold-7e5756dd172cc0f3d7a65c0289bbcac7.woff") format("woff");
+}
+@font-face {
+  font-family: "National";
+  font-weight: 100;
+  src: url("nat_thin-388d29fe3bcc126a4a9dc3418fa40c4e.woff") format("woff");
+}
+@font-face {
+  font-family: "National";
+  font-weight: 200;
+  src: url("nat_light-093b9834dbb0257c0ceb77150f20a9b8.woff") format("woff");
+}
+@font-face {
+  font-family: "National";
+  font-weight: normal;
+  src: url("nat_reg-22dcc0ae0b5718ef7847901ca86575d8.woff") format("woff");
+}
+@font-face {
+  font-family: "National";
+  font-weight: bold;
+  src: url("nat_bold-7e5756dd172cc0f3d7a65c0289bbcac7.woff") format("woff");
+}
+@keyframes st-ui-fade-in {
+0% { opacity: 0; transform: scale(0.9); }
+100% { opacity: 1; transform: scale(1); }
+}
+@keyframes st-ui-fade-in {
+0% { opacity: 0; transform: scale(0.9); }
+100% { opacity: 1; transform: scale(1); }
+}
+@keyframes st-ui-fade-out {
+0% { opacity: 1; transform: scale(1); }
+100% { opacity: 0; transform: scale(0.9); }
+}
+@keyframes st-ui-fade-out {
+0% { opacity: 1; transform: scale(1); }
+100% { opacity: 0; transform: scale(0.9); }
+}
+@keyframes st-ui-slide-in {
+0% { transform: translate(-110%, 0px); }
+100% { transform: translate(0px, 0px); }
+}
+@keyframes st-ui-slide-in {
+0% { transform: translate(-110%, 0px); }
+100% { transform: translate(0px, 0px); }
+}
+@keyframes st-ui-slide-out {
+0% { transform: translate(0px, 0px); }
+100% { transform: translate(-110%, 0px); }
+}
+@keyframes st-ui-slide-out {
+0% { transform: translate(0px, 0px); }
+100% { transform: translate(-110%, 0px); }
+}
+@media only screen and (max-width: 680px) {
+}
+@font-face {
+  font-family: "National";
+  font-weight: 100;
+  src: url("nat_thin-388d29fe3bcc126a4a9dc3418fa40c4e.woff") format("woff");
+}
+@font-face {
+  font-family: "National";
+  font-weight: 200;
+  src: url("nat_light-093b9834dbb0257c0ceb77150f20a9b8.woff") format("woff");
+}
+@font-face {
+  font-family: "National";
+  font-weight: normal;
+  src: url("nat_reg-22dcc0ae0b5718ef7847901ca86575d8.woff") format("woff");
+}
+@font-face {
+  font-family: "National";
+  font-weight: bold;
+  src: url("nat_bold-7e5756dd172cc0f3d7a65c0289bbcac7.woff") format("woff");
+}
+@media only screen and (max-width: 840px) {
+}
+@media only screen and (min-width: 680px) {
+}
+@media only screen and (max-width: 680px) {
+}
+@media only screen and (max-width: 512px) {
+}
+@media only screen and (max-width: 400px) {
+}
+@media only screen and (max-width: 360px) {
+}
+@media not all, not all, not all, not all, only screen and (min-resolution: 1.5dppx) {
+}
+/* ::::: [internal] ::::: */
+

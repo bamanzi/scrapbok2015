@@ -1,0 +1,638 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="x-ua-compatible" content="ie=7">
+
+<title>Monitorix：一款面向Linux的轻型系统和网络监测工具 - 51CTO.COM</title>
+<meta name="description" content="Monitorix是一款功能非常强大的免费开源轻型工具，目的在于监测Linux中的系统和网络资源。该工具是专门为了监测基于红帽、CentOS和Fedora的系统而开发的，但如今它可以在许多不同版本的GNU/Linux发行版上运行，可以监测系统整体性能，还有助于检测瓶颈、故障、不必要的超长响应时间及其他异常活动。">
+<meta name="keywords" content="Monitorix,监测工具">
+<base target="_blank">
+
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body><iframe src="index_1.html" style="display: none;" frameborder="0"></iframe><div style="display: block;" id="bdshare_s"><iframe src="index_2.html" id="bdsIfr" style="position: absolute; display: none; z-index: 9999;" frameborder="0"></iframe><div style="display: none;" id="bdshare_l"><div id="bdshare_l_c"><h6>分享到</h6><ul><li><a href="#" class="bds_mshare mshare">一键分享</a></li><li><a href="#" class="bds_qzone qqkj">QQ空间</a></li><li><a href="#" class="bds_tsina xlwb">新浪微博</a></li><li><a href="#" class="bds_bdysc bdysc">百度云收藏</a></li><li><a href="#" class="bds_renren rrw">人人网</a></li><li><a href="#" class="bds_tqq txwb">腾讯微博</a></li><li><a href="#" class="bds_bdxc bdxc">百度相册</a></li><li><a href="#" class="bds_kaixin001 kxw">开心网</a></li><li><a href="#" class="bds_tqf txpy">腾讯朋友</a></li><li><a href="#" class="bds_tieba bdtb">百度贴吧</a></li><li><a href="#" class="bds_douban db">豆瓣网</a></li><li><a href="#" class="bds_tsohu shwb">搜狐微博</a></li><li><a href="#" class="bds_bdhome bdhome">百度新首页</a></li><li><a href="#" class="bds_sqq sqq">QQ好友</a></li><li><a href="#" class="bds_thx thx">和讯微博</a></li><li><a href="#" class="bds_more">更多...</a></li></ul><p><a href="#" class="goWebsite">百度分享</a></p></div></div></div>
+<!-- 导航 开始-->
+<meta http-equiv="Cache-Control" content="no-siteapp"><link rel="alternate" media="handheld" href="http://os.51cto.com/art/201312/425377.htm#">
+<div id="home_top">    <div class="top_nav">        <div class="left" style="width: 400px;"><div class="logo_51cto" title="51CTO.COM - 技术成就梦想 -  中国领先的IT技术网站"></div><a href="http://www.51cto.com/">首页</a><img src="top_bg_xian.gif" style="padding-top: 2px;" width="16" align="absmiddle" height="25"><a href="http://www.51cto.com/col/35/" target="_blank">技术频道<img src="nav_ico1.gif" style="padding-left: 4px;" align="absmiddle"></a><img src="top_bg_xian.gif" width="16" align="absmiddle" height="25"><a href="http://www.51cto.com/" target="_blank">51CTO旗下网站<img src="nav_ico1.gif" style="padding-left: 4px;" align="absmiddle"></a><img src="top_bg_xian.gif" width="16" align="absmiddle" height="25"><a href="http://www.51cto.com/about/map.htm" target="_blank">地图</a> <a href="http://www.51cto.com/about/rss.html" target="_blank"><img src="143749870.gif" style="vertical-align: middle; margin-bottom: 5px; margin-left: 5px;"></a>       </div>        <div class="right">            <div class="more"><img src="top_shequ.gif" width="27" align="absmiddle" height="16"><a href="http://gaozhao.51cto.com/" target="_blank" style="color: rgb(204, 0, 0);">招聘</a><a href="http://edu.51cto.com/" target="_blank" style="color: rgb(204, 0, 0);">学院</a><a href="http://down.51cto.com/" target="_blank">下载</a><a href="http://bbs.51cto.com/" target="_blank">论坛</a><a href="http://blog.51cto.com/" target="_blank">博客</a><a>更多<img src="nav_ico1.gif" style="padding-left: 4px;" align="absmiddle"></a>            </div>            <span id="login_status"><div class="login" style="padding-top: 8px; text-align: right;"><a href="http://home.51cto.com/index?reback=http://os.51cto.com/art/201312/425377.htm" target="_self">登录</a><a href="http://ucenter.51cto.com/2015/register.php?reback=http://os.51cto.com/art/201312/425377.htm" target="_self">注册</a></div></span>                </div>    </div></div>
+<div class="subMenu1" id="s1">
+<ul>
+<li><a href="http://network.51cto.com/" target="_blank">网络</a></li>
+<li><a href="http://netsecurity.51cto.com/" target="_blank">安全</a></li>
+<li><a href="http://developer.51cto.com/" target="_blank">开发</a></li>
+<li><a href="http://database.51cto.com/" target="_blank">数据库</a></li>
+<li><a href="http://server.51cto.com/" target="_blank">服务器</a></li>
+<li><a href="http://os.51cto.com/" target="_blank">系统</a></li>
+<li><a href="http://virtual.51cto.com/" target="_blank">虚拟化</a></li>
+<li><a href="http://cloud.51cto.com/" target="_blank">云计算</a></li>
+<li><a href="http://developer.51cto.com/embed/" target="_blank">嵌入式</a></li>
+<li><a href="http://mobile.51cto.com/" target="_blank">移动开发</a></li>
+</ul>
+</div> 
+<div class="subMenu2" id="s2">
+<ul>
+<li><a href="http://www.51cto.com/" target="_blank" title="中国领先的IT技术网站">51CTO.COM</a></li>
+<li><a href="http://www.cioage.com/" target="_blank" title="中国首个专门服务于CIO的专业网站">CIOage.com</a></li>
+<li><a href="http://www.watchstor.com/" target="_blank" title="领先的中文存储网络媒体">WatchStor.com</a></li>
+<li><a href="http://www.hc3i.cn/" target="_blank" title="中国首家专注于数字医疗及医疗信息化的专业网站">HC3i.cn</a></li>
+</ul>
+</div>
+
+
+
+<div class="subMenu3" id="s3" style="z-index: 9999; position: absolute;">
+<ul>
+<li><a href="http://home.51cto.com/" target="_blank">家园</a></li>
+<li><a href="http://gaozhao.51cto.com/" target="_blank" style="color: red;">招聘</a></li>
+<li><a href="http://edu.51cto.com/" target="_blank">学院</a></li>
+<li><a href="http://blog.51cto.com/" target="_blank">博客</a></li>
+<li><a href="http://bbs.51cto.com/" target="_blank">论坛</a></li>
+<li><a href="http://down.51cto.com/" target="_blank">下载</a></li>
+<li><a href="http://selftest.51cto.com/" target="_blank">自测</a></li>
+<li><a href="http://doctor.51cto.com/" target="_blank">门诊</a></li>
+<li><a href="http://blog.51cto.com/newsletter/" target="_blank">周刊</a></li>
+<li><a href="http://book.51cto.com/" target="_blank">读书</a></li>
+<li><a href="http://t.51cto.com/" target="_blank" style="color: red;">题库</a></li>
+</ul>
+</div>
+
+<!-- 登陆信息 -->
+<!-- 导航 结束--> 
+ <div class="g_39 mb10">
+	<div id="tonglanad" class="fl"><iframe noresize="" marginheight="0" marginwidth="0" src="index_3.html" scrolling="No" width="760" align="middle" frameborder="0" height="90"></iframe></div>
+	<div id="list4" class="fr">
+		<ul>
+			<li id="wordlinkad1"><a href="http://gg1.51cto.com/www/delivery/ck.php?oaparams=2__bannerid=4317__zoneid=254__cb=39c111057d__oadest=http%3A%2F%2Fnetwork.51cto.com%2Fact%2Ft1_2015%2F10" target="_blank"><font color="red">高性能融合安全架构解析</font></a><div id="beacon_39c111057d" style="position: absolute; left: 0px; top: 0px; visibility: hidden;"><img src="lg_001.php" alt="" style="width: 0px; height: 0px;" width="0" height="0"></div>
+</li>
+			<li id="wordlinkad2"><a href="http://gg2.51cto.com/www/delivery/ck.php?oaparams=2__bannerid=3990__zoneid=255__cb=4dd50614a4__oadest=http%3A%2F%2Fserver.51cto.com%2Fact%2Fveeam2016%2Fveeam" target="_blank"><font color="red">Veeam助力财富500强</font></a><div id="beacon_4dd50614a4" style="position: absolute; left: 0px; top: 0px; visibility: hidden;"><img src="lg_002.php" alt="" style="width: 0px; height: 0px;" width="0" height="0"></div>
+</li>
+			<li id="wordlinkad3"><a href="http://gg.51cto.com/www/delivery/ck.php?oaparams=2__bannerid=3717__zoneid=594__cb=73eb5f59a4__oadest=http%3A%2F%2Fedu.51cto.com%2Ftraining%2Ftraining_id-18.html%3Fxiaoshou" target="_blank"><font color="red">微软企业级内训课程免费学</font></a><div id="beacon_73eb5f59a4" style="position: absolute; left: 0px; top: 0px; visibility: hidden;"><img src="lg_003.php" alt="" style="width: 0px; height: 0px;" width="0" height="0"></div>
+</li>
+			<li id="wordlinkad4"><a href="http://gg1.51cto.com/www/delivery/ck.php?oaparams=2__bannerid=3549__zoneid=636__cb=f7ffb74533__oadest=http%3A%2F%2Fedu.51cto.com%2Ftraining%2Ftraining_id-17.html%3Fxiaoshou" target="_blank"><font color="red">2016年备战软考-重难点解析</font></a><div id="beacon_f7ffb74533" style="position: absolute; left: 0px; top: 0px; visibility: hidden;"><img src="lg_004.php" alt="" style="width: 0px; height: 0px;" width="0" height="0"></div>
+</li>
+		</ul>
+	</div>
+<br class="dle">
+</div>
+
+<div class="g_39 menu">
+<div class="subNav_logo">
+<a href="http://os.51cto.com/" target="_blank"><img src="caozuoxitong_logo.gif" border="0"></a></div>
+<div class="subNav_l">
+<a href="http://os.51cto.com/col/543/" target="_blank">新闻</a> | 
+<a href="http://os.51cto.com/linux/" target="_blank">Linux</a> | 
+<a href="http://os.51cto.com/windows/" target="_blank">Windows</a> | 
+<a href="http://os.51cto.com/col/975/" target="_blank">浏览器</a> | 
+<a href="http://os.51cto.com/col/610/" target="_blank">开源</a> | 
+<a href="http://os.51cto.com/col/545/" target="_blank">运维</a> | 
+<a href="http://publish.51cto.com/list/519/" target="_blank">全部</a> | 
+<a href="http://os.51cto.com/art/201106/266501.htm" target="_blank">投稿指南</a> | 
+<a href="http://os.51cto.com/art/201109/292676.htm"><img src="143749870.gif" alt="RSS" width="15" height="16"> RSS订阅</a>
+</div>
+  
+<div class="search fr">
+<dl>
+<form name="searchform" action="http://www.51cto.com/php/search.php" target="_blank" method="post" style="margin: 0px; padding: 0px;">
+<dt class="fl"><input name="keyword" class="searchInput f14 input" value="请输入关键字" type="text"></dt>
+<dd class="fl"><input src="search.gif" type="image"></dd></form>
+</dl>
+</div>
+<br class="dle">
+</div>
+<div class="g_39 b3-s-4273B3 rel">
+<!--width : 26*25 - 15 = 635px-->
+<div class="g_26 fl m_l">
+<div class="brief bgF8F8F8">
+<p class="crumb ">您所在的位置：<a href="http://os.51cto.com/">操作系统</a> &gt; <a href="http://os.51cto.com/col/545/">运维经验&amp;工具</a> &gt;  <b>Monitorix：一款面向Linux的轻型系统和网络监测工具</b> </p>
+<h1>Monitorix：一款面向Linux的轻型系统和网络监测工具</h1>
+<div class="msg">
+<div>2013-12-26 09:46  布加迪编译  51CTO.com <span class="f12-a"><a href="#commment" target="_self"></a></span> 字号：<span class="f14-b"><a target="_self">T</a></span> | <span class="f16-b"><a target="_self">T</a></span></div>
+<div class="artHd" id="books" style="padding: 5px 25px; display: none;"></div>
+<div class="fav"><a title="一键收藏，随时查看，分享好友！" target="_self"><img src="Fav.gif" alt="一键收藏，随时查看，分享好友！" border="0"></a></div>
+</div>
+<div class="brieftext">
+<p class="f14 green">Monitorix是一款功能非常强大的免费开源轻型工具，目的在于监测Linux中的系统和网络资源。该工具是专门为了监测基于红帽、CentOS和Fedora的系统而开发的，但如今它可以在许多不同版本的GNU/Linux发行版上运行，可以监测系统整体性能，还有助于检测瓶颈、故障、不必要的超长响应时间及其他异常活动。</p>
+<p class="ad">AD：<a href="http://mobile.51cto.com/mobile/mdsa12/" target="_blank" style="text-decoration: none; color: red;">51CTO 网+ 第十二期沙龙：大话数据之美_如何用数据驱动用户体验</a>
+</p>
+</div>
+</div>
+<div class="tag bgF8F8F8" id="indexlist" style="display: none;">
+<ul id="indexliststr">
+</ul>
+<br class="dle">
+</div>
+<div class="content bgF8F8F8 f14">
+<div id="content">
+<p></p><p>【2013年12月26日 51CTO外电头条】Monitorix是一款功能非常强大的免费开源轻型工具，目的在于监测Linux中的系统和网络资源。它可以定期收集系统和网络数据，并使用自己的Web界面，通过图形显示相关信息。Monitorix让用户可以监测系统整体性能，还有助于检测瓶颈、故障、不必要的超长响应时间及其他异常活动。</p>
+<p>Monitorix用Perl语言编写而成，许可证遵循通用公共许可证（GNU）的条款，由自由软件基金会（FSP）发布。它使用RRDtool来生成图形，然后使用Web界面显示这些图形。</p>
+<p>该工具是专门为了监测基于红帽、CentOS和Fedora的系统而开发的，但如今它可以在许多不同版本的GNU/Linux发行版上运行，甚至可以在诸如OpenBSD、NetBSD和FreeBSD之类的UNIX系统上运行。</p>
+<p>Monitorix目前处于积极开发的状态，增添了新的特性、新的图形、新的更新版，并修复了软件错误，从而为Linux系统/网络管理员们提供了一款出色的工具。</p>
+<p><strong>Monitorix功能简介</strong></p>
+<ul>
+    <li>监测系统负载平均数值、活动进程、每个处理器的内核使用情况、全局内核使用情况和内存分配情况。</li>
+    <li>监测磁盘驱动器的温度和健康状况。</li>
+    <li>监测文件系统的使用情况和文件系统的输入/输出活动。</li>
+    <li>监测多达10个网络设备的网络流量使用情况。</li>
+    <li>监测众多系统服务，包括SSH、FTP、Vsftpd、ProFTP、SMTP、POP3、IMAP、POP3、VirusMail和Spam。</li>
+    <li>显示MTA Mail的统计数字，包括输入连接和输出连接。</li>
+    <li>显示网络端口流量，包括TCP和UDP等。</li>
+    <li>显示FTP的统计数字，使用FTP服务器的日志文件格式。</li>
+    <li>显示本地或远程服务器的Apache统计数字。</li>
+    <li>显示本地或远程服务器的MySQL统计数字。</li>
+    <li>显示Squid代理Web缓存的统计数字。</li>
+    <li>显示Fail2ban的统计数字。</li>
+    <li>监测远程服务器（多主机）。</li>
+    <li>能够按照每天、每周、每月或每年，通过图形或明文表格查看统计数字。</li>
+    <li>能够缩放图形，以便更清楚地查看。</li>
+    <li>能够定义每一行的图形数量。</li>
+    <li>内置的HTTP服务器。</li>
+</ul>
+<p>想了解新功能和更新版的完整列表，请访问官方的<a href="http://www.monitorix.org/features.html" target="_blank">功能特性页面</a>。</p>
+<p><strong>将Monitorix安装到RHEL/CentOS/Fedora Linux上</strong></p>
+<p>首先，安装下列所需的程序包。</p>
+<pre><ol class="dp-xml"><li class="alt"><span><span>#&nbsp;yum&nbsp;install&nbsp;rrdtool&nbsp;rrdtool-perl&nbsp;perl-libwww-perl&nbsp;perl-MailTools&nbsp;perl-MIME-Lite&nbsp;perl-CGI&nbsp;perl-DBI&nbsp;perl-XML-Simple&nbsp;perl-Config-General&nbsp;perl-HTTP-Server-Simple&nbsp;wget&nbsp;</span></span></li></ol></pre>
+<p>要是万一yum未能成功安装一个或多个上述程序包，那么你可以启用下列额外的软件库来安装它们。</p>
+<p><strong>启用EPEL软件库</strong></p>
+<p>启用RPMforge软件库</p>
+<p>下一步，使用wget命令，下载最新版本的'Monitorix'程序包。</p>
+<pre><ol class="dp-xml"><li class="alt"><span><span>#&nbsp;wget&nbsp;http://www.monitorix.org/monitorix-3.4.0-1.noarch.rpm&nbsp;</span></span></li></ol></pre>
+<p>一旦成功下载，使用rpm命令安装它。</p>
+<pre><ol class="dp-xml"><li class="alt"><span><span>#&nbsp;rpm&nbsp;-ivh&nbsp;monitorix-3.4.0-1.noarch.rpm&nbsp;</span></span></li><li><span>Preparing...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;###########################################&nbsp;[100%]&nbsp;</span></li><li class="alt"><span>1:monitorix&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;###########################################&nbsp;[100%]&nbsp;</span></li></ol></pre>
+<p>一旦成功安装，请查看一下主配置文件'/etc/monitorix.conf'，根据你的系统添加一些额外的设置，启用或禁用图形。</p>
+<p>最后，将Monitorix服务添加到系统启动项，并使用下面两个命令来开启这项服务。</p>
+<pre><ol class="dp-xml"><li class="alt"><span><span>#&nbsp;chkconfig&nbsp;--level&nbsp;35&nbsp;monitorix&nbsp;on&nbsp;</span></span></li><li><span>#&nbsp;service&nbsp;monitorix&nbsp;start&nbsp;</span></li></ol></pre>
+<p>一旦你开启了这项服务，该程序会开始根据'/etc/monitorix.conf'文件里面的配置集，收集系统信息；几分钟过后，你会开始在以下位置，从浏览器看到系统图形：</p>
+<pre><ol class="dp-xml"><li class="alt"><span><span>http://localhost:8080/monitorix/&nbsp;</span></span></li></ol></pre>
+<p>如果你有处于启用状态的SELinux，那么图形看不见，你会在'/var/log/messages'或'/var/log/audit/audit.log'文件中看到大量的错误信息，这些错误信息显示了访问RRD数据库文件被拒绝。想清除这类错误信息和右见的图形，你就需要禁用SELinux。</p>
+<p>想关闭SELinux，只要在'/etc/selinux/config'文件中将"enforcing"这一行改成"disabled"。</p>
+<pre><ol class="dp-xml"><li class="alt"><span><span class="attribute">SELINUX</span><span>=</span><span class="attribute-value">disabled</span><span>&nbsp;</span></span></li></ol></pre>
+<p>上面这一更改会临时禁用SELinux，直到你重启机器为止。如果你希望系统总是在禁用模式下开启，就要重启系统。</p>
+<p><strong>将Monitorix安装到Ubuntu/Debian/Linux Mint上</strong></p>
+<p>Monitorix的安装可以通过两种方式来完成，一种是使用Izzy软件库完成自动安装/更新，另一种是使用手动下载和安装.deb程序包。</p>
+<p>Izzy软件库是一个试验性的软件库，但是来自该软件库的程序包应该适用于所有版本的Ubuntu和Debian等发行版。不过，我们无法保证绝对正确――所以，风险自负。如果你仍然想通过apt-get，添加该软件库以便自动更新，只要遵循下面提供的步骤，就可以实现自动安装。</p>
+<p><strong>使用Izzy软件库，自动安装</strong></p>
+<p>把下面这一行添加到你的'/etc/apt/sources.list'文件。</p>
+<pre><ol class="dp-xml"><li class="alt"><span><span>deb&nbsp;http://apt.izzysoft.de/ubuntu&nbsp;generic&nbsp;universe&nbsp;</span></span></li></ol></pre>
+<p>获得该软件库的GPG密钥，你可以使用wget命令来获得密钥。</p>
+<pre><ol class="dp-xml"><li class="alt"><span><span>#&nbsp;wget&nbsp;http://apt.izzysoft.de/izzysoft.asc&nbsp;</span></span></li></ol></pre>
+<p>一旦下载完毕，将该GPG密钥添加到apt配置，只需使用'apt-key'这个命令，如下所示。</p>
+<pre><ol class="dp-xml"><li class="alt"><span><span>#&nbsp;apt-key&nbsp;add&nbsp;izzysoft.asc&nbsp;</span></span></li></ol></pre>
+<p>最后，通过该软件库安装程序包。</p>
+<pre><ol class="dp-xml"><li class="alt"><span><span>#&nbsp;apt-get&nbsp;update&nbsp;</span></span></li><li><span>#&nbsp;apt-get&nbsp;install&nbsp;monitorix&nbsp;</span></li></ol></pre>
+<p><strong>使用.Deb程序包，手动安装</strong></p>
+<p>手动下载最新版本的.deb程序包，并安装它，并处理好所需的依赖项，如下所示。</p>
+<pre><ol class="dp-xml"><li class="alt"><span><span>#&nbsp;apt-get&nbsp;update&nbsp;</span></span></li><li><span>#&nbsp;apt-get&nbsp;install&nbsp;rrdtool&nbsp;perl&nbsp;libwww-perl&nbsp;libmailtools-perl&nbsp;libmime-lite-perl&nbsp;librrds-perl&nbsp;libdbi-perl&nbsp;libxml-simple-perl&nbsp;</span></li><li class="alt"><span>#&nbsp;wget&nbsp;http://www.monitorix.org/monitorix_3.4.0-izzy1_all.deb&nbsp;</span></li><li><span>#&nbsp;dpkg&nbsp;-i&nbsp;monitorix_3.4.0-izzy1_all.deb&nbsp;</span></li></ol></pre>
+<p>安装过程中，会进行Web服务器配置。所以，你需要重新装入Apache Web服务器，体现新的配置。</p>
+<pre><ol class="dp-xml"><li class="alt"><span><span>#&nbsp;service&nbsp;apache2&nbsp;reload&nbsp;</span></span></li></ol></pre>
+<p>Monitorix随带一个默认配置，如果你想更改或调整一些设置，就要看一下'/etc/monitorix.conf'处的这个配置文件。一旦你完成了更改，重新装入服务，让新配置生效。</p>
+<pre><ol class="dp-xml"><li class="alt"><span><span>#&nbsp;service&nbsp;monitorix&nbsp;restart&nbsp;</span></span></li></ol></pre>
+<p>现在，将你的浏览器指向'http://localhost/monitorix/'，开始查看显示你系统情况的图形。它只可以从本地主机加以访问；如果你希望允许访问远程IP，只要打开'/etc/apache2/conf.d/monitorix.conf'文件，将IP地址添加到'Allow from'语句。请参阅如下例子。</p>
+<pre><ol class="dp-xml"><li class="alt"><span><span class="tag">&lt;</span><span class="tag-name">Directory</span><span>&nbsp;/usr/share/monitorix/cgi-bin</span><span class="tag">/&gt;</span><span>&nbsp;</span></span></li><li><span>DirectoryIndex&nbsp;monitorix.cgi&nbsp;</span></li><li class="alt"><span>Options&nbsp;ExecCGI&nbsp;</span></li><li><span>Order&nbsp;Deny,Allow&nbsp;</span></li><li class="alt"><span>Deny&nbsp;from&nbsp;all&nbsp;</span></li><li><span>Allow&nbsp;from&nbsp;172.16.16.25&nbsp;</span></li><li class="alt"><span><span class="tag">&lt;/</span><span class="tag-name">Directory</span><span class="tag">&gt;</span><span>&nbsp;</span></span></li></ol></pre>
+<p>在你对上述配置进行了更改后，别忘了重启Apache。</p>
+<pre><ol class="dp-xml"><li class="alt"><span><span>#&nbsp;service&nbsp;apache2&nbsp;reload&nbsp;</span></span></li></ol></pre>
+<p><strong>Monitorix屏幕截图：</strong></p>
+<p>下面是一些屏幕截图，请参阅。</p>
+<p style="text-align: center;"><a href="http://s4.51cto.com/wyfs01/M02/45/C4/wKioJlK7jcvAFMs5AABGQQTlhQY853.jpg" target="_blank"><img class="fit-image" src="wKioJlK7jcvAFMs5AABGQQTlhQY853.jpg" alt="" width="498"></a></p>
+<p style="text-align: center;">Monitorix Web界面</p>
+<p style="text-align: center;"><a href="http://s6.51cto.com/wyfs01/M01/44/C7/wKioOVK7jeGjCNtgAAB2pjJ5gTY369.jpg" target="_blank"><img class="fit-image" src="wKioOVK7jeGjCNtgAAB2pjJ5gTY369.jpg" alt="" width="498"></a></p>
+<p style="text-align: center;">系统负载平均数值、活动进程和内存分配情况。</p>
+<p style="text-align: center;"><a href="http://s1.51cto.com/wyfs01/M02/45/C4/wKioJlK7jhSAveZMAACBYaToSy8622.jpg" target="_blank"><img class="fit-image" src="wKioJlK7jhSAveZMAACBYaToSy8622.jpg" alt="" width="498"></a></p>
+<p style="text-align: center;">全局内核使用情况</p>
+<p style="text-align: center;"><a href="http://s9.51cto.com/wyfs01/M02/44/C7/wKioOVK7jjKSf7X8AADolg321bA671.jpg" target="_blank"><img class="fit-image" src="wKioOVK7jjKSf7X8AADolg321bA671.jpg" alt="" width="498"></a></p>
+<p style="text-align: center;">每个处理器的内核使用情况</p>
+<p style="text-align: center;"><a href="http://s9.51cto.com/wyfs01/M01/45/C4/wKioJlK7jk-h5KMxAABvKmSRdRI952.jpg" target="_blank"><img class="fit-image" src="wKioJlK7jk-h5KMxAABvKmSRdRI952.jpg" alt="" width="498"></a></p>
+<p style="text-align: center;">磁盘驱动器的温度和健康状况</p>
+<p style="text-align: center;"><a href="http://s6.51cto.com/wyfs01/M02/45/C4/wKioJlK7jmXQ-sLrAACOSSnMv74653.jpg" target="_blank"><img class="fit-image" src="wKioJlK7jmXQ-sLrAACOSSnMv74653.jpg" alt="" width="498"></a></p>
+<p style="text-align: center;">文件系统的使用情况和输入/输出活动</p>
+<p style="text-align: center;"><a href="http://s7.51cto.com/wyfs01/M00/45/C4/wKioJlK7jnfzVdZSAABwR760iUE556.jpg" target="_blank"><img class="fit-image" src="wKioJlK7jnfzVdZSAABwR760iUE556.jpg" alt="" width="498"></a></p>
+<p style="text-align: center;">eth0接口流量</p>
+<p style="text-align: center;"><a href="http://s9.51cto.com/wyfs01/M02/44/C7/wKioOVK7joah3UTZAAB4nnUZ2fY821.jpg" target="_blank"><img class="fit-image" src="wKioOVK7joah3UTZAAB4nnUZ2fY821.jpg" alt="" width="498"></a></p>
+<p style="text-align: center;">系统服务需求</p>
+<p style="text-align: center;"><a href="http://s1.51cto.com/wyfs01/M00/44/C7/wKioOVK7jpeAlOfbAADsMX2OuGc251.jpg" target="_blank"><img class="fit-image" src="wKioOVK7jpeAlOfbAADsMX2OuGc251.jpg" alt="" width="498"></a></p>
+<p style="text-align: center;">网络端口流量</p>
+<p style="text-align: center;"><a href="http://s5.51cto.com/wyfs01/M02/45/C4/wKioJlK7jq-SqS1EAABqpI3bAXI016.jpg" target="_blank"><img class="fit-image" src="wKioJlK7jq-SqS1EAABqpI3bAXI016.jpg" alt="" width="498"></a></p>
+<p style="text-align: center;">Apache的统计数字</p>
+<p style="text-align: center;"><a href="http://s2.51cto.com/wyfs01/M01/44/C7/wKioOVK7jrqDmGL4AADniiEgMzU486.jpg" target="_blank"><img class="fit-image" src="wKioOVK7jrqDmGL4AADniiEgMzU486.jpg" alt="" width="498"></a></p>
+<p style="text-align: center;">MySQL的统计数字</p>
+<p>原文链接：<a href="http://www.tecmint.com/monitorix-a-lightweight-system-and-network-monitoring-tool-for-linux/" target="_blank">http://www.tecmint.com/monitorix-a-lightweight-system-and-network-monitoring-tool-for-linux/</a></p><p>【编辑推荐】</p><div><ol><li><a href="http://os.51cto.com/art/201003/185990.htm" target="_blank">Linux Monitorix套件解壓縮修改安裝程式</a></li><li><a href="http://os.51cto.com/art/201005/201618.htm" target="_blank">十三个强大的Linux性能监测工具</a></li><li><a href="http://os.51cto.com/art/201101/243823.htm" target="_blank">简化Zimbra监测工具之vFabric Hyperic</a></li></ol></div><div align="right">【责任编辑：<a class="ln" href="mailto:huangdan@51cto.com">黄丹</a> TEL：（010）68476606】</div><br> 
+<p class="blank10"></p> 
+ 
+ 
+
+
+<div class="f12"> <span class="fl">原文：<a href="#" class="blue"><b>Monitorix：一款面向Linux的轻型系统和网络监测工具</b></a></span> <span class="fr"><a href="http://os.51cto.com/">返回操作系统首页</a></span> </div>
+<p class="blank1"></p>
+</div>
+<hr style="border-width: 1px medium medium; border-style: solid none none; border-color: rgb(85, 85, 85) -moz-use-text-color -moz-use-text-color; height: 1px;">
+<div style="width: 600px; background: none repeat scroll 0% 0% rgb(255, 255, 255);"><img alt="" src="wKioL1ZOwrbDjDqxAABJOr5GFjU021.png" width="600" border="0" height="140"></div>
+<hr style="border-width: 1px medium medium; border-style: solid none none; border-color: rgb(85, 85, 85) -moz-use-text-color -moz-use-text-color; height: 1px;">
+<iframe src="index_4.html" scrolling="no" width="600" frameborder="0" height="239"></iframe>
+<div class="tips">
+<div style="float: left;">
+<span style="float: left; margin-top: 4px;">分享到：</span>
+<!-- Baidu Button BEGIN -->
+    <div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare" style="margin-right: 5px; float: left;">
+        <a href="#" title="分享到QQ空间" class="bds_qzone"></a>
+        <a href="#" title="分享到新浪微博" class="bds_tsina"></a>
+        <a href="#" title="分享到腾讯微博" class="bds_tqq"></a>
+        <a href="#" title="分享到人人网" class="bds_renren"></a>
+        <a href="#" title="分享到网易微博" class="bds_t163"></a>
+        <span class="bds_more"></span>
+		<a title="累计分享7次" href="#" class="shareCount">7</a>
+
+</div>
+<!--<div class="fl"> 
+    </div>
+-->
+
+
+<!-- Baidu Button END -->
+
+
+
+</div><div class="fr blue"><a target="_self">收藏</a>|<a target="_self">打印</a>|<a id="msnqqcopy" title="分享本资源给好友" target="_self">复制</a></div>
+</div>
+</div>
+<!--内容 end-->
+<div class="topbiaoqing">
+<div class="biaoqing fixfloat pad">
+<ul>
+<li><a target="_self"><img src="bq1.jpg"></a>
+<div><a target="_self">给力</a></div>
+<span id="425377_1">(0票)</span></li>
+<li><a target="_self"><img src="bq2.jpg"></a>
+<div><a target="_self">动心</a></div>
+<span id="425377_2">(0票)</span></li>
+<li><a target="_self"><img src="bq3.jpg"></a>
+<div><a target="_self">废话</a></div>
+<span id="425377_3">(0票)</span></li>
+<li><a target="_self"><img src="bq4.jpg"></a>
+<div><a target="_self">专业</a></div>
+<span id="425377_4">(0票)</span></li>
+<li><a target="_self"><img src="bq5.jpg"></a>
+<div><a target="_self">标题党</a></div>
+<span id="425377_5">(0票)</span></li>
+<li><a target="_self"><img src="bq6.jpg"></a>
+<div><a target="_self">路过</a></div>
+<span id="425377_6">(0票)</span></li>
+</ul>
+</div>
+
+</div>
+<p class="blank10"></p>
+<!--reltag end-->
+
+<p class="blank10"></p>
+<div class="uyan">
+<div id="uyan_frame"><iframe src="index_5.html" style="display: block ! important; width: 100% ! important; border: 0px none ! important; overflow: hidden ! important; height: 547px;" id="uyan_ifr_9944950" scrolling="no" frameborder="0"></iframe></div>
+
+</div>
+<!--box end-->
+
+<div class="bor">
+<div class="titbg pl15">关于<a href="http://www.51cto.com/php/search.php?keyword=Monitorix" target="_blank" class="underline">Monitorix</a>&nbsp;&nbsp;<a href="http://www.51cto.com/php/search.php?keyword=%BC%E0%B2%E2%B9%A4%BE%DF" target="_blank" class="underline">监测工具</a>的更多文章</div>
+<div class="reltag">
+<ul class="fl list02">
+  <li><a href="http://os.51cto.com/art/201312/425177.htm" title="借助Glances Monitor，密切关注你的系统">借助Glances Monitor，密切关注你的系统</a></li><li><a href="http://os.51cto.com/art/201303/383262.htm" title="使用ksar工具分析系统性能">使用ksar工具分析系统性能</a></li>
+</ul>
+<div class="fr">
+<div class="h5 f12"><a href="http://os.51cto.com/art/201312/424908.htm" title="系统频道12月第3周热点推荐：你期待的Windows 9是什么样儿"><b>系统频道12月第3周热点推荐：你期待的Windows 9是什么样儿</b></a></div>
+<a href="http://os.51cto.com/art/201312/424908.htm" title="系统频道12月第3周热点推荐：你期待的Windows 9是什么样儿"><img src="wKioJlK28CWw7G_zAAAhb1Q1UAo891.jpg" alt="系统频道12月第3周热点推荐：你期待的Windows 9是什么样儿" width="100" border="0" height="80"></a>
+<p class="c666">12月中旬的北京，冷空气活动频繁，观象台已经连续7天日平均气温<a class="blue" href="http://os.51cto.com/art/201312/424908.htm" title="系统频道12月第3周热点推荐：你期待的Windows 9是什么样儿">[详细]</a></p>
+</div>
+</div></div>
+
+<p class="blank10"></p>
+
+
+
+<div class="relart fl bor">
+<div class="titbg">
+<h3 class="fl t1">栏目热门</h3>
+<a href="http://os.51cto.com/click/545" class="tmore">更多&gt;&gt;</a></div>
+<ul>
+  
+	  <li><a href="http://os.51cto.com/art/201312/422513.htm" title="十八款Hadoop工具帮你驯服大数据">十八款Hadoop工具帮你驯服大数据</a></li>
+	  
+	  <li><a href="http://os.51cto.com/art/201311/416242.htm" title="NoMachine：一款高级的远程桌面访问工具">NoMachine：一款高级的远程桌面访问工具</a></li>
+	  
+	  <li><a href="http://os.51cto.com/art/201311/416912.htm" title="PAC管理器：一款远程SSH/FTP/Telnet会话管理工具">PAC管理器：一款远程SSH/FTP/Telnet会话管</a></li>
+	  
+	  <li><a href="http://os.51cto.com/art/201311/419260.htm" title="监控系统五大必备特性汇总">监控系统五大必备特性汇总</a></li>
+	  
+	  <li><a href="http://os.51cto.com/art/201311/419159.htm" title="CentOS 6.4 搭建VPN Server端">CentOS 6.4 搭建VPN Server端</a></li>
+	  
+</ul>
+</div>
+<div class="cathot fr bor">
+<div class="titbg">
+<h3 class="fl t1">同期最新</h3>
+<a href="http://os.51cto.com/col/545" class="tmore">更多&gt;&gt;</a></div>
+<ul>
+	
+	  <li><a href="http://os.51cto.com/art/201312/425200.htm" title="一次入侵Linux服务器的事件记录">一次入侵Linux服务器的事件记录</a></li>
+	  
+	  <li><a href="http://os.51cto.com/art/201312/425177.htm" title="借助Glances Monitor，密切关注你的系统">借助Glances Monitor，密切关注你的系统</a></li>
+	  
+	  <li><a href="http://os.51cto.com/art/201312/424474.htm" title="IT运维管理员如何写好一份年终总结？">IT运维管理员如何写好一份年终总结？</a></li>
+	  
+	  <li><a href="http://os.51cto.com/art/201312/424179.htm" title="自动化运维工具Puppet在实际工作中的注意事项">自动化运维工具Puppet在实际工作中的注意事</a></li>
+	  
+	  <li><a href="http://os.51cto.com/art/201312/424174.htm" title="Nagios：一款开源的电脑系统和网络监控工具（下）">Nagios：一款开源的电脑系统和网络监控工具</a></li>
+	  
+</ul>
+</div>
+<p class="blank10"></p>
+<div class="bor">
+<div class="titbg">
+<h3 class="fl t1"><a href="http://os.51cto.com/">操作系统</a></h3>
+<span class="pl10">频道导航</span></div>
+ <ul class="xtlist">
+<li><span class="tit">生产环境</span>
+<div><a href="http://os.51cto.com/linux/">Linux</a>
+|<a href="http://os.51cto.com/windows/">Windows</a>
+|<a href="http://os.51cto.com/col/522/">Unix</a>
+|<a href="http://os.51cto.com/col/545/">运维教程</a>
+|<a href="http://os.51cto.com/art/201011/233915.htm">Linux运维趋势</a>
+</div>
+</li>
+<li class="last"><span class="tit">OS前沿</span>
+<div><a href="http://os.51cto.com/col/975/">浏览器</a>
+|<a href="http://os.51cto.com/col/610/">开源技术</a>
+|<a href="http://os.51cto.com/windows7/">Windows 7</a>
+|<a href="http://os.51cto.com/windows2008/">Server 08</a>
+|<a href="http://os.51cto.com/col/1417/">移动OS</a>
+</div>
+</li>
+</ul> 
+</div> 
+<p class="blank10"></p>
+<p class="blank10"></p>
+<div class="leftbotcon">
+<div class="bor jdlist">
+<div class="titbg">
+<h3 class="t2">热点推荐</h3></div>
+<ul>
+<li><a href="http://mobile.51cto.com/mobile-182392.htm"><img src="153546162.jpg"></a> 
+<div class="name"><a href="http://mobile.51cto.com/mobile-182392.htm">Android开发应用详解</a></div></li>
+<li><a href="http://developer.51cto.com/art/201106/266369.htm"><img src="133620622.jpg"></a> 
+<div class="name"><a href="http://developer.51cto.com/art/201106/266369.htm">那些性感的让人尖叫的程序员</a></div></li>
+<li><a href="http://developer.51cto.com/art/200907/133407.htm"><img src="134217922.jpg"></a> 
+<div class="name"><a href="http://developer.51cto.com/art/200907/133407.htm">HTML5 下一代Web开发标准详解</a></div></li>
+<li><a href="http://developer.51cto.com/art/201104/257581.htm"><img src="123123954.jpg"></a> 
+<div class="name"><a href="http://developer.51cto.com/art/201104/257581.htm">高性能WEB开发应用指南</a></div></li>
+<li><a href="http://os.51cto.com/art/200706/49181.htm"><img src="195816929.jpg"></a> 
+<div class="name"><a href="http://os.51cto.com/art/200706/49181.htm">Ubuntu开源技术交流频道</a></div></li></ul></div>
+<p class="blank10"></p>
+<div class="bor hotTag"><strong>热门标签：</strong> <a href="http://os.51cto.com/windows/">windows频道</a><a href="http://mobile.51cto.com/">移动开发</a><a href="http://cloud.51cto.com/">云计算</a><a href="http://mobile.51cto.com/mobile/objc/">objective-c</a><a href="http://network.51cto.com/art/200909/151122.htm">tp-link路由器设置图解</a><a href="http://developer.51cto.com/art/200907/133407.htm">html5</a> </div></div>
+<div class="leftbotbox"> </div>
+</div>
+<!--left end-->
+<div class="g_13 fr">
+<div style="height: 640px;" class="focus fixfloat"> 
+ <img style="border: 1px solid rgb(204, 204, 204); margin: 5px 0px;" src="weixin.jpg" width="298"><div style="top: 450px;" class="hot">
+<ul>
+<li class="tit"><em>头条</em> <a href="http://os.51cto.com/art/201603/507057.htm">如何选择最适合你的Linux发行版？</a> </li>
+<li class="con"><dl><dt><a href="http://os.51cto.com/art/201603/507057.htm"><img src="wKiom1b6KQGAGVthAABbyABK9PI856.jpg" border="0"></a></dt>
+<dd>Linux界极具活力，面向不同的用户可以使用不同的Linux发行版，比如适合新手和游戏爱好者等。</dd>
+</dl></li></ul><ol class="hotlist"><li><a href="http://os.51cto.com/art/201603/506801.htm">Zabbix监控自动化的未来如何发展</a></li><li><a href="http://os.51cto.com/art/201603/507358.htm">绝对值得你使用的75个开源移动工具</a></li></ol></div>
+<p id="hzh_one">
+<iframe noresize="" marginheight="0" marginwidth="0" src="index_6.html" scrolling="No" width="300" align="left" frameborder="0" height="260"></iframe>
+</p>
+</div>
+<div class="rank">
+<div class="tlt">
+      <h3>文章排行</h3>
+      <a id="top_3">本月</a><a id="top_2">本周</a><a class="myon" id="top_1">24小时</a> </div>
+ <div id="top10_1" style="display: block;" class="list"><ul>
+<li><a href="http://os.51cto.com/art/201009/223806.htm" target="_blank" title="十五个常用Linux命令行总汇">十五个常用Linux命令行总汇</a>
+</li><li><a href="http://os.51cto.com/art/201608/515547.htm" target="_blank" title="推荐 | 基于Linux命令行的五个文件下载">推荐 | 基于Linux命令行的五个文件下载</a>
+</li><li><a href="http://os.51cto.com/art/201403/432079.htm" target="_blank" title="从Linux终端管理进程：10个你必须知道">从Linux终端管理进程：10个你必须知道</a>
+</li><li><a href="http://os.51cto.com/art/201410/456046.htm" target="_blank" title="Git Rebase教程： 用Git Rebase让时光">Git Rebase教程： 用Git Rebase让时光</a>
+</li><li><a href="http://os.51cto.com/art/201607/514679.htm" target="_blank" title="Linux终于足够好，可以取代Windows了吗">Linux终于足够好，可以取代Windows了吗</a>
+</li><li><a href="http://os.51cto.com/art/201012/240726.htm" target="_blank" title="df、du、fdisk：Linux磁盘管理三板斧的">df、du、fdisk：Linux磁盘管理三板斧的</a>
+</li><li><a href="http://os.51cto.com/art/201103/249398.htm" target="_blank" title="CentOS下配置iptables防火墙">CentOS下配置iptables防火墙</a>
+</li><li><a href="http://os.51cto.com/art/201608/515452.htm" target="_blank" title="如何在Linux上运行Windows应用程序？">如何在Linux上运行Windows应用程序？</a>
+</li><li><a href="http://os.51cto.com/art/201602/505148.htm" target="_blank" title="如何升级到Windows 10并完美解决开机闪">如何升级到Windows 10并完美解决开机闪</a>
+</li><li><a href="http://os.51cto.com/art/201001/177059.htm" target="_blank" title="Linux删除目录的命令">Linux删除目录的命令</a>
+</li></ul></div>
+<div id="top10_2" style="display: none;" class="list"><ul>
+<li><a href="http://os.51cto.com/art/201608/515452.htm" target="_blank" title="如何在Linux上运行Windows应用程序？">如何在Linux上运行Windows应用程序？</a>
+</li><li><a href="http://os.51cto.com/art/201607/515011.htm" target="_blank" title="这10款最佳开源协作软件工具，你值得拥">这10款最佳开源协作软件工具，你值得拥</a>
+</li><li><a href="http://os.51cto.com/art/201607/515065.htm" target="_blank" title="Windows 10免费升级计划的利与弊">Windows 10免费升级计划的利与弊</a>
+</li><li><a href="http://os.51cto.com/art/201607/515068.htm" target="_blank" title="基础拾掇之http基础应用详解">基础拾掇之http基础应用详解</a>
+</li><li><a href="http://os.51cto.com/art/201607/515105.htm" target="_blank" title="awk 系列：如何使用 awk 复合表达式">awk 系列：如何使用 awk 复合表达式</a>
+</li><li><a href="http://os.51cto.com/art/201607/515107.htm" target="_blank" title="Windows 10周年更新无法关闭Cortana？">Windows 10周年更新无法关闭Cortana？</a>
+</li><li><a href="http://os.51cto.com/art/201607/515108.htm" target="_blank" title="在Docker和Kubernetes上运行MongoDB微">在Docker和Kubernetes上运行MongoDB微</a>
+</li><li><a href="http://os.51cto.com/art/201608/515456.htm" target="_blank" title="Git 系列（一）：什么是 Git">Git 系列（一）：什么是 Git</a>
+</li><li><a href="http://os.51cto.com/art/201608/515451.htm" target="_blank" title="Linux 上 10 个最好的 Markdown 编辑器">Linux 上 10 个最好的 Markdown 编辑器</a>
+</li><li><a href="http://os.51cto.com/art/201608/515402.htm" target="_blank" title="专为分布式系统管理员打造的五款开源支">专为分布式系统管理员打造的五款开源支</a>
+</li></ul></div>
+<div id="top10_3" style="display: none;" class="list"><ul>
+<li><a href="http://os.51cto.com/art/201607/514679.htm" target="_blank" title="Linux终于足够好，可以取代Windows了吗">Linux终于足够好，可以取代Windows了吗</a>
+</li><li><a href="http://os.51cto.com/art/201608/515452.htm" target="_blank" title="如何在Linux上运行Windows应用程序？">如何在Linux上运行Windows应用程序？</a>
+</li><li><a href="http://os.51cto.com/art/201607/514092.htm" target="_blank" title="在Windows 10使用上，哪些是效果最佳和">在Windows 10使用上，哪些是效果最佳和</a>
+</li><li><a href="http://os.51cto.com/art/201607/515011.htm" target="_blank" title="这10款最佳开源协作软件工具，你值得拥">这10款最佳开源协作软件工具，你值得拥</a>
+</li><li><a href="http://os.51cto.com/art/201607/514006.htm" target="_blank" title="你不要升级到Windows 10的十大理由">你不要升级到Windows 10的十大理由</a>
+</li><li><a href="http://os.51cto.com/art/201607/514821.htm" target="_blank" title="11个炫酷的Linux终端命令大全">11个炫酷的Linux终端命令大全</a>
+</li><li><a href="http://os.51cto.com/art/201607/514876.htm" target="_blank" title="你应该安装Linux系统的五个理由">你应该安装Linux系统的五个理由</a>
+</li><li><a href="http://os.51cto.com/art/201607/514836.htm" target="_blank" title="Windows 10那么好用 你为啥不升级？">Windows 10那么好用 你为啥不升级？</a>
+</li><li><a href="http://os.51cto.com/art/201607/514936.htm" target="_blank" title="你必须要避免Linux桌面的这六大错误">你必须要避免Linux桌面的这六大错误</a>
+</li><li><a href="http://os.51cto.com/art/201607/513796.htm" target="_blank" title="程序员喜欢的9款最佳的Linux文件比较工">程序员喜欢的9款最佳的Linux文件比较工</a>
+</li></ul></div>
+ 
+ </div>
+<p class="blank1"></p>
+<div class="bor">
+<div class="titbg">
+<h3 class="fl t1">热点职位</h3>
+<a href="http://gaozhao.51cto.com/job-search/list" class="tmore">更多&gt;&gt;</a></div>
+	<div class="rmzwn_xx"><dl><dt><a href="http://gaozhao.51cto.com/job/view/id-3596.html" target="_blank"> 运维工程师 </a></dt><dd><h2>全职/3-5年/本科</h2><span>12k-20k</span><a href="http://gaozhao.51cto.com/company/view/id-741.html" target="_blank">光年电商</a></dd></dl><dl><dt><a href="http://gaozhao.51cto.com/job/view/id-2549.html" target="_blank"> 高级运维工程师（高级讲师） </a></dt><dd><h2>兼职/5-10年/本科</h2><span>15k-25k</span><a href="http://gaozhao.51cto.com/company/view/id-565.html" target="_blank">京峰教育</a></dd></dl><dl><dt><a href="http://gaozhao.51cto.com/job/view/id-4327.html" target="_blank"> 中科信软招聘ansible兼职讲师 </a></dt><dd><h2>兼职/3-5年/本科</h2><span>20k-30k</span><a href="http://gaozhao.51cto.com/company/view/id-839.html" target="_blank">中科信软</a></dd></dl><dl><dt><a href="http://gaozhao.51cto.com/job/view/id-4323.html" target="_blank"> 微信开发项目经理 </a></dt><dd><h2>全职/不限/不限</h2><span>999k-1000k</span><a href="http://gaozhao.51cto.com/company/view/id-840.html" target="_blank">乐乎创新网络</a></dd></dl><dl><dt><a href="http://gaozhao.51cto.com/job/view/id-3033.html" target="_blank"> 运维工程师 </a></dt><dd><h2>全职/1-3年/大专</h2><span>6k-10k</span><a href="http://gaozhao.51cto.com/company/view/id-651.html" target="_blank">动视云科技</a></dd></dl></div>
+</div>
+<div class="blank10"></div>
+
+<div class="bor">
+<div class="titbg">
+<h3 class="fl t1">热点专题</h3>
+<a href="http://os.51cto.com/speclist/545" class="tmore">更多&gt;&gt;</a></div>
+<ul class="plist01">
+<li><a href="http://os.51cto.com/art/201312/424908.htm" title="系统频道12月第3周热点推荐：你期待的Windows 9是什么样儿"><img src="wKioJlK28CWw7G_zAAAhb1Q1UAo891.jpg" alt="系统频道12月第3周热点推荐：你期待的Windows 9是什么样儿" width="100" height="80"></a>
+<h5><a href="http://os.51cto.com/art/201312/424908.htm" title="系统频道12月第3周热点推荐：你期待的Windows 9是什么样儿">系统频道12月第3周热</a></h5>
+<div class="c666">12月中旬的北京，冷空气活动频繁，观象台已经连续7天</div>
+</li><li><a href="http://os.51cto.com/art/201312/424019.htm" title="Windows 8.2 概念构想，Windows 9 满载期许"><img src="wKioOVKxzsWRK8tnAACVDd_G3VY033.jpg" alt="Windows 8.2 概念构想，Windows 9 满载期许" width="100" height="80"></a>
+<h5><a href="http://os.51cto.com/art/201312/424019.htm" title="Windows 8.2 概念构想，Windows 9 满载期许">Windows 8.2 概念构想</a></h5>
+<div class="c666">近期关于Winndows 8.2/Windows 9更新的话题不断，用户</div>
+</li><li><a href="http://os.51cto.com/art/201312/422916.htm" title="系统频道12月第2周热点推荐：《Linux运维趋势》11月号登场"><img src="wKioOVKqxqiRiOu2AACR-qz9BG8169.jpg" alt="系统频道12月第2周热点推荐：《Linux运维趋势》11月号登场" width="100" height="80"></a>
+<h5><a href="http://os.51cto.com/art/201312/422916.htm" title="系统频道12月第2周热点推荐：《Linux运维趋势》11月号登场">系统频道12月第2周热</a></h5>
+<div class="c666">周四是“双十二”，或许人们只记得双十二是个购物季，</div>
+</li> 
+</ul>
+</div>
+<p class="blank10"></p>
+<div class="tagCloud">
+<div class="tlt">
+<h3>热点标签</h3>
+</div>
+<div class="taglist"><a title="IIS服务" href="http://os.51cto.com/art/201104/256478.htm">IIS服务</a>
+<a title="Windows 8" href="http://os.51cto.com/art/201104/256380.htm">Windows 8</a>
+<a title="浏览器战报" href="http://os.51cto.com/art/201103/250662.htm">浏览器战报</a>
+
+<a title="Ubuntu 11.04" href="http://os.51cto.com/art/201101/244030.htm">Ubuntu 11.04</a>
+<a title="运维秘诀" href="http://os.51cto.com/art/201101/244021.htm">运维秘诀</a>
+<a title="活动目录" href="http://os.51cto.com/art/201012/236185.htm">活动目录</a>
+<a title="Linux管理员" href="http://os.51cto.com/art/201104/253193.htm">Linux管理员</a>
+<a title="Fedora 15" href="http://os.51cto.com/art/201103/246763.htm">Fedora 15</a>
+<a title="Linux运维趋势" href="http://os.51cto.com/art/201011/233915.htm">Linux运维趋势</a>
+<a title="开源社区" href="http://os.51cto.com/art/201010/230570.htm">开源社区</a>
+<a title="开源社区" href="http://gaozhao.51cto.com/job-search/list/category-0-36" class="imp">系统招聘</a></div>
+</div>
+<div class="rss">
+<ul>
+<li class="lin f12-c"><a href="http://news.51cto.com/col/1323/"><strong>点击这里查看样刊</strong></a></li>
+<li>
+<dl>
+<dt> </dt>
+<dd><a href="http://home.51cto.com/index.php?s=/Subscribe"><img src="dingy.gif"></a></dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="bor">
+<div class="titbg">
+<h3 class="t1">全站热点</h3>
+</div>
+<div class="webhot fixfloat">
+<ul>
+
+<li>
+  <a href="http://network.51cto.com/network/content2013/5gwifi/" title="企业如何备战802.11ac"><img src="wKioOVIW2dOgub5LAABZtwznUdA440.jpg"></a>
+  <div><a href="http://network.51cto.com/network/content2013/5gwifi/" title="企业如何备战802.11ac">企业如何备战802.11ac</a></div>
+</li>
+
+<li>
+  <a href="http://os.51cto.com/art/201308/406340.htm" title="《Linux运维趋势》2013年7月号"><img src="wKioOVICDfvTa2lOAAAW5Oyqt7M979.jpg"></a>
+  <div><a href="http://os.51cto.com/art/201308/406340.htm" title="《Linux运维趋势》2013年7月号">《Linux运维趋势》2013年7月号</a></div>
+</li>
+
+</ul>
+</div>
+<p class="blank1"></p>
+<ul class="list03">
+
+<li><a href="http://os.51cto.com/art/201312/422708.htm" title="Storm入门教程系列集锦">Storm入门教程系列集锦</a></li>
+
+<li><a href="http://mobile.51cto.com/comment-422686.htm" title="什么才是真正的移动游戏？">什么才是真正的移动游戏？</a></li>
+
+<li><a href="http://book.51cto.com/art/201312/422624.htm" title="ASP.NET 4.5 数据库入门经典（第3版）">ASP.NET 4.5 数据库入门经典（第3版</a></li>
+
+<li><a href="http://mobile.51cto.com/iphone-422559.htm" title="iOS 7开发者必读：埋藏其中的秘密与宝藏">iOS 7开发者必读：埋藏其中的秘密与</a></li>
+
+<li><a href="http://book.51cto.com/art/201312/422470.htm" title="解密搜索引擎技术实战：Lucene &amp; Java精华版（第2版）">解密搜索引擎技术实战：Lucene &amp; Jav</a></li>
+
+</ul>
+</div>
+<p class="blank10"></p>
+<div class="bor">
+<div class="titbg">
+<h3 class="t1">读书</h3>
+</div>
+  
+<div class="catbook"><a href="http://book.51cto.com/art/200709/56163.htm" title="解密SEO：搜索引擎优化与网站成功战略"><img src="151217823.gif" width="66" border="0" height="98"></a>
+<h5><a href="http://book.51cto.com/art/200709/56163.htm">解密SEO：搜索引擎优化与网站成功战略</a></h5>
+<div class="c666 text">本书是作者根据十年网站营销经验，特别是搜索引擎优化（SEO）实现营销方面的技术和实践总结。本书帮助读者建立搜索营销的概念，</div>
+</div>
+
+
+<ul class="list03">
+
+<li><a href="http://book.51cto.com/art/200704/45839.htm" title="精通SOA：基于服务总线的Struts+EJB+Web Service整合应用开发">精通SOA：基于服务总线的Struts+EJB+Web Service</a></li>
+
+<li><a href="http://book.51cto.com/art/200704/45842.htm" title="敏捷Acegi、CAS：构建安全的Java系统">敏捷Acegi、CAS：构建安全的Java系统</a></li>
+
+<li><a href="http://book.51cto.com/art/200704/45845.htm" title="实时UML与Rational Rose RealTime建模案例剖析">实时UML与Rational Rose RealTime建模案例剖析</a></li>
+
+<li><a href="http://book.51cto.com/art/200704/45926.htm" title="2006软考上半年试题分析与解答">2006软考上半年试题分析与解答</a></li>
+
+</ul>
+</div>
+<p class="blank10"></p>
+<div class="bor">
+<div class="titbg">
+<h3 class="t1 fl">博文推荐</h3>
+<a class="tmore" href="http://blog.51cto.com/">更多&gt;&gt;</a></div>
+
+<ul class="list03">
+ <li><a href="http://jackiechen.blog.51cto.com/196075/373526/" target="_blank" title="2010一次意想不到的环球飞行">2010一次意想不到的环球飞行</a></li><li><a href="http://qingping.blog.51cto.com/335806/373307/" target="_blank" title="vSphere 4系列之七：迁移到Distributed vSwitch">vSphere 4系列之七：迁移到Distribut</a></li><li><a href="http://zhengweiit.blog.51cto.com/1109863/373169/" target="_blank" title="WFAS 将给我们带来什么？">WFAS 将给我们带来什么？</a></li><li><a href="http://xiaodaoma.blog.51cto.com/1911142/373143/" target="_blank" title="解析最新VB100测试报告">解析最新VB100测试报告</a></li>
+</ul>
+</div>
+<p class="blank10"></p>
+<div class="tj">
+<div class="tlt">
+<h3>最新热帖</h3>
+<a class="more" href="http://bbs.51cto.com/hotthreads.php">更多&gt;&gt;</a></div>
+<ul>
+<li><a href="http://bbs.51cto.com/thread-26429-1.html" target="_blank" title="通用WAP网站生成系统(PowerDiamond) v.1">通用WAP网站生成系统(PowerDiamond) </a></li><li><a href="http://bbs.51cto.com/thread-11063-1.html" target="_blank" title="八类大学毕业生求职时不受欢迎">八类大学毕业生求职时不受欢迎</a></li><li><a href="http://bbs.51cto.com/thread-6946-1.html" target="_blank" title="IT人为什么难以拿到高薪？【转帖】">IT人为什么难以拿到高薪？【转帖】</a></li><li><a href="http://bbs.51cto.com/thread-4333-1.html" target="_blank" title="想去外企上班">想去外企上班</a></li>
+</ul>
+</div>
+<div class="picAD">
+<div id="BAIDU_SSP__wrapper_u708626_0"><iframe id="iframeu708626_0" src="index_7.html" vspace="0" hspace="0" marginwidth="0" marginheight="0" style="border: 0px none; vertical-align: bottom; margin: 0px;" allowtransparency="true" scrolling="no" width="300" align="center,center" frameborder="0" height="250"></iframe></div>
+</div>
+</div>
+<p class="blank1"></p> 
+<!--leftbotcon end-->
+</div> 
+<div class="subweb">
+<h4>51CTO旗下网站</h4>
+<div>
+<a target="_blank" href="http://www.51cto.com/">领先的IT技术网站 51CTO</a>
+<a target="_blank" href="http://www.watchstor.com/">领先的中文存储媒体 WatchStor</a>
+<a target="_blank" href="http://www.cioage.com/">中国首个CIO网站 CIOage</a>
+<a target="_blank" href="http://www.hc3i.cn/">中国首家数字医疗网站 HC3i</a>
+</div>
+</div>
+<div id="ft"><div id="foot" align="center">Copyright©2005-2016 <a href="http://www.51cto.com/">51CTO.COM</a> 版权所有 未经许可 请勿转载<div style="display: none;"><a href="http://tongji.baidu.com/hm-web/welcome/ico?s=b6e2d52e9f0660b9fbaf0f2029c046c0" target="_blank"><img src="21.gif" width="20" border="0" height="20"></a></div></div></div>
+
+
+
+
+
+
+
+<!-- 新监测代码 -->
+<!-- 新监测代码 -->
+<div id="MyMoveAd" style="display: none; height: 2px;">
+<span id="wordlink_1"><a href="http://gg1.51cto.com/www/delivery/ck.php?oaparams=2__bannerid=4317__zoneid=254__cb=39c111057d__oadest=http%3A%2F%2Fnetwork.51cto.com%2Fact%2Ft1_2015%2F10" target="_blank"><font color="red">高性能融合安全架构解析</font></a><div id="beacon_39c111057d" style="position: absolute; left: 0px; top: 0px; visibility: hidden;"><img src="lg_001.php" alt="" style="width: 0px; height: 0px;" width="0" height="0"></div>
+</span>
+<span id="wordlink_2"><a href="http://gg2.51cto.com/www/delivery/ck.php?oaparams=2__bannerid=3990__zoneid=255__cb=4dd50614a4__oadest=http%3A%2F%2Fserver.51cto.com%2Fact%2Fveeam2016%2Fveeam" target="_blank"><font color="red">Veeam助力财富500强</font></a><div id="beacon_4dd50614a4" style="position: absolute; left: 0px; top: 0px; visibility: hidden;"><img src="lg_002.php" alt="" style="width: 0px; height: 0px;" width="0" height="0"></div>
+</span>
+<span id="wordlink_3"><a href="http://gg.51cto.com/www/delivery/ck.php?oaparams=2__bannerid=3717__zoneid=594__cb=73eb5f59a4__oadest=http%3A%2F%2Fedu.51cto.com%2Ftraining%2Ftraining_id-18.html%3Fxiaoshou" target="_blank"><font color="red">微软企业级内训课程免费学</font></a><div id="beacon_73eb5f59a4" style="position: absolute; left: 0px; top: 0px; visibility: hidden;"><img src="lg_003.php" alt="" style="width: 0px; height: 0px;" width="0" height="0"></div>
+</span>
+<span id="wordlink_4"><a href="http://gg1.51cto.com/www/delivery/ck.php?oaparams=2__bannerid=3549__zoneid=636__cb=f7ffb74533__oadest=http%3A%2F%2Fedu.51cto.com%2Ftraining%2Ftraining_id-17.html%3Fxiaoshou" target="_blank"><font color="red">2016年备战软考-重难点解析</font></a><div id="beacon_f7ffb74533" style="position: absolute; left: 0px; top: 0px; visibility: hidden;"><img src="lg_004.php" alt="" style="width: 0px; height: 0px;" width="0" height="0"></div>
+</span>
+<span id="pinglun">2</span>
+<span id="tonglan"></span>
+<span id="wordlink"></span>
+
+<span id="bookss"></span>
+</div>   
+
+
+
+  
+
+
+<div style="position: absolute; left: 589px; top: 7864px; width: 34px; height: 16px; z-index: 99;"><embed id="ZeroClipboardMovie_1" src="ZeroClipboard.swf" loop="false" menu="false" quality="best" bgcolor="#ffffff" name="ZeroClipboardMovie_1" allowscriptaccess="always" allowfullscreen="false" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" flashvars="id=1&amp;width=34&amp;height=16" wmode="transparent" width="34" align="middle" height="16"></div> 
+
+
+
+
+
+
+</body>
+</html>

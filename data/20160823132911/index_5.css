@@ -1,0 +1,149 @@
+/* ::::: http://v2.uyan.cc/css/style.css ::::: */
+
+html, body { margin: 0px; padding: 0px; }
+h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, cite, code, del, dfn, em, img, q, s, samp, small, strike, strong, sub, sup, tt, var, dd, dl, dt, li, ol, ul, fieldset, form, label, legend, button, table, caption, tbody, tfoot, thead, tr, th, td { border: 0px none; font-style: normal; margin: 0px; padding: 0px; }
+ol, ul { list-style: none outside none; }
+body { font-family: "Helvetica Neue","Hiragino Sans GB",Arial,sans-serif; color: rgb(64, 64, 64); }
+a { text-decoration: none; }
+.claer { clear: both; }
+h4 { font-size: 18px; font-weight: 600; line-height: 1.2; }
+h6 { color: rgb(142, 148, 156); font-size: 11px; font-weight: normal; line-height: 15px; margin: 0px 0px 6px; }
+.global-nav { margin: 0px 0px 18px; }
+.pull-right { float: right ! important; }
+.pull-right .thread-likes {  }
+.pull-right .thread-likes .icon-star { display: block; background: url("star.png") no-repeat scroll 0% 0% transparent; width: 18px; height: 18px; float: left; margin-top: 3px; margin-right: 5px; }
+.pull-right .thread-likes .icon-star img { width: 18px; height: 18px; }
+.pull-right .thread-likes .icon-star_bgl { display: block; float: left; width: 12px; background: url("star_bg.png") no-repeat scroll 0% 0% transparent; height: 23px; }
+.pull-right .thread-likes .icon-star_bgr { display: block; float: left; width: 8px; background: url("star_bg.png") no-repeat scroll right 0px transparent; height: 23px; }
+.pull-right .thread-likes .counter { display: block; float: left; height: 23px; background: none repeat scroll 0% 0% rgb(211, 216, 219); font-size: 13px; color: rgb(94, 94, 94); line-height: 22px; font-weight: 700; }
+.pull-right .thread-likes a:hover .icon-star_bgl { display: block; float: left; width: 12px; background: url("star_bg.png") no-repeat scroll 0px -23px transparent; height: 23px; }
+.pull-right .thread-likes a:hover .icon-star_bgr { display: block; float: left; width: 8px; background: url("star_bg.png") no-repeat scroll -19px -23px transparent; height: 23px; }
+.pull-right .thread-likes a:hover .counter { display: block; float: left; height: 23px; background: none repeat scroll 0% 0% rgb(189, 197, 201); font-size: 13px; color: rgb(51, 51, 51); line-height: 22px; font-weight: 700; }
+div.resetbox { border: 0px none; font-size: 100%; margin: 0px; padding: 0px; text-align: left; }
+div.resetbox select, div.resetbox input, div.resetbox textarea, div.resetbox select option { border: 0px none; margin: 0px; outline: 0px none; padding: 0px; }
+.uyanpost .sectionbox {  }
+.uyanpost .sectionbox .blockbox .blockhead { float: left; }
+.uyanpost .sectionbox .blockbox .blockhead .headimg, .uyanpost .sectionbox .blockbox .blockhead .headimg img { height: 48px; width: 48px; border-radius: 3px 3px 3px 3px; }
+.uyanpost .sectionbox .blockbox .postarea { padding: 0px 0px 0px 60px; margin: 0px 0px 12px; }
+.uyanpost .sectionbox .blockbox .postarea .post-default-w, .user-login-wrapper-dw, .visitor-login-wrapper-dw, .bind-number-wrapper-dw, .user-bind-wrapper-dw, .user-msg-wrapper-dw .wrapper-cont-bd, .uyanpost .postborder, .user-msg-wrapper-dw .postborder { border-radius: 3px 3px 3px 3px; cursor: pointer; }
+.uyanpost .postwrap .postaction .actionfunction ul li a i.face { background: url("happy.png") no-repeat scroll 0% 0% transparent; }
+.uyanpost .postwrap .postaction .actionfunction ul li a i { cursor: pointer; display: inline-block; height: 100%; width: 100%; }
+.uyanpost .postwrap .wraparea .textareawrap { background-color: rgb(255, 255, 255); overflow: hidden; padding: 4px 0px 3px 7px; }
+.inputdefaultcolor { color: rgb(170, 178, 184); }
+.uyanpost .postwrap .wraparea .textareawrap .textareastyle { font-family: "Helvetica Neue",helvetica,arial,sans-serif; font-size: 14px; height: 66px; line-height: 22px; overflow-x: hidden; overflow-y: auto; resize: none; width: 100%; }
+.uyanpost .postwrap .paborder { background-color: rgb(246, 248, 249); border-top: 1px solid rgb(241, 243, 244); }
+.uyanpost .postwrap .postaction { height: 30px; }
+.uyanpost .postwrap .postaction .actionfunction, .uyanpost .postwrap .postaction .actionfunction ul li { float: left; }
+.uyanpost .postwrap .postaction .actionfunction ul li { height: 30px; width: 40px; }
+.uyanpost .postwrap .postaction .actionfunction, .uyanpost .postwrap .postaction .actionfunction ul li { float: left; width: 30px; height: 30px; }
+.uyanpost .postwrap .postaction .actionfunction ul li.functionface a, .uyanpost .postwrap .postaction .actionfunction ul li.function-at-w a { width: 30px; }
+.uyanpost .postwrap .postaction .actionfunction ul li a.effect { display: block; height: 16px; padding: 7px 10px; }
+.uyanpost .postborder { border: 2px solid rgb(204, 212, 217); margin-bottom: 12px; }
+.rompt { background: none repeat scroll 0% 0% rgb(252, 248, 227); width: 100%; height: 32px; overflow: hidden; font-size: 13px; color: rgb(192, 152, 83); margin-bottom: 15px; border-radius: 3px 3px 3px 3px; display: none; }
+.rompt span { display: block; border: 1px solid rgb(250, 235, 204); height: 30px; overflow: hidden; }
+.rompt p { display: block; float: left; padding-left: 10px; line-height: 32px; }
+.rompt a { background: url("close.png") no-repeat scroll 0% 0% transparent; width: 14px; height: 14px; overflow: hidden; float: right; margin: 9px 10px 0px 0px; display: inline; }
+.rompt a:hover { background: url("close.png") no-repeat scroll 0px -14px transparent; }
+.avatar { float: left; }
+.avatar .user { background: none repeat scroll 0px 0px rgb(230, 230, 230); border-radius: 3px 3px 3px 3px; display: block; z-index: 10; }
+.avatar .user img { border-radius: 3px 3px 3px 3px; display: block; height: 48px; width: 48px; }
+.Social-Login {  }
+.Social-Login .Social { float: left; margin-bottom: 15px; }
+.Social-Login .Login { right: 0px; float: right; width: 200px; }
+.Social-Login span { display: block; float: left; height: 32px; }
+.Social-Login .Social a { margin-right: 3px; margin-top: 1px; }
+.Social-Login .Social .sina { width: 32px; height: 32px; display: block; float: left; background: url("uyan32.png") no-repeat scroll 0px -32px transparent; }
+.Social-Login .Social .kaixin { width: 32px; height: 32px; display: block; float: left; background: url("uyan32.png") no-repeat scroll 0px -160px transparent; }
+.Social-Login .Social .renren { width: 32px; height: 32px; display: block; float: left; background: url("uyan32.png") no-repeat scroll 0px -96px transparent; }
+.Social-Login .Social .qq { width: 32px; height: 32px; display: block; float: left; background: url("uyan32.png") no-repeat scroll 0px -224px transparent; }
+.Social-Login .Login .Login-border { border: 2px solid rgb(204, 212, 217); border-radius: 4px 4px 4px 4px; height: 28px; overflow: hidden; }
+.Social-Login .Login .txt { display: block; float: left; font-size: 13px; height: 28px; margin: 0px; width: 117px; padding-left: 6px; line-height: 28px ! important; }
+.Social-Login .Login .btn { height: 28px; display: block; float: right; cursor: pointer; background: url("Release_s.png") no-repeat scroll 0% 0% transparent; margin: 0px; padding: 0px; color: rgb(255, 255, 255); font-weight: 600; text-align: center; width: 73px; text-indent: -999em; border-radius: 0px 2px 2px 0px; }
+.Social-Login .Login .btn:hover { background: url("Release_s.png") no-repeat scroll 0px -28px transparent; }
+.Expression { position: absolute; margin-top: -6px; margin-left: -2px; z-index: 1000; }
+.Expression .Expression_top { position: relative; height: 8px; width: 16px; overflow: hidden; z-index: 100; margin-left: 12px; }
+.Expression .Expression_top span { display: block; margin: 0px auto; height: 1px; overflow: hidden; }
+.Expression .Expression_top .sp1 { width: 2px; background: none repeat scroll 0% 0% rgb(206, 213, 217); }
+.Expression .Expression_top .sp2 { width: 2px; border-left: 1px solid rgb(206, 213, 217); border-right: 1px solid rgb(206, 213, 217); background: none repeat scroll 0% 0% rgb(255, 255, 255); }
+.Expression .Expression_top .sp3 { width: 4px; border-left: 1px solid rgb(206, 213, 217); border-right: 1px solid rgb(206, 213, 217); background: none repeat scroll 0% 0% rgb(255, 255, 255); }
+.Expression .Expression_top .sp4 { width: 6px; border-left: 1px solid rgb(206, 213, 217); border-right: 1px solid rgb(206, 213, 217); background: none repeat scroll 0% 0% rgb(255, 255, 255); }
+.Expression .Expression_top .sp5 { width: 8px; border-left: 1px solid rgb(206, 213, 217); border-right: 1px solid rgb(206, 213, 217); background: none repeat scroll 0% 0% rgb(255, 255, 255); }
+.Expression .Expression_top .sp6 { width: 10px; border-left: 1px solid rgb(206, 213, 217); border-right: 1px solid rgb(206, 213, 217); background: none repeat scroll 0% 0% rgb(255, 255, 255); }
+.Expression .Expression_top .sp7 { width: 12px; border-left: 1px solid rgb(206, 213, 217); border-right: 1px solid rgb(206, 213, 217); background: none repeat scroll 0% 0% rgb(255, 255, 255); }
+.Expression .Expression_top .sp8 { width: 14px; border-left: 1px solid rgb(206, 213, 217); border-right: 1px solid rgb(206, 213, 217); background: none repeat scroll 0% 0% rgb(255, 255, 255); }
+.Expression .Expression_Content { border: 2px solid rgb(206, 213, 217); background: none repeat scroll 0% 0% rgb(255, 255, 255); width: 285px; padding: 15px 4px 4px 15px; position: relative; margin-top: -2px; border-radius: 3px 3px 3px 3px; }
+.Expression .Expression_Content .Close { height: 16px; position: relative; margin-top: -12px; margin-bottom: 4px; }
+.Expression .Expression_Content .Close a { height: 16px; width: 16px; overflow: hidden; margin-right: -8px; float: right; background: url("x_alt.png") no-repeat scroll 0% 0% transparent; }
+.Expression .Expression_Content .Close a:hover { background: url("x_alt_hover.png") no-repeat scroll 0% 0% transparent; }
+.Expression .Expression_Content ul {  }
+.Expression .Expression_Content ul li { display: block; float: left; width: 28px; height: 28px; overflow: hidden; padding: 0px 5px 5px 0px; }
+.Expression .Expression_Content ul li a { display: block; border: 1px solid rgb(232, 232, 232); height: 23px; padding-top: 3px; width: 26px; overflow: hidden; text-align: center; }
+.Expression .Expression_Content ul li a:hover { border: 1px solid rgb(116, 159, 178); }
+.nav { height: 32px; overflow: hidden; font-size: 14px; border-bottom: 2px solid rgb(235, 238, 241); margin-bottom: 15px; }
+.nav .nav-left { float: left; line-height: 32px; cursor: pointer; }
+.nav span { display: block; line-height: 32px; color: rgb(64, 64, 64); }
+.nav b { display: block; float: left; margin-right: 4px; }
+.nav .nav-left span i.downicon { background: url("down-arrow.png") no-repeat scroll 0% 0% transparent; display: block; float: left; height: 7px; margin-top: 14px; width: 12px; }
+.nav-menu { border: 2px solid rgb(204, 212, 217); border-radius: 4px 4px 4px 4px; padding: 5px 0px; background: none repeat scroll 0% 0% rgb(255, 255, 255); margin-top: 32px; }
+.nav-menu li { display: block; }
+.nav-menu li a { display: block; line-height: 26px; height: 26px; color: rgb(142, 148, 156); font-size: 12px; padding: 0px 10px; }
+.nav-menu li a:hover { background: none repeat scroll 0% 0% rgb(170, 170, 170); color: rgb(255, 255, 255); }
+.nav-menu-left { width: 95px; float: left; position: absolute; left: 0px; z-index: 1000; }
+.post-list {  }
+.post-list .post { z-index: 10; }
+.post-content { margin-bottom: 24px; transition: all 0.2s ease-in-out 0s; }
+.post-content .avatar { top: 0px; }
+.post-content .post-body { z-index: 10; margin-top: 0px; margin-left: 60px; }
+.post-content .u-header { color: rgb(119, 119, 119); font-size: 13px; z-index: 10; overflow: hidden; }
+.post-content .u-header a, .post-content .u-header .author { float: left; display: block; font-weight: 600; line-height: 14px; }
+.publisher-anchor-color a { color: rgb(68, 112, 142) ! important; }
+.post-content .u-header .bullet { padding: 0px 4px; float: left; }
+.post-content .bullet { color: rgb(204, 204, 204); padding: 0px; }
+.post-content .u-header .time-ago, .post-content .u-header .total-votes, .post-content .u-header .parent-link { color: rgb(170, 178, 184); font-size: 12px; font-weight: normal; line-height: 16px; }
+.post-meta { float: left; }
+.post-content .u-header .post-menu { position: absolute; right: 0px; opacity: 10; z-index: 10; display: none; }
+.post-content .u-header .post-menu a { display: block; float: left; cursor: pointer; width: 16px; height: 16px; overflow: hidden; opacity: 0.6; }
+.post-content .u-header .post-menu a:hover { opacity: 1; }
+.post-content .u-header .post-menu .packup { background: url("show.png") no-repeat scroll 0px -16px transparent; }
+.post-content .u-header .post-menu .unwind { background: url("show.png") no-repeat scroll 0% 0% transparent; }
+.post-content .u-header .connector { display: block; float: left; padding-left: 8px; }
+.post-content .u-header .connector .replyname { color: rgb(170, 178, 184); font-size: 13px; font-weight: normal; background: url("return.png") no-repeat scroll 0px 2px transparent; padding-left: 14px; }
+.connector-box { display: none; background: none repeat scroll 0% 0% rgb(255, 255, 255); position: absolute; z-index: 1000; width: 220px; padding: 5px; overflow: hidden; border: 2px solid rgb(204, 212, 217); border-radius: 3px 3px 3px 3px; margin-top: -18px; margin-left: 14px; }
+.connector-box .avatar { width: 36px; height: 36px; overflow: hidden; float: left; }
+.connector-box .avatar img, .connector-box .avatar a img { width: 36px; height: 36px; border-radius: 3px 3px 3px 3px; }
+.connector-box .content { float: left; width: 174px; padding-left: 10px; overflow: hidden; }
+.connector-box .content h3, .connector-box .content h3 a { display: block; float: none; font-size: 14px; font-weight: 600; margin-top: 2px; }
+.connector-box .content h3 { color: rgb(153, 153, 153); }
+.connector-box .content p { font-size: 13px; float: none; line-height: 16px; color: rgb(142, 148, 156); height: 14px; margin-top: 4px; overflow: hidden; display: block; }
+.post-content .post-message-container { overflow: hidden; z-index: 10; width: 100%; }
+.post-content .post-message p { line-height: 20px; margin: 5px 0px 2px; font-size: 14px; word-wrap: break-word; overflow: hidden; }
+.post-content .u-footer { color: rgb(108, 108, 108); margin: 2px 0px 0px; height: 18px; overflow: hidden; line-height: 18px; }
+.post-content .u-footer ul li { display: block; float: left; font-size: 13px; line-height: 18px; list-style: none outside none; }
+.post-content .u-footer ul li em { font-weight: normal; color: rgb(222, 226, 229); line-height: 16px; margin-right: 5px; }
+.post-content .u-footer a { color: rgb(170, 178, 184); }
+.post-content .u-footer .action { margin-right: 5px; cursor: pointer; height: 16px; overflow: hidden; font-size: 13px; line-height: 18px; display: block; float: left; color: rgb(139, 147, 153); }
+.post-content .u-footer .action:hover { color: rgb(119, 127, 133); }
+.post-content .u-footer .share { display: block; width: 100px; }
+.post-content .u-footer .shareto { display: none; }
+.post-content .u-footer .shareto a.tsina { width: 18px; height: 18px; overflow: hidden; background: url("ico_001.png") no-repeat scroll 0% 0% transparent; text-indent: -999em; float: left; display: block; }
+.post-content .u-footer .shareto a.tsina:hover { background: url("ico_001.png") no-repeat scroll 0px -18px transparent; }
+.post-content .u-footer .shareto a.tqq { width: 18px; height: 18px; overflow: hidden; background: url("ico_001.png") no-repeat scroll -18px 0px transparent; text-indent: -999em; float: left; display: block; margin-left: 3px; margin-right: 2px; }
+.post-content .u-footer .shareto a.tqq:hover { background: url("ico_001.png") no-repeat scroll -18px -18px transparent; }
+.Copyright { border-top: 2px solid rgb(235, 238, 241); margin-top: 20px; padding: 20px 0px; }
+.Copyright a { float: right; font-size: 12px; color: rgb(170, 178, 184); }
+@media screen and (max-width: 405px) {
+}
+@media screen and (max-width: 343px) {
+}
+@media screen and (max-width: 368px) {
+  .Expression .Expression_Content { width: auto; }
+}
+@media screen and (max-width: 543px) {
+}
+@media screen and (max-width: 496px) {
+}
+@media screen and (max-width: 447px) {
+}
+@media screen and (max-width: 400px) {
+  .uyanpost .Social-Login .Login { float: left; }
+}

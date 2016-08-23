@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=10,IE=9,IE=8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<title>系统管理中的三大利刃(htop glances dstat) – linux运维部落</title>
+
+		
+		
+
+
+
+<link rel="https://api.w.org/" href="http://www.178linux.com/wp-json/">
+<link rel="prev" title="http协议简介" href="http://www.178linux.com/9245">
+<link rel="next" title="Ansible(From Wikipedia)" href="http://www.178linux.com/9284">
+<link rel="canonical" href="http://www.178linux.com/9255">
+<link rel="shortlink" href="http://www.178linux.com/?p=9255">
+<link rel="alternate" type="application/json+oembed" href="http://www.178linux.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.178linux.com%2F9255">
+<link rel="alternate" type="text/xml+oembed" href="http://www.178linux.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.178linux.com%2F9255&amp;format=xml">
+<meta name="keywords" content="dstat, glances, htop, linux系统管理, 系统运维, 运维专栏">
+<meta name="description" content="工欲善事情，必先利其器，生产环境中的服务器在处理请求并生成回应数据的时间主要消耗在服务器端，包括了众多的环节，如何全面了解我们linux服务器的CPU使用率、使用时间、内存占用比例、磁盘IO数据、网络相关数据等等众多指标，保证我们的linux服务器顺利完成每一个请求，怎能没有几个趁手的利刃，而今天就让我们见识一下系统管理中三大利刃。相传一把三尺长的软剑，叫七星绝命剑，剑刃上嵌着七颗星状的暗器，一剑刺出，使剑人的内力劲透剑身之时，那七颗星">
+
+
+
+
+<!--[if lt IE 9]><script src="http://www.178linux.com/wp-content/themes/d8-4.0/js/html5.js"></script><![endif]-->
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body class="single single-post postid-9255 single-format-standard"><div class="navbar-wrap">
+<div class="navbar">
+		<div class="logo"><a href="http://www.178linux.com/" title="linux运维部落-|国内最专业的Linux运维博客平台">linux运维部落</a></div>
+		<ul class="nav">
+			<li id="menu-item-207" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-207"><a href="http://www.178linux.com/">首页</a></li>
+<li id="menu-item-16455" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-16455"><a href="http://www.178linux.com/more/studentlife">学员风采</a>
+<ul class="sub-menu">
+	<li id="menu-item-26876" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-26876"><a>面授班</a>
+	<ul class="sub-menu">
+		<li id="menu-item-26867" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-26867"><a href="http://www.178linux.com/m20">面授20期</a></li>
+		<li id="menu-item-26866" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-26866"><a href="http://www.178linux.com/m19">面授19期</a></li>
+		<li id="menu-item-26865" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-26865"><a href="http://www.178linux.com/m18">面授18期</a></li>
+	</ul>
+</li>
+	<li id="menu-item-26877" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-26877"><a>网络班</a>
+	<ul class="sub-menu">
+		<li id="menu-item-26875" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-26875"><a href="http://www.178linux.com/n22">网络22期</a></li>
+		<li id="menu-item-26874" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-26874"><a href="http://www.178linux.com/n21">网络21期</a></li>
+		<li id="menu-item-26873" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-26873"><a href="http://www.178linux.com/n20">网络20期</a></li>
+		<li id="menu-item-26872" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-26872"><a href="http://www.178linux.com/n19">网络19期</a></li>
+		<li id="menu-item-26871" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-26871"><a href="http://www.178linux.com/n18">网络18期</a></li>
+	</ul>
+</li>
+</ul>
+</li>
+<li id="menu-item-16454" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-16454"><a href="http://www.osstep.com/">在线课程</a></li>
+<li id="menu-item-16429" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-has-children menu-item-16429"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f">运维专栏</a>
+<ul class="sub-menu">
+	<li id="menu-item-16430" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-16430"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/devopsadmin">开发运维</a>
+	<ul class="sub-menu">
+		<li id="menu-item-16447" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-16447"><a href="http://www.178linux.com/more/devs/java">JAVA</a></li>
+		<li id="menu-item-16448" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-16448"><a href="http://www.178linux.com/more/devs/php">PHP</a></li>
+		<li id="menu-item-16449" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-16449"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/devopsadmin/django">Django</a></li>
+		<li id="menu-item-16450" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-16450"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/devopsadmin/nodejs">nodejs</a></li>
+		<li id="menu-item-16451" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-16451"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/devopsadmin/python">Python</a></li>
+		<li id="menu-item-16452" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-16452"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/devopsadmin/ruby">RUBY</a></li>
+		<li id="menu-item-16453" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-16453"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/devopsadmin/ruby-devopsadmin">ruby</a></li>
+	</ul>
+</li>
+	<li id="menu-item-16431" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-16431"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/dbadmin">数据库运维</a></li>
+	<li id="menu-item-16432" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-16432"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/monitoradmin">监控运维</a></li>
+	<li id="menu-item-16433" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-16433"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/systemadmin">系统运维</a></li>
+	<li id="menu-item-16434" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-16434"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/systemadmin/automatic">自动化</a></li>
+	<li id="menu-item-16435" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-16435"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/systemadmin/virtual">虚拟化</a></li>
+	<li id="menu-item-16436" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-16436"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/networkadmin">网络运维</a></li>
+	<li id="menu-item-19470" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-19470"><a></a></li>
+</ul>
+</li>
+<li id="menu-item-16444" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-16444"><a href="http://www.178linux.com/jobbers">职位推荐</a></li>
+<li id="menu-item-16456" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-16456"><a href="http://www.178linux.com/more">更多</a>
+<ul class="sub-menu">
+	<li id="menu-item-16457" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-16457"><a href="http://www.178linux.com/more/ts">师资力量</a></li>
+	<li id="menu-item-29684" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-29684"><a href="http://www.178linux.com/%e8%af%be%e7%a8%8b%e7%bb%83%e4%b9%a0">课程练习</a></li>
+</ul>
+</li>
+		</ul>
+		<div class="menu pull-right">
+			<form method="get" class="dropdown search-form" action="http://www.178linux.com/">
+				<input class="search-input" name="s" placeholder="输入关键字搜索" x-webkit-speech="" type="text"><input class="btn btn-success search-submit" value="搜索" type="submit">
+				<ul class="dropdown-menu search-suggest"></ul>
+			</form>
+			<div class="btn-group pull-left">
+				<button class="btn btn-primary" data-toggle="modal" data-target="#feed">订阅</button>
+								<button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">关注 <i class="caret"></i></button>
+				<ul class="dropdown-menu pull-right">
+										<li><a href="http://weibo.com/mageedu" target="_blank">新浪微博</a></li>														</ul>
+							</div>
+		</div>
+</div>
+</div>
+<header class="header">
+	<div class="speedbar">
+					<div class="pull-right">
+				<i class="icon-user icon12"></i> <a href="http://www.178linux.com/wp-login.php">登录</a>			</div>
+				<div class="toptip"><strong class="text-success">最新消息：</strong>马哥2016Linux运维实战班全新上线，详情可了解  http://www.magedu.com/</div>
+	</div>
+</header>
+<section class="container">
+	<div class="content-wrap">
+	<div class="content">
+		<div class="breadcrumbs">你的位置：<a href="http://www.178linux.com/">linux运维部落</a> <small>&gt;</small> <a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f">运维专栏</a> <small>&gt;</small> <a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/systemadmin">系统运维</a> <small>&gt;</small> <span class="muted">系统管理中的三大利刃(htop glances dstat)</span></div>
+				<header class="article-header">
+			<h1 class="article-title"><a href="#">系统管理中的三大利刃(htop glances dstat)</a></h1>
+			<div class="meta">
+				<span class="muted"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/systemadmin"><i class="icon-list-alt icon12"></i> 系统运维</a></span>				<span class="muted"><i class="icon-user icon12"></i> <a href="http://www.178linux.com/author/zhang">zhang</a></span>
+				<time class="muted"><i class="ico icon-time icon12"></i> 9个月前 (11-18)</time>
+				<span class="muted"><i class="ico icon-eye-open icon12"></i> 1469浏览</span>
+				<span class="muted"><i class="icon-comment icon12"></i> <a href="#comments">0评论</a></span>							</div>
+		</header>
+
+				
+		<article class="article-content">
+			<p style="text-indent: 28px;"><span style="font-family: 宋体;">工欲善事情，必先利其器，生产环境中的服务器在处理请求并生成回应数据的时间主要消耗在服务器端，包括了众多的环节，如何全面了解我们linux服务器的CPU使用率、使用时间、内存占用比例、磁盘IO数据、网络相关数据等等众多指标，保证我们的linux服务器顺利完成每一个请求，怎能没有几个趁手的利刃，而今天就让我们见识一下系统管理中三大利刃。</span></p>
+<p style="text-indent: 28px;"><span style="font-family: 宋体;">相传一把三尺长的软剑，叫七星绝命剑，剑刃上嵌着七颗星状的暗器，一剑刺出，使剑人的内力劲透剑身之时，那七颗星状的暗器便飞脱疾出，出其不意地取人性命，（见古龙《吸血娥》）。而htop便是我们今天所讲的第一把利刃，和上面传说中的七星绝命剑类似，有着七个最常用命令，让我们先来看一下htop的真面目：</span></p>
+<p><img title="1447254319809430.jpg" alt="htop.jpg" src="1447254319809430.jpg"></p>
+<p style="text-indent: 28px;"><span style="font-family: 宋体;">从上图可以看出，相较于</span><span style="font-family: Calibri;">CentOS</span><span style="font-family: 宋体;">发行版上系统自带的</span><span style="font-family: Calibri;">top</span><span style="font-family: 宋体;">工具，</span><span style="font-family: Calibri;">htop</span><span style="font-family: 宋体;">工具无论是信息内容丰富程度，还是在用户界面的友好度上，都有着无可比拟的优势，而且</span><span style="font-family: Calibri;">htop</span><span style="font-family: 宋体;">工具支持交互式命令，下面让我们来认识一下</span><span style="font-family: Calibri;">htop</span><span style="font-family: 宋体;">工具常见的七个交互式命令。</span></p>
+<p style="text-indent: 28px;"><span style="font-family: Calibri;">u </span><span style="font-family: 宋体;">：具有过滤功能，能显示用户指定用户的进程</span></p>
+<p style="text-indent: 28px;"><span style="font-family: Calibri;">s </span><span style="font-family: 宋体;">：选定某个进程后，使用该命令可以跟踪该进程所发起的系统调用</span></p>
+<p style="text-indent: 28px;"><span style="font-family: Calibri;">l </span><span style="font-family: 宋体;">：选定某个进程后，使用该命令可以显示该经常打开的文件有那些</span></p>
+<p style="text-indent: 28px;"><span style="font-family: Calibri;">t </span><span style="font-family: 宋体;">：直接使用该命令可以显示进程的层级机构</span></p>
+<p style="text-indent: 28px;"><span style="font-family: Calibri;">a </span><span style="font-family: 宋体;">：使用该命令可以设定某个进程的</span><span style="font-family: Calibri;">cpu</span><span style="font-family: 宋体;">亲缘性</span></p>
+<p style="text-indent: 28px;"><span style="font-family: Calibri;">k </span><span style="font-family: 宋体;">：使用该命令可以结束某个指定进程</span></p>
+<p style="text-indent: 28px;"><span style="font-family: Calibri;">h </span><span style="font-family: 宋体;">：该工具还有众多功能，使用该命令可以获取该工具其他帮助信息</span></p>
+<p style="text-indent: 28px;"><span style="font-family: Calibri;">&nbsp;</span></p>
+<p style="text-indent: 28px;"><span style="font-family: 宋体;">以上七个命令就是</span><span style="font-family: Calibri;">htop</span><span style="font-family: 宋体;">工具最常用的命令，掌握好这七个命令就好比拥有了七星绝命剑的七颗</span><span style="font-family: 宋体;">星状暗器，杀人于无形，旨在一瞬间，但是如何把握这七个形状暗器的力度和功用，需要我们对htop有着更深入的理解，接下来我们详细介绍htop的众多输出信息的详解：</span></p>
+<p style="text-indent: 28px;"><span style="font-family: 宋体;">CPU usage bar</span><span style="font-family: 宋体;">：该行主要显示CPU使用情况，而且不光这些，htop还为将不同颜色来区分是使用情况，蓝色的表示low-prority使用，绿色的表示normal使用情况，红色的表示kernel使用情况，青色的表示vistualiz使用情况。</span></p>
+<p style="text-indent: 28px;"><span style="font-family: 宋体;">Memory bar</span><span style="font-family: 宋体;">：该行主要表示内存使用情况，同样的htop使用了不同颜色来区分是使用情况，绿色的表示已经使用内存情况，蓝色的表示用于缓冲的内存使用情况，黄色的表示用于缓存的内存使用情况。</span></p>
+<p style="text-indent: 28px;"><span style="font-family: 宋体;">Swap bar</span><span style="font-family: 宋体;">：该行主要显示交换分区使用情况，当你发现你的交换分区已经派上用场的时候，说明你的物理内存已经不足，需要考虑增加内存了。</span></p>
+<p style="text-indent: 28px;"><span style="font-family: Calibri;">PID</span><span style="font-family: 宋体;">：表示进程号</span></p>
+<p style="text-indent: 28px;"><span style="font-family: Calibri;">USER</span><span style="font-family: 宋体;">：发起该进程的用户名</span></p>
+<p style="text-indent: 28px;"><span style="font-family: Calibri;">PRI</span><span style="font-family: 宋体;">：进程优先级</span></p>
+<p style="text-indent: 28px;"><span style="font-family: Calibri;">NI</span><span style="font-family: 宋体;">：</span><span style="font-family: Calibri;">nice</span><span style="font-family: 宋体;">值</span></p>
+<p style="text-indent: 28px;"><span style="font-family: Calibri;">VIRT</span><span style="font-family: 宋体;">：进程需要的虚拟内存</span></p>
+<p style="text-indent: 28px;"><span style="font-family: Calibri;">RES</span><span style="font-family: 宋体;">：常驻内存，也就是物理内存</span></p>
+<p style="text-indent: 28px;"><span style="font-family: Calibri;">SHR</span><span style="font-family: 宋体;">：共享内存</span></p>
+<p style="text-indent: 28px;"><span style="font-family: Calibri;">S</span><span style="font-family: 宋体;">：进程的运行状况：</span><span style="font-family: Calibri;">R</span><span style="font-family: 宋体;">表示正在运行，</span><span style="font-family: Calibri;">S</span><span style="font-family: 宋体;">表示休眠，</span><span style="font-family: Calibri;">Z</span><span style="font-family: 宋体;">表示僵死状态</span></p>
+<p style="text-indent: 28px;"><span style="font-family: Calibri;">CPU%</span><span style="font-family: 宋体;">：占用的</span><span style="font-family: Calibri;">CPU</span><span style="font-family: 宋体;">使用率</span></p>
+<p style="text-indent: 28px;"><span style="font-family: Calibri;">MEM%</span><span style="font-family: 宋体;">：物理内存使用率</span></p>
+<p style="text-indent: 28px;"><span style="font-family: Calibri;">TIME%</span><span style="font-family: 宋体;">：占用</span><span style="font-family: Calibri;">CPU</span><span style="font-family: 宋体;">的累计时长</span></p>
+<p style="text-indent: 28px;"><span style="font-family: Calibri;">Command</span><span style="font-family: 宋体;">：进程启动的启动命令名称即路径</span></p>
+<p style="text-indent: 28px;"><span style="font-family: 宋体;">有了以上的详解，我想</span><span style="font-family: Calibri;">htop</span><span style="font-family: 宋体;">这把利刃将会发挥最大的用处。</span></p>
+<p><span style="font-family: Calibri;">&nbsp;</span></p>
+<p style="text-indent: 28px;"><span style="font-family: 宋体;">相传君子剑剑身乌黑，没半点光泽，就似一段黑木一般，和</span><a href="http://baike.baidu.com/subview/416316/8059268.htm" target="_blank"><span style="font-family: 宋体; color: windowtext;">平常</span></a><span style="font-family: 宋体;">的宝剑不同，这剑既无尖头，又无剑锋，圆头钝边，倒有些似一条薄薄的木鞭，但寒气逼人，而且锋锐异常。此剑与淑女剑一模一样，大小长短，全无二致，双剑的材料完全相同，都具有极强的磁性，如果放的距离较近，双剑会自动吸在一起此剑后落到少年</span><a href="http://baike.baidu.com/view/24438.htm" target="_blank"><span style="font-family: 宋体; color: windowtext;">杨过</span></a><span style="font-family: 宋体;">手中，与</span><a href="http://baike.baidu.com/view/5726.htm" target="_blank"><span style="font-family: 宋体; color: windowtext;">小龙女</span></a><span style="font-family: 宋体;">手里的</span><a href="http://baike.baidu.com/view/724825.htm" target="_blank"><span style="font-family: 宋体; color: windowtext;">淑女剑</span></a><span style="font-family: 宋体;">联剑出击，以</span><a href="http://baike.baidu.com/view/700236.htm" target="_blank"><span style="font-family: 宋体; color: windowtext;">玉女素心剑法</span></a><span style="font-family: 宋体;">威震天下，（见《神雕侠侣》）。而</span><span style="font-family: Calibri;">glances</span><span style="font-family: 宋体;">就是我们要说的第二把利刃，与相传的君子剑有相似之处，</span><span style="font-family: Calibri;">glances</span><span style="font-family: 宋体;">支持客户端</span><span style="font-family: Calibri;">/</span><span style="font-family: 宋体;">服务器模式，远程模式使用将会有奇效，接下来我们认识这把君子淑女剑吧。</span></p>
+<p><span style="font-family: Calibri;">&nbsp;&nbsp;&nbsp; </span><span style="font-family: Calibri;">glances</span><span style="font-family: 宋体;">并不是</span><span style="font-family: Calibri;">CentOS</span><span style="font-family: 宋体;">发行版默认安装的工具，需要在</span><span style="font-family: Calibri;">epel</span><span style="font-family: 宋体;">源里面安装使用，首先让我们先来认识一下</span><span style="font-family: Calibri;">glances</span><span style="font-family: 宋体;">吧，如下图：</span></p>
+<p><span style="font-family: 宋体;"><img title="1447254393162637.png" alt="glances.png" src="1447254393162637.png"></span></p>
+<p><span style="font-family: 宋体;"><br></span></p>
+<p style="text-indent: 27px;"><span style="font-family: Calibri;">glances</span><span style="font-family: 宋体;">工具支持的选项众多，我们先来认识一下</span><span style="font-family: Calibri;">glances</span><span style="font-family: 宋体;">的常用选项：</span></p>
+<p style="text-indent: 27px;"><span style="font-family: Calibri;">-b </span><span style="font-family: 宋体;">：以</span><span style="font-family: Calibri;">byte/s</span><span style="font-family: 宋体;">为单位显示网卡设备</span></p>
+<p style="text-indent: 27px;"><span style="font-family: Calibri;">-d </span><span style="font-family: 宋体;">：禁用或者关闭显示磁盘</span><span style="font-family: Calibri;">IO</span><span style="font-family: 宋体;">功能模块</span></p>
+<p style="text-indent: 27px;"><span style="font-family: Calibri;">-f </span><span style="font-family: 宋体;">：通常和</span><span style="font-family: Calibri;">-o</span><span style="font-family: 宋体;">一起使用设置输出文件位置即格式</span></p>
+<p style="text-indent: 27px;"><span style="font-family: Calibri;">-o </span><span style="font-family: 宋体;">：指明输出的格式，通常为｛</span><span style="font-family: Calibri;">CSV|HTML</span><span style="font-family: 宋体;">｝</span></p>
+<p style="text-indent: 27px;"><span style="font-family: Calibri;">-m </span><span style="font-family: 宋体;">：关闭</span><span style="font-family: Calibri;">mount</span><span style="font-family: 宋体;">功能模块</span></p>
+<p style="text-indent: 27px;"><span style="font-family: Calibri;">-n </span><span style="font-family: 宋体;">：关闭网络功能模块</span></p>
+<p style="text-indent: 27px;"><span style="font-family: Calibri;">-t</span><span style="font-family: Calibri;">&nbsp; </span><span style="font-family: 宋体;">：指明刷新时长，默认为</span><span style="font-family: Calibri;">3</span><span style="font-family: 宋体;">秒</span></p>
+<p style="text-indent: 27px;"><span style="font-family: Calibri;">-1</span><span style="font-family: Calibri;">&nbsp; </span><span style="font-family: 宋体;">：单独显示每颗</span><span style="font-family: Calibri;">CPU</span><span style="font-family: 宋体;">相关的负载数据信息</span></p>
+<p style="text-indent: 27px;"><span style="font-family: 宋体;">以上就是</span><span style="font-family: Calibri;">glances</span><span style="font-family: 宋体;">工具常用选项，同时</span><span style="font-family: Calibri;">glances</span><span style="font-family: 宋体;">工具还支持在工作界面下直接按相对应的选项就可以关闭或者设置相关功能的，上面曾说过</span><span style="font-family: Calibri;">glances</span><span style="font-family: 宋体;">工具支持</span><span style="font-family: Calibri;">C/S</span><span style="font-family: 宋体;">模式，那它是如何在</span><span style="font-family: Calibri;">C/S</span><span style="font-family: 宋体;">模式下工作的那？</span> <span style="font-family: 宋体;">首先：</span><span style="font-family: Calibri;">server</span><span style="font-family: 宋体;">端以监听模式启动</span><span style="font-family: Calibri;">glances</span><span style="font-family: 宋体;">；其次：</span><span style="font-family: Calibri;">client</span><span style="font-family: 宋体;">端以远程模式启动</span><span style="font-family: Calibri;">glances</span><span style="font-family: 宋体;">远程连入指定服务器，并获取</span><span style="font-family: Calibri;">server</span><span style="font-family: 宋体;">上相关的性能数据。</span></p>
+<p style="text-indent: 27px;"><span style="font-family: 宋体;">服务端命令：</span><span style="font-family: Calibri;">glances</span><span style="font-family: Calibri;">&nbsp;&nbsp;&nbsp; </span><span style="font-family: Calibri;">-s</span><span style="font-family: Calibri;">&nbsp;&nbsp; </span><span style="font-family: Calibri;">-B</span><span style="font-family: Calibri;">&nbsp;&nbsp; </span><span style="font-family: Calibri;">IPADDRESS</span><span style="font-family: 宋体;">（指定用于监听的本地地址）</span></p>
+<p style="text-indent: 27px;"><span style="font-family: 宋体;">客户端命令：</span><span style="font-family: Calibri;">glances</span><span style="font-family: Calibri;">&nbsp;&nbsp;&nbsp; </span><span style="font-family: Calibri;">-c</span><span style="font-family: Calibri;">&nbsp;&nbsp; </span><span style="font-family: Calibri;">IPADDRESS</span><span style="font-family: 宋体;">（指明连入的服务器地址）</span></p>
+<p style="text-indent: 27px;"><span style="font-family: Calibri;">glances</span><span style="font-family: 宋体;">所显示的丰富信息包括了系统运行的众多模块，包括了</span><span style="font-family: Calibri;">cpu</span><span style="font-family: 宋体;">相关模块，多核情况下每个核心的负载情况，内存使用模块，交换分去使用情况，网络使用状况，磁盘</span><span style="font-family: Calibri;">IO</span><span style="font-family: 宋体;">使用情况，以及各分区挂载情况，我相信通过了解以上系统运行期间的状况，一定能判断出当前系统运行是所出现的问题，帮助我们找出问题所在。</span></p>
+<p style="text-indent: 27px;"><span style="font-family: Calibri;">&nbsp;</span></p>
+<p style="text-indent: 27px;"><span style="font-family: Calibri;">&nbsp;</span></p>
+<p style="text-indent: 27px;"><span style="font-family: 宋体;">相传当初傲日并非打算铸造「绝世好剑」，而是要铸造「败亡之剑」，可惜「败亡」的铸造过程太过邪异，每次铸剑，均会造成人命伤亡，故此傲家中人弃「败亡」而改铸「绝世」。铸剑的最后步骤是以三毒之血「贪」（剑贪之血），「瞋」（步惊云之血），「痴」（断浪之血）炼制。但所铸成的只是威力神髓所在的真元，而真正的剑体已藏于千万铸好的绝世好剑中，绝世好剑本身有吸摄天地灵气之能，同样也可吸收别人功力转为己用。位列当世十大神兵之一，见《风云》。而我们今天所说的第三把系统管理的兵刃，于绝世好剑有过之而不及，绝世好剑需要集三毒之血（剑贪之血）、（步惊云之血）、（断浪之血）炼制而成，而</span><span style="font-family: Calibri;">dstat</span><span style="font-family: 宋体;">整合了</span><span style="font-family: Calibri;">vmstat</span><span style="font-family: 宋体;">、</span><span style="font-family: Calibri;">iostat</span><span style="font-family: 宋体;">、</span><span style="font-family: Calibri;">netstat</span><span style="font-family: 宋体;">、</span><span style="font-family: Calibri;">ifstat</span><span style="font-family: 宋体;">四款工具的功能于一身，功能无比强大，首先来看看这个利刃的庐山真面目，如下图：</span></p>
+<p><img title="1447254434843834.jpg" alt="dstat.jpg" src="1447254434843834.jpg"></p>
+<p style="text-indent: 27px;"><span style="font-family: 宋体;">通过上图可以更直观的看出系统各功能模块的使用状况，而且</span><span style="font-family: Calibri;">dstat</span><span style="font-family: 宋体;">是</span><span style="font-family: Calibri;">CentOS</span><span style="font-family: 宋体;">默认提供的一款工具，并且使用起来十分的灵活，可以通过不同的组合来显示出我们需要的功能模块，下面来认识一下</span><span style="font-family: Calibri;">dstat</span><span style="font-family: 宋体;">这款工具的主要选项有那些：</span></p>
+<p style="text-indent: 27px;"><span style="font-family: Calibri;">-c </span><span style="font-family: 宋体;">：显示</span><span style="font-family: Calibri;">CPU</span><span style="font-family: 宋体;">相关的统计数据</span></p>
+<p style="text-indent: 27px;"><span style="font-family: Calibri;">-d </span><span style="font-family: 宋体;">：显示磁盘相关的统计数据</span></p>
+<p style="text-indent: 27px;"><span style="font-family: Calibri;">-g </span><span style="font-family: 宋体;">：显示</span><span style="font-family: Calibri;">Page</span><span style="font-family: 宋体;">相关的速率数据</span></p>
+<p style="text-indent: 27px;"><span style="font-family: Calibri;">-i </span><span style="font-family: 宋体;">：显示中断相关的统计数据</span></p>
+<p style="text-indent: 27px;"><span style="font-family: Calibri;">-l </span><span style="font-family: 宋体;">：显示</span><span style="font-family: Calibri;">load average</span><span style="font-family: 宋体;">相关的统计信息</span></p>
+<p style="text-indent: 27px;"><span style="font-family: Calibri;">-m</span><span style="font-family: 宋体;">：显示内存相关的统计信息</span></p>
+<p style="text-indent: 27px;"><span style="font-family: Calibri;">-n </span><span style="font-family: 宋体;">：显示网络相关的统计数据速率信息</span></p>
+<p style="text-indent: 27px;"><span style="font-family: Calibri;">-N </span><span style="font-family: 宋体;">：指定接口</span></p>
+<p style="text-indent: 27px;"><span style="font-family: Calibri;">-p </span><span style="font-family: 宋体;">：显示进程相关的统计数据</span></p>
+<p style="text-indent: 27px;"><span style="font-family: Calibri;">-r </span><span style="font-family: 宋体;">：显示</span><span style="font-family: Calibri;">IO</span><span style="font-family: 宋体;">请求的速率</span></p>
+<p style="text-indent: 27px;"><span style="font-family: Calibri;">-s </span><span style="font-family: 宋体;">：显示</span><span style="font-family: Calibri;">swap</span><span style="font-family: 宋体;">交换分区的相关数据</span></p>
+<p style="text-indent: 27px;"><span style="font-family: Calibri;">-y </span><span style="font-family: 宋体;">：显示系统相关的数据包括中断和进程间切换等相关信息</span></p>
+<p style="text-indent: 27px;"><span style="font-family: Calibri;">–top-cpu</span><span style="font-family: 宋体;">：显示最占用</span><span style="font-family: Calibri;">CPU</span><span style="font-family: 宋体;">的进程</span></p>
+<p style="text-indent: 27px;"><span style="font-family: Calibri;">–top-bio</span><span style="font-family: 宋体;">：显示最消耗块级别</span><span style="font-family: Calibri;">IO</span><span style="font-family: 宋体;">的进程</span></p>
+<p style="text-indent: 27px;"><span style="font-family: Calibri;">–top-time</span><span style="font-family: 宋体;">：显示最占用</span><span style="font-family: Calibri;">CPU</span><span style="font-family: 宋体;">时长的进程</span></p>
+<p style="text-indent: 27px;"><span style="font-family: Calibri;">–top-io</span><span style="font-family: 宋体;">：显示最占用</span><span style="font-family: Calibri;">io</span><span style="font-family: 宋体;">的进程</span></p>
+<p style="text-indent: 27px;"><span style="font-family: Calibri;">–top-mem</span><span style="font-family: 宋体;">：显示最占用内存的进程</span></p>
+<p style="text-indent: 27px;"><span style="font-family: Calibri;">–ipc</span><span style="font-family: 宋体;">：显示进程间通信相关的速率数据</span></p>
+<p style="text-indent: 27px;"><span style="font-family: Calibri;">–tcp</span><span style="font-family: 宋体;">：显示</span><span style="font-family: Calibri;">tcp</span><span style="font-family: 宋体;">套接字相关的数据</span></p>
+<p style="text-indent: 27px;"><span style="font-family: Calibri;">–udp</span><span style="font-family: 宋体;">：显示</span><span style="font-family: Calibri;">udp</span><span style="font-family: 宋体;">套接字的相关数据</span></p>
+<p style="text-indent: 27px;"><span style="font-family: Calibri;">–raw</span><span style="font-family: 宋体;">：显示</span><span style="font-family: Calibri;">raw</span><span style="font-family: 宋体;">套接字相关数据</span></p>
+<p style="text-indent: 27px;"><span style="font-family: Calibri;">–unix</span><span style="font-family: 宋体;">：显示</span><span style="font-family: Calibri;">unix sock</span><span style="font-family: 宋体;">接口相关的统计数据</span></p>
+<p style="text-indent: 27px;"><span style="font-family: Calibri;">-a </span><span style="font-family: 宋体;">：相当于</span><span style="font-family: Calibri;">-cdngy</span></p>
+<p style="text-indent: 27px;"><span style="font-family: Calibri;">&nbsp;</span></p>
+<p style="text-indent: 27px;"><span style="font-family: 宋体;">以上就是</span><span style="font-family: Calibri;">dstat</span><span style="font-family: 宋体;">工具的常用选项，之所以说该使用该工具十分领过是因为它即可以加上众多的参数来显示系统运行时丰富的各个功能模块的状态信息，如下图：</span></p>
+<p><img title="1447254473703798.jpg" alt="dstat1.jpg" src="1447254473703798.jpg"></p>
+<p><span style="font-family: 宋体;">同时又可以根据自己的需要来单独显示某一个功能模块的信息或者显示当前系统最占用</span><span style="font-family: Calibri;">CPU</span><span style="font-family: 宋体;">的进程，如下图：</span></p>
+<p><span style="font-family: 宋体;"><img title="1447254514631138.jpg" alt="dstat2.jpg" src="1447254514631138.jpg"></span></p>
+<p><span style="font-family: 宋体;"><br></span></p>
+<p><span style="font-family: 宋体;">&nbsp;&nbsp;&nbsp; 以上就是系统管理中的三把利刃，只要精通任何一个工具，都有助于我们更加深入的了解我们系统运行过程中的问题和不足，及时的发行并解决这些问题，但同时我们也应该认识到，所谓的这些工具都是通过整合或分析</span><span style="font-family: Calibri;">/proc/</span><span style="font-family: 宋体;">这个伪文件系统，为什么说它是伪文件系统那，因为它只存在内存当中而不占用外存空间，它是以文件系统的方式访问系统内核数据的操作提供接口，要想使用好以上三个工具，还需要更深入的理解系统是究竟怎么运行起来的，以及系统运行的原理是什么，当我们真的理解了这些，我想那个时候就是我们自己制作工具开始，正所谓真正的高手也都是制作工具的高手，就如同江湖里说的最好的境界乃是无剑胜有剑，摘叶飞花皆可伤人。</span></p>
+<p><span style="font-family: 宋体;"></span></p>
+<p><span style="font-family: 宋体;"></span></p>
+<p></p>
+<p>转载请注明：<a href="http://www.178linux.com/">linux运维部落</a> » <a href="#">系统管理中的三大利刃(htop glances dstat)</a></p>		</article>
+
+		
+		<footer class="article-footer">
+			<div class="article-tags">继续浏览有关 <a href="http://www.178linux.com/tag/dstat" rel="tag">dstat</a><a href="http://www.178linux.com/tag/glances" rel="tag">glances</a><a href="http://www.178linux.com/tag/htop" rel="tag">htop</a><a href="http://www.178linux.com/tag/linux%e7%b3%bb%e7%bb%9f%e7%ae%a1%e7%90%86" rel="tag">linux系统管理</a> 的文章</div>			<div class="share"><h5>分享到 </h5><div class="bdsharebuttonbox"><a class="bds_qzone" data-cmd="qzone"></a><a class="bds_tsina" data-cmd="tsina"></a><a class="bds_weixin" data-cmd="weixin"></a><a class="bds_tqq" data-cmd="tqq"></a><a class="bds_sqq" data-cmd="sqq"></a><a class="bds_renren" data-cmd="renren"></a><a class="bds_t163" data-cmd="t163"></a><a class="bds_tsohu" data-cmd="tsohu"></a><a class="bds_baidu" data-cmd="baidu"></a><a class="bds_douban" data-cmd="douban"></a><a class="bds_bdhome" data-cmd="bdhome"></a><a class="bds_youdao" data-cmd="youdao"></a><a class="bds_fbook" data-cmd="fbook"></a><a class="bds_twi" data-cmd="twi"></a><a class="bds_more" data-cmd="more"></a><a class="bds_count" data-cmd="count"></a></div></div>		</footer>
+
+		<nav class="article-nav">
+			<span class="article-nav-prev">上一篇 <a href="http://www.178linux.com/9245" rel="prev">http协议简介</a></span>
+			<span class="article-nav-next"><a href="http://www.178linux.com/9284" rel="next">Ansible(From Wikipedia)</a> 下一篇</span>
+		</nav>
+
+		<div class="relates">
+			<h3>与本文相关的文章</h3>
+			<ul>
+<li><a href="http://www.178linux.com/15251">Linux进程管理之“四大名捕”</a></li><li><a href="http://www.178linux.com/14038">推荐-Centos常用的进程管理和资源查看工具</a></li><li><a href="http://www.178linux.com/4394">htop使用详解</a></li><li><a href="http://www.178linux.com/2606">Linux进程管理</a></li><li><a href="http://www.178linux.com/36589">N22-第二周作业-对Linux的基础操作命令的理解及用法示例</a></li><li><a href="http://www.178linux.com/36500">linux操作系统rpm软件包管理</a></li><li><a href="http://www.178linux.com/37724">N22-第二周博客作业</a></li><li><a href="http://www.178linux.com/37956">python Django分页</a></li><li><a href="http://www.178linux.com/37544">22期第二周课堂练习</a></li><li><a href="http://www.178linux.com/38098">第二周</a></li><li><a href="http://www.178linux.com/37729">系统基础之shell脚本编程详解3(函数)</a></li><li><a href="http://www.178linux.com/38256">（8.15-8.21）第2周博客作业</a></li><li><a href="http://www.178linux.com/38039">N-22-南京-修 第二周作业</a></li><li><a href="http://www.178linux.com/38051">初入Linux世界 —马哥教育网络班N22_第二周课程练习</a></li><li><a href="http://www.178linux.com/38195">博客作业-N22第二周</a></li><li><a href="http://www.178linux.com/38493">N22-网路班-第2次作业-冥界之王</a></li><li><a href="http://www.178linux.com/38596">N22-第二周作业</a></li><li><a href="http://www.178linux.com/38379">第二天作业</a></li><li><a href="http://www.178linux.com/37329">N22-妙手 第4天视频课程练习</a></li><li><a href="http://www.178linux.com/38713">马哥教育网络班21期+第六周课程练习</a></li><li><a href="http://www.178linux.com/38776">函数定义、使用</a></li><li><a href="http://www.178linux.com/36602">2016/08/16：文件查找压缩</a></li><li><a href="http://www.178linux.com/37479">马哥教育网络班22期+第2周课程练习</a></li><li><a href="http://www.178linux.com/37492">查找与压缩</a></li></ul>		</div>
+	
+
+		
+		<div id="respond" class="no_webshot">
+		<form action="http://www.178linux.com/wp-comments-post.php" method="post" id="commentform">
+		
+		<div class="comt-title">
+			<div class="comt-avatar pull-left">
+				<img alt="" src="untitled.dat" srcset="untitled_001.dat 2x" class="avatar avatar-28 photo avatar-default" width="28" height="28">			</div>
+			<div class="comt-author pull-left">
+			发表我的评论			</div>
+			<a id="cancel-comment-reply-link" class="pull-right">取消评论</a>
+		</div>
+		
+		<div class="comt">
+			<div class="comt-box">
+				<textarea placeholder="写点什么..." class="input-block-level comt-area" name="comment" id="comment" cols="100%" rows="3" tabindex="1"></textarea>
+				<div class="comt-ctrl">
+					<button class="btn btn-primary pull-right" type="submit" name="submit" id="submit" tabindex="5"><i class="icon-ok-circle icon-white icon12"></i> 提交评论</button>
+					<div class="comt-tips pull-right"><input name="comment_post_ID" value="9255" id="comment_post_ID" type="hidden">
+<input name="comment_parent" id="comment_parent" value="0" type="hidden">
+<p style="display: none;"><input id="akismet_comment_nonce" name="akismet_comment_nonce" value="9cf6cd0614" type="hidden"></p><p style="display: none;"></p></div>
+					<span data-type="comment-insert-smilie" class="muted comt-smilie"><i class="icon-thumbs-up icon12"></i> 表情</span>
+					<span class="muted comt-mailme"><label for="comment_mail_notify" class="checkbox inline" style="padding-top: 0px;"><input name="comment_mail_notify" id="comment_mail_notify" value="comment_mail_notify" checked="checked" type="checkbox">有人回复时邮件通知我</label></span>
+				</div>
+			</div>
+
+												<div class="comt-comterinfo" id="comment-author-info">
+						<h4>Hi，您需要填写昵称和邮箱！</h4>
+						<ul>
+							<li class="form-inline"><label class="hide" for="author">昵称</label><input class="ipt" name="author" id="author" value="" tabindex="2" placeholder="昵称" type="text"><span class="help-inline">昵称 (必填)</span></li>
+							<li class="form-inline"><label class="hide" for="email">邮箱</label><input class="ipt" name="email" id="email" value="" tabindex="3" placeholder="邮箱" type="text"><span class="help-inline">邮箱 (必填)</span></li>
+							<li class="form-inline"><label class="hide" for="url">网址</label><input class="ipt" name="url" id="url" value="" tabindex="4" placeholder="网址" type="text"><span class="help-inline">网址</span></li>
+						</ul>
+					</div>
+									</div>
+
+		
+	<input id="ak_js" name="ak_js" value="1471843330396" type="hidden"></form>
+	</div>
+<div id="postcomments">
+	<h3 id="comments">
+		网友最新评论<b> (2)</b>
+	</h3>
+	<ol class="commentlist">
+		<li class="comment byuser comment-author-stanley even thread-even depth-1" id="comment-4201"><div class="c-avatar"><img alt="" data-original="http://gravatar.duoshuo.com/avatar/71323092400bf1bd04b01c5df1e9317d?s=36&amp;d=http%3A%2F%2Fwww.178linux.com%2Fwp-content%2Fthemes%2Fd8-4.0%2Fimg%2Fdefault.png&amp;r=g" srcset="71323092400bf1bd04b01c5df1e9317d.dat 2x" class="avatar avatar-36 photo" width="36" height="36"></div><div class="c-main" id="div-comment-4201">glances 已学习，其它两个工具一直在用，非常锋利！<div class="c-meta"><span class="c-author">stanley</span>9个月前 (11-18)<a rel="nofollow" class="comment-reply-link" href="http://www.178linux.com/9255?replytocom=4201#respond" aria-label="回复给stanley">回复</a></div></div><ul class="children">
+<li class="comment byuser comment-author-zhang bypostauthor odd alt depth-2" id="comment-4226"><div class="c-avatar"><img alt="" data-original="http://gravatar.duoshuo.com/avatar/48cae54f2579fe2b76c898c763c702f9?s=36&amp;d=http%3A%2F%2Fwww.178linux.com%2Fwp-content%2Fthemes%2Fd8-4.0%2Fimg%2Fdefault.png&amp;r=g" srcset="48cae54f2579fe2b76c898c763c702f9.dat 2x" class="avatar avatar-36 photo" width="36" height="36"></div><div class="c-main" id="div-comment-4226">哈哈，看来你已经能称霸武林了！<div class="c-meta"><span class="c-author">zhang</span>9个月前 (11-18)<a rel="nofollow" class="comment-reply-link" href="http://www.178linux.com/9255?replytocom=4226#respond" aria-label="回复给zhang">回复</a></div></div></li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	</ol>
+	<div class="pagenav">
+			</div>
+</div>
+
+		
+	</div>
+</div>
+<aside class="sidebar">	
+Ansible中文权威群-2号群
+<br>
+<a target="_blank" href="http://shang.qq.com/wpa/qunwpa?idkey=72aaea3658c11875339b0f26d8af772875772acc4600865f53dc805166e9b43a"><img src="group.png" alt="Ansible中文权威-2号群" title="Ansible中文权威-2号群" border="0"></a>
+<br>
+ELK企业架构群
+<br>
+<a target="_blank" href="http://shang.qq.com/wpa/qunwpa?idkey=063c723f70c77b548f065e769cb5ea9b16e8d8e8dadf5763d58f7dcb096695c6"><img src="group.png" alt="ELK企业架构群" title="ELK企业架构群" border="0"></a>
+<br>
+AWK&amp;SED企业实战群
+<br>
+<a target="_blank" href="http://shang.qq.com/wpa/qunwpa?idkey=28a633ed53538b0d570f4dc074a7bf8ec6448a8454b805bdb6f33c010f1bda5b"><img src="group.png" alt="AWK&amp;SED企业实战" title="AWK&amp;SED企业实战" border="0"></a>
+<br>
+docker企业架构实践群
+<br>
+<a target="_blank" href="http://shang.qq.com/wpa/qunwpa?idkey=cdedb9b2618192fdc0310a8ee35140bda392247251caa0253a84cfc61c3f2839"><img src="group.png" alt="docker企业架构实践" title="docker企业架构实践" border="0"></a>
+<br>
+Jumpserver 交流群2
+<br>
+<a target="_blank" href="http://shang.qq.com/wpa/qunwpa?idkey=733e29b61fabc4e332504808ef3f236fc9ab3fb6bbf424ba524a01406ae35c21"><img src="group.png" alt="Jumpserver 交流群2" title="Jumpserver 交流群2" border="0"></a>
+<br>
+
+
+
+<div class="widget d_textbanner"><a class="style04" href="http://jq.qq.com/?_wv=1027&amp;k=Yph7JP"><strong></strong><h2>有奖征稿</h2><p>致力打造最专业的linux运维博客教程平台,欢迎各位投稿，对于录用的精品博文，将有给力的奖励和内部工会机会推荐。
+官方运营群: 372011984</p></a></div><div class="widget d_textbanner"><a class="style01" href="http://www.magedu.com/" target="_blank"><strong></strong><h2>马哥2016Linux运维、Python自动化全新实战班震撼上线</h2><p>马哥全新 2016Python3.0 实战班震撼来袭,准备了大量
+一线生产环境最实用的案例如:大众点评、饿了么、腾讯、
+陆金所、唯品会等真实项目。我们教师团队全部是 5 年以
+上的资深运维出身,更懂运维的痛点和核心需求。课程全
+部以手把手式带领大家学习,项目是从 0 开始,一步步跟
+着做,绝不像其他机构,讲一些看似高大上其实没太大实
+用价值的内容。我们所有实战内容,都是在亿级别 PV 的一
+线互联网公司多年生产环境得到验证的项目。独家课程首 次呈现,干货满满不容错过!本次课程首次推出,主要以
+感恩回馈老学员为主,跳楼价上市!(本期价格5680，下期恢复原价,可与其他机构对比课程性价比)</p></a></div><div class="widget d_postlist"><h3 class="widget_tit">文章最热</h3><ul class="nopic"><li><a href="http://www.178linux.com/27538"><span class="text">网络班22期学习宣言</span><span class="muted">2016-08-03</span><span class="muted">50评论</span></a></li>
+<li><a href="http://www.178linux.com/17886"><span class="text">马哥教育首届IT技术博客大赛–复审阶段</span><span class="muted">2016-06-07</span><span class="muted">19评论</span></a></li>
+<li><a href="http://www.178linux.com/5984"><span class="text">Tomcat基于MSM+Memcached实现Session共享</span><span class="muted">2015-07-03</span><span class="muted">12评论</span></a></li>
+<li><a href="http://www.178linux.com/4746"><span class="text">grep的基本用法详解</span><span class="muted">2015-05-25</span><span class="muted">7评论</span></a></li>
+<li><a href="http://www.178linux.com/17222"><span class="text">安装LNMP + 搭建WordPress个人博客</span><span class="muted">2016-05-31</span><span class="muted">7评论</span></a></li>
+</ul></div><div class="widget widget_categories"><h3 class="widget_tit">文章分类</h3>		<ul>
+	<li class="cat-item cat-item-3"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f">运维专栏</a> (1,901)
+</li>
+	<li class="cat-item cat-item-4"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/devopsadmin/devops-other">其它</a> (7)
+</li>
+	<li class="cat-item cat-item-5"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/systemadmin/cloud">云计算</a> (5)
+</li>
+	<li class="cat-item cat-item-6"><a href="http://www.178linux.com/jobbers">职位推荐</a> (87)
+</li>
+	<li class="cat-item cat-item-7"><a href="http://www.178linux.com/more/devs">开发专栏</a> (90)
+</li>
+	<li class="cat-item cat-item-8"><a href="http://www.178linux.com/more">更多</a> (7)
+</li>
+	<li class="cat-item cat-item-9"><a href="http://www.178linux.com/more/studentlife">学员风采</a> (14)
+</li>
+	<li class="cat-item cat-item-11"><a href="http://www.178linux.com/more/ts">师资力量</a> (14)
+</li>
+	<li class="cat-item cat-item-12"><a href="http://www.178linux.com/more/devs/ios">IOS</a> (1)
+</li>
+	<li class="cat-item cat-item-13"><a href="http://www.178linux.com/more/devs/andriod">Andriod</a> (1)
+</li>
+	<li class="cat-item cat-item-14"><a href="http://www.178linux.com/more/devs/java">JAVA</a> (29)
+</li>
+	<li class="cat-item cat-item-15"><a href="http://www.178linux.com/more/devs/cc">C/C++</a> (17)
+</li>
+	<li class="cat-item cat-item-16"><a href="http://www.178linux.com/more/devs/php">PHP</a> (26)
+</li>
+	<li class="cat-item cat-item-18"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/devopsadmin/ruby">RUBY</a> (3)
+</li>
+	<li class="cat-item cat-item-23"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/systemadmin/virtual">虚拟化</a> (6)
+</li>
+	<li class="cat-item cat-item-39"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/systemadmin/linux">LINUX</a> (764)
+</li>
+	<li class="cat-item cat-item-40"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/systemadmin/unix">UNIX</a> (114)
+</li>
+	<li class="cat-item cat-item-41"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/dbadmin/mysql">MYSQL</a> (53)
+</li>
+	<li class="cat-item cat-item-42"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/dbadmin/nosql">NOSQL</a> (27)
+</li>
+	<li class="cat-item cat-item-44"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/devopsadmin/python">Python</a> (23)
+</li>
+	<li class="cat-item cat-item-45"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/devopsadmin/django">Django</a> (2)
+</li>
+	<li class="cat-item cat-item-46"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/itperson">IT生活</a> (58)
+</li>
+	<li class="cat-item cat-item-47"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/systemadmin/webadmin">Web类</a> (286)
+</li>
+	<li class="cat-item cat-item-48"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/networkadmin/network">网络</a> (19)
+</li>
+	<li class="cat-item cat-item-49"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/systemadmin/middleware">中间件</a> (17)
+</li>
+	<li class="cat-item cat-item-50"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/bigdataadmin/bigdata-other">其它</a> (11)
+</li>
+	<li class="cat-item cat-item-51"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/systemadmin/automatic">自动化</a> (40)
+</li>
+	<li class="cat-item cat-item-52"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/systemadmin/automatic/ansible">ansible</a> (10)
+</li>
+	<li class="cat-item cat-item-54"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/systemadmin/automatic/itlife-other">其它</a> (4)
+</li>
+	<li class="cat-item cat-item-55"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/systemadmin/automatic/puppet">puppet</a> (7)
+</li>
+	<li class="cat-item cat-item-166"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/systemadmin/windows">Windows</a> (26)
+</li>
+	<li class="cat-item cat-item-232"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/monitoradmin/monitor-other">其它</a> (5)
+</li>
+	<li class="cat-item cat-item-329"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/systemadmin">系统运维</a> (751)
+</li>
+	<li class="cat-item cat-item-330"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/monitoradmin">监控运维</a> (9)
+</li>
+	<li class="cat-item cat-item-331"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/bigdataadmin">大数据运维</a> (25)
+</li>
+	<li class="cat-item cat-item-332"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/devopsadmin">开发运维</a> (17)
+</li>
+	<li class="cat-item cat-item-333"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/networkadmin">网络运维</a> (17)
+</li>
+	<li class="cat-item cat-item-334"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/dbadmin">数据库运维</a> (20)
+</li>
+	<li class="cat-item cat-item-335"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/safeadmin">安全运维</a> (13)
+</li>
+	<li class="cat-item cat-item-336"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/systemadmin/virtual/openstack">openstack</a> (4)
+</li>
+	<li class="cat-item cat-item-337"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/systemadmin/virtual/xen">xen</a> (1)
+</li>
+	<li class="cat-item cat-item-338"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/systemadmin/virtual/hypervisor">hypervisor</a> (1)
+</li>
+	<li class="cat-item cat-item-339"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/systemadmin/virtual/exsi">exsi</a> (2)
+</li>
+	<li class="cat-item cat-item-340"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/monitoradmin/zabbix">zabbix</a> (7)
+</li>
+	<li class="cat-item cat-item-343"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/bigdataadmin/hive">hive</a> (13)
+</li>
+	<li class="cat-item cat-item-344"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/bigdataadmin/storm">storm</a> (4)
+</li>
+	<li class="cat-item cat-item-345"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/bigdataadmin/hadoop">hadoop</a> (14)
+</li>
+	<li class="cat-item cat-item-346"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/bigdataadmin/spark">spark</a> (2)
+</li>
+	<li class="cat-item cat-item-349"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/networkadmin/coolber">coolber</a> (3)
+</li>
+	<li class="cat-item cat-item-350"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/networkadmin/pxe">pxe</a> (4)
+</li>
+	<li class="cat-item cat-item-351"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/networkadmin/kickstart">kickstart</a> (3)
+</li>
+	<li class="cat-item cat-item-352"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/dbadmin/mariadb">mariadb</a> (10)
+</li>
+	<li class="cat-item cat-item-353"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/safeadmin/iptables">iptables</a> (2)
+</li>
+	<li class="cat-item cat-item-354"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/safeadmin/ldap">ldap</a> (2)
+</li>
+	<li class="cat-item cat-item-355"><a href="http://www.178linux.com/%e8%bf%90%e7%bb%b4%e4%b8%93%e6%a0%8f/systemadmin/virtual/kvm">kvm</a> (2)
+</li>
+	<li class="cat-item cat-item-1250"><a href="http://www.178linux.com/qa%e9%97%ae%e7%ad%94">qa问答</a> (3)
+</li>
+	<li class="cat-item cat-item-1251"><a href="http://www.178linux.com/www-178linux-com">magedu</a> (32)
+</li>
+	<li class="cat-item cat-item-1252"><a href="http://www.178linux.com/www-178linux-com/ansible%e4%b8%ad%e6%96%87%e6%9d%83%e5%a8%81">ansible</a> (4)
+</li>
+	<li class="cat-item cat-item-1793"><a href="http://www.178linux.com/%e8%af%95%e9%a2%98">试题</a> (6)
+</li>
+	<li class="cat-item cat-item-1961"><a href="http://www.178linux.com/m19">面授19期</a> (1)
+</li>
+	<li class="cat-item cat-item-1962"><a href="http://www.178linux.com/m20">面授20期</a> (906)
+</li>
+	<li class="cat-item cat-item-1963"><a href="http://www.178linux.com/m21">面授21期</a> (23)
+</li>
+	<li class="cat-item cat-item-1964"><a href="http://www.178linux.com/m22">面授22期</a> (6)
+</li>
+	<li class="cat-item cat-item-1967"><a href="http://www.178linux.com/n19">网络19期</a> (9)
+</li>
+	<li class="cat-item cat-item-1968"><a href="http://www.178linux.com/n20">网络20期</a> (37)
+</li>
+	<li class="cat-item cat-item-1969"><a href="http://www.178linux.com/n21">网络21期</a> (121)
+</li>
+	<li class="cat-item cat-item-1970"><a href="http://www.178linux.com/n22">网络22期</a> (61)
+</li>
+	<li class="cat-item cat-item-2049"><a href="http://www.178linux.com/%e6%96%87%e6%9c%ac%e5%a4%84%e7%90%86%e5%b7%a5%e5%85%b7">文本处理工具</a> (4)
+</li>
+		</ul>
+</div><div class="widget widget_archive"><h3 class="widget_tit">文章归档</h3>		<ul>
+			<li><a href="http://www.178linux.com/date/2016/08">2016年八月</a></li>
+	<li><a href="http://www.178linux.com/date/2016/07">2016年七月</a></li>
+	<li><a href="http://www.178linux.com/date/2016/06">2016年六月</a></li>
+	<li><a href="http://www.178linux.com/date/2016/05">2016年五月</a></li>
+	<li><a href="http://www.178linux.com/date/2016/04">2016年四月</a></li>
+	<li><a href="http://www.178linux.com/date/2016/03">2016年三月</a></li>
+	<li><a href="http://www.178linux.com/date/2016/02">2016年二月</a></li>
+	<li><a href="http://www.178linux.com/date/2016/01">2016年一月</a></li>
+	<li><a href="http://www.178linux.com/date/2015/12">2015年十二月</a></li>
+	<li><a href="http://www.178linux.com/date/2015/11">2015年十一月</a></li>
+	<li><a href="http://www.178linux.com/date/2015/10">2015年十月</a></li>
+	<li><a href="http://www.178linux.com/date/2015/09">2015年九月</a></li>
+	<li><a href="http://www.178linux.com/date/2015/08">2015年八月</a></li>
+	<li><a href="http://www.178linux.com/date/2015/07">2015年七月</a></li>
+	<li><a href="http://www.178linux.com/date/2015/06">2015年六月</a></li>
+	<li><a href="http://www.178linux.com/date/2015/05">2015年五月</a></li>
+	<li><a href="http://www.178linux.com/date/2015/04">2015年四月</a></li>
+	<li><a href="http://www.178linux.com/date/2015/03">2015年三月</a></li>
+	<li><a href="http://www.178linux.com/date/2015/02">2015年二月</a></li>
+		</ul>
+		</div><div class="widget widget_meta"><h3 class="widget_tit">Login</h3>			<ul>
+			<li><a href="http://www.178linux.com/wp-login.php?action=register">注册</a></li>			<li><a href="http://www.178linux.com/wp-login.php">登录</a></li>
+			<li><a href="http://www.178linux.com/feed">文章<abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="http://www.178linux.com/comments/feed">评论<abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="https://cn.wordpress.org/" title="基于WordPress，一个优美、先进的个人信息发布平台。">WordPress.org</a></li>			</ul>
+			</div>
+</aside>
+
+
+<!-- QQ客服代码开始--><div id="divStayTopright" style="position: fixed; z-index: 999999; top: 13%; right: 0px; height: 16px;"><div id="qqkefuDv" style="right: -87px; position: fixed;"><table><tbody><tr><td id="navLog"><img src="navLogo.gif" id="imgNav"></td><td><table id="__01" style="min-width: 83px;" width="83" border="0" cellpadding="0" cellspacing="0"><tbody><tr><td><div class="kefu1"></div></td></tr><tr><td><div class="kefu3"></div></td></tr><tr><td><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=453013021&amp;site=qq&amp;menu=yes"><div class="kefu4" id="qqIco0"> </div></a></td></tr><tr><td><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=453013021&amp;site=qq&amp;menu=yes"><div class="qqnum">MonitorA</div></a></td></tr><tr><td><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=2481066361&amp;site=qq&amp;menu=yes"><div class="kefu4" id="qqIco1"> </div></a></td></tr><tr><td><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=2481066361&amp;site=qq&amp;menu=yes"><div class="qqnum">MonitorB</div></a></td></tr><tr><td><div class="line"></div></td></tr><tr><td><a href="http://www.0797seo.net/" target="_blank"><div class="kefu10"></div></a></td></tr></tbody></table></td></tr></tbody></table></div></div><!-- QQ客服代码结束--></section>
+<footer class="footer">
+    <div class="footer-inner">
+        <div class="copyright pull-left">
+        <a href="http://www.miitbeian.gov.cn/" rel="external nofollow" target="_blank">
+        豫ICP备14026845号-2        </a>
+        </div>
+        
+        <div class="copyright pull-left">
+            版权所有，保留一切权利！ © 2016 <a href="http://www.178linux.com/">linux运维部落</a>　Theme <a href="http://www.daqianduan.com/" target="_blank">D8</a>
+        </div>
+        <div class="trackcode pull-right">
+            
+        </div>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

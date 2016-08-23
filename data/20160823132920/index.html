@@ -1,0 +1,531 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en" dir="ltr">
+<head>
+   <title>Monitorix :: Features</title>
+   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+   <meta http-equiv="charset" content="UTF-8">
+   <meta http-equiv="content-language" content="en">
+   <meta name="language" content="English">
+   <meta name="description" content="Monitorix - A free open source lightweight system monitoring tool for Linux/UNIX servers and embedded devices">
+   <meta name="keywords" content="Monitoring, Linux, RedHat, CentOS, Fedora, FreeBSD, OpenBSD, NetBSD">
+   <meta name="author" content="Jordi Sanfeliu (aka Mikaku)">
+   <meta name="editor" content="/usr/bin/vim">
+   <meta name="copyright" content="Jordi Sanfeliu">
+   <meta name="rating" content="general">
+   <meta name="distribution" content="global">
+   <meta name="expires" content="never">
+   <meta name="robots" content="index, follow">
+   <meta name="DC.title" content="Monitorix Project by Jordi Sanfeliu (aka Mikaku)">
+   <meta name="DC.creator" content="Jordi Sanfeliu (aka Mikaku)">
+   <meta name="DC.description" content="Monitorix - A free open source lightweight system monitoring tool for Linux/UNIX servers and embedded devices">
+   <meta name="DC.format" content="text/html">
+   <meta name="DC.language" content="en">
+   <link rel="alternate" type="application/rss+xml" title="Monitorix RSS" href="http://www.monitorix.org/rss.xml">
+   
+   
+   <link rel="shortcut icon" type="image/png" href="favicon.png">
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+
+<body>
+<div class="header">
+
+   <a href="https://github.com/mikaku/Monitorix" target="_blank"><img style="position: absolute; top: 0px; right: 0px; border: 0px none;" src="forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
+
+   <div class="image">
+      <img src="monitorixlogo.png" alt="Monitorix logo">
+   </div>
+   <div class="image_10years">
+      <img src="10years.png" alt="Celebrating 10 years :: 2005-2015">
+   </div>
+   <div class="text">
+      <h1>Welcome to The Monitorix Project</h1>
+Take control over your small server
+   </div>
+</div>
+
+<div class="content">
+   <div class="left">
+      <div class="block">
+         <div class="menu">
+
+<a href="http://www.monitorix.org/">Home</a><br>
+<a href="http://www.monitorix.org/news.html">News</a><br>
+<a href="http://www.monitorix.org/changelog.html">ChangeLog</a><br>
+Features<br>
+<a href="http://www.monitorix.org/documentation.html">Documentation</a><br>
+<a href="http://www.monitorix.org/installation.html">Installation</a><br>
+&nbsp;&nbsp;&nbsp;<span class="radio"><a href="http://www.monitorix.org/doc-redhat.html">RedHat/Fedora/CentOS</a></span><br>
+&nbsp;&nbsp;&nbsp;<span class="radio"><a href="http://www.monitorix.org/doc-archlinux.html">Arch Linux</a></span><br>
+&nbsp;&nbsp;&nbsp;<span class="radio"><a href="http://www.monitorix.org/doc-freebsd.html">FreeBSD 10</a></span><br>
+&nbsp;&nbsp;&nbsp;<span class="radio"><a href="http://www.monitorix.org/doc-debian.html">Debian/Ubuntu</a></span><br>
+&nbsp;&nbsp;&nbsp;<span class="radio"><a href="http://www.monitorix.org/doc-slackware.html">Slackware</a></span><br>
+&nbsp;&nbsp;&nbsp;<span class="radio"><a href="http://www.monitorix.org/doc-freebsd-9-nginx-fastcgi.html">FreeBSD 9 + Nginx + FastCGI</a></span><br>
+<a href="http://www.monitorix.org/faq.html">FAQ</a><br>
+<a href="http://www.monitorix.org/screenshots.html">Screenshots</a><br>
+<a href="http://www.monitorix.org/downloads.html">Downloads</a><br>
+<a href="http://www.monitorix.org/license.html">License</a><br>
+<a href="http://www.monitorix.org/donations.html">Donations</a><br>
+<a href="http://www.monitorix.org/contact.html">Contact</a><br>
+
+         </div>
+      </div>
+   </div>
+
+   <div class="text">
+      <h2>Features</h2>
+       <ul>
+	 <li>The monitoring includes the following graphs:
+	    <ul>
+	    <li>System load average and usage (<code>system.rrd</code>)
+	      <ul>
+                <li>System load.</li>
+		<li>Active processes.</li>
+		<li>Memory allocation.</li>
+	      </ul>
+	    </li>
+	    <li>Global kernel usage (<code>kern.rrd</code>)
+	      <ul>
+                <li>Including user, nice, system, idle, i/o wait, irq, software irq, steal and guest.</li>
+		<li>Context switches.</li>
+		<li>Fork and vfork rates.</li>
+		<li>VFS usage (dentries, inodes and files).</li>
+	      </ul>
+	    </li>
+	    <li>Per-processor kernel usage (<code>proc.rrd</code>)
+	      <ul>
+                <li>Including user, nice, system, idle, i/o wait, irq, software irq, steal and guest.</li>
+	        <li>Supports unlimited number of processors or cores.</li>
+		<li>Ability to define the number of graphs per row.</li>
+		<li>Ability to change the size of the graphs (there are already some predefined sizes).</li>
+		<li>Ability to disable partial or completely the legend data.</li>
+              </ul>
+	    </li>
+	    <li>HP ProLiant System Health (<code>hptemp.rrd</code>)
+	      <ul>
+                 <li>Up to 20 hardware temperature sensors supported.</li>
+		 <li>Selectable ID sensors for each graph.</li>
+		 <li>Using HP Command Line Utilities (hplog).</li>
+		 <li>(version 8.6.0 of 10-Sep-2010 at the time of writting).</li>
+	      </ul>
+	    </li>
+	    <li>LM-Sensors and GPU temperatures (<code>lmsens.rrd</code>)
+	      <ul>
+		 <li>Up to 16 temperature sensors supported for cores.</li>
+		 <li>Up to 2 temperature sensors supported for the motherboard.</li>
+		 <li>Up to 4 temperature sensors supported for the CPU.</li>
+		 <li>Up to 9 fan speeds supported.</li>
+		 <li>Up to 12 voltages supported.</li>
+		 <li>Up to 9 temperature sensors for GPU (nvidia/ati).</li>
+	      </ul>
+	    </li>
+	    <li>NVIDIA temperatures and usage (<code>nvidia.rrd</code>)
+	      <ul>
+	         <li>Up to 9 cards supported.</li>
+		 <li>Temperatures, GPU usage and memory usage (CUDA).</li>
+	      </ul>
+	    </li>
+	    <li>Disk drive temperatures and health (<code>disk.rrd</code>)
+	      <ul>
+	         <li>Unlimited number of disk drives graphs supported.</li>
+	         <li>Up to 8 disk drives per graph.</li>
+		 <li>Temperatures (using smartmontools and hddtemp).</li>
+		 <li>Reallocated sectors count.</li>
+		 <li>Current pending sectors.</li>
+	      </ul>
+	    </li>
+	    <li>Filesystem usage and I/O activity (<code>fs.rrd</code>)
+	      <ul>
+	         <li>Unlimited number of filesystems graphs supported.</li>
+	         <li>Up to 8 filesystems per graph.</li>
+		 <li>Ability to hide the real name of each mount point (filesystem).</li>
+		 <li>Inode usage for each filesystem.</li>
+		 <li>Disk I/O activity for each filesystem.</li>
+		 <li>Time spent in disk I/O for each filesystem.</li>
+		 <li>Disk sectors activity for each filesystem.</li>
+		 <li>Alerts capabilities for each filesystem defined.</li>
+	      </ul>
+	    </li>
+            <li>ZFS statistics (<code>zfs.rrd</code>)
+	      <ul>
+	         <li>Unlimited number of pools supported.</li>
+		 <li>ARC usage, ARC cache and L2ARC cache.</li>
+		 <li>Pool data and snapshots usage.</li>
+		 <li>Pool capacity and fragmentation.</li>
+	      </ul>
+	    </li>
+            <li>Directory usage (<code>du.rrd</code>)
+	      <ul>
+	         <li>Unlimited number of groups of directories.</li>
+		 <li>Ability to define up to 9 directories per group or graph.</li>
+		 <li>Ability to hide (change) the real name of each directory.</li>
+	      </ul>
+	    </li>
+            <li>Network traffic and usage (<code>net.rrd</code>)
+	      <ul>
+	         <li>Up to 10 network devices supported.</li>
+		 <li>Including packet traffic and traffic error graphs.</li>
+	      </ul>
+	    </li>
+	    <li>Netstat statistics (<code>netstat.rrd</code>)
+	      <ul>
+	         <li>Includes statistics for IPv4 and IPv6 connections.</li>
+		 <li>All connection states are represented.</li>
+	      </ul>
+	    </li>
+	    <li>Libvirt statistics (<code>libvirt.rrd</code>)
+	      <ul>
+	         <li>Unlimited number of virtual machines.</li>
+		 <li>Up to 8 virtual machines per graph.</li>
+		 <li>CPU time usage, memory usage, disk usage and network usage.</li>
+	      </ul>
+	    </li>
+	    <li>Process statistics (<code>process.rrd</code>)
+	      <ul>
+	         <li>Unlimited number of user processes.</li>
+		 <li>Up to 10 user processes per graph.</li>
+		 <li>CPU usage, memory usage, disk usage and network usage.</li>
+		 <li>Opened files, number of threads, number of voluntary and involuntary context switches and number of process instances.</li>
+	      </ul>
+	    </li>
+            <li>System services demand (<code>serv.rrd</code>)
+	      <ul>
+	         <li>Ability to toggle between (I)ncremental and (L)oad values.</li>
+		 <li>Including (SSH, ProFTPD, Vsftpd, Pure-FTPd, Telnet, Samba, FAX, CUPS, Fail2ban, IMAP, POP3, SMTP, VirusMail and Spam).</li>
+                 <li>Supports xinetd, Sendmail, Postfix, Dovecot, UW-IMAP, Qpopper, Hylafax, MailScanner, Amavisd-new and CommuniGate logs.</li>
+	      </ul>
+	    </li>
+	    <li>Mail statistics (<code>mail.rrd</code>)
+	      <ul>
+		 <li>Supported MTAs are Sendmail and Postfix.
+		 </li><li>Complete statistics including:
+		   <ul>
+		     <li>Incomming connections.</li>
+		     <li>Outgoing connections.</li>
+		     <li>Rejected.</li>
+		     <li>Delivered.</li>
+		     <li>Received.</li>
+		     <li>Bounced.</li>
+		     <li>Discarded.</li>
+		     <li>Held.</li>
+		     <li>Forwarded.</li>
+		     <li>Spam.</li>
+		     <li>Virus.</li>
+		   </ul>
+	         </li><li>Number of emails in queue.</li>
+	         <li>Total size of all emails in queue.</li>
+	         <li>Network traffic usage.</li>
+		 <li>SPF results (smf-spf and postfix-policyd-spf-perl).</li>
+		 <li>Greylisting (milter-greylist).</li>
+	      </ul>
+	    </li>
+	    <li>Network port traffic (<code>port.rrd</code>)
+	      <ul>
+	         <li>Unlimited number of network ports supported.</li>
+		 <li>Ability to select multiple protocol type for each port (tcp, udp, etc.).</li>
+		 <li>Supports incoming and outgoing connections.</li>
+                 <li>It warns if a network port is not listening.</li>
+	      </ul>
+	    </li>
+	    <li>Users using the system (<code>user.rrd</code>)
+	      <ul>
+	         <li>Supports SSH/Login/Telnet, Samba and Netatalk.</li>
+	      </ul>
+	    </li>
+	    <li>FTP statistics (<code>ftp.rrd</code>)
+	      <ul>
+	        <li>Supports the log file format of ProFTPD, vsftpd and Pure-FTPd servers.
+	      </li></ul>
+	    </li>
+	    <li>Apache statistics (<code>apache.rrd</code>)
+	      <ul>
+	         <li>Including workers (busy and idle), CPU usage and requests/sec.</li>
+		 <li>Includes also detailed metrics on workers usage and open slots.</li>
+		 <li>Alert capabilities based on remaining free slots.</li>
+		 <li>Unlimited number of Apache servers supported.</li>
+	      </ul>
+	    </li>
+	    <li>Nginx statistics (<code>nginx.rrd</code>)
+	      <ul>
+	         <li>Including connections (reading, writing, waiting), requests/sec and network traffic.</li>
+	      </ul>
+	    </li>
+	    <li>Lighttpd statistics (<code>lighttpd.rrd</code>)
+	      <ul>
+	         <li>Including workers (busy and idle), network traffic and requests/sec.</li>
+		 <li>Unlimited number of Lighttpd servers supported.</li>
+	      </ul>
+	    </li>
+	    <li>MySQL statistics (<code>mysql.rrd</code>)
+	      <ul>
+		 <li>Query types per second:
+		    <ul>
+		      <li>Select.</li>
+		      <li>Commit.</li>
+		      <li>Delete.</li>
+		      <li>Insert.</li>
+		      <li>Insert_Select.</li>
+		      <li>Update.</li>
+		      <li>Replace.</li>
+		      <li>Replace_Select</li>
+		      <li>Rollback.</li>
+		    </ul>
+		 </li><li>Percentage values of:
+		    <ul>
+		      <li>Thread cache hit rate.</li>
+		      <li>Query cache usage.</li>
+		      <li>Connections usage.</li>
+		      <li>Key buffer usage.</li>
+		      <li>InnoDB buffer pool usage.</li>
+		    </ul>
+	         </li><li>Number of opened tables and table locks waited per second.</li>
+	         <li>Number of queries and slow queries per second.</li>
+	         <li>Number of connections, abort clients and abort connects per second.</li>
+		 <li>Network traffic.</li>
+		 <li>Unlimited number of MySQL servers supported.</li>
+	      </ul>
+	    </li>
+	    <li>Varnish statistics (<code>varnish.rrd</code>)
+	      <ul>
+	         <li>Workers and LRU objects statistics.</li>
+		 <li>Backend usage.</li>
+		 <li>Client connections.</li>
+		 <li>Cache performance.</li>
+		 <li>Objects.</li>
+		 <li>Traffic.</li>
+	      </ul>
+	    </li>
+	    <li>PageSpeed Module statistics (<code>pagespeed.rrd</code>)
+	      <ul>
+		 <li>Unlimited number of PageSpeed installations supported.</li>
+	      	 <li>Cache overview.</li>
+		 <li>HTML optimization.</li>
+		 <li>Saved ratio.</li>
+		 <li>Memcached.</li>
+		 <li>Pcache cohorts.</li>
+		 <li>Rewrite &amp; SHM cache.</li>
+		 <li>LRU &amp; File cache.</li>
+		 <li>Cache time.</li>
+	      </ul>
+	    </li>
+	    <li>Squid Proxy Web Cache statistics (<code>squid.rrd</code>)
+	      <ul>
+	         <li>Up to 19 result and status codes supported.</li>
+		 <li>Overall requests (client, server, etc.).</li>
+		 <li>Memory and disk storage usage.</li>
+		 <li>IP cache use with requests, hits and misses.</li>
+		 <li>Network protocols usage (HTTP, FTP, Gopher and WAIS).</li>
+		 <li>Client and server network traffic.</li>
+	      </ul>
+	    </li>
+	    <li>NFS server statistics (<code>nfss.rrd</code>)
+	      <ul>
+		 <li>NFS v2, v3 and v4 supported.</li>
+		 <li>Up to 30 defined requests supported.</li>
+                 <li>Overall I/O bytes (read and written).</li>
+		 <li>Network layer usage (TCP, UDP and TCPConn).</li>
+		 <li>RPC usage.</li>
+		 <li>Thread utilization.</li>
+		 <li>Read cache usage.</li>
+		 <li>File handle cache usage.</li>
+	      </ul>
+	    </li>
+	    <li>NFS client statistics (<code>nfsc.rrd</code>)
+	      <ul>
+		 <li>NFS v2, v3 and v4 supported.</li>
+		 <li>Up to 32 defined requests supported.</li>
+		 <li>RPC usage.</li>
+	      </ul>
+	    </li>
+	    <li>BIND server statistics (<code>bind.rrd</code>)
+	      <ul>
+		 <li>Unlimited number of BIND servers supported.</li>
+		 <li>Incoming queries.</li>
+		 <li>Outgoing queries (_default) view.</li>
+		 <li>Name server statistics.</li>
+		 <li>Resolver statistics (_default) view.</li>
+		 <li>Cache DB RRsets (_default) view.</li>
+		 <li>Memory usage.</li>
+		 <li>Task manager.</li>
+	      </ul>
+	    </li>
+	    <li>NTP statistics (<code>ntp.rrd</code>)
+	      <ul>
+		 <li>Unlimited number of NTP servers supported.</li>
+	         <li>NTP timing.</li>
+		 <li>Stratum level.</li>
+		 <li>Reference Identifier and Kiss-o'-Death Codes.</li>
+	      </ul>
+	    </li>
+	    <li>Fail2ban statistics (<code>fail2ban.rrd</code>)
+	      <ul>
+	         <li>Unlimited number of group of jails for monitoring.</li>
+		 <li>Ability to define up to 9 jails per group or graph.</li>
+		 <li>Ability to define a title for every group or graph of jails.</li>
+	      </ul>
+	    </li>
+	    <li>Icecast Streaming Media Server statistics (<code>icecast.rrd</code>)
+	      <ul>
+		 <li>Unlimited number of Icecast servers supported.</li>
+	         <li>Current listeners.</li>
+		 <li>Bitrate.</li>
+	      </ul>
+	    </li>
+	    <li>Raspberry Pi sensor statistics (<code>raspberrypi.rrd</code>)
+	      <ul>
+	         <li>Up to 9 different clock frequency.</li>
+		 <li>Core temperature.</li>
+		 <li>Voltages.</li>
+	      </ul>
+	    </li>
+	    <li>Alternative PHP Cache statistics (<code>phpapc.rrd</code>)
+	      <ul>
+		 <li>Unlimited number of web servers with PHP-APC installed.</li>
+		 <li>Memory usage including fragmentation.</li>
+		 <li>Hits and misses.</li>
+		 <li>File cache information.</li>
+	      </ul>
+	    </li>
+	    <li>Memcached statistics (<code>memcached.rrd</code>)
+	      <ul>
+		 <li>Unlimited number of servers with Memcached installed.</li>
+		 <li>Hits and misses.</li>
+		 <li>Cached usage and items in cache.</li>
+		 <li>Objects I/O.</li>
+		 <li>Connections.</li>
+		 <li>Memcached network traffic.</li>
+	      </ul>
+	    </li>
+	    <li>APC UPS statistics (<code>apcupsd.rrd</code>)
+	      <ul>
+		 <li>Unlimited number of APC UPS devices supported.</li>
+		 <li>Line voltage with high and low transitions.</li>
+		 <li>Temperatures with support for internal and ambient sensors.</li>
+		 <li>Battery charge with load capacity and shutdown level.</li>
+		 <li>Battery voltage and nominal.</li>
+		 <li>Time left with shutdown level.</li>
+		 <li>Line frequency.</li>
+	      </ul>
+	    </li>
+	    <li>Network UPS Tools statistics (<code>nut.rrd</code>)
+	      <ul>
+		 <li>Unlimited number of Network UPS Tools installations supported.</li>
+		 <li>Line voltage with high and low input transfers.</li>
+		 <li>Temperatures with support for internal and ambient sensors.</li>
+		 <li>Battery charge with load capacity and shutdown level.</li>
+		 <li>Battery voltage and nominal.</li>
+		 <li>Time left with shutdown level.</li>
+		 <li>Line frequency.</li>
+	      </ul>
+	    </li>
+	    <li>Wowza Media Server (<code>wowza.rrd</code>)
+	      <ul>
+		 <li>Unlimited number of Wowza servers supported.</li>
+		 <li>Ability to define up to 8 applications per server.</li>
+	      </ul>
+	    </li>
+	    <li>Devices interrupt activity (<code>int.rrd</code>)
+	      <ul>
+                 <li>APIC support with up to 256 different interrupts.</li>
+	      </ul>
+	    </li>
+	    <li>Verlihub statistics (<code>verlihub.rrd</code>)
+	      <ul>
+	         <li>Connected users.</li>
+		 <li>Total hub upload.</li>
+		 <li>Total hub share.</li>
+	      </ul>
+	    </li>
+	    </ul>
+	 </li>
+
+	 <li>Support for monitoring remote servers (Multihost).
+	    <ul>
+	      <li>Unlimited number of remote servers.</li>
+	      <li>Ability to define the number of graphs per row.</li>
+	      <li>Ability to hide the real URL of each remote server.</li>
+	      <li>Ability to create groups of remote servers.</li>
+	    </ul>
+	 </li>
+
+	 <li>Support for monitoring (as gateway) the Internet traffic of LAN devices.
+	    <ul>
+	      <li>Unlimited number of LAN devices (PC, printers, networks, etc.).</li>
+	      <li>Ability to define the number of graphs per row.</li>
+	      <li>Ability to enable traffic monthly reports.</li>
+	      <li>Ability to send individual traffic monthly reports.</li>
+	      <li>Supported languages in reports: Catalan, German, English, Italian, Polish and Simplified Chinese.</li>
+	    </ul>
+	 </li>
+
+	 <li>Alert capabilities supported.
+	    <ul>
+	      <li>CPU load average alert.</li>
+	      <li>Reallocated sector count alert.</li>
+	      <li>Current pending sectors alert.</li>
+	      <li>Root filesystem usage alert.</li>
+	      <li>Delivered emails counter alert.</li>
+	      <li>Mails queued counter alert.</li>
+	      <li>Activated when it reaches or exceeds a threshold value for an specified amount of time.</li>
+	    </ul>
+	 </li>
+
+	 <li>Built-in HTTP server.
+	   <ul>
+	     <li>Basic access authentication supported.</li>
+	     <li>IP address restriction with <code>host_deny</code> and <code>host_allow</code> options.</li>
+	     <li>Configurable host address to bind to and network port to listen on.</li>
+	     <li>The use of an external web server (like Apache, Nginx, etc.) is optional.</li>
+	   </ul>
+	 </li>
+
+	 <li>Complete email reporting mechanism of all graphs.</li>
+	 <li>Ability to include additional configuration file(s).</li>
+         <li>Ability to view statistics per day, week, month or year(s).</li>
+	 <li>Ability to view statistics in graphs or in plain text tables.</li>
+	 <li>Ability to zoom in any graph to see it in more detail.</li>
+	 <li>Ability to show network metrics in MBytes/sec or Mbits/sec.</li>
+	 <li>Ability to show temperatures in Celsius or in Fahrenheit.</li>
+	 <li>Ability to configure the number of years of historical data (up to 5 years).</li>
+         <li>Web interface offers minimal learning, ubiquitous access.</li>
+         <li>Configuration with only one text-plain file.</li>
+         <li>Silent mode to be able to retrieve the graphs from scripts.</li>
+         <li>Traffic statistics are stored in fixed-size databases (<a href="http://oss.oetiker.ch/rrdtool/">RRDtool</a>).</li>
+         <li>Perl language based (lightweight tool).</li>
+	 <li>Supported systems: GNU/Linux, FreeBSD, OpenBSD and NetBSD.</li>
+       </ul>
+   </div>
+
+</div>
+
+<div class="footer">
+   <div class="fibranet">
+Hosted by<br>
+      <a href="http://www.fibranet.cat/" target="_blank"><img class="img" src="fibranetlogo.png" alt="FibraNet - Network Services Provider" title="FibraNet - Network Services Provider"></a>
+   </div>
+
+   <div class="monitorix">
+Live demo<br>
+      <a href="http://www.fibranet.cat/monitorix/" target="_blank"><img class="img" src="monitorix.png" alt="Live demo" title="Live demo"></a>
+   </div>
+
+   
+   <div class="author">
+Last modified: 01-Aug-2016<br>
+Copyright © 2005-2016 Jordi Sanfeliu<br>
+       <a target="_blank" href="https://www.openhub.net/p/Monitorix?ref=sample"><img alt="Open Hub project report for Monitorix" src="project_thin_badge.dat" border="0"></a>
+       <br>
+<a href="http://validator.w3.org/check?uri=referer" target="_blank"><img class="img_mini" src="valid-html401_mini.png" alt="Valid HTML 4.01 Transitional" title="Valid HTML 4.01 Transitional"></a>
+<a href="http://www.monitorix.org/rss.xml" target="_blank"><img class="img_mini" src="rss.png" alt="RSS" title="RSS"></a>
+   </div>
+
+<!--   <div class="openhub" style='height: 32px; width: 150px; border: none;'> -->
+<!--   </div> -->
+
+</div>
+
+
+
+</body>
+</html>

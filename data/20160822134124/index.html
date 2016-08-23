@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>netdata：实时监视 Linux 系统性能 · LinuxTOY</title>
+        
+        <!--[if lte IE 8]>
+        <link rel="stylesheet" href="https://linuxtoy.org/theme/css/grids-responsive-old-ie-min.css">
+        <link rel="stylesheet" href="https://linuxtoy.org/theme/css/side-menu-old-ie.css">
+        <![endif]-->
+        <!--[if gt IE 8]><!-->
+        
+        
+        <!--<![endif]-->
+        
+        <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+        <link rel="alternate" type="application/atom+xml" href="https://linuxtoy.org/feeds/all.atom.xml" title="LinuxTOY Atom Feed">
+        <!--[if IE]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        
+        
+        <meta name="keywords" content="Linux, 自由软件, 新闻, 教程，提示">
+        <meta name="description" content="作为一个 Linux 系统的管理员，为了随时了解系统资源的占用情况，有必要使用专门的系统监视工具。如果你需要对 Linux 系统、应用程序、SNMP 设备进行实时的性能监视，那么 netdata 这个工具将是你的好帮手。">
+        <meta name="subject" content="Linux 新闻、应用及提示">
+
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:site" content="@linuxtoy">
+        <meta name="twitter:creator" content="@linuxtoy">
+        <meta name="twitter:url" content="https://linuxtoy.org/archives/netdata.html">
+        <meta name="twitter:title" content="netdata：实时监视 Linux 系统性能">
+        <meta name="twitter:description" content="作为一个 Linux 系统的管理员，为了随时了解系统资源的占用情况，有必要使用专门的系统监视工具。如果你需要对 Linux 系统、应用程序、SNMP 设备进行实时的性能监视，那么 netdata 这个工具将是你的好帮手。">
+        <meta name="twitter:image" content="https://linuxtoy.org/logo.png">
+        <meta property="og:url" content="https://linuxtoy.org/archives/netdata.html">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="netdata：实时监视 Linux 系统性能">
+        <meta property="og:image" content="https://linuxtoy.org/logo.png">
+        <meta property="og:description" content="作为一个 Linux 系统的管理员，为了随时了解系统资源的占用情况，有必要使用专门的系统监视工具。如果你需要对 Linux 系统、应用程序、SNMP 设备进行实时的性能监视，那么 netdata 这个工具将是你的好帮手。">
+        <meta property="og:site_name" content="LinuxTOY">
+        <meta property="article:author" content="toy">
+        <link rel="canonical" href="https://linuxtoy.org/archives/netdata.html">
+    
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+    <body>
+        <div id="layout" class="pure-g">
+            <div class="sidebar pure-u-1">
+                <div class="header">
+                    <a id="menuLink" class="menu-link" href="#menu"><span></span></a>
+                    <div id="menu" class="pure-menu">
+                        <a class="pure-menu-heading" href="https://linuxtoy.org/" title="LinuxTOY">LinuxTOY</a>
+                        <ul class="pure-menu-list">
+
+                            <li class="pure-menu-item">
+                                <a class="pure-menu-link" href="https://linuxtoy.org/pages/all-archives.html" title="Archives">Archives</a>
+                            </li>
+                            <li class="pure-menu-item">
+                                <a class="pure-menu-link" href="https://linuxtoy.org/pages/books.html" title="Books">Books</a>
+                            </li>
+                            <li class="pure-menu-item">
+                                <a class="pure-menu-link" href="https://linuxtoy.org/pages/talks.html" title="Talks">Talks</a>
+                            </li>
+                            <li class="pure-menu-item">
+                                <a class="pure-menu-link" href="https://linuxtoy.org/pages/download.html" title="Download">Download</a>
+                            </li>
+                            <li class="pure-menu-item">
+                                <a class="pure-menu-link" href="https://linuxtoy.org/pages/faq.html" title="FAQs">FAQs</a>
+                            </li>
+                            <li class="pure-menu-item">
+                                <a class="pure-menu-link" href="https://linuxtoy.org/pages/contact.html" title="Contact">Contact</a>
+                            </li>
+                            <li class="pure-menu-item">
+                                <a class="pure-menu-link" href="https://linuxtoy.org/pages/donate.html" title="Donate">Donate</a>
+                            </li>
+                            <li class="pure-menu-item">
+                                <a class="pure-menu-link" href="https://linuxtoy.org/pages/license.html" title="License">License</a>
+                            </li>
+                            <li class="pure-menu-item">
+                                <a class="pure-menu-link" href="https://linuxtoy.org/pages/links.html" title="Links">Links</a>
+                            </li>
+
+                            <li class="pure-menu-item">
+                                <a class="pure-menu-link" href="https://linuxtoy.org/pages/comments.html" title="Comments">Comments</a>
+                            </li>
+                            <li class="pure-menu-item">
+                                <a class="pure-menu-link" href="https://linuxtoy.org/random.html" title="Random">Random</a>
+                            </li>
+                            <li class="pure-menu-item">
+                                <a class="pure-menu-link" href="https://linuxtoy.org/feeds/all.atom.xml" title="RSS">RSS</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+<div class="content pure-u-1 pure-u-md-3-5">
+    <div class="posts">
+        <section class="post">
+            <header class="post-header">
+                <h2 class="post-title">
+                    <a href="#" rel="bookmark" title="Permalink to netdata：实时监视 Linux 系统性能">netdata：实时监视 Linux 系统性能</a>
+                </h2>
+                <p class="post-meta">
+                    2016-04-21
+                    · By
+                    <a href="https://linuxtoy.org/author/toy.html">toy</a>
+                    · Posted in <a href="https://linuxtoy.org/category/apps.html">Apps</a>
+                    · <a href="#disqus_thread">0 Comments</a>
+                </p>
+            </header>
+            <div class="post-description">
+            <p>作为一个 Linux 系统的管理员，为了随时了解系统资源的占用情况，有必要使用专门的系统监视工具。如果你需要对 Linux 系统、应用程序、SNMP 设备进行实时的性能监视，那么 netdata 这个工具将是你的好帮手。</p>
+
+
+<p><a href="https://linuxtoy.org/images/netdata.png"><img alt="netdata" src="netdata.thumb.png"></a></p>
+<p>netdata 能够监视 CPU、内存、磁盘、网络、进程、应用程序、Apache、NGINX、MySQL、Postfix、Squid 等总计 2000 多项度量指标，并提供可视化的实时显示图表，看起来可谓一目了然。</p>
+<p>在安装 netdata 之前，需要先准备好编译依赖：</p>
+<div class="highlight"><pre>apt-get install zlib1g-dev gcc make git \
+    autoconf autogen automake pkg-config           # Debian/Ubuntu
+yum install zlib-devel gcc make git autoconf \
+    autogen automake pkgconfig                     # CentOS/RHEL
+pacman -S --needed base-devel libmnl \
+    libnetfilter_acct zlib                         # Arch Linux
+</pre></div>
+
+
+<p>接着克隆 netdata 的源代码，并执行编译脚本：</p>
+<div class="highlight"><pre>git clone https://github.com/firehol/netdata.git --depth=1
+cd netdata
+./netdata-installer.sh
+</pre></div>
+
+
+<p>一旦编译安装完毕，netdata 将执行 <code>/usr/sbin/netdata</code> 启动 daemon 程序，并监听本机的 <code>19999</code> 端口。</p>
+<p>为了访问 netdata 的 Web Dashboards，在此我们通过 NGINX 配置一个反向代理：</p>
+<div class="highlight"><pre><span class="k">upstream</span> <span class="s">backend</span> <span class="p">{</span>
+    <span class="kn">server</span> <span class="n">127.0.0.1</span><span class="p">:</span><span class="mi">19999</span><span class="p">;</span>
+    <span class="kn">keepalive</span> <span class="mi">64</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">server</span> <span class="p">{</span>
+    <span class="kn">listen</span> <span class="mi">80</span><span class="p">;</span>
+    <span class="kn">server_name</span> <span class="s">n.linuxtoy.org</span><span class="p">;</span>
+
+    <span class="kn">location</span> <span class="s">/</span> <span class="p">{</span>
+        <span class="kn">proxy_set_header</span> <span class="s">X-Forwarded-Host</span> <span class="nv">$host</span><span class="p">;</span>
+        <span class="kn">proxy_set_header</span> <span class="s">X-Forwarded-Server</span> <span class="nv">$host</span><span class="p">;</span>
+        <span class="kn">proxy_set_header</span> <span class="s">X-Forwarded-For</span> <span class="nv">$proxy_add_x_forwarded_for</span><span class="p">;</span>
+        <span class="kn">proxy_pass</span> <span class="s">http://backend</span><span class="p">;</span>
+        <span class="kn">proxy_http_version</span> <span class="mi">1</span><span class="s">.1</span><span class="p">;</span>
+        <span class="kn">proxy_pass_request_headers</span> <span class="no">on</span><span class="p">;</span>
+        <span class="kn">proxy_set_header</span> <span class="s">Connection</span> <span class="s">"keep-alive"</span><span class="p">;</span>
+        <span class="kn">proxy_store</span> <span class="no">off</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>重载 NGINX 配置后，就可以通过 <a href="http://n.linuxtoy.org/">http://n.linuxtoy.org</a> 访问了。如果你使用其它 Web 服务器，那么参照 <a href="https://github.com/firehol/netdata/wiki">netdata 的 Wiki</a> 了解配置说明即可。</p>
+            <p>→ <a href="https://github.com/firehol/netdata">netdata</a></p>
+            <p class="post-meta">
+                # 
+                Tagged as 
+                <a href="https://linuxtoy.org/tag/monitor.html">monitor</a>,                 <a href="https://linuxtoy.org/tag/netdata.html">netdata</a>                · 
+                Edit on <a href="https://github.com/LinuxTOY/linuxtoy.org/blob/master/content/netdata.md">GitHub</a>
+            </p>            <!-- <p class="post-meta">&num; <a href="http://resume.linuxtoy.org" title="若有兴趣，欢迎来电 :)">寻 GNU/Linux 相关工作，欢迎联系 :)</a></p> -->
+            </div>
+        </section>
+        <h4>Read More:</h4>
+        <div class="nav-left">
+        
+        <ins class="adsbygoogle" style="display: inline-block; width: 336px; height: 280px;" data-ad-client="ca-pub-9432205671574187" data-ad-slot="6128171428"></ins>
+        
+        </div>
+    </div>
+    <div id="disqus_thread"></div>
+    
+    <div class="footer">
+        <p class="nav-left">
+            <a href="https://linuxtoy.org/archives/electronic-wechat.html">
+                « Electronic WeChat：在 Linux 下使用微信
+            </a>
+        </p>
+        <p class="nav-right">
+            <a href="https://linuxtoy.org/archives/ubuntu-1604.html">
+                Ubuntu 16.04 正式发布 »
+            </a>
+        </p>
+    </div>
+</div>
+
+<div class="content pure-u-1 pure-u-md-1-5">
+    <div class="posts">
+    
+    <ins class="adsbygoogle" style="display: inline-block; width: 300px; height: 250px;" data-ad-client="ca-pub-9432205671574187" data-ad-slot="6262929029"></ins>
+    
+        <h1 class="content-subhead">Popular Posts</h1>
+        <div class="pure-menu">
+            <ul class="pure-menu-list">
+                <li class="pure-menu-item"><a href="https://linuxtoy.org/archives/the-perfect-linux-desktop-arch-linux-2007-08-2-1.html">Archlinux 安装指南</a></li>
+                <li class="pure-menu-item"><a href="https://linuxtoy.org/archives/unix-linux-command-cheat-sheet.html">Unix/Linux 命令速查表</a></li>
+                <li class="pure-menu-item"><a href="https://linuxtoy.org/archives/efficient-editing-with-vim.html">高效率编辑器 Vim</a></li>
+                <li class="pure-menu-item"><a href="https://linuxtoy.org/archives/wget-tips.html">Wget 使用技巧</a></li>
+                <li class="pure-menu-item"><a href="https://linuxtoy.org/archives/playing-around-with-mplayer.html">玩转 MPlayer</a></li>
+                <li class="pure-menu-item"><a href="https://linuxtoy.org/archives/awesome.html">平铺式窗口管理器 Awesome</a></li>
+                <li class="pure-menu-item"><a href="https://linuxtoy.org/archives/3_free_antivirus_under_linux.html">Linux 下的桌面级杀毒软件</a></li>
+                <li class="pure-menu-item"><a href="https://linuxtoy.org/archives/openbox-getting-started-guide.html">窗口管理器 Openbox 入门指南</a></li>
+                <li class="pure-menu-item"><a href="https://linuxtoy.org/archives/minimalist-install-of-ubuntu.html">最小化安装 Ubuntu</a></li>
+                <li class="pure-menu-item"><a href="https://linuxtoy.org/archives/5-desktop-environment-for-linux.html">你可能不知道的 Linux 桌面</a></li>
+                <li class="pure-menu-item"><a href="https://linuxtoy.org/archives/the-7-deadly-linux-commands.html">7 个致命的 Linux 命令</a></li>
+                <li class="pure-menu-item"><a href="https://linuxtoy.org/archives/lightweight-desktop-compare.html">轻量级桌面环境比较</a></li>
+                <li class="pure-menu-item"><a href="https://linuxtoy.org/archives/zsh.html">终极 Shell——Zsh</a></li>
+                <li class="pure-menu-item"><a href="https://linuxtoy.org/archives/6-of-the-best-free-linux-cad-software.html">高品质的免费 Linux CAD 程序</a></li>
+                <li class="pure-menu-item"><a href="https://linuxtoy.org/archives/game_emulator_for_linux.html">Linux 下的几个游戏模拟器</a></li>
+                <li class="pure-menu-item"><a href="https://linuxtoy.org/archives/history-command-usage-examples.html">History（历史）命令用法 15 例</a></li>
+                <li class="pure-menu-item"><a href="https://linuxtoy.org/archives/the-best-tips-and-tricks-for-bash.html">bash 使用技巧</a></li>
+                <li class="pure-menu-item"><a href="https://linuxtoy.org/archives/10-oreilly-books.html">10 本 O'Reilly 出版的免费好书</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+        </div>
+
+        
+        
+        
+        
+
+
+    
+</body><div style="display: none; width: 24px;" id="diigotb-imagepanel"><div class="diigotb-btn enabled" title="Save this image to Diigo" id="diigotb-quick-save"></div></div><div style="display: none;" class="diigotb-border diigotb-left"></div><div style="display: none;" class="diigotb-border diigotb-top"></div><div style="display: none;" class="diigotb-border diigotb-right"></div><div style="display: none;" class="diigotb-border diigotb-bottom"></div>
+</html>

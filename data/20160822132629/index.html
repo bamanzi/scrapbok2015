@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<!-- Beginning of <head> --><head>
+<!-- heatmapthemead_pre_wp_head hook -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+<title>Glances – CLI curses based monitoring tool for GNU/Linux | Ubuntu Geek</title>
+<link rel="profile" href="http://gmpg.org/xfn/11"><link rel="pingback" href="http://www.ubuntugeek.com/xmlrpc.php">
+<!-- end of heatmapthemead_pre_wp_head hook -->
+<!-- wp_head()--><link rel="dns-prefetch" href="http://www.google.com/">
+<link rel="dns-prefetch" href="http://maxcdn.bootstrapcdn.com/">
+<link rel="dns-prefetch" href="http://s.w.org/">
+<link rel="alternate" type="application/rss+xml" title="Ubuntu Geek » Feed" href="http://www.ubuntugeek.com/feed">
+<link rel="alternate" type="application/rss+xml" title="Ubuntu Geek » Comments Feed" href="http://www.ubuntugeek.com/comments/feed">
+
+<link rel="alternate" type="application/rss+xml" title="Ubuntu Geek » Glances – CLI curses based monitoring tool for GNU/Linux Comments Feed" href="http://www.ubuntugeek.com/glances-cli-curses-based-monitoring-tool-for-gnulinux.html/feed">
+<!-- This site is powered by Shareaholic - https://shareaholic.com -->
+
+
+
+<!-- Shareaholic Content Tags -->
+<meta name="shareaholic:site_name" content="Ubuntu Geek">
+<meta name="shareaholic:language" content="en-US">
+<meta name="shareaholic:url" content="http://www.ubuntugeek.com/glances-cli-curses-based-monitoring-tool-for-gnulinux.html">
+<meta name="shareaholic:keywords" content="glances ubuntu deb package, install glances on ubuntu 13.04, monitor ubuntu system with glances, server, monitoring">
+<meta name="shareaholic:article_published_time" content="2013-06-13T23:32:38+00:00">
+<meta name="shareaholic:article_modified_time" content="2016-08-21T23:07:08+00:00">
+<meta name="shareaholic:shareable_page" content="true">
+<meta name="shareaholic:article_author_name" content="ruchi">
+<meta name="shareaholic:site_id" content="2f8351e9ac97b344e9b7b7930f323155">
+<meta name="shareaholic:wp_version" content="7.6.0.2">
+<meta name="shareaholic:image" content="http://www.ubuntugeek.com/wp-content/uploads/2013/06/1.png">
+<!-- Shareaholic Content Tags End -->
+
+<!-- Shareaholic Open Graph Tags -->
+<meta property="og:image" content="http://www.ubuntugeek.com/wp-content/uploads/2013/06/1.png">
+<!-- Shareaholic Open Graph Tags End -->
+		
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="https://api.w.org/" href="http://www.ubuntugeek.com/wp-json/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.ubuntugeek.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.ubuntugeek.com/wp-includes/wlwmanifest.xml"> 
+<link rel="canonical" href="http://www.ubuntugeek.com/glances-cli-curses-based-monitoring-tool-for-gnulinux.html">
+<link rel="shortlink" href="http://www.ubuntugeek.com/?p=14286">
+<link rel="alternate" type="application/json+oembed" href="http://www.ubuntugeek.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.ubuntugeek.com%2Fglances-cli-curses-based-monitoring-tool-for-gnulinux.html">
+<link rel="alternate" type="text/xml+oembed" href="http://www.ubuntugeek.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.ubuntugeek.com%2Fglances-cli-curses-based-monitoring-tool-for-gnulinux.html&amp;format=xml">
+
+<!-- Powered by AdSense-Deluxe WordPress Plugin v0.8 - http://www.acmetech.com/blog/adsense-deluxe/ -->
+		
+	   		
+			
+		
+				
+					
+					 
+							<!-- WordPress Popular Posts v3.3.4 -->
+				
+				<!-- End WordPress Popular Posts v3.3.4 -->
+					
+	<!-- End of wp_head() -->
+<!-- heatmapthemead_post_wp_head hook -->
+<!-- HEAD CSS -->
+
+<!-- end of heatmapthemead_post_wp_head hook -->
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<!-- End of <head> -->
+<body class="single single-post postid-14286 single-format-standard heatmapthemead-layout-both-sidebars  heatmapthemead-max-width-1225">
+<!-- heatmapthemead_start_body hook -->
+<!-- end of heatmapthemead_start_body hook -->
+<!-- The Header Bars -->
+<div id="heatmapthemead-header-wipe">
+<div id="heatmapthemead-header">
+<div id="heatmapthemead-header-container">
+	<div id="heatmapthemead-header-branding">
+		<div id="heatmapthemead-branding-container">
+							<header id="branding" role="banner">
+							<div id="heatmapthemead-header-text">
+			<aside>
+				<p id="site-title"><a href="http://www.ubuntugeek.com/" title="Ubuntu Geek" rel="home">Ubuntu Geek</a></p>
+				<p id="site-description">Ubuntu Linux Tutorials,Howtos,Tips &amp; News | Xenial Xerus,Yakkety Yak</p>
+			</aside>
+		</div>
+					</header><!-- #branding -->
+					</div><!-- #heatmapthemead-branding-container -->
+	</div><!-- #heatmapthemead-header-branding -->		
+  
+		<div id="heatmapthemead-primary-menu" class="heatmapthemead-menu">
+			<nav role="navigation" class="site-navigation main-navigation">
+				<p class="primary-small-nav-text">	
+					Home				</p>
+				<div class="menu-home-3-container"><ul id="menu-home-3" class="menu"><li id="menu-item-15331" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15331"><a href="http://www.ubuntugeek.com/contact">Contact</a></li>
+<li id="menu-item-15332" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15332"><a target="_blank" href="http://www.ubuntugeek.com/forum">Forum</a></li>
+<li id="menu-item-15333" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15333"><a href="http://www.ubuntugeek.com/free-ubuntu-e-books">Free Ubuntu E-Books</a></li>
+<li id="menu-item-15334" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15334"><a href="http://www.ubuntugeek.com/top-posts">Popular Posts</a></li>
+<li id="menu-item-15335" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15335"><a href="http://www.ubuntugeek.com/search-3">Search</a></li>
+<li id="menu-item-15336" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15336"><a href="http://www.ubuntugeek.com/ubuntu-hosting">Ubuntu Hosting</a></li>
+<li id="menu-item-15337" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15337"><a href="http://www.ubuntugeek.com/about-2">About</a></li>
+<li id="menu-item-15338" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15338"><a href="http://www.ubuntugeek.com/subscribe">RSS Feed</a></li>
+<li id="menu-item-15339" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15339"><a href="http://www.ubuntugeek.com/sitemap">Sitemap</a></li>
+<li id="menu-item-15340" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15340"><a href="http://www.ubuntugeek.com/privacy-policy">Privacy Policy</a></li>
+</ul></div>			</nav>
+		</div>
+		</div> <!-- id="heatmapthemead-header-container" -->
+</div> <!-- id="heatmapthemead-header" -->
+</div> <!-- id="heatmapthemead-header-wipe" -->
+<!-- The main part of the page (with content and sidebars) -->
+<div id="heatmapthemead-main-wipe">
+<div id="heatmapthemead-main">
+<div id="heatmapthemead-content">
+<div id="heatmapthemead-the-content" class="site-content">
+<div id="heatmapthemead-the-content-container" role="main">
+	
+	
+		<article id="post-14286" class="post-14286 post type-post status-publish format-standard hentry category-monitoring category-server tag-glances-ubuntu-deb-package tag-install-glances-on-ubuntu-13-04 tag-monitor-ubuntu-system-with-glances tag-server">
+		
+					<header class="entry-header">
+			<h1 class="entry-title"><a href="#" title="Permalink to Glances – CLI curses based monitoring tool for GNU/Linux" rel="bookmark">Glances – CLI curses based monitoring tool for GNU/Linux</a></h1>
+		</header> <!-- heatmapthemead-entry-header -->
+	<div class="heatmapthemead-header-entry-meta entry-meta"><span class="heatmapthemead-post-details">Posted on <a href="#" title="12:32 am" rel="bookmark"><time class="entry-date updated" datetime="2013-06-14T00:32:38+00:00">June 14, 2013</time></a><span class="byline"> by <span class="author vcard"><a class="url fn n" href="http://www.ubuntugeek.com/author/ubuntufix" title="View all posts by ruchi" rel="author">ruchi</a></span></span></span>					<span class="comments-link"><a href="#comments">3 Comments</a></span>
+								</div><!-- .heatmapthemead-entry-meta -->
+			<div class="entry-content"><p></p><h6><b>Sponsored Link</b></h6>
+<div style="display: block; float: left; padding: 5px;">
+
+<!-- New Ubuntu Bottom -->
+
+</div>
+Glances is a CLI curses based monitoring tool for GNU/Linux and BSD OS.Glances uses the PsUtil library to get information from your system.It is developed in Python.<br>
+<span id="more-14286"></span><br>
+<strong>Install glances on ubuntu</strong><p></p>
+<p>Open the terminal and run the following commands</p>
+<blockquote><p>
+sudo apt-get install python-pip build-essential python-dev<br>
+sudo pip install Glances<br>
+sudo pip install PySensors
+</p></blockquote>
+<p>After installation you can start glances using the following command from your terminal</p>
+<blockquote><p>glances</p></blockquote>
+<p><strong>Output</strong></p>
+<p><a href="http://www.ubuntugeek.com/wp-content/uploads/2013/06/1.png" rel="lightbox-0"><img src="1.png" alt="1" class="alignnone size-full wp-image-14287" srcset="1.png 722w, 1-300x176.png 300w" sizes="(max-width: 722px) 100vw, 722px" width="722" height="425"></a></p>
+<p>By default, stats are refreshed every second, to change this setting, you can<br>
+use the -t option. For example to set the refresh rate to 5 seconds:</p>
+<blockquote><p>    $ glances -t 5</p></blockquote>
+<p>Importants stats are colored:</p>
+<p>* GREEN:   stat counter is "OK"<br>
+* BLUE:    stat counter is "CAREFUL"<br>
+* MAGENTA: stat counter is "WARNING"<br>
+* RED:     stat counter is "CRITICAL"</p>
+<p>When Glances is running, you can press:</p>
+<p>* ‘a' to set the automatic mode. The processes are sorted automatically</p>
+<p>    IF CPU IoWait &gt; 60% sort by process "IO read and write"</p>
+<p>    If CPU &gt; 70%, sort by process "CPU consumption"</p>
+<p>    If MEM &gt; 70%, sort by process "memory size"</p>
+<blockquote><p>* ‘b' switch between bit/s or byte/s for network IO<br>
+* ‘c' sort the processes list by CPU consumption<br>
+* ‘d' disable or enable the disk IO stats<br>
+* ‘e' enable the sensors module (PySensors library is needed; Linux-only)<br>
+* ‘f' disable or enable the file system stats<br>
+* ‘h' to display a help message with the keys you can press and the limits<br>
+* ‘i' sort the processes list by IO rate (need root account on some OS)<br>
+* ‘l' disable or enable the logs<br>
+* ‘m' sort the processes list by process MEM<br>
+* ‘n' disable or enable the network interfaces stats<br>
+* ‘p' sort by process name<br>
+* ‘s' disable or enable the sensor stats (only available with -e tag)<br>
+* ‘w' delete finished warning logs messages<br>
+* ‘x' delete finished warning and critical logs messages<br>
+* ‘1' switch between global CPU and per core stats<br>
+* ‘q' Exit</p></blockquote>
+<p></p><center><h6><b>Sponsored Link</b></h6></center>
+<center>
+
+<!-- New Ubuntu Bottom -->
+
+</center><p></p>
+<h4>Incoming search terms:</h4><ul><li><a href="#" title="CRITICAL: Curses module not found Glances cannot start in standalone mode">CRITICAL: Curses module not found Glances cannot start in standalone mode</a></li><li><a href="#" title="Curses module not found">Curses module not found</a></li><li><a href="#" title="curses process monitor">curses process monitor</a></li></ul><div id="shr_canvas2" class="shareaholic-canvas shareaholic-ui shareaholic-resolved-canvas ng-scope" data-app-id="425266" data-app="share_buttons" data-title="Glances - CLI curses based monitoring tool for GNU/Linux" data-link="http://www.ubuntugeek.com/glances-cli-curses-based-monitoring-tool-for-gnulinux.html" data-summary=""><div class="ng-scope" ng-show="ready" ng-class="containerClasses" ng-controller="AppCtrl as appCtrl" shr-overflow-limit="3" shr-overflow-child=".shareaholic-share-button, .shareaholic-total-count" shr-overflow-last="true" shr-overflow-enabled="" shr-overflow-wiggle="5" shr-auto-size="" shr-auto-size-trigger="3" shr-auto-size-target=".shareaholic-share-button .share-button-sizing, .shareaholic-total-count" shr-auto-size-mobile="config.isMobile" shr-auto-size-min-size="44">
+     <div style="top: 15%;" class="shareaholic-share-buttons-container shareaholic-ui flat round rectangle    center-align" ng-style="config.verticalOffset ? {top: config.verticalOffset} : {}">
+    <div class="shareaholic-share-buttons-wrapper shareaholic-ui">
+
+      <!-- ngIf: headlineImage -->
+
+
+
+      <ul class="shareaholic-share-buttons">
+        <!-- ngIf: config.showTotalShareCount && shareCountTotal -->
+
+        <!-- data-service is used for styles TODO remove!-->
+        <!-- ngRepeat: sb in sharebuttons --><li ng-repeat="sb in sharebuttons" data-service="twitter" class="shareaholic-share-button ng-scope" style="display: list-item;" title="Twitter" ng-class="{'has-shares': sb.shares}">
+          <div class="shareaholic-share-button-container" ng-click="sb.click()" style="color: !important;
+                      background: !important;
+                      opacity:  !important;">
+            <span class="share-button-counter ng-binding" style="color: !important;
+                  background: !important;
+                  opacity:  !important;">0</span>
+            <div class="share-button-sizing" ng-style="config.customColorsEnabled &amp;&amp; config.appName === 'floated_share_buttons' ? config.customColors : {}">
+              <i class="shareaholic-service-icon service-twitter" ng-style="config.customColorsEnabled ? config.customColors : {}"></i>
+              <span class="share-button-verb ng-binding" style="color: rgb(255, 255, 255) ! important;">
+                <b class="ng-binding">Tweet</b>
+                
+              </span>
+            </div>
+          </div>
+        </li><!-- end ngRepeat: sb in sharebuttons --><li ng-repeat="sb in sharebuttons" data-service="facebook" class="shareaholic-share-button ng-scope" style="display: list-item;" title="Facebook" ng-class="{'has-shares': sb.shares}">
+          <div class="shareaholic-share-button-container" ng-click="sb.click()" style="color: !important;
+                      background: !important;
+                      opacity:  !important;">
+            <span class="share-button-counter ng-binding" style="color: !important;
+                  background: !important;
+                  opacity:  !important;">0</span>
+            <div class="share-button-sizing" ng-style="config.customColorsEnabled &amp;&amp; config.appName === 'floated_share_buttons' ? config.customColors : {}">
+              <i class="shareaholic-service-icon service-facebook" ng-style="config.customColorsEnabled ? config.customColors : {}"></i>
+              <span class="share-button-verb ng-binding" style="color: rgb(255, 255, 255) ! important;">
+                <b class="ng-binding">Share</b>
+                
+              </span>
+            </div>
+          </div>
+        </li><!-- end ngRepeat: sb in sharebuttons --><li ng-repeat="sb in sharebuttons" data-service="google_plus" class="shareaholic-share-button ng-scope has-shares" style="display: list-item;" title="Google+" ng-class="{'has-shares': sb.shares}">
+          <div class="shareaholic-share-button-container" ng-click="sb.click()" style="color: !important;
+                      background: !important;
+                      opacity:  !important;">
+            <span class="share-button-counter ng-binding" style="color: !important;
+                  background: !important;
+                  opacity:  !important;">23</span>
+            <div class="share-button-sizing" ng-style="config.customColorsEnabled &amp;&amp; config.appName === 'floated_share_buttons' ? config.customColors : {}">
+              <i class="shareaholic-service-icon service-google_plus" ng-style="config.customColorsEnabled ? config.customColors : {}"></i>
+              <span class="share-button-verb ng-binding" style="color: rgb(255, 255, 255) ! important;">
+                <b class="ng-binding">Share</b>
+                
+              </span>
+            </div>
+          </div>
+        </li><!-- end ngRepeat: sb in sharebuttons --><li ng-repeat="sb in sharebuttons" data-service="email_this" class="shareaholic-share-button ng-scope" style="display: none;" title="Email This" ng-class="{'has-shares': sb.shares}">
+          <div class="shareaholic-share-button-container" ng-click="sb.click()" style="color: !important;
+                      background: !important;
+                      opacity:  !important;">
+            <span class="share-button-counter ng-binding" style="color: !important;
+                  background: !important;
+                  opacity:  !important;">0</span>
+            <div class="share-button-sizing" ng-style="config.customColorsEnabled &amp;&amp; config.appName === 'floated_share_buttons' ? config.customColors : {}">
+              <i class="shareaholic-service-icon service-email_this" ng-style="config.customColorsEnabled ? config.customColors : {}"></i>
+              <span class="share-button-verb ng-binding" style="color: rgb(255, 255, 255) ! important;">
+                <b class="ng-binding">Mail</b>
+                
+              </span>
+            </div>
+          </div>
+        </li><!-- end ngRepeat: sb in sharebuttons --><li ng-repeat="sb in sharebuttons" data-service="delicious" class="shareaholic-share-button ng-scope" style="display: none;" title="Delicious" ng-class="{'has-shares': sb.shares}">
+          <div class="shareaholic-share-button-container" ng-click="sb.click()" style="color: !important;
+                      background: !important;
+                      opacity:  !important;">
+            <span class="share-button-counter ng-binding" style="color: !important;
+                  background: !important;
+                  opacity:  !important;">0</span>
+            <div class="share-button-sizing" ng-style="config.customColorsEnabled &amp;&amp; config.appName === 'floated_share_buttons' ? config.customColors : {}">
+              <i class="shareaholic-service-icon service-delicious" ng-style="config.customColorsEnabled ? config.customColors : {}"></i>
+              <span class="share-button-verb ng-binding" style="color: rgb(255, 255, 255) ! important;">
+                <b class="ng-binding">Share</b>
+                
+              </span>
+            </div>
+          </div>
+        </li><!-- end ngRepeat: sb in sharebuttons --><li ng-repeat="sb in sharebuttons" data-service="stumbleupon" class="shareaholic-share-button ng-scope" style="display: none;" title="StumbleUpon" ng-class="{'has-shares': sb.shares}">
+          <div class="shareaholic-share-button-container" ng-click="sb.click()" style="color: !important;
+                      background: !important;
+                      opacity:  !important;">
+            <span class="share-button-counter ng-binding" style="color: !important;
+                  background: !important;
+                  opacity:  !important;">0</span>
+            <div class="share-button-sizing" ng-style="config.customColorsEnabled &amp;&amp; config.appName === 'floated_share_buttons' ? config.customColors : {}">
+              <i class="shareaholic-service-icon service-stumbleupon" ng-style="config.customColorsEnabled ? config.customColors : {}"></i>
+              <span class="share-button-verb ng-binding" style="color: rgb(255, 255, 255) ! important;">
+                <b class="ng-binding">Share</b>
+                
+              </span>
+            </div>
+          </div>
+        </li><!-- end ngRepeat: sb in sharebuttons --><li ng-repeat="sb in sharebuttons" data-service="all" class="shareaholic-share-button ng-scope" style="display: list-item;" title="More Options" ng-class="{'has-shares': sb.shares}">
+          <div class="shareaholic-share-button-container" ng-click="sb.click()" style="color: !important;
+                      background: !important;
+                      opacity:  !important;">
+            <span class="share-button-counter ng-binding" style="color: !important;
+                  background: !important;
+                  opacity:  !important;">0</span>
+            <div class="share-button-sizing" ng-style="config.customColorsEnabled &amp;&amp; config.appName === 'floated_share_buttons' ? config.customColors : {}">
+              <i class="shareaholic-service-icon service-all" ng-style="config.customColorsEnabled ? config.customColors : {}"></i>
+              <span class="share-button-verb ng-binding" style="color: rgb(255, 255, 255) ! important;">
+                <b class="ng-binding">Share</b>
+                
+              </span>
+            </div>
+          </div>
+        </li><!-- end ngRepeat: sb in sharebuttons -->
+
+      </ul>
+
+    </div>
+  </div>
+</div>
+</div>
+	<h4>Related posts</h4>
+	<ul class="st-related-posts">
+	<li><a href="http://www.ubuntugeek.com/zentyal-linux-small-business-server-based-on-ubuntu-10-04.html" title="Zentyal – Linux Small Business Server based on ubuntu 10.04 (October 13, 2010)">Zentyal – Linux Small Business Server based on ubuntu 10.04</a> (4)</li>
+	<li><a href="http://www.ubuntugeek.com/zbackup-a-versatile-deduplicating-backup-tool.html" title="zBackup – A versatile deduplicating backup tool (February 4, 2015)">zBackup – A versatile deduplicating backup tool</a> (0)</li>
+	<li><a href="http://www.ubuntugeek.com/webmin-installation-and-configuration-in-ubuntu-linux.html" title="Webmin Installation and Configuration in Ubuntu Linux (December 22, 2006)">Webmin Installation and Configuration in Ubuntu Linux</a> (22)</li>
+	<li><a href="http://www.ubuntugeek.com/webalizer-apache-web-server-log-file-analysis-tool.html" title="Webalizer – Apache web server log file analysis Tool (June 10, 2008)">Webalizer – Apache web server log file analysis Tool</a> (15)</li>
+	<li><a href="http://www.ubuntugeek.com/web-based-centralized-console-for-tripwire.html" title="Web-based centralized console for tripwire (December 8, 2009)">Web-based centralized console for tripwire</a> (0)</li>
+	<li><a href="http://www.ubuntugeek.com/vnstat-console-based-network-traffic-monitor.html" title="VNSTAT – Console-based network traffic monitor (March 14, 2016)">VNSTAT – Console-based network traffic monitor</a> (0)</li>
+	<li><a href="http://www.ubuntugeek.com/vesta-simple-clever-hosting-control-panel.html" title="Vesta – Simple &amp; Clever Hosting Control Panel (September 19, 2014)">Vesta – Simple &amp; Clever Hosting Control Panel</a> (0)</li>
+</ul>
+
+</div> <!-- .entry-content -->	<div id="comments" class="comments-area">
+	
+	
+			<h2 id="comments-title">
+			3 thoughts on “<span>Glances – CLI curses based monitoring tool for GNU/Linux</span>”		</h2>
+
+		
+		<ol class="commentlist">
+					<li class="comment even thread-even depth-1" id="li-comment-129091">
+			<div class="heatmapthemead-comment-article">
+				<article id="comment-129091" class="comment">
+					<footer class="comment-meta">
+						<div class="reply">
+													</div><!-- .reply -->
+						<div class="comment-author vcard">
+							<span class="fn">Al</span> on <a href="#comment-129091"><time datetime="2013-06-14T17:54:31+00:00">June 14, 2013 at 5:54 pm</time></a> <span class="says">said:</span>		
+													</div><!-- .comment-author .vcard -->
+		
+								
+					</footer>
+		
+					<div class="comment-content"><p>Cool article. I really like these types of articles,</p>
+</div>
+				</article><!-- #comment-## -->
+			</div><!-- .heatmapthemead-comment-article -->
+	
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-129095">
+			<div class="heatmapthemead-comment-article">
+				<article id="comment-129095" class="comment">
+					<footer class="comment-meta">
+						<div class="reply">
+													</div><!-- .reply -->
+						<div class="comment-author vcard">
+							<span class="fn">JoshFindit</span> on <a href="#comment-129095"><time datetime="2013-06-15T04:16:17+00:00">June 15, 2013 at 4:16 am</time></a> <span class="says">said:</span>		
+													</div><!-- .comment-author .vcard -->
+		
+								
+					</footer>
+		
+					<div class="comment-content"><p>Interesting and potentially handy, but so much CPU usage!</p>
+</div>
+				</article><!-- #comment-## -->
+			</div><!-- .heatmapthemead-comment-article -->
+	
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="li-comment-129097">
+			<div class="heatmapthemead-comment-article">
+				<article id="comment-129097" class="comment">
+					<footer class="comment-meta">
+						<div class="reply">
+													</div><!-- .reply -->
+						<div class="comment-author vcard">
+							<span class="fn"><a href="http://zhan.renren.com/linuxpowered" rel="external nofollow" class="url">Meow</a></span> on <a href="#comment-129097"><time datetime="2013-06-15T05:05:13+00:00">June 15, 2013 at 5:05 am</time></a> <span class="says">said:</span>		
+													</div><!-- .comment-author .vcard -->
+		
+								
+					</footer>
+		
+					<div class="comment-content"><p>Excellent tool</p>
+</div>
+				</article><!-- #comment-## -->
+			</div><!-- .heatmapthemead-comment-article -->
+	
+		</li><!-- #comment-## -->
+		</ol>
+
+		
+	
+	
+					<div id="respond" class="comment-respond">
+			<h3 id="reply-title" class="comment-reply-title">Leave a comment <small><a rel="nofollow" id="cancel-comment-reply-link" href="#respond" style="display: none;">Cancel reply</a></small></h3>				<form action="http://www.ubuntugeek.com/wp-comments-post.php" method="post" id="commentform" class="comment-form">
+					<p class="comment-notes"><span id="email-notes">Your email address will not be published.</span> Required fields are marked <span class="required">*</span></p><p class="comment-form-comment"><label for="comment">Comment</label> <textarea id="comment" name="1ff7a-comment" cols="45" rows="8" maxlength="65525" aria-required="true" required="required"></textarea><textarea name="comment" style="display: none;" rows="1" cols="1"></textarea></p><p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" value="" size="30" maxlength="245" aria-required="true" required="required" type="text"></p>
+<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" value="" size="30" maxlength="100" aria-describedby="email-notes" aria-required="true" required="required" type="text"></p>
+<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" value="" size="30" maxlength="200" type="text"></p>
+<p class="form-submit"><input name="submit" id="submit" class="submit" value="Post Comment" type="submit"> <input name="comment_post_ID" value="14286" id="comment_post_ID" type="hidden">
+<input name="comment_parent" id="comment_parent" value="0" type="hidden">
+</p>				</form>
+					</div><!-- #respond -->
+		
+</div><!-- #comments .comments-area -->		</article><!-- #post-14286 -->        
+			<div id="heatmapthemead-post-navigation">
+            <nav role="navigation" id="nav-below" class="site-navigation post-navigation">
+        
+                    
+                <div class="nav-previous"><a href="http://www.ubuntugeek.com/how-to-install-intelr-linux-graphics-drivers-on-ubuntu-13-04.html" rel="prev"><span class="meta-nav">«</span> How to install Intel(R) Linux Graphics drivers on ubuntu 13.04</a></div>                <div class="nav-next"><a href="http://www.ubuntugeek.com/gnome-encfs-manager.html" rel="next">Gnome Encfs Manager <span class="meta-nav">»</span></a></div>        
+                    
+            </nav><!-- .site-navigation post-navigation -->
+        </div><!-- #heatmapthemead-post-navigation -->
+		</div> <!-- id="heatmapthemead-the-content-container" --> 
+</div> <!-- id="heatmapthemead-the-content" --> 
+</div> <!-- id="heatmapthemead-content" --> 
+<!-- primary sidebar -->
+<div id="heatmapthemead-primary-sidebar">
+<div id="heatmapthemead-primary-sidebar-container" role="complementary">
+<div id="heatmapthemead-widget-position-primary" class="heatmapthemead-widget-position heatmapthemead-primary" role="complementary"><aside id="text-310769683" class="widget widget_text"><h4 class="widget-title">Sponsored Link</h4>			<div class="textwidget"><ul>
+<a href="http://www.a2hosting.com/1659-vps-224-custom.html" target="_blank">
+<img src="ubuntu1.png" alt="Cheap Web Hosting" border="0"></a>
+</ul><br>
+
+
+</div>
+		</aside><aside id="categories-310769689" class="widget widget_categories"><h4 class="widget-title">Categories</h4>		<ul>
+	<li class="cat-item cat-item-3"><a href="http://www.ubuntugeek.com/category/backup">Backup</a>
+</li>
+	<li class="cat-item cat-item-6929"><a href="http://www.ubuntugeek.com/category/free-books">Free Books</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="http://www.ubuntugeek.com/category/general">General</a>
+</li>
+	<li class="cat-item cat-item-5"><a href="http://www.ubuntugeek.com/category/monitoring">Monitoring</a>
+</li>
+	<li class="cat-item cat-item-6"><a href="http://www.ubuntugeek.com/category/networking">Networking</a>
+</li>
+	<li class="cat-item cat-item-2626"><a href="http://www.ubuntugeek.com/category/news">News</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="http://www.ubuntugeek.com/category/package-mgmt">Package Mgmt</a>
+</li>
+	<li class="cat-item cat-item-8"><a href="http://www.ubuntugeek.com/category/security">Security</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="http://www.ubuntugeek.com/category/server">Server</a>
+</li>
+		</ul>
+</aside><aside id="text-390956925" class="widget widget_text">			<div class="textwidget"><ul>
+<a href="https://www.digitalocean.com/features/linux-distribution/ubuntu/?utm_source=UnbuntuGeek&amp;utm_medium=BannerAd&amp;utm_campaign=UnbuntuGeekBannerAd" target="_blank">
+<img src="od.jpg" alt="Deploy Ubuntu VPS server
+> > in 60 sec" border="0"></a>
+</ul><br></div>
+		</aside><aside id="text-390956927" class="widget widget_text"><h4 class="widget-title">Sponsored Link</h4>			<div class="textwidget">
+
+</div>
+		</aside><aside id="archives-2" class="widget widget_archive"><h4 class="widget-title">Archives</h4>		<label class="screen-reader-text" for="archives-dropdown-2">Archives</label>
+		<select id="archives-dropdown-2" name="archive-dropdown">
+			
+			<option value="">Select Month</option>
+				<option value="http://www.ubuntugeek.com/2016/08"> August 2016 </option>
+	<option value="http://www.ubuntugeek.com/2016/07"> July 2016 </option>
+	<option value="http://www.ubuntugeek.com/2016/06"> June 2016 </option>
+	<option value="http://www.ubuntugeek.com/2016/05"> May 2016 </option>
+	<option value="http://www.ubuntugeek.com/2016/04"> April 2016 </option>
+	<option value="http://www.ubuntugeek.com/2016/03"> March 2016 </option>
+	<option value="http://www.ubuntugeek.com/2016/02"> February 2016 </option>
+	<option value="http://www.ubuntugeek.com/2016/01"> January 2016 </option>
+	<option value="http://www.ubuntugeek.com/2015/12"> December 2015 </option>
+	<option value="http://www.ubuntugeek.com/2015/11"> November 2015 </option>
+	<option value="http://www.ubuntugeek.com/2015/10"> October 2015 </option>
+	<option value="http://www.ubuntugeek.com/2015/09"> September 2015 </option>
+	<option value="http://www.ubuntugeek.com/2015/08"> August 2015 </option>
+	<option value="http://www.ubuntugeek.com/2015/07"> July 2015 </option>
+	<option value="http://www.ubuntugeek.com/2015/06"> June 2015 </option>
+	<option value="http://www.ubuntugeek.com/2015/05"> May 2015 </option>
+	<option value="http://www.ubuntugeek.com/2015/04"> April 2015 </option>
+	<option value="http://www.ubuntugeek.com/2015/03"> March 2015 </option>
+	<option value="http://www.ubuntugeek.com/2015/02"> February 2015 </option>
+	<option value="http://www.ubuntugeek.com/2015/01"> January 2015 </option>
+	<option value="http://www.ubuntugeek.com/2014/12"> December 2014 </option>
+	<option value="http://www.ubuntugeek.com/2014/11"> November 2014 </option>
+	<option value="http://www.ubuntugeek.com/2014/10"> October 2014 </option>
+	<option value="http://www.ubuntugeek.com/2014/09"> September 2014 </option>
+	<option value="http://www.ubuntugeek.com/2014/08"> August 2014 </option>
+	<option value="http://www.ubuntugeek.com/2014/07"> July 2014 </option>
+	<option value="http://www.ubuntugeek.com/2014/06"> June 2014 </option>
+	<option value="http://www.ubuntugeek.com/2014/05"> May 2014 </option>
+	<option value="http://www.ubuntugeek.com/2014/04"> April 2014 </option>
+	<option value="http://www.ubuntugeek.com/2014/03"> March 2014 </option>
+	<option value="http://www.ubuntugeek.com/2014/02"> February 2014 </option>
+	<option value="http://www.ubuntugeek.com/2014/01"> January 2014 </option>
+	<option value="http://www.ubuntugeek.com/2013/12"> December 2013 </option>
+	<option value="http://www.ubuntugeek.com/2013/11"> November 2013 </option>
+	<option value="http://www.ubuntugeek.com/2013/10"> October 2013 </option>
+	<option value="http://www.ubuntugeek.com/2013/09"> September 2013 </option>
+	<option value="http://www.ubuntugeek.com/2013/08"> August 2013 </option>
+	<option value="http://www.ubuntugeek.com/2013/07"> July 2013 </option>
+	<option value="http://www.ubuntugeek.com/2013/06"> June 2013 </option>
+	<option value="http://www.ubuntugeek.com/2013/05"> May 2013 </option>
+	<option value="http://www.ubuntugeek.com/2013/04"> April 2013 </option>
+	<option value="http://www.ubuntugeek.com/2013/03"> March 2013 </option>
+	<option value="http://www.ubuntugeek.com/2013/02"> February 2013 </option>
+	<option value="http://www.ubuntugeek.com/2013/01"> January 2013 </option>
+	<option value="http://www.ubuntugeek.com/2012/12"> December 2012 </option>
+	<option value="http://www.ubuntugeek.com/2012/11"> November 2012 </option>
+	<option value="http://www.ubuntugeek.com/2012/10"> October 2012 </option>
+	<option value="http://www.ubuntugeek.com/2012/09"> September 2012 </option>
+	<option value="http://www.ubuntugeek.com/2012/08"> August 2012 </option>
+	<option value="http://www.ubuntugeek.com/2012/07"> July 2012 </option>
+	<option value="http://www.ubuntugeek.com/2012/06"> June 2012 </option>
+	<option value="http://www.ubuntugeek.com/2012/05"> May 2012 </option>
+	<option value="http://www.ubuntugeek.com/2012/04"> April 2012 </option>
+	<option value="http://www.ubuntugeek.com/2012/03"> March 2012 </option>
+	<option value="http://www.ubuntugeek.com/2012/02"> February 2012 </option>
+	<option value="http://www.ubuntugeek.com/2012/01"> January 2012 </option>
+	<option value="http://www.ubuntugeek.com/2011/12"> December 2011 </option>
+	<option value="http://www.ubuntugeek.com/2011/11"> November 2011 </option>
+	<option value="http://www.ubuntugeek.com/2011/10"> October 2011 </option>
+	<option value="http://www.ubuntugeek.com/2011/09"> September 2011 </option>
+	<option value="http://www.ubuntugeek.com/2011/08"> August 2011 </option>
+	<option value="http://www.ubuntugeek.com/2011/07"> July 2011 </option>
+	<option value="http://www.ubuntugeek.com/2011/06"> June 2011 </option>
+	<option value="http://www.ubuntugeek.com/2011/05"> May 2011 </option>
+	<option value="http://www.ubuntugeek.com/2011/04"> April 2011 </option>
+	<option value="http://www.ubuntugeek.com/2011/03"> March 2011 </option>
+	<option value="http://www.ubuntugeek.com/2011/02"> February 2011 </option>
+	<option value="http://www.ubuntugeek.com/2011/01"> January 2011 </option>
+	<option value="http://www.ubuntugeek.com/2010/12"> December 2010 </option>
+	<option value="http://www.ubuntugeek.com/2010/11"> November 2010 </option>
+	<option value="http://www.ubuntugeek.com/2010/10"> October 2010 </option>
+	<option value="http://www.ubuntugeek.com/2010/09"> September 2010 </option>
+	<option value="http://www.ubuntugeek.com/2010/08"> August 2010 </option>
+	<option value="http://www.ubuntugeek.com/2010/07"> July 2010 </option>
+	<option value="http://www.ubuntugeek.com/2010/06"> June 2010 </option>
+	<option value="http://www.ubuntugeek.com/2010/05"> May 2010 </option>
+	<option value="http://www.ubuntugeek.com/2010/04"> April 2010 </option>
+	<option value="http://www.ubuntugeek.com/2010/03"> March 2010 </option>
+	<option value="http://www.ubuntugeek.com/2010/02"> February 2010 </option>
+	<option value="http://www.ubuntugeek.com/2010/01"> January 2010 </option>
+	<option value="http://www.ubuntugeek.com/2009/12"> December 2009 </option>
+	<option value="http://www.ubuntugeek.com/2009/11"> November 2009 </option>
+	<option value="http://www.ubuntugeek.com/2009/10"> October 2009 </option>
+	<option value="http://www.ubuntugeek.com/2009/09"> September 2009 </option>
+	<option value="http://www.ubuntugeek.com/2009/08"> August 2009 </option>
+	<option value="http://www.ubuntugeek.com/2009/07"> July 2009 </option>
+	<option value="http://www.ubuntugeek.com/2009/06"> June 2009 </option>
+	<option value="http://www.ubuntugeek.com/2009/05"> May 2009 </option>
+	<option value="http://www.ubuntugeek.com/2009/04"> April 2009 </option>
+	<option value="http://www.ubuntugeek.com/2009/03"> March 2009 </option>
+	<option value="http://www.ubuntugeek.com/2009/02"> February 2009 </option>
+	<option value="http://www.ubuntugeek.com/2009/01"> January 2009 </option>
+	<option value="http://www.ubuntugeek.com/2008/12"> December 2008 </option>
+	<option value="http://www.ubuntugeek.com/2008/11"> November 2008 </option>
+	<option value="http://www.ubuntugeek.com/2008/10"> October 2008 </option>
+	<option value="http://www.ubuntugeek.com/2008/09"> September 2008 </option>
+	<option value="http://www.ubuntugeek.com/2008/08"> August 2008 </option>
+	<option value="http://www.ubuntugeek.com/2008/07"> July 2008 </option>
+	<option value="http://www.ubuntugeek.com/2008/06"> June 2008 </option>
+	<option value="http://www.ubuntugeek.com/2008/05"> May 2008 </option>
+	<option value="http://www.ubuntugeek.com/2008/04"> April 2008 </option>
+	<option value="http://www.ubuntugeek.com/2008/03"> March 2008 </option>
+	<option value="http://www.ubuntugeek.com/2008/02"> February 2008 </option>
+	<option value="http://www.ubuntugeek.com/2008/01"> January 2008 </option>
+	<option value="http://www.ubuntugeek.com/2007/12"> December 2007 </option>
+	<option value="http://www.ubuntugeek.com/2007/11"> November 2007 </option>
+	<option value="http://www.ubuntugeek.com/2007/10"> October 2007 </option>
+	<option value="http://www.ubuntugeek.com/2007/09"> September 2007 </option>
+	<option value="http://www.ubuntugeek.com/2007/08"> August 2007 </option>
+	<option value="http://www.ubuntugeek.com/2007/07"> July 2007 </option>
+	<option value="http://www.ubuntugeek.com/2007/06"> June 2007 </option>
+	<option value="http://www.ubuntugeek.com/2007/05"> May 2007 </option>
+	<option value="http://www.ubuntugeek.com/2007/04"> April 2007 </option>
+	<option value="http://www.ubuntugeek.com/2007/03"> March 2007 </option>
+	<option value="http://www.ubuntugeek.com/2007/02"> February 2007 </option>
+	<option value="http://www.ubuntugeek.com/2007/01"> January 2007 </option>
+	<option value="http://www.ubuntugeek.com/2006/12"> December 2006 </option>
+
+		</select>
+		</aside></div> <!-- id="heatmapthemead-widget-position-primary" -->
+</div> <!-- id="heatmapthemead-primary-sidebar-container" -->
+</div> <!-- id="heatmapthemead-primary-sidebar" -->
+<!-- secondary sidebar -->
+<div id="heatmapthemead-secondary-sidebar">
+<div id="heatmapthemead-secondary-sidebar-container" role="complementary">
+<div id="heatmapthemead-widget-position-secondary" class="heatmapthemead-widget-position heatmapthemead-secondary widget-area" role="complementary"><aside id="text-390956921" class="widget widget_text"><h4 class="widget-title">RSS Feed</h4>			<div class="textwidget">
+<a href="http://feeds.feedburner.com/UbuntuGeek" target="_blank"><img src="feed.png" alt="subscribe to the ubuntu Geek RSS feed" title="Subscribe for Updates" border="0"></a>
+<br>
+</div>
+		</aside><aside id="text-390956922" class="widget widget_text"><h4 class="widget-title">UbuntuGeek on Twitter</h4>			<div class="textwidget"><ul>
+<a href="http://twitter.com/ubuntugeek" target="_blank">
+<img src="twitter.png" alt="Follow Us on Twitter" border="0"></a>
+</ul><br>
+</div>
+		</aside><aside id="text-390956926" class="widget widget_text"><h4 class="widget-title">Sponsored Link</h4>			<div class="textwidget"><a href="http://www.digitalocean.com/?utm_source=UnbuntuGeek&amp;utm_medium=TextAd&amp;utm_campaign=UnbuntuGeekTextAd" target="_blank">$5/Mo. Ubuntu SSD VPS</a> . Deploy an Ubuntu virtual server in 55 sec. 
+Sign up for free. <br>
+</div>
+		</aside><aside id="text-310774991" class="widget widget_text">			<div class="textwidget">
+<!-- Ubuntu300x600 -->
+</div>
+		</aside><aside id="paypal_donations-2" class="widget widget_paypal_donations"><h4 class="widget-title">Support UbuntuGeek</h4><!-- Begin PayPal Donations by https://www.tipsandtricks-hq.com/paypal-donations-widgets-plugin -->
+
+<form action="http://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+    <div class="paypal-donations">
+        <input name="cmd" value="_donations" type="hidden">
+        <input name="bn" value="TipsandTricks_SP" type="hidden">
+        <input name="business" value="admin@debianadmin.com" type="hidden">
+        <input name="return" value="http://www.ubuntugeek.com" type="hidden">
+        <input name="item_name" value="Support UbuntuGeek" type="hidden">
+        <input name="amount" value="10" type="hidden">
+        <input name="rm" value="0" type="hidden">
+        <input name="currency_code" value="USD" type="hidden">
+        <input src="btn_donate_LG.gif" name="submit" alt="PayPal - The safer, easier way to pay online." type="image">
+    </div>
+</form>
+<!-- End PayPal Donations -->
+</aside><aside id="text-310774994" class="widget widget_text"><h4 class="widget-title">Favourite Sites</h4>			<div class="textwidget"><a href="http://www.debianadmin.com/" target="_blank">Debian Admin</a><br>
+  <a href="http://www.debianhelp.co.uk/" target="_blank">DebianHelp</a><br>
+    <a href="http://www.tuxmachines.org/" target="_blank">Tuxmachines</a><br>
+
+
+</div>
+		</aside></div> <!-- id="heatmapthemead-widget-position-secondary" -->
+</div> <!-- id="heatmapthemead-secondary-sidebar-container" -->
+</div> <!-- id="heatmapthemead-secondary-sidebar" -->
+</div> <!-- id="heatmapthemead-main" -->
+</div><iframe src="index_1.html" style="display: none;" id="SHR-9691" frameborder="0"></iframe> <!-- id="heatmapthemead-main-wipe" -->
+<!-- Footer -->
+<div id="heatmapthemead-footer-wipe">
+<div id="heatmapthemead-footer">
+<div id="heatmapthemead-footer-container" role="complementary">
+<div id="heatmapthemead-credits" class="heatmapthemead-menu">Copyright © 2016 Ubuntugeek -  Ubuntu Linux Howtos and Tutorials
+All Rights Reserved. </div></div> <!-- id="heatmapthemead-footer-container" -->
+</div> <!-- id="heatmapthemead-footer" -->
+</div> <!-- id="heatmapthemead-footer-wipe" -->
+<!-- wp_footer() -->
+
+<div style="display: none;" class="shareaholic-canvas shareaholic-media-overlay" data-app="media_share"></div><div style="display: none;" class="shareaholic-canvas" data-app="cookie_consent"></div><div style="display: none;" class="shareaholic-canvas shareaholic-share-buttons-container" data-app="floated_share_buttons"></div><img src="pageview.gif" style="height: 1px; width: 1px; position: absolute; bottom: 0px; right: 0px; border: 0px none;"></body>
+</html>
