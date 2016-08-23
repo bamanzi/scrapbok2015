@@ -1,0 +1,590 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html class="wf-ptserif-n4-active wf-merriweather-n4-inactive wf-merriweather-i4-inactive wf-vollkorn-n4-inactive wf-andada-n4-inactive wf-lora-n4-inactive wf-robotoslab-n3-inactive wf-martel-n4-inactive wf-notoserif-n4-inactive wf-sourcesanspro-n4-inactive wf-opensans-n4-inactive wf-slabo27px-n4-inactive wf-active">
+<head>
+<meta charset="UTF-8">
+
+  
+  
+
+
+  <title>Use Curl to identify bottlenecks in your service layers. · GitHub</title>
+  
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body id="bodyid">
+<div id="main" role="main">
+  <div style="font-size: 18px; max-width: 750px; line-height: 29px; font-family: 'PT Serif',&quot;Helvetica Neue&quot;,Helvetica,Tahoma,Verdana,Arial,STHeiti,&quot;Heiti SC&quot;,&quot;Hiragino Sans GB&quot;,&quot;Microsoft JhengHei&quot;,&quot;Microsoft YaHei&quot;,sans-serif;" id="readability-content">
+    <article id="readable-article" style="">
+      <header>
+        <h2 class="title" id="article_title">Use Curl to identify bottlenecks in your service layers.</h2>
+        <div class="meta clearfix no-print">
+          <a href="https://gist.github.com/adamkaplan/adf15f0d622f4932f4af">Original link</a> | 
+          <a href="https://www.diigo.com/cached?url=https%3A%2F%2Fgist.github.com%2Fadamkaplan%2Fadf15f0d622f4932f4af">Cache version</a>
+        </div>
+        <div class="credit print">
+          <a href="https://gist.github.com/adamkaplan/adf15f0d622f4932f4af">gist.github.com</a>
+        </div>
+      </header>
+      <div class="entry-content" id="article_content">
+      <div id="readability-page-1" class="page"><div class="repository-content gist-content"><div><div class="js-gist-file-update-container js-task-list-container file-box"><div id="file-curlformat-txt" class="file"><div itemprop="text" class="blob-wrapper data type-text"><table class="highlight tab-size js-file-line-container" data-tab-size="8">
+      <tbody><tr>
+        <td id="file-curlformat-txt-L1" class="blob-num js-line-number" data-line-number="1"></td>
+        <td id="file-curlformat-txt-LC1" class="blob-code blob-code-inner js-file-line">\n</td>
+      </tr>
+      <tr>
+        <td id="file-curlformat-txt-L2" class="blob-num js-line-number" data-line-number="2"></td>
+        <td id="file-curlformat-txt-LC2" class="blob-code blob-code-inner js-file-line">Size:     %{size_download}\n</td>
+      </tr>
+      <tr>
+        <td id="file-curlformat-txt-L3" class="blob-num js-line-number" data-line-number="3"></td>
+        <td id="file-curlformat-txt-LC3" class="blob-code blob-code-inner js-file-line">DNS:      %{time_namelookup}\n</td>
+      </tr>
+      <tr>
+        <td id="file-curlformat-txt-L4" class="blob-num js-line-number" data-line-number="4"></td>
+        <td id="file-curlformat-txt-LC4" class="blob-code blob-code-inner js-file-line">Connect:  %{time_connect}\n</td>
+      </tr>
+      <tr>
+        <td id="file-curlformat-txt-L5" class="blob-num js-line-number" data-line-number="5"></td>
+        <td id="file-curlformat-txt-LC5" class="blob-code blob-code-inner js-file-line">SSL:      %{time_appconnect}\n</td>
+      </tr>
+      <tr>
+        <td id="file-curlformat-txt-L6" class="blob-num js-line-number" data-line-number="6"></td>
+        <td id="file-curlformat-txt-LC6" class="blob-code blob-code-inner js-file-line">Transfer: %{time_starttransfer}\n</td>
+      </tr>
+      <tr>
+        <td id="file-curlformat-txt-L7" class="blob-num js-line-number" data-line-number="7"></td>
+        <td id="file-curlformat-txt-LC7" class="blob-code blob-code-inner js-file-line">Total:    %{time_total}\n</td>
+      </tr>
+</tbody></table></div></div></div><div class="js-gist-file-update-container js-task-list-container file-box"><div id="file-uncached-dns-new-connection" class="file"><div itemprop="text" class="blob-wrapper data type-text"><table class="highlight tab-size js-file-line-container" data-tab-size="8">
+      <tbody><tr>
+        <td id="file-uncached-dns-new-connection-L1" class="blob-num js-line-number" data-line-number="1"></td>
+        <td id="file-uncached-dns-new-connection-LC1" class="blob-code blob-code-inner js-file-line"># SSL request to hostname that is not in DNS</td>
+      </tr>
+      <tr>
+        <td id="file-uncached-dns-new-connection-L2" class="blob-num js-line-number" data-line-number="2"></td>
+        <td id="file-uncached-dns-new-connection-LC2" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-uncached-dns-new-connection-L3" class="blob-num js-line-number" data-line-number="3"></td>
+        <td id="file-uncached-dns-new-connection-LC3" class="blob-code blob-code-inner js-file-line">&gt; curl -o /dev/null -w @curlformat https://beta.finance.yahoo.com</td>
+      </tr>
+      <tr>
+        <td id="file-uncached-dns-new-connection-L4" class="blob-num js-line-number" data-line-number="4"></td>
+        <td id="file-uncached-dns-new-connection-LC4" class="blob-code blob-code-inner js-file-line">  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current</td>
+      </tr>
+      <tr>
+        <td id="file-uncached-dns-new-connection-L5" class="blob-num js-line-number" data-line-number="5"></td>
+        <td id="file-uncached-dns-new-connection-LC5" class="blob-code blob-code-inner js-file-line">                                 Dload  Upload   Total   Spent    Left  Speed</td>
+      </tr>
+      <tr>
+        <td id="file-uncached-dns-new-connection-L6" class="blob-num js-line-number" data-line-number="6"></td>
+        <td id="file-uncached-dns-new-connection-LC6" class="blob-code blob-code-inner js-file-line">100  255k    0  255k    0     0   233k      0 --:--:--  0:00:01 --:--:--  233k</td>
+      </tr>
+      <tr>
+        <td id="file-uncached-dns-new-connection-L7" class="blob-num js-line-number" data-line-number="7"></td>
+        <td id="file-uncached-dns-new-connection-LC7" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-uncached-dns-new-connection-L8" class="blob-num js-line-number" data-line-number="8"></td>
+        <td id="file-uncached-dns-new-connection-LC8" class="blob-code blob-code-inner js-file-line">Size:     261255</td>
+      </tr>
+      <tr>
+        <td id="file-uncached-dns-new-connection-L9" class="blob-num js-line-number" data-line-number="9"></td>
+        <td id="file-uncached-dns-new-connection-LC9" class="blob-code blob-code-inner js-file-line">DNS:      0.522</td>
+      </tr>
+      <tr>
+        <td id="file-uncached-dns-new-connection-L10" class="blob-num js-line-number" data-line-number="10"></td>
+        <td id="file-uncached-dns-new-connection-LC10" class="blob-code blob-code-inner js-file-line">Connect:  0.536</td>
+      </tr>
+      <tr>
+        <td id="file-uncached-dns-new-connection-L11" class="blob-num js-line-number" data-line-number="11"></td>
+        <td id="file-uncached-dns-new-connection-LC11" class="blob-code blob-code-inner js-file-line">SSL:      0.667</td>
+      </tr>
+      <tr>
+        <td id="file-uncached-dns-new-connection-L12" class="blob-num js-line-number" data-line-number="12"></td>
+        <td id="file-uncached-dns-new-connection-LC12" class="blob-code blob-code-inner js-file-line">Transfer: 0.772</td>
+      </tr>
+      <tr>
+        <td id="file-uncached-dns-new-connection-L13" class="blob-num js-line-number" data-line-number="13"></td>
+        <td id="file-uncached-dns-new-connection-LC13" class="blob-code blob-code-inner js-file-line">Total:    1.094</td>
+      </tr>
+      <tr>
+        <td id="file-uncached-dns-new-connection-L14" class="blob-num js-line-number" data-line-number="14"></td>
+        <td id="file-uncached-dns-new-connection-LC14" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-uncached-dns-new-connection-L15" class="blob-num js-line-number" data-line-number="15"></td>
+        <td id="file-uncached-dns-new-connection-LC15" class="blob-code blob-code-inner js-file-line"># Repeat another 2 requests to the same host: DNS is now cached, saving 0.5 seconds.</td>
+      </tr>
+      <tr>
+        <td id="file-uncached-dns-new-connection-L16" class="blob-num js-line-number" data-line-number="16"></td>
+        <td id="file-uncached-dns-new-connection-LC16" class="blob-code blob-code-inner js-file-line"># The final request re-uses the already open connection that Curl is holding, making</td>
+      </tr>
+      <tr>
+        <td id="file-uncached-dns-new-connection-L17" class="blob-num js-line-number" data-line-number="17"></td>
+        <td id="file-uncached-dns-new-connection-LC17" class="blob-code blob-code-inner js-file-line"># DNS lookup, Connection time, and SSL handshake time all 0.</td>
+      </tr>
+      <tr>
+        <td id="file-uncached-dns-new-connection-L18" class="blob-num js-line-number" data-line-number="18"></td>
+        <td id="file-uncached-dns-new-connection-LC18" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-uncached-dns-new-connection-L19" class="blob-num js-line-number" data-line-number="19"></td>
+        <td id="file-uncached-dns-new-connection-LC19" class="blob-code blob-code-inner js-file-line">&gt; curl -o /dev/null -w @../curlformat https://beta.finance.yahoo.com -o /dev/null https://beta.finance.yahoo.com</td>
+      </tr>
+      <tr>
+        <td id="file-uncached-dns-new-connection-L20" class="blob-num js-line-number" data-line-number="20"></td>
+        <td id="file-uncached-dns-new-connection-LC20" class="blob-code blob-code-inner js-file-line">  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current</td>
+      </tr>
+      <tr>
+        <td id="file-uncached-dns-new-connection-L21" class="blob-num js-line-number" data-line-number="21"></td>
+        <td id="file-uncached-dns-new-connection-LC21" class="blob-code blob-code-inner js-file-line">                                 Dload  Upload   Total   Spent    Left  Speed</td>
+      </tr>
+      <tr>
+        <td id="file-uncached-dns-new-connection-L22" class="blob-num js-line-number" data-line-number="22"></td>
+        <td id="file-uncached-dns-new-connection-LC22" class="blob-code blob-code-inner js-file-line">100  255k    0  255k    0     0   108k      0 --:--:--  0:00:02 --:--:--  109k</td>
+      </tr>
+      <tr>
+        <td id="file-uncached-dns-new-connection-L23" class="blob-num js-line-number" data-line-number="23"></td>
+        <td id="file-uncached-dns-new-connection-LC23" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-uncached-dns-new-connection-L24" class="blob-num js-line-number" data-line-number="24"></td>
+        <td id="file-uncached-dns-new-connection-LC24" class="blob-code blob-code-inner js-file-line">Size:     261238</td>
+      </tr>
+      <tr>
+        <td id="file-uncached-dns-new-connection-L25" class="blob-num js-line-number" data-line-number="25"></td>
+        <td id="file-uncached-dns-new-connection-LC25" class="blob-code blob-code-inner js-file-line">DNS:      0.005</td>
+      </tr>
+      <tr>
+        <td id="file-uncached-dns-new-connection-L26" class="blob-num js-line-number" data-line-number="26"></td>
+        <td id="file-uncached-dns-new-connection-LC26" class="blob-code blob-code-inner js-file-line">Connect:  0.086</td>
+      </tr>
+      <tr>
+        <td id="file-uncached-dns-new-connection-L27" class="blob-num js-line-number" data-line-number="27"></td>
+        <td id="file-uncached-dns-new-connection-LC27" class="blob-code blob-code-inner js-file-line">SSL:      0.230</td>
+      </tr>
+      <tr>
+        <td id="file-uncached-dns-new-connection-L28" class="blob-num js-line-number" data-line-number="28"></td>
+        <td id="file-uncached-dns-new-connection-LC28" class="blob-code blob-code-inner js-file-line">Transfer: 1.930</td>
+      </tr>
+      <tr>
+        <td id="file-uncached-dns-new-connection-L29" class="blob-num js-line-number" data-line-number="29"></td>
+        <td id="file-uncached-dns-new-connection-LC29" class="blob-code blob-code-inner js-file-line">Total:    2.341</td>
+      </tr>
+      <tr>
+        <td id="file-uncached-dns-new-connection-L30" class="blob-num js-line-number" data-line-number="30"></td>
+        <td id="file-uncached-dns-new-connection-LC30" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-uncached-dns-new-connection-L31" class="blob-num js-line-number" data-line-number="31"></td>
+        <td id="file-uncached-dns-new-connection-LC31" class="blob-code blob-code-inner js-file-line">100  255k    0  255k    0     0   495k      0 --:--:-- --:--:-- --:--:-- 1048k</td>
+      </tr>
+      <tr>
+        <td id="file-uncached-dns-new-connection-L32" class="blob-num js-line-number" data-line-number="32"></td>
+        <td id="file-uncached-dns-new-connection-LC32" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-uncached-dns-new-connection-L33" class="blob-num js-line-number" data-line-number="33"></td>
+        <td id="file-uncached-dns-new-connection-LC33" class="blob-code blob-code-inner js-file-line">Size:     261255</td>
+      </tr>
+      <tr>
+        <td id="file-uncached-dns-new-connection-L34" class="blob-num js-line-number" data-line-number="34"></td>
+        <td id="file-uncached-dns-new-connection-LC34" class="blob-code blob-code-inner js-file-line">DNS:      0.000</td>
+      </tr>
+      <tr>
+        <td id="file-uncached-dns-new-connection-L35" class="blob-num js-line-number" data-line-number="35"></td>
+        <td id="file-uncached-dns-new-connection-LC35" class="blob-code blob-code-inner js-file-line">Connect:  0.000 &lt;-- connection pool - 80ms connect time already completed above</td>
+      </tr>
+      <tr>
+        <td id="file-uncached-dns-new-connection-L36" class="blob-num js-line-number" data-line-number="36"></td>
+        <td id="file-uncached-dns-new-connection-LC36" class="blob-code blob-code-inner js-file-line">SSL:      0.000 &lt;-- connection pool - 140ms SSL handshake already completed above</td>
+      </tr>
+      <tr>
+        <td id="file-uncached-dns-new-connection-L37" class="blob-num js-line-number" data-line-number="37"></td>
+        <td id="file-uncached-dns-new-connection-LC37" class="blob-code blob-code-inner js-file-line">Transfer: 0.064</td>
+      </tr>
+      <tr>
+        <td id="file-uncached-dns-new-connection-L38" class="blob-num js-line-number" data-line-number="38"></td>
+        <td id="file-uncached-dns-new-connection-LC38" class="blob-code blob-code-inner js-file-line">Total:    0.515</td>
+      </tr>
+</tbody></table></div></div></div><a name="comments"></a></div></div></div></div>
+    </article>
+    <p id="error" style="margin: 10px 0px; color: red; font-weight: bold;"></p>
+    <p id="exception" style="display: none; color: rgb(102, 102, 102); margin-top: 20px;">Redirect to <a href="https://www.diigo.com/cached?url=https%3A%2F%2Fgist.github.com%2Fadamkaplan%2Fadf15f0d622f4932f4af">cached page</a> in <span class="count">5</span> seconds.</p>
+  </div>
+</div>
+<div id="styles" class="no-print">
+  <div id="back-to-top" class="hidden" title="back to top">Top</div>
+  <div class="buttons">
+    <button id="decreaseFont">-</button> A <button id="increaseFont">+</button>
+  </div>
+  <select id="fonts">
+  <option value="serif">==== Serif ====</option><option value="A">PT Serif</option><option value="M">Merriweather</option><option value="B">Martel</option><option value="C">Noto Serif</option><option value="D">Slabo 27px</option><option value="F">Andada</option><option value="E">Lora</option><option value="G">Roboto Slab</option><option value="sans">== Sans Serif ==</option><option value="J">Source Sans Pro</option><option value="K">Open Sans</option><option value="L">Lato</option></select>
+</div>
+<div id="progress" class="no-print">
+  <div style="width: 67.9832%;" id="ratio"></div>
+</div>
+
+
+<div style="display: none;" class="loading-area" id="loading-area">
+  <div class="la-pacman">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</div>
+
+
+<div style="left: 1243px;" id="diigolet-panel-panel" class="diigolet notSignedIn">
+	<div id="diigolet-panel-logo" title="Expand the Annotation Toolbar"></div><!--
+            --><div id="diigolet-panel-main" class="clearfloat">
+	<div id="diigolet-panel-fold" title="Collapse the Annotation Toolbar"></div>
+	<div id="diigolet-panel-Highlight" class="diigolet-panel-btn">
+		<div id="diigolet-panel-hightlight-dropdown" title="Select a highlight color">
+			<b></b>
+		</div>
+		<div id="diigolet-panel-btnHighlight" title="Select text to highlight or click to turn on a highlighter pen">
+			<b></b>
+		</div>
+		<ul id="diigolet-panel-colorPicker">
+			<div id="diigolet-panel-colorPicker-arrow"></div>
+			<li diigocolor="yellow" class="yellow">
+                            <span>
+                                <b></b>
+                            </span>
+				Yellow
+			</li>
+			<li diigocolor="blue" class="blue">
+                            <span>
+                                <b></b>
+                            </span>
+				Blue
+			</li>
+			<li diigocolor="green" class="green">
+                            <span>
+                                <b></b>
+                            </span>
+				Green
+			</li>
+			<li diigocolor="pink" class="pink">
+                            <span>
+                                <b></b>
+                            </span>
+				Pink
+			</li>
+		</ul>
+	</div>
+	<div id="diigolet-panel-btnStickyNote" class="diigolet-panel-btn" title="Add sticky note">
+		<b></b>
+	</div>
+	<div id="diigolet-panel-btnBookmark" class="diigolet-panel-btn" title="Save to Diigo">
+		<b></b>
+	</div>
+	<div id="diigolet-panel-btnAnnotationList" class="diigolet-panel-btn" title="Show annotations list on this page">
+		<b></b>
+	</div>
+</div><!----><div style="cursor: n-resize;" id="diigolet-panel-space"></div>
+</div><div style="position: fixed; display: none; left: 976px;" class="diigolet" id="diigolet-tagForward">
+	<div style="cursor: move;" id="diigolet-tagForward-topBar" class="_dragHandle">
+		<span class="topBar-title">Save to Diigo</span>
+		<span class="focus-research-tip">(focus research)</span>
+		<div id="diigolet-tagForward-remove" data-gtooltip="Saved on April 24,2013"><span></span></div>
+	</div>
+	<div id="diigolet-Bookmark-Form">
+		<div id="Diigo-outliner">
+			<div id="diigo-list-add">
+				<div class="diigo-alert-tip"><span>Name existed !</span><div class="diigo-alert-tip-arrow"></div></div>
+				<input id="diigo-list-addInput" type="text">
+				<div id="diigo-list-addBtn">
+					<span class="label">Create</span>
+					<span class="spinner"></span>
+				</div>
+				<a id="diigo-list-addCancel">Cancel</a>
+			</div>
+			<div id="diigo-list-add-tip">
+				You have reach the limit of outliner. <a href="#" id="diigo-w-cancel">Cancel</a><a href="#" id="diigo-w-upgrade">Upgrade</a>
+			</div>
+			<div id="diigo-list"><select><option value="0">Add to an Outliner</option><option value="-1">-------------------</option><option value="-2">Create an Outliner...</option><option value="-1">-------------------</option><option value="539803">editor-war</option><option value="523246">emacs-python</option><option value="524888">emacs-ruby</option><option value="519877">emacs-sysadmin</option><option value="553578">linux-daemon-or-service</option><option value="519878">Why and how to use Outliner</option><option value="-1">-------------------</option><option value="-8">Add to a List</option><option value="-1">-------------------</option><option value="3299067">editor-war</option><option value="3298462">emacs-sysadmin</option><option value="3298694">git-rant</option><option value="3298927">org-mode</option><option value="3298700">systemd-rant</option><option value="3298926">tabbed-ssh</option><option value="3299110">work</option><option value="-1">-------------------</option><option value="-3">Refresh</option></select></div>
+		</div>
+		<div id="Diigo-Bookmark-Title">
+			<div id="link-icon" data-gtooltip="Edit url"></div>
+			<input id="Diigo-Bookmark-Title-Input" value="DISQUS - Elevating the discussion" type="text">
+			<div class="diigo-alert-tip"><span>Please input a bookmark title</span><div class="diigo-alert-tip-arrow"></div></div>
+		</div>
+		<div id="Diigo-Bookmark-Url">
+			<input id="Diigo-Bookmark-Url-Input" value="http://disqus.com" type="text">
+			<div id="url-arrow"></div>
+			<div class="diigo-alert-tip"><span>Please input a valid url</span><div class="diigo-alert-tip-arrow"></div></div>
+		</div>
+		<div id="Diigo-Bookmark-Options">
+			<div id="Diigo-Bookmark-Privacy" class="diigo-option" data-gtooltip="private"><div class="op-checkbox-container" title="Make this bookmark private"><div class="op-checkbox"></div><div class="op-label">Private</div></div></div>
+			<div id="Diigo-Bookmark-Unread" class="diigo-option" data-gtooltip="readlater"><div class="op-checkbox-container" title="Mark this bookmark as unread" v=""><div class="op-checkbox"></div><div class="op-label">Read Later</div></div></div>
+			<div id="Diigo-Bookmark-uploadCache" class="diigo-option" data-gtooltip="cache"><div class="op-checkbox-container" title="Upload a copy of the page"><div class="op-checkbox"></div><div class="op-label">Cache</div></div></div>
+		</div>
+		<div id="Diigo-Bookmark-Description">
+			<textarea id="Diigo-Bookmark-Description-Input" placeholder="Add description"></textarea>
+		</div>
+		<div class="ac_input" autocomplete="off" id="Diigo-Bookmark-Tag">
+			<div id="Diigo-Bookmark-Tag-Wrapper">
+				<span id="Diigo-Bookmark-Tag-dropdown"></span>
+				<input id="Diigo-Bookmark-Tag-Input" placeholder="Input or select tags" type="text">
+			</div>
+		</div>
+		<div id="Diigo-Bookmark-Tag-suggestion">
+			<div id="diigolet-bm-tagListContainer-recent" class="diigo-su-tag">
+				<a title="Select to add all">Recent Tags:</a>
+				<!--put recent tags here-->
+			</div>
+			<div id="diigolet-bm-tagListContainer-recommend" class="diigo-su-tag">
+				<a>Recommended:</a>
+				<!--<div class="loading"></div>-->
+				<!--put recommended tags here-->
+			</div>
+			<div id="diigolet-bm-tagListContainer-group" class="diigo-su-tag">
+				<a>Group dictionary:</a>
+				<div class="loading"></div>
+				<!--put group tags here-->
+			</div>
+		</div>
+		<div id="Diigo-Bookmark-Tag-Cloud">
+			<div>
+				Select from your top 100 tags:
+				<a href="#" id="Diigo-Bookmark-Tag-Eidt" target="_blank">Edit tags &gt;&gt;</a>
+			</div>
+			<div id="Diigo-Bookmark-Tag-Cloud-Container">
+				<!-- put tag cloud items here-->
+			</div>
+		</div>
+		<div id="diigo-list-group">
+			<div id="diigo-group"><select><option value="0">Share to a group</option><option value="-1">-------------------</option><option value="-2">Create a Group...</option><option value="-1">-------------------</option><option value="gnuemacs">Gnu Emacs</option><option value="-1">-------------------</option><option value="-3">Refresh</option></select>
+			</div>
+		</div>
+	</div>
+	<div id="Diigo-Bookmark-bottom">
+		<div id="Diigo-Bookmark-checkShareExisting">
+			<div class="op-checkbox-container checked">
+				<div class="op-checkbox"></div>
+				<div class="op-label">Share my existing annotations</div>
+			</div>
+		</div>
+		<div id="diigolet-dlgBm-btnSave">Save</div>
+		<a id="diigolet-dlgBm-btnCancel">cancel</a>
+	</div>
+</div><div id="gtooltip"><div id="gtooltip-content"></div><div id="gtooltip-arrow"></div></div><div id="diigolet-dlg-sticky" style="position: absolute; left: 100px; top: 100px; display: none;" class="diigolet diigoletFN yellow">
+    <div style="cursor: move;" id="diigolet-dlg-sticky-top" class="_dragHandle">
+        <span id="diigolet-dlg-sticky-close"></span>
+       <span id="diigolet-dlg-sticky-color">
+           <div id="diigolet-dlg-sticky-currentColor" title="change color"></div>
+           <div style="display: none;" id="diigolet-dlg-sticky-colorPicker">
+               <b color="yellow" id="diigolet-dlg-yellow" class="dlg-colorItem colorchecked"><b></b></b>
+               <b color="blue" id="diigolet-dlg-blue" class="dlg-colorItem"><b></b></b>
+               <b color="green" id="diigolet-dlg-green" class="dlg-colorItem"><b></b></b>
+               <b color="pink" id="diigolet-dlg-pink" class="dlg-colorItem"><b></b></b>
+           </div>
+       </span>
+        <span id="diigolet-dlg-sticky-addTab"></span>
+    </div>
+    <div id="diigolet-dlg-sticky-content" class="private">
+        <div id="diigolet-dlg-sticky-switcher">
+            <span class="FN-switcher" id="FN-switcher-private"><b></b>Private</span>
+            <span class="FN-switcher" id="FN-switcher-group"><b></b>Group</span>
+        </div>
+        <div class="FN-content-wrapper private">
+            <textarea id="FN-private-editor" placeholder="Input here..."></textarea>
+            <div id="FN-content-footer">
+                <div id="editDone">
+                    <span id="FN-private-delete"><b></b></span>
+                    <span id="FN-private-datetime"></span>
+                </div>
+                <div id="editing">
+                    <a id="FN-private-saveBtn">Save</a>
+                    <a id="FN-private-cancelBtn">Cancel</a>
+                </div>
+            </div>
+        </div>
+        <div class="FN-content-wrapper group">
+            <!--END-FN-post-form-->
+            <div>
+                <div id="FN-group-content-nav">
+                    <span id="FN-current-group"><span>+Share to a new group</span>
+                        <b></b>
+                    </span>
+                    <div style="display: none;" id="FN-group-menu">
+                        <ul id="FN-group-ul">
+                        </ul>
+                        <ul id="FN-group-share-new-ul">
+                            <li id="FN-group-share-new">+Share to a new group</li>
+                        </ul>
+                    </div>
+                </div>
+                <div id="FN-post-form" class="">
+                    <div>
+                        <textarea id="FN-group-post" placeholder="write a comment..."></textarea>
+                    </div>
+                    <div>
+                        <select id="FN-group-share"></select>
+                        <button>
+                            <span class="button-label">Post</span>
+                            <span class="button-spinner"></span>
+                        </button>
+                        <a>Cancel</a>
+                    </div>
+                </div>
+                <div id="FN-group-content">
+                    <div id="FN-group-content-container">
+                    </div>
+                    <div id="FN-group-content-postform">
+                        <textarea placeholder="Write a comment..."></textarea>
+                        <div class="post-action">
+                            <button>
+                                <span class="button-label">Post</span>
+                                <span class="button-spinner"></span>
+                            </button>
+                            <a>Cancel</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><div style="position: absolute; display: none;" id="diigolet-csm">
+	<div id="diigolet-csm-research-mode"></div>
+	<div id="diigolet-csm-highlight-wrapper" class="csm-btn">
+		<a id="diigolet-csm-highlight" class="csm-action"></a>
+		<div style="height: 0px;" class="diigolet-csm-color small hidden">
+			<a style="height: 0px;" class="diigolet-csm-coloritem yellow" data-color="yellow"></a>
+			<a style="height: 0px;" class="diigolet-csm-coloritem blue" data-color="blue"></a>
+			<a style="height: 0px;" class="diigolet-csm-coloritem green" data-color="green"></a>
+			<a style="height: 0px;" class="diigolet-csm-coloritem pink" data-color="pink"></a>
+		</div>
+	</div>
+	<div id="diigolet-csm-highlightAndComment-wrapper" class="csm-btn">
+		<a id="diigolet-csm-highlightAndComment" class="csm-action"></a>
+		<div style="height: 0px;" class="diigolet-csm-color small hidden">
+			<a style="height: 0px;" class="diigolet-csm-coloritem yellow" data-color="yellow"></a>
+			<a style="height: 0px;" class="diigolet-csm-coloritem blue" data-color="blue"></a>
+			<a style="height: 0px;" class="diigolet-csm-coloritem green" data-color="green"></a>
+			<a style="height: 0px;" class="diigolet-csm-coloritem pink" data-color="pink"></a>
+		</div>
+	</div>
+	<a id="diigolet-csm-search" class="csm-action"></a>
+</div><div style="position: absolute; display: none;" id="diigolet-annMenu" class="diigolet diigoletContexMenu">
+	<div id="diigolet-annMenu-color" class="diigolet-annMenu-item _onlyMy">
+		<b id="diigolet-annMenu-currentColor" title="change color"><b></b></b>
+		<div id="diigolet-annMenu-colorPicker">
+			<b id="diigolet-context-yellow" color="yellow" class="ann-colorItem"><b></b></b>
+			<b id="diigolet-context-blue" color="blue" class="ann-colorItem"><b></b></b>
+			<b id="diigolet-context-green" color="green" class="ann-colorItem"><b></b></b>
+			<b id="diigolet-context-pink" color="pink" class="ann-colorItem"><b></b></b>
+		</div>
+	</div>
+	<div id="diigolet-annMenu-add" class="diigolet-annMenu-item" title="add a sticky note"><b></b></div>
+	<div id="diigolet-annMenu-share" class="diigolet-annMenu-item" title="share"><b></b></div>
+	<div id="diigolet-annMenu-del" class="diigolet-annMenu-item _onlyMy" title="delete"><b></b></div>
+	<div id="diigolet-annMenu-more" class="diigolet-annMenu-item" title="more action"><b></b></div>
+	<div id="diigolet-annMenu-arrow"></div>
+	<div id="diigolet-annMenu-moreThings">
+		<ul>
+			<li><a id="diigolet-annMenu-My">View in My Library</a></li>
+			<!--<li><a href="javascript:void(0)" id="diigolet-annMenu-copy-highlights">Copy this highlight</a></li>-->
+			<li id="diigolet-annMenu-tip"></li>
+		</ul>
+	</div>
+</div><div style="display: none; left: 461.5px;" id="diigolet-dialog-share" class="diigolet">
+	<div style="cursor: move;" id="diigolet-dialog-share-title" class="_dragHandle">
+		<a id="diigolet-dialog-share-closeBtn"></a>
+		<span>Share - Diigo</span>
+	</div>
+	<div id="diigolet-diglog-tabs">
+		<ul id="diigolet-share-shareToTabs">
+			<li class="shareToTwitter"><a id="diigolet-share-tab-twitter" diigotab="twitter"><b>&nbsp;</b>Twitter</a></li>
+			<li class="shareToFacebook"><a id="diigolet-share-tab-facebook" diigotab="facebook"><b>&nbsp;</b>Facebook</a></li>
+			<li class="shareToGplus"><a id="diigolet-share-tab-gPlus" diigotab="gPlus"><b>&nbsp;</b>Google+</a></li>
+			<li class="shareToEmail"><a id="diigolet-share-tab-email" diigotab="email"><b>&nbsp;</b>Email</a></li>
+			<li class="getAnnotatedLink"><a id="diigolet-share-tab-annotatedLink" diigotab="annotatedLink"><b>&nbsp;</b>Annotated Link</a></li>
+		</ul>
+	</div>
+	<div id="diigolet-dialog-share-content">
+		<div id="diigolet-dialog-share-twitter" style="display: none;">
+			<p class="twitterDesc"><b id="diigolet-share-twitterLeftChars">20</b>Share this bookmark with friends on Twitter</p>
+                <textarea id="diigolet-dialog-share-twitterMsg" class="inputTxt">                FTA - Main page | FTA - Free Technology Academy http://bit.ly/d4OiXQ via www.diigo.com/~soraya
+                </textarea>
+			<div class="buttonRow clearfloat">
+				<div style="float: left;">
+					<a href="http://www.twitter.com/diigo"><img src="follow-us.png" alt="Follow diigo on Twitter" align="absmiddle"></a>
+				</div>
+                    <span id="diigolet-dialog-share-twitter-signInStatus"><span id="diigolet-dialog-share-twitter-signedIn">Signed in as <span></span> <a href="#">(not you?)</a></span>
+                    <a id="diigolet-dialog-share-twitter-notSignedIn" href="#">Click here to connect to twitter</a></span>
+				<!--<input type="button" value="Cancel" />
+                <input class="defaultAction diigoBtn" type="button" value="Send" />-->
+				<a id="diigolet-twitter-saveBtn" class="diigoBtn">Send</a>
+				<a id="diigolet-twitter-cancelBtn">Cancel</a>
+			</div>
+		</div><!--twitter-->
+		<div id="diigolet-dialog-share-facebook" style="display: none;">
+			Please finish sharing in the popup window.
+		</div><!--facebook-->
+		<!-- <div id="diigolet-dialog-share-gBuzz" style="display:none">
+            <iframe src="http://www.google.com/reader/link?url=http://www.google.com/&title=Google">
+            </iframe>
+            <iframe name="diigolet-GR________link_bookmarklet_frame"></iframe>
+        </div> --><!--Google Buzz-->
+		<div id="diigolet-dialog-share-gPlus" style="display: none;">
+			Please finish sharing in the popup window.
+		</div><!--facebook-->
+		<div id="diigolet-dialog-share-email" style="display: none;">
+			<table>
+				<tbody>
+				<tr><td style="width: 60px;"><label for="diigolet-dialog-share-email-to">To:</label></td>
+					<td><input id="diigolet-dialog-share-email-to" class="inputTxt" style="display: none;" diigocomment="unused" type="text">
+						<div id="forwardTo" class="autocompleteContacts"></div></td></tr>
+				<tr><td><label for="diigolet-dialog-share-email-subject">Subject:</label></td>
+					<td><input id="diigolet-dialog-share-email-subject" class="inputTxt" type="text"></td></tr>
+				</tbody>
+			</table>
+			<p>
+				<label id="diigolet-dialog-share-email-quotes-checker"><input checked="checked" type="checkbox">Include Quotes</label>
+				<label for="diigolet-dialog-share-email-message">Message:</label><br>
+				<textarea id="diigolet-dialog-share-email-message" class="inputTxt"></textarea>
+			</p>
+			<div id="diigolet-dialog-share-email-quotes">
+				<div id="diigolet-aidlog-share-email-quotes-content">
+					<strong>Quotes:</strong>
+					<div style="border-left: 3px solid rgb(221, 221, 221); padding-left: 5px; margin-left: 5px; margin-top: 5px;">
+						<p> After a 71/2-hour summit, Obama suggested Democrats may go it alone to try to pass an overhaul. By Charles Babington Associated Press WASHINGTON - Giving no ground, President Obama and Republican leaders fought forcefully for their competing visions of </p>
+					</div>
+				</div>
+			</div>
+			<div class="buttonRow clearfloat">
+				<a id="diigolet-email-saveBtn" class="diigoBtn">Send</a>
+				<a id="diigolet-email-cancelBtn">Cancel</a>
+			</div>
+		</div><!--email-->
+		<div id="diigolet-dialog-share-annotatedLink" style="display: none;">
+			<div class="annotatedLinkInfo">
+				<b>&nbsp;</b>An Annotated Link is a special URL provided by Diigo that allows you to share the current webpage complete with highlights and sticky notes to anyone.<br><strong>Copy the URL below </strong>and paste it into your blog, email or IM messages...
+			</div>
+			<p><input id="diigolet-dialog-share-annotatedLink-value" class="inputTxt" value="http://www.diigo.com/09ijt" type="text"></p>
+			<div class="buttonRow clearfloat">
+                    <span id="diigolet-dialog-share-annotatedLink-optLinks">
+                    <a target="_blank">Preview</a><!-- - <a href="javascript:void(0)">Twitter this</a> -->
+                    </span>
+				<a id="diigolet-annotatedLink-saveBtn" class="diigoBtn">Copy</a>
+				<a id="diigolet-annotatedLink-cancelBtn">Cancel</a>
+			</div>
+		</div><!--annotated link-->
+	</div><!--diglog content-->
+</div><div style="display: none; position: fixed;" class="diigolet ac_results" id="diigolet-ac"><ul></ul></div></body>
+</html>

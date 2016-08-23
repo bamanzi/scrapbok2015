@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<!--<![endif]--><head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<title>a curl cheat sheet | daniel.haxx.se</title>
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+	<link rel="pingback" href="https://daniel.haxx.se/blog/xmlrpc.php">
+	<!--[if lt IE 9]>
+	<script src="https://daniel.haxx.se/blog/wp-content/themes/twentyfourteen/js/html5.js"></script>
+	<![endif]-->
+	<link rel="dns-prefetch" href="https://fonts.googleapis.com/">
+<link rel="dns-prefetch" href="https://s.w.org/">
+<link rel="alternate" type="application/rss+xml" title="daniel.haxx.se » Feed" href="https://daniel.haxx.se/blog/feed/">
+<link rel="alternate" type="application/rss+xml" title="daniel.haxx.se » Comments Feed" href="https://daniel.haxx.se/blog/comments/feed/">
+		
+		
+
+
+
+
+
+
+<!--[if lt IE 9]>
+<link rel='stylesheet' id='twentyfourteen-ie-css'  href='https://daniel.haxx.se/blog/wp-content/themes/twentyfourteen/css/ie.css?ver=20131205' type='text/css' media='all' />
+<![endif]-->
+
+
+<link rel="https://api.w.org/" href="https://daniel.haxx.se/blog/wp-json/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://daniel.haxx.se/blog/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://daniel.haxx.se/blog/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="Yours truly on “kodsnack”" href="https://daniel.haxx.se/blog/2015/09/15/yours-truly-on-kodsnack/">
+<link rel="next" title="Blabbed about curl at Google" href="https://daniel.haxx.se/blog/2015/09/17/blabbed-about-curl-at-google/">
+<meta name="generator" content="WordPress 4.6">
+<link rel="canonical" href="https://daniel.haxx.se/blog/2015/09/16/a-curl-cheat-sheet/">
+<link rel="shortlink" href="https://daniel.haxx.se/blog/?p=8165">
+<link rel="alternate" type="application/json+oembed" href="https://daniel.haxx.se/blog/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fdaniel.haxx.se%2Fblog%2F2015%2F09%2F16%2Fa-curl-cheat-sheet%2F">
+<link rel="alternate" type="text/xml+oembed" href="https://daniel.haxx.se/blog/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fdaniel.haxx.se%2Fblog%2F2015%2F09%2F16%2Fa-curl-cheat-sheet%2F&amp;format=xml">
+		
+			
+	<link rel="icon" href="cropped-Daniel-head-greenshirt-32x32.jpg" sizes="32x32">
+<link rel="icon" href="cropped-Daniel-head-greenshirt-192x192.jpg" sizes="192x192">
+<link rel="apple-touch-icon-precomposed" href="https://daniel.haxx.se/blog/wp-content/uploads/2015/08/cropped-Daniel-head-greenshirt-180x180.jpg">
+<meta name="msapplication-TileImage" content="https://daniel.haxx.se/blog/wp-content/uploads/2015/08/cropped-Daniel-head-greenshirt-270x270.jpg">
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+
+<body class="single single-post postid-8165 single-format-standard header-image singular masthead-fixed">
+<div id="page" class="hfeed site">
+		<div id="site-header">
+		<a href="https://daniel.haxx.se/blog/" rel="home">
+			<img src="keyword-header-thin.jpg" alt="daniel.haxx.se" width="1260" height="100">
+		</a>
+	</div>
+	
+	<header id="masthead" class="site-header" role="banner">
+		<div class="header-main">
+			<h1 class="site-title"><a href="https://daniel.haxx.se/blog/" rel="home">daniel.haxx.se</a></h1>
+
+			<div class="search-toggle">
+				<a href="#search-container" class="screen-reader-text" aria-expanded="false" aria-controls="search-container">Search</a>
+			</div>
+
+			<nav id="primary-navigation" class="site-navigation primary-navigation" role="navigation">
+				<button class="menu-toggle">Primary Menu</button>
+				<a class="screen-reader-text skip-link" href="#content">Skip to content</a>
+				<div id="primary-menu" class="nav-menu"><ul><li class="page_item page-item-2"><a href="https://daniel.haxx.se/blog/about/">About</a></li><li class="page_item page-item-8378"><a href="https://daniel.haxx.se/blog/contact/">Contact</a></li></ul></div>
+			</nav>
+		</div>
+
+		<div id="search-container" class="search-box-wrapper hide">
+			<div class="search-box">
+				<form role="search" method="get" class="search-form" action="https://daniel.haxx.se/blog/">
+				<label>
+					<span class="screen-reader-text">Search for:</span>
+					<input class="search-field" placeholder="Search …" value="" name="s" type="search">
+				</label>
+				<input class="search-submit" value="Search" type="submit">
+			</form>			</div>
+		</div>
+	</header><!-- #masthead -->
+
+	<div id="main" class="site-main">
+
+	<div id="primary" class="content-area">
+		<div id="content" class="site-content" role="main">
+			
+<article id="post-8165" class="post-8165 post type-post status-publish format-standard hentry category-curl category-floss category-web tag-curl-and-libcurl">
+	
+	<header class="entry-header">
+				<div class="entry-meta">
+			<span class="cat-links"><a href="https://daniel.haxx.se/blog/category/floss/curl/" rel="category tag">cURL and libcurl</a>, <a href="https://daniel.haxx.se/blog/category/floss/" rel="category tag">Open Source</a>, <a href="https://daniel.haxx.se/blog/category/web/" rel="category tag">Web</a></span>
+		</div>
+		<h1 class="entry-title">a curl cheat sheet</h1>
+		<div class="entry-meta">
+			<span class="entry-date"><a href="#" rel="bookmark"><time class="entry-date" datetime="2015-09-16T22:59:13+00:00">September 16, 2015</time></a></span> <span class="byline"><span class="author vcard"><a class="url fn n" href="https://daniel.haxx.se/blog/author/daniel/" rel="author">Daniel Stenberg</a></span></span>		</div><!-- .entry-meta -->
+	</header><!-- .entry-header -->
+
+		<div class="entry-content">
+		<p>MOAR DOX!</p>
+<p>Whenever we ask <a href="http://curl.haxx.se/">curl</a> users what they lack in our project and what we should improve, the response is always clear: documentation.</p>
+<p>Here are the most common curl command line options when doing HTTP operations. This is the web page rendered as an image, click it to get to the web version.</p>
+<p><a href="http://bagder.github.io/curl-cheat-sheet/http-sheet.html"><img class="alignright size-full wp-image-8222" src="curl-cheat-sheet.png" alt="curl cheat sheet" srcset="curl-cheat-sheet_001.png 674w, curl-cheat-sheet-200x76.png 200w, curl-cheat-sheet-450x171.png 450w, curl-cheat-sheet-672x256.png 672w" sizes="(max-width: 674px) 100vw, 674px" width="674" height="256"></a></p>
+<p>The source for the document/image is on <a href="https://github.com/bagder/curl-cheat-sheet/tree/gh-pages">github</a>. As always, you can help improving it.</p>
+	</div><!-- .entry-content -->
+	
+	<footer class="entry-meta"><span class="tag-links"><a href="https://daniel.haxx.se/blog/tag/curl-and-libcurl/" rel="tag">cURL and libcurl</a></span></footer></article><!-- #post-## -->
+	<nav class="navigation post-navigation" role="navigation">
+		<h1 class="screen-reader-text">Post navigation</h1>
+		<div class="nav-links">
+			<a href="https://daniel.haxx.se/blog/2015/09/15/yours-truly-on-kodsnack/" rel="prev"><span class="meta-nav">Previous Post</span>Yours truly on “kodsnack”</a><a href="https://daniel.haxx.se/blog/2015/09/17/blabbed-about-curl-at-google/" rel="next"><span class="meta-nav">Next Post</span>Blabbed about curl at Google</a>		</div><!-- .nav-links -->
+	</nav><!-- .navigation -->
+			</div><!-- #content -->
+	</div><!-- #primary -->
+
+<div id="content-sidebar" class="content-sidebar widget-area" role="complementary">
+			<aside id="recent-posts-3" class="widget widget_recent_entries">		<h1 class="widget-title">Recent Posts</h1>		<ul>
+					<li>
+				<a href="https://daniel.haxx.se/blog/2016/08/19/removing-the-powershell-curl-alias/">Removing the PowerShell curl alias?</a>
+						</li>
+					<li>
+				<a href="https://daniel.haxx.se/blog/2016/08/18/http2-connection-coalescing/">HTTP/2 connection coalescing</a>
+						</li>
+					<li>
+				<a href="https://daniel.haxx.se/blog/2016/08/01/curl-and-h2-on-mac/">curl and h2 on mac</a>
+						</li>
+					<li>
+				<a href="https://daniel.haxx.se/blog/2016/07/27/a-third-day-of-deep-http-inspection/">A third day of deep HTTP inspection</a>
+						</li>
+					<li>
+				<a href="https://daniel.haxx.se/blog/2016/07/27/workshop-day-two/">Workshop day two</a>
+						</li>
+				</ul>
+		</aside>		<aside id="recent-comments-3" class="widget widget_recent_comments"><h1 class="widget-title">Recent Comments</h1><ul id="recentcomments"><li class="recentcomments"><span class="comment-author-link"><a href="http://daniel.haxx.se/" rel="external nofollow" class="url">Daniel Stenberg</a></span> on <a href="https://daniel.haxx.se/blog/2016/08/18/http2-connection-coalescing/comment-page-1/#comment-17818">HTTP/2 connection coalescing</a></li><li class="recentcomments"><span class="comment-author-link"><a href="https://centminmod.com/" rel="external nofollow" class="url">George</a></span> on <a href="https://daniel.haxx.se/blog/2016/08/18/http2-connection-coalescing/comment-page-1/#comment-17817">HTTP/2 connection coalescing</a></li><li class="recentcomments"><span class="comment-author-link"><a href="http://daniel.haxx.se/" rel="external nofollow" class="url">Daniel Stenberg</a></span> on <a href="https://daniel.haxx.se/blog/2016/08/18/http2-connection-coalescing/comment-page-1/#comment-17816">HTTP/2 connection coalescing</a></li><li class="recentcomments"><span class="comment-author-link"><a href="https://joshtriplett.org/" rel="external nofollow" class="url">Josh Triplett</a></span> on <a href="https://daniel.haxx.se/blog/2016/08/18/http2-connection-coalescing/comment-page-1/#comment-17815">HTTP/2 connection coalescing</a></li><li class="recentcomments"><span class="comment-author-link"><a href="http://daniel.haxx.se/" rel="external nofollow" class="url">Daniel Stenberg</a></span> on <a href="https://daniel.haxx.se/blog/2016/07/27/workshop-day-two/comment-page-1/#comment-17813">Workshop day two</a></li></ul></aside><aside id="text-407386423" class="widget widget_text"><h1 class="widget-title">twitter</h1>			<div class="textwidget">            <a class="twitter-timeline" href="https://twitter.com/bagder" data-widget-id="637253903420002304">Tweets by @bagder</a>
+            
+          </div>
+		</aside></div><!-- #content-sidebar -->
+<div id="secondary">
+		<h2 class="site-description">tech, open source and networking</h2>
+	
+	
+		<div id="primary-sidebar" class="primary-sidebar widget-area" role="complementary">
+		<aside id="text-407386422" class="widget widget_text">			<div class="textwidget"><h1><a href="http://daniel.haxx.se/blog/">daniel.haxx.se</a></h1>
+<p>
+Internet protocols. Network hacking. curl and libcurl. Firefox stuff. Open Source. Technology.
+</p><p>
+I'm Daniel Stenberg, lead developer of curl and employed by Mozilla. I'm tall, Swedish and grumpy,</p></div>
+		</aside><aside id="archives-3" class="widget widget_archive"><h1 class="widget-title">Archive</h1>		<label class="screen-reader-text" for="archives-dropdown-3">Archive</label>
+		<select id="archives-dropdown-3" name="archive-dropdown">
+			
+			<option value="">Select Month</option>
+				<option value="https://daniel.haxx.se/blog/2016/08/"> August 2016 </option>
+	<option value="https://daniel.haxx.se/blog/2016/07/"> July 2016 </option>
+	<option value="https://daniel.haxx.se/blog/2016/06/"> June 2016 </option>
+	<option value="https://daniel.haxx.se/blog/2016/05/"> May 2016 </option>
+	<option value="https://daniel.haxx.se/blog/2016/04/"> April 2016 </option>
+	<option value="https://daniel.haxx.se/blog/2016/03/"> March 2016 </option>
+	<option value="https://daniel.haxx.se/blog/2016/02/"> February 2016 </option>
+	<option value="https://daniel.haxx.se/blog/2016/01/"> January 2016 </option>
+	<option value="https://daniel.haxx.se/blog/2015/12/"> December 2015 </option>
+	<option value="https://daniel.haxx.se/blog/2015/11/"> November 2015 </option>
+	<option value="https://daniel.haxx.se/blog/2015/10/"> October 2015 </option>
+	<option value="https://daniel.haxx.se/blog/2015/09/"> September 2015 </option>
+	<option value="https://daniel.haxx.se/blog/2015/08/"> August 2015 </option>
+	<option value="https://daniel.haxx.se/blog/2015/07/"> July 2015 </option>
+	<option value="https://daniel.haxx.se/blog/2015/06/"> June 2015 </option>
+	<option value="https://daniel.haxx.se/blog/2015/05/"> May 2015 </option>
+	<option value="https://daniel.haxx.se/blog/2015/04/"> April 2015 </option>
+	<option value="https://daniel.haxx.se/blog/2015/03/"> March 2015 </option>
+	<option value="https://daniel.haxx.se/blog/2015/02/"> February 2015 </option>
+	<option value="https://daniel.haxx.se/blog/2015/01/"> January 2015 </option>
+	<option value="https://daniel.haxx.se/blog/2014/12/"> December 2014 </option>
+	<option value="https://daniel.haxx.se/blog/2014/11/"> November 2014 </option>
+	<option value="https://daniel.haxx.se/blog/2014/10/"> October 2014 </option>
+	<option value="https://daniel.haxx.se/blog/2014/09/"> September 2014 </option>
+	<option value="https://daniel.haxx.se/blog/2014/08/"> August 2014 </option>
+	<option value="https://daniel.haxx.se/blog/2014/07/"> July 2014 </option>
+	<option value="https://daniel.haxx.se/blog/2014/06/"> June 2014 </option>
+	<option value="https://daniel.haxx.se/blog/2014/05/"> May 2014 </option>
+	<option value="https://daniel.haxx.se/blog/2014/04/"> April 2014 </option>
+	<option value="https://daniel.haxx.se/blog/2014/03/"> March 2014 </option>
+	<option value="https://daniel.haxx.se/blog/2014/02/"> February 2014 </option>
+	<option value="https://daniel.haxx.se/blog/2014/01/"> January 2014 </option>
+	<option value="https://daniel.haxx.se/blog/2013/12/"> December 2013 </option>
+	<option value="https://daniel.haxx.se/blog/2013/11/"> November 2013 </option>
+	<option value="https://daniel.haxx.se/blog/2013/10/"> October 2013 </option>
+	<option value="https://daniel.haxx.se/blog/2013/08/"> August 2013 </option>
+	<option value="https://daniel.haxx.se/blog/2013/07/"> July 2013 </option>
+	<option value="https://daniel.haxx.se/blog/2013/06/"> June 2013 </option>
+	<option value="https://daniel.haxx.se/blog/2013/04/"> April 2013 </option>
+	<option value="https://daniel.haxx.se/blog/2013/03/"> March 2013 </option>
+	<option value="https://daniel.haxx.se/blog/2013/02/"> February 2013 </option>
+	<option value="https://daniel.haxx.se/blog/2013/01/"> January 2013 </option>
+	<option value="https://daniel.haxx.se/blog/2012/12/"> December 2012 </option>
+	<option value="https://daniel.haxx.se/blog/2012/11/"> November 2012 </option>
+	<option value="https://daniel.haxx.se/blog/2012/10/"> October 2012 </option>
+	<option value="https://daniel.haxx.se/blog/2012/09/"> September 2012 </option>
+	<option value="https://daniel.haxx.se/blog/2012/08/"> August 2012 </option>
+	<option value="https://daniel.haxx.se/blog/2012/07/"> July 2012 </option>
+	<option value="https://daniel.haxx.se/blog/2012/06/"> June 2012 </option>
+	<option value="https://daniel.haxx.se/blog/2012/05/"> May 2012 </option>
+	<option value="https://daniel.haxx.se/blog/2012/04/"> April 2012 </option>
+	<option value="https://daniel.haxx.se/blog/2012/03/"> March 2012 </option>
+	<option value="https://daniel.haxx.se/blog/2012/02/"> February 2012 </option>
+	<option value="https://daniel.haxx.se/blog/2012/01/"> January 2012 </option>
+	<option value="https://daniel.haxx.se/blog/2011/12/"> December 2011 </option>
+	<option value="https://daniel.haxx.se/blog/2011/11/"> November 2011 </option>
+	<option value="https://daniel.haxx.se/blog/2011/10/"> October 2011 </option>
+	<option value="https://daniel.haxx.se/blog/2011/09/"> September 2011 </option>
+	<option value="https://daniel.haxx.se/blog/2011/08/"> August 2011 </option>
+	<option value="https://daniel.haxx.se/blog/2011/07/"> July 2011 </option>
+	<option value="https://daniel.haxx.se/blog/2011/06/"> June 2011 </option>
+	<option value="https://daniel.haxx.se/blog/2011/05/"> May 2011 </option>
+	<option value="https://daniel.haxx.se/blog/2011/04/"> April 2011 </option>
+	<option value="https://daniel.haxx.se/blog/2011/03/"> March 2011 </option>
+	<option value="https://daniel.haxx.se/blog/2011/02/"> February 2011 </option>
+	<option value="https://daniel.haxx.se/blog/2011/01/"> January 2011 </option>
+	<option value="https://daniel.haxx.se/blog/2010/12/"> December 2010 </option>
+	<option value="https://daniel.haxx.se/blog/2010/11/"> November 2010 </option>
+	<option value="https://daniel.haxx.se/blog/2010/10/"> October 2010 </option>
+	<option value="https://daniel.haxx.se/blog/2010/09/"> September 2010 </option>
+	<option value="https://daniel.haxx.se/blog/2010/08/"> August 2010 </option>
+	<option value="https://daniel.haxx.se/blog/2010/07/"> July 2010 </option>
+	<option value="https://daniel.haxx.se/blog/2010/06/"> June 2010 </option>
+	<option value="https://daniel.haxx.se/blog/2010/05/"> May 2010 </option>
+	<option value="https://daniel.haxx.se/blog/2010/04/"> April 2010 </option>
+	<option value="https://daniel.haxx.se/blog/2010/03/"> March 2010 </option>
+	<option value="https://daniel.haxx.se/blog/2010/02/"> February 2010 </option>
+	<option value="https://daniel.haxx.se/blog/2010/01/"> January 2010 </option>
+	<option value="https://daniel.haxx.se/blog/2009/12/"> December 2009 </option>
+	<option value="https://daniel.haxx.se/blog/2009/11/"> November 2009 </option>
+	<option value="https://daniel.haxx.se/blog/2009/10/"> October 2009 </option>
+	<option value="https://daniel.haxx.se/blog/2009/09/"> September 2009 </option>
+	<option value="https://daniel.haxx.se/blog/2009/08/"> August 2009 </option>
+	<option value="https://daniel.haxx.se/blog/2009/07/"> July 2009 </option>
+	<option value="https://daniel.haxx.se/blog/2009/06/"> June 2009 </option>
+	<option value="https://daniel.haxx.se/blog/2009/05/"> May 2009 </option>
+	<option value="https://daniel.haxx.se/blog/2009/04/"> April 2009 </option>
+	<option value="https://daniel.haxx.se/blog/2009/03/"> March 2009 </option>
+	<option value="https://daniel.haxx.se/blog/2009/02/"> February 2009 </option>
+	<option value="https://daniel.haxx.se/blog/2009/01/"> January 2009 </option>
+	<option value="https://daniel.haxx.se/blog/2008/12/"> December 2008 </option>
+	<option value="https://daniel.haxx.se/blog/2008/11/"> November 2008 </option>
+	<option value="https://daniel.haxx.se/blog/2008/10/"> October 2008 </option>
+	<option value="https://daniel.haxx.se/blog/2008/09/"> September 2008 </option>
+	<option value="https://daniel.haxx.se/blog/2008/08/"> August 2008 </option>
+	<option value="https://daniel.haxx.se/blog/2008/07/"> July 2008 </option>
+	<option value="https://daniel.haxx.se/blog/2008/06/"> June 2008 </option>
+	<option value="https://daniel.haxx.se/blog/2008/05/"> May 2008 </option>
+	<option value="https://daniel.haxx.se/blog/2008/04/"> April 2008 </option>
+	<option value="https://daniel.haxx.se/blog/2008/03/"> March 2008 </option>
+	<option value="https://daniel.haxx.se/blog/2008/02/"> February 2008 </option>
+	<option value="https://daniel.haxx.se/blog/2008/01/"> January 2008 </option>
+	<option value="https://daniel.haxx.se/blog/2007/12/"> December 2007 </option>
+	<option value="https://daniel.haxx.se/blog/2007/11/"> November 2007 </option>
+	<option value="https://daniel.haxx.se/blog/2007/10/"> October 2007 </option>
+	<option value="https://daniel.haxx.se/blog/2007/09/"> September 2007 </option>
+	<option value="https://daniel.haxx.se/blog/2007/08/"> August 2007 </option>
+
+		</select>
+		</aside>	</div><!-- #primary-sidebar -->
+	</div><!-- #secondary -->
+
+		</div><!-- #main -->
+
+		<footer id="colophon" class="site-footer" role="contentinfo">
+
+			
+			<div class="site-info">
+								<a href="https://wordpress.org/">Proudly powered by WordPress</a>
+			</div><!-- .site-info -->
+		</footer><!-- #colophon -->
+	</div><!-- #page -->
+
+	
+
+
+</body><div style="display: none; width: 24px;" id="diigotb-imagepanel"><div class="diigotb-btn enabled" title="Save this image to Diigo" id="diigotb-quick-save"></div></div><div style="display: none;" class="diigotb-border diigotb-left"></div><div style="display: none;" class="diigotb-border diigotb-top"></div><div style="display: none;" class="diigotb-border diigotb-right"></div><div style="display: none;" class="diigotb-border diigotb-bottom"></div>
+</html>

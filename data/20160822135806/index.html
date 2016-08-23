@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#" itemtype="http://schema.org/Product" itemscope="" class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage no-websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients no-cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths">
+<!--<![endif]--><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>How to use inotify-tools to trigger scripts on filesystem events -</title>
+    <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <!-- CSS imports non-minified for staging, minify before moving to production-->
+    
+        <!-- end CSS -->
+    
+
+<!-- This site is optimized with the Yoast SEO plugin v3.2.5 - https://yoast.com/wordpress/plugins/seo/ -->
+<meta name="description" content="A simple inotify-tools example to use with rsync">
+<meta name="robots" content="noodp">
+<link rel="canonical" href="https://techarena51.com/index.php/inotify-tools-example/">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to use inotify-tools to trigger scripts on filesystem events -">
+<meta property="og:description" content="A simple inotify-tools example to use with rsync">
+<meta property="og:url" content="https://techarena51.com/index.php/inotify-tools-example/">
+<meta property="article:tag" content="inotify">
+<meta property="article:tag" content="inotify linux">
+<meta property="article:tag" content="inotify-tools">
+<meta property="article:tag" content="inotify-tools example">
+<meta property="article:section" content="Bash Scripting">
+<meta property="article:published_time" content="2014-07-20T14:27:29+00:00">
+<meta property="article:modified_time" content="2014-10-30T14:43:36+00:00">
+<meta property="og:updated_time" content="2014-10-30T14:43:36+00:00">
+<!-- / Yoast SEO plugin. -->
+
+<link rel="alternate" type="application/rss+xml" title=" » Feed" href="https://techarena51.com/index.php/feed/">
+<link rel="alternate" type="application/rss+xml" title=" » Comments Feed" href="https://techarena51.com/index.php/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title=" » How to use inotify-tools to trigger scripts on filesystem events Comments Feed" href="https://techarena51.com/index.php/inotify-tools-example/feed/">
+		
+		
+
+
+
+
+
+
+<!-- This site uses the Google Analytics by MonsterInsights plugin v5.5 - Universal disabled - https://www.monsterinsights.com/ -->
+
+<!-- / Google Analytics by MonsterInsights -->
+
+
+<link rel="https://api.w.org/" href="https://techarena51.com/wp-json/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://techarena51.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://techarena51.com/wp-includes/wlwmanifest.xml"> 
+<meta name="generator" content="WordPress 4.5.3">
+<link rel="shortlink" href="https://techarena51.com/?p=1003">
+<link rel="alternate" type="application/json+oembed" href="https://techarena51.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Ftecharena51.com%2Findex.php%2Finotify-tools-example%2F">
+<link rel="alternate" type="text/xml+oembed" href="https://techarena51.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Ftecharena51.com%2Findex.php%2Finotify-tools-example%2F&amp;format=xml">
+<!-- This site is powered by Tweet, Like, Plusone and Share Plugin - http://techxt.com/tweet-like-google-1-and-share-plugin-wordpress/ -->
+		<meta property="og:type" content="article">
+		<meta property="og:title" content="How to use inotify-tools to trigger scripts on filesystem events">
+		<meta property="og:url" content="https://techarena51.com/index.php/inotify-tools-example/">
+		<meta property="og:site_name" content="">
+		<meta property="og:description" content="In my last example of Bash if statements we created a backup script which would run &quot;rsync&quot; as per the time set in a cron.  But wouldn't it be nice if we coul">
+		<!--[if lt IE 9]>
+	  <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+					<meta property="og:image" content="https://techarena51.com/wp-content/uploads/2014/06/bash-s.png">
+			
+
+<!-- StarBox - the Author Box for Humans 3.0.4, visit: http://wordpress.org/plugins/starbox/ -->
+<meta property="article:author" content="https://www.facebook.com/Techarena51-367758900005546/">
+<!-- /StarBox - the Author Box for Humans -->
+
+
+
+
+		
+		
+
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body id="top" class="single single-post postid-1003 single-format-standard">
+
+
+
+<div class="container">
+    <!-- HEADER -->
+    <div class="row preheader">
+        <div class="sixteen columns special head" id="header">
+        
+            <div class="seven columns logo">
+                                    <h1><a href="https://techarena51.com/"></a></h1>
+                            </div>
+                            <div class="nine columns ad468">
+                    <div class="ad468">
+
+    
+                        
+<!-- techarena-468-banner -->
+<ins class="adsbygoogle" style="display: inline-block; width: 468px; height: 60px;" data-ad-client="ca-pub-2310453105507515" data-ad-slot="7548768888"></ins>
+                    </div>
+                </div>
+                    </div>
+    </div>
+<!-- NAV -->
+    <div class="row prenav">
+        <div class="sixteen columns navpad">
+            <div class="sixteen columns nav">
+                <nav>
+                    <ul id="menu-main" class="menu"><li id="menu-item-727" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-727"><a href="http://techarena51.com/">Home</a></li>
+<li id="menu-item-1273" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-1273"><a href="https://techarena51.com/index.php/category/python-flask-bash-web-developer-tutorials/bash-scripting/">Bash/Shell Scripting Tutorials</a></li>
+<li id="menu-item-1262" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-1262"><a href="https://techarena51.com/index.php/category/linux-system-administrator-tutorials/">Linux Admin Tutorials</a>
+<ul class="sub-menu">
+	<li id="menu-item-1267" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1267"><a href="https://techarena51.com/index.php/category/linux-system-administrator-tutorials/centos-linux-tutorials/">CentOS</a></li>
+	<li id="menu-item-1268" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1268"><a href="https://techarena51.com/index.php/category/linux-system-administrator-tutorials/linux-troubleshooting/">Linux Troubleshooting</a></li>
+	<li id="menu-item-1272" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1272"><a href="https://techarena51.com/index.php/category/linux-system-administrator-tutorials/raspberry-pi-tutorials-and-accessories/">Raspberry Pi</a></li>
+	<li id="menu-item-1552" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1552"><a href="https://techarena51.com/index.php/category/linux-system-administrator-tutorials/ubuntu-linux-tutorials/">Ubuntu</a></li>
+</ul>
+</li>
+<li id="menu-item-1537" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1537"><a href="https://techarena51.com/index.php/category/flask-framework-tutorials-and-examples/">Flask Python Web Tutorials</a></li>
+<li id="menu-item-1264" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1264"><a href="https://plus.google.com/b/104889801713275137574/communities/113018367317637294714">Communities</a>
+<ul class="sub-menu">
+	<li id="menu-item-1266" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1266"><a href="http://www.reddit.com/r/linux4developers/">Reddit</a></li>
+	<li id="menu-item-1265" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1265"><a href="https://plus.google.com/b/104889801713275137574/communities/113018367317637294714">Learn Linux</a></li>
+	<li id="menu-item-1544" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1544"><a href="https://plus.google.com/u/0/communities/109010680875664603632">Flask</a></li>
+	<li id="menu-item-1274" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1274"><a href="https://www.linkedin.com/groups/Linux-System-Ninjas-Support-engineers-5099918?home=&amp;gid=5099918&amp;trk=anet_ug_hm">Devops</a></li>
+</ul>
+</li>
+</ul>                </nav>
+            </div>
+        </div>
+    </div>    <!-- CONTENT -->
+<div class="row content">
+    <div class="ten columns leftcontent">
+                    <h1 class="postmargin">How to use inotify-tools to trigger scripts on filesystem events</h1>
+        <!-- post -->
+        <div class="post-1003 post type-post status-publish format-standard has-post-thumbnail hentry category-bash-scripting tag-inotify tag-inotify-linux tag-inotify-tools tag-inotify-tools-example">
+                <p>
+                            <a href="#" rel="nofollow"><img src="bash-s.png" alt="How to use inotify-tools to trigger scripts on filesystem events" class="affiliate-image" align="left"></a>
+                        </p><p>In my last example of <a title="Bash If statements, Exit Status and Comparison Operators, A beginners guide to bash scripting part 2" href="http://techarena51.com/index.php/bash-scripting-tutorial-part-2/" target="_blank">Bash if statements</a> we created a backup script which would run “rsync” as per the time set in a cron.</p>
+<p>But wouldn’t it be nice if we could run our “rsync” script only if there was a change to the files in our directory instead of running a cron every hour despite no change? With inotify-tools you can do just that.</p>
+<p><strong>What is inotify-tools?</strong><br>
+Inotify tools are a set of command line programs based on <a href="https://www.kernel.org/doc/Documentation/filesystems/inotify.txt" target="_blank">inotify</a> a Linux kernel (2.6.13 or later) feature which can be used to monitor filesystem events.</p>
+<p><strong>Installing inotify-tools</strong><br>
+<strong> Software versions :</strong></p>
+<p>inotify-tools.x86_64 3.14-1.el6<br>
+CentOS 6.5<br>
+Linux kernel 2.6.32-042stab085.20</p>
+<pre>#Add the epel repo
+[leo@linux-vps ~]$sudo rpm -Uvh http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm
+#Install inotify-tools
+[leo_g@vps ~]$ sudo yum install inotify-tools
+</pre>
+<p><strong>Inotify-tools has two commands </strong></p>
+<p><strong>Inotifywait</strong><br>
+This command simply blocks for inotify events, making it appropriate for use in shell scripts. It can watch any set of files and directories, and can recursively watch entire directory trees.</p>
+<p><strong>inotifywatch</strong><br>
+inotifywatch collects filesystem usage statistics and outputs counts of each inotify event.</p>
+<p>We will use inotifywait, since we do not need statistics.</p>
+<p><strong>inotifywait syntax</strong></p>
+<pre>inotifywait filename
+</pre>
+<p><strong>inotifywait example</strong></p>
+<pre>[leo@linux-vps ~]$ inotifywait /tmp
+Setting up watches.
+Watches established.
+/tmp/ MODIFY test
+</pre>
+<p>As you can see in the above example an event (in this case a “modify action” was performed on a file named “test” inside /tmp) triggered the output.</p>
+<p>Now “inotifywait” by default checks for all events including if a file was opened but not written to, Since we only want “rsync” to trigger on change events like when a file is modified, we will need to specify the “-e” flag along with the list of events we want to be notified about.</p>
+<pre>[leo@linux-vps ~]$ inotifywait -m -r -e \ modify,attrib,close_write,move,create,delete /tmp
+Setting up watches.  Beware: since -r was given, this may take a while!
+Watches established.
+/tmp/ MODIFY a
+/tmp/ CLOSE_WRITE,CLOSE a
+</pre>
+<p>The -m flag is for continuous monitoring as by default inotifywait will exit on the first event and -r means recursively or check through sub-directories as well.</p>
+<p><strong>List of inotifywait events </strong><br>
+<strong>access</strong><br>
+A watched file or a file within a watched directory was read from.<br>
+<strong>modify</strong><br>
+A watched file or a file within a watched directory was written to.<br>
+<strong>attrib</strong><br>
+The metadata of a watched file or a file within a watched directory was modified. This includes timestamps, file permissions, extended attributes etc.<br>
+<strong>close_write</strong><br>
+A watched file or a file within a watched directory was closed, after being opened in writeable mode. This does not necessarily imply the file was written to.<br>
+<strong>close_nowrite</strong><br>
+A watched file or a file within a watched directory was closed, after being opened in read-only mode.<br>
+<strong>close</strong><br>
+A watched file or a file within a watched directory was closed, regardless of how it was opened. Note that this is actually implemented simply by listening for both close_write and close_nowrite, hence all close events received will be output as one of these, not CLOSE.<br>
+<strong>open</strong><br>
+A watched file or a file within a watched directory was opened.<br>
+<strong>moved_to</strong><br>
+A file or directory was moved into a watched directory. This event occurs even if the file is simply moved from and to the same directory.<br>
+<strong>moved_from</strong><br>
+A file or directory was moved from a watched directory. This event occurs even if the file is simply moved from and to the same directory.<br>
+<strong>move</strong><br>
+A file or directory was moved from or to a watched directory. Note that this is actually implemented simply by listening for both moved_to and moved_from, hence all close events received will be output as one or both of these, not MOVE.<br>
+<strong>move_self</strong><br>
+A watched file or directory was moved. After this event, the file or directory is no longer being watched.<br>
+<strong>create</strong><br>
+A file or directory was created within a watched directory.<br>
+<strong>delete</strong><br>
+A file or directory within a watched directory was deleted.<br>
+<strong>delete_self</strong><br>
+A watched file or directory was deleted. After this event the file or directory is no longer being watched. Note that this event can occur even if it is not explicitly being listened for.<br>
+<strong>unmount</strong><br>
+The filesystem on which a watched file or directory resides was unmounted. After this event the file or directory is no longer being watched. Note that this event can occur even if it is not explicitly being listened to.</p>
+<!-- Quick Adsense WordPress Plugin: http://quicksense.net/ -->
+<div style="float: none; margin: 10px 0px; text-align: center;">
+
+
+</div>
+
+<p>Now let’s use inotifywait with our script.</p>
+<pre>[leo@linux-vps~]$ vim inotify-example
+while true #run indefinitely
+do 
+inotifywait -r -e modify,attrib,close_write,move,create,delete /dir &amp;&amp; /bin/bash backup-script
+done
+</pre>
+<p>Since we want to continuously monitor changes, we use an infinite while loop and the Logic “&amp;&amp;” operator will ensure that our backup script is only triggered on a successful completion of the inotifywait event</p>
+<pre>[leo_g@vps scripts]$bash inotify-example 
++ true
++ inotifywait -r -e modify,attrib,close_write,move,create,delete /
+Setting up watches.  Beware: since -r was given, this may take a while!
+Watches established.
+/dir DELETE a
++ /bin/bash backup-script 
++ rsync -avz  -e “ssh ” /path/to/yourfile user@backupserver.com:/backup/ 2&gt; \ /tmp/error.txt
++ mail -s “backup complete” user@youremail.com
++ echo “backup for $(date) “
++ true
++ inotifywait -r -e modify,attrib,close_write,move,create,delete /dir
+Setting up watches.  Beware: since -r was given, this may take a while!
+Watches established.
+</pre>
+<p>If you have a suggestion feel free to let me know. The complete source code to the file syncing daemon with rsync and inotify can be found at <a href="https://github.com/Leo-g/backup-bash" target="_blank">https://github.com/Leo-g/backup-bash</a></p>
+<p>You mat also like <a href="http://techarena51.com/index.php/watch-command-linux/" target="_blank">How to display a changing output like top </a></p>
+<p>source https://github.com/rvoicilas/inotify-tools/wiki
+</p><div class="social4i" style="height: 29px;">
+<div class="social4in" style="height: 29px; float: left;">
+<div class="socialicons s4custombtn-1" style="float: left; margin-right: 10px;"><a href="https://www.reddit.com/submit"> <img src="spreddit7.gif" alt="submit to reddit" border="0"> </a></div>
+<div class="socialicons s4fblike" style="float: left; margin-right: 10px;">
+<div class="fb-like" data-href="https://techarena51.com/index.php/inotify-tools-example/" data-send="false" data-layout="button_count" data-width="100" data-height="21" data-show-faces="false"></div>
+</div>
+<div class="socialicons s4twitter" style="float: left; margin-right: 10px;"><a href="https://twitter.com/share" data-url="https://techarena51.com/index.php/inotify-tools-example/" data-counturl="https://techarena51.com/index.php/inotify-tools-example/" data-text="How to use inotify-tools to trigger scripts on filesystem events" class="twitter-share-button" data-count="horizontal" data-via="CaptainDevops"></a></div>
+<div class="socialicons s4plusone" style="float: left; margin-right: 10px;">
+<div class="g-plusone" data-size="medium" data-href="https://techarena51.com/index.php/inotify-tools-example/"></div>
+</div>
+<div class="socialicons s4linkedin" style="float: left; margin-right: 10px;"></div>
+<div class="socialicons s4fbshare" style="position: relative; float: left; margin-right: 10px;">
+<div class="s4ifbshare">
+<div class="fb-share-button" data-href="https://techarena51.com/index.php/inotify-tools-example/" data-width="450" data-type="button_count"></div>
+</div>
+</div>
+</div>
+<div style="clear: both;"></div>
+</div>
+
+<div style="font-size: 0px; height: 0px; line-height: 0px; margin: 0px; padding: 0px; clear: both;"></div>
+                         <div class="abh_box abh_box_down abh_box_business"><ul class="abh_tabs"> <li class="abh_about abh_active"><a href="#abh_about">About</a></li> <li class="abh_posts"><a href="#abh_posts">Latest Posts</a></li></ul><div class="abh_tab_content"><section class="vcard abh_about_tab abh_tab" style="display: block;"><div class="abh_image"><a href="http://techarena51.com/" class="url" target="_blank" title="Leo G"><img alt="" src="1217c92fcc76d2ea5c13f3d4a38d229f.dat" srcset="1217c92fcc76d2ea5c13f3d4a38d229f_001.dat 2x" class="avatar avatar-80 photo" width="80" height="80"></a></div><div class="abh_social"> <div style="clear: both; font-size: 12px; font-weight: normal; width: 85px; margin: 0px 0px 2px auto; line-height: 20px;">Follow me</div><a href="https://www.facebook.com/Techarena51-367758900005546/" title="Facebook" class="abh_facebook" target="_blank" rel="nofollow"></a><a href="https://twitter.com/CaptainDevops" title="Twitter" class="abh_twitter" target="_blank" rel="nofollow"></a></div><div class="abh_text"><h3 class="fn name"><a href="http://techarena51.com/" class="url" target="_blank">Leo G</a></h3><div class="abh_job"></div><div class="description note abh_description">Is a Linux Hobbyist and Enthusiast. He Strongly believes in OpenSource Software and would like you to view and download his software at https://github.com/Leo-g</div></div> </section><section class="abh_posts_tab abh_tab"><div class="abh_image"><a href="http://techarena51.com/" class="url" target="_blank" title="Leo G"><img alt="" src="1217c92fcc76d2ea5c13f3d4a38d229f.dat" srcset="1217c92fcc76d2ea5c13f3d4a38d229f_001.dat 2x" class="avatar avatar-80 photo" width="80" height="80"></a></div><div class="abh_social"> <div style="clear: both; font-size: 12px; font-weight: normal; width: 85px; margin: 0px 0px 2px auto; line-height: 20px;">Follow me</div><a href="https://www.facebook.com/Techarena51-367758900005546/" title="Facebook" class="abh_facebook" target="_blank" rel="nofollow"></a><a href="https://twitter.com/CaptainDevops" title="Twitter" class="abh_twitter" target="_blank" rel="nofollow"></a></div><div class="abh_text"><h4>Latest posts by Leo G <span class="abh_allposts">(<a href="https://techarena51.com/index.php/author/leo/">see all</a>)</span></h4><div class="abh_description note"><ul>				<li>					<a href="https://techarena51.com/index.php/installing-and-securing-nginx-websites-on-linux-with-a-free-ssl-certificate-from-lets-encrypt/">Installing and Securing Nginx Websites on Linux with a Free SSL/TLS Certificate from Let’s Encrypt</a><span> - June 8, 2016</span>				</li>				<li>					<a href="https://techarena51.com/index.php/how-to-build-database-driven-restful-api-applications-with-flask-flask-restful-and-angularjss-resource-service/">How to BuildDatabase driven RESTFUL API Applications with Flask, Flask-RESTFUL and Angularjs’s $resource service</a><span> - May 17, 2016</span>				</li>				<li>					<a href="https://techarena51.com/index.php/real-time-linux-server-monitoring-with-node-js-socket-io-and-d3-js-gauges/">Real Time Linux Server Monitoring with Node.js Socket.io and D3.js</a><span> - March 21, 2016</span>				</li></ul></div></div> </section></div> </div>        <div class="clear"></div>
+                <p></p>
+    </div>
+    <!-- end post -->
+    <!-- Similar Posts -->
+        
+<div id="disqus_thread">
+            <div id="dsq-content">
+
+
+            <ul id="dsq-comments">
+                    <li class="post pingback">
+        <p>Pingback: <a href="http://wiert.me/2014/07/21/using-inotify-wait-to-check-filesystem-events%ef%bb%bf/" rel="external nofollow" class="url">Using inotify-wait to check filesystem events﻿ « The Wiert Corner – irregular stream of stuff</a>()</p>
+    </li>
+    <!-- #comment-## -->
+    <li class="post pingback">
+        <p>Pingback: <a href="http://d4n3ws.polux-hosting.com/2014/07/21/tuto-sur-les-commandes-inotify-en-ligne-de-commande/" rel="external nofollow" class="url">.:[ d4 n3wS ]:. » Tuto sur les commandes inotify en ligne de commande</a>()</p>
+    </li>
+    <!-- #comment-## -->
+    <li class="post pingback">
+        <p>Pingback: <a href="http://www.hallowdemon.net/blog/how-to-check-filesystem-events-in-linux/" rel="external nofollow" class="url">How to check filesystem events in Linux | Hallow Demon</a>()</p>
+    </li>
+    <!-- #comment-## -->
+    <li class="post pingback">
+        <p>Pingback: <a href="http://techrights.org/2014/07/22/new-uberstudent/" rel="external nofollow" class="url">Links 22/7/2014: Linux 3.16 RC 6, New UberStudent | Techrights</a>()</p>
+    </li>
+    <!-- #comment-## -->
+    <li class="post pingback">
+        <p>Pingback: <a href="http://techarena51.com/index.php/create-init-scripts/" rel="external nofollow" class="url">How to create init scripts »</a>()</p>
+    </li>
+    <!-- #comment-## -->
+    <li class="post pingback">
+        <p>Pingback: <a href="http://techarena51.com/index.php/using-git-backup-website-files-on-linux/" rel="external nofollow" class="url">Using GIT to backup your website files on linux -</a>()</p>
+    </li>
+    <!-- #comment-## -->
+    <li class="post pingback">
+        <p>Pingback: <a href="http://dev.eb-suite.com/blog/?p=13" rel="external nofollow" class="url">使用 GIT 备份 linux 上的网页文件 | eb-suite blog</a>()</p>
+    </li>
+    <!-- #comment-## -->
+    <li class="comment even thread-even depth-1" id="dsq-comment-12309">
+        <div id="dsq-comment-header-12309" class="dsq-comment-header">
+            <cite id="dsq-cite-12309">
+                <a id="dsq-author-user-12309" href="http://igumail.com/" target="_blank" rel="nofollow">Gabe LG</a>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-12309" class="dsq-comment-body">
+            <div id="dsq-comment-message-12309" class="dsq-comment-message"><p>Hi Leo,</p>
+<p>Thanks for the informative article. Could you explain how to detect which files changed in your backup-script or whatever is being called when inotifywait returns. </p>
+<p>eg:</p>
+<p><code><br>
+# backup_script<br>
+| while read file;<br>
+do<br>
+    ... checks ...<br>
+done<br>
+</code></p>
+</div>
+        </div>
+
+    <ul class="children">
+    <li class="comment byuser comment-author-leo bypostauthor odd alt depth-2" id="dsq-comment-12714">
+        <div id="dsq-comment-header-12714" class="dsq-comment-header">
+            <cite id="dsq-cite-12714">
+                <a id="dsq-author-user-12714" href="http://techarena51.com/" target="_blank" rel="nofollow">Leo G</a>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-12714" class="dsq-comment-body">
+            <div id="dsq-comment-message-12714" class="dsq-comment-message"><p>I set up a redirection of the output of inotify, which logs all the changes to file, you can then view the file to check which files were changed</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+    <li class="comment even thread-odd thread-alt depth-1" id="dsq-comment-13317">
+        <div id="dsq-comment-header-13317" class="dsq-comment-header">
+            <cite id="dsq-cite-13317">
+                <span id="dsq-author-user-13317">chethan</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-13317" class="dsq-comment-body">
+            <div id="dsq-comment-message-13317" class="dsq-comment-message"><p>Hi Leo thanks a lot for this tutorial u saved me from such a big problem your are awesome ,, i cant express how much this helps..</p>
+<p>i was creating a search engine for call recordings from asterisks but in our company we get around 10k calls each day my previous plan is to scan directory as new calls get appended but that was taking like 10 minutes for each scan ..</p>
+<p>but now i will just redirect output to some text file and after like 30 minutes will auto import to mysql so i can query in like 0.0002 sec hehehe  thanks man .. God bless you</p>
+</div>
+        </div>
+
+    <ul class="children">
+    <li class="comment byuser comment-author-leo bypostauthor odd alt depth-2" id="dsq-comment-13318">
+        <div id="dsq-comment-header-13318" class="dsq-comment-header">
+            <cite id="dsq-cite-13318">
+                <a id="dsq-author-user-13318" href="http://techarena51.com/" target="_blank" rel="nofollow">Leo G</a>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-13318" class="dsq-comment-body">
+            <div id="dsq-comment-message-13318" class="dsq-comment-message"><p>Hey Chethan,</p>
+<p>Glad I could help, do subscribe and follow Techarena51 on social medial for more updates.</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+    <li class="post pingback">
+        <p>Pingback: <a href="http://nyheter.4an.eu/?p=37425" rel="external nofollow" class="url">How to trigger scripts on filesystem events | 4an Nyheter</a>()</p>
+    </li>
+    <!-- #comment-## -->
+    <li class="post pingback">
+        <p>Pingback: <a href="http://techbait.net/how-to-trigger-scripts-on-filesystem-events/" rel="external nofollow" class="url">How to trigger scripts on filesystem events - Techbait Tech News</a>()</p>
+    </li>
+    <!-- #comment-## -->
+    <li class="post pingback">
+        <p>Pingback: <a href="http://techrights.org/2014/11/25/jolla-tablet-million/" rel="external nofollow" class="url">Links 25/11/2014: Tizen News, Jolla Tablet Past Million | Techrights</a>()</p>
+    </li>
+    <!-- #comment-## -->
+    <li class="post pingback">
+        <p>Pingback: <a href="http://jamyy.us.to/blog/2014/11/6875.html" rel="external nofollow" class="url">使用 inotifywait 監視檔案異動情況 « Jamyy's Weblog</a>()</p>
+    </li>
+    <!-- #comment-## -->
+    <li class="comment even thread-even depth-1" id="dsq-comment-16335">
+        <div id="dsq-comment-header-16335" class="dsq-comment-header">
+            <cite id="dsq-cite-16335">
+                <span id="dsq-author-user-16335">LinuxUser</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-16335" class="dsq-comment-body">
+            <div id="dsq-comment-message-16335" class="dsq-comment-message"><p>Will this script run automatically every time I boot? Or how to do that? Cron?</p>
+</div>
+        </div>
+
+    <ul class="children">
+    <li class="comment byuser comment-author-leo bypostauthor odd alt depth-2" id="dsq-comment-16356">
+        <div id="dsq-comment-header-16356" class="dsq-comment-header">
+            <cite id="dsq-cite-16356">
+                <a id="dsq-author-user-16356" href="http://techarena51.com/" target="_blank" rel="nofollow">Leo G</a>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-16356" class="dsq-comment-body">
+            <div id="dsq-comment-message-16356" class="dsq-comment-message"><p>For it to start at boot you need to create an <a href="http://techarena51.com/index.php/how-to-create-an-init-script-on-centos-6/" title="How to create an Init script on Centos 6" rel="nofollow">init file</a> or yes add a cron job</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+    <li class="post pingback">
+        <p>Pingback: <a href="http://www.linuxajuda.net/artigos/use-o-inotify-tools-para-monitorar-eventos-de-arquivos-ou-diretorios-em-seus-scripts/" rel="external nofollow" class="url">Use o inotify-tools para monitorar eventos de arquivos ou diretórios em seus scripts - Linux AjudaLinux Ajuda</a>()</p>
+    </li>
+    <!-- #comment-## -->
+    <li class="post pingback">
+        <p>Pingback: <a href="http://dexpage.com/how-can-i-detect-if-some-file-in-a-subdir-changed/" rel="external nofollow" class="url">How can I detect if some file in a subdir changed? - DexPage</a>()</p>
+    </li>
+    <!-- #comment-## -->
+    <li class="post pingback">
+        <p>Pingback: <a href="http://systemsolver.com/StatlerBlog/index.php/2015/09/09/linux-watch-directory-for-open/" rel="external nofollow" class="url">Linux watch directory – inotify « Statler’s Rogue Valley Views</a>()</p>
+    </li>
+    <!-- #comment-## -->
+    <li class="comment even thread-odd thread-alt depth-1" id="dsq-comment-18228">
+        <div id="dsq-comment-header-18228" class="dsq-comment-header">
+            <cite id="dsq-cite-18228">
+                <span id="dsq-author-user-18228">aditi</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-18228" class="dsq-comment-body">
+            <div id="dsq-comment-message-18228" class="dsq-comment-message"><p>Hi </p>
+<p>I want to run a script that only triggers when some body gives command to printer and also during printing process.<br>
+can this be done by  inotify tools??</p>
+<p>pls help.</p>
+</div>
+        </div>
+
+    <ul class="children">
+    <li class="comment odd alt depth-2" id="dsq-comment-18229">
+        <div id="dsq-comment-header-18229" class="dsq-comment-header">
+            <cite id="dsq-cite-18229">
+                <span id="dsq-author-user-18229">Leo G</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-18229" class="dsq-comment-body">
+            <div id="dsq-comment-message-18229" class="dsq-comment-message"><p>Hi Aditi,</p>
+<p>You will need to check during the printing process or during the print command any filesystem modifications or any files are changed or created. If yes then you monitor those changes and run inotify tools to run your script. If no then you will need to write a bash script which will run print command and write to a log file. You can monitor this log file with inotify and provide your users to run your script when they need to add a print job</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+    <li class="post pingback">
+        <p>Pingback: <a href="http://www.cdlin.com/30293" rel="external nofollow" class="url">使用 GIT 备份 linux 上的网页文件 | 写代码度日的骚年</a>()</p>
+    </li>
+    <!-- #comment-## -->
+    <li class="post pingback">
+        <p>Pingback: <a href="http://unix.itsprite.com/unixlinuxhow-can-i-start-a-file-processing-daemon-closed/" rel="external nofollow" class="url">Unix/Linux:How can I start a file-processing daemon? [closed] – Unix Questions</a>()</p>
+    </li>
+    <!-- #comment-## -->
+    <li class="post pingback">
+        <p>Pingback: <a href="http://techarena51.com/index.php/watch-command-linux/" rel="external nofollow" class="url">Linux watch command example</a>()</p>
+    </li>
+    <!-- #comment-## -->
+    <li class="post pingback">
+        <p>Pingback: <a href="http://techarena51.com/index.php/a-beginners-guide-to-bash-scripting/" rel="external nofollow" class="url">A beginner's guide to bash scripting -</a>()</p>
+    </li>
+    <!-- #comment-## -->
+    <li class="comment even thread-even depth-1" id="dsq-comment-18313">
+        <div id="dsq-comment-header-18313" class="dsq-comment-header">
+            <cite id="dsq-cite-18313">
+                <span id="dsq-author-user-18313">gatopeich</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-18313" class="dsq-comment-body">
+            <div id="dsq-comment-message-18313" class="dsq-comment-message"><p>Thanks, but there is an obvious race condition in the script: while “backup-script” is running you may loose track of changes in the monitored system. You should use “-m” continuous mode flag I think…</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="post pingback">
+        <p>Pingback: <a href="http://linux.javacss.space/2016/01/11/how-can-i-detect-if-some-file-in-a-subdir-changed/" rel="external nofollow" class="url">How can I detect if some file in a subdir changed? - linux</a>()</p>
+    </li>
+    <!-- #comment-## -->
+    <li class="post pingback">
+        <p>Pingback: <a href="http://cileria.de/blog/index.php/2016/03/21/linux-command-overview-part-1-file-management/" rel="external nofollow" class="url">Linux Commands Overview Part 1: File Management | cileria.com/blog</a>()</p>
+    </li>
+    <!-- #comment-## -->
+            </ul>
+
+
+        </div>
+
+    </div>
+
+    </div><!--end of .ten columns (left content) -->
+<div class="six columns" id="sidebar">
+        <div class="widget"><h2>Follow </h2><div class="socialmedia-buttons smw_left"><a href="https://www.facebook.com/pages/Techarena51/367758900005546" rel="nofollow"><img src="facebook.png" alt="Follow Us on Facebook" title="Follow Us on Facebook" style="opacity: 0.8;" class="fade" width="32" height="32"></a><a href="https://plus.google.com/u/0/+Techarena51leog/about" rel="publisher"><img src="googleplus.png" alt="Follow Us on Google+" title="Follow Us on Google+" style="opacity: 0.8;" class="fade" width="32" height="32"></a><a href="https://twitter.com/CaptainDevops" rel="nofollow"><img src="twitter.png" alt="Follow Us on Twitter" title="Follow Us on Twitter" style="opacity: 0.8;" class="fade" width="32" height="32"></a><a href="https://www.youtube.com/channel/UCt9YMpo1Z_RXBqzAUwk6rRA" rel="nofollow"><img src="youtube.png" alt="Follow Us on YouTube" title="Follow Us on YouTube" style="opacity: 0.8;" class="fade" width="32" height="32"></a><a href="https://www.linkedin.com/groups?home=&amp;gid=5099918&amp;trk=anet_ug_hm&amp;goback=%2Egde_5099918_member_5948518234897539076" rel="nofollow"><img src="linkedin.png" alt="Follow Us on LinkedIn" title="Follow Us on LinkedIn" style="opacity: 0.8;" class="fade" width="32" height="32"></a><a href="https://github.com/Leo-G" rel="nofollow"><img src="github.png" alt="Follow Us on Github" title="Follow Us on Github" style="opacity: 0.8;" class="fade" width="32" height="32"></a><a href="http://www.reddit.com/r/linux4developers" rel="nofollow"><img src="reddit.png" alt="Follow Us on Reddit" title="Follow Us on Reddit" style="opacity: 0.8;" class="fade" width="32" height="32"></a><a href="mailto:leo@techarena51.com" rel="nofollow"><img src="email.png" alt="Follow Us on E-mail" title="Follow Us on E-mail" style="opacity: 0.8;" class="fade" width="32" height="32"></a></div></div>
+<!-- Quick Adsense Wordpress Plugin: http://quicksense.net/ -->
+<div class="widget">
+
+<!-- techarena-med-rect-top -->
+<ins class="adsbygoogle" style="display: inline-block; width: 300px; height: 250px;" data-ad-client="ca-pub-2310453105507515" data-ad-slot="4123476881"></ins>
+
+</div><div class="widget"><form role="search" method="get" id="searchform" class="searchform" action="https://techarena51.com/">
+				<div>
+					<label class="screen-reader-text" for="s">Search for:</label>
+					<input value="" name="s" id="s" type="text">
+					<input id="searchsubmit" value="Search" type="submit">
+				</div>
+			</form></div><div class="widget"><h2>Get easy to understand Dev and Ops Tutorials in your mail</h2><!-- MailChimp for WordPress v2.3.14 - https://wordpress.org/plugins/mailchimp-for-wp/ --><div id="mc4wp-form-1" class="form mc4wp-form"><form lpformnum="6" method="post"><p>
+	<label for="mc4wp_email"> Enter your email address: </label>
+	<input id="mc4wp_email" name="EMAIL" required="" type="email">
+</p>
+
+<p>
+	<input value="Subcscribe" type="submit">
+</p><div style="position: absolute; left: -5000px;"><input name="_mc4wp_h_7bed55d882a4d88ee4cccc1867ae458f" value="" tabindex="-1" autocomplete="off" type="text"></div><input name="_mc4wp_timestamp" value="1471844434" type="hidden"><input name="_mc4wp_form_id" value="0" type="hidden"><input name="_mc4wp_form_element_id" value="mc4wp-form-1" type="hidden"><input name="_mc4wp_form_submit" value="1" type="hidden"><input name="_mc4wp_form_nonce" value="2e347ccb85" type="hidden"></form></div><!-- / MailChimp for WordPress Plugin --></div><div class="widget">			<div class="textwidget"><!-- Place this tag in your head or just before your close body tag. -->
+
+
+<!-- Place this tag where you want the widget to render. -->
+<div class="g-page" data-href="//plus.google.com/u/0/104889801713275137574" data-layout="landscape" data-rel="publisher"></div></div>
+		</div><div class="widget">
+<div class="pop-layout-v"><ul id="pop-widget-tabs-2" class="pop-widget-tabs pop-widget-tabs-2"><li><a class="active" href="#recent" rel="nofollow">Recent Posts</a></li><li><a href="#viewed" rel="nofollow">Most Viewed</a></li></ul><div class="pop-inside-2 pop-inside"><ul style="display: block;" id="pop-widget-recent-2"><li><a href="https://techarena51.com/index.php/installing-and-securing-nginx-websites-on-linux-with-a-free-ssl-certificate-from-lets-encrypt/" title="Installing and Securing Nginx Websites on Linux with a Free SSL/TLS Certificate from Let's Encrypt" rel="bookmark"><img src="lets-encrypt.jpg" class="attachment-thumbnail size-thumbnail wp-post-image" alt="Nginx let's encrypt configuration" width="150" height="60"><span class="pop-overlay"><span class="pop-title">Installing and Securing Nginx Websites on Linux with a Free SSL/TLS Certificate from Let's Encrypt</span> </span></a><br class="pop-cl"></li><li><a href="https://techarena51.com/index.php/how-to-build-database-driven-restful-api-applications-with-flask-flask-restful-and-angularjss-resource-service/" title="How to Build  Database driven RESTFUL API Applications with Flask, Flask-RESTFUL and Angularjs's $resource service" rel="bookmark"><img src="Flask-Angularjs-CRUD-API-Tutorial.png" class="attachment-thumbnail size-thumbnail wp-post-image" alt="Flask-Angularjs-CRUD- API-Tutorial" width="150" height="51"><span class="pop-overlay"><span class="pop-title">How to Build  Database driven RESTFUL API Applications with Flask, Flask-RESTFUL and Angularjs's $resource service</span> </span></a><br class="pop-cl"></li><li><a href="https://techarena51.com/index.php/real-time-linux-server-monitoring-with-node-js-socket-io-and-d3-js-gauges/" title="Real Time Linux Server Monitoring with Node.js Socket.io and D3.js" rel="bookmark"><img src="Linux-Memory-Visual-with-D3.js-and-Socket.io_.png" class="attachment-thumbnail size-thumbnail wp-post-image" alt="Linux Memory Visual with D3.js and Socket.io" width="150" height="104"><span class="pop-overlay"><span class="pop-title">Real Time Linux Server Monitoring with Node.js Socket.io and D3.js</span> </span></a><br class="pop-cl"></li><li><a href="https://techarena51.com/index.php/buidling-a-database-driven-restful-json-api-in-python-3-with-flask-flask-restful-and-sqlalchemy/" title="Buidling a database driven RESTFUL JSON API  in Python 3 with Flask Flask-Restful and  SQLAlchemy" rel="bookmark"><img src="REST-API-with-flask-and-python.png" class="attachment-thumbnail size-thumbnail wp-post-image" alt="REST API with flask and python" width="150" height="95"><span class="pop-overlay"><span class="pop-title">Buidling a database driven RESTFUL JSON API  in Python 3 with Flask Flask-Restful and  SQLAlchemy</span> </span></a><br class="pop-cl"></li><li><a href="https://techarena51.com/index.php/json-web-token-authentication-with-flask-and-angularjs/" title="JSON web token authentication with  Flask and Angularjs" rel="bookmark"><img src="json-token-flask-angularjs.png" class="attachment-thumbnail size-thumbnail wp-post-image" alt="json-token-flask-angularjs" width="150" height="13"><span class="pop-overlay"><span class="pop-title">JSON web token authentication with  Flask and Angularjs</span> </span></a><br class="pop-cl"></li><li><a href="https://techarena51.com/index.php/flask-github-webhook-handler/" title="Continuously deploying your Flask/Python code  to your Linux production server with GitHub webhooks" rel="bookmark"><img src="github-webhooks-flask.png" class="attachment-thumbnail size-thumbnail wp-post-image" alt="github-webhooks-flask" width="150" height="134"><span class="pop-overlay"><span class="pop-title">Continuously deploying your Flask/Python code  to your Linux production server with GitHub webhooks</span> </span></a><br class="pop-cl"></li><li><a href="https://techarena51.com/index.php/many-to-many-relationships-with-flask-sqlalchemy/" title="Many to Many Relationships with Flask-SQLALchemy" rel="bookmark"><img src="flask-sqlalchemy-small.png" class="attachment-thumbnail size-thumbnail wp-post-image" alt="Many to Many Relationships with Flask-SQLAlchemy/" width="150" height="131"><span class="pop-overlay"><span class="pop-title">Many to Many Relationships with Flask-SQLALchemy</span> </span></a><br class="pop-cl"></li><li><a href="https://techarena51.com/index.php/one-to-many-relationships-with-flask-sqlalchemy/" title="One to Many Relationships with Flask-SQLAlchemy" rel="bookmark"><img src="flask-sqlalchemy-small.png" class="attachment-thumbnail size-thumbnail wp-post-image" alt="Many to Many Relationships with Flask-SQLAlchemy/" width="150" height="131"><span class="pop-overlay"><span class="pop-title">One to Many Relationships with Flask-SQLAlchemy</span> </span></a><br class="pop-cl"></li><li><a href="https://techarena51.com/index.php/flask-sqlalchemy-postgresql-tutorial/" title="Python PostgreSQL example" rel="bookmark"><img src="python-postgresql.png" class="attachment-thumbnail size-thumbnail wp-post-image" alt="python postgresql example" width="150" height="93"><span class="pop-overlay"><span class="pop-title">Python PostgreSQL example</span> </span></a><br class="pop-cl"></li><li><a href="https://techarena51.com/index.php/deploy-flask-on-ubuntu/" title="Launching your Flask web application on Linux  with Gunicorn and Nginx" rel="bookmark"><img src="deploy-flask-on-ubuntu.jpg" class="attachment-thumbnail size-thumbnail wp-post-image" alt="deploy flask on ubuntu" width="109" height="150"><span class="pop-overlay"><span class="pop-title">Launching your Flask web application on Linux  with Gunicorn and Nginx</span> </span></a><br class="pop-cl"></li></ul><ul style="display: none;" id="pop-widget-viewed-2"><li><a href="https://techarena51.com/index.php/installing-and-securing-nginx-websites-on-linux-with-a-free-ssl-certificate-from-lets-encrypt/" title="Installing and Securing Nginx Websites on Linux with a Free SSL/TLS Certificate from Let's Encrypt" rel="bookmark"><img src="lets-encrypt.jpg" class="attachment-thumbnail size-thumbnail wp-post-image" alt="Nginx let's encrypt configuration" width="150" height="60"><span class="pop-overlay"><span class="pop-title">Installing and Securing Nginx Websites on Linux with a Free SSL/TLS Certificate from Let's Encrypt</span> </span></a><br class="pop-cl"></li></ul></div><!--.pop-inside--></div><!--.pop-layout-v--></div>
+<div class="widget">			<div class="textwidget"><!-- BEGIN JS TAG - 160x600 techarena51.com < - DO NOT MODIFY -->
+
+<!-- END TAG --></div>
+		</div><div class="widget"><h2>License</h2>			<div class="textwidget"><a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license"><img alt="Creative Commons License" style="border-width: 0px;" src="88x31.png"></a><br><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">All Techarena51.com posts Content</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://techarena51.com/" property="cc:attributionName" rel="cc:attributionURL">Leonard Gonsalves</a> is licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.<br>Based on a work at <a xmlns:dct="http://purl.org/dc/terms/" href="http://techarena51.com/" rel="dct:source">http://techarena51.com</a>.<br>Permissions beyond the scope of this license may be available at <a xmlns:cc="http://creativecommons.org/ns#" href="http://techarena51.com/" rel="cc:morePermissions">http://techarena51.com</a>.</div>
+		</div></div>
+</div><!--end of .six columns (right content) --><!-- FOOTER -->
+<div class="row footer">
+    <div class="thirteen columns copyright">
+        <a rel="nofollow" href="http://www.readythemes.com/ready-review-theme-for-wordpress/">Ready Review Theme</a> by Ready Themes    </div>
+    <div class="three columns footerright" align="right">
+        <a href="#top" class="scroll">Back To Top</a>
+    </div>
+</div>
+<!-- FOOTER -->
+</div>
+
+<!-- Start of Async HubSpot Analytics Code for WordPress v1.0.0 -->
+
+<!-- End of Async HubSpot Analytics Code -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<div id="fb-root"></div>
+		</body>
+</html>

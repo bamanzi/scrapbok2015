@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en" style="display: block;">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    
+    <meta name="title" content="Ubuntu14.04如何设置固定IP和DNS | Gevin's Blog">
+    <meta name="description" content="对于 Desktop版的ubuntu，用NetworkManager通过图形界面配置IP和DNS就可以，而通过命令行，需要修改`/etc/network/interfaces`文件">
+    <meta name="author" content="gevin">
+    <meta name="keywords" content="技巧,ubuntu">
+    
+
+    <meta name="google-site-verification" content="Cj8n-gGgBXzrcuYXoe9fWtDOqNn0hmakKzmoazwrFAY">
+    <meta name="baidu-site-verification" content="87654321">
+    <meta name="sogou_site_verification" content="nGL5VMtBrG">
+    <meta name="sogou-site-verification" content="nGL5VMtBrG">
+
+    <title> Ubuntu14.04如何设置固定IP和DNS </title>
+
+    <!-- Bootstrap Core CSS -->
+
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+
+    <!-- <link href="http://cdn.staticfile.org/twitter-bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://cdn.staticfile.org/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"> -->
+    
+    
+    <!-- Custom CSS -->
+    
+    
+    
+
+    <link href="http://gevin-oct-blog.daoapp.io/atom/" rel="alternate" title="Recent Changes" type="application/atom+xml">
+
+    
+    
+
+
+     
+    
+
+    <!-- Custom Fonts -->
+    <!-- <link href="http://libs.useso.com/js/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="http://gevin-oct-blog.daoapp.io/">Oct Blog</a> 
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="http://gevin-oct-blog.daoapp.io/atom/" target="_blank">RSS</a>
+                    </li>
+                    <li>
+                        <a href="http://gevin-oct-blog.daoapp.io/archive/">Archive</a>
+                    </li>
+
+                   
+                    
+                    <li>
+                        <a href="http://gevin-oct-blog.daoapp.io/pages/donation/">donation</a>
+                    </li>
+                    
+                    <li>
+                        <a href="http://gevin-oct-blog.daoapp.io/pages/About/">About</a>
+                    </li>
+                    
+
+                    <li>
+                        
+                    </li>
+                    
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    
+<header class="intro-header" style="background-image: url(&quot;mayblog-home-bg.jpg&quot;);">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="post-heading">
+                        <h1>Ubuntu14.04如何设置固定IP和DNS</h1>
+                        <!-- <h2 class="subheading">Problems look mighty small from 150 miles up</h2> -->
+                        <span class="meta">Posted by <a href="http://gevin-oct-blog.daoapp.io/users/gevin/">gevin</a> on 2016/04/15 02:04:54</span>
+                        
+                        <span class="meta">Category: <a href="http://gevin-oct-blog.daoapp.io/?category=default">default</a></span>
+                        
+                        <span class="meta">Tags:
+                             <a href="http://gevin-oct-blog.daoapp.io/?tag=%E6%8A%80%E5%B7%A7">技巧</a>   <a href="http://gevin-oct-blog.daoapp.io/?tag=ubuntu">ubuntu</a>  
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    
+<div class="container">
+    <article>
+        <!-- <div class="container"> -->
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <blockquote>
+  <p>对于 Desktop版的ubuntu，用NetworkManager通过图形界面配置IP和DNS就可以了</p>
+</blockquote>
+
+<p>前一段时间在公司机房配置Ubuntu服务器，要求使用公司指定的IP和DNS。由于平常都是通过ssh访问服务器，在配置IP地址和DNS时，也习惯性的通过命令行来配置了；当时忽视了Desktop 版Ubuntu的网络被<code>NetworkManager</code>管理的问题，导致折腾了半天才把看似简单的设置固定IP和DNS的问题搞定。这里总结一下我的配置过程，有兴趣通过命令行配置UbuntuIP和DNS的童靴可以看看。</p>
+
+<h2>为Ubuntu14.04设置静态IP</h2>
+
+<p>Ubuntu IP的网络配置文件是这个：<code>/etc/network/interfaces</code></p>
+
+<blockquote>
+  <p><strong>注意：如果Ubuntu系统采用的是desktop版，由于desktop版安装了NetworkManager，修改完interfaces文档中的内容后，不会生效。需要先修改<code>/etc/NetworkManager/NetworkManager.conf</code>文档中的managed参数，使之为true，并重启系统， 然后在修改<code>/etc/network/interfaces</code>文件，设置静态IP。</strong></p>
+</blockquote>
+
+<h3>修改<code>/etc/network/interfaces</code>设置静态IP</h3>
+
+<pre><code class="hljs nginx"><span class="hljs-title">sudo</span> vim /etc/network/interfaces
+</code></pre>
+
+<p>用下面的代码替换有关eth0的内容：</p>
+
+<pre><code class="hljs cpp"><span class="hljs-preprocessor"># The primary network interface  </span>
+<span class="hljs-keyword">auto</span> eth0  <span class="hljs-preprocessor">#表示让网卡开机自动挂载eth0</span>
+iface eth0 inet <span class="hljs-keyword">static</span>  
+address <span class="hljs-number">192.168</span><span class="hljs-number">.2</span><span class="hljs-number">.1</span>  
+gateway <span class="hljs-number">192.168</span><span class="hljs-number">.2</span><span class="hljs-number">.254</span>  
+netmask <span class="hljs-number">255.255</span><span class="hljs-number">.255</span><span class="hljs-number">.0</span>  
+<span class="hljs-preprocessor">#network <span class="hljs-number">192.168</span><span class="hljs-number">.2</span><span class="hljs-number">.0</span>  </span>
+<span class="hljs-preprocessor">#broadcast <span class="hljs-number">192.168</span><span class="hljs-number">.2</span><span class="hljs-number">.255</span> </span>
+</code></pre>
+
+<p>重启网络使上面的配置生效：</p>
+
+<pre><code class="hljs nginx"><span class="hljs-title">sudo</span> /etc/init.d/networking restart 
+</code></pre>
+
+<p>如果上面命令无法令ubuntu重启网络，则使用下面命令：</p>
+
+<pre><code class="hljs nginx"><span class="hljs-title">sudo</span> ifdown eth0 &amp;&amp; sudo ifup eth0
+</code></pre>
+
+<h2>为Ubuntu14.04设置固定DNS</h2>
+
+<p>方法一：</p>
+
+<p>创建/修改下面的文件
+<code>
+sudo vim /etc/resolvconf/resolv.conf.d/base
+</code></p>
+
+<p>添加下面内容：</p>
+
+<pre><code class="hljs cpp">nameserver <span class="hljs-number">8.8</span><span class="hljs-number">.8</span><span class="hljs-number">.8</span>
+nameserver <span class="hljs-number">8.8</span><span class="hljs-number">.4</span><span class="hljs-number">.4</span>
+</code></pre>
+
+<p>修改好保存，然后执行：</p>
+
+<pre><code class="hljs nginx"><span class="hljs-title">resolvconf</span> -u
+</code></pre>
+
+<p>方法二：</p>
+
+<p>通过<code>/etc/network/interfaces</code>，在它的最后增加一句：</p>
+
+<pre><code class="hljs css"><span class="hljs-tag">dns-nameservers</span> 8<span class="hljs-class">.8</span><span class="hljs-class">.8</span><span class="hljs-class">.8</span>
+
+# 如果多个<span class="hljs-tag">dns</span>：
+# <span class="hljs-tag">dns-nameservers</span> <span class="hljs-tag">X</span><span class="hljs-class">.X</span><span class="hljs-class">.X</span><span class="hljs-class">.X</span> <span class="hljs-tag">Y</span><span class="hljs-class">.Y</span><span class="hljs-class">.Y</span><span class="hljs-class">.Y</span> <span class="hljs-tag">Z</span><span class="hljs-class">.Z</span><span class="hljs-class">.Z</span><span class="hljs-class">.Z</span>
+</code></pre>
+
+<p>然后重启网络：</p>
+
+<pre><code class="hljs nginx"><span class="hljs-title">sudo</span> ifdown eth0 &amp;&amp; sudo ifup eth0
+</code></pre>
+
+<p>对于Ubuntu上如何设置固定IP和DNS，欢迎大家与我讨论</p>
+
+                </div>
+            </div>
+
+        
+            
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <hr>
+                    <p><strong>注：转载本文，请与Gevin联系</strong></p>
+                <hr>
+                </div>
+
+            </div>
+            
+            <br>
+            
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="share-component" data-sites="weibo,wechat,douban,twitter,qq,google,facebook,linkedin"><a href="http://service.weibo.com/share/share.php?url=http%3A%2F%2Fgevin-oct-blog.daoapp.io%2Fposts%2Fubuntu-1404-ip-dns%2F%3Futm_source%3Dtuicool%26utm_medium%3Dreferral&amp;title=Ubuntu14.04%E5%A6%82%E4%BD%95%E8%AE%BE%E7%BD%AE%E5%9B%BA%E5%AE%9AIP%E5%92%8CDNS%20%7C%20Gevin%27s%20Blog&amp;pic=http%3A%2F%2F7tsygu.com1.z0.glb.clouddn.com%2Fmayblog-weixin-pay.jpg%3FimageView%2F2%2Fw%2F300" class="iconfont icon-weibo" target="_blank"></a><a class="iconfont icon-wechat" target="_blank"><div class="wechat-qrcode"><h4>微信扫一扫：分享</h4><div class="qrcode"><canvas height="100" width="100"></canvas><script>(function (data) { var scripts = document.getElementsByTagName("script"); var script = scripts[scripts.length-1], canvas = script.previousSibling; var img = new Image(); img.onload = function(){ canvas.getContext('2d').drawImage(img, 0, 0); }; img.src = data; script.parentNode.removeChild(script); })('data:image/png;base64,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')</script></div><div class="help"><p>微信里点“发现”，扫一下</p><p>二维码便可将本文分享至朋友圈。</p></div></div></a><a href="http://shuo.douban.com/!service/share?href=http%3A%2F%2Fgevin-oct-blog.daoapp.io%2Fposts%2Fubuntu-1404-ip-dns%2F%3Futm_source%3Dtuicool%26utm_medium%3Dreferral&amp;name=Ubuntu14.04%E5%A6%82%E4%BD%95%E8%AE%BE%E7%BD%AE%E5%9B%BA%E5%AE%9AIP%E5%92%8CDNS%20%7C%20Gevin%27s%20Blog&amp;text=%E5%AF%B9%E4%BA%8E%20Desktop%E7%89%88%E7%9A%84ubuntu%EF%BC%8C%E7%94%A8NetworkManager%E9%80%9A%E8%BF%87%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2%E9%85%8D%E7%BD%AEIP%E5%92%8CDNS%E5%B0%B1%E5%8F%AF%E4%BB%A5%EF%BC%8C%E8%80%8C%E9%80%9A%E8%BF%87%E5%91%BD%E4%BB%A4%E8%A1%8C%EF%BC%8C%E9%9C%80%E8%A6%81%E4%BF%AE%E6%94%B9%60%2Fetc%2Fnetwork%2Finterfaces%60%E6%96%87%E4%BB%B6&amp;image=http%3A%2F%2F7tsygu.com1.z0.glb.clouddn.com%2Fmayblog-weixin-pay.jpg%3FimageView%2F2%2Fw%2F300&amp;starid=0&amp;aid=0&amp;style=11" class="iconfont icon-douban" target="_blank"></a><a href="https://twitter.com/intent/tweet?text=Ubuntu14.04%E5%A6%82%E4%BD%95%E8%AE%BE%E7%BD%AE%E5%9B%BA%E5%AE%9AIP%E5%92%8CDNS%20%7C%20Gevin%27s%20Blog&amp;url=http%3A%2F%2Fgevin-oct-blog.daoapp.io%2Fposts%2Fubuntu-1404-ip-dns%2F%3Futm_source%3Dtuicool%26utm_medium%3Dreferral&amp;via=http%3A%2F%2Fgevin-oct-blog.daoapp.io" class="iconfont icon-twitter" target="_blank"></a><a href="http://connect.qq.com/widget/shareqq/index.html?url=http%3A%2F%2Fgevin-oct-blog.daoapp.io%2Fposts%2Fubuntu-1404-ip-dns%2F%3Futm_source%3Dtuicool%26utm_medium%3Dreferral&amp;title=Ubuntu14.04%E5%A6%82%E4%BD%95%E8%AE%BE%E7%BD%AE%E5%9B%BA%E5%AE%9AIP%E5%92%8CDNS%20%7C%20Gevin%27s%20Blog&amp;source=Ubuntu14.04%E5%A6%82%E4%BD%95%E8%AE%BE%E7%BD%AE%E5%9B%BA%E5%AE%9AIP%E5%92%8CDNS&amp;desc=%E5%AF%B9%E4%BA%8E%20Desktop%E7%89%88%E7%9A%84ubuntu%EF%BC%8C%E7%94%A8NetworkManager%E9%80%9A%E8%BF%87%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2%E9%85%8D%E7%BD%AEIP%E5%92%8CDNS%E5%B0%B1%E5%8F%AF%E4%BB%A5%EF%BC%8C%E8%80%8C%E9%80%9A%E8%BF%87%E5%91%BD%E4%BB%A4%E8%A1%8C%EF%BC%8C%E9%9C%80%E8%A6%81%E4%BF%AE%E6%94%B9%60%2Fetc%2Fnetwork%2Finterfaces%60%E6%96%87%E4%BB%B6" class="iconfont icon-qq" target="_blank"></a><a href="https://plus.google.com/share?url=http%3A%2F%2Fgevin-oct-blog.daoapp.io%2Fposts%2Fubuntu-1404-ip-dns%2F%3Futm_source%3Dtuicool%26utm_medium%3Dreferral" class="iconfont icon-google" target="_blank"></a><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fgevin-oct-blog.daoapp.io%2Fposts%2Fubuntu-1404-ip-dns%2F%3Futm_source%3Dtuicool%26utm_medium%3Dreferral" class="iconfont icon-facebook" target="_blank"></a><a href="http://www.linkedin.com/shareArticle?mini=true&amp;ro=true&amp;title=Ubuntu14.04%E5%A6%82%E4%BD%95%E8%AE%BE%E7%BD%AE%E5%9B%BA%E5%AE%9AIP%E5%92%8CDNS%20%7C%20Gevin%27s%20Blog&amp;url=http%3A%2F%2Fgevin-oct-blog.daoapp.io%2Fposts%2Fubuntu-1404-ip-dns%2F%3Futm_source%3Dtuicool%26utm_medium%3Dreferral&amp;summary=%E5%AF%B9%E4%BA%8E%20Desktop%E7%89%88%E7%9A%84ubuntu%EF%BC%8C%E7%94%A8NetworkManager%E9%80%9A%E8%BF%87%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2%E9%85%8D%E7%BD%AEIP%E5%92%8CDNS%E5%B0%B1%E5%8F%AF%E4%BB%A5%EF%BC%8C%E8%80%8C%E9%80%9A%E8%BF%87%E5%91%BD%E4%BB%A4%E8%A1%8C%EF%BC%8C%E9%9C%80%E8%A6%81%E4%BF%AE%E6%94%B9%60%2Fetc%2Fnetwork%2Finterfaces%60%E6%96%87%E4%BB%B6&amp;source=Ubuntu14.04%E5%A6%82%E4%BD%95%E8%AE%BE%E7%BD%AE%E5%9B%BA%E5%AE%9AIP%E5%92%8CDNS&amp;armin=armin" class="iconfont icon-linkedin" target="_blank"></a></div>
+                </div>
+
+            </div>
+            
+            <br>
+            
+            <div class="row">
+                <!-- donate -->
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <p>如果您觉得Gevin的文章有价值，就请Gevin喝杯茶吧！</p>
+                    <a id="btn_donate" class="btn_donate" href="#" title="Donate">
+                    <i class="fa fa-usd"></i> | <i class="fa fa-jpy"></i>
+                    </a>                  
+                    <br>
+                  <!-- weixin -->
+                  <div id="donate_guide" class="donate_bar center hidden ">
+                      <img src="mayblog-weixin-pay.jpg" title="Donate">
+                  </div> 
+                </div>
+                <!-- donate --> 
+                
+            </div>
+            <br>
+            
+
+            
+            <div class="row">
+                <!-- donate -->
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <p>欢迎关注我的微信公众账号 <i class="fa fa-weixin" aria-hidden="true"></i></p>
+                    <img src="gevin-view.jpg" title="GevinView">
+                </div>
+                
+            </div>
+            
+            
+        
+            
+        <!-- </div> -->
+    </article>
+    <br>
+    <hr>
+    
+        <article>
+            <!-- <div class="container"> -->
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                        <a name="comment"></a>
+<h3>Comments</h3><br>
+
+
+
+
+
+  
+
+
+
+
+
+<form method="POST" action="http://gevin-oct-blog.daoapp.io/posts/ubuntu-1404-ip-dns/?utm_source=tuicool&amp;utm_medium=referral#comment">
+    
+  
+    <input id="csrf_token" name="csrf_token" value="1471574396##83f280b67dfa655ac4be8dc0621a0f759ed2b938" type="hidden">
+  
+
+  
+    <div class="clearfix  form-group">
+
+      <label for="email">* Email</label>
+        
+          <input style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABHklEQVQ4EaVTO26DQBD1ohQWaS2lg9JybZ+AK7hNwx2oIoVf4UPQ0Lj1FdKktevIpel8AKNUkDcWMxpgSaIEaTVv3sx7uztiTdu2s/98DywOw3Dued4Who/M2aIx5lZV1aEsy0+qiwHELyi+Ytl0PQ69SxAxkWIA4RMRTdNsKE59juMcuZd6xIAFeZ6fGCdJ8kY4y7KAuTRNGd7jyEBXsdOPE3a0QGPsniOnnYMO67LgSQN9T41F2QGrQRRFCwyzoIF2qyBuKKbcOgPXdVeY9rMWgNsjf9ccYesJhk3f5dYT1HX9gR0LLQR30TnjkUEcx2uIuS4RnI+aj6sJR0AM8AaumPaM/rRehyWhXqbFAA9kh3/8/NvHxAYGAsZ/il8IalkCLBfNVAAAAABJRU5ErkJggg==&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;" class="form-control" id="email" name="email" value="" type="text">
+        
+        
+    </div>
+  
+
+  
+    <div class="clearfix  form-group">
+
+      <label for="author">* Name</label>
+        
+          <input class="form-control" id="author" name="author" value="" type="text">
+        
+        
+    </div>
+  
+
+  
+    <div class="clearfix  form-group">
+
+      <label for="homepage">Homepage</label>
+        
+          <input class="form-control" id="homepage" name="homepage" value="" type="text">
+        
+        
+    </div>
+  
+
+  
+    <div class="clearfix  form-group">
+
+      <label for="content">* Comment <small><span class="label label-info">markdown</span></small></label>
+        
+          <textarea class="form-control" id="content" name="content" rows="10"></textarea>
+        
+        
+    </div>
+  
+
+  
+    <input id="comment_id" name="comment_id" value="" type="hidden">
+  
+
+
+
+    <button type="submit" class="btn btn-primary" name="oct-comment" value="oct-comment">Submit</button>
+</form>
+<br>
+
+<table class="table">
+    
+</table>
+                    </div>
+                </div>
+            <!-- </div> -->
+        </article>
+    
+</div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <ul class="list-inline text-center">
+                        <li>
+                            <a href="https://creativecommons.org/licenses/" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-creative-commons fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://gevin-oct-blog.daoapp.io/atom/">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/flyhigher139/OctBlog" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <p class="copyright text-muted">Copyright © Oct Blog 2015</p>
+                    <p class="copyright text-muted"><a href="http://www.qiniu.com/" target="_blank"><img src="qiniu-transparent.png"></a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- jQuery -->
+    
+    <!-- Bootstrap Core JavaScript -->
+    
+    <!-- Custom Theme JavaScript -->
+    
+    
+    
+
+
+
+
+</body>
+</html>

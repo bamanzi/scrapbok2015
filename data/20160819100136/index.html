@@ -1,0 +1,2261 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# object: http://ogp.me/ns/object# article: http://ogp.me/ns/article# profile: http://ogp.me/ns/profile#">
+    <meta charset="UTF-8">
+    
+
+    
+    
+    
+    
+    
+    
+
+    <link as="script" href="https://assets-cdn.github.com/assets/frameworks-655305f0453f424f8dab87dc1ae0e385e5982f72f7e2ce14eb1a9c229174cebe.js" rel="preload">
+    
+    <link as="script" href="https://assets-cdn.github.com/assets/github-108a3bda59197d1655c64d87385635ebafc034d0fa01295528a3eb1eafa70300.js" rel="preload">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Language" content="en">
+    <meta name="viewport" content="width=device-width">
+    
+    <title>jkbrzt/httpie: CLI HTTP client, user-friendly curl replacement with intuitive UI, JSON support, syntax highlighting, wget-like downloads, extensions, etc.</title>
+    <link rel="search" type="application/opensearchdescription+xml" href="https://github.com/opensearch.xml" title="GitHub">
+    <link rel="fluid-icon" href="https://github.com/fluidicon.png" title="GitHub">
+    <link rel="apple-touch-icon" href="https://github.com/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="57x57" href="https://github.com/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="https://github.com/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="https://github.com/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="https://github.com/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="https://github.com/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="https://github.com/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="https://github.com/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="https://github.com/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://github.com/apple-touch-icon-180x180.png">
+    <meta property="fb:app_id" content="1401488693436528">
+
+      <meta content="https://avatars2.githubusercontent.com/u/326885?v=3&amp;s=400" name="twitter:image:src"><meta content="@github" name="twitter:site"><meta content="summary" name="twitter:card"><meta content="jkbrzt/httpie" name="twitter:title"><meta content="httpie - CLI HTTP client, user-friendly curl replacement with intuitive UI, JSON support, syntax highlighting, wget-like downloads, extensions, etc." name="twitter:description">
+      <meta content="https://avatars2.githubusercontent.com/u/326885?v=3&amp;s=400" property="og:image"><meta content="GitHub" property="og:site_name"><meta content="object" property="og:type"><meta content="jkbrzt/httpie" property="og:title"><meta content="https://github.com/jkbrzt/httpie" property="og:url"><meta content="httpie - CLI HTTP client, user-friendly curl replacement with intuitive UI, JSON support, syntax highlighting, wget-like downloads, extensions, etc." property="og:description">
+      <meta name="browser-stats-url" content="https://api.github.com/_private/browser/stats">
+    <meta name="browser-errors-url" content="https://api.github.com/_private/browser/errors">
+    <link rel="assets" href="https://assets-cdn.github.com/">
+    <link rel="web-socket" href="wss://live.github.com/_sockets/Nzc1ODY3OjJmN2MxZWZkZGE3MmExYjFjMjc1ZjA2ODVhODNkNjZhOjlkNzYxYmM1ZTcwZjEzYWZkNmJiMjExZjAzNmY0NDVkMDI1YWVjZTk1NTY0MWUzOTlmZDE2ZjVhYjViYjJjNWY=--f4dfbb1d1fd05c37d10ff9ac4baf24a272558338">
+    <meta name="pjax-timeout" content="1000">
+    <link rel="sudo-modal" href="https://github.com/sessions/sudo_modal">
+    <meta name="request-id" content="75884F98:88D1:3D1A80D:57B667E6" data-pjax-transient="">
+
+    <meta name="msapplication-TileImage" content="/windows-tile.png">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="selected-link" value="repo_source" data-pjax-transient="">
+
+    <meta name="google-site-verification" content="KT5gs8h0wvaagLKAVWq8bbeNwnZZK1r1XQysX3xurLU">
+<meta name="google-site-verification" content="ZzhVyEFwb7w3e0-uOTltm8Jsck2F5StVihD0exw2fsA">
+    <meta name="google-analytics" content="UA-3769691-2">
+
+<meta content="collector.githubapp.com" name="octolytics-host"><meta content="github" name="octolytics-app-id"><meta content="75884F98:88D1:3D1A80D:57B667E6" name="octolytics-dimension-request_id"><meta content="775867" name="octolytics-actor-id"><meta content="bamanzi" name="octolytics-actor-login"><meta content="e1253ee97109340dbe6750e67f37cd50634b775c85ce81905686b977ca0464a6" name="octolytics-actor-hash">
+<meta content="/<user-name>/<repo-name>" data-pjax-transient="true" name="analytics-location">
+
+
+
+  <meta class="js-ga-set" name="dimension1" content="Logged In">
+
+
+
+        <meta name="hostname" content="github.com">
+    <meta name="user-login" content="bamanzi">
+
+        <meta name="expected-hostname" content="github.com">
+      <meta name="js-proxy-site-detection-payload" content="ZWFkMDRjZDY4YmUxMTAyZWMzNTc0MTYxNmQ2Y2E2OTFjMWNhYjVmZmMzYjQ4MmQ0MzVmMTQzYmVkZDExM2Q1NXx7InJlbW90ZV9hZGRyZXNzIjoiMTE3LjEzNi43OS4xNTIiLCJyZXF1ZXN0X2lkIjoiNzU4ODRGOTg6ODhEMTozRDFBODBEOjU3QjY2N0U2IiwidGltZXN0YW1wIjoxNDcxNTcxOTQ0fQ==">
+
+
+      <link rel="mask-icon" href="https://assets-cdn.github.com/pinned-octocat.svg" color="#4078c0">
+      <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+    <meta name="html-safe-nonce" content="9bc6031c5c1839e039b5149459eaa3d47140a792">
+    <meta content="84da46a5ca5dc665232f8b3d18ab77c9d7b5d735" name="form-nonce">
+
+    <meta http-equiv="x-pjax-version" content="6749290bc4adfe629b7302b96849b1fa">
+    
+
+      
+  <meta name="description" content="httpie - CLI HTTP client, user-friendly curl replacement with intuitive UI, JSON support, syntax highlighting, wget-like downloads, extensions, etc.">
+  <meta name="go-import" content="github.com/jkbrzt/httpie git https://github.com/jkbrzt/httpie.git">
+
+  <meta content="326885" name="octolytics-dimension-user_id"><meta content="jkbrzt" name="octolytics-dimension-user_login"><meta content="3544424" name="octolytics-dimension-repository_id"><meta content="jkbrzt/httpie" name="octolytics-dimension-repository_nwo"><meta content="true" name="octolytics-dimension-repository_public"><meta content="false" name="octolytics-dimension-repository_is_fork"><meta content="3544424" name="octolytics-dimension-repository_network_root_id"><meta content="jkbrzt/httpie" name="octolytics-dimension-repository_network_root_nwo">
+  <link href="https://github.com/jkbrzt/httpie/commits/master.atom" rel="alternate" title="Recent Commits to httpie:master" type="application/atom+xml">
+
+
+      <link rel="canonical" href="https://github.com/jkbrzt/httpie" data-pjax-transient="">
+  
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+
+
+  <body class="logged-in  env-production linux vis-public">
+    <div id="js-pjax-loader-bar" class="pjax-loader-bar"><div class="progress"></div></div>
+    <a href="#start-of-content" tabindex="1" class="accessibility-aid js-skip-to-content">Skip to content</a>
+
+    
+    
+    
+
+
+
+        <div class="header header-logged-in true" role="banner">
+  <div class="container clearfix">
+
+    <a class="header-logo-invertocat" href="https://github.com/" data-hotkey="g d" aria-label="Homepage" data-ga-click="Header, go to dashboard, icon:logo">
+  <svg aria-hidden="true" class="octicon octicon-mark-github" height="28" version="1.1" viewBox="0 0 16 16" width="28"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>
+</a>
+
+
+        <div class="header-search scoped-search site-scoped-search js-site-search" role="search">
+  <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="https://github.com/jkbrzt/httpie/search" class="js-site-search-form" data-scoped-search-url="/jkbrzt/httpie/search" data-unscoped-search-url="/search" method="get"><div style="margin: 0px; padding: 0px; display: inline;"><input name="utf8" value="✓" type="hidden"></div>
+    <label class="form-control header-search-wrapper js-chromeless-input-container">
+      <div class="header-search-scope">This repository</div>
+      <input class="form-control header-search-input js-site-search-focus js-site-search-field is-clearable" data-hotkey="s" name="q" placeholder="Search" aria-label="Search this repository" data-unscoped-placeholder="Search GitHub" data-scoped-placeholder="Search" autocapitalize="off" type="text">
+    </label>
+</form></div>
+
+
+      <ul class="header-nav left" role="navigation">
+        <li class="header-nav-item">
+          <a href="https://github.com/pulls" class="js-selected-navigation-item header-nav-link" data-ga-click="Header, click, Nav menu - item:pulls context:user" data-hotkey="g p" data-selected-links="/pulls /pulls/assigned /pulls/mentioned /pulls">
+            Pull requests
+</a>        </li>
+        <li class="header-nav-item">
+          <a href="https://github.com/issues" class="js-selected-navigation-item header-nav-link" data-ga-click="Header, click, Nav menu - item:issues context:user" data-hotkey="g i" data-selected-links="/issues /issues/assigned /issues/mentioned /issues">
+            Issues
+</a>        </li>
+          <li class="header-nav-item">
+            <a class="header-nav-link" href="https://gist.github.com/" data-ga-click="Header, go to gist, text:gist">Gist</a>
+          </li>
+      </ul>
+
+    
+<ul class="header-nav user-nav right" id="user-links">
+  <li class="header-nav-item">
+    
+    <a href="https://github.com/notifications" aria-label="You have unread notifications" class="header-nav-link notification-indicator tooltipped tooltipped-s js-socket-channel js-notification-indicator" data-channel="tenant:1:notification-changed:775867" data-ga-click="Header, go to notifications, icon:unread" data-hotkey="g n">
+        <span class="mail-status unread"></span>
+        <svg aria-hidden="true" class="octicon octicon-bell" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path d="M14 12v1H0v-1l.73-.58c.77-.77.81-2.55 1.19-4.42C2.69 3.23 6 2 6 2c0-.55.45-1 1-1s1 .45 1 1c0 0 3.39 1.23 4.16 5 .38 1.88.42 3.66 1.19 4.42l.66.58H14zm-7 4c1.11 0 2-.89 2-2H5c0 1.11.89 2 2 2z"></path></svg>
+</a>
+  </li>
+
+  <li class="header-nav-item dropdown js-menu-container">
+    <a class="header-nav-link tooltipped tooltipped-s js-menu-target" href="https://github.com/new" aria-label="Create new…" data-ga-click="Header, create new, icon:add">
+      <svg aria-hidden="true" class="octicon octicon-plus left" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 9H7v5H5V9H0V7h5V2h2v5h5z"></path></svg>
+      <span class="dropdown-caret"></span>
+    </a>
+
+    <div class="dropdown-menu-content js-menu-content">
+      <ul class="dropdown-menu dropdown-menu-sw">
+        
+<a class="dropdown-item" href="https://github.com/new" data-ga-click="Header, create new repository">
+  New repository
+</a>
+
+  <a class="dropdown-item" href="https://github.com/new/import" data-ga-click="Header, import a repository">
+    Import repository
+  </a>
+
+
+  <a class="dropdown-item" href="https://github.com/organizations/new" data-ga-click="Header, create new organization">
+    New organization
+  </a>
+
+
+
+  <div class="dropdown-divider"></div>
+  <div class="dropdown-header">
+    <span title="jkbrzt/httpie">This repository</span>
+  </div>
+    <a class="dropdown-item" href="https://github.com/jkbrzt/httpie/issues/new" data-ga-click="Header, create new issue">
+      New issue
+    </a>
+
+      </ul>
+    </div>
+  </li>
+
+  <li class="header-nav-item dropdown js-menu-container">
+    <a class="header-nav-link name tooltipped tooltipped-sw js-menu-target" href="https://github.com/bamanzi" aria-label="View profile and more" data-ga-click="Header, show menu, icon:avatar">
+      <img alt="@bamanzi" class="avatar" src="775867.dat" width="20" height="20">
+      <span class="dropdown-caret"></span>
+    </a>
+
+    <div class="dropdown-menu-content js-menu-content">
+      <div class="dropdown-menu dropdown-menu-sw">
+        <div class="dropdown-header header-nav-current-user css-truncate">
+          Signed in as <strong class="css-truncate-target">bamanzi</strong>
+        </div>
+
+        <div class="dropdown-divider"></div>
+
+        <a class="dropdown-item" href="https://github.com/bamanzi" data-ga-click="Header, go to profile, text:your profile">
+          Your profile
+        </a>
+        <a class="dropdown-item" href="https://github.com/stars" data-ga-click="Header, go to starred repos, text:your stars">
+          Your stars
+        </a>
+        <a class="dropdown-item" href="https://github.com/explore" data-ga-click="Header, go to explore, text:explore">
+          Explore
+        </a>
+          <a class="dropdown-item" href="https://github.com/integrations" data-ga-click="Header, go to integrations, text:integrations">
+            Integrations
+          </a>
+        <a class="dropdown-item" href="https://help.github.com/" data-ga-click="Header, go to help, text:help">
+          Help
+        </a>
+
+
+        <div class="dropdown-divider"></div>
+
+        <a class="dropdown-item" href="https://github.com/settings/profile" data-ga-click="Header, go to settings, icon:settings">
+          Settings
+        </a>
+
+        <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="https://github.com/logout" class="logout-form" data-form-nonce="84da46a5ca5dc665232f8b3d18ab77c9d7b5d735" method="post"><div style="margin: 0px; padding: 0px; display: inline;"><input name="utf8" value="✓" type="hidden"><input name="authenticity_token" value="RROhIouewyjO5EHFqKjsMDGvGZSEd0ShrGZ62WuVvjsv+C1qRtR13V3X6ln5/YLyvnO98FyU8NE3Uf2yvujd2Q==" type="hidden"></div>
+          <button class="dropdown-item dropdown-signout" data-ga-click="Header, sign out, icon:logout">
+            Sign out
+          </button>
+</form>      </div>
+    </div>
+  </li>
+</ul>
+
+
+    
+  </div>
+</div>
+
+
+      
+
+
+    <div id="start-of-content" class="accessibility-aid"></div>
+
+      <div id="js-flash-container">
+</div>
+
+
+    <div role="main">
+        <div itemscope="" itemtype="http://schema.org/SoftwareSourceCode">
+    <div id="js-repo-pjax-container" data-pjax-container="">
+      
+<div class="pagehead repohead instapaper_ignore readability-menu experiment-repo-nav">
+  <div class="container repohead-details-container">
+
+    
+
+<ul class="pagehead-actions">
+
+  <li>
+        <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="https://github.com/notifications/subscribe" class="js-social-container" data-autosubmit="true" data-form-nonce="84da46a5ca5dc665232f8b3d18ab77c9d7b5d735" data-remote="true" method="post"><div style="margin: 0px; padding: 0px; display: inline;"><input name="utf8" value="✓" type="hidden"><input name="authenticity_token" value="bs7015Ghz3bfT+h9Hy+afBMT6XFqDiwgouHFU/jQq4NEpYhH99uvyF0ZyYxUB5aX97HD+0G65YMPI5EbkKnw4Q==" type="hidden"></div>      <input class="form-control" id="repository_id" name="repository_id" value="3544424" type="hidden">
+
+        <div class="select-menu js-menu-container js-select-menu">
+          <a href="https://github.com/jkbrzt/httpie/subscription" class="btn btn-sm btn-with-count select-menu-button js-menu-target" role="button" tabindex="0" aria-haspopup="true" data-ga-click="Repository, click Watch settings, action:files#disambiguate">
+            <span class="js-select-button">
+              <svg aria-hidden="true" class="octicon octicon-eye" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M8.06 2C3 2 0 8 0 8s3 6 8.06 6C13 14 16 8 16 8s-3-6-7.94-6zM8 12c-2.2 0-4-1.78-4-4 0-2.2 1.8-4 4-4 2.22 0 4 1.8 4 4 0 2.22-1.78 4-4 4zm2-4c0 1.11-.89 2-2 2-1.11 0-2-.89-2-2 0-1.11.89-2 2-2 1.11 0 2 .89 2 2z"></path></svg>
+              Watch
+            </span>
+          </a>
+          <a class="social-count js-social-count" href="https://github.com/jkbrzt/httpie/watchers">
+            800
+          </a>
+
+        <div class="select-menu-modal-holder">
+          <div class="select-menu-modal subscription-menu-modal js-menu-content" aria-hidden="true">
+            <div class="select-menu-header js-navigation-enable" tabindex="-1">
+              <svg aria-label="Close" class="octicon octicon-x js-menu-close" height="16" role="img" version="1.1" viewBox="0 0 12 16" width="12"><path d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48z"></path></svg>
+              <span class="select-menu-title">Notifications</span>
+            </div>
+
+              <div class="select-menu-list js-navigation-container" role="menu">
+
+                <div class="select-menu-item js-navigation-item selected" role="menuitem" tabindex="0">
+                  <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+                  <div class="select-menu-item-text">
+                    <input checked="checked" id="do_included" name="do" value="included" type="radio">
+                    <span class="select-menu-item-heading">Not watching</span>
+                    <span class="description">Be notified when participating or @mentioned.</span>
+                    <span class="js-select-button-text hidden-select-button-text">
+                      <svg aria-hidden="true" class="octicon octicon-eye" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M8.06 2C3 2 0 8 0 8s3 6 8.06 6C13 14 16 8 16 8s-3-6-7.94-6zM8 12c-2.2 0-4-1.78-4-4 0-2.2 1.8-4 4-4 2.22 0 4 1.8 4 4 0 2.22-1.78 4-4 4zm2-4c0 1.11-.89 2-2 2-1.11 0-2-.89-2-2 0-1.11.89-2 2-2 1.11 0 2 .89 2 2z"></path></svg>
+                      Watch
+                    </span>
+                  </div>
+                </div>
+
+                <div class="select-menu-item js-navigation-item " role="menuitem" tabindex="0">
+                  <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+                  <div class="select-menu-item-text">
+                    <input id="do_subscribed" name="do" value="subscribed" type="radio">
+                    <span class="select-menu-item-heading">Watching</span>
+                    <span class="description">Be notified of all conversations.</span>
+                    <span class="js-select-button-text hidden-select-button-text">
+                      <svg aria-hidden="true" class="octicon octicon-eye" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M8.06 2C3 2 0 8 0 8s3 6 8.06 6C13 14 16 8 16 8s-3-6-7.94-6zM8 12c-2.2 0-4-1.78-4-4 0-2.2 1.8-4 4-4 2.22 0 4 1.8 4 4 0 2.22-1.78 4-4 4zm2-4c0 1.11-.89 2-2 2-1.11 0-2-.89-2-2 0-1.11.89-2 2-2 1.11 0 2 .89 2 2z"></path></svg>
+                      Unwatch
+                    </span>
+                  </div>
+                </div>
+
+                <div class="select-menu-item js-navigation-item " role="menuitem" tabindex="0">
+                  <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+                  <div class="select-menu-item-text">
+                    <input id="do_ignore" name="do" value="ignore" type="radio">
+                    <span class="select-menu-item-heading">Ignoring</span>
+                    <span class="description">Never be notified.</span>
+                    <span class="js-select-button-text hidden-select-button-text">
+                      <svg aria-hidden="true" class="octicon octicon-mute" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M8 2.81v10.38c0 .67-.81 1-1.28.53L3 10H1c-.55 0-1-.45-1-1V7c0-.55.45-1 1-1h2l3.72-3.72C7.19 1.81 8 2.14 8 2.81zm7.53 3.22l-1.06-1.06-1.97 1.97-1.97-1.97-1.06 1.06L11.44 8 9.47 9.97l1.06 1.06 1.97-1.97 1.97 1.97 1.06-1.06L13.56 8l1.97-1.97z"></path></svg>
+                      Stop ignoring
+                    </span>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+</form>
+  </li>
+
+  <li>
+    
+  <div class="js-toggler-container js-social-container starring-container ">
+
+    <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="https://github.com/jkbrzt/httpie/unstar" class="starred" data-form-nonce="84da46a5ca5dc665232f8b3d18ab77c9d7b5d735" data-remote="true" method="post"><div style="margin: 0px; padding: 0px; display: inline;"><input name="utf8" value="✓" type="hidden"><input name="authenticity_token" value="MD0wJmjNdS2kPLk7UKU5et2NNmxYuF7JJO0enu3sozEfnJsGC39IOAVbgwhoVfGPidNMciv3aqXvI7w6VHXOfQ==" type="hidden"></div>
+      <button class="btn btn-sm btn-with-count js-toggler-target" aria-label="Unstar this repository" title="Unstar jkbrzt/httpie" data-ga-click="Repository, click unstar button, action:files#disambiguate; text:Unstar">
+        <svg aria-hidden="true" class="octicon octicon-star" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path d="M14 6l-4.9-.64L7 1 4.9 5.36 0 6l3.6 3.26L2.67 14 7 11.67 11.33 14l-.93-4.74z"></path></svg>
+        Unstar
+      </button>
+        <a class="social-count js-social-count" href="https://github.com/jkbrzt/httpie/stargazers">
+          25,535
+        </a>
+</form>
+    <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="https://github.com/jkbrzt/httpie/star" class="unstarred" data-form-nonce="84da46a5ca5dc665232f8b3d18ab77c9d7b5d735" data-remote="true" method="post"><div style="margin: 0px; padding: 0px; display: inline;"><input name="utf8" value="✓" type="hidden"><input name="authenticity_token" value="xVDrNuYZ5CoNHk8KHd2maziADAXZ4C+c+uTEde6+IcAAPuQbDaN2mX2HJS26bQ1Kn/jk3YIo/QsfdNC3/OvC8g==" type="hidden"></div>
+      <button class="btn btn-sm btn-with-count js-toggler-target" aria-label="Star this repository" title="Star jkbrzt/httpie" data-ga-click="Repository, click star button, action:files#disambiguate; text:Star">
+        <svg aria-hidden="true" class="octicon octicon-star" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path d="M14 6l-4.9-.64L7 1 4.9 5.36 0 6l3.6 3.26L2.67 14 7 11.67 11.33 14l-.93-4.74z"></path></svg>
+        Star
+      </button>
+        <a class="social-count js-social-count" href="https://github.com/jkbrzt/httpie/stargazers">
+          25,535
+        </a>
+</form>  </div>
+
+  </li>
+
+  <li>
+          <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="https://github.com/jkbrzt/httpie/fork" class="btn-with-count" data-form-nonce="84da46a5ca5dc665232f8b3d18ab77c9d7b5d735" method="post"><div style="margin: 0px; padding: 0px; display: inline;"><input name="utf8" value="✓" type="hidden"><input name="authenticity_token" value="2UWRgiFNlFyFj1Pr/ZFWy8Dmhgyo5lWaqgX8AG1RLiuS/ZSyg5wGKnO2V/KaHPOJBVs5X6qLPgrIUytHMYPyGg==" type="hidden"></div>
+            <button type="submit" class="btn btn-sm btn-with-count" data-ga-click="Repository, show fork modal, action:files#disambiguate; text:Fork" title="Fork your own copy of jkbrzt/httpie to your account" aria-label="Fork your own copy of jkbrzt/httpie to your account">
+              <svg aria-hidden="true" class="octicon octicon-repo-forked" height="16" version="1.1" viewBox="0 0 10 16" width="10"><path d="M8 1a1.993 1.993 0 0 0-1 3.72V6L5 8 3 6V4.72A1.993 1.993 0 0 0 2 1a1.993 1.993 0 0 0-1 3.72V6.5l3 3v1.78A1.993 1.993 0 0 0 5 15a1.993 1.993 0 0 0 1-3.72V9.5l3-3V4.72A1.993 1.993 0 0 0 8 1zM2 4.2C1.34 4.2.8 3.65.8 3c0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zm3 10c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zm3-10c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2z"></path></svg>
+              Fork
+            </button>
+</form>
+    <a href="https://github.com/jkbrzt/httpie/network" class="social-count">
+      1,592
+    </a>
+  </li>
+</ul>
+
+    <h1 class="public ">
+  <svg aria-hidden="true" class="octicon octicon-repo" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M4 9H3V8h1v1zm0-3H3v1h1V6zm0-2H3v1h1V4zm0-2H3v1h1V2zm8-1v12c0 .55-.45 1-1 1H6v2l-1.5-1.5L3 16v-2H1c-.55 0-1-.45-1-1V1c0-.55.45-1 1-1h10c.55 0 1 .45 1 1zm-1 10H1v2h2v-1h3v1h5v-2zm0-10H2v9h9V1z"></path></svg>
+  <span class="author" itemprop="author"><a href="https://github.com/jkbrzt" class="url fn" rel="author">jkbrzt</a></span><!--
+--><span class="path-divider">/</span><!--
+--><strong itemprop="name"><a href="#" data-pjax="#js-repo-pjax-container">httpie</a></strong>
+
+</h1>
+
+  </div>
+  <div class="container">
+    
+<nav class="reponav js-repo-nav js-sidenav-container-pjax" itemscope="" itemtype="http://schema.org/BreadcrumbList" role="navigation" data-pjax="#js-repo-pjax-container">
+
+  <span itemscope="" itemtype="http://schema.org/ListItem" itemprop="itemListElement">
+    <a href="#" aria-selected="true" class="js-selected-navigation-item selected reponav-item" data-hotkey="g c" data-selected-links="repo_source repo_downloads repo_commits repo_releases repo_tags repo_branches /jkbrzt/httpie" itemprop="url">
+      <svg aria-hidden="true" class="octicon octicon-code" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path d="M9.5 3L8 4.5 11.5 8 8 11.5 9.5 13 14 8 9.5 3zm-5 0L0 8l4.5 5L6 11.5 2.5 8 6 4.5 4.5 3z"></path></svg>
+      <span itemprop="name">Code</span>
+      <meta itemprop="position" content="1">
+</a>  </span>
+
+    <span itemscope="" itemtype="http://schema.org/ListItem" itemprop="itemListElement">
+      <a href="https://github.com/jkbrzt/httpie/issues" class="js-selected-navigation-item reponav-item" data-hotkey="g i" data-selected-links="repo_issues repo_labels repo_milestones /jkbrzt/httpie/issues" itemprop="url">
+        <svg aria-hidden="true" class="octicon octicon-issue-opened" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg>
+        <span itemprop="name">Issues</span>
+        <span class="counter">67</span>
+        <meta itemprop="position" content="2">
+</a>    </span>
+
+  <span itemscope="" itemtype="http://schema.org/ListItem" itemprop="itemListElement">
+    <a href="https://github.com/jkbrzt/httpie/pulls" class="js-selected-navigation-item reponav-item" data-hotkey="g p" data-selected-links="repo_pulls /jkbrzt/httpie/pulls" itemprop="url">
+      <svg aria-hidden="true" class="octicon octicon-git-pull-request" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M11 11.28V5c-.03-.78-.34-1.47-.94-2.06C9.46 2.35 8.78 2.03 8 2H7V0L4 3l3 3V4h1c.27.02.48.11.69.31.21.2.3.42.31.69v6.28A1.993 1.993 0 0 0 10 15a1.993 1.993 0 0 0 1-3.72zm-1 2.92c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zM4 3c0-1.11-.89-2-2-2a1.993 1.993 0 0 0-1 3.72v6.56A1.993 1.993 0 0 0 2 15a1.993 1.993 0 0 0 1-3.72V4.72c.59-.34 1-.98 1-1.72zm-.8 10c0 .66-.55 1.2-1.2 1.2-.65 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2zM2 4.2C1.34 4.2.8 3.65.8 3c0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2z"></path></svg>
+      <span itemprop="name">Pull requests</span>
+      <span class="counter">12</span>
+      <meta itemprop="position" content="3">
+</a>  </span>
+
+
+
+
+  <a href="https://github.com/jkbrzt/httpie/pulse" class="js-selected-navigation-item reponav-item" data-selected-links="pulse /jkbrzt/httpie/pulse">
+    <svg aria-hidden="true" class="octicon octicon-pulse" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path d="M11.5 8L8.8 5.4 6.6 8.5 5.5 1.6 2.38 8H0v2h3.6l.9-1.8.9 5.4L9 8.5l1.6 1.5H14V8z"></path></svg>
+    Pulse
+</a>
+  <a href="https://github.com/jkbrzt/httpie/graphs" class="js-selected-navigation-item reponav-item" data-selected-links="repo_graphs repo_contributors /jkbrzt/httpie/graphs">
+    <svg aria-hidden="true" class="octicon octicon-graph" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M16 14v1H0V0h1v14h15zM5 13H3V8h2v5zm4 0H7V3h2v10zm4 0h-2V6h2v7z"></path></svg>
+    Graphs
+</a>
+
+</nav>
+
+  </div>
+</div>
+
+<div class="container new-discussion-timeline experiment-repo-nav">
+  <div class="repository-content">
+
+    
+<div class="repository-meta js-details-container">
+  <span class="repository-meta-content">
+        <span itemprop="about"> CLI HTTP client, user-friendly curl replacement with intuitive UI, JSON support, syntax highlighting, wget-like downloads, extensions, etc.</span>
+        <span itemprop="url"><a href="http://httpie.org/" rel="nofollow">http://httpie.org</a></span>
+  </span>
+
+</div>
+
+
+<div class="overall-summary overall-summary-bottomless">
+  <div class="stats-switcher-viewport js-stats-switcher-viewport">
+    <div class="stats-switcher-wrapper">
+    <ul class="numbers-summary">
+      <li class="commits">
+        <a data-pjax="" href="https://github.com/jkbrzt/httpie/commits/master">
+            <svg aria-hidden="true" class="octicon octicon-history" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path d="M8 13H6V6h5v2H8v5zM7 1C4.81 1 2.87 2.02 1.59 3.59L0 2v4h4L2.5 4.5C3.55 3.17 5.17 2.3 7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-.34.03-.67.09-1H.08C.03 7.33 0 7.66 0 8c0 3.86 3.14 7 7 7s7-3.14 7-7-3.14-7-7-7z"></path></svg>
+            <span class="num text-emphasized">
+              853
+            </span>
+            commits
+        </a>
+      </li>
+      <li>
+        <a data-pjax="" href="https://github.com/jkbrzt/httpie/branches">
+          <svg aria-hidden="true" class="octicon octicon-git-branch" height="16" version="1.1" viewBox="0 0 10 16" width="10"><path d="M10 5c0-1.11-.89-2-2-2a1.993 1.993 0 0 0-1 3.72v.3c-.02.52-.23.98-.63 1.38-.4.4-.86.61-1.38.63-.83.02-1.48.16-2 .45V4.72a1.993 1.993 0 0 0-1-3.72C.88 1 0 1.89 0 3a2 2 0 0 0 1 1.72v6.56c-.59.35-1 .99-1 1.72 0 1.11.89 2 2 2 1.11 0 2-.89 2-2 0-.53-.2-1-.53-1.36.09-.06.48-.41.59-.47.25-.11.56-.17.94-.17 1.05-.05 1.95-.45 2.75-1.25S8.95 7.77 9 6.73h-.02C9.59 6.37 10 5.73 10 5zM2 1.8c.66 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2C1.35 4.2.8 3.65.8 3c0-.65.55-1.2 1.2-1.2zm0 12.41c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zm6-8c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2z"></path></svg>
+          <span class="num text-emphasized">
+            1
+          </span>
+          branch
+        </a>
+      </li>
+
+      <li>
+        <a data-pjax="" href="https://github.com/jkbrzt/httpie/releases">
+          <svg aria-hidden="true" class="octicon octicon-tag" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path d="M7.73 1.73C7.26 1.26 6.62 1 5.96 1H3.5C2.13 1 1 2.13 1 3.5v2.47c0 .66.27 1.3.73 1.77l6.06 6.06c.39.39 1.02.39 1.41 0l4.59-4.59a.996.996 0 0 0 0-1.41L7.73 1.73zM2.38 7.09c-.31-.3-.47-.7-.47-1.13V3.5c0-.88.72-1.59 1.59-1.59h2.47c.42 0 .83.16 1.13.47l6.14 6.13-4.73 4.73-6.13-6.15zM3.01 3h2v2H3V3h.01z"></path></svg>
+          <span class="num text-emphasized">
+            27
+          </span>
+          releases
+        </a>
+      </li>
+
+      <li>
+          <a href="https://github.com/jkbrzt/httpie/graphs/contributors">
+  <svg aria-hidden="true" class="octicon octicon-organization" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M16 12.999c0 .439-.45 1-1 1H7.995c-.539 0-.994-.447-.995-.999H1c-.54 0-1-.561-1-1 0-2.634 3-4 3-4s.229-.409 0-1c-.841-.621-1.058-.59-1-3 .058-2.419 1.367-3 2.5-3s2.442.58 2.5 3c.058 2.41-.159 2.379-1 3-.229.59 0 1 0 1s1.549.711 2.42 2.088C9.196 9.369 10 8.999 10 8.999s.229-.409 0-1c-.841-.62-1.058-.59-1-3 .058-2.419 1.367-3 2.5-3s2.437.581 2.495 3c.059 2.41-.158 2.38-1 3-.229.59 0 1 0 1s3.005 1.366 3.005 4"></path></svg>
+    <span class="num text-emphasized">
+      54
+    </span>
+    contributors
+</a>
+
+      </li>
+    </ul>
+
+      <div class="repository-lang-stats">
+        <ol class="repository-lang-stats-numbers">
+          <li>
+              <a href="https://github.com/jkbrzt/httpie/search?l=python" data-ga-click="Repository, language stats search click, location:repo overview">
+                <span class="color-block language-color" style="background-color: rgb(53, 114, 165);"></span>
+                <span class="lang">Python</span>
+                <span class="percent">96.9%</span>
+              </a>
+          </li>
+          <li>
+              <a href="https://github.com/jkbrzt/httpie/search?l=bash" data-ga-click="Repository, language stats search click, location:repo overview">
+                <span class="color-block language-color" style="background-color: rgb(137, 224, 81);"></span>
+                <span class="lang">Shell</span>
+                <span class="percent">2.0%</span>
+              </a>
+          </li>
+          <li>
+              <a href="https://github.com/jkbrzt/httpie/search?l=makefile" data-ga-click="Repository, language stats search click, location:repo overview">
+                <span class="color-block language-color" style="background-color: rgb(66, 120, 25);"></span>
+                <span class="lang">Makefile</span>
+                <span class="percent">1.1%</span>
+              </a>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="repository-lang-stats-graph js-toggle-lang-stats" title="Click for language details" data-ga-click="Repository, language bar stats toggle, location:repo overview">
+    <span class="language-color" aria-label="Python 96.9%" style="width: 96.9%; background-color: rgb(53, 114, 165);" itemprop="keywords">Python</span>
+    <span class="language-color" aria-label="Shell 2.0%" style="width: 2%; background-color: rgb(137, 224, 81);" itemprop="keywords">Shell</span>
+    <span class="language-color" aria-label="Makefile 1.1%" style="width: 1.1%; background-color: rgb(66, 120, 25);" itemprop="keywords">Makefile</span>
+  </div>
+
+  
+
+<div class="file-navigation in-mid-page">
+
+    <div class="select-menu get-repo-select-menu js-menu-container right select-menu-modal-right">
+  <button class="btn btn-sm btn-primary select-menu-button js-menu-target" title="Clone or download this repository" type="button" aria-label="Clone or download this repository" tabindex="0" aria-haspopup="true">
+    <span>Clone or download</span>
+  </button>
+
+  <div class="select-menu-modal-holder dropdown-menu-content js-menu-content" aria-hidden="true">
+    <div class="get-repo-modal dropdown-menu dropdown-menu-sw pb-0 js-toggler-container ">
+      <div class="clone-options https-clone-options">
+          <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="https://github.com/users/set_protocol?protocol_selector=ssh&amp;protocol_type=clone" data-form-nonce="84da46a5ca5dc665232f8b3d18ab77c9d7b5d735" data-remote="true" method="post"><div style="margin: 0px; padding: 0px; display: inline;"><input name="utf8" value="✓" type="hidden"><input name="authenticity_token" value="/PZ/ybAqbKes98NP5dhi28nIN+SZ2W7SNNy010OoKlnN/73aWncI/RZ5hndkjZwKU2OsRL2GXaOYcGcoXz/hGA==" type="hidden"></div><button class="btn-link btn-change-protocol js-toggler-target right" type="submit">Use SSH</button></form>
+
+        <h4 class="mb-1">
+          Clone with HTTPS
+          <a class="muted-link" href="https://help.github.com/articles/which-remote-url-should-i-use" target="_blank">
+            <svg aria-hidden="true" class="octicon octicon-question" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path d="M6 10h2v2H6v-2zm4-3.5C10 8.64 8 9 8 9H6c0-.55.45-1 1-1h.5c.28 0 .5-.22.5-.5v-1c0-.28-.22-.5-.5-.5h-1c-.28 0-.5.22-.5.5V7H4c0-1.5 1.5-3 3-3s3 1 3 2.5zM7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7z"></path></svg>
+          </a>
+        </h4>
+        <p class="mb-2 get-repo-decription-text">
+          Use Git or checkout with SVN using the web URL.
+        </p>
+
+        <div class="input-group js-zeroclipboard-container has-zeroclipboard-disabled">
+  <input class="form-control input-monospace input-sm js-zeroclipboard-target js-url-field" value="https://github.com/jkbrzt/httpie.git" aria-label="Clone this repository at https://github.com/jkbrzt/httpie.git" readonly="" type="text">
+  <div class="input-group-button">
+    
+  </div>
+</div>
+
+      </div>
+
+        <div class="clone-options ssh-clone-options">
+          <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="https://github.com/users/set_protocol?protocol_selector=https&amp;protocol_type=clone" data-form-nonce="84da46a5ca5dc665232f8b3d18ab77c9d7b5d735" data-remote="true" method="post"><div style="margin: 0px; padding: 0px; display: inline;"><input name="utf8" value="✓" type="hidden"><input name="authenticity_token" value="clc50ItVJjobO+NUq5E+P3ODBe9vfZFpzM/p2qyWsZV8j+mAdGFv7ue+bNgFX+v3wwtR5cVX6C3envP3Au8Nqw==" type="hidden"></div><button class="btn-link btn-change-protocol js-toggler-target right" type="submit">Use HTTPS</button></form>
+
+          <h4 class="mb-1">
+            Clone with SSH
+            <a class="muted-link" href="https://help.github.com/articles/which-remote-url-should-i-use" target="_blank">
+              <svg aria-hidden="true" class="octicon octicon-question" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path d="M6 10h2v2H6v-2zm4-3.5C10 8.64 8 9 8 9H6c0-.55.45-1 1-1h.5c.28 0 .5-.22.5-.5v-1c0-.28-.22-.5-.5-.5h-1c-.28 0-.5.22-.5.5V7H4c0-1.5 1.5-3 3-3s3 1 3 2.5zM7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7z"></path></svg>
+            </a>
+          </h4>
+          <p class="mb-2 get-repo-decription-text">
+            Use an SSH key and passphrase from account.
+          </p>
+
+          <div class="input-group js-zeroclipboard-container has-zeroclipboard-disabled">
+  <input class="form-control input-monospace input-sm js-zeroclipboard-target js-url-field" value="git@github.com:jkbrzt/httpie.git" aria-label="Clone this repository at git@github.com:jkbrzt/httpie.git" readonly="" type="text">
+  <div class="input-group-button">
+    
+  </div>
+</div>
+
+        </div>
+
+      <div class="mt-2">
+        
+<a href="https://github.com/jkbrzt/httpie/archive/master.zip" class="btn btn-outline get-repo-btn
+" rel="nofollow" data-ga-click="Repository, download zip, location:repo overview">
+  Download ZIP
+</a>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <div class="btn-group right">
+      
+  <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="https://github.com/jkbrzt/httpie/new/master" class="btn-group-form" data-form-nonce="84da46a5ca5dc665232f8b3d18ab77c9d7b5d735" method="post"><div style="margin: 0px; padding: 0px; display: inline;"><input name="utf8" value="✓" type="hidden"><input name="authenticity_token" value="83GWyBsbV+hcHrSxSfoUpZjPxJTosSaHIqyg/5ZMDNWsRMu99Nm6kMYnNkeaF1OrKPd5hwfnG+Q/PtcKBT5jGg==" type="hidden"></div>
+    <button class="btn btn-sm" type="submit" data-disable-with="Creating file…">
+      Create new file
+    </button>
+</form>
+
+      <a href="https://github.com/jkbrzt/httpie/upload/master" class="btn btn-sm">
+        Upload files
+      </a>
+
+    <a href="https://github.com/jkbrzt/httpie/find/master" class="btn btn-sm empty-icon right" data-pjax="" data-hotkey="t" data-ga-click="Repository, find file, location:repo overview">
+      Find file
+    </a>
+  </div>
+
+  
+<div class="select-menu branch-select-menu js-menu-container js-select-menu left">
+  <button class="btn btn-sm select-menu-button js-menu-target css-truncate" data-hotkey="w" type="button" aria-label="Switch branches or tags" tabindex="0" aria-haspopup="true">
+    <i>Branch:</i>
+    <span class="js-select-button css-truncate-target">master</span>
+  </button>
+
+  <div class="select-menu-modal-holder js-menu-content js-navigation-container" data-pjax="" aria-hidden="true">
+
+    <div class="select-menu-modal">
+      <div class="select-menu-header">
+        <svg aria-label="Close" class="octicon octicon-x js-menu-close" height="16" role="img" version="1.1" viewBox="0 0 12 16" width="12"><path d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48z"></path></svg>
+        <span class="select-menu-title">Switch branches/tags</span>
+      </div>
+
+      <div class="select-menu-filters">
+        <div class="select-menu-text-filter">
+          <input aria-label="Filter branches/tags" id="context-commitish-filter-field" class="form-control js-filterable-field js-navigation-enable" placeholder="Filter branches/tags" type="text">
+        </div>
+        <div class="select-menu-tabs">
+          <ul>
+            <li class="select-menu-tab">
+              <a href="#" data-tab-filter="branches" data-filter-placeholder="Filter branches/tags" class="js-select-menu-tab" role="tab">Branches</a>
+            </li>
+            <li class="select-menu-tab">
+              <a href="#" data-tab-filter="tags" data-filter-placeholder="Find a tag…" class="js-select-menu-tab" role="tab">Tags</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="select-menu-list select-menu-tab-bucket js-select-menu-tab-bucket" data-tab-filter="branches" role="menu">
+
+        <div data-filterable-for="context-commitish-filter-field" data-filterable-type="substring">
+
+
+            <a class="select-menu-item js-navigation-item js-navigation-open selected" href="https://github.com/jkbrzt/httpie/tree/master" data-name="master" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target js-select-menu-filter-text">
+                master
+              </span>
+            </a>
+        </div>
+
+          <div class="select-menu-no-results">Nothing to show</div>
+      </div>
+
+      <div class="select-menu-list select-menu-tab-bucket js-select-menu-tab-bucket" data-tab-filter="tags">
+        <div data-filterable-for="context-commitish-filter-field" data-filterable-type="substring">
+
+
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/jkbrzt/httpie/tree/0.9.6" data-name="0.9.6" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target">
+                0.9.6
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/jkbrzt/httpie/tree/0.9.4" data-name="0.9.4" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target">
+                0.9.4
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/jkbrzt/httpie/tree/0.9.3" data-name="0.9.3" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target">
+                0.9.3
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/jkbrzt/httpie/tree/0.9.2" data-name="0.9.2" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target">
+                0.9.2
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/jkbrzt/httpie/tree/0.9.1" data-name="0.9.1" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target">
+                0.9.1
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/jkbrzt/httpie/tree/0.9.0" data-name="0.9.0" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target">
+                0.9.0
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/jkbrzt/httpie/tree/0.8.0" data-name="0.8.0" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target">
+                0.8.0
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/jkbrzt/httpie/tree/0.7.1" data-name="0.7.1" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target">
+                0.7.1
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/jkbrzt/httpie/tree/0.7.0" data-name="0.7.0" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target">
+                0.7.0
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/jkbrzt/httpie/tree/0.6.0" data-name="0.6.0" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target">
+                0.6.0
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/jkbrzt/httpie/tree/0.5.1" data-name="0.5.1" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target">
+                0.5.1
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/jkbrzt/httpie/tree/0.5.0" data-name="0.5.0" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target">
+                0.5.0
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/jkbrzt/httpie/tree/0.4.1" data-name="0.4.1" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target">
+                0.4.1
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/jkbrzt/httpie/tree/0.4.0" data-name="0.4.0" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target">
+                0.4.0
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/jkbrzt/httpie/tree/0.3.1" data-name="0.3.1" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target">
+                0.3.1
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/jkbrzt/httpie/tree/0.3.0" data-name="0.3.0" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target">
+                0.3.0
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/jkbrzt/httpie/tree/0.2.7" data-name="0.2.7" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target">
+                0.2.7
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/jkbrzt/httpie/tree/0.2.6" data-name="0.2.6" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target">
+                0.2.6
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/jkbrzt/httpie/tree/0.2.5" data-name="0.2.5" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target">
+                0.2.5
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/jkbrzt/httpie/tree/0.2.4" data-name="0.2.4" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target">
+                0.2.4
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/jkbrzt/httpie/tree/0.2.3" data-name="0.2.3" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target">
+                0.2.3
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/jkbrzt/httpie/tree/0.2.2" data-name="0.2.2" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target">
+                0.2.2
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/jkbrzt/httpie/tree/0.2.1" data-name="0.2.1" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target">
+                0.2.1
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/jkbrzt/httpie/tree/0.2.0" data-name="0.2.0" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target">
+                0.2.0
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/jkbrzt/httpie/tree/0.1.6" data-name="0.1.6" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target">
+                0.1.6
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/jkbrzt/httpie/tree/0.1.5" data-name="0.1.5" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target">
+                0.1.5
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/jkbrzt/httpie/tree/0.1.4" data-name="0.1.4" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target">
+                0.1.4
+              </span>
+            </a>
+        </div>
+
+        <div class="select-menu-no-results">Nothing to show</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+      <a href="https://github.com/jkbrzt/httpie/pull/new/master" class="btn btn-sm new-pull-request-btn" data-pjax="" data-ga-click="Repository, new pull request, location:repo overview">
+        New pull request
+      </a>
+
+  <div class="breadcrumb">
+    
+  </div>
+</div>
+
+
+
+
+
+  <div class="commit-tease js-details-container">
+    <span class="right">
+      Latest commit
+      <a class="commit-tease-sha" href="https://github.com/jkbrzt/httpie/commit/5efc9010ccc260d99e5790fa1a9fe5b06039ae96" data-pjax="">
+        5efc901
+      </a>
+      <span itemprop="dateModified"><relative-time title="2016年08月14日 星期日 17时36分21秒" datetime="2016-08-14T09:36:21Z">5 days ago</relative-time></span>
+    </span>
+
+
+    <span class="commit-author-section">
+      <img alt="@jkbrzt" class="avatar" src="326885.dat" width="20" height="20">
+      <a href="https://github.com/jkbrzt" class="user-mention" rel="author">jkbrzt</a>
+        committed on <strong>GitHub</strong>
+    </span>
+
+        <a href="https://github.com/jkbrzt/httpie/commit/5efc9010ccc260d99e5790fa1a9fe5b06039ae96" class="message" data-pjax="true" title="Update CHANGELOG.rst">Update CHANGELOG.rst</a>
+    
+
+  </div>
+
+
+<div class="file-wrap">
+
+  <a href="https://github.com/jkbrzt/httpie/tree/5efc9010ccc260d99e5790fa1a9fe5b06039ae96" class="hidden js-permalink-shortcut" data-hotkey="y">Permalink</a>
+
+  <table class="files js-navigation-container js-active-navigation-container" data-pjax="">
+
+
+    <tbody>
+      <tr class="warning include-fragment-error">
+        <td class="icon"><svg aria-hidden="true" class="octicon octicon-alert" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M8.865 1.52c-.18-.31-.51-.5-.87-.5s-.69.19-.87.5L.275 13.5c-.18.31-.18.69 0 1 .19.31.52.5.87.5h13.7c.36 0 .69-.19.86-.5.17-.31.18-.69.01-1L8.865 1.52zM8.995 13h-2v-2h2v2zm0-3h-2V6h2v4z"></path></svg></td>
+        <td class="content" colspan="3">Failed to load latest commit information.</td>
+      </tr>
+
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <svg aria-hidden="true" class="octicon octicon-file-directory" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path d="M13 4H7V3c0-.66-.31-1-1-1H1c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1V5c0-.55-.45-1-1-1zM6 4H1V3h5v1z"></path></svg>
+            <img alt="" class="spinner" src="octocat-spinner-32.gif" width="16" height="16">
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="https://github.com/jkbrzt/httpie/tree/master/extras" class="js-navigation-open" id="27353006cfd751d26221e04a7928034d-dfe3510a6b1039d4c3e5fdf878dce5bc775f8699" title="extras">extras</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+                  <a href="https://github.com/jkbrzt/httpie/commit/8a9206eceb705c5665c68d80b26a2540a0f038d8" class="message" data-pjax="true" title="Fixed Makefile">Fixed Makefile</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time-ago title="2016年08月14日 星期日 04时57分44秒" datetime="2016-08-13T20:57:44Z">5 days ago</time-ago></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <svg aria-hidden="true" class="octicon octicon-file-directory" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path d="M13 4H7V3c0-.66-.31-1-1-1H1c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1V5c0-.55-.45-1-1-1zM6 4H1V3h5v1z"></path></svg>
+            <img alt="" class="spinner" src="octocat-spinner-32.gif" width="16" height="16">
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="https://github.com/jkbrzt/httpie/tree/master/httpie" class="js-navigation-open" id="ef4b313016b6c8bb14c01fc3c096dc34-9d413878d5b952db5f12366e9eb7645a261f0d47" title="httpie">httpie</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+                  <a href="https://github.com/jkbrzt/httpie/commit/8e962383235badcdc56118385edb343df3f624fe" class="message" data-pjax="true" title="v0.9.6">v0.9.6</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time-ago title="2016年08月14日 星期日 05时01分05秒" datetime="2016-08-13T21:01:05Z">5 days ago</time-ago></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <svg aria-hidden="true" class="octicon octicon-file-directory" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path d="M13 4H7V3c0-.66-.31-1-1-1H1c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1V5c0-.55-.45-1-1-1zM6 4H1V3h5v1z"></path></svg>
+            <img alt="" class="spinner" src="octocat-spinner-32.gif" width="16" height="16">
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="https://github.com/jkbrzt/httpie/tree/master/tests" class="js-navigation-open" id="b61a6d542f9036550ba9c401c80f00ef-6fc3a7ce3811b088e8aa5ce296621dd288a321d3" title="tests">tests</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+                  <a href="https://github.com/jkbrzt/httpie/commit/8f6bee9196f2cacee9cc94de537c63ca15bd75dd" class="message" data-pjax="true" title="codestyle fixes">codestyle fixes</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time-ago title="2016年07月20日 星期三 00时23分40秒" datetime="2016-07-19T16:23:40Z">a month ago</time-ago></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <svg aria-hidden="true" class="octicon octicon-file-text" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M6 5H2V4h4v1zM2 8h7V7H2v1zm0 2h7V9H2v1zm0 2h7v-1H2v1zm10-7.5V14c0 .55-.45 1-1 1H1c-.55 0-1-.45-1-1V2c0-.55.45-1 1-1h7.5L12 4.5zM11 5L8 2H1v12h10V5z"></path></svg>
+            <img alt="" class="spinner" src="octocat-spinner-32.gif" width="16" height="16">
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="https://github.com/jkbrzt/httpie/blob/master/.coveragerc" class="js-navigation-open" id="6f1f859c6ca5c4cae7310924786cf661-99e1cbc0be4fa851544282e079189b79b63a2b9b" title=".coveragerc">.coveragerc</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+                  <a href="https://github.com/jkbrzt/httpie/commit/13a979ad1165e1c6d49d422a8b5229db81972a15" class="message" data-pjax="true" title="Cleanup">Cleanup</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time-ago title="2016年03月02日 星期三 14时20分35秒" datetime="2016-03-02T06:20:35Z">6 months ago</time-ago></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <svg aria-hidden="true" class="octicon octicon-file-text" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M6 5H2V4h4v1zM2 8h7V7H2v1zm0 2h7V9H2v1zm0 2h7v-1H2v1zm10-7.5V14c0 .55-.45 1-1 1H1c-.55 0-1-.45-1-1V2c0-.55.45-1 1-1h7.5L12 4.5zM11 5L8 2H1v12h10V5z"></path></svg>
+            <img alt="" class="spinner" src="octocat-spinner-32.gif" width="16" height="16">
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="https://github.com/jkbrzt/httpie/blob/master/.editorconfig" class="js-navigation-open" id="1e70daafb475c0ce3fef7d2728279182-532b12b6de8c19f449db35852170a37258a8fc1b" title=".editorconfig">.editorconfig</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+                  <a href="https://github.com/jkbrzt/httpie/commit/ab0d1fd8d09e048fd34c71076b7c79389b29fc70" class="message" data-pjax="true" title="Added .editorconfig.">Added .editorconfig.</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time-ago title="2015年03月14日 星期六 00时17分17秒" datetime="2015-03-13T16:17:17Z">a year ago</time-ago></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <svg aria-hidden="true" class="octicon octicon-file-text" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M6 5H2V4h4v1zM2 8h7V7H2v1zm0 2h7V9H2v1zm0 2h7v-1H2v1zm10-7.5V14c0 .55-.45 1-1 1H1c-.55 0-1-.45-1-1V2c0-.55.45-1 1-1h7.5L12 4.5zM11 5L8 2H1v12h10V5z"></path></svg>
+            <img alt="" class="spinner" src="octocat-spinner-32.gif" width="16" height="16">
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="https://github.com/jkbrzt/httpie/blob/master/.gitignore" class="js-navigation-open" id="a084b794bc0759e7a6b77810e01874f2-0131d9ac8dc4144299211b4e12b18fb035de4067" title=".gitignore">.gitignore</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+                  <a href="https://github.com/jkbrzt/httpie/commit/74e4d0b67852ab0b628f687ac62e2d509fa74b61" class="message" data-pjax="true" title="Added JSON detection when ``--json, -j`` is set
+
+To correctly format JSON responses even when an incorrect ``Content-Type`` is returned.
+
+Closes #92
+Closes #349
+Closes #368">Added JSON detection when ``--json, -j`` is set</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time-ago title="2016年03月01日 星期二 14时57分15秒" datetime="2016-03-01T06:57:15Z">6 months ago</time-ago></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <svg aria-hidden="true" class="octicon octicon-file-text" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M6 5H2V4h4v1zM2 8h7V7H2v1zm0 2h7V9H2v1zm0 2h7v-1H2v1zm10-7.5V14c0 .55-.45 1-1 1H1c-.55 0-1-.45-1-1V2c0-.55.45-1 1-1h7.5L12 4.5zM11 5L8 2H1v12h10V5z"></path></svg>
+            <img alt="" class="spinner" src="octocat-spinner-32.gif" width="16" height="16">
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="https://github.com/jkbrzt/httpie/blob/master/.travis.yml" class="js-navigation-open" id="354f30a63fb0907d4ad57269548329e3-f0a6ca02ed31783163c9bef216f8253096c6b90e" title=".travis.yml">.travis.yml</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+                  <a href="https://github.com/jkbrzt/httpie/commit/becb63de9a0c0ccedd5c2e1073045b088cd76f98" class="message" data-pjax="true" title="useful info">useful info</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time-ago title="2016年07月27日 星期三 04时59分34秒" datetime="2016-07-26T20:59:34Z">23 days ago</time-ago></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <svg aria-hidden="true" class="octicon octicon-file-text" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M6 5H2V4h4v1zM2 8h7V7H2v1zm0 2h7V9H2v1zm0 2h7v-1H2v1zm10-7.5V14c0 .55-.45 1-1 1H1c-.55 0-1-.45-1-1V2c0-.55.45-1 1-1h7.5L12 4.5zM11 5L8 2H1v12h10V5z"></path></svg>
+            <img alt="" class="spinner" src="octocat-spinner-32.gif" width="16" height="16">
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="https://github.com/jkbrzt/httpie/blob/master/AUTHORS.rst" class="js-navigation-open" id="830968569b50f87c82e22a0042a7f760-542191ffcfe3ba78f435e63d9985b3155c4b7bac" title="AUTHORS.rst">AUTHORS.rst</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+                  <a href="https://github.com/jkbrzt/httpie/commit/af737fd3384aeb973fb97b4aea0de9cafd299bc8" class="message" data-pjax="true" title="Fixed spelling mistage `GitHib` to `GitHub`">Fixed spelling mistage `GitHib` to `GitHub`</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time-ago title="2016年08月11日 星期四 07时43分15秒" datetime="2016-08-10T23:43:15Z">8 days ago</time-ago></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <svg aria-hidden="true" class="octicon octicon-file-text" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M6 5H2V4h4v1zM2 8h7V7H2v1zm0 2h7V9H2v1zm0 2h7v-1H2v1zm10-7.5V14c0 .55-.45 1-1 1H1c-.55 0-1-.45-1-1V2c0-.55.45-1 1-1h7.5L12 4.5zM11 5L8 2H1v12h10V5z"></path></svg>
+            <img alt="" class="spinner" src="octocat-spinner-32.gif" width="16" height="16">
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="https://github.com/jkbrzt/httpie/blob/master/CHANGELOG.rst" class="js-navigation-open" id="de0a9b67ffe2874a076b5fdb15bad484-460a9b7c20721705939fa67bd2b69d2e8f028957" title="CHANGELOG.rst">CHANGELOG.rst</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+                  <a href="https://github.com/jkbrzt/httpie/commit/5efc9010ccc260d99e5790fa1a9fe5b06039ae96" class="message" data-pjax="true" title="Update CHANGELOG.rst">Update CHANGELOG.rst</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time-ago title="2016年08月14日 星期日 17时36分21秒" datetime="2016-08-14T09:36:21Z">5 days ago</time-ago></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <svg aria-hidden="true" class="octicon octicon-file-text" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M6 5H2V4h4v1zM2 8h7V7H2v1zm0 2h7V9H2v1zm0 2h7v-1H2v1zm10-7.5V14c0 .55-.45 1-1 1H1c-.55 0-1-.45-1-1V2c0-.55.45-1 1-1h7.5L12 4.5zM11 5L8 2H1v12h10V5z"></path></svg>
+            <img alt="" class="spinner" src="octocat-spinner-32.gif" width="16" height="16">
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="https://github.com/jkbrzt/httpie/blob/master/CONTRIBUTING.rst" class="js-navigation-open" id="ea1f65a8eaac0cec7ae151dfdbbbc587-ca57350de4df3cdaae6d431d12801d2e551d20a8" title="CONTRIBUTING.rst">CONTRIBUTING.rst</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+                  <a href="https://github.com/jkbrzt/httpie/commit/c82c9f0ae4317bcc2b9210b0fd61fb16d7a4041e" class="message" data-pjax="true" title="Makefile improvements">Makefile improvements</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time-ago title="2016年01月03日 星期日 01时28分46秒" datetime="2016-01-02T17:28:46Z">8 months ago</time-ago></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <svg aria-hidden="true" class="octicon octicon-file-text" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M6 5H2V4h4v1zM2 8h7V7H2v1zm0 2h7V9H2v1zm0 2h7v-1H2v1zm10-7.5V14c0 .55-.45 1-1 1H1c-.55 0-1-.45-1-1V2c0-.55.45-1 1-1h7.5L12 4.5zM11 5L8 2H1v12h10V5z"></path></svg>
+            <img alt="" class="spinner" src="octocat-spinner-32.gif" width="16" height="16">
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="https://github.com/jkbrzt/httpie/blob/master/LICENSE" class="js-navigation-open" id="9879d6db96fd29134fc802214163b95a-b84d413a10cb733b126151407213d8c84a9317d0" itemprop="license" title="LICENSE">LICENSE</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+                  <a href="https://github.com/jkbrzt/httpie/commit/a6a79e92e42cf09b1c873e78cf77ba6723f20d36" class="message" data-pjax="true" title="Update license year range to 2016">Update license year range to 2016</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time-ago title="2016年01月18日 星期一 13时50分24秒" datetime="2016-01-18T05:50:24Z">7 months ago</time-ago></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <svg aria-hidden="true" class="octicon octicon-file-text" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M6 5H2V4h4v1zM2 8h7V7H2v1zm0 2h7V9H2v1zm0 2h7v-1H2v1zm10-7.5V14c0 .55-.45 1-1 1H1c-.55 0-1-.45-1-1V2c0-.55.45-1 1-1h7.5L12 4.5zM11 5L8 2H1v12h10V5z"></path></svg>
+            <img alt="" class="spinner" src="octocat-spinner-32.gif" width="16" height="16">
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="https://github.com/jkbrzt/httpie/blob/master/MANIFEST.in" class="js-navigation-open" id="97c91a104c431d0c365565d3ac03ac13-3d6d0baba9168c9c22e51fe50f607529a36fe4d7" title="MANIFEST.in">MANIFEST.in</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+                  <a href="https://github.com/jkbrzt/httpie/commit/fb437591dae366a9bcd9366d6b32481a8ab4316e" class="message" data-pjax="true" title="Include AUTHORS.rst in dist; metadata cleanup">Include AUTHORS.rst in dist; metadata cleanup</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time-ago title="2015年02月17日 星期二 04时42分09秒" datetime="2015-02-16T20:42:09Z">2 years ago</time-ago></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <svg aria-hidden="true" class="octicon octicon-file-text" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M6 5H2V4h4v1zM2 8h7V7H2v1zm0 2h7V9H2v1zm0 2h7v-1H2v1zm10-7.5V14c0 .55-.45 1-1 1H1c-.55 0-1-.45-1-1V2c0-.55.45-1 1-1h7.5L12 4.5zM11 5L8 2H1v12h10V5z"></path></svg>
+            <img alt="" class="spinner" src="octocat-spinner-32.gif" width="16" height="16">
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="https://github.com/jkbrzt/httpie/blob/master/Makefile" class="js-navigation-open" id="b67911656ef5d18c4ae36cb6741b7965-ce83fcde5473b7453de2d7124fa185918f8726e3" title="Makefile">Makefile</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+                  <a href="https://github.com/jkbrzt/httpie/commit/8a9206eceb705c5665c68d80b26a2540a0f038d8" class="message" data-pjax="true" title="Fixed Makefile">Fixed Makefile</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time-ago title="2016年08月14日 星期日 04时57分44秒" datetime="2016-08-13T20:57:44Z">5 days ago</time-ago></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <svg aria-hidden="true" class="octicon octicon-file-text" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M6 5H2V4h4v1zM2 8h7V7H2v1zm0 2h7V9H2v1zm0 2h7v-1H2v1zm10-7.5V14c0 .55-.45 1-1 1H1c-.55 0-1-.45-1-1V2c0-.55.45-1 1-1h7.5L12 4.5zM11 5L8 2H1v12h10V5z"></path></svg>
+            <img alt="" class="spinner" src="octocat-spinner-32.gif" width="16" height="16">
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="https://github.com/jkbrzt/httpie/blob/master/README.rst" class="js-navigation-open" id="88b99bb28683bd5b7e3a204826ead112-e6c4ff05fba0b71fcbaefc283d85ace0211c5276" title="README.rst">README.rst</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+                  <a href="https://github.com/jkbrzt/httpie/commit/c4b309164f0ca7ea4819b1d27a02fb9c4e16833f" class="message" data-pjax="true" title="Updated README.rst to add Arch Linux install docs.">Updated README.rst to add Arch Linux install docs.</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time-ago title="2016年08月14日 星期日 10时08分37秒" datetime="2016-08-14T02:08:37Z">5 days ago</time-ago></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <svg aria-hidden="true" class="octicon octicon-file-text" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M6 5H2V4h4v1zM2 8h7V7H2v1zm0 2h7V9H2v1zm0 2h7v-1H2v1zm10-7.5V14c0 .55-.45 1-1 1H1c-.55 0-1-.45-1-1V2c0-.55.45-1 1-1h7.5L12 4.5zM11 5L8 2H1v12h10V5z"></path></svg>
+            <img alt="" class="spinner" src="octocat-spinner-32.gif" width="16" height="16">
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="https://github.com/jkbrzt/httpie/blob/master/appveyor.yml" class="js-navigation-open" id="180360612c6b8c4ed830919bbb4dd459-d5be13447e11ec38e79e0779b7699bc1e82f92f8" title="appveyor.yml">appveyor.yml</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+                  <a href="https://github.com/jkbrzt/httpie/commit/fb85509e917836c7bfd18127d5908526b2a66e5e" class="message" data-pjax="true" title="CI">CI</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time-ago title="2016年03月02日 星期三 09时58分50秒" datetime="2016-03-02T01:58:50Z">6 months ago</time-ago></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <svg aria-hidden="true" class="octicon octicon-file-text" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M6 5H2V4h4v1zM2 8h7V7H2v1zm0 2h7V9H2v1zm0 2h7v-1H2v1zm10-7.5V14c0 .55-.45 1-1 1H1c-.55 0-1-.45-1-1V2c0-.55.45-1 1-1h7.5L12 4.5zM11 5L8 2H1v12h10V5z"></path></svg>
+            <img alt="" class="spinner" src="octocat-spinner-32.gif" width="16" height="16">
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="https://github.com/jkbrzt/httpie/blob/master/httpie.png" class="js-navigation-open" id="490b4b4cc4df006cd24bdc298a8dfc54-803dc538b2853f7f79537b7b73796478542f5e49" title="httpie.png">httpie.png</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+                  <a href="https://github.com/jkbrzt/httpie/commit/dd0a4ab87a5121da7ed63fa453a7d65a6285b3eb" class="message" data-pjax="true" title="Default --style to &quot;monokai&quot;
+
+419ca85">Default --style to "monokai"</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time-ago title="2015年02月15日 星期日 05时51分31秒" datetime="2015-02-14T21:51:31Z">2 years ago</time-ago></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <svg aria-hidden="true" class="octicon octicon-file-text" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M6 5H2V4h4v1zM2 8h7V7H2v1zm0 2h7V9H2v1zm0 2h7v-1H2v1zm10-7.5V14c0 .55-.45 1-1 1H1c-.55 0-1-.45-1-1V2c0-.55.45-1 1-1h7.5L12 4.5zM11 5L8 2H1v12h10V5z"></path></svg>
+            <img alt="" class="spinner" src="octocat-spinner-32.gif" width="16" height="16">
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="https://github.com/jkbrzt/httpie/blob/master/pytest.ini" class="js-navigation-open" id="513c9b6861fc981fb2c708db477f542c-f132993de7a00b7b3ade20d9075bb68c1ad87a8b" title="pytest.ini">pytest.ini</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+                  <a href="https://github.com/jkbrzt/httpie/commit/66e168b2afe4c9ba94275eb8649ddb8a03779679" class="message" data-pjax="true" title="Improved failed test output">Improved failed test output</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time-ago title="2016年03月02日 星期三 13时16分41秒" datetime="2016-03-02T05:16:41Z">6 months ago</time-ago></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <svg aria-hidden="true" class="octicon octicon-file-text" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M6 5H2V4h4v1zM2 8h7V7H2v1zm0 2h7V9H2v1zm0 2h7v-1H2v1zm10-7.5V14c0 .55-.45 1-1 1H1c-.55 0-1-.45-1-1V2c0-.55.45-1 1-1h7.5L12 4.5zM11 5L8 2H1v12h10V5z"></path></svg>
+            <img alt="" class="spinner" src="octocat-spinner-32.gif" width="16" height="16">
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="https://github.com/jkbrzt/httpie/blob/master/requirements-dev.txt" class="js-navigation-open" id="f4c265073ea4274a80eca85440875e56-0578ada35be9b4a3e5c5e50c1752c56780269be5" title="requirements-dev.txt">requirements-dev.txt</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+                  <a href="https://github.com/jkbrzt/httpie/commit/cbbaac13ea775c4e937bc259c25501cc77ca1010" class="message" data-pjax="true" title="Merge pull request #300 from msabramo/print_info_about_request_on_error
+
+Print info about request on error">Merge pull request</a> <a href="https://github.com/jkbrzt/httpie/pull/300" class="issue-link js-issue-link" data-url="https://github.com/jkbrzt/httpie/issues/300" data-id="56568301" data-error-text="Failed to load issue title" data-permission-text="Issue title is private">#300</a> <a href="https://github.com/jkbrzt/httpie/commit/cbbaac13ea775c4e937bc259c25501cc77ca1010" class="message" data-pjax="true" title="Merge pull request #300 from msabramo/print_info_about_request_on_error
+
+Print info about request on error">from msabramo/print_info_about_request_on_error</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time-ago title="2015年03月26日 星期四 05时21分18秒" datetime="2015-03-25T21:21:18Z">a year ago</time-ago></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <svg aria-hidden="true" class="octicon octicon-file-text" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M6 5H2V4h4v1zM2 8h7V7H2v1zm0 2h7V9H2v1zm0 2h7v-1H2v1zm10-7.5V14c0 .55-.45 1-1 1H1c-.55 0-1-.45-1-1V2c0-.55.45-1 1-1h7.5L12 4.5zM11 5L8 2H1v12h10V5z"></path></svg>
+            <img alt="" class="spinner" src="octocat-spinner-32.gif" width="16" height="16">
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="https://github.com/jkbrzt/httpie/blob/master/setup.cfg" class="js-navigation-open" id="380c6a8ebbbce17d55d50ef17d3cf906-5e4090017a9bec5de60a745d17007a9e95f31a43" title="setup.cfg">setup.cfg</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+                  <a href="https://github.com/jkbrzt/httpie/commit/5a989b6075785c25ab8d4d96a30febbaa3cd7c7d" class="message" data-pjax="true" title="Fixed Makefile, added setup.cfg.">Fixed Makefile, added setup.cfg.</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time-ago title="2014年04月28日 星期一 19时27分02秒" datetime="2014-04-28T11:27:02Z">2 years ago</time-ago></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <svg aria-hidden="true" class="octicon octicon-file-text" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M6 5H2V4h4v1zM2 8h7V7H2v1zm0 2h7V9H2v1zm0 2h7v-1H2v1zm10-7.5V14c0 .55-.45 1-1 1H1c-.55 0-1-.45-1-1V2c0-.55.45-1 1-1h7.5L12 4.5zM11 5L8 2H1v12h10V5z"></path></svg>
+            <img alt="" class="spinner" src="octocat-spinner-32.gif" width="16" height="16">
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="https://github.com/jkbrzt/httpie/blob/master/setup.py" class="js-navigation-open" id="2eeaed663bd0d25b7e608891384b7298-3dc8862095e78254f5bc214c676b2e01c7412944" title="setup.py">setup.py</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+                  <a href="https://github.com/jkbrzt/httpie/commit/8ac3c5961ca96500034c34d589f4ecab77bcce97" class="message" data-pjax="true" title="Upgrade Pygments version">Upgrade Pygments version</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time-ago title="2016年08月14日 星期日 04时57分33秒" datetime="2016-08-13T20:57:33Z">5 days ago</time-ago></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <svg aria-hidden="true" class="octicon octicon-file-text" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M6 5H2V4h4v1zM2 8h7V7H2v1zm0 2h7V9H2v1zm0 2h7v-1H2v1zm10-7.5V14c0 .55-.45 1-1 1H1c-.55 0-1-.45-1-1V2c0-.55.45-1 1-1h7.5L12 4.5zM11 5L8 2H1v12h10V5z"></path></svg>
+            <img alt="" class="spinner" src="octocat-spinner-32.gif" width="16" height="16">
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="https://github.com/jkbrzt/httpie/blob/master/tox.ini" class="js-navigation-open" id="b91f3d5bd63fcd17221b267e851608e8-57cc5d9dd83742361c2ad1545885cd8cd8f868ad" title="tox.ini">tox.ini</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+                  <a href="https://github.com/jkbrzt/httpie/commit/becb63de9a0c0ccedd5c2e1073045b088cd76f98" class="message" data-pjax="true" title="useful info">useful info</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time-ago title="2016年07月27日 星期三 04时59分34秒" datetime="2016-07-26T20:59:34Z">23 days ago</time-ago></span>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+</div>
+
+
+
+  <div id="readme" class="readme boxed-group clearfix announce instapaper_body rst">
+    <h3>
+      <svg aria-hidden="true" class="octicon octicon-book" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M3 5h4v1H3V5zm0 3h4V7H3v1zm0 2h4V9H3v1zm11-5h-4v1h4V5zm0 2h-4v1h4V7zm0 2h-4v1h4V9zm2-6v9c0 .55-.45 1-1 1H9.5l-1 1-1-1H2c-.55 0-1-.45-1-1V3c0-.55.45-1 1-1h5.5l1 1 1-1H15c.55 0 1 .45 1 1zm-8 .5L7.5 3H2v9h6V3.5zm7-.5H9.5l-.5.5V12h6V3z"></path></svg>
+      README.rst
+    </h3>
+
+      <article class="markdown-body entry-content" itemprop="text"><h1><a id="user-content-httpie-a-cli-curl-like-tool-for-humans" class="anchor" href="#httpie-a-cli-curl-like-tool-for-humans" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>HTTPie: a CLI, cURL-like tool for humans</h1>
+<p>HTTPie (pronounced <em>aitch-tee-tee-pie</em>) is a <strong>command line HTTP client</strong>.
+Its goal is to make CLI interaction with web services as <strong>human-friendly</strong>
+as possible. It provides a simple <code>http</code> command that allows for sending
+arbitrary HTTP requests using a simple and natural syntax, and displays
+colorized output. HTTPie can be used for <strong>testing, debugging</strong>, and
+generally <strong>interacting</strong> with HTTP servers.</p>
+<a href="https://raw.githubusercontent.com/jkbrzt/httpie/master/httpie.png" target="_blank"><img alt="HTTPie compared to cURL" src="httpie.png" style="max-width: 100%;"></a>
+<p>HTTPie is written in Python, and under the hood it uses the excellent
+<a href="http://python-requests.org/">Requests</a> and <a href="http://pygments.org/">Pygments</a> libraries.</p>
+<hr>
+<p><a href="https://pypi.python.org/pypi/httpie"><img alt="Latest version released on PyPi" src="68747470733a2f2f696d672e736869656c64732e696f2f707970692f762f6874747069652e7376673f7374796c653d666c61742d737175617265266c61626....dat" data-canonical-src="https://img.shields.io/pypi/v/httpie.svg?style=flat-square&amp;label=latest%20stable%20version" style="max-width: 100%;"></a> <a href="http://travis-ci.org/jkbrzt/httpie"><img alt="Build status of the master branch on Mac/Linux" src="68747470733a2f2f696d672e736869656c64732e696f2f7472617669732f6a6b62727a742f6874747069652f6d61737465722e7376673f7374796c653d666....dat" data-canonical-src="https://img.shields.io/travis/jkbrzt/httpie/master.svg?style=flat-square&amp;label=unix%20build" style="max-width: 100%;"></a> <a href="https://ci.appveyor.com/project/jkbrzt/httpie"><img alt="Build status of the master branch on Windows" src="68747470733a2f2f696d672e736869656c64732e696f2f6170707665796f722f63692f6a6b62727a742f6874747069652e7376673f7374796c653d666c617....dat" data-canonical-src="https://img.shields.io/appveyor/ci/jkbrzt/httpie.svg?style=flat-square&amp;label=windows%20build" style="max-width: 100%;"></a> <a href="https://coveralls.io/r/jkbrzt/httpie?branch=master"><img alt="Test coverage" src="68747470733a2f2f696d672e736869656c64732e696f2f636f766572616c6c732f6a6b62727a742f6874747069652f6d61737465722e7376673f7374796c6....dat" data-canonical-src="https://img.shields.io/coveralls/jkbrzt/httpie/master.svg?style=flat-square&amp;label=coverage" style="max-width: 100%;"></a> <a href="https://gitter.im/jkbrzt/httpie"><img alt="Chat on Gitter" src="68747470733a2f2f6261646765732e6769747465722e696d2f6a6b62727a742f6874747069652e737667.dat" data-canonical-src="https://badges.gitter.im/jkbrzt/httpie.svg" style="max-width: 100%;">
+</a></p>
+<hr>
+<div id="user-content-contents">
+<ul>
+<li><a href="#main-features" id="user-content-id1">Main features</a></li>
+<li><a href="#installation" id="user-content-id2">Installation</a></li>
+<li><a href="#usage" id="user-content-id3">Usage</a></li>
+<li><a href="#http-method" id="user-content-id4">HTTP method</a></li>
+<li><a href="#request-url" id="user-content-id5">Request URL</a></li>
+<li><a href="#request-items" id="user-content-id6">Request items</a></li>
+<li><a href="#json" id="user-content-id7">JSON</a></li>
+<li><a href="#forms" id="user-content-id8">Forms</a></li>
+<li><a href="#http-headers" id="user-content-id9">HTTP headers</a></li>
+<li><a href="#authentication" id="user-content-id10">Authentication</a></li>
+<li><a href="#http-redirects" id="user-content-id11">HTTP redirects</a></li>
+<li><a href="#proxies" id="user-content-id12">Proxies</a></li>
+<li><a href="#https" id="user-content-id13">HTTPS</a></li>
+<li><a href="#output-options" id="user-content-id14">Output options</a></li>
+<li><a href="#redirected-input" id="user-content-id15">Redirected Input</a></li>
+<li><a href="#terminal-output" id="user-content-id16">Terminal output</a></li>
+<li><a href="#redirected-output" id="user-content-id17">Redirected output</a></li>
+<li><a href="#download-mode" id="user-content-id18">Download mode</a></li>
+<li><a href="#streamed-responses" id="user-content-id19">Streamed responses</a></li>
+<li><a href="#sessions" id="user-content-id20">Sessions</a></li>
+<li><a href="#config" id="user-content-id21">Config</a></li>
+<li><a href="#scripting" id="user-content-id22">Scripting</a></li>
+<li><a href="#interface-design" id="user-content-id23">Interface design</a></li>
+<li><a href="#support" id="user-content-id24">Support</a></li>
+<li><a href="#authors" id="user-content-id25">Authors</a></li>
+<li><a href="#logo" id="user-content-id26">Logo</a></li>
+<li><a href="#contribute" id="user-content-id27">Contribute</a></li>
+<li><a href="#change-log" id="user-content-id28">Change log</a></li>
+<li><a href="#licence" id="user-content-id29">Licence</a></li>
+<li><a href="#related-projects" id="user-content-id30">Related projects</a></li>
+</ul>
+</div>
+<a name="user-content-main-features"></a>
+<h2><a id="user-content-main-features" class="anchor" href="#main-features" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Main features</h2>
+<ul>
+<li>Expressive and intuitive syntax</li>
+<li>Formatted and colorized terminal output</li>
+<li>Built-in JSON support</li>
+<li>Forms and file uploads</li>
+<li>HTTPS, proxies, and authentication</li>
+<li>Arbitrary request data</li>
+<li>Custom headers</li>
+<li>Persistent sessions</li>
+<li>Wget-like downloads</li>
+<li>Python 2.6, 2.7 and 3.x support</li>
+<li>Linux, Mac OS X and Windows support</li>
+<li>Plugins</li>
+<li>Documentation</li>
+<li>Test coverage</li>
+</ul>
+<a name="user-content-installation"></a>
+<h2><a id="user-content-installation" class="anchor" href="#installation" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Installation</h2>
+<p>On <strong>Mac OS X</strong>, HTTPie can be installed via <a href="http://brew.sh/">Homebrew</a>
+(recommended):</p>
+<div class="highlight highlight-source-shell"><pre>$ brew install httpie</pre></div>
+<p>A MacPorts <em>port</em> is also available:</p>
+<div class="highlight highlight-source-shell"><pre>$ port install httpie</pre></div>
+<p>Most <strong>Linux</strong> distributions provide a package that can be installed using the
+system package manager, e.g.:</p>
+<div class="highlight highlight-source-shell"><pre><span class="pl-c"># Debian-based distributions such as Ubuntu:</span>
+$ apt-get install httpie
+
+<span class="pl-c"># RPM-based distributions:</span>
+$ yum install httpie
+
+<span class="pl-c"># Arch Linux</span>
+$ pacman -S httpie</pre></div>
+<p>A <strong>universal installation method</strong> (that works on <strong>Windows</strong>, Mac OS X, Linux, …,
+and provides the latest version) is to use <a href="http://www.pip-installer.org/en/latest/index.html">pip</a>:</p>
+<div class="highlight highlight-source-shell"><pre><span class="pl-c"># Make sure we have an up-to-date version of pip and setuptools:</span>
+$ pip install --upgrade pip setuptools
+
+$ pip install --upgrade httpie</pre></div>
+<p>(If <code>pip</code> installation fails for some reason, you can try
+<code>easy_install httpie</code> as a fallback.)</p>
+<a name="user-content-development-version"></a>
+<h3><a id="user-content-development-version" class="anchor" href="#development-version" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Development version</h3>
+<p>The <strong>latest development version</strong> can be installed directly from GitHub:</p>
+<div class="highlight highlight-source-shell"><pre><span class="pl-c"># Mac OS X via Homebrew</span>
+$ brew install httpie --HEAD
+
+<span class="pl-c"># Universal</span>
+$ pip install --upgrade https://github.com/jkbrzt/httpie/archive/master.tar.gz</pre></div>
+<a name="user-content-python-version"></a>
+<h3><a id="user-content-python-version" class="anchor" href="#python-version" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Python version</h3>
+<p>Although Python 2.6 and 2.7 are supported as well, it is recommended to install
+HTTPie against the latest Python 3.x whenever possible. That will ensure that
+some of the newer HTTP features, such as <a href="#sni-server-name-indication">SNI (Server Name Indication)</a>,
+work out of the box.
+Python 3 is the default for Homebrew installations starting with version 0.9.4.
+To see which version HTTPie uses, run <code>http --debug</code>.</p>
+<a name="user-content-usage"></a>
+<h2><a id="user-content-usage" class="anchor" href="#usage" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Usage</h2>
+<p>Hello World:</p>
+<div class="highlight highlight-source-shell"><pre>$ http httpie.org</pre></div>
+<p>Synopsis:</p>
+<div class="highlight highlight-source-shell"><pre>$ http [flags] [METHOD] URL [ITEM [ITEM]]</pre></div>
+<p>See also <code>http --help</code>.</p>
+<a name="user-content-examples"></a>
+<h3><a id="user-content-examples" class="anchor" href="#examples" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Examples</h3>
+<p>Custom <a href="#http-method">HTTP method</a>, <a href="#http-headers">HTTP headers</a> and <a href="#json">JSON</a> data:</p>
+<div class="highlight highlight-source-shell"><pre>$ http PUT example.org X-API-Token:123 name=John</pre></div>
+<p>Submitting <a href="#forms">forms</a>:</p>
+<div class="highlight highlight-source-shell"><pre>$ http -f POST example.org hello=World</pre></div>
+<p>See the request that is being sent using one of the <a href="#output-options">output options</a>:</p>
+<div class="highlight highlight-source-shell"><pre>$ http -v example.org</pre></div>
+<p>Use <a href="http://developer.github.com/v3/issues/comments/#create-a-comment">Github API</a> to post a comment on an
+<a href="https://github.com/jkbrzt/httpie/issues/83">issue</a>
+with <a href="#authentication">authentication</a>:</p>
+<div class="highlight highlight-source-shell"><pre>$ http -a USERNAME POST https://api.github.com/repos/jkbrzt/httpie/issues/83/comments body=<span class="pl-s"><span class="pl-pds">'</span>HTTPie is awesome! :heart:<span class="pl-pds">'</span></span></pre></div>
+<p>Upload a file using <a href="#redirected-input">redirected input</a>:</p>
+<div class="highlight highlight-source-shell"><pre>$ http example.org <span class="pl-k">&lt;</span> file.json</pre></div>
+<p>Download a file and save it via <a href="#redirected-output">redirected output</a>:</p>
+<div class="highlight highlight-source-shell"><pre>$ http example.org/file <span class="pl-k">&gt;</span> file</pre></div>
+<p>Download a file <code>wget</code> style:</p>
+<div class="highlight highlight-source-shell"><pre>$ http --download example.org/file</pre></div>
+<p>Use named <a href="#sessions">sessions</a> to make certain aspects or the communication persistent
+between requests to the same host:</p>
+<div class="highlight highlight-source-shell"><pre>$ http --session=logged-in -a username:password httpbin.org/get API-Key:123
+
+$ http --session=logged-in httpbin.org/headers</pre></div>
+<p>Set a custom <code>Host</code> header to work around missing DNS records:</p>
+<div class="highlight highlight-source-shell"><pre>$ http localhost:8000 Host:example.com</pre></div>
+<hr>
+<p><em>What follows is a detailed documentation. It covers the command syntax,
+advanced usage, and also features additional examples.</em></p>
+<a name="user-content-http-method"></a>
+<h2><a id="user-content-http-method" class="anchor" href="#http-method" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>HTTP method</h2>
+<p>The name of the HTTP method comes right before the URL argument:</p>
+<div class="highlight highlight-source-shell"><pre>$ http DELETE example.org/todos/7</pre></div>
+<p>Which looks similar to the actual <code>Request-Line</code> that is sent:</p>
+<div class="highlight highlight-source-httpspec"><pre><span class="pl-k">DELETE</span><span class="pl-c1"> /todos/7 HTTP/1.1</span></pre></div>
+<p>When the <code>METHOD</code> argument is <strong>omitted</strong> from the command, HTTPie defaults to
+either <code>GET</code> (with no request data) or <code>POST</code> (with request data).</p>
+<a name="user-content-request-url"></a>
+<h2><a id="user-content-request-url" class="anchor" href="#request-url" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Request URL</h2>
+<p>The only information HTTPie needs to perform a request is a URL.
+The default scheme is, somewhat unsurprisingly, <code>http://</code>,
+and can be omitted from the argument – <code>http example.org</code> works just fine.</p>
+<p>Additionally, curl-like shorthand for localhost is supported.
+This means that, for example <code>:3000</code> would expand to <code>http://localhost:3000</code>
+If the port is omitted, then port 80 is assumed.</p>
+<div class="highlight highlight-source-shell"><pre>$ http :/foo</pre></div>
+<div class="highlight highlight-source-httpspec"><pre><span class="pl-k">GET</span><span class="pl-c1"> /foo HTTP/1.1</span>
+<span class="pl-s"><span class="pl-v">Host:</span> localhost</span></pre></div>
+<div class="highlight highlight-source-shell"><pre>$ http :3000/bar</pre></div>
+<div class="highlight highlight-source-httpspec"><pre><span class="pl-k">GET</span><span class="pl-c1"> /bar HTTP/1.1</span>
+<span class="pl-s"><span class="pl-v">Host:</span> localhost:3000</span></pre></div>
+<div class="highlight highlight-source-shell"><pre>$ http <span class="pl-c1">:</span></pre></div>
+<div class="highlight highlight-source-httpspec"><pre><span class="pl-k">GET</span><span class="pl-c1"> / HTTP/1.1</span>
+<span class="pl-s"><span class="pl-v">Host:</span> localhost</span></pre></div>
+<p>If you find yourself manually constructing URLs with <strong>querystring parameters</strong>
+on the terminal, you may appreciate the <code>param==value</code> syntax for appending
+URL parameters. With that, you don't have to worry about escaping the <code>&amp;</code>
+separators for you shell. Also, special characters in parameter values,
+will also automatically escaped (HTTPie otherwise expects the URL to be
+already escaped). To search for <code>HTTPie logo</code> on Google Images you could use
+this command:</p>
+<div class="highlight highlight-source-shell"><pre>$ http www.google.com search==<span class="pl-s"><span class="pl-pds">'</span>HTTPie logo<span class="pl-pds">'</span></span> tbm==isch</pre></div>
+<div class="highlight highlight-source-httpspec"><pre><span class="pl-k">GET</span><span class="pl-c1"> /?search=HTTPie+logo&amp;tbm=isch HTTP/1.1</span></pre></div>
+<p>You can use the <code>--default-scheme &lt;URL_SCHEME&gt;</code> option to create
+shortcuts for other protocols than HTTP:</p>
+<div class="highlight highlight-source-shell"><pre>$ <span class="pl-c1">alias</span> https=<span class="pl-s"><span class="pl-pds">'</span>http --default-scheme=https<span class="pl-pds">'</span></span></pre></div>
+<a name="user-content-request-items"></a>
+<h2><a id="user-content-request-items" class="anchor" href="#request-items" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Request items</h2>
+<p>There are a few different <em>request item</em> types that provide a
+convenient mechanism for specifying HTTP headers, simple JSON and
+form data, files, and URL parameters.</p>
+<p>They are key/value pairs specified after the URL. All have in
+common that they become part of the actual request that is sent and that
+their type is distinguished only by the separator used:
+<code>:</code>, <code>=</code>, <code>:=</code>, <code>==</code>, <code>@</code>, <code>=@</code>, and <code>:=@</code>. The ones with an
+<code>@</code> expect a file path as value.</p>
+<table>
+
+
+
+
+<thead valign="bottom">
+<tr><th>Item Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>HTTP Headers
+<code>Name:Value</code></td>
+<td>Arbitrary HTTP header, e.g. <code>X-API-Token:123</code>.</td>
+</tr>
+<tr><td>URL parameters
+<code>name==value</code></td>
+<td>Appends the given name/value pair as a query
+string parameter to the URL.
+The <code>==</code> separator is used.</td>
+</tr>
+<tr><td>Data Fields
+<code>field=value</code>,
+<code>field=@file.txt</code></td>
+<td>Request data fields to be serialized as a JSON
+object (default), or to be form-encoded
+(<code>--form, -f</code>).</td>
+</tr>
+<tr><td>Raw JSON fields
+<code>field:=json</code>,
+<code>field:=@file.json</code></td>
+<td>Useful when sending JSON and one or
+more fields need to be a <code>Boolean</code>, <code>Number</code>,
+nested <code>Object</code>, or an <code>Array</code>,  e.g.,
+<code>meals:='["ham","spam"]'</code> or <code>pies:=[1,2,3]</code>
+(note the quotes).</td>
+</tr>
+<tr><td>Form File Fields
+<code>field@/dir/file</code></td>
+<td>Only available with <code>--form, -f</code>.
+For example <code>screenshot@~/Pictures/img.png</code>.
+The presence of a file field results
+in a <code>multipart/form-data</code> request.</td>
+</tr>
+</tbody>
+</table>
+<p>You can use <code>\</code> to escape characters that shouldn't be used as separators
+(or parts thereof). For instance, <code>foo\==bar</code> will become a data key/value
+pair (<code>foo=</code> and <code>bar</code>) instead of a URL parameter.</p>
+<p>Often it is necessary to quote the values, e.g. <code>foo='bar baz'</code>.</p>
+<p>If any of the field names or headers starts with a minus
+(e.g., <code>-fieldname</code>), you need to place all such items after the special
+token <code>--</code> to prevent confusion with <code>--arguments</code>:</p>
+<div class="highlight highlight-source-shell"><pre>$ http httpbin.org/post  --  -name-starting-with-dash=foo --Weird-Header:bar</pre></div>
+<div class="highlight highlight-source-httpspec"><pre><span class="pl-k">POST</span><span class="pl-c1"> /post HTTP/1.1</span>
+<span class="pl-s"><span class="pl-v">--Weird-Header:</span> bar</span>
+
+{
+    <span class="pl-s"><span class="pl-pds">"</span>-name-starting-with-dash<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>value<span class="pl-pds">"</span></span>
+}</pre></div>
+<p>Note that data fields aren't the only way to specify request data:
+<a href="#redirected-input">Redirected input</a> allows for passing arbitrary data to be sent with the
+request.</p>
+<a name="user-content-json"></a>
+<h2><a id="user-content-json" class="anchor" href="#json" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>JSON</h2>
+<p>JSON is the <em>lingua franca</em> of modern web services and it is also the
+<strong>implicit content type</strong> HTTPie by default uses:</p>
+<p>If your command includes some data items, they are serialized as a JSON
+object by default. HTTPie also automatically sets the following headers,
+both of which can be overwritten:</p>
+<table>
+
+
+
+
+<tbody valign="top">
+<tr><td><code>Content-Type</code></td>
+<td><code>application/json</code></td>
+</tr>
+<tr><td><code>Accept</code></td>
+<td><code>application/json, */*</code></td>
+</tr>
+</tbody>
+</table>
+<p>You can use <code>--json, -j</code> to explicitly set <code>Accept</code>
+to <code>application/json</code> regardless of whether you are sending data
+(it's a shortcut for setting the header via the usual header notation –
+<code>http url Accept:application/json, */*</code>). Additionally,
+HTTPie will try to detect JSON responses even when the
+<code>Content-Type</code> is incorrectly <code>text/plain</code> or unknown.</p>
+<p>Simple example:</p>
+<div class="highlight highlight-source-shell"><pre>$ http PUT example.org name=John email=john@example.org</pre></div>
+<div class="highlight highlight-source-httpspec"><pre><span class="pl-k">PUT</span><span class="pl-c1"> / HTTP/1.1</span>
+<span class="pl-s"><span class="pl-v">Accept:</span> application/json, */*</span>
+<span class="pl-s"><span class="pl-v">Accept-Encoding:</span> gzip, deflate</span>
+<span class="pl-s"><span class="pl-v">Content-Type:</span> application/json</span>
+<span class="pl-s"><span class="pl-v">Host:</span> example.org</span>
+
+{
+    <span class="pl-s"><span class="pl-pds">"</span>name<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>John<span class="pl-pds">"</span></span>,
+    <span class="pl-s"><span class="pl-pds">"</span>email<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>john@example.org<span class="pl-pds">"</span></span>
+}</pre></div>
+<p>Non-string fields use the <code>:=</code> separator, which allows you to embed raw JSON
+into the resulting object. Text and raw JSON files can also be embedded into
+fields using <code>=@</code> and <code>:=@</code>:</p>
+<div class="highlight highlight-source-shell"><pre>$ http PUT api.example.com/person/1 \
+    name=John \
+    age:=29 married:=<span class="pl-c1">false</span> hobbies:=<span class="pl-s"><span class="pl-pds">'</span>["http", "pies"]<span class="pl-pds">'</span></span> <span class="pl-cce">\ </span> <span class="pl-c"># Raw JSON</span>
+    description=@about-john.txt <span class="pl-cce">\ </span>  <span class="pl-c"># Embed text file</span>
+    bookmarks:=@bookmarks.json      <span class="pl-c"># Embed JSON file</span></pre></div>
+<div class="highlight highlight-source-httpspec"><pre><span class="pl-k">PUT</span><span class="pl-c1"> /person/1 HTTP/1.1</span>
+<span class="pl-s"><span class="pl-v">Accept:</span> application/json, */*</span>
+<span class="pl-s"><span class="pl-v">Content-Type:</span> application/json</span>
+<span class="pl-s"><span class="pl-v">Host:</span> api.example.com</span>
+
+{
+    <span class="pl-s"><span class="pl-pds">"</span>age<span class="pl-pds">"</span></span>: <span class="pl-c1">29</span>,
+    <span class="pl-s"><span class="pl-pds">"</span>hobbies<span class="pl-pds">"</span></span>: [
+        <span class="pl-s"><span class="pl-pds">"</span>http<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>pies<span class="pl-pds">"</span></span>
+    ],
+    <span class="pl-s"><span class="pl-pds">"</span>description<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>John is a nice guy who likes pies.<span class="pl-pds">"</span></span>,
+    <span class="pl-s"><span class="pl-pds">"</span>married<span class="pl-pds">"</span></span>: <span class="pl-c1">false</span>,
+    <span class="pl-s"><span class="pl-pds">"</span>name<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>John<span class="pl-pds">"</span></span>,
+    <span class="pl-s"><span class="pl-pds">"</span>bookmarks<span class="pl-pds">"</span></span>: {
+        <span class="pl-s"><span class="pl-pds">"</span>HTTPie<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>http://httpie.org<span class="pl-pds">"</span></span>,
+    }
+}</pre></div>
+<p>Send JSON data stored in a file (see <a href="#redirected-input">redirected input</a> for more examples):</p>
+<div class="highlight highlight-source-shell"><pre>$ http POST api.example.com/person/1 <span class="pl-k">&lt;</span> person.json</pre></div>
+<a name="user-content-forms"></a>
+<h2><a id="user-content-forms" class="anchor" href="#forms" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Forms</h2>
+<p>Submitting forms is very similar to sending <a href="#json">JSON</a> requests. Often the only
+difference is in adding the <code>--form, -f</code> option, which ensures that
+data fields are serialized as, and <code>Content-Type</code> is set to,
+<code>application/x-www-form-urlencoded; charset=utf-8</code>.</p>
+<p>It is possible to make form data the implicit content type instead of JSON
+via the <a href="#config">config</a> file.</p>
+<a name="user-content-regular-forms"></a>
+<h3><a id="user-content-regular-forms" class="anchor" href="#regular-forms" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Regular forms</h3>
+<div class="highlight highlight-source-shell"><pre>$ http --form POST api.example.org/person/1 name=<span class="pl-s"><span class="pl-pds">'</span>John Smith<span class="pl-pds">'</span></span> \
+    email=john@example.org cv=@~/Documents/cv.txt</pre></div>
+<div class="highlight highlight-source-httpspec"><pre><span class="pl-k">POST</span><span class="pl-c1"> /person/1 HTTP/1.1</span>
+<span class="pl-s"><span class="pl-v">Content-Type:</span> application/x-www-form-urlencoded; charset=utf-8</span>
+
+name<span class="pl-c1">=</span><span class="pl-c1">John+Smith</span><span class="pl-c1">&amp;</span><span class="pl-c1">email</span><span class="pl-c1">=</span><span class="pl-c1">john%40example.org</span><span class="pl-c1">&amp;</span><span class="pl-c1">cv</span><span class="pl-c1">=</span><span class="pl-c1">John's+CV+...</span></pre></div>
+<a name="user-content-file-upload-forms"></a>
+<h3><a id="user-content-file-upload-forms" class="anchor" href="#file-upload-forms" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>File upload forms</h3>
+<p>If one or more file fields is present, the serialization and content type is
+<code>multipart/form-data</code>:</p>
+<div class="highlight highlight-source-shell"><pre>$ http -f POST example.com/jobs name=<span class="pl-s"><span class="pl-pds">'</span>John Smith<span class="pl-pds">'</span></span> cv@~/Documents/cv.pdf</pre></div>
+<p>The request above is the same as if the following HTML form were
+submitted:</p>
+<div class="highlight highlight-text-html-basic"><pre>&lt;<span class="pl-ent">form</span> <span class="pl-e">enctype</span>=<span class="pl-s"><span class="pl-pds">"</span>multipart/form-data<span class="pl-pds">"</span></span> <span class="pl-e">method</span>=<span class="pl-s"><span class="pl-pds">"</span>post<span class="pl-pds">"</span></span> <span class="pl-e">action</span>=<span class="pl-s"><span class="pl-pds">"</span>http://example.com/jobs<span class="pl-pds">"</span></span>&gt;
+    &lt;<span class="pl-ent">input</span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>text<span class="pl-pds">"</span></span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>name<span class="pl-pds">"</span></span> /&gt;
+    &lt;<span class="pl-ent">input</span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>file<span class="pl-pds">"</span></span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>cv<span class="pl-pds">"</span></span> /&gt;
+&lt;/<span class="pl-ent">form</span>&gt;</pre></div>
+<p>Note that <code>@</code> is used to simulate a file upload form field, whereas
+<code>=@</code> just embeds the file content as a regular text field value.</p>
+<a name="user-content-http-headers"></a>
+<h2><a id="user-content-http-headers" class="anchor" href="#http-headers" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>HTTP headers</h2>
+<p>To set custom headers you can use the <code>Header:Value</code> notation:</p>
+<div class="highlight highlight-source-shell"><pre>$ http example.org  User-Agent:Bacon/1.0  <span class="pl-s"><span class="pl-pds">'</span>Cookie:valued-visitor=yes;foo=bar<span class="pl-pds">'</span></span>  \
+    X-Foo:Bar  Referer:http://httpie.org/</pre></div>
+<div class="highlight highlight-source-httpspec"><pre><span class="pl-k">GET</span><span class="pl-c1"> / HTTP/1.1</span>
+<span class="pl-s"><span class="pl-v">Accept:</span> */*</span>
+<span class="pl-s"><span class="pl-v">Accept-Encoding:</span> gzip, deflate</span>
+<span class="pl-s"><span class="pl-v">Cookie:</span> valued-visitor=yes;foo=bar</span>
+<span class="pl-s"><span class="pl-v">Host:</span> example.org</span>
+<span class="pl-s"><span class="pl-v">Referer:</span> http://httpie.org/</span>
+<span class="pl-s"><span class="pl-v">User-Agent:</span> Bacon/1.0</span>
+<span class="pl-s"><span class="pl-v">X-Foo:</span> Bar</span></pre></div>
+<p>There are a couple of default headers that HTTPie sets:</p>
+<div class="highlight highlight-source-httpspec"><pre><span class="pl-k">GET</span><span class="pl-c1"> / HTTP/1.1</span>
+<span class="pl-s"><span class="pl-v">Accept:</span> */*</span>
+<span class="pl-s"><span class="pl-v">Accept-Encoding:</span> gzip, deflate</span>
+<span class="pl-s"><span class="pl-v">User-Agent:</span> HTTPie/&lt;version&gt;</span>
+<span class="pl-s"><span class="pl-v">Host:</span> &lt;taken-from-URL&gt;</span></pre></div>
+<p>Any of the default headers can be overwritten and some of them unset.</p>
+<p>To unset a header that has already been specified (such a one of the default
+headers), use <code>Header:</code>:</p>
+<div class="highlight highlight-source-shell"><pre>$ http httpbin.org/headers Accept: User-Agent:</pre></div>
+<p>To send a header with an empty value, use <code>Header;</code>:</p>
+<div class="highlight highlight-source-shell"><pre>$ http httpbin.org/headers <span class="pl-s"><span class="pl-pds">'</span>Header;<span class="pl-pds">'</span></span></pre></div>
+<a name="user-content-authentication"></a>
+<h2><a id="user-content-authentication" class="anchor" href="#authentication" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Authentication</h2>
+<p>The currently supported authentication schemes are Basic and Digest
+(see <a href="#auth-plugins">auth plugins</a> for more). There are two flags that control authentication:</p>
+<table>
+
+
+
+
+<tbody valign="top">
+<tr><td><code>--auth, -a</code></td>
+<td>Pass a <code>username:password</code> pair as
+the argument. Or, if you only specify a username
+(<code>-a username</code>), you'll be prompted for
+the password before the request is sent.
+To send an empty password, pass <code>username:</code>.
+The <code>username:password@hostname</code> URL syntax is
+supported as well (but credentials passed via <code>-a</code>
+have higher priority).</td>
+</tr>
+<tr><td><code>--auth-type, -A</code></td>
+<td>Specify the auth mechanism. Possible values are
+<code>basic</code> and <code>digest</code>. The default value is
+<code>basic</code> so it can often be omitted.</td>
+</tr>
+</tbody>
+</table>
+<p>Basic auth:</p>
+<div class="highlight highlight-source-shell"><pre>$ http -a username:password example.org</pre></div>
+<p>Digest auth:</p>
+<div class="highlight highlight-source-shell"><pre>$ http -A digest -a username:password example.org</pre></div>
+<p>With password prompt:</p>
+<div class="highlight highlight-source-shell"><pre>$ http -a username example.org</pre></div>
+<p>Authorization information from your <code>~/.netrc</code> file is honored as well:</p>
+<div class="highlight highlight-source-shell"><pre>$ cat <span class="pl-k">~</span>/.netrc
+machine httpbin.org
+login httpie
+password <span class="pl-c1">test</span>
+
+$ http httpbin.org/basic-auth/httpie/test
+HTTP/1.1 200 OK
+[...]</pre></div>
+<a name="user-content-auth-plugins"></a>
+<h3><a id="user-content-auth-plugins" class="anchor" href="#auth-plugins" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Auth plugins</h3>
+<ul>
+<li><a href="https://github.com/jkbrzt/httpie-oauth">httpie-oauth</a>: OAuth</li>
+<li><a href="https://github.com/guardian/httpie-hmac-auth">httpie-hmac-auth</a>: HMAC</li>
+<li><a href="https://github.com/jkbrzt/httpie-ntlm">httpie-ntlm</a>: NTLM (NT LAN Manager)</li>
+<li><a href="https://github.com/ndzou/httpie-negotiate">httpie-negotiate</a>: SPNEGO (GSS Negotiate)</li>
+<li><a href="https://github.com/mozilla-services/requests-hawk">requests-hawk</a>: Hawk</li>
+<li><a href="https://github.com/pd/httpie-api-auth">httpie-api-auth</a>: ApiAuth</li>
+<li><a href="https://github.com/akamai-open/httpie-edgegrid">httpie-edgegrid</a>: EdgeGrid</li>
+<li><a href="https://github.com/teracyhq/httpie-jwt-auth">httpie-jwt-auth</a>: JWTAuth (JSON Web Tokens)</li>
+</ul>
+<a name="user-content-http-redirects"></a>
+<h2><a id="user-content-http-redirects" class="anchor" href="#http-redirects" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>HTTP redirects</h2>
+<p>By default, HTTP redirects are not followed and only the first
+response is shown. To instruct HTTPie to follow the <code>Location</code> header of
+<code>30x</code> responses and show the final response instead, use the <code>--follow, -F</code> option.</p>
+<p>If you additionally wish to see the intermediary requests/responses,
+then use the <code>--all</code> option as well.</p>
+<p>To change the default limit of maximum 30 redirects, use the
+<code>--max-redirects=&lt;limit&gt;</code> option.</p>
+<div class="highlight highlight-source-shell"><pre>$ http --follow --all --max-redirects=5 httpbin.org/redirect/3</pre></div>
+<a name="user-content-proxies"></a>
+<h2><a id="user-content-proxies" class="anchor" href="#proxies" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Proxies</h2>
+<p>You can specify proxies to be used through the <code>--proxy</code> argument for each
+protocol (which is included in the value in case of redirects across protocols):</p>
+<div class="highlight highlight-source-shell"><pre>$ http --proxy=http:http://10.10.1.10:3128 --proxy=https:https://10.10.1.10:1080 example.org</pre></div>
+<p>With Basic authentication:</p>
+<div class="highlight highlight-source-shell"><pre>$ http --proxy=http:http://user:pass@10.10.1.10:3128 example.org</pre></div>
+<p>You can also configure proxies by environment variables <code>HTTP_PROXY</code> and
+<code>HTTPS_PROXY</code>, and the underlying Requests library will pick them up as well.
+If you want to disable proxies configured through the environment variables for
+certain hosts, you can specify them in <code>NO_PROXY</code>.</p>
+<p>In your <code>~/.bash_profile</code>:</p>
+<div class="highlight highlight-source-shell"><pre><span class="pl-k">export</span> HTTP_PROXY=http://10.10.1.10:3128
+<span class="pl-k">export</span> HTTPS_PROXY=https://10.10.1.10:1080
+<span class="pl-k">export</span> NO_PROXY=localhost,example.com</pre></div>
+<a name="user-content-socks"></a>
+<h3><a id="user-content-socks" class="anchor" href="#socks" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>SOCKS</h3>
+<p>To enable SOCKS proxy support please install <code>requests[socks]</code> using <code>pip</code>:</p>
+<div class="highlight highlight-source-shell"><pre>$ pip install -U requests[socks]</pre></div>
+<p>Usage is the same as for other types of <a href="#proxies">proxies</a>:</p>
+<div class="highlight highlight-source-shell"><pre>$ http --proxy=http:socks5://user:pass@host:port --proxy=https:socks5://user:pass@host:port example.org</pre></div>
+<a name="user-content-https"></a>
+<h2><a id="user-content-https" class="anchor" href="#https" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>HTTPS</h2>
+<a name="user-content-server-ssl-certificate-verification"></a>
+<h3><a id="user-content-server-ssl-certificate-verification" class="anchor" href="#server-ssl-certificate-verification" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Server SSL certificate verification</h3>
+<p>To skip the <strong>host's SSL certificate verification,</strong> you can pass
+<code>--verify=no</code> (default is <code>yes</code>):</p>
+<div class="highlight highlight-source-shell"><pre>$ http --verify=no https://example.org</pre></div>
+<p>You can also use <code>--verify=&lt;CA_BUNDLE_PATH&gt;</code> to set a <strong>custom CA bundle</strong>
+path:</p>
+<div class="highlight highlight-source-shell"><pre>$ http --verify=/ssl/custom_ca_bundle https://example.org</pre></div>
+<p>The path can also be configured via the environment variable
+<code>REQUESTS_CA_BUNDLE</code> (picked up by the underlying python-requests library):</p>
+<div class="highlight highlight-source-shell"><pre>$ REQUESTS_CA_BUNDLE=/ssl/custom_ca_bundle http https://example.org</pre></div>
+<a name="user-content-client-side-ssl-certificate"></a>
+<h3><a id="user-content-client-side-ssl-certificate" class="anchor" href="#client-side-ssl-certificate" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Client side SSL certificate</h3>
+<p>To use a <strong>client side certificate</strong> for the SSL communication, you can pass
+the path of the cert file with <code>--cert</code>:</p>
+<div class="highlight highlight-source-shell"><pre>$ http --cert=client.pem https://example.org</pre></div>
+<p>If the <strong>private key</strong> is not contained in the cert file you may pass the
+path of the key file with <code>--cert-key</code>:</p>
+<div class="highlight highlight-source-shell"><pre>$ http --cert=client.crt --cert-key=client.key https://example.org</pre></div>
+<a name="user-content-ssl-version"></a>
+<h3><a id="user-content-ssl-version" class="anchor" href="#ssl-version" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>SSL version</h3>
+<p>Use the <code>--ssl=&lt;PROTOCOL&gt;</code> to specify the desired protocol version to use.
+This will default to SSL v2.3 which will negotiate the highest protocol that both
+the server and your installation of OpenSSL support. The available protocols
+are <code>ssl2.3</code>, <code>ssl3</code>, <code>tls1</code>, <code>tls1.1</code>, <code>tls1.2</code>. (The actually
+available set of protocols may vary depending on your OpenSSL installation.)</p>
+<div class="highlight highlight-source-shell"><pre><span class="pl-c"># Specify the vulnerable SSL v3 protocol to talk to an outdated server:</span>
+$ http --ssl=ssl3 https://vulnerable.example.org</pre></div>
+<a name="user-content-sni-server-name-indication"></a>
+<h3><a id="user-content-sni-server-name-indication" class="anchor" href="#sni-server-name-indication" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>SNI (Server Name Indication)</h3>
+<p>If you use HTTPie with <a href="#python-version">Python version</a> lower than 2.7.9
+(can be verified with <code>http --debug</code>) and need to talk to servers that
+use <strong>SNI (Server Name Indication)</strong> you need to install some additional
+dependencies:</p>
+<div class="highlight highlight-source-shell"><pre>$ pip install --upgrade pyopenssl pyasn1 ndg-httpsclient</pre></div>
+<p>You can use the following command to test SNI support:</p>
+<div class="highlight highlight-source-shell"><pre>$ http https://sni.velox.ch</pre></div>
+<a name="user-content-output-options"></a>
+<h2><a id="user-content-output-options" class="anchor" href="#output-options" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Output options</h2>
+<p>By default, HTTPie only outputs the final response and the whole response
+message is printed (headers as well as the body).</p>
+<p>You can control what should be printed via several options:</p>
+<table>
+
+
+
+
+<tbody valign="top">
+<tr><td><code>--headers, -h</code></td>
+<td>Only the response headers are printed.</td>
+</tr>
+<tr><td><code>--body, -b</code></td>
+<td>Only the response body is printed.</td>
+</tr>
+<tr><td><code>--verbose, -v</code></td>
+<td>Print the whole HTTP exchange (request and response).
+This option also enables <code>--all</code> (see bellow).</td>
+</tr>
+<tr><td><code>--print, -p</code></td>
+<td>Selects parts of the HTTP exchange.</td>
+</tr>
+</tbody>
+</table>
+<p><code>--verbose</code> can often be useful for debugging the request and generating
+documentation examples:</p>
+<div class="highlight highlight-source-shell"><pre>$ http --verbose PUT httpbin.org/put hello=world
+PUT /put HTTP/1.1
+Accept: application/json, <span class="pl-k">*</span>/<span class="pl-k">*</span>
+Accept-Encoding: gzip, deflate
+Content-Type: application/json
+Host: httpbin.org
+User-Agent: HTTPie/0.2.7dev
+
+{
+    <span class="pl-s"><span class="pl-pds">"</span>hello<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>world<span class="pl-pds">"</span></span>
+}
+
+
+HTTP/1.1 200 OK
+Connection: keep-alive
+Content-Length: 477
+Content-Type: application/json
+Date: Sun, 05 Aug 2012 00:25:23 GMT
+Server: gunicorn/0.13.4
+
+{
+    […]
+}</pre></div>
+<p>All the other options are just a shortcut for <code>--print, -p</code>.
+It accepts a string of characters each of which represents a specific part of
+the HTTP exchange:</p>
+<table>
+
+
+
+
+<thead valign="bottom">
+<tr><th>Character</th>
+<th>Stands for</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><code>H</code></td>
+<td>request headers</td>
+</tr>
+<tr><td><code>B</code></td>
+<td>request body</td>
+</tr>
+<tr><td><code>h</code></td>
+<td>response headers</td>
+</tr>
+<tr><td><code>b</code></td>
+<td>response body</td>
+</tr>
+</tbody>
+</table>
+<p>Print request and response headers:</p>
+<div class="highlight highlight-source-shell"><pre>$ http --print=Hh PUT httpbin.org/put hello=world</pre></div>
+<a name="user-content-viewing-intermediary-requests-responses"></a>
+<h3><a id="user-content-viewing-intermediary-requestsresponses" class="anchor" href="#viewing-intermediary-requestsresponses" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Viewing intermediary requests/responses</h3>
+<p>To see <em>all</em> the HTTP communication, i.e. the final request/response as
+well as any possible  intermediary requests/responses, use the <code>--all</code>
+option. The intermediary HTTP communication include followed redirects
+(with <code>--follow</code>), the first unauthorized request when HTTP digest
+authentication is used (<code>--auth=digest</code>), etc.</p>
+<div class="highlight highlight-source-shell"><pre><span class="pl-c"># Include all responses that lead to the final one:</span>
+$ http --all --follow httpbin.org/redirect/3</pre></div>
+<p>The intermediary requests/response are by default formatted according to
+<code>--print, -p</code> (and its shortcuts described above). If you'd like to change
+that, use the <code>--history-print, -P</code> option. It takes the same
+arguments as <code>--print, -p</code> but applies to the intermediary requests only.</p>
+<div class="highlight highlight-source-shell"><pre><span class="pl-c"># Print the intermediary requests/responses differently than the final one:</span>
+$ http -A digest -a foo:bar --all -p Hh -P H httpbin.org/digest-auth/auth/foo/bar</pre></div>
+<a name="user-content-conditional-body-download"></a>
+<h3><a id="user-content-conditional-body-download" class="anchor" href="#conditional-body-download" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Conditional body download</h3>
+<p>As an optimization, the response body is downloaded from the server
+only if it's part of the output. This is similar to performing a <code>HEAD</code>
+request, except that it applies to any HTTP method you use.</p>
+<p>Let's say that there is an API that returns the whole resource when it is
+updated, but you are only interested in the response headers to see the
+status code after an update:</p>
+<div class="highlight highlight-source-shell"><pre>$ http --headers PATCH example.org/Really-Huge-Resource name=<span class="pl-s"><span class="pl-pds">'</span>New Name<span class="pl-pds">'</span></span></pre></div>
+<p>Since we are only printing the HTTP headers here, the connection to the server
+is closed as soon as all the response headers have been received.
+Therefore, bandwidth and time isn't wasted downloading the body
+which you don't care about.</p>
+<p>The response headers are downloaded always, even if they are not part of
+the output</p>
+<a name="user-content-redirected-input"></a>
+<h2><a id="user-content-redirected-input" class="anchor" href="#redirected-input" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Redirected Input</h2>
+<p><strong>A universal method for passing request data is through redirected</strong> <code>stdin</code>
+(standard input). Such data is buffered and then with no further processing
+used as the request body. There are multiple useful ways to use piping:</p>
+<p>Redirect from a file:</p>
+<div class="highlight highlight-source-shell"><pre>$ http PUT example.com/person/1 X-API-Token:123 <span class="pl-k">&lt;</span> person.json</pre></div>
+<p>Or the output of another program:</p>
+<div class="highlight highlight-source-shell"><pre>$ grep <span class="pl-s"><span class="pl-pds">'</span>401 Unauthorized<span class="pl-pds">'</span></span> /var/log/httpd/error_log <span class="pl-k">|</span> http POST example.org/intruders</pre></div>
+<p>You can use <code>echo</code> for simple data:</p>
+<div class="highlight highlight-source-shell"><pre>$ <span class="pl-c1">echo</span> <span class="pl-s"><span class="pl-pds">'</span>{"name": "John"}<span class="pl-pds">'</span></span> <span class="pl-k">|</span> http PATCH example.com/person/1 X-API-Token:123</pre></div>
+<p>You can even pipe web services together using HTTPie:</p>
+<div class="highlight highlight-source-shell"><pre>$ http GET https://api.github.com/repos/jkbrzt/httpie <span class="pl-k">|</span> http POST httpbin.org/post</pre></div>
+<p>You can use <code>cat</code> to enter multiline data on the terminal:</p>
+<div class="highlight highlight-source-shell"><pre>$ cat <span class="pl-k">|</span> http POST example.com
+<span class="pl-k">&lt;</span>paste<span class="pl-k">&gt;</span>
+^D</pre></div>
+<div class="highlight highlight-source-shell"><pre>$ cat <span class="pl-k">|</span> http POST example.com/todos Content-Type:text/plain
+- buy milk
+- call parents
+^D</pre></div>
+<p>On OS X, you can send the contents of the clipboard with <code>pbpaste</code>:</p>
+<div class="highlight highlight-source-shell"><pre>$ pbpaste <span class="pl-k">|</span> http PUT example.com</pre></div>
+<p>Passing data through <code>stdin</code> cannot be combined with data fields specified
+on the command line:</p>
+<div class="highlight highlight-source-shell"><pre>$ <span class="pl-c1">echo</span> <span class="pl-s"><span class="pl-pds">'</span>data<span class="pl-pds">'</span></span> <span class="pl-k">|</span> http POST example.org more=data   <span class="pl-c"># This is invalid</span></pre></div>
+<p>To prevent HTTPie from reading <code>stdin</code> data you can use the
+<code>--ignore-stdin</code> option.</p>
+<a name="user-content-request-data-from-a-filename"></a>
+<h3><a id="user-content-request-data-from-a-filename" class="anchor" href="#request-data-from-a-filename" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Request data from a filename</h3>
+<p><strong>An alternative to redirected</strong> <code>stdin</code> is specifying a filename (as
+<code>@/path/to/file</code>) whose content is used as if it came from <code>stdin</code>.</p>
+<p>It has the advantage that <strong>the</strong> <code>Content-Type</code>
+<strong>header is automatically set</strong> to the appropriate value based on the
+filename extension. For example, the following request sends the
+verbatim contents of that XML file with <code>Content-Type: application/xml</code>:</p>
+<div class="highlight highlight-source-shell"><pre>$ http PUT httpbin.org/put @/data/file.xml</pre></div>
+<a name="user-content-terminal-output"></a>
+<h2><a id="user-content-terminal-output" class="anchor" href="#terminal-output" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Terminal output</h2>
+<p>HTTPie does several things by default in order to make its terminal output
+easy to read.</p>
+<a name="user-content-colors-and-formatting"></a>
+<h3><a id="user-content-colors-and-formatting" class="anchor" href="#colors-and-formatting" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Colors and formatting</h3>
+<p>Syntax highlighting is applied to HTTP headers and bodies (where it makes
+sense). You can choose your preferred color scheme via the <code>--style</code> option
+if you don't like the default one (see <code>$ http --help</code> for the possible
+values).</p>
+<p>Also, the following formatting is applied:</p>
+<ul>
+<li>HTTP headers are sorted by name.</li>
+<li>JSON data is indented, sorted by keys, and unicode escapes are converted
+to the characters they represent.</li>
+</ul>
+<p>One of these options can be used to control output processing:</p>
+<table>
+
+
+
+
+<tbody valign="top">
+<tr><td><code>--pretty=all</code></td>
+<td>Apply both colors and formatting.
+Default for terminal output.</td>
+</tr>
+<tr><td><code>--pretty=colors</code></td>
+<td>Apply colors.</td>
+</tr>
+<tr><td><code>--pretty=format</code></td>
+<td>Apply formatting.</td>
+</tr>
+<tr><td><code>--pretty=none</code></td>
+<td>Disables output processing.
+Default for redirected output.</td>
+</tr>
+</tbody>
+</table>
+<a name="user-content-binary-data"></a>
+<h3><a id="user-content-binary-data" class="anchor" href="#binary-data" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Binary data</h3>
+<p>Binary data is suppressed for terminal output, which makes it safe to perform
+requests to URLs that send back binary data. Binary data is suppressed also in
+redirected, but prettified output. The connection is closed as soon as we know
+that the response body is binary,</p>
+<div class="highlight highlight-source-shell"><pre>$ http example.org/Movie.mov</pre></div>
+<p>You will nearly instantly see something like this:</p>
+<div class="highlight highlight-source-httpspec"><pre>HTTP/<span class="pl-c1">1.1</span> <span class="pl-c1">200</span> OK
+<span class="pl-s"><span class="pl-v">Accept-Ranges:</span> bytes</span>
+<span class="pl-s"><span class="pl-v">Content-Encoding:</span> gzip</span>
+<span class="pl-s"><span class="pl-v">Content-Type:</span> video/quicktime</span>
+<span class="pl-s"><span class="pl-v">Transfer-Encoding:</span> chunked</span>
+
++-----------------------------------------+
+| NOTE: binary data not shown in terminal |
++-----------------------------------------+</pre></div>
+<a name="user-content-redirected-output"></a>
+<h2><a id="user-content-redirected-output" class="anchor" href="#redirected-output" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Redirected output</h2>
+<p>HTTPie uses <strong>different defaults</strong> for redirected output than for
+<a href="#terminal-output">terminal output</a>:</p>
+<ul>
+<li>Formatting and colors aren't applied (unless <code>--pretty</code> is specified).</li>
+<li>Only the response body is printed (unless one of the <a href="#output-options">output options</a> is set).</li>
+<li>Also, binary data isn't suppressed.</li>
+</ul>
+<p>The reason is to make piping HTTPie's output to another programs and
+downloading files work with no extra flags. Most of the time, only the raw
+response body is of an interest when the output is redirected.</p>
+<p>Download a file:</p>
+<div class="highlight highlight-source-shell"><pre>$ http example.org/Movie.mov <span class="pl-k">&gt;</span> Movie.mov</pre></div>
+<p>Download an image of Octocat, resize it using ImageMagick, upload it elsewhere:</p>
+<div class="highlight highlight-source-shell"><pre>$ http octodex.github.com/images/original.jpg <span class="pl-k">|</span> convert - -resize 25% -  <span class="pl-k">|</span> http example.org/Octocats</pre></div>
+<p>Force colorizing and formatting, and show both the request and the response in
+<code>less</code> pager:</p>
+<div class="highlight highlight-source-shell"><pre>$ http --pretty=all --verbose example.org <span class="pl-k">|</span> less -R</pre></div>
+<p>The <code>-R</code> flag tells <code>less</code> to interpret color escape sequences included
+HTTPie`s output.</p>
+<p>You can create a shortcut for invoking HTTPie with colorized and paged output
+by adding the following to your <code>~/.bash_profile</code>:</p>
+<div class="highlight highlight-source-shell"><pre><span class="pl-k">function</span> <span class="pl-en">httpless</span> {
+    <span class="pl-c"># `httpless example.org'</span>
+    http --pretty=all --print=hb <span class="pl-s"><span class="pl-pds">"</span><span class="pl-smi">$@</span><span class="pl-pds">"</span></span> <span class="pl-k">|</span> less -R<span class="pl-k">;</span>
+}</pre></div>
+<a name="user-content-download-mode"></a>
+<h2><a id="user-content-download-mode" class="anchor" href="#download-mode" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Download mode</h2>
+<p>HTTPie features a download mode in which it acts similarly to <code>wget</code>.</p>
+<p>When enabled using the <code>--download, -d</code> flag, response headers are printed to
+the terminal (<code>stderr</code>), and a progress bar is shown while the response body
+is being saved to a file.</p>
+<div class="highlight highlight-source-shell"><pre>$ http --download https://github.com/jkbrzt/httpie/archive/master.tar.gz</pre></div>
+<div class="highlight highlight-source-httpspec"><pre>HTTP/<span class="pl-c1">1.1</span> <span class="pl-c1">200</span> OK
+<span class="pl-s"><span class="pl-v">Content-Disposition:</span> attachment; filename=httpie-master.tar.gz</span>
+<span class="pl-s"><span class="pl-v">Content-Length:</span> 257336</span>
+<span class="pl-s"><span class="pl-v">Content-Type:</span> application/x-gzip</span>
+
+Downloading <span class="pl-c1">251.30</span> kB to <span class="pl-s"><span class="pl-pds">"</span>httpie-master.tar.gz<span class="pl-pds">"</span></span>
+Done. <span class="pl-c1">251.30</span> kB in <span class="pl-c1">2.73862</span>s (<span class="pl-c1">91.76</span> kB/s)</pre></div>
+<p>If not provided via <code>--output, -o</code>, the output filename will be determined
+from <code>Content-Disposition</code> (if available), or from the URL and
+<code>Content-Type</code>. If the guessed filename already exists, HTTPie adds a unique
+suffix to it.</p>
+<p>You can also redirect the response body to another program while the response
+headers and progress are still shown in the terminal:</p>
+<div class="highlight highlight-source-shell"><pre>$ http -d https://github.com/jkbrzt/httpie/archive/master.tar.gz <span class="pl-k">|</span>  tar zxf -</pre></div>
+<p>If <code>--output, -o</code> is specified, you can resume a partial download using the
+<code>--continue, -c</code> option. This only works with servers that support
+<code>Range</code> requests and <code>206 Partial Content</code> responses. If the server doesn't
+support that, the whole file will simply be downloaded:</p>
+<div class="highlight highlight-source-shell"><pre>$ http -dco file.zip example.org/file</pre></div>
+<p>Other notes:</p>
+<ul>
+<li>The <code>--download</code> option only changes how the response body is treated.</li>
+<li>You can still set custom headers, use sessions, <code>--verbose, -v</code>, etc.</li>
+<li><code>--download</code> always implies <code>--follow</code> (redirects are followed).</li>
+<li>HTTPie exits with status code <code>1</code> (error) if the body hasn't been fully
+downloaded.</li>
+<li><code>Accept-Encoding</code> cannot be set with <code>--download</code>.</li>
+</ul>
+<a name="user-content-streamed-responses"></a>
+<h2><a id="user-content-streamed-responses" class="anchor" href="#streamed-responses" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Streamed responses</h2>
+<p>Responses are downloaded and printed in chunks, which allows for streaming
+and large file downloads without using too much RAM. However, when
+<a href="#colors-and-formatting">colors and formatting</a> is applied, the whole response is buffered and only
+then processed at once.</p>
+<p>You can use the <code>--stream, -S</code> flag to make two things happen:</p>
+<ol class="arabic simple">
+<li>The output is flushed in <strong>much smaller chunks</strong> without any buffering,
+which makes HTTPie behave kind of like <code>tail -f</code> for URLs.</li>
+<li>Streaming becomes enabled even when the output is prettified: It will be
+applied to <strong>each line</strong> of the response and flushed immediately. This makes
+it possible to have a nice output for long-lived requests, such as one
+to the Twitter streaming API.</li>
+</ol>
+<p>Prettified streamed response:</p>
+<div class="highlight highlight-source-shell"><pre>$ http --stream -f -a YOUR-TWITTER-NAME https://stream.twitter.com/1/statuses/filter.json track=<span class="pl-s"><span class="pl-pds">'</span>Justin Bieber<span class="pl-pds">'</span></span></pre></div>
+<p>Streamed output by small chunks alá <code>tail -f</code>:</p>
+<div class="highlight highlight-source-shell"><pre><span class="pl-c"># Send each new tweet (JSON object) mentioning "Apple" to another</span>
+<span class="pl-c"># server as soon as it arrives from the Twitter streaming API:</span>
+$ http --stream -f -a YOUR-TWITTER-NAME https://stream.twitter.com/1/statuses/filter.json track=Apple \
+<span class="pl-k">|</span> <span class="pl-k">while</span> <span class="pl-c1">read</span> tweet<span class="pl-k">;</span> <span class="pl-k">do</span> <span class="pl-c1">echo</span> <span class="pl-s"><span class="pl-pds">"</span><span class="pl-smi">$tweet</span><span class="pl-pds">"</span></span> <span class="pl-k">|</span> http POST example.org/tweets <span class="pl-k">;</span> <span class="pl-k">done</span></pre></div>
+<a name="user-content-sessions"></a>
+<h2><a id="user-content-sessions" class="anchor" href="#sessions" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Sessions</h2>
+<p>By default, every request is completely independent of any previous ones.
+HTTPie also supports persistent sessions, where custom headers (except for the
+ones starting with <code>Content-</code> or <code>If-</code>), authorization, and cookies
+(manually specified or sent by the server) persist between requests
+to the same host.</p>
+<a name="user-content-named-sessions"></a>
+<h3><a id="user-content-named-sessions" class="anchor" href="#named-sessions" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Named sessions</h3>
+<p>Create a new session named <code>user1</code> for <code>example.org</code>:</p>
+<div class="highlight highlight-source-shell"><pre>$ http --session=user1 -a user1:password example.org X-Foo:Bar</pre></div>
+<p>Now you can refer to the session by its name, and the previously used
+authorization and HTTP headers will automatically be set:</p>
+<div class="highlight highlight-source-shell"><pre>$ http --session=user1 example.org</pre></div>
+<p>To create or reuse a different session, simple specify a different name:</p>
+<div class="highlight highlight-source-shell"><pre>$ http --session=user2 -a user2:password example.org X-Bar:Foo</pre></div>
+<p>To use a session without updating it from the request/response exchange
+once it is created, specify the session name via
+<code>--session-read-only=SESSION_NAME</code> instead.</p>
+<p>Named sessions' data is stored in JSON files in the directory
+<code>~/.httpie/sessions/&lt;host&gt;/&lt;name&gt;.json</code>
+(<code>%APPDATA%\httpie\sessions\&lt;host&gt;\&lt;name&gt;.json</code> on Windows).</p>
+<a name="user-content-anonymous-sessions"></a>
+<h3><a id="user-content-anonymous-sessions" class="anchor" href="#anonymous-sessions" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Anonymous sessions</h3>
+<p>Instead of a name, you can also directly specify a path to a session file. This
+allows for sessions to be re-used across multiple hosts:</p>
+<div class="highlight highlight-source-shell"><pre>$ http --session=/tmp/session.json example.org
+$ http --session=/tmp/session.json admin.example.org
+$ http --session=<span class="pl-k">~</span>/.httpie/sessions/another.example.org/test.json example.org
+$ http --session-read-only=/tmp/session.json example.org</pre></div>
+<p><strong>Warning:</strong> All session data, including credentials, cookie data,
+and custom headers are stored in plain text.</p>
+<p>Note that session files can also be created and edited manually in a text
+editor; they are plain JSON.</p>
+<p>See also <a href="#config">Config</a>.</p>
+<a name="user-content-config"></a>
+<h2><a id="user-content-config" class="anchor" href="#config" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Config</h2>
+<p>HTTPie uses a simple configuration file that contains a JSON object with the
+following keys:</p>
+<a name="user-content-meta"></a>
+<h3><a id="user-content-__meta__" class="anchor" href="#__meta__" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>__meta__</code></h3>
+<p>HTTPie automatically stores some of its metadata here. Do not change.</p>
+<a name="user-content-default-options"></a>
+<h3><a id="user-content-default_options" class="anchor" href="#default_options" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>default_options</code></h3>
+<p>An <code>Array</code> (by default empty) of default options that should be applied to
+every invocation of HTTPie.</p>
+<p>For instance, you can use this option to change the default style and output
+options: <code>"default_options": ["--style=fruity", "--body"]</code> Another useful
+default option could be <code>"--session=default"</code> to make HTTPie always
+use <a href="#sessions">sessions</a> (one named <code>default</code> will automatically be used).
+Or you could change the implicit request content type from JSON to form by
+adding <code>--form</code> to the list.</p>
+<p>Default options from config file can be unset for a particular invocation via
+<code>--no-OPTION</code> arguments passed on the command line (e.g., <code>--no-style</code>
+or <code>--no-session</code>). The default location of the configuration file is
+<code>~/.httpie/config.json</code> (or <code>%APPDATA%\httpie\config.json</code> on Windows).
+The config directory location can be changed by setting the
+<code>HTTPIE_CONFIG_DIR</code> environment variable.</p>
+<a name="user-content-scripting"></a>
+<h2><a id="user-content-scripting" class="anchor" href="#scripting" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Scripting</h2>
+<p>When using HTTPie from <strong>shell scripts</strong>, it can be handy to set the
+<code>--check-status</code> flag. It instructs HTTPie to exit with an error if the
+HTTP status is one of <code>3xx</code>, <code>4xx</code>, or <code>5xx</code>. The exit status will
+be <code>3</code> (unless <code>--follow</code> is set), <code>4</code>, or <code>5</code>,
+respectively.</p>
+<p>The <code>--ignore-stdin</code> option prevents HTTPie from reading data from <code>stdin</code>,
+which is usually not desirable during non-interactive invocations.</p>
+<p>Also, the <code>--timeout</code> option allows to overwrite the default 30s timeout:</p>
+<div class="highlight highlight-source-shell"><pre><span class="pl-c">#!/bin/bash</span>
+
+<span class="pl-k">if</span> http --check-status --ignore-stdin --timeout=2.5 HEAD example.org/health <span class="pl-k">&amp;</span><span class="pl-k">&gt;</span> /dev/null<span class="pl-k">;</span> <span class="pl-k">then</span>
+    <span class="pl-c1">echo</span> <span class="pl-s"><span class="pl-pds">'</span>OK!<span class="pl-pds">'</span></span>
+<span class="pl-k">else</span>
+    <span class="pl-k">case</span> <span class="pl-smi">$?</span> in
+        2) <span class="pl-c1">echo</span> <span class="pl-s"><span class="pl-pds">'</span>Request timed out!<span class="pl-pds">'</span></span> ;;
+        3) <span class="pl-c1">echo</span> <span class="pl-s"><span class="pl-pds">'</span>Unexpected HTTP 3xx Redirection!<span class="pl-pds">'</span></span> ;;
+        4) <span class="pl-c1">echo</span> <span class="pl-s"><span class="pl-pds">'</span>HTTP 4xx Client Error!<span class="pl-pds">'</span></span> ;;
+        5) <span class="pl-c1">echo</span> <span class="pl-s"><span class="pl-pds">'</span>HTTP 5xx Server Error!<span class="pl-pds">'</span></span> ;;
+        6) <span class="pl-c1">echo</span> <span class="pl-s"><span class="pl-pds">'</span>Exceeded --max-redirects=&lt;n&gt; redirects!<span class="pl-pds">'</span></span> ;;
+        <span class="pl-k">*</span>) <span class="pl-c1">echo</span> <span class="pl-s"><span class="pl-pds">'</span>Other Error!<span class="pl-pds">'</span></span> ;;
+    <span class="pl-k">esac</span>
+<span class="pl-k">fi</span></pre></div>
+<a name="user-content-interface-design"></a>
+<h2><a id="user-content-interface-design" class="anchor" href="#interface-design" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Interface design</h2>
+<p>The syntax of the command arguments closely corresponds to the actual HTTP
+requests sent over the wire. It has the advantage  that it's easy to remember
+and read. It is often possible to translate an HTTP request to an HTTPie
+argument list just by inlining the request elements. For example, compare this
+HTTP request:</p>
+<div class="highlight highlight-source-httpspec"><pre><span class="pl-k">POST</span><span class="pl-c1"> /collection HTTP/1.1</span>
+<span class="pl-s"><span class="pl-v">X-API-Key:</span> 123</span>
+<span class="pl-s"><span class="pl-v">User-Agent:</span> Bacon/1.0</span>
+<span class="pl-s"><span class="pl-v">Content-Type:</span> application/x-www-form-urlencoded</span>
+
+name<span class="pl-c1">=</span><span class="pl-c1">value</span><span class="pl-c1">&amp;</span><span class="pl-c1">name2</span><span class="pl-c1">=</span><span class="pl-c1">value2</span></pre></div>
+<p>with the HTTPie command that sends it:</p>
+<div class="highlight highlight-source-shell"><pre>$ http -f POST example.org/collection \
+  X-API-Key:123 \
+  User-Agent:Bacon/1.0 \
+  name=value \
+  name2=value2</pre></div>
+<p>Notice that both the order of elements and the syntax is very similar,
+and that only a small portion of the command is used to control HTTPie and
+doesn't directly correspond to any part of the request (here it's only <code>-f</code>
+asking HTTPie to send a form request).</p>
+<p>The two modes, <code>--pretty=all</code> (default for terminal) and <code>--pretty=none</code>
+(default for redirected output), allow for both user-friendly interactive use
+and usage from scripts, where HTTPie serves as a generic HTTP client.</p>
+<p>As HTTPie is still under heavy development, the existing command line
+syntax and some of the <code>--OPTIONS</code> may change slightly before
+HTTPie reaches its final version <code>1.0</code>. All changes are recorded in the
+<a href="#change-log">change log</a>.</p>
+<a name="user-content-support"></a>
+<h2><a id="user-content-support" class="anchor" href="#support" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Support</h2>
+<p>Please use the following support channels:</p>
+<ul>
+<li><a href="https://github.com/jkbr/httpie/issues">GitHub issues</a>
+for bug reports and feature requests.</li>
+<li><a href="https://gitter.im/jkbrzt/httpie">Our Gitter chat room</a>
+to ask questions, discuss features, and for general discussion.</li>
+<li><a href="https://stackoverflow.com/">StackOverflow</a>
+to ask questions (please make sure to use the
+<a href="http://stackoverflow.com/questions/tagged/httpie">httpie</a> tag).</li>
+<li>You can also tweet directly to <a href="https://twitter.com/jkbrzt">@jkbrzt</a>.</li>
+</ul>
+<a name="user-content-authors"></a>
+<h2><a id="user-content-authors" class="anchor" href="#authors" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Authors</h2>
+<p><a href="http://roztocil.co/">Jakub Roztocil</a>  (<a href="https://twitter.com/jkbrzt">@jkbrzt</a>) created HTTPie and <a href="https://github.com/jkbrzt/httpie/contributors">these fine people</a>
+have contributed.</p>
+<a name="user-content-logo"></a>
+<h2><a id="user-content-logo" class="anchor" href="#logo" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Logo</h2>
+<p>See <a href="https://github.com/claudiatd/httpie-artwork">claudiatd/httpie-artwork</a></p>
+<a name="user-content-contribute"></a>
+<h2><a id="user-content-contribute" class="anchor" href="#contribute" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Contribute</h2>
+<p>See <a href="https://github.com/jkbrzt/httpie/blob/master/CONTRIBUTING.rst">CONTRIBUTING</a>.</p>
+<a name="user-content-change-log"></a>
+<h2><a id="user-content-change-log" class="anchor" href="#change-log" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Change log</h2>
+<p>See <a href="https://github.com/jkbrzt/httpie/blob/master/CHANGELOG.rst">CHANGELOG</a>.</p>
+<a name="user-content-licence"></a>
+<h2><a id="user-content-licence" class="anchor" href="#licence" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Licence</h2>
+<p>See <a href="https://github.com/jkbrzt/httpie/blob/master/LICENSE">LICENSE</a>.</p>
+<a name="user-content-related-projects"></a>
+<h2><a id="user-content-related-projects" class="anchor" href="#related-projects" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Related projects</h2>
+<ul>
+<li><a href="https://stedolan.github.io/jq/">jq</a> — a command-line JSON processor that
+works great in conjunction with HTTPie</li>
+<li><a href="https://github.com/eliangcs/http-prompt">http-prompt</a> —  an interactive
+shell for HTTPie featuring autocomplete and command syntax highlighting</li>
+</ul>
+
+</article>
+  </div>
+
+
+  </div>
+  <div class="modal-backdrop js-touch-events"></div>
+</div>
+
+
+    </div>
+  </div>
+
+    </div>
+
+        <div class="container site-footer-container">
+  <div class="site-footer" role="contentinfo">
+    <ul class="site-footer-links right">
+        <li><a href="https://github.com/contact" data-ga-click="Footer, go to contact, text:contact">Contact GitHub</a></li>
+      <li><a href="https://developer.github.com/" data-ga-click="Footer, go to api, text:api">API</a></li>
+      <li><a href="https://training.github.com/" data-ga-click="Footer, go to training, text:training">Training</a></li>
+      <li><a href="https://shop.github.com/" data-ga-click="Footer, go to shop, text:shop">Shop</a></li>
+        <li><a href="https://github.com/blog" data-ga-click="Footer, go to blog, text:blog">Blog</a></li>
+        <li><a href="https://github.com/about" data-ga-click="Footer, go to about, text:about">About</a></li>
+
+    </ul>
+
+    <a href="https://github.com/" aria-label="Homepage" class="site-footer-mark" title="GitHub">
+      <svg aria-hidden="true" class="octicon octicon-mark-github" height="24" version="1.1" viewBox="0 0 16 16" width="24"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>
+</a>
+    <ul class="site-footer-links">
+      <li>© 2016 <span title="0.12606s from github-fe136-cp1-prd.iad.github.net">GitHub</span>, Inc.</li>
+        <li><a href="https://github.com/site/terms" data-ga-click="Footer, go to terms, text:terms">Terms</a></li>
+        <li><a href="https://github.com/site/privacy" data-ga-click="Footer, go to privacy, text:privacy">Privacy</a></li>
+        <li><a href="https://github.com/security" data-ga-click="Footer, go to security, text:security">Security</a></li>
+        <li><a href="https://status.github.com/" data-ga-click="Footer, go to status, text:status">Status</a></li>
+        <li><a href="https://help.github.com/" data-ga-click="Footer, go to help, text:help">Help</a></li>
+    </ul>
+  </div>
+</div>
+
+
+
+    
+
+    <div id="ajax-error-message" class="ajax-error-message flash flash-error">
+      <svg aria-hidden="true" class="octicon octicon-alert" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M8.865 1.52c-.18-.31-.51-.5-.87-.5s-.69.19-.87.5L.275 13.5c-.18.31-.18.69 0 1 .19.31.52.5.87.5h13.7c.36 0 .69-.19.86-.5.17-.31.18-.69.01-1L8.865 1.52zM8.995 13h-2v-2h2v2zm0-3h-2V6h2v4z"></path></svg>
+      <button type="button" class="flash-close js-flash-close js-ajax-error-dismiss" aria-label="Dismiss error">
+        <svg aria-hidden="true" class="octicon octicon-x" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48z"></path></svg>
+      </button>
+      You can't perform that action at this time.
+    </div>
+
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    <div class="js-stale-session-flash stale-session-flash flash flash-warn flash-banner hidden">
+      <svg aria-hidden="true" class="octicon octicon-alert" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M8.865 1.52c-.18-.31-.51-.5-.87-.5s-.69.19-.87.5L.275 13.5c-.18.31-.18.69 0 1 .19.31.52.5.87.5h13.7c.36 0 .69-.19.86-.5.17-.31.18-.69.01-1L8.865 1.52zM8.995 13h-2v-2h2v2zm0-3h-2V6h2v4z"></path></svg>
+      <span class="signed-in-tab-flash">You signed in with another tab or window. <a href="#">Reload</a> to refresh your session.</span>
+      <span class="signed-out-tab-flash">You signed out in another tab or window. <a href="#">Reload</a> to refresh your session.</span>
+    </div>
+    <div class="facebox" id="facebox" style="display: none;">
+  <div class="facebox-popup">
+    <div class="facebox-content" role="dialog" aria-labelledby="facebox-header" aria-describedby="facebox-description">
+    </div>
+    <button type="button" class="facebox-close js-facebox-close" aria-label="Close modal">
+      <svg aria-hidden="true" class="octicon octicon-x" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48z"></path></svg>
+    </button>
+  </div>
+</div>
+
+  
+
+
+</body>
+</html>

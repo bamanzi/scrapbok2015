@@ -1,0 +1,286 @@
+/* ::::: https://techarena51.com/wp-content/themes/ready-review/css/imports.css ::::: */
+
+/* ::::: (import) https://techarena51.com/wp-content/themes/ready-review/css/gumby.16col.css ::::: */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video { margin: 0px; padding: 0px; border: 0px none; font: inherit; vertical-align: baseline; }
+html { font-size: 100%; }
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; }
+body { line-height: 1; }
+ol, ul { list-style: none outside none; }
+body { background: none repeat scroll 0% 0% rgb(255, 255, 255); font-family: "Helvetica Neue","HelveticaNeue",Helvetica,Arial,"Lucida Grande",sans-serif; font-size: 0.95rem; line-height: 1.6; color: rgb(85, 85, 85); position: relative; }
+h1, h2, h3, h4, h5, h6 { color: rgb(27, 27, 27); font-weight: bold; line-height: 1.6; }
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { font-weight: inherit; }
+h1 { font-size: 4.6rem; margin-bottom: 0px; }
+h2 { font-size: 3.9rem; margin-bottom: 9px; }
+h3 { font-size: 2.9rem; margin-bottom: 9px; }
+h4 { font-size: 2.5rem; margin-bottom: 3px; }
+p { line-height: 1.6; margin: 0px 0px 18px; }
+p img { margin: 0px; }
+a { color: rgb(0, 0, 238); text-decoration: none; outline: 0px none; line-height: inherit; }
+a:hover { color: rgb(0, 0, 238); text-decoration: underline; }
+p a, p a:visited { line-height: inherit; }
+ul, ol { margin-bottom: 18px; }
+ul { list-style: none outside none; }
+ul ul, ol ol { margin: 4px 0px 5px 30px; }
+li { margin-bottom: 4px; }
+@media handheld, only screen and (max-width: 767px) {
+  body, p { font-size: 1.6rem; line-height: 1.6; }
+}
+strong { font-weight: bold; line-height: inherit; }
+@media print {
+  * { background: none repeat scroll 0% 0% transparent ! important; color: black ! important; text-shadow: none ! important; filter: none ! important; }
+  p a, p a:visited { color: rgb(68, 68, 68) ! important; text-decoration: underline; }
+  p a[href]:after { content: " (" attr(href) ")"; }
+  .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after { content: ""; }
+  pre, blockquote { border: 1px solid rgb(153, 153, 153); page-break-inside: avoid; }
+  tr, img { page-break-inside: avoid; }
+  @page { margin: 0.5cm; }
+  p, h2, h3 { orphans: 3; widows: 3; }
+  h2, h3 { page-break-after: avoid; }
+}
+.container { padding: 0px 20px; }
+.row { width: 100%; max-width: 1000px; min-width: 720px; margin: 0px auto; }
+.column, .columns { margin-left: 2.12766%; float: left; min-height: 45px; position: relative; box-sizing: border-box; }
+.column:first-child, .columns:first-child, .alpha { margin-left: 0px; }
+.row .three.columns { width: 17.0213%; }
+.row .six.columns { width: 36.1703%; }
+.row .seven.columns { width: 42.5533%; }
+.row .nine.columns { width: 55.3192%; }
+.row .ten.columns { width: 63.83%; }
+.row .thirteen.columns { width: 80.8512%; }
+.row .sixteen.columns { width: 100%; }
+img, object, embed { max-width: 100%; height: auto; }
+img {  }
+.row:before, .row:after, .clearfix:before, .clearfix:after { content: ""; display: table; }
+.row:after, .clearfix:after { clear: both; }
+.row, .clearfix {  }
+@media only screen and (max-width: 480px) {
+  .row { text-align: center; }
+}
+@media only screen and (max-width: 767px) {
+  body { width: 100%; min-width: 0px; margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; }
+  .container { min-width: 0px; margin-left: 0px; margin-right: 0px; }
+  .row { width: 100%; min-width: 0px; margin-left: 0px; margin-right: 0px; }
+  .column, .columns { width: auto ! important; float: none; margin-left: 0px; margin-right: 0px; }
+  .column:last-child, .columns:last-child { margin-right: 0px; float: none; }
+  .column, .columns { width: auto ! important; float: none; margin-left: 0px; margin-right: 0px; }
+  .column:last-child, .columns:last-child { margin-right: 0px; float: none; }
+  [class*="column"] + [class*="column"]:last-child { float: none; }
+  [class*="column"]:before, [class*="column"]:after { display: table; }
+  [class*="column"]:after { clear: both; }
+}
+/* ::::: (end import) ::::: */
+/* ::::: (import) https://techarena51.com/wp-content/themes/ready-review/css/ui.css ::::: */
+@media only screen and (max-width: 767px) {
+}
+@media only screen and (min-width: 768px) and (max-width: 939px) {
+}
+@-moz-document url-prefix("http://") {
+  input.button[type="submit"]::-moz-focus-inner, button.button::-moz-focus-inner { border: 0px none; padding: 0px; }
+  input.small.button[type="submit"] { padding: 7px 20px 8px; }
+  input.medium.button[type="submit"] { padding: 8px 34px 9px; }
+  input.large.button[type="submit"] { padding: 9px 48px 10px; }
+}
+@media only screen and (max-width: 767px) {
+}
+form label { display: block; font-size: 16px; line-height: 18px; cursor: pointer; margin-bottom: 9px; }
+@media only screen and (max-width: 767px) {
+}
+@media only screen and (max-width: 767px) {
+}
+pre { background-color: rgb(27, 27, 27); border-radius: 4px 4px 4px 4px; box-shadow: 0px 2px 2px rgb(0, 0, 0) inset; border: 1px solid rgb(230, 255, 235); color: rgb(255, 255, 255); font-family: Courier,monospace; font-size: 14px; text-align: left; overflow: hidden ! important; padding: 20px; white-space: pre-wrap; box-sizing: border-box; }
+code { color: rgb(208, 69, 38); font-family: Courier,monospace; font-size: 14px; padding: 2px 4px; background: none repeat scroll 0% 0% rgb(231, 255, 236); border-radius: 4px 4px 4px 4px; }
+@media print {
+  * { background: none repeat scroll 0% 0% transparent ! important; color: black ! important; text-shadow: none ! important; filter: none ! important; }
+  a, a:visited { text-decoration: underline; }
+  a[href]:after { content: " (" attr(href) ")"; }
+  .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after { content: ""; }
+  pre, blockquote { border: 1px solid rgb(153, 153, 153); page-break-inside: avoid; }
+  tr, img { page-break-inside: avoid; }
+  img { max-width: 100% ! important; }
+  @page { margin: 0.5cm; }
+  p, h2, h3 { orphans: 3; widows: 3; }
+  h2, h3 { page-break-after: avoid; }
+}
+/* ::::: (end import) ::::: */
+/* ::::: (import) https://techarena51.com/wp-content/themes/ready-review/css/style.css ::::: */
+html { margin: 0px; }
+body { font-family: Arial,Helvetica,sans-serif; font-size: 0.95em; color: rgb(34, 34, 34); background-color: rgb(240, 240, 240); margin: 0px; padding: 0px; word-wrap: break-word; }
+p { font-size: 0.95em; }
+a { color: rgb(0, 0, 238); }
+.clear { clear: both; }
+h1 { font-size: 30px; }
+h2 { font-size: 26px; }
+h3 { font-size: 24px; }
+h4 { font-size: 22px; }
+.preheader { background-color: rgb(255, 255, 255); }
+#header { padding: 20px; }
+#header .logo h1 { margin: 0px; color: rgb(34, 34, 34); font-family: Arial,Helvetica,sans-serif; font-size: 42px; text-transform: uppercase; }
+#header .logo h1 a { color: rgb(34, 34, 34); text-decoration: none; }
+#header .ad468 { text-align: right; }
+.prenav { background-color: rgb(255, 255, 255); }
+.navpad { padding: 0px 20px; }
+.nav { background: url("nav_bg.jpg") repeat-x scroll 0% 0% transparent; line-height: 44px; }
+.content { background-color: rgb(255, 255, 255); }
+.leftcontent { padding: 20px; background: none repeat scroll 0% 0% rgb(255, 255, 255); height: 100%; }
+.leftcontent h1 { margin: 0px 0px 5px; border-bottom: 1px solid rgb(229, 229, 229); padding-bottom: 5px; }
+.leftcontent h1.postmargin { margin-bottom: 20px; }
+.post { border-bottom: 1px solid rgb(204, 204, 204); margin-bottom: 20px; padding-bottom: 20px; overflow: hidden; }
+.post p { line-height: 24px; font-size: 0.95em; }
+.affiliate-image { margin: 0px 10px 10px 0px; }
+.post p img { border: medium none; }
+.post ul { line-height: 24px; padding-left: 40px; margin-left: 0px; }
+.post ul li { list-style-type: disc; }
+#sidebar { padding: 20px; margin-left: 0px; }
+#sidebar .widget { margin-bottom: 20px; }
+#sidebar h2 { margin: 4px 0px 20px; font-size: 18px; border-bottom: 3px solid rgb(225, 225, 225); padding: 6px; background-color: rgb(235, 235, 235); }
+#sidebar .widget ul { margin: 0px; padding: 0px; list-style: none outside none; }
+#sidebar .widget ul li { padding: 10px 0px; border-top: 1px solid rgb(229, 229, 229); }
+#sidebar .widget ul li a { color: rgb(34, 34, 34); text-decoration: none; }
+#sidebar p { line-height: 24px; }
+.fn { font-style: normal; font-weight: normal; font-size: 18px; }
+.footer { background-color: rgb(7, 7, 7); color: rgb(255, 255, 255); font-size: 11px; }
+.footer a { color: rgb(255, 255, 255); }
+.footer .copyright { font-size: 12px; color: rgb(153, 153, 153); padding: 10px 20px; }
+.footer .copyright a { color: rgb(255, 255, 255); text-decoration: underline; }
+.footer .footerright { font-size: 12px; color: rgb(153, 153, 153); padding: 10px 20px; }
+.footer .footerright a { color: rgb(255, 255, 255); text-decoration: underline; }
+.postmargin { margin-bottom: 20px; }
+.bypostauthor {  }
+/* ::::: (end import) ::::: */
+/* ::::: (import) https://techarena51.com/wp-content/themes/ready-review/css/text.css ::::: */
+@media only screen and (min-width: 480px) {
+}
+@media only screen and (min-width: 768px) {
+}
+/* ::::: (end import) ::::: */
+/* ::::: (import) https://techarena51.com/wp-content/themes/ready-review/css/responsive.css ::::: */
+ol, ul, li { margin: 0px; padding: 0px; border: 0px none; outline: 0px none; font: inherit; vertical-align: baseline; }
+a, a:link, a:visited { cursor: pointer; text-decoration: none; }
+a:hover, a:active { text-decoration: underline; }
+p {  }
+nav { display: block; float: none; z-index: 1000; }
+nav ul { display: block; }
+nav ul li { display: inline; position: relative; float: left; list-style: none outside none; }
+nav ul a, nav ul a:link, nav ul a:visited { display: block; float: left; padding: 0px 12px; margin: 0px; line-height: 45px; font-size: 14px; font-weight: bold; color: rgb(255, 255, 255); background: url("nav_divider.gif") no-repeat scroll right center transparent; }
+nav ul a:hover, nav ul a:active { text-decoration: none; }
+nav ul ul { display: none; position: absolute; top: 41px; left: -22px; width: 150px; padding: 5px; background-color: rgb(255, 255, 255); border: 1px solid rgb(204, 204, 204); z-index: 1000; }
+nav ul ul li { display: block; float: none; clear: both; }
+nav ul ul a, nav ul ul a:link, nav ul ul a:visited { display: block; float: none; border: 0px none; margin: 0px; color: rgb(34, 34, 34); line-height: 26px; background-image: none; }
+nav ul ul a:hover, nav ul ul a:active { text-decoration: underline; }
+@media (max-width: 650px) {
+  body {  }
+  nav { position: relative; float: none; margin: 0px; padding: 0px; width: 100%; background-color: rgb(34, 34, 34); }
+  nav ul { display: none; }
+  nav ul li { display: block; position: relative; float: none; padding: 0px; margin: 0px ! important; background: url("nav_bg_001.jpg") repeat-x scroll 0% 0% transparent; border-top: 1px solid rgb(0, 0, 0); }
+  nav ul a, nav ul a:link, nav ul a:visited { display: block; position: relative; float: none; padding: 10px; clear: both; line-height: 20px; text-align: left; color: rgb(255, 255, 255); }
+  nav ul ul { display: none; position: relative; width: 100%; top: 0px; left: 0px; margin: 0px ! important; padding: 0px; background: url("nav_bg_001.jpg") repeat-x scroll 0% 0% transparent; border: medium none ! important; }
+  nav ul ul a, nav ul ul a:link, nav ul ul a:visited { color: rgb(255, 255, 255); text-align: left; padding: 7px 10px 7px 35px; border: medium none; }
+}
+/* ::::: (end import) ::::: */
+/* ::::: [internal] ::::: */
+
+/* ::::: [internal] ::::: */
+
+/* ::::: https://techarena51.com/wp-content/plugins/social-media-widget/social_widget.css?ver=4.5.3 (@media all) ::::: */
+
+.socialmedia-buttons { margin-top: 5px; }
+.smw_left { text-align: left; }
+.smw_center img, .smw_left img { border: 0px none ! important; display: inline; transition: all 0.2s ease 0s; margin-right: 10px ! important; }
+.socialmedia-buttons a { background: none repeat scroll 0% 0% transparent ! important; }
+.socialmedia-buttons a:hover { text-decoration: none; border: 0px none; }
+.socialmedia-buttons img { vertical-align: middle; margin-bottom: 3px; }
+.socialmedia-buttons img.fade:hover { opacity: 1 ! important; transition: all 0.2s ease 0s; }
+/* ::::: https://techarena51.com/wp-content/plugins/wp-pagenavi/pagenavi-css.css?ver=2.70 (@media all) ::::: */
+
+/* ::::: https://techarena51.com/wp-content/plugins/mailchimp-for-wp/assets/css/checkbox.min.css?ver=2.3.14 (@media all) ::::: */
+
+/* ::::: https://techarena51.com/wp-content/plugins/popular-widget/_css/pop-widget.css?ver=1.7.0 (@media all) ::::: */
+
+ul.pop-widget-tabs { list-style: none outside none; clear: both; width: 100%; border: medium none; margin: 0px ! important; padding: 0px ! important; }
+ul.pop-widget-tabs li { padding: 0px; float: left; display: inline; line-height: 30px; border: 1px solid rgb(245, 245, 245); font-weight: bold; margin: 0px 1px 1px 0px; font-size: 11px; list-style: none outside none; cursor: pointer; }
+ul.pop-widget-tabs li a { float: left; display: block; padding: 0px 5px; background: none repeat scroll 0% 0% rgb(255, 255, 255); line-height: 30px; text-decoration: none; border: 1px solid rgb(221, 221, 221); font-family: Arial,Helvetica,sans-serif; letter-spacing: -0.05em; }
+ul.pop-widget-tabs li a { padding: 0px 3px; font-size: 11px; }
+ul.pop-widget-tabs li a:hover, ul.pop-widget-tabs li a.active, ul.pop-widget-tabs li a:active, ul.pop-widget-tabs li a:focus { text-decoration: none; background: none repeat scroll 0% 0% rgb(245, 245, 245); }
+div.pop-inside { clear: both; padding: 0px; border: 1px solid rgb(221, 221, 221); margin: 5px 0px 0px; }
+div.pop-inside ul { border: medium none; padding: 0px; display: block; list-style: none outside none; position: relative; margin: 0px ! important; }
+div.pop-inside ul li { margin: 0px; list-style: none outside none; position: relative; padding: 8px 5px; border-bottom: 1px dotted rgb(204, 204, 204); }
+div.pop-inside ul li .pop-title { clear: none; font-weight: bold; margin: 0px 0px 3px; padding: 0px; }
+div.pop-inside ul li a { cursor: pointer; text-decoration: none; font-weight: normal; }
+div.pop-inside ul li:hover, div.pop-inside ul li:active, div.pop-inside ul li:focus { background: none repeat scroll 0% 0% rgb(245, 245, 245); }
+div.pop-inside ul li a:hover, div.pop-inside ul li a:active, div.pop-inside ul li a:focus { text-decoration: none; }
+div.pop-inside ul li img { display: block; margin: 0px auto; height: auto; }
+div.pop-inside br.pop-cl { clear: both; content: ""; display: block; }
+div.pop-inside br.pop-cl:after, div.pop-inside br.pop-cl:before { content: ""; }
+div.pop-inside ul li .pop-overlay { bottom: 0px; opacity: 0.8; display: block; padding: 5px; background-color: rgb(68, 68, 68); position: absolute; }
+div.pop-inside ul li:last-child { border-bottom: medium none; margin: 0px; }
+.pop-layout-v div.pop-inside ul li .pop-overlay { opacity: 1; display: inline; padding: 0px; background: none repeat scroll 0% 0% transparent; position: static; }
+.pop-layout-v div.pop-inside ul li img { margin: 0px 10px 0px 0px; float: left; height: auto; max-width: 65px; }
+/* ::::: https://techarena51.com/wp-content/plugins/mailchimp-for-wp/assets/css/form-theme-dark.min.css?ver=2.3.14 (@media all) ::::: */
+
+.mc4wp-form { margin: 1em 0px; }
+.mc4wp-form form, .mc4wp-form input, .mc4wp-form label { width: auto; display: block; box-sizing: border-box; cursor: auto; height: auto; vertical-align: baseline; line-height: normal; }
+.mc4wp-form form:after { content: ""; display: table; clear: both; }
+.mc4wp-form label { font-weight: 700; }
+.mc4wp-form button, .mc4wp-form input[type="button"], .mc4wp-form input[type="submit"] { -moz-appearance: none; }
+.mc4wp-form form, form.mc4wp-form { box-shadow: none ! important; width: auto; }
+.mc4wp-form p { margin: 10px 0px; padding: 0px; }
+.mc4wp-form label { font-size: 1em; margin: 6px 0px; }
+.mc4wp-form input[type="date"], .mc4wp-form input[type="email"], .mc4wp-form input[type="number"], .mc4wp-form input[type="tel"], .mc4wp-form input[type="text"], .mc4wp-form input[type="url"], .mc4wp-form select, .mc4wp-form textarea { width: 100%; height: 34px; margin: 0px; padding: 6px 12px; font-size: 14px; line-height: 1.42857; color: rgb(85, 85, 85) ! important; vertical-align: middle; background-color: rgb(255, 255, 255); border: 1px solid rgb(204, 204, 204); border-radius: 2px 2px 2px 2px; box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset; transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s; background-image: none; text-shadow: none; }
+.mc4wp-form input[type="date"]:focus, .mc4wp-form input[type="email"]:focus, .mc4wp-form input[type="number"]:focus, .mc4wp-form input[type="tel"]:focus, .mc4wp-form input[type="text"]:focus, .mc4wp-form input[type="url"]:focus, .mc4wp-form select:focus, .mc4wp-form textarea:focus { border-color: rgb(102, 175, 233); outline: 0px none; box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px rgba(102, 175, 233, 0.6); }
+.mc4wp-form button, .mc4wp-form input[type="button"], .mc4wp-form input[type="submit"] { display: inline-block; padding: 6px 12px; margin: 0px; font-size: 14px; font-weight: 400; line-height: 1.42857; text-align: center; white-space: nowrap; vertical-align: middle; cursor: pointer; border: 1px solid transparent; border-radius: 2px 2px 2px 2px; -moz-user-select: none; box-shadow: none; background: none repeat scroll 0px 0px transparent; text-shadow: none; filter: none; height: auto; width: auto; }
+.mc4wp-form button:focus, .mc4wp-form input[type="button"]:focus, .mc4wp-form input[type="submit"]:focus { outline: thin dotted rgb(51, 51, 51); outline-offset: -2px; }
+.mc4wp-form button:focus, .mc4wp-form button:hover, .mc4wp-form input[type="button"]:focus, .mc4wp-form input[type="button"]:hover, .mc4wp-form input[type="submit"]:focus, .mc4wp-form input[type="submit"]:hover { color: rgb(51, 51, 51); text-decoration: none; background: none repeat scroll 0px 0px transparent; }
+.mc4wp-form button:active, .mc4wp-form input[type="button"]:active, .mc4wp-form input[type="submit"]:active { background-image: none; outline: 0px none; box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.125) inset; }
+.mc4wp-form button, .mc4wp-form input[type="submit"] { color: rgb(255, 255, 255) ! important; background-color: rgb(68, 68, 68) ! important; border-color: rgb(40, 40, 40); }
+.mc4wp-form button:active, .mc4wp-form button:focus, .mc4wp-form button:hover, .mc4wp-form input[type="submit"]:active, .mc4wp-form input[type="submit"]:focus, .mc4wp-form input[type="submit"]:hover { color: rgb(255, 255, 255) ! important; background-color: rgb(40, 40, 40) ! important; border-color: rgb(17, 17, 17); }
+.mc4wp-form input[type="date"]:focus, .mc4wp-form input[type="email"]:focus, .mc4wp-form input[type="tel"]:focus, .mc4wp-form input[type="text"]:focus, .mc4wp-form input[type="url"]:focus, .mc4wp-form select:focus, .mc4wp-form textarea:focus { border-color: rgb(68, 68, 68); }
+/* ::::: https://techarena51.com/wp-content/plugins/wp-github/css/wp-github.css?ver=4.5.3 (@media all) ::::: */
+
+/* ::::: [internal] ::::: */
+
+div.socialicons { float: left; display: block; margin-right: 10px; line-height: 1; }
+/* ::::: https://techarena51.com/wp-content/plugins/starbox//themes/business/css/frontend.css?ver=3.0.4 (@media all) ::::: */
+
+.abh_box { clear: both ! important; position: relative ! important; width: 100% ! important; padding: 25px 0px ! important; }
+.abh_tabs { list-style: none outside none ! important; width: 100% ! important; padding: 5px 0px 1px ! important; margin: 0px ! important; font: 13px arial ! important; border-bottom: 1px solid rgb(204, 204, 204) ! important; }
+.abh_tabs li { list-style: none outside none ! important; display: inline ! important; margin: 0px ! important; padding: 0px ! important; }
+.abh_tabs li:after { content: "" ! important; padding: 0px ! important; margin: 0px ! important; }
+.abh_tabs li:before { content: "" ! important; padding: 0px ! important; margin: 0px ! important; }
+.abh_tabs li a { color: rgb(51, 51, 51) ! important; background-color: transparent ! important; border-width: 0px 0px medium ! important; border-style: solid solid none ! important; border-color: rgb(204, 204, 204) rgb(204, 204, 204) -moz-use-text-color ! important; -moz-border-top-colors: none ! important; -moz-border-right-colors: none ! important; -moz-border-bottom-colors: none ! important; -moz-border-left-colors: none ! important; border-image: none ! important; padding: 4px 10px 5px ! important; text-decoration: none ! important; outline: medium none ! important; font-size: 100% ! important; line-height: 23px ! important; }
+.abh_tabs li a:hover { background-color: rgb(221, 221, 221) ! important; padding: 4px 10px 5px ! important; }
+.abh_tabs li.abh_active a { color: rgb(51, 51, 51) ! important; background-color: rgb(238, 238, 238) ! important; padding: 4px 10px 5px ! important; border-bottom: medium none ! important; }
+.abh_tabs li.abh_active a:hover { background-color: rgb(238, 238, 238) ! important; padding: 4px 10px 5px ! important; border-bottom: medium none ! important; }
+.abh_tab_content { padding: 20px 12px ! important; min-height: 80px ! important; overflow: hidden ! important; border-bottom: 1px solid rgb(204, 204, 204) ! important; }
+.abh_tab_content .abh_tab { display: none; }
+.abh_tab_content .abh_image { display: block; float: left ! important; width: 80px ! important; margin-top: 10px ! important; }
+.abh_tab_content .abh_image img { max-width: 80px ! important; box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2) ! important; overflow: hidden ! important; border-radius: 50% 50% 50% 50% ! important; }
+.abh_tab_content .abh_text { margin-left: 96px ! important; font-size: 100% ! important; line-height: 1.5 ! important; }
+.abh_tab_content .abh_text h3, .abh_tab_content .abh_text h4 { font-size: 20px ! important; padding: 0px ! important; margin: 0px ! important; clear: none ! important; font-weight: bold ! important; text-align: left ! important; line-height: 20px ! important; }
+.abh_tab_content .abh_text .fn { text-transform: capitalize ! important; clear: none ! important; font-size: 18px ! important; line-height: 24px ! important; margin: 0px ! important; padding: 0px ! important; border: medium none ! important; }
+.abh_tab_content .abh_text a { font-size: 100% ! important; text-decoration: none ! important; }
+.abh_tab_content .abh_text .abh_job { line-height: 20px ! important; font-size: 100% ! important; }
+.abh_tab_content .abh_text .abh_description { position: static ! important; padding-top: 6px ! important; font-size: 14px ! important; width: 100% ! important; }
+.abh_tab_content .abh_text .abh_allposts { font-size: 11px ! important; vertical-align: middle ! important; }
+.abh_tab_content .abh_text ul { list-style: none outside none ! important; padding: 0px ! important; margin: 5px 0px 0px 15px ! important; }
+.abh_tab_content .abh_text ul li, .abh_tab_content .abh_text ul li span { font-size: 13px ! important; line-height: 20px ! important; margin: 0px ! important; }
+.abh_tab_content .abh_social { display: block; float: right ! important; line-height: 1px ! important; padding: 0px ! important; margin: 3px 0px 0px ! important; text-align: right ! important; }
+.abh_tab_content .abh_social div { width: 140px ! important; margin: 0px 0px 0px auto ! important; }
+.abh_tab_content .abh_social a { display: inline-block; background: url("sprite.png") no-repeat scroll 0% 0% transparent ! important; width: 24px ! important; height: 24px ! important; margin: 1px ! important; padding: 0px ! important; opacity: 0.5 ! important; text-decoration: none ! important; transition: opacity 0.2s ease 0s ! important; border-radius: 5px 5px 5px 5px ! important; }
+.abh_tab_content .abh_social a:hover { opacity: 1 ! important; }
+.abh_tab_content .abh_social a.abh_facebook { background-position: 0px 0px ! important; }
+.abh_tab_content .abh_social a.abh_twitter { background-position: -168px 0px ! important; }
+.abh_box .vcard { background: none repeat scroll 0% 0% transparent ! important; font-size: 100% ! important; border: medium none ! important; }
+/* ::::: https://techarena51.com/wp-content/plugins/starbox//themes/admin/css/hidedefault.css?ver=3.0.4 (@media all) ::::: */
+
+/* ::::: [internal] ::::: */
+
+/* ::::: [internal] ::::: */
+
+/* ::::: [internal] ::::: */
+
+@media screen {
+}
+@media print {
+}
+/* ::::: [internal] ::::: */
+

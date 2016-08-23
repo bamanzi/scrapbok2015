@@ -1,0 +1,795 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<meta http-equiv="Cache-Control" content="no-siteapp"><link rel="alternate" media="handheld" href="http://kaifly.blog.51cto.com/#">
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>查看Linux服务器网卡流量小脚本shell和Python各一例 - 奋进的K - 51CTO技术博客</title>
+<meta name="description" content="&nbsp;有时我们需要较为实时的查看服务器上的网卡流量，这里我写了两个小脚本，一个用shell（先写的，一次只能查看一个网卡），另一个用Python（后写的，一次可查看多个网卡）。脚本中都用了whiletrue“死循环”..">
+<meta name="keywords" content="Linux,网卡流量">
+<meta http-equiv="Cache-Control" content="private">
+<base href="">
+
+
+
+
+
+
+<link rel="alternate" href="http://kaifly.blog.51cto.com/rss.php?uid=3209616" type="application/rss+xml" title="RSS 2.0">
+<link rel="edituri" type="application/rsd+xml" title="rsd" href="http://kaifly.blog.51cto.com/xmlrpc.php?rsd=1">
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+
+<body>
+
+<div id="home_top">
+<div class="top_nav" style="width: 990px;">
+<div class="left" style="margin-top: 10px; width: 440px;"><a href="http://blog.51cto.com/" target="_blank"><img src="head_blog_sibebar_logo.gif" style="margin-top: -4px;" align="absmiddle"></a><a target="_blank" href="http://www.51cto.com/">51CTO首页</a><img src="top_bg_xian.gif" style="margin-top: -4px;" width="16" align="absmiddle" height="25"><a href="http://blog.51cto.com/" target="_blank">51CTO博客</a><img src="top_bg_xian.gif" style="margin-top: -4px;" width="16" align="absmiddle" height="25"><a href="http://home.51cto.com/?reback=http%253A%252F%252Fkaifly.blog.51cto.com%252F3209616%252F1783530">我的博客</a><img src="top_bg_xian.gif" style="margin-top: -4px;" width="16" align="absmiddle" height="25">
+
+<a target="_blank" href="http://blog.51cto.com/search.php">搜索</a>
+<a style="color: rgb(255, 0, 0); text-decoration: underline;" id="showMessagerDim">每日博报</a>
+</div>
+
+<div class="right" style="width: 550px;">
+<div class="more"><img src="top_shequ.gif" width="27" align="absmiddle" height="16"><a target="_blank" style="color: rgb(204, 0, 0);" href="http://gaozhao.51cto.com/">招聘</a><a style="color: rgb(204, 0, 0);" target="_blank" href="http://edu.51cto.com/">学院</a><a target="_blank" href="http://bbs.51cto.com/">论坛</a><a target="_blank" href="http://blog.51cto.com/">博客</a><a target="_blank" href="http://down.51cto.com/">下载</a><a>更多<img style="padding-left: 4px;" src="nav_ico1.gif" align="absmiddle"></a>            </div>            <span id="login_status"><div class="login" style="padding-top: 8px; text-align: right;"><a href="http://home.51cto.com/index?reback=http://kaifly.blog.51cto.com/3209616/1783530" target="_self">登录</a><a href="http://ucenter.51cto.com/2015/register.php?reback=http://kaifly.blog.51cto.com/3209616/1783530" target="_self">注册</a></div></span>                </div>    </div></div>
+
+
+
+<div class="subMenu3" id="s3">
+<ul>
+<li><a href="http://home.51cto.com/" target="_blank">家园</a></li>
+<li><a href="http://edu.51cto.com/" target="_blank">学院</a></li>
+<li><a href="http://blog.51cto.com/" target="_blank">博客</a></li>
+<li><a href="http://bbs.51cto.com/" target="_blank">论坛</a></li>
+<li><a href="http://down.51cto.com/" target="_blank">下载</a></li>
+
+<li><a href="http://selftest.51cto.com/" target="_blank">自测</a></li>
+<li><a href="http://doctor.51cto.com/" target="_blank">门诊</a></li>
+<li><a href="http://blog.51cto.com/newsletter/" target="_blank">周刊</a></li>
+<li><a href="http://book.51cto.com/" target="_blank">读书</a></li>
+<li><a href="http://t.51cto.com/" style="color: red;" target="_blank">题库</a></li>
+<li><a href="http://gaozhao.51cto.com/" target="_blank">招聘</a></li>
+</ul>
+</div>
+<!--简导航end-->
+
+
+
+<div class="headerBox">
+<div class="header">
+<div class="header_l">
+<div class="logo_blogname">
+
+
+<div class="blogLogo">
+<a href="http://blog.51cto.com/blogcommend" target="_blank"><img src="blogLogo01.png" width="161px;" height="70px;"></a>
+</div>
+
+
+<div class="blogName">
+<a href="http://kaifly.blog.51cto.com/"><h1>奋进的K</h1></a>
+</div>
+</div><!--logo_blogname end-->
+<div class="blogLink">
+
+<a href="http://kaifly.blog.51cto.com/">http://kaifly.blog.51cto.com</a> <input id="txtUser" size="32" value="http://kaifly.blog.51cto.com" type="hidden">   <a>【复制】</a> <a href="http://kaifly.blog.51cto.com/rss.php?uid=3209616" target="_blank"></a><a href="http://kaifly.blog.51cto.com/rss.php?uid=3209616" target="_blank">【订阅】</a>
+
+</div>
+
+
+
+</div><!--header_l end-->
+<div class="header_r">
+<div class="blogInfo"><span><a href="http://kaifly.blog.51cto.com/3209616/o" title="察看kai404所有原创文章">原创</a>:38</span><span><a href="http://kaifly.blog.51cto.com/3209616/t" title="察看kai404所有翻译文章">翻译</a>:4</span><span><a href="http://kaifly.blog.51cto.com/3209616/c" title="察看kai404所有转载文章">转载</a>:13</span></div>
+<div class="blogNav"><a href="http://kaifly.blog.51cto.com/">博 客</a>|<a href="http://home.51cto.com/apps/photo/index.php?s=/Index/photos/uid/3209616">图库</a>|<a href="http://blog.51cto.com/user_index.php?action=addblog_new">写博文</a>|<a href="http://51ctoblog.blog.51cto.com/all/26414/4" target="_blank">帮 助</a></div>
+</div>
+</div>
+<!--header end-->
+</div><!--headerBox end-->
+<div class="mainNav">
+<span class="mainNavT"></span>
+<ul>
+<li><a href="http://kaifly.blog.51cto.com/">首页</a></li>|<li><a href="http://kaifly.blog.51cto.com/3209616/d-1">Linux运维</a></li>|<li><a href="http://kaifly.blog.51cto.com/3209616/d-2">数据库类</a></li>|<li><a href="http://kaifly.blog.51cto.com/3209616/d-3">通用脚本</a></li>|<li><a href="http://kaifly.blog.51cto.com/3209616/d-4">运维架构</a></li>|<li><a href="http://kaifly.blog.51cto.com/3209616/d-5">Python编程</a></li>
+</ul>
+<span class="mainNavB"></span>
+</div>
+<!--mainNav end-->
+
+
+
+
+<!--[if IE 6]>
+  <script type="text/javascript" src="http://images.watchstor.com/newhomes/png.js"></script>
+  <script>
+    DD_belatedPNG.fix('img,input,ul,li, .get-box, div, .add, .sub, .ui-slider-handle, .footer-chopper');
+  </script>
+<![endif]-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="add_sys_type_div" style="width: 600px; border: 1px solid rgb(88, 176, 221); background-color: rgb(255, 255, 255); position: absolute; left: 30%; top: 300px; display: none; z-index: 255;"></div>
+<div id="add_sys_type_dvs" style="width: 550px; border: 1px solid rgb(88, 176, 221); background-color: rgb(255, 255, 255); position: absolute; left: 30%; top: 300px; display: none; z-index: 255;"></div>
+	
+
+
+
+<div class="blogMain">
+<div class="blogLeft">
+
+
+<div class="box moduleUser">
+<div class="title">
+<h2><strong>kai404</strong> 的BLOG  </h2>
+</div>
+<div class="modCon">
+
+<div class="userImage" style="margin: 10px auto 5px; text-align: center; width: 130px; border: 1px solid rgb(212, 212, 212);">
+	<table width="100%" cellpadding="0" cellspacing="0">
+		<tbody><tr>
+			<td valign="middle" align="center" height="130"><img src="avatar.php" id="userface"></td>
+		</tr>
+	</tbody></table>
+</div>
+<div class="photo_links">
+</div>
+
+
+
+
+
+
+
+
+
+<div class="crumbs">
+<a href="http://home.51cto.com/index.php?s=/space/3209616#message" class="writeMessage" target="_blank">写留言</a><a href="http://edu.51cto.com/" class="inCircle" target="_blank">去学院学习</a><a href="http://home.51cto.com/index.php?s=/Notify/write/uid/3209616" class="message" target="_blank">发消息</a>
+ <a href="http://kaifly.blog.51cto.com/" class="joinLinks">加友情链接</a><a href="http://home.51cto.com/index.php?s=/space/3209616" class="joinFriends" target="_blank">进家园 加好友</a>
+</div>
+
+<div style="width: 239px; height: 64px; display: none;">
+
+
+<div style="float: left;"><p style="padding: 15px 0px 0px 28px; line-height: 20px;">2012年度IT博客大赛<br><a target="_blank" href="http://blog.51cto.com/contest2012/#top10000" style="color: rgb(255, 0, 0); text-decoration: underline;">十大杰出IT博客诞生</a></p></div>
+<div style="float: right;"><a target="_blank" href="http://blog.51cto.com/contest2012/"><img src="blog_match_endlook.jpg" style="margin: 23px 20px 0px 0px;" width="57" height="27"></a></div>
+<!-- <div style="float:left;"><p style="padding:15px 0 0 28px; line-height:20px;">星光评委正在评选<br><a target="_blank" href="http://blog.51cto.com/contest2012/index.php?mod=userlist_sec" style="color:#F00; text-decoration:underline;">2012年度IT博客大赛50强</a></p></div>
+<div style="float:right;"><img class="blog_match_yq" width="57" height="27" src="http://img1.51cto.com/images/blog_match_invite.jpg" style="margin:23px 20px 0 0;"></div> -->
+
+
+
+<div class="clear"></div>
+</div>
+
+
+</div><!--modCon end-->
+<span class="modBot"></span>
+</div>
+
+
+<div class="infoList box">
+<div class="title">
+<h2>博客统计信息</h2>
+</div>
+<div class="modCon">
+<p>
+<span class="infoListHead"><a href="http://blog.51cto.com/blogcommend" target="_blank" class="operlink"><b>51CTO推荐博客</b></a> <br></span>
+用户名：kai404<br>
+文章数：58<br>
+评论数：51<br>
+访问量：35578<br>
+<a href="http://home.51cto.com/index.php?s=/Account/credit" target="_blank">无忧币</a>：2328<br>
+<a href="http://51ctoblog.blog.51cto.com/26414/5591" target="_blank">博客积分</a>：2076<br>
+<a href="http://51ctoblog.blog.51cto.com/26414/5591" target="_blank">博客等级</a>：6<br>
+注册日期：2011-06-12<br>
+</p>
+</div>
+<span class="modBot"></span>
+</div>
+
+
+<div class="infoList box">
+	<div class="title">
+		<h2 class="fl">热门专题</h2>
+		<a target="_blank" class="fr" href="http://blog.51cto.com/zt">更多&gt;&gt;</a>
+	</div>
+	<div class="modCon" style="height: 348px;">
+
+	
+		<div class="vlist">
+		  <a href="http://blog.51cto.com/zt/692" target="_blank"><img src="wKioL1c5llLwKSo3AAAbx5aBW1Q413.jpg" width="63" height="63"></a>
+		<dl>
+		<dt>
+		  <a href="http://blog.51cto.com/zt/692" target="_blank" title="每天5分钟玩转 OpenStack">每天5分钟玩转 OpenStack</a></dt>
+		<dd>阅读量：5863</dd>
+		</dl>
+		</div>
+	
+		<div class="vlist">
+		  <a href="http://blog.51cto.com/zt/693" target="_blank"><img src="wKiom1dVDr7javamAABB79u01lo798.jpg" width="63" height="63"></a>
+		<dl>
+		<dt>
+		  <a href="http://blog.51cto.com/zt/693" target="_blank" title="【51CTO三周年】我在学院不得不说的收获">【51CTO三周年】我在学院不得不说的收获</a></dt>
+		<dd>阅读量：12276</dd>
+		</dl>
+		</div>
+	
+		<div class="vlist">
+		  <a href="http://blog.51cto.com/zt/14" target="_blank"><img src="1304672337_index.jpg" width="63" height="63"></a>
+		<dl>
+		<dt>
+		  <a href="http://blog.51cto.com/zt/14" target="_blank" title="从菜鸟到老鸟-教你玩转Mac操作系统">从菜鸟到老鸟-教你玩转Mac操作系统</a></dt>
+		<dd>阅读量：319006</dd>
+		</dl>
+		</div>
+	
+		<div class="vlist">
+		  <a href="http://blog.51cto.com/zt/20" target="_blank"><img src="1306310178_index.jpg" width="63" height="63"></a>
+		<dl>
+		<dt>
+		  <a href="http://blog.51cto.com/zt/20" target="_blank" title="QT学习之路：从入门到精通">QT学习之路：从入门到精通</a></dt>
+		<dd>阅读量：1030572</dd>
+		</dl>
+		</div>
+		
+		
+	</div>
+	<span class="modBot"></span>
+</div>
+
+
+<div class="hotArt box">
+<div class="title">
+<h2>热门文章</h2>
+</div>
+<div class="modCon">
+<ul>
+<li><a href="http://kaifly.blog.51cto.com/3209616/1665729">MySQL主库高可用 -- 双主..</a></li>
+<li><a href="http://kaifly.blog.51cto.com/3209616/1696203">利用shell脚本“综合、集..</a></li>
+<li><a href="http://kaifly.blog.51cto.com/3209616/1704105">两套mysql备份脚本</a></li>
+<li><a href="http://kaifly.blog.51cto.com/3209616/1312978">苹果开发者账号--关于邓..</a></li>
+<li><a href="#">查看Linux服务器网卡流量..</a></li>
+<li><a href="http://kaifly.blog.51cto.com/3209616/1367591">大用户量下Openvpn部署方..</a></li>
+<li><a href="http://kaifly.blog.51cto.com/3209616/1574640">Percona XtraDB Cluster ..</a></li>
+<li><a href="http://kaifly.blog.51cto.com/3209616/1786586">Python实现MySQL DBA小工..</a></li>
+
+</ul>
+</div>
+<span class="modBot"></span>
+</div>
+<div class="search box">
+<div class="title"><h2>搜索BLOG文章</h2></div>
+<div class="modCon">
+<form method="post" action="http://kaifly.blog.51cto.com/search.php?" tabindex="99">
+<input name="step" value="2" type="hidden">
+<input name="authorid" value="3209616" type="hidden">
+<input name="sch_area" value="S" type="hidden">
+<input value="" name="keyword" class="searchInput" type="text">
+<input value="搜 索" class="searchBtn" type="submit">
+</form>
+</div><!--modCon end-->
+<span class="modBot"></span>
+</div>
+
+
+<div class="box recentGuests">
+<div class="title">
+<h2>最近访客</h2>
+</div>
+<div class="modCon">
+<ul>
+
+<li><a href="http://3227162.blog.51cto.com/"><img src="avatar_001.php"></a>
+<p><a href="http://3227162.blog.51cto.com/">sdozh..</a></p>
+
+</li><li><a href="http://989446.blog.51cto.com/"><img src="avatar_002.php"></a>
+<p><a href="http://989446.blog.51cto.com/">lanya..</a></p>
+
+</li><li><a href="http://480620.blog.51cto.com/"><img src="avatar_003.php"></a>
+<p><a href="http://480620.blog.51cto.com/">omnipeek</a></p>
+
+</li><li><a href="http://6481109.blog.51cto.com/"><img src="avatar_004.php"></a>
+<p><a href="http://6481109.blog.51cto.com/">smart..</a></p>
+
+</li><li><a href="http://9970287.blog.51cto.com/"><img src="avatar_005.php"></a>
+<p><a href="http://9970287.blog.51cto.com/">wys_555</a></p>
+
+</li><li><a href="http://6760164.blog.51cto.com/"><img src="avatar_006.php"></a>
+<p><a href="http://6760164.blog.51cto.com/">gaoch..</a></p>
+
+</li><li><a href="http://7616637.blog.51cto.com/"><img src="avatar_007.php"></a>
+<p><a href="http://7616637.blog.51cto.com/">Lixora</a></p>
+
+</li><li><a href="http://10985890.blog.51cto.com/"><img src="avatar_008.php"></a>
+<p><a href="http://10985890.blog.51cto.com/">garry..</a></p>
+
+</li><li><a href="http://7475159.blog.51cto.com/"><img src="avatar_009.php"></a>
+<p><a href="http://7475159.blog.51cto.com/">zhang..</a></p>
+
+</li><li><a href="http://11802259.blog.51cto.com/"><img src="avatar_010.php"></a>
+<p><a href="http://11802259.blog.51cto.com/">syinm</a></p>
+
+</li><li><a href="http://micheng.blog.51cto.com/"><img src="avatar_011.php"></a>
+<p><a href="http://micheng.blog.51cto.com/">huayu..</a></p>
+
+</li><li><a href="http://11656649.blog.51cto.com/"><img src="avatar_012.php"></a>
+<p><a href="http://11656649.blog.51cto.com/">cyber..</a></p>
+
+</li></ul>
+<span class="clear"></span>
+</div>
+<span class="modBot"></span>
+</div>
+
+
+<div class="newComments box">
+<div class="title">
+<h2>最新评论 
+
+</h2>
+
+
+
+</div>
+<div class="modCon">
+<ul>
+
+<li><a href="http://kaifly.blog.51cto.com/" class="operlink" target="_blank"><b>kai404</b></a>：<a href="http://kaifly.blog.51cto.com/3209616/1665729" target="_blank">回复 szh812187267: 你怎么想，这..</a></li>
+
+<li><a href="http://1526470.blog.51cto.com/" class="operlink" target="_blank"><b>szh812187267</b></a>：<a href="http://kaifly.blog.51cto.com/3209616/1665729" target="_blank">在change_to_backup.sh下面的逻辑有..</a></li>
+
+<li><a href="http://kaifly.blog.51cto.com/" class="operlink" target="_blank"><b>kai404</b></a>：<a href="#" target="_blank">回复 3764208: bc: command not f..</a></li>
+
+<li><a href="http://zhangxiaoxiong.blog.51cto.com/" class="operlink" target="_blank"><b>3764208</b></a>：<a href="#" target="_blank">IN: 0.0 OUT: &nbsp;  &nbsp;  Mb/s..</a></li>
+
+<li><a href="http://kaifly.blog.51cto.com/" class="operlink" target="_blank"><b>kai404</b></a>：<a href="#" target="_blank">回复 3764208: 这是提示啊~~~你后..</a></li>
+
+
+</ul>
+</div>
+<span class="modBot"></span>
+</div>
+
+
+<div class="hotBlogArt box">
+<div class="title">
+  <h2 class="fl">51CTO推荐博文</h2>
+  <a href="http://blog.51cto.com/artcommend" class="fr">更多&gt;&gt;</a></div>
+<div class="modCon">
+<ul>
+<li><a href="http://icenycmh.blog.51cto.com/4077647/1839566" title="nginx代理websocket配置" target="_blank">nginx代理websocket配置</a></li>
+<li><a href="http://51mark.blog.51cto.com/11032349/1840154" title="部署Tomcat及其负载均衡" target="_blank">部署Tomcat及其负载均衡</a></li>
+<li><a href="http://renzhiyuan.blog.51cto.com/10433137/1840180" title="查看Linux服务器raid信息笔记整理！" target="_blank">查看Linux服务器raid信息笔记整理！</a></li>
+<li><a href="http://beanxyz.blog.51cto.com/5570417/1840160" title="Nagios 监控 SNMP 温度计" target="_blank">Nagios 监控 SNMP 温度计</a></li>
+<li><a href="http://icenycmh.blog.51cto.com/4077647/1840196" title=" Mongodb被动(passive)节点配置" target="_blank"> Mongodb被动(passive)节点配置</a></li>
+<li><a href="http://huaxin.blog.51cto.com/903026/1840294" title="Apache运维架构之Apache+PHP" target="_blank">Apache运维架构之Apache+PHP</a></li>
+<li><a href="http://mofansheng.blog.51cto.com/8792265/1840215" title="升级openssl包，修复心脏出血漏洞" target="_blank">升级openssl包，修复心脏出血漏洞</a></li>
+<li><a href="http://51log.blog.51cto.com/6076767/1839560" title="yum介绍及 基于yum服务器和客户端例子" target="_blank">yum介绍及 基于yum服务器和客户端..</a></li>
+<li><a href="http://lilongzi.blog.51cto.com/5519072/1839751" title="企业级Nginx服务基础到架构优化详解--25条" target="_blank">企业级Nginx服务基础到架构优化详..</a></li>
+<li><a href="http://qiaomiao.blog.51cto.com/484197/1839337" title="nginx网站被持续攻击1个月后最终防攻策略" target="_blank">nginx网站被持续攻击1个月后最终..</a></li>
+<li><a href="http://huaxin.blog.51cto.com/903026/1839313" title="运维监控平台之zabbix详解2" target="_blank">运维监控平台之zabbix详解2</a></li>
+
+</ul>
+</div><!--modCon end-->
+<span class="modBot"></span>
+</div>
+
+
+<div class="friendLink box">
+<div class="title">
+  <h2>友情链接</h2>
+</div>
+<div class="modCon">
+<ul>
+
+<li><a href="http://baidutech.blog.51cto.com/" title="百度技术博客" target="_blank">百度技术博客</a></li>
+
+<li><a href="http://xjsunjie.blog.51cto.com/" title="滴水穿石孙杰" target="_blank">滴水穿石孙杰</a></li>
+
+<li><a href="http://yuhongchun.blog.51cto.com/" title="抚琴煮酒" target="_blank">抚琴煮酒</a> <img src="tubiao3.gif" alt="本周内更新"></li>
+
+<li><a href="http://dl528888.blog.51cto.com/" title="吟—技术交流" target="_blank">吟—技术交流</a></li>
+
+<li><a href="http://51edu.blog.51cto.com/" title="51CTO学院 官方博客" target="_blank">51CTO学院 官方博客</a></li>
+
+<li><a href="http://edu.51cto.com/" title="IT精品课程" target="_blank">IT精品课程</a></li>
+
+<li><a href="http://51ctoblog.blog.51cto.com/" title="51CTO博客开发" target="_blank">51CTO博客开发</a></li>
+
+<li><a href="http://gaozhao.51cto.com/" title="技术人才招聘" target="_blank">技术人才招聘 </a></li>
+
+</ul>
+</div><!--modCon end-->
+<span class="modBot"></span>
+</div>
+
+
+
+</div>
+<!--left end-->
+
+
+
+
+
+<div class="blogRight" rel="3209616######Linux 网卡流量" id="article_edu_void">
+<input value="12" id="edu_jia" type="hidden">
+			
+	<p style="clear: both;" class="edu_insert"><div class="box edu-col-a" style="display: none;"><div class="title">的视频课程</div><div class="vbox" style=""><div class="clear hr10"></div></div></div><div class="box edu-col-b" style=""><div class="title"><a target="_blank" href="http://edu.51cto.com/index.php?do=search&amp;m=course&amp;q=Linux">相关视频课程</a><a href="http://edu.51cto.com/index.php?do=search&amp;m=course&amp;q=Linux" target="_blank" style="float: right;">更多</a></div><div class="vbox" style=""><div class="vlist video-icon" style="margin: 2px 8px;"><a href="http://edu.51cto.com/course/course_id-1454.html?edu_recommend_adid=91" target="_blank"><img src="wKiom1OqZcKy-sdXAAEuKhuqWjk445.jpg" width="86" height="63"></a><dl><dt> <a href="http://edu.51cto.com/course/course_id-1454.html?edu_recommend_adid=91" target="_blank" title="Linux命令大全-Linux命令使用和管理课程-[国内No.1马哥Linux]">Linux命令大全-Linux命令使用和管理课程-[国内No.1马哥Linux](共92课时)</a></dt><dd>37666人学习</dd></dl><a class="i_video" href="http://edu.51cto.com/course/course_id-1454.html?edu_recommend_adid=91" target="_blank"></a></div><div class="vlist video-icon" style="margin: 2px 8px;"><a href="http://edu.51cto.com/course/course_id-463.html?edu_recommend_adid=91" target="_blank"><img src="wKiom1NUhUSALyshAAFMYmblG3c101.jpg" width="86" height="63"></a><dl><dt> <a href="http://edu.51cto.com/course/course_id-463.html?edu_recommend_adid=91" target="_blank" title="马哥教育高薪Linux培训教程-Linux入门">马哥教育高薪Linux培训教程-Linux入门(共36课时)</a></dt><dd>761034人学习</dd></dl><a class="i_video" href="http://edu.51cto.com/course/course_id-463.html?edu_recommend_adid=91" target="_blank"></a></div><div class="vlist video-icon" style="margin: 2px 8px;"><a href="http://edu.51cto.com/course/course_id-328.html?edu_recommend_adid=91" target="_blank"><img src="wKioL1NUhTeR6C1kAABetPdjXFw756.jpg" width="86" height="63"></a><dl><dt> <a href="http://edu.51cto.com/course/course_id-328.html?edu_recommend_adid=91" target="_blank" title="“Linux典藏”之Linux入门视频课程讲解系列">“Linux典藏”之Linux入门视频课程讲解系列(共24课时)</a></dt><dd>42200人学习</dd></dl><a class="i_video" href="http://edu.51cto.com/course/course_id-328.html?edu_recommend_adid=91" target="_blank"></a></div><div class="clear hr10"></div></div></div></p>
+	<!--modCon end-->
+	<div class="artShow box" style="margin-top: 5px;">
+   	  <div class="share" id="share">
+
+    <div class="shareItem">
+		<div class="m_sharelinks"><a target="_blank" href="http://kaifly.blog.51cto.com/" style="color: red;"></a><a target="_blank" href="http://kaifly.blog.51cto.com/" style="color: blue;"></a><a target="_blank" href="http://kaifly.blog.51cto.com/" style="color: blue;"></a></div>
+		<p class="shareMored"><a href="http://kaifly.blog.51cto.com/all/3209616">博主的更多文章&gt;&gt;</a></p>
+	</div>
+      </div>
+       <div class="modCon">
+   	  <div class="showBox" style="margin: 0px 0px 10px;">
+      <div class="line_hd_r"></div>
+      <div class="art_tj">
+
+      <a href="http://blog.51cto.com/artcommend" target="_blank"><img src="tj.png"></a>
+
+      </div>
+
+ 
+    		<div class="showHead">
+    		  <div class="showTitleBOx" style="text-align: center;">
+              <div class="showTitle">
+
+             <img src="artType01.jpg">
+
+
+    		    查看Linux服务器网卡流量小脚本shell和Python各一例
+                </div>
+  		    </div>
+   		    <span class="artTime">2016-05-26 16:52:53</span></div><!--showHead end-->
+    <div class="showTags">标签：<a href="http://blog.51cto.com/tag-Linux.html" target="_blank" class="operlink">Linux</a> <a href="http://blog.51cto.com/tag-%E7%BD%91%E5%8D%A1%E6%B5%81%E9%87%8F.html" target="_blank" class="operlink">网卡流量</a>
+
+	</div>
+
+			<div class="CopyrightStatement lh22">
+            原创作品，允许转载，转载时请务必以超链接形式标明文章 <a href="#" target="_blank" style="text-decoration: underline;">原始出处</a> 、作者信息和本声明。否则将追究法律责任。<a href="#">http://kaifly.blog.51cto.com/3209616/1783530</a>
+            </div>
+
+
+            <!--正文 begin-->
+    		<div class="showContent">
+    		  <p>&nbsp; 有时我们需要较为实时的查看服务器上的网卡流量，这里我写了两个小脚本，一个用shell（先写的，一次只能查看一个网卡），另一个用Python（后写的，一次可查看多个网卡）。脚本中都用了while true“死循环”，每隔10s从“/proc/net/dev”中取一次值并根据10s内的差值计算10s内的平均带宽；按ctrl+c停止执行。脚本兼容centos6和7<br></p><p>两个脚本都不太复杂，而且脚本中注释也比较细致，所以我就不过多解释脚本内容了。直接上图上脚本：</p><p><strong>shell版--使用截图：</strong></p><p><a href="http://s3.51cto.com/wyfs02/M00/81/FD/wKiom1dGtVjC0q0TAABf9C5ErSY496.png" target="_blank"><img src="wKiom1dGtVjC0q0TAABf9C5ErSY496.png" title="1.png" alt="wKiom1dGtVjC0q0TAABf9C5ErSY496.png"></a></p><p><strong>shell版代码：</strong></p><div><div id="highlighter_647040" class="syntaxhighlighter  bash"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div><div class="line number16 index15 alt1">16</div><div class="line number17 index16 alt2">17</div><div class="line number18 index17 alt1">18</div><div class="line number19 index18 alt2">19</div><div class="line number20 index19 alt1">20</div><div class="line number21 index20 alt2">21</div><div class="line number22 index21 alt1">22</div><div class="line number23 index22 alt2">23</div><div class="line number24 index23 alt1">24</div><div class="line number25 index24 alt2">25</div><div class="line number26 index25 alt1">26</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="bash preprocessor bold">#!/bin/sh</code></div><div class="line number2 index1 alt1"><code class="bash comments">#by&nbsp;ljk&nbsp;20160526</code></div><div class="line number3 index2 alt2">&nbsp;</div><div class="line number4 index3 alt1"><code class="bash keyword">if</code>&nbsp;<code class="bash plain">[&nbsp;</code><code class="bash string">"$1"</code>&nbsp;<code class="bash plain">=&nbsp;</code><code class="bash string">""</code>&nbsp;<code class="bash plain">];</code><code class="bash keyword">then</code>&nbsp;&nbsp;&nbsp;&nbsp;<code class="bash comments">#判断后面是否有跟参数</code></div><div class="line number5 index4 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash functions">echo</code>&nbsp;<code class="bash plain">-e&nbsp;</code><code class="bash string">"\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;use&nbsp;interface_name&nbsp;after&nbsp;the&nbsp;script,like&nbsp;\"script&nbsp;eth0\"...\n"</code></div><div class="line number6 index5 alt1"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash functions">exit</code>&nbsp;<code class="bash plain">-1</code></div><div class="line number7 index6 alt2"><code class="bash keyword">fi</code></div><div class="line number8 index7 alt1">&nbsp;</div><div class="line number9 index8 alt2"><code class="bash functions">echo</code>&nbsp;<code class="bash plain">-e&nbsp;</code><code class="bash string">"\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;start&nbsp;monitoring&nbsp;the&nbsp;$1,press&nbsp;\"ctrl+c\"&nbsp;to&nbsp;stop"</code></div><div class="line number10 index9 alt1"><code class="bash functions">echo</code>&nbsp;<code class="bash plain">----------------------------------------------------------</code></div><div class="line number11 index10 alt2">&nbsp;</div><div class="line number12 index11 alt1"><code class="bash functions">file</code><code class="bash plain">=</code><code class="bash plain">/proc/net/dev</code>&nbsp;&nbsp;&nbsp;&nbsp;<code class="bash comments">#内核网卡信息文件</code></div><div class="line number13 index12 alt2"><code class="bash keyword">while</code>&nbsp;<code class="bash functions">true</code></div><div class="line number14 index13 alt1"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash keyword">do</code></div><div class="line number15 index14 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">RX_bytes=`</code><code class="bash functions">cat</code>&nbsp;<code class="bash plain">$</code><code class="bash functions">file</code><code class="bash plain">|</code><code class="bash functions">grep</code>&nbsp;<code class="bash plain">$1|</code><code class="bash functions">sed</code>&nbsp;<code class="bash string">'s/^&nbsp;*//g'</code><code class="bash plain">|</code><code class="bash functions">awk</code>&nbsp;<code class="bash plain">-F</code><code class="bash string">'[&nbsp;:]+'</code>&nbsp;<code class="bash string">'{print&nbsp;$2}'</code><code class="bash plain">`&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash comments">#这里sed这一步为了同时兼容centos6和7</code></div><div class="line number16 index15 alt1"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">TX_bytes=`</code><code class="bash functions">cat</code>&nbsp;<code class="bash plain">$</code><code class="bash functions">file</code><code class="bash plain">|</code><code class="bash functions">grep</code>&nbsp;<code class="bash plain">$1|</code><code class="bash functions">sed</code>&nbsp;<code class="bash string">'s/^&nbsp;*//g'</code><code class="bash plain">|</code><code class="bash functions">awk</code>&nbsp;<code class="bash plain">-F</code><code class="bash string">'[&nbsp;:]+'</code>&nbsp;<code class="bash string">'{print&nbsp;$10}'</code><code class="bash plain">`</code></div><div class="line number17 index16 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash functions">sleep</code>&nbsp;<code class="bash plain">10</code></div><div class="line number18 index17 alt1"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">RX_bytes_later=`</code><code class="bash functions">cat</code>&nbsp;<code class="bash plain">$</code><code class="bash functions">file</code><code class="bash plain">|</code><code class="bash functions">grep</code>&nbsp;<code class="bash plain">$1|</code><code class="bash functions">sed</code>&nbsp;<code class="bash string">'s/^&nbsp;*//g'</code><code class="bash plain">|</code><code class="bash functions">awk</code>&nbsp;<code class="bash plain">-F</code><code class="bash string">'[&nbsp;:]+'</code>&nbsp;<code class="bash string">'{print&nbsp;$2}'</code><code class="bash plain">`</code></div><div class="line number19 index18 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">TX_bytes_later=`</code><code class="bash functions">cat</code>&nbsp;<code class="bash plain">$</code><code class="bash functions">file</code><code class="bash plain">|</code><code class="bash functions">grep</code>&nbsp;<code class="bash plain">$1|</code><code class="bash functions">sed</code>&nbsp;<code class="bash string">'s/^&nbsp;*//g'</code><code class="bash plain">|</code><code class="bash functions">awk</code>&nbsp;<code class="bash plain">-F</code><code class="bash string">'[&nbsp;:]+'</code>&nbsp;<code class="bash string">'{print&nbsp;$10}'</code><code class="bash plain">`</code></div><div class="line number20 index19 alt1">&nbsp;</div><div class="line number21 index20 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash comments">#B*8/1024/1024=Mb</code></div><div class="line number22 index21 alt1"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">speed_RX=`</code><code class="bash functions">echo</code>&nbsp;<code class="bash string">"scale=2;($RX_bytes_later&nbsp;-&nbsp;$RX_bytes)*8/1024/1024/10"</code><code class="bash plain">|</code><code class="bash functions">bc</code><code class="bash plain">`</code></div><div class="line number23 index22 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash plain">speed_TX=`</code><code class="bash functions">echo</code>&nbsp;<code class="bash string">"scale=2;($TX_bytes_later&nbsp;-&nbsp;$TX_bytes)*8/1024/1024/10"</code><code class="bash plain">|</code><code class="bash functions">bc</code><code class="bash plain">`</code></div><div class="line number24 index23 alt1">&nbsp;</div><div class="line number25 index24 alt2"><code class="bash spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="bash functions">printf</code>&nbsp;<code class="bash string">"%-3s&nbsp;%-3.1f&nbsp;%-10s&nbsp;%-4s&nbsp;%-3.1f&nbsp;%-4s\n"</code>&nbsp;<code class="bash plain">IN:&nbsp;$speed_RX&nbsp;Mb</code><code class="bash plain">/s</code>&nbsp;<code class="bash plain">OUT:&nbsp;$speed_TX&nbsp;Mb</code><code class="bash plain">/s</code></div><div class="line number26 index25 alt1"><code class="bash keyword">done</code></div></div></td></tr></tbody></table></div></div><p><strong>Python版--使用截图：</strong><br><img src="wKiom1dGuoqS6honAAA8gQMh4e8068.png" title="2.png" alt="wKiom1dGuoqS6honAAA8gQMh4e8068.png"></p><p><br></p><p><img src="wKioL1dGu5HDfYfbAABaNXTdogo428.png" title="3.png" alt="wKioL1dGu5HDfYfbAABaNXTdogo428.png"></p><p><br></p><p><img src="wKioL1dGu6DRv4BPAAEkqYfpne0398.png" title="4.png" alt="wKioL1dGu6DRv4BPAAEkqYfpne0398.png" width="650"></p><p><strong>Python版代码：</strong></p><div><div id="highlighter_888993" class="syntaxhighlighter  python"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div><div class="line number16 index15 alt1">16</div><div class="line number17 index16 alt2">17</div><div class="line number18 index17 alt1">18</div><div class="line number19 index18 alt2">19</div><div class="line number20 index19 alt1">20</div><div class="line number21 index20 alt2">21</div><div class="line number22 index21 alt1">22</div><div class="line number23 index22 alt2">23</div><div class="line number24 index23 alt1">24</div><div class="line number25 index24 alt2">25</div><div class="line number26 index25 alt1">26</div><div class="line number27 index26 alt2">27</div><div class="line number28 index27 alt1">28</div><div class="line number29 index28 alt2">29</div><div class="line number30 index29 alt1">30</div><div class="line number31 index30 alt2">31</div><div class="line number32 index31 alt1">32</div><div class="line number33 index32 alt2">33</div><div class="line number34 index33 alt1">34</div><div class="line number35 index34 alt2">35</div><div class="line number36 index35 alt1">36</div><div class="line number37 index36 alt2">37</div><div class="line number38 index37 alt1">38</div><div class="line number39 index38 alt2">39</div><div class="line number40 index39 alt1">40</div><div class="line number41 index40 alt2">41</div><div class="line number42 index41 alt1">42</div><div class="line number43 index42 alt2">43</div><div class="line number44 index43 alt1">44</div><div class="line number45 index44 alt2">45</div><div class="line number46 index45 alt1">46</div><div class="line number47 index46 alt2">47</div><div class="line number48 index47 alt1">48</div><div class="line number49 index48 alt2">49</div><div class="line number50 index49 alt1">50</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="python comments">#!/bin/env&nbsp;python3</code></div><div class="line number2 index1 alt1"><code class="python comments">#by&nbsp;ljk&nbsp;20160526</code></div><div class="line number3 index2 alt2">&nbsp;</div><div class="line number4 index3 alt1"><code class="python keyword">import</code>&nbsp;<code class="python plain">os,re,sys,time</code></div><div class="line number5 index4 alt2">&nbsp;</div><div class="line number6 index5 alt1"><code class="python keyword">if</code>&nbsp;<code class="python functions">len</code><code class="python plain">(sys.argv)&nbsp;</code><code class="python keyword">=</code><code class="python keyword">=</code>&nbsp;<code class="python value">1</code><code class="python plain">:</code></div><div class="line number7 index6 alt2"><code class="python spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="python functions">print</code><code class="python plain">(</code><code class="python string">'\n使用方法：请跟上网卡名称,可接"单个网卡"/"多个网卡,以空格分开".\n'</code><code class="python plain">)</code></div><div class="line number8 index7 alt1"><code class="python spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="python plain">sys.exit(</code><code class="python value">100</code><code class="python plain">)</code></div><div class="line number9 index8 alt2"><code class="python keyword">else</code><code class="python plain">:</code></div><div class="line number10 index9 alt1"><code class="python spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="python functions">print</code><code class="python plain">(</code><code class="python string">'start&nbsp;monitoring,press&nbsp;"ctrl+c"&nbsp;to&nbsp;stop\n'</code><code class="python plain">)</code></div><div class="line number11 index10 alt2">&nbsp;</div><div class="line number12 index11 alt1"><code class="python spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="python keyword">for</code>&nbsp;<code class="python plain">arg&nbsp;</code><code class="python keyword">in</code>&nbsp;<code class="python plain">sys.argv[</code><code class="python value">1</code><code class="python plain">:]:&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="python comments">#输出标头</code></div><div class="line number13 index12 alt2"><code class="python spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="python plain">header&nbsp;</code><code class="python keyword">=</code>&nbsp;<code class="python string">'------{}&nbsp;bandwidth(Mb/s)------'</code><code class="python plain">.</code><code class="python functions">format</code><code class="python plain">(arg)</code></div><div class="line number14 index13 alt1"><code class="python spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="python functions">print</code><code class="python plain">(header.ljust(</code><code class="python value">35</code><code class="python plain">),end</code><code class="python keyword">=</code><code class="python plain">'')</code></div><div class="line number15 index14 alt2"><code class="python spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="python functions">print</code><code class="python plain">()</code></div><div class="line number16 index15 alt1">&nbsp;</div><div class="line number17 index16 alt2"><code class="python spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="python comments">#global&nbsp;values_dic</code></div><div class="line number18 index17 alt1"><code class="python spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="python plain">values_dic&nbsp;</code><code class="python keyword">=</code>&nbsp;<code class="python plain">{}&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="python comments">#定义空字典，用来在下面函数中存放各网卡的各项需要用到的值</code></div><div class="line number19 index18 alt2">&nbsp;</div><div class="line number20 index19 alt1"><code class="python spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="python keyword">def</code>&nbsp;<code class="python plain">get_values(orders):</code></div><div class="line number21 index20 alt2"><code class="python spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="python keyword">try</code><code class="python plain">:</code></div><div class="line number22 index21 alt1"><code class="python spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="python plain">with&nbsp;</code><code class="python functions">open</code><code class="python plain">(</code><code class="python string">'/proc/net/dev'</code><code class="python plain">)&nbsp;as&nbsp;f:</code></div><div class="line number23 index22 alt2"><code class="python spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="python plain">lines</code><code class="python keyword">=</code><code class="python plain">f.readlines()&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="python comments">#内容不多，一次性读取较方便</code></div><div class="line number24 index23 alt1"><code class="python spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="python keyword">for</code>&nbsp;<code class="python plain">arg&nbsp;</code><code class="python keyword">in</code>&nbsp;<code class="python plain">sys.argv[</code><code class="python value">1</code><code class="python plain">:]:</code></div><div class="line number25 index24 alt2"><code class="python spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="python keyword">for</code>&nbsp;<code class="python plain">line&nbsp;</code><code class="python keyword">in</code>&nbsp;<code class="python plain">lines:</code></div><div class="line number26 index25 alt1"><code class="python spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="python plain">line</code><code class="python keyword">=</code><code class="python plain">line.lstrip()&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="python comments">#去掉行首的空格，以便下面split</code></div><div class="line number27 index26 alt2"><code class="python spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="python keyword">if</code>&nbsp;<code class="python plain">re.match(arg,line):</code></div><div class="line number28 index27 alt1"><code class="python spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="python plain">values&nbsp;</code><code class="python keyword">=</code>&nbsp;<code class="python plain">re.split(</code><code class="python string">"[&nbsp;:]+"</code><code class="python plain">,line)&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="python comments">#以空格和:作为分隔符</code></div><div class="line number29 index28 alt2"><code class="python spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="python plain">values_dic[arg</code><code class="python keyword">+</code><code class="python string">'r'</code><code class="python keyword">+</code><code class="python plain">orders]</code><code class="python keyword">=</code><code class="python plain">values[</code><code class="python value">1</code><code class="python plain">]&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="python comments">#1为接收值</code></div><div class="line number30 index29 alt1"><code class="python spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="python plain">values_dic[arg</code><code class="python keyword">+</code><code class="python string">'t'</code><code class="python keyword">+</code><code class="python plain">orders]</code><code class="python keyword">=</code><code class="python plain">values[</code><code class="python value">9</code><code class="python plain">]&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="python comments">#9为发送值</code></div><div class="line number31 index30 alt2"><code class="python spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="python comments">#return&nbsp;[values[1],values[9]]&nbsp;&nbsp;&nbsp;&nbsp;#可返回列表</code></div><div class="line number32 index31 alt1"><code class="python spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="python keyword">except</code>&nbsp;<code class="python plain">(FileExistsError,FileNotFoundError,PermissionError):</code></div><div class="line number33 index32 alt2"><code class="python spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="python functions">print</code><code class="python plain">(</code><code class="python string">'open&nbsp;file&nbsp;error'</code><code class="python plain">)</code></div><div class="line number34 index33 alt1"><code class="python spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="python plain">sys.exit(</code><code class="python keyword">-</code><code class="python value">1</code><code class="python plain">)</code></div><div class="line number35 index34 alt2">&nbsp;</div><div class="line number36 index35 alt1"><code class="python spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="python keyword">try</code><code class="python plain">:</code></div><div class="line number37 index36 alt2"><code class="python spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="python keyword">while</code>&nbsp;<code class="python color1">True</code><code class="python plain">:</code></div><div class="line number38 index37 alt1"><code class="python spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="python plain">get_values(</code><code class="python string">'first'</code><code class="python plain">)&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="python comments">#第一次取值</code></div><div class="line number39 index38 alt2"><code class="python spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="python plain">time.sleep(</code><code class="python value">10</code><code class="python plain">)</code></div><div class="line number40 index39 alt1"><code class="python spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="python plain">get_values(</code><code class="python string">'second'</code><code class="python plain">)&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="python comments">#10s后第二次取值</code></div><div class="line number41 index40 alt2">&nbsp;</div><div class="line number42 index41 alt1"><code class="python spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="python keyword">for</code>&nbsp;<code class="python plain">arg&nbsp;</code><code class="python keyword">in</code>&nbsp;<code class="python plain">sys.argv[</code><code class="python value">1</code><code class="python plain">:]:</code></div><div class="line number43 index42 alt2"><code class="python spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="python plain">r_bandwidth&nbsp;</code><code class="python keyword">=</code>&nbsp;<code class="python plain">(</code><code class="python functions">int</code><code class="python plain">(values_dic[arg</code><code class="python keyword">+</code><code class="python string">'r'</code><code class="python keyword">+</code><code class="python string">'second'</code><code class="python plain">])&nbsp;</code><code class="python keyword">-</code>&nbsp;<code class="python functions">int</code><code class="python plain">(values_dic[arg</code><code class="python keyword">+</code><code class="python string">'r'</code><code class="python keyword">+</code><code class="python string">'first'</code><code class="python plain">]))</code><code class="python keyword">/</code><code class="python value">1024</code><code class="python keyword">/</code><code class="python value">1024</code><code class="python keyword">/</code><code class="python value">10</code><code class="python keyword">*</code><code class="python value">8</code></div><div class="line number44 index43 alt1"><code class="python spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="python plain">t_bandwidth&nbsp;</code><code class="python keyword">=</code>&nbsp;<code class="python plain">(</code><code class="python functions">int</code><code class="python plain">(values_dic[arg</code><code class="python keyword">+</code><code class="python string">'t'</code><code class="python keyword">+</code><code class="python string">'second'</code><code class="python plain">])&nbsp;</code><code class="python keyword">-</code>&nbsp;<code class="python functions">int</code><code class="python plain">(values_dic[arg</code><code class="python keyword">+</code><code class="python string">'t'</code><code class="python keyword">+</code><code class="python string">'first'</code><code class="python plain">]))</code><code class="python keyword">/</code><code class="python value">1024</code><code class="python keyword">/</code><code class="python value">1024</code><code class="python keyword">/</code><code class="python value">10</code><code class="python keyword">*</code><code class="python value">8</code></div><div class="line number45 index44 alt2"><code class="python spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="python functions">print</code><code class="python plain">(</code><code class="python string">'IN:&nbsp;'</code><code class="python keyword">+</code><code class="python functions">str</code><code class="python plain">(</code><code class="python functions">round</code><code class="python plain">(r_bandwidth,</code><code class="python value">2</code><code class="python plain">)).ljust(</code><code class="python value">8</code><code class="python plain">)</code><code class="python keyword">+</code><code class="python string">'&nbsp;&nbsp;OUT:&nbsp;'</code><code class="python keyword">+</code><code class="python functions">str</code><code class="python plain">(</code><code class="python functions">round</code><code class="python plain">(t_bandwidth,</code><code class="python value">2</code><code class="python plain">)).ljust(</code><code class="python value">16</code><code class="python plain">),end</code><code class="python keyword">=</code><code class="python plain">'')</code></div><div class="line number46 index45 alt1">&nbsp;</div><div class="line number47 index46 alt2"><code class="python spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="python functions">print</code><code class="python plain">()</code></div><div class="line number48 index47 alt1"><code class="python spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="python plain">values_dic&nbsp;</code><code class="python keyword">=</code>&nbsp;<code class="python plain">{}&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="python comments">#清空本次循环后字典的内容</code></div><div class="line number49 index48 alt2"><code class="python spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="python keyword">except</code>&nbsp;<code class="python plain">KeyboardInterrupt:</code></div><div class="line number50 index49 alt1"><code class="python spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="python functions">print</code><code class="python plain">(</code><code class="python string">"\n-----bye-----"</code><code class="python plain">)</code></div></div></td></tr></tbody></table></div></div><p>这俩脚本使用起来都还是很方便实用的，共享出来希望能给朋友们工作中带来一点方便。</p><p>本文出自 “<a href="http://kaifly.blog.51cto.com/">奋进的K</a>” 博客，请务必保留此出处<a href="#">http://kaifly.blog.51cto.com/3209616/1783530</a></p>
+    		</div><!--正文 end-->
+
+		
+<div class="m_sharebtn clear">
+	<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	  <tbody><tr>
+		<td valign="middle" width="11%" align="center" height="43"><img src="ssk.png" alt="分享至"></td>
+		<td valign="top" width="77%" align="left">
+<!-- 			
+<div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_mshare" data-cmd="mshare" title="分享到一键分享"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_bdhome" data-cmd="bdhome" title="分享到百度新首页"></a><a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a><a href="#" class="bds_youdao" data-cmd="youdao" title="分享到有道云笔记"></a><a href="#" class="bds_bdysc" data-cmd="bdysc" title="分享到百度云收藏"></a><a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a></div>
+<script>
+var bds_config = {'wbUid':1706976420};
+window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false, 'bdPic':'http://blog.51cto.com/attachment/201305/173413310.jpg',"bdStyle":"1","bdSize":"32"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+ -->
+
+<div data-bd-bind="1471842897141" class="bdsharebuttonbox bdshare-button-style1-32"><a href="http://kaifly.blog.51cto.com/#" class="bds_more" data-cmd="more"></a><a href="http://kaifly.blog.51cto.com/#" class="bds_mshare" data-cmd="mshare" title="分享到一键分享"></a><a href="http://kaifly.blog.51cto.com/#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="http://kaifly.blog.51cto.com/#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a><a href="http://kaifly.blog.51cto.com/#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="http://kaifly.blog.51cto.com/#" class="bds_bdhome" data-cmd="bdhome" title="分享到百度新首页"></a><a href="http://kaifly.blog.51cto.com/#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a><a href="http://kaifly.blog.51cto.com/#" class="bds_youdao" data-cmd="youdao" title="分享到有道云笔记"></a><a href="http://kaifly.blog.51cto.com/#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a><a href="http://kaifly.blog.51cto.com/#" class="bds_bdysc" data-cmd="bdysc" title="分享到百度云收藏"></a><a href="http://kaifly.blog.51cto.com/#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a></div>
+
+
+	<!-- Baidu Button END --></td>
+		<td valign="middle" width="12%" align="right"><a title="一键收藏，随时查看，分享好友！"><img src="favorite_add_small.gif" alt="一键收藏，随时查看，分享好友！" border="0"></a></td>
+	  </tr>
+	</tbody></table>
+
+</div>			
+    		<div class="showBottom">
+            <!--<div class="reviews"><span class="fl" style="cursor:pointer;"><a onclick="openFavoulist();" id="favourer">wozhangkun、yue8803、bearmimi001</a>
+
+            </span><div id="favourdiv" class="support01">8人</div>
+              <span class="fl">了这篇文章</span></div>-->
+              <table width="720" border="0" cellpadding="0" cellspacing="0">
+  <tbody><tr>
+    <td align="right"><img src="icon01.png" width="15" height="16"> <span style="cursor: pointer;"><a id="favourer">wozhangkun、yue8803、bearmimi001</a></span></td>
+    <td width="70" align="left"><div style="line-height: 28px;" id="favourdiv" class="support01">8人</div></td>
+    <td width="60" align="left">了这篇文章</td>
+  </tr>
+</tbody></table>
+
+
+
+
+            <div class="showType">类别：<a href="http://kaifly.blog.51cto.com/3209616/d-3" class="operlink">通用脚本</a>┆阅读(<span id="readNum">1247</span>)┆评论(<span id="cmtNum">7</span>)
+
+┆
+<a href="http://kaifly.blog.51cto.com/">返回博主首页</a>┆<a href="http://blog.51cto.com/">返回博客首页</a></div>
+            <div class="prevNext">
+
+			上一篇 <a href="http://kaifly.blog.51cto.com/3209616/1772377" class="operlink" title="利用zabbix生成awstats日志分析图表并用Python调用zabbix API批量添加item">利用zabbix生成awstats日志分析图表并用Python..</a>
+
+
+			下一篇 <a href="http://kaifly.blog.51cto.com/3209616/1786586" class="operlink" title="Python实现MySQL DBA小工具一例">Python实现MySQL DBA小工具一例</a>
+
+
+            </div>
+
+            </div>
+
+	  </div><!--showBottom end-->
+      </div><!--modCon-->
+    <span class="modBot"></span>
+    </div><!--artShow end-->
+    <span class="blank"></span>
+	
+	<div class="relatedArt box">
+<a href="http://x.51cto.com/act/cto/pc/page/course_detail_shh_1?blogbanner" target="_blank"><img src="wKioL1esNQOCU7VCAAEwz6aDWnA280.jpg"></a>
+</div>
+
+<div class="artComm " style="height: 170px;">
+   <div class="relatedArt box1 mr10">
+    <div class="title" name="zhuanti" id="zhuanti"><h2>相关文章</h2></div>
+    <div class="modCon">
+<ul>
+
+
+<li><a href="http://tech110.blog.51cto.com/438717/669139" title="Linux下查看网卡实时流量工具" target="_blank">Linux下查看网卡实时流量工具</a></li>
+
+
+<li><a href="http://chenxiaoying.blog.51cto.com/3989265/1196648" title="统计网卡流量的两段shell脚本(使用ifconfig) 详细出处参考：http://www.jb51.net/article/34290.htm" target="_blank">统计网卡流量的两段shell脚本(使用ifconfig)..</a></li>
+
+
+<li><a href="http://linushai.blog.51cto.com/4976486/1085468" title=" Linux下监控网卡流量的软件iftop" target="_blank"> Linux下监控网卡流量的软件iftop</a></li>
+
+
+<li><a href="http://kerry.blog.51cto.com/172631/513856" title="Linux下监控网卡流量的软件iftop" target="_blank">Linux下监控网卡流量的软件iftop</a></li>
+
+
+<li><a href="http://dog250.blog.51cto.com/2466061/1273959" title="选择linux操作系统来工作" target="_blank">选择linux操作系统来工作</a></li>
+
+
+
+
+
+
+</ul>
+
+
+
+<span class="blank6"></span>
+</div><!--modCon end-->
+<span class="modBot"></span>
+</div>
+
+<!--相关文章 end-->
+        <div class="relatedArt box1">
+    <div class="title" name="zhuanti" id="zhuanti"><h2>职位推荐</h2></div>
+    <div class="modCon">
+
+<ul>
+
+
+<li><a href="http://gaozhao.51cto.com/job/view/id-3568.html" target="_blank">Webmaster-IT管理员</a></li>
+
+<li><a href="http://gaozhao.51cto.com/job/view/id-3596.html" target="_blank">运维工程师</a></li>
+
+<li><a href="http://gaozhao.51cto.com/job/view/id-4265.html" target="_blank">IDC运维监控</a></li>
+
+<li><a href="http://gaozhao.51cto.com/job/view/id-2549.html" target="_blank">高级运维工程师（高级讲师）</a></li>
+
+<li><a href="http://gaozhao.51cto.com/job/view/id-4327.html" target="_blank">中科信软招聘ansible兼职讲师</a></li>
+
+
+
+</ul>
+
+
+
+
+<span class="blank6"></span>
+</div><!--modCon end-->
+<span class="modBot"></span>
+</div><!--职位推荐 end-->
+
+</div>
+
+
+<div class="artComm box">
+    <div class="title"><a name="replay"></a><h2>文章评论</h2></div>
+    <div class="modCon" id="artcomment">
+		<div>  &nbsp;</div><a name="662908"></a><div class="itcomment" style="table-layout: fixed; word-wrap: break-word;" id="itcommentid0"><div><div style="width: 100%; border-bottom: 1px solid rgb(160, 160, 160); height: 20px;"><label style="float: left;">[1楼]&nbsp;&nbsp;&nbsp;&nbsp;<img src="reply.gif">&nbsp;&nbsp;<a target="_blank" href="http://liuyuan.blog.51cto.com/" class="operlink" ref="nofollow"><b>ashajia</b></a></label><label style="float: right;">&nbsp;<a href="http://kaifly.blog.51cto.com/#" class="repost operlink" user_name="ashajia" parentid="662908">回复</a></label></div></div><div align="right">2016-05-31 09:42:58</div><div class="commentcontent">请问，最后在计算MBps的时候【scale=2】这个在这是启什么作用？</div></div><br><a name="662913"></a><div class="itcomment" style="table-layout: fixed; word-wrap: break-word;" id="itcommentid1"><div><div style="width: 100%; border-bottom: 1px solid rgb(160, 160, 160); height: 20px;"><label style="float: left;">[2楼]<a href="http://kaifly.blog.51cto.com/">楼主</a>&nbsp;&nbsp;&nbsp;&nbsp;<img src="reply.gif">&nbsp;&nbsp;<a target="_blank" href="http://kaifly.blog.51cto.com/" class="operlink" ref="nofollow"><b>kai404</b></a></label><label style="float: right;">&nbsp;<a href="http://kaifly.blog.51cto.com/#" class="repost operlink" user_name="kai404" parentid="662913">回复</a></label></div></div><div align="right">2016-05-31 10:10:02</div><div class="commentcontent">回复 ashajia:<a href="http://kaifly.blog.51cto.com/#" class="anchor_page" title="加载中....." style="cursor: pointer;" tid="1783530" parentid="662908">[1楼]</a><br><br>scale ( expression )<br> &nbsp;   The  value  of  the scale function is the number of digits after the decimal point in the expression.</div></div><br><a name="662927"></a><div class="itcomment" style="table-layout: fixed; word-wrap: break-word;" id="itcommentid2"><div><div style="width: 100%; border-bottom: 1px solid rgb(160, 160, 160); height: 20px;"><label style="float: left;">[3楼]&nbsp;&nbsp;&nbsp;&nbsp;<img src="reply.gif">&nbsp;&nbsp;<a target="_blank" href="http://liuyuan.blog.51cto.com/" class="operlink" ref="nofollow"><b>ashajia</b></a></label><label style="float: right;">&nbsp;<a href="http://kaifly.blog.51cto.com/#" class="repost operlink" user_name="ashajia" parentid="662927">回复</a></label></div></div><div align="right">2016-05-31 11:45:15</div><div class="commentcontent">回复 kai404:<a href="http://kaifly.blog.51cto.com/#" class="anchor_page" title="加载中....." style="cursor: pointer;" tid="1783530" parentid="662913">[2楼]</a><br><br>哦~多谢</div></div><br><a name="663400"></a><div class="itcomment" style="table-layout: fixed; word-wrap: break-word;" id="itcommentid3"><div><div style="width: 100%; border-bottom: 1px solid rgb(160, 160, 160); height: 20px;"><label style="float: left;">[4楼]&nbsp;&nbsp;&nbsp;&nbsp;<img src="reply.gif">&nbsp;&nbsp;<a target="_blank" href="http://zhangxiaoxiong.blog.51cto.com/" class="operlink" ref="nofollow"><b>3764208</b></a></label><label style="float: right;">&nbsp;<a href="http://kaifly.blog.51cto.com/#" class="repost operlink" user_name="3764208" parentid="663400">回复</a></label></div></div><div align="right">2016-06-06 11:41:29</div><div class="commentcontent">脚本 执行直接是这一行 use interface_name after the script,like \"script eth0\"...\n" &nbsp;  怎么回事？</div></div><br><a name="663402"></a><div class="itcomment" style="table-layout: fixed; word-wrap: break-word;" id="itcommentid4"><div><div style="width: 100%; border-bottom: 1px solid rgb(160, 160, 160); height: 20px;"><label style="float: left;">[5楼]<a href="http://kaifly.blog.51cto.com/">楼主</a>&nbsp;&nbsp;&nbsp;&nbsp;<img src="reply.gif">&nbsp;&nbsp;<a target="_blank" href="http://kaifly.blog.51cto.com/" class="operlink" ref="nofollow"><b>kai404</b></a></label><label style="float: right;">&nbsp;<a href="http://kaifly.blog.51cto.com/#" class="repost operlink" user_name="kai404" parentid="663402">回复</a></label></div></div><div align="right">2016-06-06 12:34:33</div><div class="commentcontent">回复 3764208:<a href="http://kaifly.blog.51cto.com/#" class="anchor_page" title="加载中....." style="cursor: pointer;" tid="1783530" parentid="663400">[4楼]</a><br><br>这是提示啊~~~你后面要跟一个网卡名~~</div></div><br><a name="663426"></a><div class="itcomment" style="table-layout: fixed; word-wrap: break-word;" id="itcommentid5"><div><div style="width: 100%; border-bottom: 1px solid rgb(160, 160, 160); height: 20px;"><label style="float: left;">[6楼]&nbsp;&nbsp;&nbsp;&nbsp;<img src="reply.gif">&nbsp;&nbsp;<a target="_blank" href="http://zhangxiaoxiong.blog.51cto.com/" class="operlink" ref="nofollow"><b>3764208</b></a></label><label style="float: right;">&nbsp;<a href="http://kaifly.blog.51cto.com/#" class="repost operlink" user_name="3764208" parentid="663426">回复</a></label></div></div><div align="right">2016-06-06 18:00:45</div><div class="commentcontent">IN: 0.0 OUT: &nbsp;  &nbsp;  Mb/s 0.0 &nbsp;   <br>1.sh: line 22: bc: command not found<br>1.sh: line 23: bc: command not found<br>1.sh: line 25: printf: Mb/s: invalid number<br>IN: 0.0 OUT: &nbsp;  &nbsp;  Mb/s 0.0 &nbsp; <br><br><br>跟网卡名出这样的</div></div><br><a name="663429"></a><div class="itcomment" style="table-layout: fixed; word-wrap: break-word;" id="itcommentid6"><div><div style="width: 100%; border-bottom: 1px solid rgb(160, 160, 160); height: 20px;"><label style="float: left;">[7楼]<a href="http://kaifly.blog.51cto.com/">楼主</a>&nbsp;&nbsp;&nbsp;&nbsp;<img src="reply.gif">&nbsp;&nbsp;<a target="_blank" href="http://kaifly.blog.51cto.com/" class="operlink" ref="nofollow"><b>kai404</b></a></label><label style="float: right;">&nbsp;<a href="http://kaifly.blog.51cto.com/#" class="repost operlink" user_name="kai404" parentid="663429">回复</a></label></div></div><div align="right">2016-06-06 18:14:21</div><div class="commentcontent">回复 3764208:<a href="http://kaifly.blog.51cto.com/#" class="anchor_page" title="加载中....." style="cursor: pointer;" tid="1783530" parentid="663426">[6楼]</a><br><br>bc: command not found &nbsp;  ~~~</div></div><br><div>  &nbsp;</div>
+    </div><!--modCon-->
+        <span class="modBot"></span>
+</div><!--commBox end-->
+<a href="http://kaifly.blog.51cto.com/" id="com_top_top"></a>
+<!--<div class="artComm box" style="750px;height:90px;">
+<script type="text/javascript">
+    var cpro_id = "u2386995";
+</script>
+<script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script>
+</div>--><form action="http://kaifly.blog.51cto.com/comment.php?" method="post" name="form1" id="form1">
+<span class="blank1"></span>
+<div class="box writeComm" style="min-height: 30px;">
+<a name="comment"></a>
+<input name="action" value="comment" type="hidden">
+<input id="commenttid" name="tid" value="1783530" type="hidden">
+<input name="com_count_ajax" id="com_count_ajax" value="1" type="hidden">
+
+ <div class="title">
+	<h2 class="fl">发表评论&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h2>
+	<span class="fl" id="messageTj">
+<div style="color: red; font-family: 微软雅黑;"></div><div id="beacon_cf8ec387ef" style="position: absolute; left: 0px; top: 0px; visibility: hidden;"><img src="lg.php" alt="" style="width: 0px; height: 0px;" width="0" height="0"></div>
+
+</span>
+	
+</div>
+<div style="display: none;" rel="" id="ggBox">
+<div style="color: red; font-family: 微软雅黑;"></div><div id="beacon_cf8ec387ef" style="position: absolute; left: 0px; top: 0px; visibility: hidden;"><img src="lg.php" alt="" style="width: 0px; height: 0px;" width="0" height="0"></div>
+
+</div>
+
+ <div class="modCon">
+
+ <div class="commForm">
+<dl>
+<dt>昵&nbsp;&nbsp;称：</dt>
+<dd>
+
+<input id="commentusername" name="username" value="" class="commInput fl" type="text"><span><a href="http://home.51cto.com/index.php?reback=http%253A%252F%252Fkaifly.blog.51cto.com%252F3209616%252F1783530" style="text-decoration: underline;">登录</a>&nbsp;&nbsp;<a href="http://ucenter.51cto.com/reg_01.php?reback=http://blog.51cto.com" target="_blank" style="text-decoration: underline;">快速注册</a></span>
+
+
+
+</dd>
+</dl>
+
+
+
+<dl id="commentyanzheng">
+
+
+<dt>验证码：</dt>
+<dd><input class="code" value="" id="commentauthnum" name="authnum" type="text">
+
+  <img class="fl" id="secunum" style="display: none;" width="78" height="29"><p class="fl"><span style="display: none;" id="spanfont">点击图片可刷新验证码</span><span style="display: inline;" id="clickfont">请点击后输入验证码</span><span class="pl5"><a href="http://51ctoblog.blog.51cto.com/26414/5591" target="_blank" style="text-decoration: underline;">博客过2级，无需填写验证码</a></span></p></dd>
+</dl>
+<dl>
+<dt>内&nbsp;&nbsp;容：</dt>
+<dd>
+<textarea class="writeCommCon f12" id="commentcontent" name="content"></textarea>
+</dd>
+</dl>
+</div>
+<div class="writeCommBot">
+  <input name="parentid" value="" id="parentid" type="hidden">
+  <input class="commBtn fl" name="submit" id="commentsubmit" value="" type="button">
+
+ <p class="fl" style="display: none;"><input class="fl" name="favour" id="favour" checked="" value="1" type="checkbox"><span class="fl">同时赞一个</span></p>
+
+</div>
+<span class="blank"></span>
+
+</div><!--modCon-->
+<span class="modBot"></span>
+</div>
+</form>
+<div style="display: none;">
+<a href="http://tongji.baidu.com/hm-web/welcome/ico?s=2283d46608159c3b39fc9f1178809c21" target="_blank"><img src="21.gif" width="20" border="0" height="20"></a>
+
+
+
+</div>
+<iframe src="index_1.html" id="iframe1" name="iframe1" width="0" height="0"></iframe>
+<!--发表评论 end-->
+</div>
+</div>
+<div id="f_close_box" style="width: 150px; height: 300px; position: fixed; top: 42%; left: 0px; z-index: 100;">
+
+	<img src="wKioL1VHFCjRwiyNAAB-jIackwQ674.jpg" usemap="#Map1" border="0">
+    <map name="Map1" id="Map1">
+      <area shape="rect" coords="124,7,143,25">
+    </map>
+    
+</div>
+
+
+
+
+
+<!-- <script src="http://blog.51cto.com/js/blog_top_list.php" type="text/javascript" language="javascript"></script> -->
+
+<div id="message" class="blogpop" style="background-color: rgb(255, 255, 255); z-index: 100; width: 389px; height: 196px; position: absolute; bottom: 0px; right: 0px; overflow: hidden;"><iframe src="index_2.html" style="width: 800px; height: 536px; top: 0px; left: 0px; position: absolute; visibility: inherit; z-index: -1;" frameborder="0"></iframe>
+<div style="height: 36px; background: url(&quot;popbgx.jpg&quot;) repeat-x scroll 0% 0% transparent; position: relative; width: 387px; border-right-color: rgb(38, 104, 183); border-right-width: 2px;"><span style="right: 10px; padding: 12px 0px 0px; position: absolute; top: 0px;"><span style="margin-right: 80px; color: rgb(130, 130, 130); width: 190px; padding: 10px 0px 0px 10px; font-size: 14px;">每日博报 精彩不止一点</span><img title="关闭" id="message_close" src="close.jpg" alt="关闭"></span><div style="width: 387px; height: 36px; left: 0px; overflow: hidden; text-indent: -999em; background: url(&quot;hdtit.jpg&quot;) no-repeat scroll 0% 0% transparent; border-right: 2px solid rgb(38, 104, 183);"><a style="display: block; height: 36px; width: 138px;" target="_blank" href="http://blog.51cto.com/"></a>
+</div>
+<div style="clear: both;"></div>
+</div>
+	<div id="message_content" style="border-top: medium none; font-family: Microsoft YaHei; font-size: 12px; width: 389px; text-align: left; overflow: hidden;">
+	<div class="blogpopMain">
+<div class="l">
+<a target="_blank" href="http://blog.51cto.com/zt/695"><img src="wKioL1ea8kqzmp9sAAAqluZQmDk045.jpg" width="105" height="105"></a>
+<p>
+<a target="_blank" href="http://blog.51cto.com/zt/695"> Lync Server 2013部署 </a></p>
+</div>
+<div class="r">
+<h4 style="text-align: left;">
+<a target="_blank" href="http://lavenliu.blog.51cto.com/5060944/1836500">  Python开发环境之pyenv搭建</a>
+</h4>
+<ul>
+<li>
+<a target="_blank" href="http://chawan.blog.51cto.com/9179874/1836438">Linux之sed流编辑器详解</a>
+</li>
+<li>
+<a target="_blank" href="http://yangsir.blog.51cto.com/1549/1813902" style="color: red;">总编下午茶：技术老男人的创业经</a>
+</li>
+<li>
+<a target="_blank" href="http://gaowenlong.blog.51cto.com/451336/1835545"> Linux 下Shell脚本回滚删除数据 </a></li>
+<li><a target="_blank" href="http://bbs.51cto.com/thread-1435374-1.html" style="color: red;">【小编赠书】Scala编程实战
+</a></li>
+</ul>
+</div>
+</div><div id="beacon_708811650a" style="position: absolute; left: 0px; top: 0px; visibility: hidden;"><img src="lg_001.php" alt="" style="width: 0px; height: 0px;" width="0" height="0"></div>
+
+	</div>
+</div>
+
+
+<div style="display: none;" title="返回顶部" class="backToTop tops">返回顶部</div>
+
+
+
+
+
+
+<div class="clear"></div>
+<!-- <script>
+jQuery(function(){
+	var html= "<div id=\"sogou_se_tgbar\" style=\"text-align:center;margin:0px auto 2px auto;clear:both;background:url(http://home.51cto.com/public/images/notice/sogou_se_tgbar_bg_final1.gif) repeat-x;width:950px;color:#000;font-size:13px;height:36px;z-index:21474836471\"><div style=\"float:left;cursor:pointer;width:910px;text-align:center;border-left:solid #efbf00 1px;height:32px; line-height:32px;txt-align:center;\"><span style=\"\">	<a href=\"http://51ctoblog.blog.51cto.com/26414/1093282\">【新年祝福征集】51CTO社区年底嘉年华活动正在征集博主祝福语，祝福以红包的形式随机的赠送给访问51CTO的网友 点此送祝福>></a></span></div><div onclick=\"document.getElementById('sogou_se_tgbar').style.display = 'none';\" style=\"float:right;width:20px;cursor:pointer;height:28px;padding:4px 8px 0px 8px;border-right:solid #efbf00 1px\"><img style=\"border:none;margin:4px 0px 0px 0px;\" src=\"http://home.51cto.com/public/images/notice/sogou_se_tgbar_close_final1.gif\"></div></div>"
+	jQuery('body').prepend(html);
+})
+</script> -->
+
+<div id="footer">
+  <div id="innerFooter">
+	<center>
+		<small>
+			Copyright By 51CTO.COM 版权所有<br><br>
+			<a href="http://blog.51cto.com/" target="_blank"><img src="copyright.jpg"></a>
+	  </small>
+	</center>
+  </div>
+</div>
+
+<div style="display: none;">
+
+
+<div style="display: none;">
+
+
+
+
+</div>
+<iframe src="index_3.html" scrolling="no" width="0" frameborder="0" height="0"></iframe>
+</div>
+<div style="display: none;"><div>
+
+
+
+
+</div></div></body>
+</html>

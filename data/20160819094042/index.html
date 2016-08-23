@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>树莓派上使用htpdate同步时间 | Soul Of Free Loop</title>
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="pingback" href="http://zohead.com/xmlrpc.php">
+
+<link rel="alternate" type="application/rss+xml" title="Soul Of Free Loop » Feed" href="https://zohead.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="Soul Of Free Loop » 评论Feed" href="https://zohead.com/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="Soul Of Free Loop » 树莓派上使用htpdate同步时间评论Feed" href="https://zohead.com/archives/htpdate-raspberry/feed/">
+
+
+
+
+
+
+
+
+
+
+
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://zohead.com/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="推荐带开关的USB数据线" href="https://zohead.com/archives/usb-cable-switch/">
+<link rel="next" title="不得不吐槽的《魁拔》" href="https://zohead.com/archives/kuiba/">
+<meta name="generator" content="WordPress 3.8, fitted with the WordPress Mobile Pack 1.2.5">
+<link rel="shortlink" href="https://zohead.com/?p=809">
+
+<!-- All in One SEO Pack - Pro Version 1.72 by Michael Torbert of Semper Fi Web Design[-1,-1] -->
+<meta name="description" content="最近住处的网络由电信换为移动宽带之后，之前一直使用的 Raspberry Pi 树莓派板子上出现系统时间不正确的问题（显示为">
+<meta name="keywords" content="ntp,ntpdate,raspberry pi,时间同步">
+<link rel="canonical" href="https://zohead.com/archives/htpdate-raspberry/">
+<!-- /all in one seo pack Pro Version-->
+
+<meta http-equiv="Content-Language" content="zh-CN">
+
+<link hreflang="en" href="https://zohead.com/archives/htpdate-raspberry/?wpmp_switcher=desktop&amp;lang=en" rel="alternate">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://zohead.com/xmlrpc@zohead.php?rsd">
+	
+
+
+<!-- begin SI CAPTCHA Anti-Spam - comment form style --><!-- end SI CAPTCHA Anti-Spam - comment form style -->
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+
+<body class="single single-post postid-809 single-format-standard custom-background">
+<div id="page" class="hfeed site">
+	<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+
+	<header id="masthead" class="site-header" role="banner">
+
+		<nav class="navbar navbar-inverse" role="navigation">
+		  <div class="container">
+		    <!-- Brand and toggle get grouped for better mobile display -->
+		    <div class="navbar-header">
+		      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+		        <span class="sr-only">Toggle navigation</span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		      </button>
+
+			<a class="navbar-brand" rel="home" href="https://zohead.com/">Soul Of Free Loop</a>
+    		</div>
+
+    			<div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1">
+				 <ul id="menu-menu" class="nav navbar-nav navbar-left"><li id="menu-item-148" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-148"><a title="首页" href="https://zohead.com/">首页</a></li>
+<li id="menu-item-150" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-150"><a title="技术" href="https://zohead.com/archives/category/%e6%8a%80%e6%9c%af/">技术</a></li>
+<li id="menu-item-238" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-238"><a title="旅行" href="https://zohead.com/archives/category/%e6%97%85%e8%a1%8c/">旅行</a></li>
+<li id="menu-item-910" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-910"><a title="GitHub" href="https://github.com/zohead">GitHub</a></li>
+<li id="menu-item-1091" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1091"><a title="留言板" href="https://zohead.com/guestbook/">留言板</a></li>
+</ul>
+        		</div> <!-- .navbar-collapse -->
+        	</div><!-- /.container -->
+		</nav><!-- .navbar .navbar-default -->
+	</header><!-- #masthead -->
+
+	<div id="content" class="site-content">
+
+<div class="container">
+	<div class="row">
+
+	<div id="primary" class="col-md-8 col-lg-8">
+		<main id="main" class="site-main" role="main">
+
+		
+			
+<article id="post-809" class="post-809 post type-post status-publish format-standard hentry category-linux category-94 category-22 tag-ntp tag-ntpdate tag-raspberry-pi tag-572">
+
+	<div class="card">
+		<div class="entry-img">
+					</div>
+
+		<div class="entry-container">
+			<header class="entry-header">
+				<h1 class="entry-title">树莓派上使用htpdate同步时间</h1>
+				<div class="entry-meta">
+					<span class="posted-on"><i class="mdi-action-schedule"></i> <a href="https://zohead.com/archives/htpdate-raspberry/" rel="bookmark"><time class="entry-date published updated" datetime="2014年10月14日 星期二">2014年10月14日 星期二</time></a></span><span class="byline"> <i class="mdi-action-account-circle"></i> <span class="author vcard"><a class="url fn n" href="https://zohead.com/archives/author/admin/">Uranus Zhou</a></span></span><span class="cat-links"><i class="mdi-file-folder-open"></i> <a href="https://zohead.com/archives/category/%e6%8a%80%e6%9c%af/linux/" title="查看Linux中的全部文章" rel="category tag">Linux</a>, <a href="https://zohead.com/archives/category/%e5%b7%a5%e5%85%b7/" title="查看工具中的全部文章" rel="category tag">工具</a>, <a href="https://zohead.com/archives/category/%e6%8a%80%e6%9c%af/" title="查看技术中的全部文章" rel="category tag">技术</a></span>				</div><!-- .entry-meta -->
+			</header><!-- .entry-header -->
+
+			<div class="entry-content">
+				<p>最近住处的网络由电信换为移动宽带之后，之前一直使用的 Raspberry Pi 树莓派板子上出现系统时间不正确的问题（显示为 1970 年 1 月 1 日），由于树莓派板子上没有 RTC 硬件和电池，因此树莓派上的系统时间重启是保存不了的。</p>
+<p>之前设置的是每次开机自动使用 ntpdate 命令从 NTP 服务器上同步时间，但现在每次运行时都提示：</p>
+<p></p><div><div id="highlighter_96682" class="syntaxhighlighter  bash"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="bash plain">root@XBian:~</code><code class="bash comments"># ntpdate ntp.sjtu.edu.cn</code></div><div class="line number2 index1 alt1"><code class="bash plain">13 Oct 23:49:01 ntpdate[1484]: no server suitable </code><code class="bash keyword">for</code> <code class="bash plain">synchronization found</code></div></div></td></tr></tbody></table></div></div>
+<p></p>
+<p><span id="more-809"></span></p>
+<p>同时公司里电信网络环境下这个命令又是完全正常的，移动宽带环境下直接 ping 这个 NTP 服务器也是通的，因此估计就是移动宽带直接把 NTP 给封了。</p>
+<p>在谴责移动的同时只能另想办法，还好网上已经有人想到这种应对 NTP 被防火墙封掉类似的需求了，开源的 htpdate 命令直接使用 HTTP 协议（这个是不可能封的了）来进行系统时间同步，项目主页在这里：</p>
+<p><a href="https://github.com/iridium77/htpdate" target="_blank">https://github.com/iridium77/htpdate</a></p>
+<p>htpdate 的原理也非常简单，直接解析 HTTP 协议头中的服务器时间信息，然后设置本地时间，我们来看百度返回的 HTTP 头：</p>
+<p></p><div><div id="highlighter_482374" class="syntaxhighlighter  plain"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="plain plain">HTTP/1.1 200 OK</code></div><div class="line number2 index1 alt1"><code class="plain plain">Date Mon, 13 Oct 2014 16:05:18 GMT</code></div><div class="line number3 index2 alt2"><code class="plain plain">Content-Type text/html</code></div><div class="line number4 index3 alt1"><code class="plain plain">Transfer-Encoding chunked</code></div><div class="line number5 index4 alt2"><code class="plain plain">Connection Keep-Alive</code></div><div class="line number6 index5 alt1"><code class="plain plain">Cache-Control private</code></div><div class="line number7 index6 alt2"><code class="plain plain">Expires Mon, 13 Oct 2014 16:05:18 GMT</code></div><div class="line number8 index7 alt1"><code class="plain plain">Server BWS/1.1</code></div><div class="line number9 index8 alt2"><code class="plain plain">BDPAGETYPE 2</code></div><div class="line number10 index9 alt1"><code class="plain plain">BDQID 0x8b40c1f700000bd4</code></div><div class="line number11 index10 alt2"><code class="plain plain">BDUSERID 13923551</code></div><div class="line number12 index11 alt1"><code class="plain plain">Set-Cookie BDSVRTM=133; path=/</code></div><div class="line number13 index12 alt2"><code class="plain plain">Set-Cookie BD_HOME=1; path=/</code></div></div></td></tr></tbody></table></div></div>
+<p></p>
+<p>上面的 Date Mon, 13 Oct 2014 16:05:18 GMT 就是百度的 Web 服务器上的系统时间了。</p>
+<p>htpdate 命令做时间同步会有 0.5 秒左右的误差（看看 HTTP 头就知道里面很多时间都是以秒为单位哈），对于我的树莓派来说就完全没有关系，如果对这个比较在意的话只能尽量用 NTP 时间同步了。</p>
+<p>htpdate 使用上也很简单，简单编译安装之后把这条命令加到 Raspberry Pi Raspbian 系统的 /etc/rc.local 文件中（不加 -t 参数基本不能同步成功哦）：</p>
+<p><strong>htpdate -t -s ntp.neu.edu.cn</strong></p>
+<p>然后重启树莓派就可以正常同步系统时间了。</p>
+<div class="yarpp-related yarpp-related-none">
+<p>无相关文章.</p>
+</div>
+							</div><!-- .entry-content -->
+
+			<footer class="entry-footer">
+				<span class="tags-links"><i class="mdi-maps-local-offer"></i> <a href="https://zohead.com/archives/tag/ntp/" rel="tag">NTP</a>, <a href="https://zohead.com/archives/tag/ntpdate/" rel="tag">ntpdate</a>, <a href="https://zohead.com/archives/tag/raspberry-pi/" rel="tag">Raspberry Pi</a>, <a href="https://zohead.com/archives/tag/%e6%97%b6%e9%97%b4%e5%90%8c%e6%ad%a5/" rel="tag">时间同步</a></span>			</footer><!-- .entry-footer -->
+		</div> <!-- .entry-container -->
+	</div> <!-- .card -->
+</article><!-- #post-## -->
+
+				<nav class="navigation post-navigation" role="navigation">
+		<h1 class="screen-reader-text">Post navigation</h1>
+		<div class="nav-links">
+			<div class="nav-previous"><a class="btn btn-warning btn-fab btn-raised mdi-image-navigate-before" href="https://zohead.com/archives/usb-cable-switch/" rel="prev"></a></div><div class="nav-next"><a class="btn btn-warning btn-fab btn-raised mdi-image-navigate-next" href="https://zohead.com/archives/kuiba/" rel="next"></a></div>		</div><!-- .nav-links -->
+	</nav><!-- .navigation -->
+	
+			
+<div id="comments" class="comments-area card">
+
+	
+			<h2 class="comments-title">
+			《<span>树莓派上使用htpdate同步时间</span>》上的评论		</h2>
+
+		
+		<ol class="comment-list">
+					<li id="comment-975" class="pingback even thread-even depth-1">
+			<div class="comment-body">
+				Pingback： <a href="http://www.iraspberrypi.com/archives/1004" rel="external nofollow" class="url">树莓派上使用htpdate同步时间 - 爱上Raspberry Pi树莓派社区 |哈尔滨奥松机器人|ALSRobotBase</a> 			</div>
+</li><!-- #comment-## -->
+		</ol><!-- .comment-list -->
+
+		
+	
+	
+									<div id="respond" class="comment-respond">
+				<h3 id="reply-title" class="comment-reply-title">发表评论 <small><a rel="nofollow" id="cancel-comment-reply-link" href="#respond" style="display: none;">取消回复</a></small></h3>
+									<form action="http://zohead.com/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate="">
+																			<p class="comment-notes">电子邮件地址不会被公开。 必填项已用<span class="required">*</span>标注</p>							<div class="form-group"><div class="form-control-wrapper"><input style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABHklEQVQ4EaVTO26DQBD1ohQWaS2lg9JybZ+AK7hNwx2oIoVf4UPQ0Lj1FdKktevIpel8AKNUkDcWMxpgSaIEaTVv3sx7uztiTdu2s/98DywOw3Dued4Who/M2aIx5lZV1aEsy0+qiwHELyi+Ytl0PQ69SxAxkWIA4RMRTdNsKE59juMcuZd6xIAFeZ6fGCdJ8kY4y7KAuTRNGd7jyEBXsdOPE3a0QGPsniOnnYMO67LgSQN9T41F2QGrQRRFCwyzoIF2qyBuKKbcOgPXdVeY9rMWgNsjf9ccYesJhk3f5dYT1HX9gR0LLQR30TnjkUEcx2uIuS4RnI+aj6sJR0AM8AaumPaM/rRehyWhXqbFAA9kh3/8/NvHxAYGAsZ/il8IalkCLBfNVAAAAABJRU5ErkJggg==&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;" class="form-control empty" id="author" name="author" value="" size="30" aria-required="true" type="text"><div class="floating-label">姓名</div><span class="material-input"></span></div></div>
+<div class="form-group"><div class="form-control-wrapper"><input class="form-control empty" id="email" name="email" value="" size="30" aria-required="true" type="text"><div class="floating-label">电子邮件</div><span class="material-input"></span></div></div>
+<div class="form-group"><div class="form-control-wrapper"><input class="form-control empty" id="url" name="url" value="" size="30" type="text"><div class="floating-label">站点</div><span class="material-input"></span></div></div>
+
+<div class="captchaSizeDivSmall"><img id="si_image_com" class="si-captcha" src="securimage_show.php" alt="验证图片" title="验证图片" width="132" height="45">
+    <input id="si_code_com" name="si_code_com" value="vFeCmJ49DR35FKET" type="hidden">
+    <div id="si_refresh_com">
+<a href="#" rel="nofollow" title="刷新验证码">
+      <img class="captchaImgRefresh" src="refresh.png" alt="刷新验证码" width="22" height="20"></a>
+  </div>
+  </div>
+<br>
+<p><input id="captcha_code" name="captcha_code" size="6" type="text">
+<label id="captcha_code_label" for="captcha_code" style="display: inline;">验证码</label><span class="required">*</span>
+</p>												 
+        <div class="form-group"><div class="form-control-wrapper"><textarea class="form-control empty" rows="10" id="comment" name="comment" aria-required="true"></textarea><div class="floating-label">评论</div><span class="material-input"></span></div></div>												<p class="form-submit">
+							<input name="submit" id="submit" value="提交" type="submit">
+							<input name="comment_post_ID" value="809" id="comment_post_ID" type="hidden">
+<input name="comment_parent" id="comment_parent" value="0" type="hidden">
+						</p>
+						<p style="display: none;"><input id="akismet_comment_nonce" name="akismet_comment_nonce" value="3694004af7" type="hidden"></p><p><input name="comment_mail_notify" id="comment_mail_notify" value="comment_mail_notify" checked="checked" style="width: auto;" type="checkbox"><label for="comment_mail_notify" style="display: inline;">有人回复时邮件通知我</label></p>					</form>
+							</div><!-- #respond -->
+			
+</div><!-- #comments -->
+
+		
+		</main><!-- #main -->
+	</div><!-- #primary -->
+
+
+<div id="secondary" class="widget-area col-md-4 col-lg-4" role="complementary">
+	
+		<aside id="qtranslate-4" class="widget widget_qtranslate"><div class="panel panel-warning"><ul class="qtrans_language_chooser" id="qtranslate-4-chooser"><li class="active"><a href="https://zohead.com/archives/htpdate-raspberry/?wpmp_switcher=desktop" class="qtrans_flag_zh qtrans_flag_and_text" title="中文"><span>中文</span></a></li><li><a href="https://zohead.com/archives/htpdate-raspberry/?wpmp_switcher=desktop&amp;lang=en" class="qtrans_flag_en qtrans_flag_and_text" title="English"><span>English</span></a></li></ul><div class="qtrans_widget_end"></div></div></aside><aside id="search-2" class="widget widget_search"><div class="panel panel-warning">
+<form method="get" class="form-search" action="https://zohead.com/">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="form-control-wrapper"><input class="form-control search-query empty" name="s" type="text"><div class="floating-label">搜索</div><span class="material-input"></span></div>
+		</div>
+	</div>
+</form>
+
+</div></aside><aside id="execphp-2" class="widget widget_execphp"><div class="panel panel-warning"> <div class="panel-heading"><h3 class="panel-title">捐赠</h3></div>			<div class="execphpwidget"><center>
+<form accept-charset="GBK" action="https://shenghuo.alipay.com/send/payment/fill.htm" method="POST" target="_blank">
+<input name="optEmail" value="nocwat@gmail.com" type="hidden">
+<input name="payAmount" value="10.00" type="hidden">
+<input id="title" name="title" value="支持 Uranus Zhou" type="hidden">
+<input name="memo" value="欢迎写下您的姓名及留言" type="hidden">
+<input name="pay" src="2m8C9z7xQ5_src.png" value="转账" type="image" width="92" height="32">
+</form>
+</center></div>
+		</div></aside>		<aside id="recent-posts-2" class="widget widget_recent_entries"><div class="panel panel-warning">		 <div class="panel-heading"><h3 class="panel-title">近期文章</h3></div>		<ul>
+					<li>
+				<a href="https://zohead.com/archives/win10-bash-ubuntu/">Win10年度更新开启Bash on Ubuntu</a>
+						</li>
+					<li>
+				<a href="https://zohead.com/archives/displaylink_superbook/">使用DisplayLink显卡组装Android Superbook</a>
+						</li>
+					<li>
+				<a href="https://zohead.com/archives/zenfone2-nfc-sim/">为Zenfone 2开启NFC SIM卡刷公交支持</a>
+						</li>
+					<li>
+				<a href="https://zohead.com/archives/chromebook-zed/">适合Chromebook的Zed编辑器上手</a>
+						</li>
+					<li>
+				<a href="https://zohead.com/archives/qiniu-https-tamper/">考虑开启SRI防止七牛CDN HTTPS劫持</a>
+						</li>
+					<li>
+				<a href="https://zohead.com/archives/chelsio-rbd/">Chelsio RDMA Block设备驱动测试</a>
+						</li>
+					<li>
+				<a href="https://zohead.com/archives/mk809iv-1080p/">为MK809IV电视棒开启真正1080p支持</a>
+						</li>
+					<li>
+				<a href="https://zohead.com/archives/zenfone2/">入手华硕Zenfone 2旗舰版</a>
+						</li>
+					<li>
+				<a href="https://zohead.com/archives/ibm-bluemix-docker/">IBM Bluemix Docker容器初步体验</a>
+						</li>
+					<li>
+				<a href="https://zohead.com/archives/cloud-player-helper/">发布360云盘播放助手Chrome扩展</a>
+						</li>
+				</ul>
+		</div></aside><aside id="categories-2" class="widget widget_categories"><div class="panel panel-warning"> <div class="panel-heading"><h3 class="panel-title">分类目录</h3></div>		<ul>
+	<li class="cat-item cat-item-7"><a href="https://zohead.com/archives/category/wordpress/" title="查看WordPress下的所有文章">WordPress</a> (5)
+</li>
+	<li class="cat-item cat-item-3"><a href="https://zohead.com/archives/category/%e5%8f%a4%e5%85%b8%e5%90%89%e4%bb%96/" title="查看古典吉他下的所有文章">古典吉他</a> (1)
+</li>
+	<li class="cat-item cat-item-94"><a href="https://zohead.com/archives/category/%e5%b7%a5%e5%85%b7/" title="查看工具下的所有文章">工具</a> (16)
+</li>
+	<li class="cat-item cat-item-14"><a href="https://zohead.com/archives/category/%e5%bf%83%e6%83%85%e9%9a%8f%e7%ac%94/" title="查看心情随笔下的所有文章">心情随笔</a> (13)
+<ul class="children">
+	<li class="cat-item cat-item-454"><a href="https://zohead.com/archives/category/%e5%bf%83%e6%83%85%e9%9a%8f%e7%ac%94/%e7%94%9f%e6%b4%bb/" title="查看生活下的所有文章">生活</a> (7)
+</li>
+	<li class="cat-item cat-item-120"><a href="https://zohead.com/archives/category/%e5%bf%83%e6%83%85%e9%9a%8f%e7%ac%94/%e7%94%b5%e5%bd%b1/" title="查看电影下的所有文章">电影</a> (3)
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-22"><a href="https://zohead.com/archives/category/%e6%8a%80%e6%9c%af/" title="查看技术下的所有文章">技术</a> (100)
+<ul class="children">
+	<li class="cat-item cat-item-334"><a href="https://zohead.com/archives/category/%e6%8a%80%e6%9c%af/android/" title="查看Android下的所有文章">Android</a> (11)
+</li>
+	<li class="cat-item cat-item-80"><a href="https://zohead.com/archives/category/%e6%8a%80%e6%9c%af/boost/" title="查看boost下的所有文章">boost</a> (1)
+</li>
+	<li class="cat-item cat-item-55"><a href="https://zohead.com/archives/category/%e6%8a%80%e6%9c%af/c/" title="查看C++下的所有文章">C++</a> (5)
+</li>
+	<li class="cat-item cat-item-578"><a href="https://zohead.com/archives/category/%e6%8a%80%e6%9c%af/chrome/" title="查看Chrome下的所有文章">Chrome</a> (13)
+</li>
+	<li class="cat-item cat-item-707"><a href="https://zohead.com/archives/category/%e6%8a%80%e6%9c%af/docker/" title="查看Docker下的所有文章">Docker</a> (1)
+</li>
+	<li class="cat-item cat-item-450"><a href="https://zohead.com/archives/category/%e6%8a%80%e6%9c%af/javascript/" title="查看JavaScript下的所有文章">JavaScript</a> (3)
+</li>
+	<li class="cat-item cat-item-32"><a href="https://zohead.com/archives/category/%e6%8a%80%e6%9c%af/linux/" title="查看Linux下的所有文章">Linux</a> (45)
+	<ul class="children">
+	<li class="cat-item cat-item-295"><a href="https://zohead.com/archives/category/%e6%8a%80%e6%9c%af/linux/device-mapper/" title="查看Device mapper下的所有文章">Device mapper</a> (5)
+</li>
+	<li class="cat-item cat-item-105"><a href="https://zohead.com/archives/category/%e6%8a%80%e6%9c%af/linux/kernel/" title="查看kernel下的所有文章">kernel</a> (17)
+</li>
+	<li class="cat-item cat-item-369"><a href="https://zohead.com/archives/category/%e6%8a%80%e6%9c%af/linux/ubuntu/" title="查看Ubuntu下的所有文章">Ubuntu</a> (4)
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-86"><a href="https://zohead.com/archives/category/%e6%8a%80%e6%9c%af/php-%e6%8a%80%e6%9c%af/" title="查看PHP下的所有文章">PHP</a> (5)
+</li>
+	<li class="cat-item cat-item-275"><a href="https://zohead.com/archives/category/%e6%8a%80%e6%9c%af/python/" title="查看Python下的所有文章">Python</a> (6)
+</li>
+	<li class="cat-item cat-item-260"><a href="https://zohead.com/archives/category/%e6%8a%80%e6%9c%af/raspberry-pi/" title="查看Raspberry Pi下的所有文章">Raspberry Pi</a> (8)
+</li>
+	<li class="cat-item cat-item-154"><a href="https://zohead.com/archives/category/%e6%8a%80%e6%9c%af/shell-%e6%8a%80%e6%9c%af/" title="查看shell下的所有文章">shell</a> (5)
+</li>
+	<li class="cat-item cat-item-47"><a href="https://zohead.com/archives/category/%e6%8a%80%e6%9c%af/windows/" title="查看Windows下的所有文章">Windows</a> (4)
+</li>
+	<li class="cat-item cat-item-276"><a href="https://zohead.com/archives/category/%e6%8a%80%e6%9c%af/xbmc/" title="查看XBMC下的所有文章">XBMC</a> (8)
+</li>
+	<li class="cat-item cat-item-23"><a href="https://zohead.com/archives/category/%e6%8a%80%e6%9c%af/%e4%bb%a3%e7%a0%81%e5%88%86%e6%9e%90/" title="查看代码分析下的所有文章">代码分析</a> (8)
+</li>
+	<li class="cat-item cat-item-99"><a href="https://zohead.com/archives/category/%e6%8a%80%e6%9c%af/%e5%ad%98%e5%82%a8/" title="查看存储下的所有文章">存储</a> (11)
+	<ul class="children">
+	<li class="cat-item cat-item-514"><a href="https://zohead.com/archives/category/%e6%8a%80%e6%9c%af/%e5%ad%98%e5%82%a8/%e9%9b%86%e7%be%a4/" title="查看集群下的所有文章">集群</a> (1)
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-114"><a href="https://zohead.com/archives/category/%e6%8a%80%e6%9c%af/%e5%ad%a6%e4%b9%a0%e6%84%9f%e6%82%9f/" title="查看学习感悟下的所有文章">学习感悟</a> (2)
+</li>
+	<li class="cat-item cat-item-340"><a href="https://zohead.com/archives/category/%e6%8a%80%e6%9c%af/%e6%89%8b%e6%9c%ba/" title="查看手机下的所有文章">手机</a> (7)
+</li>
+	<li class="cat-item cat-item-561"><a href="https://zohead.com/archives/category/%e6%8a%80%e6%9c%af/%e6%95%b0%e6%8d%ae%e5%ba%93/" title="查看数据库下的所有文章">数据库</a> (1)
+</li>
+	<li class="cat-item cat-item-549"><a href="https://zohead.com/archives/category/%e6%8a%80%e6%9c%af/%e7%bd%91%e7%bb%9c-%e6%8a%80%e6%9c%af/" title="查看网络下的所有文章">网络</a> (2)
+	<ul class="children">
+	<li class="cat-item cat-item-730"><a href="https://zohead.com/archives/category/%e6%8a%80%e6%9c%af/%e7%bd%91%e7%bb%9c-%e6%8a%80%e6%9c%af/https-%e7%bd%91%e7%bb%9c-%e6%8a%80%e6%9c%af/" title="查看HTTPS下的所有文章">HTTPS</a> (1)
+</li>
+	</ul>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-63"><a href="https://zohead.com/archives/category/%e6%97%85%e8%a1%8c/" title="查看旅行下的所有文章">旅行</a> (5)
+<ul class="children">
+	<li class="cat-item cat-item-64"><a href="https://zohead.com/archives/category/%e6%97%85%e8%a1%8c/%e4%b8%ad%e5%9b%bd/" title="查看中国下的所有文章">中国</a> (5)
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-129"><a href="https://zohead.com/archives/category/%e7%bd%91%e7%bb%9c/" title="查看网络下的所有文章">网络</a> (7)
+<ul class="children">
+	<li class="cat-item cat-item-436"><a href="https://zohead.com/archives/category/%e7%bd%91%e7%bb%9c/google/" title="查看Google下的所有文章">Google</a> (1)
+</li>
+	<li class="cat-item cat-item-176"><a href="https://zohead.com/archives/category/%e7%bd%91%e7%bb%9c/%e4%b8%bb%e6%9c%ba%e7%a9%ba%e9%97%b4/" title="查看主机空间下的所有文章">主机空间</a> (3)
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-442"><a href="https://zohead.com/archives/category/%e8%b4%a2%e5%8a%a1/" title="查看财务下的所有文章">财务</a> (2)
+</li>
+	<li class="cat-item cat-item-226"><a href="https://zohead.com/archives/category/%e9%98%85%e8%af%bb/" title="查看阅读下的所有文章">阅读</a> (3)
+</li>
+		</ul>
+</div></aside><aside id="archives-2" class="widget widget_archive"><div class="panel panel-warning"> <div class="panel-heading"><h3 class="panel-title">文章归档</h3></div>		<center><select name="archive-dropdown"> <option value="">选择月份</option> 	<option value="https://zohead.com/archives/2016/08/"> 2016年八月 &nbsp;(1)</option>
+	<option value="https://zohead.com/archives/2016/07/"> 2016年七月 &nbsp;(2)</option>
+	<option value="https://zohead.com/archives/2016/06/"> 2016年六月 &nbsp;(1)</option>
+	<option value="https://zohead.com/archives/2016/05/"> 2016年五月 &nbsp;(3)</option>
+	<option value="https://zohead.com/archives/2016/04/"> 2016年四月 &nbsp;(3)</option>
+	<option value="https://zohead.com/archives/2016/03/"> 2016年三月 &nbsp;(4)</option>
+	<option value="https://zohead.com/archives/2016/02/"> 2016年二月 &nbsp;(3)</option>
+	<option value="https://zohead.com/archives/2016/01/"> 2016年一月 &nbsp;(4)</option>
+	<option value="https://zohead.com/archives/2015/12/"> 2015年十二月 &nbsp;(2)</option>
+	<option value="https://zohead.com/archives/2015/11/"> 2015年十一月 &nbsp;(2)</option>
+	<option value="https://zohead.com/archives/2015/10/"> 2015年十月 &nbsp;(2)</option>
+	<option value="https://zohead.com/archives/2015/08/"> 2015年八月 &nbsp;(2)</option>
+	<option value="https://zohead.com/archives/2015/07/"> 2015年七月 &nbsp;(2)</option>
+	<option value="https://zohead.com/archives/2015/05/"> 2015年五月 &nbsp;(1)</option>
+	<option value="https://zohead.com/archives/2015/04/"> 2015年四月 &nbsp;(2)</option>
+	<option value="https://zohead.com/archives/2015/03/"> 2015年三月 &nbsp;(3)</option>
+	<option value="https://zohead.com/archives/2015/02/"> 2015年二月 &nbsp;(1)</option>
+	<option value="https://zohead.com/archives/2015/01/"> 2015年一月 &nbsp;(1)</option>
+	<option value="https://zohead.com/archives/2014/12/"> 2014年十二月 &nbsp;(1)</option>
+	<option value="https://zohead.com/archives/2014/11/"> 2014年十一月 &nbsp;(1)</option>
+	<option value="https://zohead.com/archives/2014/10/"> 2014年十月 &nbsp;(1)</option>
+	<option value="https://zohead.com/archives/2014/09/"> 2014年九月 &nbsp;(2)</option>
+	<option value="https://zohead.com/archives/2014/08/"> 2014年八月 &nbsp;(2)</option>
+	<option value="https://zohead.com/archives/2014/07/"> 2014年七月 &nbsp;(2)</option>
+	<option value="https://zohead.com/archives/2014/06/"> 2014年六月 &nbsp;(1)</option>
+	<option value="https://zohead.com/archives/2014/04/"> 2014年四月 &nbsp;(2)</option>
+	<option value="https://zohead.com/archives/2014/03/"> 2014年三月 &nbsp;(1)</option>
+	<option value="https://zohead.com/archives/2014/02/"> 2014年二月 &nbsp;(1)</option>
+	<option value="https://zohead.com/archives/2014/01/"> 2014年一月 &nbsp;(2)</option>
+	<option value="https://zohead.com/archives/2013/12/"> 2013年十二月 &nbsp;(2)</option>
+	<option value="https://zohead.com/archives/2013/11/"> 2013年十一月 &nbsp;(4)</option>
+	<option value="https://zohead.com/archives/2013/10/"> 2013年十月 &nbsp;(2)</option>
+	<option value="https://zohead.com/archives/2013/09/"> 2013年九月 &nbsp;(2)</option>
+	<option value="https://zohead.com/archives/2013/08/"> 2013年八月 &nbsp;(1)</option>
+	<option value="https://zohead.com/archives/2013/07/"> 2013年七月 &nbsp;(2)</option>
+	<option value="https://zohead.com/archives/2013/06/"> 2013年六月 &nbsp;(2)</option>
+	<option value="https://zohead.com/archives/2013/05/"> 2013年五月 &nbsp;(2)</option>
+	<option value="https://zohead.com/archives/2013/04/"> 2013年四月 &nbsp;(3)</option>
+	<option value="https://zohead.com/archives/2013/01/"> 2013年一月 &nbsp;(1)</option>
+	<option value="https://zohead.com/archives/2012/12/"> 2012年十二月 &nbsp;(3)</option>
+	<option value="https://zohead.com/archives/2012/11/"> 2012年十一月 &nbsp;(3)</option>
+	<option value="https://zohead.com/archives/2012/10/"> 2012年十月 &nbsp;(6)</option>
+	<option value="https://zohead.com/archives/2012/09/"> 2012年九月 &nbsp;(2)</option>
+	<option value="https://zohead.com/archives/2012/08/"> 2012年八月 &nbsp;(2)</option>
+	<option value="https://zohead.com/archives/2012/07/"> 2012年七月 &nbsp;(6)</option>
+	<option value="https://zohead.com/archives/2012/06/"> 2012年六月 &nbsp;(9)</option>
+	<option value="https://zohead.com/archives/2012/05/"> 2012年五月 &nbsp;(15)</option>
+	<option value="https://zohead.com/archives/2012/04/"> 2012年四月 &nbsp;(3)</option>
+	<option value="https://zohead.com/archives/2012/03/"> 2012年三月 &nbsp;(1)</option>
+	<option value="https://zohead.com/archives/2012/02/"> 2012年二月 &nbsp;(3)</option>
+ </select></center>
+</div></aside><aside id="recent-comments-2" class="widget widget_recent_comments"><div class="panel panel-warning"> <div class="panel-heading"><h3 class="panel-title">近期评论</h3></div><ul id="recentcomments"><li class="recentcomments"><a href="https://zohead.com/" rel="external nofollow" class="url">Uranus Zhou</a>发表在《<a href="https://zohead.com/archives/chrome-redirector/#comment-2180">使用Chrome Redirector扩展解决网站访问问题</a>》</li><li class="recentcomments">Emi发表在《<a href="https://zohead.com/archives/chrome-redirector/#comment-2179">使用Chrome Redirector扩展解决网站访问问题</a>》</li><li class="recentcomments"><a href="https://zohead.com/" rel="external nofollow" class="url">Uranus Zhou</a>发表在《<a href="https://zohead.com/archives/chrome-redirector/#comment-2178">使用Chrome Redirector扩展解决网站访问问题</a>》</li><li class="recentcomments">Emi发表在《<a href="https://zohead.com/archives/chrome-redirector/#comment-2177">使用Chrome Redirector扩展解决网站访问问题</a>》</li><li class="recentcomments"><a href="https://zohead.com/" rel="external nofollow" class="url">Uranus Zhou</a>发表在《<a href="https://zohead.com/archives/chrome-redirector/#comment-2176">使用Chrome Redirector扩展解决网站访问问题</a>》</li><li class="recentcomments">Emi发表在《<a href="https://zohead.com/archives/chrome-redirector/#comment-2175">使用Chrome Redirector扩展解决网站访问问题</a>》</li><li class="recentcomments"><a href="https://zohead.com/" rel="external nofollow" class="url">Uranus Zhou</a>发表在《<a href="https://zohead.com/archives/chrome-redirector/#comment-2174">使用Chrome Redirector扩展解决网站访问问题</a>》</li><li class="recentcomments">Emi发表在《<a href="https://zohead.com/archives/chrome-redirector/#comment-2173">使用Chrome Redirector扩展解决网站访问问题</a>》</li><li class="recentcomments"><a href="https://zohead.com/" rel="external nofollow" class="url">Uranus Zhou</a>发表在《<a href="https://zohead.com/archives/wikitten-mdwiki/#comment-2172">整合Wikitten和MDwiki搭建个人知识库</a>》</li><li class="recentcomments"><a href="http://kb.lotei.com/" rel="external nofollow" class="url">chinos</a>发表在《<a href="https://zohead.com/archives/wikitten-mdwiki/#comment-2171">整合Wikitten和MDwiki搭建个人知识库</a>》</li></ul></div></aside><aside id="tag_cloud-2" class="widget widget_tag_cloud"><div class="panel panel-warning"> <div class="panel-heading"><h3 class="panel-title">标签</h3></div><div class="tagcloud"><a href="https://zohead.com/archives/tag/android/" class="tag-link-334" title="13个话题" style="font-size: 15.549pt;">Android</a>
+<a href="https://zohead.com/archives/tag/arm/" class="tag-link-261" title="5个话题" style="font-size: 10.4706pt;">ARM</a>
+<a href="https://zohead.com/archives/tag/c/" class="tag-link-55" title="4个话题" style="font-size: 9.37255pt;">C++</a>
+<a href="https://zohead.com/archives/tag/chrome/" class="tag-link-578" title="7个话题" style="font-size: 12.1176pt;">Chrome</a>
+<a href="https://zohead.com/archives/tag/chromebook/" class="tag-link-596" title="12个话题" style="font-size: 15pt;">Chromebook</a>
+<a href="https://zohead.com/archives/tag/chrome-os/" class="tag-link-601" title="7个话题" style="font-size: 12.1176pt;">Chrome OS</a>
+<a href="https://zohead.com/archives/tag/cygwin/" class="tag-link-44" title="3个话题" style="font-size: 8pt;">cygwin</a>
+<a href="https://zohead.com/archives/tag/device-mapper/" class="tag-link-295" title="4个话题" style="font-size: 9.37255pt;">Device mapper</a>
+<a href="https://zohead.com/archives/tag/dm/" class="tag-link-296" title="4个话题" style="font-size: 9.37255pt;">DM</a>
+<a href="https://zohead.com/archives/tag/https/" class="tag-link-133" title="3个话题" style="font-size: 8pt;">https</a>
+<a href="https://zohead.com/archives/tag/intel/" class="tag-link-344" title="4个话题" style="font-size: 9.37255pt;">Intel</a>
+<a href="https://zohead.com/archives/tag/kernel/" class="tag-link-105" title="21个话题" style="font-size: 18.1569pt;">kernel</a>
+<a href="https://zohead.com/archives/tag/linux/" class="tag-link-32" title="41个话题" style="font-size: 22pt;">Linux</a>
+<a href="https://zohead.com/archives/tag/m3u8/" class="tag-link-317" title="4个话题" style="font-size: 9.37255pt;">m3u8</a>
+<a href="https://zohead.com/archives/tag/msys/" class="tag-link-45" title="3个话题" style="font-size: 8pt;">MSYS</a>
+<a href="https://zohead.com/archives/tag/otg/" class="tag-link-343" title="4个话题" style="font-size: 9.37255pt;">OTG</a>
+<a href="https://zohead.com/archives/tag/php/" class="tag-link-13" title="6个话题" style="font-size: 11.4314pt;">php</a>
+<a href="https://zohead.com/archives/tag/pptv/" class="tag-link-307" title="7个话题" style="font-size: 12.1176pt;">PPTV</a>
+<a href="https://zohead.com/archives/tag/python/" class="tag-link-275" title="6个话题" style="font-size: 11.4314pt;">Python</a>
+<a href="https://zohead.com/archives/tag/raspberry-pi/" class="tag-link-260" title="9个话题" style="font-size: 13.4902pt;">Raspberry Pi</a>
+<a href="https://zohead.com/archives/tag/rsync/" class="tag-link-43" title="3个话题" style="font-size: 8pt;">rsync</a>
+<a href="https://zohead.com/archives/tag/shell/" class="tag-link-96" title="7个话题" style="font-size: 12.1176pt;">Shell</a>
+<a href="https://zohead.com/archives/tag/socket/" class="tag-link-51" title="3个话题" style="font-size: 8pt;">socket</a>
+<a href="https://zohead.com/archives/tag/stl/" class="tag-link-56" title="3个话题" style="font-size: 8pt;">STL</a>
+<a href="https://zohead.com/archives/tag/ubuntu/" class="tag-link-369" title="4个话题" style="font-size: 9.37255pt;">Ubuntu</a>
+<a href="https://zohead.com/archives/tag/usb/" class="tag-link-373" title="4个话题" style="font-size: 9.37255pt;">USB</a>
+<a href="https://zohead.com/archives/tag/widget/" class="tag-link-89" title="3个话题" style="font-size: 8pt;">Widget</a>
+<a href="https://zohead.com/archives/tag/windows/" class="tag-link-47" title="5个话题" style="font-size: 10.4706pt;">Windows</a>
+<a href="https://zohead.com/archives/tag/wordpress/" class="tag-link-7" title="5个话题" style="font-size: 10.4706pt;">WordPress</a>
+<a href="https://zohead.com/archives/tag/xbmc/" class="tag-link-276" title="10个话题" style="font-size: 14.0392pt;">XBMC</a>
+<a href="https://zohead.com/archives/tag/%e5%86%85%e5%ad%98/" class="tag-link-113" title="4个话题" style="font-size: 9.37255pt;">内存</a>
+<a href="https://zohead.com/archives/tag/%e5%86%85%e6%a0%b8/" class="tag-link-198" title="5个话题" style="font-size: 10.4706pt;">内核</a>
+<a href="https://zohead.com/archives/tag/%e5%8f%8b%e8%a8%80/" class="tag-link-9" title="3个话题" style="font-size: 8pt;">友言</a>
+<a href="https://zohead.com/archives/tag/%e5%90%8c%e6%ad%a5/" class="tag-link-50" title="4个话题" style="font-size: 9.37255pt;">同步</a>
+<a href="https://zohead.com/archives/tag/%e5%a4%87%e4%bb%bd/" class="tag-link-49" title="3个话题" style="font-size: 8pt;">备份</a>
+<a href="https://zohead.com/archives/tag/%e5%ad%98%e5%82%a8/" class="tag-link-99" title="3个话题" style="font-size: 8pt;">存储</a>
+<a href="https://zohead.com/archives/tag/%e5%ad%a6%e4%b9%a0/" class="tag-link-115" title="3个话题" style="font-size: 8pt;">学习</a>
+<a href="https://zohead.com/archives/tag/%e6%89%8b%e6%9c%ba/" class="tag-link-340" title="6个话题" style="font-size: 11.4314pt;">手机</a>
+<a href="https://zohead.com/archives/tag/%e6%8f%92%e4%bb%b6/" class="tag-link-8" title="11个话题" style="font-size: 14.5882pt;">插件</a>
+<a href="https://zohead.com/archives/tag/%e6%97%85%e8%a1%8c/" class="tag-link-63" title="5个话题" style="font-size: 10.4706pt;">旅行</a>
+<a href="https://zohead.com/archives/tag/%e7%a9%ba%e9%97%b4/" class="tag-link-62" title="3个话题" style="font-size: 8pt;">空间</a>
+<a href="https://zohead.com/archives/tag/%e7%bc%96%e7%a8%8b/" class="tag-link-38" title="11个话题" style="font-size: 14.5882pt;">编程</a>
+<a href="https://zohead.com/archives/tag/%e8%81%94%e6%83%b3/" class="tag-link-335" title="4个话题" style="font-size: 9.37255pt;">联想</a>
+<a href="https://zohead.com/archives/tag/%e8%84%9a%e6%9c%ac/" class="tag-link-273" title="4个话题" style="font-size: 9.37255pt;">脚本</a>
+<a href="https://zohead.com/archives/tag/%e8%a7%86%e9%a2%91/" class="tag-link-308" title="7个话题" style="font-size: 12.1176pt;">视频</a></div>
+</div></aside><aside id="wpmp_barcode_widget" class="widget wpmp_barcode_widget"><div class="panel panel-warning"> <div class="panel-heading"><h3 class="panel-title">移动版二维码</h3></div><p align="center"><img src="untitled.dat" alt="扫描二维码访问移动版网站" width="125" height="125"></p></div></aside><aside id="meta-2" class="widget widget_meta"><div class="panel panel-warning"> <div class="panel-heading"><h3 class="panel-title">功能</h3></div>			<ul>
+			<li><a href="http://zohead.com/wp-login.php?action=register">注册</a></li>			<li><a href="http://zohead.com/wp-login.php">登录</a></li>
+			<li><a href="https://zohead.com/feed/" title="使用RSS 2.0订阅本站点内容">文章<abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="https://zohead.com/comments/feed/" title="使用RSS订阅本站点的所有文章的近期评论">评论<abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="http://cn.wordpress.org/" title="基于WordPress，一个优美、先进的个人信息发布平台。">WordPress.org</a></li>						</ul>
+</div></aside>	
+</div><!-- #secondary -->
+
+</div> <!-- .row -->
+</div> <!-- .container -->
+
+	</div><!-- #content -->
+
+	<footer id="colophon" class="site-footer" role="contentinfo">
+
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="site-info pull-right">
+						&nbsp;&nbsp;&nbsp;[<a href="http://m.zohead.com/archives/htpdate-raspberry/?wpmp_switcher=mobile">切换到移动版网站</a>]					</div><!-- .site-info -->
+				</div> <!-- col-lg-12 -->
+			</div><!-- .row -->
+		</div><!-- .containr -->
+
+	</footer><!-- #colophon -->
+</div><!-- #page -->
+
+
+<div style="display: none;"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
