@@ -1,0 +1,11 @@
+id	20160823142225
+create	20160823142225
+modify	20160823142225
+type	
+title	dennishafemann/tmux-cssh: TMUX with a "ClusterSSH"-like behaviour.
+chars	UTF-8
+icon	favicon.ico
+source	https://github.com/dennishafemann/tmux-cssh
+comment	
+lock	
+folder	ssh-tips	cluster-ssh

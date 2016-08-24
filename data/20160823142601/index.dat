@@ -1,0 +1,11 @@
+id	20160823142601
+create	20160823142601
+modify	20160823142601
+type	
+title	Ara4Sh/sshconfig: Minimal command to Add/Remove/list ssh aliases in $HOME/.ssh/config
+chars	UTF-8
+icon	favicon.ico
+source	https://github.com/ara4sh/sshconfig
+comment	
+lock	
+folder	ssh-tips	ssh-manager

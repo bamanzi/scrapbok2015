@@ -1,0 +1,157 @@
+/* ::::: http://fonts.googleapis.com/css?family=Kameron&v1 ::::: */
+
+@font-face {
+  font-family: "Kameron";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Kameron"), url("2MA5UxhNXWrBge11rsgwSg.woff") format("woff");
+}
+/* ::::: http://fonts.googleapis.com/css?family=Exo+2&v1 ::::: */
+
+@font-face {
+  font-family: "Exo 2";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Exo 2"), local("Exo2-Regular"), url("8C2PVL2WIMUnPF90ukjrZQ.woff") format("woff");
+}
+/* ::::: http://fonts.googleapis.com/css?family=Open+Sans&v1 ::::: */
+
+@font-face {
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Open Sans"), local("OpenSans"), url("cJZKeOuBrn4kERxqtaUH3T8E0i7KZn-EPnyo3HZu7kw.woff") format("woff");
+}
+/* ::::: http://blog.tjll.net/css/style.css?v=7 ::::: */
+
+/* ::::: (import) http://blog.tjll.net/css/html5-open.css ::::: */
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video { margin: 0px; padding: 0px; border: 0px none; font: inherit; vertical-align: baseline; }
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; }
+del { text-decoration: line-through; }
+hr { display: block; height: 1px; border-right: 0px none; border-width: 1px 0px 0px; border-style: solid none none; border-color: rgb(204, 204, 204) -moz-use-text-color -moz-use-text-color; -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; margin: 1em 0px; padding: 0px; }
+input, select { vertical-align: middle; }
+body { font: 13px/1.231 sans-serif; }
+select, input, textarea, button { font: 99% sans-serif; }
+pre, code, kbd, samp { font-family: monospace,sans-serif; }
+html { overflow-y: scroll; }
+a:hover, a:active { outline: medium none; }
+ul, ol { margin-left: 2em; }
+ol { list-style-type: decimal; }
+nav ul, nav li { margin: 0px; list-style: none outside none; }
+strong, th { font-weight: bold; }
+sub, sup { font-size: 75%; line-height: 0; position: relative; }
+sup { top: -0.5em; }
+pre { white-space: pre-wrap; word-wrap: break-word; padding: 15px; }
+button, input, select, textarea { margin: 0px; }
+input:valid, textarea:valid {  }
+input:invalid, textarea:invalid { border-radius: 1px 1px 1px 1px; box-shadow: 0px 0px 5px red; }
+*::-moz-selection { background: none repeat scroll 0% 0% rgb(255, 94, 153); color: rgb(255, 255, 255); text-shadow: none; }
+a:link {  }
+body, select, input, textarea { color: rgb(51, 51, 51); font-family: Bookman,Georgia,serif; }
+h1, h2, h3, h4, h5, h6 { font-weight: bold; }
+a, a:active, a:visited { color: rgb(96, 120, 144); }
+a:hover { color: rgb(0, 51, 102); }
+/* ::::: (end import) ::::: */
+/* ::::: (import) http://blog.tjll.net/css/syntax.css ::::: */
+.highlight { background: none repeat scroll 0% 0% rgb(255, 255, 255); }
+.highlight .c { color: rgb(153, 153, 136); font-style: italic; }
+.highlight .err { color: rgb(166, 23, 23); background-color: rgb(227, 210, 210); }
+.highlight .nc { color: rgb(68, 85, 136); font-weight: bold; }
+.highlight .w { color: rgb(187, 187, 187); }
+/* ::::: (end import) ::::: */
+/* ::::: (import) http://blog.tjll.net/css/custom.css ::::: */
+html, body { background-image: url("regalblue_small_darker.jpg"); background-color: rgb(0, 0, 0); }
+#wrapper { padding: 0em 1em; }
+#container { background-color: rgb(255, 255, 255); max-width: 600px; min-width: 400px; margin: 0px auto; box-shadow: 0px 0px 30px rgb(0, 0, 0); position: relative; padding: 1em 1.6em; }
+#header h1, #header h2, #content h3, #content h4, #content h5, #content h6 { font-family: "Exo 2"; font-weight: normal; }
+#content p, #content > ul, #content > ol { line-height: 1.45em; font-size: 1.3em; }
+#content ul li { font-size: 1em; }
+#content { font-family: "Open Sans",Verdana,Helvetica,Arial,sans-serif; }
+#header a { text-decoration: none; color: rgb(68, 68, 68); }
+#header h1 { font-size: 3.5em; display: inline; text-shadow: 0.1em 0.1em 0.2em rgb(204, 204, 204); }
+#header h2 { font-size: 1.4em; float: right; padding-top: 0.2em; text-shadow: 0.1em 0.1em 0.15em rgb(204, 204, 204); text-align: right; }
+#nav { font-family: Helvetica,sans; font-weight: bold; clear: right; position: relative; }
+#nav #menu { margin: 1em -1.6em; background: linear-gradient(rgb(68, 156, 224), rgb(25, 58, 83)) repeat scroll 0% 0% transparent; position: relative; }
+#nav #menu a, #nav ul#menu a:visited { color: rgb(255, 255, 255); text-decoration: none; text-shadow: 0.15em 0.15em 0.3em rgb(51, 51, 51); }
+#nav #menu a:hover { color: rgb(0, 0, 0); }
+#nav #menu a:first-child li { padding-left: 0.9em; }
+#nav #menu li { display: inline-block; padding: 0.47em; }
+#nav #menu a.selected { font-weight: bold; font-style: italic; }
+#nav #menu a.selected li { background: linear-gradient(rgb(68, 156, 224), rgb(47, 112, 162)) repeat scroll 0% 0% transparent; }
+#nav #menu a:hover li { background: linear-gradient(rgb(25, 58, 83), rgb(68, 156, 224)) repeat scroll 0% 0% transparent; text-shadow: 0.15em 0.15em 0.5em rgb(255, 255, 255); }
+#nav #search { position: absolute; right: 0px; }
+#nav #search-results { position: absolute; top: 4.85em; right: -1em; margin: 0px 1em; padding: 0.5em; background-color: rgb(47, 112, 162); color: rgb(255, 255, 255); display: none; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; border-top-left-radius: 8px; }
+#breadcrumb { margin: 0.9em 0px 0.5em 1em; line-height: 1em; color: rgb(204, 204, 204); font-family: "Warnock Pro","Goudy Old Style","Palatino","Book Antiqua",Georgia,serif; font-style: italic; font-weight: normal; font-size: 1.2em; }
+#breadcrumb #marker { margin-right: 0.4em; }
+#breadcrumb .spacer { margin: 0px 0.2em; }
+#breadcrumb a { text-decoration: none; border-bottom: 1px dotted rgb(204, 204, 204); }
+#content { margin: 0.25em 0px 0.5em; }
+#content h3, #content h4 { text-transform: capitalize; }
+#content h3 { font-size: 2.3em; margin-bottom: 0.3em; }
+#content h3 a { text-decoration: none; position: relative; bottom: 0.15em; }
+#content h4 { font-size: 1.9em; margin: 0.6em 0em; padding-bottom: 0.2em; border-bottom: 1px solid rgb(204, 204, 204); }
+#content h5 { font-size: 1.5em; margin: 0.6em 0em; }
+#content em { font-style: italic; }
+#content .sub { font-size: 1.1em; font-family: "Warnock Pro","Goudy Old Style","Palatino","Book Antiqua",Georgia,serif; font-style: italic; font-weight: normal; color: rgb(102, 102, 102); display: block; margin: -0.3em 0px 0.3em; padding: 0px 0px 0.5em 1em; }
+#content p { margin-bottom: 1em; }
+#content p:last-child:after { content: "  ☯"; }
+#content figcaption { color: rgb(102, 102, 102); font-family: "Warnock Pro","Goudy Old Style","Palatino","Book Antiqua",Georgia,serif; font-style: italic; font-weight: normal; font-size: 1.1em; text-align: center; margin-top: 0.2em; margin-bottom: 1em; }
+#content figure { text-align: center; }
+#content figure.highlight { text-align: left; }
+#content figure.mainline { margin-top: 0.2em; }
+#content > ul, #content > ol { margin-bottom: 1em; margin-top: 1em; font-size: 1.3em; }
+#content > ul li, #content > ol li { margin-top: 0.5em; margin-bottom: 0.5em; }
+code, #content pre { color: rgb(255, 255, 255); background-color: rgb(51, 51, 51); border-radius: 5px 5px 5px 5px; }
+p code, li code { background-color: rgb(102, 102, 102); }
+#content li code { font-size: 0.8em; }
+#content p code { font-size: 0.8em; }
+#content p code, #content li code { padding: 0.2em 0.5em; }
+#content pre { margin: 2em 0px; box-shadow: 5px 5px 15px rgb(51, 51, 51); }
+#content > hr { width: 75%; margin: 1em auto; }
+#content #page-nav { margin-top: 0.5em; }
+#content #page-nav #prev { float: left; }
+#content #page-nav #next { float: right; }
+#content .footnotes { font-size: 0.65em; }
+footer { color: rgb(102, 102, 102); font-family: "Warnock Pro","Goudy Old Style","Palatino","Book Antiqua",Georgia,serif; font-style: italic; font-weight: normal; margin-top: 0.9em; padding-top: 1.1em; text-align: right; border-top: 1px solid rgb(204, 204, 204); }
+#email { float: left; }
+.group:before, .group:after { content: ""; display: table; }
+.group:after { clear: both; }
+.group {  }
+/* ::::: (end import) ::::: */
+/* ::::: (import) http://blog.tjll.net/css/html5-close.css ::::: */
+@media all and (orientation: portrait) {
+}
+@media all and (orientation: landscape) {
+}
+@media screen and (max-device-width: 480px) {
+}
+@media print {
+  * { background: none repeat scroll 0% 0% transparent ! important; color: black ! important; text-shadow: none ! important; filter: none ! important; }
+  a, a:visited { color: rgb(68, 68, 68) ! important; text-decoration: underline; }
+  a[href]:after { content: " (" attr(href) ")"; }
+  .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after { content: ""; }
+  pre, blockquote { border: 1px solid rgb(153, 153, 153); page-break-inside: avoid; }
+  tr, img { page-break-inside: avoid; }
+  @page { margin: 0.5cm; }
+  p, h2, h3 { orphans: 3; widows: 3; }
+  h2, h3 { page-break-after: avoid; }
+}
+/* ::::: (end import) ::::: */
+/* ::::: http://blog.tjll.net/css/handheld.css?v=2.1 (@media only screen and (max-device-width: 480px)) ::::: */
+
+@media only screen and (max-device-width: 480px) {
+* { float: none; }
+#content, #header { color: rgb(0, 0, 0); }
+body { font-size: 75%; }
+#wrapper { padding: 1.4em; }
+#container { min-width: 200px; padding: 0.7em 1.3em; }
+#nav { padding-top: 0.4em; }
+}
+/* ::::: [internal] ::::: */
+
+@media screen {
+}
+@media print {
+}
+/* ::::: [internal] ::::: */
+

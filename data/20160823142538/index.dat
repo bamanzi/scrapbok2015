@@ -1,0 +1,11 @@
+id	20160823142538
+create	20160823142538
+modify	20160823142538
+type	
+title	dbrady/ssh-config: A Tool to help manage your .ssh/config file.
+chars	UTF-8
+icon	favicon.ico
+source	https://github.com/dbrady/ssh-config
+comment	
+lock	
+folder	ssh-tips	ssh-manager

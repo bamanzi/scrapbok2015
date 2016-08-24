@@ -1,0 +1,2296 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# object: http://ogp.me/ns/object# article: http://ogp.me/ns/article# profile: http://ogp.me/ns/profile#">
+    <meta charset="UTF-8">
+    
+
+    
+    
+    
+    
+    
+    
+
+    <link as="script" href="https://assets-cdn.github.com/assets/frameworks-74e2880351ce368d8f0a52f12a7452b422bef6397d5477d8120207ea79f0dfd9.js" rel="preload">
+    
+    <link as="script" href="https://assets-cdn.github.com/assets/github-6517faa57b52d1d9b6711f6868aa8f6013ce6f0b72a80d5051985f13ee8fc07f.js" rel="preload">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Language" content="en">
+    <meta name="viewport" content="width=device-width">
+    
+    <title>moul/advanced-ssh-config: assh: ssh wrapper using ProxyCommand that adds regex, aliases, gateways, includes, dynamic hostnames to SSH and ssh-config</title>
+    <link rel="search" type="application/opensearchdescription+xml" href="https://github.com/opensearch.xml" title="GitHub">
+    <link rel="fluid-icon" href="https://github.com/fluidicon.png" title="GitHub">
+    <link rel="apple-touch-icon" href="https://github.com/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="57x57" href="https://github.com/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="https://github.com/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="https://github.com/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="https://github.com/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="https://github.com/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="https://github.com/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="https://github.com/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="https://github.com/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://github.com/apple-touch-icon-180x180.png">
+    <meta property="fb:app_id" content="1401488693436528">
+
+      <meta content="https://avatars3.githubusercontent.com/u/94029?v=3&amp;s=400" name="twitter:image:src"><meta content="@github" name="twitter:site"><meta content="summary" name="twitter:card"><meta content="moul/advanced-ssh-config" name="twitter:title"><meta content="advanced-ssh-config - :computer: assh: ssh wrapper using ProxyCommand that adds regex, aliases, gateways, includes, dynamic hostnames to SSH and ssh-config" name="twitter:description">
+      <meta content="https://avatars3.githubusercontent.com/u/94029?v=3&amp;s=400" property="og:image"><meta content="GitHub" property="og:site_name"><meta content="object" property="og:type"><meta content="moul/advanced-ssh-config" property="og:title"><meta content="https://github.com/moul/advanced-ssh-config" property="og:url"><meta content="advanced-ssh-config - :computer: assh: ssh wrapper using ProxyCommand that adds regex, aliases, gateways, includes, dynamic hostnames to SSH and ssh-config" property="og:description">
+      <meta name="browser-stats-url" content="https://api.github.com/_private/browser/stats">
+    <meta name="browser-errors-url" content="https://api.github.com/_private/browser/errors">
+    <link rel="assets" href="https://assets-cdn.github.com/">
+    <link rel="web-socket" href="wss://live.github.com/_sockets/Nzc1ODY3OmJlMGM1MjZiOTE4ODM3YzFiZmZjOGFmOTNmMWM3OWZjOjhmZWQ2MTNlZjNmNDFiNzgxY2EzYjI5ZjZiM2E0MmY2YzUwNzFkZGViZWUwMTAzYWVkZWE5M2JkOGExYzhkYTk=--3e0e8a3bd31f61a60f5efee07806521775db030a">
+    <meta name="pjax-timeout" content="1000">
+    <link rel="sudo-modal" href="https://github.com/sessions/sudo_modal">
+    <meta name="request-id" content="75881FEF:55A9:73AF7A5:57BBEC3A" data-pjax-transient="">
+
+    <meta name="msapplication-TileImage" content="/windows-tile.png">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="selected-link" value="repo_source" data-pjax-transient="">
+
+    <meta name="google-site-verification" content="KT5gs8h0wvaagLKAVWq8bbeNwnZZK1r1XQysX3xurLU">
+<meta name="google-site-verification" content="ZzhVyEFwb7w3e0-uOTltm8Jsck2F5StVihD0exw2fsA">
+    <meta name="google-analytics" content="UA-3769691-2">
+
+<meta content="collector.githubapp.com" name="octolytics-host"><meta content="github" name="octolytics-app-id"><meta content="75881FEF:55A9:73AF7A5:57BBEC3A" name="octolytics-dimension-request_id"><meta content="775867" name="octolytics-actor-id"><meta content="bamanzi" name="octolytics-actor-login"><meta content="e1253ee97109340dbe6750e67f37cd50634b775c85ce81905686b977ca0464a6" name="octolytics-actor-hash">
+<meta content="/<user-name>/<repo-name>" data-pjax-transient="true" name="analytics-location">
+
+
+
+  <meta class="js-ga-set" name="dimension1" content="Logged In">
+
+
+
+        <meta name="hostname" content="github.com">
+    <meta name="user-login" content="bamanzi">
+
+        <meta name="expected-hostname" content="github.com">
+      <meta name="js-proxy-site-detection-payload" content="NzBhMDE1ZTQ2Y2Q4NGIwYjliNzZhMmIwZGE4OGE5ODQxNDE3OGRmMWNjMjQ0N2ViNjg5ZDBlYjEyOGQ4ZWFlZnx7InJlbW90ZV9hZGRyZXNzIjoiMTE3LjEzNi4zMS4yMzkiLCJyZXF1ZXN0X2lkIjoiNzU4ODFGRUY6NTVBOTo3M0FGN0E1OjU3QkJFQzNBIiwidGltZXN0YW1wIjoxNDcxOTMzNDk5fQ==">
+
+
+      <link rel="mask-icon" href="https://assets-cdn.github.com/pinned-octocat.svg" color="#4078c0">
+      <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+    <meta name="html-safe-nonce" content="9bc6031c5c1839e039b5149459eaa3d47140a792">
+    <meta content="84da46a5ca5dc665232f8b3d18ab77c9d7b5d735" name="form-nonce">
+
+    <meta http-equiv="x-pjax-version" content="f3559b926f1b8f22471cdf1fc22bc1ee">
+    
+
+      
+  <meta name="description" content="advanced-ssh-config - :computer: assh: ssh wrapper using ProxyCommand that adds regex, aliases, gateways, includes, dynamic hostnames to SSH and ssh-config">
+  <meta name="go-import" content="github.com/moul/advanced-ssh-config git https://github.com/moul/advanced-ssh-config.git">
+
+  <meta content="94029" name="octolytics-dimension-user_id"><meta content="moul" name="octolytics-dimension-user_login"><meta content="3049190" name="octolytics-dimension-repository_id"><meta content="moul/advanced-ssh-config" name="octolytics-dimension-repository_nwo"><meta content="true" name="octolytics-dimension-repository_public"><meta content="false" name="octolytics-dimension-repository_is_fork"><meta content="3049190" name="octolytics-dimension-repository_network_root_id"><meta content="moul/advanced-ssh-config" name="octolytics-dimension-repository_network_root_nwo">
+  <link href="https://github.com/moul/advanced-ssh-config/commits/master.atom" rel="alternate" title="Recent Commits to advanced-ssh-config:master" type="application/atom+xml">
+
+
+      <link rel="canonical" href="https://github.com/moul/advanced-ssh-config" data-pjax-transient="">
+  
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+
+
+  <body class="logged-in  env-production linux vis-public">
+    <div id="js-pjax-loader-bar" class="pjax-loader-bar"><div class="progress"></div></div>
+    <a href="#start-of-content" tabindex="1" class="accessibility-aid js-skip-to-content">Skip to content</a>
+
+    
+    
+    
+
+
+
+        <div class="header header-logged-in true" role="banner">
+  <div class="container clearfix">
+
+    <a class="header-logo-invertocat" href="https://github.com/" data-hotkey="g d" aria-label="Homepage" data-ga-click="Header, go to dashboard, icon:logo">
+  <svg aria-hidden="true" class="octicon octicon-mark-github" height="28" version="1.1" viewBox="0 0 16 16" width="28"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>
+</a>
+
+
+        <div class="header-search scoped-search site-scoped-search js-site-search" role="search">
+  <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="https://github.com/moul/advanced-ssh-config/search" class="js-site-search-form" data-scoped-search-url="/moul/advanced-ssh-config/search" data-unscoped-search-url="/search" method="get"><div style="margin: 0px; padding: 0px; display: inline;"><input name="utf8" value="✓" type="hidden"></div>
+    <label class="form-control header-search-wrapper js-chromeless-input-container">
+      <div class="header-search-scope">This repository</div>
+      <input class="form-control header-search-input js-site-search-focus js-site-search-field is-clearable" data-hotkey="s" name="q" placeholder="Search" aria-label="Search this repository" data-unscoped-placeholder="Search GitHub" data-scoped-placeholder="Search" autocapitalize="off" type="text">
+    </label>
+</form></div>
+
+
+      <ul class="header-nav left" role="navigation">
+        <li class="header-nav-item">
+          <a href="https://github.com/pulls" aria-label="Pull requests you created" class="js-selected-navigation-item header-nav-link" data-ga-click="Header, click, Nav menu - item:pulls context:user" data-hotkey="g p" data-selected-links="/pulls /pulls/assigned /pulls/mentioned /pulls">
+            Pull requests
+</a>        </li>
+        <li class="header-nav-item">
+          <a href="https://github.com/issues" aria-label="Issues you created" class="js-selected-navigation-item header-nav-link" data-ga-click="Header, click, Nav menu - item:issues context:user" data-hotkey="g i" data-selected-links="/issues /issues/assigned /issues/mentioned /issues">
+            Issues
+</a>        </li>
+          <li class="header-nav-item">
+            <a class="header-nav-link" href="https://gist.github.com/" data-ga-click="Header, go to gist, text:gist">Gist</a>
+          </li>
+      </ul>
+
+    
+<ul class="header-nav user-nav right" id="user-links">
+  <li class="header-nav-item">
+    
+    <a href="https://github.com/notifications" aria-label="You have unread notifications" class="header-nav-link notification-indicator tooltipped tooltipped-s js-socket-channel js-notification-indicator" data-channel="tenant:1:notification-changed:775867" data-ga-click="Header, go to notifications, icon:unread" data-hotkey="g n">
+        <span class="mail-status unread"></span>
+        <svg aria-hidden="true" class="octicon octicon-bell" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path d="M14 12v1H0v-1l.73-.58c.77-.77.81-2.55 1.19-4.42C2.69 3.23 6 2 6 2c0-.55.45-1 1-1s1 .45 1 1c0 0 3.39 1.23 4.16 5 .38 1.88.42 3.66 1.19 4.42l.66.58H14zm-7 4c1.11 0 2-.89 2-2H5c0 1.11.89 2 2 2z"></path></svg>
+</a>
+  </li>
+
+  <li class="header-nav-item dropdown js-menu-container">
+    <a class="header-nav-link tooltipped tooltipped-s js-menu-target" href="https://github.com/new" aria-label="Create new…" data-ga-click="Header, create new, icon:add">
+      <svg aria-hidden="true" class="octicon octicon-plus left" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 9H7v5H5V9H0V7h5V2h2v5h5z"></path></svg>
+      <span class="dropdown-caret"></span>
+    </a>
+
+    <div class="dropdown-menu-content js-menu-content">
+      <ul class="dropdown-menu dropdown-menu-sw">
+        
+<a class="dropdown-item" href="https://github.com/new" data-ga-click="Header, create new repository">
+  New repository
+</a>
+
+  <a class="dropdown-item" href="https://github.com/new/import" data-ga-click="Header, import a repository">
+    Import repository
+  </a>
+
+
+  <a class="dropdown-item" href="https://github.com/organizations/new" data-ga-click="Header, create new organization">
+    New organization
+  </a>
+
+
+
+  <div class="dropdown-divider"></div>
+  <div class="dropdown-header">
+    <span title="moul/advanced-ssh-config">This repository</span>
+  </div>
+    <a class="dropdown-item" href="https://github.com/moul/advanced-ssh-config/issues/new" data-ga-click="Header, create new issue">
+      New issue
+    </a>
+
+      </ul>
+    </div>
+  </li>
+
+  <li class="header-nav-item dropdown js-menu-container">
+    <a class="header-nav-link name tooltipped tooltipped-sw js-menu-target" href="https://github.com/bamanzi" aria-label="View profile and more" data-ga-click="Header, show menu, icon:avatar">
+      <img alt="@bamanzi" class="avatar" src="775867.dat" width="20" height="20">
+      <span class="dropdown-caret"></span>
+    </a>
+
+    <div class="dropdown-menu-content js-menu-content">
+      <div class="dropdown-menu dropdown-menu-sw">
+        <div class="dropdown-header header-nav-current-user css-truncate">
+          Signed in as <strong class="css-truncate-target">bamanzi</strong>
+        </div>
+
+        <div class="dropdown-divider"></div>
+
+        <a class="dropdown-item" href="https://github.com/bamanzi" data-ga-click="Header, go to profile, text:your profile">
+          Your profile
+        </a>
+          <a class="dropdown-item" href="https://github.com/stars" data-ga-click="Header, go to starred repos, text:your stars">
+            Your stars
+          </a>
+        <a class="dropdown-item" href="https://github.com/explore" data-ga-click="Header, go to explore, text:explore">
+          Explore
+        </a>
+          <a class="dropdown-item" href="https://github.com/integrations" data-ga-click="Header, go to integrations, text:integrations">
+            Integrations
+          </a>
+        <a class="dropdown-item" href="https://help.github.com/" data-ga-click="Header, go to help, text:help">
+          Help
+        </a>
+
+
+        <div class="dropdown-divider"></div>
+
+        <a class="dropdown-item" href="https://github.com/settings/profile" data-ga-click="Header, go to settings, icon:settings">
+          Settings
+        </a>
+
+        <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="https://github.com/logout" class="logout-form" data-form-nonce="84da46a5ca5dc665232f8b3d18ab77c9d7b5d735" method="post"><div style="margin: 0px; padding: 0px; display: inline;"><input name="utf8" value="✓" type="hidden"><input name="authenticity_token" value="1dyrkFq4sp5vA+OQo8lw4uh1AUAlHSZ34X1yu34v2lFDwcux6VMZ6hMz7JeSh1TUyGN667NNirkomvMSKRT7XQ==" type="hidden"></div>
+          <button class="dropdown-item dropdown-signout" data-ga-click="Header, sign out, icon:logout">
+            Sign out
+          </button>
+</form>      </div>
+    </div>
+  </li>
+</ul>
+
+
+    
+  </div>
+</div>
+
+
+      
+
+
+    <div id="start-of-content" class="accessibility-aid"></div>
+
+      <div id="js-flash-container">
+</div>
+
+
+    <div role="main">
+        <div itemscope="" itemtype="http://schema.org/SoftwareSourceCode">
+    <div id="js-repo-pjax-container" data-pjax-container="">
+      
+<div class="pagehead repohead instapaper_ignore readability-menu experiment-repo-nav">
+  <div class="container repohead-details-container">
+
+    
+
+<ul class="pagehead-actions">
+
+  <li>
+        <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="https://github.com/notifications/subscribe" class="js-social-container" data-autosubmit="true" data-form-nonce="84da46a5ca5dc665232f8b3d18ab77c9d7b5d735" data-remote="true" method="post"><div style="margin: 0px; padding: 0px; display: inline;"><input name="utf8" value="✓" type="hidden"><input name="authenticity_token" value="4ZFOkYlAtmTIm++N04JRNete0h8du4BwqaCQaDSdWgJY9KzS+H+qhwyP21x9L/zb0wpUWYYmAJgHnt81G0yr4Q==" type="hidden"></div>      <input class="form-control" id="repository_id" name="repository_id" value="3049190" type="hidden">
+
+        <div class="select-menu js-menu-container js-select-menu">
+          <a href="https://github.com/moul/advanced-ssh-config/subscription" class="btn btn-sm btn-with-count select-menu-button js-menu-target" role="button" tabindex="0" aria-haspopup="true" data-ga-click="Repository, click Watch settings, action:files#disambiguate">
+            <span class="js-select-button">
+              <svg aria-hidden="true" class="octicon octicon-eye" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M8.06 2C3 2 0 8 0 8s3 6 8.06 6C13 14 16 8 16 8s-3-6-7.94-6zM8 12c-2.2 0-4-1.78-4-4 0-2.2 1.8-4 4-4 2.22 0 4 1.8 4 4 0 2.22-1.78 4-4 4zm2-4c0 1.11-.89 2-2 2-1.11 0-2-.89-2-2 0-1.11.89-2 2-2 1.11 0 2 .89 2 2z"></path></svg>
+              Watch
+            </span>
+          </a>
+          <a class="social-count js-social-count" href="https://github.com/moul/advanced-ssh-config/watchers" aria-label="24 users are watching this repository">
+            24
+          </a>
+
+        <div class="select-menu-modal-holder">
+          <div class="select-menu-modal subscription-menu-modal js-menu-content" aria-hidden="true">
+            <div class="select-menu-header js-navigation-enable" tabindex="-1">
+              <svg aria-label="Close" class="octicon octicon-x js-menu-close" height="16" role="img" version="1.1" viewBox="0 0 12 16" width="12"><path d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48z"></path></svg>
+              <span class="select-menu-title">Notifications</span>
+            </div>
+
+              <div class="select-menu-list js-navigation-container" role="menu">
+
+                <div class="select-menu-item js-navigation-item selected" role="menuitem" tabindex="0">
+                  <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+                  <div class="select-menu-item-text">
+                    <input checked="checked" id="do_included" name="do" value="included" type="radio">
+                    <span class="select-menu-item-heading">Not watching</span>
+                    <span class="description">Be notified when participating or @mentioned.</span>
+                    <span class="js-select-button-text hidden-select-button-text">
+                      <svg aria-hidden="true" class="octicon octicon-eye" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M8.06 2C3 2 0 8 0 8s3 6 8.06 6C13 14 16 8 16 8s-3-6-7.94-6zM8 12c-2.2 0-4-1.78-4-4 0-2.2 1.8-4 4-4 2.22 0 4 1.8 4 4 0 2.22-1.78 4-4 4zm2-4c0 1.11-.89 2-2 2-1.11 0-2-.89-2-2 0-1.11.89-2 2-2 1.11 0 2 .89 2 2z"></path></svg>
+                      Watch
+                    </span>
+                  </div>
+                </div>
+
+                <div class="select-menu-item js-navigation-item " role="menuitem" tabindex="0">
+                  <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+                  <div class="select-menu-item-text">
+                    <input id="do_subscribed" name="do" value="subscribed" type="radio">
+                    <span class="select-menu-item-heading">Watching</span>
+                    <span class="description">Be notified of all conversations.</span>
+                    <span class="js-select-button-text hidden-select-button-text">
+                      <svg aria-hidden="true" class="octicon octicon-eye" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M8.06 2C3 2 0 8 0 8s3 6 8.06 6C13 14 16 8 16 8s-3-6-7.94-6zM8 12c-2.2 0-4-1.78-4-4 0-2.2 1.8-4 4-4 2.22 0 4 1.8 4 4 0 2.22-1.78 4-4 4zm2-4c0 1.11-.89 2-2 2-1.11 0-2-.89-2-2 0-1.11.89-2 2-2 1.11 0 2 .89 2 2z"></path></svg>
+                      Unwatch
+                    </span>
+                  </div>
+                </div>
+
+                <div class="select-menu-item js-navigation-item " role="menuitem" tabindex="0">
+                  <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+                  <div class="select-menu-item-text">
+                    <input id="do_ignore" name="do" value="ignore" type="radio">
+                    <span class="select-menu-item-heading">Ignoring</span>
+                    <span class="description">Never be notified.</span>
+                    <span class="js-select-button-text hidden-select-button-text">
+                      <svg aria-hidden="true" class="octicon octicon-mute" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M8 2.81v10.38c0 .67-.81 1-1.28.53L3 10H1c-.55 0-1-.45-1-1V7c0-.55.45-1 1-1h2l3.72-3.72C7.19 1.81 8 2.14 8 2.81zm7.53 3.22l-1.06-1.06-1.97 1.97-1.97-1.97-1.06 1.06L11.44 8 9.47 9.97l1.06 1.06 1.97-1.97 1.97 1.97 1.06-1.06L13.56 8l1.97-1.97z"></path></svg>
+                      Stop ignoring
+                    </span>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+</form>
+  </li>
+
+  <li>
+    
+  <div class="js-toggler-container js-social-container starring-container ">
+
+    <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="https://github.com/moul/advanced-ssh-config/unstar" class="starred" data-form-nonce="84da46a5ca5dc665232f8b3d18ab77c9d7b5d735" data-remote="true" method="post"><div style="margin: 0px; padding: 0px; display: inline;"><input name="utf8" value="✓" type="hidden"><input name="authenticity_token" value="x10/7KW87VGj6hqFdZaIIH1V5XAHVjCrCTFEdW5JEfg5HwJyyikhYbdsmnFRIpJ0gJ7wAA/59lKSZaZ1md+eyQ==" type="hidden"></div>
+      <button class="btn btn-sm btn-with-count js-toggler-target" aria-label="Unstar this repository" title="Unstar moul/advanced-ssh-config" data-ga-click="Repository, click unstar button, action:files#disambiguate; text:Unstar">
+        <svg aria-hidden="true" class="octicon octicon-star" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path d="M14 6l-4.9-.64L7 1 4.9 5.36 0 6l3.6 3.26L2.67 14 7 11.67 11.33 14l-.93-4.74z"></path></svg>
+        Unstar
+      </button>
+        <a class="social-count js-social-count" href="https://github.com/moul/advanced-ssh-config/stargazers" aria-label="545 users starred this repository">
+          545
+        </a>
+</form>
+    <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="https://github.com/moul/advanced-ssh-config/star" class="unstarred" data-form-nonce="84da46a5ca5dc665232f8b3d18ab77c9d7b5d735" data-remote="true" method="post"><div style="margin: 0px; padding: 0px; display: inline;"><input name="utf8" value="✓" type="hidden"><input name="authenticity_token" value="l/T/ezM0QBxUBtJ8+/q1EIYbGUb4X55s+YBY81DPgKv9b4TMvhUg4SfCEmKoZtXjxc/q0MPekK/ww1VmMyawUg==" type="hidden"></div>
+      <button class="btn btn-sm btn-with-count js-toggler-target" aria-label="Star this repository" title="Star moul/advanced-ssh-config" data-ga-click="Repository, click star button, action:files#disambiguate; text:Star">
+        <svg aria-hidden="true" class="octicon octicon-star" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path d="M14 6l-4.9-.64L7 1 4.9 5.36 0 6l3.6 3.26L2.67 14 7 11.67 11.33 14l-.93-4.74z"></path></svg>
+        Star
+      </button>
+        <a class="social-count js-social-count" href="https://github.com/moul/advanced-ssh-config/stargazers" aria-label="545 users starred this repository">
+          545
+        </a>
+</form>  </div>
+
+  </li>
+
+  <li>
+          <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="https://github.com/moul/advanced-ssh-config/fork" class="btn-with-count" data-form-nonce="84da46a5ca5dc665232f8b3d18ab77c9d7b5d735" method="post"><div style="margin: 0px; padding: 0px; display: inline;"><input name="utf8" value="✓" type="hidden"><input name="authenticity_token" value="TJ6GpgNPnMWd4lA3G6TQwt28PmXE6LTHDRHGVK5gb/IGLPlRET6fm60s3rpajliYPeeuyfqojGI242/p3oar2A==" type="hidden"></div>
+            <button type="submit" class="btn btn-sm btn-with-count" data-ga-click="Repository, show fork modal, action:files#disambiguate; text:Fork" title="Fork your own copy of moul/advanced-ssh-config to your account" aria-label="Fork your own copy of moul/advanced-ssh-config to your account">
+              <svg aria-hidden="true" class="octicon octicon-repo-forked" height="16" version="1.1" viewBox="0 0 10 16" width="10"><path d="M8 1a1.993 1.993 0 0 0-1 3.72V6L5 8 3 6V4.72A1.993 1.993 0 0 0 2 1a1.993 1.993 0 0 0-1 3.72V6.5l3 3v1.78A1.993 1.993 0 0 0 5 15a1.993 1.993 0 0 0 1-3.72V9.5l3-3V4.72A1.993 1.993 0 0 0 8 1zM2 4.2C1.34 4.2.8 3.65.8 3c0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zm3 10c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zm3-10c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2z"></path></svg>
+              Fork
+            </button>
+</form>
+    <a href="https://github.com/moul/advanced-ssh-config/network" class="social-count" aria-label="37 users are forked this repository">
+      37
+    </a>
+  </li>
+</ul>
+
+    <h1 class="public ">
+  <svg aria-hidden="true" class="octicon octicon-repo" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M4 9H3V8h1v1zm0-3H3v1h1V6zm0-2H3v1h1V4zm0-2H3v1h1V2zm8-1v12c0 .55-.45 1-1 1H6v2l-1.5-1.5L3 16v-2H1c-.55 0-1-.45-1-1V1c0-.55.45-1 1-1h10c.55 0 1 .45 1 1zm-1 10H1v2h2v-1h3v1h5v-2zm0-10H2v9h9V1z"></path></svg>
+  <span class="author" itemprop="author"><a href="https://github.com/moul" class="url fn" rel="author">moul</a></span><!--
+--><span class="path-divider">/</span><!--
+--><strong itemprop="name"><a href="#" data-pjax="#js-repo-pjax-container">advanced-ssh-config</a></strong>
+
+</h1>
+
+  </div>
+  <div class="container">
+    
+<nav class="reponav js-repo-nav js-sidenav-container-pjax" itemscope="" itemtype="http://schema.org/BreadcrumbList" role="navigation" data-pjax="#js-repo-pjax-container">
+
+  <span itemscope="" itemtype="http://schema.org/ListItem" itemprop="itemListElement">
+    <a href="#" aria-selected="true" class="js-selected-navigation-item selected reponav-item" data-hotkey="g c" data-selected-links="repo_source repo_downloads repo_commits repo_releases repo_tags repo_branches /moul/advanced-ssh-config" itemprop="url">
+      <svg aria-hidden="true" class="octicon octicon-code" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path d="M9.5 3L8 4.5 11.5 8 8 11.5 9.5 13 14 8 9.5 3zm-5 0L0 8l4.5 5L6 11.5 2.5 8 6 4.5 4.5 3z"></path></svg>
+      <span itemprop="name">Code</span>
+      <meta itemprop="position" content="1">
+</a>  </span>
+
+    <span itemscope="" itemtype="http://schema.org/ListItem" itemprop="itemListElement">
+      <a href="https://github.com/moul/advanced-ssh-config/issues" class="js-selected-navigation-item reponav-item" data-hotkey="g i" data-selected-links="repo_issues repo_labels repo_milestones /moul/advanced-ssh-config/issues" itemprop="url">
+        <svg aria-hidden="true" class="octicon octicon-issue-opened" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg>
+        <span itemprop="name">Issues</span>
+        <span class="counter">31</span>
+        <meta itemprop="position" content="2">
+</a>    </span>
+
+  <span itemscope="" itemtype="http://schema.org/ListItem" itemprop="itemListElement">
+    <a href="https://github.com/moul/advanced-ssh-config/pulls" class="js-selected-navigation-item reponav-item" data-hotkey="g p" data-selected-links="repo_pulls /moul/advanced-ssh-config/pulls" itemprop="url">
+      <svg aria-hidden="true" class="octicon octicon-git-pull-request" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M11 11.28V5c-.03-.78-.34-1.47-.94-2.06C9.46 2.35 8.78 2.03 8 2H7V0L4 3l3 3V4h1c.27.02.48.11.69.31.21.2.3.42.31.69v6.28A1.993 1.993 0 0 0 10 15a1.993 1.993 0 0 0 1-3.72zm-1 2.92c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zM4 3c0-1.11-.89-2-2-2a1.993 1.993 0 0 0-1 3.72v6.56A1.993 1.993 0 0 0 2 15a1.993 1.993 0 0 0 1-3.72V4.72c.59-.34 1-.98 1-1.72zm-.8 10c0 .66-.55 1.2-1.2 1.2-.65 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2zM2 4.2C1.34 4.2.8 3.65.8 3c0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2z"></path></svg>
+      <span itemprop="name">Pull requests</span>
+      <span class="counter">0</span>
+      <meta itemprop="position" content="3">
+</a>  </span>
+
+
+
+
+  <a href="https://github.com/moul/advanced-ssh-config/pulse" class="js-selected-navigation-item reponav-item" data-selected-links="pulse /moul/advanced-ssh-config/pulse">
+    <svg aria-hidden="true" class="octicon octicon-pulse" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path d="M11.5 8L8.8 5.4 6.6 8.5 5.5 1.6 2.38 8H0v2h3.6l.9-1.8.9 5.4L9 8.5l1.6 1.5H14V8z"></path></svg>
+    Pulse
+</a>
+  <a href="https://github.com/moul/advanced-ssh-config/graphs" class="js-selected-navigation-item reponav-item" data-selected-links="repo_graphs repo_contributors /moul/advanced-ssh-config/graphs">
+    <svg aria-hidden="true" class="octicon octicon-graph" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M16 14v1H0V0h1v14h15zM5 13H3V8h2v5zm4 0H7V3h2v10zm4 0h-2V6h2v7z"></path></svg>
+    Graphs
+</a>
+
+</nav>
+
+  </div>
+</div>
+
+<div class="container new-discussion-timeline experiment-repo-nav">
+  <div class="repository-content">
+
+    
+<div class="repository-meta js-details-container">
+  <span class="repository-meta-content">
+        <span itemprop="about"> 
+<g-emoji alias="computer" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f4bb.png"><img src="1f4bb.png" alt=":computer:" title=":computer:" class="emoji" width="20" height="20"></g-emoji> assh: ssh wrapper using ProxyCommand that adds regex, aliases, gateways, includes, dynamic hostnames to SSH and ssh-config</span>
+        <span itemprop="url"><a href="http://blog.m.42.am/post/134293789696/assh-20-release" rel="nofollow">http://blog.m.42.am/post/134293789696/assh-20-release</a></span>
+  </span>
+
+</div>
+
+
+<div class="overall-summary overall-summary-bottomless">
+  <div class="stats-switcher-viewport js-stats-switcher-viewport">
+    <div class="stats-switcher-wrapper">
+    <ul class="numbers-summary">
+      <li class="commits">
+        <a data-pjax="" href="https://github.com/moul/advanced-ssh-config/commits/master">
+            <svg aria-hidden="true" class="octicon octicon-history" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path d="M8 13H6V6h5v2H8v5zM7 1C4.81 1 2.87 2.02 1.59 3.59L0 2v4h4L2.5 4.5C3.55 3.17 5.17 2.3 7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-.34.03-.67.09-1H.08C.03 7.33 0 7.66 0 8c0 3.86 3.14 7 7 7s7-3.14 7-7-3.14-7-7-7z"></path></svg>
+            <span class="num text-emphasized">
+              345
+            </span>
+            commits
+        </a>
+      </li>
+      <li>
+        <a data-pjax="" href="https://github.com/moul/advanced-ssh-config/branches">
+          <svg aria-hidden="true" class="octicon octicon-git-branch" height="16" version="1.1" viewBox="0 0 10 16" width="10"><path d="M10 5c0-1.11-.89-2-2-2a1.993 1.993 0 0 0-1 3.72v.3c-.02.52-.23.98-.63 1.38-.4.4-.86.61-1.38.63-.83.02-1.48.16-2 .45V4.72a1.993 1.993 0 0 0-1-3.72C.88 1 0 1.89 0 3a2 2 0 0 0 1 1.72v6.56c-.59.35-1 .99-1 1.72 0 1.11.89 2 2 2 1.11 0 2-.89 2-2 0-.53-.2-1-.53-1.36.09-.06.48-.41.59-.47.25-.11.56-.17.94-.17 1.05-.05 1.95-.45 2.75-1.25S8.95 7.77 9 6.73h-.02C9.59 6.37 10 5.73 10 5zM2 1.8c.66 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2C1.35 4.2.8 3.65.8 3c0-.65.55-1.2 1.2-1.2zm0 12.41c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zm6-8c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2z"></path></svg>
+          <span class="num text-emphasized">
+            5
+          </span>
+          branches
+        </a>
+      </li>
+
+      <li>
+        <a data-pjax="" href="https://github.com/moul/advanced-ssh-config/releases">
+          <svg aria-hidden="true" class="octicon octicon-tag" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path d="M7.73 1.73C7.26 1.26 6.62 1 5.96 1H3.5C2.13 1 1 2.13 1 3.5v2.47c0 .66.27 1.3.73 1.77l6.06 6.06c.39.39 1.02.39 1.41 0l4.59-4.59a.996.996 0 0 0 0-1.41L7.73 1.73zM2.38 7.09c-.31-.3-.47-.7-.47-1.13V3.5c0-.88.72-1.59 1.59-1.59h2.47c.42 0 .83.16 1.13.47l6.14 6.13-4.73 4.73-6.13-6.15zM3.01 3h2v2H3V3h.01z"></path></svg>
+          <span class="num text-emphasized">
+            51
+          </span>
+          releases
+        </a>
+      </li>
+
+      <li>
+          <a href="https://github.com/moul/advanced-ssh-config/graphs/contributors">
+  <svg aria-hidden="true" class="octicon octicon-organization" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M16 12.999c0 .439-.45 1-1 1H7.995c-.539 0-.994-.447-.995-.999H1c-.54 0-1-.561-1-1 0-2.634 3-4 3-4s.229-.409 0-1c-.841-.621-1.058-.59-1-3 .058-2.419 1.367-3 2.5-3s2.442.58 2.5 3c.058 2.41-.159 2.379-1 3-.229.59 0 1 0 1s1.549.711 2.42 2.088C9.196 9.369 10 8.999 10 8.999s.229-.409 0-1c-.841-.62-1.058-.59-1-3 .058-2.419 1.367-3 2.5-3s2.437.581 2.495 3c.059 2.41-.158 2.38-1 3-.229.59 0 1 0 1s3.005 1.366 3.005 4"></path></svg>
+    <span class="num text-emphasized">
+      9
+    </span>
+    contributors
+</a>
+      </li>
+    </ul>
+
+      <div class="repository-lang-stats">
+        <ol class="repository-lang-stats-numbers">
+          <li>
+              <a href="https://github.com/moul/advanced-ssh-config/search?l=go" data-ga-click="Repository, language stats search click, location:repo overview">
+                <span class="color-block language-color" style="background-color: rgb(55, 94, 171);"></span>
+                <span class="lang">Go</span>
+                <span class="percent">98.2%</span>
+              </a>
+          </li>
+          <li>
+              <span class="other">
+                <span class="color-block language-color" style="background-color: rgb(237, 237, 237);"></span>
+                <span class="lang">Other</span>
+                <span class="percent">1.8%</span>
+              </span>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="repository-lang-stats-graph js-toggle-lang-stats" title="Click for language details" data-ga-click="Repository, language bar stats toggle, location:repo overview">
+    <span class="language-color" aria-label="Go 98.2%" style="width: 98.2%; background-color: rgb(55, 94, 171);" itemprop="keywords">Go</span>
+    <span class="language-color" aria-label="Other 1.8%" style="width: 1.8%; background-color: rgb(237, 237, 237);" itemprop="keywords">Other</span>
+  </div>
+
+  
+
+<div class="file-navigation in-mid-page">
+
+    <div class="select-menu get-repo-select-menu js-menu-container right select-menu-modal-right">
+  <button class="btn btn-sm btn-primary select-menu-button js-menu-target" title="Clone or download this repository" type="button" aria-label="Clone or download this repository" tabindex="0" aria-haspopup="true">
+    <span>Clone or download</span>
+  </button>
+
+  <div class="select-menu-modal-holder dropdown-menu-content js-menu-content" aria-hidden="true">
+    <div class="get-repo-modal dropdown-menu dropdown-menu-sw pb-0 js-toggler-container ">
+      <div class="clone-options https-clone-options">
+          <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="https://github.com/users/set_protocol?protocol_selector=ssh&amp;protocol_type=clone" data-form-nonce="84da46a5ca5dc665232f8b3d18ab77c9d7b5d735" data-remote="true" method="post"><div style="margin: 0px; padding: 0px; display: inline;"><input name="utf8" value="✓" type="hidden"><input name="authenticity_token" value="uTkstjZY8hNqUUQeFt5mY6Ck+TXu0qPvlAjeMcJSOfeGap00Z8azWYlTLtZ5QjBgKZWRa/d15IMh0nc9Q3m4kg==" type="hidden"></div><button class="btn-link btn-change-protocol js-toggler-target right" type="submit">Use SSH</button></form>
+
+        <h4 class="mb-1">
+          Clone with HTTPS
+          <a class="muted-link" href="https://help.github.com/articles/which-remote-url-should-i-use" target="_blank">
+            <svg aria-hidden="true" class="octicon octicon-question" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path d="M6 10h2v2H6v-2zm4-3.5C10 8.64 8 9 8 9H6c0-.55.45-1 1-1h.5c.28 0 .5-.22.5-.5v-1c0-.28-.22-.5-.5-.5h-1c-.28 0-.5.22-.5.5V7H4c0-1.5 1.5-3 3-3s3 1 3 2.5zM7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7z"></path></svg>
+          </a>
+        </h4>
+        <p class="mb-2 get-repo-decription-text">
+          Use Git or checkout with SVN using the web URL.
+        </p>
+
+        <div class="input-group js-zeroclipboard-container has-zeroclipboard-disabled">
+  <input class="form-control input-monospace input-sm js-zeroclipboard-target js-url-field" value="https://github.com/moul/advanced-ssh-config.git" aria-label="Clone this repository at https://github.com/moul/advanced-ssh-config.git" readonly="" type="text">
+  <div class="input-group-button">
+    
+  </div>
+</div>
+
+      </div>
+
+        <div class="clone-options ssh-clone-options">
+          <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="https://github.com/users/set_protocol?protocol_selector=https&amp;protocol_type=clone" data-form-nonce="84da46a5ca5dc665232f8b3d18ab77c9d7b5d735" data-remote="true" method="post"><div style="margin: 0px; padding: 0px; display: inline;"><input name="utf8" value="✓" type="hidden"><input name="authenticity_token" value="Vx5tpH4bthH+q9oxY73oqDSr2hy6L/E1JhvpOuhLGWcMC5eQHPxTJbKDAOIgLi21n6YJ6TQHT3+lUddlqSL4ow==" type="hidden"></div><button class="btn-link btn-change-protocol js-toggler-target right" type="submit">Use HTTPS</button></form>
+
+          <h4 class="mb-1">
+            Clone with SSH
+            <a class="muted-link" href="https://help.github.com/articles/which-remote-url-should-i-use" target="_blank">
+              <svg aria-hidden="true" class="octicon octicon-question" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path d="M6 10h2v2H6v-2zm4-3.5C10 8.64 8 9 8 9H6c0-.55.45-1 1-1h.5c.28 0 .5-.22.5-.5v-1c0-.28-.22-.5-.5-.5h-1c-.28 0-.5.22-.5.5V7H4c0-1.5 1.5-3 3-3s3 1 3 2.5zM7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7z"></path></svg>
+            </a>
+          </h4>
+          <p class="mb-2 get-repo-decription-text">
+            Use an SSH key and passphrase from account.
+          </p>
+
+          <div class="input-group js-zeroclipboard-container has-zeroclipboard-disabled">
+  <input class="form-control input-monospace input-sm js-zeroclipboard-target js-url-field" value="git@github.com:moul/advanced-ssh-config.git" aria-label="Clone this repository at git@github.com:moul/advanced-ssh-config.git" readonly="" type="text">
+  <div class="input-group-button">
+    
+  </div>
+</div>
+
+        </div>
+
+      <div class="mt-2">
+        
+<a href="https://github.com/moul/advanced-ssh-config/archive/master.zip" class="btn btn-outline get-repo-btn
+" rel="nofollow" data-ga-click="Repository, download zip, location:repo overview">
+  Download ZIP
+</a>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <div class="btn-group right">
+      
+  <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="https://github.com/moul/advanced-ssh-config/new/master" class="btn-group-form" data-form-nonce="84da46a5ca5dc665232f8b3d18ab77c9d7b5d735" method="post"><div style="margin: 0px; padding: 0px; display: inline;"><input name="utf8" value="✓" type="hidden"><input name="authenticity_token" value="rI8HxItENWQsu+unHGdbC7enWcdCrl90RBhfo1u5vYL1ZXpy3gLf76mILJfl15W5dkUZEN25IlKWJ36eA0t5jw==" type="hidden"></div>
+    <button class="btn btn-sm" type="submit" data-disable-with="Creating file…">
+      Create new file
+    </button>
+</form>
+
+      
+  <a href="https://github.com/moul/advanced-ssh-config/upload/master" class="btn btn-sm">
+    Upload files
+  </a>
+
+
+    <a href="https://github.com/moul/advanced-ssh-config/find/master" class="btn btn-sm empty-icon right" data-pjax="" data-hotkey="t" data-ga-click="Repository, find file, location:repo overview">
+      Find file
+    </a>
+  </div>
+
+  
+<div class="select-menu branch-select-menu js-menu-container js-select-menu left">
+  <button class="btn btn-sm select-menu-button js-menu-target css-truncate" data-hotkey="w" type="button" aria-label="Switch branches or tags" tabindex="0" aria-haspopup="true">
+    <i>Branch:</i>
+    <span class="js-select-button css-truncate-target">master</span>
+  </button>
+
+  <div class="select-menu-modal-holder js-menu-content js-navigation-container" data-pjax="" aria-hidden="true">
+
+    <div class="select-menu-modal">
+      <div class="select-menu-header">
+        <svg aria-label="Close" class="octicon octicon-x js-menu-close" height="16" role="img" version="1.1" viewBox="0 0 12 16" width="12"><path d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48z"></path></svg>
+        <span class="select-menu-title">Switch branches/tags</span>
+      </div>
+
+      <div class="select-menu-filters">
+        <div class="select-menu-text-filter">
+          <input aria-label="Filter branches/tags" id="context-commitish-filter-field" class="form-control js-filterable-field js-navigation-enable" placeholder="Filter branches/tags" type="text">
+        </div>
+        <div class="select-menu-tabs">
+          <ul>
+            <li class="select-menu-tab">
+              <a href="#" data-tab-filter="branches" data-filter-placeholder="Filter branches/tags" class="js-select-menu-tab" role="tab">Branches</a>
+            </li>
+            <li class="select-menu-tab">
+              <a href="#" data-tab-filter="tags" data-filter-placeholder="Find a tag…" class="js-select-menu-tab" role="tab">Tags</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="select-menu-list select-menu-tab-bucket js-select-menu-tab-bucket" data-tab-filter="branches" role="menu">
+
+        <div data-filterable-for="context-commitish-filter-field" data-filterable-type="substring">
+
+
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/moul/advanced-ssh-config/tree/fix-51" data-name="fix-51" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target js-select-menu-filter-text">
+                fix-51
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/moul/advanced-ssh-config/tree/gh-pages" data-name="gh-pages" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target js-select-menu-filter-text">
+                gh-pages
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/moul/advanced-ssh-config/tree/hook-daemon" data-name="hook-daemon" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target js-select-menu-filter-text">
+                hook-daemon
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open selected" href="https://github.com/moul/advanced-ssh-config/tree/master" data-name="master" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target js-select-menu-filter-text">
+                master
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/moul/advanced-ssh-config/tree/v1" data-name="v1" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target js-select-menu-filter-text">
+                v1
+              </span>
+            </a>
+        </div>
+
+          <div class="select-menu-no-results">Nothing to show</div>
+      </div>
+
+      <div class="select-menu-list select-menu-tab-bucket js-select-menu-tab-bucket" data-tab-filter="tags">
+        <div data-filterable-for="context-commitish-filter-field" data-filterable-type="substring">
+
+
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/moul/advanced-ssh-config/tree/v2.4.1" data-name="v2.4.1" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target" title="v2.4.1">
+                v2.4.1
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/moul/advanced-ssh-config/tree/v2.4.0" data-name="v2.4.0" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target" title="v2.4.0">
+                v2.4.0
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/moul/advanced-ssh-config/tree/v2.3.0" data-name="v2.3.0" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target" title="v2.3.0">
+                v2.3.0
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/moul/advanced-ssh-config/tree/v2.2.0" data-name="v2.2.0" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target" title="v2.2.0">
+                v2.2.0
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/moul/advanced-ssh-config/tree/v2.1.0" data-name="v2.1.0" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target" title="v2.1.0">
+                v2.1.0
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/moul/advanced-ssh-config/tree/v2.0.0" data-name="v2.0.0" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target" title="v2.0.0">
+                v2.0.0
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/moul/advanced-ssh-config/tree/v1.1.0" data-name="v1.1.0" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target" title="v1.1.0">
+                v1.1.0
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/moul/advanced-ssh-config/tree/v1.0.1" data-name="v1.0.1" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target" title="v1.0.1">
+                v1.0.1
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/moul/advanced-ssh-config/tree/v1.0.0" data-name="v1.0.0" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target" title="v1.0.0">
+                v1.0.0
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/moul/advanced-ssh-config/tree/v0.17.1" data-name="v0.17.1" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target" title="v0.17.1">
+                v0.17.1
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/moul/advanced-ssh-config/tree/v0.17.0" data-name="v0.17.0" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target" title="v0.17.0">
+                v0.17.0
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/moul/advanced-ssh-config/tree/v0.16.0" data-name="v0.16.0" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target" title="v0.16.0">
+                v0.16.0
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/moul/advanced-ssh-config/tree/v0.15.1" data-name="v0.15.1" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target" title="v0.15.1">
+                v0.15.1
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/moul/advanced-ssh-config/tree/v0.15.0" data-name="v0.15.0" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target" title="v0.15.0">
+                v0.15.0
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/moul/advanced-ssh-config/tree/v0.14.2" data-name="v0.14.2" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target" title="v0.14.2">
+                v0.14.2
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/moul/advanced-ssh-config/tree/v0.14.1" data-name="v0.14.1" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target" title="v0.14.1">
+                v0.14.1
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/moul/advanced-ssh-config/tree/v0.13.1" data-name="v0.13.1" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target" title="v0.13.1">
+                v0.13.1
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/moul/advanced-ssh-config/tree/v0.12.2" data-name="v0.12.2" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target" title="v0.12.2">
+                v0.12.2
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/moul/advanced-ssh-config/tree/v0.12.1" data-name="v0.12.1" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target" title="v0.12.1">
+                v0.12.1
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/moul/advanced-ssh-config/tree/v0.11.2" data-name="v0.11.2" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target" title="v0.11.2">
+                v0.11.2
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/moul/advanced-ssh-config/tree/v0.11.1" data-name="v0.11.1" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target" title="v0.11.1">
+                v0.11.1
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/moul/advanced-ssh-config/tree/v0.10.1" data-name="v0.10.1" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target" title="v0.10.1">
+                v0.10.1
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/moul/advanced-ssh-config/tree/v0.9.4" data-name="v0.9.4" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target" title="v0.9.4">
+                v0.9.4
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/moul/advanced-ssh-config/tree/v0.9.3" data-name="v0.9.3" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target" title="v0.9.3">
+                v0.9.3
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/moul/advanced-ssh-config/tree/v0.9.2" data-name="v0.9.2" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target" title="v0.9.2">
+                v0.9.2
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/moul/advanced-ssh-config/tree/v0.9.1" data-name="v0.9.1" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target" title="v0.9.1">
+                v0.9.1
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/moul/advanced-ssh-config/tree/v0.8.1" data-name="v0.8.1" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target" title="v0.8.1">
+                v0.8.1
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/moul/advanced-ssh-config/tree/v0.7.1" data-name="v0.7.1" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target" title="v0.7.1">
+                v0.7.1
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/moul/advanced-ssh-config/tree/v0.6.5" data-name="v0.6.5" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target" title="v0.6.5">
+                v0.6.5
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/moul/advanced-ssh-config/tree/v0.6.4" data-name="v0.6.4" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target" title="v0.6.4">
+                v0.6.4
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/moul/advanced-ssh-config/tree/v0.6.3" data-name="v0.6.3" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target" title="v0.6.3">
+                v0.6.3
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/moul/advanced-ssh-config/tree/v0.6.2" data-name="v0.6.2" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target" title="v0.6.2">
+                v0.6.2
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/moul/advanced-ssh-config/tree/v0.6.1" data-name="v0.6.1" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target" title="v0.6.1">
+                v0.6.1
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/moul/advanced-ssh-config/tree/v0.5.4" data-name="v0.5.4" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target" title="v0.5.4">
+                v0.5.4
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/moul/advanced-ssh-config/tree/v0.5.3" data-name="v0.5.3" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target" title="v0.5.3">
+                v0.5.3
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/moul/advanced-ssh-config/tree/v0.5.2" data-name="v0.5.2" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target" title="v0.5.2">
+                v0.5.2
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/moul/advanced-ssh-config/tree/v0.5.1" data-name="v0.5.1" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target" title="v0.5.1">
+                v0.5.1
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/moul/advanced-ssh-config/tree/v0.5.0" data-name="v0.5.0" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target" title="v0.5.0">
+                v0.5.0
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/moul/advanced-ssh-config/tree/v0.4.2" data-name="v0.4.2" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target" title="v0.4.2">
+                v0.4.2
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/moul/advanced-ssh-config/tree/v0.4.1" data-name="v0.4.1" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target" title="v0.4.1">
+                v0.4.1
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/moul/advanced-ssh-config/tree/v0.4.0" data-name="v0.4.0" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target" title="v0.4.0">
+                v0.4.0
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/moul/advanced-ssh-config/tree/v0.3.8" data-name="v0.3.8" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target" title="v0.3.8">
+                v0.3.8
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/moul/advanced-ssh-config/tree/v0.3.7" data-name="v0.3.7" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target" title="v0.3.7">
+                v0.3.7
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/moul/advanced-ssh-config/tree/v0.3.6" data-name="v0.3.6" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target" title="v0.3.6">
+                v0.3.6
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/moul/advanced-ssh-config/tree/v0.3.5" data-name="v0.3.5" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target" title="v0.3.5">
+                v0.3.5
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/moul/advanced-ssh-config/tree/v0.3.4" data-name="v0.3.4" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target" title="v0.3.4">
+                v0.3.4
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/moul/advanced-ssh-config/tree/v0.3.3" data-name="v0.3.3" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target" title="v0.3.3">
+                v0.3.3
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/moul/advanced-ssh-config/tree/v0.3.2" data-name="v0.3.2" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target" title="v0.3.2">
+                v0.3.2
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/moul/advanced-ssh-config/tree/v0.3.1" data-name="v0.3.1" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target" title="v0.3.1">
+                v0.3.1
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/moul/advanced-ssh-config/tree/v0.2.1" data-name="v0.2.1" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target" title="v0.2.1">
+                v0.2.1
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/moul/advanced-ssh-config/tree/v0.2.0" data-name="v0.2.0" data-skip-pjax="true" rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+              <span class="select-menu-item-text css-truncate-target" title="v0.2.0">
+                v0.2.0
+              </span>
+            </a>
+        </div>
+
+        <div class="select-menu-no-results">Nothing to show</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+      <a href="https://github.com/moul/advanced-ssh-config/pull/new/master" class="btn btn-sm new-pull-request-btn" data-pjax="" data-ga-click="Repository, new pull request, location:repo overview">
+        New pull request
+      </a>
+
+  <div class="breadcrumb">
+    
+  </div>
+</div>
+
+
+
+
+
+  <div class="commit-tease js-details-container">
+    <span class="right">
+      Latest commit
+      <a class="commit-tease-sha" href="https://github.com/moul/advanced-ssh-config/commit/277dcefbf74949251f3404f5184df5150de78cf1" data-pjax="">
+        277dcef
+      </a>
+      <span itemprop="dateModified"><relative-time title="2016年08月07日 星期日 21时07分32秒" datetime="2016-08-07T13:07:32Z">16 days ago</relative-time></span>
+    </span>
+
+
+    <span class="commit-author-section">
+      <img alt="@moul" class="avatar" src="94029.dat" width="20" height="20">
+      <a href="https://github.com/moul" class="user-mention" rel="author">moul</a>
+        committed on <strong>GitHub</strong>
+    </span>
+
+        <a href="https://github.com/moul/advanced-ssh-config/commit/277dcefbf74949251f3404f5184df5150de78cf1" class="message" data-pjax="true" title="Merge pull request #170 from moul/hook-daemon
+
+Hook daemon">Merge pull request</a> <a href="https://github.com/moul/advanced-ssh-config/pull/170" class="issue-link js-issue-link" data-url="https://github.com/moul/advanced-ssh-config/issues/170" data-id="169795506" data-error-text="Failed to load issue title" data-permission-text="Issue title is private">#170</a> <a href="https://github.com/moul/advanced-ssh-config/commit/277dcefbf74949251f3404f5184df5150de78cf1" class="message" data-pjax="true" title="Merge pull request #170 from moul/hook-daemon
+
+Hook daemon">from moul/hook-daemon</a>
+          <span class="hidden-text-expander inline">
+            <button type="button" class="ellipsis-expander js-details-target">…</button>
+          </span>
+    
+
+      <div class="commit-desc"><pre class="text-small">Hook daemon</pre></div>
+  </div>
+
+
+<div class="file-wrap">
+
+  <a href="https://github.com/moul/advanced-ssh-config/tree/277dcefbf74949251f3404f5184df5150de78cf1" class="hidden js-permalink-shortcut" data-hotkey="y">Permalink</a>
+
+  <table class="files js-navigation-container js-active-navigation-container" data-pjax="">
+
+
+    <tbody>
+      <tr class="warning include-fragment-error">
+        <td class="icon"><svg aria-hidden="true" class="octicon octicon-alert" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M8.865 1.52c-.18-.31-.51-.5-.87-.5s-.69.19-.87.5L.275 13.5c-.18.31-.18.69 0 1 .19.31.52.5.87.5h13.7c.36 0 .69-.19.86-.5.17-.31.18-.69.01-1L8.865 1.52zM8.995 13h-2v-2h2v2zm0-3h-2V6h2v4z"></path></svg></td>
+        <td class="content" colspan="3">Failed to load latest commit information.</td>
+      </tr>
+
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <svg aria-hidden="true" class="octicon octicon-file-directory" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path d="M13 4H7V3c0-.66-.31-1-1-1H1c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1V5c0-.55-.45-1-1-1zM6 4H1V3h5v1z"></path></svg>
+            <img alt="" class="spinner" src="octocat-spinner-32.gif" width="16" height="16">
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="https://github.com/moul/advanced-ssh-config/tree/master/cmd/assh" class="js-navigation-open" id="ffad5d9e979132c5f6d7df413c6f8f76-b72a4a25361f3ce478c7f0eba155ee348aada15a" title="This path skips through empty directories"><span class="simplified-path">cmd/</span>assh</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+                  <a href="https://github.com/moul/advanced-ssh-config/commit/1cb5f08a5711e07f67c5c26132a63acbca3fa4ce" class="message" data-pjax="true" title="Switch to github.com/urfave/cli">Switch to github.com/urfave/cli</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time-ago title="2016年07月20日 星期三 00时47分08秒" datetime="2016-07-19T16:47:08Z">a month ago</time-ago></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <svg aria-hidden="true" class="octicon octicon-file-directory" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path d="M13 4H7V3c0-.66-.31-1-1-1H1c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1V5c0-.55-.45-1-1-1zM6 4H1V3h5v1z"></path></svg>
+            <img alt="" class="spinner" src="octocat-spinner-32.gif" width="16" height="16">
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="https://github.com/moul/advanced-ssh-config/tree/master/contrib" class="js-navigation-open" id="1aca857b55ce1183cb964b343b4fdeb3-c7818ea6524072999376d06c3788b0437aa2a119" title="contrib">contrib</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+                  <a href="https://github.com/moul/advanced-ssh-config/commit/d75d53b385c326f2bba79352416ebd853cdff546" class="message" data-pjax="true" title="Bump homebrew">Bump homebrew</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time-ago title="2016年07月20日 星期三 00时46分00秒" datetime="2016-07-19T16:46:00Z">a month ago</time-ago></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <svg aria-hidden="true" class="octicon octicon-file-directory" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path d="M13 4H7V3c0-.66-.31-1-1-1H1c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1V5c0-.55-.45-1-1-1zM6 4H1V3h5v1z"></path></svg>
+            <img alt="" class="spinner" src="octocat-spinner-32.gif" width="16" height="16">
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="https://github.com/moul/advanced-ssh-config/tree/master/pkg" class="js-navigation-open" id="a46a1bce0b67c45bec8f435bd5390a54-eeb46c284febbfaa684d74d319f179018b8d362e" title="pkg">pkg</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+                  <a href="https://github.com/moul/advanced-ssh-config/commit/277dcefbf74949251f3404f5184df5150de78cf1" class="message" data-pjax="true" title="Merge pull request #170 from moul/hook-daemon
+
+Hook daemon">Merge pull request</a> <a href="https://github.com/moul/advanced-ssh-config/pull/170" class="issue-link js-issue-link" data-url="https://github.com/moul/advanced-ssh-config/issues/170" data-id="169795506" data-error-text="Failed to load issue title" data-permission-text="Issue title is private">#170</a> <a href="https://github.com/moul/advanced-ssh-config/commit/277dcefbf74949251f3404f5184df5150de78cf1" class="message" data-pjax="true" title="Merge pull request #170 from moul/hook-daemon
+
+Hook daemon">from moul/hook-daemon</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time-ago title="2016年08月07日 星期日 21时07分32秒" datetime="2016-08-07T13:07:32Z">16 days ago</time-ago></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <svg aria-hidden="true" class="octicon octicon-file-directory" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path d="M13 4H7V3c0-.66-.31-1-1-1H1c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1V5c0-.55-.45-1-1-1zM6 4H1V3h5v1z"></path></svg>
+            <img alt="" class="spinner" src="octocat-spinner-32.gif" width="16" height="16">
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="https://github.com/moul/advanced-ssh-config/tree/master/resources" class="js-navigation-open" id="55b558c7ef820e6e00e5993b9e55d93b-05ebbdcc6ebbc98eb205a2f8d2b1d848be43d860" title="resources">resources</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+                  <a href="https://github.com/moul/advanced-ssh-config/commit/77243e74710efdc652d75e89fb0c7bbf9adedc7e" class="message" data-pjax="true" title="Add new screenshots">Add new screenshots</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time-ago title="2016年07月24日 星期日 17时38分25秒" datetime="2016-07-24T09:38:25Z">a month ago</time-ago></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <svg aria-hidden="true" class="octicon octicon-file-directory" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path d="M13 4H7V3c0-.66-.31-1-1-1H1c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1V5c0-.55-.45-1-1-1zM6 4H1V3h5v1z"></path></svg>
+            <img alt="" class="spinner" src="octocat-spinner-32.gif" width="16" height="16">
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="https://github.com/moul/advanced-ssh-config/tree/master/vendor" class="js-navigation-open" id="7c3613dba5171cb6027c67835dd3b9d4-7d176497041a8be427b154a80deabbbec7842a4e" title="vendor">vendor</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+                  <a href="https://github.com/moul/advanced-ssh-config/commit/789481912e4edd0938c1d5013a655738887c043f" class="message" data-pjax="true" title="glide get -u -s -v github.com/dustin/go-humanize">glide get -u -s -v github.com/dustin/go-humanize</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time-ago title="2016年07月30日 星期六 22时07分18秒" datetime="2016-07-30T14:07:18Z">24 days ago</time-ago></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <svg aria-hidden="true" class="octicon octicon-file-text" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M6 5H2V4h4v1zM2 8h7V7H2v1zm0 2h7V9H2v1zm0 2h7v-1H2v1zm10-7.5V14c0 .55-.45 1-1 1H1c-.55 0-1-.45-1-1V2c0-.55.45-1 1-1h7.5L12 4.5zM11 5L8 2H1v12h10V5z"></path></svg>
+            <img alt="" class="spinner" src="octocat-spinner-32.gif" width="16" height="16">
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="https://github.com/moul/advanced-ssh-config/blob/master/.dockerignore" class="js-navigation-open" id="f7c5b4068637e2def526f9bbc7200c4e-8deb54133322ad31f9072778db58d5811b1b94fe" title=".dockerignore">.dockerignore</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+                  <a href="https://github.com/moul/advanced-ssh-config/commit/41dc755f74137eed32a93d9a6a17e42339cdee77" class="message" data-pjax="true" title="Using standard Dockerfile">Using standard Dockerfile</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time-ago title="2016年06月30日 星期四 23时50分36秒" datetime="2016-06-30T15:50:36Z">2 months ago</time-ago></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <svg aria-hidden="true" class="octicon octicon-file-text" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M6 5H2V4h4v1zM2 8h7V7H2v1zm0 2h7V9H2v1zm0 2h7v-1H2v1zm10-7.5V14c0 .55-.45 1-1 1H1c-.55 0-1-.45-1-1V2c0-.55.45-1 1-1h7.5L12 4.5zM11 5L8 2H1v12h10V5z"></path></svg>
+            <img alt="" class="spinner" src="octocat-spinner-32.gif" width="16" height="16">
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="https://github.com/moul/advanced-ssh-config/blob/master/.gitignore" class="js-navigation-open" id="a084b794bc0759e7a6b77810e01874f2-e341aa39366e8d33bf4cc024d9eb8a7ef70c98d6" title=".gitignore">.gitignore</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+                  <a href="https://github.com/moul/advanced-ssh-config/commit/8742a9aa8b970dc2713cfc93734f21f8ad1ec9f3" class="message" data-pjax="true" title="Moved docker to contrib">Moved docker to contrib</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time-ago title="2016年02月02日 星期二 07时37分49秒" datetime="2016-02-01T23:37:49Z">7 months ago</time-ago></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <svg aria-hidden="true" class="octicon octicon-file-text" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M6 5H2V4h4v1zM2 8h7V7H2v1zm0 2h7V9H2v1zm0 2h7v-1H2v1zm10-7.5V14c0 .55-.45 1-1 1H1c-.55 0-1-.45-1-1V2c0-.55.45-1 1-1h7.5L12 4.5zM11 5L8 2H1v12h10V5z"></path></svg>
+            <img alt="" class="spinner" src="octocat-spinner-32.gif" width="16" height="16">
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="https://github.com/moul/advanced-ssh-config/blob/master/.godir" class="js-navigation-open" id="d052919d9a70b5ea19952fdc963b15f9-728a0d1718f0a1d4609ceb6178bf460421a9aa52" title=".godir">.godir</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+                  <a href="https://github.com/moul/advanced-ssh-config/commit/03ba781c0f3c446b24d6184f3a26127753e5f80a" class="message" data-pjax="true" title="Added .godir file">Added .godir file</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time-ago title="2015年07月23日 星期四 17时48分45秒" datetime="2015-07-23T09:48:45Z">a year ago</time-ago></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <svg aria-hidden="true" class="octicon octicon-file-text" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M6 5H2V4h4v1zM2 8h7V7H2v1zm0 2h7V9H2v1zm0 2h7v-1H2v1zm10-7.5V14c0 .55-.45 1-1 1H1c-.55 0-1-.45-1-1V2c0-.55.45-1 1-1h7.5L12 4.5zM11 5L8 2H1v12h10V5z"></path></svg>
+            <img alt="" class="spinner" src="octocat-spinner-32.gif" width="16" height="16">
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="https://github.com/moul/advanced-ssh-config/blob/master/.goxc.json" class="js-navigation-open" id="639089ccfb371ead1296689338156551-0f00b17ce926aa5d61551c130cded7fae3bb0d20" title=".goxc.json">.goxc.json</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+                  <a href="https://github.com/moul/advanced-ssh-config/commit/95d762fbdb52b72cc8938c7680b60ee5d4b35a62" class="message" data-pjax="true" title="Post-release version bump">Post-release version bump</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time-ago title="2016年07月20日 星期三 00时44分32秒" datetime="2016-07-19T16:44:32Z">a month ago</time-ago></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <svg aria-hidden="true" class="octicon octicon-file-text" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M6 5H2V4h4v1zM2 8h7V7H2v1zm0 2h7V9H2v1zm0 2h7v-1H2v1zm10-7.5V14c0 .55-.45 1-1 1H1c-.55 0-1-.45-1-1V2c0-.55.45-1 1-1h7.5L12 4.5zM11 5L8 2H1v12h10V5z"></path></svg>
+            <img alt="" class="spinner" src="octocat-spinner-32.gif" width="16" height="16">
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="https://github.com/moul/advanced-ssh-config/blob/master/.travis.yml" class="js-navigation-open" id="354f30a63fb0907d4ad57269548329e3-dbc054a98eb14afb2617299e3509b080973c061f" title=".travis.yml">.travis.yml</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+                  <a href="https://github.com/moul/advanced-ssh-config/commit/38a1ccd228839d2d450110ca7c8256789234fa1a" class="message" data-pjax="true" title="Travis: test on go1.6">Travis: test on go1.6</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time-ago title="2016年03月22日 星期二 16时03分03秒" datetime="2016-03-22T08:03:03Z">5 months ago</time-ago></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <svg aria-hidden="true" class="octicon octicon-file-text" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M6 5H2V4h4v1zM2 8h7V7H2v1zm0 2h7V9H2v1zm0 2h7v-1H2v1zm10-7.5V14c0 .55-.45 1-1 1H1c-.55 0-1-.45-1-1V2c0-.55.45-1 1-1h7.5L12 4.5zM11 5L8 2H1v12h10V5z"></path></svg>
+            <img alt="" class="spinner" src="octocat-spinner-32.gif" width="16" height="16">
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="https://github.com/moul/advanced-ssh-config/blob/master/.wercker.yml" class="js-navigation-open" id="ae31f08d12238e641bbdb8df0fc2ebbc-bb7810122816c67cde10edb1202cc267b187bcf1" title=".wercker.yml">.wercker.yml</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+                  <a href="https://github.com/moul/advanced-ssh-config/commit/55137f0a8e8b5075ed73b3a0ecf64315f6818905" class="message" data-pjax="true" title="Added .wercker.yml">Added .wercker.yml</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time-ago title="2015年09月08日 星期二 22时43分33秒" datetime="2015-09-08T14:43:33Z">a year ago</time-ago></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <svg aria-hidden="true" class="octicon octicon-file-text" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M6 5H2V4h4v1zM2 8h7V7H2v1zm0 2h7V9H2v1zm0 2h7v-1H2v1zm10-7.5V14c0 .55-.45 1-1 1H1c-.55 0-1-.45-1-1V2c0-.55.45-1 1-1h7.5L12 4.5zM11 5L8 2H1v12h10V5z"></path></svg>
+            <img alt="" class="spinner" src="octocat-spinner-32.gif" width="16" height="16">
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="https://github.com/moul/advanced-ssh-config/blob/master/Dockerfile" class="js-navigation-open" id="3254677a7917c6c01f55212f86c57fbf-1dfa311a2a51254b9e77185aef051d46c826b083" title="Dockerfile">Dockerfile</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+                  <a href="https://github.com/moul/advanced-ssh-config/commit/41dc755f74137eed32a93d9a6a17e42339cdee77" class="message" data-pjax="true" title="Using standard Dockerfile">Using standard Dockerfile</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time-ago title="2016年06月30日 星期四 23时50分36秒" datetime="2016-06-30T15:50:36Z">2 months ago</time-ago></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <svg aria-hidden="true" class="octicon octicon-file-text" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M6 5H2V4h4v1zM2 8h7V7H2v1zm0 2h7V9H2v1zm0 2h7v-1H2v1zm10-7.5V14c0 .55-.45 1-1 1H1c-.55 0-1-.45-1-1V2c0-.55.45-1 1-1h7.5L12 4.5zM11 5L8 2H1v12h10V5z"></path></svg>
+            <img alt="" class="spinner" src="octocat-spinner-32.gif" width="16" height="16">
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="https://github.com/moul/advanced-ssh-config/blob/master/LICENSE" class="js-navigation-open" id="9879d6db96fd29134fc802214163b95a-c98955a530275691d8d23d0dd781df201f131618" itemprop="license" title="LICENSE">LICENSE</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+                  <a href="https://github.com/moul/advanced-ssh-config/commit/93502bbfb00ce3edbba514b777417456249598fa" class="message" data-pjax="true" title="Create LICENSE">Create LICENSE</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time-ago title="2016年04月27日 星期三 18时12分39秒" datetime="2016-04-27T10:12:39Z">4 months ago</time-ago></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <svg aria-hidden="true" class="octicon octicon-file-text" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M6 5H2V4h4v1zM2 8h7V7H2v1zm0 2h7V9H2v1zm0 2h7v-1H2v1zm10-7.5V14c0 .55-.45 1-1 1H1c-.55 0-1-.45-1-1V2c0-.55.45-1 1-1h7.5L12 4.5zM11 5L8 2H1v12h10V5z"></path></svg>
+            <img alt="" class="spinner" src="octocat-spinner-32.gif" width="16" height="16">
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="https://github.com/moul/advanced-ssh-config/blob/master/Makefile" class="js-navigation-open" id="b67911656ef5d18c4ae36cb6741b7965-bda9aba1b41e62cdcbb505e309f2e9eb391e6e6e" title="Makefile">Makefile</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+                  <a href="https://github.com/moul/advanced-ssh-config/commit/57be23407a1d8458379573f8facf14bcc6ea27ad" class="message" data-pjax="true" title="Fix Makefile">Fix Makefile</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time-ago title="2016年07月09日 星期六 05时45分48秒" datetime="2016-07-08T21:45:48Z">2 months ago</time-ago></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <svg aria-hidden="true" class="octicon octicon-file-text" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M6 5H2V4h4v1zM2 8h7V7H2v1zm0 2h7V9H2v1zm0 2h7v-1H2v1zm10-7.5V14c0 .55-.45 1-1 1H1c-.55 0-1-.45-1-1V2c0-.55.45-1 1-1h7.5L12 4.5zM11 5L8 2H1v12h10V5z"></path></svg>
+            <img alt="" class="spinner" src="octocat-spinner-32.gif" width="16" height="16">
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="https://github.com/moul/advanced-ssh-config/blob/master/README.md" class="js-navigation-open" id="04c6e90faac2675aa89e2176d2eec7d8-3f9127e7a22f21d250f2b1deb2460e0123e589da" title="README.md">README.md</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+                  <a href="https://github.com/moul/advanced-ssh-config/commit/891fea255abee605549aae40b924f4c7df684ecb" class="message" data-pjax="true" title="Update README.md">Update README.md</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time-ago title="2016年08月03日 星期三 19时21分39秒" datetime="2016-08-03T11:21:39Z">20 days ago</time-ago></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <svg aria-hidden="true" class="octicon octicon-file-text" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M6 5H2V4h4v1zM2 8h7V7H2v1zm0 2h7V9H2v1zm0 2h7v-1H2v1zm10-7.5V14c0 .55-.45 1-1 1H1c-.55 0-1-.45-1-1V2c0-.55.45-1 1-1h7.5L12 4.5zM11 5L8 2H1v12h10V5z"></path></svg>
+            <img alt="" class="spinner" src="octocat-spinner-32.gif" width="16" height="16">
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="https://github.com/moul/advanced-ssh-config/blob/master/circle.yml" class="js-navigation-open" id="29944324a3cbf9f4bd0162dfe3975d88-4fdebd3b724aa6536316fc8851771722a0b837d8" title="circle.yml">circle.yml</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+                  <a href="https://github.com/moul/advanced-ssh-config/commit/90fa52b4cfefd498ba2a5ecedce531ab2a014a0c" class="message" data-pjax="true" title="Add circle.yml file">Add circle.yml file</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time-ago title="2016年06月30日 星期四 23时52分38秒" datetime="2016-06-30T15:52:38Z">2 months ago</time-ago></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <svg aria-hidden="true" class="octicon octicon-file-text" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M6 5H2V4h4v1zM2 8h7V7H2v1zm0 2h7V9H2v1zm0 2h7v-1H2v1zm10-7.5V14c0 .55-.45 1-1 1H1c-.55 0-1-.45-1-1V2c0-.55.45-1 1-1h7.5L12 4.5zM11 5L8 2H1v12h10V5z"></path></svg>
+            <img alt="" class="spinner" src="octocat-spinner-32.gif" width="16" height="16">
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="https://github.com/moul/advanced-ssh-config/blob/master/glide.lock" class="js-navigation-open" id="f16a80eae23d5b298c2652448ec420cf-577dfce81ced0971865d02fed7aaae9d8ec5f52f" title="glide.lock">glide.lock</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+                  <a href="https://github.com/moul/advanced-ssh-config/commit/789481912e4edd0938c1d5013a655738887c043f" class="message" data-pjax="true" title="glide get -u -s -v github.com/dustin/go-humanize">glide get -u -s -v github.com/dustin/go-humanize</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time-ago title="2016年07月30日 星期六 22时07分18秒" datetime="2016-07-30T14:07:18Z">24 days ago</time-ago></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <svg aria-hidden="true" class="octicon octicon-file-text" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M6 5H2V4h4v1zM2 8h7V7H2v1zm0 2h7V9H2v1zm0 2h7v-1H2v1zm10-7.5V14c0 .55-.45 1-1 1H1c-.55 0-1-.45-1-1V2c0-.55.45-1 1-1h7.5L12 4.5zM11 5L8 2H1v12h10V5z"></path></svg>
+            <img alt="" class="spinner" src="octocat-spinner-32.gif" width="16" height="16">
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="https://github.com/moul/advanced-ssh-config/blob/master/glide.yaml" class="js-navigation-open" id="395f41b2a27b70ce44399c91c82158c2-281ff553d25ee4cbd40e76af0faf424d9b37b87c" title="glide.yaml">glide.yaml</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+                  <a href="https://github.com/moul/advanced-ssh-config/commit/789481912e4edd0938c1d5013a655738887c043f" class="message" data-pjax="true" title="glide get -u -s -v github.com/dustin/go-humanize">glide get -u -s -v github.com/dustin/go-humanize</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time-ago title="2016年07月30日 星期六 22时07分18秒" datetime="2016-07-30T14:07:18Z">24 days ago</time-ago></span>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+</div>
+
+
+
+  <div id="readme" class="readme boxed-group clearfix announce instapaper_body md">
+    <h3>
+      <svg aria-hidden="true" class="octicon octicon-book" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M3 5h4v1H3V5zm0 3h4V7H3v1zm0 2h4V9H3v1zm11-5h-4v1h4V5zm0 2h-4v1h4V7zm0 2h-4v1h4V9zm2-6v9c0 .55-.45 1-1 1H9.5l-1 1-1-1H2c-.55 0-1-.45-1-1V3c0-.55.45-1 1-1h5.5l1 1 1-1H15c.55 0 1 .45 1 1zm-8 .5L7.5 3H2v9h6V3.5zm7-.5H9.5l-.5.5V12h6V3z"></path></svg>
+      README.md
+    </h3>
+
+      <article class="markdown-body entry-content" itemprop="text"><h1><a id="user-content-assh---advanced-ssh-config" class="anchor" href="#assh---advanced-ssh-config" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>assh - <em>Advanced SSH config</em></h1>
+
+<p><a href="https://travis-ci.org/moul/advanced-ssh-config"><img src="68747470733a2f2f696d672e736869656c64732e696f2f7472617669732f6d6f756c2f616476616e6365642d7373682d636f6e6669672e737667.dat" alt="Travis" data-canonical-src="https://img.shields.io/travis/moul/advanced-ssh-config.svg" style="max-width: 100%;"></a>
+<a href="https://godoc.org/github.com/moul/advanced-ssh-config"><img src="68747470733a2f2f676f646f632e6f72672f6769746875622e636f6d2f6d6f756c2f616476616e6365642d7373682d636f6e6669673f7374617475732e737667.dat" alt="GoDoc" data-canonical-src="https://godoc.org/github.com/moul/advanced-ssh-config?status.svg" style="max-width: 100%;"></a>
+<a href="https://camo.githubusercontent.com/8ad4aeb6137e38d9cf37f95314cd559a540f2df2/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f6c6963656e73652f6d6f756c2f616476616e6365642d7373682d636f6e6669672e737667" target="_blank"><img src="68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f6c6963656e73652f6d6f756c2f616476616e6365642d7373682d636f6e6669672....dat" alt="License" data-canonical-src="https://img.shields.io/github/license/moul/advanced-ssh-config.svg" style="max-width: 100%;"></a>
+<a href="https://github.com/moul/advanced-ssh-config/releases"><img src="68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f72656c656173652f6d6f756c2f616476616e6365642d7373682d636f6e6669672....dat" alt="GitHub release" data-canonical-src="https://img.shields.io/github/release/moul/advanced-ssh-config.svg" style="max-width: 100%;"></a>
+<a href="https://goreportcard.com/report/github.com/moul/advanced-ssh-config"><img src="68747470733a2f2f676f7265706f7274636172642e636f6d2f62616467652f6769746875622e636f6d2f6d6f756c2f616476616e6365642d7373682d636f6....dat" alt="Go Report Card" data-canonical-src="https://goreportcard.com/badge/github.com/moul/advanced-ssh-config" style="max-width: 100%;"></a></p>
+
+<p><a href="https://raw.githubusercontent.com/moul/advanced-ssh-config/master/resources/assh.png" target="_blank"><img src="assh.png" style="max-width: 100%;" width="400"></a></p>
+
+<h4><a id="user-content-table-of-contents" class="anchor" href="#table-of-contents" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Table of Contents</h4>
+
+<ol>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#features">Features</a>
+
+<ul>
+<li><a href="#configuration-features">Configuration features</a></li>
+<li><a href="#using-gateway-from-command-line">Using Gateway from command line</a></li>
+<li><a href="#using-gateways-from-configuration-file">Using Gateway from configuration file</a></li>
+<li><a href="#under-the-hood-features">Under the hood features</a></li>
+<li><a href="#hooks">Hooks</a></li>
+</ul></li>
+<li><a href="#configuration">Configuration</a></li>
+<li><a href="#usage">Usage</a>
+
+<ul>
+<li><a href="#usage-examples">Usage Examples</a></li>
+</ul></li>
+<li><a href="#install">Install</a>
+
+<ul>
+<li><a href="#register-the-wrapper-optional">Register the wrapper (optional)</a></li>
+</ul></li>
+<li><a href="#getting-started">Getting started</a></li>
+<li><a href="#changelog">Changelog</a></li>
+<li><a href="#alternative-version">Alternative version</a></li>
+<li><a href="#troubleshooting">Troubleshooting</a></li>
+<li><a href="#license">License</a></li>
+</ol>
+
+<h2><a id="user-content-overview" class="anchor" href="#overview" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Overview</h2>
+
+<p>A <em>transparent wrapper</em> that adds <strong>regex</strong>, <strong>aliases</strong>, <strong>gateways</strong>, <strong>includes</strong>, <strong>dynamic hostnames</strong> to <strong>SSH</strong>.</p>
+
+<p><a href="https://www.libssh.org/">lib-ssh</a> wraps <code>assh</code> as a <a href="https://en.wikibooks.org/wiki/OpenSSH/Cookbook/Proxies_and_Jump_Hosts#ProxyCommand_with_Netcat">ProxyCommand</a>; it means that it works seamlessly with:</p>
+
+<ul>
+<li><a href="http://www.openbsd.org/cgi-bin/man.cgi?query=ssh&amp;sektion=1">ssh</a></li>
+<li><a href="http://www.openbsd.org/cgi-bin/man.cgi?query=scp&amp;sektion=1">scp</a></li>
+<li><a href="http://linuxcommand.org/man_pages/rsync1.html">rsync</a></li>
+<li><a href="https://www.kernel.org/pub/software/scm/git/docs/">git</a></li>
+<li>Desktop applications depending on <code>lib-ssh</code> or <code>ssh</code> (i.e., <a href="http://www.git-tower.com/">Tower</a>, <a href="https://atom.io/">Atom.io</a>, <a href="http://projects.tynsoe.org/fr/stm/">SSH Tunnel Manager</a>)</li>
+</ul>
+
+<h2><a id="user-content-features" class="anchor" href="#features" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Features</h2>
+
+<h3><a id="user-content-configuration-features" class="anchor" href="#configuration-features" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Configuration features</h3>
+
+<ul>
+<li><strong>regex</strong> support</li>
+<li><strong>aliases</strong> <code>gate</code> -&gt; <code>gate.domain.tld</code></li>
+<li><strong>gateways</strong> -&gt; transparent ssh connection chaining</li>
+<li><strong>includes</strong>: split configuration in multiple files</li>
+<li><strong>local command execution</strong>: finally the reverse of <strong>RemoteCommand</strong></li>
+<li><strong>templates</strong>: equivalent to host but you can't connect directly to a template, perfect for inheritance</li>
+<li><strong>inheritance</strong>: make hosts inherits from host hosts or templates</li>
+<li><strong>variable expansion</strong>: resolve variables from the environment</li>
+<li><strong>smart proxycommand</strong>: RAW tcp connection when possible with <code>netcat</code> and <code>socat</code> as default fallbacks</li>
+</ul>
+
+<h3><a id="user-content-using-gateway-from-command-line" class="anchor" href="#using-gateway-from-command-line" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Using Gateway from command line</h3>
+
+<p><em>assh</em> can use the <a href="https://en.wikibooks.org/wiki/OpenSSH/Cookbook/Proxies_and_Jump_Hosts#ProxyCommand_with_Netcat">ProxyCommand with netcat</a> feature of OpenSSH <strong>transparently</strong> and without the pain of using extended configuration.</p>
+
+<p>Connect to <code>hosta</code> using <code>hostb</code> as a gateway.</p>
+
+<pre><code>  ┌─────┐
+  │ YOU │─ ─ ─ ─ ─
+  └─────┘         │
+     ┃            ▽
+     ┃         ┌─────┐
+ firewall      │hostb│
+     ┃         └─────┘
+     ▼            │
+  ┌─────┐
+  │hosta│◁─ ─ ─ ─ ┘
+  └─────┘
+</code></pre>
+
+<div class="highlight highlight-text-shell-session"><pre>$ <span class="pl-s1">ssh hosta/hostb</span>
+<span class="pl-e">user@hosta</span> $</pre></div>
+
+<p>Equivalent to <code>ssh -o ProxyCommand="ssh hostb nc %h %p" hosta</code></p>
+
+<hr>
+
+<p>Connect to <code>hosta</code> using <code>hostb</code> as a gateway using <code>hostc</code> as a gateway.</p>
+
+<pre><code>  ┌─────┐              ┌─────┐
+  │ YOU │─ ─ ─ ─ ─ ─ ─▷│hostc│
+  └─────┘              └─────┘
+     ┃                    │
+     ┃
+ firewall                 │
+     ┃
+     ┃                    │
+     ▼                    ▽
+  ┌─────┐              ┌─────┐
+  │hosta│◁─ ─ ─ ─ ─ ─ ─│hostb│
+  └─────┘              └─────┘
+</code></pre>
+
+<div class="highlight highlight-text-shell-session"><pre>$ <span class="pl-s1">ssh hosta/hostb/hostc</span>
+<span class="pl-e">user@hosta</span> $</pre></div>
+
+<p>Equivalent to <code>ssh -o ProxyCommand="ssh -o ProxyCommand='ssh hostc nc %h %p' hostb nc %h %p" hosta</code></p>
+
+<h3><a id="user-content-using-gateways-from-configuration-file" class="anchor" href="#using-gateways-from-configuration-file" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Using Gateways from configuration file</h3>
+
+<p>You can define an equivalent of the <a href="https://en.wikibooks.org/wiki/OpenSSH/Cookbook/Proxies_and_Jump_Hosts#ProxyCommand_with_Netcat">"ProxyCommand with netcat"</a> feature of OpenSSH, with a simpler syntax, more advanced workflows, and a unique fallback feature.</p>
+
+<p>Let's consider the following <code>assh.yml</code> file</p>
+
+<div class="highlight highlight-source-yaml"><pre><span class="pl-s"><span class="pl-ent">hosts:</span></span>
+  <span class="pl-s"><span class="pl-ent">hosta:</span></span>
+    <span class="pl-s"><span class="pl-ent">Hostname:</span> <span class="pl-s">1.2.3.4</span></span>
+
+  <span class="pl-s"><span class="pl-ent">hostb:</span></span>
+    <span class="pl-s"><span class="pl-ent">Hostname:</span> <span class="pl-s">5.6.7.8</span></span>
+    <span class="pl-s"><span class="pl-ent">Gateways:</span></span>
+    <span class="pl-s">- <span class="pl-s">hosta</span></span>
+
+  <span class="pl-s"><span class="pl-ent">hostc:</span></span>
+    <span class="pl-s"><span class="pl-ent">Hostname:</span> <span class="pl-s">9.10.11.12</span></span>
+    <span class="pl-s"><span class="pl-ent">Gateways:</span></span>
+    <span class="pl-s">- <span class="pl-s">hostb</span></span>
+
+  <span class="pl-s"><span class="pl-ent">hostd:</span></span>
+    <span class="pl-s"><span class="pl-ent">Hostname:</span> <span class="pl-s">13.14.15.16</span></span>
+    <span class="pl-s"><span class="pl-ent">Gateways:</span></span>
+    <span class="pl-s">- <span class="pl-s">direct</span></span>
+    <span class="pl-s">- <span class="pl-s">hosta</span></span></pre></div>
+
+<ul>
+<li><code>ssh hosta</code> -&gt; <code>ssh 1.2.3.4</code></li>
+<li><code>ssh hostb</code> -&gt; <code>ssh -o ProxyCommand="ssh hostb nc %h %p" hosta</code></li>
+<li><code>ssh hostc</code> -&gt; <code>ssh -o ProxyCommand="ssh -o ProxyCommand='ssh hostc nc %h %p' hostb nc %h %p" hosta</code></li>
+<li><code>ssh hostd</code> -&gt;
+
+<ul>
+<li>assh will try to <code>ssh 13.14.15.16</code></li>
+<li>then, fallback on <code>ssh -o ProxyCommand="ssh hostd nc %h %p" hosta</code></li>
+<li>this method allows you to have the best performances when it is possible, but ensure your commands will work if you are outside of your company for instance</li>
+</ul></li>
+</ul>
+
+<h3><a id="user-content-under-the-hood-features" class="anchor" href="#under-the-hood-features" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Under the hood features</h3>
+
+<ul>
+<li>Automatically regenerates <code>~/.ssh/config</code> file when needed</li>
+<li>Inspect parent process to determine log level (if you use <code>ssh -vv</code>, <strong>assh</strong> will automatically run in debug mode)</li>
+<li>Automatically creates <code>ControlPath</code> directories so you can use <em>slashes</em> in your <code>ControlPath</code> option, can be disabled with the <code>NoControlMasterMkdir: true</code> configuration in host or globally.</li>
+</ul>
+
+<h3><a id="user-content-hooks" class="anchor" href="#hooks" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Hooks</h3>
+
+<h4><a id="user-content-events" class="anchor" href="#events" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Events</h4>
+
+<h5><a id="user-content-beforeconnect" class="anchor" href="#beforeconnect" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>BeforeConnect</h5>
+
+<p><code>BeforeConnect</code> is called just before <code>assh</code> tries to connect to the remote SSH port.</p>
+
+<p>Note: <code>BeforeConnect</code> will be called for each SSH connection; if you use multiple gateways, it will be called for each gateways until one succeed to connect.</p>
+
+<hr>
+
+<p>Example of Golang template variables:</p>
+
+<pre lang="golang"><code>// Host: http://godoc.org/github.com/moul/advanced-ssh-config/pkg/config/#Host
+{{.Host.Name}}                                  //  localhost
+{{.Host.HostName}}                              //  127.0.0.1
+{{.Host.Port}}                                  //  22
+{{.Host.User}}                                  //  moul
+{{.Host.Prototype}}                             //  moul@127.0.0.1:22
+{{.Host}}                                       //  {"HostName":"localhost","Port":22","User":"moul","ControlPersist":"yes",...}
+{{printf "%s:%s" .Host.HostName .Host.Port}}    //  localhost:22
+</code></pre>
+
+<h5><a id="user-content-onconnect" class="anchor" href="#onconnect" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>OnConnect</h5>
+
+<p><code>OnConnect</code> is called as soon as assh is connected to the remote SSH port.</p>
+
+<p>Note: <code>OnConnect</code> is not aware of the authentication process and will always be raised.</p>
+
+<hr>
+
+<p>Example of Golang template variables:</p>
+
+<pre lang="golang"><code>// Host: http://godoc.org/github.com/moul/advanced-ssh-config/pkg/config/#Host
+{{.Host.Name}}                                  //  localhost
+{{.Host.HostName}}                              //  127.0.0.1
+{{.Host.Port}}                                  //  22
+{{.Host.User}}                                  //  moul
+{{.Host.Prototype}}                             //  moul@127.0.0.1:22
+{{.Host}}                                       //  {"HostName":"localhost","Port":22","User":"moul","ControlPersist":"yes",...}
+{{printf "%s:%s" .Host.HostName .Host.Port}}    //  localhost:22
+
+// Stats: http://godoc.org/github.com/moul/advanced-ssh-config/pkg/commands/#ConnectionStats
+{{.Stats.ConnectedAt}}                           //  2016-07-20 11:19:23.467900594 +0200 CEST
+</code></pre>
+
+<h5><a id="user-content-onconnecterror" class="anchor" href="#onconnecterror" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>OnConnectError</h5>
+
+<p><code>OnConnectError</code> is called when <code>assh</code> fails to open a new TCP connection.</p>
+
+<hr>
+
+<p>Example of Golang template variables:</p>
+
+<pre lang="golang"><code>// Host: http://godoc.org/github.com/moul/advanced-ssh-config/pkg/config/#Host
+{{.Host.Name}}                                  //  localhost
+{{.Host.HostName}}                              //  127.0.0.1
+{{.Host.Port}}                                  //  22
+{{.Host.User}}                                  //  moul
+{{.Host.Prototype}}                             //  moul@127.0.0.1:22
+{{.Host}}                                       //  {"HostName":"localhost","Port":22","User":"moul","ControlPersist":"yes",...}
+{{printf "%s:%s" .Host.HostName .Host.Port}}    //  localhost:22
+
+// Error
+{{.Error}}                                      //  dial tcp: lookup localhost: no such host
+</code></pre>
+
+<h5><a id="user-content-ondisconnect" class="anchor" href="#ondisconnect" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>OnDisconnect</h5>
+
+<p><code>OnDisconnect</code> is called as the assh socket is closed.</p>
+
+<hr>
+
+<p>Example of Golang template variables:</p>
+
+<pre lang="golang"><code>// Host: http://godoc.org/github.com/moul/advanced-ssh-config/pkg/config/#Host
+{{.Host.Name}}                                  //  localhost
+{{.Host.HostName}}                              //  127.0.0.1
+{{.Host.Port}}                                  //  22
+{{.Host.User}}                                  //  moul
+{{.Host.Prototype}}                             //  moul@127.0.0.1:22
+{{.Host}}                                       //  {"HostName":"localhost","Port":22","User":"moul","ControlPersist":"yes",...}
+{{printf "%s:%s" .Host.HostName .Host.Port}}    //  localhost:22
+
+// Stats: http://godoc.org/github.com/moul/advanced-ssh-config/pkg/commands/#ConnectionStats
+{{.Stats.ConnectedAt}}                           //  2016-07-20 11:19:23.467900594 +0200 CEST
+{{.Stats.WrittenBytes}}                          //  3613
+{{.Stats.WrittenBytesHuman}}                     //  3.6kb
+{{.Stats.DisconnectAt}}                          //  2016-07-20 11:19:29,520515792 +0200 CEST
+{{.Stats.ConnectionDuration}}                    //  6.052615198s
+{{.Stats.ConnectionDurationHuman}}               //  6s
+{{.Stats.AverageSpeed}}                          //  596.933bps
+{{.Stats.AverageSpeedHuman}}                     //  3.4kb/s
+</code></pre>
+
+<h4><a id="user-content-hooks-drivers" class="anchor" href="#hooks-drivers" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Hooks drivers</h4>
+
+<h5><a id="user-content-exec-driver" class="anchor" href="#exec-driver" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Exec driver</h5>
+
+<p>Exec driver uses <a href="https://golang.org/pkg/text/template/">Golang's template system</a> to execute a shell command</p>
+
+<p>Usage: <code>exec &lt;binary&gt; [args...]</code></p>
+
+<div class="highlight highlight-source-yaml"><pre><span class="pl-s"><span class="pl-ent">defaults:</span></span>
+  <span class="pl-s"><span class="pl-ent">Hooks:</span></span>
+    <span class="pl-s"><span class="pl-ent">OnConnect:</span></span>
+    <span class="pl-s">- <span class="pl-s">exec echo '{{.Host}}' | jq .</span></span>
+<span class="pl-c"># executes: `echo '{"HostName":"localhost","Port":"22","User":"moul","ControlPersist":"yes",...}' | jq .</span>
+<span class="pl-c"># which results in printing a pretty JSON of the host</span>
+<span class="pl-c"># {</span>
+<span class="pl-c">#   "HostName": "localhost",</span>
+<span class="pl-c">#   "Port": "22",</span>
+<span class="pl-c">#   "User": "moul",</span>
+<span class="pl-c">#   "ControlPersist": "yes",</span>
+<span class="pl-c">#   ...</span>
+<span class="pl-c"># }</span></pre></div>
+
+<div class="highlight highlight-source-yaml"><pre><span class="pl-s"><span class="pl-ent">defaults:</span></span>
+  <span class="pl-s"><span class="pl-ent">Hooks:</span></span>
+    <span class="pl-s"><span class="pl-ent">OnConnect:</span></span>
+    <span class="pl-s">- <span class="pl-s">exec echo 'New SSH connection to {{.Host.Prototype}}.' | mail -s "SSH connection journal" m+assh@42.am</span></span>
+<span class="pl-c"># send an email with the connection prototype</span></pre></div>
+
+<hr>
+
+<p>The <code>exec</code> commands are blocking, a new driver for background tasks is planned. For now, you can run a job in background like this:</p>
+
+<div class="highlight highlight-source-yaml"><pre><span class="pl-s"><span class="pl-ent">defaults:</span></span>
+  <span class="pl-s"><span class="pl-ent">Hooks:</span></span>
+    <span class="pl-s"><span class="pl-ent">OnConnect:</span></span>
+    <span class="pl-s">- <span class="pl-s">exec sleep 60 &amp;</span></span>
+<span class="pl-c"># execute the `sleep 60` command in background (non-blocking)</span>
+<span class="pl-c"># if you quit your ssh connection, the process will continue in background.</span></pre></div>
+
+<h5><a id="user-content-write-driver" class="anchor" href="#write-driver" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Write driver</h5>
+
+<p>Write driver uses <a href="https://golang.org/pkg/text/template/">Golang's template system</a> to write out data to stdout</p>
+
+<p>Usage: <code>write &lt;line:string...&gt;</code></p>
+
+<div class="highlight highlight-source-yaml"><pre><span class="pl-s"><span class="pl-ent">defaults:</span></span>
+  <span class="pl-s"><span class="pl-ent">Hooks:</span></span>
+    <span class="pl-s"><span class="pl-ent">OnConnect:</span></span>
+    <span class="pl-s">- <span class="pl-s">write New SSH connection to {{.Host.Prototype}}.</span></span>
+<span class="pl-c"># writes: "New SSH connection to moul@127.0.0.1:22." on the terminal on connection</span></pre></div>
+
+<div class="highlight highlight-source-yaml"><pre><span class="pl-s"><span class="pl-ent">defaults:</span></span>
+  <span class="pl-s"><span class="pl-ent">Hooks:</span></span>
+    <span class="pl-s"><span class="pl-ent">OnDisconnect:</span></span>
+    <span class="pl-s">- <span class="pl-s"><span class="pl-pds">"</span>write SSH connection to {{.Host.Name}} closed, {{ .Stats.WrittenBytes }} bytes written in {{ .Stats.ConnectionDuration }} ({{ .Stats.AverageSpeed }})<span class="pl-pds">"</span></span></span>
+<span class="pl-c"># writes: SSH connection to localhost closed, 40 bytes written.</span></pre></div>
+
+<h5><a id="user-content-notify-driver" class="anchor" href="#notify-driver" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Notify driver</h5>
+
+<p>Notify driver uses <a href="https://golang.org/pkg/text/template/">Golang's template system</a> to open Desktop notifications.</p>
+
+<p>Note: OS X only for now.</p>
+
+<p>Usage: <code>notify &lt;line:string...&gt;</code></p>
+
+<div class="highlight highlight-source-yaml"><pre><span class="pl-s"><span class="pl-ent">defaults:</span></span>
+  <span class="pl-s"><span class="pl-ent">Hooks:</span></span>
+    <span class="pl-s"><span class="pl-ent">OnConnect:</span></span>
+    <span class="pl-s">- <span class="pl-s">notify New SSH connection to {{.Host.Prototype}}.</span></span></pre></div>
+
+<p><a href="https://github.com/moul/advanced-ssh-config/raw/master/resources/new_connection_notification.png" target="_blank"><img src="new_connection_notification.png" alt="" style="max-width: 100%;"></a></p>
+
+<div class="highlight highlight-source-yaml"><pre><span class="pl-s"><span class="pl-ent">defaults:</span></span>
+  <span class="pl-s"><span class="pl-ent">Hooks:</span></span>
+    <span class="pl-s"><span class="pl-ent">OnDisconnect:</span></span>
+    <span class="pl-s">- <span class="pl-s"><span class="pl-pds">"</span>notify SSH connection to {{.Host.Name}} closed, {{ .Stats.WrittenBytes }} bytes written in {{ .Stats.ConnectionDuration }} ({{ .Stats.AverageSpeed }})<span class="pl-pds">"</span></span></span></pre></div>
+
+<p><a href="https://github.com/moul/advanced-ssh-config/raw/master/resources/closed_connection_notification.png" target="_blank"><img src="closed_connection_notification.png" alt="" style="max-width: 100%;"></a></p>
+
+<h2><a id="user-content-configuration" class="anchor" href="#configuration" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Configuration</h2>
+
+<p><code>assh</code> now manages the <code>~/.ssh/config</code> file, take care to keep a backup your <code>~/.ssh/config</code> file.</p>
+
+<p><code>~/.ssh/assh.yml</code> is a <a href="http://www.yaml.org/spec/1.2/spec.html">YAML</a> file containing:</p>
+
+<ul>
+<li>a <code>hosts</code> dictionary containing multiple <em>HOST</em> definitions</li>
+<li>a <code>defaults</code> section containing global flags</li>
+<li>and an <code>includes</code> section containing path to other configuration files</li>
+</ul>
+
+<div class="highlight highlight-source-yaml"><pre><span class="pl-s"><span class="pl-ent">hosts:</span></span>
+
+  <span class="pl-s"><span class="pl-ent">homer:</span></span>
+    <span class="pl-c"># ssh homer -&gt;  ssh 1.2.3.4 -p 2222 -u robert</span>
+    <span class="pl-s"><span class="pl-ent">Hostname:</span> <span class="pl-s">1.2.3.4</span></span>
+    <span class="pl-s"><span class="pl-ent">User:</span> <span class="pl-s">robert</span></span>
+    <span class="pl-c1"><span class="pl-ent">Port:</span> 2222</span>
+
+  <span class="pl-s"><span class="pl-ent">bart:</span></span>
+    <span class="pl-c"># ssh bart -&gt;   ssh 5.6.7.8 -u bart           &lt;- direct access</span>
+    <span class="pl-c">#            or ssh 5.6.7.8/homer -u bart     &lt;- using homer as a gateway</span>
+    <span class="pl-s"><span class="pl-ent">Hostname:</span> <span class="pl-s">5.6.7.8</span></span>
+    <span class="pl-s"><span class="pl-ent">User:</span> <span class="pl-s">bart</span></span>
+    <span class="pl-s"><span class="pl-ent">Gateways:</span></span>
+    <span class="pl-s">- <span class="pl-s">direct                   </span></span><span class="pl-c"># tries a direct access first</span>
+    <span class="pl-s">- <span class="pl-s">homer                    </span></span><span class="pl-c"># fallback on homer gateway</span>
+
+  <span class="pl-s"><span class="pl-ent">maggie:</span></span>
+    <span class="pl-c"># ssh maggie -&gt;   ssh 5.6.7.8 -u maggie       &lt;- direct access</span>
+    <span class="pl-c">#              or ssh 5.6.7.8/homer -u maggie   &lt;- using homer as a gateway</span>
+    <span class="pl-s"><span class="pl-ent">User:</span> <span class="pl-s">maggie</span></span>
+    <span class="pl-s"><span class="pl-ent">Inherits:</span></span>
+    <span class="pl-s">- <span class="pl-s">bart                     </span></span><span class="pl-c"># inherits rules from "bart"</span>
+
+  <span class="pl-s"><span class="pl-ent">bart-access:</span></span>
+    <span class="pl-c"># ssh bart-access -&gt;  ssh home.simpson.springfield.us -u bart</span>
+    <span class="pl-s"><span class="pl-ent">Inherits:</span></span>
+    <span class="pl-s">- <span class="pl-s">bart-template</span></span>
+    <span class="pl-s">- <span class="pl-s">simpson-template</span></span>
+
+  <span class="pl-s"><span class="pl-ent">lisa-access:</span></span>
+    <span class="pl-c"># ssh lisa-access -&gt;  ssh home.simpson.springfield.us -u lisa</span>
+    <span class="pl-s"><span class="pl-ent">Inherits:</span></span>
+    <span class="pl-s">- <span class="pl-s">lisa-template</span></span>
+    <span class="pl-s">- <span class="pl-s">simpson-template</span></span>
+
+  <span class="pl-s"><span class="pl-ent">marvin:</span></span>
+    <span class="pl-c"># ssh marvin    -&gt; ssh marvin    -p 23</span>
+    <span class="pl-c"># ssh sad-robot -&gt; ssh sad-robot -p 23</span>
+    <span class="pl-c"># ssh bighead   -&gt; ssh bighead   -p 23</span>
+    <span class="pl-c"># aliases inherit everything from marvin, except hostname</span>
+    <span class="pl-c1"><span class="pl-ent">Port:</span> 23</span>
+    <span class="pl-s"><span class="pl-ent">Aliases:</span></span>
+    <span class="pl-s">- <span class="pl-s">sad-robot</span></span>
+    <span class="pl-s">- <span class="pl-s">bighead</span></span>
+
+  <span class="pl-s"><span class="pl-ent">dolphin:</span></span>
+    <span class="pl-c"># ssh dolphin   -&gt; ssh dolphin -p 24</span>
+    <span class="pl-c"># ssh ecco      -&gt; ssh dolphin -p 24</span>
+    <span class="pl-c"># same as above, but with fixed hostname</span>
+    <span class="pl-c1"><span class="pl-ent">Port:</span> 24</span>
+    <span class="pl-s"><span class="pl-ent">Hostname:</span> <span class="pl-s">dolphin</span></span>
+    <span class="pl-s"><span class="pl-ent">Aliases:</span></span>
+    <span class="pl-s">- <span class="pl-s">ecco</span></span>
+
+  <span class="pl-s"><span class="pl-ent">schooltemplate:</span></span>
+    <span class="pl-s"><span class="pl-ent">User:</span> <span class="pl-s">student</span></span>
+    <span class="pl-s"><span class="pl-ent">IdentityFile:</span> <span class="pl-s">~/.ssh/school-rsa</span></span>
+    <span class="pl-s"><span class="pl-ent">ForwardX11:</span> <span class="pl-s">yes</span></span>
+
+  <span class="pl-s"><span class="pl-ent">schoolgw:</span></span>
+    <span class="pl-c"># ssh school -&gt;   ssh gw.school.com -l student -o ForwardX11=no -i ~/.ssh/school-rsa</span>
+    <span class="pl-s"><span class="pl-ent">Hostname:</span> <span class="pl-s">gw.school.com</span></span>
+    <span class="pl-s"><span class="pl-ent">ForwardX11:</span> <span class="pl-s">no</span></span>
+    <span class="pl-s"><span class="pl-ent">Inherits:</span></span>
+    <span class="pl-s">- <span class="pl-s">schooltemplate</span></span>
+
+  <span class="pl-s"><span class="pl-ent">"expanded-host[0-7]*":</span></span>
+    <span class="pl-c"># ssh somehost2042 -&gt;       ssh somehost2042.some.zone</span>
+    <span class="pl-s"><span class="pl-ent">Hostname:</span> <span class="pl-s"><span class="pl-pds">"</span>%h.some.zone<span class="pl-pds">"</span></span></span>
+
+  <span class="pl-s"><span class="pl-ent">vm-*.school.com:</span></span>
+    <span class="pl-c"># ssh vm-42.school.com -&gt;   ssh vm-42.school.com/gw.school.com -l student -o ForwardX11=yes -i ~/.ssh/school-rsa</span>
+    <span class="pl-s"><span class="pl-ent">Gateways:</span></span>
+    <span class="pl-s">- <span class="pl-s">schoolgw</span></span>
+    <span class="pl-s"><span class="pl-ent">Inherits:</span></span>
+    <span class="pl-s">- <span class="pl-s">schooltemplate</span></span>
+    <span class="pl-c"># do not automatically create `ControlPath` -&gt; may result in error</span>
+    <span class="pl-s"><span class="pl-ent">NoControlMasterMkdir:</span> <span class="pl-c1">true</span></span>
+
+  <span class="pl-s"><span class="pl-ent">"*.shortcut1":</span></span>
+    <span class="pl-s"><span class="pl-ent">ResolveCommand:</span> <span class="pl-s">/bin/sh -c "echo %h | sed s/.shortcut1/.my-long-domain-name.com/"</span></span>
+
+  <span class="pl-s"><span class="pl-ent">"*.shortcut2":</span></span>
+    <span class="pl-s"><span class="pl-ent">ResolveCommand:</span> <span class="pl-s">/bin/sh -c "echo $(echo %h | sed s/.shortcut2//).my-other-long-domain-name.com"</span></span>
+
+  <span class="pl-s"><span class="pl-ent">"*.scw":</span></span>
+    <span class="pl-c"># ssh toto.scw -&gt; 1. dynamically resolves the IP address</span>
+    <span class="pl-c">#                 2. ssh {resolved ip address} -u root -p 22 -o UserKnownHostsFile=null -o StrictHostKeyChecking=no</span>
+    <span class="pl-c"># requires github.com/scaleway/scaleway-cli</span>
+    <span class="pl-s"><span class="pl-ent">ResolveCommand:</span> <span class="pl-s">/bin/sh -c "scw inspect -f {{.PublicAddress.IP}} server:$(echo %h | sed s/.scw//)"</span></span>
+    <span class="pl-s"><span class="pl-ent">User:</span> <span class="pl-s">root</span></span>
+    <span class="pl-c1"><span class="pl-ent">Port:</span> 22</span>
+    <span class="pl-s"><span class="pl-ent">UserKnownHostsFile:</span> <span class="pl-s">/dev/null</span></span>
+    <span class="pl-s"><span class="pl-ent">StrictHostKeyChecking:</span> <span class="pl-s">no</span></span>
+
+  <span class="pl-s"><span class="pl-ent">my-env-host:</span></span>
+    <span class="pl-s"><span class="pl-ent">User:</span> <span class="pl-s">user-$USER</span></span>
+    <span class="pl-s"><span class="pl-ent">Hostname:</span> <span class="pl-s">${HOSTNAME}${HOSTNAME_SUFFIX}</span></span>
+
+<span class="pl-s"><span class="pl-ent">templates:</span></span>
+  <span class="pl-c"># Templates are similar to Hosts; you can inherit from them</span>
+  <span class="pl-c"># but you cannot ssh to a template</span>
+  <span class="pl-s"><span class="pl-ent">bart-template:</span></span>
+    <span class="pl-s"><span class="pl-ent">User:</span> <span class="pl-s">bart</span></span>
+  <span class="pl-s"><span class="pl-ent">lisa-template:</span></span>
+    <span class="pl-s"><span class="pl-ent">User:</span> <span class="pl-s">lisa</span></span>
+  <span class="pl-s"><span class="pl-ent">simpson-template:</span></span>
+    <span class="pl-s"><span class="pl-ent">Host:</span> <span class="pl-s">home.simpson.springfield.us</span></span>
+
+<span class="pl-s"><span class="pl-ent">defaults:</span></span>
+  <span class="pl-c"># Defaults are applied to each hosts</span>
+  <span class="pl-s"><span class="pl-ent">ControlMaster:</span> <span class="pl-s">auto</span></span>
+  <span class="pl-s"><span class="pl-ent">ControlPath:</span> <span class="pl-s">~/tmp/.ssh/cm/%h-%p-%r.sock</span></span>
+  <span class="pl-s"><span class="pl-ent">ControlPersist:</span> <span class="pl-s">yes</span></span>
+  <span class="pl-c1"><span class="pl-ent">Port:</span> 22</span>
+  <span class="pl-s"><span class="pl-ent">User:</span> <span class="pl-s">bob</span></span>
+
+<span class="pl-s"><span class="pl-ent">includes:</span></span>
+<span class="pl-s">- <span class="pl-s">~/.ssh/assh.d/*.yml</span></span>
+<span class="pl-s">- <span class="pl-s">/etc/assh.yml</span></span>
+<span class="pl-s">- <span class="pl-s">$ENV_VAR/blah-blah-*/*.yml</span></span>
+
+<span class="pl-s"><span class="pl-ent">ASSHBinaryPath:</span> <span class="pl-s">~/bin/assh  </span></span><span class="pl-c"># optionally set the path of assh</span></pre></div>
+
+<hr>
+
+<p>A <em>HOST</em> and the <code>defaults</code> section may</p>
+
+<h2><a id="user-content-usage" class="anchor" href="#usage" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Usage</h2>
+
+<p><code>assh</code> usage</p>
+
+<pre><code>NAME:
+   assh - advanced ssh config
+
+USAGE:
+   assh [global options] command [command options] [arguments...]
+
+VERSION:
+   2.4.1 (HEAD)
+
+AUTHOR(S):
+   Manfred Touron &lt;https://github.com/moul/advanced-ssh-config&gt;
+
+COMMANDS:
+   info          Display system-wide information
+   config        Manage ssh and assh configuration
+   sockets       Manage control sockets
+   help, h       Shows a list of commands or help for one command
+
+GLOBAL OPTIONS:
+  --config value, -c value       Location of config file (default: "~/.ssh/assh.yml") [$ASSH_CONFIG]
+  --debug, -D                    Enable debug mode [$ASSH_DEBUG]
+  --verbose, -V                  Enable verbose mode
+  --help, -h                     show help
+  --version, -v                  print the version
+</code></pre>
+
+<h3><a id="user-content-usage-examples" class="anchor" href="#usage-examples" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Usage examples</h3>
+
+<h5><a id="user-content-assh-config-build" class="anchor" href="#assh-config-build" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>assh config build</code></h5>
+
+<p>Rewrites and replaces the existing ~/.ssh/config file.</p>
+
+<p>This action is automatically done by assh when detecting configuration changes.
+Running this command is useful to set up assh or repair the configuration file.</p>
+
+<div class="highlight highlight-text-shell-session"><pre>$ <span class="pl-s1">assh config build <span class="pl-k">&gt;</span> <span class="pl-k">~</span>/.ssh/config</span></pre></div>
+
+<h5><a id="user-content-assh-config-list" class="anchor" href="#assh-config-list" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>assh config list</code></h5>
+
+<p>List hosts and options.</p>
+
+<div class="highlight highlight-text-shell-session"><pre>$ <span class="pl-s1">assh config list</span>
+<span class="pl-mo">Listing entries</span>
+
+<span class="pl-mo">    *.scw -&gt; root@[hostname_not_specified]:22</span>
+<span class="pl-mo">        [custom options] StrictHostKeyChecking=no UserKnownHostsFile=/dev/null</span>
+
+<span class="pl-mo">    *.shortcut1 -&gt; bob@[hostname_not_specified]:22</span>
+
+<span class="pl-mo">    *.shortcut2 -&gt; bob@[hostname_not_specified]:22</span>
+
+<span class="pl-mo">    bart -&gt; bart@5.6.7.8:22</span>
+
+<span class="pl-mo">    bart-access -&gt; bob@[hostname_not_specified]:22</span>
+
+<span class="pl-mo">    dolphin -&gt; bob@dolphin:24</span>
+
+<span class="pl-mo">    expanded-host[0-7]* -&gt; bob@%h.some.zone:22</span>
+
+<span class="pl-mo">    homer -&gt; robert@1.2.3.4:2222</span>
+
+<span class="pl-mo">    lisa-access -&gt; bob@[hostname_not_specified]:22</span>
+
+<span class="pl-mo">    maggie -&gt; maggie@[hostname_not_specified]:22</span>
+
+<span class="pl-mo">    marvin -&gt; bob@[hostname_not_specified]:23</span>
+
+<span class="pl-mo">    my-env-host -&gt; user-moul@[hostname_not_specified]:22</span>
+
+<span class="pl-mo">    schoolgw -&gt; bob@gw.school.com:22</span>
+<span class="pl-mo">        [custom options] ForwardX11=no</span>
+
+<span class="pl-mo">    schooltemplate -&gt; student@[hostname_not_specified]:22</span>
+<span class="pl-mo">        [custom options] ForwardX11=yes IdentityFile=~/.ssh/school-rsa</span>
+
+<span class="pl-mo">    vm-*.school.com -&gt; bob@[hostname_not_specified]:22</span>
+
+<span class="pl-mo">    (*) General options:</span>
+<span class="pl-mo">        ControlMaster: auto</span>
+<span class="pl-mo">        ControlPath: ~/tmp/.ssh/cm/%h-%p-%r.sock</span>
+<span class="pl-mo">        ControlPersist: yes</span>
+<span class="pl-mo">        Port: 22</span>
+<span class="pl-mo">        User: bob</span></pre></div>
+
+<h5><a id="user-content-assh-config-search-keyword" class="anchor" href="#assh-config-search-keyword" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>assh config search &lt;keyword&gt;</code></h5>
+
+<p>Search for <code>&lt;keyword&gt;</code> in hosts and host options.</p>
+
+<div class="highlight highlight-text-shell-session"><pre>$ <span class="pl-s1">assh config search bart</span>
+<span class="pl-mo">Listing results for bart:</span>
+<span class="pl-mo">    bart -&gt; bart@5.6.7.8:22</span>
+<span class="pl-mo">    bart-access -&gt; moul@[hostname_not_specified]:22</span></pre></div>
+
+<h5><a id="user-content-assh-info" class="anchor" href="#assh-info" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>assh info</code></h5>
+
+<p>Display system-wide information.</p>
+
+<div class="highlight highlight-text-shell-session"><pre>$ <span class="pl-s1">assh info</span>
+<span class="pl-mo">Debug mode (client): false</span>
+<span class="pl-mo">CLI Path: /path/to/assh</span>
+<span class="pl-mo">Go version: go1.6.2</span>
+<span class="pl-mo">OS/Arch: darwin/amd64</span>
+
+<span class="pl-mo">RC files:</span>
+<span class="pl-mo">- ~/.ssh/assh.yml</span>
+<span class="pl-mo">- ~/.ssh/assh.d/hosts.yml</span>
+<span class="pl-mo">- ~/.ssh/assh.d/moul.yml</span>
+<span class="pl-mo">- ~/.ssh/assh.d/test.yml</span>
+
+<span class="pl-mo">Statistics:</span>
+<span class="pl-mo">- 299 hosts</span>
+<span class="pl-mo">- 2 templates</span>
+<span class="pl-mo">- 4 included files</span></pre></div>
+
+<h5><a id="user-content-assh-sockets-list" class="anchor" href="#assh-sockets-list" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>assh sockets list</code></h5>
+
+<p>List active control sockets.</p>
+
+<div class="highlight highlight-text-shell-session"><pre>$ <span class="pl-s1">assh sockets list</span>
+<span class="pl-mo">4 active control sockets in "~/.ssh/cm/":</span>
+
+<span class="pl-mo">- bart/homer/lisa-22-root.sock (14 minutes)</span>
+<span class="pl-mo">- bart/homer-22-root.sock (14 minutes)</span>
+<span class="pl-mo">- bart-22-root.sock (14 minutes)</span>
+<span class="pl-mo">- marge-22-bart.sock (1 hour)</span></pre></div>
+
+<h5><a id="user-content-assh-sockets-flush" class="anchor" href="#assh-sockets-flush" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>assh sockets flush</code></h5>
+
+<p>Close active control sockets.</p>
+
+<div class="highlight highlight-text-shell-session"><pre>$ <span class="pl-s1">assh sockets flush</span>
+<span class="pl-mo">Closed 4 control sockets.</span></pre></div>
+
+<h5><a id="user-content-assh-sockets-master" class="anchor" href="#assh-sockets-master" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>assh sockets master</code></h5>
+
+<p>Create a master control sockets.</p>
+
+<div class="highlight highlight-text-shell-session"><pre>$ <span class="pl-s1">assh sockets master</span></pre></div>
+
+<h2><a id="user-content-install" class="anchor" href="#install" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Install</h2>
+
+<p>Get the latest version using GO (recommended way):</p>
+
+<div class="highlight highlight-source-shell"><pre>go get -u github.com/moul/advanced-ssh-config/cmd/assh</pre></div>
+
+<hr>
+
+<p>Get the latest released version using homebrew (Mac OS X):</p>
+
+<div class="highlight highlight-source-shell"><pre>brew install assh</pre></div>
+
+<p>Build the latest version</p>
+
+<div class="highlight highlight-source-shell"><pre>brew install assh --HEAD</pre></div>
+
+<hr>
+
+<p>Get a released version on: <a href="https://github.com/moul/advanced-ssh-config/releases">https://github.com/moul/advanced-ssh-config/releases</a></p>
+
+<hr>
+
+<h4><a id="user-content-register-the-wrapper-optional" class="anchor" href="#register-the-wrapper-optional" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Register the wrapper (optional)</h4>
+
+<p>To improve experience when using advanced pattern matching, add the following at the end of your .bashrc or .zshrc:</p>
+
+<div class="highlight highlight-source-shell"><pre><span class="pl-c1">alias</span> ssh=<span class="pl-s"><span class="pl-pds">"</span>assh wrapper ssh<span class="pl-pds">"</span></span></pre></div>
+
+<p>This step is not <em>mandatory</em> but highly <em>recommended</em>.</p>
+
+<hr>
+
+<p><strong>Note</strong>: <code>ssh</code> does not understand advanced patterns;
+To bypass this limitation, <code>assh</code> maintains a list of <em>known hosts</em> and regenerate the <code>~/.ssh/config</code> with all those expanded <em>known hosts</em>.</p>
+
+<p>Without the wrapper, the <code>~/.ssh/config</code> risks to be outdated when connecting to a new host for the first time and you will need to launch the command again.</p>
+
+<p>With the wrapper, <code>ssh</code> will <em>always</em> be called with an updated <code>~/.ssh/config</code> file.</p>
+
+<h2><a id="user-content-getting-started" class="anchor" href="#getting-started" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Getting started</h2>
+
+<ol>
+<li>Backup your old <code>~/.ssh/config</code>: <code>cp ~/.ssh/config ~/.ssh/config.backup</code></li>
+<li>Create a new <code>~/.ssh/assh.yml</code> file</li>
+<li>Run <code>assh config build &gt; ~/.ssh/config</code> to validate the syntax of your <code>~/.ssh/assh.yml</code> file and automatically build your <code>~/.ssh/config</code> file</li>
+<li>You are ready!</li>
+</ol>
+
+<h2><a id="user-content-changelog" class="anchor" href="#changelog" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Changelog</h2>
+
+<h3><a id="user-content-master-unreleased" class="anchor" href="#master-unreleased" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>master (unreleased)</h3>
+
+<ul>
+<li>Fix <code>written bytes</code> calculation (<a href="https://github.com/quentinperez">@quentinperez</a>)</li>
+<li>Add template functions: <code>json</code>, <code>prettyjson</code>, <code>split</code>, <code>join</code>, <code>title</code>, <code>lower</code>, <code>upper</code></li>
+<li>Support of <code>BeforeConnect</code>, <code>OnConnect</code>, <code>OnConnectError</code> and <code>OnDisconnect</code> hooks</li>
+<li>Support of <code>write</code>, <code>notify</code> and <code>exec</code> hook drivers</li>
+<li>Add <code>assh config json</code> command</li>
+<li>Add <code>assh config {build,json} --expand</code> option</li>
+</ul>
+
+<p><a href="https://github.com/moul/advanced-ssh-config/compare/v2.4.1...master">Full commits list</a></p>
+
+<h3><a id="user-content-v241-2016-07-19" class="anchor" href="#v241-2016-07-19" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>v2.4.1 (2016-07-19)</h3>
+
+<ul>
+<li>Fix panic in <code>assh wrapper</code> (<a href="https://github.com/moul/advanced-ssh-config/issues/157">#157</a>)</li>
+</ul>
+
+<p><a href="https://github.com/moul/advanced-ssh-config/compare/v2.4.0...v2.4.1">Full commits list</a></p>
+
+<h3><a id="user-content-v240-2016-07-14" class="anchor" href="#v240-2016-07-14" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>v2.4.0 (2016-07-14)</h3>
+
+<ul>
+<li>Add a control socket manager <code>assh sockets {list,flush,master}</code> (<a href="https://github.com/moul/advanced-ssh-config/pull/152">#152</a>)</li>
+<li>Add a <code>assh --config=/path/to/assh.yml</code> option</li>
+<li>Add storm-like <code>assh config list</code> and <code>assh config search {keyword}</code> commands (<a href="https://github.com/moul/advanced-ssh-config/pull/151">#151</a>)</li>
+<li>Add an optional <code>ASSHBinaryPath</code> variable in the <code>assh.yml</code> file (<a href="https://github.com/moul/advanced-ssh-config/issues/148">#148</a>)</li>
+<li>Rename <code>assh proxy -&gt; assh connect</code></li>
+<li>Hide <code>assh connect</code> and <code>assh wrapper</code> from the help</li>
+<li>Support built-in ssh netcat mode, may fail with older SSH clients (<a href="https://github.com/moul/advanced-ssh-config/issues/146">#146</a>)</li>
+</ul>
+
+<p><a href="https://github.com/moul/advanced-ssh-config/compare/v2.3.0...v2.4.0">Full commits list</a></p>
+
+<h3><a id="user-content-v230-2016-04-27" class="anchor" href="#v230-2016-04-27" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>v2.3.0 (2016-04-27)</h3>
+
+<ul>
+<li>Add wrapper and <code>known_hosts</code> support to handle <em>advanced patterns</em> (<a href="https://github.com/moul/advanced-ssh-config/issues/122">#122</a>)</li>
+<li>Add build information in .ssh/config header (<a href="https://github.com/moul/advanced-ssh-config/issues/49">#49</a>)</li>
+<li>Add Autocomplete support (<a href="https://github.com/moul/advanced-ssh-config/issues/48">#48</a>)</li>
+<li>Initial <code>Aliases</code> support (<a href="https://github.com/moul/advanced-ssh-config/issues/133">#133</a>)</li>
+<li>Use args[0] as ProxyCommand (<a href="https://github.com/moul/advanced-ssh-config/issues/134">#134</a>)</li>
+<li>Add <code>NoControlMasterMkdir</code> option to disable automatic creation of directories for gateways (<a href="https://github.com/moul/advanced-ssh-config/issues/124">#124</a>)</li>
+<li>Fix: Allow <code>$(...)</code> syntax in the <code>ResolveCommand</code> function (<a href="https://github.com/moul/advanced-ssh-config/issues/117">#117</a>)</li>
+<li>Printing the error of a failing <code>ResolveCommand</code> (<a href="https://github.com/moul/advanced-ssh-config/issues/117">#117</a>)</li>
+<li>Fix: <code>Gateways</code> field is no longer ignored when the <code>HostName</code> field is present (<a href="https://github.com/moul/advanced-ssh-config/issues/102">#102</a>)</li>
+<li>Ignore SIGHUP, close goroutines and export written bytes (<a href="https://github.com/moul/advanced-ssh-config/pull/112">#112</a>) (<a href="https://github.com/QuentinPerez">@QuentinPerez</a>)</li>
+<li>Various documentation improvements (<a href="https://github.com/ashmatadeen">@ashmatadeen</a>, <a href="https://github.com/loliee">@loliee</a>, <a href="https://github.com/cerisier">@cerisier</a>)</li>
+<li>Support of new SSH configuration fields (<code>AskPassGUI</code>, <code>GSSAPIClientIdentity</code>, <code>GSSAPIKeyExchange</code>, <code>GSSAPIRenewalForcesRekey</code>, <code>GSSAPIServerIdentity</code>, <code>GSSAPITrustDns</code>, <code>KeychainIntegration</code>)</li>
+</ul>
+
+<p><a href="https://github.com/moul/advanced-ssh-config/compare/v2.2.0...v2.3.0">Full commits list</a></p>
+
+<h3><a id="user-content-v220-2016-02-03" class="anchor" href="#v220-2016-02-03" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>v2.2.0 (2016-02-03)</h3>
+
+<ul>
+<li>Avoid exiting when an included file contains errors (<a href="https://github.com/moul/advanced-ssh-config/issues/95">#95</a>)</li>
+<li>Anonymize paths in <code>assh info</code></li>
+<li>Support of <code>assh proxy --dry-run</code> option</li>
+<li>Fix: do not resolve variables in hostnames twice (<a href="https://github.com/moul/advanced-ssh-config/issues/103">#103</a>)</li>
+</ul>
+
+<p><a href="https://github.com/moul/advanced-ssh-config/compare/v2.1.0...v2.2.0">Full commits list</a></p>
+
+<h3><a id="user-content-v210-2015-10-05" class="anchor" href="#v210-2015-10-05" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>v2.1.0 (2015-10-05)</h3>
+
+<ul>
+<li>Expand environment variables (<a href="https://github.com/moul/advanced-ssh-config/issues/86">#86</a>)</li>
+<li>Add homebrew support (<a href="https://github.com/moul/advanced-ssh-config/issues/73">#73</a>)</li>
+<li>Add a 'ssh info' command (<a href="https://github.com/moul/advanced-ssh-config/issues/71">#71</a>)</li>
+<li>Templates support (<a href="https://github.com/moul/advanced-ssh-config/issues/52">#52</a>)</li>
+<li>Configuration is now case insensitive (<a href="https://github.com/moul/advanced-ssh-config/issues/51">#51</a>)</li>
+<li>Fix: resolving host fields for gateways (<a href="https://github.com/moul/advanced-ssh-config/issues/79">#79</a>)</li>
+<li>Fix: inheritance was not working for non assh-related fields (<a href="https://github.com/moul/advanced-ssh-config/issues/54">#54</a>)</li>
+<li>Fix: expanding variables in HostName (<a href="https://github.com/moul/advanced-ssh-config/issues/56">#56</a>)</li>
+</ul>
+
+<p><a href="https://github.com/moul/advanced-ssh-config/compare/v2.0.0...v2.1.0">Full commits list</a></p>
+
+<h3><a id="user-content-v200-2015-09-07" class="anchor" href="#v200-2015-09-07" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>v2.0.0 (2015-09-07)</h3>
+
+<ul>
+<li>First Golang version</li>
+<li>Compatibility issue: complete switch from <code>.ini</code> file format to <code>.yml</code>, the <code>~/.ssh/assh.yml</code> file needs to be manually crafted</li>
+<li>Features
+
+<ul>
+<li>Parses <code>~/.ssh/assh.yml</code> and generates <code>~/.ssh/config</code> dynamically</li>
+<li>CLI: Use gateways from CLI without any configuration needed</li>
+<li>Config: Declares gateways in coniguration</li>
+<li>Config: Host inheritance</li>
+<li>Config: Support of <code>includes</code></li>
+<li>Config: Support of Regex</li>
+<li>Config: Handling all sshconfig fields</li>
+<li>Config: Support of host <code>ProxyCommand</code> (inception)</li>
+<li>Under the hood: Inspecting parent process <strong>verbose</strong>/<strong>debug</strong> mode</li>
+<li>Under the hook: dynamic proxy using <strong>raw TCP</strong>, <strong>netcat</strong></li>
+</ul></li>
+</ul>
+
+<p><a href="https://github.com/moul/advanced-ssh-config/compare/be4fea1632b1e9f8aa60585187338777baaf1210...v2.0.0">Full commits list</a></p>
+
+<h3><a id="user-content-v1-2015-07-22" class="anchor" href="#v1-2015-07-22" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a href="https://github.com/moul/advanced-ssh-config/tree/v1.1.0">v1</a> (2015-07-22)</h3>
+
+<ul>
+<li>Last Python version</li>
+</ul>
+
+<h3><a id="user-content-poc-2010-08-26" class="anchor" href="#poc-2010-08-26" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a href="https://github.com/moul/advanced-ssh-config/commit/550f86c225d30292728ad24bc883b6d3a3e3f1b1">POC</a> (2010-08-26)</h3>
+
+<ul>
+<li>First Python version (POC)</li>
+</ul>
+
+<h2><a id="user-content-docker" class="anchor" href="#docker" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Docker</h2>
+
+<p>Experimental: <code>assh</code> may run in Docker, however you will have limitations:</p>
+
+<ul>
+<li>The <code>assh</code> containers does not have any binaries except <code>assh</code>, you can't use <code>ProxyCommand</code>, <code>ResolveCommand</code>...</li>
+<li>Docker may run on another host, <code>ssh localhost</code> will ssh to Docker host</li>
+</ul>
+
+<div class="highlight highlight-text-shell-session"><pre><span class="pl-mo">docker run -it --rm -v ~/.ssh:/.ssh moul/assh --help</span></pre></div>
+
+<p><code>assh</code> in Docker is slower and has more limitations, but it may be useful for testing or if you plan to use a Docker host as a remote Gateway</p>
+
+<h2><a id="user-content-alternative-version" class="anchor" href="#alternative-version" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Alternative version</h2>
+
+<ul>
+<li><a href="https://github.com/moul/advanced-ssh-config/tree/v1">v1</a> (2009-2015) - The original implementation. It worked quite well, but was a lot slower, less portable, harder to install for the user and harder to work on to develop new features and fix bugs</li>
+</ul>
+
+<h2><a id="user-content-troubleshooting" class="anchor" href="#troubleshooting" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Troubleshooting</h2>
+
+<h4><a id="user-content-i-cant-use-gateways" class="anchor" href="#i-cant-use-gateways" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>I can't use gateways</h4>
+
+<p><code>assh</code> uses the <a href="https://en.wikibooks.org/wiki/OpenSSH/Cookbook/Proxies_and_Jump_Hosts#Passing_through_a_gateway_using_netcat_mode">built-in netcat mode of OpenSSH (shipped with OpenSSH 5.4)</a> by default.
+If your ssh client doesn't support this feature, you can configure a custom <code>ProxyCommand</code> configuration, i.e.,</p>
+
+<div class="highlight highlight-source-yaml"><pre><span class="pl-s"><span class="pl-ent">hosts:</span></span>
+  <span class="pl-s"><span class="pl-ent">myserver:</span></span>
+    <span class="pl-s"><span class="pl-ent">host:</span> <span class="pl-s">1.2.3.4</span></span>
+    <span class="pl-s"><span class="pl-ent">gateways:</span></span>
+    <span class="pl-s">- <span class="pl-s">mygateway</span></span>
+    <span class="pl-c"># configure a custom proxycommand</span>
+    <span class="pl-s"><span class="pl-ent">proxycommand:</span> <span class="pl-s">/bin/nc %h %p</span></span>
+
+  <span class="pl-s"><span class="pl-ent">mygateway:</span></span>
+    <span class="pl-s"><span class="pl-ent">host:</span> <span class="pl-s">5.6.7.8</span></span></pre></div>
+
+<hr>
+
+<p>You can configure this rule globally:</p>
+
+<div class="highlight highlight-source-yaml"><pre><span class="pl-s"><span class="pl-ent">defaults:</span></span>
+  <span class="pl-s"><span class="pl-ent">proxycommand:</span> <span class="pl-s">nc %h %p</span></span></pre></div>
+
+<hr>
+
+<p>Also, be sure to have netcat installed on your system, or use an alternative proxy binary, i.e., <code>socat</code>.</p>
+
+<h4><a id="user-content-how-to-configure-resolver-to-parse-etchosts-andor-handle-mdns-requests" class="anchor" href="#how-to-configure-resolver-to-parse-etchosts-andor-handle-mdns-requests" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>How to Configure resolver to parse <code>/etc/hosts</code> and/or handle <strong>mDNS</strong> requests?</h4>
+
+<p><strong>assh</strong> resolves hostnames using the system built-in resolver, depending on the OS, you can enable new features and/or change modules order.</p>
+
+<ul>
+<li><a href="http://man7.org/linux/man-pages/man5/nsswitch.conf.5.html">Linux - nsswitch documentation</a></li>
+<li><a href="http://0pointer.de/lennart/projects/nss-mdns/">Linux - mDNS support (nss-mdns)</a></li>
+<li><a href="https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man5/resolver.5.html">Mac OS X - <code>/etc/resolv.conf</code> documentation</a></li>
+</ul>
+
+<h4><a id="user-content-unix_listener-userssshcm-too-long-for-unix-domain-socket" class="anchor" href="#unix_listener-userssshcm-too-long-for-unix-domain-socket" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>unix_listener: "/Users/.../.ssh/cm/..." too long for Unix domain socket</code></h4>
+
+<p>Starting with <code>OpenSSH v6.7</code> the socket name can be shortened by configuring <code>%C</code> for the name expansion.</p>
+
+<div class="highlight highlight-source-yaml"><pre><span class="pl-s"><span class="pl-ent">defaults:</span></span>
+  <span class="pl-s"><span class="pl-ent">ControlPath:</span> <span class="pl-s">~/tmp/.ssh/cm/%C.sock</span></span></pre></div>
+
+<p><code>%C</code> is a unique identifier based on a hash of the tuple of (local host, remote user, hostname, port).</p>
+
+<h2><a id="user-content-license" class="anchor" href="#license" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>License</h2>
+
+<p>© 2009-2016 Manfred Touron - MIT License</p>
+</article>
+  </div>
+
+
+  </div>
+  <div class="modal-backdrop js-touch-events"></div>
+</div>
+
+
+    </div>
+  </div>
+
+    </div>
+
+        <div class="container site-footer-container">
+  <div class="site-footer" role="contentinfo">
+    <ul class="site-footer-links right">
+        <li><a href="https://github.com/contact" data-ga-click="Footer, go to contact, text:contact">Contact GitHub</a></li>
+      <li><a href="https://developer.github.com/" data-ga-click="Footer, go to api, text:api">API</a></li>
+      <li><a href="https://training.github.com/" data-ga-click="Footer, go to training, text:training">Training</a></li>
+      <li><a href="https://shop.github.com/" data-ga-click="Footer, go to shop, text:shop">Shop</a></li>
+        <li><a href="https://github.com/blog" data-ga-click="Footer, go to blog, text:blog">Blog</a></li>
+        <li><a href="https://github.com/about" data-ga-click="Footer, go to about, text:about">About</a></li>
+
+    </ul>
+
+    <a href="https://github.com/" aria-label="Homepage" class="site-footer-mark" title="GitHub">
+      <svg aria-hidden="true" class="octicon octicon-mark-github" height="24" version="1.1" viewBox="0 0 16 16" width="24"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>
+</a>
+    <ul class="site-footer-links">
+      <li>© 2016 <span title="0.12140s from github-fe143-cp1-prd.iad.github.net">GitHub</span>, Inc.</li>
+        <li><a href="https://github.com/site/terms" data-ga-click="Footer, go to terms, text:terms">Terms</a></li>
+        <li><a href="https://github.com/site/privacy" data-ga-click="Footer, go to privacy, text:privacy">Privacy</a></li>
+        <li><a href="https://github.com/security" data-ga-click="Footer, go to security, text:security">Security</a></li>
+        <li><a href="https://status.github.com/" data-ga-click="Footer, go to status, text:status">Status</a></li>
+        <li><a href="https://help.github.com/" data-ga-click="Footer, go to help, text:help">Help</a></li>
+    </ul>
+  </div>
+</div>
+
+
+
+    
+
+    <div id="ajax-error-message" class="ajax-error-message flash flash-error">
+      <svg aria-hidden="true" class="octicon octicon-alert" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M8.865 1.52c-.18-.31-.51-.5-.87-.5s-.69.19-.87.5L.275 13.5c-.18.31-.18.69 0 1 .19.31.52.5.87.5h13.7c.36 0 .69-.19.86-.5.17-.31.18-.69.01-1L8.865 1.52zM8.995 13h-2v-2h2v2zm0-3h-2V6h2v4z"></path></svg>
+      <button type="button" class="flash-close js-flash-close js-ajax-error-dismiss" aria-label="Dismiss error">
+        <svg aria-hidden="true" class="octicon octicon-x" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48z"></path></svg>
+      </button>
+      You can't perform that action at this time.
+    </div>
+
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    <div class="js-stale-session-flash stale-session-flash flash flash-warn flash-banner hidden">
+      <svg aria-hidden="true" class="octicon octicon-alert" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M8.865 1.52c-.18-.31-.51-.5-.87-.5s-.69.19-.87.5L.275 13.5c-.18.31-.18.69 0 1 .19.31.52.5.87.5h13.7c.36 0 .69-.19.86-.5.17-.31.18-.69.01-1L8.865 1.52zM8.995 13h-2v-2h2v2zm0-3h-2V6h2v4z"></path></svg>
+      <span class="signed-in-tab-flash">You signed in with another tab or window. <a href="#">Reload</a> to refresh your session.</span>
+      <span class="signed-out-tab-flash">You signed out in another tab or window. <a href="#">Reload</a> to refresh your session.</span>
+    </div>
+    <div class="facebox" id="facebox" style="display: none;">
+  <div class="facebox-popup">
+    <div class="facebox-content" role="dialog" aria-labelledby="facebox-header" aria-describedby="facebox-description">
+    </div>
+    <button type="button" class="facebox-close js-facebox-close" aria-label="Close modal">
+      <svg aria-hidden="true" class="octicon octicon-x" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48z"></path></svg>
+    </button>
+  </div>
+</div>
+
+  
+
+
+</body>
+</html>

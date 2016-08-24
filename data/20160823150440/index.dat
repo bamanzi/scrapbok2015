@@ -1,0 +1,11 @@
+id	20160823150440
+create	20160823150440
+modify	20160823150440
+type	
+title	Linux/Unix: OpenSSH Multiplexer To Speed Up OpenSSH Connections
+chars	UTF-8
+icon	favicon.ico
+source	http://www.cyberciti.biz/faq/linux-unix-osx-bsd-ssh-multiplexing-to-speed-up-ssh-connections/
+comment	
+lock	
+folder	ssh-tips

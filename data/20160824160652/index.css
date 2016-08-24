@@ -1,0 +1,109 @@
+/* ::::: http://blogs.perl.org/users/smylers/styles/reset.css ::::: */
+
+html, body, div, span, applet, object, iframe, a, abbr, acronym, address, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, strike, strong, tt, var, b, u, i, center, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video { margin: 0px; padding: 0px; border: 0px none; font-size: 100%; vertical-align: baseline; }
+/* ::::: http://blogs.perl.org/users/smylers/styles/base.css ::::: */
+
+pre, tt, code, kbd, samp { font-family: monospace; }
+pre { line-height: 100%; }
+body { background: url("bg-main.png") no-repeat scroll center -185px rgb(0, 64, 101); font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; font-size: 14px; line-height: 1.5em; }
+h1, h2, h3, h4, h5, h6 { font-weight: bold; }
+a:link, a:visited { color: rgb(0, 124, 168); text-decoration: none; }
+a:active, a:hover { color: rgb(0, 124, 168) ! important; text-decoration: underline; }
+.more-link { font-weight: bold; letter-spacing: -0.05em; text-align: right; }
+#container { position: relative; width: 960px; margin: 0px auto; }
+#global-nav { width: 910px; height: 43px; margin: 0px auto; background: url("bg-global-nav.png") no-repeat scroll center top transparent; }
+#header { position: relative; width: 960px; height: 90px; margin: 7px 0px 0px; padding-bottom: 27px; background: url("bg-page-top.png") no-repeat scroll center bottom transparent; }
+#header-inner { padding: 0px 45px; }
+#content { position: relative; color: rgb(51, 51, 51); background: url("bg-page-main.png") repeat-y scroll center top transparent; }
+#content-inner { position: relative; padding: 11px 53px; background: url("bg-page-inner.png") no-repeat scroll center top transparent; }
+#content-main { float: left; width: 580px; padding: 0px; margin: 9px 15px 0px 0px; overflow: hidden; }
+#content-aux { float: right; width: 255px; padding: 0px; overflow: hidden; }
+#footer { width: 960px; clear: both; padding-top: 30px; background: url("bg-page-bottom.png") no-repeat scroll center top transparent; }
+#global-nav-inner { padding: 6px 28px 6px 13px; }
+#global-nav-search label { display: none; }
+#global-nav-search { float: left; }
+#global-nav-search form { position: relative; display: block; width: 156px; height: 19px; background: url("bg-global-search-box.gif") no-repeat scroll left top transparent; }
+#global-nav-search #global-search { display: block; float: left; border: medium none; padding: 0px; margin: 2px 0px 0px 4px; height: 14px; width: 129px; background: none repeat scroll 0% 0% transparent; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; font-size: 11px; color: rgb(187, 225, 241); }
+#global-nav-search .submit { position: absolute; right: 0px; top: 0px; border: medium none; padding: 0px; margin: 0px; height: 19px; width: 23px; text-indent: -999em; overflow: hidden; background: url("button-global-search-submit.gif") no-repeat scroll left top transparent; }
+#global-nav-search .submit:hover { background-position: 0px -19px; }
+#global-nav-links { float: right; margin: 0px; }
+#global-nav-links li { display: inline; padding-left: 20px; color: rgb(204, 204, 204); }
+#global-nav-links a:hover { color: rgb(187, 225, 241) ! important; }
+#site-title { display: block; font-size: 48px; font-weight: bold; line-height: 1; letter-spacing: -0.06em; overflow: auto; }
+#site-title a { display: block; position: relative; float: left; height: 87px; color: rgb(187, 225, 241) ! important; text-decoration: none; padding: 8px 0px 0px 88px; background: url("logo-onion-beta.png") no-repeat scroll left top transparent; }
+#site-description { position: absolute; left: 140px; bottom: 40px; color: rgb(187, 225, 241); }
+.entry { overflow: hidden; margin: 0px 0px 40px; width: 100%; }
+.entry-title { font-size: 24px; line-height: 1em; margin: 0px; letter-spacing: -0.06em; }
+.entry-meta-1 { font-size: 12px; margin-bottom: 1.5em; }
+.entry-meta-1 .profile-link { color: rgb(51, 51, 51); font-weight: bold; }
+.entry p { margin: 0px 0px 1.5em; }
+.entry ul, .entry ol { padding-left: 1.3em; margin: 5px 0px; }
+.entry ul { list-style-type: disc; }
+.entry ol { list-style-type: decimal; }
+.entry li { padding: 0px; margin: 0px; }
+.entry-body { overflow: hidden; }
+.entry-body a, .entry-body a:link { text-decoration: underline; }
+.entry-meta-2 { padding: 5px 0px; border-top: 1px solid rgb(0, 124, 168); border-bottom: 1px solid rgb(0, 124, 168); font-weight: bold; letter-spacing: -0.05em; }
+.entry-meta-2 ul { display: inline; margin: 0px; padding: 0px; }
+.entry-meta-2 li { display: inline; padding: 0px 10px 0px 5px; }
+#comments { margin-top: 2em; }
+#comments h2 { font-size: 2em; font-weight: bold; margin-bottom: 1em; }
+.comments-content { padding-bottom: 1em; margin-bottom: 2em; border-bottom: 2px solid rgb(102, 102, 102); }
+.comment-content a:visited, .comment-content a, .comment-content a:link { text-decoration: underline; }
+.comments-content p, .comments-content pre { margin: 1em 0px; }
+.comments-content blockquote { margin: 1.5em 0px 0.75em; padding: 0px 0px 0px 0.5em; border-left: 2px solid rgb(102, 102, 102); color: rgb(102, 102, 102); }
+.comment { margin-bottom: 1.5em; }
+.comment .commenter-profile { padding: 4px; margin-left: 4px; }
+#comments form { margin-top: 1.5em; }
+#comments label { display: block; font-weight: bold; color: rgb(85, 85, 85); font-size: 0.85em; }
+#comments input, #comments textarea { padding: 5px; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(153, 153, 153) rgb(153, 153, 153) rgb(204, 204, 204); -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; margin-bottom: 1.5em; color: rgb(51, 51, 51); }
+#comments textarea { font-size: 1em; line-height: 1.5em; font-weight: normal; width: 400px; }
+#comments #comment-form-remember-me label { display: inline; }
+#comments #comment-form-remember-me input { float: left; }
+#comments-open-text { clear: left; }
+#comments-open-footer input { color: rgb(255, 255, 255); background: none repeat scroll 0% 0% rgb(85, 85, 85); }
+.module-aux { clear: both; margin-bottom: 20px; border: 1px solid rgb(51, 51, 51); font-size: 12px; }
+.module-aux .module-inner { border: 2px solid rgb(255, 255, 255); background: url("bg-module.png") repeat-x scroll center bottom rgb(255, 255, 255); padding: 10px; }
+.module-aux h3 { font-size: 18px; letter-spacing: -0.06em; margin: 0px 0px 10px; }
+.module-aux p { margin: 0px 0px 1.5em; line-height: 1.5em; }
+.module-aux a:link, .module-aux a:visited { color: rgb(51, 51, 51); }
+.module-aux .more-link { font-size: 14px; }
+.module-aux .more-link a { color: rgb(0, 124, 168); }
+#search-form-aux label { display: none; }
+#search-form-aux { position: relative; display: block; width: 226px; height: 23px; background: url("bg-local-search-box.gif") no-repeat scroll left top transparent; }
+#search-form-aux #local-search { display: block; float: left; border: medium none; padding: 0px; margin: 4px 0px 0px 6px; height: 16px; width: 165px; background: none repeat scroll 0% 0% transparent; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; font-size: 14px; color: rgb(51, 51, 51); }
+#search-form-aux .submit { position: absolute; right: 0px; top: 0px; border: medium none; padding: 0px; margin: 0px; height: 23px; width: 65px; text-indent: -999em; overflow: hidden; background: url("button-local-search-submit.gif") no-repeat scroll left top transparent; }
+#search-form-aux .submit:hover { background-position: 0px -23px; }
+img.authorpic { float: left; padding: 2px; }
+#footer-inner { padding: 0px 53px 10px; }
+#footer-inner ul, #footer-inner li { float: left; padding-right: 16px; font-size: 12px; line-height: 1; color: rgb(0, 108, 152); list-style: none outside none; }
+#footer-inner li.first:before { content: none; }
+#footer-inner li:before { content: "•"; padding-right: 14px; }
+.powered-by { float: right; }
+.powered-by a { display: block; height: 28px; width: 197px; text-indent: -999em; background: url("logo-powered-by-mt.png") no-repeat scroll left top transparent; }
+.pkg:after { content: " "; display: block; visibility: hidden; clear: both; height: 0.1px; font-size: 0.1em; line-height: 0; }
+.pkg { display: inline-block; }
+.pkg[id] { height: auto; }
+.pkg { display: block; }
+img, div, h1, h2, h3, h4, h5, h6, li {  }
+/* ::::: http://blogs.perl.org/mt/mt-static/plugins/GCPrettify/prettify.css ::::: */
+
+code.prettyprint { padding: 2px; }
+.kwd { color: rgb(51, 51, 255); }
+.typ { color: rgb(204, 68, 0); }
+.pun { color: rgb(0, 0, 0); }
+.pln { color: rgb(51, 51, 51); }
+@media print {
+  .kwd { color: rgb(0, 0, 102); font-weight: bold; }
+  .typ { color: rgb(68, 0, 68); font-weight: bold; }
+  .pun { color: rgb(68, 68, 0); }
+  .pln { color: rgb(0, 0, 0); }
+}
+/* ::::: [internal] ::::: */
+
+@media screen {
+}
+@media print {
+}
+/* ::::: [internal] ::::: */
+

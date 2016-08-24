@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en" class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage no-websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients no-cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths" style="">
+<!--<![endif]--><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>stormssh — storm 0.6.3 documentation</title>
+  
+
+  
+  
+
+  
+  
+
+  
+  
+    
+
+  
+
+  
+  
+
+  
+    
+  
+    
+  
+    <link rel="top" title="storm 0.6.3 documentation" href="http://stormssh.readthedocs.io/en/master/#">
+        <link rel="next" title="installation" href="http://stormssh.readthedocs.io/en/master/installing.html">
+ 
+<!-- RTD Extra Head -->
+
+
+
+<!-- 
+Read the Docs is acting as the canonical URL for your project. 
+If you want to change it, more info is available in our docs:
+  http://docs.readthedocs.org/en/latest/canonical.html
+-->
+<link rel="canonical" href="http://stormssh.readthedocs.org/en/latest/">
+
+
+<!-- RTD Analytics Code -->
+<!-- Included in the header because you don't have a footer block. -->
+
+<!-- end RTD Analytics Code -->
+<!-- end RTD <extrahead> -->
+
+
+  
+  
+
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side"><div class="wy-side-scroll"><div class="wy-side-nav-search">
+        
+          <a href="#" class="fa fa-home"> storm</a>
+        
+        <div role="search">
+  <form id="rtd-search-form" class="wy-form" action="http://stormssh.readthedocs.io/en/master/search.html" method="get">
+    <input name="q" placeholder="Search docs" type="text">
+    <input name="check_keywords" value="yes" type="hidden">
+    <input name="area" value="default" type="hidden">
+  </form>
+</div>
+      </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul>
+<li class="toctree-l1"><a class="reference internal" href="http://stormssh.readthedocs.io/en/master/installing.html">installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://stormssh.readthedocs.io/en/master/usage.html"><span class="toctree-expand"></span>usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://stormssh.readthedocs.io/en/master/usage.html#adding-hosts">adding hosts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://stormssh.readthedocs.io/en/master/usage.html#editing-hosts">editing hosts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://stormssh.readthedocs.io/en/master/usage.html#updating-multiple-hosts-all-at-once-using-regular-expressions">updating multiple hosts all at once using regular expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://stormssh.readthedocs.io/en/master/usage.html#deleting-hosts">deleting hosts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://stormssh.readthedocs.io/en/master/usage.html#searching-hosts">searching hosts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://stormssh.readthedocs.io/en/master/usage.html#listing-hosts">listing hosts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://stormssh.readthedocs.io/en/master/usage.html#deleting-all-hosts">deleting all hosts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://stormssh.readthedocs.io/en/master/usage.html#custom-ssh-config-directives">custom ssh config directives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://stormssh.readthedocs.io/en/master/usage.html#command-aliases">command aliases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://stormssh.readthedocs.io/en/master/usage.html#connection-uri-format">connection uri format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://stormssh.readthedocs.io/en/master/usage.html#web-ui">web ui</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://stormssh.readthedocs.io/en/master/appsandtools.html">tools and libraries using storm</a></li>
+</ul>
+
+        
+      </div><div class="wy-menu rst-pro"><div class="rst-pro-about"><a href="http://docs.readthedocs.org/en/latest/sponsors.html#sponsorship-information"><i class="fa fa-info-circle"></i></a></div><a target="_blank" href="http://readthedocs.org/sustainability/click/13/TbXyuvSbvrzM/" class="rst-pro-image-wrapper"><img src="untitled.dat" class="rst-pro-image"></a><span><a target="_blank" href="http://readthedocs.org/sustainability/click/13/TbXyuvSbvrzM/" class="rst-pro-link">Rackspace</a> sponsors hosting of Read the Docs. Thanks so much for supporting the community!</span></div><div class="rst-pro-wrapper"></div></div>
+      
+
+      
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="#">storm</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="#">Docs</a> »</li>
+      
+    <li>stormssh</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="https://github.com/emre/storm/blob/master/docs/index.rst" class="fa fa-github"> Edit on GitHub</a>
+        
+      </li>
+  </ul>
+  <hr>
+</div>
+          <div role="main" class="document">
+            
+  <div class="section" id="stormssh">
+<h1>stormssh<a class="headerlink" href="#stormssh" title="Permalink to this headline">¶</a></h1>
+<p>storm is a command line tool to manage your ssh connections.</p>
+<p><a class="reference external" href="https://github.com/emre/storm/">project page</a></p>
+<p><strong>features</strong></p>
+<ul class="simple">
+<li>adding, editing, deleting, listing, searching across your SSHConfig.</li>
+<li>command alias support for your CLI preferences.</li>
+<li>support for custom SSH directives.</li>
+<li>scriptable as a python library.</li>
+<li>user interfaces besides cli. (wxpython, unity(ubuntu) indicator.)</li>
+</ul>
+<div class="figure">
+<a class="reference internal image-reference" href="https://raw.github.com/emre/storm/master/resources/screenshot.png"><img alt="https://raw.github.com/emre/storm/master/resources/screenshot.png" src="screenshot.png" style="width: 600px;"></a>
+</div>
+<p>Contents:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="http://stormssh.readthedocs.io/en/master/installing.html">installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://stormssh.readthedocs.io/en/master/usage.html">usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://stormssh.readthedocs.io/en/master/usage.html#adding-hosts">adding hosts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://stormssh.readthedocs.io/en/master/usage.html#editing-hosts">editing hosts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://stormssh.readthedocs.io/en/master/usage.html#updating-multiple-hosts-all-at-once-using-regular-expressions">updating multiple hosts all at once using regular expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://stormssh.readthedocs.io/en/master/usage.html#deleting-hosts">deleting hosts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://stormssh.readthedocs.io/en/master/usage.html#searching-hosts">searching hosts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://stormssh.readthedocs.io/en/master/usage.html#listing-hosts">listing hosts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://stormssh.readthedocs.io/en/master/usage.html#deleting-all-hosts">deleting all hosts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://stormssh.readthedocs.io/en/master/usage.html#custom-ssh-config-directives">custom ssh config directives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://stormssh.readthedocs.io/en/master/usage.html#command-aliases">command aliases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://stormssh.readthedocs.io/en/master/usage.html#connection-uri-format">connection uri format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://stormssh.readthedocs.io/en/master/usage.html#web-ui">web ui</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://stormssh.readthedocs.io/en/master/appsandtools.html">tools and libraries using storm</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><a class="reference internal" href="http://stormssh.readthedocs.io/en/master/genindex.html"><em>Index</em></a></li>
+<li><a class="reference internal" href="http://stormssh.readthedocs.io/en/master/search.html"><em>Search Page</em></a></li>
+</ul>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="http://stormssh.readthedocs.io/en/master/installing.html" class="btn btn-neutral float-right" title="installation">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+    </div>
+  
+
+  <hr>
+
+  <div role="contentinfo">
+    <p>
+        © Copyright 2013, Emre Yilmaz.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>.
+  
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: master
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions"><!-- Inserted RTD Footer -->
+<div class="injected">
+
+  
+
+      
+      
+      
+      <dl>
+        <dt>Versions</dt>
+        
+        
+        <dd><a href="http://stormssh.readthedocs.io/en/latest/">latest</a></dd>
+        
+        
+        
+        <dd><a href="http://stormssh.readthedocs.io/en/stable/">stable</a></dd>
+        
+        
+         <strong> 
+        <dd><a href="#">master</a></dd>
+         </strong> 
+        
+      </dl>
+      
+      
+
+      
+      
+      <dl>
+        <dt>Downloads</dt>
+        
+        <dd><a href="http://readthedocs.org/projects/stormssh/downloads/pdf/master/">PDF</a></dd>
+        
+        <dd><a href="http://readthedocs.org/projects/stormssh/downloads/htmlzip/master/">HTML</a></dd>
+        
+        <dd><a href="http://readthedocs.org/projects/stormssh/downloads/epub/master/">Epub</a></dd>
+        
+      </dl>
+      
+      
+
+      
+      <dl>
+        <!-- These are kept as relative links for internal installs that are http -->
+        <dt>On Read the Docs</dt>
+        <dd>
+          <a href="http://readthedocs.org/projects/stormssh/">Project Home</a>
+        </dd>
+        <dd>
+          <a href="http://readthedocs.org/projects/stormssh/builds/">Builds</a>
+        </dd>
+        <dd>
+          <a href="http://readthedocs.org/projects/stormssh/downloads/">Downloads</a>
+        </dd>
+      </dl>
+      
+
+      
+
+      
+      <dl>
+        <dt>On GitHub</dt>
+        <dd>
+          <a href="https://github.com/emre/storm/blob/master/docs/index.rst">View</a>
+        </dd>
+        <dd>
+          <a href="https://github.com/emre/storm/edit/master/docs/index.rst">Edit</a>
+        </dd>
+      </dl>
+      
+      
+
+      
+      <dl>
+        <dt>Search</dt>
+        <dd>
+          <div style="padding: 6px;">
+            <form id="flyout-search-form" class="wy-form" target="_blank" action="https://readthedocs.org/projects/stormssh/search/" method="get">
+              <input name="q" placeholder="Search docs" type="text">
+              </form>
+          </div>
+        </dd>
+      </dl>
+      
+
+
+
+      <hr>
+      
+      Free document hosting provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+      
+
+      
+
+</div>
+</div>
+  </div>
+
+
+
+  
+
+    
+      
+      
+      
+      
+      
+
+  
+
+  
+  
+
+  
+  
+  
+   
+
+
+</body><div style="display: none; width: 24px;" id="diigotb-imagepanel"><div class="diigotb-btn enabled" title="Save this image to Diigo" id="diigotb-quick-save"></div></div><div style="display: none;" class="diigotb-border diigotb-left"></div><div style="display: none;" class="diigotb-border diigotb-top"></div><div style="display: none;" class="diigotb-border diigotb-right"></div><div style="display: none;" class="diigotb-border diigotb-bottom"></div>
+</html>

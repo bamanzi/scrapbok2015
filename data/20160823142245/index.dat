@@ -1,0 +1,11 @@
+id	20160823142245
+create	20160823142245
+modify	20160823142245
+type	
+title	hukl/hostmux: A wrapper script for tmux to multiplex commands to ssh hosts
+chars	UTF-8
+icon	favicon.ico
+source	https://github.com/hukl/hostmux
+comment	
+lock	
+folder	ssh-tips	cluster-ssh

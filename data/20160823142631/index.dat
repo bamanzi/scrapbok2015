@@ -1,0 +1,11 @@
+id	20160823142631
+create	20160823142631
+modify	20160823142631
+type	
+title	moul/advanced-ssh-config: assh: ssh wrapper using ProxyCommand that adds regex, aliases, gateways, includes, dynamic hostnames to SSH and ssh-config
+chars	UTF-8
+icon	favicon.ico
+source	https://github.com/moul/advanced-ssh-config
+comment	
+lock	
+folder	ssh-tips	ssh-manager

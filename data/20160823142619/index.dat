@@ -1,0 +1,11 @@
+id	20160823142619
+create	20160823142619
+modify	20160823142619
+type	
+title	robinparisi/ssh-manager: A simple script to manage ssh connections
+chars	UTF-8
+icon	favicon.ico
+source	https://github.com/robinparisi/ssh-manager
+comment	
+lock	
+folder	ssh-tips	ssh-manager

@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" media="screen" href="/assets/embed-318775ee16088ec6e76c7c50db7001e7e191a56ebcb99128db170c197f44db92.css" />
+      
+    <script src="/assets/break_string-cc617154cd957804f2f6a1f3bc68258c9cdca3d4b9a322bf777d145fed04790e.js"></script>
+
+      <title>SSH Kung Fu - tjll.net</title>
+
+    <script>
+      (function() {
+
+        function postUp(msg) {
+          if (parent) {
+            parent.postMessage(msg, 'http://blog.tjll.net/ssh-kung-fu/');
+          }
+        }
+
+        function clickPostLink(e) {
+          var postId = e.target.getAttribute('data-link-to-post');
+          if (postId) {
+            var postElement = document.getElementById('post-' + postId);
+            if (postElement) {
+              var rect = postElement.getBoundingClientRect();
+              if (rect && rect.top) {
+                postUp({type: 'discourse-scroll', top: rect.top});
+                e.preventDefault();
+                return false;
+              }
+            }
+          }
+        }
+
+        window.onload = function() {
+          // Send a post message with our loaded height
+          postUp({type: 'discourse-resize', height: document['body'].offsetHeight});
+
+          var postLinks = document.querySelectorAll("a[data-link-to-post]"),
+              i;
+
+          for (i=0; i<postLinks.length; i++) {
+            postLinks[i].onclick = clickPostLink;
+          }
+
+          // Make sure all links in the iframe point to _blank
+          var cookedLinks = document.querySelectorAll('.cooked a');
+          for (i=0; i<cookedLinks.length; i++) {
+            cookedLinks[i].target = "_blank";
+          }
+
+          // Adjust all names
+          var names = document.querySelectorAll('.username a');
+          for (i=0; i<names.length; i++) {
+            var username = names[i].innerHTML;
+            if (username) {
+              names[i].innerHTML = new BreakString(username).break();
+            }
+          }
+
+        };
+
+      })();
+    </script>
+  </head>
+  <body>
+    <header class='discourse'>
+    <a class="button" target="_blank" href="http://forum.tjll.net/t/ssh-kung-fu/20/2">Continue Discussion</a>
+  <span class='replies'>15 replies</span>
+</header>
+
+    <article class='post' id='post-33'>
+      <a title="April 28, 2014  8:10am" class="post-date" target="_blank" href="http://forum.tjll.net/t/ssh-kung-fu/20/2">Apr &#39;14</a>
+
+      <div class='author'>
+        <a href='http://forum.tjll.net/users/vook' target="_blank"><img src='//forum.tjll.net/letter_avatar_proxy/v2/letter/v/9dc877/45.png' alt=''></a>
+      </div>
+      <div class='cooked'>
+        <h3 class='username'>
+          <a href='http://forum.tjll.net/users/vook' target="_blank" class='new-user'>vook</a>
+        </h3>
+        <p>Very nicely done. The remote file editing feature is new to me - very cool.<br>It's worth noting that the Tab Completion feature is the product of some sort of unrelated shell level completion and may require additional packages to be installed (such as bash-completion on Debian). Tab completion does not work for ssh by default on Macs.</p>
+
+            <a data-link-to-post="39" class="post-replies button" href="http://forum.tjll.net/t/ssh-kung-fu/20/2">1 reply</a>
+      </div>
+    </article>
+    <article class='post' id='post-34'>
+      <a title="April 28, 2014  8:12am" class="post-date" target="_blank" href="http://forum.tjll.net/t/ssh-kung-fu/20/3">Apr &#39;14</a>
+
+      <div class='author'>
+        <a href='http://forum.tjll.net/users/lonetwin' target="_blank"><img src='//forum.tjll.net/user_avatar/forum.tjll.net/lonetwin/45/25_1.png' alt=''></a>
+      </div>
+      <div class='cooked'>
+        <h3 class='username'>
+          <a href='http://forum.tjll.net/users/lonetwin' target="_blank" class='new-user'>lonetwin</a>
+        </h3>
+        <p>A couple of other tricks I find useful:<br>a. The ForwardAgent config option: From the man page "Specifies whether the connection to the authentication agent (if any) will be forwarded to the remote machine." ...basically if you are on hostA and login into hostB using ssh and now want to access hostC (where your pub key from hostA is already setup in authorized hosts (eg: a remote git server)), you needn't create another set of keys for hostB and then add them to hostC. Simply add "ForwardAgent yes" and you credentials 'travel' with you.</p>
+
+<p>b. ssh escapes: From within an ssh session try : ~+h ...the most useful espace sequences for me are ~+^Z (suspend ssh) and ~+. (terminate connection -- especially if the remote ssh host dies unexpectedly)</p>
+
+      </div>
+    </article>
+    <article class='post' id='post-36'>
+      <a title="April 28, 2014  9:29am" class="post-date" target="_blank" href="http://forum.tjll.net/t/ssh-kung-fu/20/4">Apr &#39;14</a>
+
+      <div class='author'>
+        <a href='http://forum.tjll.net/users/lior' target="_blank"><img src='//forum.tjll.net/user_avatar/forum.tjll.net/lior/45/24_1.png' alt=''></a>
+      </div>
+      <div class='cooked'>
+        <h3 class='username'>
+          <a href='http://forum.tjll.net/users/lior' target="_blank" class='new-user'>lior</a>
+        </h3>
+        <p>No need to use anymore the nice 'nc' trick. In recent versions of OpenSSH, you have the -W option that does the same.<br>So for example, you'd use:</p>
+
+<pre><code>Host finaldest
+   Hostname 1.2.3.4
+   User root
+   ProxyCommand ssh -e none -W %h:119 intermediate</code></pre>
+
+      </div>
+    </article>
+    <article class='post' id='post-39'>
+      <a title="April 28, 2014  3:04pm" class="post-date" target="_blank" href="http://forum.tjll.net/t/ssh-kung-fu/20/5">Apr &#39;14</a>
+        <a data-link-to-post="33" class="in-reply-to" href="http://forum.tjll.net/t/ssh-kung-fu/20/2">▶ vook</a>
+
+      <div class='author'>
+        <a href='http://forum.tjll.net/users/ford' target="_blank"><img src='//forum.tjll.net/user_avatar/forum.tjll.net/ford/45/23_1.png' alt=''></a>
+      </div>
+      <div class='cooked'>
+        <h3 class='username'>
+          <a href='http://forum.tjll.net/users/ford' target="_blank" class='new-user'>ford</a>
+        </h3>
+        <p>bash-completion can be installed on OS X to get completion of ssh hosts. To get it:</p>
+
+<pre><code>brew install bash-completion</code></pre>
+
+      </div>
+    </article>
+    <article class='post' id='post-40'>
+      <a title="April 28, 2014  3:06pm" class="post-date" target="_blank" href="http://forum.tjll.net/t/ssh-kung-fu/20/6">Apr &#39;14</a>
+
+      <div class='author'>
+        <a href='http://forum.tjll.net/users/speeddymon' target="_blank"><img src='//forum.tjll.net/user_avatar/forum.tjll.net/speeddymon/45/22_1.png' alt=''></a>
+      </div>
+      <div class='cooked'>
+        <h3 class='username'>
+          <a href='http://forum.tjll.net/users/speeddymon' target="_blank" class='new-user'>speeddymon</a>
+        </h3>
+        <p>Please stop telling people to use netcat to proxy ssh connections. Use <code>ssh -W</code> instead</p>
+
+<p>All modern SSH clients support this flag and it works infinitely better than netcat.</p>
+
+      </div>
+    </article>
+    <article class='post' id='post-42'>
+      <a title="April 28, 2014  5:36pm" class="post-date" target="_blank" href="http://forum.tjll.net/t/ssh-kung-fu/20/7">Apr &#39;14</a>
+
+      <div class='author'>
+        <a href='http://forum.tjll.net/users/tylerjl' target="_blank"><img src='//forum.tjll.net/user_avatar/forum.tjll.net/tylerjl/45/21_1.png' alt=''></a>
+      </div>
+      <div class='cooked'>
+        <h3 class='username'>
+          <a href='http://forum.tjll.net/users/tylerjl' target="_blank" class='staff'>tylerjl</a>
+        </h3>
+        <p><a class="mention" href="/users/vook">@vook</a> Thanks! Apparently remote editing works with Emacs as well, I'll be amending my post to include that trick.</p>
+
+<p><a class="mention" href="/users/vook">@vook</a> <a class="mention" href="/users/ford">@ford</a> As far as tab-completion goes, I've been running under oh-my-zsh so long it's become hard to tell what requires special configurations, so thank you for the clarification regarding needed packages.</p>
+
+<p><a class="mention" href="/users/lonetwin">@lonetwin</a> I use agent forwarding heavily and love it. Note that the key also has to be cached client-side with ssh-agent and the ssh daemon must have "AllowAgentForwarding yes"</p>
+
+<p> <a class="mention" href="/users/lior">@lior</a> <a class="mention" href="/users/speeddymon">@speeddymon</a> The -W flag is new to me and makes much more sense than calling an entirely new executable to enable forwarding. I'll be updating the post to reflect this much better practice.  </p>
+
+      </div>
+    </article>
+    <article class='post' id='post-44'>
+      <a title="April 29, 2014  1:38am" class="post-date" target="_blank" href="http://forum.tjll.net/t/ssh-kung-fu/20/8">Apr &#39;14</a>
+
+      <div class='author'>
+        <a href='http://forum.tjll.net/users/BasketCase' target="_blank"><img src='//forum.tjll.net/letter_avatar_proxy/v2/letter/b/aca169/45.png' alt=''></a>
+      </div>
+      <div class='cooked'>
+        <h3 class='username'>
+          <a href='http://forum.tjll.net/users/BasketCase' target="_blank" class='new-user'>BasketCase</a>
+        </h3>
+        <p>If you think that ECDSA keys are small wait until you see an ED25519 key.  They will probably completely replace ECDSA after they have been around for a few versions.</p>
+
+      </div>
+    </article>
+    <article class='post' id='post-46'>
+      <a title="April 29, 2014  4:21am" class="post-date" target="_blank" href="http://forum.tjll.net/t/ssh-kung-fu/20/9">Apr &#39;14</a>
+
+      <div class='author'>
+        <a href='http://forum.tjll.net/users/mxxcon' target="_blank"><img src='//forum.tjll.net/user_avatar/forum.tjll.net/mxxcon/45/20_1.png' alt=''></a>
+      </div>
+      <div class='cooked'>
+        <h3 class='username'>
+          <a href='http://forum.tjll.net/users/mxxcon' target="_blank" class='new-user'>mxxcon</a>
+        </h3>
+        <p><a href="http://unixwiz.net/techtips/ssh-agent-forwarding.html" rel="nofollow">http://unixwiz.net/techtips/ssh-agent-forwarding.html</a> gives some nice and detailed background explanation of how SSH Agents work.</p>
+
+      </div>
+    </article>
+    <article class='post' id='post-48'>
+      <a title="April 29, 2014  6:47am" class="post-date" target="_blank" href="http://forum.tjll.net/t/ssh-kung-fu/20/10">Apr &#39;14</a>
+
+      <div class='author'>
+        <a href='http://forum.tjll.net/users/smaudet' target="_blank"><img src='//forum.tjll.net/letter_avatar_proxy/v2/letter/s/0ea827/45.png' alt=''></a>
+      </div>
+      <div class='cooked'>
+        <h3 class='username'>
+          <a href='http://forum.tjll.net/users/smaudet' target="_blank" class='new-user'>smaudet</a>
+        </h3>
+        <p>So I'm not cryptographer, but I'm pretty sure ec was the random number generator that has holes in it. Not a very good idea to use ecdrsa keys then I should think?</p>
+
+            <a data-link-to-post="51" class="post-replies button" href="http://forum.tjll.net/t/ssh-kung-fu/20/10">1 reply</a>
+      </div>
+    </article>
+    <article class='post' id='post-50'>
+      <a title="April 29, 2014  8:57am" class="post-date" target="_blank" href="http://forum.tjll.net/t/ssh-kung-fu/20/11">Apr &#39;14</a>
+
+      <div class='author'>
+        <a href='http://forum.tjll.net/users/Tenzer' target="_blank"><img src='//forum.tjll.net/user_avatar/forum.tjll.net/tenzer/45/19_1.png' alt=''></a>
+      </div>
+      <div class='cooked'>
+        <h3 class='username'>
+          <a href='http://forum.tjll.net/users/Tenzer' target="_blank" class='new-user'>Tenzer</a>
+        </h3>
+        <p>Regarding the <code>~C</code> and <code>~.</code> combinations you can enter within an open SSH connection:<br>If you enter <code>~?</code> you will get a small list of all the different combinations there is, such as:</p>
+
+<pre><code>Supported escape sequences:
+ ~.   - terminate connection (and any multiplexed sessions)
+ ~B   - send a BREAK to the remote system
+ ~C   - open a command line
+ ~R   - request rekey
+ ~V/v - decrease/increase verbosity (LogLevel)
+ ~^Z  - suspend ssh
+ ~#   - list forwarded connections
+ ~&amp;   - background ssh (when waiting for connections to terminate)
+ ~?   - this message
+ ~~   - send the escape character by typing it twice
+(Note that escapes are only recognized immediately after newline.)</code></pre>
+
+      </div>
+    </article>
+    <article class='post' id='post-51'>
+      <a title="April 29, 2014  1:24pm" class="post-date" target="_blank" href="http://forum.tjll.net/t/ssh-kung-fu/20/12">Apr &#39;14</a>
+        <a data-link-to-post="48" class="in-reply-to" href="http://forum.tjll.net/t/ssh-kung-fu/20/10">▶ smaudet</a>
+
+      <div class='author'>
+        <a href='http://forum.tjll.net/users/BasketCase' target="_blank"><img src='//forum.tjll.net/letter_avatar_proxy/v2/letter/b/aca169/45.png' alt=''></a>
+      </div>
+      <div class='cooked'>
+        <h3 class='username'>
+          <a href='http://forum.tjll.net/users/BasketCase' target="_blank" class='new-user'>BasketCase</a>
+        </h3>
+        <p>You are thinking of Dual_EC_DRBG which has never had anything to do with ECDSA.</p>
+
+      </div>
+    </article>
+    <article class='post' id='post-53'>
+      <a title="May  3, 2014  8:51pm" class="post-date" target="_blank" href="http://forum.tjll.net/t/ssh-kung-fu/20/13">May &#39;14</a>
+
+      <div class='author'>
+        <a href='http://forum.tjll.net/users/grantm' target="_blank"><img src='//forum.tjll.net/user_avatar/forum.tjll.net/grantm/45/18_1.png' alt=''></a>
+      </div>
+      <div class='cooked'>
+        <h3 class='username'>
+          <a href='http://forum.tjll.net/users/grantm' target="_blank" class='new-user'>grantm</a>
+        </h3>
+        <p>If you use SSH and vim, you might be interested in <a href="http://sshmenu.sourceforge.net/articles/bcvi/" rel="nofollow">bcvi</a> which allows you to just type 'vi filename' in your ssh session on the remote host and have the file open in an editor on your workstation.</p>
+
+      </div>
+    </article>
+    <article class='post' id='post-55'>
+      <a title="May  6, 2014  9:58am" class="post-date" target="_blank" href="http://forum.tjll.net/t/ssh-kung-fu/20/14">May &#39;14</a>
+
+      <div class='author'>
+        <a href='http://forum.tjll.net/users/cirotix' target="_blank"><img src='//forum.tjll.net/user_avatar/forum.tjll.net/cirotix/45/17_1.png' alt=''></a>
+      </div>
+      <div class='cooked'>
+        <h3 class='username'>
+          <a href='http://forum.tjll.net/users/cirotix' target="_blank" class='new-user'>cirotix</a>
+        </h3>
+        <p>Thank you for this great list.</p>
+
+<p>You can extend the Sharing Connection trick to all your hosts by adding this at the begining of your config file</p>
+
+<p>Host *                                                                                                                                                                     <br>   ControlMaster auto<br>   ControlPath ~/.ssh/master-%r@%h:%p</p>
+
+<p>Once you get used to that you can't go back!</p>
+
+      </div>
+    </article>
+    <article class='post' id='post-57'>
+      <a title="May  7, 2014  4:02am" class="post-date" target="_blank" href="http://forum.tjll.net/t/ssh-kung-fu/20/15">May &#39;14</a>
+
+      <div class='author'>
+        <a href='http://forum.tjll.net/users/mrohit829' target="_blank"><img src='//forum.tjll.net/letter_avatar_proxy/v2/letter/m/d78d45/45.png' alt=''></a>
+      </div>
+      <div class='cooked'>
+        <h3 class='username'>
+          <a href='http://forum.tjll.net/users/mrohit829' target="_blank" class='new-user'>mrohit829</a>
+        </h3>
+        <p>Indeed a great list. I never knew so many things about SSH, though I have been using it from long time. This is what I call fundamental building, a must read tutorial for every one, bookmarked in my <a href="http://javarevisited.blogspot.com" rel="nofollow">lis</a>t of favorite blogs.</p>
+
+      </div>
+    </article>
+    <article class='post' id='post-60'>
+      <a title="May 19, 2014 10:02am" class="post-date" target="_blank" href="http://forum.tjll.net/t/ssh-kung-fu/20/16">May &#39;14</a>
+
+      <div class='author'>
+        <a href='http://forum.tjll.net/users/oaubert' target="_blank"><img src='//forum.tjll.net/user_avatar/forum.tjll.net/oaubert/45/16_1.png' alt=''></a>
+      </div>
+      <div class='cooked'>
+        <h3 class='username'>
+          <a href='http://forum.tjll.net/users/oaubert' target="_blank" class='new-user'>oaubert</a>
+        </h3>
+        <p>Great compilation of useful tips, thanks. I am using most of these options (and replaced my nc usage with the -W option). I suggest another one, in relation to the socks proxying, which is great but only works with SOCKS-enabled apps. The great sshuttle application is a transparent proxy-based VPN using ssh: relying on dynamic iptables trickery, it creates a VPN through a ssh connection. You launch the application as root on the client side, it transfers some python code to the server side (where you do not have to have any specific admin rights) and you get a VPN. It saves my life on a daily basis.</p>
+
+      </div>
+    </article>
+
+    <footer class="clearfix">
+      <a target="_blank" href="http://forum.tjll.net"><img class="logo" src="" /></a>
+      <a class="button" target="_blank" href="http://forum.tjll.net/t/ssh-kung-fu/20/16">Continue Discussion</a>
+    </footer>
+    <div class="clearfix"></div>
+
+
+  </body>
+</html>

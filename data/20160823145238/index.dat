@@ -1,0 +1,11 @@
+id	20160823145238
+create	20160823145238
+modify	20160823145238
+type	
+title	Russell91/sshrc: bring your .bashrc, .vimrc, etc. with you when you ssh
+chars	UTF-8
+icon	favicon.ico
+source	https://github.com/Russell91/sshrc
+comment	
+lock	
+folder	ssh-tips

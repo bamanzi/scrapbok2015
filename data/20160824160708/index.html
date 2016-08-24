@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en" class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage no-websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients no-cssreflections csstransforms csstransforms3d csstransitions fontface video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths">
+<!--<![endif]--><head>
+  <meta charset="UTF-8">
+
+  <title>Tyblog | SSH Kung Fu</title>
+  <meta name="description" content="An extended look at SSH features that can serve a variety of purposes for different use cases.">
+  <meta name="author" content="Tyler Langlois">
+
+  <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google web fonts -->
+    
+    
+    
+
+  <!-- Place favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="apple-touch-icon" href="http://blog.tjll.net/apple-touch-icon.png">
+
+  <!-- RSS Feed Discovery -->
+  <link rel="alternate" type="application/rss+xml" title="Tyblog" href="http://blog.tjll.net/feed.xml">
+
+  <!-- CSS: implied media="all" -->
+  
+
+  <!-- Uncomment if you are specifically targeting less enabled mobile browsers -->
+  
+
+  <!-- All JavaScript at the bottom, except for Modernizr which enables HTML5 elements & feature detects -->
+  
+  
+  
+
+  
+  
+
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+
+<body>
+
+<div id="wrapper">
+  <div id="container">
+    <header id="header">
+    <h1><a href="http://blog.tjll.net/">Tyblog</a></h1>
+        <h2>Technology, security, and open source<br>
+        blog.tjll.net</h2>
+    </header>
+    <nav id="nav">
+        <ul id="menu">
+            
+            
+                <a href="http://blog.tjll.net/about">
+                    <li>About</li>
+                </a>
+            
+            
+                <a href="http://blog.tjll.net/posts" class="selected">
+                    <li>Blog</li>
+                </a>
+            
+            
+                <a href="http://blog.tjll.net/faq">
+                    <li>Faq</li>
+                </a>
+            
+            
+                <a href="http://blog.tjll.net/work">
+                    <li>Work</li>
+                </a>
+            
+            
+                <a href="https://github.com/tylerjl">
+                    <li>Code</li>
+                </a>
+            
+        </ul>
+        <li id="search">
+          <form action="http://blog.tjll.net/search" id="search-form" method="get">
+            <input id="search-query" name="q" placeholder="Search" autocomplete="off" type="text">
+          </form>
+        </li>
+
+        <section id="search-results">
+          <p>Search results</p>
+          <div class="entries">
+          </div>
+        </section>
+        <!--
+        <ul id="submenu">
+            <li>Link</li>
+            <li>Link</li>
+        </ul>
+        -->
+    </nav>
+    <div id="breadcrumb">
+    
+        <span id="marker">↪</span>
+        <span class="crumb">
+            
+                blog
+            
+        </span>
+            
+                <span class="spacer">»</span>
+            
+    
+        
+        <span class="crumb">
+            <a href="#">
+                SSH Kung fu
+            </a>
+        </span>
+            
+    
+    </div>
+    <div id="content" class="post">
+        <h3>
+          
+            <a href="http://blog.tjll.net/please-stop-hashing-passwords/">«</a>
+          
+          SSH Kung Fu
+          
+            <a href="http://blog.tjll.net/practical-linux-pipelining/">»</a>
+          
+        </h3>
+        <div class="sub">27 April 2014</div>
+<p><a href="http://www.openssh.com/">OpenSSH</a> is an incredible tool. Though primarily relied upon as a secure alternative to plaintext remote tools like telnet or rsh, OpenSSH (hereafter referred to as plain old ssh) has become a swiss army knife of functionality for far more than just remote logins.</p>
+
+<p>I rely on ssh every day for multiple purposes and feel the need to share the love for this excellent tool. What follows is a list for some of my use cases that leverage the power of ssh.</p>
+
+<hr>
+
+<ul id="markdown-toc">
+  <li><a href="#public-key-cryptography" id="markdown-toc-public-key-cryptography">Public-Key Cryptography</a>    <ul>
+      <li><a href="#bonus-ssh-copy-id" id="markdown-toc-bonus-ssh-copy-id">Bonus: ssh-copy-id</a></li>
+      <li><a href="#trivia-ecdsa-keys" id="markdown-toc-trivia-ecdsa-keys">Trivia: ecdsa keys</a></li>
+    </ul>
+  </li>
+  <li><a href="#tunnelling" id="markdown-toc-tunnelling">Tunnelling</a></li>
+  <li><a href="#mounting-filesystems" id="markdown-toc-mounting-filesystems">Mounting Filesystems</a></li>
+  <li><a href="#remote-file-editing" id="markdown-toc-remote-file-editing">Remote File Editing</a></li>
+  <li><a href="#tab-completion" id="markdown-toc-tab-completion">Tab-Completion</a></li>
+  <li><a href="#lightweight-proxy" id="markdown-toc-lightweight-proxy">Lightweight Proxy</a></li>
+  <li><a href="#accessing-nat-ed-hosts-directly" id="markdown-toc-accessing-nat-ed-hosts-directly">Accessing NAT-ed Hosts Directly</a></li>
+  <li><a href="#sharing-connections" id="markdown-toc-sharing-connections">Sharing Connections</a></li>
+  <li><a href="#conclusion" id="markdown-toc-conclusion">Conclusion</a></li>
+  <li><a href="#edit-bonus-round" id="markdown-toc-edit-bonus-round">Edit: Bonus Round!</a>    <ul>
+      <li><a href="#remote-file-editing-in-emacs" id="markdown-toc-remote-file-editing-in-emacs">Remote File Editing in Emacs</a></li>
+      <li><a href="#the-secure-shell-shell" id="markdown-toc-the-secure-shell-shell">The Secure Shell… Shell</a></li>
+      <li><a href="#agent-forwarding" id="markdown-toc-agent-forwarding">Agent Forwarding</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="public-key-cryptography">Public-Key Cryptography</h4>
+
+<p>This is kind of a prerequisite for supercharging ssh usage. It’s a pretty straightforward concept:</p>
+
+<ul>
+  <li>Generate a public key and private key. The private key can prove ownership of a public key</li>
+  <li>Place the public key on any servers you need to log in to</li>
+  <li>No more password prompts</li>
+</ul>
+
+<p>Sound good? Let’s do it:</p>
+
+<figure class="highlight"><pre><code class="language-console" data-lang="console"><span class="w">$ </span><span class="nc">ssh-keygen</span><span class="kv"> -t rsa
+</span><span class="w">$ </span><span class="nc">cat</span><span class="kv"> ~/.ssh/id_rsa.pub
+</span><span class="err">... your public key here ...</span></code></pre></figure>
+
+<p>Paste that into the <code class="highlighter-rouge">~/.ssh/authorized_keys</code> file of any server account you need to log in to, then any subsequent</p>
+
+<figure class="highlight"><pre><code class="language-console" data-lang="console"><span class="w">$ </span><span class="nc">ssh</span><span class="kv"> user@host</span></code></pre></figure>
+
+<p>Will be automatic. Now you’re prepared to really make ssh useful.</p>
+
+<h5 id="bonus-ssh-copy-id">Bonus: ssh-copy-id</h5>
+
+<p>As this process of copying public keys is a fairly common task, you can usually get the <code class="highlighter-rouge">ssh-copy-id</code> command on most platforms do to this automagically for you. For example, if you’ve generated your keys and want to set up key login for the user bob at the host fortknox:</p>
+
+<figure class="highlight"><pre><code class="language-console" data-lang="console"><span class="w">$ </span><span class="nc">brew</span><span class="kv"> install ssh-copy-id # (if needed)
+</span><span class="w">$ </span><span class="nc">ssh-copy-id</span><span class="kv"> bob@fortknox</span></code></pre></figure>
+
+<p>Done!</p>
+
+<h5 id="trivia-ecdsa-keys">Trivia: ecdsa keys</h5>
+
+<p>While rsa keys are the traditional standard for ssh keys, ssh supports several types of asymmetric key types. For example, an Elliptic Curve Data Signature Algorithm (ecdsa) key provides roughly the same strength as rsa with dramatically fewer bits. Take an example rsa private key:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>-----BEGIN RSA PRIVATE KEY-----
+MIIEowIBAAKCAQEA5i0picr3EuP/MLLYjFn930uw5PXEfVSRAyp4B7wFFLX8gwfo
+T1JQvElFSlkM160u7XOdocdcQ85FLC7ABYWEe6OaUqSmBLoYzoKVE72lyKHjXeve
+zjPgAHIcZ6xpi1ua5RfeE+L/yAxx7NNK2n8IFKPQWbHOH20I6aTjVPH810DKybAK
+geDdzdIdo3COp4yUotYmL3WI5oH3LZ+0QMJsyQtXWj56K2sX6Bi9dzQbID+jMRRC
+ctnKE3Z+S24GdZTlslL/6fzhzVi2JSBOAdwh7s7PC7b2PJL6BlOkTBpOVNv1Ttzg
+VrpybqN2emNhmi/lIKS9bTgN7ZD1ndSImVKAYwIDAQABAoIBAAL22e4YWw43OXYb
+F4bXMdnKU8DfGWSzzhpIVbtjxHz7ywC0/VzoJnoGR4opk2zDojMUphcLRjjpUyK6
+h2aKzaX5+WbPEARHkUI3lEvoyVXIH/F5tCjbqirXTV5YbhOJXnlM0WNYLQsafe0a
+23/s2uHJKkm9bHYjJVY89WCGrUboXHIfq1zsSvunCkD8mJxP8tXZhtqn7KlHK4w+
+X8t259hOGPboGcZ48I6TZ1o5GzoUIpJdVuhxvK1+RGOiE4RPgdDyC3dQQV3hc4Iq
+2k/EOnDqOFtHMW1uCgnz7+sDLaEhuG823MnhRBhZEDKSQECUdfRHsX2JYC6F3fnC
+1pMZtSECgYEA/Wo8RKMtNrovTruJemTjMAIe06H1UjsC46ppYEiWDTlZZsbPJ3AH
+l5+9ER2FAReU+Op5UoUgmxLg7kFJFudib2cieLYKVODnIdvw8yGx895qA32xP16e
+C0HRexDhzW2LBIgmSSz0+QEaYbuiQBWfq02EQ9yUbmcePX9eyY8bZwcCgYEA6IY9
+8CeaM9UlQ18m5eFuM40xpjaED3sESRMCJU61rqnMPyJHFBMiR2fqQRbQoirU7qyL
+/fJhfOKSkK0wHO+OBokbxxggcswLPkJnBSb6MVtqec+s7n0Oko+9Czfa4xWeHWI5
+n25N+YuEEAC92RODUxQkynsk6/3wv4LqHkzcCMUCgYAOlN1Q6b7BRmdQdXQMqd90
+tLqHXOtbxu98oCKeGq8fpawiQNBMqaKWM+fSI0uy62N0CzHd8LEWmzh8HR+ShM/i
+LyIJphfkGGjURu6PXuH5cVPSTZo0VkJrzWa7WRZVFreIFDl3vnF+HnUhKIXGgDgG
+yFgS+49C5wYTbc/Lc0OVYwKBgQDJA8Rn6NSWGp2sMIYgFVJ/noBdgKOJ/n8l7Rjd
+x72o0YGQ0sE/yYrI0DzjKCYVC5IpA2HCl9dPb0/lYtNFMJNHcyBgbasfkuXlXOJS
+we9o2+6gf7iwM8x1R23WVOMVjYqzPEc0XNdr9ACnFP0KvKO7Hp7vrKWunkmSRkq/
+BxLxQQKBgFYi4PKlqWG9tkXoqh9Hzjn29VfUcu5QVfNGpTN4ohr1j1TFaJgBF6bJ
+TSXXUErOtPIQREVOCe9OJqzT4SPVm0OZoI7qTOVp5b6tbXjY29oUcNSszAjmEySo
+fMtmbBWirnFRCuZVIylokl/3uviNbIUNkNOFZnhiVy0CviDG05F/
+-----END RSA PRIVATE KEY-----
+</code></pre>
+</div>
+
+<p>And compare it to an ecdsa private key:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>-----BEGIN EC PRIVATE KEY-----
+MHcCAQEEIOSxjv3N24PiYulQcC7sr3RhfAtEXcnf4uRicHiFO5LhoAoGCCqGSM49
+AwEHoUQDQgAE66S7FaV6O+oWuRBurSxmPzKy/gSoCqJr48IsacXpDvhNKBiJprdj
+ahrB5Tk74YUTlQvZgdZSlGPVnn6OF1MI6Q==
+-----END EC PRIVATE KEY-----
+</code></pre>
+</div>
+
+<p>No, these are not my private keys. ☺ They’re one-shot example keys.</p>
+
+<p>Note that although they’re cool, I wouldn’t recommend trying ecdsa out in a production environment<sup id="fnref:ecdsa"><a href="#fn:ecdsa" class="footnote">1</a></sup> – I’ve run into a couple of daemons during my day-to-day that wouldn’t accept this key type.</p>
+
+<h4 id="tunnelling">Tunnelling</h4>
+
+<p>Need access to a port behind a firewall? ssh has got you covered. If you need to access the remote endpoint http://no-public-access:80 but can reach that host from another host that you can log in to (let’s call it ssh-host), just try this:</p>
+
+<figure class="highlight"><pre><code class="language-console" data-lang="console"><span class="w">$ </span><span class="nc">ssh</span><span class="kv"> -L 8080:no-public-access:80 user@ssh-host</span></code></pre></figure>
+
+<p>Then browse to http://localhost:8080. Your requests are being routed through <code class="highlighter-rouge">ssh-host</code> and hit <code class="highlighter-rouge">no-public-access:80</code> and are routed back to you. <em>Tremendously</em> useful.</p>
+
+<h4 id="mounting-filesystems">Mounting Filesystems</h4>
+
+<p>NFS, while venerable, is pretty shoddy when it comes to securely sharing directories. You can share to an entire subnet, but anything beyond that gets tricky. Enter sshfs, the ssh <em>filesystem</em>.</p>
+
+<p>I’ve got a machine called <code class="highlighter-rouge">wonka</code> trying to share the directory <code class="highlighter-rouge">/srv/factory</code> with the host <code class="highlighter-rouge">bucket</code>. Assuming that the user <code class="highlighter-rouge">charlie</code> on <code class="highlighter-rouge">bucket</code> has keys set up on <code class="highlighter-rouge">wonka</code>, and assuming that I’ve got sshfs available (install it via your package manager of choice if <code class="highlighter-rouge">which sshfs</code> returns nothing), try this out:</p>
+
+<figure class="highlight"><pre><code class="language-console" data-lang="console"><span class="w">$ </span><span class="nc">sshfs</span><span class="kv"> wonka:/srv/factory /mnt -o idmap=user</span></code></pre></figure>
+
+<p>Everything is pretty self-explanatory except for the filesystem mount option <code class="highlighter-rouge">idmap</code>. That just tries to map the unix numeric IDs from the server to the user you’re mounting the filesystem as (it’s the least troublesome option.)</p>
+
+<p>And presto, you’re sharing a filesystem quickly, easily, and securely. The caveat here is that filesystem changes can take a little longer to propagate than with similar file-sharing schemes like SMB or NFS.</p>
+
+<h4 id="remote-file-editing">Remote File Editing</h4>
+
+<p>This trick relies on the netrw capabilities of vim (a directory browsing function) and scp (a sister program of ssh.)</p>
+
+<p>Netrw allows vim to browse the filesystem on the local filesystem easily (try it in a terminal with <code class="highlighter-rouge">$ vim [path]</code>, such as <code class="highlighter-rouge">$ vim .</code>. However, we can pass vim a <em>remote path</em> using <code class="highlighter-rouge">scp://</code> to achieve remote file editing:</p>
+
+<figure class="highlight"><pre><code class="language-console" data-lang="console"><span class="w">$ </span><span class="nc">vim</span><span class="kv"> scp://wonka/</span></code></pre></figure>
+
+<p>You’re now browsing your home directory’s contents on <code class="highlighter-rouge">wonka</code> within vim. Any file edits you make will be synced over on write via scp.</p>
+
+<h4 id="tab-completion">Tab-Completion</h4>
+
+<p>Not a trick, but really useful.</p>
+
+<p>Have you ssh-ed into a machine like this in the past?</p>
+
+<figure class="highlight"><pre><code class="language-console" data-lang="console"><span class="w">$ </span><span class="nc">ssh</span><span class="kv"> supercalifragilisticexpialidocious</span></code></pre></figure>
+
+<p>Good news, you can probably do this:</p>
+
+<figure class="highlight"><pre><code class="language-console" data-lang="console"><span class="w">$ </span><span class="nc">ssh</span><span class="kv"> sup&lt;TAB&gt;</span></code></pre></figure>
+
+<p>and <del>ssh</del><sup id="fnref:ssh-auto"><a href="#fn:ssh-auto" class="footnote">2</a></sup> the shell will auto-complete hostnames drawn from the <code class="highlighter-rouge">~/.ssh/known_hosts</code> file.</p>
+
+<h4 id="lightweight-proxy">Lightweight Proxy</h4>
+
+<p>This is probably one of my favorite tricks, and is very useful when the need for it arises.</p>
+
+<p>The previous tunnelling example was simple: we’re forwarding a local port such as <code class="highlighter-rouge">8080</code> to a remote endpoint, and ssh handles passing packets through your intermediate ssh host. However, what if you want to place a program entirely behind an ssh host? Doing so enables you to essentially create a very lightweight proxy, independent of some sort of VPN solution like PPTP or OpenVPN.</p>
+
+<p>ssh has an option for this, the <code class="highlighter-rouge">-D</code> flag. Invoking ssh with the following options</p>
+
+<figure class="highlight"><pre><code class="language-console" data-lang="console"><span class="w">$ </span><span class="nc">ssh</span><span class="kv"> -D 9090 user@host</span></code></pre></figure>
+
+<p>exposes the local port <code class="highlighter-rouge">9090</code> as a <a href="https://en.wikipedia.org/wiki/SOCKS_proxy">SOCKS</a> proxy. You can then alter your browser settings to use your local SOCKS proxy to route browsing traffic. My configuration in Firefox for the previous example is show here:</p>
+
+<figure class="mainline"><img src="socks_proxy-507x493-ec3013.png" class="mainline" itemprop="image" alt="ssh SOCKS proxy settings in Firefox"><figcaption>ssh SOCKS proxy settings in Firefox</figcaption></figure>
+
+<p>Note that for Firefox at least, I had to set the following flag in my http://about:config in order for everything to work correctly:</p>
+
+<figure class="mainline"><img src="firefox_socks_dns-495x55-c560e8.png" class="mainline" itemprop="image" alt="Firefox SOCKS dns settings"><figcaption>Firefox SOCKS dns settings</figcaption></figure>
+
+<p>Try browsing to a site like <a href="http://geoiptool.com/">geoiptool</a> and you should find that your IP is now originating from your ssh host.</p>
+
+<p>This may initially seem a little useless, but when you consider that you can also use a cheap (or free) EC2 instance anywhere in the world… there’s a lot of possibilities. For example, I’ve used this trick to access US-only services when traveling abroad and it has worked very well.</p>
+
+<h4 id="accessing-nat-ed-hosts-directly">Accessing NAT-ed Hosts Directly</h4>
+
+<p>Before diving into this one, I want to emphasize that if you aren’t taking full advantage of your <code class="highlighter-rouge">~/.ssh/config</code>, you really should. Stop using <code class="highlighter-rouge">alias</code> and starting using shorthand hostnames in the ssh config file. Doing so allows you do use the same shortname in any ssh-friendly application (scp, rsync, vim, etc.) and lends itself well to providing a unified environment if you distribute your dotfiles across machines.</p>
+
+<p>Moving on. ssh config files follow this syntax:</p>
+
+<figure class="highlight"><pre><code class="language-apache" data-lang="apache">Host foobar
+    Option value</code></pre></figure>
+
+<p>For example, you can reduce the command</p>
+
+<figure class="highlight"><pre><code class="language-console" data-lang="console"><span class="w">$ </span><span class="nc">ssh</span><span class="kv"> -p12345 foo@bar.baz.edu -i ~/.ssh/customkey</span></code></pre></figure>
+
+<p>to</p>
+
+<figure class="highlight"><pre><code class="language-console" data-lang="console"><span class="w">$ </span><span class="nc">ssh</span><span class="kv"> bar</span></code></pre></figure>
+
+<p>by adding the following to <code class="highlighter-rouge">~/.ssh/config</code>:</p>
+
+<figure class="highlight"><pre><code class="language-apache" data-lang="apache">Host bar
+    <span class="nc">User</span> foo
+    <span class="nc">Port</span> 12345
+    IdentityFile ~/.ssh/customkey
+    HostName bar.baz.edu</code></pre></figure>
+
+<p>Now that we’ve dabbled in the config, look at this configuration stanza:</p>
+
+<figure class="highlight"><pre><code class="language-apache" data-lang="apache">Host behind.bar
+    <span class="c"># ProxyCommand ssh bar exec nc behind %p</span>
+    <span class="c"># I've since been educated that invoking netcat for forwarding</span>
+    <span class="c"># is deprecated, use the -W flag instead:</span>
+    ProxyCommand ssh -q -W %h:%p bar</code></pre></figure>
+
+<p><code class="highlighter-rouge">ProxyCommand</code> directs ssh how to connect to <code class="highlighter-rouge">behind.bar</code>: connect to <code class="highlighter-rouge">bar</code> (previously defined) and <del>use netcat to</del> connect to the port that ssh would normally connect to. ssh’s <code class="highlighter-rouge">-W</code> flag intelligently forwards traffic to the interpolated %h (hostname) and %p (port) variable placeholders. The following diagram demonstrates.</p>
+
+<figure class="mainline"><img src="ssh_proxycommand-600x301-0610a0.png" class="mainline" itemprop="image" alt="ssh ProxyCommand diagram"><figcaption>ssh ProxyCommand diagram</figcaption></figure>
+
+<p>I’ve you’ve ever tried to copy a file from a NAT-ed machine, you’ll see the usefulness in this: you can essentially treat the NAT-ed host as if there were no intermediate hosts between the ssh client and daemon.</p>
+
+<h4 id="sharing-connections">Sharing Connections</h4>
+
+<p>I often find that when I’m working on a remote host, there’s a pretty good chance I’ll need to scp a file over or log in again over another ssh session. While you <em>could</em> negotiate another asymmetric ssh handshake, why not use your pre-existing connection to make speedier file copies or logins?</p>
+
+<p>Use <code class="highlighter-rouge">Controlpath</code>:</p>
+
+<figure class="highlight"><pre><code class="language-apache" data-lang="apache">Host busyserver
+    Controlmaster auto
+    Controlpath ~/.ssh/ssh-%r@%h:%p.sock</code></pre></figure>
+
+<p>This means upon first connection to <code class="highlighter-rouge">busyserver</code>, ssh will create a socket in <code class="highlighter-rouge">~/.ssh/</code> which can be shared by other commands. If you’re using commands like rsync or scp, this can make repetitive copy tasks much quicker.</p>
+
+<h4 id="conclusion">Conclusion</h4>
+
+<p>These are just a few uses for ssh that I’ve come across. If anyone has other creative uses for it, I’d love to hear them.</p>
+
+<h4 id="edit-bonus-round">Edit: Bonus Round!</h4>
+
+<p>There’s been great reception for this post both on reddit and twitter, so I couldn’t help but add some of the great tips that people have been throwing at me.</p>
+
+<p>Credit goes to the ssh savants commenting on this blog post and over at the <a href="https://pay.reddit.com/r/linux/comments/245jt9/ssh_kung_fu/">reddit thread</a>.</p>
+
+<h5 id="remote-file-editing-in-emacs">Remote File Editing in Emacs</h5>
+
+<p>I’m a vim man, so I hadn’t the slightest clue that you could leverage ssh equally well using emacs by opening a file path of the format <code class="highlighter-rouge">//user@host:/file</code> in order to remotely edit files.</p>
+
+<h5 id="the-secure-shell-shell">The Secure Shell… Shell</h5>
+
+<p>This one was new to me: try the key combination <code class="highlighter-rouge">~C</code> while in an ssh session and you’ll get a prompt that looks like this:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>ssh&gt;
+</code></pre>
+</div>
+
+<p>(I have to hit return before the <code class="highlighter-rouge">~C</code> key combo in zsh, but your shell’s behavior may vary.)</p>
+
+<p>Try entering <code class="highlighter-rouge">help</code> at this prompt to get a summary of the commands you can enter at the prompt. Essentially you can dynamically allocate forwarded ports from within your active ssh session. Who knew?</p>
+
+<p>I’ve actually used the key combination <code class="highlighter-rouge">~.</code> many types to kill a hung ssh session but had no idea that I was using this feature of ssh.</p>
+
+<h5 id="agent-forwarding">Agent Forwarding</h5>
+
+<p>I actually use this pretty heavily but failed to mention it because I got lazy.</p>
+
+<p>When you negotiate pubkey authentication with ssh, you’re just validating that your key gives you the rights to log in the the remote server. What if you want to get from that remote server to <em>another</em> server?</p>
+
+<p>You could use password authentication to get to the other machine (ugly), place your private on the intermediate host (not a good idea to spread your private key around), <strong>or</strong> you could use agent forwarding.</p>
+
+<p>Agent forwarding allows you to validate against that second machine by verifying that you’re the owner of the permissioned private key somewhere down the chain. I don’t want to make more diagrams so I’ll make some ASCII art. Here are your hostnames:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>sol ----------------------&gt; terra ----------------------&gt; luna
+</code></pre>
+</div>
+
+<p>Your pubkey from sol is listed in terra:~/.ssh/authorized_keys. Great! You ssh into terra:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>sol ======================&gt; terra ----------------------&gt; luna
+</code></pre>
+</div>
+
+<p>Now you want to get to luna. You can get there without your private key on terra by using a plain old</p>
+
+<figure class="highlight"><pre><code class="language-console" data-lang="console"><span class="w">$ </span><span class="nc">ssh</span><span class="kv"> luna</span></code></pre></figure>
+
+<p>Nice! With any key credentials stored on terra, you’ve authenticated to luna using the private key stored on sol. The only requirements for this feature are:</p>
+
+<ul>
+  <li>On the client (sol in this example)
+    <ul>
+      <li>Make sure you have the <code class="highlighter-rouge">ssh-agent</code> program running (check if it’s running with <code class="highlighter-rouge">ssh-add -L</code> to list cached private keys)</li>
+      <li>Cache your key with <code class="highlighter-rouge">ssh-add</code></li>
+      <li>Prepend the line <code class="highlighter-rouge">ForwardAgent yes</code> to your <code class="highlighter-rouge">~/.ssh/config</code></li>
+    </ul>
+  </li>
+  <li>Each intermediate server
+    <ul>
+      <li>Ensure the line <code class="highlighter-rouge">AllowAgentForwarding yes</code> is in <code class="highlighter-rouge">/etc/ssh/sshd_config</code></li>
+    </ul>
+  </li>
+</ul>
+
+<p>That’s all there is. If this fails to work for you for some reason, the most common problem is that your key isn’t cached in <code class="highlighter-rouge">ssh-agent</code> on your local machine (again, confirm it’s cached with <code class="highlighter-rouge">ssh-add -L</code>.)</p>
+
+<p>Note that this technique of caching your key in ssh-agent also alleviates the annoyance of having to unlock a password-protected private key every time it’s used by caching it for an extended period (with the associated security/convenience tradeoff of keeping your private key cached in memory.)</p>
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:ecdsa">
+      <p>A <a href="https://pay.reddit.com/r/linux/comments/245jt9/ssh_kung_fu/ch3wruh">reddit user</a> has noted that the ECDSA algorithm isn’t entirely safe from a cryptographic standpoint, either. If <a href="https://www.schneier.com/blog/archives/2013/09/the_nsa_is_brea.html#c1675929">Schneier</a> recommends avoiding ecc crypto for the time being, I’ll err on his side. <a href="#fnref:ecdsa" class="reversefootnote">↩</a></p>
+    </li>
+    <li id="fn:ssh-auto">
+      <p>Another <a href="https://pay.reddit.com/r/linux/comments/245jt9/ssh_kung_fu/ch3uzqo">reddit user</a> has noted that this is typically accomplished by the shell. In the case of my shell (zsh), the oh-my-zsh autocomplete function I’m using does draw from ~/.ssh/known_hosts. <a href="#fnref:ssh-auto" class="reversefootnote">↩</a></p>
+    </li>
+  </ol>
+</div>
+
+
+<div id="discourse-comments"><iframe id="discourse-embed-frame" src="index_1.html" scrolling="no" width="100%" frameborder="0" height="2820px"></iframe></div>
+
+
+
+<div id="page-nav" class="group">
+  <div id="prev">
+    
+      <a href="http://blog.tjll.net/please-stop-hashing-passwords/" title="Previous post: Please stop hashing passwords">« Please stop hashing passwords</a>
+    
+  </div>
+
+  <div id="next">
+    
+    <a href="http://blog.tjll.net/practical-linux-pipelining/" title="
+      Next post: ">Practical Linux Pipelining »</a>
+    
+  </div>
+</div>
+
+    </div>
+    <footer>
+    <div id="email">
+      ty@tjll<span style="display: none;">gmail</span>.net
+    </div>
+    <!-- <div id="timestamp"> -->
+    <!--     Freshly baked 2016 07 05 00:32 -->
+    <!-- </div> -->
+    <div id="copyright">
+        <!--&#3647;-->
+        Copyright © 2012-2016
+    </div>
+    </footer>
+  </div> <!--! end of #container -->
+</div> <!--! end of #wrapper -->
+
+  <!-- Search template -->
+  
+  
+  
+
+  
+
+  <!--[if lt IE 7 ]>
+    <script src="/js/libs/dd_belatedpng.js"></script>
+    <script>DD_belatedPNG.fix("img, .png_bg"); // Fix any <img> or .png_bg bg-images. Also, please read goo.gl/mZiyb </script>
+  <![endif]-->
+
+  <!-- mathiasbynens.be/notes/async-analytics-snippet Change UA-XXXXX-X to be your site's ID -->
+  
+
+
+
+
+</body>
+</html>

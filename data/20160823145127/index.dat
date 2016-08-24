@@ -1,0 +1,11 @@
+id	20160823145127
+create	20160823145127
+modify	20160823145127
+type	
+title	实战 SSH 端口转发
+chars	UTF-8
+icon	favicon.ico
+source	https://www.ibm.com/developerworks/cn/linux/l-cn-sshforward/
+comment	
+lock	
+folder	ssh-tips	ssh port forwarding

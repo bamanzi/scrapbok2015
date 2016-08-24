@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en-US" xmlns:addthis="http://www.addthis.com/help/api-spec" xmlns:fb="http://ogp.me/ns/fb#">
+<!--<![endif]--><head>
+<meta charset="UTF-8">
+
+<link rel="pingback" href="http://linuxaria.com/xmlrpc.php">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1,maximum-scale=1,user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="HandheldFriendly" content="true">
+<!--[if lt IE 9]>
+	<script src="http://cdn.linuxaria.com/wp-content/themes/suffusion/scripts/html5.js" type="text/javascript"></script>
+	<![endif]-->
+<title>Run the same command on many Linux servers at once | Linuxaria</title>
+ 
+<link rel="author" href="https://plus.google.com/101727609700016666852/posts">
+<meta name="description" itemprop="description" content="Original article by Linux Brigade Ever have to check a list of Linux servers for various things like what version of CentOS they’re running, maybe how long">
+<meta name="keywords" itemprop="keywords" content="cpanel,gsh,linux,linux kernel,shells,ssh,terminal,vps">
+<link rel="canonical" href="https://linuxaria.com/pills/run-the-same-command-on-many-linux-servers-at-once">
+
+ 
+<link rel="alternate" type="application/rss+xml" title="Linuxaria » Feed" href="https://linuxaria.com/feed">
+<link rel="alternate" type="application/rss+xml" title="Linuxaria » Comments Feed" href="https://linuxaria.com/comments/feed">
+<link rel="alternate" type="application/rss+xml" title="Linuxaria » Run the same command on many Linux servers at once Comments Feed" href="https://linuxaria.com/pills/run-the-same-command-on-many-linux-servers-at-once/feed">
+
+
+
+
+
+
+
+
+<!--[if !IE]>-->
+<!--<![endif]-->
+<!--[if gt IE 8]><link rel='stylesheet' id='suffusion-rounded-css'  href='http://cdn.linuxaria.com/wp-content/themes/suffusion/rounded-corners.css?ver=4.4.9' type='text/css' media='all' />
+<![endif]-->
+<!--[if lt IE 8]><link rel='stylesheet' id='suffusion-ie-css'  href='http://cdn.linuxaria.com/wp-content/themes/suffusion/ie-fix.css?ver=4.4.9' type='text/css' media='all' />
+<![endif]-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="https://api.w.org/" href="https://linuxaria.com/wp-json/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://linuxaria.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://cdn.linuxaria.com/wp-includes/wlwmanifest.xml">
+<link rel="prev" title="Linux Subnet Calculator (CIDR)" href="https://linuxaria.com/howto/linux-subnet-calculator-cidr">
+<link rel="next" title="Linux compressors comparison on CentOS 6.5 x86-64: lzo vs lz4 vs gzip vs bzip2 vs lzma" href="https://linuxaria.com/article/linux-compressors-comparison-on-centos-6-5-x86-64-lzo-vs-lz4-vs-gzip-vs-bzip2-vs-lzma">
+<link rel="shortlink" href="https://linuxaria.com/?p=8081">
+<link rel="alternate" type="application/json+oembed" href="https://linuxaria.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Flinuxaria.com%2Fpills%2Frun-the-same-command-on-many-linux-servers-at-once">
+<link rel="alternate" type="text/xml+oembed" href="https://linuxaria.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Flinuxaria.com%2Fpills%2Frun-the-same-command-on-many-linux-servers-at-once&amp;format=xml">
+<link rel="payment" type="text/html" title="Flattr this!" href="https://flattr.com/submit/auto?user_id=linuxaria&amp;popout=1&amp;url=https%3A%2F%2Flinuxaria.com%2Fpills%2Frun-the-same-command-on-many-linux-servers-at-once&amp;language=en_GB&amp;category=text&amp;title=Run+the+same+command+on+many+Linux+servers+at+once&amp;description=Popular+Posts%3A+None+Found&amp;tags=cpanel%2Cgsh%2Clinux%2Clinux+kernel%2Cshells%2Cssh%2Cterminal%2Cvps%2Cblog">
+ 
+
+
+
+
+ 
+ 
+
+ 
+
+<link hreflang="en" href="http://linuxaria.com/pills/run-the-same-command-on-many-linux-servers-at-once?lang=en" rel="alternate">
+<link hreflang="it" href="http://linuxaria.com/pills/run-the-same-command-on-many-linux-servers-at-once?lang=it" rel="alternate">
+<link hreflang="x-default" href="http://linuxaria.com/pills/run-the-same-command-on-many-linux-servers-at-once" rel="alternate">
+<meta name="generator" content="qTranslate-X 3.4.6.8">
+ 
+ 
+
+ 
+
+ 
+ 
+
+ 
+
+<!-- begin SI CAPTCHA Anti-Spam - comment form style --><!-- end SI CAPTCHA Anti-Spam - comment form style -->
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body class="single single-post postid-8081 single-format-standard light-theme-orange suffusion-custom device-desktop">
+<div id="wrapper" class="fix">
+<div id="header-container" class="custom-header fix">
+<header id="header" class="fix">
+<h2 class="blogtitle left"><a href="https://linuxaria.com/">Linuxaria</a></h2>
+<div class="description right">Everything about Linux</div>
+</header> 
+<nav id="nav" class="tab fix">
+<div class="col-control left">
+ 
+<div id="right-header-widgets" class="warea">
+ <div id="text-11" class="widget_text"> <div class="textwidget"><form action="https://www.google.com/" id="cse-search-box" target="_blank">
+<div>
+<input name="cx" value="partner-pub-2431705124166952:4754734936" type="hidden">
+<input name="ie" value="UTF-8" type="hidden">
+<input name="q" size="23" type="text">
+<input name="sa" value="Search" type="submit">
+</div>
+</form>
+</div>
+</div>  </div>
+ 
+<ul class="sf-menu l_tinynav1">
+<li class="regular-tab"><a href="https://linuxaria.com/"><img src="home-light.png" alt="Home" class="home-icon"></a></li> <li class="cat-item cat-item-10 dd-tab"><a class="with-arrow" href="https://linuxaria.com/category/article"><!--[if !IE]>--><span class="down-ptr">&nbsp;</span><!--<![endif]-->Articles<!--[if lt IE 7]>&nbsp;&nbsp;&darr;<![endif]--> <!--[if (!IE)|(gte IE 7)]><span class='down-ptr'>&nbsp;</span><![endif]--></a>
+<ul style="display: none; visibility: hidden;" class="children">
+<li class="cat-item cat-item-24"><a href="https://linuxaria.com/category/article/news">News</a>
+</li>
+</ul>
+</li>
+<li class="cat-item cat-item-27 dd-tab"><a href="https://linuxaria.com/category/howto">Guides</a>
+</li>
+<li class="cat-item cat-item-261 dd-tab"><a href="https://linuxaria.com/category/interviste">Interview</a>
+</li>
+<li class="cat-item cat-item-11 dd-tab"><a href="https://linuxaria.com/category/pills">Pills</a>
+</li>
+<li class="cat-item cat-item-13 dd-tab"><a href="https://linuxaria.com/category/recensioni">Reviews</a>
+</li>
+<li class="pagenav dd-tab"><a class="with-arrow" href="#"><!--[if !IE]>--><span class="down-ptr">&nbsp;</span><!--<![endif]-->Information<!--[if lt IE 7]>&nbsp;&nbsp;&darr;<![endif]--> <!--[if (!IE)|(gte IE 7)]><span class='down-ptr'>&nbsp;</span><![endif]--></a><ul style="display: none; visibility: hidden;"><li class="page_item page-item-943"><a href="https://linuxaria.com/collabora">Contribute</a></li>
+<li class="page_item page-item-61"><a href="https://linuxaria.com/contattami">Contact me</a></li>
+<li class="page_item page-item-44"><a href="https://linuxaria.com/info">Info</a></li>
+<li class="page_item page-item-221"><a href="https://linuxaria.com/privacy-policy">Privacy Policy</a></li>
+</ul></li><li id="linkcat-" class="linkcat dd-tab"><a class="with-arrow" href="#"><!--[if !IE]>--><span class="down-ptr">&nbsp;</span><!--<![endif]-->Links<!--[if lt IE 7]>&nbsp;&nbsp;&darr;<![endif]--> <!--[if (!IE)|(gte IE 7)]><span class='down-ptr'>&nbsp;</span><![endif]--></a>
+<ul style="display: none; visibility: hidden;" class="xoxo blogroll">
+<li><a href="http://gmstyle.org/">GMStyle</a></li>
+<li><a href="http://www.ilbloggatore.com/" target="_blank">Il Bloggatore</a></li>
+<li><a href="http://www.linux.com/" target="_blank">Linux</a></li>
+<li><a href="http://www.linuxtoday.com/" target="_blank">Linux Today</a></li>
+<li><a href="http://www.linuxfeed.org/" target="_blank">Linuxfeed</a></li>
+<li><a href="http://www.linuxinsight.com/">LinuxInsight</a></li>
+<li><a href="http://lxer.com/" target="_blank">Lxer</a></li>
+<li><a href="http://ziobudda.net/" target="_blank">ZioBudda</a></li>
+</ul>
+</li>
+</ul><select class="tinynav tinynav1"><option value="https://linuxaria.com"></option><option value="https://linuxaria.com/category/article">&nbsp;Articles </option><option value="https://linuxaria.com/category/article/news">— News</option><option value="https://linuxaria.com/category/howto">Guides</option><option value="https://linuxaria.com/category/interviste">Interview</option><option value="https://linuxaria.com/category/pills">Pills</option><option value="https://linuxaria.com/category/recensioni">Reviews</option><option value="#">&nbsp;Information </option><option value="https://linuxaria.com/collabora">— Contribute</option><option value="https://linuxaria.com/contattami">— Contact me</option><option value="https://linuxaria.com/info">— Info</option><option value="https://linuxaria.com/privacy-policy">— Privacy Policy</option><option value="#">&nbsp;Links </option><option value="http://gmstyle.org/">— GMStyle</option><option value="http://www.ilbloggatore.com/">— Il Bloggatore</option><option value="http://www.linux.com/">— Linux</option><option value="http://www.linuxtoday.com/">— Linux Today</option><option value="http://www.linuxfeed.org/">— Linuxfeed</option><option value="http://www.linuxinsight.com/">— LinuxInsight</option><option value="http://lxer.com/">— Lxer</option><option selected="selected" value="http://ziobudda.net/">— ZioBudda</option></select>
+</div> 
+</nav> 
+</div> 
+ 
+<div id="horizontal-outer-widgets-1" class="dbx-group boxed warea fix">
+ <aside id="text-6" class="suf-widget suf-horizontal-widget suf-widget-1c widget_text"><h3 class="dbx-handle plain">sponsored links</h3><div class="dbx-content"> <div class="textwidget">
+</div>
+</div></aside> </div>
+  <div id="container" class="fix">
+<div id="main-col">
+<div id="content">
+<article class="post-8081 post type-post status-publish format-standard hentry category-howto category-pills tag-cpanel tag-gsh tag-linux tag-linux-kernel tag-shells tag-ssh tag-terminal tag-vps category-27-id category-11-id full-content meta-position-corners fix" id="post-8081">
+<header class="post-header title-container fix">
+<div class="title">
+<h1 class="posttitle"><a href="https://linuxaria.com/pills/run-the-same-command-on-many-linux-servers-at-once" class="entry-title" rel="bookmark" title="Run the same command on many Linux servers at once">Run the same command on many Linux servers at once</a></h1>
+<div class="postdata fix">
+<span class="category"><span class="icon">&nbsp;</span><a href="https://linuxaria.com/category/howto" rel="category tag">Guides</a>, <a href="https://linuxaria.com/category/pills" rel="category tag">Pills</a></span>
+<span class="comments"><span class="icon">&nbsp;</span><a href="#respond">Add comments</a></span>
+</div> 
+</div> 
+<div class="date"><span class="month">May</span> <span class="day">21</span><span class="year">2014</span></div>
+</header> 
+<span class="post-format-icon">&nbsp;</span><span class="updated" title="2014-05-21T23:11:30+00:00"></span> <div class="entry-container fix">
+<div class="entry fix">
+ 
+<div class="at-above-post" data-url="https://linuxaria.com/pills/run-the-same-command-on-many-linux-servers-at-once" data-title="Run the same command on many Linux servers at once"></div><p>Original article by <a href="http://www.linuxbrigade.com/run-the-same-command-on-many-linux-servers-at-once/" target="_blank">Linux Brigade</a></p>
+<p>Ever have to check a list of Linux servers for various things like what version of CentOS they’re running, maybe how long each has been running to get an uptime report? You can and it’s very easy to get going with it with the command gsh</p>
+<p><a href="http://outflux.net/unix/software/gsh/" target="_blank">Group Shell (also called gsh)</a> is a remote shell multiplexor. It lets you control many remote shells at once in a single shell. Unlike other commands dispatchers, it is interactive, so shells spawned on the remote hosts are persistent.<br>
+It requires only a SSH server on the remote hosts, or some other way to open a remote shell.<br>
+<span id="more-8081"></span></p>
+<p><br>
+</p>
+<p>gsh allows you to run commands on multiple hosts by adding tags to the gsh command.</p>
+<div id="crayon-537d22526de3b921836847" class="crayon-syntax crayon-theme-github crayon-font-monospace crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover">
+<div class="crayon-main">
+<table class="crayon-table">
+<tbody>
+<tr class="crayon-row">
+<td class="crayon-nums " data-settings="show">
+<div class="crayon-nums-content">
+<div class="crayon-num" style="font-weight: inherit ! important; color: rgb(170, 170, 170) ! important;" data-line="crayon-537d22526de3b921836847-1">1</div>
+</div>
+</td>
+<td class="crayon-code">
+<div class="crayon-pre">
+<div id="crayon-537d22526de3b921836847-1" class="crayon-line" style="font-weight: inherit ! important;"><span class="crayon-e" style="font-weight: inherit ! important; color: teal ! important;">gsh </span><span class="crayon-i" style="font-weight: inherit ! important;">tag&nbsp;</span><span class="crayon-s" style="font-weight: inherit ! important; color: rgb(221, 17, 68) ! important;">“remote command”</span></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><strong>Important things to remember:</strong></p>
+<ul>
+<li>/etc/ghosts contains a list of all the servers and tags</li>
+<li>gsh is a lot more fun once you’ve set up ssh keys to your servers</li>
+</ul>
+<p><strong>Examples to use:</strong></p>
+<p>List uptime on all servers in the linux group:</p>
+<div id="crayon-537d22526de5a352418938" class="crayon-syntax crayon-theme-github crayon-font-monospace crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover">
+<div class="crayon-main">
+<table class="crayon-table">
+<tbody>
+<tr class="crayon-row">
+<td class="crayon-nums " data-settings="show">
+<div class="crayon-nums-content">
+<div class="crayon-num" style="font-weight: inherit ! important; color: rgb(170, 170, 170) ! important;" data-line="crayon-537d22526de5a352418938-1">1</div>
+</div>
+</td>
+<td class="crayon-code">
+<div class="crayon-pre">
+<div id="crayon-537d22526de5a352418938-1" class="crayon-line" style="font-weight: inherit ! important;"><span class="crayon-e" style="font-weight: inherit ! important; color: teal ! important;">gsh </span><span class="crayon-i" style="font-weight: inherit ! important;">linux&nbsp;</span><span class="crayon-s" style="font-weight: inherit ! important; color: rgb(221, 17, 68) ! important;">“uptime”</span></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Check to see if an IP address was blocked with CSF by checking the csf and csfcluster groups/tags:</p>
+<div id="crayon-537d22526de66425470819" class="crayon-syntax crayon-theme-github crayon-font-monospace crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover">
+<div class="crayon-plain-wrap"></div>
+<div class="crayon-main">
+<table class="crayon-table">
+<tbody>
+<tr class="crayon-row">
+<td class="crayon-nums " data-settings="show">
+<div class="crayon-nums-content">
+<div class="crayon-num" style="font-weight: inherit ! important; color: rgb(170, 170, 170) ! important;" data-line="crayon-537d22526de66425470819-1">1</div>
+</div>
+</td>
+<td class="crayon-code">
+<div class="crayon-pre">
+<div id="crayon-537d22526de66425470819-1" class="crayon-line" style="font-weight: inherit ! important;"><span class="crayon-e" style="font-weight: inherit ! important; color: teal ! important;">gsh </span><span class="crayon-v" style="font-weight: inherit ! important; color: rgb(0, 45, 122) ! important;">csf</span><span class="crayon-o" style="font-weight: inherit ! important; color: rgb(0, 111, 224) ! important;">+</span><span class="crayon-i" style="font-weight: inherit ! important;">csfcluster&nbsp;</span><span class="crayon-s" style="font-weight: inherit ! important; color: rgb(221, 17, 68) ! important;">“/usr/sbin/csf -g xxx.xxx.xxx.xxx”</span></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Unblock an IP and remove from /etc/csf.deny from all csf and csfcluster machines</p>
+<div id="crayon-537d22526de71896446938" class="crayon-syntax crayon-theme-github crayon-font-monospace crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover">
+<div class="crayon-plain-wrap"></div>
+<div class="crayon-main">
+<table class="crayon-table">
+<tbody>
+<tr class="crayon-row">
+<td class="crayon-nums " data-settings="show">
+<div class="crayon-nums-content">
+<div class="crayon-num" style="font-weight: inherit ! important; color: rgb(170, 170, 170) ! important;" data-line="crayon-537d22526de71896446938-1">1</div>
+</div>
+</td>
+<td class="crayon-code">
+<div class="crayon-pre">
+<div id="crayon-537d22526de71896446938-1" class="crayon-line" style="font-weight: inherit ! important;"><span class="crayon-e" style="font-weight: inherit ! important; color: teal ! important;">gsh </span><span class="crayon-v" style="font-weight: inherit ! important; color: rgb(0, 45, 122) ! important;">csf</span><span class="crayon-o" style="font-weight: inherit ! important; color: rgb(0, 111, 224) ! important;">+</span><span class="crayon-i" style="font-weight: inherit ! important;">csfcluster&nbsp;</span><span class="crayon-s" style="font-weight: inherit ! important; color: rgb(221, 17, 68) ! important;">“/usr/sbin/csf -dr xxx.xxx.xxx.xxx”</span></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Check the linux kernel version on all VPS machines running centos 5</p>
+<div id="crayon-537d22526de7c030152505" class="crayon-syntax crayon-theme-github crayon-font-monospace crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover">
+<div class="crayon-plain-wrap"></div>
+<div class="crayon-main">
+<table class="crayon-table">
+<tbody>
+<tr class="crayon-row">
+<td class="crayon-nums " data-settings="show">
+<div class="crayon-nums-content">
+<div class="crayon-num" style="font-weight: inherit ! important; color: rgb(170, 170, 170) ! important;" data-line="crayon-537d22526de7c030152505-1">1</div>
+</div>
+</td>
+<td class="crayon-code">
+<div class="crayon-pre">
+<div id="crayon-537d22526de7c030152505-1" class="crayon-line" style="font-weight: inherit ! important;"><span class="crayon-e" style="font-weight: inherit ! important; color: teal ! important;">gsh </span><span class="crayon-v" style="font-weight: inherit ! important; color: rgb(0, 45, 122) ! important;">centos5</span><span class="crayon-o" style="font-weight: inherit ! important; color: rgb(0, 111, 224) ! important;">–</span><span class="crayon-i" style="font-weight: inherit ! important;">baremetal&nbsp;</span><span class="crayon-s" style="font-weight: inherit ! important; color: rgb(221, 17, 68) ! important;">“uname -r”</span></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Check cpanel version on all cpanel machines</p>
+<div id="crayon-537d22526de87155227698" class="crayon-syntax crayon-theme-github crayon-font-monospace crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover">
+<div class="crayon-plain-wrap"></div>
+<div class="crayon-main">
+<table class="crayon-table">
+<tbody>
+<tr class="crayon-row">
+<td class="crayon-nums " data-settings="show">
+<div class="crayon-nums-content">
+<div class="crayon-num" style="font-weight: inherit ! important; color: rgb(170, 170, 170) ! important;" data-line="crayon-537d22526de87155227698-1">1</div>
+</div>
+</td>
+<td class="crayon-code">
+<div class="crayon-pre">
+<div id="crayon-537d22526de87155227698-1" class="crayon-line" style="font-weight: inherit ! important;"><span class="crayon-e" style="font-weight: inherit ! important; color: teal ! important;">gsh </span><span class="crayon-i" style="font-weight: inherit ! important;">cpanel&nbsp;</span><span class="crayon-s" style="font-weight: inherit ! important; color: rgb(221, 17, 68) ! important;">“/usr/local/cpanel/cpanel -V”</span></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>The full readme is located here:&nbsp;<a style="color: rgb(77, 139, 151);" href="http://outflux.net/unix/software/gsh/" target="_blank">http://outflux.net/unix/software/gsh/</a></p>
+<p>Here’s an example /etc/ghosts file:</p>
+<pre># Machines
+#
+# hostname         OS-Version Hardware OS  cp     security
+1.linuxbrigade.com debian6 baremetal linux plesk  iptables
+2.linuxbrigade.com centos5 vps       linux cpanel csfcluster
+3.linuxbrigade.com debian7 baremetal linux plesk  iptables
+4.linuxbrigade.com centos6 vps       linux cpanel csfcluster
+5.linuxbrigade.com centos6 vps       linux cpanel csfcluster
+6.linuxbrigade.com centos6 vps       linux nocp   denyhosts
+7.linuxbrigade.com debian6 baremetal linux plesk  iptables
+8.linuxbrigade.com centos6 baremetal linux cpanel csf
+9.linuxbrigade.com centos5 vps       linux cpanel csf</pre>
+<p><br>
+<br>
+</p><h3>Popular Posts:</h3>
+<ul class="popular-posts">None Found
+</ul>
+<p> </p>
+ 
+<div class="at-below-post" data-url="https://linuxaria.com/pills/run-the-same-command-on-many-linux-servers-at-once" data-title="Run the same command on many Linux servers at once"></div> 
+ 
+<div class="at-below-post-recommended"></div> <p class="wp-flattr-button"><a href="http://linuxaria.com/?flattrss_redirect&amp;id=8081&amp;md5=433ada892f09a548896683de920ecd54" title="Flattr" target="_blank"><img src="flattr-badge-large.png" srcset="flattr-badge-large.png" alt="Flattr this!"></a></p> </div> 
+</div> 
+<footer class="post-footer postdata fix">
+<span class="author"><span class="icon">&nbsp;</span>Posted by <span class="vcard"><a href="https://linuxaria.com/author/linuxari" class="url fn" rel="author">linuxari</a></span> at 23:11</span> <span class="tags tax"><span class="icon">&nbsp;</span>Tagged with: <a href="https://linuxaria.com/tag/cpanel" rel="tag">cpanel</a>, <a href="https://linuxaria.com/tag/gsh" rel="tag">gsh</a>, <a href="https://linuxaria.com/tag/linux" rel="tag">linux</a>, <a href="https://linuxaria.com/tag/linux-kernel" rel="tag">linux kernel</a>, <a href="https://linuxaria.com/tag/shells" rel="tag">shells</a>, <a href="https://linuxaria.com/tag/ssh" rel="tag">ssh</a>, <a href="https://linuxaria.com/tag/terminal" rel="tag">terminal</a>, <a href="https://linuxaria.com/tag/vps" rel="tag">vps</a></span>
+</footer> 
+<section id="comments">
+<h3 class="comments"><span class="icon">&nbsp;</span>
+4 Responses to “Run the same command on many Linux servers at once”</h3>
+<ol class="commentlist">
+<li id="comment-14146" class="comment even thread-even depth-1 plain-nested">
+<div id="div-comment-14146" class="comment-body">
+<div class="comment-author fix vcard">
+<img alt="" src="ba788cc0579fa2d2c9f0ab9af64070ad.dat" srcset="ba788cc0579fa2d2c9f0ab9af64070ad_001.dat 2x" class="avatar avatar-48 photo" width="48" height="48"> <div class="comment-author-link">
+<cite class="fn">Etescartz</cite> <span class="says">says:</span> </div>
+<div class="comment-meta commentmetadata"><a href="https://linuxaria.com/pills/run-the-same-command-on-many-linux-servers-at-once#comment-14146">
+Thursday May 22nd, 2014 at 07:46 AM</a> </div>
+</div>
+<p>I didn’t know this tool. I used “cssh” until now. I’m going to give gsh a try. Thanks for the article! As always, it is good reading material.</p>
+</div>
+<div class="reply">
+<a rel="nofollow" class="comment-reply-link" href="https://linuxaria.com/pills/run-the-same-command-on-many-linux-servers-at-once?replytocom=14146#respond" aria-label="Reply to Etescartz">Reply</a> </div>
+</li> 
+<li id="comment-15041" class="comment odd alt thread-odd thread-alt depth-1 plain-nested">
+<div id="div-comment-15041" class="comment-body">
+<div class="comment-author fix vcard">
+<img alt="" src="72062f4186198a165895361a931f7263.dat" srcset="72062f4186198a165895361a931f7263_001.dat 2x" class="avatar avatar-48 photo" width="48" height="48"> <div class="comment-author-link">
+<cite class="fn"><a href="http://www.websitemanagers.com.au/" rel="external nofollow" class="url">Adam Goryachev</a></cite> <span class="says">says:</span> </div>
+<div class="comment-meta commentmetadata"><a href="https://linuxaria.com/pills/run-the-same-command-on-many-linux-servers-at-once#comment-15041">
+Monday May 26th, 2014 at 11:42 PM</a> </div>
+</div>
+<p>Hmmm, I’ve always used something simple like this:<br>
+for i in 1 2 3 4 5 6 7 8;do echo “XEN${i}”;ssh 1.1.1.3${i} apt-get upgrade -y ; done<br>
+for i in 1 2 3 4 5 6 7 8;do echo “XEN${i}”;ssh 1.1.1.3${i} /etc/init.d/ssh restart ; done</p>
+<p>etc… might give this a go one day, depending on how well it works.<br>
+Personally, I’d like to be able to open a bunck of terminal windows to a group of hosts, send the same command to all of them, and then interact with each individually, or as a group. Like a “group command line” as well as the normal individual command lines.</p>
+</div>
+<div class="reply">
+<a rel="nofollow" class="comment-reply-link" href="https://linuxaria.com/pills/run-the-same-command-on-many-linux-servers-at-once?replytocom=15041#respond" aria-label="Reply to Adam Goryachev">Reply</a> </div>
+</li> 
+<li id="comment-15124" class="comment even thread-even depth-1 plain-nested">
+<div id="div-comment-15124" class="comment-body">
+<div class="comment-author fix vcard">
+<img alt="" src="c5b17da5c69042e65730e497cc2078b7.dat" srcset="c5b17da5c69042e65730e497cc2078b7_001.dat 2x" class="avatar avatar-48 photo" width="48" height="48"> <div class="comment-author-link">
+<cite class="fn">Ganesh</cite> <span class="says">says:</span> </div>
+<div class="comment-meta commentmetadata"><a href="https://linuxaria.com/pills/run-the-same-command-on-many-linux-servers-at-once#comment-15124">
+Tuesday May 27th, 2014 at 09:56 AM</a> </div>
+</div>
+<p>And the last update to the application was on 2006? and seems like its dead.</p>
+</div>
+<div class="reply">
+<a rel="nofollow" class="comment-reply-link" href="https://linuxaria.com/pills/run-the-same-command-on-many-linux-servers-at-once?replytocom=15124#respond" aria-label="Reply to Ganesh">Reply</a> </div>
+</li> 
+<li id="comment-15638" class="comment odd alt thread-odd thread-alt depth-1 plain-nested">
+<div id="div-comment-15638" class="comment-body">
+<div class="comment-author fix vcard">
+<img alt="" src="5b66ff5d6c029879ead5591fba656749.dat" srcset="5b66ff5d6c029879ead5591fba656749_001.dat 2x" class="avatar avatar-48 photo" width="48" height="48"> <div class="comment-author-link">
+<cite class="fn">Andy</cite> <span class="says">says:</span> </div>
+<div class="comment-meta commentmetadata"><a href="https://linuxaria.com/pills/run-the-same-command-on-many-linux-servers-at-once#comment-15638">
+Friday May 30th, 2014 at 03:15 AM</a> </div>
+</div>
+<p>If you have a little money SecureCRT from Vandyke software is an awesome connection manager. I use it to manage around 600 linux VM’s and about 50 32 port serial concentrators.</p>
+</div>
+<div class="reply">
+<a rel="nofollow" class="comment-reply-link" href="https://linuxaria.com/pills/run-the-same-command-on-many-linux-servers-at-once?replytocom=15638#respond" aria-label="Reply to Andy">Reply</a> </div>
+</li> 
+</ol>
+<div id="respond" class="comment-respond">
+<h3 id="reply-title" class="comment-reply-title"><span class="icon">&nbsp;</span>Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="#respond" style="display: none;">Cancel reply</a></small></h3> <form action="http://linuxaria.com/wp-comments-post.php" method="post" id="commentform" class="comment-form">
+<span></span>
+<p>
+<label for="comment" class="textarea suf-comment-label">Your Comment</label>
+<textarea name="comment" id="comment" cols="60" rows="10" tabindex="4" class="textarea"></textarea>
+</p><p class="form-allowed-tags">You may use these <abbr title="HyperText Markup Language">HTML</abbr> tags and attributes: <code>&lt;a href="" title=""&gt; &lt;abbr title=""&gt; &lt;acronym title=""&gt; &lt;b&gt; &lt;blockquote cite=""&gt; &lt;cite&gt; &lt;code&gt; &lt;del datetime=""&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=""&gt; &lt;s&gt; &lt;strike&gt; &lt;strong&gt; </code></p>
+<p>
+<label for="author" class="suf-comment-label">Name</label>
+<input style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABHklEQVQ4EaVTO26DQBD1ohQWaS2lg9JybZ+AK7hNwx2oIoVf4UPQ0Lj1FdKktevIpel8AKNUkDcWMxpgSaIEaTVv3sx7uztiTdu2s/98DywOw3Dued4Who/M2aIx5lZV1aEsy0+qiwHELyi+Ytl0PQ69SxAxkWIA4RMRTdNsKE59juMcuZd6xIAFeZ6fGCdJ8kY4y7KAuTRNGd7jyEBXsdOPE3a0QGPsniOnnYMO67LgSQN9T41F2QGrQRRFCwyzoIF2qyBuKKbcOgPXdVeY9rMWgNsjf9ccYesJhk3f5dYT1HX9gR0LLQR30TnjkUEcx2uIuS4RnI+aj6sJR0AM8AaumPaM/rRehyWhXqbFAA9kh3/8/NvHxAYGAsZ/il8IalkCLBfNVAAAAABJRU5ErkJggg==&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;" name="author" id="author" class="textarea" value="" size="28" tabindex="1" type="text"> (required)
+</p>
+<p>
+<label for="email" class="suf-comment-label">E-mail</label>
+<input name="email" id="email" value="" size="28" tabindex="2" class="textarea" type="text"> (required)
+</p>
+<p>
+<label for="url" class="suf-comment-label">URI</label>
+<input name="url" id="url" value="" size="28" tabindex="3" class="textarea" type="text">
+</p>
+<div class="captchaSizeDivLarge"><img id="si_image_com" class="si-captcha" src="securimage_show.php" alt="CAPTCHA Image" title="CAPTCHA Image" width="175" height="60">
+<input id="si_code_com" name="si_code_com" value="aperzqunfv8NQQt7" type="hidden">
+<div id="si_refresh_com">
+<a href="#" rel="nofollow" title="Refresh Image">
+<img class="captchaImgRefresh" src="refresh.png" alt="Refresh Image" width="22" height="20"></a>
+</div>
+</div>
+<br>
+<p><input id="captcha_code" name="captcha_code" size="6" type="text">
+<label id="captcha_code_label" for="captcha_code">CAPTCHA Code</label><span class="required"> *</span>
+</p><p class="form-submit"><input name="submit" id="submit" class="submit" value="Submit Comment" type="submit"> <input name="comment_post_ID" value="8081" id="comment_post_ID" type="hidden">
+<input name="comment_parent" id="comment_parent" value="0" type="hidden">
+</p><p style="display: none;"><input id="akismet_comment_nonce" name="akismet_comment_nonce" value="61d3cf7341" type="hidden"></p><p style="display: none;"></p> <input id="ak_js" name="ak_js" value="1471933241987" type="hidden"></form>
+</div> 
+</section>   </article> 
+<nav class="post-nav fix">
+<table>
+<tbody><tr>
+<td class="previous"><a href="https://linuxaria.com/howto/linux-subnet-calculator-cidr" rel="prev"><span class="icon">&nbsp;</span> Linux Subnet Calculator (CIDR)</a></td>
+<td class="next"><a href="https://linuxaria.com/article/linux-compressors-comparison-on-centos-6-5-x86-64-lzo-vs-lz4-vs-gzip-vs-bzip2-vs-lzma" rel="next"><span class="icon">&nbsp;</span> Linux compressors comparison on CentOS 6.5 x86-64: lzo vs lz4 vs gzip vs bzip2 vs lzma</a></td>
+</tr>
+</tbody></table>
+</nav>
+</div> 
+</div> 
+<div id="sidebar-shell-1" class="sidebar-shell sidebar-shell-right">
+<div class="dbx-group right boxed warea" id="sidebar">
+
+ <aside id="qtranslate-4" class="dbx-box suf-widget qtranxs_widget"><h3 class="dbx-handle plain">Language:</h3><div class="dbx-content">
+<ul class="language-chooser language-chooser-both qtranxs_language_chooser" id="qtranslate-4-chooser">
+<li class="active"><a href="http://linuxaria.com/pills/run-the-same-command-on-many-linux-servers-at-once?lang=en" class="qtranxs_flag_en qtranxs_flag_and_text" title="English (en)"><span>English</span></a></li>
+<li><a href="http://linuxaria.com/pills/run-the-same-command-on-many-linux-servers-at-once?lang=it" class="qtranxs_flag_it qtranxs_flag_and_text" title="Italiano (it)"><span>Italiano</span></a></li>
+</ul><div class="qtranxs_widget_end"></div>
+</div></aside>  <aside id="facebooklikebox-4" class="dbx-box suf-widget widget_FacebookLikeBox"><div class="dbx-content"><div id="fb-root"></div>
+
+<div class="fb-page" data-href="https://www.facebook.com/linuxaria/" data-width="250" data-height="250" data-hide-cover="true" data-show-facepile="true" data-show-posts="false"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/linuxaria/"><a href="https://www.facebook.com/linuxaria/">Facebook</a></blockquote></div></div>
+</div></aside>  <aside id="text-5" class="dbx-box suf-widget widget_text"><h3 class="dbx-handle plain">Sponsor</h3><div class="dbx-content"> <div class="textwidget"><table>
+<tbody><tr>
+<td>
+<a href="http://www.dhgate.com/wholesale+tablet+pc.html"> <img alt="buy tablet pc" title="Buy tablet pc on DHgate.com" src="dhgate.jpg"></a>
+</td>
+<td><a href="http://www.pcs4you.co.uk/"><img class="alignnone" src="pcs-ad.jpg" ;="" alt="" width="125" height="125"></a>
+</td></tr>
+<tr>
+<td>
+<a title="ssd vps" href="https://schnellno.de/"> <img alt="ssd vps" src="125x125_linuxaria.gif"> </a> 
+</td>
+<td>
+<a href="http://www.curtainhomesale.com/blog/" title="curtains"><img src="curtains.jpg" ;="" alt="" height="125"></a>
+</td>
+</tr><tr>
+<td>
+<a href="https://www.udemy.com/secure-your-network-like-a-furtune-500-company/"> <img src="secureyournetwork.jpg"> </a> 
+</td>
+<td>
+<a href="http://www.kazila.com/xen-vps-hosting.html"> <img src="kazilagif1.png"> </a> 
+</td></tr>
+<tr>
+<td>
+<a title="apk monk" href="http://www.apkmonk.com/"> <img alt="apk monk" src="rsz_weborial.png"> </a>
+</td>
+</tr>
+</tbody></table></div>
+		</div></aside><!--widget end --><!--widget start --><aside id="suf-subscription-5" class="dbx-box suf-widget widget-suf-subscription"><h3 class="dbx-handle plain">Follow Me</h3><div class="dbx-content">    <form class="aligncenter" action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow">
+            <p>
+                <input name="email" value="Enter email address" class="subscription-email" type="text">
+                <input value="Linuxaria_En" name="uri" type="hidden">
+                <input name="loc" value="en_US" type="hidden">
+                <input value="Subscribe" type="submit">
+            </p>
+    </form>
+    <p>
+        <a href="https://feeds.feedburner.com/Linuxaria_En">
+            <img src="Linuxaria_En.dat" class="subscription-stats-icon" alt="">
+        </a>
+    </p>
+    <div class="fix">
+        <a href="http://feeds.feedburner.com/Linuxaria_En" class="follow-icon-and-tag" title="RSS">
+            <img src="RSS-09.png" alt="RSS" style="width: 48px; height: 48px;">
+        </a>
+        <a href="http://twitter.com/linuxaria" class="follow-icon-and-tag" title="Twitter">
+            <img src="Twitter-07.png" alt="Twitter" style="width: 48px; height: 48px;">
+        </a>
+        <a href="http://www.facebook.com/linuxaria" class="follow-icon-and-tag" title="Facebook">
+            <img src="Facebook-04.png" alt="Facebook" style="width: 48px; height: 48px;">
+        </a>
+        <a href="https://plus.google.com/101727609700016666852" class="follow-icon-and-tag" title="Google+">
+            <img src="Google+-05.png" alt="Google+" style="width: 48px; height: 48px;">
+        </a>
+    </div>
+</div></aside><!--widget end --><!--widget start --><aside id="popular-posts" class="dbx-box suf-widget widget_rrm_popular_posts"><h3 class="dbx-handle plain">Popular posts</h3><div class="dbx-content"><ul>None Found
+</ul><!-- popular Posts took 0.903 ms --></div></aside><!--widget end --><!--widget start --><aside id="text-4" class="dbx-box suf-widget widget_text"><h3 class="dbx-handle plain">Subscribe by Email</h3><div class="dbx-content">			<div class="textwidget"><p><a href="https://feedburner.google.com/fb/a/mailverify?uri=Linuxaria_En&amp;loc=en_US">Subscribe to RSS» English by mail</a></p>
+<p><a href="https://feedburner.google.com/fb/a/mailverify?uri=Linuxaria_It&amp;loc=en_US">Iscriviti agli RSS» Italiano via Email</a></p>
+</div>
+		</div></aside><!--widget end --></div><!--/sidebar -->
+		<!-- #sidebar-b -->
+		<div id="sidebar-b" class="dbx-group right boxed warea">
+<!--widget start --><aside id="recent-comments-5" class="dbx-box suf-widget widget_recent_comments"><h3 class="dbx-handle plain">Recent Comments</h3><div class="dbx-content"><ul id="recentcomments"><li class="recentcomments"><span class="comment-author-link">ravi</span> on <a href="https://linuxaria.com/howto/permanent-ssh-tunnels-with-autossh#comment-69521">Permanent SSH Tunnels with autossh</a></li><li class="recentcomments"><span class="comment-author-link"><a href="http://kalfcomputertechniek.nl/" rel="external nofollow" class="url">FrankK</a></span> on <a href="https://linuxaria.com/recensioni/symphytum-a-personal-database-for-linux#comment-68941">Symphytum, a Personal database for Linux</a></li><li class="recentcomments"><span class="comment-author-link">Arnisong</span> on <a href="https://linuxaria.com/recensioni/4-linux-programs-to-open-a-remote-desktop-on-windows#comment-68693">4 Linux programs to open a Remote Desktop on Windows</a></li><li class="recentcomments"><span class="comment-author-link">yomm</span> on <a href="https://linuxaria.com/howto/how-to-remove-zeitgeist-in-ubuntu-and-why#comment-68660">How to remove Zeitgeist in Ubuntu and why</a></li><li class="recentcomments"><span class="comment-author-link">Ajtak</span> on <a href="https://linuxaria.com/howto/how-to-anonymize-the-programs-from-your-terminal-with-torify#comment-68638">How to anonymize the programs from your terminal with torify</a></li></ul></div></aside><!--widget end --><!--widget start --><aside id="rss-3" class="dbx-box suf-widget widget_rss"><h3 class="dbx-handle plain"><a class="rsswidget" href="http://www.scoop.it/t/linux-and-open-source/rss.xml"><img class="rss-widget-icon" style="border: 0px none;" src="rss.png" alt="RSS" width="14" height="14"></a> <a class="rsswidget" href="http://www.scoop.it/t/linux-and-open-source">My scoop.it feed</a></h3><div class="dbx-content"><ul><li><a class="rsswidget" href="http://www.scoop.it/t/linux-and-open-source/p/4067458026/2016/08/11/docker-and-public-interface">Docker and Public Interface</a></li><li><a class="rsswidget" href="http://www.scoop.it/t/linux-and-open-source/p/4067317308/2016/08/08/easy-docker-orchestration-with-docker-1-12-aws-efs-and-the-swarm-mode-medium">Easy Docker Orchestration With Docker 1.12, AWS EFS And The Swarm Mode — Medium</a></li><li><a class="rsswidget" href="http://www.scoop.it/t/linux-and-open-source/p/4067052334/2016/08/01/an-introduction-to-iridium-an-open-source-selenium-and-cucumber-testing-tool-dzone-web-dev">An Introduction to Iridium, an Open Source Selenium and Cucumber Testing Tool - DZone Web Dev</a></li><li><a class="rsswidget" href="http://www.scoop.it/t/linux-and-open-source/p/4066956573/2016/07/29/docker-built-in-orchestration-ready-for-production-docker-1-12-goes-ga">Docker Built-in Orchestration Ready for Production: Docker 1.12 Goes GA</a></li><li><a class="rsswidget" href="http://www.scoop.it/t/linux-and-open-source/p/4066919614/2016/07/28/books-for-devops-reading-devops-consultant">Books For DevOps Reading | DevOps Consultant</a></li></ul></div></aside><!--widget end -->		</div>
+		<!-- /#sidebar-b -->
+</div>
+	</div><!-- /container -->
+
+</div><!--/wrapper -->
+<footer>
+	<div id="page-footer">
+		<div class="col-control">
+		<div id="cred">
+		<table>
+			<tbody><tr>
+				<td class="cred-left">© 2013 <a href="http://www.linuxaria.com/">Linuxaria</a></td>
+				<td class="cred-center">All site content, except where otherwise noted, is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</td>
+				<td class="cred-right"><a href="http://aquoid.com/news/themes/suffusion/">Suffusion theme by Sayontan Sinha</a></td>
+			</tr>
+		</tbody></table>
+	</div>
+		</div>
+	</div>
+	</footer>
+<!-- 36 queries, 7MB in 0.745 seconds. -->
+<!-- location footer -->
+<div style="display: block; background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); font-family: inherit; bottom: 0px; border-top: 4px solid rgb(68, 68, 68); position: fixed;" id="cookie-law-info-bar"><span>This website uses cookies to improve your experience. We'll assume you're ok with this, but you can opt-out if you wish.<a style="color: rgb(255, 255, 255); background-color: rgb(0, 0, 0);" href="#" id="cookie_action_close_header" class="medium cli-plugin-button cli-plugin-main-button">Accept</a> <a style="color: rgb(68, 68, 68);" href="http://linuxaria.com/privacy-policy" id="CONSTANT_OPEN_URL" target="_blank" class="cli-plugin-main-link">Read More</a></span></div><div style="background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); position: fixed; font-family: inherit; border-width: 1px 1px medium; border-style: solid solid none; border-color: rgb(68, 68, 68) rgb(68, 68, 68) -moz-use-text-color; -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; bottom: 0px; right: 100px; display: none;" id="cookie-law-info-again"><span id="cookie_hdr_showagain">Privacy &amp; Cookies Policy</span></div>		
+		
+		
+		
+
+
+
+                
+                
+            
+
+
+
+
+
+
+
+
+</body><iframe src="index_1.html" style="display: none;"></iframe>
+</html>

@@ -1,0 +1,11 @@
+id	20160823142133
+create	20160823142133
+modify	20160823142133
+type	
+title	Run the same command on many Linux servers at once | Linuxaria
+chars	UTF-8
+icon	favicon.ico
+source	http://linuxaria.com/pills/run-the-same-command-on-many-linux-servers-at-once
+comment	
+lock	
+folder	ssh-tips	cluster-ssh

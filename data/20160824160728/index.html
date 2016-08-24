@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head><title>SSH Tunnel - Local and Remote Port Forwarding Explained With Examples -  Trackets Blog</title><meta charset="UTF-8"><link href="favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon"><meta content="wFXtXbsPg9TOfU_Gb-NYapGa9FhqaPHnIoEOxL_DdzM" name="google-site-verification"><link href="http://blog.trackets.com/rss" rel="alternate" title="ATOM" type="application/atom+xml">
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head><body data-twttr-rendered="true"><div class="navbar navbar-default navbar-visitor navbar-inverse"><div class="navbar-inner"><a class="navbar-brand" href="http://blog.trackets.com/"><img src="SMwMlTG.png"> Trackets Blog</a><ul class="nav navbar-nav pull-right"><li><a href="https://trackets.com/#pricing">Pricing</a></li><li><a href="http://blog.trackets.com/">Blog</a></li><li><a href="https://trackets.com/docs">Docs</a></li><li><a href="https://trackets.com/users/sign_up">Sign up</a></li><li><a href="https://trackets.com/users/sign_in">Sign in</a></li></ul></div></div><div class="feature-box"><div class="container"><h1><a href="https://trackets.com/">Error Tracking Made Easy</a></h1><div class="subheader">Catch and fix every error in your application. <a href="https://trackets.com/">Sign up for free</a></div></div></div><div class="container"><div class="row"><div class="col-md-8"><article class="post"><header><h2><a href="#">SSH Tunnel - Local and Remote Port Forwarding Explained With Examples</a></h2></header><div class="post-content"><p>There are two ways to create an SSH tunnel, local and remote port
+forwarding (there’s also dynamic forwarding, but we won’t cover that
+here). The best way to understand these is by an example, let’s start
+with local port forwarding.</p>
+
+<p>Imagine you’re on a private network which doesn’t allow connections to a
+specific server. Let’s say you’re at work and imgur.com is being
+blocked. To get around this we can create a tunnel through a server
+which isn’t on our network and thus can access Imgur.</p>
+<pre class="highlight plaintext"><code>$ ssh -L 9000:imgur.com:80 user@example.com
+</code></pre>
+
+<p>The key here is <code>-L</code> which says we’re doing local port forwarding. Then
+it says we’re forwarding our local port <code>9000</code> to <code>imgur.com:80</code>,
+which is the default port for HTTP. Now open your browser and go to
+<a href="http://localhost:9000/">http://localhost:9000</a>.</p>
+
+<p>The awesome thing about SSH tunnels is that they are encrypted. Nobody
+is going to see what sites you’re visiting, they’ll only see an SSH
+connection to your server.</p>
+
+<h2>Connecting to a database behind a firewall</h2>
+
+<p>Another good example is if you need to access a port on your server
+which can only be accessed from <code>localhost</code> and not remotely.</p>
+
+<p>An example here is when you need to connect to a database console, which
+only allows local connection for security reasons. Let’s say you’re
+running PostgreSQL on your server, which by default listens on the port
+<code>5432</code>.</p>
+<pre class="highlight plaintext"><code>$ ssh -L 9000:localhost:5432 user@example.com
+</code></pre>
+
+<p>The part that changed here is the <code>localhost:5432</code>, which says to
+forward connections from your local port <code>9000</code> to <code>localhost:5432</code> on
+your server. Now we can simply connect to our database.</p>
+<pre class="highlight plaintext"><code>$ psql -h localhost -p 9000
+</code></pre>
+
+<p>Now let’s stop here for a little bit an explain what is actually going
+on. In the first example the <code>9000:imgur.com:80</code> is actually saying
+<code>forward my local port 9000 to imgur.com at port 80</code>. You can imagine
+SSH on your server actually making a connection (a tunnel) between those
+two ports, one on your local machine, and one on the target destination.</p>
+
+<p>If we however say something like <code>9000:localhost:5432</code>, it means
+<code>localhost</code> from the server’s perspective, not localhost on your
+machine. This means <code>forward my local port 9000 to port 5432 on
+the server</code>, because when you’re on the server, <code>localhost</code> means the
+server itself.</p>
+
+<p>This might be a bit confusing, but it is important to understand what
+the syntax actually means here.</p>
+
+<h2>Remote port forwarding</h2>
+
+<p>Now comes the second part of this tutorial, which is remote port
+forwarding. This is again best to explain with an example.</p>
+
+<p>Say that you’re developing a Rails application on your local machine,
+and you’d like to show it to a friend. Unfortunately your ISP didn’t
+provide you with a public IP address, so it’s not possible to connect
+to your machine directly via the internet.</p>
+
+<p>Sometimes this can be solved by configuring NAT (Network Address
+Translation) on your router, but this doesn’t always work, and it
+requires you to change the configuration on your router, which isn’t
+always desirable. This solution also doesn’t work when you don’t have
+admin access on your network.</p>
+
+<p>To fix this problem you need to have another computer, which is publicly
+accessible and have SSH access to it. It can be any server on the
+internet, as long as you can connect to it. We’ll tell SSH to make a
+tunnel that opens up a new port on the server, and connects it to a
+local port on your machine.</p>
+<pre class="highlight plaintext"><code>$ ssh -R 9000:localhost:3000 user@example.com
+</code></pre>
+
+<p>The syntax here is very similar to local port forwarding, with a
+single change of <code>-L</code> for <code>-R</code>. But as with local port forwarding, the
+syntax remains the same.</p>
+
+<p>First you need to specify the port on which th remote server will
+listen, which in this case is <code>9000</code>, and next follows <code>localhost</code> for
+your local machine, and the local port, which in this case is <code>3000</code>.</p>
+
+<p>There is one more thing you need to do to enable this. SSH doesn’t by
+default allow remote hosts to forwarded ports. To enable this open
+<code>/etc/ssh/sshd_config</code> and add the following line somewhere in that
+config file.</p>
+<pre class="highlight plaintext"><code>GatewayPorts yes
+</code></pre>
+
+<p>Make sure you add it only once!</p>
+<pre class="highlight plaintext"><code>$ sudo vim /etc/ssh/sshd_config
+</code></pre>
+
+<p>And restart SSH</p>
+<pre class="highlight plaintext"><code>$ sudo service ssh restart
+</code></pre>
+
+<p>After this you should be able to connect to the server remotely, even
+from your local machine. The way this would work is that you would
+first create an SSH tunnel that forwards traffic from the server on
+port <code>9000</code> to your local machine on port <code>3000</code>. This means that if
+you connect to the server on port <code>9000</code> from your local machine,
+you’ll actually make a request to your machine through the SSH tunnel.</p>
+
+<h2>A few closing tips</h2>
+
+<p>You might have noticed that every time we create a tunnel you also SSH
+into the server and get a shell. This isn’t usually necessary, as you’re
+just trying to create a tunnel. To avoid this we can run SSH with the
+<code>-nNT</code> flags, such as the following, which will cause SSH to not
+allocate a tty and only do the port forwarding.</p>
+<pre class="highlight plaintext"><code>$ ssh -nNT -L 9000:imgur.com:80 user@example.com
+</code></pre>
+
+<p>SSH has a huge number of features, so I’d recommend you to checkout the
+manual page at <code>man ssh</code>, which contains even more tips.</p>
+
+<p>There’s also an amazing talk called <a href="http://vimeo.com/54505525">The Black Magic of SSH / SSH Can Do
+That?</a>, which I really recommend you to
+watch.</p>
+<hr></div></article><article class="post"><p><strong>Are you having trouble with JavaScript errors in production?</strong></p><p>We are building a tool to solve the problem once and for all. It's called <a href="http://trackets.com/">Trackets</a>
+and it's really awesome.</p><div class="call-to-action"><a href="https://trackets.com/" title="Trackets - JavaScript error tracking made simple"><img src="XYIZsH6.png"><span>I Want To Know More</span></a></div></article><hr><div class="social-buttons"><div class="inner-buttons"><iframe src="index_1.html" scrolling="no" width="51" frameborder="0" height="69"></iframe><br><div class="g-plusone" data-size="tall"></div><br><iframe style="width: 58px; height: 62px;" data-twttr-rendered="true" title="Twitter Tweet Button" class="twitter-share-button twitter-tweet-button twitter-share-button twitter-count-vertical" src="index_2.xhtml" allowtransparency="true" id="twitter-widget-0" scrolling="no" frameborder="0"></iframe></div></div><div id="disqus_thread"></div></div><aside class="col-md-4"></aside></div></div></body>
+</html>

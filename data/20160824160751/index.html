@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class=" js flexbox no-touch rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients no-cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio">
+<head>
+	<meta charset="UTF-8">
+	
+        <link href="https://plus.google.com/102489913995324619361" rel="publisher">
+	<title>SSH Tunneling for VNC</title>
+	
+	<!--iOS/android/handheld specific -->	
+	<link rel="apple-touch-icon" href="https://www.dragonsreach.it/2012/10/06/ssh-tunneling-for-vnc/apple-touch-icon.png">			
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">						
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+	
+	
+	<link rel="pingback" href="https://www.dragonsreach.it/xmlrpc.php">
+
+		        <!--[if lt IE 9]>
+		<script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	
+	
+<!-- SEO Ultimate (http://www.seodesignsolutions.com/wordpress-seo/) -->
+	<link rel="author" href="https://plus.google.com/102489913995324619361/posts">
+	<meta prefix="og: http://ogp.me/ns#" property="og:type" content="article">
+	<meta prefix="og: http://ogp.me/ns#" property="og:title" content="SSH Tunneling for VNC">
+	<meta prefix="og: http://ogp.me/ns#" property="og:url" content="https://www.dragonsreach.it/2012/10/06/ssh-tunneling-for-vnc/">
+	<meta prefix="article: http://ogp.me/ns/article#" property="article:published_time" content="2012-10-06">
+	<meta prefix="article: http://ogp.me/ns/article#" property="article:modified_time" content="2013-10-31">
+	<meta prefix="article: http://ogp.me/ns/article#" property="article:author" content="https://www.dragonsreach.it/author/averi/">
+	<meta prefix="article: http://ogp.me/ns/article#" property="article:tag" content="SSH">
+	<meta prefix="article: http://ogp.me/ns/article#" property="article:tag" content="Sysadmin">
+	<meta prefix="article: http://ogp.me/ns/article#" property="article:tag" content="SSH">
+	<meta prefix="article: http://ogp.me/ns/article#" property="article:tag" content="Tunneling">
+	<meta prefix="article: http://ogp.me/ns/article#" property="article:tag" content="Virsh">
+	<meta prefix="article: http://ogp.me/ns/article#" property="article:tag" content="VNC">
+	<meta prefix="og: http://ogp.me/ns#" property="og:site_name" content="Andrea Veri's Blog">
+	<meta name="twitter:card" content="summary">
+<!-- /SEO Ultimate -->
+
+<link rel="alternate" type="application/rss+xml" title="Andrea Veri's Blog » Feed" href="https://www.dragonsreach.it/feed/">
+<link rel="alternate" type="application/rss+xml" title="Andrea Veri's Blog » Comments Feed" href="https://www.dragonsreach.it/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="Andrea Veri's Blog » SSH Tunneling for VNC Comments Feed" href="https://www.dragonsreach.it/2012/10/06/ssh-tunneling-for-vnc/feed/">
+		
+		
+
+
+
+
+
+
+
+
+
+<link rel="https://api.w.org/" href="https://www.dragonsreach.it/wp-json/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.dragonsreach.it/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://www.dragonsreach.it/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="An interview with Allan Day" href="https://www.dragonsreach.it/2012/10/02/an-interview-with-allan-day/">
+<link rel="next" title="Some statistics about GNOME.org" href="https://www.dragonsreach.it/2012/10/15/gnome-org-statistics/">
+<meta name="generator" content="WordPress 4.5.3">
+<link rel="canonical" href="https://www.dragonsreach.it/2012/10/06/ssh-tunneling-for-vnc/">
+<link rel="shortlink" href="https://www.dragonsreach.it/?p=461">
+<link rel="alternate" type="application/json+oembed" href="https://www.dragonsreach.it/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.dragonsreach.it%2F2012%2F10%2F06%2Fssh-tunneling-for-vnc%2F">
+<link rel="alternate" type="text/xml+oembed" href="https://www.dragonsreach.it/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.dragonsreach.it%2F2012%2F10%2F06%2Fssh-tunneling-for-vnc%2F&amp;format=xml">
+
+ <link rel="shortcut icon" href="favicon.ico">
+<!-- Google Analytics Tracking by Google Analyticator 6.4.9: http://www.videousermanuals.com/google-analyticator/ -->
+
+
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+
+	<body id="blog" class="single single-post postid-461 single-format-standard main cat-21-id cat-22-id cookiebanner">
+        <div style="display: block;" class="my-navbar">
+        <div class="container">
+
+        <span class="my-logo">
+        <a href="https://www.dragonsreach.it/">
+        <img class="img-round" src="averi.jpg" height="40"> <span class="logo-text">Andrea Veri's Blog</span>
+        </a>
+        </span>
+        <span class="my-nav-menu">
+        <a href="https://www.dragonsreach.it/about-me">About me</a>
+        </span>
+        <span class="my-nav-menu">
+        <a href="#top">Back to the Top</a>
+        </span>
+        </div>
+        </div>
+
+		<header class="main-header">
+			<div class="inside-main-header"></div>	
+		<div class="container">
+				<div id="header">
+				<!--<h2 id="logo">
+				<a href="https://www.dragonsreach.it">Andrea Veri&#039;s Blog</a>
+				</h2>
+								-->
+				
+				</div>
+		</div>
+		</header>
+
+<!--<link href='https://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'> -->
+<!--<link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,700,600,300' rel='stylesheet' type='text/css'> -->
+<div id="page" class="single">
+        <div class="content">
+                <article class="article">
+                        <div id="content_box">
+                                                                        <div id="post-461" class="g post post-461 type-post status-publish format-standard hentry category-ssh category-sysadmin tag-ssh tag-tunneling tag-virsh tag-vnc cat-21-id cat-22-id">
+                                                                                        <div class="post-content box mark-links">
+                                                        <h1 class="title">SSH Tunneling for VNC</h1>
+                                                        <div class="post-info">
+                                                                        <time>October 6, 2012</time>
+                                                        </div>
+                                                        <p>Logging in into a Linux machine and executing the hundreds commands available is just one of the most common usages of <strong>OpenSSH</strong>. Another interesting and very useful usage is tunneling some specific (or even all) traffic from your local machine to an external machine you have access to.</p>
+<p>Today we’ll analyze how to access a certain virtual machine’s <strong>console</strong> by tunneling the relevant <strong>VNC</strong> port locally and accessing it through your favorite VNC client. The scenario:</p>
+<ol>
+<li>Machine<strong> A</strong> is our main virtualization machine and hosts several virtual machines. (VMs)</li>
+<li>Each <strong>VM</strong>&nbsp;has its own VNC port assigned. (usually the port range goes from <strong>5900</strong> to <strong>5910</strong> or even more if the hosted VMs are more than 10)</li>
+<li>We’ll be using libvirt, thus virsh.</li>
+</ol>
+<p>We first need to find out which port got assigned to the VM we want to have console access to:</p>
+<p></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-57bd552d3274c068640607" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px ! important; line-height: 15px ! important; height: auto;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px ! important; height: 18px ! important; line-height: 18px ! important; margin-top: -19px; display: none; position: absolute; z-index: 2;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px ! important; height: 18px ! important; line-height: 18px ! important;"><div class="crayon-button crayon-nums-button crayon-pressed" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div style="display: none;" class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px ! important; line-height: 16.8px ! important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly="" style="-moz-tab-size: 4; font-size: 12px ! important; line-height: 15px ! important; z-index: 0; opacity: 0; overflow: hidden;">sudo virsh
+
+virsh # list
+Id   Name   Status
+----------------------------------------------------
+5    foo    running
+6    bar    running
+7    foobar running
+
+virsh # vncdisplay foobar
+:3</textarea></div>
+			<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+				<table style="" class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px ! important; line-height: 15px ! important;"><div class="crayon-num" data-line="crayon-57bd552d3274c068640607-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-57bd552d3274c068640607-2">2</div><div class="crayon-num" data-line="crayon-57bd552d3274c068640607-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-57bd552d3274c068640607-4">4</div><div class="crayon-num" data-line="crayon-57bd552d3274c068640607-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-57bd552d3274c068640607-6">6</div><div class="crayon-num" data-line="crayon-57bd552d3274c068640607-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-57bd552d3274c068640607-8">8</div><div class="crayon-num" data-line="crayon-57bd552d3274c068640607-9">9</div><div class="crayon-num crayon-striped-num" data-line="crayon-57bd552d3274c068640607-10">10</div><div class="crayon-num" data-line="crayon-57bd552d3274c068640607-11">11</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px ! important; line-height: 15px ! important; -moz-tab-size: 4;"><div class="crayon-line" id="crayon-57bd552d3274c068640607-1"><span class="crayon-e">sudo </span><span class="crayon-e">virsh</span></div><div class="crayon-line crayon-striped-line" id="crayon-57bd552d3274c068640607-2">&nbsp;</div><div class="crayon-line" id="crayon-57bd552d3274c068640607-3"><span class="crayon-v">virsh</span><span class="crayon-h"> </span><span class="crayon-p"># list</span></div><div class="crayon-line crayon-striped-line" id="crayon-57bd552d3274c068640607-4"><span class="crayon-e">Id&nbsp;&nbsp; </span><span class="crayon-e">Name&nbsp;&nbsp; </span><span class="crayon-v">Status</span></div><div class="crayon-line" id="crayon-57bd552d3274c068640607-5"><span class="crayon-o">--</span><span class="crayon-o">--</span><span class="crayon-o">--</span><span class="crayon-o">--</span><span class="crayon-o">--</span><span class="crayon-o">--</span><span class="crayon-o">--</span><span class="crayon-o">--</span><span class="crayon-o">--</span><span class="crayon-o">--</span><span class="crayon-o">--</span><span class="crayon-o">--</span><span class="crayon-o">--</span><span class="crayon-o">--</span><span class="crayon-o">--</span><span class="crayon-o">--</span><span class="crayon-o">--</span><span class="crayon-o">--</span><span class="crayon-o">--</span><span class="crayon-o">--</span><span class="crayon-o">--</span><span class="crayon-o">--</span><span class="crayon-o">--</span><span class="crayon-o">--</span><span class="crayon-o">--</span><span class="crayon-o">--</span></div><div class="crayon-line crayon-striped-line" id="crayon-57bd552d3274c068640607-6"><span class="crayon-cn">5</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-e">foo&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">running</span></div><div class="crayon-line" id="crayon-57bd552d3274c068640607-7"><span class="crayon-cn">6</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-e">bar&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">running</span></div><div class="crayon-line crayon-striped-line" id="crayon-57bd552d3274c068640607-8"><span class="crayon-cn">7</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-e">foobar </span><span class="crayon-e">running</span></div><div class="crayon-line" id="crayon-57bd552d3274c068640607-9">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-57bd552d3274c068640607-10"><span class="crayon-v">virsh</span><span class="crayon-h"> </span><span class="crayon-p"># vncdisplay foobar</span></div><div class="crayon-line" id="crayon-57bd552d3274c068640607-11"><span class="crayon-o">:</span><span class="crayon-cn">3</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0029 seconds] -->
+<p></p>
+<p>We, then, create a tunnel which redirects all the traffic from the main virtualization machine’s port to the port we gonna specify in the next command:</p>
+<p></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-57bd552d32762115547548" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px ! important; line-height: 15px ! important; height: auto;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px ! important; height: 18px ! important; line-height: 18px ! important; margin-top: -19px; display: none; z-index: 4;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px ! important; height: 18px ! important; line-height: 18px ! important;"><div class="crayon-button crayon-nums-button crayon-pressed" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div style="display: none;" class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px ! important; line-height: 16.8px ! important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly="" style="-moz-tab-size: 4; font-size: 12px ! important; line-height: 15px ! important; z-index: 0; opacity: 0; overflow: hidden;">ssh -f -N -L 5910:localhost:5903 user@machine-A.com</textarea></div>
+			<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+				<table style="" class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px ! important; line-height: 15px ! important;"><div class="crayon-num" data-line="crayon-57bd552d32762115547548-1">1</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px ! important; line-height: 15px ! important; -moz-tab-size: 4;"><div class="crayon-line" id="crayon-57bd552d32762115547548-1"><span class="crayon-v">ssh</span><span class="crayon-h"> </span><span class="crayon-o">-</span><span class="crayon-v">f</span><span class="crayon-h"> </span><span class="crayon-o">-</span><span class="crayon-v">N</span><span class="crayon-h"> </span><span class="crayon-o">-</span><span class="crayon-i">L</span><span class="crayon-h"> </span><span class="crayon-cn">5910</span><span class="crayon-o">:</span><span class="crayon-v">localhost</span><span class="crayon-o">:</span><span class="crayon-cn">5903</span><span class="crayon-h"> </span><span class="crayon-v">user</span><span class="crayon-sy">@</span><span class="crayon-v">machine</span><span class="crayon-o">-</span><span class="crayon-v">A</span><span class="crayon-sy">.</span><span class="crayon-v">com</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0015 seconds] -->
+<p></p>
+<p>A few <strong>details</strong> about the previous command:</p>
+<ol>
+<li><strong>-N&nbsp;</strong>tells SSH to not execute any command after logging in.</li>
+<li><strong>-f</strong>&nbsp;tells SSH to hide into the background just before the command gets executed.</li>
+<li><strong>-L</strong>&nbsp;enables the port forwarding between the local (client) host and the host on the remote side.</li>
+</ol>
+<p>And…why did I choose respectively port <strong>5903</strong> and<strong> 5910</strong></p>
+<p>While you can adjust port <strong>5910</strong> with your own choice (that will just move the tunneled traffic from port <strong>5910</strong> to your favorite port), that won’t work as expected with port 5903 since each VNC port is binded to the number of display virsh assigned to it. (for example, the <strong>bar</strong> VM may be running on display 5, thus its <strong>vncdisplay</strong> port will be <strong>5905</strong>)</p>
+<p>When <strong>done</strong>, fire up your favorite VNC client and create a new connection with the following details:</p>
+<p></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-57bd552d3276d817022751" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px ! important; line-height: 15px ! important; height: auto;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px ! important; height: 18px ! important; line-height: 18px ! important; margin-top: -19px; display: none; position: absolute; z-index: 2;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px ! important; height: 18px ! important; line-height: 18px ! important;"><div class="crayon-button crayon-nums-button crayon-pressed" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div style="display: none;" class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px ! important; line-height: 16.8px ! important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly="" style="-moz-tab-size: 4; font-size: 12px ! important; line-height: 15px ! important; z-index: 0; opacity: 0; overflow: hidden;">Protocol: VNC - Virtual Network Computing
+Server: localhost - 127.0.0.1
+Port: 5910</textarea></div>
+			<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+				<table style="" class="crayon-table">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px ! important; line-height: 15px ! important;"><div class="crayon-num" data-line="crayon-57bd552d3276d817022751-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-57bd552d3276d817022751-2">2</div><div class="crayon-num" data-line="crayon-57bd552d3276d817022751-3">3</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px ! important; line-height: 15px ! important; -moz-tab-size: 4;"><div class="crayon-line" id="crayon-57bd552d3276d817022751-1"><span class="crayon-v">Protocol</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-v">VNC</span><span class="crayon-h"> </span><span class="crayon-o">-</span><span class="crayon-h"> </span><span class="crayon-e">Virtual </span><span class="crayon-e">Network </span><span class="crayon-e">Computing</span></div><div class="crayon-line crayon-striped-line" id="crayon-57bd552d3276d817022751-2"><span class="crayon-v">Server</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-v">localhost</span><span class="crayon-h"> </span><span class="crayon-o">-</span><span class="crayon-h"> </span><span class="crayon-cn">127.0.0.1</span></div><div class="crayon-line" id="crayon-57bd552d3276d817022751-3"><span class="crayon-v">Port</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-cn">5910</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0014 seconds] -->
+<p></p>
+<p>The connection will load and you’ll be put in front of your<strong> ‘foobar’</strong> VM console.</p>
+<!-- Simple Share Buttons Adder (6.2.2) simplesharebuttons.com --><div class="ssba ssba-wrap"><div style="text-align: center;"><a data-site="" class="ssba_google_share" href="https://plus.google.com/share?url=https://www.dragonsreach.it/2012/10/06/ssh-tunneling-for-vnc/" target="_blank"><img src="google.png" title="Google+" class="ssba ssba-img" alt="Share on Google+"></a><span class="ssba_sharecount">12</span><a data-site="" class="ssba_twitter_share" href="http://twitter.com/share?url=https://www.dragonsreach.it/2012/10/06/ssh-tunneling-for-vnc/&amp;text=SSH+Tunneling+for+VNC+" target="_blank"><img src="twitter.png" title="Twitter" class="ssba ssba-img" alt="Tweet about this on Twitter"></a><a data-site="" class="ssba_facebook_share" href="http://www.facebook.com/sharer.php?u=https://www.dragonsreach.it/2012/10/06/ssh-tunneling-for-vnc/" target="_blank"><img src="facebook.png" title="Facebook" class="ssba ssba-img" alt="Share on Facebook"></a><span class="ssba_sharecount">0</span><a data-site="linkedin" class="ssba_linkedin_share ssba_share_link" href="http://www.linkedin.com/shareArticle?mini=true&amp;url=https://www.dragonsreach.it/2012/10/06/ssh-tunneling-for-vnc/" target="_blank"><img src="linkedin.png" title="LinkedIn" class="ssba ssba-img" alt="Share on LinkedIn"></a><span class="ssba_sharecount">0</span><a data-site="digg" class="ssba_diggit_share ssba_share_link" href="http://www.digg.com/submit?url=https://www.dragonsreach.it/2012/10/06/ssh-tunneling-for-vnc/" target="_blank"><img src="diggit.png" title="Digg" class="ssba ssba-img" alt="Digg this"></a><a data-site="reddit" class="ssba_reddit_share" href="http://reddit.com/submit?url=https://www.dragonsreach.it/2012/10/06/ssh-tunneling-for-vnc/&amp;title=SSH%20Tunneling%20for%20VNC" target="_blank"><img src="reddit.png" title="Reddit" class="ssba ssba-img" alt="Share on Reddit"></a><span class="ssba_sharecount">0</span><a data-site="stumbleupon" class="ssba_stumbleupon_share ssba_share_link" href="http://www.stumbleupon.com/submit?url=https://www.dragonsreach.it/2012/10/06/ssh-tunneling-for-vnc/&amp;title=SSH%20Tunneling%20for%20VNC" target="_blank"><img src="stumbleupon.png" title="StumbleUpon" class="ssba ssba-img" alt="Share on StumbleUpon"></a><span class="ssba_sharecount">0</span><a data-site="email" class="ssba_email_share" href="mailto:?subject=SSH%20Tunneling%20for%20VNC&amp;body=%20https://www.dragonsreach.it/2012/10/06/ssh-tunneling-for-vnc/"><img src="email.png" title="Email" class="ssba ssba-img" alt="Email this to someone"></a></div></div>                                                                                                                                                                </div><!--.post-content box mark-links-->
+                                        </div><!--.g post-->
+                                        
+
+<!-- *******************************************************************************************************************-->
+<!-- Comments Evolved for Wordpress v1.6 ( http://wordpress.org/plugins/gplus-comments/ ) -->
+<!-- *******************************************************************************************************************-->
+
+<!-- comment-tabs -->
+
+<div class="ui-tabs ui-widget ui-widget-content ui-corner-all" id="comment-tabs">
+<a name="comments"></a>
+    <ul role="tablist" class="controls inline clearfix ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">
+    <li aria-expanded="true" aria-selected="true" aria-labelledby="ui-id-1" aria-controls="gplus-tab" tabindex="0" role="tab" class="active ui-state-default ui-corner-top ui-tabs-active ui-state-active" id="gplus-control"><a id="ui-id-1" tabindex="-1" role="presentation" class="ui-tabs-anchor" href="#gplus-tab"><img id="gplus-icon" src="gplus.png"><span id="gplus-label"></span></a></li>
+<li aria-expanded="false" aria-selected="false" aria-labelledby="ui-id-2" aria-controls="wordpress-tab" tabindex="-1" role="tab" class="ui-state-default ui-corner-top" id="wordpress-control"><a id="ui-id-2" tabindex="-1" role="presentation" class="ui-tabs-anchor" href="#wordpress-tab"><img id="wordpress-icon" src="wordpress.png"><span id="wordpress-label"></span></a></li>
+  </ul>
+  <!-- gplus-tab -->
+<div aria-hidden="false" role="tabpanel" aria-labelledby="ui-id-1" id="gplus-tab" class="embed-container content-tab clearfix ui-tabs-panel ui-widget-content ui-corner-bottom"><div id="___comments_0" style="position: absolute; width: 450px; left: -10000px;"><iframe src="index_1.html" name="I0_1472025938537" id="I0_1472025938537" vspace="0" tabindex="0" style="position: absolute; top: -10000px; width: 450px; margin: 0px; border-style: none;" marginwidth="0" marginheight="0" hspace="0" scrolling="no" width="100%" frameborder="0"></iframe></div><div data-gapistub="true" data-onload="true" data-gapiscan="true" class="g-comments" data-width="1000" data-href="https://www.dragonsreach.it/2012/10/06/ssh-tunneling-for-vnc/" data-first_party_property="BLOGGER" data-view_type="FILTERED_POSTMOD">Loading Google+ Comments ...</div></div>
+<!-- //gplus-tab -->
+<!-- wordpress-tab -->
+<div aria-hidden="true" style="display: none;" role="tabpanel" aria-labelledby="ui-id-2" id="wordpress-tab" class="embed-container content-tab clearfix ui-tabs-panel ui-widget-content ui-corner-bottom">
+<!-- You can start editing here. -->
+<div id="comments">
+<div class="total-comments">Comments <span class="cnumber">(10)</span></div>
+
+<ol class="commentlist">
+<div class="navigation">
+<div class="alignleft"></div>
+<div class="alignright"></div>
+</div>
+
+   <li class="comment even thread-even depth-1" id="li-comment-71">
+     <div id="comment-71">
+      <div class="comment-author vcard">
+         <!--?php echo get_avatar( $comment->comment_author_email, 75 ); ?-->
+
+         <span class="fn"><a href="http://debblog.philkern.de/" rel="external nofollow" class="url">Philipp Kern</a></span>         <br>
+         <div class="time">October 6, 2012</div>
+      </div>
+      
+      <div class="comment-meta commentmetadata">
+	  
+	  </div>
+
+      <p>That’s what virt-manager is for. Which also does the work for Spice displays transparently.</p>
+
+      <div class="reply">
+               </div>
+     </div>
+</li><!-- #comment-## -->
+   <li class="comment byuser comment-author-averi bypostauthor odd alt thread-odd thread-alt depth-1" id="li-comment-72">
+     <div id="comment-72">
+      <div class="comment-author vcard">
+         <!--?php echo get_avatar( $comment->comment_author_email, 75 ); ?-->
+
+         <span class="fn">Andrea Veri</span>         <br>
+         <div class="time">October 6, 2012</div>
+      </div>
+      
+      <div class="comment-meta commentmetadata">
+	  
+	  </div>
+
+      <p>Virt-manager requires GNOME to be installed on the main virtualization machine and I try do avoid that in any case on production machines.</p>
+
+      <div class="reply">
+               </div>
+     </div>
+<ul class="children">
+   <li class="comment even depth-2" id="li-comment-80">
+     <div id="comment-80">
+      <div class="comment-author vcard">
+         <!--?php echo get_avatar( $comment->comment_author_email, 75 ); ?-->
+
+         <span class="fn"><a href="http://pthree.org/" rel="external nofollow" class="url">Aaron Toponce</a></span>         <br>
+         <div class="time">October 6, 2012</div>
+      </div>
+      
+      <div class="comment-meta commentmetadata">
+	  
+	  </div>
+
+      <p>virt-manager(1) does not have any GNOME or GTK dependencies. It does have X dependencies, however.</p>
+
+      <div class="reply">
+               </div>
+     </div>
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+   <li class="comment odd alt thread-even depth-1" id="li-comment-73">
+     <div id="comment-73">
+      <div class="comment-author vcard">
+         <!--?php echo get_avatar( $comment->comment_author_email, 75 ); ?-->
+
+         <span class="fn">Jason Riedy</span>         <br>
+         <div class="time">October 6, 2012</div>
+      </div>
+      
+      <div class="comment-meta commentmetadata">
+	  
+	  </div>
+
+      <p>See also the -via option for vncviewer.  Slightly easier.</p>
+
+      <div class="reply">
+               </div>
+     </div>
+</li><!-- #comment-## -->
+   <li class="comment even thread-odd thread-alt depth-1" id="li-comment-74">
+     <div id="comment-74">
+      <div class="comment-author vcard">
+         <!--?php echo get_avatar( $comment->comment_author_email, 75 ); ?-->
+
+         <span class="fn">Till Maas</span>         <br>
+         <div class="time">October 6, 2012</div>
+      </div>
+      
+      <div class="comment-meta commentmetadata">
+	  
+	  </div>
+
+      <p>vncviewer already supports creating tunnels using the -via command line option.</p>
+
+      <div class="reply">
+               </div>
+     </div>
+</li><!-- #comment-## -->
+   <li class="comment odd alt thread-even depth-1" id="li-comment-75">
+     <div id="comment-75">
+      <div class="comment-author vcard">
+         <!--?php echo get_avatar( $comment->comment_author_email, 75 ); ?-->
+
+         <span class="fn">Robert Edmonds</span>         <br>
+         <div class="time">October 6, 2012</div>
+      </div>
+      
+      <div class="comment-meta commentmetadata">
+	  
+	  </div>
+
+      <p>if these guest VMs are mostly-headless linux servers IMO it’s nicer to make them completely-headless by setting up serial consoles and using “virsh console ” on the host and avoid VNC.  (in fact, you can avoid the emulated VGA hardware and console getty’s in the guest VM entirely, even during installation.)</p>
+
+      <div class="reply">
+               </div>
+     </div>
+</li><!-- #comment-## -->
+   <li class="comment even thread-odd thread-alt depth-1" id="li-comment-76">
+     <div id="comment-76">
+      <div class="comment-author vcard">
+         <!--?php echo get_avatar( $comment->comment_author_email, 75 ); ?-->
+
+         <span class="fn"><a href="http://aigarius.com/" rel="external nofollow" class="url">Aigars Mahinovs</a></span>         <br>
+         <div class="time">October 6, 2012</div>
+      </div>
+      
+      <div class="comment-meta commentmetadata">
+	  
+	  </div>
+
+      <p>See sshuttle – basically it is a fully automatic VNC-over-SSH in a box.</p>
+
+      <div class="reply">
+               </div>
+     </div>
+</li><!-- #comment-## -->
+   <li class="comment odd alt thread-even depth-1" id="li-comment-77">
+     <div id="comment-77">
+      <div class="comment-author vcard">
+         <!--?php echo get_avatar( $comment->comment_author_email, 75 ); ?-->
+
+         <span class="fn"><a href="http://debblog.philkern.de/" rel="external nofollow" class="url">Philipp Kern</a></span>         <br>
+         <div class="time">October 6, 2012</div>
+      </div>
+      
+      <div class="comment-meta commentmetadata">
+	  
+	  </div>
+
+      <p>Excuse me? virt-manager needs <b>gtk</b> on the <b>management</b> host, not <em>GNOME on the virtualization host</em>.</p>
+
+      <div class="reply">
+               </div>
+     </div>
+</li><!-- #comment-## -->
+   <li class="comment even thread-odd thread-alt depth-1" id="li-comment-78">
+     <div id="comment-78">
+      <div class="comment-author vcard">
+         <!--?php echo get_avatar( $comment->comment_author_email, 75 ); ?-->
+
+         <span class="fn"><a href="http://linuxart.com/" rel="external nofollow" class="url">Garrett LeSage</a></span>         <br>
+         <div class="time">October 6, 2012</div>
+      </div>
+      
+      <div class="comment-meta commentmetadata">
+	  
+	  </div>
+
+      <p>For a really-easy way to do VNC over SSH, you can also use “remote desktop viewer” (vinagre).</p>
+<p>Connect → Protocol: VNC, then check “Use Host ____ as a SSH tunnel” (and fill in the host.</p>
+
+      <div class="reply">
+               </div>
+     </div>
+</li><!-- #comment-## -->
+   <li class="comment odd alt thread-even depth-1" id="li-comment-79">
+     <div id="comment-79">
+      <div class="comment-author vcard">
+         <!--?php echo get_avatar( $comment->comment_author_email, 75 ); ?-->
+
+         <span class="fn">Soren Hansen</span>         <br>
+         <div class="time">October 6, 2012</div>
+      </div>
+      
+      <div class="comment-meta commentmetadata">
+	  
+	  </div>
+
+      <p>virt-viewer was written for this exact use case. To use it over ssh, you can do something like:</p>
+<p>virt-viewer -c qemu+ssh://user@hostname/system name-of-vm</p>
+<p>You run this on your desktop system, so it doesn’t impose any additional requirements on the server side. It takes care of setting up the tunnels and everything. It’s quite convenient.</p>
+
+      <div class="reply">
+               </div>
+     </div>
+</li><!-- #comment-## -->
+ 
+<div class="navigation">
+<div class="alignleft"></div>
+<div class="alignright"></div>
+</div>
+</ol>
+ 
+ </div>
+</div>
+<!-- //wordpress-tab -->
+</div>
+<!-- //comment-tabs -->
+                                                        </div>
+</article>
+	
+	
+	
+
+	</div><!--#page-->
+</div><div class=" fb_reset" id="fb-root"><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div><iframe src="index_2.html" style="border: medium none;" tabindex="-1" title="Facebook Cross Domain Communication Frame" aria-hidden="true" id="fb_xdm_frame_https" allowfullscreen="true" allowtransparency="true" name="fb_xdm_frame_https" scrolling="no" frameborder="0"></iframe></div></div><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div></div></div></div><!--.container-->
+	<footer>
+		<div class="container">
+			<div class="footer-widgets">
+						<div class="f-widget">
+			<div class="widget"><h3>About me</h3>			<div class="textwidget">Law student graduate, GNOME Sysadmin and Accounts Team Lead, GNOME Foundation Membership &amp; Elections Committee Chairman, Debian Developer, Fedora packager and former HTML.it Freelance blogger.</div>
+		</div>		</div>
+		<div class="f-widget">
+			<div class="widget"><h3>Connect with me</h3>			<div class="textwidget"><a href="https://plus.google.com/u/0/+AndreaVeri/posts"><img src="google+.png"></a>
+<a href="https://twitter.com/andrea_veri"><img src="twitter_001.png"></a>
+<a href="https://it.linkedin.com/pub/andrea-veri/91/3a0/bb2/"><img src="linkedin_001.png"></a>
+<a href="https://www.dragonsreach.it/rss"><img src="rss.png"></a>
+
+</div>
+		</div>		</div>
+		<div class="f-widget last">
+								</div>
+                                <div class="copyrights">
+				<div class="row" id="copyright-note">
+<span>© 2016 <a href="https://www.dragonsreach.it/" title="">Andrea Veri's Blog</a>.</span>
+                        <span>Artwork by <a href="mailto:aretha.battistutta@gmail.com">Aretha Battistutta</a>.</span>
+			</div>
+			</div>
+			</div><!--.footer-widgets-->
+		</div>
+	</footer>
+
+<div id="hidden-cookie-message" style="display: none;">
+  <div>
+    <h4>Andrea Veri's Blog Cookies Policy</h4>
+<p>The website is currently making use of the Google Analytics Wordpress Plugin. Please read more details about the cookies in use and how we make use of them at the <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/cookie-usage#gajs">following page</a>.</p>    <a class="close-cookie-banner"><span>Close</span></a>
+  </div>
+</div>
+<!-- Powered by WPtouch Pro: 3.7.6.3 --><div id="su-footer-links" style="text-align: center;"></div>
+
+
+
+
+
+
+
+
+<!-- Comments Evolved plugin -->
+
+<!-- //Comments Evolved plugin -->
+
+		
+
+
+
+
+<div style="display: none;" id="cookie-law">
+  <div>
+    <h4>Andrea Veri's Blog Cookies Policy</h4>
+<p>The website is currently making use of the Google Analytics Wordpress Plugin. Please read more details about the cookies in use and how we make use of them at the <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/cookie-usage#gajs">following page</a>.</p>    <a class="close-cookie-banner"><span>Close</span></a>
+  </div>
+</div></body>
+</html>
