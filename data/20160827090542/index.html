@@ -1,0 +1,1108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head profile="http://gmpg.org/xfn/11">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Deprecated Linux networking commands and their replacements | Doug Vitale Tech Blog</title>
+<link rel="pingback" href="https://dougvitale.wordpress.com/xmlrpc.php">
+<meta name="google-site-verification" content="GfaPkK0FGlUxCyzt3lEQ_XzM8qzbOQNxKyqYkvFXa1g">
+<meta name="msvalidate.01" content="21150EEB0FCAF2AF5D0F16D9C08B0945">
+<link rel="alternate" type="application/rss+xml" title="Doug Vitale Tech Blog » Feed" href="https://dougvitale.wordpress.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="Doug Vitale Tech Blog » Comments Feed" href="https://dougvitale.wordpress.com/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="Doug Vitale Tech Blog » Deprecated Linux networking commands and their&nbsp;replacements Comments Feed" href="https://dougvitale.wordpress.com/2011/12/21/deprecated-linux-networking-commands-and-their-replacements/feed/">
+	
+			
+		
+
+<!--[if IE 6]>
+<link rel='stylesheet' id='journalist-ie6-css'  href='https://s0.wp.com/wp-content/themes/pub/journalist/ie6.css?m=1270837707h&#038;ver=4.5.3-20160628' type='text/css' media='all' />
+<![endif]-->
+
+
+
+
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://dougvitale.wordpress.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://s1.wp.com/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="Troubleshooting faulty network connectivity, part 2: Essential network&nbsp;commands" href="https://dougvitale.wordpress.com/2011/12/11/troubleshooting-faulty-network-connectivity-part-2-essential-network-commands/">
+<link rel="next" title="Use SSH in Firefox with&nbsp;FireSSH" href="https://dougvitale.wordpress.com/2011/12/31/use-ssh-in-firefox-with-firessh/">
+<meta name="generator" content="WordPress.com">
+<link rel="canonical" href="https://dougvitale.wordpress.com/2011/12/21/deprecated-linux-networking-commands-and-their-replacements/">
+<link rel="shortlink" href="http://wp.me/pNKAH-8W">
+<link rel="alternate" type="application/json+oembed" href="https://public-api.wordpress.com/oembed/1.0/?format=json&amp;url=https%3A%2F%2Fdougvitale.wordpress.com%2F2011%2F12%2F21%2Fdeprecated-linux-networking-commands-and-their-replacements%2F&amp;for=wpcom-auto-discovery"><link rel="alternate" type="application/xml+oembed" href="https://public-api.wordpress.com/oembed/1.0/?format=xml&amp;url=https%3A%2F%2Fdougvitale.wordpress.com%2F2011%2F12%2F21%2Fdeprecated-linux-networking-commands-and-their-replacements%2F&amp;for=wpcom-auto-discovery">
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="Deprecated Linux networking commands and their replacements">
+<meta property="og:url" content="https://dougvitale.wordpress.com/2011/12/21/deprecated-linux-networking-commands-and-their-replacements/">
+<meta property="og:description" content="In my article detailing the command line utilities available for configuring and troubleshooting network properties on Windows and Linux, I mentioned some Linux tools that, while still included and…">
+<meta property="article:published_time" content="2011-12-21T21:26:06+00:00">
+<meta property="article:modified_time" content="2014-02-25T16:23:58+00:00">
+<meta property="og:site_name" content="Doug Vitale Tech Blog">
+<meta property="og:image" content="https://dougvitale.files.wordpress.com/2011/12/41rtdcejwml-_sl110_.jpg">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:site" content="@wordpressdotcom">
+<meta name="twitter:image" content="https://dougvitale.files.wordpress.com/2011/12/51i9ierlvl-_sl110_.jpg?w=240">
+<meta name="twitter:card" content="summary">
+<meta property="fb:app_id" content="249643311490">
+<meta property="article:publisher" content="https://www.facebook.com/WordPresscom">
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" sizes="16x16 24x24 32x32 48x48">
+<link rel="icon" type="image/x-icon" href="favicon.ico" sizes="16x16 24x24 32x32 48x48">
+<link rel="apple-touch-icon-precomposed" href="https://s0.wp.com/i/webclip.png">
+<link rel="openid.server" href="https://dougvitale.wordpress.com/?openidserver=1">
+<link rel="openid.delegate" href="https://dougvitale.wordpress.com/">
+<link rel="search" type="application/opensearchdescription+xml" href="https://dougvitale.wordpress.com/osd.xml" title="Doug Vitale Tech Blog">
+<link rel="search" type="application/opensearchdescription+xml" href="https://s1.wp.com/opensearch.xml" title="WordPress.com">
+		
+		<meta name="application-name" content="Doug Vitale Tech Blog"><meta name="msapplication-window" content="width=device-width;height=device-height"><meta name="msapplication-task" content="name=Subscribe;action-uri=https://dougvitale.wordpress.com/feed/;icon-uri=https://s2.wp.com/i/favicon.ico"><meta name="msapplication-task" content="name=Sign up for a free blog;action-uri=http://wordpress.com/signup/;icon-uri=https://s2.wp.com/i/favicon.ico"><meta name="msapplication-task" content="name=WordPress.com Support;action-uri=http://support.wordpress.com/;icon-uri=https://s2.wp.com/i/favicon.ico"><meta name="msapplication-task" content="name=WordPress.com Forums;action-uri=http://forums.wordpress.com/;icon-uri=https://s2.wp.com/i/favicon.ico"><meta name="title" content="Deprecated Linux networking commands and their&nbsp;replacements | Doug Vitale Tech Blog on WordPress.com">
+<meta name="description" content="In my article detailing the command line utilities available for configuring and troubleshooting network properties on Windows and Linux, I mentioned some Linux tools that, while still included and functional in many Linux distributions, are actually considered deprecated and therefore should be phased out in favor of more modern replacements. Specifically, the deprecated Linux networking…">
+		
+		
+				<!-- IPONWEB header script -->
+		
+		<link rel="amphtml" href="https://dougvitale.wordpress.com/2011/12/21/deprecated-linux-networking-commands-and-their-replacements/amp/">
+		
+		
+
+
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+
+<body class="single single-post postid-554 single-format-standard mp6 customizer-styles-applied highlander-enabled highlander-light">
+<div id="container" class="group">
+
+<h1><a href="https://dougvitale.wordpress.com/">Doug Vitale Tech Blog</a></h1>
+
+<div id="content" class="group">
+<div class="post-554 post type-post status-publish format-standard hentry category-computer-networking-techniques-and-concepts tag-ip-command tag-ip-link tag-ip-neighbor tag-ip-route tag-iproute2 tag-iwconfig tag-linux-deprecated">
+	<h2 id="post-554">Deprecated Linux networking commands and their&nbsp;replacements</h2>
+	
+	<div class="main">
+		<p>In my <a title="Troubleshooting faulty network connectivity, part 2: Essential network&nbsp;commands" href="https://dougvitale.wordpress.com/2011/12/11/troubleshooting-faulty-network-connectivity-part-2-essential-network-commands/">article</a> detailing the command line utilities available for configuring and troubleshooting network properties on Windows and Linux, I mentioned some Linux tools that, while still included and functional in many Linux distributions, are actually considered <a title="Deprecation on Wikipedia" href="http://en.wikipedia.org/wiki/Deprecation">deprecated</a> and therefore should be phased out in favor of more modern replacements.</p>
+<p>Specifically, the deprecated Linux networking commands in question are: <strong>arp</strong>, <strong>ifconfig</strong>,&nbsp;<strong>iptunnel</strong>, <strong>iwconfig</strong>, <strong>nameif</strong>, <strong>netstat</strong>, and <strong>route</strong>. These programs (except <strong>iwconfig</strong>) are included in the <a title="net-tools on the Linux Foundation" href="http://www.linuxfoundation.org/collaborate/workgroups/networking/net-tools">net-tools</a> package that has been unmaintained for years. The functionality provided by several of these utilities has been reproduced and improved in the new <a title="iproute2 on Wikipedia" href="http://en.wikipedia.org/wiki/Iproute2">iproute2</a> suite, primarily by using its new <strong>ip</strong> command. The <strong>iproute2</strong> software code is available from <a href="http://www.kernel.org/pub/linux/utils/net/iproute2/" title="Iproute2 on kernel.org">Kernel.org</a>. <strong>Iproute2</strong> documentation is available from <a href="http://www.linuxfoundation.org/collaborate/workgroups/networking/iproute2">the Linux Foundation</a> and <a href="http://www.policyrouting.org/iproute2-toc.html" title="IProute2 utility suite how-to on policyrouting.org">PolicyRouting.org</a>.</p>
+<table width="820" border="1">
+<tbody>
+<tr>
+<th>
+<h3><strong>Deprecated command</strong></h3>
+</th>
+<th>
+<h3><strong>Replacement command(s)</strong></h3>
+</th>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>arp</strong></td>
+<td style="padding: 5px;"><strong>ip n</strong> (<strong>ip neighbor)</strong></td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>ifconfig</strong></td>
+<td style="padding: 5px;"><strong>ip a</strong> (<strong>ip addr</strong>), <strong>ip link</strong>, <strong>ip -s</strong> (<strong>ip -stats)</strong></td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>iptunnel</strong></td>
+<td style="padding: 5px;"><strong>ip tunnel</strong></td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>iwconfig</strong></td>
+<td style="padding: 5px;"><strong>iw</strong></td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>nameif</strong></td>
+<td style="padding: 5px;"><strong>ip link</strong>, <strong>ifrename</strong></td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>netstat</strong></td>
+<td style="padding: 5px;"><strong>ss</strong>, <strong>ip route </strong>(for <strong>netstat-r</strong>), <strong>ip -s link </strong>(for <strong>netstat -i</strong>), <strong>ip maddr </strong>(for <strong>netstat-g</strong>)</td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>route</strong></td>
+<td style="padding: 5px;"><strong>ip r</strong> (<strong>ip route</strong>)</td>
+</tr>
+</tbody>
+</table>
+<p><span style="color: rgb(255, 255, 255);">.</span><br>
+Now let’s take a closer look at these deprecated commands and their replacements.</p>
+<p><span id="more-554"></span></p>
+<p>This article will not focus on <strong>iproute2</strong> or the <strong>ip</strong> command in detail; instead it will simply give one-to-one mappings between the deprecated commands and their new counterparts. For replacement commands that are listed as ‘not apparent’, please <a title="Contact" href="https://dougvitale.wordpress.com/contact/">contact me</a> if you know otherwise.</p>
+<p><strong>Jump to:</strong></p>
+<ul>
+<li><a href="#arp">Arp</a></li>
+<li><a href="#ifconfig">Ifconfig</a></li>
+<li><a href="#iptunnel">Iptunnel</a></li>
+<li><a href="#iwconfig">Iwconfig</a></li>
+<li><a href="#nameif">Nameif</a></li>
+<li><a href="#netstat">Netstat</a></li>
+<li><a href="#route">Route</a></li>
+<li><a href="#discussion">Discussion</a></li>
+<li><a href="#recommended">Recommended reading</a></li>
+</ul>
+<p>Please note that <strong>nslookup</strong> and <strong>dig</strong> are covered separately <a title="Troubleshooting faulty network connectivity, part 2: Essential network&nbsp;commands" href="https://dougvitale.wordpress.com/2011/12/11/troubleshooting-faulty-network-connectivity-part-2-essential-network-commands/#nslookup">here</a>.<br>
+<a name="arp"></a><br>
+</p><h2>Arp</h2>
+<table width="820" border="1">
+<tbody>
+<tr>
+<th>
+<h3><strong>Deprecated arp commands</strong></h3>
+</th>
+<th>
+<h3><strong>Replacement</strong></h3>
+</th>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>arp -a [host] </strong>or<strong> <code>--</code>all [host]</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Shows the entries of the specified host name or IP address. If the <strong>[host]</strong> parameter is not used, all entries will be displayed.<strong><br>
+</strong></td>
+<td style="padding: 5px;"><strong>ip n</strong> (or <strong>ip neighbor</strong>), or<strong> ip n show</strong></td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>arp -d [ip_addr]</strong> or <strong><code>--</code>delete [ip_addr]</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Removes the ARP cache entry for the specified host.</td>
+<td style="padding: 5px;"><strong>ip n del [ip_addr] </strong>(this “invalidates” neighbor entries)<strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+ip n f [ip_addr]</strong> (or <strong>ip n flush [ip_addr]</strong>)</td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>arp -D </strong>or<strong> <code>--</code>use-device</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Uses the hardware address associated with the specified interface.</td>
+<td style="padding: 5px;">Not apparent</td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>arp -e</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Shows the entries in default (Linux) style.</td>
+<td style="padding: 5px;">Not apparent</td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>arp -f [filename] </strong>or<strong> <code>--</code>file [filename]</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Similar to the <strong>-s</strong> option, only this time the address info is taken from the file that <strong>[filename]</strong> set up. If no <strong>[filename]</strong> is specified, <em>/etc/ethers</em> is used as default.</td>
+<td style="padding: 5px;">Not apparent</td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>arp -H </strong>or<strong> <code>--</code>hw-type [type] </strong>or<strong> -t [type]</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+When setting or reading the ARP cache, this optional parameter tells <strong>arp</strong> which class of entries it should check for. The default value of this parameter is <strong>ether</strong> (i.e. hardware code 0x01 for IEEE 802.3 10Mbps Ethernet).</td>
+<td style="padding: 5px;">Not apparent</td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>arp -i [int] </strong>or<strong> <code>--</code>device [int]</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Selects an interface. When dumping the ARP cache only entries matching the specified interface will be printed. For example, <strong>arp -i eth0 -s 10.21.31.41 A321.ABCF.321A</strong> creates a static ARP entry associating IP address 10.21.31.41 with MAC address A321.ABCF.321A on <strong>eth0</strong>.</td>
+<td style="padding: 5px;"><strong>ip n [add | chg | del | repl] dev [name]</strong></td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>arp -n </strong>or<strong> <code>--</code>numeric</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Shows IP addresses instead of trying to determine domain names.</td>
+<td style="padding: 5px;">Not apparent</td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>arp -s [ip_addr] [hw_addr] </strong>or<strong> <code>--</code>set [ip_addr]</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Manually creates a static ARP address mapping entry for host <strong>[ip_addr]</strong> with the hardware address set to <strong>[hw_addr]</strong>.</td>
+<td style="padding: 5px;"><strong>ip n add [ip_addr] lladdr [mac_address] dev [device] nud [nud_state] </strong>(see example below)</td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>arp -v</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Uses verbose mode to provide more details.</td>
+<td style="padding: 5px;"><strong>ip -s n</strong> (or <strong>ip -stats n</strong>)</td>
+</tr>
+</tbody>
+</table>
+<p><span style="color: rgb(255, 255, 255);">.</span><br>
+Some <strong>ip neighbor</strong> examples are as follows:</p>
+<p style="padding: 2px 6px 4px; color: rgb(85, 85, 85); background-color: rgb(238, 238, 238); border: 2px solid rgb(221, 221, 221);"><code># ip n del 10.1.2.3 dev eth0</code></p>
+<p>Invalidates the ARP cache entry for host 10.1.2.3 on device <strong>eth0</strong>.</p>
+<p style="padding: 2px 6px 4px; color: rgb(85, 85, 85); background-color: rgb(238, 238, 238); border: 2px solid rgb(221, 221, 221);"><code># ip neighbor show dev eth0</code></p>
+<p>Shows the ARP cache for interface <strong>eth0</strong>.</p>
+<p style="padding: 2px 6px 4px; color: rgb(85, 85, 85); background-color: rgb(238, 238, 238); border: 2px solid rgb(221, 221, 221);"><code># ip n add 10.1.2.3 lladdr 1:2:3:4:5:6 dev eth0 nud perm</code></p>
+<p>Adds a “permanent” ARP cache entry for host 10.1.2.3 device <strong>eth0</strong>. The Neighbor Unreachability Detection (<strong>nud</strong>) state can be one of the following:</p>
+<ul>
+<li><strong>noarp</strong> – entry is valid. No attempts to validate this entry will be made but it can be removed when its lifetime expires.</li>
+<li><strong>permanent</strong> – entry is valid forever and can be only be removed administratively.</li>
+<li><strong>reachable</strong> – entry is valid until the reachability timeout expires.</li>
+<li><strong>stale</strong> – entry is valid but suspicious.</li>
+</ul>
+<p><a name="ifconfig"></a><br>
+</p><h2>Ifconfig</h2>
+<table width="820" border="1">
+<tbody>
+<tr>
+<th>
+<h3><strong>Deprecated ifconfig commands<br>
+</strong></h3>
+</th>
+<th>
+<h3><strong>Replacement</strong></h3>
+</th>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>ifconfig</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Displays details on all network interfaces.</td>
+<td style="padding: 5px;"><strong>ip a</strong> (or <strong>ip addr</strong>)</td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>ifconfig [interface]</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+The name of the interface. This is usually a driver name followed by a unit number; for example, <strong>eth0</strong> for the first Ethernet interface. <strong>Eth0</strong> will usually be a PC’s primary network interface card (NIC).</td>
+<td style="padding: 5px;"><strong>ip a show dev [interface]<br>
+</strong></td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>ifconfig [address_family]</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+To enable the interpretation of differing naming schemes used by various protocols, <strong>[address_family]</strong> is used for decoding and displaying all protocol addresses. Currently supported address families include <strong>inet</strong> (TCP/IP, default), <strong>inet6</strong> (IPv6), <strong>ax25</strong> (AMPR Packet Radio), <strong>ddp</strong> (Appletalk Phase 2), <strong>ipx</strong> (Novell IPX) and <strong>netrom</strong> (AMPR Packet radio).</td>
+<td style="padding: 5px;"><strong>ip -f [family] a</strong><strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+[family]</strong> can be <strong>inet</strong> (IPv4), <strong>inet6</strong> (IPv6), or <strong>link</strong>. Additionally, <strong>-4</strong> = <strong>-f inet</strong> and<strong> -6</strong> = <strong>-f inet6</strong>.</td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>ifconfig [interface] add [address/prefixlength</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Adds an IPv6 address to the <strong>[interface]</strong>.</td>
+<td style="padding: 5px;"><strong>ip a add [ip_addr/mask] dev [interface]</strong></td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>ifconfig [interface] address [address]<br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+</strong>Assigns the specified IP <strong>[address]</strong> to the specified <strong>[interface].</strong></td>
+<td style="padding: 5px;"><strong>ip a add [ip_addr/mask] dev [interface]</strong></td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>ifconfig [interface] allmulti </strong>or<strong> -allmulti</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Enables or disables all-multicast mode. If selected, all multicast packets on the network will be received by the <strong>[interface]</strong> specified. This enables or disables the sending of incoming frames to the kernel’s network layer.</td>
+<td style="padding: 5px;"><strong>ip mr iif [name]</strong> or <strong>ip mroute iif [name]</strong>, where <strong>[name]</strong> is the interface on which multicast packets are received.</td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>ifconfig [interface] arp</strong> or <strong>-arp</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Enables or disables the use of the ARP protocol on this <strong>[interface]</strong>.</td>
+<td style="padding: 5px;"><strong>ip link set arp on</strong> or <strong>arp off</strong></td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>ifconfig [interface] broadcast [address]</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Specifies the address to use to use for broadcast transmissions. By default, the broadcast address for a subnet is the IP address with all ones in the host portion of the subnet address (i.e., <em>a.b.c.255</em> for a /24 subnet).</td>
+<td style="padding: 5px;"><strong>ip a add broadcast [ip_address]</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+<strong>ip link set dev [interface] broadcast [mac_address]</strong> (sets the link layer broadcast address)</td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>ifconfig [interface] del [address/prefixlength]</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Removes an IPv6 address from the <strong>[interface]</strong>, such as <strong>eth0</strong>.</td>
+<td style="padding: 5px;"><strong>ip a del [ipv6_addr</strong> or <strong>ipv4_addr] dev [interface]</strong></td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>ifconfig [interface] down</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Disables the <strong>[interface]</strong>, such as <strong>eth0</strong>.</td>
+<td style="padding: 5px;"><strong>ip link set dev [interface] down</strong></td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>ifconfig [interface] hw [class] [address]</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Sets the hardware (MAC) address of this <strong>[interface]</strong>, if the device driver supports this operation. The keyword <em>must</em> be followed by the name of the hardware <strong>[class]</strong> and the printable ASCII equivalent of the hardware address. Hardware classes currently supported include <strong>ether </strong> (Ethernet), <strong>ax25</strong> (AMPR AX.25), <strong>ARCnet</strong> and <strong>netrom</strong> (AMPR NET/ROM).</td>
+<td style="padding: 5px;"><strong>ip link set dev [interface] address [mac_addr]</strong></td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>ifconfig [interface] io_addr [address]</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Sets the start <strong>[address]</strong> in <a title="I/O Address on TechTerms" href="http://www.techterms.com/definition/ioaddress">I/O space</a> for this device.</td>
+<td style="padding: 5px;">Not apparent; possibly <strong>ethtool</strong>.</td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>ifconfig [interface] irq [address]</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Sets the <a title="IRQ on Wikipedia" href="http://en.wikipedia.org/wiki/Interrupt_request">interrupt line</a> used by the network interface.</td>
+<td style="padding: 5px;">Not apparent; possibly <strong>ethtool</strong>.</td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>ifconfig [interface] mem_start [address]</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Sets the start address for <a title="Shared memory on Wikipedia" href="http://en.wikipedia.org/wiki/Shared_memory">shared memory</a> of the interface.</td>
+<td style="padding: 5px;">Not apparent; possibly <strong>ethtool</strong>.</td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>ifconfig [interface] media [type]</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Sets physical port or medium type. Examples of <strong>[type]</strong> are <strong>10baseT</strong>, <strong>10base2</strong>, and <strong>AUI</strong>. A <strong>[type]</strong> value of <strong>auto</strong> will tell the interface driver to automatically determine the media type (driver support for this command varies).</td>
+<td style="padding: 5px;">Not apparent; possibly <strong>ethtool</strong>.</td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>ifconfig [interface] mtu [n]</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Sets the Maximum Transfer Unit (<a title="MTU on Wikipedia" href="http://en.wikipedia.org/wiki/Maximum_transmission_unit">MTU</a>) of an interface to <strong>[n]</strong>.</td>
+<td style="padding: 5px;"><strong>ip link set dev [interface] mtu [n]</strong></td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>ifconfig [interface] multicast</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Sets the <a title="Multicast addressing on Wikipedia" href="http://en.wikipedia.org/wiki/Multicast_address">multicast flag</a> on the interface (should not normally be needed as the drivers set the flag correctly themselves).</td>
+<td style="padding: 5px;"><strong>ip link set dev [interface] multicast on</strong> or <strong>off</strong></td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>ifconfig [interface] netmask [mask_address]</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Sets the <em>subnet mask</em> (not the IP address) for this <strong>[interface]</strong>. This value defaults to the standard Class A, B, or C subnet masks (based on the interface IP address) but can be changed with this command.<strong><br>
+</strong></td>
+<td style="padding: 5px;">Not apparent</td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>ifconfig [interface] pointopoint </strong>or<strong> -pointopoint</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Enables or disables <a title="Point-to-point on Wikipedia" href="http://en.wikipedia.org/wiki/Point-to-point_%28telecommunications%29">point-to-point</a> mode on this <strong>[interface]</strong>.
+</td>
+<td style="padding: 5px;">not apparent; possibly&nbsp;<strong>ipppd [device]</strong>. The command <strong>ip a add peer [address]</strong> specifies the address of the remote endpoint for point-to-point interfaces.</td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>ifconfig [interface] promisc </strong>or<strong> -promisc</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Enables or disables <a title="Promiscuous mode on Wikipedia" href="http://en.wikipedia.org/wiki/Promiscuous_mode">promiscuous mode</a> on the <strong>[interface]</strong>.<strong><br>
+</strong></td>
+<td style="padding: 5px;"><strong>ip link set dev [interface] promisc on </strong>or<strong> off</strong></td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>ifconfig [interface] txquelen [n]</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Sets the <a title="Transmit queue length" href="http://publib.boulder.ibm.com/infocenter/pseries/v5r3/index.jsp?topic=/com.ibm.aix.prftungd/doc/prftungd/transmit_queues.htm">transmit queue length</a> on the <strong>[interface]</strong>. Smaller values are recommended for connections with high latency (i.e., dial-up modems, ISDN, etc).</td>
+<td style="padding: 5px;"><strong>ip link set dev [interface] txqueuelen [n]</strong> or <strong>txqlen [n]</strong></td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>ifconfig [interface] tunnel [address]</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Creates a Simple Internet Transition (IPv6-in-IPv4) device which tunnels to the IPv4 <strong>[address]</strong> provided.</td>
+<td style="padding: 5px;"><strong>ip tunnel mode sit</strong> (other possible modes are <strong>ipip</strong> and <strong>gre)</strong>.</td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>ifconfig [interface] up</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Activates (enables) the <strong>[interface]</strong> specified.</td>
+<td style="padding: 5px;"><strong>ip link set [interface] up</strong></td>
+</tr>
+</tbody>
+</table>
+<p><span style="color: rgb(255, 255, 255);">.</span><br>
+Some examples illustrating the <strong>ip</strong> command are as follows; using the table above you should be able to figure out what they do.</p>
+<p style="padding: 2px 6px 4px; color: rgb(85, 85, 85); background-color: rgb(238, 238, 238); border: 2px solid rgb(221, 221, 221);"><code># ip link show dev eth0<br>
+<br>
+# ip a add 10.11.12.13/8 dev eth0<br>
+<br>
+# ip link set dev eth0 up<br>
+<br>
+# ip link set dev eth0 mtu 1500<br>
+<br>
+# ip link set dev eth0 address 00:70:b7:d6:cd:ef</code></p>
+<p><a name="iptunnel"></a><br>
+</p><h2>Iptunnel</h2>
+<table width="820" border="1">
+<tbody>
+<tr>
+<th>
+<h3><strong>Deprecated iptunnel commands</strong></h3>
+</th>
+<th>
+<h3><strong>Replacement<br>
+</strong></h3>
+</th>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>iptunnel [add | change | del | show]</strong></td>
+<td style="padding: 5px;"><strong>ip tunnel a</strong> or <strong>add</strong><br>
+<strong>ip tunnel chg</strong> or <strong>change</strong><br>
+<strong>ip tunnel d</strong> or <strong>del</strong><br>
+<strong>ip tunnel ls</strong> or <strong>show</strong></td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>iptunnel add&nbsp;[name] [mode {ipip | gre | sit} ] remote [remote_addr] local [local_addr]</strong></td>
+<td style="padding: 5px;"><strong>ip tunnel add [name] [mode {ipip | gre | sit | isatap | ip6in6 | ipip6 | any }] remote [remote_addr] local [local_addr]</strong></td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>iptunnel -V</strong> or <strong><code>--</code>version</strong></td>
+<td style="padding: 5px;">not apparent</td>
+</tr>
+</tbody>
+</table>
+<p><span style="color: rgb(255, 255, 255);">.</span><br>
+The syntax between <strong>iptunnel</strong> and <strong>ip tunnel</strong> is very similar as these examples show.</p>
+<p style="padding: 2px 6px 4px; color: rgb(85, 85, 85); background-color: rgb(238, 238, 238); border: 2px solid rgb(221, 221, 221);"><code># [iptunnel | ip tunnel] add ipip-tunl1 mode ipip remote 83.240.67.86</code> (<em>ipip-tunl1</em> is the name of the tunnel, 83.240.67.86 is the IP address of the remote endpoint).<br>
+<br>
+<code># [iptunnel | ip tunnel] add ipi-tunl2 mode ipip remote 104.137.4.160 local 104.137.4.150 ttl 1<br>
+<br>
+#&nbsp;[iptunnel | ip tunnel] add gre-tunl1 mode gre remote 192.168.22.17 local 192.168.10.21 ttl 255</code></p>
+<p><strong>Iptunnel</strong> is covered in more depth <a href="http://www.deepspace6.net/docs/iproute2tunnel-en.html">here</a>.</p>
+<p><a name="iwconfig"></a><br>
+</p><h2>Iwconfig</h2>
+<p><strong>Iwconfig’s</strong> successor, <strong>iw</strong>, is still in development. Official documentation for <strong>iw</strong> is available <a href="http://linuxwireless.org/en/users/Documentation/iw">here</a> and <a href="http://linuxwireless.org/en/users/Documentation/iw/replace-iwconfig">here</a>.</p>
+<table width="820" border="1">
+<tbody>
+<tr>
+<th>
+<h3><strong>Deprecated iwconfig commands</strong></h3>
+</th>
+<th>
+<h3><strong>Replacement</strong></h3>
+</th>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>iwconfig</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Displays basic details about wireless interfaces, such as supported protocols (<a title="802.11 on Wikipedia" href="http://en.wikipedia.org/wiki/IEEE_802.11">802.11a/b/g/n</a>), Extended Service Set ID (<a title="Service Set Identifier on Wikipedia" href="http://en.wikipedia.org/wiki/Service_set_%28802.11_network%29">ESSID</a>), mode, and access point. To view these details about a particular interface, use <strong>iwconfig [interface]</strong> where the interface is the device name, such as <strong>wlan0</strong>.</td>
+<td style="padding: 5px;"><strong>iw dev [interface] link</strong></td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>iwconfig [interface] ap [address]</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Forces the wireless adapter to register with the access point given by the <strong>[address]</strong>, if possible. This address is the cell identity of the access point (as reported by wireless scanning) which may be different from its MAC address.</td>
+<td style="padding: 5px;">Not apparent</td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>iwconfig commit</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Some wireless adapters may not apply changes immediately (they may wait to aggregate the changes, or apply them only when the card is brought up via <strong>ifconfig</strong>). This command (when available) forces the adapter to immediately apply all pending changes.</td>
+<td style="padding: 5px;">Not apparent</td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>iwconfig [interface] essid [name]</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Connects to the WLAN with the ESSID <strong>[name]</strong> provided. With some wireless adapters, you can disable the ESSID checking (ESSID promiscuous) with <strong>off</strong> or <strong>any</strong> (and <strong>on</strong> to re-enable it).</td>
+<td style="padding: 5px;"><strong>iw [interface] connect [name]</strong></td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>iwconfig [interface] frag [num]</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Sets the maximum fragment size which is always lower than the maximum packet size. This parameter may also control Frame Bursting available on some wireless adapters (the ability to send multiple IP packets together). This mechanism would be enabled if the fragment size is larger than the maximum packet size. Other valid frag parameters to <strong>auto</strong>, <strong>on</strong>, and <strong>off</strong>.</td>
+<td style="padding: 5px;">Not apparent</td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>iwconfig [interface] [freq | channel]</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Sets the operating frequency or channel on the wireless device. A value below 1000 indicates a channel number, a value greater than 1000 is a frequency in Hz. You can append the suffix <strong>k</strong>, <strong>M</strong> or <strong>G</strong> to the value (for example, “2.46G” for 2.46 GHz frequency). You may also use<em></em> <strong>off</strong> or <strong>auto</strong> to let the adapter pick up the best channel (when supported).</td>
+<td style="padding: 5px;"><strong>iw dev [interface] set freq [freq] [HT20|HT40+|HT40-]</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+<strong>iw dev [interface] set channel [chan] [HT20|HT40+|HT40-]</strong></td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>iwconfig [interface] key [key] [mode] [on | off]</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+To set the current encryption <strong>[key]</strong>, just enter the key in <em>hex</em> digits as XXXX-XXXX-XXXX-XXXX or XXXXXXXX. You can also enter the key as an ASCII string by using the <strong>s: </strong>prefix. <strong>On</strong> and <strong>off</strong> re=enable and disable encryption. The security mode may be <strong>open</strong> or <strong>restricted</strong>, and its meaning depends on the card used. With most cards, in <strong>open</strong> mode no authentication is used and the card may also accept non-encrypted sessions, whereas in <strong>restricted</strong> mode only encrypted sessions are accepted and the card will use authentication if available.</td>
+<td style="padding: 5px;"><strong>iw [interface] connect [name] keys [key] </strong>(for WEP)<br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+To connect to an AP with WPA or WPA2 encryption, you must use <a href="http://wireless.kernel.org/en/users/Documentation/wpa_supplicant">wpa_supplicant</a>.<strong><br>
+</strong></td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>iwconfig [interface] mode [mode]</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Sets the operating mode of the wireless device. The <strong>[mode]</strong> can be <strong>Ad-Hoc</strong>, <strong>Auto</strong>, <strong>Managed</strong>, <strong>Master</strong>, <strong>Monitor, Repeater</strong>, or <strong>Secondary</strong>.<strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Ad-Hoc</strong>: the network is composed of only one cell and without an access point.<br>
+<strong>Managed</strong>: the wireless node connects to a network composed of many access points, with roaming.<br>
+<strong>Master</strong>: the wireless node is the synchronization master, or it acts as an access point.<br>
+<strong>Monitor</strong>: the wireless node is not associated with any cell and passively monitors all packets on the frequency.<br>
+<strong>Repeater</strong>: the wireless node forwards packets between other wireless nodes.<br>
+<strong>Secondary</strong>: the wireless node acts as a backup master/repeater.</td>
+<td style="padding: 5px;">Not apparent</td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>iwconfig [interface] modu [modulation]</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Forces the wireless adapter to use a specific set of modulations. Modern adapters support various modulations, such as 802.11b or 802.11g. The list of available modulations depends on the adapter/driver and can be displayed using <strong>iwlist modulation</strong>. Some options are <strong>11g</strong>, <strong>CCK OFDMa</strong>, and <strong>auto</strong>.</td>
+<td style="padding: 5px;">Not apparent</td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>iwconfig [interface] nick [name]</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Sets the nick name (or station name).</td>
+<td style="padding: 5px;">Not apparent</td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>iwconfig [interface] nwid [name]<br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+</strong>Sets the Network ID for the WLAN. <em>This parameter is only used for pre-802.11 hardware</em> as the 802.11 protocol uses the ESSID and access point address for this function. With some wireless adapters, you can disable the Network ID checking (NWID promiscuous) with <strong>off</strong><em></em> (and <strong>on</strong> <em></em>to re-enable it).</td>
+<td style="padding: 5px;">Not apparent</td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>iwconfig [interface] power [option]</strong><br>
+<strong>iwconfig [interface] power min | max [secondsu | secondsm]</strong><br>
+<strong>iwconfig [interface] power mode [mode]</strong><br>
+<strong>iwconfig [interface] power on | off</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Configures the power management scheme and mode. Valid <strong>[options]</strong> are: <strong>period [value]</strong> (sets the period between wake ups), <strong>timeout [value]</strong> (sets the timeout before going back to sleep), <strong>saving [value]</strong> (sets the generic level of power saving).<br>
+The <strong>min</strong> and <strong>max</strong> modifiers are in seconds by default, but append the suffices <strong>m</strong> or <strong>u</strong> to specify values in milliseconds or microseconds.<br>
+Valid <strong>[mode]</strong> options are: <strong>all</strong> (receive all packets), <strong>unicast</strong> (receive unicast packets only, discard multicast and broadcast) and <strong>multicast</strong> (receive multicast and broadcast only, discard unicast packets).<br>
+<strong>On</strong> and <strong>off</strong> re-enable or disable power management.</td>
+<td style="padding: 5px;">Not apparent; some power commands are:<br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+<strong>iw dev [interface] set power_save on</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+<strong>iw dev [interface] get power_save</strong></td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>iwconfig [interface] rate/bit [rate]</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Sets the bit rate in bits per second for cards supporting multiple bit rates. The bit-rate is the speed at which bits are transmitted over the medium, the user speed of the link is lower due to medium sharing and various overhead.Suffixes <strong>k</strong>, <strong>M</strong> or <strong>G</strong> can be added to the numeric <strong>[rate]</strong> (decimal multiplier : 10^3, 10^6 and 10^9 b/s), or add ‘<strong>0</strong>‘ for enough. The <strong>[rate]</strong> can also be <strong>auto</strong> to select automatic bit-rate mode (fallback to lower rate on noisy channels), or <strong>fixed</strong> to revert back to fixed setting. If you specify a bit-rate numeric value and append <strong>auto</strong>, the driver will use all bit-rates lower and equal than this value.</td>
+<td style="padding: 5px;"><strong>iw [interface] set bitrates legacy-2.4 12 18 24</strong></td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>iwconfig [interface] retry [option] [value]</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+To set the maximum number of retries (MAC retransmissions), enter <strong>limit [value]</strong>. To set the maximum length of time the MAC should retry, enter <strong>lifetime [value]</strong>. By default, this value is in seconds; append the suffices <strong>m</strong> or <strong>u</strong> to specify values in milliseconds or microseconds. You can also add the <strong>short</strong>, <strong>long</strong>, <strong>min</strong> and <strong>max</strong> modifiers.</td>
+<td style="padding: 5px;">Not apparent</td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>iwconfig [interface] rts [threshold]</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Sets the size of the smallest packet for which the node sends RTS; a value equal to the maximum packet size disables the mechanism. You may also set the threshold parameter to <strong>auto</strong>, <strong>fixed</strong> or <strong>off</strong>.</td>
+<td style="padding: 5px;">Not apparent</td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>iwconfig [interface] sens [threshold]</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Sets the sensitivity threshold (defines how sensitive the wireless adapter is to poor operating conditions such as low signal, signal interference, etc). Modern adapter designs seem to control these thresholds automatically.</td>
+<td style="padding: 5px;">Not apparent</td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>iwconfig [interface] txpower [value]</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+For adapters supporting multiple transmit powers, this sets the transmit power in dBm. If <strong>W</strong> is the power in Watt, the power in dBm is P = 30 + 10.log(W). If the <strong>[value]</strong> is postfixed by <strong>mW</strong>, it will be automatically converted to dBm. In addition, <strong>on</strong> and <strong>off</strong> enable and disable the radio, and <strong>auto</strong> and <strong>fixed</strong> enable and disable power control (if those features are available).</td>
+<td style="padding: 5px;"><strong>iw dev [interface] set txpower [auto | fixed | |limit] [tx power in mBm]</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+<strong>iw phy [phyname] set txpower [auto | fixed | limit] [tx power in mBm]</strong></td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>iwconfig <code>--</code>help</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Displays the iwconfig help message.</td>
+<td style="padding: 5px;"><strong>iw help</strong></td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>iwconfig <code>--</code>version</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Displays the version of iwconfig installed.</td>
+<td style="padding: 5px;"><strong>iw <code>--</code>version</strong></td>
+</tr>
+</tbody>
+</table>
+<p><span style="color: rgb(255, 255, 255);">.</span><br>
+Some examples of the <strong>iw</strong> command syntax are as follows.</p>
+<p style="padding: 2px 6px 4px; color: rgb(85, 85, 85); background-color: rgb(238, 238, 238); border: 2px solid rgb(221, 221, 221);"><code># iw dev wlan0 link<br>
+<br>
+# iw wlan0 connect CoffeeShopWLAN<br>
+<br>
+# iw wlan0 connect HomeWLAN keys 0:abcde d:1:0011223344</code> (for WEP)</p>
+<p><a name="nameif"></a><br>
+</p><h2>Nameif</h2>
+<table width="820" border="1">
+<tbody>
+<tr>
+<th>
+<h3><strong>Deprecated nameif commands</strong></h3>
+</th>
+<th>
+<h3><strong>Replacement</strong></h3>
+</th>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>nameif [name] [mac_address]</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+If no name and MAC address are provided, it attempts to read addresses from <code>/etc/mactab</code>. Each line of <code>mactab</code> should contain an interface name and MAC address (or comments starting with #).</td>
+<td style="padding: 5px;"><strong>ip link set dev [interface] name [name]<br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+ifrename -i [interface] -n [newname]<br>
+</strong></td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>nameif -c [config_file]</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Reads from <strong>[config_file]</strong> instead of <code>/etc/mactab</code>.</td>
+<td style="padding: 5px;"><strong>ifrename -c [config_file]</strong></td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>nameif -s</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Error messages are sent to the syslog.</td>
+<td style="padding: 5px;">Not apparent</td>
+</tr>
+</tbody>
+</table>
+<p><a name="netstat"></a><br>
+</p><h2>Netstat</h2>
+<table width="820" border="1">
+<tbody>
+<tr>
+<th>
+<h3><strong>Deprecated netstat commands</strong></h3>
+</th>
+<th>
+<h3><strong>Replacement</strong></h3>
+</th>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>netstat -a </strong>or<strong> <code>--</code>all</strong><br>
+<span style="color: rgb(255, 255, 255);">.<strong><br>
+</strong></span>Shows both listening and non-listening <a title="Sockets on Wikipedia" href="http://en.wikipedia.org/wiki/Internet_socket">sockets</a>.<strong><br>
+</strong></td>
+<td style="padding: 5px;"><strong>ss -a </strong>or<strong> <code>--</code>all</strong></td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>netstat -A </strong> <strong>[family]</strong> or<strong> <code>--</code>protocol=[family]</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Specifies the address families for which connections are to be shown. <strong>[family]</strong> is a comma separated list of address family keywords like <strong>inet</strong>, <strong>unix</strong>, <strong>ipx</strong>, <strong>ax25</strong>, <strong>netrom</strong>, and <strong>ddp</strong>. This has the same effect as using the <strong><code>--</code>inet</strong>, <strong><code>--</code>unix (-x)</strong>, <strong><code>--</code>ipx</strong>, <strong><code>--</code>ax25</strong>, <strong><code>--</code>netrom</strong>, and <strong><code>--</code>ddp</strong> options.</td>
+<td style="padding: 5px;"><strong>ss -f [family]</strong> or <strong>–family=[family]</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Families: <strong>unix</strong>, <strong>inet</strong>, <strong>inet6</strong>, <strong>link</strong>, <strong>netlink</strong>.</td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>netstat -c</strong> or <strong><code>--</code>continuous</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Configures <strong>netstat</strong> to refresh the displayed information every second until stopped.</td>
+<td style="padding: 5px;">Not apparent</td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>netstat -C</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Prints routing information from the route cache.</td>
+<td style="padding: 5px;"><strong>ip route list cache</strong></td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>netstat -e</strong> or <strong><code>--</code>extend</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Displays an increased level of detail. Can be entered as twice (as <strong><code>--</code>ee</strong>) for maximum details.</td>
+<td style="padding: 5px;"><strong>ss -e</strong> or <strong><code>--</code>extended</strong></td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>netstat -F</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Prints routing information from the forward information database (<a title="Forward Information Database on Wikipedia" href="http://en.wikipedia.org/wiki/Forwarding_information_base">FIB</a>).</td>
+<td style="padding: 5px;">Not apparent</td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>netstat -g</strong> or <strong><code>--</code>groups</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Displays multicast group membership information for IPv4 and IPv6.</td>
+<td style="padding: 5px;"><strong>ip maddr</strong>, <strong>ip maddr show [interface]</strong></td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>netstat -i </strong>or<strong> <code>--</code>interface=[name]</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Displays a table of all network interfaces, or the specified<strong> [name].<br>
+</strong></td>
+<td style="padding: 5px;"><strong>ip -s link</strong></td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>netstat -l </strong>or<strong> <code>--</code>listening</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Shows only listening sockets (which are omitted by <strong>netstat</strong> be default).</td>
+<td style="padding: 5px;"><strong>ss -l </strong>or<strong> <code>--</code>listening</strong></td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>netstat -M</strong> or <strong><code>--</code>masquerade</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Displays a list of <a title="NAT on Wikipedia" href="http://en.wikipedia.org/wiki/Network_address_translation">masqueraded</a> connections (connections being altered by Network Address Translation).</td>
+<td style="padding: 5px;">Not apparent</td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>netstat -n </strong>or<strong> <code>--</code>numeric</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Show numerical addresses instead of trying to determine symbolic host, port or user names (skips DNS translation).</td>
+<td style="padding: 5px;"><strong>ss -n</strong> or <strong><code>--</code>numeric</strong></td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>netstat <code>--</code>numeric-hosts</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Shows numerical host addresses but does not affect the resolution of port or user names.</td>
+<td style="padding: 5px;">Not apparent</td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>netstat <code>--</code>numeric ports</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Shows numerical port numbers but does not affect the resolution of host or user names.</td>
+<td style="padding: 5px;">Not apparent</td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>netstat <code>--</code>numeric-users</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Shows numerical user IDs but does not affect the resolution of host or port names.</td>
+<td style="padding: 5px;">Not apparent</td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>netstat -N</strong> or <strong><code>--</code>symbolic</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Displays the symbolic host, port, or user names instead of numerical representations. <strong>Netstat</strong> does this by default.</td>
+<td style="padding: 5px;"><strong>ss -r</strong> or <strong><code>--</code>resolve</strong></td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>netstat -o</strong> or <strong><code>--</code>timers</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Includes information related to networking timers.</td>
+<td style="padding: 5px;"><strong>ss -o</strong> or <strong><code>--</code>options</strong></td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>netstat -p</strong> or <strong><code>--</code>program</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Shows the process ID (PID) and name of the program to which each socket belongs.</td>
+<td style="padding: 5px;"><strong>ss -p</strong></td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>netstat -r </strong>or<strong> <code>--</code>route</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Shows the kernel routing tables.</td>
+<td style="padding: 5px;"><strong>ip route</strong>, <strong>ip route show all</strong></td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>netstat -s</strong> or<strong> <code>--</code>statistics</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Displays summary statistics for each protocol.</td>
+<td style="padding: 5px;"><strong>ss -s</strong></td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>netstat -t </strong>or<strong> <code>--</code>tcp</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Filters results to display TCP only.</td>
+<td style="padding: 5px;"><strong>ss -t </strong>or<strong> <code>--</code>tcp</strong></td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>netstat -T </strong>or<strong> <code>--</code>notrim</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Stops trimming long addresses.</td>
+<td style="padding: 5px;">Not apparent</td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>netstat -u </strong>or<strong> <code>--</code>udp</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Filters results to display UDP only.</td>
+<td style="padding: 5px;"><strong>ss -u </strong>or<strong> <code>--</code>udp</strong></td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>netstat -v </strong>or<strong> <code>--</code>verbose</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Produces verbose output.</td>
+<td style="padding: 5px;">Not apparent</td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>netstat -w</strong> or <strong><code>--</code>raw</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Filter results to display <a title="Raw sockets on Wikipedia" href="http://en.wikipedia.org/wiki/Raw_socket">raw sockets</a> only.</td>
+<td style="padding: 5px;"><strong>ss-w</strong> or <strong><code>--</code>raw</strong></td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>netstat -Z </strong>or<strong> <code>--</code>context</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Prints the <a title="SELinux on Wikipedia" href="http://en.wikipedia.org/wiki/Security-Enhanced_Linux">SELinux</a> context if SELinux is enabled. On hosts running SELinux, all processes and files are labeled in a way that represents security-relevant information. This information is called the SELinux context.</td>
+<td style="padding: 5px;">Not apparent</td>
+</tr>
+</tbody>
+</table>
+<p><a name="route"></a><br>
+</p><h2>Route</h2>
+<table width="820" border="1">
+<tbody>
+<tr>
+<th>
+<h3><strong>Deprecated route commands</strong></h3>
+</th>
+<th>
+<h3><strong>Replacement</strong></h3>
+</th>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>route</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Displays the host’s routing tables.</td>
+<td style="padding: 5px;"><strong>ip route</strong></td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>route -A [family] [add]</strong> or<strong> route <code>--</code>[family] [add]</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Uses the specified address family with <strong>add</strong> or <strong>del</strong>. Valid families are <strong>inet</strong> (DARPA Internet), <strong>inet6</strong> (IPv6), <strong>ax25</strong> (AMPR AX.25), <strong>netrom</strong> (AMPR NET/ROM), <strong>ipx</strong> (Novell IPX), <strong>ddp</strong> (Appletalk DDP), and <strong>x25</strong> (CCITT X.25).</td>
+<td style="padding: 5px;"><strong>ip -f [family] route</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+<strong>[family]</strong> can be <strong>inet</strong> (IP), <strong>inet6</strong> (IPv6), or <strong>link</strong>. Additionally, <strong>-4</strong> = <strong>-f inet</strong> and<strong> -6</strong> = <strong>-f inet6</strong>.</td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>route -C </strong>or<strong> <code>--</code>cache</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Operates on the kernel’s routing cache instead of the forwarding information base (<a title="FIB on Wikipedia" href="http://en.wikipedia.org/wiki/Forwarding_information_base">FIB</a>) routing table.</td>
+<td style="padding: 5px;">Not apparent; <strong>ip route show cache</strong> dumps the routing cache.</td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>route -e </strong>or<strong> -ee</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Uses the <strong>netstat-r</strong> format to display the routing table. <strong>-ee</strong> will generate a very long line with all parameters from the routing table.</td>
+<td style="padding: 5px;"><strong>ip route show</strong></td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>route -F </strong>or<strong> <code>--</code>fib</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Operates on the kernel’s Forwarding Information Base (<a title="FIB on Wikipedia" href="http://en.wikipedia.org/wiki/Forwarding_information_base">FIB</a>) routing table (default behavior).</td>
+<td style="padding: 5px;">Not apparent</td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>route -h </strong>or<strong> <code>--</code>help</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Prints the help message.</td>
+<td style="padding: 5px;"><strong>ip route help</strong></td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>route -n</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Shows numerical IP addresses and bypass host name resolution.</td>
+<td style="padding: 5px;">Not apparent</td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>route -v </strong>or<strong> <code>--</code>verbose</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Enables verbose command output.</td>
+<td style="padding: 5px;"><strong>ip -s route</strong></td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>route -V </strong>or<strong> <code>--</code>version</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Dispays the version of <strong>net-tools</strong> and the <strong>route</strong> command.</td>
+<td style="padding: 5px;"><strong>ip -V</strong></td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>route add </strong>or<strong> del</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Adds or delete a route in the routing table.</td>
+<td style="padding: 5px;"><strong>ip route [add | chg | repl | del] [ip_addr] via [ip_addr]</strong></td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>route [add </strong>or<strong> del]</strong> <strong>dev [interface]</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Associates a route with a specific device. If <strong>dev [interface]</strong> is the last option on the command line, the word dev may be omitted.</td>
+<td style="padding: 5px;"><strong>ip route&nbsp;[add | chg | repl | del] dev [interface]</strong></td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>route [add </strong>or<strong> del] [default] gw [gw]</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Routes packets through the specified gateway IP address.</td>
+<td style="padding: 5px;"><strong>ip route add default via [gw]</strong></td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>route [add </strong>or<strong> del] -host</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Specifies that the target is a host (not a network).</td>
+<td style="padding: 5px;">Not apparent</td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>route [add </strong>or<strong> del] -irtt [n]</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Sets the initial round trip time (<a title="Round Trip Time on Wikipedia" href="http://en.wikipedia.org/wiki/Round-trip_delay_time">IRTT</a>) for TCP connections over this route to <strong>[n]</strong> milliseconds (1-12000). This is typically only used on AX.25 networks. If omitted the <a title="RFC 1122" href="http://www.rfc-editor.org/info/rfc1122">RFC 1122</a> default of 300ms is used.</td>
+<td style="padding: 5px;">Not apparent; <strong>ip route [add | chg | repl | del] rtt [number]</strong> sets the RTT estimate; <strong>rttvar [number]</strong> sets the initial RTT variance estimate.</td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>route [add </strong>or<strong> del] -net</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Specifies that the target is a network (not a host).<strong><br>
+</strong></td>
+<td style="padding: 5px;">Not apparent</td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>route [add</strong> or <strong>del]</strong> <strong>[-host</strong> or <strong>-net] netmask [mask]</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Sets the subnet <strong>[mask]</strong>.</td>
+<td style="padding: 5px;">Not apparent</td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>route [add </strong>or<strong> del] metric [n]</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Sets the metric field in the routing table (used by routing daemons) to the value of <strong>[n]</strong>.
+</td>
+<td style="padding: 5px;"><strong>ip route [add | chg | repl | del]</strong> <strong>metric [number]</strong> or <strong>preference [number]</strong></td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>route [add </strong>or<strong> del]</strong> <strong>mod, dyn, </strong>or<strong> reinstate</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Install a dynamic or modified route. These flags are for diagnostic purposes, and are generally only set by routing daemons.</td>
+<td style="padding: 5px;">Not apparent</td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>route [add </strong>or<strong> del] mss [bytes]</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Sets the TCP Maximum Segment Size (<a title="Maximum segment size on Wikipedia" href="http://en.wikipedia.org/wiki/Maximum_segment_size">MSS</a>) for connections over this route to the number of <strong>[bytes]</strong> specified.</td>
+<td style="padding: 5px;"><strong>ip route [add | chg | repl | del] advmss [number]</strong> (the MSS to advertise to these destinations when establishing TCP connections).</td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>route [add </strong>or<strong> del] reject</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Installs a blocking route, which will force a route lookup to fail. This is used to mask out networks before using the default route. This is not intended to provide firewall functionality.</td>
+<td style="padding: 5px;"><strong>ip route add prohibit [network_addr]</strong></td>
+</tr>
+<tr>
+<td style="padding: 5px;"><strong>route [add </strong>or<strong> del] window [n]</strong><br>
+<span style="color: rgb(255, 255, 255);">.</span><br>
+Set the <a title="TCP window scaling on Wikipedia" href="http://en.wikipedia.org/wiki/TCP_window_scale_option">TCP window size</a> for connections over this route to the value of <strong>[n]</strong> bytes. This is typically only used on AX.25 networks and with drivers unable to handle back-to-back frames.</td>
+<td style="padding: 5px;"><strong>ip route [add | chg | repl | del] window [W]</strong></td>
+</tr>
+</tbody>
+</table>
+<p><span style="color: rgb(255, 255, 255);">.</span><br>
+Some examples of <strong>ip route</strong> command syntax are as follows.</p>
+<p style="padding: 2px 6px 4px; color: rgb(85, 85, 85); background-color: rgb(238, 238, 238); border: 2px solid rgb(221, 221, 221);"><code># ip route add 10.23.30.0/24 via 192.168.8.50<br>
+<br>
+# ip route del 10.28.0.0/16 via 192.168.10.50 dev eth0<br>
+<br>
+#&nbsp;ip route chg default via 192.168.25.110 dev eth1<br>
+<br>
+# ip route get [ip_address]</code> (shows the interface and gateway that would be used to reach a remote host. This command would be especially useful for troubleshooting routing issues on hosts with large routing tables and/or with multiple network interfaces).</p>
+<p><a name="discussion"></a><br>
+</p><h3><strong>Discussion</strong></h3>
+<p>This article and the topic of deprecated Linux networking commands has generated much interesting commentary on <a title="Deprecated Linux network commands on Reddit" href="http://www.reddit.com/r/linux/comments/nux9v/deprecated_linux_networking_commands_and_their/?sort=confidence">Reddit</a>.</p>
+<p><a name="recommended"></a><br>
+</p><h3><strong>Recommended reading</strong></h3>
+<p>If you found the content of this article helpful and want to expand your knowledge further, please consider buying a relevant book using the links below. Thanks!</p>
+<p><a href="http://www.amazon.com/gp/product/143026196X/ref=as_li_ss_il?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=143026196X&amp;linkCode=as2&amp;tag=douvittecblo-20"><img src="51i9ierlvl-_sl110_.jpg" title="Linux Kernel Networking on Amazon" alt="Linux Kernel Networking on Amazon" class="alignnone size-full wp-image-4150"></a> <a href="http://www.amazon.com/gp/product/143026196X/ref=as_li_ss_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=143026196X&amp;linkCode=as2&amp;tag=douvittecblo-20">Linux Kernel Networking</a>  <a href="http://www.amazon.com/gp/product/0596002556/ref=as_li_ss_il?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=0596002556&amp;linkCode=as2&amp;tag=douvittecblo-20"><img src="51ftvglxrl-_sl110_.jpg" title="Linux Network Internals on Amazon" alt="Linux Network Internals on Amazon" class="alignnone size-full wp-image-4151"></a> <a href="http://www.amazon.com/gp/product/0596002556/ref=as_li_ss_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=0596002556&amp;linkCode=as2&amp;tag=douvittecblo-20">Linux Network Internals</a></p>
+<p><a href="http://www.amazon.com/gp/product/0596102488/ref=as_li_ss_il?ie=UTF8&amp;tag=douvittecblo-20&amp;linkCode=as2&amp;camp=1789&amp;creative=390957&amp;creativeASIN=0596102488"><img class="alignleft size-full wp-image-784" title="Linux Networking Cookbook" src="51ec4ltaesl-_sl110_.jpg" alt=""></a><a href="http://www.amazon.com/gp/product/0596102488/ref=as_li_ss_tl?ie=UTF8&amp;tag=douvittecblo-20&amp;linkCode=as2&amp;camp=1789&amp;creative=390957&amp;creativeASIN=0596102488"> Linux Networking Cookbook</a>&nbsp; <a href="http://www.amazon.com/gp/product/0596005482/ref=as_li_ss_tl?ie=UTF8&amp;tag=douvittecblo-20&amp;linkCode=as2&amp;camp=1789&amp;creative=390957&amp;creativeASIN=0596005482"><img class="size-full wp-image-785 alignnone" title="Linux Network Administrator's Guide" src="51bme1a7l-_sl110_.jpg" alt=""></a><a href="http://www.amazon.com/gp/product/0596005482/ref=as_li_ss_tl?ie=UTF8&amp;tag=douvittecblo-20&amp;linkCode=as2&amp;camp=1789&amp;creative=390957&amp;creativeASIN=0596005482">Linux Network Administrator’s Guide</a></p>
+<p><a href="http://www.amazon.com/gp/product/0596154488/ref=as_li_ss_il?ie=UTF8&amp;tag=douvittecblo-20&amp;linkCode=as2&amp;camp=1789&amp;creative=390957&amp;creativeASIN=0596154488"><img class="alignleft  wp-image-786" title="Linux In A Nutshell, 6th Edition" src="41j6rxrjbl-_sl110_.jpg" alt="" width="85" height="110"></a> <a href="http://www.amazon.com/gp/product/0596154488/ref=as_li_ss_tl?ie=UTF8&amp;tag=douvittecblo-20&amp;linkCode=as2&amp;camp=1789&amp;creative=390957&amp;creativeASIN=0596154488">Linux in a Nutshell, 6th Edition</a> <a href="http://www.amazon.com/gp/product/013308504X/ref=as_li_ss_il?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=013308504X&amp;linkCode=as2&amp;tag=douvittecblo-20"><img src="51sfmak7kl-_sl110_.jpg" alt="Practical Guide to Linux Commands, Editors, and Shell Programming on Amazon" class="alignnone size-full wp-image-1815"></a> <a href="http://www.amazon.com/gp/product/013308504X/ref=as_li_ss_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=013308504X&amp;linkCode=as2&amp;tag=douvittecblo-20">Practical Guide to Linux Commands</a></p>
+<p><a href="http://www.amazon.com/gp/product/0470147733/ref=as_li_ss_il?ie=UTF8&amp;tag=douvittecblo-20&amp;linkCode=as2&amp;camp=1789&amp;creative=390957&amp;creativeASIN=0470147733"><img class="alignnone size-full wp-image-963" title="TCP/IP Architecture, Design and Implementation in Linux on Amazon" src="4141ziuugvl-_sl110_.jpg" alt="TCP/IP Architecture, Design and Implementation in Linux on Amazon"></a>  <a href="http://www.amazon.com/gp/product/0470147733/ref=as_li_ss_tl?ie=UTF8&amp;tag=douvittecblo-20&amp;linkCode=as2&amp;camp=1789&amp;creative=390957&amp;creativeASIN=0470147733">TCP/IP Implementation in Linux</a><a href="http://www.amazon.com/gp/product/0131777203/ref=as_li_ss_il?ie=UTF8&amp;tag=douvittecblo-20&amp;linkCode=as2&amp;camp=1789&amp;creative=390957&amp;creativeASIN=0131777203"><img class="alignnone size-full wp-image-964" title="Linux Networking Architecture on Amazon" src="41rtdcejwml-_sl110_.jpg" alt="Linux Networking Architecture on Amazon"></a> <a href="http://www.amazon.com/gp/product/0131777203/ref=as_li_ss_tl?ie=UTF8&amp;tag=douvittecblo-20&amp;linkCode=as2&amp;camp=1789&amp;creative=390957&amp;creativeASIN=0131777203">Linux Networking Architecture</a></p>
+<ul>
+<li><a href="http://astore.amazon.com/douvittecblo-20?_encoding=UTF8&amp;node=3">The best Linux and Unix books on Amazon</a></li>
+</ul>
+		<div class="wpcnt">
+			<div class="wpa wpmrec">
+				<a class="wpa-about" href="https://wordpress.com/about-these-ads/" rel="nofollow">About these ads</a>
+				<div class="u">
+					<div id="automattic-id-5532" data-section="26942" style="width: 300px; height: 250px;"><iframe src="index_1.html" id="fif_slot_automattic-id-_automattic-id-5532" name="fif_slot_automattic-id-_automattic-id-5532" style="border: medium none; width: 300px; height: 250px;" scrolling="no" width="300" frameborder="0" height="250"></iframe></div>
+				</div>
+			</div>
+		</div><div id="jp-post-flair" class="sharedaddy sd-like-enabled sd-sharing-enabled"><div class="sharedaddy sd-sharing-enabled"><div class="robots-nocontent sd-block sd-social sd-social-official sd-sharing"><h3 class="sd-title">Share this on:</h3><div class="sd-content"><ul><li class="share-email"><a rel="nofollow" data-shared="" class="share-email sd-button" href="https://dougvitale.wordpress.com/2011/12/21/deprecated-linux-networking-commands-and-their-replacements/?share=email" target="_blank" title="Click to email"><span>Email</span></a></li><li class="share-facebook"><div class="fb-share-button" data-href="https://dougvitale.wordpress.com/2011/12/21/deprecated-linux-networking-commands-and-their-replacements/" data-layout="button_count"></div></li><li class="share-twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-url="https://dougvitale.wordpress.com/2011/12/21/deprecated-linux-networking-commands-and-their-replacements/" data-text="Deprecated Linux networking commands and their replacements" data-via="wordpressdotcom" data-related="wordpressdotcom">Tweet</a></li><li class="share-linkedin"><div class="linkedin_button"></div></li><li class="share-google-plus-1"><div class="googleplus1_button"><div class="g-plus" data-action="share" data-size="medium" data-annotation="bubble" data-href="https://dougvitale.wordpress.com/2011/12/21/deprecated-linux-networking-commands-and-their-replacements/"></div></div></li><li><a href="#" class="sharing-anchor sd-button share-more"><span>More</span></a></li><li class="share-end"></li></ul><div class="sharing-hidden"><div class="inner" style="display: none; width: 150px;"><ul style="background-image: none;"><li class="share-tumblr"><a target="_blank" href="http://www.tumblr.com/share/link/?url=https%3A%2F%2Fdougvitale.wordpress.com%2F2011%2F12%2F21%2Fdeprecated-linux-networking-commands-and-their-replacements%2F&amp;name=Deprecated%20Linux%20networking%20commands%20and%20their%20replacements" title="Share on Tumblr" style="display: inline-block; text-indent: -9999px; overflow: hidden; width: 62px; height: 20px; background: url(&quot;share_2.png&quot;) no-repeat scroll left top transparent;">Share on Tumblr</a></li><li class="share-end"></li></ul></div></div></div></div></div><div class="sharedaddy sd-block sd-like jetpack-likes-widget-wrapper jetpack-likes-widget-unloaded" id="like-post-wrapper-11857171-554-57c0e6a9daadd" data-src="//widgets.wp.com/likes/#blog_id=11857171&amp;post_id=554&amp;origin=dougvitale.wordpress.com&amp;obj_id=11857171-554-57c0e6a9daadd" data-name="like-post-frame-11857171-554-57c0e6a9daadd"><h3 class="sd-title">Like this:</h3><div class="likes-widget-placeholder post-likes-widget-placeholder" style="height: 55px;"><span class="button"><span>Like</span></span> <span class="loading">Loading...</span></div><span class="sd-text-color"></span><a class="sd-link-color"></a></div>
+<div style="display: block;" id="jp-relatedposts" class="jp-relatedposts">
+	<h3 class="jp-relatedposts-headline"><em>Related</em></h3>
+<div class="jp-relatedposts-items jp-relatedposts-items-minimal"><p class="jp-relatedposts-post jp-relatedposts-post0" data-post-id="425" data-post-format="false"><span class="jp-relatedposts-post-title"><a data-position="0" data-origin="554" rel="nofollow" title="Troubleshooting faulty network connectivity, part 2: Essential network commands
+
+In my previous article describing the troubleshooting steps for faulty TCP/IP connections, I mentioned several commands such as ping, traceroute, and ipconfig that could assist you in pinpointing problematic network components. These commands and several others like them are commonly referred to as TCP/IP utilities because they are tools that…" href="https://dougvitale.wordpress.com/2011/12/11/troubleshooting-faulty-network-connectivity-part-2-essential-network-commands/" class="jp-relatedposts-post-a">Troubleshooting faulty network connectivity, part 2: Essential network commands</a></span><span class="jp-relatedposts-post-context">In "Computer Networking Techniques and Concepts"</span></p><p class="jp-relatedposts-post jp-relatedposts-post1" data-post-id="326" data-post-format="false"><span class="jp-relatedposts-post-title"><a data-position="1" data-origin="554" rel="nofollow" title="Spoofing MAC addresses in Linux and Windows
+
+Recall that each network adapter (whether wired or wireless) has a hard-coded&nbsp; (&quot;burned in&quot;) Media Access Control (MAC) address that uniquely identifies the adapter on the local network to which it is connected. MAC addresses are 48-bit values comprised of twelve hexadecimal characters (0-9 and A-F). The twelve characters are…" href="https://dougvitale.wordpress.com/2011/11/27/spoofing-mac-addresses-in-windows/" class="jp-relatedposts-post-a">Spoofing MAC addresses in Linux and Windows</a></span><span class="jp-relatedposts-post-context">In "Info Security or Ethical Hacking Tools"</span></p><p class="jp-relatedposts-post jp-relatedposts-post2" data-post-id="3927" data-post-format="false"><span class="jp-relatedposts-post-title"><a data-position="2" data-origin="554" rel="nofollow" title="Perform Web-based network queries with these sites
+
+When you want to perform network queries for troubleshooting or data collecting purposes, the standard approach has been to launch a non-graphical command line interface (CLI) in Windows or a shell prompt (such as Bash) in Linux to display the input and output of the commands you use. While this…" href="https://dougvitale.wordpress.com/2013/11/21/perform-web-based-network-queries/" class="jp-relatedposts-post-a">Perform Web-based network queries with these sites</a></span><span class="jp-relatedposts-post-context">In "Useful Web-Based Tools"</span></p></div></div></div>			</div>
+
+	<div class="meta group">
+		<div class="signature">
+			<p>Written by Doug Vitale <span class="edit"></span></p>
+			<p>December 21, 2011 at 4:26 PM</p>
+		</div>
+		<div class="tags">
+			<p>Posted in <a href="https://dougvitale.wordpress.com/category/computer-networking-techniques-and-concepts/" rel="category tag">Computer Networking Techniques and Concepts</a></p>
+			<p>Tagged with <a href="https://dougvitale.wordpress.com/tag/ip-command/" rel="tag">ip command</a>, <a href="https://dougvitale.wordpress.com/tag/ip-link/" rel="tag">ip link</a>, <a href="https://dougvitale.wordpress.com/tag/ip-neighbor/" rel="tag">ip neighbor</a>, <a href="https://dougvitale.wordpress.com/tag/ip-route/" rel="tag">ip route</a>, <a href="https://dougvitale.wordpress.com/tag/iproute2/" rel="tag">iproute2</a>, <a href="https://dougvitale.wordpress.com/tag/iwconfig/" rel="tag">iwconfig</a>, <a href="https://dougvitale.wordpress.com/tag/linux-deprecated/" rel="tag">linux deprecated</a></p>		</div>
+	</div>
+</div>
+<div class="navigation group">
+	<div class="alignleft">« <a href="https://dougvitale.wordpress.com/2011/12/11/troubleshooting-faulty-network-connectivity-part-2-essential-network-commands/" rel="prev">Troubleshooting faulty network connectivity, part 2: Essential network&nbsp;commands</a></div>
+	<div class="alignright"><a href="https://dougvitale.wordpress.com/2011/12/31/use-ssh-in-firefox-with-firessh/" rel="next">Use SSH in Firefox with&nbsp;FireSSH</a> »</div>
+</div>
+
+
+<a name="comments" id="comments"></a>
+
+
+
+
+
+</div>
+
+<div id="sidebar">
+			<div class="textwidget"><a href="http://astore.amazon.com/douvittecblo-20"><img src="amazon_icon1.jpg" title="Amazon bookstore"></a> <a title="Amazon bookstore" href="http://astore.amazon.com/douvittecblo-20"><strong>Amazon bookstore</strong></a></div>
+		<h3>Pages</h3>		<ul>
+			<li class="page_item page-item-2"><a href="https://dougvitale.wordpress.com/about/">About</a></li>
+<li class="page_item page-item-113"><a href="https://dougvitale.wordpress.com/contact/">Contact</a></li>
+<li class="page_item page-item-3660"><a href="https://dougvitale.wordpress.com/news/">Latest IT news and&nbsp;commentary</a></li>
+		</ul>
+		<h3>Site search</h3><form role="search" method="get" id="searchform" class="searchform" action="https://dougvitale.wordpress.com/">
+				<div>
+					<label class="screen-reader-text" for="s">Search for:</label>
+					<input value="" name="s" id="s" type="text">
+					<input id="searchsubmit" value="Search" type="submit">
+				</div>
+			</form>			<div class="textwidget"><br>
+<a href="http://www.google.com/cse/home?cx=009178134032797716717:cwmztgcnbfg"><img src="google_search.gif" title="Google site search"></a> <a href="http://www.google.com/cse/home?cx=009178134032797716717:cwmztgcnbfg">Site search engine</a></div>
+		<h3>Most popular</h3><ul>				<li>
+										<a href="#" class="bump-view" data-bump-view="tp">
+						Deprecated Linux networking commands and their replacements					</a>
+									</li>
+							<li>
+										<a href="https://dougvitale.wordpress.com/2012/01/05/reset-windows-passwords-with-offline-nt-password-registry-editor/" class="bump-view" data-bump-view="tp">
+						Reset Windows passwords with Offline NT Password &amp; Registry Editor					</a>
+									</li>
+							<li>
+										<a href="https://dougvitale.wordpress.com/2011/12/31/send-spoofed-emails-with-telnet/" class="bump-view" data-bump-view="tp">
+						Send spoofed emails with telnet					</a>
+									</li>
+							<li>
+										<a href="https://dougvitale.wordpress.com/2013/03/05/understanding-and-performing-ipv4-subnetting/" class="bump-view" data-bump-view="tp">
+						Understanding and performing IPv4 subnetting					</a>
+									</li>
+							<li>
+										<a href="https://dougvitale.wordpress.com/2012/12/01/layer-3-switches-compared-to-routers/" class="bump-view" data-bump-view="tp">
+						Layer 3 switches compared to routers					</a>
+									</li>
+							<li>
+										<a href="https://dougvitale.wordpress.com/2011/12/11/troubleshooting-faulty-network-connectivity-part-2-essential-network-commands/" class="bump-view" data-bump-view="tp">
+						Troubleshooting faulty network connectivity, part 2: Essential network commands					</a>
+									</li>
+							<li>
+										<a href="https://dougvitale.wordpress.com/2011/11/18/microsoft-baseline-security-analyzer/" class="bump-view" data-bump-view="tp">
+						Microsoft Baseline Security Analyzer					</a>
+									</li>
+			</ul><h3>Get networking gear</h3><div style="overflow: hidden;"><a href="http://www.amazon.com/b?_encoding=UTF8&amp;camp=1789&amp;creative=9325&amp;linkCode=ur2&amp;node=172504&amp;site-redirect=&amp;tag=douvittecblo-20&amp;linkId=I62YD6RYZXAFAFKK"><img src="network-home.gif" alt="Networking devices on Amazon" title="Networking devices on Amazon" class="aligncenter" width="125" height="125"></a></div>
+<h3>Categories</h3>		<ul>
+	<li class="cat-item cat-item-271"><a href="https://dougvitale.wordpress.com/category/commentary/">Commentary</a> (6)
+</li>
+	<li class="cat-item cat-item-70006191"><a href="https://dougvitale.wordpress.com/category/computer-networking-techniques-and-concepts/">Computer Networking Techniques and Concepts</a> (10)
+</li>
+	<li class="cat-item cat-item-67923263"><a href="https://dougvitale.wordpress.com/category/computer-networking-tools/">Computer Networking Tools</a> (9)
+</li>
+	<li class="cat-item cat-item-254928913"><a href="https://dougvitale.wordpress.com/category/info-security-or-ethical-hacking-tools/">Info Security or Ethical Hacking Tools</a> (28)
+</li>
+	<li class="cat-item cat-item-4800592"><a href="https://dougvitale.wordpress.com/category/useful-applications/">Useful Applications</a> (9)
+</li>
+	<li class="cat-item cat-item-68239710"><a href="https://dougvitale.wordpress.com/category/useful-web-based-tools/">Useful Web-Based Tools</a> (5)
+</li>
+	<li class="cat-item cat-item-17315"><a href="https://dougvitale.wordpress.com/category/useful-websites/">Useful Websites</a> (3)
+</li>
+		</ul>
+<h3>Browse tech books</h3><div style="overflow: hidden;"><a href="http://www.amazon.com/b?_encoding=UTF8&amp;camp=1789&amp;creative=9325&amp;linkCode=ur2&amp;node=5&amp;site-redirect=&amp;tag=douvittecblo-20&amp;linkId=AZADNWHFYV5SQXT5"><img src="amazon-books.gif" alt="Computer and technology books on Amazon" title="Computer and technology books on Amazon" class="aligncenter" width="125" height="125"></a></div>
+<h3>RSS</h3><p class="size-small"><a class="feed-image-link" href="https://dougvitale.wordpress.com/feed/" title="Subscribe to Posts"><img src="orange-small.png" alt="RSS Feed"></a>&nbsp;<a href="https://dougvitale.wordpress.com/feed/" title="Subscribe to Posts">RSS - Posts</a></p>
+<h3><label for="subscribe-field">Follow blog via email</label></h3>
+				<form action="https://subscribe.wordpress.com/" method="post" accept-charset="utf-8" id="subscribe-blog">
+											<p>Enter your email address to follow this blog and receive notifications of new posts by email.</p>
+						<p><input name="email" style="width: 95%; padding: 1px 2px;" placeholder="Enter your email address" value="" id="subscribe-field" type="text"></p>
+					
+					<p>
+						<input name="action" value="subscribe" type="hidden">
+						<input name="blog_id" value="11857171" type="hidden">
+						<input name="source" value="https://dougvitale.wordpress.com/2011/12/21/deprecated-linux-networking-commands-and-their-replacements/" type="hidden">
+						<input name="sub-type" value="widget" type="hidden">
+						<input name="redirect_fragment" value="blog_subscription-3" type="hidden">
+						<input id="_wpnonce" name="_wpnonce" value="5aa638cff5" type="hidden">						<input value="Follow" type="submit">
+					</p>
+				</form>
+			
+<h3>Build a custom PC</h3><div style="overflow: hidden;"><a href="http://www.amazon.com/b?_encoding=UTF8&amp;camp=1789&amp;creative=9325&amp;linkCode=ur2&amp;node=193870011&amp;site-redirect=&amp;tag=douvittecblo-20&amp;linkId=QS4CWENJX7LEUFUS"><img src="dream-pc.gif" alt="Hardware computer components on Amazon" title="Hardware computer components on Amazon" class="aligncenter" width="125" height="125"></a></div>
+<h3>↓ What’s new in Tech ↓</h3>			<div class="textwidget"></div>
+		<h3><a class="rsswidget" href="http://lxer.com/module/newswire/headlines.rdf" title="Syndicate this content"><img style="background: none repeat scroll 0% 0% orange; color: white; border: medium none;" src="rss.png" alt="RSS" width="14" height="14"></a> <a class="rsswidget" href="http://lxer.com/" title="Linux and Open Source news headlines">LXer Linux News</a></h3><ul><li><a class="rsswidget" href="https://opensource.com/life/16/8/queue-how-did-you-discover-linux" title="Welcome to The Queue, a new Q[he]amp[/he]A column I[he]#039[/he]ll be writing for Opensource.com. Although typically I will be answering questions from readers, sometimes I[he]#039[/he]ll switch that around and ask readers a question. With Linux turning 25, I thought it would be interesting to see how we all discovered the operating system. I[he]#039[/he]ll […]">The Queue: How did you discover Linux?</a></li><li><a class="rsswidget" href="https://www.howtoforge.com/tutorial/how-to-install-nginx-and-google-pagespeed-on-ubuntu-16-04/" title="This tutorial shows how to build a nginx .deb package for Ubuntu 16.04 from source that has Google PageSpeed module compiled in. Nginx (engine-x) is an open source and high-performance HTTP server, reverse proxy and IMAP/POP3 proxy server. The outstanding features of Nginx are stability, rich feature set, simple configuration and low resource consumption. Ng […]">How to Install nginx and google PageSpeed on Ubuntu 16.04 (Xenial Xerus)</a></li><li><a class="rsswidget" href="http://fossforce.com/2016/08/show-tell-maker-projects-hangouts/" title="This live Hangout show looks a lot like a DIY version of one of the morning shows on over-the-air TV -- and if there's any doubt that the maker movement thrives on open source, the first guest's project is all about Python and Arduino. Be sure to check out the cool Star Trek combadge. Beam us up, Mr. Shapiro!">'Show-and-Tell' Cool Maker Projects on Hangouts</a></li></ul><h3><a class="rsswidget" href="http://www.techrepublic.com/rssfeeds/topic/security/" title="Syndicate this content"><img style="background: none repeat scroll 0% 0% orange; color: white; border: medium none;" src="rss.png" alt="RSS" width="14" height="14"></a> <a class="rsswidget" href="http://www.techrepublic.com/rssfeeds/topic/security/" title="Security on TechRepublic">TechRepublic IT Security</a></h3><ul><li><a class="rsswidget" href="http://www.techrepublic.com/article/how-callminer-uses-analytics-to-secure-customer-data-and-ensure-pci-compliance/#ftag=RSS56d97e7" title="When recording voice conversations, complying with Payment Card Industry Data Security Standard regulations is tricky. Voice-analysis tech simplifies the process.">How CallMiner uses analytics to secure customer data and ensure PCI compliance</a></li><li><a class="rsswidget" href="http://www.techrepublic.com/article/stolen-iphones-could-eventually-capture-photo-and-fingerprint-of-thieves/#ftag=RSS56d97e7" title="Apple recently patented a feature that could trigger the iPhone to capture and store biometric data, images, audio, and video of a user if unauthorized use is detected.">Stolen iPhones could eventually capture photo and fingerprint of thieves</a></li><li><a class="rsswidget" href="http://www.techrepublic.com/article/cloud-security-alliance-releases-top-100-big-data-best-practices-report/#ftag=RSS56d97e7" title="The thoroughly detailed report breaks 100 best practices down into 10 categories. We've summarized them into the biggest takeaways IT professionals need to know about.">Cloud Security Alliance releases top 100 big data best practices report</a></li></ul><h3><a class="rsswidget" href="http://www.zdnet.com/blog/security/rss.xml" title="Syndicate this content"><img style="background: none repeat scroll 0% 0% orange; color: white; border: medium none;" src="rss.png" alt="RSS" width="14" height="14"></a> <a class="rsswidget" href="http://www.zdnet.com/" title="ZDNet | security RSS">ZDNet Zero Day</a></h3><ul><li><a class="rsswidget" href="http://www.zdnet.com/article/apple-releases-important-security-update-for-iphone-after-malware-found/#ftag=RSSbaffb68" title="The patch comes after the discovery of spyware circulating in the Middle East.">Apple releases 'important security update' for iPhone after spyware discovery</a></li><li><a class="rsswidget" href="http://www.zdnet.com/article/auth0-raises-15-million-to-let-you-know-when-youve-been-pwned/#ftag=RSSbaffb68" title="The authentication startup's software will inform users when their passwords have been compromised elsewhere.">Auth0 raises $15 million to let you know when you've been pwned</a></li><li><a class="rsswidget" href="http://www.zdnet.com/article/sony-finally-enables-two-factor-authentication-for-playstation-network-users/#ftag=RSSbaffb68" title="You can now add an additional layer of security to your account -- despite how late the feature has arrived.">Sony finally enables two factor authentication for PlayStation Network users</a></li></ul><h3><a class="rsswidget" href="https://dougvitale.wordpress.com/rssfeeds/topic/open-source/" title="Syndicate this content"><img style="background: none repeat scroll 0% 0% orange; color: white; border: medium none;" src="rss.png" alt="RSS" width="14" height="14"></a> <a class="rsswidget" href="#" title="">TechRepublic Linux</a></h3><ul><li>An error has occurred; the feed is probably down. Try again later.</li></ul><h3><a class="rsswidget" href="http://www.zdnet.com/blog/open-source/rss.xml?tag=mantle_skin;content" title="Syndicate this content"><img style="background: none repeat scroll 0% 0% orange; color: white; border: medium none;" src="rss.png" alt="RSS" width="14" height="14"></a> <a class="rsswidget" href="http://www.zdnet.com/" title="ZDNet | open-source RSS">ZDNet Open Source</a></h3><ul><li><a class="rsswidget" href="http://www.zdnet.com/pictures/the-25-biggest-events-in-linuxs-25-year-history/#ftag=RSSbaffb68" title="A year by year summary of the most significant events in Linux's history to date.">The 25 biggest events in Linux's 25-year history</a></li><li><a class="rsswidget" href="http://www.zdnet.com/article/linus-on-linuxs-25th-birthday/#ftag=RSSbaffb68" title="Linus Torvalds describes Linux's secret origins.">​Linus on Linux's 25th birthday</a></li><li><a class="rsswidget" href="http://www.zdnet.com/article/the-marriage-of-microsoft-and-linux/#ftag=RSSbaffb68" title="Wim Coekaerts, corporate VP of Microsoft Enterprise Open Source Group, came to LinuxCon preaching enable, integrate, release, and contribute instead of embrace, extend, and extinguish.">The marriage of Microsoft and Linux</a></li></ul><h3><a class="rsswidget" href="http://feeds.feedburner.com/linuxtoday/linux" title="Syndicate this content"><img style="background: none repeat scroll 0% 0% orange; color: white; border: medium none;" src="rss.png" alt="RSS" width="14" height="14"></a> <a class="rsswidget" href="http://www.linuxtoday.com/" title="">Linux Today</a></h3><ul><li><a class="rsswidget" href="http://feedproxy.google.com/~r/linuxtoday/linux/~3/GlR2KUJ0aKk/linuxcon-tracing-linuxs-roots-mapping-its-future.html" title="Starting in 2017, LinuxCon will be renamed the Open Source Summit">LinuxCon: Tracing Linux's Roots, Mapping Its Future</a></li><li><a class="rsswidget" href="http://feedproxy.google.com/~r/linuxtoday/linux/~3/uY0_2MJXR6U/how-to-install-nginx-and-google-pagespeed-on-ubuntu-16.04-xenial-xerus-160826074514.html" title="This tutorial shows how to build a nginx .deb package for Ubuntu 16.04 from source that has Google PageSpeed module compiled in.">How to Install nginx and google pagespeed on Ubuntu 16.04 (Xenial Xerus)</a></li><li><a class="rsswidget" href="http://feedproxy.google.com/~r/linuxtoday/linux/~3/Cg6gYp5IVL0/microsoft-at-linuxcon-building-open-source-cred-one-conference-at-a-time-160825160504.html" title="To say that Microsoft and open source have a rocky history would be an understatement.">Microsoft at LinuxCon: Building Open Source Cred One Conference at a Time</a></li></ul><h3><a class="rsswidget" href="http://www.ehackingnews.com/feeds/posts/default" title="Syndicate this content"><img style="background: none repeat scroll 0% 0% orange; color: white; border: medium none;" src="rss.png" alt="RSS" width="14" height="14"></a> <a class="rsswidget" href="http://www.ehackingnews.com/" title="">EHacking News</a></h3><ul><li><a class="rsswidget" href="http://www.ehackingnews.com/2016/08/hackers-steal-12-million-baht-from-thai.html" title="(pc-google images)In another row of hack attacks, hackers have managed to steal 12.29 million Baht ($350,000) from the Government Savings Banks of Thailand. The bank shut down 3,000 ATMs after 21 machines were hacked. The hacking spree was conducted from August 1st onwards.According to the Bangkok Post, GSB found that over 20 of its machines across the provi […]">Hackers Steal 12 Million Baht From Thai Bank ATMs</a></li><li><a class="rsswidget" href="http://www.ehackingnews.com/2016/08/t-mobiles-data-plan-violates-net.html" title="(PC-google images)The new unlimited data plan of T-Mobile One is causing serious concerns for people as it may violate net neutrality rules in US.The Electronic Frontier Foundation believes that T-Mobile's new One plan, which offers unlimited data, calls, and texts, may fall afoul of net neutrality rules due to the restrictions that it imposes on how cu […]">T-Mobile's Data Plan Violates Net Neutrality Rules In US</a></li><li><a class="rsswidget" href="http://www.ehackingnews.com/2016/08/massive-data-breach-hits-indian-navys.html" title="(PC-google images)French shipbuilder DCNS has suffered a massive data breach as detailed plans for stealth submarines built by the military manufacturer have been leaked.Tens of thousands of documents detailing the combat capability of France’s Scorpène-class submarine have been revealed, raising fears over the security of multibillion-dollar defence contrac […]">Massive Data Breach Hits Indian Navy's Submarine Maker 'DCNS'</a></li></ul><h3><a class="rsswidget" href="http://www.networkworld.com/category/security/index.rss" title="Syndicate this content"><img style="background: none repeat scroll 0% 0% orange; color: white; border: medium none;" src="rss.png" alt="RSS" width="14" height="14"></a> <a class="rsswidget" href="http://www.networkworld.com/" title="">NetworkWorld Security</a></h3><ul><li><a class="rsswidget" href="http://www.networkworld.com/article/3113050/medical-device-security-ignites-an-ethics-firestorm.html#tk.rss_security" title="One security research company is taking a controversial approach to disclosing vulnerabilities: It’s publicizing the flaws as a way to tank a company’s stock.The security firm, MedSec, made news on Thursday when it claimed that pacemakers and other health care products from St. Jude Medical contain vulnerabilities that expose them to hacks.However, MedSec is […]">Medical device security ignites an ethics firestorm</a></li><li><a class="rsswidget" href="http://www.networkworld.com/article/3112199/got-big-data-this-report-offers-100-best-practices-for-keeping-it-secure.html#tk.rss_security" title="Big data is best known for its volume, variety, and velocity -- collectively referred to as the &quot;3 Vs&quot; -- and all three of those traits make security an elusive goal. Targeting companies grappling with that challenge, the Cloud Security Alliance on Friday released a new report offering 100 best practices.As its name would suggest, the CSA focuses o […]">Got big data? Check out these 100 best practices for keeping it secure</a></li><li><a class="rsswidget" href="http://www.networkworld.com/article/3112956/security/distil-networks-uses-device-fingerprints-to-detect-malicious-web-bots.html#tk.rss_security" title="This column is available in a weekly newsletter called IT Best Practices. &nbsp;Click here to subscribe. &nbsp;Who's that coming to your website? Is it friend or foe? Is it a customer wanting to buy your products, or someone or something wanting to steal your web content? Is it a community member that wants to post a relevant comment, or a spammer intent on plant […]"> Distil Networks uses device fingerprints to detect malicious web bots</a></li></ul><h3><a class="rsswidget" href="http://www.networkworld.com/category/lan-wan/index.rss" title="Syndicate this content"><img style="background: none repeat scroll 0% 0% orange; color: white; border: medium none;" src="rss.png" alt="RSS" width="14" height="14"></a> <a class="rsswidget" href="http://www.networkworld.com/" title="">NetworkWorld LAN &amp; WAN</a></h3><ul><li><a class="rsswidget" href="http://www.networkworld.com/article/3112423/computers-accessories/best-deals-of-the-week-august-22-26-deal-alert.html#tk.rss_lanwan" title="Best Deals of the Week, August 22-26 - Deal AlertCheck out this roundup of the best deals on gadgets, gear and other cool stuff we have found this week, the week of August 15th. All items are highly rated, and dramatically discounted!72% off Cambridge SoundWorks OontZ Angle 3 Wireless Bluetooth SpeakerThe Cambridge SoundWorks OontZ Angle 3 Next Generation Ul […]">Best Deals of the Week, August 22-26 - Deal Alert</a></li><li><a class="rsswidget" href="http://www.networkworld.com/article/3112679/cisco-subnet/cisco-us-trade-rep-backing-arista-product-import-ban.html#tk.rss_lanwan" title="The knives are out again between Cisco and Arista over their patent clash. Cisco this week said the US Trade Representative has begun the import ban as well as the cease and desist order covering Arista products imposed by the International Trade Commission in June.+More on Network World: Arista infringes on Cisco networking patents, trade agency says+Accord […]">Cisco: US Trade Rep. backing Arista product import ban</a></li><li><a class="rsswidget" href="http://www.networkworld.com/article/3112417/cisco-starts-patching-firewall-devices-against-nsa-linked-exploit.html#tk.rss_lanwan" title="Cisco Systems has started releasing security patches for a critical flaw in Adaptive Security Appliance (ASA) firewalls targeted by an exploit linked to the U.S. National Security Agency.The exploit, dubbed ExtraBacon, is one of the tools used by a group that the security industry calls the Equation, believed to be a cyberespionage team tied to the NSA.Extra […]">Cisco starts patching firewall devices against NSA-linked exploit</a></li></ul><h3><a class="rsswidget" href="http://www.internetsociety.org/deploy360/feed/" title="Syndicate this content"><img style="background: none repeat scroll 0% 0% orange; color: white; border: medium none;" src="rss.png" alt="RSS" width="14" height="14"></a> <a class="rsswidget" href="http://www.internetsociety.org/deploy360" title="Providing real-world deployment info for IPv6, DNSSEC and more...">Internet Society Deploy360</a></h3><ul><li><a class="rsswidget" href="http://www.internetsociety.org/deploy360/blog/2016/08/bt-to-support-ipv6-from-autumn-2016/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=bt-to-support-ipv6-from-autumn-2016" title="Still more positive news&nbsp;in the IPv6 world&nbsp;this week as BT announces&nbsp;that IPv6 will be enabled on their network from Autumn 2016. BT is the incumbent telco and largest ISP in the UK, with an estimated 8 million Internet subscribers, and aims to make IPv6 available by default for those customers with HomeHub 5 and 6  Read more...">BT to support IPv6 from Autumn 2016</a></li><li><a class="rsswidget" href="http://www.internetsociety.org/deploy360/blog/2016/08/ipv6-support-for-amazon-s3/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=ipv6-support-for-amazon-s3" title="Hot on the heels of the IPv6 news earlier this week about&nbsp;Facebook and Akamai, is the announcement from Amazon that their S3&nbsp;service is&nbsp;now accessible over IPv6 via dual-stack endpoints. Amazon Simple Storage Service (S3) provides online&nbsp;file storage through web interfaces including REST, SOAP and HTTP GET, as well as with&nbsp;BitTorrent. In order to access S3 R […]">IPv6 support for Amazon S3</a></li><li><a class="rsswidget" href="http://www.internetsociety.org/deploy360/blog/2016/08/new-nat64dns64-implementations-available-for-public-testing-in-go6lab/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=new-nat64dns64-implementations-available-for-public-testing-in-go6lab" title="This summer we’ve been busy in the&nbsp;Go6lab updating old NAT64/DNS64 implementations and adding new ones for public testing – A10 Networks and Jool NAT64 builds – as well as enhanced&nbsp;the pool of testing options we initially set up in 2013. First of all – what does public NAT64/DNS64 testing mean? While some people assign a  Read more...">New NAT64/DNS64 implementations available for public testing in Go6lab</a></li></ul><h3><a class="rsswidget" href="http://www.zdnet.com/blog/networking/rss.xml" title="Syndicate this content"><img style="background: none repeat scroll 0% 0% orange; color: white; border: medium none;" src="rss.png" alt="RSS" width="14" height="14"></a> <a class="rsswidget" href="http://www.zdnet.com/" title="ZDNet | networking RSS">ZDNet Networking</a></h3><ul><li><a class="rsswidget" href="http://www.zdnet.com/article/google-pluss-hangouts-on-air-moved-to-youtube-live/#ftag=RSSbaffb68" title="Want to broadcast your Google Hangouts meeting or performance? Better make it fast. Google is shutting down that functionality and moving it to YouTube Live.">​Google Plus' Hangouts On Air moved to YouTube Live</a></li><li><a class="rsswidget" href="http://www.zdnet.com/article/linux-tcp-flaw-lets-anyone-hijack-internet-traffic/#ftag=RSSbaffb68" title="What started as an attempt to secure TCP/IP in Linux ended up enabling an attack vector that can be used to break, or even hijack, internet connections between Linux and Android systems.">Linux TCP flaw lets 'anyone' hijack Internet traffic</a></li><li><a class="rsswidget" href="http://www.zdnet.com/article/25-years-of-the-web-and-counting/#ftag=RSSbaffb68" title="And how it's far from done transforming our world.">Twenty-five years and counting: How the web changed everything</a></li></ul><h3><a class="rsswidget" href="http://www.windowsnetworking.com/articles-tutorials/feed.rss" title="Syndicate this content"><img style="background: none repeat scroll 0% 0% orange; color: white; border: medium none;" src="rss.png" alt="RSS" width="14" height="14"></a> <a class="rsswidget" href="http://www.windowsnetworking.com/articles-tutorials/" title="Contains: 29 categories / 1459 items. 
+		Last Updated: 2016-08-25 09:50:35+00:00
+		Average Rating: 5
+		http://www.windowsnetworking.com/articles-tutorials/ ">Windows Networking</a></h3><ul><li><a class="rsswidget" href="http://www.windowsnetworking.com/articles-tutorials/windows-server-2012/hyper-v-windows-failover-cluster-and-isalive-operation-part2.html" title="In the Part I of this article series, we provided an overview of the Hyper-V cluster issue and explained the DNS registration process invoked by the “IsAlive” call executed by the failover cluster. In this part 2, we will explain the Windows Failover cluster interaction with resources and how the whole failover clustering is implemented to monitor the resour […]">Hyper-V Windows Failover Cluster and IsAlive Operation (Part 2)</a></li><li><a class="rsswidget" href="http://www.windowsnetworking.com/articles-tutorials/netgeneral/building-powershell-gui-part9.html" title="This article continues the discussion of building a PowerShell GUI by demonstrating techniques for removing interface objects from the screen, and creating list boxes.">Building a PowerShell GUI (Part 9)</a></li><li><a class="rsswidget" href="http://www.windowsnetworking.com/articles-tutorials/windows-server-2012/windows-apps-database-and-server-administrators.html" title="The Universal Windows Platform (UWP) in Windows 8 and later has a long way to go before most see it as truly useful. Many developers still have to add the platform to their list of supported OSs and many of the Windows apps in the Microsoft Store are still pretty basic in functionality. However, here I share a couple apps you might find useful when working w […]">Windows Apps for Database and Server Administrators</a></li></ul><h3><a class="rsswidget" href="http://www.windowsecurity.com/articles-tutorials/feed.rss" title="Syndicate this content"><img style="background: none repeat scroll 0% 0% orange; color: white; border: medium none;" src="rss.png" alt="RSS" width="14" height="14"></a> <a class="rsswidget" href="http://www.windowsecurity.com/articles-tutorials/" title="Contains: 18 categories / 856 items. 
+		Last Updated: 2016-08-10 10:28:53+00:00
+		Average Rating: 4
+		http://www.windowsecurity.com/articles-tutorials/ ">Windows Security</a></h3><ul><li><a class="rsswidget" href="http://www.windowsecurity.com/articles-tutorials/Cloud_computing/security-visibility-cloud.html" title="In this article, we’ll provide an overview of how Microsoft and Amazon are giving customers more visibility into and control over cloud security resources.">Security visibility in the cloud</a></li><li><a class="rsswidget" href="http://www.windowsecurity.com/articles-tutorials/Cloud_computing/azure-security-infrastructure.html" title="This article provides you an inside look into the Network Security chapter in the upcoming book – Azure Security Infrastructure">Azure Security Infrastructure</a></li><li><a class="rsswidget" href="http://www.windowsecurity.com/articles-tutorials/misc_network_security/application-security-redux-its-all-about-apps-part7.html" title="In this, Part 7, we will address the last bullet point in our list of topics as we talk about encryption and protection of the data that is created, gathered or stored by applications. ">Application security redux: It’s All about the Apps (Part 7)</a></li></ul><h3><a class="rsswidget" href="http://www.infosecisland.com/rss.html" title="Syndicate this content"><img style="background: none repeat scroll 0% 0% orange; color: white; border: medium none;" src="rss.png" alt="RSS" width="14" height="14"></a> <a class="rsswidget" href="https://www.infosecisland.com/" title="Adrift in Threats? Come Ashore!">InfoSec Island</a></h3><ul><li><a class="rsswidget" href="https://www.infosecisland.com/blogview/24814-Insider-Threat-Why-Negligence-Is-More-Dangerous-Than-Malevolence.html" title="When addressing the risk of Insider Threats, we must look beyond those who are intentionally doing harm and place equal emphasis on those who are simply doing their job.">Insider Threat: Why Negligence Is More Dangerous Than Malevolence</a></li><li><a class="rsswidget" href="https://www.infosecisland.com/blogview/24813-Mr-Robot-Inspired-FSociety-Ransomware-Emerges.html" title="A new ransowmare family was named FSociety because it uses an image that appeared in the Mr. Robot show as the logo of an infamous hacking group called FSociety. ">Mr. Robot-Inspired FSociety Ransomware Emerges</a></li><li><a class="rsswidget" href="https://www.infosecisland.com/blogview/24812-What-Elements-Are-Needed-for-Security-Analytics-Success.html" title="Not all security analytics solutions are created equal. There are five key characteristics critically important to ensuring that your security analytics are effective and capable of stopping today’s advanced threats.   ">What Elements Are Needed for Security Analytics Success?</a></li></ul><h3><a class="rsswidget" href="http://feeds.feedburner.com/securityweek" title="Syndicate this content"><img style="background: none repeat scroll 0% 0% orange; color: white; border: medium none;" src="rss.png" alt="RSS" width="14" height="14"></a> <a class="rsswidget" href="http://www.securityweek.com/" title="Latest IT Security News and Expert Insights Via RSS Feed">SecurityWeek</a></h3><ul><li><a class="rsswidget" href="http://feedproxy.google.com/~r/Securityweek/~3/qltc_eHQ1pA/f-secures-mikko-hypponen-talks-cyber-crime-and-cyber-unicorns" title="At some point in the recent past -- he is not sure exactly when -- F-Secure's Chief Research Officer Mikko Hypponen coined the term 'cyber crime unicorn'. His purpose was to highlight the growing professionalism of cyber criminals; and the term caught on. Now he has asked the question seriously: could a ransomware product actually be a crimina […]">F-Secure's Mikko Hypponen Talks Cyber Crime and Cyber Unicorns</a></li><li><a class="rsswidget" href="http://feedproxy.google.com/~r/Securityweek/~3/mzyuJibX6R0/industry-reactions-shadow-brokers-leak-feedback-friday" title="A group calling itself Shadow Brokers has leaked many exploits, implants and other tools allegedly stolen from the NSA-linked Equation Group, and it claims to possess much more information that it’s prepared to sell for 1 million Bitcoins. read more         ">Industry Reactions to Shadow Brokers Leak: Feedback Friday</a></li><li><a class="rsswidget" href="http://feedproxy.google.com/~r/Securityweek/~3/ceyl4TiVjqQ/locky-ransomware-switches-dlls-distribution" title="Locky, one of the most popular ransomware families at the moment, has changed its distribution method once again and is now using DLLs for infection, Cyren researchers warn. read more         ">Locky Ransomware Switches to DLLs for Distribution</a></li></ul><h3><a class="rsswidget" href="http://feeds.feedburner.com/isc2Blog?format=xml" title="Syndicate this content"><img style="background: none repeat scroll 0% 0% orange; color: white; border: medium none;" src="rss.png" alt="RSS" width="14" height="14"></a> <a class="rsswidget" href="http://blog.isc2.org/isc2_blog/" title="Voice of the Information Security Professional">(ISC)² Blog</a></h3><ul><li><a class="rsswidget" href="http://feedproxy.google.com/~r/isc2Blog/~3/TcOI-uLSLr4/ssh-vulnerabilities.html" title="The SSH protocol that is embedded on Unix, Linux, Mainframe, and Windows 16 Servers – in additional to Switches, Routers, IOT devices, etc. can be compromised by bad actors with access to keys. This is also true for anyone deploying applications in the cloud. The SSH protocol creates an encrypted tunnel providing users with root level access. In the wrong ha […]">Important Security News Flash Regarding SSH Vulnerabilities</a></li><li><a class="rsswidget" href="http://feedproxy.google.com/~r/isc2Blog/~3/FJfYXUOakcU/apac-congress-2016.html" title="At the recent Security Congress APAC 2016 held in Bangkok, attendees consisted of ICT professionals, information security professionals, practitioners, and university students and professors from some regional universities. It was a successful gathering where the attendees shared their ideas and views. We also had a great student track presentation from a yo […]">Bringing New Entrants into a Hundred-Year Business</a></li><li><a class="rsswidget" href="http://feedproxy.google.com/~r/isc2Blog/~3/4Z8XUL8seAM/online-endorsements.html" title="We are excited to share news about the launch of a change to our certification endorsement process. Beginning today, August 17, the process will take place entirely online. Once an (ISC)² exam has been taken and the results validated, a candidate applying for certification must be endorsed by another (ISC)²-certified professional in good standing before the […]">(ISC)² Member Endorsement Process Goes Online</a></li></ul><h3><a class="rsswidget" href="http://www.nist.gov/rss/informationtechnology.xml" title="Syndicate this content"><img style="background: none repeat scroll 0% 0% orange; color: white; border: medium none;" src="rss.png" alt="RSS" width="14" height="14"></a> <a class="rsswidget" href="http://www.nist.gov/" title="The National Institute of Standards and Technology">NIST News</a></h3><ul><li><a class="rsswidget" href="http://www.nist.gov/pml/div684/why-might-this-uncanny-crystal-change-laser-design.cfm" title=" Laser applications may benefit from crystal research by scientists at the National Institute of Standards and Technology (NIST) and Chinas Shandong University. They have discovered a potential way to sidestep longstanding difficulties ..."> Crystal Unclear: Why Might This Uncanny Crystal Change Laser Design?</a></li><li><a class="rsswidget" href="http://www.nist.gov/itl/acd/grants-to-foster-more-secure-online-access-to-online-government-and-health-care-services.cfm" title=" GAITHERSBURG, Md.âThe U.S. Commerce Departments National Institute of Standards and Technology (NIST) has awarded six pilot grants totaling more than $15 million to foster more secure access to online services provided by states and ..."> Grants to Foster More Secure Online Access to Online Government and Health Care Services</a></li><li><a class="rsswidget" href="http://www.nist.gov/ctl/pscr/nists-rolling-wireless-net-helps-improve-first-responder-communications.cfm" title=" First responders often have trouble communicating with each other in emergencies. They may use different types of radios, or they may be working in rural areas lacking wireless coverage, or they may be deep inside large buildings that ..."> NISTs Rolling Wireless Net Helps Improve First-Responder Communications </a></li></ul><h3><a class="rsswidget" href="http://blogs.cisco.com/security/feed" title="Syndicate this content"><img style="background: none repeat scroll 0% 0% orange; color: white; border: medium none;" src="rss.png" alt="RSS" width="14" height="14"></a> <a class="rsswidget" href="http://blogs.cisco.com/" title="">Cisco Security Blog</a></h3><ul><li><a class="rsswidget" href="http://blogs.cisco.com/security/talos/vulnerability-spotlight-multiple-dos-vulnerabilities-within-kaspersky-internet-security-suite" title="Talos has discovered multiple vulnerabilities in Kaspersky’s Internet Security product which can be used by an attacker to cause a local denial of service attack or to leak memory from any machine running Kaspersky Internet Security software. The vulnerabilities affect Kaspersky Internet Security 16.0.0, KLIF driver version 10.0.0.1532, but may affect other […]">Vulnerability Spotlight: Multiple DOS Vulnerabilities Within Kaspersky Internet Security Suite</a></li><li><a class="rsswidget" href="http://blogs.cisco.com/security/engineering-postquantum-security" title="While no one has yet built a general purpose Quantum Computer (QC) capable of breaking the public key cryptography in use on the Internet, that possibility is now considered a realistic threat to long-term security. &nbsp;As research into the design of a QC has intensified (including public access to a small implementation), so has the […]">Engineering Postquantum Security</a></li><li><a class="rsswidget" href="http://blogs.cisco.com/security/how-cisco-ise-customers-saved-over-17-million" title="Today, thousands of Cisco customers are using the Identity Services Engine for guest and BYOD access. Naturally they want their users to have a great experience with great looking portals that’s consistent with their company brand. Custom portal creation typically requires technical and design expertise that’s scarcer than you would think. That can put IT [… […]">How Cisco ISE Customers Saved Over $17 Million</a></li></ul><h3><a class="rsswidget" href="https://dougvitale.wordpress.com/en-us/" title="Syndicate this content"><img style="background: none repeat scroll 0% 0% orange; color: white; border: medium none;" src="rss.png" alt="RSS" width="14" height="14"></a> <a class="rsswidget" href="#" title="">Microsoft TechNet</a></h3><ul><li>An error has occurred; the feed is probably down. Try again later.</li></ul><h3><a class="rsswidget" href="http://www.theregister.co.uk/security/headlines.atom" title="Syndicate this content"><img style="background: none repeat scroll 0% 0% orange; color: white; border: medium none;" src="rss.png" alt="RSS" width="14" height="14"></a> <a class="rsswidget" href="http://www.theregister.co.uk/security/" title="">The Register – Security</a></h3><ul><li><a class="rsswidget" href="http://go.theregister.com/feed/www.theregister.co.uk/2016/08/26/muddy_waters_medsec_st_jude_security_flaws/" title="Some sharks wear suits and ties Analysis&nbsp; A team of security researchers tipped off an investment firm about software vulnerabilities in life-preserving medical equipment in order to profit from the fallout.… ">Muddying the waters of infosec: Cyber upstart, investors short medical biz – then reveal bugs</a></li><li><a class="rsswidget" href="http://go.theregister.com/feed/www.theregister.co.uk/2016/08/25/iot_manufacturer_caught_fixing_security_holes/" title="Smart lock maker August fails to ignore flaws In a shocking development, smart lock manufacturer August has been caught promptly patching security holes discovered in its product.…">IoT manufacturer caught fixing security holes</a></li><li><a class="rsswidget" href="http://go.theregister.com/feed/www.theregister.co.uk/2016/08/25/update_your_ios_devices_now_theres_an_apt_in_the_wild/" title="Pegasus snoopware package used against activists and journalists Apple has pushed out an emergency security update for iPhones, iPads and iPods after super sophisticated spyware was found exploiting three iOS vulnerabilities.…">Update your iPhones, iPads right now – govt spy tools exploit vulns</a></li></ul><h3><a class="rsswidget" href="http://www.internetsociety.org/headlines/rss" title="Syndicate this content"><img style="background: none repeat scroll 0% 0% orange; color: white; border: medium none;" src="rss.png" alt="RSS" width="14" height="14"></a> <a class="rsswidget" href="http://www.internetsociety.org/rss.xml" title="">Internet Society</a></h3><ul><li><a class="rsswidget" href="http://www.internetsociety.org/news/internet-society-announces-fellowships-afpif-2016" title="   Language   English  Date:&nbsp;Wed, 08/03/2016 [Addis Ababa, Ethiopia –3 August, 2016] – The Internet Society today announced that it has selected 23 fellows from 20 African countries to attend the 7th African Peering and Interconnection Forum (AfPIF), to be held from 30 August - 1 September, 2016 in Dar Es Salaam, Tanzania. &nbsp;&nbsp;">Internet Society Announces Fellowships to AfPIF 2016 </a></li><li><a class="rsswidget" href="http://www.internetsociety.org/news/leading-companies-and-organizations-commit-over-us3m-internet-engineering-task-force-endowment" title="   Language   English  Date:&nbsp;Wed, 07/20/2016Diverse funding source provides solid financial foundation for development of open Internet technologies and standards">Leading Companies and Organizations Commit over US$3M to Internet Engineering Task Force Endowment </a></li><li><a class="rsswidget" href="http://www.internetsociety.org/news/internet-society-elects-new-chair-seats-new-board-members-annual-general-meeting" title="Language English Date:&nbsp;Mon, 06/20/2016[Washington, D.C.] – The Internet Society today announced that its Board of Trustees elected Gonzalo Camarillo as the new Chair during its Annual General Meeting 18-19 June 2016. It also seated new Board members who will now serve a term of three years.&nbsp; The Internet Society Board of Trustees is elected or appointed by C […]">Internet Society Elects New Chair; Seats New Board Members at Annual General Meeting </a></li></ul><h3><a class="rsswidget" href="http://www.cio.com/category/security/index.rss" title="Syndicate this content"><img style="background: none repeat scroll 0% 0% orange; color: white; border: medium none;" src="rss.png" alt="RSS" width="14" height="14"></a> <a class="rsswidget" href="http://www.cio.com/" title="">CIO.com Security</a></h3><ul><li><a class="rsswidget" href="http://www.cio.com/article/3113051/medical-device-security-ignites-an-ethics-firestorm.html#tk.rss_security" title="One security research company is taking a controversial approach to disclosing vulnerabilities: It’s publicizing the flaws as a way to tank a company’s stock.The security firm, MedSec, made news on Thursday when it claimed that pacemakers and other health care products from St. Jude Medical contain vulnerabilities that expose them to hacks.However, MedSec is […]">Medical device security ignites an ethics firestorm</a></li><li><a class="rsswidget" href="http://www.cio.com/article/3112200/got-big-data-this-report-offers-100-best-practices-for-keeping-it-secure.html#tk.rss_security" title="Big data is best known for its volume, variety, and velocity -- collectively referred to as the &quot;3 Vs&quot; -- and all three of those traits make security an elusive goal. Targeting companies grappling with that challenge, the Cloud Security Alliance on Friday released a new report offering 100 best practices.As its name would suggest, the CSA focuses o […]">Got big data? Check out these 100 best practices for keeping it secure</a></li><li><a class="rsswidget" href="http://www.cio.com/article/3112740/security/5-security-practices-hackers-say-make-their-lives-harder.html#tk.rss_security" title="Whether they identify as white hats, black hats or something in-between, a majority of hackers agree that no password is safe from them — or the government for that matter. Regardless of where they sit with respect to the law, hackers mostly agree that five key security measures can make it a lot harder to penetrate enterprise networks. At the Black Hat USA […]">5 security practices hackers say make their lives harder</a></li></ul><h3><a class="rsswidget" href="http://feeds.feedburner.com/InformationSecurityBuzz" title="Syndicate this content"><img style="background: none repeat scroll 0% 0% orange; color: white; border: medium none;" src="rss.png" alt="RSS" width="14" height="14"></a> <a class="rsswidget" href="http://www.informationsecuritybuzz.com/" title="Connecting Infosec with News">Information Security Buzz</a></h3><ul><li><a class="rsswidget" href="http://feedproxy.google.com/~r/InformationSecurityBuzz/~3/2gJ6mf8_r-E/" title="The ISBuzz Post: This Post Government Hackers Caught Using Unprecedented iPhone Spy Tool appeared first on Information Security Buzz. Following the news that government hackers have been caught using a never-before-seen malware/iPhone spy tool that exploits three different vulnerabilities in Apple’s iOS operating system that allows them to get full control o […]">Government Hackers Caught Using Unprecedented iPhone Spy Tool</a></li><li><a class="rsswidget" href="http://feedproxy.google.com/~r/InformationSecurityBuzz/~3/gp1YaVN9rNo/" title="The ISBuzz Post: This Post United Airlines Sets Minimum Bar On Security appeared first on Information Security Buzz. According to Brian Krebs,&nbsp;United Airlines&nbsp;has rolled out a series of updates to its website that it claims will improve the security of its customer accounts. These changes include moving from a 4-digit PIN to a password, as well as customers […]">United Airlines Sets Minimum Bar On Security</a></li><li><a class="rsswidget" href="http://feedproxy.google.com/~r/InformationSecurityBuzz/~3/SvHi_glH_5g/" title="The ISBuzz Post: This Post Security Quotes: 25 Years Since Public Launch Of WWW appeared first on Information Security Buzz. This week marks the 25th&nbsp;anniversary of when the WWW was made available to the public.&nbsp;Security experts from Ipswitch, ForgeRock, Barracuda Networks and WhiteHat Security commented below. Michael Hack, SVP of EMEA Operations at Ipswitc […]">Security Quotes: 25 Years Since Public Launch Of WWW</a></li></ul><h3><a class="rsswidget" href="http://www.cert.org/podcasts/exec_podcast.rss" title="Syndicate this content"><img style="background: none repeat scroll 0% 0% orange; color: white; border: medium none;" src="rss.png" alt="RSS" width="14" height="14"></a> <a class="rsswidget" href="http://www.cert.org/podcasts" title="In this series of podcasts, CERT provides both general principles and specific starting points for business leaders who want to launch an enterprise-wide security effort or make sure their existing security program is as good as it can be.">CERT’S Security for Business Leaders (MP3)</a></h3><ul><li><a class="rsswidget" href="http://resources.sei.cmu.edu/asset_files/Podcast/2016_016_400_465663.mp3" title="In this podcast, Edna Conway, and John Haller, discuss the global value chain for organizations and critical infrastructures and how this expanded view can be used to improve ICT supply chain management, including risks to the supply chain.">Global Value Chain – An Expanded View of the ICT Supply Chain</a></li><li><a class="rsswidget" href="http://resources.sei.cmu.edu/asset_files/Podcast/2016_016_400_464141.mp3" title="In this podcast, Douglas Gray, a member of the CERT Cyber Risk Management team, discusses how to operationalize intelligence products to build operational resilience of organizational assets and services using IPOR.">Intelligence Preparation for Operational Resilience</a></li><li><a class="rsswidget" href="http://resources.sei.cmu.edu/asset_files/Podcast/2016_016_400_450812.mp3" title="In this podcast, Gary McGraw, the Chief Technology Officer for Cigital, discusses the latest version of BSIMM and how to take advantage of observed practices from high-performing organizations.">Build Security In Maturity Model (BSIMM) – Practices from Seventy Eight Organizations</a></li></ul>			<div class="textwidget"><br>
+<a href="http://astore.amazon.com/douvittecblo-20"><img src="amazon_icon1.jpg" title="Amazon bookstore"></a> <a title="Amazon bookstore" href="http://astore.amazon.com/douvittecblo-20"><strong>Amazon bookstore</strong></a></div>
+		
+
+</div>
+
+</div>
+
+<div id="footer">
+	<p><a href="https://wordpress.com/?ref=footer_website">Create a free website or blog at WordPress.com.</a> </p>
+</div>
+<!-- wpcom_wp_footer -->
+</body>
+</html>

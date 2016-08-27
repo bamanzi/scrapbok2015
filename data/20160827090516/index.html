@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><title>Vasudev Kamath - Random Ramblings</title><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link href="https://copyninja.info/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Random Ramblings Full Atom Feed"><link href="https://copyninja.info/feeds/devops.atom.xml" type="application/atom+xml" rel="alternate" title="Random Ramblings Categories Atom Feed"><meta name="tags" content="lxc"><meta name="tags" content="container"><meta name="tags" content="debian">
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head><body><div id="header" class="body"><div id="navigation"> | <a href="https://copyninja.info/">Home</a> | | <a href="https://copyninja.info/about">About</a> | | <a href="https://copyninja.info/contact">Contact</a> | </div><h1><a href="#">Notes: LXC How-To</a></h1></div><div id="content"><section id="content" class="body"><footer class="post-info"><p> Posted on Dec 26, 2014 By copyninja under devops </p></footer><div class="entry-content"><p>LXC - Linux Containers allows us to run multiple isolated Linux system under same control host. This will be useful for testing application without changing our existing system.</p><p>To create an LXC container we use the <cite>lxc-create</cite> command, it can accepts the template option, with which we can choose the OS we would like to run under the virtual isolated environment. On a Debian system I see following templates supported</p><div class="highlight"><pre><span></span><span class="o">[</span>vasudev@rudra: ~/ <span class="o">]</span>% ls /usr/share/lxc/templates
+lxc-alpine*    lxc-archlinux*  lxc-centos*  lxc-debian*    lxc-fedora*  lxc-openmandriva*  lxc-oracle*  lxc-sshd*    lxc-ubuntu-cloud*
+lxc-altlinux*  lxc-busybox*    lxc-cirros*  lxc-download*  lxc-gentoo*  lxc-opensuse*      lxc-plamo*   lxc-ubuntu*
+</pre></div><p>For my application testing I wanted to create a Debian container for my By default the template provided by lxc package creates Debian stable container. This can be changed by passing the option to debootstrap after <cite>--</cite> as shown below.</p><div class="highlight"><pre><span></span>sudo <span class="nv">MIRROR</span><span class="o">=</span>http://localhost:9999/debian lxc-create -t debian <span class="se">\</span>
+     -f   container.conf -n container-name -- -r sid
+</pre></div><p><cite>-r</cite> switch is used to specify the release, MIRROR environment variable is used to choose the required Debian mirror. I wanted to use my own local <em>approx</em> installation, so I can save some bandwidth.</p><p><cite>container.conf</cite> is the configuration file used for creating the LXC, in my case it contains basic information on how container networking should b setup. The configuration is basically taken from <a class="reference external" href="https://wiki.debian.org/LXC">LXC Debian wiki</a></p><div class="highlight"><pre><span></span><span class="na">lxc.utsname</span> <span class="o">=</span> <span class="s">aptoffline-dev</span>
+<span class="na">lxc.network.type</span> <span class="o">=</span> <span class="s">veth</span>
+<span class="na">lxc.network.flags</span> <span class="o">=</span> <span class="s">up</span>
+<span class="na">lxc.network.link</span> <span class="o">=</span> <span class="s">br0.1</span>
+<span class="na">lxc.network.name</span> <span class="o">=</span> <span class="s">eth0</span>
+<span class="na">lxc.network.ipv4</span> <span class="o">=</span> <span class="s">192.168.3.2/24</span>
+<span class="na">lxc.network.veth.pair</span> <span class="o">=</span> <span class="s">vethvm1</span>
+</pre></div><p>I'm using VLAN setup described in <a class="reference external" href="https://wiki.debian.org/LXC/VlanNetworking">Debian wiki: LXC VLAN Networking</a> page. Below is my <cite>interfaces</cite> file.</p><pre class="literal-block">iface eth0.1 inet manual
+
+iface br0.1  inet manual
+   bridge_ports eth0.1
+   bridge_fd 0
+   bridge_maxwait 0
+</pre><p>Before launching the LXC make sure you run below command</p><div class="highlight"><pre><span></span>sudo ifup eth0.1
+sudo ifup br0.1
+
+<span class="c1"># Also give ip to bridge in same subnet as lxc.network.ipv4</span>
+sudo ip addr add 192.168.3.1/24 dev br0.1
+</pre></div><p>I'm giving ip address to bridge so that I can communicate with container from my control host, once it comes up.</p><p>Now start the container using below command</p><div class="highlight"><pre><span></span>sudo lxc-start -n container -d -c tty8
+</pre></div><p>We are starting lxc in daemon mode and attaching it to console <cite>tty8</cite>. If you want, you can drop -d and -c option to start lxc in foreground. But its better you start it in background and attach using <cite>lxc-console</cite> command shown below.</p><div class="highlight"><pre><span></span>sudo lxc-console -n container -t tty8
+</pre></div><p>You can detach from console using <cite>Ctrl+a q</cite> combination and let lxc execute in background.</p><p>Its also possible to simply ssh into the running container since we have enabled networking.</p><p>Stopping the container should be done using <cite>lxc-stop</cite> command, but without <cite>-k</cite> switch (kill) this command never returned. Even with timeout container is not stopped.</p><div class="highlight"><pre><span></span>sudo lxc-stop -n container
+</pre></div><p><cite>-r</cite> can be used for reboot of container. Since I couldn't get clean shutdown I normally attach the console and issue a <cite>halt</cite> command in container itself. Not sure if this is the right way, but it gets the thing done.</p><p>I consider Linux container as a better alternative for spawning a virtual Linux environment instead of running a full blown VM like Virtualbox or VMware.</p></div><div id="footer"><p><italic>Tagged as: container, debian, lxc, </italic></p></div></section></div><hr><div id="footer"> Site Proudly powered by <a href="http://getpelican.com/">Pelican</a></div></body>
+</html>

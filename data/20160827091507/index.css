@@ -1,0 +1,33 @@
+/* ::::: https://copyninja.info/theme/css/pygments.css ::::: */
+
+.k { color: rgb(170, 34, 255); font-weight: bold; }
+.o { color: rgb(102, 102, 102); }
+.c1 { color: rgb(0, 136, 0); font-style: italic; }
+.m { color: rgb(102, 102, 102); }
+.s { color: rgb(187, 68, 68); }
+.nb { color: rgb(170, 34, 255); }
+.nv { color: rgb(184, 134, 11); }
+.s2 { color: rgb(187, 68, 68); }
+.se { color: rgb(187, 102, 34); font-weight: bold; }
+.si { color: rgb(187, 102, 136); font-weight: bold; }
+.s1 { color: rgb(187, 68, 68); }
+/* ::::: https://copyninja.info/theme/css/default.css ::::: */
+
+html { background-repeat: no-repeat; background-size: cover; background-attachment: fixed; background-position: center center; }
+body { background-color: white; font-family: "Lucida Sans","Georgia",helvetica,"Droid Serif","Bitstream Charter",serif; margin: auto; padding: 1em; border-radius: 1em 1em 1em 1em; max-width: 48em; font-size: 100%; }
+h1, h2, h3, h4, h5, h6 { color: rgb(250, 105, 0); }
+a { color: rgb(51, 136, 221); text-decoration: none; }
+a:visited { color: rgb(85, 119, 153); }
+a:hover { color: rgb(255, 136, 51); }
+@media (max-width: 979px) {
+}
+pre { overflow: auto; white-space: pre; word-break: normal; word-wrap: normal; }
+div.highlight { margin-bottom: 20px; }
+/* ::::: [internal] ::::: */
+
+@media screen {
+}
+@media print {
+}
+/* ::::: [internal] ::::: */
+

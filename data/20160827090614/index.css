@@ -1,0 +1,90 @@
+/* ::::: https://www.blogger.com/static/v1/widgets/1280358568-widget_css_bundle.css ::::: */
+
+div.clear { clear: both; }
+.quickedit { cursor: pointer; }
+.post-share-buttons { position: relative; }
+.post-footer abbr { border: medium none; }
+#blog-pager-newer-link { float: left; }
+#blog-pager-older-link { float: right; }
+#blog-pager { margin: 1em 0px; text-align: center; overflow: hidden; }
+.comment-link { white-space: nowrap; }
+#comments-block.avatar-comment-indent { margin-left: 45px; position: relative; }
+.comments { clear: both; margin-top: 10px; margin-bottom: 0px; }
+@media screen and (max-device-width: 480px) {
+}
+.icon-action { border-style: none ! important; margin: 0px 0px 0px 0.5em ! important; vertical-align: middle; }
+@media all {
+}
+@media handheld {
+}
+.post-share-buttons { display: inline-block; margin-top: 0.5em; vertical-align: middle; }
+.share-button { width: 20px; height: 20px; background: url("share_buttons_20_3.png") no-repeat scroll left center transparent ! important; overflow: hidden; margin-left: -1px; position: relative; }
+.dummy-container, .google-plus-share-container { vertical-align: top; padding-left: 0.3em; }
+a.share-button:hover { text-decoration: none; z-index: 1; }
+.share-button-link-text { display: block; text-indent: -9999px; }
+.sb-email { background-position: 0px 0px ! important; }
+a.sb-email:hover { background-position: 0px -20px ! important; }
+a.sb-email:active { background-position: 0px -40px ! important; }
+.sb-blog { background-position: -20px 0px ! important; }
+a.sb-blog:hover { background-position: -20px -20px ! important; }
+a.sb-blog:active { background-position: -20px -40px ! important; }
+.sb-twitter { background-position: -40px 0px ! important; }
+a.sb-twitter:hover { background-position: -40px -20px ! important; }
+a.sb-twitter:active { background-position: -40px -40px ! important; }
+.sb-facebook { background-position: -60px 0px ! important; }
+a.sb-facebook:hover { background-position: -60px -20px ! important; }
+a.sb-facebook:active { background-position: -60px -40px ! important; }
+.sb-pinterest { background-position: -100px 0px ! important; }
+a.sb-pinterest:hover { background-position: -100px -20px ! important; }
+a.sb-pinterest:active { background-position: -100px -40px ! important; }
+.goog-inline-block { position: relative; display: inline-block; }
+.item-control { display: none; }
+.item-control a, .item-action a { text-decoration: none ! important; }
+.widget-item-control { float: right; height: 20px; margin-top: -20px; position: relative; z-index: 10; }
+.widget-item-control a { opacity: 0.5; }
+.widget-item-control a:hover { opacity: 1; }
+.widget .widget-item-control a img { border: medium none; background: none repeat scroll 0% 0% transparent; box-shadow: none; }
+/* ::::: https://www.blogger.com/dyn-css/authorization.css?targetBlogID=3669809752172683097&zx=bde6cff1-162c-4e37-9a0c-8683a2d23060 ::::: */
+
+/* ::::: [internal] ::::: */
+
+body { margin: 0px; padding: 0px; font-size: small; text-align: center; color: rgb(51, 51, 51); background: none repeat scroll 0% 0% rgb(224, 224, 224); }
+abbr, acronym { cursor: help; font-style: normal; border-bottom: 1px dotted; }
+img { border: medium none; }
+a:link { color: rgb(102, 153, 204); }
+a:visited { color: rgb(102, 102, 153); }
+a:hover { color: rgb(91, 115, 156); }
+a:active { color: rgb(91, 115, 156); text-decoration: none; }
+#outer-wrapper { width: 847px; margin: 0px auto; text-align: left; font: 100% Verdana,sans-serif; background: url("tile.gif") repeat-y scroll 0% 0% transparent; }
+#content-wrapper { margin-left: 42px; width: 763px; }
+#main { float: left; width: 460px; margin: 20px 0px 0px; padding: 0px 0px 0px 1em; line-height: 1.5em; word-wrap: break-word; overflow: hidden; }
+#sidebar { float: right; width: 259px; padding: 20px 0px 0px; font-size: 85%; line-height: 1.4em; color: rgb(153, 153, 153); background: url("sidebar_bg.gif") no-repeat scroll 0px 0px transparent; word-wrap: break-word; overflow: hidden; }
+#header-wrapper { margin: 0px; padding: 0px; font: 100% 'Lucida Grande','Trebuchet MS'; background: url("top_div_blue.gif") no-repeat scroll 0px 0px rgb(224, 224, 224); }
+#header { margin: 0px; padding: 25px 60px 35px 160px; color: rgb(255, 255, 255); background: url("top_h1.gif") no-repeat scroll left bottom transparent; }
+#header h1 { font-size: 200%; text-shadow: 2px 2px 2px rgb(79, 115, 182); }
+#header h1 a { text-decoration: none; color: rgb(255, 255, 255); }
+#header h1 a:hover { color: rgb(238, 238, 238); }
+h2.date-header { margin-top: 0px; padding-left: 14px; font-size: 90%; color: rgb(153, 153, 153); background: url("date_icon_blue.gif") no-repeat scroll 0px 50% transparent; }
+.post h3 { margin-top: 0px; font: bold 130% 'Lucida Grande','Trebuchet MS'; letter-spacing: -1px; color: rgb(153, 51, 51); }
+.post { margin: 0px 0px 1.5em; padding: 0px 0px 1.5em 14px; border-bottom: 1px solid rgb(221, 221, 221); }
+.post-footer { margin: 0px; padding: 0px 0px 0px 14px; font-size: 88%; color: rgb(153, 153, 153); background: url("tictac_grey.gif") no-repeat scroll 0px 8px transparent; }
+.post img { padding: 6px; border-width: 1px; border-style: solid; border-color: rgb(221, 221, 221) rgb(192, 192, 192) rgb(192, 192, 192) rgb(221, 221, 221); }
+.feed-links { clear: both; line-height: 2.5em; }
+#blog-pager-newer-link { float: left; }
+#blog-pager-older-link { float: right; }
+#blog-pager { text-align: center; }
+#comments { padding-top: 10px; font-size: 85%; line-height: 1.5em; color: rgb(102, 102, 102); background: url("comments_curve.gif") no-repeat scroll left top rgb(238, 238, 238); }
+#comments h4 { margin: 20px 0px 15px; padding: 8px 0px 0px 40px; font-family: "Lucida Grande","Trebuchet MS"; font-size: 130%; color: rgb(102, 102, 102); background: url("bubbles.gif") no-repeat scroll 10px 0px transparent; height: 29px ! important; }
+.comment-footer { border-bottom: 1px solid rgb(221, 221, 221); padding-bottom: 1em; }
+.sidebar .widget { margin: 0px; padding: 0px 0px 10px 10px; border-bottom: 1px solid rgb(221, 221, 221); }
+.clear { clear: both; }
+pre { border: 1px dashed rgb(153, 153, 153); padding: 5px; overflow: auto; font-family: Andale Mono,Lucida Console,Monaco,fixed,monospace; color: rgb(0, 0, 0); background-color: rgb(238, 238, 238); font-size: 12px; line-height: 14px; width: 95%; }
+.post-body div { overflow: auto ! important; }
+/* ::::: [internal] ::::: */
+
+@media screen {
+}
+@media print {
+}
+/* ::::: [internal] ::::: */
+

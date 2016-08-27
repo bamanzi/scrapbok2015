@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="changetip" class="ng-scope">
+<head>
+<meta charset="UTF-8">
+
+  <title>Tip Bitcoin with ChangeTip!</title>
+  
+  
+  
+  
+
+<link rel="stylesheet" type="text/css" href="index_1.css" media="all">
+</head>
+<body style="padding: 0px; margin: 0px;" class="ng-scope" ng-controller="TipYourTipMeCtrl">
+  <div class="tipme-button" ng-init="referrer='http://bryan-murdock.blogspot.com/2016/04/get-xpra-to-work-on-ubuntu-1404.html';tippeeId='w2p2Pd9fGvSH7fVmrUXZYC';bid='mpZr6FRPJrebNAokLptYAh';brid='25345555';count='0';hasTipped=false">
+    <a href="#" id="button" class="button" ng-class="{'success': hasTipped || tipped, 'loading': btn_loading}" role="button" ng-click="onClicked()" aria-label="Tip Me With ChangeTip">
+      <span class="button-img"></span> Tip
+      <span class="button-overlay"></span>
+    </a>
+    <div class="count_box">
+       <div>
+        
+          <div class="counter"><span class="ng-binding">0</span>
+            <ng-pluralize count="count" when="{'1': 'tip', 'other': 'tips'}">tips</ng-pluralize>
+          </div>
+        
+       </div>
+    </div>
+  </div>
+  <div id="popover" ct-show="loaded" after-show="turnOffLoading()" after-hide="previewStep=0" class="tipme-popover animation-fadeInDown-fadeOutDown ng-isolate-scope ng-hide" bind-html-compile="popover"></div>
+
+
+
+
+
+
+
+
+<!-- start Mixpanel --><!-- end Mixpanel -->
+
+
+
+
+
+
+</body>
+</html>

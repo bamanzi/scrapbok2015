@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en" class="js video no-maskImage placeholder">
+<!--<![endif]--><head>
+  <meta charset="UTF-8">
+  <title>top实践小技巧 - OPS Notes By 枯木</title>
+  <meta name="author" content="枯木">
+
+  
+  <meta name="description" content="之前介绍了top基本介绍,本章主要介绍一些top的实用技巧。 终端执行top命令之后【也可后接一些选项，比如top -p 1只监控init进程，top -u root只显示root运行进程等等】，可以敲击如下按键，实现不同功能： 1(数字1)：列出所有的单个CPU负载情况
+z:top显示颜色
+P[ …">
+  <meta name="keywords" content="Linux,top">
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
+
+  
+  <link rel="canonical" href="http://kumu-linux.github.io/blog/2013/06/07/top-hacks/">
+  <link href="favicon.png" rel="icon">
+  
+  
+  
+  
+  <link href="http://kumu-linux.github.io/atom.xml" rel="alternate" title="OPS Notes By 枯木" type="application/atom+xml">
+  
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<!--
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+-->
+ 
+
+
+
+  
+  
+
+
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+
+<body class="collapse-sidebar sidebar-footer">
+  <header role="banner"><hgroup>
+  <h1><a href="http://kumu-linux.github.io/">OPS Notes By 枯木</a></h1>
+  
+  <div class="clear"></div>
+</hgroup>
+
+</header>
+<div class="navi">
+<ul>
+  <li><a href="http://kumu-linux.github.io/">Blog</a></li>
+  <li><a href="http://kumu-linux.github.io/blog/archives">Archives</a></li>
+  <li><a href="http://kumu-linux.github.io/blog/ops">Ops Tools</a></li>
+  <li><a href="http://kumu-linux.github.io/blog/tips">Linux Tips</a></li>
+  <li><a href="http://kumu-linux.github.io/blog/books">Books</a></li>
+  <li><a href="http://kumu-linux.github.io/blog/about">Author</a></li>
+</ul>
+</div>
+
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      
+        <h1 class="entry-title">Top实践小技巧</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-06-07T17:32:00+08:00" pubdate="" data-updated="true">Jun 7<span>th</span>, 2013</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>之前介绍了<a href="http://kumu-linux.github.io/blog/2013/06/02/top/">top基本介绍</a>,本章主要介绍一些top的实用技巧。</p>
+
+<!--more-->
+
+
+<p>终端执行top命令之后【也可后接一些选项，比如<code>top -p 1</code>只监控init进程，<code>top -u root</code>只显示root运行进程等等】，可以敲击如下按键，实现不同功能：</p>
+
+<ul>
+<li><code>1</code>(数字1)：列出所有的单个CPU负载情况</li>
+<li><code>z</code>:top显示颜色</li>
+<li><code>P</code>[大写]:按CPU占用高低顺序列出程序</li>
+<li><code>M</code>[大写]:按内存占用高低顺序列出程序</li>
+<li><code>x</code>:类似高亮显示，在z显示模式下效果才会更明显</li>
+</ul>
+
+
+<p>如下效果图:</p>
+
+<center><img src="top1.png" alt="geek" title="geek" width="600"></center>
+
+
+<ul>
+<li>top显示Swap利用率，使用top命令后按f键，然后按p键，回车之后即可看到Swap状态</li>
+</ul>
+
+
+<center><img src="top2.png" alt="geek" title="geek" width="600"></center>
+
+
+<ul>
+<li><code>d</code>:top默认的刷新时间是3s，使用d键可以自定义刷新时间</li>
+</ul>
+
+
+<center><img src="top3.png" alt="geek" title="geek" width="600"></center>
+
+
+
+
+<p></p>
+
+
+<p><strong>top类似上下翻页的方法：</strong></p>
+
+<ul>
+<li>shift &lt;  下翻页</li>
+<li>shift &gt;   上翻页</li>
+</ul>
+
+
+<p>top默认按cpu占用排序，这也是可以修改的，按F(大写)即可选择相应排序，之后任意键退出即可</p>
+
+<center><img src="top4.png" alt="geek" title="geek" width="600"></center>
+
+
+<ul>
+<li><code>c</code>:显示进程命令的全路径与参数</li>
+<li><code>f</code>:可以指定top显示的内容，如ppid、swap等都可以选择显示</li>
+<li><code>k</code>:输入k之后可以kill掉指定的进程</li>
+<li><code>A</code>:分类显示各种系统资源高的进程。可用于快速识别系统上的性能要求极高的任务，<strong>推荐使用</strong></li>
+<li><code>h</code>:获取top的命令帮助</li>
+<li><code>H</code>:显示线程，默认只显示进程</li>
+<li><code>W</code>[大写]:将当前设置写入~/.toprc文件中。这是写top配置文件的推荐方法</li>
+</ul>
+
+
+<p>参考: <a href="http://linux.vbird.org/">鸟哥Linux私房菜</a>  <a href="http://www.cyberciti.biz/tips/top-linux-monitoring-tools.html">top - Process Activity Command</a>  <a href="http://how-to.linuxcareer.com/learning-linux-commands-top">Learning Linux Commands: top</a></p>
+
+<p>–EOF–</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="http://kumu-linux.github.io/blog/2013/06/04/iproute/" title="Previous Post: iproute">« iproute</a>
+      
+      
+        <a class="basic-alignment right" href="http://kumu-linux.github.io/blog/2013/06/19/pdsh/" title="Next Post: pdsh使用方法">pdsh使用方法 »</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><iframe verticalscrolling="no" horizontalscrolling="no" src="index_1.html" style="width: 1px ! important; min-width: 100% ! important; border: medium none ! important; overflow: hidden ! important; height: 335px ! important;" title="Disqus" tabindex="0" allowtransparency="true" name="dsq-app2" id="dsq-app2" scrolling="no" width="100%" frameborder="0"></iframe></div>
+  </section>
+
+
+</div>
+
+<aside class="sidebar">
+  
+    
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright © 2014 - 枯木 -
+  <span class="credit">Powered by <a href="http://octopress.org/">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

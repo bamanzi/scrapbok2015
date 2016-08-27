@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="en" ng-app="changetip">
+<head>
+    <title>Uh oh / ChangeTip</title>
+    <meta charset="utf-8">
+    <meta name="description" content="ChangeTip makes it easy to send and receive money online. Tip people, businesses and organizations by mentioning a recipient, changetip, and an amount.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="google-site-verification"  content="H6ECyqlzngjVqHrul7JPxHwZSkfcU3Yn53Owu0yloK0">
+    <meta name="apple-mobile-web-app-title" content="ChangeTip">
+    
+    <meta name="apple-itunes-app" content="app-id=1028936312">
+    
+    <link rel="http://oexchange.org/spec/0.8/rel/related-target" type="application/xrd+xml" href="http://www.changetip.com//oexchange.xrd"/>
+    <link rel="apple-touch-icon" href="//cdn.changetip.com/apple-touch-icon.png?1">
+    <link rel="shortcut icon" href="//cdn.changetip.com/favicon.ico?1">
+    <style type="text/css">
+        /* Prevent FOUC */
+        [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+              display: none !important;
+        }
+        /* bootstrap angular */
+        .nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+    </style>
+    
+
+    <!-- Manually generated Sass file -->
+    <link rel="stylesheet" href="/public/css/changetip.css">
+
+    <!-- Test for Django Compressor Sass -->
+    <link rel="stylesheet" href="/public/CACHE/css/aae4fb2a359c.css" type="text/css" />
+
+    
+    <script>
+        window.CHANGECOIN={
+ "device": null,
+ "currencies": [
+  {
+   "abbreviation": "BTC",
+   "to_usd": 579.36,
+   "featured": 1,
+   "name": "Bitcoin",
+   "updated_at": "2016-08-27T01:04:51+00:00",
+   "to_btc": 1.0,
+   "symbol": "B",
+   "id": 159,
+   "uri": "/v1/currencies/159"
+  },
+  {
+   "abbreviation": "USD",
+   "to_usd": 1.0,
+   "featured": 2,
+   "name": "United States Dollar",
+   "updated_at": "2016-08-27T01:04:53+00:00",
+   "to_btc": 0.0017104,
+   "symbol": "",
+   "id": 149,
+   "uri": "/v1/currencies/149"
+  },
+  {
+   "abbreviation": "EUR",
+   "to_usd": 1.119884,
+   "featured": 3,
+   "name": "Euro",
+   "updated_at": "2016-08-27T01:04:53+00:00",
+   "to_btc": 0.00193697,
+   "symbol": "\u20ac",
+   "id": 49,
+   "uri": "/v1/currencies/49"
+  },
+  {
+   "abbreviation": "GBP",
+   "to_usd": 1.31371,
+   "featured": 4,
+   "name": "British Pound",
+   "updated_at": "2016-08-27T01:04:53+00:00",
+   "to_btc": 0.00222876,
+   "symbol": "\u00a3",
+   "id": 22,
+   "uri": "/v1/currencies/22"
+  },
+  {
+   "abbreviation": "JPY",
+   "to_usd": 0.009847,
+   "featured": 5,
+   "name": "Japanese Yen",
+   "updated_at": "2016-08-27T01:04:53+00:00",
+   "to_btc": 1.697e-05,
+   "symbol": "\u00a5",
+   "id": 70,
+   "uri": "/v1/currencies/70"
+  },
+  {
+   "abbreviation": "CNY",
+   "to_usd": 0.150002,
+   "featured": 6,
+   "name": "Chinese Renminbi Yuan",
+   "updated_at": "2016-08-27T01:04:53+00:00",
+   "to_btc": 0.00025811,
+   "symbol": "\u00a5",
+   "id": 33,
+   "uri": "/v1/currencies/33"
+  },
+  {
+   "abbreviation": "INR",
+   "to_usd": 0.014901,
+   "featured": 7,
+   "name": "Indian Rupee",
+   "updated_at": "2016-08-27T01:04:53+00:00",
+   "to_btc": 2.524e-05,
+   "symbol": "",
+   "id": 64,
+   "uri": "/v1/currencies/64"
+  },
+  {
+   "abbreviation": "RUB",
+   "to_usd": 0.015443,
+   "featured": 8,
+   "name": "Russian Ruble",
+   "updated_at": "2016-08-27T01:04:53+00:00",
+   "to_btc": 2.602e-05,
+   "symbol": "",
+   "id": 116,
+   "uri": "/v1/currencies/116"
+  },
+  {
+   "abbreviation": "AUD",
+   "to_usd": 0.75643,
+   "featured": 9,
+   "name": "Australian Dollar",
+   "updated_at": "2016-08-27T01:04:53+00:00",
+   "to_btc": 0.00130698,
+   "symbol": "",
+   "id": 8,
+   "uri": "/v1/currencies/8"
+  },
+  {
+   "abbreviation": "CAD",
+   "to_usd": 0.770179,
+   "featured": 10,
+   "name": "Canadian Dollar",
+   "updated_at": "2016-08-27T01:04:53+00:00",
+   "to_btc": 0.00133837,
+   "symbol": "",
+   "id": 27,
+   "uri": "/v1/currencies/27"
+  }
+ ],
+ "facebook": {
+  "app_id": "329866120487822"
+ },
+ "user": {
+  "currency": {
+   "to_usd": 1.00000000,
+   "to_btc": 0.00171040,
+   "id": 149,
+   "abbreviation": "USD",
+   "name": "United States Dollar"
+  },
+  "authenticated": false
+ }
+};
+    </script>
+    
+    <meta name="twitter:site" content="@changetip">
+    <meta name="twitter:title" content="ChangeTip - More than a like, better than a share">
+    <meta name="twitter:description" content="ChangeTip makes it easy to send and receive money online. Tip people, businesses and organizations by mentioning the person you are trying to tip, @changetip and an amount.">
+    <meta name="twitter:creator" content="@changetip">
+    <meta name="twitter:domain" content="www.changetip.com">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@changetip">
+    <meta name="twitter:title" content="ChangeTip - More than a like, better than a share">
+    <meta name="twitter:description" content="ChangeTip makes it easy to send and receive tips and donations – from anywhere, to anywhere. Your cause, your heart, your change.">
+    <meta name="twitter:image" content="https://cdn.changetip.com/img/Twitter-Card.png">
+    
+    
+    
+    <meta property="og:image" content="https://cdn.changetip.com/img/logos/changetip_round_icon.png">
+    <meta property="og:site_name" content="ChangeTip">
+    <meta property="og:title" content="ChangeTip">
+    <meta property="og:description" content="More than a like, better than a share">
+    
+</head>
+<body ng-controller="AppCtrl" class="logged-out
+">
+
+    <header class="site-header">
+        
+        <div >
+            <script type="text/ng-template" id="login_dialog.html">
+<div class="modal-header">
+    <i class="pull-right fa fa-times fa-lg text-muted pointer" ng-click="$close()"></i>
+</div>
+<div class="modal-body login" >
+    
+        <div >
+            <div ng-hide="lastChannelDetected">
+                <div ng-show="loginDialog.dialogType == 'get started'">
+                    <h2 class="center-text">Connect an account to get started tipping</h2>
+                </div>
+                <div ng-show="loginDialog.dialogType == 'sign up'">
+                    <h2 class="center-text">Sign up by connecting an account</h2>
+                </div>
+                <div ng-show="loginDialog.dialogType == 'login'">
+                    <h2 class="center-text">Sign in with one of these accounts</h2>
+                </div>
+            </div>
+            <div ng-show="loginDialog.dialogType == 'connect'">
+                <h2 class="center-text">Connect another account</h2>
+            </div>
+
+            <div class="login-buttons">
+                <div ng-show="lastChannelDetected">
+                    <h2 class="center-text">Last time you logged in using None</h2>
+                </div>
+                <ul>
+                    
+                    <li >
+                        
+                            <form action="/login/facebook/" method="post" target="_top">
+                                <input type='hidden' name='csrfmiddlewaretoken' value='JwQ2PkFLFPfP1eXp5bjgjutZPpzhWC28' />
+                                
+                                <input type="hidden" name="next" value="/public/fonts/glyphicons-halflings-regular.eot">
+                                <div class="center-text">
+                                    <div>
+                                        <button analytics-on="click" analytics-event="Social Login" analytics-channel="Facebook"
+                                                class="login-button connect-icon-only primary-login">
+                                            
+                                            <span class="icon facebook"></span>
+                                            
+                                        </button>
+                                    </div>
+                                    Facebook
+                                </div>
+                            </form>
+                        
+                    </li>
+                    
+                    <li ng-hide="lastChannelDetected">
+                        
+                            <form action="/login/twitter/" method="post" target="_top">
+                                <input type='hidden' name='csrfmiddlewaretoken' value='JwQ2PkFLFPfP1eXp5bjgjutZPpzhWC28' />
+                                
+                                <input type="hidden" name="next" value="/public/fonts/glyphicons-halflings-regular.eot">
+                                <div class="center-text">
+                                    <div>
+                                        <button analytics-on="click" analytics-event="Social Login" analytics-channel="Twitter"
+                                                class="login-button connect-icon-only secondary-login">
+                                            
+                                            <span class="icon twitter"></span>
+                                            
+                                        </button>
+                                    </div>
+                                    Twitter
+                                </div>
+                            </form>
+                        
+                    </li>
+                    
+                    <li ng-hide="lastChannelDetected">
+                        
+                            <form action="/login/reddit/" method="post" target="_top">
+                                <input type='hidden' name='csrfmiddlewaretoken' value='JwQ2PkFLFPfP1eXp5bjgjutZPpzhWC28' />
+                                
+                                <input type="hidden" name="next" value="/public/fonts/glyphicons-halflings-regular.eot">
+                                <div class="center-text">
+                                    <div>
+                                        <button analytics-on="click" analytics-event="Social Login" analytics-channel="Reddit"
+                                                class="login-button connect-icon-only secondary-login">
+                                            
+                                            <span class="icon reddit"></span>
+                                            
+                                        </button>
+                                    </div>
+                                    Reddit
+                                </div>
+                            </form>
+                        
+                    </li>
+                    
+                </ul>
+                <button class="btn btn-default" ng-click="showSecondary = !showSecondary" ng-hide="showSecondary">SHOW MORE OPTIONS</button>
+                <div ng-show="showSecondary">
+                    <ul class="channels-secondary">
+                        
+                        
+                        
+                        
+                        <li>
+                            <form action="/login/github/" method="post" target="_top">
+                                <input type='hidden' name='csrfmiddlewaretoken' value='JwQ2PkFLFPfP1eXp5bjgjutZPpzhWC28' />
+                                
+                                <input type="hidden" name="next" value="/public/fonts/glyphicons-halflings-regular.eot">
+                                <div class="center-text">
+                                    <div>
+                                        <button analytics-on="click" analytics-event="Social Login" analytics-channel="Github"
+                                                class="login-button connect-icon-only secondary-login">
+                                        
+                                            <span class="icon github"></span>
+                                        
+                                        </button>
+                                    </div>
+                                    Github
+                                </div>
+                            </form>
+                        </li>
+                        
+                        
+                        
+                        <li>
+                            <form action="/login/googleplus/" method="post" target="_top">
+                                <input type='hidden' name='csrfmiddlewaretoken' value='JwQ2PkFLFPfP1eXp5bjgjutZPpzhWC28' />
+                                
+                                <input type="hidden" name="next" value="/public/fonts/glyphicons-halflings-regular.eot">
+                                <div class="center-text">
+                                    <div>
+                                        <button analytics-on="click" analytics-event="Social Login" analytics-channel="GooglePlus"
+                                                class="login-button connect-icon-only secondary-login">
+                                        
+                                            <span class="icon googleplus"></span>
+                                        
+                                        </button>
+                                    </div>
+                                    GooglePlus
+                                </div>
+                            </form>
+                        </li>
+                        
+                        
+                        
+                        
+                        
+                        <li>
+                            <form action="/login/slack/" method="post" target="_top">
+                                <input type='hidden' name='csrfmiddlewaretoken' value='JwQ2PkFLFPfP1eXp5bjgjutZPpzhWC28' />
+                                
+                                <input type="hidden" name="next" value="/public/fonts/glyphicons-halflings-regular.eot">
+                                <div class="center-text">
+                                    <div>
+                                        <button analytics-on="click" analytics-event="Social Login" analytics-channel="Slack"
+                                                class="login-button connect-icon-only secondary-login">
+                                        
+                                            <span class="icon slack"></span>
+                                        
+                                        </button>
+                                    </div>
+                                    Slack
+                                </div>
+                            </form>
+                        </li>
+                        
+                        
+                        
+                        <li>
+                            <form action="/login/soundcloud/" method="post" target="_top">
+                                <input type='hidden' name='csrfmiddlewaretoken' value='JwQ2PkFLFPfP1eXp5bjgjutZPpzhWC28' />
+                                
+                                <input type="hidden" name="next" value="/public/fonts/glyphicons-halflings-regular.eot">
+                                <div class="center-text">
+                                    <div>
+                                        <button analytics-on="click" analytics-event="Social Login" analytics-channel="SoundCloud"
+                                                class="login-button connect-icon-only secondary-login">
+                                        
+                                            <span class="icon soundcloud"></span>
+                                        
+                                        </button>
+                                    </div>
+                                    SoundCloud
+                                </div>
+                            </form>
+                        </li>
+                        
+                        
+                        
+                        <li>
+                            <form action="/login/tumblr/" method="post" target="_top">
+                                <input type='hidden' name='csrfmiddlewaretoken' value='JwQ2PkFLFPfP1eXp5bjgjutZPpzhWC28' />
+                                
+                                <input type="hidden" name="next" value="/public/fonts/glyphicons-halflings-regular.eot">
+                                <div class="center-text">
+                                    <div>
+                                        <button analytics-on="click" analytics-event="Social Login" analytics-channel="Tumblr"
+                                                class="login-button connect-icon-only secondary-login">
+                                        
+                                            <span class="icon tumblr"></span>
+                                        
+                                        </button>
+                                    </div>
+                                    Tumblr
+                                </div>
+                            </form>
+                        </li>
+                        
+                        
+                        
+                        <li>
+                            <form action="/login/twitch/" method="post" target="_top">
+                                <input type='hidden' name='csrfmiddlewaretoken' value='JwQ2PkFLFPfP1eXp5bjgjutZPpzhWC28' />
+                                
+                                <input type="hidden" name="next" value="/public/fonts/glyphicons-halflings-regular.eot">
+                                <div class="center-text">
+                                    <div>
+                                        <button analytics-on="click" analytics-event="Social Login" analytics-channel="Twitch"
+                                                class="login-button connect-icon-only secondary-login">
+                                        
+                                            <span class="icon twitch"></span>
+                                        
+                                        </button>
+                                    </div>
+                                    Twitch
+                                </div>
+                            </form>
+                        </li>
+                        
+                        
+                        
+                        
+                    </ul>
+                    <span ng-click="showDeactivated = !showDeactivated" ng-hide="showDeactivated"
+                          style="cursor: pointer; color: blue; display: block; margin-top: 18px; font-size: 0.8em">Show deactivated networks</span>
+                        <ul class="channels-deactivated" ng-show="showDeactivated">
+                            
+                                <li>
+                                    <form action="/login/disqus/" method="post" target="_top">
+                                        <input type='hidden' name='csrfmiddlewaretoken' value='JwQ2PkFLFPfP1eXp5bjgjutZPpzhWC28' />
+                                        <input type="hidden" name="next" value="/public/fonts/glyphicons-halflings-regular.eot">
+                                        <div class="center-text">
+                                            <div>
+                                                <button analytics-on="click" analytics-event="Social Login" analytics-channel="Disqus"
+                                                        class="login-button connect-icon-only primary-login">
+                                                
+                                                    <span class="icon-sm disqus"></span>
+                                                
+                                                </button>
+                                            </div>
+                                            Disqus
+                                        </div>
+                                    </form>
+
+                                </li>
+                            
+                                <li>
+                                    <form action="/login/stocktwits/" method="post" target="_top">
+                                        <input type='hidden' name='csrfmiddlewaretoken' value='JwQ2PkFLFPfP1eXp5bjgjutZPpzhWC28' />
+                                        <input type="hidden" name="next" value="/public/fonts/glyphicons-halflings-regular.eot">
+                                        <div class="center-text">
+                                            <div>
+                                                <button analytics-on="click" analytics-event="Social Login" analytics-channel="StockTwits"
+                                                        class="login-button connect-icon-only secondary-login">
+                                                
+                                                    <span class="icon-sm stocktwits"></span>
+                                                
+                                                </button>
+                                            </div>
+                                            StockTwits
+                                        </div>
+                                    </form>
+
+                                </li>
+                            
+                                <li>
+                                    <form action="/login/youtube/" method="post" target="_top">
+                                        <input type='hidden' name='csrfmiddlewaretoken' value='JwQ2PkFLFPfP1eXp5bjgjutZPpzhWC28' />
+                                        <input type="hidden" name="next" value="/public/fonts/glyphicons-halflings-regular.eot">
+                                        <div class="center-text">
+                                            <div>
+                                                <button analytics-on="click" analytics-event="Social Login" analytics-channel="YouTube"
+                                                        class="login-button connect-icon-only secondary-login">
+                                                
+                                                    <span class="icon-sm youtube"></span>
+                                                
+                                                </button>
+                                            </div>
+                                            YouTube
+                                        </div>
+                                    </form>
+
+                                </li>
+                            
+                        </ul>
+                </div>
+            </div>
+            <div class="login-why">
+                <h4>It's All About Being Social</h4>
+                ChangeTip is social in nature.  Therefore, we require our users to connect a social account to use our platform.  We value your trust and respect you and your privacy.
+            </div>
+        </div>
+    
+</div>
+<div class="modal-footer">
+</div>
+</script>
+
+        </div>
+        
+
+        
+            
+<div class="navbar">
+    <div class="container">
+        
+        <div class="login-navigation pull-right">
+            
+                <a class="login-link btn btn-default" ng-click="loginModal('login')" analytics-on="click" analytics-event="Sign In" analytics-label="Top Nav">
+                    Login
+                </a>
+            
+        </div>
+        
+
+        <div class="navbar-header">
+        
+
+            <!-- Logo -->
+            
+                <a href="/" class="navbar-brand"></a>
+            
+        </div>
+
+        
+    </div>
+</div>
+
+        
+    </header>
+
+    <header class="site-header-small">
+        <div class="navbar">
+            <div class="container">
+                <div class="navbar-header">
+                    <!-- Logo -->
+                    <a href="/" class="navbar-brand"></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    
+
+        
+        <div class="row flash-messages">
+            <alert class="col-xs-12" ng-cloak ng-repeat="f in flashMessages" type="{{f.type}}" close="closeFlash($index)">
+                <div class="row">
+                    <div class="col-md-1 text-center contain-icon">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-square-o fa-stack-2x"></i>
+                            <i class="fa fa-stack-1x fa-warning" ng-show="f.type == 'warning'"></i>
+                            <i class="fa fa-stack-1x fa-info" ng-show="f.type == 'info'"></i>
+                            <i class="fa fa-stack-1x fa-check" ng-show="f.type == 'success'"></i>
+                            <i class="fa fa-stack-1x fa-bug" ng-show="f.type == 'error' || f.type == 'danger'"></i>
+                        </span>
+                    </div>
+                    <div class="col-md-10" bind-html-compile="f.message"></div>
+                </div>
+            </alert>
+        </div>
+        
+
+
+    
+
+        
+<div class="container">
+  <div class="alert alert-warning">
+      <h2><i class="fa fa-chain-broken"></i> Uh oh</h2>
+      <p>
+      
+      We could not figure out what to do, so we had to give up and show you this <b>404 page</b>.
+      
+      <p>
+      Sorry about that.
+  </div>
+</div>
+<div class="container">
+    <script type="text/javascript">
+      var GOOG_FIXURL_LANG = 'en';
+      var GOOG_FIXURL_SITE = 'https://www.changetip.com'
+    </script>
+    <script type="text/javascript" src="https://linkhelp.clients.google.com/tbproxy/lh/wm/fixurl.js">
+    </script>
+</div>
+
+
+
+    
+
+
+    
+    
+    <footer class="clearfix" role="contentinfo" ng-cloak>
+        <div class="container">
+            <div class="well row">
+                <ul class="list-unstyled li-links">
+                    <li>
+                        <a href="https://twitter.com/changetip" target="_blank" tooltip-placement="top" tooltip="Follow us">
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.facebook.com/ChangeTip" target="_blank tooltip-placement='top'"  tooltip="Like us">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://plus.google.com/+Changetip" target="_blank tooltip-placement='top'"  tooltip="+ us">
+                            <i class="fa fa-google-plus"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.linkedin.com/company/changetip" target="_blank tooltip-placement='top'" tooltip="Work with us">
+                            <i class="fa fa-linkedin"></i>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="list-unstyled li-links">
+                    <li>
+                        <a class="pointer" ng-click="contactModal('Contact ChangeTip', 'We would like to hear from you!')" analytics-on="click" analytics-event="Contact" analytics-label="Footer">
+                            <span class="">Contact Us</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a analytics-on="click" analytics-event="Blog" analytics-label="Footer" target="_blank" href="http://blog.changetip.com/">
+                            <span>Blog</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a tooltip="Frequently Asked Questions" tooltip-placement="top" analytics-on="click" analytics-event="FAQ" analytics-label="Footer" href="https://changecoin.zendesk.com" target="_blank">
+                            <span class="">FAQ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a analytics-on="click" analytics-event="Privacy" analytics-label="Footer" href="/privacy">
+                            <span class="">Privacy</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a analytics-on="click" analytics-event="Terms" analytics-label="Footer" href="/terms">
+                            <span>Terms</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a analytics-on="click" analytics-event="Security" analytics-label="Footer" href="/security">
+                            <span>Security</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a analytics-on="click" analytics-event="Tip Amounts" analytics-label="Footer" href="/tip-amounts">
+                            <span>Tip Amounts</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a analytics-on="click" analytics-event="Fees" analytics-label="Footer" href="/fees">
+                            <span class="">Fees</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a analytics-on="click" analytics-event="API" analytics-label="Footer" href="/api">
+                            <span class="">API</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a analytics-on="click" analytics-event="Brand" analytics-label="Footer" href="/brand">
+                            <span class="">Brand</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a analytics-on="click" analytics-event="About" analytics-label="Footer" href="/about">
+                            <span class="">About Us</span>
+                        </a>
+                    </li>
+                    <li>
+                        &copy; 2016 ChangeTip
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    
+    
+    <div growl></div>
+
+
+
+
+
+<!--[if lt IE 9]>
+    <script src="//cdn.changetip.com/js/vendor/respond.js"></script>
+<![endif]-->
+<script>
+window.flashMessages = [];
+
+
+
+</script>
+<script type="text/javascript">
+    (function(){
+  var FLAGS = {
+    'activity': false,'auto_top_up': true,'auto_transfer': true,'btc_pocket_withdrawal': true,'campaigns': false,'coinbase_button': true,'coinbase_removal': true,'coinbase_withdraw': false,'coinsph': false,'coinx_mtls': false,'creditcard': true,'creditcard_use_vogogo': true,'deactivation_emails': false,'dev_apps': false,'dev_apps_details': true,'direct_tips': true,'expresscoin': false,'fb_how_to': true,'gocoin': false,'gyft': false,'header_balances': false,'knox': false,'netki': false,'new-tipworthy': true,'paypal_withdrawal': false,'pocket_btc': false,'pocket_usd': true,'post_comments': false,'profile_field_select': true,'purchases': false,'realbitcoins': false,'referrals': true,'synapsepay_withdrawal': true,'thank_you_button': true,'tip_giveaway': false,'tip_redirect': true,'tipworthy_skip_fee': false,'transfer_fees': false,'trusted_transactions': false,'vanity_url': true
+    },
+    SWITCHES = {
+    'use_pycoin_withdrawals': true,'pause_pycoin_withdrawals': false
+    },
+    SAMPLES = {
+    
+    };
+  window.waffle = {
+    "flag_is_active": function waffle_flag(flag_name) {
+      
+      return !!FLAGS[flag_name];
+    },
+    "switch_is_active": function waffle_switch(switch_name) {
+      
+      return !!SWITCHES[switch_name];
+    },
+    "sample_is_active": function waffle_sample(sample_name) {
+      
+      return !!SAMPLES[sample_name];
+    },
+    "FLAGS": FLAGS,
+    "SWITCHES": SWITCHES,
+    "SAMPLES": SAMPLES
+  };
+})();
+
+</script>
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//cdn.changetip.com/css/vendor/animate.min.css">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/authy-form-helpers/2.3/form.authy.min.css" media="screen" rel="stylesheet" type="text/css">
+
+
+
+<script type="text/javascript" src="/public/CACHE/js/0f49a96636b9.js"></script>
+
+<script type="text/javascript" src="/public/CACHE/js/d2ce2d0654bb.js"></script>
+
+
+    <script type="text/javascript">(function() {
+var changetip = angular.module("changetip");
+changetip.factory("TemplateRouter", function() {
+    var templateRoot = ["public", "templates"];
+    function isNotEmpty(s) {
+        return s.length > 0;
+    };
+
+    return {
+        urlFor: function(templatePath) {
+            var parts = templatePath.split("/").filter(isNotEmpty);
+            return "/" + templateRoot.concat(parts).join("/");
+        }
+    }
+});
+changetip.factory("Constants", function() {
+    var values = {
+        csrf: null,
+        channels: {
+            
+            "facebook": {
+                "name": "Facebook",
+                "displayName": "Facebook",
+                "iconUrl": "https://cdn.changetip.com/img/icon_64_facebook.png?1",
+                "websiteUrl": "http://www.facebook.com/",
+                "activeForUser": false,
+                "fieldsProvided": ["location",],
+                
+            }, 
+            
+            "github": {
+                "name": "Github",
+                "displayName": "Github",
+                "iconUrl": "https://cdn.changetip.com/img/icon_64_github.png",
+                "websiteUrl": "http://www.github.com/",
+                "activeForUser": false,
+                "fieldsProvided": ["bio","website_url","location",],
+                
+            }, 
+            
+            "googleplus": {
+                "name": "GooglePlus",
+                "displayName": "Google+",
+                "iconUrl": "https://cdn.changetip.com/img/icon_64_google_plus.png?1",
+                "websiteUrl": "http://plus.google.com/",
+                "activeForUser": false,
+                "fieldsProvided": ["website_url",],
+                
+            }, 
+            
+            "reddit": {
+                "name": "Reddit",
+                "displayName": "Reddit",
+                "iconUrl": "https://cdn.changetip.com/img/icon_64_reddit.png",
+                "websiteUrl": "http://www.reddit.com/",
+                "activeForUser": false,
+                "fieldsProvided": [],
+                
+            }, 
+            
+            "slack": {
+                "name": "Slack",
+                "displayName": "Slack",
+                "iconUrl": "https://cdn.changetip.com/img/icon_64_slack.png",
+                "websiteUrl": "https://slack.com/",
+                "activeForUser": false,
+                "fieldsProvided": [],
+                
+            }, 
+            
+            "soundcloud": {
+                "name": "SoundCloud",
+                "displayName": "SoundCloud",
+                "iconUrl": "https://cdn.changetip.com/img/icon_64_soundcloud.png",
+                "websiteUrl": "http://www.soundcloud.com/",
+                "activeForUser": false,
+                "fieldsProvided": [],
+                
+            }, 
+            
+            "tumblr": {
+                "name": "Tumblr",
+                "displayName": "Tumblr",
+                "iconUrl": "https://cdn.changetip.com/img/icon_64_tumblr.png",
+                "websiteUrl": "http://www.tumblr.com/",
+                "activeForUser": false,
+                "fieldsProvided": ["website_url",],
+                
+            }, 
+            
+            "twitch": {
+                "name": "Twitch",
+                "displayName": "Twitch",
+                "iconUrl": "https://cdn.changetip.com/img/icon_64_twitch.png",
+                "websiteUrl": "http://www.twitch.tv/",
+                "activeForUser": false,
+                "fieldsProvided": [],
+                
+            }, 
+            
+            "twitter": {
+                "name": "Twitter",
+                "displayName": "Twitter",
+                "iconUrl": "https://cdn.changetip.com/img/icon_64_twitter.png",
+                "websiteUrl": "http://www.twitter.com/",
+                "activeForUser": false,
+                "fieldsProvided": ["bio","website_url","language","location",],
+                
+            }
+            
+        }
+    };
+
+    return {
+        get: function(key, alt) {
+            return values[key] !== undefined ? values[key] : alt;
+        },
+        define: function(key, value) {
+            values[key] = value;
+        }
+    };
+});
+
+})();</script>
+
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-5CCKQ4"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5CCKQ4');</script>
+<!-- End Google Tag Manager -->
+
+
+
+  <!--Google Analytics -->
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-46713181-1', 'changetip.com');
+  </script>
+  
+  <!--End Google Analytics-->
+
+
+
+</body>
+</html>
