@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="codesiteArchive.application" class="google ng-scope">
+<head>
+    <meta charset="UTF-8">
+    <meta content="initial-scale=1, minimum-scale=1, width=device-width" name="viewport">
+
+    <!-- https://developers.google.com/webmasters/ajax-crawling/docs/specification -->
+    <meta name="fragment" content="!">
+    <title>Google Code Archive - Long-term storage for Google Code Project Hosting.</title>
+
+    <link rel="icon" type="image/vnd.microsoft.icon" href="project-hosting.ico">
+    
+    
+    
+    
+    
+    
+    
+    
+    <base href="">
+  
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+
+  <body>
+    <div class="maia-header" id="maia-header" role="banner">
+      <div class="maia-aux">
+        <a href="https://code.google.com/archive/">
+          </a><h1><a href="https://code.google.com/archive/">
+            <img alt="Google" src="googlelogo_color_116x41dp.png"> Code</a>
+          </h1>
+        
+        <a href="https://code.google.com/archive/">
+          <h2>
+            Archive
+          </h2>
+        </a>
+        <a class="maia-teleport" href="https://code.google.com/archive/#content">Skip to content</a>
+        <div class="maia-util">
+          <form action="https://code.google.com/archive/search" class="maia-search ng-pristine ng-valid">
+            <input name="q" placeholder="Search this site" type="text">
+            <button class="maia-button">
+              <span class="maia-search-icon">Search</span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- ngView:  --><div class="ng-scope" ng-view=""><div class="ng-scope" ng-controller="ProjectHomepageCtrl as projectCtrl">
+<nav-bar-widget class="ng-isolate-scope" nav-level-1="projectCtrl.navLevel1"><div class="maia-nav maia-complex" id="maia-nav-x" role="navigation">
+  <div class="maia-aux">
+    <ul>
+      <li class="active" ng-class="{active: navLevel1 == 'projects'}">
+        <a href="https://code.google.com/archive/">Projects</a>
+        <!-- ngIf: navLevel2 -->
+      </li>
+      <li ng-class="{active: navLevel1 == 'search'}">
+        <a href="https://code.google.com/archive/search">Search</a>
+      </li>
+      <li ng-class="{active: navLevel1 == 'about'}">
+        <a href="https://code.google.com/archive/about">About</a>
+      </li>
+    </ul>
+  </div>
+</div>
+</nav-bar-widget>
+<div id="maia-main" role="main">
+
+  <!-- Left-side resource nav -->
+  <span ng-hide="projectCtrl.project.notFound">
+    <project-resources-widget class="ng-isolate-scope" domain="projectCtrl.domain" project="projectCtrl.projectName"><div class="maia-nav" id="maia-nav-y" role="navigation">
+  <!-- ngIf: domain == 'code.google.com' --><ul class="ng-scope" ng-if="domain == 'code.google.com'">
+    <li class="active">
+      <a href="#">Project</a>
+    </li>
+    <li>
+      <a href="https://code.google.com/archive/p/parallel-ssh/source">Source</a>
+    </li>
+    <li>
+      <a href="https://code.google.com/archive/p/parallel-ssh/issues">Issues</a>
+    </li>
+    <li>
+      <a href="https://code.google.com/archive/p/parallel-ssh/wikis">Wikis</a>
+    </li>
+    <li>
+      <a href="https://code.google.com/archive/p/parallel-ssh/downloads">Downloads</a>
+    </li>
+  </ul><!-- end ngIf: domain == 'code.google.com' -->
+
+    <!-- ngIf: domain != 'code.google.com' -->
+</div></project-resources-widget>
+  </span>
+
+  <div class="maia-article" role="article">
+    <div class="maia-teleport" id="content"></div>
+    <div class="maia-cols">
+
+      <!-- BUG: We show "no issues" and relaged sub-pages for projects that
+           do not exist. Similarly, if you go to page 1,000,000 it says the
+           project has no issues, despite page 999,999 existing. -->
+      <!-- ngIf: projectCtrl.project.notFound -->
+
+      <div ng-hide="projectCtrl.project.notFound" id="gca-project-header" class="maia-col-10">
+        <img class="gca-project-logo" src="logo.png">
+        <h1 class="ng-binding">parallel-ssh</h1>
+      </div>
+
+      <div ng-hide="projectCtrl.project.notFound" class="maia-col-10">
+        <hr>
+
+        <!-- ngIf: projectCtrl.error -->
+
+        <!-- Switch by project resource -->
+        <!-- ngIf: !projectCtrl.error --><div class="ng-scope" ng-if="!projectCtrl.error" ng-switch="projectCtrl.resource">
+
+          <!-- Project -->
+          <!-- ngSwitchWhen: project --><div class="ng-scope" ng-switch-when="project">
+            <!-- ngIf: projectCtrl.project == null -->
+
+            <!-- ngIf: projectCtrl.project.notFound -->
+
+            <!-- ngIf: projectCtrl.project.found --><div class="ng-scope" ng-if="projectCtrl.project.found">
+              <div class="maia-col-6">
+                <p class="maia-meta ng-binding">PSSH: Parallel SSH Tools</p>
+                <markdown-widget class="markdown" text="projectCtrl.project.description"><p>PSSH provides parallel versions of OpenSSH and related tools.  Included are pssh, pscp, prsync, pnuke, and pslurp.  The project includes psshlib which can be used within custom applications.  The source code is written in Python and can be cloned from:</p>
+
+<p>git clone <a href="http://code.google.com/p/parallel-ssh/">http://code.google.com/p/parallel-ssh/</a></p>
+
+<p>PSSH is supported on Python 2.4 and greater (including Python 3.1 and
+greater). It was originally written and maintained by Brent N. Chun.  Due to his busy schedule, Brent handed over maintenance to Andrew McNabb in October 2009.</p></markdown-widget>
+              </div>
+              <div id="gca-project-info-box" class="maia-col-4">
+                <div class="maia-aside">
+                  <h1>Project Information</h1>
+                  <!-- ngIf: projectCtrl.project.creationTime -->
+                  <!-- ngIf: projectCtrl.project.ancestorRepo -->
+                  <ul>
+                    <li>
+                      License: <a class="ng-binding" href="http://opensource.org/licenses/BSD-3-Clause">
+                        New BSD License</a>
+                    </li>
+                    <!-- ngIf: projectCtrl.project.contentLicenseName -->
+                    <!-- ngIf: projectCtrl.project.stars --><li class="ng-binding ng-scope" ng-if="projectCtrl.project.stars">
+                      247 stars
+                    </li><!-- end ngIf: projectCtrl.project.stars -->
+                    <li class="ng-binding">git-based source control</li>
+                  </ul>
+                  <!-- ngIf: projectCtrl.project.labels.length > 0 --><p class="ng-scope" ng-if="projectCtrl.project.labels.length > 0">
+                    Labels:
+                    <br>
+                    <!-- ngRepeat: label in projectCtrl.project.labels track by $index --><span class="ng-scope" ng-repeat="label in projectCtrl.project.labels track by $index">
+                      <a href="https://code.google.com/archive/search?q=domain:code.google.com%20label:python"><span class="gca-label ng-binding">python</span></a>
+                    </span><!-- end ngRepeat: label in projectCtrl.project.labels track by $index --><span class="ng-scope" ng-repeat="label in projectCtrl.project.labels track by $index">
+                      <a href="https://code.google.com/archive/search?q=domain:code.google.com%20label:ssh"><span class="gca-label ng-binding">ssh</span></a>
+                    </span><!-- end ngRepeat: label in projectCtrl.project.labels track by $index --><span class="ng-scope" ng-repeat="label in projectCtrl.project.labels track by $index">
+                      <a href="https://code.google.com/archive/search?q=domain:code.google.com%20label:parallel"><span class="gca-label ng-binding">parallel</span></a>
+                    </span><!-- end ngRepeat: label in projectCtrl.project.labels track by $index --><span class="ng-scope" ng-repeat="label in projectCtrl.project.labels track by $index">
+                      <a href="https://code.google.com/archive/search?q=domain:code.google.com%20label:cluster"><span class="gca-label ng-binding">cluster</span></a>
+                    </span><!-- end ngRepeat: label in projectCtrl.project.labels track by $index --><span class="ng-scope" ng-repeat="label in projectCtrl.project.labels track by $index">
+                      <a href="https://code.google.com/archive/search?q=domain:code.google.com%20label:rsync"><span class="gca-label ng-binding">rsync</span></a>
+                    </span><!-- end ngRepeat: label in projectCtrl.project.labels track by $index --><span class="ng-scope" ng-repeat="label in projectCtrl.project.labels track by $index">
+                      <a href="https://code.google.com/archive/search?q=domain:code.google.com%20label:scp"><span class="gca-label ng-binding">scp</span></a>
+                    </span><!-- end ngRepeat: label in projectCtrl.project.labels track by $index -->
+                  </p><!-- end ngIf: projectCtrl.project.labels.length > 0 -->
+                </div>
+              </div>
+            </div><!-- end ngIf: projectCtrl.project.found -->
+          </div><!-- end ngSwitchWhen: -->
+
+          <!-- Source -->
+          <!-- ngSwitchWhen: source -->
+
+          <!-- Issues -->
+          <!-- ngSwitchWhen: issues -->
+
+          <!-- Wikis -->
+          <!-- ngSwitchWhen: wikis -->
+
+          <!-- Downloads -->
+          <!-- ngSwitchWhen: downloads -->
+
+          <!-- Default -->
+          <!-- ngSwitchDefault:  -->
+
+        <!-- end Switch -->
+        </div><!-- end ngIf: !projectCtrl.error -->
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+    <div id="maia-signature"></div>
+    <div class="maia-footer" id="maia-footer">
+      <div id="maia-footer-local">
+      </div>
+      <div id="maia-footer-global">
+        <div class="maia-aux">
+          <ul>
+            <li>
+              <a href="https://www.google.com/">Google</a>
+            </li>
+            <li>
+              <a href="https://www.google.com/intl/en/about/">About Google</a>
+            </li>
+            <li>
+              <a href="https://www.google.com/intl/en/policies/privacy/">Privacy</a>
+            </li>
+            <li>
+              <a href="https://www.google.com/intl/en/policies/terms/">Terms</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+  
+
+</body>
+</html>
