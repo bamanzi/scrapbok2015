@@ -1,0 +1,26 @@
+/* Code tidied up by ScrapBook */
+body { margin: 0px; }
+.rc-anchor { border-radius: 3px 3px 3px 3px; box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.08); }
+.rc-anchor-light { background: none repeat scroll 0% 0% rgb(249, 249, 249); color: rgb(0, 0, 0); }
+.rc-anchor-error-msg-container { color: rgb(255, 0, 0); font-family: Roboto,helvetica,arial,sans-serif; font-size: 12px; font-weight: 400; left: 0px; line-height: 14px; margin: 2px 10px; position: absolute; top: 0px; }
+.rc-anchor-normal-footer { display: inline-block; height: 74px; vertical-align: top; }
+.rc-anchor-logo-img { background: url("logo_48.png") no-repeat scroll 0% 0% transparent; }
+.rc-anchor-normal .rc-anchor-pt, .rc-anchor-invisible .rc-anchor-pt, .rc-anchor-compact .rc-anchor-pt { color: rgb(155, 155, 155); font-family: Roboto,helvetica,arial,sans-serif; font-size: 8px; font-weight: 400; }
+.rc-anchor-pt a:link, .rc-anchor-pt a:visited { color: rgb(155, 155, 155); text-decoration: none; }
+.rc-anchor-pt a:hover { text-decoration: underline; }
+.rc-anchor-aria-status { left: -10000px; height: 1px; position: absolute; top: -10000px; width: 1px; }
+.rc-anchor-alert { bottom: 0px; color: red; font-size: 13px; position: absolute; }
+.rc-anchor-invisible { height: 60px; width: 256px; }
+.rc-anchor-invisible-text { background: none repeat scroll 0% 0% rgb(74, 144, 226); color: white; display: inline-block; font-family: Roboto,helvetica,arial,sans-serif; font-size: 13px; font-weight: 400; height: 36px; line-height: 20px; padding: 12px 16px; white-space: nowrap; width: 154px; }
+.rc-anchor-invisible-text strong { font-weight: 500; }
+.rc-anchor-invisible .rc-anchor-normal-footer .rc-anchor-pt { transition: opacity 0.3s ease 0s; text-align: center; width: 70px; margin-top: 2px; }
+.rc-anchor-logo-img-large { transition: all 0.3s ease 0s; background-size: 40px auto; margin: 5px 15px 0px; height: 40px; width: 40px; }
+.rc-anchor-invisible-nohover .rc-anchor-logo-img-large, .rc-anchor-invisible-hover:hover .rc-anchor-logo-img-large { background-size: 44px auto; margin: 8px 13px 0px; height: 44px; width: 44px; }
+.rc-anchor-invisible-nohover .rc-anchor-normal-footer .rc-anchor-pt, .rc-anchor-invisible-hover:hover .rc-anchor-normal-footer .rc-anchor-pt { opacity: 0; }
+.rc-anchor-invisible-nohover .rc-anchor-invisible-text .rc-anchor-pt, .rc-anchor-invisible-hover:hover .rc-anchor-invisible-text .rc-anchor-pt { opacity: 1; }
+.rc-anchor-invisible-text .rc-anchor-pt { transition: opacity 0.3s ease 0s; }
+.rc-anchor-invisible-text .rc-anchor-pt a:link, .rc-anchor-invisible-text .rc-anchor-pt a:visited { text-decoration: none; color: white; font-size: 10px; }
+.rc-anchor-invisible-text .rc-anchor-pt a:hover { text-decoration: underline; }
+body { margin: 0px; }
+@media (orientation: landscape) and (max-height: 400px) {
+}

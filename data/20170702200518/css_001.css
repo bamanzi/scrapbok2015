@@ -1,0 +1,11 @@
+/* Code tidied up by ScrapBook */
+.codehilite { background: none repeat scroll 0% 0% rgb(248, 248, 248); }
+.codehilite .k { color: rgb(0, 128, 0); font-weight: bold; }
+.codehilite .o { color: rgb(102, 102, 102); }
+.codehilite .na { color: rgb(125, 144, 41); }
+.codehilite .no { color: rgb(136, 0, 0); }
+.codehilite .nf { color: rgb(0, 0, 255); }
+.codehilite .mi { color: rgb(102, 102, 102); }
+.codehilite .sc { color: rgb(186, 33, 33); }
+.codehilite { overflow: auto; }
+.codehilite pre { margin: 0px; word-wrap: normal; }
