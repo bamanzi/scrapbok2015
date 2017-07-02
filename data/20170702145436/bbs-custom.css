@@ -1,0 +1,7 @@
+/* Code tidied up by ScrapBook */
+@media screen and (min-width: 800px) {
+  .bbs-screen, #topbar, #navigation, .action-bar, #article-polling { min-width: 600px; max-width: 1200px; }
+  .bbs-content, #article-polling { font-size: 24px; }
+}
+@media screen and (max-width: 799px) {
+}

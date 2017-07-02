@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head><script async="" src="about:blank"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>介绍一下MicroEmacs - 巴蛮子 - 博客园</title>
+<link type="text/css" rel="stylesheet" href="blog-common.css">
+<link id="MainCss" type="text/css" rel="stylesheet" href="bundle-coffee.css">
+<link type="text/css" rel="stylesheet" href="76791.css">
+<link id="mobile-style" media="only screen and (max-width: 768px)" type="text/css" rel="stylesheet" href="bundle-coffee-mobile.css">
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/bamanzi/rss">
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/bamanzi/rsd.xml">
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/bamanzi/wlwmanifest.xml">
+<script src="about:blank" type="text/javascript"></script>  
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+<script src="about:blank" type="text/javascript"></script>
+<style type="text/css">
+/* Code tidied up by ScrapBook */
+@media screen {
+}
+@media print {
+}
+</style><style type="text/css" id="diigo-activeHighlight">
+/* Code tidied up by ScrapBook */
+</style></head>
+<body>
+<a name="top"></a>
+<!--PageBeginHtml Block Begin-->
+<link href="prettify.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+<!--PageBeginHtml Block End-->
+
+<!--done-->
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+	<a id="lnkBlogLogo" href="http://www.cnblogs.com/bamanzi/"><img id="blogLogo" src="logo.gif" alt="返回主页"></a>			
+		
+<!--done-->
+<h1><a id="Header1_HeaderTitle" class="headermaintitle" href="http://www.cnblogs.com/bamanzi/">巴蛮子的烂笔头</a></h1>
+<h2>好记性不如烂笔头啊。
+<br>跟我联系: ba.manzi AT yahoo.com <u><a href="http://www.cnblogs.com/bamanzi/articles/1871009.html">更多关于巴蛮子的信息</a></u><br></h2>
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+</div><!--end: header 头部 -->
+
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		<div id="navigator">
+			
+<ul id="navList">
+	<li><a id="blog_nav_sitehome" class="menu" href="http://www.cnblogs.com/">博客园</a></li>
+	<li><a id="blog_nav_myhome" class="menu" href="http://www.cnblogs.com/bamanzi/">首页</a></li>
+	<li></li>
+	<li><a id="blog_nav_contact" accesskey="9" class="menu" rel="nofollow" href="https://msg.cnblogs.com/send/%E5%B7%B4%E8%9B%AE%E5%AD%90">联系</a></li>
+	<li><a id="blog_nav_admin" class="menu" rel="nofollow" href="https://i.cnblogs.com/">管理</a></li>
+	<li><a id="blog_nav_rss" class="menu" href="http://www.cnblogs.com/bamanzi/rss">订阅</a>
+	<a id="blog_nav_rss_image" class="aHeaderXML" href="http://www.cnblogs.com/bamanzi/rss"><img src="xml.gif" alt="订阅"></a></li>
+</ul>
+
+
+			<div class="blogStats">
+				
+				<div id="blog_stats">
+<!--done-->
+随笔- 119&nbsp;
+文章- 5&nbsp;
+评论- 567&nbsp;
+</div>
+				
+			</div><!--end: blogStats -->
+		</div><!--end: navigator 博客导航栏 -->
+		
+<div id="post_detail">
+<!--done-->
+<div id="topics">
+	<div class="post">
+		<h1 class="postTitle">
+			<a id="cb_post_title_url" class="postTitle2" href="#">介绍一下MicroEmacs</a>
+		</h1>
+		<div class="clear"></div>
+		<div class="postBody">
+			<div id="cnblogs_post_body"><p>看见vmlinz在玩JED（(<a href="http://vmlinz.is-programmer.com/posts/23765.html">轻量级Emacs--JED介绍 - vmlinz's Blog</a>），于是也装了一个玩玩，但我对它的GUI版本很不满意。该文章里面又说到了其它的轻量级编辑器，里面有个叫做MicroEmacs的。想起以前看见网上说<a href="http://www.stifflog.com/2006/10/16/stiff-asks-great-programmers-answer/" target="_blank">Linus用的就是这个叫做MicroEmacs的编辑器</a>（据说他还说了GNU Emacs is just evil，但我没找到确切的出处，只在EmacsWiki上看到过<a href="http://www.emacswiki.org/emacs/EditorsUsedByOthers" target="_blank">[link]</a>）。好，去找来玩玩。<br><br>	但在Google上一搜，居然没有看到一个象MicroEmacs官网的网址，中文的说明也很少。在Wikipedia <a href="http://en.wikipedia.org/wiki/MicroEMACS" target="_blank">[link]</a>和EmacsWiki<a href="http://www.emacswiki.org/emacs/MicroEmacs" target="_blank"> [link]</a>上看了一下介绍才明白，这个东西诞生在80年代，因为体积不大，互联网又没有出现，所以大家就拷来拷去，改出了好多个分支：</p>
+<ol>
+<li>原始作者Daniel Lawrence <a href="http://www.aquest.com/emacs.htm" target="_blank">自己的版本</a>（不过最早的作者是Dave Conroy），，最新版本是09年2月出的5.00，但提供了源代码和Windows版本，似乎用的人不多。网上其它地方可以找到3.12和4.0版本，这两个版本以前使用比较广泛；</li>
+<br>
+<li>uEmacs/PK，作者是Petri H. Kutvonen，基于Lawrence原版的3.9e分支出来的。最后版本是4.0.15， 各个kernel.org镜像上均可以下载到源代码<a href="http://ftp.kernel.org/pub/software/editors/uemacs/" target="_blank">[uemacs]</a>；</li>
+<br>
+<li>Linus他们在kernel.org上维护的另一个分支（<a href="http://git.kernel.org/?p=editors/uemacs/uemacs.git;a=tree" target="_blank">git仓库链接</a>），基于uEmacs/PK，是在P.K.停止开发后，Linus接手的（这也是为什么kernel.org上有uemacs/pk的下载连接）；</li>
+<br>
+<li>最受欢迎、最有名（似乎功能也最强的）的一个版本是<a href="http://www.jasspa.com/" target="_blank">Jasspa</a>，它在1987年就从原版MicroEmacs 3.8中分支出来，增强了特别多，下面将会详细介绍其特性；</li>
+<br>
+<li>我十年前读书的时候淘到一张C++ User Group的光盘，里面就提供了一个Windows 3.1 GUI的port，似乎改动也不小（要知道除了jasspa，其它版本大多只有终端版本）。刚才在网上搜了半天，找到说是Pierre Perret 基于Lawrence的MicroEmacs 4.0做的，不过其所在<a href="http://zenith.cs.uah.edu/labs/CS390/" target="_blank">网址</a>已经打不开了（已经排除了G.F.W的因素）；</li>
+<br>
+<li>还有其它一些分支和变体，比如快捷键跟GNU Emacs更接近的<a href="http://en.wikipedia.org/wiki/Mg_%28editor%29" target="_blank">mg</a>（原名MicroGNUEmacs。它甚至有个WinCE版本），克隆vi 的<a href="http://en.wikipedia.org/wiki/Vile_%28editor%29" target="_blank">vile</a>，<a href="http://freshmeat.net/projects/ersatz/" target="_blank">ersatz emacs</a>，<a href="http://http//texteditors.org/cgi-bin/wiki.pl?search=Conroy+MicroEmacs" target="_blank">Conroy MicroEmacs</a>等等。前面说的JED跟MicroEmacs也有些渊源。。</li>
+<br></ol>
+<p>	为什么这么有名的东西，在Linux里面没有见到过呢？因为原始作者Daniel Lawrence是个激进的反GPL分子，多次明确表示不同意将这个东西变成自由软件（free software）——虽然它一直是开放源码（open source）的。一直到了2002年，Lawrence才松口。至于02年之后为什么还没进入各个distribution，我就搞不清楚了（估计是没有吸引力不够？）不过FreeBSD里面是收录了它的。<br><br>	本来是打算主要介绍Jasspa的主要特性和亮点功能的，没想到前面这版本的考证工作费了我不少时间（而且各处的说法还有些相互矛盾的，比如），所以Jasspa下次再讲吧。</p>
+<p>	总体说一下MicroEmacs：。它的主要特性有：</p>
+<ul>
+<li>按键的行为可配置</li>
+<br>
+<li>多窗口编辑</li>
+<br>
+<li>“菜单”可配置</li>
+<br>
+<li>可通过宏语言来扩展</li>
+<br>
+<li>轻量级（加上配置都不到1M）</li>
+<br>
+</ul>
+缺点：虽然有Linus这样的牛人在顶这个东东，但它跟“现代”编辑器的差异还真的很大，大多只有Console版本（除了我上面说的CUG的那个Windows GUI port和Jasspa之外），不支持语法高亮，甚至C-x C-f 都不一定能提供补全，Shell集成也。<br>
+<p>当然基本的多窗口编辑、shell集成、可通过宏进行扩展这些基本思想还是有的，你拿它来替代nano还是绰绰有余。——但Jasspa 就不一样了，它完全可以用“麻雀虽小、五脏俱全”来形容，可说是功能齐备、文档详尽、配置方便、扩展容易。这个下次再详细讲吧。</p>
+<img style="max-width: 400px;" src="201103072112572588.jpg" height="198" width="400"><br><br>
+<p><img style="max-width: 800px;" src="201103072113149659.jpeg"><br>	<br><br>	对了，还有一点忘了说了，这个MicroEmacs有个别名叫uemacs，因为μ跟micro是差不多的意思。有不少地方都是直接用uemacs这个名字。</p>
+如果你想试试，Windows版本可到<a href="http://www.aquest.com/emacs.htm">Daniel Lawrence的主页</a>下载，那里有最新的5.00版本（好像这个网站刚被G-F-W屏蔽了，你可以下载我这里的副本<a href="http://bamanzi.is-programmer.com/user_files/bamanzi/File/uemacs5.zip">uemacs5.zip</a>(windows console版本和源代码) <a href="http://bamanzi.is-programmer.com/user_files/bamanzi/File/me404gui.zip">me404gui.zip</a>(windows gui版本)）；Linux和其它平台的版本可以到这里下载 [<a href="http://www.mtxia.com/css/Downloads/Editors/MicroEMACS/index.shtml">mtxia.com</a>]，注意这里虽然也提供了5.00版本（仅Windows版本和源代码），但Windows版本不能正常运行。 下载后注意将exe和那些.cmd宏文件放在一起。<br>
+<p><br>	参考:</p>
+<ul>
+<li>		<a href="http://en.wikipedia.org/wiki/Microemacs" target="_blank">Wikipedia : MicroEMACS</a></li>
+<br>
+<li><a href="http://www.emacswiki.org/emacs/MicroEmacs" target="_blank">EmacsWiki: MicroEmacs</a></li>
+<br>
+<li><a href="http://texteditors.org/cgi-bin/wiki.pl?MicroEmacs" target="_blank">texteditors.org: MicroEmacs</a></li>
+<br>
+<li><a href="http://www.mtxia.com/css/Downloads/Editors/MicroEMACS/index.shtml" target="_blank">MicroEmacs下载</a>（主要是Lawrence原始分支，提供了多种平台的3.09 - 5.00各版本二进制包和源代码，也有mg的版本）</li>
+<br>
+</ul>
+Technorati 标签: <a class="performancingtags" href="http://technorati.com/tag/emacs" rel="tag">emacs</a>, <a class="performancingtags" href="http://technorati.com/tag/uemacs" rel="tag">uemacs</a>, <a class="performancingtags" href="http://technorati.com/tag/microemacs" rel="tag">microemacs</a><br>
+<div style="position: absolute; z-index: 99999999; display: none; top: 0pt; right: 0pt; bottom: auto; left: auto; height: auto; width: auto; padding: 5px; background-color: rgb(0, 0, 0); font-size: 13px; line-height: 1.2; color: rgb(255, 255, 255); opacity: 0.9;"><br>
+<p style="margin: 0pt; padding: 0pt; display: none;">&nbsp;</p>
+<br>
+<p style="margin: 0pt; padding: 0pt; color: rgb(255, 255, 153); display: none;">&nbsp;</p>
+<br>
+<p style="margin: 0pt; padding: 0pt; display: none;">&nbsp;</p>
+</div>
+<br>
+<div style="position: absolute; z-index: 99999999; display: none; top: 0pt; right: 0pt; bottom: auto; left: auto; height: auto; width: auto; padding: 5px; background-color: rgb(0, 0, 0); font-size: 13px; line-height: 1.2; color: rgb(255, 255, 255); opacity: 0.9;"><br>
+<p style="margin: 0pt; padding: 0pt; display: none;">&nbsp;</p>
+<br>
+<p style="margin: 0pt; padding: 0pt; color: rgb(255, 255, 153); display: none;">&nbsp;</p>
+<br>
+<p style="margin: 0pt; padding: 0pt; display: none;">&nbsp;</p>
+</div>
+<br>
+<div style="position: absolute; z-index: 99999999; display: none; top: 1418px; right: auto; bottom: auto; left: 106px; height: auto; width: auto; padding: 5px; background-color: rgb(0, 0, 0); font-size: 13px; line-height: 1.2; color: rgb(255, 255, 255); opacity: 0.9;"><br>
+<p style="margin: 0pt; padding: 0pt; display: block;"><br>		mtxia.com</p>
+<br>
+<p style="margin: 0pt; padding: 0pt; color: rgb(255, 255, 153); display: none;">&nbsp;</p>
+<br>
+<p style="margin: 0pt; padding: 0pt; display: none; color: rgb(255, 255, 255);"><br>		Searching...</p>
+</div></div><div id="MySignature" style="display: block;"><div id="wumiiRelatedItems"></div></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory"></div>
+<div id="EntryTag">标签: <a href="http://www.cnblogs.com/bamanzi/tag/emacs/">emacs</a>, <a href="http://www.cnblogs.com/bamanzi/tag/microemacs/">microemacs</a></div>
+<div id="blog_post_info"><div id="green_channel">
+        <a id="green_channel_digg">好文要顶</a>
+            <a id="green_channel_follow">关注我</a>
+    <a id="green_channel_favorite">收藏该文</a>
+    <a id="green_channel_weibo" title="分享至新浪微博"><img src="icon_weibo_24.png" alt=""></a>
+    <a id="green_channel_wechat" title="分享至微信"><img src="wechat.png" alt=""></a>
+</div>
+<div id="author_profile">
+    <div id="author_profile_info" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/bamanzi/" target="_blank"><img src="u163248.png" class="author_avatar" alt=""></a>
+        <div id="author_profile_detail" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/bamanzi/">巴蛮子</a><br>
+            <a href="http://home.cnblogs.com/u/bamanzi/followees">关注 - 34</a><br>
+            <a href="http://home.cnblogs.com/u/bamanzi/followers">粉丝 - 75</a>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div id="author_profile_honor"></div>
+    <div id="author_profile_follow">
+    </div>
+</div>
+<div id="div_digg">
+    <div class="diggit">
+        <span class="diggnum" id="digg_count">0</span>
+    </div>
+    <div class="buryit">
+        <span class="burynum" id="bury_count">0</span>
+    </div>
+    <div class="clear"></div>
+    <div class="diggword" id="digg_tips">
+    </div>
+</div>
+</div>
+<div class="clear"></div>
+<div id="post_next_prev"><a href="http://www.cnblogs.com/bamanzi/archive/2011/03/07/emacs-auto-complete-scite-api.html" class="p_n_p_prefix">« </a> 上一篇：<a href="http://www.cnblogs.com/bamanzi/archive/2011/03/07/emacs-auto-complete-scite-api.html" title="发布于2011-03-07 21:23">[emacs] auto-complete上使用scite的api文件进行补全</a><br><a href="http://www.cnblogs.com/bamanzi/archive/2011/03/07/microemacs-jasspa-cool-1.html" class="p_n_p_prefix">» </a> 下一篇：<a href="http://www.cnblogs.com/bamanzi/archive/2011/03/07/microemacs-jasspa-cool-1.html" title="发布于2011-03-07 21:28">图说MicroEmacs Jasspa版本的亮点功能(1)</a><br></div>
+</div>
+
+
+		</div>
+		<div class="postDesc">posted @ <span id="post-date">2011-03-07 21:24</span> <a href="http://www.cnblogs.com/bamanzi/">巴蛮子</a> 阅读(<span id="post_view_count">4829</span>) 评论(<span id="post_comment_count">6</span>)  <a href="https://i.cnblogs.com/EditPosts.aspx?postid=1976366" rel="nofollow">编辑</a> <a href="#">收藏</a></div>
+	</div>
+	<script type="text/javascript">/* Code removed by ScrapBook */</script>
+	
+</div><!--end: topics 文章、评论容器-->
+</div><a name="!comments"></a><div id="blog-comments-placeholder"><div id="comments_pager_top"></div>
+<!--done-->
+<br>
+<div class="feedback_area_title">评论</div>
+<div class="feedbackNoItems"></div>
+	
+
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"><a>回复</a><a>引用</a><a>删除</a></span>
+				</div>
+				<a href="#2043326" class="layer">#1楼</a><a name="2043326" id="comment_anchor_2043326"></a> <span class="comment_date">2011-03-10 11:39</span> | <a id="a_comment_author_2043326" href="http://www.cnblogs.com/sdjc/" target="_blank">红烧土豆</a> <a href="http://msg.cnblogs.com/send/%E7%BA%A2%E7%83%A7%E5%9C%9F%E8%B1%86" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2043326" class="blog_comment_body">中文支持不好。<br>现在emacs 感觉也不是太大</div><div class="comment_vote"><a class="comment_digg">支持(0)</a><a class="comment_bury">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"><a>修改</a><a>删除</a></span>
+				</div>
+				<a href="#2043446" class="layer">#2楼</a><a name="2043446" id="comment_anchor_2043446"></a>[<span class="louzhu">楼主</span>] <span class="comment_date">2011-03-10 13:36</span> | <a id="a_comment_author_2043446" href="http://www.cnblogs.com/bamanzi/" target="_blank">巴蛮子</a> <a href="http://msg.cnblogs.com/send/%E5%B7%B4%E8%9B%AE%E5%AD%90" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2043446" class="blog_comment_body"><a href="#2043326" title="查看所回复的评论">@</a>
+红烧土豆<br><br>我也觉得这很不爽，一个是半个字符问题，另一个是不支持其它编码（至少得有utf-8呀）。<br><br>适合在一些临时机器上用吧。自己机器上用emacsclient也很快。</div><div class="comment_vote"><a class="comment_digg">支持(0)</a><a class="comment_bury">反对(0)</a></div><span id="comment_2043446_avatar" style="display: none;">http://pic.cnblogs.com/face/u163248.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"><a>修改</a><a>删除</a></span>
+				</div>
+				<a href="#2105098" class="layer">#3楼</a><a name="2105098" id="comment_anchor_2105098"></a>[<span class="louzhu">楼主</span>] <span class="comment_date">2011-05-24 14:18</span> | <a id="a_comment_author_2105098" href="http://www.cnblogs.com/bamanzi/" target="_blank">巴蛮子</a> <a href="http://msg.cnblogs.com/send/%E5%B7%B4%E8%9B%AE%E5%AD%90" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2105098" class="blog_comment_body">看介绍，另外一个叫做QEmacs的东西也很强，不仅支持UTF-8和“大”文件，还支持所见即所得的HTML/DocBook编辑、十六进制编辑、Shell和vt100终端，以及X(包括XIM和Xft)——要知道，它最后的一个版本可是2003年出的<br><br><a href="http://bellard.org/qemacs/" target="_blank">QEmacs Editor</a></div><div class="comment_vote"><a class="comment_digg">支持(0)</a><a class="comment_bury">反对(0)</a></div><span id="comment_2105098_avatar" style="display: none;">http://pic.cnblogs.com/face/u163248.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"><a>回复</a><a>引用</a><a>删除</a></span>
+				</div>
+				<a href="#2258290" class="layer">#4楼</a><a name="2258290" id="comment_anchor_2258290"></a> <span class="comment_date">2011-12-01 11:56</span> | <a id="a_comment_author_2258290" href="http://www.cnblogs.com/bananapeel/" target="_blank">coder?coder!</a> <a href="http://msg.cnblogs.com/send/coder%3Fcoder%21" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2258290" class="blog_comment_body">= =MicroEmacs不支持语法高亮…………linus是怎么喜欢上这玩意的。<br>话说Emacs现在的确变臃肿了…………</div><div class="comment_vote"><a class="comment_digg">支持(0)</a><a class="comment_bury">反对(0)</a></div><span id="comment_2258290_avatar" style="display: none;">http://pic.cnblogs.com/face/u304484.jpg?id=29152556</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"><a>修改</a><a>删除</a></span>
+				</div>
+				<a href="#2291586" class="layer">#5楼</a><a name="2291586" id="comment_anchor_2291586"></a>[<span class="louzhu">楼主</span>] <span class="comment_date">2012-01-11 14:31</span> | <a id="a_comment_author_2291586" href="http://www.cnblogs.com/bamanzi/" target="_blank">巴蛮子</a> <a href="http://msg.cnblogs.com/send/%E5%B7%B4%E8%9B%AE%E5%AD%90" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2291586" class="blog_comment_body">jasspa居然还支持将macros以及其它数据文件跟me.exe打包成一个大的可执行程序 <a href="http://www.jasspa.com/zeroinst.html" target="_blank">MicroEmacs JASSPA Distribution</a><br><br>打包方法跟tar比较类似（只不过需要对原本的可执行程序特殊对待一下）。<br><br>不过我这里打包后用C-x C-f bfs://访问不成功，Windows和Linux上都不行 :-(<br>而且它也没说怎么让这个新的可执行程序能够读取到包内的配置</div><div class="comment_vote"><a class="comment_digg">支持(0)</a><a class="comment_bury">反对(0)</a></div><span id="comment_2291586_avatar" style="display: none;">http://pic.cnblogs.com/face/u163248.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"><a>回复</a><a>引用</a><a>删除</a></span>
+				</div>
+				<a href="#2322476" class="layer">#6楼</a><a name="2322476" id="comment_anchor_2322476"></a><span id="comment-maxId" style="display: none;">2322476</span><span id="comment-maxDate" style="display: none;">2012/3/4 17:23:12</span> <span class="comment_date">2012-03-04 17:23</span> | <a id="a_comment_author_2322476" href="http://www.cnblogs.com/Open_Source/" target="_blank">open  source</a> <a href="http://msg.cnblogs.com/send/open%20%20source" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2322476" class="blog_comment_body"><fieldset class="comment_quote"><legend>引用</legend>想起以前看见网上说Linus用的就是这个叫做MicroEmacs的编辑器（据说他还说了GNU Emacs is just evil，但我没找到确切的出处</fieldset><br>王根说的，文章是《完全用 Gnu/Linux 工作》</div><div class="comment_vote"><a class="comment_digg">支持(0)</a><a class="comment_bury">反对(0)</a></div><span id="comment_2322476_avatar" style="display: none;">http://pic.cnblogs.com/face/u237623.jpg?id=27125445</span>
+			</div>
+		</div>
+	<div id="comments_pager_bottom"></div></div><script type="text/javascript">/* Code removed by ScrapBook */</script>
+<div id="comment_form" class="commentform">
+<a name="commentform"></a>
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="#">刷新页面</a><a href="#top">返回顶部</a></div>
+<div id="comment_form_container">
+<div id="commentform_title">发表评论</div>
+<span id="tip_comment" style="color: Red;"></span>
+<p>
+昵称：<input id="tbCommentAuthor" class="author" disabled="disabled" size="50" value="巴蛮子" type="text">
+</p>
+<div class="commentbox_main">
+<div class="commentbox_title">
+<div class="commentbox_title_left">评论内容：</div>
+<div class="commentbox_title_right">
+<img id="ubb_quote" class="comment_icon" src="quote.gif" alt="引用" title="添加引用">
+<img id="ubb_bold" class="comment_icon" src="b.png" alt="粗体" title="添加粗体">
+<img id="ubb_url" class="comment_icon" src="lk.png" alt="链接" title="添加链接">
+<img id="ubb_indent" class="comment_icon" src="indent.png" alt="缩进" title="添加首行缩进">
+<img id="ubb_code" class="comment_icon" src="InsertCode.gif" alt="代码" title="添加代码">
+<img id="ubb_img" class="comment_icon" src="img.gif" alt="图片" title="上传图片">
+</div>
+</div>
+<div class="clear"></div>
+<textarea id="tbCommentBody" class="comment_textarea"></textarea>
+</div>
+<p id="commentbox_opt">
+<input id="btn_comment_submit" class="comment_btn" value="提交评论" type="button">
+<span id="span_comment_canceledit" style="display: none;"><a>不改了</a></span>
+<a>退出</a>
+</p>
+<div id="tip_comment2" style="color: Red;"></div>
+<p>
+[Ctrl+Enter快捷键提交]
+</p>
+<div style="display: none;">
+<span id="comment_edit_id"></span><span id="span_parentcomment_id"></span>
+<span id="span_parent_id"></span>
+<span id="span_comment_replyto"></span>
+<span id="span_comment_posted"></span>
+</div>
+</div>
+<div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+<div id="ad_t2"><a href="http://www.ucancode.com/index.htm" target="_blank">【推荐】50万行VC++源码: 大型组态工控、电力仿真CAD与GIS源码库</a><br><a href="https://cloud.tencent.com/developer/labs?fromSource=gwzcw.241259.241259.241259" target="_blank">【免费】从零开始学编程，开发者专属实验平台免费实践！</a><br></div>
+<div id="opt_under_post"></div>
+<div id="cnblogs_c1" class="c_ad_block"><a href="https://cn.udacity.com/course/front-end-web-developer-nanodegree--nd001-cn-advanced/?utm_source=cnblogs&amp;utm_medium=referral&amp;utm_campaign=FEND04" target="_blank"><img src="24442-20170629184920789-1740545267.png" alt="Udacity_前端_06290712" height="250" width="300"></a></div>
+<div id="under_post_news"><div class="itnews c_ad_block"><b>最新IT新闻</b>:<br> ·  <a href="http://news.cnblogs.com/n/572920/" target="_blank">乐视融资模式解密：很多融资手段本质都是加杠杆</a><br> ·  <a href="http://news.cnblogs.com/n/572919/" target="_blank">传Dropbox正在聘请IPO承销商 或年底启动IPO</a><br> ·  <a href="http://news.cnblogs.com/n/572918/" target="_blank">微软提醒用户安装最新Windows 10版本并查看隐私设置</a><br> ·  <a href="http://news.cnblogs.com/n/572917/" target="_blank">这七大颠覆性技术价值数十万亿美元 深度学习值35个亚马逊</a><br> ·  <a href="http://news.cnblogs.com/n/572916/" target="_blank">福特首秀辅助驾驶技术：能将通勤时间缩短20分钟</a><br>» <a href="http://news.cnblogs.com/" title="IT新闻" target="_blank">更多新闻...</a></div></div>
+<div id="cnblogs_c2" class="c_ad_block"><a href="https://www.jiguang.cn/devservice?source=bky" target="_blank"><img src="24442-20170629165247758-2056260207.png" alt="极光推广_0701" height="60" width="468"></a></div>
+<div id="under_post_kb"><div class="itnews c_ad_block" id="kb_block"><b>最新知识库文章</b>:<br><div id="kb_recent"> ·  <a href="http://kb.cnblogs.com/page/570194/" target="_blank">小printf的故事：什么是真正的程序员？</a><br> ·  <a href="http://kb.cnblogs.com/page/569992/" target="_blank">程序员的工作、学习与绩效</a><br> ·  <a href="http://kb.cnblogs.com/page/569056/" target="_blank">软件开发为什么很难</a><br> ·  <a href="http://kb.cnblogs.com/page/565901/" target="_blank">唱吧DevOps的落地，微服务CI/CD的范本技术解读</a><br> ·  <a href="http://kb.cnblogs.com/page/566523/" target="_blank">程序员，如何从平庸走向理想？</a><br></div>» <a href="http://kb.cnblogs.com/" target="_blank">更多知识库文章...</a></div></div>
+<div id="HistoryToday" class="c_ad_block"></div>
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+</div>
+
+
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+
+	<div id="sideBar">
+		<div id="sideBarMain">
+			
+<!--done-->
+<div class="newsItem">
+<h3 class="catListTitle">公告</h3>
+	<div id="blog-news"></div><script type="text/javascript">/* Code removed by ScrapBook */</script>
+</div>
+
+			<div id="calendar"><div id="blog-calendar" style=""><table id="blogCalendar" class="Cal" title="Calendar" cellspacing="0" cellpadding="0">
+	<tbody><tr><td colspan="7"><table class="CalTitle" cellspacing="0">
+		<tbody><tr><td class="CalNextPrev"><a>&lt;</a></td><td align="center">2011年3月</td><td class="CalNextPrev" align="right"><a>&gt;</a></td></tr>
+	</tbody></table></td></tr><tr><th class="CalDayHeader" abbr="日" scope="col" align="center">日</th><th class="CalDayHeader" abbr="一" scope="col" align="center">一</th><th class="CalDayHeader" abbr="二" scope="col" align="center">二</th><th class="CalDayHeader" abbr="三" scope="col" align="center">三</th><th class="CalDayHeader" abbr="四" scope="col" align="center">四</th><th class="CalDayHeader" abbr="五" scope="col" align="center">五</th><th class="CalDayHeader" abbr="六" scope="col" align="center">六</th></tr><tr><td class="CalOtherMonthDay" align="center">27</td><td class="CalOtherMonthDay" align="center">28</td><td align="center">1</td><td align="center"><a href="http://www.cnblogs.com/bamanzi/archive/2011/03/02.html"><u>2</u></a></td><td align="center">3</td><td align="center">4</td><td class="CalWeekendDay" align="center">5</td></tr><tr><td class="CalWeekendDay" align="center"><a href="http://www.cnblogs.com/bamanzi/archive/2011/03/06.html"><u>6</u></a></td><td align="center"><a href="http://www.cnblogs.com/bamanzi/archive/2011/03/07.html"><u>7</u></a></td><td align="center"><a href="http://www.cnblogs.com/bamanzi/archive/2011/03/08.html"><u>8</u></a></td><td align="center">9</td><td align="center"><a href="http://www.cnblogs.com/bamanzi/archive/2011/03/10.html"><u>10</u></a></td><td align="center">11</td><td class="CalWeekendDay" align="center">12</td></tr><tr><td class="CalWeekendDay" align="center">13</td><td align="center">14</td><td align="center">15</td><td align="center">16</td><td align="center">17</td><td align="center">18</td><td class="CalWeekendDay" align="center">19</td></tr><tr><td class="CalWeekendDay" align="center">20</td><td align="center">21</td><td align="center">22</td><td align="center">23</td><td align="center">24</td><td align="center">25</td><td class="CalWeekendDay" align="center">26</td></tr><tr><td class="CalWeekendDay" align="center">27</td><td align="center">28</td><td align="center">29</td><td align="center">30</td><td align="center">31</td><td class="CalOtherMonthDay" align="center">1</td><td class="CalOtherMonthDay" align="center">2</td></tr><tr><td class="CalOtherMonthDay" align="center">3</td><td class="CalOtherMonthDay" align="center">4</td><td class="CalOtherMonthDay" align="center">5</td><td class="CalOtherMonthDay" align="center">6</td><td class="CalOtherMonthDay" align="center">7</td><td class="CalOtherMonthDay" align="center">8</td><td class="CalOtherMonthDay" align="center">9</td></tr>
+</tbody></table></div><script type="text/javascript">/* Code removed by ScrapBook */</script></div>
+			
+			<div id="leftcontentcontainer">
+				<div id="blog-sidecolumn"><div id="sidebar_search" class="sidebar-block">
+<div id="sidebar_search" class="mySearch">
+<h3 class="catListTitle">搜索</h3>
+<div id="sidebar_search_box">
+<div id="widget_my_zzk" class="div_my_zzk"><input id="q" class="input_my_zzk" type="text">&nbsp;<input value="找找看" id="btnZzk" class="btn_my_zzk" type="button"></div>
+<div id="widget_my_google" class="div_my_zzk"><input name="google_q" id="google_q" class="input_my_zzk" type="text">&nbsp;<input value="谷歌搜索" class="btn_my_zzk" type="button"></div>
+</div>
+</div>
+
+</div><div id="sidebar_shortcut" class="sidebar-block">
+<div class="catListLink">
+<h3 class="catListTitle">常用链接</h3>
+<ul>
+<li><a href="http://www.cnblogs.com/bamanzi/p/" title="我的博客的随笔列表">我的随笔</a></li><li><a href="http://www.cnblogs.com/bamanzi/MyComments.html" title="我发表过的评论列表">我的评论</a></li><li><a href="http://www.cnblogs.com/bamanzi/OtherPosts.html" title="我评论过的随笔列表">我的参与</a></li><li><a href="http://www.cnblogs.com/bamanzi/RecentComments.html" title="我的博客的评论列表">最新评论</a></li><li><a href="http://www.cnblogs.com/bamanzi/tag/" title="我的博客的标签列表">我的标签</a></li>
+<li><a id="itemListLink" href="#">更多链接</a></li>
+</ul>
+<div id="itemListLin_con" style="display: none;">
+<ul>
+
+</ul>
+</div>
+</div></div><div id="sidebar_recentposts" class="sidebar-block">
+<div class="catListEssay">
+<h3 class="catListTitle">最新随笔</h3>
+<ul>
+<li><a href="http://www.cnblogs.com/bamanzi/p/tmux-share-windows-between-sessions.html">1. 在tmux会话之间共享窗口（Windows &amp; Panes）</a></li><li><a href="http://www.cnblogs.com/bamanzi/p/linux-disk-io-scheduler.html">2. [Linux性能调优] 磁盘I/O队列调度策略</a></li><li><a href="http://www.cnblogs.com/bamanzi/p/lightweight-x-window-manager-windowmaker.html">3. X下轻量级桌面WindowMaker上手指南</a></li><li><a href="http://www.cnblogs.com/bamanzi/p/switch-tmux-to-gnu-screen.html">4. 从Tmux 转到GNU Screen</a></li><li><a href="http://www.cnblogs.com/bamanzi/p/putty-transfering-files.html">5. 使用PuTTY时的文件上传下载方法</a></li><li><a href="http://www.cnblogs.com/bamanzi/p/org-indent-mode.html">6. [emacs org-mode小技巧] org-indent-mode 让文档更容易阅读</a></li><li><a href="http://www.cnblogs.com/bamanzi/p/iceweasel-to-firefox.html">7. Firefox终于返回到了Debian stable</a></li><li><a href="http://www.cnblogs.com/bamanzi/p/tldr-two-android-clients.html">8. tldr 的安卓客户端</a></li><li><a href="http://www.cnblogs.com/bamanzi/p/ssh-login-without-password.html">9. 如何配置ssh免密码登录</a></li><li><a href="http://www.cnblogs.com/bamanzi/p/colorful-shell.html">10. 彩色的Shell</a></li>
+</ul>
+</div>
+</div><div id="sidebar_toptags" class="sidebar-block">
+<div class="catListTag">
+<h3 class="catListTitle">我的标签</h3>
+<ul>
+<li><a href="http://www.cnblogs.com/bamanzi/tag/emacs/">emacs</a>(48)</li><li><a href="http://www.cnblogs.com/bamanzi/tag/linux/">linux</a>(15)</li><li><a href="http://www.cnblogs.com/bamanzi/tag/firefox/">firefox</a>(12)</li><li><a href="http://www.cnblogs.com/bamanzi/tag/shell/">shell</a>(11)</li><li><a href="http://www.cnblogs.com/bamanzi/tag/python/">python</a>(10)</li><li><a href="http://www.cnblogs.com/bamanzi/tag/debian/">debian</a>(10)</li><li><a href="http://www.cnblogs.com/bamanzi/tag/%E5%B7%A5%E5%85%B7%E8%BD%AF%E4%BB%B6/">工具软件</a>(9)</li><li><a href="http://www.cnblogs.com/bamanzi/tag/cygwin/">cygwin</a>(6)</li><li><a href="http://www.cnblogs.com/bamanzi/tag/linuxmint/">linuxmint</a>(6)</li><li><a href="http://www.cnblogs.com/bamanzi/tag/unix/">unix</a>(6)</li><li><a href="http://www.cnblogs.com/bamanzi/tag/">更多</a></li>
+</ul>
+</div></div><div id="sidebar_myteams" class="sidebar-block"></div><div id="sidebar_categories">
+<div class="catListPostCategory">
+<h3 class="catListTitle">随笔分类<span style="font-size: 11px; font-weight: normal;">(144)</span></h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_0_Link_0" href="http://www.cnblogs.com/bamanzi/category/559028.html">Emacs(36)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_1" href="http://www.cnblogs.com/bamanzi/category/559052.html">Firefox(13)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_2" href="http://www.cnblogs.com/bamanzi/category/711382.html">sysadmin(14)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_3" href="http://www.cnblogs.com/bamanzi/category/559032.html">Unix(38)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_4" href="http://www.cnblogs.com/bamanzi/category/559030.html">编程(20)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_5" href="http://www.cnblogs.com/bamanzi/category/786984.html">移动设备(5)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_6" href="http://www.cnblogs.com/bamanzi/category/559027.html">桌面软件(18)</a> </li>
+
+</ul>
+
+</div>
+
+<div class="catListPostArchive">
+<h3 class="catListTitle">随笔档案<span style="font-size: 11px; font-weight: normal;">(119)</span></h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_1_Link_0" href="http://www.cnblogs.com/bamanzi/archive/2017/06.html">2017年6月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_1" href="http://www.cnblogs.com/bamanzi/archive/2017/05.html">2017年5月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_2" href="http://www.cnblogs.com/bamanzi/archive/2016/08.html">2016年8月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_3" href="http://www.cnblogs.com/bamanzi/archive/2016/07.html">2016年7月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_4" href="http://www.cnblogs.com/bamanzi/archive/2016/06.html">2016年6月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_5" href="http://www.cnblogs.com/bamanzi/archive/2016/04.html">2016年4月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_6" href="http://www.cnblogs.com/bamanzi/archive/2016/02.html">2016年2月 (4)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_7" href="http://www.cnblogs.com/bamanzi/archive/2016/01.html">2016年1月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_8" href="http://www.cnblogs.com/bamanzi/archive/2015/12.html">2015年12月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_9" href="http://www.cnblogs.com/bamanzi/archive/2015/11.html">2015年11月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_10" href="http://www.cnblogs.com/bamanzi/archive/2015/09.html">2015年9月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_11" href="http://www.cnblogs.com/bamanzi/archive/2015/07.html">2015年7月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_12" href="http://www.cnblogs.com/bamanzi/archive/2015/06.html">2015年6月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_13" href="http://www.cnblogs.com/bamanzi/archive/2014/10.html">2014年10月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_14" href="http://www.cnblogs.com/bamanzi/archive/2014/08.html">2014年8月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_15" href="http://www.cnblogs.com/bamanzi/archive/2014/06.html">2014年6月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_16" href="http://www.cnblogs.com/bamanzi/archive/2014/03.html">2014年3月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_17" href="http://www.cnblogs.com/bamanzi/archive/2013/08.html">2013年8月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_18" href="http://www.cnblogs.com/bamanzi/archive/2013/05.html">2013年5月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_19" href="http://www.cnblogs.com/bamanzi/archive/2013/04.html">2013年4月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_20" href="http://www.cnblogs.com/bamanzi/archive/2013/02.html">2013年2月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_21" href="http://www.cnblogs.com/bamanzi/archive/2012/12.html">2012年12月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_22" href="http://www.cnblogs.com/bamanzi/archive/2012/09.html">2012年9月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_23" href="http://www.cnblogs.com/bamanzi/archive/2012/08.html">2012年8月 (8)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_24" href="http://www.cnblogs.com/bamanzi/archive/2012/07.html">2012年7月 (5)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_25" href="http://www.cnblogs.com/bamanzi/archive/2012/06.html">2012年6月 (4)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_26" href="http://www.cnblogs.com/bamanzi/archive/2012/05.html">2012年5月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_27" href="http://www.cnblogs.com/bamanzi/archive/2012/02.html">2012年2月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_28" href="http://www.cnblogs.com/bamanzi/archive/2012/01.html">2012年1月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_29" href="http://www.cnblogs.com/bamanzi/archive/2011/12.html">2011年12月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_30" href="http://www.cnblogs.com/bamanzi/archive/2011/10.html">2011年10月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_31" href="http://www.cnblogs.com/bamanzi/archive/2011/08.html">2011年8月 (4)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_32" href="http://www.cnblogs.com/bamanzi/archive/2011/07.html">2011年7月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_33" href="http://www.cnblogs.com/bamanzi/archive/2011/06.html">2011年6月 (6)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_34" href="http://www.cnblogs.com/bamanzi/archive/2011/05.html">2011年5月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_35" href="http://www.cnblogs.com/bamanzi/archive/2011/04.html">2011年4月 (8)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_36" href="http://www.cnblogs.com/bamanzi/archive/2011/03.html">2011年3月 (12)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_37" href="http://www.cnblogs.com/bamanzi/archive/2011/02.html">2011年2月 (4)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_38" href="http://www.cnblogs.com/bamanzi/archive/2010/11.html">2010年11月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_39" href="http://www.cnblogs.com/bamanzi/archive/2010/10.html">2010年10月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_40" href="http://www.cnblogs.com/bamanzi/archive/2010/06.html">2010年6月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_41" href="http://www.cnblogs.com/bamanzi/archive/2010/04.html">2010年4月 (2)</a> </li>
+
+</ul>
+
+</div>
+
+<div class="catListArticleArchive">
+<h3 class="catListTitle">文章档案<span style="font-size: 11px; font-weight: normal;">(5)</span></h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_2_Link_0" href="http://www.cnblogs.com/bamanzi/archives/2016/02.html" rel="nofollow">2016年2月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_2_Link_1" href="http://www.cnblogs.com/bamanzi/archives/2014/01.html" rel="nofollow">2014年1月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_2_Link_2" href="http://www.cnblogs.com/bamanzi/archives/2012/08.html" rel="nofollow">2012年8月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_2_Link_3" href="http://www.cnblogs.com/bamanzi/archives/2012/07.html" rel="nofollow">2012年7月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_2_Link_4" href="http://www.cnblogs.com/bamanzi/archives/2010/11.html" rel="nofollow">2010年11月 (1)</a> </li>
+
+</ul>
+
+</div>
+
+<div class="catList">
+<h3 class="catListTitle">Pages</h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_3_Link_0" href="http://www.cnblogs.com/bamanzi/articles/downloads.html" rel="nofollow">一些可下载资源</a> </li>
+
+</ul>
+
+</div>
+
+</div><div id="sidebar_scorerank" class="sidebar-block">
+<div class="catListBlogRank">
+<h3 class="catListTitle">积分与排名</h3>
+<ul>
+	<li class="liScore">
+		积分 -	153390
+	</li><li class="liRank">
+		排名 -	1493
+	</li>
+</ul>
+</div>
+
+
+</div><div id="sidebar_recentcomments" class="sidebar-block"><div id="recent_comments_wrap">
+<div class="catListComment">
+<h3 class="catListTitle">最新评论</h3>
+
+	<div id="RecentCommentsBlock"><ul>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/bamanzi/p/org-indent-mode.html#3632442">1. Re:[emacs org-mode小技巧] org-indent-mode 让文档更容易阅读</a></li>
+        <li class="recent_comment_body">@neopeter抱歉，没有收到这条评论的通知，刚才回来查这篇文章才看到。我用的这个主题是emacs自带的tango-dark，只不过自己把org-level-?的字体大小设置了一下（org-leve......</li>
+        <li class="recent_comment_author">--巴蛮子</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/bamanzi/p/zsh-simple-guide.html#3614729">2. Re:我的zsh简单设置</a></li>
+        <li class="recent_comment_body"><a href="#" target="_blank">Zsh themes for prompts screenshots | blog post</a></li>
+        <li class="recent_comment_author">--巴蛮子</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/bamanzi/p/putty-transfering-files.html#3613070">3. Re:使用PuTTY时的文件上传下载方法</a></li>
+        <li class="recent_comment_body">用PuTTY官方提供的pscp.exe，小巧方便。</li>
+        <li class="recent_comment_author">--ejzhang</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/bamanzi/p/org-indent-mode.html#3600332">4. Re:[emacs org-mode小技巧] org-indent-mode 让文档更容易阅读</a></li>
+        <li class="recent_comment_body">你好，您是在ubuntu下使用emacs是吧，你这个主题颜色很好，不是默认的把，怎么配置的呢？请问<br>希望能加你好友 qq 四九7767141</li>
+        <li class="recent_comment_author">--neopeter</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/bamanzi/p/zsh-simple-guide.html#3582839">5. Re:我的zsh简单设置</a></li>
+        <li class="recent_comment_body">tput的用法： <a href="#" target="_blank">Colours and Cursor Movement With tput</a></li>
+        <li class="recent_comment_author">--巴蛮子</li>
+</ul>
+</div>
+</div>
+</div></div><div id="sidebar_topviewedposts" class="sidebar-block"><div id="topview_posts_wrap">
+<div class="catListView">
+<h3 class="catListTitle">阅读排行榜</h3>
+	<div id="TopViewPostsBlock"><ul><li><a href="http://www.cnblogs.com/bamanzi/p/zsh-simple-guide.html">1. 我的zsh简单设置(34349)</a></li><li><a href="http://www.cnblogs.com/bamanzi/archive/2012/07/08/notes-gitlab-on-rhel.html">2. 关于gitlab搭建方法的几点补充(24545)</a></li><li><a href="http://www.cnblogs.com/bamanzi/archive/2010/10/19/iphone-chm-viewer-comparision.html">3. iPhone上面几个CHM阅读工具对比(21583)</a></li><li><a href="http://www.cnblogs.com/bamanzi/archive/2013/05/05/mobaxterm-ssh-xserver.html">4. MobaXterm: SSH/X远程客户端,  Xmanager的最佳免费替代品(16522)</a></li><li><a href="http://www.cnblogs.com/bamanzi/archive/2012/06/24/note-taking-tool-cherrytree.html">5. 推荐跨平台笔记软件CherryTree(12003)</a></li></ul></div>
+</div>
+</div></div><div id="sidebar_topcommentedposts" class="sidebar-block"><div id="topfeedback_posts_wrap">
+<div class="catListFeedback">
+<h3 class="catListTitle">评论排行榜</h3>
+	<div id="TopFeedbackPostsBlock"><ul><li><a href="http://www.cnblogs.com/bamanzi/archive/2011/03/06/emacs-elisp-snippets.html">1. 我的Emacs elisp代码搜集贴(69)</a></li><li><a href="http://www.cnblogs.com/bamanzi/archive/2011/04/12/firefox-keysnail-tips.html">2. keysnail 使用方法与一些技巧搜集贴(48)</a></li><li><a href="http://www.cnblogs.com/bamanzi/archive/2011/05/06/emacs-code-completion-for-python-methods.html">3. [emacs] Python代码补全的各种方法介绍以及对比(27)</a></li><li><a href="http://www.cnblogs.com/bamanzi/archive/2011/03/08/emacs-window-related-tips.html">4. [Emacs] 与窗口相关的笔记(22)</a></li><li><a href="http://www.cnblogs.com/bamanzi/archive/2011/04/22/choose-with-ido-or-anything.html">5. [emacs] 用 ido 或 anything 进行选择(15)</a></li></ul></div>
+</div>
+</div></div><div id="sidebar_topdiggedposts" class="sidebar-block"><div id="topdigg_posts_wrap">
+<div class="catListView">
+<h3 class="catListTitle">推荐排行榜</h3>
+<div id="TopDiggPostsBlock"><ul><li><a href="http://www.cnblogs.com/bamanzi/p/hddb-replaces-everything.html">1. 推荐几个Windows工具软件: HDDB - Everything的替代品(2)</a></li><li><a href="http://www.cnblogs.com/bamanzi/p/colorful-shell.html">2. 彩色的Shell(2)</a></li><li><a href="http://www.cnblogs.com/bamanzi/p/zsh-simple-guide.html">3. 我的zsh简单设置(2)</a></li><li><a href="http://www.cnblogs.com/bamanzi/archive/2012/06/27/windows-console-emulater.html">4. Windows下的Console Emulator(2)</a></li><li><a href="http://www.cnblogs.com/bamanzi/archive/2012/05/12/org-mode-so-powerful.html">5. [emacs] 为什么说org-mode是个神器(1)</a></li></ul></div>
+</div></div></div></div><script type="text/javascript">/* Code removed by ScrapBook */</script>
+			</div>
+			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		
+<!--done-->
+Copyright ©2017 巴蛮子
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+
+
+</body>
+</html>

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html itemscope="" itemtype="http://schema.org/Blog" xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US">
+<head profile="http://gmpg.org/xfn/11">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Using jed with different encodings – utf8 and cp1251. « Unix HOWTOs and Tips</title>
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="pingback" href="http://blog.bulsynt.org/xmlrpc.php">
+
+<meta itemprop="name" content="Unix HOWTOs and Tips">
+<meta itemprop="description" content="Short and useful unix command line administration tips.">
+<meta itemprop="image" content="http://blog.bulsynt.org/konsole.png">
+
+<link rel="alternate" type="application/rss+xml" title="Unix HOWTOs and Tips » Feed" href="http://blog.bulsynt.org/feed/">
+<link rel="alternate" type="application/rss+xml" title="Unix HOWTOs and Tips » Comments Feed" href="http://blog.bulsynt.org/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="Unix HOWTOs and Tips » Using jed with different encodings – utf8 and cp1251. Comments Feed" href="http://blog.bulsynt.org/2011/03/06/how-to-use-jed-with-different-encodings-utf8-and-cp1251/feed/">
+<link rel="stylesheet" id="lightword_stylesheet-css" href="style.css" type="text/css" media="all">
+<link rel="stylesheet" id="lightword_stylesheet_wider-css" href="wider.css" type="text/css" media="all">
+<script src="about:blank" async=""></script><script src="about:blank" async=""></script><script type="text/javascript" async="" src="about:blank" gapi_processed="true"></script><script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript" src="about:blank"></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://blog.bulsynt.org/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://blog.bulsynt.org/wp-includes/wlwmanifest.xml"> 
+<link rel="index" title="Unix HOWTOs and Tips" href="http://blog.bulsynt.org/">
+<link rel="start" title="Using jed with different encodings – utf8 and cp1251." href="http://blog.bulsynt.org/2011/03/06/how-to-use-jed-with-different-encodings-utf8-and-cp1251/">
+<link rel="next" title="Simple PHP cyr2lat command line transliteration filter from bulgarian to latin" href="http://blog.bulsynt.org/2011/10/30/simple-php-cyr2lat-command-line-transliteration-filter-from-bulgarian-to-latin/">
+<link rel="canonical" href="http://blog.bulsynt.org/2011/03/06/how-to-use-jed-with-different-encodings-utf8-and-cp1251/">
+<link rel="shortlink" href="http://blog.bulsynt.org/?p=3">
+	
+<!-- START: Syntax Highlighter ComPress -->
+<script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript" src="about:blank"></script>
+<link type="text/css" rel="stylesheet" href="shCoreFadeToGrey.css">
+<!-- END: Syntax Highlighter ComPress -->
+
+  <style type="text/css">
+/* Code tidied up by ScrapBook */
+#content-body, x:-moz-any-link { float: left; margin-right: 28px; }
+#content-body, x:-moz-any-link, x:default { float: none; margin-right: 25px; }
+</style>
+<style type="text/css">
+/* Code tidied up by ScrapBook */
+body { background-color: rgb(38, 0, 96); }
+</style>
+
+<!--[if IE 6]><style type="text/css">#header{background-image: none; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://blog.bulsynt.org/wp-content/themes/lightword/images/wider/content_top.png',sizingMethod='scale'); }#footer{background:transparent url(http://blog.bulsynt.org/wp-content/themes/lightword/images/wider/content_bottom.gif) no-repeat;height:8px;}.comm_date{background-image: none; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://blog.bulsynt.org/wp-content/themes/lightword/images/date_comm_box.png',sizingMethod='scale'); }</style><![endif]-->
+<style type="text/css">
+/* Code tidied up by ScrapBook */
+@media screen {
+}
+@media print {
+}
+</style><style type="text/css" id="diigo-activeHighlight">
+/* Code tidied up by ScrapBook */
+</style></head>
+
+<body class="single single-post postid-3 single-format-standard">
+<div id="wrapper">
+
+<div id="top_cufon"><h1 id="logo"><a name="top" title="Unix HOWTOs and Tips" href="http://blog.bulsynt.org/">Unix HOWTOs and Tips</a> <small>Short unix command line administration tips and scripts</small></h1></div>
+
+<div id="header">
+<a id="rss-feed" title="Syndicate this site using RSS" href="http://blog.bulsynt.org/feed/">Subscribe via RSS</a>
+
+<div id="top_bar">
+<div class="center_menu">
+<ul id="front_menu" style="z-index: 50;">
+    <li><a class="" title="Home" href="http://blog.bulsynt.org/"><span>Home</span></a></li>
+<div class="menu"><ul style="opacity: 0.9; display: none; z-index: 40;"><li class="page_item page-item-2"><a href="http://blog.bulsynt.org/about/" title="About"><span>About</span></a></li></ul></div>
+</ul>
+</div>
+<form method="get" id="searchform" action="http://blog.bulsynt.org/"> <input value="" name="s" id="s" type="text"> <input id="go" value="" alt="Search" title="Search" type="submit"></form>
+</div>
+
+</div>
+<div id="content"><div id="content-body">
+<div class="post-3 post type-post status-publish format-standard hentry category-utils tag-command-line tag-cp1251 tag-editor tag-emacs tag-jed tag-locale tag-unix tag-utf8 tag-windows1251" id="post-3">
+<div class="comm_date"><span class="data"><span class="j">6</span>Mar/11</span><span class="nr_comm"><a class="nr_comm_spot" href="#comments">0</a></span></div>
+<h2><a class="thetitle" title="Using jed with different encodings – utf8 and cp1251." href="#" rel="bookmark">Using jed with different encodings – utf8 and cp1251.</a>
+<div class="google_plus_one"><div style="text-indent: 0px; margin: 0px; padding: 0px; background: transparent none repeat scroll 0% 0%; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 450px; height: 20px;" id="___plusone_0"><iframe ng-non-bindable="" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position: static; top: 0px; width: 450px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 20px;" tabindex="0" vspace="0" id="I0_1498976865827" name="I0_1498976865827" src="index_1.html" width="100%" frameborder="0"></iframe></div></div>	
+</h2>
+
+			
+
+<p>Maintaining websites through remote ssh connections, requires using console editors which should start fast, do not require huge amounts of memory and are easy to use.</p>
+<p>The powerfull editors Vim and Emacs are not good for this task - although VIM is virtually guaranteed to be installed and it is fast, can be customized and so on, it is hardly easy to learn. Emacs may be easier, it has menus and tutorial, it is very customizable, but is not too fast to start.</p>
+<p>In contrast,&nbsp;<strong><a title="Jed" href="http://www.jedsoft.org/jed/download.html" target="_blank">Jed</a></strong> is a very light weight editor which is ideal for quick changes, because it starts instantly, supports syntax highlighting for many common programming languages and has good UTF8 support. It has emacs like macro recorder, buffers, and auto indenting too. It also supports emacs keyboard shortcuts by default, so if you use emacs for longer programming sessions, you probably will like jed when you need to edit quickly some remote files.</p>
+<p>Unfortunately bulgarian texts (and sites) are often written using 2 different common encodings, and so there is a catch - you need some tweaks for your programs (and jed in particular), to support both encodings equally well:</p>
+<p>In order to edit utf8 files with <strong>jed</strong>, first, you need to have the correct bulgarian locale for utf8 generated.<br>
+You can do this using this command:</p>
+<div><div id="highlighter_819590" class="syntaxhighlighter  shell"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellspacing="0" cellpadding="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="shell functions">sudo</code> <code class="shell plain">localedef -i bg_BG -f UTF-8 bg_BG.UTF8</code></div></div></td></tr></tbody></table></div></div>
+<p>You can install <strong>jed</strong> and some <strong>jed</strong> goodies with the following instructions (Debian/Ubuntu):<br>
+<strong><code></code></strong></p>
+<div><div id="highlighter_323248" class="syntaxhighlighter  shell"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellspacing="0" cellpadding="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="shell functions">sudo</code> <code class="shell plain">apt-get </code><code class="shell functions">install</code> <code class="shell plain">jed jed-extra jedstate</code></div></div></td></tr></tbody></table></div></div>
+<p>For RedHat/Centos, try to google for a <strong>jed</strong> rpm, or try:</p>
+<div><div id="highlighter_122813" class="syntaxhighlighter  shell"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellspacing="0" cellpadding="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="shell plain">wget&nbsp; </code><code class="shell functions">ftp</code><code class="shell plain">:</code><code class="shell plain">//ftp</code><code class="shell plain">.pbone.net</code><code class="shell plain">/mirror/centos</code><code class="shell plain">.karan.org</code><code class="shell plain">/el5/extras/testing/i386/RPMS/jed-0</code><code class="shell plain">.99.18-5.el5.kb.i386.rpm</code></div><div class="line number2 index1 alt1"><code class="shell plain">rpm -i jed-0.99.18-5.el5.kb.i386.rpm</code></div></div></td></tr></tbody></table></div></div>
+<p>Next, you add these lines to your <strong>.bashrc</strong> file:</p>
+<div><div id="highlighter_841638" class="syntaxhighlighter  shell"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellspacing="0" cellpadding="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="shell functions">alias</code> <code class="shell plain">jed.cp1251=</code><code class="shell string">'LANG=C jed'</code></div><div class="line number2 index1 alt1"><code class="shell functions">alias</code> <code class="shell plain">jed.utf8=</code><code class="shell string">'LANG=bg_BG.UTF-8 jed'</code></div></div></td></tr></tbody></table></div></div>
+<p>Restart your shell, or do:</p>
+<div><div id="highlighter_116228" class="syntaxhighlighter  shell"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellspacing="0" cellpadding="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="shell functions">source</code> <code class="shell plain">~/.bashrc</code></div></div></td></tr></tbody></table></div></div>
+<p>in your current shell, so that the changes can be applied.</p>
+<p>After all this preparation, when you want to edit a file encoded using utf8, do it like this:<br>
+<code><strong></strong></code></p>
+<div><div id="highlighter_917693" class="syntaxhighlighter  shell"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellspacing="0" cellpadding="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="shell plain">jed.utf8&nbsp;&nbsp;&nbsp; FILENAME</code></div></div></td></tr></tbody></table></div></div>
+<p>For cp1251/windows1251, the command should be:</p>
+<div><div id="highlighter_80348" class="syntaxhighlighter  shell"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellspacing="0" cellpadding="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="shell plain">jed.cp1251&nbsp;&nbsp; FILENAME</code></div></div></td></tr></tbody></table></div></div>
+<p>&nbsp;</p>
+<p>Note, that the selected encoding of your terminal application should match the encoding of your editor, or else you will see some funny characters instead of the proper ones. For this and other reasons, I recommend you to use the KDE's <strong>konsole</strong> application. It is stable, has good internationalization support, and it is pretty fast, even when you have a large scroll buffer.</p>
+<p>You can also use&nbsp;<strong><a title="PuTTY" href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html" target="_blank">PuTTY</a></strong> in case you are trapped in a windows only shop <img src="icon_smile.gif" alt=":-)" class="wp-smiley">  .</p>
+
+
+<div class="about_author">
+<h4>Posted by <a href="http://blog.bulsynt.org/">Delyan Angelov</a></h4>
+</div>
+
+<div class="cat_tags clear">
+<span class="category">Tagged as: <a href="http://blog.bulsynt.org/tag/command-line/" rel="tag">command line</a>, <a href="http://blog.bulsynt.org/tag/cp1251/" rel="tag">cp1251</a>, <a href="http://blog.bulsynt.org/tag/editor/" rel="tag">editor</a>, <a href="http://blog.bulsynt.org/tag/emacs/" rel="tag">emacs</a>, <a href="http://blog.bulsynt.org/tag/jed/" rel="tag">jed</a>, <a href="http://blog.bulsynt.org/tag/locale/" rel="tag">locale</a>, <a href="http://blog.bulsynt.org/tag/unix/" rel="tag">unix</a>, <a href="http://blog.bulsynt.org/tag/utf8/" rel="tag">utf8</a>, <a href="http://blog.bulsynt.org/tag/windows1251/" rel="tag">windows1251</a></span>
+<span class="continue"><a class="nr_comm_spot" href="#respond">Leave a comment</a></span><div class="clear"></div>
+</div>
+<div class="cat_tags_close"></div>
+
+
+</div>
+
+<div id="tabsContainer">
+<a href="#" class="tabs selected" rel="tab-content0"><span>Comments (0)</span></a>
+<a href="#" class="tabs" rel="tab-content1"><span>Trackbacks (0)</span></a>
+<span class="subscribe_comments"><a href="http://blog.bulsynt.org/2011/03/06/how-to-use-jed-with-different-encodings-utf8-and-cp1251/feed/">( subscribe to comments on this post )</a></span>
+<div class="clear_tab"></div>
+<div class="tab-content selected" id="tab-content0">
+<a name="comments"></a>
+
+<p class="no">No comments yet.</p>
+
+ 
+<br>
+
+								<div id="respond">
+				<h3 id="reply-title">Leave a comment <small><a rel="nofollow" id="cancel-comment-reply-link" href="#respond" style="display: none;">Cancel reply</a></small></h3>
+									<form action="http://blog.bulsynt.org/wp-comments-post.php" method="post" id="commentform">
+																										<p class="comment-form-author"><input id="author" name="author" value="" size="30" aria-required="true" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABHklEQVQ4EaVTO26DQBD1ohQWaS2lg9JybZ+AK7hNwx2oIoVf4UPQ0Lj1FdKktevIpel8AKNUkDcWMxpgSaIEaTVv3sx7uztiTdu2s/98DywOw3Dued4Who/M2aIx5lZV1aEsy0+qiwHELyi+Ytl0PQ69SxAxkWIA4RMRTdNsKE59juMcuZd6xIAFeZ6fGCdJ8kY4y7KAuTRNGd7jyEBXsdOPE3a0QGPsniOnnYMO67LgSQN9T41F2QGrQRRFCwyzoIF2qyBuKKbcOgPXdVeY9rMWgNsjf9ccYesJhk3f5dYT1HX9gR0LLQR30TnjkUEcx2uIuS4RnI+aj6sJR0AM8AaumPaM/rRehyWhXqbFAA9kh3/8/NvHxAYGAsZ/il8IalkCLBfNVAAAAABJRU5ErkJggg==&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;" type="text"><label for="author">Name</label><span class="required">(required)</span></p>
+<p class="comment-form-email"><input id="email" name="email" value="" size="30" aria-required="true" type="text"><label for="email">Email</label><span class="required">(required)</span></p>
+<p class="comment-form-url"><input id="url" name="url" value="" size="30" type="text"><label for="url">Website</label></p>
+												<p class="comment-form-comment"><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea></p>												<p class="form-submit">
+							<input name="submit" id="submit" value="Submit" type="submit">
+							<input name="comment_post_ID" value="3" id="comment_post_ID" type="hidden">
+<input name="comment_parent" id="comment_parent" value="0" type="hidden">
+						</p>
+						<p style="display: none;"><input id="akismet_comment_nonce" name="akismet_comment_nonce" value="cac4eb78c5" type="hidden"></p>					</form>
+							</div><!-- #respond -->
+						
+
+</div>
+
+<div class="tab-content" id="tab-content1">
+<p class="no">No trackbacks yet.</p></div>
+</div>
+<div class="next_previous_links">
+<span class="alignleft"><a href="http://blog.bulsynt.org/2011/10/30/simple-php-cyr2lat-command-line-transliteration-filter-from-bulgarian-to-latin/" rel="next">Simple PHP cyr2lat command line transliteration filter from bulgarian to latin</a> »</span>
+<span class="alignright"></span>
+<div class="clear"></div>
+
+</div>
+</div>
+<div class="content-sidebar">
+
+
+<h3>Pages</h3>
+<ul style="z-index: 30;">
+<li class="page_item page-item-2"><a href="http://blog.bulsynt.org/about/" title="About">About</a></li>
+</ul>
+
+<h3>Categories</h3>
+<ul style="z-index: 20;">	
+	<li class="cat-item cat-item-30"><a href="http://blog.bulsynt.org/category/openvz/" title="View all posts filed under OpenVZ">OpenVZ</a>
+</li>
+	<li class="cat-item cat-item-22"><a href="http://blog.bulsynt.org/category/scripting/" title="Short and useful scripts.">Scripting</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="http://blog.bulsynt.org/category/uncategorized/" title="View all posts filed under Uncategorized">Uncategorized</a>
+</li>
+	<li class="cat-item cat-item-12"><a href="http://blog.bulsynt.org/category/utils/" title="Miscelaneous small command scripts, short snippets, utility tools.">Utilities</a>
+<ul class="children" style="z-index: 10;">
+	<li class="cat-item cat-item-31"><a href="http://blog.bulsynt.org/category/utils/automation/" title="View all posts filed under Automation">Automation</a>
+</li>
+</ul>
+</li>
+</ul>
+
+<h3>Blogroll</h3>
+<ul style="z-index: 0;">
+<li><a href="http://www.pozdravi.net/" rel="me" title="Най-добрите оригинални български поздравителни картички" target="_top">Оригинални поздравителни картички</a></li>
+</ul>
+
+<h3>Archive</h3>
+<ul style="z-index: -10;">
+	<li><a href="http://blog.bulsynt.org/2014/07/" title="July 2014">July 2014</a></li>
+	<li><a href="http://blog.bulsynt.org/2012/10/" title="October 2012">October 2012</a></li>
+	<li><a href="http://blog.bulsynt.org/2012/02/" title="February 2012">February 2012</a></li>
+	<li><a href="http://blog.bulsynt.org/2011/11/" title="November 2011">November 2011</a></li>
+	<li><a href="http://blog.bulsynt.org/2011/10/" title="October 2011">October 2011</a></li>
+	<li><a href="http://blog.bulsynt.org/2011/03/" title="March 2011">March 2011</a></li>
+</ul>
+
+<h3>Meta</h3>
+<ul style="z-index: -20;">
+<li><a href="http://blog.bulsynt.org/wp-login.php?action=register">Register</a></li><li><a href="http://blog.bulsynt.org/wp-login.php">Log in</a></li>
+<li><a href="http://blog.bulsynt.org/feed/" title="Syndicate this site using RSS"><abbr title="Really Simple Syndication">RSS</abbr></a></li>
+<li><a href="http://blog.bulsynt.org/comments/feed/" title="The latest comments to all posts in RSS">Comments <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+</ul>
+
+</div><div class="clear"></div>
+</div>
+<div id="footer">
+<span class="text">
+Copyright © 2017 <a href="http://blog.bulsynt.org/">Unix HOWTOs and Tips</a> · Powered by <a href="http://www.wordpress.org/" title="WordPress" target="_blank">WordPress</a> <br><a href="http://www.lightword-design.com/" target="_blank" title="Lightword Theme">Lightword Theme</a> by Andrei Luca
+       <script type="text/javascript">/* Code removed by ScrapBook */</script>
+<a title="Go to top" class="top" href="#top">Go to top ↑</a>
+</span>
+</div>
+<script type="text/javascript" src="about:blank"></script>
+</div>
+	
+	
+<!-- START: Syntax Highlighter ComPress -->
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+<!-- END: Syntax Highlighter ComPress -->
+
+	<script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+	
+
+<center style="padding-top: 5px;">
+<!-- NACHALO NA TYXO.BG BROYACH -->
+<script type="text/javascript">/* Code removed by ScrapBook */</script><a href="https://www.tyxo.bg/?127981" title="Tyxo.bg counter"><img alt="Tyxo.bg counter" src="127981.png" style="display: none ! important;" border="0" height="15" width="80" hidden=""></a><noscript><a href="http://www.tyxo.bg/?127981" title="Tyxo.bg counter"><img src="https://cnt.tyxo.bg/127981" width="80" height="15" border="0" alt="Tyxo.bg counter" /></a></noscript>
+<!-- KRAI NA TYXO.BG BROYACH -->
+</center>
+			
+
+</body>
+</html>

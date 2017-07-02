@@ -1,0 +1,26 @@
+/* Code tidied up by ScrapBook */
+img { border: 0px none; }
+a.down { background: transparent url("down-blue.gif") no-repeat scroll left center; padding-left: 14px; }
+#article_header { color: rgb(119, 119, 119); margin: 0px 0px 8px 10px; padding: 0px 10px 0px 30px; }
+#article_body { font-size: 13px; line-height: 20px; padding-bottom: 35px; }
+.articlefooter { background: rgb(238, 238, 238) none repeat scroll 0% 0%; border-top: 1px solid rgb(204, 204, 204); padding: 3px 4px 4px; margin-bottom: 5px; }
+.comment_box { padding: 10px; width: 93%; margin-left: 10px; margin-bottom: 10px; }
+.comment_box1 { background: rgb(238, 238, 238) none repeat scroll 0% 0%; }
+.comment_self { background: rgb(255, 255, 255) none repeat scroll 0% 0%; }
+.comments_count { float: right; font-weight: bold; font-style: italic; font-family: Georgia,serif; margin-right: 3px; }
+.comment_header { padding: 1px; }
+.reply_comment_button, .mark_spam_comment_button { text-align: center; margin-right: 6px; float: right; }
+.comment_box:hover .reply_comment_button { display: inline; }
+.comment_box:hover {  }
+.comment_box0 a, .comment_box1 a { font-weight: bold; }
+.comment_box0 a:hover, .comment_box1 a:hover {  }
+.comment_avatar { float: left; padding: 5px 15px 10px 5px; }
+.comment_content { padding: 0px 15px 5px 5px; }
+.comment_content p { margin-top: 0px; }
+.comment_content small { display: block; }
+#article_body { text-align: justify; }
+img.feed { margin-bottom: -1px; }
+div.pre_next_post { font-size: 90%; float: right; margin-right: 25px; }
+.twitter_comment_button { text-align: center; margin-right: 10px; float: right; }
+.follow_him:hover { text-decoration: none; }
+.follow_him { background: transparent url("twitter.png") no-repeat scroll left center; padding-left: 16px; margin-top: 5px; margin-right: 5px; }

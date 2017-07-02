@@ -1,0 +1,45 @@
+/* Code tidied up by ScrapBook */
+@import url("css.css");
+.f1 { color: rgb(153, 0, 0); }
+.f2 { color: rgb(0, 153, 0); }
+.f3 { color: rgb(153, 153, 0); }
+.hl { color: rgb(255, 255, 255); }
+.hl.f1 { color: rgb(255, 102, 102); }
+.hl.f3 { color: rgb(255, 255, 102); }
+.bbs-screen { color: rgb(187, 187, 187); background-color: rgb(0, 0, 0); line-height: 100%; overflow-wrap: break-word; margin: 0px auto; padding: 0px; width: 100%; }
+.bbs-content { font-family: "細明體","AR PL UMing TW","Inconsolata","LiSongPro",monospace; }
+#topbar-container { position: fixed; top: 0px; width: 100%; height: 40px; z-index: 99; background-color: rgb(12, 10, 102); overflow-y: hidden; overflow-x: auto; }
+#topbar { margin: 0px auto; width: 100%; height: 40px; box-sizing: border-box; color: rgb(170, 170, 170); }
+#topbar > * { display: inline-block; height: 100%; line-height: 40px; vertical-align: middle; padding: 0px 5px; float: left; }
+#topbar a:hover { background-color: rgb(51, 51, 136); color: rgb(255, 255, 255); }
+#topbar a:link, #topbar a:visited, #topbar a:hover { text-decoration: none; }
+#topbar .board { color: rgb(255, 255, 255); }
+#topbar .board-label { font-size: small; vertical-align: middle; }
+#topbar > .right { float: right; }
+.small { font-size: small; }
+#main-container { margin: 0px; padding: 0px 0px 3ex; position: relative; }
+#main-content { position: relative; white-space: pre-wrap; }
+a:link { color: rgb(170, 170, 170); }
+a:hover { color: rgb(51, 51, 51); background-color: rgb(204, 204, 204); }
+a:visited { color: rgb(136, 136, 136); }
+body { background-color: rgb(0, 0, 0); margin: 0px; padding: 40px 0px 24px; }
+#logo { padding: 0px 10px; }
+#logo:link, #logo:visited, #logo:hover { text-decoration: none; color: rgb(255, 255, 102); }
+#navigation-container { position: fixed; bottom: 0px; width: 100%; z-index: 1; background-color: rgb(204, 204, 204); }
+#navigation { margin: 0px auto; width: 100%; height: 40px; box-sizing: border-box; color: rgb(51, 51, 51); }
+#navigation > * { display: inline-block; height: 100%; line-height: 40px; vertical-align: middle; padding: 0px 5px; float: left; }
+#navigation a:link, #navigation a:visited { color: rgb(51, 51, 51); text-decoration: none; }
+#navigation a:hover { color: rgb(34, 34, 34); background-color: rgb(238, 238, 238); text-decoration: none; }
+.share { line-height: 40px; vertical-align: middle; }
+.fb-like > span { vertical-align: middle ! important; }
+#navigation .board { padding: 0px 10px; }
+#navigation .bar { background-color: rgb(136, 136, 136); width: 4px; height: 100%; padding: 0px; }
+.push { line-height: 130%; white-space: normal; clear: both; position: relative; }
+.push > span { white-space: pre-wrap; }
+.push-tag { display: inline-block; min-width: 3.5ex; white-space: normal; }
+.push-content {  }
+.push-ipdatetime { float: right; }
+.article-metaline { margin: 0px; padding: 0px; background-color: rgb(0, 0, 136); }
+.article-metaline-right { position: absolute; right: 0px; top: 0px; background-color: rgb(0, 0, 136); }
+.article-meta-tag { padding: 0px 1ex; background-color: rgb(153, 153, 153); color: rgb(0, 0, 136); }
+.article-meta-value { padding: 0px 1ex; background-color: rgb(0, 0, 136); color: rgb(153, 153, 153); }

@@ -1,0 +1,1947 @@
+<!--  Jed Quick Reference -->
+<!--  -->
+<!--  This document is written in AFT,  -->
+<!--  http://www.maplefish.com/todd/aft.html -->
+<!--  -->
+<!--  Last revised: March 18, 2010 -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<title>Jed 0.99.18 Quick Reference, v. 1.0.9</title>
+	<meta name="author" content="Guido Gonzato and John. E. Davis">
+	<meta name="GENERATOR" content = "Almost Free Text v5.097; Copyright 1996-2009 Todd Coram.">
+<style type="text/css">
+  <!--
+	.Default {background-color: rgb(255,255,255); color: rgb(0,0,0); font-family: 'Tahoma'; font-size: 12pt}
+	.Text-Background {background-color: rgb(255,255,255)}
+	.section5 { padding-left: 50pt; }
+	.section6 { padding-left: 75pt; }
+	.section7 { padding-left: 100pt; }
+  -->
+</style>
+</head>
+<body>
+
+<br><center><h1><a name="AFT-top">Jed 0.99.18 Quick Reference, v. 1.0.9</a></h1></center>
+<br><center><h2>Guido Gonzato and John. E. Davis</h2></center>
+<!--  AFT Table of Contents (auto generated) -->
+<ul>
+<li> <a class="link" href="#Introduction">1. Introduction</a></li>
+<ul>
+<li> <a class="link" href="#Getting Started">1.1. Getting Started</a></li>
+<li> <a class="link" href="#Getting Help">1.2. Getting Help</a></li>
+<li> <a class="link" href="#Notes for Windows Users">1.3. Notes for Windows Users</a></li>
+<li> <a class="link" href="#Startup Files">1.4. Startup Files</a></li>
+<li> <a class="link" href="#Customisation">1.5. Customisation</a></li>
+<li> <a class="link" href="#Emulations">1.6. Emulations</a></li>
+<li> <a class="link" href="#Window Size, Font, and Colour">1.7. Window Size, Font, and Colour</a></li>
+<li> <a class="link" href="#Extending the Jed Library">1.8. Extending the Jed Library</a></li>
+<li> <a class="link" href="#Mini-Buffer">1.9. Mini-Buffer</a></li>
+<ul>
+<li> <a class="link" href="#Command Line Editing and Completion">1.9.1. Command Line Editing and Completion</a></li>
+<li> <a class="link" href="#File Names">1.9.2. File Names</a></li>
+</ul>
+<li> <a class="link" href="#Buffers, Windows, and Status Line">1.10. Buffers, Windows, and Status Line</a></li>
+<li> <a class="link" href="#Backup and Auto-Save Files">1.11. Backup and Auto-Save Files</a></li>
+<li> <a class="link" href="#Batch and Script Mode">1.12. Batch and Script Mode</a></li>
+</ul>
+<li> <a class="link" href="#Basic Editing">2. Basic Editing</a></li>
+<li> <a class="link" href="#Main Features">3. Main Features</a></li>
+<li> <a class="link" href="#Editing">4. Editing</a></li>
+<ul>
+<li> <a class="link" href="#Menus">4.1. Menus</a></li>
+<li> <a class="link" href="#Marking Text">4.2. Marking Text</a></li>
+<li> <a class="link" href="#Using the Mouse">4.3. Using the Mouse</a></li>
+<li> <a class="link" href="#Reformatting Paragraphs">4.4. Reformatting Paragraphs</a></li>
+<li> <a class="link" href="#Keyboard Macros">4.5. Keyboard Macros</a></li>
+<li> <a class="link" href="#Repeating Actions">4.6. Repeating Actions</a></li>
+<li> <a class="link" href="#Rectangles">4.7. Rectangles</a></li>
+<li> <a class="link" href="#Block Sorting">4.8. Block Sorting</a></li>
+<li> <a class="link" href="#8-bit Characters and Mutekey">4.9. 8-bit Characters and Mutekey</a></li>
+<li> <a class="link" href="#Abbreviations and Completion">4.10. Abbreviations and Completion</a></li>
+<li> <a class="link" href="#Ispell">4.11. Ispell</a></li>
+<li> <a class="link" href="#Registers">4.12. Registers</a></li>
+<li> <a class="link" href="#Tab Issues">4.13. Tab Issues</a></li>
+<li> <a class="link" href="#Regular Expressions">4.14. Regular Expressions</a></li>
+<li> <a class="link" href="#Occur Search">4.15. Occur Search</a></li>
+</ul>
+<li> <a class="link" href="#Buffer-related Issues">5. Buffer-related Issues</a></li>
+<ul>
+<li> <a class="link" href="#Window Splitting">5.1. Window Splitting</a></li>
+<li> <a class="link" href="#Folding">5.2. Folding</a></li>
+<li> <a class="link" href="#Narrowing Regions">5.3. Narrowing Regions</a></li>
+<li> <a class="link" href="#Compiling">5.4. Compiling</a></li>
+<li> <a class="link" href="#Tags">5.5. Tags</a></li>
+<li> <a class="link" href="#Commenting Code">5.6. Commenting Code</a></li>
+<li> <a class="link" href="#Buffer Editor">5.7. Buffer Editor</a></li>
+<li> <a class="link" href="#Mail/Rmail (Unix Only)">5.8. Mail/Rmail (Unix Only)</a></li>
+<li> <a class="link" href="#Man and Info Reader">5.9. Man and Info Reader</a></li>
+<li> <a class="link" href="#Quick Tips">5.10. Quick Tips</a></li>
+</ul>
+<li> <a class="link" href="#File-Related Issues">6. File-Related Issues</a></li>
+<ul>
+<li> <a class="link" href="#Recovering Files">6.1. Recovering Files</a></li>
+<li> <a class="link" href="#Editing Compressed Files">6.2. Editing Compressed Files</a></li>
+<li> <a class="link" href="#File Locking (Unix Only)">6.3. File Locking (Unix Only)</a></li>
+<li> <a class="link" href="#End-Of-Line Issues">6.4. End-Of-Line Issues</a></li>
+<li> <a class="link" href="#Multiple Versions">6.5. Multiple Versions</a></li>
+<li> <a class="link" href="#RCS and SCCS interface">6.6. RCS and SCCS interface</a></li>
+<li> <a class="link" href="#Directory Editor">6.7. Directory Editor</a></li>
+</ul>
+<li> <a class="link" href="#Modes">7. Modes</a></li>
+<ul>
+<li> <a class="link" href="#Byte-Compiling Modes">7.1. Byte-Compiling Modes</a></li>
+<li> <a class="link" href="#Syntax Highlighting">7.2. Syntax Highlighting</a></li>
+<li> <a class="link" href="#C mode">7.3. C mode</a></li>
+<li> <a class="link" href="#Fortran Mode">7.4. Fortran Mode</a></li>
+<li> <a class="link" href="#LaTeX Mode">7.5. LaTeX Mode</a></li>
+<li> <a class="link" href="#Tex Mode">7.6. Tex Mode</a></li>
+<li> <a class="link" href="#HTML Mode">7.7. HTML Mode</a></li>
+<li> <a class="link" href="#Docbook SGML Mode">7.8. Docbook SGML Mode</a></li>
+<li> <a class="link" href="#Most Mode">7.9. Most Mode</a></li>
+</ul>
+<li> <a class="link" href="#Advanced Customisation">8. Advanced Customisation</a></li>
+<ul>
+<li> <a class="link" href="#UTF8 Support">8.1. UTF8 Support</a></li>
+<li> <a class="link" href="#Setting Keybindings">8.2. Setting Keybindings</a></li>
+<li> <a class="link" href="#Loading Additional <tt>.sl</tt> Files">8.3. Loading Additional <tt>.sl</tt> Files</a></li>
+<li> <a class="link" href="#Autoloading Functions">8.4. Autoloading Functions</a></li>
+<li> <a class="link" href="#Hooks">8.5. Hooks</a></li>
+</ul>
+<li> <a class="link" href="#The End">9. The End</a>
+
+</li>
+</ul>
+<!-- Start SectLevel1 -->
+<h2><a name="Introduction">1. Introduction</a></h2>
+<p class="Body">
+From the <B>Jed</B> home page:
+</p>
+<p class="Body">
+``<B>Jed</B> is a freely available text editor for Unix, VMS, MSDOS, OS/2,
+BeOS, QNX, and win9X/NT platforms. Although it is a powerful editor designed
+for use by programmers, its drop-down menu facility makes it one of the
+friendliest text editors around. Hence, it is ideal for composing simple
+email messages as well as editing complex programs in a variety of computer
+languages.
+</p>
+<p class="Body">
+<B>Jed</B> makes extensive use of the S-Lang library, which endows it with a
+powerful S-Lang macro language.''
+</p>
+<p class="Body">
+S-Lang files implement <a class="link" href="#Modes">Modes</a>, i.e. specialised editing facilities. In
+addition to the modes included in the distribution, many more are available.
+And yes, you can write your own.
+</p>
+<p class="Body">
+<B>Jed</B> was written by John E. Davis, <tt>davis@space.mit.edu</tt>. Some useful
+addresses:
+</p>
+<ul>
+<li> the <B>Jed</B> home page, <a class="link" href="http://www.jedsoft.org/jed">http://www.jedsoft.org/jed</a></li>
+<li> the <B>Jed</B> users mailing list, <a class="link" href="http://www.jedsoft.org/jed/mailinglists.html">http://www.jedsoft.org/jed/mailinglists.html</a></li>
+<li> the <B>Jed</B> modes repository, <a class="link" href="http://jedmodes.sourceforge.net">http://jedmodes.sourceforge.net</a></li>
+</ul>
+<p class="Body">
+This manual assumes that <B>Jed</B> (version 0.99.18) is properly
+installed on your system. For installation details, please see the
+<tt>INSTALL*</tt> files included in the distribution.
+</p>
+<p class="Body">
+As the author of <B>Jed</B> states, the version number is still below 1.0
+<em>``because of the lack of adequate documentation''</em>. This quick
+reference is hopefully a good starting point, but don't forget to consult
+the <tt>.txt</tt> files in the distribution for further explanations.
+</p>
+<!-- Start SectLevel2 -->
+<h3><a name="Getting Started">1.1. Getting Started</a></h3>
+<p class="Body">
+Depending on the operating system, the name of the <B>Jed</B> executable
+can be <tt>jed</tt> (console), <tt>jed386</tt> (DOS), <tt>xjed</tt> (X11), or <tt>wjed</tt> (Windows). 
+</p>
+<div class="block"><pre>
+prompt&gt; jed [switches] [file(s)]
+</pre></div>
+<p class="Body">
+The following command-line switches are available:
+</p>
+<div class="block"><pre>
+Switch           Meaning
+------------------------
+-batch           run JED in batch (non interactive) mode.
+-help            shows usage
+-hook fn (argv)  exec fn with rest of argv parameters
+-script          like `-batch -l', but no output
+-tmp             do not backup buffer
+--ANYTHING       execute ANYTHING as a function
+-e &lt;emulation&gt;   use emulation (e.g. emacs, ide, cua...)
+-n               do not load jed.rc (.jedrc) file.
+-g &lt;n&gt;           goto line `n' in buffer
+-l &lt;file&gt;        load `file' as S-Lang code.
+-f &lt;function&gt;    execute S-Lang function named `function'
+-s &lt;string&gt;      search forward for `string'
+-2               split window
+-i &lt;file&gt;        insert &lt;file&gt; into current buffer
+</pre></div>
+<p class="Body">
+The directory defined in the <tt>JED_ROOT</tt> environment variable contains the
+installation. Documentation files reside in <tt>JED_ROOT/doc</tt>, S-Lang files
+in <tt>JED_ROOT/lib</tt>, info pages in <tt>JED_ROOT/info</tt>, and binaries in
+<tt>JED_ROOT/bin</tt>. Binaries may be moved to a standard system directory.
+</p>
+<p class="Body">
+Common values for <tt>JED_ROOT</tt> in Unix environments are <tt>/usr/local/jed</tt> or
+<tt>/usr/share/jed</tt>.
+</p>
+<p class="Body">
+<tt>xjed</tt> accepts additional switches:
+</p>
+<div class="block"><pre>
+-Display       [-d]     display to run on
+-Name                   instance name
+-Geometry               initial geometry specifications
+-font          [-fn]    default font to use
+-background    [-bg]    background color
+-foreground    [-fg]    foreground color
+-Title                  name to be displayed on the title bar
+-fgStatus      [-sfg]   foreground color of the xjed buffer status line
+-bgStatus      [-sbg]   background color of the xjed buffer status line
+-fgRegion      [-rfg]   foreground color of a region as defined by point
+                        and mark
+-bgRegion      [-rbg]   background color of a region as defined by point
+                        and mark
+-fgCursor      [-cfg]   text cursor foreground color
+-bgCursor      [-cbg]   text cursor background color
+-fgMouse       [-mfg]   mouse cursor foreground color
+-bgMouse       [-mbg]   mouse cursor background color
+-fgMenu        [-fgm]   foreground color for menubar
+-bgMenu        [-bgm]   foreground color for menubar
+-fgMessage     [-fgms]  foreground color for messages
+-bgMessage     [-bgms]  background color for messages
+-fgError       [-fger]  foreground color for error messages
+-bgError       [-bger]  background color for messages
+-fgOperator    [-fgop]  foreground color for operators (+, -, etc...)
+-bgOperator    [-bgop]  background color for operators
+-fgNumber      [-fgnm]  foreground color for numbers
+-bgNumber      [-bgnm]  background color for numbers
+-fgString      [-fgst]  foreground color for strings
+-bgString      [-bgst]  background color for strings
+-fgComments    [-fgco]  foreground color for comments
+-bgComments    [-bgco]  background color for comments
+-fgKeyword     [-fgkw]  foreground color for keywords
+-bgKeyword     [-bgkw]  background color for keywords
+-fgKeyword1    [-fgkw1] foreground color for keywords1
+-bgKeyword1    [-bgkw1] background color for keywords1
+-fgKeyword2    [-fgkw2] foreground color for keywords2
+-bgKeyword2    [-bgkw2] background color for keywords2
+-fgDelimiter   [-fgde]  foreground color for delimeters
+-bgDelimiter   [-bgde]  background color for delimeters
+-fgPreprocess  [-fgpr]  foreground color for preprocessor lines
+-bgPreprocess  [-bgpr]  background color for preprocessor lines
+</pre></div>
+<p class="Body">
+For example,
+</p>
+<div class="block"><pre>
+xjed -d space:0.0 -font 9x15 -bg blue -fg white
+</pre></div>
+<p class="Body">
+will start <tt>xjed</tt> using the server called <tt>space</tt>, using a white on blue
+9x15 font.
+</p>
+<p class="Body">
+You can set defaults for <tt>xjed</tt> inserting appropriate lines in your
+<tt>.Xdefaults</tt>, e.g.
+</p>
+<div class="block"><pre>
+xjed*Geometry: 80x40+100+100
+xjed*font: 9x15bold
+</pre></div>
+<p class="Body">
+(If <tt>.Xdefaults</tt> is missing, just create it.)
+</p>
+<p class="Body">
+If you're using <tt>xjed</tt> with UTF8 support (see <a class="link" href="#UTF8 Support">UTF8 Support</a>), line
+drawings around menus might show as strange characters. In that case,
+add this line to <tt>.Xdefaults</tt>:
+</p>
+<div class="block"><pre>
+UXjed*font: -misc-fixed-medium-r-normal--15-140-75-75-c-90-iso10646-1
+</pre></div>
+<p class="Body">
+To reload the X settings, type:
+</p>
+<div class="block"><pre>
+xrdb -load ~/.Xdefaults
+</pre></div>
+<!--End Section 2-->
+<h3><a name="Getting Help">1.2. Getting Help</a></h3>
+<p class="Body">
+There are several ways to get help:
+</p>
+<ul>
+<li> via the <em>Help</em> menu: there are many options, try them all;</li>
+<li> typing <tt>Esc X help</tt>, you access the help screen pertinent to the emulation you're using;</li>
+<li> browse the off-line documentation that <B>Jed</B> ships with;</li>
+<li> look at the <tt>*.sl</tt> sources in the <tt>JED_ROOT/lib</tt> directory.</li>
+</ul>
+<p class="Body">
+    
+</p>
+<!--End Section 2-->
+<h3><a name="Notes for Windows Users">1.3. Notes for Windows Users</a></h3>
+<p class="Body">
+First of all: on Windows NT/2000/XP etc., <B>Jed</B> must be installed by the
+system administrator. A standard installer is provided, but it does not
+extend the PATH to make the console <tt>jed</tt> executable readily available.
+</p>
+<p class="Body">
+If you don't want to or don't know how to modify the environment to make
+<B>Jed</B> work, use the following <tt>.bat</tt> file. In this example, we'll assume
+that <B>Jed</B> is installed in <tt>C:\TOOLS\JED</tt>:
+</p>
+<div class="block"><pre>
+rem wjed.bat
+rem
+SET PATH=C:\TOOLS\JED\BIN;%PATH%
+SET JED_ROOT=C:\JED\TOOLS
+C:\TOOLS\JED\BIN\JED.EXE %1 %2 %3 %4 %5 %6 %7 %8 %9
+</pre></div>
+<p class="Body">
+Make a shortcut to this <tt>.bat</tt> file in <tt>C:\WINDOWS\SENDTO</tt>. By
+right-clicking on a file, you will be able to select ``Wjed'' from the
+``Send to...'' menu.
+</p>
+<p class="Body">
+<tt>wjed</tt> is a bit confusing when it comes to cut, copy, and paste.
+The <em>Edit</em> menu cannot be used to paste text; only the <em>right</em> mouse
+button works.
+</p>
+<p class="Body">
+Console <B>Jed</B> for DOS/Windows may not insert characters like `#', `@' and
+in general those characters that are obtained via the <tt>Alt Gr</tt> key on a
+non-US keyboard. This can be fixed inserting these lines in <tt>.jedrc</tt>
+(alas, using another editor):
+</p>
+<div class="block"><pre>
+setkey (&quot;self_insert_cmd&quot;, &quot;\e@&quot;);
+setkey (&quot;self_insert_cmd&quot;, &quot;\e#&quot;);
+setkey (&quot;self_insert_cmd&quot;, &quot;\e[&quot;);
+setkey (&quot;self_insert_cmd&quot;, &quot;\e]&quot;); % and so on...
+</pre></div>
+<p class="Body">
+Currently, <tt>wjed</tt> doesn't honour the standard menus. To get the same menus
+as console <B>Jed</B>, you will have to edit the system file <tt>os.sl</tt> to uncomment
+the line that reads:
+</p>
+<div class="block"><pre>
+% . &quot;menus&quot; evalfile pop         %  Uncomment to enable text menus
+</pre></div>
+<!--End Section 2-->
+<h3><a name="Startup Files">1.4. Startup Files</a></h3>
+<p class="Body">
+When <B>Jed</B> starts up, it loads an initialization file, <tt>site.sl</tt>; then, if
+they exist, <tt>defaults.sl</tt> and <tt>/etc/jed.conf</tt>; then it tries to load your
+personal initialization file, <tt>$HOME/.jedrc</tt>; failing that, it will load a
+system-wide file, <tt>jed.rc</tt>. All of these files are written in S-Lang.
+</p>
+<p class="Body">
+<tt>site.sl</tt> is particularly important. In addition to defining keybindings,
+functions and variables, it also declares <em>autoloads</em>. These are
+associations between functions and the <tt>.sl</tt> file where they are defined.
+When such a function is needed, the corresponding <tt>.sl</tt> file will be loaded.
+This arrangement allows <B>Jed</B> to load only needed functions, saving memory
+and startup time.
+</p>
+<p class="Body">
+System administrators will want to provide a system-wide <tt>defaults.sl</tt>.
+It's desirable that editor emulation (see below) not be included in
+system-wide init files, so that users can use the <tt>-n -e</tt> switches. More
+details in Section <a class="link" href="#Batch and Script Mode">Batch and Script Mode</a>.
+</p>
+<!--End Section 2-->
+<h3><a name="Customisation">1.5. Customisation</a></h3>
+<p class="Body">
+You don't have to be proficient in S-Lang to tailor <B>Jed</B> to your
+needs. On Unix, copy <tt>jed.rc</tt> to <tt>$HOME/.jedrc</tt>, read it carefully to
+become familiar with the features you can customise, then make changes. On
+Windows, modify <tt>jed.rc</tt> directly, but make a backup copy beforehand.
+</p>
+<p class="Body">
+In many cases, all you have to do is change the value of <B>Jed</B>'s global
+variables.
+</p>
+<p class="Body">
+Apart from modifying existing parameters, sooner or later you will want to
+modify your <tt>.jedrc</tt> heavily, perhaps adding your own S-Lang functions. You
+could simply append lines to the end, but the best place is often within
+the braces that define the block:
+</p>
+<div class="block"><pre>
+if (BATCH == 0)
+{
+...  
+}
+</pre></div>
+<p class="Body">
+Everything in the block will not be loaded when <B>Jed</B> is used in batch
+mode, making it faster to load. For further details, please read 
+<a class="link" href="#Advanced Customisation">Advanced Customisation</a>.
+</p>
+<!--End Section 2-->
+<h3><a name="Emulations">1.6. Emulations</a></h3>
+<p class="Body">
+The very first change you may want to make is choose your favourite editor
+emulation. <tt>emacs</tt> emulation is the default; DOS/Windows users might like
+CUA mode, which uses standard Windows keybindings, or IDE mode, which is
+compatible with Wordstar and the Borland Turbo Pascal/C++ editors. 
+</p>
+<p class="Body">
+Edit your <tt>.jedrc</tt> and uncomment the appropriate line removing the leading
+<tt>%</tt>:
+</p>
+<div class="block"><pre>
+%  () = evalfile(&quot;emacs&quot;);        % Emacs-like bindings
+%  () = evalfile(&quot;edt&quot;);          % EDT emulation
+%  () = evalfile (&quot;ide&quot;);         % Borland IDE (see also doc/ide-mode.txt)
+%  () = evalfile (&quot;brief&quot;);       % Brief Keybindings (MSDOS only!!)
+%  () = evalfile(&quot;wordstar&quot;);     % obsolete --- use ide instead)
+%  () = evalfile (&quot;cua&quot;);         % CUA-like key bindings
+</pre></div>
+<p class="Body">
+Every emulation reserves a key for extended operations. In <tt>emacs</tt> mode,
+this key is <tt>Ctrl-C</tt>; in IDE mode, <tt>Ctrl-Z</tt>; in CUA mode, <tt>Ctrl-E</tt>. You can
+change the key inserting a line like this in <tt>.jedrc</tt>:
+</p>
+<div class="block"><pre>
+_Reserved_Key_Prefix = &quot;^Y&quot;;
+</pre></div>
+<p class="Body">
+From now on, we'll assume that <B>Jed</B> is running in Emacs mode. To find out
+the key bindings associated to a function in other emulations,
+select <em>Help/Where Is Command</em> and type the function name. For instance,
+querying <B>Jed</B> in IDE mode about the <tt>comment_region</tt> function, you will
+receive the answer <tt>Ctrl-K ;</tt>.
+</p>
+<p class="Body">
+In the following, I will not provide key bindings but functions names
+whenever possible. It's up to you to find the associated key binding, if
+any.
+</p>
+<!--End Section 2-->
+<h3><a name="Window Size, Font, and Colour">1.7. Window Size, Font, and Colour</a></h3>
+<p class="Body">
+To change font size and dimensions in <tt>xjed</tt>, edit the file <tt>.Xdefaults</tt>
+in your home directory and add these two lines:
+</p>
+<div class="block"><pre>
+xjed*Geometry: 80x35+150+0 ! columns x lines, X and Y offset
+xjed*font: 7x14
+! or:
+! xjed*font: lucidasanstypewriter-14
+</pre></div>
+<p class="Body">
+Other valid values for font size are 5x7 (tiny), 6x10, 6x12, 6x13, 7x13,
+7x14, 8x13, 8x16, 9x15, 9x18, 10x20, 12x24, and 18x18 (huge). Use 
+<tt>xlsfonts | less</tt> to list available fonts.
+</p>
+<p class="Body">
+To do the same in <tt>wjed</tt>, open <tt>C:\WINDOWS\WIN.INI</tt> and search for the
+<tt>[WJED]</tt> section. If it's missing, create it. You will modify the
+properties with lines like these:
+</p>
+<div class="block"><pre>
+X=67
+Y=14
+Width=696
+Height=542
+Font=Fixedsys
+FontHeight=10
+</pre></div>
+<p class="Body">
+There are several colour schemes available; you will find them in the
+<em>Windows/Color Schemes</em> menu.
+</p>
+<!--End Section 2-->
+<h3><a name="Extending the Jed Library">1.8. Extending the Jed Library</a></h3>
+<p class="Body">
+You may want to install additional <tt>.sl</tt> files, but normally you
+can't add them to <tt>JED_ROOT/lib</tt>; only the system administrator can do
+that. In this case, you can make a directory where you will keep your own
+<tt>.sl</tt> files. You will also have to add a few lines to <tt>$HOME/.jedrc</tt>.
+</p>
+<p class="Body">
+The settings shown below force <B>Jed</B> to look for <tt>.sl</tt> files in
+<tt>$HOME/mylib/jed</tt> before the standard location. The same holds for
+highlighting patterns and colour schemes.
+</p>
+<div class="block"><pre>
+variable Jed_Home_Library = &quot;~/mylib/jed&quot;;
+set_jed_library_path (Jed_Home_Library + &quot;,&quot; + get_jed_library_path ());
+Jed_Highlight_Cache_Dir = Jed_Home_Library;
+Jed_Highlight_Cache_Path = Jed_Highlight_Cache_Dir + &quot;,&quot; +
+                           Jed_Highlight_Cache_Path;
+Color_Scheme_Path = Jed_Home_Library + &quot;/colors/,&quot; + Color_Scheme_Path;
+</pre></div>
+<!--End Section 2-->
+<h3><a name="Mini-Buffer">1.9. Mini-Buffer</a></h3>
+<p class="Body">
+The <em>Mini-Buffer</em> consists of a single line located at the bottom of the
+screen; much of the dialog between the user and <B>Jed</B> takes place in this
+buffer. For example, when you search for a string, <B>Jed</B> will prompt you
+for the string in the mini-buffer.
+</p>
+<p class="Body">
+You can type commands in the mini-buffer pressing <tt>Esc-x</tt> (or <tt>Alt-x</tt>);
+the <tt>M-X</tt> prompt will appear. At this stage, insert a function name. For
+example, to move to the top of a buffer you will type <tt>Alt-X bob</tt>.
+</p>
+<p class="Body">
+The mini-buffer also provides a direct link to the S-Lang interpreter.
+To access the interpreter, press <tt>Ctrl-X Esc</tt> (or <tt>Esc X</tt> in IDE mode) and
+the <tt>S-Lang&gt;</tt> prompt will appear in the mini-buffer. Enter any valid S-Lang
+expression for evaluation by the interpreter.
+</p>
+<p class="Body">
+In all cases, you can quit the mini-buffer pressing <tt>Ctrl-G</tt>.
+</p>
+<!-- Start SectLevel3 -->
+<h4><a name="Command Line Editing and Completion">1.9.1. Command Line Editing and Completion</a></h4>
+<p class="Body">
+It is possible to recall data previously entered into the mini-buffer by
+using the Up and Down arrow keys. This makes it possible to use and edit
+previous expressions in a convenient and efficient manner.
+</p>
+<p class="Body">
+Commands typed in the mini-buffer can be completed pressing the <tt>Tab</tt>
+and/or <tt>Space</tt> keys. This is useful when you don't remember the name of a
+function (<B>Jed</B> provides hundreds of them), or to cycle amongst file or
+buffer names.
+</p>
+<p class="Body">
+For example, let's suppose you want to see all functions that start in
+`b'. Type <tt>Alt-X b</tt>, then press <tt>Tab</tt>: a new window will appear containing
+a list of possible completions. Now press <tt>Space</tt> repeatedly and note how
+the command line completes itself.
+</p>
+<p class="Body">
+Not all functions made available by <B>Jed</B> support completion. For instance,
+functions defined in emulation modes won't self complete; functions defined
+in files not yet loaded will not complete either. More
+details in Section <a class="link" href="#Autoloading Functions">Autoloading Functions</a>.
+</p>
+<!--End Section 3-->
+<h4><a name="File Names">1.9.2. File Names</a></h4>
+<p class="Body">
+When <B>Jed</B> prompts you for a file name, completion works as explained
+above. The file name syntax is operating system-dependent. Valid examples
+are:
+</p>
+<div class="block"><pre>
+C:\JED\LIB\JED.RC
+~/progs/jed/ide.sl
+dev$user:[davis.jed]vms.c
+</pre></div>
+<p class="Body">
+which denote file paths for DOS/Windows, Unix, and VMS. In Unix, the 
+tilde <tt>~</tt> expands to the user's <tt>HOME</tt> directory.
+</p>
+<p class="Body">
+Wildcards are allowed. For example, to select one of the files with
+extension <tt>.txt</tt> in the <tt>text</tt> subdirectory, you can type
+</p>
+<div class="block"><pre>
+text/*.txt
+</pre></div>
+<p class="Body">
+in the mini-buffer, then press <tt>Tab</tt> and <tt>Space</tt> as usual.
+</p>
+<!--End Section 3-->
+<!-- End SectLevel3 -->
+<!--End Section 2-->
+<h3><a name="Buffers, Windows, and Status Line">1.10. Buffers, Windows, and Status Line</a></h3>
+<p class="Body">
+<B>Jed</B> supports multiple windows. Each window may contain the same buffer
+or different buffers. Buffers are usually (but not necessarily) attached
+to a file.
+</p>
+<p class="Body">
+A default buffer called <tt>*scratch*</tt> exists that can be used to scribble
+things that need not be saved.
+</p>
+<p class="Body">
+A status line is displayed at the bottom of each window. The status
+line contains information such as the <B>Jed</B> version number, the buffer
+name, the mode, etc. On the left-hand side, the status bar starts with
+a string of dashes. In this area, special <em>indicators</em> can appear:
+</p>
+<dl>
+<dt><strong><tt>**</tt></strong></dt><dd> buffer has been modified since last save.</dd>
+<dt><strong><tt>%%</tt></strong></dt><dd> buffer is read only.</dd>
+<dt><strong><tt>m</tt></strong></dt><dd> mark set indicator; this means a region is being defined.</dd>
+<dt><strong><tt>d</tt></strong></dt><dd> file changed on disk indicator. This indicates that the file associated with the buffer is newer than the buffer itself.</dd>
+<dt><strong><tt>s</tt></strong></dt><dd> spot pushed indicator.</dd>
+<dt><strong><tt>+</tt></strong></dt><dd> Undo is enabled for the buffer.</dd>
+<dt><strong><tt>[Macro]</tt></strong></dt><dd> a macro is being defined.</dd>
+<dt><strong><tt>[Narrow]</tt></strong></dt><dd> buffer is narrowed to a region of lines. Please see Section <a class="link" href="#Narrowing Regions">Narrowing Regions</a>.</dd>
+</dl>
+<p class="Body">
+To customise the status line, you may use this command in your <tt>.jedrc</tt>:
+</p>
+<div class="block"><pre>
+set_status_line (&quot; Jed %v: %b (%m%n) (%l %c) %t&quot;, 1);
+</pre></div>
+<p class="Body">
+The meaning of the fields is:
+</p>
+<dl>
+<dt><strong><tt>%b</tt></strong></dt><dd> buffer name</dd>
+<dt><strong><tt>%f</tt></strong></dt><dd> file name (without the directory part)</dd>
+<dt><strong><tt>%F</tt></strong></dt><dd> file name with directory</dd>
+<dt><strong><tt>%v</tt></strong></dt><dd> JED version. If followed by <tt>U</tt>, means UTF8 active</dd>
+<dt><strong><tt>%t</tt></strong></dt><dd> current time --- only used if variable DISPLAY_TIME is non-zero</dd>
+<dt><strong><tt>%p</tt></strong></dt><dd> line number or percent string. If LINENUMBERS is 2, this expands to &quot;line number,column number&quot;</dd>
+<dt><strong><tt>%c</tt></strong></dt><dd> column number</dd>
+<dt><strong><tt>%%</tt></strong></dt><dd> literal '%' character</dd>
+<dt><strong><tt>%m</tt></strong></dt><dd> mode string</dd>
+<dt><strong><tt>%a</tt></strong></dt><dd> If abbrev mode, expands to &quot;abbrev&quot;</dd>
+<dt><strong><tt>%n</tt></strong></dt><dd> If buffer is narrowed, expands to &quot;Narrow&quot;</dd>
+<dt><strong><tt>%o</tt></strong></dt><dd> If overwrite mode, expands to &quot;Ovwrt&quot;</dd>
+<dt><strong><tt>%O</tt></strong></dt><dd> Overwrite/Insert flag - like %o, but shows INS/OVR</dd>
+<dt><strong><tt>%l</tt></strong></dt><dd> Shows current line number</dd>
+<dt><strong><tt>%L</tt></strong></dt><dd> Shows number of lines in the file</dd>
+</dl>
+<!--End Section 2-->
+<h3><a name="Backup and Auto-Save Files">1.11. Backup and Auto-Save Files</a></h3>
+<p class="Body">
+By default, <B>Jed</B> creates backup files appending <tt>~</tt> to the file name.
+This feature can be disabled setting the <tt>No_Backups = 1</tt> in <tt>.jedrc</tt>.
+</p>
+<p class="Body">
+Moreover, <B>Jed</B> periodically auto-saves its buffers; auto-save files are
+prefixed with <tt>#</tt>. The auto-save interval may be changed by setting
+the variable <tt>MAX_HITS</tt> to the desired value; the default is 300
+``hits'' (key presses) on the buffer.
+</p>
+<p class="Body">
+More details in Section <a class="link" href="#Recovering Files">Recovering Files</a>.
+</p>
+<!--End Section 2-->
+<h3><a name="Batch and Script Mode">1.12. Batch and Script Mode</a></h3>
+<p class="Body">
+<B>Jed</B> can be used to perform text editing tasks non interactively. For
+example, 
+</p>
+<div class="block"><pre>
+jed -batch -l preparse
+</pre></div>
+<p class="Body">
+starts <B>Jed</B> in batch mode, then loads and runs the file <tt>preparse.sl</tt>.
+This will generate some verbose output.
+</p>
+<p class="Body">
+To use <B>Jed</B> as a non-interactive text processing facility, you will want
+to use the <tt>-script</tt> option followed by the name of an S-Lang file. All
+other switches after <tt>-script</tt> are ignored, and the user's <tt>.jedrc</tt> is
+not loaded.
+</p>
+<p class="Body">
+Let's see a simple example. Save the following code as <tt>hello.sl</tt>:
+</p>
+<div class="block"><pre>
+% a very simple S-Lang program
+flush (&quot;Hello, world!&quot;);
+</pre></div>
+<p class="Body">
+Type <tt>jed -script hello.sl</tt>: as you may expect, <tt>Hello, world!</tt> will be
+displayed. Obviously, real S-Lang programs will prove more useful.
+Scripting makes <B>Jed</B> a valuable alternative to other tools like <tt>sed</tt>,
+which are often cryptic to use.
+</p>
+<p class="Body">
+On Unix systems, you can write shell scripts that use <B>Jed</B> as command
+interpreter. For example, save this script as <tt>replace.sh</tt>:
+</p>
+<div class="block"><pre>
+#!/usr/bin/jed -script
+
+% this script replaces text in a file.
+% __argv[0] = /usr/bin/jed
+% __argv[1] = -script
+% __argv[2] = ./change.sh
+% __argv[3] = file.txt
+% __argv[4] = old
+% __argv[5] = new
+
+if (__argc != 6) {
+  message (&quot;Usage: ./replace.sh filename old-string new-string&quot;);
+  quit_jed ();
+}
+
+() = read_file (__argv[3]);
+replace (__argv[4], __argv[5]);
+save_buffer ();
+quit_jed ();
+</pre></div>
+<!--End Section 2-->
+<!-- End SectLevel2 -->
+<!--End Section 1-->
+<h2><a name="Basic Editing">2. Basic Editing</a></h2>
+<p class="Body">
+<tt>M-Key</tt> stands for <tt>Esc-Key</tt> or, equivalently, <tt>Alt-Key</tt>; <tt>^Key</tt> stands
+for <tt>Ctrl-Key</tt>. These are the very basic commands to get you started:
+</p>
+<div class="block"><pre>
+Operation            Emacs                IDE            CUA
+--------------------------------------------------------------------------
+quit jed             ^X^C                 ^Kx            M-Q
+quit the cmd line    ^G                   ^G             ^G
+suspend              ^Z                   ^Kz            ?
+                          File Operations
+find (open) file     ^X^F                 ^Ke or F3      ^O
+insert file          ^Xi                  ^Ki            M-I
+save                 ^X^S                 ^Kd or F2      ^S
+save as              ^X^W                 ^Ks            n/a
+close file           ^Xk                  ^Kq or M-F3    n/a
+change buffer        ^Xb                  ^Kp or F6      n/a
+                          Movement
+word left            M-b                  ^A             M-Left
+word right           M-f                  ^F             M-Right
+beginning of line    ^A                   ^Qs            ^A
+end of line          ^E                   ^Qd            ^E
+page up              M-c                  ^R             ^P
+page down            ^V                   ^C             ^N
+top of buffer        M-&lt;                  ^Qr            M-^A
+end of buffer        M-&gt;                  ^Qc            M-^E
+line no.             M-X goto_line_cmd    ^Qi            M-X goto_line_cmd
+                          Deleting
+character left       ^H or BS             ^H or BS       ^H or Bs
+character right      ^D                   M-g            ^D
+word left            M-DEL                M-BS           ^-Bs
+word right           M-d                  ^T             ^-Del
+line                 ^A^K                 ^Y             ^K
+to end of line       ^K                   ^Qy            M-K
+undo                 ^Xu                  ^U             ^Z
+redo                 ^G^Xu                ^G^U           ^G^Z
+                          Search and Replace
+search               ^S                   ^Qf            ^F
+replace              M-%                  ^Qa            ^R
+repeat search        n/a                  ^L             n/a
+                       Regions (aka Blocks)	         
+begin                ^@ or ^-SPACE        ^Kb            Shift-arrow
+cut                  ^W                   ^Ky            ^X
+copy                 M-W                  ^Kh            ^C
+paste                ^Y                   ^Kc            ^V
+</pre></div>
+<p class="Body">
+Moreover, all emulations support these additional key bindings:
+</p>
+<div class="block"><pre>
+^_                   undo
+M-q                  format_paragraph
+M-n                  narrow_paragraph
+M-\                  trim_whitespace
+M-!                  do_shell_cmd
+M-$                  ispell
+M-u                  upcase_word
+M-c                  capitalize_word
+M-.                  find_tag
+</pre></div>
+<p class="Body">
+You should also be aware of these important features:
+</p>
+<ul>
+<li> <B>Jed</B> acts in different ways, according to the type of text you're writing; that is, it supports <a class="link" href="#Modes">Modes</a>. Some characters are not always typed in as you would expect, and some key bindings may stop working.</li>
+<li> The inverted quote character <tt>`</tt> (ASCII 96) is used to insert the next character literally. For example, <tt>` Esc</tt> will insert a real <tt>Esc</tt> character (ASCII 27) in the text. To get an inverted quote, type <tt>` `</tt>.</li>
+<li> To insert a character of a given ASCII code, press <tt>Esc</tt>, then the character ASCII code, then <tt>`</tt>. For example, to insert an open curly brace you can type <tt>Esc 123 `</tt>.</li>
+<li> These are "normal double quotes", these are ``smart quotes''. If you get smart quotes but want normal double quotes, type <tt>`</tt> then <tt>&quot;</tt>. The same applies to single quotes.</li>
+</ul>
+<p class="Body">
+    
+</p>
+<!--End Section 1-->
+<h2><a name="Main Features">3. Main Features</a></h2>
+<p class="Body">
+So many things to list here! Many of these features are accessible via
+menus, others via key bindings, others still via the mini-buffer typing
+<tt>M-X</tt> followed by the name of the relevant function. For some of them,
+a brief explanation is provided below. There you are, in no particular
+order:
+</p>
+<blockquote>
+pull-down menus; mouse support; multiple windows/buffers; mini-buffer
+completion and history; directory/buffer manager; `modes' for editing
+program sources or markup languages like LaTeX or HTML; recovery of lost
+files; file locking; loading of compressed files; folding support; 8-bit
+characters and mute-key support; abbreviations and completion; shell and
+compiler interface; numbered backups; RCS support; bookmarks; calendar;
+matching parenthesis highlighting/moving to; filtering of regions of text;
+editing of binary files; info and man page reader; incremental search;
+ispell word or automatic on the whole buffer; macros; mail and rmail;
+`occur' search; plain and regular expression search and replace; replace
+across several buffers; registers; block sorting; rectangular cut and
+paste; editable tab positions; tab-space conversion; Windows-like cut and
+paste; reformatting of paragraphs; CR/LF independence; key codes; VMS
+help; mime filtering.
+</blockquote>
+<p class="Body">
+In the following sections, only the names of the functions will be
+reported; find out the key bindings, if any, via 
+<em>Help/Where Is Command</em>. Look at the S-Lang files if you're curious.
+</p>
+<!--End Section 1-->
+<h2><a name="Editing">4. Editing</a></h2>
+<!-- Start SectLevel2 -->
+<h3><a name="Menus">4.1. Menus</a></h3>
+<p class="Body">
+Pull-down menus are supported in all terminals, and are accessed via the
+<tt>F10</tt>, arrows and <tt>Enter</tt> keys; or directly via <tt>M-key</tt> or the mouse. If
+<tt>Alt-key</tt> doesn't work, try <tt>Esc-key</tt>.
+</p>
+<p class="Body">
+You will want to append a list of recently accessed files to the <em>File</em>
+menu. Just insert this line in <tt>.jedrc</tt>:
+</p>
+<div class="block"><pre>
+() = evalfile (&quot;recent.sl&quot;);
+</pre></div>
+<p class="Body">
+You can roll your own menus by customizing <tt>popups.sl</tt>.
+</p>
+<!--End Section 2-->
+<h3><a name="Marking Text">4.2. Marking Text</a></h3>
+<p class="Body">
+<em>Regions</em> (blocks) of text are marked with <tt>set_mark_command</tt>, or
+emulation-dependent equivalent commands; please see the table in Section
+<a class="link" href="#Basic Editing">Basic Editing</a>. A region is defined by two screen locations called
+<em>point</em> and <em>mark</em>, which respectively start and end the region.
+</p>
+<p class="Body">
+Many commands operate on regions, i.e. for deleting, filtering,
+conversion, and so on. For instance, <tt>xform_region ('u')</tt> will turn the
+region to upper case.
+</p>
+<!--End Section 2-->
+<h3><a name="Using the Mouse">4.3. Using the Mouse</a></h3>
+<p class="Body">
+Mouse support is available for DOS/Windows, Linux console, Xjed, and
+<B>Jed</B> in several favours of xterms:
+</p>
+<ul>
+<li> Click the <em>left</em> mouse button to move the cursor to another location.</li>
+<li> To copy a region for subsequent pasting, press the <em>left</em> mouse button and drag the mouse to the end of the region.</li>
+<li> To paste a previously copied region, press the appropriate button:</li>
+<ul>
+<li> <em>right</em> (Linux console and <tt>wjed</tt>)</li>
+<li> <em>middle</em> (<tt>xjed</tt>)</li>
+<li> <tt>Alt-</tt><em>middle</em> (DOS console)</li>
+</ul>
+<li> To cut a region and put it in the paste buffer, define a region by dragging with the <em>right</em> (console, <tt>xjed</tt>) mouse button. Now release the <em>right</em> button and press it again.</li>
+<li> To paste from another window/application into Jed, press the <em>Alt</em> key while pressing the <em>right</em> (Linux console) button.</li>
+</ul>
+<p class="Body">
+If you're using <B>Jed</B> in <tt>rxvt</tt>, <tt>xterm</tt> or other terminal emulator, the
+above operations are obtained this way:
+</p>
+<ul>
+<li> To define a region, click <tt>Shift</tt>-<em>left</em>;</li>
+<li> To paste from the pastebuffer, move the cursor to where you want to paste and press the <tt>Shift</tt>-<em>middle</em>.</li>
+</ul>
+<p class="Body">
+On Windows, you can paste text from other applications pressing the
+<em>right</em> button.
+</p>
+<p class="Body">
+S-Lang files: <tt>mouse.sl</tt>, <tt>mousex.sl</tt>, <tt>mswmouse.sl</tt>
+</p>
+<!--End Section 2-->
+<h3><a name="Pasting from Other Applications">4.4. Pasting from Other Applications</a></h3>
+<p class="Body">
+Pasting may produce unexpected indentation. Let's suppose you select the
+following code snippet in a web browser:
+</p>
+<div class="block"><pre>
+untgz()
+{
+  if [ $# != 0 ]; then
+    tar zxvf $1
+    echo &quot;done.&quot;
+  fi
+}
+</pre></div>
+<p class="Body">
+when you paste it into a <B>Jed</B> buffer, you'll probably get:
+</p>
+<div class="block"><pre>
+untgz()  # Install a .tar.gz archive in current directory
+{
+  if [ $# != 0 ]; then
+      tar zxvf $1
+          echo &quot;Done.&quot;
+            fi
+            }
+</pre></div>
+<p class="Body">
+This is caused by the <tt>^M</tt> key, normally bound to the <tt>newline_and_indent</tt>
+function. You may want to reserve a key to toggle between
+<tt>newline_and_indent</tt> and <tt>newline</tt>. Add this code to <tt>.jedrc</tt>:
+</p>
+<div class="block"><pre>
+static variable newline_indents = 0;
+define toggle_newline_and_indent ()
+{
+  if (0 == newline_indents) {
+    local_setkey (&quot;newline_and_indent&quot;, &quot;^M&quot;);
+    newline_indents = 1;
+    flush (&quot;RET indents&quot;);
+  }
+  else {
+    local_setkey (&quot;newline&quot;, &quot;^M&quot;);
+    newline_indents = 0;
+    flush (&quot;RET does not indent&quot;);
+  }
+}
+
+define global_mode_hook (hook_name)
+{
+  ...
+  local_setkey (&quot;toggle_newline_and_indent&quot;, &quot;^Z^M&quot;);
+}
+</pre></div>
+<p class="Body">
+Before pasting from other applications, you'll press <tt>^Z RET</tt> to disable
+indentation.
+</p>
+<!--End Section 2-->
+<h3><a name="Reformatting Paragraphs">4.5. Reformatting Paragraphs</a></h3>
+<p class="Body">
+The command <tt>M-X format_paragraph</tt> reformats the current paragraph - that
+is, all the text until the following blank line. If you want the paragraph
+to be indented by, say, 5 positions, make the first line begin with 5
+spaces, move the cursor to the first character, then issue the command.
+</p>
+<p class="Body">
+If you'd like narrower paragraphs, set the variable <tt>WRAP</tt> in your
+<tt>.jedrc</tt>, or type <tt>^X Esc</tt> and enter <tt>WRAP=</tt><em>nn</em>, where <em>nn</em> is the
+column where you want the text to wrap. To get unwrapped text, set <tt>WRAP</tt> to
+a very high value (say, 2000 or so).
+</p>
+<p class="Body">
+To get the right margin aligned too, type <tt>Esc 1 M-X format_paragraph</tt>.
+</p>
+<p class="Body">
+Modes may redefine paragraph delimiters, e.g. for avoiding reformatting
+comments of language constructs.
+</p>
+<!--End Section 2-->
+<h3><a name="Keyboard Macros">4.6. Keyboard Macros</a></h3>
+<p class="Body">
+<em>Macros</em> are used to define a set of commands that can be repeated at a
+later time. Use <tt>M-X begin_macro</tt>, <tt>M-X end_macro</tt>, and
+<tt>M-X execute_macro</tt> to define and run a macro.
+</p>
+<p class="Body">
+If you need to enter some text while defining a macro, type
+<tt>M-X macro_query</tt>. The prompt <tt>Enter String:</tt> will appear in the
+mini-buffer. Any string that is entered will be inserted into the buffer,
+and the process of defining the macro continues. Every time the macro is
+executed, <B>Jed</B> will prompt for a string to be inserted.
+</p>
+<p class="Body">
+If you type <tt>()=evalfile (&quot;macro&quot;)</tt> at the S-Lang prompt, additional
+functions will become available. To assign a macro to a key, use
+<tt>M-X macro_assign_macro_to_key</tt>; to a function,
+<tt>M-X macro_to_function</tt>.
+</p>
+<p class="Body">
+Saving and recalling macros is possible, if a bit tricky. Let's suppose
+that a macro was created that inserts <tt>12345</tt> and a newline in the
+current buffer. <tt>M-X macro<strong>save</strong>macro</tt> prompts you for a file name and a 
+macro name. The file will look like:
+</p>
+<div class="block"><pre>
+%%%MACRO NAME: mymacro
+@12345^M
+</pre></div>
+<p class="Body">
+To bind the macro to, say, <tt>Ctrl-Z 1</tt> and make it available in all
+modes, add this line to the <tt>global<strong>mode</strong>hook</tt> function in your <tt>.jedrc</tt>:
+</p>
+<div class="block"><pre>
+define global_mode_hook (hook_name)
+{
+  ...
+  local_setkey (&quot;@12345^M&quot;, &quot;^Z1&quot;);
+  ...
+}
+</pre></div>
+<!--End Section 2-->
+<h3><a name="Repeating Actions">4.7. Repeating Actions</a></h3>
+<p class="Body">
+The key sequence <tt>Esc n</tt>, where <em>n</em> is a digit, is used to repeat a
+command <em>n</em> times. For example, <tt>Esc 25 x</tt> inserts 25 `x' characters;
+<tt>Esc 100 M-X execute_macro</tt> runs the last macro 100 times; etc.
+</p>
+<!--End Section 2-->
+<h3><a name="Rectangles">4.8. Rectangles</a></h3>
+<p class="Body">
+When you define a region, if the point and the mark are positioned on
+different columns <em>rectangle</em> is defined. Some function then let you
+perfomr actions on the rectangle.
+</p>
+<p class="Body">
+You can use the functions <tt>kill_rect</tt> to cut the rectangle,
+<tt>open_rect</tt> to insert a blank rectangle, <tt>copy_rect</tt> to copy,
+<tt>insert_rect</tt> to paste, and <tt>blank_rect</tt> to blank-fill the rectangle.
+</p>
+<!--End Section 2-->
+<h3><a name="Block Sorting">4.9. Block Sorting</a></h3>
+<p class="Body">
+Let's suppose you want to sort a set of lines alphabetically or
+numerically. Begin by defining a rectangle on the data you want to sort,
+then type <tt>M-X sort</tt>. For example, let's consider this text:
+</p>
+<div class="block"><pre>
+Fruit:         Quantity:
+lemons                3
+oranges              56
+peaches             175
+apples              200
+pears                37
+</pre></div>
+<p class="Body">
+To sort the data based upon the name: move the point on the <tt>l</tt> of
+<tt>lemons</tt>, set the mark, then move the cursor three positions after the <tt>s</tt>
+of <tt>pears</tt>. A rectangle is defined; type <tt>M-X sort</tt>. To sort the data by
+quantity, set the point two spaces before the <tt>3</tt> of the <tt>lemons</tt> line,
+then move the cursor after the <tt>37</tt> of the last line. This rectangle will
+sort the line upon the numbers.
+</p>
+<p class="Body">
+Rectangles and block sorting are very useful when you work on multi-column
+data files.
+</p>
+<p class="Body">
+S-Lang files: <tt>sort.sl</tt>
+</p>
+<!--End Section 2-->
+<h3><a name="8-bit Characters and Mutekey">4.10. 8-bit Characters and Mutekey</a></h3>
+<p class="Body">
+People whose language includes accented characters will benefit from
+<tt>M-X digraph_cmd</tt>, which lets the user compose such characters. To 
+type special characters as you go, include a line like this in your
+<tt>.jedrc</tt>:
+</p>
+<div class="block"><pre>
+mute_set_mute_keys (&quot;'`~^&quot;);
+</pre></div>
+<p class="Body">
+Pressing a quote, or a tilde, or a caret, followed by the character to
+accent, will insert an accented character in the buffer. Beware: this
+could make inserting quotes cumbersome in some situations, and won't work
+in all modes. If you get unexpected behaviour, type <tt>M-X no_mode</tt>, insert
+the problem characters, then revert to the mode you were using.
+</p>
+<p class="Body">
+S-Lang files: <tt>mutekeys.sl</tt>
+</p>
+<!--End Section 2-->
+<h3><a name="Abbreviations and Completion">4.11. Abbreviations and Completion</a></h3>
+<p class="Body">
+<em>Abbreviations</em> are mode-dependent and work like in this example: you
+define that, say, ``PS'' stands for ``PostScript'' in all text-mode
+files; then toggle abbreviation mode; hence, each time you type ``PS'',
+it will be expanded to ``PostScript''. Abbreviations are saved in a file,
+usually <tt>$HOME/.abbrevs.sl</tt>.
+</p>
+<p class="Body">
+To define your own abbreviations, you will edit that file by hand or type
+<tt>M-X define_abbreviation</tt>. You will be prompted for the word(s) you want to
+define an abbreviation for, and the abbreviation itself. Then type
+<tt>M-X save_abbrevs</tt> to save the abbreviations to the file, and 
+<tt>M-X abbrev_mode</tt> to enable them.
+</p>
+<p class="Body">
+To have abbreviations loaded at startup, see the example in Section
+<a class="link" href="#Hooks">Hooks</a>.
+</p>
+<p class="Body">
+<em>Completion</em> is the automatic expansion of partially-typed words. If
+your text contains the word `frobnication', typing `fro' followed by <tt>M-/</tt>
+(<tt>M-X dabbrev</tt>) will either expand the whole word, or cycle amongst all
+possible completions.
+</p>
+<p class="Body">
+S-Lang files: <tt>abbrev.sl</tt>, <tt>dabbrev.sl</tt>
+</p>
+<!--End Section 2-->
+<h3><a name="Ispell">4.12. Ispell</a></h3>
+<p class="Body">
+<B>Jed</B> uses <tt>ispell</tt> for check spelling. If you're in doubt whether you
+misspelt a word, move the cursor over it and type <tt>M-X ispell</tt>. If the word
+is wrong, you will be prompted for alternatives.
+</p>
+<p class="Body">
+Please note that only <tt>ispell</tt> works, <tt>aspell</tt> and other spell checkers do
+not!
+</p>
+<p class="Body">
+S-Lang files: <tt>ispell.sl</tt>
+</p>
+<!--End Section 2-->
+<h3><a name="Registers">4.13. Registers</a></h3>
+<p class="Body">
+<em>Registers</em> are 128 additional ``clipboards''. Select a region of text,
+then copy it to a register with <tt>M-X reg_copy_to_register</tt>. You will be
+prompted for a label to be associated with the register. To paste from a
+register, type <tt>M-X reg_insert_register</tt>; to view all active registers,
+<tt>M-X register_mode</tt>.
+</p>
+<p class="Body">
+S-Lang files: <tt>register.sl</tt>
+</p>
+<!--End Section 2-->
+<h3><a name="Tab Issues">4.14. Tab Issues</a></h3>
+<p class="Body">
+By default, the <tt>Tab</tt> key is used in many modes to indent the text, but
+you can change the setkey definition in <tt>.jedrc</tt> to insert a real
+Tab character (ASCII 9). The <tt>TAB_DEFAULT</tt> variable specifies the tab
+size; for word processor-like tab editing, use <tt>M-X edit_tab_stops</tt>.
+</p>
+<p class="Body">
+<tt>M-X untab</tt> operates on a region and converts tabs to spaces;
+<tt>Esc 1 M-X untab</tt> converts spaces to tabs.
+</p>
+<p class="Body">
+S-Lang files: <tt>tab.sl</tt>, <tt>untab.sl</tt>
+</p>
+<!--  ''TODO: more explanations.'' -->
+<!--End Section 2-->
+<h3><a name="Regular Expressions">4.15. Regular Expressions</a></h3>
+<p class="Body">
+You may perform search and replace operations with regular expression
+(RE) support. The S-Lang library supports the following standard REs:
+</p>
+<div class="block"><pre>
+.                 match any character except newline
+*                 matches zero or more occurences of previous RE
++                 matches one or more occurences of previous RE
+?                 matches zero or one occurence of previous RE
+^                 matches beginning of a line
+$                 matches end of line
+[ ... ]           matches any single character between brackets.
+                  For example, [-02468] matches `-' or any even digit.
+                  and [-0-9a-z] matches `-' and any digit between 0 and 9
+                  as well as letters a through z.
+\&lt;                Match the beginning of a word.
+\&gt;                Match the end of a word.
+\( ... \)
+\1, \2, ..., \9   Matches the match specified by nth \( ... \)
+                  expression.
+</pre></div>
+<p class="Body">
+In addition, the following extensions are also supported:
+</p>
+<div class="block"><pre>
+\c                turn on case-sensitivity (default)
+\C                turn off case-sensitivity
+\d                match any digit
+\e                match ESC char
+</pre></div>
+<p class="Body">
+For example, to replace <tt>"some text"</tt> with <tt>'some text'</tt>
+(notice: from double quotes to simple quotes), you will search for
+<tt>"\([a-zA-Z ]*\)"</tt> and replace it with <tt>'\1'</tt>. 
+</p>
+<p class="Body">
+RE matching does not work across multiple lines. Moreover, <B>Jed</B>'s
+REs differ from <tt>egrep</tt>'s in the following aspects:
+</p>
+<ul>
+<li> the OR operator | is not supported;</li>
+<li> grouping operators <tt>\(</tt> and <tt>\)</tt> are not used to group REs to form a single RE. Thus, an expression such as <tt>\(hello\)*</tt> is not a pattern to match zero or more occurances of <tt>hello</tt> as it is in e.g., <tt>egrep</tt>.</li>
+</ul>
+<p class="Body">
+S-Lang files: <tt>regexp.sl</tt>
+</p>
+<!--End Section 2-->
+<h3><a name="Occur Search">4.16. Occur Search</a></h3>
+<p class="Body">
+<tt>M-X occur</tt> finds occurrences of regular expressions in the current
+buffer. A new buffer, called <tt>*occur*</tt>, is created; it contains the lines
+where the regexp was found. Switch to the <tt>*occur*</tt> buffer, then move the
+cursor to a line and press `g'. In the other buffer, the cursor will be
+placed on the corresponding line.
+</p>
+<p class="Body">
+S-Lang files: <tt>occur.sl</tt>
+</p>
+<!--End Section 2-->
+<!-- End SectLevel2 -->
+<!--End Section 1-->
+<h2><a name="Buffer-related Issues">5. Buffer-related Issues</a></h2>
+<!-- Start SectLevel2 -->
+<h3><a name="Window Splitting">5.1. Window Splitting</a></h3>
+<p class="Body">
+The function <tt>split_window</tt> splits the current window in two; each window
+can display different buffers, or different parts of the same buffer. This
+is useful when you need to compare different parts of a file.
+</p>
+<p class="Body">
+Use <tt>M-X other_window</tt> to move the cursor from one window to the other,
+and <tt>M-X one_window</tt> to get only one window on the screen.
+</p>
+<!--End Section 2-->
+<h3><a name="Folding">5.2. Folding</a></h3>
+<p class="Body">
+<em>Folding</em> is a technique for hiding parts of a document, and is
+activated via the function <tt>folding_mode</tt>. The following functions/key
+bindings will be made available by this mode:
+</p>
+<div class="block"><pre>
+Function                Bound to key
+------------------------------------
+fold_whole_buffer       ^C^W
+fold_enter_fold         ^C&gt;
+fold_exit_fold          ^C&lt;
+fold_open_buffer        ^C^O
+fold_fold_region        ^C^F
+fold_open_fold          ^C^S
+fold_close_fold         ^C^X
+fold_search_forward     ^Cf
+fold_search_backward    ^Cb
+</pre></div>
+<p class="Body">
+S-Lang files: <tt>folding.sl</tt>
+</p>
+<!--End Section 2-->
+<h3><a name="Narrowing Regions">5.3. Narrowing Regions</a></h3>
+<p class="Body">
+Once a region is defined, you can restrict editing on the region typing
+<tt>M-X narrow</tt>. Only the text in the region will be visible. To make the
+remaining text accessible again, type <tt>M-X widen</tt>.
+</p>
+<!--End Section 2-->
+<h3><a name="Compiling">5.4. Compiling</a></h3>
+<p class="Body">
+Let's suppose that you're writing C or Fortran code. Once the program is
+finished, you don't have to quit <B>Jed</B> to compile it. Type <tt>M-X compile</tt> and
+provide a suitable command (e.g., <tt>gcc -o foo foo.c</tt>). If the source
+contains errors, they will be highlighted in the <tt>*compile*</tt> buffer;
+<tt>M-X compile_parse_errors</tt> and <tt>M-X compile_previous_error</tt> will move 
+the cursor to the location of the next/previous error in the source buffer.
+</p>
+<p class="Body">
+S-Lang files: <tt>compile.sl</tt>, <tt>acompile.sl</tt>
+</p>
+<!--End Section 2-->
+<h3><a name="Tags">5.5. Tags</a></h3>
+<p class="Body">
+If you load a <tt>tags</tt> file made by the <tt>ctags</tt> program, you can visit the
+first occurrance of the tag under the cursor (or a tag you specify) typing
+<tt>M-X find_tag</tt>.
+</p>
+<p class="Body">
+S-Lang file: <tt>ctags.sl</tt>
+</p>
+<!--End Section 2-->
+<h3><a name="Commenting Code">5.6. Commenting Code</a></h3>
+<p class="Body">
+When you write code, you can comment out regions of text with
+<tt>M-X comment_region</tt>. The function <tt>uncomment_region</tt> performs the
+opposite action.
+</p>
+<p class="Body">
+S-Lang file: <tt>comment.sl</tt>
+</p>
+<!--End Section 2-->
+<h3><a name="Buffer Editor">5.7. Buffer Editor</a></h3>
+<p class="Body">
+Mode designed for maintaining and editing open buffers; type <tt>M-X bufed</tt>.
+A new buffer called <tt>*BufferList*</tt> will be created. Type `h' or `?' to get
+help.
+</p>
+<p class="Body">
+S-Lang files: <tt>bufed.sl</tt>
+</p>
+<!--End Section 2-->
+<h3><a name="Mail/Rmail (Unix Only)">5.8. Mail/Rmail (Unix Only)</a></h3>
+<p class="Body">
+Type <tt>M-X mail</tt> to write an email message; <tt>M-X mail_send</tt> to send it. In
+addition, if the executable <tt>getmail</tt> is included in the distribution, Jed
+acts as a MUA and gets mail from the standard mail spool. At this stage,
+it should be obvious how to use it. Main keys:
+</p>
+<div class="block"><pre>
+Key        Action
+--------------------------
+SPACE      scroll forward or select message
+DELETE     scroll message backward
+DOWN       move to next message (use space to select it)
+UP         move to previous message
+N          move to Next non-deleted message
+P          move to Previously non-deleted message
+D          Tag message for deletion
+X          Really delete tagged messages and resequence folder
+G          Get newmail
+Esc 1 G    Prompt for a mail box and get new mail from that
+Q          Quit this folder returning to top level (folder index)
+T          Toggle headers. By default, jed will hide most of the
+           headers. Use this key to unhide them.
+O          Output message to a different folder. One will be
+           created if necessary.
+F          Forward message
+R          Reply
+M          mail
+</pre></div>
+<p class="Body">
+S-Lang files: <tt>mail.sl</tt>, <tt>mailalias.sl</tt>, <tt>rmail.sl</tt>, <tt>sendmail.sl</tt>
+</p>
+<!--End Section 2-->
+<h3><a name="Man and Info Reader">5.9. Man and Info Reader</a></h3>
+<p class="Body">
+Unix users will like the built-in <tt>man</tt> and <tt>info</tt> readers; <tt>M-X unix_man</tt>
+and <tt>M-X info_mode</tt> to activate them. Man pages will be loaded in <a class="link" href="#Most">Most</a>
+mode.
+</p>
+<p class="Body">
+S-Lang files: <tt>man.sl</tt>, <tt>info.sl</tt>
+</p>
+<!--  buffer-related -->
+<!--End Section 2-->
+<h3><a name="Quick Tips">5.10. Quick Tips</a></h3>
+<p class="Body">
+    
+<ul>
+<li> <tt>M-X do_shell_cmd</tt> executes a shell command and puts the resulting output in a buffer (<tt>shell.sl</tt>).</li>
+<li> <tt>M-X toggle_readonly</tt> is fairly obvious - it will make a buffer read-only or read/write.</li>
+<li> place the cursor on a parenthesis of any kind and type <tt>M-X goto_match</tt> to move the cursor to the matching parenthesis.</li>
+<li> <tt>M-X cal</tt> displays a calendar in a buffer (<tt>cal.sl</tt>).</li>
+<li> <tt>M-X isearch_forward</tt> and <tt>M-X isearch_backward</tt> perform incremental search operations (<tt>isearch.sl</tt>).</li>
+<li> <tt>M-X replace_across_buffer_files</tt> does a replace across all open buffers (<tt>replace.sl</tt>).</li>
+<li> <tt>M-X trim_whitespace</tt> removes all spaces after the last non-space character of a line.</li>
+<li> <tt>M-X capitalize_word</tt> changes a letter to upper case, while  <tt>M-X downcase_word</tt> does the opposite.</li>
+<li> <tt>M-X toggle_line_number_mode</tt> toggles the visualisation of line numbers.</li>
+</ul>
+    
+</p>
+<!--End Section 2-->
+<!-- End SectLevel2 -->
+<!--End Section 1-->
+<h2><a name="File-Related Issues">6. File-Related Issues</a></h2>
+<!-- Start SectLevel2 -->
+<h3><a name="Recovering Files">6.1. Recovering Files</a></h3>
+<p class="Body">
+<B>Jed</B> can recover an interrupted session, like a system shutdown or a
+disconnected terminal. In such events, <B>Jed</B> tries to auto-save its
+buffers. Files are saved with a leading and a trailing <tt>#</tt>, e.g.
+<tt>#FileName.txt#</tt>.
+</p>
+<p class="Body">
+Whenever <B>Jed</B> finds (loads) a file, it checks to see if an auto-save
+ile exists as well as the file's date. If the dates are such that the
+auto-save file is more recent, a message in the mini-buffer will alert
+the user. To recover your file, type <tt>M-X recover_file</tt>.
+</p>
+<!--End Section 2-->
+<h3><a name="Editing Compressed Files">6.2. Editing Compressed Files</a></h3>
+<p class="Body">
+The <tt>auto_compression_mode</tt> function toggles this feature on or off.
+When it's on, files whose names end with <tt>.gz</tt>, <tt>.Z</tt>, or <tt>.bz2</tt> will be
+automatically uncompressed when read in, and compressed when written out.
+To enable this feature by default, include the following line in <tt>.jedrc</tt>:
+</p>
+<div class="block"><pre>
+auto_compression_mode ();
+</pre></div>
+<p class="Body">
+S-Lang file: <tt>compress.sl</tt>
+</p>
+<!--End Section 2-->
+<h3><a name="File Locking (Unix Only)">6.3. File Locking (Unix Only)</a></h3>
+<p class="Body">
+Editing the same file in multiple <B>Jed</B> sessions is potentially disruptive.
+File locking prevents a <B>Jed</B> session from modifying a file that is already
+being edited in another session. Whenever a file gets modified, <B>Jed</B> will
+attempt to lock the file. When the file is no longer modified (via getting
+saved to disk or changes discarded via undo), <B>Jed</B> will unlock it.
+</p>
+<!--End Section 2-->
+<h3><a name="End-Of-Line Issues">6.4. End-Of-Line Issues</a></h3>
+<p class="Body">
+On DOS/Windows, text lines end with the two characters <tt>^M^J</tt> (ASCII
+13 + ASCII 10), on Unix with <tt>^J</tt>, on the Macintosh with <tt>^M</tt>. This
+difference makes it notoriously irksome editing Unix text files under
+Windows, and vice versa. Jed solves this problem automatically when reading
+a file. Under Unix, a `C' in the status line indicates that DOS-style
+end-of-line is enabled; under DOS/Windows, an `L' denotes Unix-style
+end-of-line. You can change the end-of-line style with the command
+<tt>M-X toggle_crmode</tt>.
+</p>
+<p class="Body">
+Macintosh text files will load as a long single line. To fix it, replace
+<tt>^M</tt> (enter it literally) with <tt>^J</tt>.
+</p>
+<p class="Body">
+To have <B>Jed</B> always save files with <tt>^M^J</tt>, add this line in <tt>.jedrc</tt>:
+</p>
+<div class="block"><pre>
+setbuf_info (getbuf_info () | 0x400);
+</pre></div>
+<!--End Section 2-->
+<h3><a name="Multiple Versions">6.5. Multiple Versions</a></h3>
+<p class="Body">
+In addition to the backup copy of the working file, you can get numbered
+copies that are created each time you save a buffer. These have a suffix
+like <tt>.~3~</tt> (third backup copy).
+</p>
+<p class="Body">
+To enable multiple versions by default, add the entry <tt>backups_on ();</tt> in
+<tt>.jedrc</tt>. To disable this feature, type <tt>M-X backups_off</tt>.
+</p>
+<p class="Body">
+S-Lang file: <tt>backups.sl</tt>
+</p>
+<!--End Section 2-->
+<h3><a name="RCS and SCCS interface">6.6. RCS and SCCS interface</a></h3>
+<p class="Body">
+<B>Jed</B> provides access to the RCS versioning system. <tt>M-X rcs_open_file</tt>
+and <tt>M-X rcs_read_log</tt> prompt for the name of a file under RCS, such as
+<tt>textfile.txt,v</tt> or <tt>RCS/textfile.txt,v</tt>. To check a file in and out, use
+<tt>M-X rcs_check_in_and_out</tt>. When a file is checked out, it becomes write
+protected until you check it in again.
+</p>
+<p class="Body">
+Similar commands are provided for SCCS: <tt>M-X sccs_open_file</tt> and
+<tt>M-X sccs_check_in_and_out</tt>.
+</p>
+<p class="Body">
+S-Lang files: <tt>rcs.sl</tt>, <tt>sccs.sl</tt>
+</p>
+<!--End Section 2-->
+<h3><a name="Directory Editor">6.7. Directory Editor</a></h3>
+<p class="Body">
+This is a mode designed for maintaining and editing a directory and the
+files contained therein. Yype <tt>M-X dired</tt>; you will be promted for a
+directory name, and a new buffer called <tt>*dired*</tt> will be created.
+Type `h' to get help on the commands available.
+</p>
+<p class="Body">
+S-Lang file: <tt>dired.sl</tt>
+</p>
+<!--  -->
+<!--End Section 2-->
+<!-- End SectLevel2 -->
+<!--End Section 1-->
+<h2><a name="Modes">7. Modes</a></h2>
+<p class="Body">
+<B>Jed</B> implements <em>modes</em> to facilitate the editing of program sources or
+markup languages like LaTeX or HTML. Typically, modes define a 
+<em>syntax highlighting</em> scheme, provide <em>automatic indentation</em> and
+functions whose behaviour depends on <em>variables</em>. In some cases they
+provide a Mode menu entry, and often also provide a <em>hook</em> for
+customization purposes. You can change the default key binding and
+variables default values in your <tt>.jedrc</tt>.
+</p>
+<p class="Body">
+For example, let's consider C mode. When you edit a file with extension
+<tt>.c</tt>, <B>Jed</B> understands it's a C language file and turns C mode on. As you
+type your program, syntax elements are highlighted. Some mode-specific
+functions are now available from the Mode menu, along with new key
+bindings; you can change these by writing a function called
+<tt>c_mode_hook</tt> in your <tt>.jedrc</tt>.
+</p>
+<p class="Body">
+Usually, <B>Jed</B> recognises a file's associated mode by its extension. You
+can force <B>Jed</B> to edit a file using a particular mode by putting this on
+its first line:
+</p>
+<div class="block"><pre>
+-*- your_mode -*-
+</pre></div>
+<p class="Body">
+For example, if you save your LaTeX files without the <tt>.tex</tt> extension,
+but want to edit them in LaTeX mode, you will write <tt>% -*- LaTeX -*-</tt>
+as the first line.
+</p>
+<p class="Body">
+You may notice that modes are not very consistent with each other; that
+is, similar actions are often bound to very different key bindings. This
+will hopefully change in the future.
+</p>
+<p class="Body">
+As of <B>Jed</B> 0.99.18, supported modes and their features are outlined
+in the following table:
+</p>
+<div class="block"><pre>
+Mode          Syntax         Indent    Font    Comment Other
+              Highlighting
+---------------------------------------------------------------
+bibtex        y              y         y       n       n
+c             y              y         n/a     y       y
+c++           y              y         n/a     y       n
+dcl           y              y         n/a     y       y
+docbook       y              y         y       y       y
+fortran 77    y              y         n/a     y       y
+fortran 90    y              y         n/a     y       y
+html          y              n         y       y       y
+idl           y              y         n/a     n       y
+java          y              y         n/a     y       y
+latex         y              y         y       y       y
+php           y              y         n/a     y       y
+tex           y              n         n       n       y
+lisp          y              y         n/a     n       n
+lua           y              y         n/a     y       y
+maple         ?              ?         n/a     ?       y
+matlab        y              y         n/a     y       y
+nroff         y              n         n       n       n
+perl          y              n         n/a     n       n
+postscript    y              n         n/a     n       n
+python        y              y         n/a     y       y
+docbook       y              n         y       y       y
+S-Lang        y              y         n/a     y       y
+spice         y              n         n/a     n       n
+tcl           y              y         n/a     n       n
+tiasm         y              n         n/a     n       n
+pascal        y              y         n/a     n       y
+verilog       y              n         n/a     n       n
+vhdl          y              n         n/a     n       n
+</pre></div>
+<p class="Body">
+Modes often provide new functions and new key bindings. In addition,
+virtually all modes provide hooks, which are explained in the next
+section.
+</p>
+<!-- Start SectLevel2 -->
+<h3><a name="Byte-Compiling Modes">7.1. Byte-Compiling Modes</a></h3>
+<p class="Body">
+Normal <tt>.sl</tt> files can be <em>byte-compiled</em>, i.e. turned to a more
+compact and faster format. The extension of byte-compiled S-Lang
+is <tt>.slc</tt>; many such files are created at install time.
+</p>
+<p class="Body">
+If you want to byte-compile an S-Lang file in your <tt>Jed_Home_Library</tt>,
+move to that directory and start <B>Jed</B>. Type this line in the 
+<tt>*scratch*</tt> buffer:
+</p>
+<div class="block"><pre>
+byte_compile_file (&quot;./your_file.sl&quot;, 0);
+</pre></div>
+<p class="Body">
+then type <tt>M-X evalbuffer</tt>. The file <tt>your_file.slc</tt> will be created.
+</p>
+<!--End Section 2-->
+<h3><a name="Syntax Highlighting">7.2. Syntax Highlighting</a></h3>
+<p class="Body">
+<B>Jed</B> provides two different kinds of syntax highlighting: normal and DFA.
+The latter is based on regular expressions, requires more memory, and
+makes <B>Jed</B> a bit slower to start.
+</p>
+<p class="Body">
+When a mode defines DFA highlighting, it may be convenient to create a 
+<em>DFA cache</em>; this solves the problem of slow startup. The command
+</p>
+<div class="block"><pre>
+jed -batch -l preparse
+</pre></div>
+<p class="Body">
+creates DFA caches for all modes listed in <tt>preparse.sl</tt>, that is file with
+a <tt>.dfa</tt> extension.
+</p>
+<p class="Body">
+<strong>Caveat</strong>: currently, DFA syntax highlighting breaks <a class="link" href="#UTF8 Support">UTF8 Support</a>!
+</p>
+<!--End Section 2-->
+<h3><a name="C mode">7.3. C mode</a></h3>
+<p class="Body">
+This is a mode designed for editing C language files. After the mode is
+loaded, the hook <tt>c_mode_hook</tt> is called if it exists.
+Functions that affect this mode include:
+</p>
+<div class="block"><pre>
+Function              Default Binding
+-------------------------------------
+c_insert_bra          {
+c_insert_ket          }
+newline_and_indent    RETURN
+indent_line           Tab
+goto_match            ^-\
+c_make_comment        Esc ;
+c_format_Paragraph    Esc q
+c_top_of_function     Esc ^A
+c_end_of_function     Esc ^E
+c_mark_function       Esc ^H
+</pre></div>
+<p class="Body">
+Variables affecting indentation include: 
+</p>
+<div class="block"><pre>
+C_INDENT             % indentation of lines after '{'
+C_BRACE              % how much to indent '{' if on a line by itself
+C_BRA_NEWLINE        % '{' on a line by itself?
+C_CONTINUED_OFFSET   % indentation of statements that continue on next line
+C_Colon_Offset       % indentation of 'case' statements
+C_Class_Offset       % indentation of members in a class declaration
+</pre></div>
+<p class="Body">
+You can set a predefined indentation style using using <tt>c_set_style</tt> and
+one of the following: <tt>gnu linux jed bsd k&amp;r</tt>; e.g.
+</p>
+<div class="block"><pre>
+c_set_style (&quot;gnu&quot;);
+</pre></div>
+<p class="Body">
+If you wish, you can make your own style using a statement like:
+</p>
+<div class="block"><pre>
+(C_INDENT, C_BRACE, C_BRA_NEWLINE, C_CONTINUED_OFFSET,
+  C_Colon_Offset, C_Class_Offset) = (2,0,0,2,0,2);
+</pre></div>
+<p class="Body">
+S-Lang files: <tt>cmisc.sl</tt>
+</p>
+<!--End Section 2-->
+<h3><a name="Fortran Mode">7.4. Fortran Mode</a></h3>
+<p class="Body">
+This is a mode designed for editing Fortran language files. After the mode
+is loaded, the hook <tt>fortran_hook</tt> is called if it exists. Useful
+functions include:
+</p>
+<div class="block"><pre>
+Function                       Default Binding
+----------------------------------------------
+fortran_continue_newline        Esc RETURN
+fortran_comment                 Esc ;
+fortran_uncomment               Esc :
+fortran_electric_label          0-9
+fortran_next_statement          ^C^N
+fortran_previous_statement      ^C^P
+fortran_ruler                   ^C^R
+fortran_beg_of_subprogram       Esc ^A
+fortran_end_of_subprogram       Esc ^E
+fortran_mark_subprogram         Esc ^H
+</pre></div>
+<p class="Body">
+Variables include:
+</p>
+<div class="block"><pre>
+Fortran_Continue_Char
+Fortran_Comment_String
+Fortran_Indent_Amount
+</pre></div>
+<p class="Body">
+S-Lang files: <tt>fortran.sl</tt>
+</p>
+<!--End Section 2-->
+<h3><a name="LaTeX Mode">7.5. LaTeX Mode</a></h3>
+<p class="Body">
+This is a mode designed for editing LaTeX files. After the mode is loaded,
+the hook <tt>latex_mode_hook</tt> is called if it exists. In addition, if the
+abbreviation table <tt>latex</tt> is defined, that table is used. Useful functions
+include:
+</p>
+<div class="block"><pre>
+Function                    Default Binding
+-------------------------------------------
+tex_insert_braces           ^C{
+tex_font                    ^C^F
+latex_environment           ^C^E
+latex_section               ^C^S
+latex_close_environment     ^C]
+latex_insert_item           ^C^J
+tex_comment_region          ^C;
+tex_uncomment_region        ^C:
+tex_comment_Paragraph       ^C%
+tex_mark_environment        ^C.
+tex_mark_section            ^C*
+latex_toggle_math_mode      ^C~
+tex_insert_macro            ^C^M
+tex_complete_symbol         Esc Tab
+tex_complete_symbol         Esc Tab
+latex_help                  ^Ci
+latex_indent_next_line      ^J
+latex_indent_region         ^C^Q^R
+latex_indent_section        ^C^Q^S
+latex_indent_environment    ^C^Q^E
+</pre></div>
+<p class="Body">
+S-Lang files: <tt>texcom.sl</tt>, <tt>latex.sl</tt>, <tt>latex209.sl</tt>, <tt>ltx-math.sl</tt>.
+</p>
+<p class="Body">
+Much better LaTeX modes are available on the net:
+</p>
+<ul>
+<li> <a class="link" href="http://www.ctan.org/tex-archive/support/jed/latex4jed">http://www.ctan.org/tex-archive/support/jed/latex4jed</a>/</li>
+<li> <a class="link" href="http://www.ctan.org/tex-archive/support/jed/jlm">http://www.ctan.org/tex-archive/support/jed/jlm</a>/</li>
+</ul>
+<!--End Section 2-->
+<h3><a name="Tex Mode">7.6. Tex Mode</a></h3>
+<p class="Body">
+This is a mode designed for editing TeX files. When <tt>tex</tt> mode is
+loaded, <tt>tex_mode_hook</tt> is called if it exists. Useful bindings:
+</p>
+<div class="block"><pre>
+Function             Default Binding
+------------------------------------
+tex_insert_quote     &quot;
+tex_insert_quote     '
+tex_blink_dollar     $
+tex_ldots            .
+</pre></div>
+<p class="Body">
+S-Lang files: <tt>texcom.sl</tt>
+</p>
+<!--End Section 2-->
+<h3><a name="HTML Mode">7.7. HTML Mode</a></h3>
+<p class="Body">
+This is a mode designed for editing HTML files. The hook
+<tt>html_mode_hook</tt> is called if it exists.
+</p>
+<p class="Body">
+If a region is defined (i.e., if a mark is set), many HTML tags will
+insert around the region, e.g. <tt>&lt;B&gt;</tt> and <tt>&lt;/B&gt;</tt>.
+</p>
+<p class="Body">
+If the variable <tt>HTMLModeWraps</tt> is set to 1, this mode will wrap (like
+<tt>text_mode</tt> does); otherwise, this mode won't wrap (like <tt>no_mode</tt>).
+</p>
+<p class="Body">
+Keybindings are grouped according to function:
+</p>
+<div class="block"><pre>
+Key       Functions
+-------------------
+^CA...    Anchors
+^CD...    Definition lists
+^CF...    Forms
+^CH...    Headings, document type, etc.
+^CI...    Images
+^CL...    Lists
+^CP...    Paragraphs styles, etc.
+^CC...    Character styles
+</pre></div>
+<p class="Body">
+Additionally, some special movement commands and miscellaneous characters
+are defined:
+</p>
+<div class="block"><pre>
+Key     Action
+--------------
+^C^B    skip to beginning of prior HTML tag
+^C^F    skip to end of next HTML tag
+^C^N    mark next HTML tag from '&lt;' to '&gt;'
+^C^P    mark prior HTML tag from '&lt;' to '&gt;'
+^C&amp;     insert HTML text for '&amp;'
+^C&gt;     insert HTML text for '&gt;'
+^C&lt;     insert HTML text for '&lt;'
+^CC     insert HTML comment (around region, if marked)
+</pre></div>
+<p class="Body">
+S-Lang files: <tt>html.sl</tt>
+</p>
+<p class="Body">
+Again, another HTML mode is available:
+</p>
+<ul>
+<li> <a class="link" href="http://guido.gonzato.googlepages.com/html.sl">http://guido.gonzato.googlepages.com/html.sl</a></li>
+</ul>
+<!--End Section 2-->
+<h3><a name="Docbook SGML Mode">7.8. Docbook SGML Mode</a></h3>
+<p class="Body">
+This is a mode designed for editing Docbook SGML files. The hook
+<tt>sgml_mode_hook</tt> is called if it exists.
+</p>
+<p class="Body">
+If a region is defined (i.e., if a mark is set), many SGML tags will
+insert around the region, e.g. <tt>&lt;Emphasis&gt;</tt> and <tt>&lt;/Emphasis&gt;</tt>.
+</p>
+<p class="Body">
+If the variable <tt>WRAP_INDENTS</tt> is set to 1, this mode will indent the
+text. Also, <tt>SGML_INDENT</tt> contains the number of characters of
+indentation (default 2).
+</p>
+<p class="Body">
+All tags are inserted via the Mode menu. Additionally, some special
+movement commands and miscellaneous characters are defined:
+</p>
+<div class="block"><pre>
+Key     Action
+--------------
+^C^B    skip to beginning of prior SGML tag
+^C^F    skip to end of next SGML tag
+^CP     insert &lt;Para&gt;
+^C&amp;     insert SGML text for '&amp;'
+^C$     insert SGML text for '$'
+^C&gt;     insert SGML text for '&gt;'
+^C&lt;     insert SGML text for '&lt;'
+^C.     insert SGML text for '...'
+^C;     insert SGML comment (around region, if marked)
+</pre></div>
+<p class="Body">
+S-Lang files: <tt>docbook.sl</tt>
+</p>
+<p class="Body">
+Similar to Docbook SGML mode is Linuxdoc mode, available at
+</p>
+<ul>
+<li> <a class="link" href="http://guido.gonzato.googlepages.com/linuxdoc.sl">http://guido.gonzato.googlepages.com/linuxdoc.sl</a></li>
+</ul>
+<!--End Section 2-->
+<h3><a name="Most Mode">7.9. Most Mode</a></h3>
+<p class="Body">
+This is a simple mode used for browsing text files, which will be opened
+read-only. Press <tt>Space</tt> to advance a page, <tt>Bs</tt> to go back, <tt>/</tt> to search
+forward, <tt>?</tt> to search backwards. Press <tt>h</tt> to get a short help message.
+</p>
+<p class="Body">
+S-Lang files: <tt>most.sl</tt>
+</p>
+<!--End Section 2-->
+<!-- End SectLevel2 -->
+<!--End Section 1-->
+<h2><a name="Advanced Customisation">8. Advanced Customisation</a></h2>
+<p class="Body">
+<B>Jed</B> can be fully customised writing S-Lang code in your <tt>.jedrc</tt> and/or
+in external files. You can get started with S-Lang simply studying the
+<tt>.sl</tt> files in the <B>Jed</B> distribution. Full documentation is available in
+the S-Lang source package.
+</p>
+<!-- Start SectLevel2 -->
+<h3><a name="UTF8 Support">8.1. UTF8 Support</a></h3>
+<p class="Body">
+If the environment variable <tt>JED_UTF8</tt> exists and is 1, <B>Jed</B> runs with
+UTF8 encoding. Beware though: currently, DFA syntax highlighting is not
+compatible with it. For instance, <tt>&agrave; &ccedil; &igrave;</tt> are displayed as
+<tt>&lt;E0&gt; &lt;E7&gt; &lt;EC&gt;</tt>: that is, the hex character codes.
+</p>
+<!--  ** Main Global Variables -->
+<!--  TO BE WRITTEN -->
+<!--End Section 2-->
+<h3><a name="Setting Keybindings">8.2. Setting Keybindings</a></h3>
+<p class="Body">
+Consider this S-Lang code:
+</p>
+<div class="block"><pre>
+unsetkey (^H);
+unsetkey (^N);
+setkey (&quot;insert (string(what_line))&quot;, &quot;^H&quot;);
+setkey (&quot; Guido Gonzato, Ph.D.&quot;, &quot;^N&quot;);
+</pre></div>
+<p class="Body">
+The first two lines unset previous definitions of <tt>^H</tt> and <tt>^N</tt>. The <tt>^H</tt> 
+key is bound to the function <tt>insert (string(what_line))</tt>. The effect of
+<tt>^N</tt> is different, because the text given as first argument of <tt>setkey</tt>
+starts with a space. In this case, the text itself is inserted, not
+interpreted as S-Lang code.
+</p>
+<p class="Body">
+<tt>setkey</tt> applies to the global keymap (i.e., in all modes). To restrict a
+key binding to a specific keymap, use <tt>definekey</tt>:
+</p>
+<div class="block"><pre>
+unsetkey (&quot;^N&quot;, &quot;LaTeX-Mode&quot;);
+definekey (&quot; \LaTeX{}&quot;, &quot;^N&quot;, &quot;LaTeX-Mode&quot;);
+</pre></div>
+<p class="Body">
+Finally, <tt>local_unsetkey</tt> and <tt>local_setkey</tt> behave like <tt>(un)setkey</tt>, but
+apply to the current keymap only.
+</p>
+<!--End Section 2-->
+<h3><a name="Loading Additional |.sl| Files">8.3. Loading Additional <tt>.sl</tt> Files</a></h3>
+<p class="Body">
+Writing lots of code in <tt>.jedrc</tt> is not practical; a better method is to
+write it in an external <tt>.sl</tt> file. Continuing the example
+above, let's suppose you write key definitions to <tt>mykeys.sl</tt>. Add this
+file to the <B>Jed</B> library and add this line in <tt>.jedrc</tt>:
+</p>
+<div class="block"><pre>
+() = evalfile (&quot;mykeys&quot;);
+</pre></div>
+<!--End Section 2-->
+<h3><a name="Autoloading Functions">8.4. Autoloading Functions</a></h3>
+<p class="Body">
+Sometimes, using <tt>evalfile</tt> is not the best method of loading functions.
+Let's suppose you <em>occasionally</em> want to use the functions <tt>fun1</tt>,
+<tt>fun2</tt>, <tt>fun3</tt> defined in the file <tt>functions.sl</tt>. <tt>evalfile</tt> will load
+a given file even if its functions are not actually used, which is a waste
+of computer resources.
+</p>
+<p class="Body">
+Another method of loading functions is via the <tt>autoload</tt> function.
+<tt>autoload</tt> is used to declare a function to the interpreter, and indicate
+that it should be loaded from a file when it is actually used.
+</p>
+<p class="Body">
+For example, defining these lines in <tt>.jedrc</tt>:
+</p>
+<div class="block"><pre>
+autoload (&quot;fun1&quot;, &quot;functions&quot;);
+autoload (&quot;fun2&quot;, &quot;functions&quot;);
+autoload (&quot;fun3&quot;, &quot;functions&quot;);
+</pre></div>
+<p class="Body">
+will cause <B>Jed</B> to load <tt>functions.sl</tt> when one of its functions is
+required.
+</p>
+<!--End Section 2-->
+<h3><a name="Hooks">8.5. Hooks</a></h3>
+<p class="Body">
+A <em>hook</em> is a user defined S-Lang function that may be used to
+extend the editor or to modify how it behaves under certain circumstances.
+There are two kinds of hooks that vary according to whether the hook is
+called ``internally'' from the editor by the underlying C code, or whether
+the hook is called from another S-Lang function.
+</p>
+<p class="Body">
+The hooks may be subdivided further according to their scope. They may
+apply to all buffers (globally), only buffers sharing the same mode
+(modal), or to a single buffer (local). Please read <tt>hooks.txt</tt>.
+</p>
+<p class="Body">
+An example of hook is the following function:
+</p>
+<div class="block"><pre>
+define latex_mode_hook ()
+{
+  set_abbrev_mode (1); % use LaTeX-specific abbreviations
+  if ( () = abbrev_table_p (&quot;LaTeX&quot;) )
+    use_abbrev_table (&quot;LaTeX&quot;);
+  local_setkey (&quot; \\`a&quot;, &quot;&agrave;&quot;); % pressing '&agrave;' inserts '\`a'
+  local_setkey (&quot; \\`e&quot;, &quot;&egrave;&quot;);
+  local_setkey (&quot; \\'e&quot;, &quot;&eacute;&quot;);
+  local_setkey (&quot; \\`\\i{}&quot;, &quot;&igrave;&quot;);
+  local_setkey (&quot; \\`o&quot;, &quot;&ograve;&quot;);
+  local_setkey (&quot; \\`u&quot;, &quot;&ugrave;&quot;);
+}
+</pre></div>
+<p class="Body">
+This hook is called whenever LaTeX mode is entered. It loads
+LaTeX-specific abbreviations and lets the user type accented
+characters, expanding them to the right key sequences.
+</p>
+<hr>
+<!--End Section 2-->
+<!-- End SectLevel2 -->
+<!--End Section 1-->
+<h2><a name="The End">9. The End</a></h2>
+<p class="Body">
+This quick reference was written by Guido Gonzato, Ph.D. 
+<tt>guido dot gonzato at poste dot it</tt>. Contributions by John E. Davis.
+</p>
+<p class="Body">
+Many thanks to John for writing <B>Jed</B>!
+</p>
+<p class="Body">
+Please drop me a line if you think the information contained in this
+document is inaccurate or unclear.
+</p>
+<!--  End of file jed-quickref.aft -->
+<!--End Section 1-->
+<!-- End SectLevel1 -->
+<hr>
+<br>
+<p align="right"> <small>This document was generated using <a class="link" href="http://www.maplefish.com/todd/aft.html">AFT v5.097</a></small> </p>
+</body>
+</html>
+

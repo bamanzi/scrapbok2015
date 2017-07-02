@@ -1,0 +1,102 @@
+/* Code tidied up by ScrapBook */
+@keyframes jfk-progressBar-bg {
+0% { background-position: 0px 0px; }
+100% { background-position: -16px 0px; }
+}
+@keyframes jfk-progressBar-bg {
+0% { background-position: 0px 0px; }
+100% { background-position: -16px 0px; }
+}
+@keyframes jfk-progressBar-bg {
+0% { background-position: 0px 0px; }
+100% { background-position: -16px 0px; }
+}
+@keyframes jfk-progressBar-bg-tall {
+0% { background-position: 0px 0px; }
+100% { background-position: -20px 0px; }
+}
+@keyframes jfk-progressBar-bg-tall {
+0% { background-position: 0px 0px; }
+100% { background-position: -20px 0px; }
+}
+@keyframes jfk-progressBar-bg-tall {
+0% { background-position: 0px 0px; }
+100% { background-position: -20px 0px; }
+}
+@media print {
+}
+#sites-canvas-main { overflow: hidden; }
+#sites-header-title { padding-left: 5px; overflow: visible; }
+#title-crumbs { padding: 5px 0px 0px 10px; }
+.sites-layout-searchbox { text-align: right; padding-right: 6px; }
+#sites-chrome-everything .sites-layout-sidebar-left { padding-left: 5px; }
+#sites-chrome-header .sites-header-secondary-row td { padding: 0px 4px ! important; }
+@media only screen and (orientation: portrait) {
+}
+.sites-system-link { margin-left: 0.5em; margin-right: 0.5em; }
+.sites-layout-hbox { width: 100%; table-layout: fixed; }
+.sites-layout-hbox td.sites-layout-tile { vertical-align: top; }
+.sites-layout-tile { padding: 3px; }
+@font-face {
+  font-family: "ie-sites-symbol-font";
+  src: url("sites.eot");
+}
+@font-face {
+  font-family: "non-ie-sites-symbol-font";
+  src: url("sites.ttf");
+}
+.sites-header-divider { border-bottom: 1px solid rgb(201, 215, 241); }
+html, body { padding: 0px; margin: 0px; direction: ltr; }
+body { font: 10pt Arial,sans-serif; }
+td { vertical-align: top; }
+#sites-chrome-everything { margin: 0px auto; }
+#sites-canvas-main { min-height: 150px; padding-bottom: 5px; padding-top: 15px; }
+#sites-canvas-main table { margin: 0px; }
+#title-crumbs, body #sites-page-title-header, .sites-tile-name-header, #sites-canvas-main .sites-tile-name-content-1, .sites-tile-name-footer, .sites-subpages, .sites-kix-editor-wrapper, #sites-editor-wrapper { padding-left: 10px; padding-right: 10px; }
+#sites-canvas-main .sites-tile-name-content-1, #sites-canvas-main .sites-tile-name-content-2, #sites-canvas-main .sites-tile-name-content-3 { padding-top: 10px; padding-bottom: 10px; }
+#goog-ws-page-tools-div .editing, tt:-moz-any-link { height: 23px; }
+.edit-in-progress-message, tt:-moz-any-link { display: -moz-inline-box; line-height: 25px; padding-left: 5px; }
+#goog-ws-page-tools-div .editing, tt:-moz-any-link, tt:default { height: 24px; }
+.edit-in-progress-message, tt:-moz-any-link, tt:default { display: inline-block; }
+.edit-in-progress-message, tt:-moz-any-link { display: -moz-inline-box; line-height: 15px; padding-left: 0px; }
+#sites-status { position: fixed; top: 0px; width: 100%; z-index: 1010; text-align: center; }
+.sites-notice { background: rgb(255, 204, 51) none repeat scroll 0% 0%; color: rgb(0, 0, 0); display: inline; font: bold 13px Arial,sans-serif; padding: 2px 10px 3px; z-index: 199; }
+#sites-header-title h2 { margin: 0px; }
+.sites-header-divider { font-size: 13px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border-bottom: medium none; font-family: arial,sans-serif ! important; }
+#sites-page-title-header { font-size: 22px; font-weight: bold; margin: 0px; }
+.sites-adminfooter { font-size: 11px; text-align: center; }
+.sites-adminfooter p { margin: 0px; padding: 5px; }
+.sites-adminfooter p span { font-size: 10px; }
+#sites-chrome-everything { width: 100%; }
+#sites-chrome-sidebar-left, #sites-chrome-sidebar-right, .sites-canvas-sidebar { width: 150px; }
+ol { list-style-type: decimal; }
+.sites-adminfooter { font-size: 11px; }
+.sites-adminfooter p span { font-size: 10px; }
+#sites-status { top: 2px; }
+#sites-notice { text-align: center; bottom: 0px; background: rgb(249, 237, 190) none repeat scroll 0% 0%; border: 1px solid rgb(240, 195, 109); margin-bottom: -15px; z-index: 199; border-radius: 2px; box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); transform: scale(1); font: 11px Arial,Helvetica,sans-serif; }
+body { background-color: rgb(236, 238, 246); }
+#sites-chrome-everything h2, #sites-chrome-everything h3, #sites-chrome-everything h4 { font-family: "Trebuchet MS",arial,sans-serif; }
+#sites-chrome-everything h2 { color: rgb(80, 100, 174); font-size: 1.8em; letter-spacing: 0.1em; font-weight: normal; }
+#sites-chrome-everything h3 { color: rgb(119, 119, 119); font-size: 1.4em; font-weight: normal; border-bottom: 1px dotted rgb(201, 208, 230); }
+td { vertical-align: top; padding: 1px 4px; }
+#sites-chrome-everything a, #sites-chrome-everything .goog-tree-item-label a { color: rgb(68, 90, 169); }
+#sites-chrome-everything a:visited, #sites-chrome-everything .goog-tree-item-label a:visited { color: rgb(40, 61, 136); }
+#sites-chrome-everything a:hover, #sites-chrome-everything a:active, #sites-chrome-everything .goog-tree-item-label a:hover { color: rgb(255, 255, 255); background-color: rgb(68, 90, 169); }
+#sites-chrome-everything hr { background: rgb(199, 199, 199) none repeat scroll 0% 0%; color: rgb(199, 199, 199); border-style: none; height: 1px; }
+ul li { list-style-position: outside; list-style-type: square; }
+#sites-chrome-everything { font-family: "Lucida Grande","Lucida Sans Unicode",Arial,sans-serif; color: rgb(40, 55, 105); line-height: 1.5; padding: 0px; }
+#sites-chrome-page-wrapper { width: 90%; margin: auto; background-color: rgb(255, 255, 255); }
+#sites-chrome-header-wrapper { border-top: 7px solid rgb(102, 120, 184); border-bottom: 40px solid rgb(201, 208, 230); }
+#sites-chrome-footer-wrapper { border-bottom: 7px solid rgb(102, 120, 184); }
+#sites-chrome-footer { border-bottom: 3px solid rgb(102, 120, 184); margin-bottom: 2px; border-top: 1px solid rgb(199, 199, 199); }
+#sites-chrome-main { text-align: left; padding: 0px; margin-bottom: 10px; margin-top: 0px; }
+#sites-chrome-header { border-top: 3px solid rgb(102, 120, 184); margin-top: 2px; }
+.sites-header-primary-row #sites-header-title { height: 75px; padding-left: 10px; }
+body #sites-header-title h2 { font: 2.6em "Trebuchet MS",arial,sans-serif; margin: 0px; letter-spacing: 4px; }
+.sites-header-primary-row td { vertical-align: top; }
+.sites-header-primary-row .sites-header-cell-buffer-wrapper { padding: 20px 10px 10px; }
+body #sites-chrome-everything #sites-chrome-sidebar-left { padding: 10px; width: 150px; margin: 10px 0px; }
+#sites-canvas { padding-top: 5px; }
+.sites-canvas-main { background-color: transparent; }
+body #sites-page-title-header { color: rgb(80, 100, 174); font: bold 1.8em "Trebuchet MS",arial,sans-serif; border-bottom: medium none; background: transparent none repeat scroll 0% 0%; }
+#sites-canvas-bottom-panel {  }

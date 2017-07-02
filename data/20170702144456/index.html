@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<meta charset="UTF-8">
+
+  <title>Local Configuration and project handling</title>
+<style type="text/css">
+/* Code tidied up by ScrapBook */
+@media screen {
+}
+@media print {
+}
+</style><style type="text/css" id="diigo-activeHighlight">
+/* Code tidied up by ScrapBook */
+</style></head>
+<body>
+<center><h1>Per-Directory Projects</h1></center>
+<p>
+What if you want to use different JED configurations for different tasks?
+<i>project.sl</i> allows you to write a script in the current directory, or
+in one of its parents, where you can set variables, or do whatever you can
+do with slang.
+</p><p>
+I use this a lot for setting which tags files should be searched for a
+given program, to choose the right indentation style, etc.
+</p><p>
+The script searches for a <i>.project.sl</i> file (for non unix systems,
+<i>wproject.sl</i>) in the current directory, and back in the parents, until it
+finds one, reaches the root (actually until trying to change the directory back
+doesn't change the current directory) or when it reaches the user's home
+directory (as defined by the environment variable HOME).<br> 
+If everything fails, it loads a default file (<i>dfltprj.sl</i> in your
+JED library path). As a last resort,  it tries to open the file in the 
+user-configurable variable <u>Project_Global_File</u> (by default it's
+value is NULL).<br>
+The file is executed with the variable <u>Project_File_Dir</u> set to the
+directory where the script was found.
+</p><p>
+For example, I use an indentation style all mine (a bit like linux style,
+but with some differences). Futhermore, my save hook strips spaces at 
+end-of-line, and converts tabs to spaces before saving C sources. This is not
+what I want if I'm modifing sources written by other people, specially if I 
+want to make diff files. So, say that I want to edit some jed files, I simply 
+write in the jed sources' top directory a <i>.project.sl</i> file containing:
+</p><pre>c_set_style("jed");
+variable _Save_Remove_Tabs = 0;
+variable _Save_Remove_Space_At_Eols = 0;
+variable Tags_Files = path_concat(Project_File_Dir, "src/tags") + ",~/.tags/usr_h";
+</pre>
+And no matter how deep in the directory tree I am when I launch jed, this
+file will be loaded (If there are no other <i>.project.sl</i> files before, of
+course).
+<p>
+To use this, simply put an <code>() = evalfile("project");</code> somewhere
+in your <i>.jedrc</i>, and write some <i>.project.sl</i> files in the right directories.
+</p><p>
+</p><p>
+Get <a href="http://www.paneura.com/~dino/files/project.tar.gz">project.tar.gz</a>.
+</p><p>
+<a href="http://www.paneura.com/~dino/index.html">Back to home page</a>.
+</p><p>
+<small></small></p><pre><small>Last Updated : Thu Nov  8 22:57:05 CET 2001
+</small></pre>
+
+
+</body>
+</html>

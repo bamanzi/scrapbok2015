@@ -1,0 +1,16 @@
+/* Code tidied up by ScrapBook */
+#wrapper { width: 977px; }
+#header { background: transparent url("content_top.png") no-repeat scroll 0% 0%; }
+#top_bar { padding-top: 72px; }
+#rss-feed { position: relative; top: 33px; }
+#content { background: rgb(255, 255, 255) url("content_middle.png") repeat-y scroll 0% 0%; width: 935px; }
+#content-body { width: 714px; }
+#footer { background: transparent url("content_bottom.png") no-repeat scroll 0% 0%; height: 8px; }
+#footer .text { width: 960px; }
+ul#front_menu { width: 720px; }
+.hentry { width: 713px; overflow: hidden; }
+.hentry img { max-width: 713px; }
+.cat_tags { background: rgb(255, 255, 255) url("tags_category.png") no-repeat scroll 0% 0%; width: 713px; }
+.cat_tags_close { background: rgb(255, 255, 255) url("tags_category.png") no-repeat scroll 0px -81px; width: 713px; }
+.cat_tags .category { width: 570px; }
+.cat_tags .continue { padding-right: 15px; }

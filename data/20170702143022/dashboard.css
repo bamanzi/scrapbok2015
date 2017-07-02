@@ -1,0 +1,12 @@
+/* Code tidied up by ScrapBook */
+html { position: relative; min-height: 100%; min-width: 700px; }
+body { color: rgb(51, 51, 51); font-family: "Arial",sans-serif; font-size: 13px; height: 100%; }
+a { color: rgb(17, 85, 204); text-decoration: none; }
+a:hover { cursor: pointer; text-decoration: underline; }
+#sites-dash-sandbar, .sites-dash-appbar { border-bottom: 1px solid rgb(221, 221, 221); height: 70px; padding: 0px 0px 0px 30px; position: relative; z-index: 190; margin-top: 0px; white-space: nowrap; width: auto; }
+.sites-dash-appbar { background-color: white; }
+.sites-dash-appbar-content { padding-top: 23px; position: relative ! important; font-size: 20px; font-weight: normal; }
+.sites-dash-appbar-left { color: rgb(221, 75, 57); min-width: 152px; padding-right: 22px; display: inline-block; }
+.sites-dash-appbar-left a, .sites-dash-appbar-left a:visited, .sites-dash-appbar-left a:hover { color: rgb(221, 75, 57); text-decoration: none; }
+.sites-dash-appbar-center { position: static; color: rgb(153, 153, 153); display: inline-block; vertical-align: middle; }
+.sites-dash-appbar-right { position: absolute; top: 23px; right: 30px; }

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>jed——文本编辑器中的小李飞刀 · LinuxTOY</title>
+        <link rel="stylesheet" href="main.css">
+        <!--[if lte IE 8]>
+        <link rel="stylesheet" href="https://linuxtoy.org/theme/css/grids-responsive-old-ie-min.css">
+        <link rel="stylesheet" href="https://linuxtoy.org/theme/css/side-menu-old-ie.css">
+        <![endif]-->
+        <!--[if gt IE 8]><!-->
+        <link rel="stylesheet" href="grids-responsive-min.css">
+        <link rel="stylesheet" href="side-menu.css">
+        <!--<![endif]-->
+        <link rel="stylesheet" href="pygments.css">
+        <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+        <link rel="alternate" type="application/atom+xml" href="https://linuxtoy.org/feeds/all.atom.xml" title="LinuxTOY Atom Feed">
+        <!--[if IE]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        <script async="" src="about:blank"></script><script type="text/javascript" async="" src="about:blank"></script><script async="" src="about:blank"></script>
+        <script>/* Code removed by ScrapBook */</script>
+        <meta name="keywords" content="Linux, 自由软件, 新闻, 教程，提示">
+        <meta name="description" content="子曾经曰过：世界上有三种人,一种用Vi,另一种用Emacs,剩下的是第三种人 这句话囊括了文本编辑的三种风格： Vi风格是最具有操作感的，也是最畅快的……在不使用中文输入法的情况下 (Vi对输入法说：我本来是比Emacs高一点点的，但是有了你这个累赘，Emacs就比我高一点点了) Emacs风格操作十分别扭，可以说是手指的瑜伽……可是效率也挺高，还能舒筋活血，最大的优势是通用 剩下的这种风格，容易学习，但效率低下……XXXPad、XXXEditor都是这种风格，不提也罢 显然，对于使用中文的各位同学来说，Emacs的文本编辑风格，是不二的选择 另一个子这样曰过： GNU ...">
+        <meta name="subject" content="Linux 新闻、应用及提示">
+
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:site" content="@linuxtoy">
+        <meta name="twitter:creator" content="@linuxtoy">
+        <meta name="twitter:url" content="https://linuxtoy.org/archives/jed.html">
+        <meta name="twitter:title" content="jed——文本编辑器中的小李飞刀">
+        <meta name="twitter:description" content="子曾经曰过：世界上有三种人,一种用Vi,另一种用Emacs,剩下的是第三种人 这句话囊括了文本编辑的三种风格： Vi风格是最具有操作感的，也是最畅快的……在不使用中文输入法的情况下 (Vi对输入法说：我本来是比Emacs高一点点的，但是有了你这个累赘，Emacs就比我高一点点了) Emacs风格操作十分别扭，可以说是手指的瑜伽……可是效率也挺高，还能舒筋活血，最大的优势是通用 剩下的这种风格，容易学习，但效率低下……XXXPad、XXXEditor都是这种风格，不提也罢 显然，对于使用中文的各位同学来说，Emacs的文本编辑风格，是不二的选择 另一个子这样曰过： GNU ...">
+        <meta name="twitter:image" content="https://linuxtoy.org/logo.png">
+        <meta property="og:url" content="https://linuxtoy.org/archives/jed.html">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="jed——文本编辑器中的小李飞刀">
+        <meta property="og:image" content="https://linuxtoy.org/logo.png">
+        <meta property="og:description" content="子曾经曰过：世界上有三种人,一种用Vi,另一种用Emacs,剩下的是第三种人 这句话囊括了文本编辑的三种风格： Vi风格是最具有操作感的，也是最畅快的……在不使用中文输入法的情况下 (Vi对输入法说：我本来是比Emacs高一点点的，但是有了你这个累赘，Emacs就比我高一点点了) Emacs风格操作十分别扭，可以说是手指的瑜伽……可是效率也挺高，还能舒筋活血，最大的优势是通用 剩下的这种风格，容易学习，但效率低下……XXXPad、XXXEditor都是这种风格，不提也罢 显然，对于使用中文的各位同学来说，Emacs的文本编辑风格，是不二的选择 另一个子这样曰过： GNU ...">
+        <meta property="og:site_name" content="LinuxTOY">
+        <meta property="article:author" content="Kardinal">
+        <link rel="canonical" href="https://linuxtoy.org/archives/jed.html">
+    <script type="text/javascript" async="" src="about:blank"></script><style type="text/css">
+/* Code tidied up by ScrapBook */
+@media screen {
+  #diigotb-imagepanel { height: 22px ! important; position: absolute ! important; z-index: 11000022 ! important; margin: 0px ! important; }
+  #diigotb-imagepanel .diigotb-btn { cursor: pointer ! important; width: 20px ! important; height: 20px ! important; margin: 2px ! important; float: left ! important; background: transparent url("chrome://diigotb/skin/save-image-action-icons.png") no-repeat scroll 0% 0% ! important; }
+  #diigotb-imagepanel #diigotb-quick-save { background-position: 0px 0px ! important; }
+  #diigotb-imagepanel.needpremium #diigotb-quick-save { background-position: 0px -20px ! important; cursor: default ! important; }
+  .diigotb-border { position: absolute ! important; z-index: 11000000 ! important; margin: 0px ! important; background-color: rgb(75, 140, 220) ! important; }
+  .diigotb-left { width: 1px ! important; }
+  .diigotb-right { width: 1px ! important; }
+  .diigotb-top { height: 1px ! important; }
+  .diigotb-bottom { height: 1px ! important; }
+}
+@media print {
+}
+</style><style type="text/css" id="diigo-activeHighlight">
+/* Code tidied up by ScrapBook */
+</style><link rel="prefetch" href="https://c.disquscdn.com/next/embed/styles/lounge.e52b2f99308b09ef7684f62bab4d6f07.css"><link rel="prefetch" href="https://c.disquscdn.com/next/embed/common.bundle.837e7ac45e6f038477f9c6774eede58f.js"><link rel="prefetch" href="https://c.disquscdn.com/next/embed/lounge.bundle.28338403eeacac8e9c44d9dbee9ad45e.js"><link rel="prefetch" href="https://disqus.com/next/config.js"><script src="about:blank"></script></head>
+    <body>
+        <div id="layout" class="pure-g">
+            <div class="sidebar pure-u-1">
+                <div class="header">
+                    <a id="menuLink" class="menu-link" href="#menu"><span></span></a>
+                    <div id="menu" class="pure-menu">
+                        <a class="pure-menu-heading" href="https://linuxtoy.org/" title="LinuxTOY">LinuxTOY</a>
+                        <ul class="pure-menu-list">
+
+                            <li class="pure-menu-item">
+                                <a class="pure-menu-link" href="https://linuxtoy.org/pages/all-archives.html" title="Archives">Archives</a>
+                            </li>
+                            <li class="pure-menu-item">
+                                <a class="pure-menu-link" href="https://linuxtoy.org/pages/books.html" title="Books">Books</a>
+                            </li>
+                            <li class="pure-menu-item">
+                                <a class="pure-menu-link" href="https://linuxtoy.org/pages/talks.html" title="Talks">Talks</a>
+                            </li>
+                            <li class="pure-menu-item">
+                                <a class="pure-menu-link" href="https://linuxtoy.org/pages/download.html" title="Download">Download</a>
+                            </li>
+                            <li class="pure-menu-item">
+                                <a class="pure-menu-link" href="https://linuxtoy.org/pages/faq.html" title="FAQs">FAQs</a>
+                            </li>
+                            <li class="pure-menu-item">
+                                <a class="pure-menu-link" href="https://linuxtoy.org/pages/contact.html" title="Contact">Contact</a>
+                            </li>
+                            <li class="pure-menu-item">
+                                <a class="pure-menu-link" href="https://linuxtoy.org/pages/donate.html" title="Donate">Donate</a>
+                            </li>
+                            <li class="pure-menu-item">
+                                <a class="pure-menu-link" href="https://linuxtoy.org/pages/license.html" title="License">License</a>
+                            </li>
+                            <li class="pure-menu-item">
+                                <a class="pure-menu-link" href="https://linuxtoy.org/pages/links.html" title="Links">Links</a>
+                            </li>
+
+                            <li class="pure-menu-item">
+                                <a class="pure-menu-link" href="https://linuxtoy.org/pages/comments.html" title="Comments">Comments</a>
+                            </li>
+                            <li class="pure-menu-item">
+                                <a class="pure-menu-link" href="https://linuxtoy.org/random.html" title="Random">Random</a>
+                            </li>
+                            <li class="pure-menu-item">
+                                <a class="pure-menu-link" href="https://linuxtoy.org/feeds/all.atom.xml" title="RSS">RSS</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+<div class="content pure-u-1 pure-u-md-3-5">
+    <div class="posts">
+        <section class="post">
+            <header class="post-header">
+                <h2 class="post-title">
+                    <a href="#" rel="bookmark" title="Permalink to jed——文本编辑器中的小李飞刀">jed——文本编辑器中的小李飞刀</a>
+                </h2>
+                <p class="post-meta">
+                    2008-08-14
+                    · By
+                    <a href="https://linuxtoy.org/author/kardinal.html">Kardinal</a>
+                    · Posted in <a href="https://linuxtoy.org/category/apps.html">Apps</a>
+                    · <a href="#disqus_thread">79 Comments</a>
+                </p>
+            </header>
+            <div class="post-description">
+            <p>子曾经曰过：世界上有三种人,一种用Vi,另一种用Emacs,剩下的是第三种人</p>
+<p>这句话囊括了文本编辑的三种风格：<br>
+Vi风格是最具有操作感的，也是最畅快的……在不使用中文输入法的情况下  </p>
+<p>(Vi对输入法说：我本来是比Emacs高一点点的，但是有了你这个累赘，Emacs就比我高一点点了)  </p>
+<p>Emacs风格操作十分别扭，可以说是手指的瑜伽……可是效率也挺高，还能舒筋活血，最大的优势是通用  </p>
+<p>剩下的这种风格，容易学习，但效率低下……XXXPad、XXXEditor都是这种风格，不提也罢</p>
+<p>显然，对于使用中文的各位同学来说，Emacs的文本编辑风格，是不二的选择</p>
+<p>另一个子这样曰过：&nbsp;GNU Emacs is evil！<br>
+虽然这话不代表本人观点<br>
+但是动用Emacs来编辑某某只有几行的小文件<br>
+……这简直和擎着青龙偃月刀杀鸡一样的行为艺术</p>
+<p>现在隆重推荐一下jed，它可以媲美小李飞刀，实在是杀人越货，杀鸡取卵，居家必备，馈赠亲友的极品<br>
+<img alt="" src="jed.jpg"></p>
+<p>它支持中文，默认使用Emacs风格的键绑定，配置简单，速度称得上迅雷不及掩耳盗铃<br>
+被Emacs摧残着的同学不妨试试</p>
+<hr>
+<ul>
+<li>jed的默认配置文件为/usr/share/jed/lib/jedrc 里面有详细的说明</li>
+<li>取消这个注释<br>
+<code>%enable_top_status_line (0);</code><br>
+    可以屏蔽jed的菜单</li>
+<li>
+<p>有些Emacs的组合键和jed菜单组合键冲突<br>
+    例如Alt+f在Emacs中应该是“前进一个单词”，而在jed中则是“文件菜单”<br>
+    想使用Emacs风格的组合键的话，编辑/usr/share/jed/lib/menus.sl<br>
+    找到如下段落：  </p>
+<p><code>unset_setkey ("select_menubar", "\em"); unset_setkey ("@\emF", "\ef"); unset_setkey ("@\emE", "\ee"); unset_setkey ("@\emo", "\eo"); % Mode menu unset_setkey ("@\emS", "\es"); unset_setkey ("@\emB", "\eb"); unset_setkey ("@\emi", "\ei"); unset_setkey ("@\emH", "\eh"); unset_setkey ("@\emy", "\ey");</code><br>
+可以根据自己的需要修改，也可以简单的注释掉；使用菜单可以用F10键
+-   jed还有X版本xjed和Windows版本wjed</p>
+</li>
+</ul>
+            <p class="post-meta">
+                # 
+                Edit on <a href="https://github.com/LinuxTOY/linuxtoy.org/blob/master/content/jed.md">GitHub</a>
+            </p>            <!-- <p class="post-meta">&num; <a href="http://resume.linuxtoy.org" title="若有兴趣，欢迎来电 :)">寻 GNU/Linux 相关工作，欢迎联系 :)</a></p> -->
+            </div>
+        </section>
+        <h4>Read More:</h4>
+        <div class="nav-left">
+        <script async="" src="about:blank"></script>
+        <ins class="adsbygoogle" style="display: inline-block; width: 336px; height: 280px;" data-ad-client="ca-pub-9432205671574187" data-ad-slot="6128171428" osga0yr="" hidden=""></ins>
+        <script>/* Code removed by ScrapBook */</script>
+        </div>
+    </div>
+    <div id="disqus_thread"><iframe id="dsq-app1" name="dsq-app1" allowtransparency="true" scrolling="no" tabindex="0" title="Disqus" style="width: 1px ! important; min-width: 100% ! important; border: medium none ! important; overflow: hidden ! important; height: 0px ! important;" src="index_1.html" width="100%" frameborder="0"></iframe></div>
+    <script type="text/javascript">/* Code removed by ScrapBook */</script>
+    <div class="footer">
+        <p class="nav-left">
+            <a href="https://linuxtoy.org/archives/toipod-script.html">
+                « 给 iPod 转视频的脚本
+            </a>
+        </p>
+        <p class="nav-right">
+            <a href="https://linuxtoy.org/archives/ubuntu-810-alpha-4.html">
+                Ubuntu 8.10 第四个 Alpha 版本发布 »
+            </a>
+        </p>
+    </div>
+</div>
+
+<div class="content pure-u-1 pure-u-md-1-5">
+    <div class="posts">
+    <script async="" src="about:blank"></script>
+    <ins class="adsbygoogle" style="display: inline-block; width: 300px; height: 250px;" data-ad-client="ca-pub-9432205671574187" data-ad-slot="6262929029" osga0yr="" hidden=""></ins>
+    <script>/* Code removed by ScrapBook */</script>
+        <h1 class="content-subhead">Popular Posts</h1>
+        <div class="pure-menu">
+            <ul class="pure-menu-list">
+                <li class="pure-menu-item"><a href="https://linuxtoy.org/archives/the-perfect-linux-desktop-arch-linux-2007-08-2-1.html">Archlinux 安装指南</a></li>
+                <li class="pure-menu-item"><a href="https://linuxtoy.org/archives/unix-linux-command-cheat-sheet.html">Unix/Linux 命令速查表</a></li>
+                <li class="pure-menu-item"><a href="https://linuxtoy.org/archives/efficient-editing-with-vim.html">高效率编辑器 Vim</a></li>
+                <li class="pure-menu-item"><a href="https://linuxtoy.org/archives/wget-tips.html">Wget 使用技巧</a></li>
+                <li class="pure-menu-item"><a href="https://linuxtoy.org/archives/playing-around-with-mplayer.html">玩转 MPlayer</a></li>
+                <li class="pure-menu-item"><a href="https://linuxtoy.org/archives/awesome.html">平铺式窗口管理器 Awesome</a></li>
+                <li class="pure-menu-item"><a href="https://linuxtoy.org/archives/3_free_antivirus_under_linux.html">Linux 下的桌面级杀毒软件</a></li>
+                <li class="pure-menu-item"><a href="https://linuxtoy.org/archives/openbox-getting-started-guide.html">窗口管理器 Openbox 入门指南</a></li>
+                <li class="pure-menu-item"><a href="https://linuxtoy.org/archives/minimalist-install-of-ubuntu.html">最小化安装 Ubuntu</a></li>
+                <li class="pure-menu-item"><a href="https://linuxtoy.org/archives/5-desktop-environment-for-linux.html">你可能不知道的 Linux 桌面</a></li>
+                <li class="pure-menu-item"><a href="https://linuxtoy.org/archives/the-7-deadly-linux-commands.html">7 个致命的 Linux 命令</a></li>
+                <li class="pure-menu-item"><a href="https://linuxtoy.org/archives/lightweight-desktop-compare.html">轻量级桌面环境比较</a></li>
+                <li class="pure-menu-item"><a href="https://linuxtoy.org/archives/zsh.html">终极 Shell——Zsh</a></li>
+                <li class="pure-menu-item"><a href="https://linuxtoy.org/archives/6-of-the-best-free-linux-cad-software.html">高品质的免费 Linux CAD 程序</a></li>
+                <li class="pure-menu-item"><a href="https://linuxtoy.org/archives/game_emulator_for_linux.html">Linux 下的几个游戏模拟器</a></li>
+                <li class="pure-menu-item"><a href="https://linuxtoy.org/archives/history-command-usage-examples.html">History（历史）命令用法 15 例</a></li>
+                <li class="pure-menu-item"><a href="https://linuxtoy.org/archives/the-best-tips-and-tricks-for-bash.html">bash 使用技巧</a></li>
+                <li class="pure-menu-item"><a href="https://linuxtoy.org/archives/10-oreilly-books.html">10 本 O'Reilly 出版的免费好书</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+        </div>
+
+        <script src="about:blank"></script>
+        <script src="about:blank"></script>
+        <script>/* Code removed by ScrapBook */</script>
+        <script id="dsq-count-scr" src="about:blank" async=""></script>
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+    
+<iframe style="display: none;" src="index_2.html"></iframe></body><div id="diigotb-imagepanel" style="display: none; width: 24px; left: 963px; top: 1218px;" class="needpremium"><div class="diigotb-btn enabled" title="Premium feature, please upgrade." id="diigotb-quick-save"></div></div><div class="diigotb-border diigotb-left" style="display: none; height: 575px; width: 1px; left: 204px; top: 675px;"></div><div class="diigotb-border diigotb-top" style="display: none; width: 793px; height: 1px; left: 204px; top: 675px;"></div><div class="diigotb-border diigotb-right" style="display: none; height: 575px; width: 1px; left: 997px; top: 675px;"></div><div class="diigotb-border diigotb-bottom" style="display: none; width: 793px; height: 1px; left: 204px; top: 1250px;"></div>
+</html>

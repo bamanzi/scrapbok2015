@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+		<meta charset="UTF-8">
+		
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>[分享] joe 編輯器 - 看板 Editor - 批踢踢實業坊</title>
+<meta name="robots" content="all">
+<meta name="keywords" content="Ptt BBS 批踢踢">
+<meta name="description" content="在Linux 幾乎都有內建著vi 編輯器，但有一個小巧而方便的編輯器，其實也一直
+躲在許多Linux預設套件裡，它的名字就是joe (Joe's Own Editor)。
+對Windows 使用者來說，你要他用vi 簡直是要他的命，
+但是joe 編輯器的操作對大部份的人來說就順手多了。
+如果遇到不會用vi 的人在向我討救兵，我都直接請他使用joe來操作。
+">
+<meta property="og:site_name" content="Ptt 批踢踢實業坊">
+<meta property="og:title" content="[分享] joe 編輯器">
+<meta property="og:description" content="在Linux 幾乎都有內建著vi 編輯器，但有一個小巧而方便的編輯器，其實也一直
+躲在許多Linux預設套件裡，它的名字就是joe (Joe's Own Editor)。
+對Windows 使用者來說，你要他用vi 簡直是要他的命，
+但是joe 編輯器的操作對大部份的人來說就順手多了。
+如果遇到不會用vi 的人在向我討救兵，我都直接請他使用joe來操作。
+">
+<link rel="canonical" href="https://www.ptt.cc/bbs/Editor/M.1283487777.A.0BE.html">
+
+<link rel="stylesheet" type="text/css" href="bbs-common.css">
+<link rel="stylesheet" type="text/css" href="bbs-base.css" media="screen">
+<link rel="stylesheet" type="text/css" href="bbs-custom.css">
+<link rel="stylesheet" type="text/css" href="pushstream.css" media="screen">
+<link rel="stylesheet" type="text/css" href="bbs-print.css" media="print">
+
+
+
+
+	<style type="text/css">
+/* Code tidied up by ScrapBook */
+@media screen {
+}
+@media print {
+}
+</style><style type="text/css" id="diigo-activeHighlight">
+/* Code tidied up by ScrapBook */
+</style><style type="text/css">
+/* Code tidied up by ScrapBook */
+.fb_reset { background: transparent none repeat scroll 0% 0%; border: 0px none; border-spacing: 0px; color: rgb(0, 0, 0); cursor: auto; direction: ltr; font-family: "lucida grande",tahoma,verdana,arial,sans-serif; font-size: 11px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 1; margin: 0px; overflow: visible; padding: 0px; text-align: left; text-decoration: none; text-indent: 0px; text-shadow: none; text-transform: none; visibility: visible; white-space: normal; word-spacing: normal; }
+.fb_reset > div { overflow: hidden; }
+@keyframes fb_transform {
+0% { opacity: 0; transform: scale(0.95); }
+100% { opacity: 1; transform: scale(1); }
+}
+@keyframes rotateSpinner {
+0% { transform: rotate(0deg); }
+100% { transform: rotate(360deg); }
+}
+.fb_iframe_widget { display: inline-block; position: relative; }
+.fb_iframe_widget span { display: inline-block; position: relative; text-align: justify; }
+.fb_iframe_widget iframe { position: absolute; }
+</style></head>
+    <body>
+		
+<div id="fb-root" class=" fb_reset"><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div><iframe name="fb_xdm_frame_https" allowtransparency="true" allowfullscreen="true" scrolling="no" id="fb_xdm_frame_https" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tabindex="-1" style="border: medium none;" src="index_1.html" frameborder="0"></iframe></div></div><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div></div></div></div>
+<script src="about:blank" async=""></script><script src="about:blank" async=""></script><script async="" src="about:blank"></script><script type="text/javascript" async="" src="about:blank" gapi_processed="true"></script><script id="facebook-jssdk" src="about:blank"></script><script>/* Code removed by ScrapBook */</script>
+
+<div id="topbar-container">
+	<div id="topbar" class="bbs-content">
+		<a id="logo" href="https://www.ptt.cc/">批踢踢實業坊</a>
+		<span>›</span>
+		<a class="board" href="https://www.ptt.cc/bbs/Editor/index.html"><span class="board-label">看板 </span>Editor</a>
+		<a class="right small" href="https://www.ptt.cc/about.html">關於我們</a>
+		<a class="right small" href="https://www.ptt.cc/contact.html">聯絡資訊</a>
+	</div>
+</div>
+<div id="navigation-container">
+	<div id="navigation" class="bbs-content">
+		<a class="board" href="https://www.ptt.cc/bbs/Editor/index.html">返回看板</a>
+		<div class="bar"></div>
+		<div class="share">
+			<span>分享</span>
+			<div class="fb-like fb_iframe_widget" data-send="false" data-layout="button_count" data-width="90" data-show-faces="false" data-href="http://www.ptt.cc/bbs/Editor/M.1283487777.A.0BE.html" fb-xfbml-state="rendered" fb-iframe-plugin-query="app_id=&amp;container_width=90&amp;href=http%3A%2F%2Fwww.ptt.cc%2Fbbs%2FEditor%2FM.1283487777.A.0BE.html&amp;layout=button_count&amp;locale=en_US&amp;sdk=joey&amp;send=false&amp;show_faces=false&amp;width=90"><span style="vertical-align: bottom; width: 60px; height: 20px;"><iframe name="f3dc068f12d51b4" allowtransparency="true" allowfullscreen="true" scrolling="no" title="fb:like Facebook Social Plugin" style="border: medium none; visibility: visible; width: 60px; height: 20px;" src="index_2.html" class="" height="1000px" width="90px" frameborder="0"></iframe></span></div>
+
+			<div style="text-indent: 0px; margin: 0px; padding: 0px; background: transparent none repeat scroll 0% 0%; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 90px; height: 20px;" id="___plusone_0"><iframe ng-non-bindable="" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position: static; top: 0px; width: 90px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 20px;" tabindex="0" vspace="0" id="I0_1498978408560" name="I0_1498978408560" src="index_3.html" data-gapiattached="true" title="+1" width="100%" frameborder="0"></iframe></div>
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+
+		</div>
+	</div>
+</div>
+<div id="main-container">
+    <div id="main-content" class="bbs-screen bbs-content"><div class="article-metaline"><span class="article-meta-tag">作者</span><span class="article-meta-value">JoeJohnson (不平凡的Joe)</span></div><div class="article-metaline-right"><span class="article-meta-tag">看板</span><span class="article-meta-value">Editor</span></div><div class="article-metaline"><span class="article-meta-tag">標題</span><span class="article-meta-value">[分享] joe 編輯器</span></div><div class="article-metaline"><span class="article-meta-tag">時間</span><span class="article-meta-value">Fri Sep  3 12:22:50 2010</span></div>
+在Linux 幾乎都有內建著vi 編輯器，但有一個小巧而方便的編輯器，其實也一直
+躲在許多Linux預設套件裡，它的名字就是<span class="f3 hl">joe (Joe's Own Editor)</span>。
+
+對Windows 使用者來說，你要他用vi 簡直是要他的命，
+但是joe 編輯器的操作對大部份的人來說就順手多了。
+如果遇到不會用vi 的人在向我討救兵，我都直接請他使用joe來操作。
+
+他可以讓你直接游標移動修改，能夠Undo，當然也有提供豐富的編輯功能，
+進入joe 之後，你可以隨時按Ctrl+K+H 來看操作說明。
+
+我覺得joe 最好的地方，就是他允許你自訂自己的編輯器，
+說穿了，就是/etc/joe/joerc 內容的設定。
+可以看到能設定每個不同附檔名的顯示處理，
+可以把.php、.pl 分別加上想要功能(像顏色)風格。
+
+些簡單的操作：
+存檔離開 Ctrl+K+X ← 很常用
+不存離開 Ctrl+C   ← 很直覺
+復原操作 Ctrl+_   ← 連續按可復原好幾次前的動作
+整行刪除 Ctrl+Y   ← 和ptt 一樣^.&lt;
+....
+
+
+我也還不是很熟，但覺得他真的很方便，而且到處linux內都有
+歡迎更多joe 同好獻技分享 :)
+
+ps : 對於中文，請在joerc 的 -asis 描述將它前面的空白刪掉即可
+
+--
+<span class="f2">※ 發信站: 批踢踢實業坊(ptt.cc)
+</span>◆ From: 61.31.89.70
+<div class="push"><span class="f1 hl push-tag">→ </span><span class="f3 hl push-userid">contrav</span><span class="f3 push-content">:joe沒有內建 要自己裝 我以前也都用joe 不過他沒有utf8</span><span class="push-ipdatetime"> 09/03 12:59
+</span></div><div class="push"><span class="f1 hl push-tag">→ </span><span class="f3 hl push-userid">JoeJohnson</span><span class="f3 push-content">:我在SUSE、slackware 都有說</span><span class="push-ipdatetime"> 09/03 13:09
+</span></div><div class="push"><span class="f1 hl push-tag">→ </span><span class="f3 hl push-userid">JoeJohnson</span><span class="f3 push-content">:還是請1樓報一下你的linux 是？</span><span class="push-ipdatetime"> 09/03 13:11
+</span></div><div class="push"><span class="f1 hl push-tag">→ </span><span class="f3 hl push-userid">tkcn</span><span class="f3 push-content">:我試了一下，ubuntu 沒內建</span><span class="push-ipdatetime"> 09/03 17:14
+</span></div><span class="f2">※ 編輯: JoeJohnson      來自: 61.31.89.70          (09/06 14:07)
+</span><div class="push"><span class="f1 hl push-tag">→ </span><span class="f3 hl push-userid">walking</span><span class="f3 push-content">:如沒,會不會只是預設值沒,要選項會有可以選安裝.</span><span class="push-ipdatetime"> 11/10 17:43
+</span></div></div>
+    
+    <div id="article-polling" data-pollurl="/poll/Editor/M.1283487777.A.0BE.html?cacheKey=2052-403571733&amp;offset=1648&amp;offset-sig=7dad6ce1f137e81124c6b5a2f8c42cbb57541653" data-longpollurl="/v1/longpoll?id=05b1a8fdd53fa9f481558eaa72b4d4ff6c41096c" data-offset="1648">推文自動更新已關閉</div>
+    
+
+    
+</div>
+
+		
+
+<script>/* Code removed by ScrapBook */</script>
+
+
+		
+<script src="about:blank"></script>
+<script src="about:blank"></script>
+
+    
+
+<iframe name="oauth2relay443813211" id="oauth2relay443813211" src="index_4.html" style="width: 1px; height: 1px; position: absolute; top: -100px;" tabindex="-1" aria-hidden="true"></iframe></body>
+</html>

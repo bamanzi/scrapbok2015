@@ -1,0 +1,505 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="all">
+<meta name="author" content="">
+<meta name="description" content="轻量级Emacs--JED介绍-	轻量级Emacs--JED	JED介绍	JED是一个轻量级的Emacs实现，它是JohnE.Davis在1992年发起的一个编辑器项目。	这个编辑器现在仍然在活跃的开发中，主要开发者仍然是最初的作者。 PS:他最近也	使用git来管理这个项目了。	JED通过S-lang（作者自己写的一个语法类似于c语言的解释器）来扩展，它的设计	结构和GNU Ema...">
+<meta name="keywords" content="">
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+<link href="http://vmlinz.is-programmer.com/posts.rss" rel="alternate" title="Blog RSS" type="application/rss+xml">
+<link href="http://vmlinz.is-programmer.com/comments.rss" rel="alternate" title="Comments RSS" type="application/rss+xml">
+<link href="http://vmlinz.is-programmer.com/messages.rss" rel="alternate" title="Messages RSS" type="application/rss+xml">
+<link href="http://vmlinz.is-programmer.com/site.rss" rel="alternate" title="is-Programmer.com RSS" type="application/rss+xml">
+<link href="common.css" media="screen" rel="stylesheet" type="text/css">
+<link href="jquery-ui.css" media="screen" rel="stylesheet" type="text/css">
+<link href="application.css" media="screen" rel="stylesheet" type="text/css">
+
+
+<meta content="authenticity_token" name="csrf-param">
+<meta content="SYELgOz9lIHXSLKDJSww1SzSlClGyNHio+CFGJfx8lI=" name="csrf-token">
+<script type="text/javascript" async="" src="about:blank"></script><script src="about:blank" type="text/javascript"></script>
+<title>轻量级Emacs--JED介绍 - vmlinz's Blog</title>
+<link href="shCore.css" media="screen" rel="stylesheet" type="text/css">
+<link href="shThemeRDark.css" media="screen" rel="stylesheet" type="text/css">
+
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+
+<link href="plugin.css" media="screen" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<div id="container">
+  <div id="header">
+    <h1><span><a href="http://vmlinz.is-programmer.com/">vmlinz's Blog</a></span></h1>
+    <h2>Just follow one's own heart and mind.</h2>
+  </div>
+
+  <div id="page">
+    <div id="content">
+      
+<div id="article_wrap">
+  <div class="pre_next_post">
+	<div></div> 
+        <div><a href="http://vmlinz.is-programmer.com/2011/1/14/introduce-el-get.23797.html" class="down" title="Next post">GNU Emacs的终极扩展管理工具 -- el-get</a></div>
+  </div>
+
+  <h1>轻量级Emacs--JED介绍</h1>
+
+  <div id="article_header">
+    <strong> vmlinz</strong> 
+    posted @ Wed, 12 Jan 2011 09:24:16 +0800
+     in <a href="http://vmlinz.is-programmer.com/categories/5918/posts">Emacs</a>
+	with tags 
+	<a href="http://vmlinz.is-programmer.com/tag/emacs">emacs</a>  <a href="http://vmlinz.is-programmer.com/tag/jed">jed</a>  
+    , 6457 readers
+        </div>
+
+  
+  
+  <div id="article_body">
+    <div id="article_content"><h1>
+	轻量级Emacs--JED</h1>
+<h1>
+	JED介绍</h1>
+<p>
+	JED是一个轻量级的Emacs实现，它是JohnE.Davis在1992年发起的一个编辑器项目。<br>
+	这个编辑器现在仍然在活跃的开发中，主要开发者仍然是最初的作者。 PS:他最近也<br>
+	使用git来管理这个项目了。</p>
+<p>
+	JED通过S-lang（作者自己写的一个语法类似于c语言的解释器）来扩展，它的设计<br>
+	结构和GNU Emacs是基本一致的（核心+解释器+扩展）。但是它非常的轻量级，同<br>
+	时具有命令行界面和x界面。</p>
+<a id="more"></a>
+<h1>
+	为什么使用JED</h1>
+<p>
+	GNU Emacs是我最喜欢的编辑器，但是有时候需要在终端下面编辑一些配置文件。<br>
+	在vps上使用的时候就不太方便，需要重新配置。而且它太重量级了。曾经有段时间<br>
+	我都把EDITOR变量设置成vim了，但是在两个足够复杂的编辑器之间切换，我的手<br>
+	指不听话。我也用emacs-daemon，但是有时候emacsclient不能连接上已有的<br>
+	emacs-server，结果老是重新启动一个新的实例。</p>
+<p>
+	我也使用过nano、zile和micro emacs这些轻量级编辑器，但是始终不给力。nano<br>
+	的按键绑定不是类Emacs的；zile够轻量级，但是不支持UTF，连基本的高亮显示<br>
+	都不支持。jasspa的Micro Emacs，它对UTF的支持也不完善，甚至到现在也只有<br>
+	少数Linux发行版（gentoo）给它打包。</p>
+<p>
+	终于我找到了一个功能强大，同时完美支持UTF-8，也非常轻量的Emacs实现。它的<br>
+	扩展语言也非常易用，使用接近C语言的语法，让我觉得非常亲切。这样我就不用<br>
+	在做基本编辑的时候需要去使用其他和emacs按键差别很大的编辑器了。我相信喜欢<br>
+	GNU Emacs的同学一定会爱上这个轻量级的emacs。</p>
+<h1>
+	JED的特性</h1>
+<ol>
+	<li>
+		语法高亮</li>
+	<li>
+		易用的下拉菜单UI</li>
+	<li>
+		各种主流编辑器的按键绑定模拟（Emacs,EDT,CUA...）</li>
+	<li>
+		非常丰富的编程语言模式支持</li>
+	<li>
+		TeX支持</li>
+	<li>
+		终端鼠标支持（GPM）</li>
+	<li>
+		和GNU Emacs几乎一样的块操作</li>
+	<li>
+		异步子进程支持</li>
+	<li>
+		UTF-8支持</li>
+	<li>
+		多种平台支持</li>
+</ol>
+<h1>
+	安装和定制JED</h1>
+<p>
+	JED默认使用GNU Emacs的按键绑定，非常符合我的胃口。我现在使用的是Ubuntu，<br>
+	下面是我安装和定制JED的简单介绍。</p>
+<ol>
+	<li>
+		安装JED：<code>sudo aptitude install jed jed-extra</code></li>
+	<li>
+		复制Debian包的配置文件： <code>zcat /usr/share/doc/jed/examples/jed.rc.gz &gt; ~/.jedrc</code></li>
+	<li>
+		编辑~/.jedrc：<code>jed ~/.jedrc</code></li>
+	<li>
+		禁止显示菜单，这样就和我的Emacs配置一样了：<code>enable_top_status_line(0);</code></li>
+	<li>
+		打开自动解压，这样就可以直接浏览压缩文本：<code>auto_compression_mode(1);</code></li>
+	<li>
+		设置C-mode的缩进风格：<code>c_set_style ("linux");</code></li>
+	<li>
+		其他的模式以及进一步的定制请参考 <a href="http://www.jedsoft.org/jed/doc/jedfuns.html">JED参考</a></li>
+</ol>
+<h1>
+	JED文档和资源</h1>
+<ol>
+	<li>
+		JED 官方网站:<a href="http://www.jedsoft.org/jed">http://www.jedsoft.org/jed</a></li>
+	<li>
+		JED 扩展列表: <a href="http://jedmodes.sourceforge.net/modes">http://jedmodes.sourceforge.net/modes</a></li>
+	<li>
+		JED的debian package链接: <a href="http://packages.debian.org/squeeze/jed">http://packages.debian.org/squeeze/jed</a></li>
+</ol>
+</div>
+  </div>
+
+  
+
+  <div id="comments_wrap">
+      
+
+<div class="articlefooter">
+        <span class="comments">
+	<a href="http://vmlinz.is-programmer.com/posts/23765.rss"><img alt="Small_feed" class="feed" src="small_feed.png"></a>
+	Comments (15)
+    </span>
+</div>
+    <div id="comments">
+            <div class="comment_box comment_box0" id="comment153828">
+<div class="comment_header">
+    <div class="comments_count">
+	    1
+    </div> 
+	    
+	    <span class="reply_comment_button"><a href="#" title="Reply to K*K">[Reply]</a></span>
+	    <span class="mark_spam_comment_button" style="display: none;"><a href="http://vmlinz.is-programmer.com/comments/153828/mark_as_spam.js" data-method="post" data-remote="true" id="mark_spam_comment_153828" rel="nofollow" title="[Mark as spam]">[Mark as spam]</a></span>
+</div>
+<div class="comment_body">
+	<div class="comment_avatar">
+	    <a href="http://xuqingkuang.is-programmer.com/"><img alt="Head_small" src="head_small.jpg"></a>
+	</div>
+	<div class="comment_content">
+	    <a href="http://xuqingkuang.is-programmer.com/">K*K</a> said: 
+	    <br>
+	    <small><a href="#comment153828">Wed, 12 Jan 2011 23:53:01 +0800</a></small>
+	    <p>说真的我一直对 Emacs 和 VIM 有很强的敬畏心理，刚去主页上看了一下，堪比 DOS 时代的编辑器我还是继续敬而远之。
+</p>
+	</div>
+</div>
+</div>
+
+    <div class="comment_box comment_box1 comment_self comment_reply" id="comment153831" reply_id="153828">
+<div class="comment_header">
+    <div class="comments_count">
+	    2
+    </div> 
+	    
+	    <span class="reply_comment_button"><a href="#" title="Reply to vmlinz">[Reply]</a></span>
+	    <span class="mark_spam_comment_button" style="display: none;"><a href="http://vmlinz.is-programmer.com/comments/153831/mark_as_spam.js" data-method="post" data-remote="true" id="mark_spam_comment_153831" rel="nofollow" title="[Mark as spam]">[Mark as spam]</a></span>
+</div>
+<div class="comment_body">
+	<div class="comment_avatar">
+	    <a href="http://vmlinz.is-programmer.com/"><img alt="Avatar_small" src="avatar_small.png"></a>
+	</div>
+	<div class="comment_content">
+	    <a href="http://vmlinz.is-programmer.com/">vmlinz</a> said: 
+	    <br>
+	    <small><a href="#comment153831">Thu, 13 Jan 2011 09:20:50 +0800</a></small>
+	    <p>@K*K: 我相信一旦你开始使用它们，你会发现它们其实是非常强大而且易用的。</p>
+	</div>
+</div>
+</div>
+
+    <div class="comment_box comment_box0 comment_self comment_reply" id="comment153832" reply_id="153828">
+<div class="comment_header">
+    <div class="comments_count">
+	    3
+    </div> 
+	    
+	    <span class="reply_comment_button"><a href="#" title="Reply to vmlinz">[Reply]</a></span>
+	    <span class="mark_spam_comment_button" style="display: none;"><a href="http://vmlinz.is-programmer.com/comments/153832/mark_as_spam.js" data-method="post" data-remote="true" id="mark_spam_comment_153832" rel="nofollow" title="[Mark as spam]">[Mark as spam]</a></span>
+</div>
+<div class="comment_body">
+	<div class="comment_avatar">
+	    <a href="http://vmlinz.is-programmer.com/"><img alt="Avatar_small" src="avatar_small.png"></a>
+	</div>
+	<div class="comment_content">
+	    <a href="http://vmlinz.is-programmer.com/">vmlinz</a> said: 
+	    <br>
+	    <small><a href="#comment153832">Thu, 13 Jan 2011 09:21:46 +0800</a></small>
+	    <p>昨天发的时候弄错了，以为blog可以直接用markdown。。。</p>
+	</div>
+</div>
+</div>
+
+    <div class="comment_box comment_box1" id="comment153834">
+<div class="comment_header">
+    <div class="comments_count">
+	    4
+    </div> 
+	    
+	    <span class="reply_comment_button"><a href="#" title="Reply to K*K">[Reply]</a></span>
+	    <span class="mark_spam_comment_button" style="display: none;"><a href="http://vmlinz.is-programmer.com/comments/153834/mark_as_spam.js" data-method="post" data-remote="true" id="mark_spam_comment_153834" rel="nofollow" title="[Mark as spam]">[Mark as spam]</a></span>
+</div>
+<div class="comment_body">
+	<div class="comment_avatar">
+	    <a href="http://xuqingkuang.is-programmer.com/"><img alt="Head_small" src="head_small.jpg"></a>
+	</div>
+	<div class="comment_content">
+	    <a href="http://xuqingkuang.is-programmer.com/">K*K</a> said: 
+	    <br>
+	    <small><a href="#comment153834">Thu, 13 Jan 2011 10:32:09 +0800</a></small>
+	    <p>我得承认我比较懒。 :-p</p>
+	</div>
+</div>
+</div>
+
+    <div class="comment_box comment_box0 comment_reply" id="comment153839" reply_id="153834">
+<div class="comment_header">
+    <div class="comments_count">
+	    5
+    </div> 
+	    <span class="twitter_comment_button"><a href="http://twitter.com/bamanzi" class="follow_him" target="_blank"></a></span>
+	    <span class="reply_comment_button"><a href="#" title="Reply to 巴蛮子">[Reply]</a></span>
+	    <span class="mark_spam_comment_button" style="display: none;"><a href="http://vmlinz.is-programmer.com/comments/153839/mark_as_spam.js" data-method="post" data-remote="true" id="mark_spam_comment_153839" rel="nofollow" title="[Mark as spam]">[Mark as spam]</a></span>
+</div>
+<div class="comment_body">
+	<div class="comment_avatar">
+	    <a href="http://bamanzi.is-programmer.com/"><img alt="Avatar_small" src="avatar_small.png"></a>
+	</div>
+	<div class="comment_content">
+	    <a href="http://bamanzi.is-programmer.com/">巴蛮子</a> said: 
+	    <br>
+	    <small><a href="#comment153839">Thu, 13 Jan 2011 21:27:42 +0800</a></small>
+	    <p>@K*K: 恰恰说明你还不够懒。很多时候我们在其它编辑器里面一遍又一遍地重复，却不愿学习一下用vim/emacs一个命令就能搞定的事情。我就见过有同事打开日志文件，一行一行地删除包含某个词的行</p>
+	</div>
+</div>
+</div>
+
+    <div class="comment_box comment_box1 comment_self" id="comment153841">
+<div class="comment_header">
+    <div class="comments_count">
+	    6
+    </div> 
+	    
+	    <span class="reply_comment_button"><a href="#" title="Reply to vmlinz">[Reply]</a></span>
+	    <span class="mark_spam_comment_button" style="display: none;"><a href="http://vmlinz.is-programmer.com/comments/153841/mark_as_spam.js" data-method="post" data-remote="true" id="mark_spam_comment_153841" rel="nofollow" title="[Mark as spam]">[Mark as spam]</a></span>
+</div>
+<div class="comment_body">
+	<div class="comment_avatar">
+	    <a href="http://vmlinz.is-programmer.com/"><img alt="Avatar_small" src="avatar_small.png"></a>
+	</div>
+	<div class="comment_content">
+	    <a href="http://vmlinz.is-programmer.com/">vmlinz</a> said: 
+	    <br>
+	    <small><a href="#comment153841">Thu, 13 Jan 2011 22:16:22 +0800</a></small>
+	    <p>还没有懒到什么都不想自己直接干，要机器帮忙，呵呵</p>
+	</div>
+</div>
+</div>
+
+    <div class="comment_box comment_box0" id="comment153843">
+<div class="comment_header">
+    <div class="comments_count">
+	    7
+    </div> 
+	    
+	    <span class="reply_comment_button"><a href="#" title="Reply to Garfileo">[Reply]</a></span>
+	    <span class="mark_spam_comment_button" style="display: none;"><a href="http://vmlinz.is-programmer.com/comments/153843/mark_as_spam.js" data-method="post" data-remote="true" id="mark_spam_comment_153843" rel="nofollow" title="[Mark as spam]">[Mark as spam]</a></span>
+</div>
+<div class="comment_body">
+	<div class="comment_avatar">
+	    <a href="http://garfileo.is-programmer.com/"><img alt="Avatar_small" src="avatar_small_001.png"></a>
+	</div>
+	<div class="comment_content">
+	    <a href="http://garfileo.is-programmer.com/">Garfileo</a> said: 
+	    <br>
+	    <small><a href="#comment153843">Thu, 13 Jan 2011 22:19:05 +0800</a></small>
+	    <p>这个不错，开始使用</p>
+	</div>
+</div>
+</div>
+
+    <div class="comment_box comment_box1 comment_self comment_reply" id="comment153845" reply_id="153843">
+<div class="comment_header">
+    <div class="comments_count">
+	    8
+    </div> 
+	    
+	    <span class="reply_comment_button"><a href="#" title="Reply to vmlinz">[Reply]</a></span>
+	    <span class="mark_spam_comment_button" style="display: none;"><a href="http://vmlinz.is-programmer.com/comments/153845/mark_as_spam.js" data-method="post" data-remote="true" id="mark_spam_comment_153845" rel="nofollow" title="[Mark as spam]">[Mark as spam]</a></span>
+</div>
+<div class="comment_body">
+	<div class="comment_avatar">
+	    <a href="http://vmlinz.is-programmer.com/"><img alt="Avatar_small" src="avatar_small.png"></a>
+	</div>
+	<div class="comment_content">
+	    <a href="http://vmlinz.is-programmer.com/">vmlinz</a> said: 
+	    <br>
+	    <small><a href="#comment153845">Thu, 13 Jan 2011 22:30:54 +0800</a></small>
+	    <p>@Garfileo: jed在gentoo中有打包：http://gentoo-portage.com/app-editors/jed，它的语言真的好定制啊，直接看着函数文档就可以改（可能没有lisp那些特性，不过也简单一些）而且很多概念和操作都和GNU Emacs一模一样。</p>
+	</div>
+</div>
+</div>
+
+    <div class="comment_box comment_box0" id="comment153888">
+<div class="comment_header">
+    <div class="comments_count">
+	    9
+    </div> 
+	    <span class="twitter_comment_button"><a href="http://twitter.com/bamanzi" class="follow_him" target="_blank"></a></span>
+	    <span class="reply_comment_button"><a href="#" title="Reply to 巴蛮子">[Reply]</a></span>
+	    <span class="mark_spam_comment_button" style="display: none;"><a href="http://vmlinz.is-programmer.com/comments/153888/mark_as_spam.js" data-method="post" data-remote="true" id="mark_spam_comment_153888" rel="nofollow" title="[Mark as spam]">[Mark as spam]</a></span>
+</div>
+<div class="comment_body">
+	<div class="comment_avatar">
+	    <a href="http://bamanzi.is-programmer.com/"><img alt="Avatar_small" src="avatar_small.png"></a>
+	</div>
+	<div class="comment_content">
+	    <a href="http://bamanzi.is-programmer.com/">巴蛮子</a> said: 
+	    <br>
+	    <small><a href="#comment153888">Tue, 18 Jan 2011 06:24:39 +0800</a></small>
+	    <p>受楼主的启发，我跑去玩了一下MicroEmacs，感觉易用性不错，可扩展能力也很强。
+<br>（我适用的是Jasspa这个版本。MicroEmacs分支版本太多了，功能特性差异比较大）</p>
+
+<p>http://www.jasspa.com/</p>
+	</div>
+</div>
+</div>
+
+    <div class="comment_box comment_box1 comment_reply" id="comment153892" reply_id="153888">
+<div class="comment_header">
+    <div class="comments_count">
+	    10
+    </div> 
+	    
+	    <span class="reply_comment_button"><a href="#" title="Reply to vmlinz">[Reply]</a></span>
+	    <span class="mark_spam_comment_button" style="display: none;"><a href="http://vmlinz.is-programmer.com/comments/153892/mark_as_spam.js" data-method="post" data-remote="true" id="mark_spam_comment_153892" rel="nofollow" title="[Mark as spam]">[Mark as spam]</a></span>
+</div>
+<div class="comment_body">
+	<div class="comment_avatar">
+	    <img alt="Avatar_small" src="avatar_small.png">
+	</div>
+	<div class="comment_content">
+	    vmlinz said: 
+	    <br>
+	    <small><a href="#comment153892">Tue, 18 Jan 2011 11:11:18 +0800</a></small>
+	    <p>@巴蛮子: 它对中文的支持有bug，删除的时候删半个字，需要改一下源代码</p>
+	</div>
+</div>
+</div>
+
+    <div class="comment_box comment_box0" id="comment161064">
+<div class="comment_header">
+    <div class="comments_count">
+	    11
+    </div> 
+	    
+	    <span class="reply_comment_button"><a href="#" title="Reply to Bananapeel">[Reply]</a></span>
+	    <span class="mark_spam_comment_button" style="display: none;"><a href="http://vmlinz.is-programmer.com/comments/161064/mark_as_spam.js" data-method="post" data-remote="true" id="mark_spam_comment_161064" rel="nofollow" title="[Mark as spam]">[Mark as spam]</a></span>
+</div>
+<div class="comment_body">
+	<div class="comment_avatar">
+	    <img alt="Avatar_small" src="avatar_small.png">
+	</div>
+	<div class="comment_content">
+	    <a href="http://http//www.cnblogs.com/bananapeel/">Bananapeel</a> said: 
+	    <br>
+	    <small><a href="#comment161064">Thu, 01 Dec 2011 13:20:41 +0800</a></small>
+	    <p>= =我想说Jed没有gui吧？
+<br>另外如果我在虚拟终端下按F10调出的并不是jed的菜单栏而是虚拟终端的菜单栏。
+<br>另外我想说，Jed的自动缩进比Emacs的还爽………………</p>
+	</div>
+</div>
+</div>
+
+    <div class="comment_box comment_box1 comment_self comment_reply" id="comment161071" reply_id="161064">
+<div class="comment_header">
+    <div class="comments_count">
+	    12
+    </div> 
+	    
+	    <span class="reply_comment_button"><a href="#" title="Reply to vmlinz">[Reply]</a></span>
+	    <span class="mark_spam_comment_button" style="display: none;"><a href="http://vmlinz.is-programmer.com/comments/161071/mark_as_spam.js" data-method="post" data-remote="true" id="mark_spam_comment_161071" rel="nofollow" title="[Mark as spam]">[Mark as spam]</a></span>
+</div>
+<div class="comment_body">
+	<div class="comment_avatar">
+	    <a href="http://vmlinz.is-programmer.com/"><img alt="Avatar_small" src="avatar_small.png"></a>
+	</div>
+	<div class="comment_content">
+	    <a href="http://vmlinz.is-programmer.com/">vmlinz</a> said: 
+	    <br>
+	    <small><a href="#comment161071">Thu, 01 Dec 2011 15:59:18 +0800</a></small>
+	    <p>@Bananapeel: F10可能被终端绑定了，你要取消绑定先。jed的gui版本叫做xjed。</p>
+	</div>
+</div>
+</div>
+
+    <div class="comment_box comment_box0 comment_reply" id="comment161074" reply_id="161071">
+<div class="comment_header">
+    <div class="comments_count">
+	    13
+    </div> 
+	    
+	    <span class="reply_comment_button"><a href="#" title="Reply to Bananapeel">[Reply]</a></span>
+	    <span class="mark_spam_comment_button" style="display: none;"><a href="http://vmlinz.is-programmer.com/comments/161074/mark_as_spam.js" data-method="post" data-remote="true" id="mark_spam_comment_161074" rel="nofollow" title="[Mark as spam]">[Mark as spam]</a></span>
+</div>
+<div class="comment_body">
+	<div class="comment_avatar">
+	    <img alt="Avatar_small" src="avatar_small.png">
+	</div>
+	<div class="comment_content">
+	    <a href="http://http//www.cnblogs.com/bananapeel/">Bananapeel</a> said: 
+	    <br>
+	    <small><a href="#comment161074">Thu, 01 Dec 2011 17:39:12 +0800</a></small>
+	    <p>@vmlinz: 我去找找x版本…………谢谢啦。^_^就是不知道拓展丰富不丰富。</p>
+	</div>
+</div>
+</div>
+
+    <div class="comment_box comment_box1 comment_reply" id="comment161075" reply_id="161071">
+<div class="comment_header">
+    <div class="comments_count">
+	    14
+    </div> 
+	    
+	    <span class="reply_comment_button"><a href="#" title="Reply to Bananapeel">[Reply]</a></span>
+	    <span class="mark_spam_comment_button" style="display: none;"><a href="http://vmlinz.is-programmer.com/comments/161075/mark_as_spam.js" data-method="post" data-remote="true" id="mark_spam_comment_161075" rel="nofollow" title="[Mark as spam]">[Mark as spam]</a></span>
+</div>
+<div class="comment_body">
+	<div class="comment_avatar">
+	    <img alt="Avatar_small" src="avatar_small.png">
+	</div>
+	<div class="comment_content">
+	    <a href="http://http//www.cnblogs.com/bananapeel/">Bananapeel</a> said: 
+	    <br>
+	    <small><a href="#comment161075">Thu, 01 Dec 2011 17:48:44 +0800</a></small>
+	    <p>@vmlinz: = =额，刚下了xjed。好吧这玩意感觉还不如CLI的jed好用。</p>
+	</div>
+</div>
+</div>
+
+    <div class="comment_box comment_box0" id="comment1247735">
+<div class="comment_header">
+    <div class="comments_count">
+	    15
+    </div> 
+	    
+	    <span class="reply_comment_button"><a href="#" title="Reply to LdBeth">[Reply]</a></span>
+	    <span class="mark_spam_comment_button" style="display: none;"><a href="http://vmlinz.is-programmer.com/comments/1247735/mark_as_spam.js" data-method="post" data-remote="true" id="mark_spam_comment_1247735" rel="nofollow" title="[Mark as spam]">[Mark as spam]</a></span>
+</div>
+<div class="comment_body">
+	<div class="comment_avatar">
+	    <img alt="Avatar_small" src="avatar_small.png">
+	</div>
+	<div class="comment_content">
+	    LdBeth said: 
+	    <br>
+	    <small><a href="#comment1247735">Tue, 09 May 2017 19:50:48 +0800</a></small>
+	    <p>想问一下为什么把jed用作git editor的时候会在启动时卡死。</p>
+	</div>
+</div>
+</div>
+
+
+ 
+    </div>
+
+
+
+<script src="about:blank" type="text/javascript"></script></div></div></div></div></div></body>
+</html>
