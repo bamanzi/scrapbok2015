@@ -1,0 +1,9 @@
+/* Code tidied up by ScrapBook */
+.d_tm { margin-top: 20px; }
+.d_thm { margin-top: 10px; }
+.d_lhm { margin-left: 10px; }
+.tNone, .tNone * { text-decoration: none ! important; }
+.fixed, .fixed { display: block; min-height: 1%; }
+.fixed::after, .fixed::after { content: "."; display: block; visibility: hidden; clear: both; height: 0px; font-size: 0px; line-height: 0; }
+.show, .content .show { display: block ! important; visibility: visible ! important; }
+.hide, .content .hide { display: none ! important; visibility: hidden ! important; }

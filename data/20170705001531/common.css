@@ -1,0 +1,32 @@
+/* Code tidied up by ScrapBook */
+@import url("css.css");
+@import url("nanumgothic.css");
+@import url("layout.css");
+html { -moz-text-size-adjust: none; overflow-y: scroll; }
+html, body { width: 100%; height: 100%; }
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, select, textarea, p, blockquote, address { margin: 0px; padding: 0px; outline-style: none; outline-offset: 0px; }
+input[type="image"], input[type="text"], input[type="submit"], input[type="password"] { border-radius: 0px; }
+img, fieldset, button, iframe { border: 0px none; }
+ol, ul { list-style: outside none none; }
+a, a:link, a:visited, a:active, a:hover { text-decoration: none; }
+body { font-size: x-small; }
+* { font-family: "Open Sans","Nanum Gothic","Arial","Gulim"; color: rgb(51, 51, 51); }
+.fixed { display: block; min-height: 1%; }
+.fixed::after { display: block; visibility: hidden; clear: both; height: 0px; content: "."; font-size: 0px; line-height: 0; }
+.show { display: block; visibility: visible; }
+.hide { display: none; visibility: hidden; }
+a, a *, a:link, a:link * { color: rgb(225, 70, 45); cursor: pointer; }
+a:hover { color: rgb(225, 70, 45); text-decoration: underline; }
+a.tNone, a.tNone * { color: rgb(68, 68, 68) ! important; text-decoration: none ! important; }
+ul li { list-style-position: outside; }
+ul.li_circle li, ul.li_square li, ul.li_arrow li, ul.li_line li { padding-left: 18px; list-style: outside none none; }
+ul.li_circle li { background: transparent url("bul_li_circle.png") no-repeat scroll 3px 0.5em; }
+dl dt { font-weight: bold; }
+.text_field, .select_field, .textarea_field, .file_field { display: inline-block; margin: 0px; padding: 0px; outline: medium none; border: 1px solid rgb(213, 213, 213); border-radius: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; font-size: 12px ! important; line-height: 18px ! important; vertical-align: top ! important; }
+.text_field { height: 18px; text-indent: 3px; }
+.btn { display: inline-block ! important; overflow: visible ! important; position: relative; height: 30px ! important; margin: 0px; padding: 0px 15px ! important; border: 0px none ! important; color: rgb(255, 255, 255) ! important; font-size: 12px ! important; font-weight: bold ! important; line-height: 30px ! important; text-decoration: none ! important; vertical-align: top ! important; cursor: pointer ! important; border-radius: 3px ! important; }
+.btn { background-color: rgb(31, 139, 239) ! important; }
+.btn:hover { background-color: rgb(2, 180, 255) ! important; }
+.btn.small { height: 20px ! important; padding: 0px 15px ! important; font-size: 11px ! important; line-height: 20px ! important; }
+.btn.gray { background-color: rgb(176, 176, 176) ! important; }
+.btn.gray:hover { background-color: rgb(210, 210, 210) ! important; }

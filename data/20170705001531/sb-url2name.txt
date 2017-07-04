@@ -1,0 +1,6 @@
+http://www.netsarang.com/products/xsh_overview.html	index
+http://www.netsarang.com/products/xsh_key_features.html	xsh_key_features
+http://www.netsarang.com/products/xsh_specification.html	xsh_specification
+http://www.netsarang.com/products/xsh_requirements.html	xsh_requirements
+http://www.netsarang.com/products/xsh_screenshot.html	xsh_screenshot
+http://www.netsarang.com/products/xsh_update.html	xsh_update

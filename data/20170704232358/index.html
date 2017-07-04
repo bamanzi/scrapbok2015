@@ -1,0 +1,1455 @@
+<!DOCTYPE html>
+<html class="v2" dir="ltr" xmlns="http://www.w3.org/1999/xhtml" xmlns:b="http://www.google.com/2005/gml/b" xmlns:data="http://www.google.com/2005/gml/data" xmlns:expr="http://www.google.com/2005/gml/expr">
+<head>
+<link type="text/css" rel="stylesheet" href="304508860-css_bundle_v2.css">
+<link href="prettify.css" rel="stylesheet" type="text/css">
+<script src="about:blank" async=""></script><script src="about:blank" async=""></script><script src="about:blank" async=""></script><script type="text/javascript" async="" src="about:blank"></script><script src="about:blank" type="text/javascript"></script>
+<meta content="IE=EmulateIE7" http-equiv="X-UA-Compatible">
+<meta content="width=1100" name="viewport">
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="blogger" name="generator">
+<link href="favicon.ico" rel="icon" type="image/x-icon">
+<link href="http://blog.sepa.spb.ru/2014/09/putty-nd-vs-superputty.html" rel="canonical">
+<link rel="alternate" type="application/atom+xml" title="blog.sepa.spb.ru - Atom" href="http://blog.sepa.spb.ru/feeds/posts/default">
+<link rel="alternate" type="application/rss+xml" title="blog.sepa.spb.ru - RSS" href="http://blog.sepa.spb.ru/feeds/posts/default?alt=rss">
+<link rel="service.post" type="application/atom+xml" title="blog.sepa.spb.ru - Atom" href="https://www.blogger.com/feeds/6332425732664082644/posts/default">
+
+<link rel="alternate" type="application/atom+xml" title="blog.sepa.spb.ru - Atom" href="http://blog.sepa.spb.ru/feeds/2819668781582547187/comments/default">
+<!--[if IE]><script type="text/javascript" src="https://www.blogger.com/static/v1/jsbin/3409755933-ieretrofit.js"></script>
+<![endif]-->
+<link href="http://1.bp.blogspot.com/-TaLw6K9tULM/VCfqmgk2tDI/AAAAAAAAxEo/34eHD53Da5Q/s1600/opensess.png" rel="image_src">
+<meta content="http://blog.sepa.spb.ru/2014/09/putty-nd-vs-superputty.html" property="og:url">
+<meta content="putty-nd vs SuperPuTTY " property="og:title">
+<meta content="I've been using putty-nd  for a long time. Starting from putty_nd2.0 it started to support chrome-like tabs and development was going quite ..." property="og:description">
+<meta content="http://1.bp.blogspot.com/-TaLw6K9tULM/VCfqmgk2tDI/AAAAAAAAxEo/34eHD53Da5Q/w1200-h630-p-k-no-nu/opensess.png" property="og:image">
+<!--[if IE]> <script> (function() { var html5 = ("abbr,article,aside,audio,canvas,datalist,details," + "figure,footer,header,hgroup,mark,menu,meter,nav,output," + "progress,section,time,video").split(','); for (var i = 0; i < html5.length; i++) { document.createElement(html5[i]); } try { document.execCommand('BackgroundImageCache', false, true); } catch(e) {} })(); </script> <![endif]-->
+<title>blog.sepa.spb.ru: putty-nd vs SuperPuTTY </title>
+<link href="css.css" rel="stylesheet" type="text/css"><style id="page-skin-1" type="text/css">
+/* Code tidied up by ScrapBook */
+body { font: 12px "Trebuchet MS",Trebuchet,Verdana,sans-serif; color: rgb(102, 102, 102); background: rgb(255, 255, 255) none repeat scroll left top; padding: 0px; }
+html body .region-inner { min-width: 0px; max-width: 100%; width: auto; }
+h2 { font-size: 22px; }
+a:link { text-decoration: none; color: rgb(56, 118, 29); }
+a:visited { text-decoration: none; color: rgb(136, 136, 136); }
+a:hover { text-decoration: underline; color: rgb(147, 196, 125); }
+.body-fauxcolumn-outer .fauxcolumn-inner { background: transparent none repeat scroll left top; }
+.body-fauxcolumn-outer .cap-top { position: absolute; z-index: 1; height: 400px; width: 100%; }
+.body-fauxcolumn-outer .cap-top .cap-left { width: 100%; background: transparent none repeat-x scroll left top; }
+.content-outer { box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.15); margin-bottom: 1px; }
+.content-inner { padding: 10px 40px; }
+.content-inner { background-color: rgb(255, 255, 255); }
+.header-outer { background: transparent none repeat-x scroll 0px -400px; }
+.Header h1 { font: 40px "Trebuchet MS",Trebuchet,Verdana,sans-serif; color: rgb(0, 0, 0); text-shadow: 0px 0px 0px rgba(0, 0, 0, 0.2); }
+.Header h1 a { color: rgb(0, 0, 0); }
+.Header .description { font-size: 18px; color: rgb(0, 0, 0); }
+.header-inner .Header .titlewrapper { padding: 22px 0px; }
+.header-inner .Header .descriptionwrapper { padding: 0px; }
+.tabs-inner .section:first-child { border-top: 0px solid rgb(204, 204, 204); }
+.main-outer { border-top: 0px solid transparent; }
+.fauxcolumn-left-outer .fauxcolumn-inner { border-right: 1px solid transparent; }
+.fauxcolumn-right-outer .fauxcolumn-inner { border-left: 1px solid transparent; }
+div.widget > h2, div.widget h2.title { margin: 0px 0px 1em; font: 11px Consolas; color: rgb(0, 0, 0); }
+.widget .zippy { color: rgb(153, 153, 153); text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.1); }
+h2.date-header { font: bold 11px Arial,Tahoma,Helvetica,FreeSans,sans-serif; }
+.date-header span { background-color: rgb(187, 187, 187); color: rgb(255, 255, 255); padding: 0.4em; letter-spacing: 3px; margin: inherit; }
+.main-inner { padding-top: 35px; padding-bottom: 65px; }
+.main-inner .column-center-inner { padding: 0px; }
+.main-inner .column-center-inner .section { margin: 0px 1em; }
+.post { margin: 0px 0px 45px; }
+h3.post-title, .comments h4 { font: 22px "Trebuchet MS",Trebuchet,Verdana,sans-serif; margin: 0.75em 0px 0px; }
+.post-body { font-size: 110%; line-height: 1.4; position: relative; }
+.post-body img, .post-body .tr-caption-container, .Profile img, .Image img, .BlogList .item-thumbnail img { padding: 2px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 1px solid rgb(238, 238, 238); box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1); }
+.post-body img, .post-body .tr-caption-container { padding: 5px; }
+.post-header { margin: 0px 0px 1.5em; line-height: 1.6; font-size: 90%; }
+.post-footer { margin: 20px -2px 0px; padding: 5px 10px; color: rgb(102, 102, 102); background-color: rgb(238, 238, 238); border-bottom: 1px solid rgb(238, 238, 238); line-height: 1.6; font-size: 90%; }
+.blog-pager { background: transparent url("paging_dot.png") repeat-x scroll center top; }
+.blog-pager-older-link, .home-link, .blog-pager-newer-link { background-color: rgb(255, 255, 255); padding: 5px; }
+.footer-outer { border-top: 1px dashed rgb(187, 187, 187); }
+</style>
+<style id="template-skin-1" type="text/css">
+/* Code tidied up by ScrapBook */
+body { min-width: 860px; }
+.content-outer, .content-fauxcolumn-outer, .region-inner { min-width: 860px; max-width: 860px; }
+.main-inner .columns { padding-left: 0px; padding-right: 200px; }
+.main-inner .fauxcolumn-center-outer { left: 0px; right: 200px; }
+.main-inner .fauxcolumn-left-outer { width: 0px; }
+.main-inner .fauxcolumn-right-outer { width: 200px; }
+.main-inner .column-left-outer { width: 0px; right: 100%; margin-left: 0px; }
+.main-inner .column-right-outer { width: 200px; margin-right: -200px; }
+</style>
+<script src="about:blank" type="text/javascript"></script>
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+<link href="authorization.css" media="all" rel="stylesheet"><noscript><link href='https://www.blogger.com/dyn-css/authorization.css?targetBlogID=6332425732664082644&amp;zx=2405cc56-62a1-405b-af6a-ffaccf07d575' rel='stylesheet'/></noscript>
+<script type="text/javascript" src="about:blank"></script><style>
+/* Code tidied up by ScrapBook */
+</style><style type="text/css">
+/* Code tidied up by ScrapBook */
+@media screen {
+}
+@media print {
+}
+</style><style type="text/css" id="diigo-activeHighlight">
+/* Code tidied up by ScrapBook */
+</style></head>
+<body class=" variant-simplysimple">
+<div class="navbar section" id="navbar"><div class="widget Navbar" data-version="1" id="Navbar1"><script type="text/javascript">/* Code removed by ScrapBook */</script>
+<div id="navbar-iframe-container"><iframe ng-non-bindable="" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="" tabindex="0" vspace="0" id="navbar-iframe" name="navbar-iframe" src="index_1.html" width="100%" frameborder="0"></iframe></div>
+<script type="text/javascript" src="about:blank" gapi_processed="true"></script>
+<script type="text/javascript">/* Code removed by ScrapBook */</script><script type="text/javascript">/* Code removed by ScrapBook */</script>
+</div></div>
+<div class="body-fauxcolumns">
+<div class="fauxcolumn-outer body-fauxcolumn-outer">
+<div class="cap-top">
+<div class="cap-left"></div>
+<div class="cap-right"></div>
+</div>
+<div class="fauxborder-left">
+<div class="fauxborder-right"></div>
+<div class="fauxcolumn-inner">
+</div>
+</div>
+<div class="cap-bottom">
+<div class="cap-left"></div>
+<div class="cap-right"></div>
+</div>
+</div>
+</div>
+<div class="content">
+<div class="content-fauxcolumns">
+<div class="fauxcolumn-outer content-fauxcolumn-outer">
+<div class="cap-top">
+<div class="cap-left"></div>
+<div class="cap-right"></div>
+</div>
+<div class="fauxborder-left">
+<div class="fauxborder-right"></div>
+<div class="fauxcolumn-inner">
+</div>
+</div>
+<div class="cap-bottom">
+<div class="cap-left"></div>
+<div class="cap-right"></div>
+</div>
+</div>
+</div>
+<div class="content-outer">
+<div class="content-cap-top cap-top">
+<div class="cap-left"></div>
+<div class="cap-right"></div>
+</div>
+<div class="fauxborder-left content-fauxborder-left">
+<div class="fauxborder-right content-fauxborder-right"></div>
+<div class="content-inner">
+<header>
+<div class="header-outer">
+<div class="header-cap-top cap-top">
+<div class="cap-left"></div>
+<div class="cap-right"></div>
+</div>
+<div class="fauxborder-left header-fauxborder-left">
+<div class="fauxborder-right header-fauxborder-right"></div>
+<div class="region-inner header-inner">
+<div class="header section" id="header"><div class="widget Header" data-version="1" id="Header1">
+<div id="header-inner">
+<div class="titlewrapper">
+<h1 class="title">
+<a href="http://blog.sepa.spb.ru/">
+blog.sepa.spb.ru
+</a>
+</h1>
+</div>
+<div class="descriptionwrapper">
+<p class="description"><span>
+</span></p>
+</div>
+</div>
+</div></div>
+</div>
+</div>
+<div class="header-cap-bottom cap-bottom">
+<div class="cap-left"></div>
+<div class="cap-right"></div>
+</div>
+</div>
+</header>
+<div class="tabs-outer">
+<div class="tabs-cap-top cap-top">
+<div class="cap-left"></div>
+<div class="cap-right"></div>
+</div>
+<div class="fauxborder-left tabs-fauxborder-left">
+<div class="fauxborder-right tabs-fauxborder-right"></div>
+<div class="region-inner tabs-inner">
+<div class="tabs no-items section" id="crosscol"></div>
+<div class="tabs no-items section" id="crosscol-overflow"></div>
+</div>
+</div>
+<div class="tabs-cap-bottom cap-bottom">
+<div class="cap-left"></div>
+<div class="cap-right"></div>
+</div>
+</div>
+<div class="main-outer">
+<div class="main-cap-top cap-top">
+<div class="cap-left"></div>
+<div class="cap-right"></div>
+</div>
+<div class="fauxborder-left main-fauxborder-left">
+<div class="fauxborder-right main-fauxborder-right"></div>
+<div class="region-inner main-inner">
+<div class="columns fauxcolumns">
+<div class="fauxcolumn-outer fauxcolumn-center-outer">
+<div class="cap-top">
+<div class="cap-left"></div>
+<div class="cap-right"></div>
+</div>
+<div class="fauxborder-left">
+<div class="fauxborder-right"></div>
+<div class="fauxcolumn-inner">
+</div>
+</div>
+<div class="cap-bottom">
+<div class="cap-left"></div>
+<div class="cap-right"></div>
+</div>
+</div>
+<div class="fauxcolumn-outer fauxcolumn-left-outer">
+<div class="cap-top">
+<div class="cap-left"></div>
+<div class="cap-right"></div>
+</div>
+<div class="fauxborder-left">
+<div class="fauxborder-right"></div>
+<div class="fauxcolumn-inner">
+</div>
+</div>
+<div class="cap-bottom">
+<div class="cap-left"></div>
+<div class="cap-right"></div>
+</div>
+</div>
+<div class="fauxcolumn-outer fauxcolumn-right-outer">
+<div class="cap-top">
+<div class="cap-left"></div>
+<div class="cap-right"></div>
+</div>
+<div class="fauxborder-left">
+<div class="fauxborder-right"></div>
+<div class="fauxcolumn-inner">
+</div>
+</div>
+<div class="cap-bottom">
+<div class="cap-left"></div>
+<div class="cap-right"></div>
+</div>
+</div>
+<!-- corrects IE6 width calculation -->
+<div class="columns-inner">
+<div class="column-center-outer">
+<div class="column-center-inner">
+<div class="main section" id="main"><div class="widget Blog" data-version="1" id="Blog1">
+<div class="blog-posts hfeed">
+
+          <div class="date-outer">
+        
+<h2 class="date-header"><span>2014/09/28</span></h2>
+
+          <div class="date-posts">
+        
+<div class="post-outer">
+<div class="post hentry">
+<a name="2819668781582547187"></a>
+<h3 class="post-title entry-title">
+putty-nd vs SuperPuTTY 
+</h3>
+<div class="post-header">
+<div class="post-header-line-1"></div>
+</div>
+<div class="post-body entry-content" id="post-body-2819668781582547187">
+I've been using <a href="http://sourceforge.net/projects/putty-nd/">putty-nd</a> for a long time. Starting from putty_nd2.0 it started to support chrome-like tabs and development was going quite rapidly. <a href="mailto:noodle1983@126.com">Lu Dong</a> (author) was always responding to emails and bugs were fixed fast. But unfortunately this stopped at Feb 2014 with few annoying bugs left:<br>
+<ul>
+<li>When some tab connection drops, it can randomly freeze some other tab, so you need to reconnect both of them</li>
+<li>Tab names are right aligned. So, when you have a lot of tabs opened, their width is short and you see only endings of names like '...ain.local' instead of 'server1.doma..'</li>
+<li>When you click 'open new session' button and starting to type search query - it always skips first letter</li>
+<li>And the most unfortunate was that putty-nd sources weren't available. Latest one I was able to find was <a href="http://sourceforge.net/p/putty-nd/code/commit_browser">v6.0_nd1.11</a> back from 2011.</li>
+</ul>
+<br>
+Nevertheless of those issues I still was using putty-nd. Because other clients like <a href="http://mobaxterm.mobatek.net/">MobaXterm</a>, <a href="http://www.netsarang.com/products/xsh_overview.html">Xshell</a>, <a href="http://ttyplus.com/multi-tabbed-putty/">MTPuTTY</a>, <a href="http://www.mremoteng.org/">mRemoteNG</a> were even more inconvenient. Here is what I liked in putty-nd so much:<br>
+<ol>
+<li>When there are &gt;1000 sessions configured - you will never click by mouse in tree-like menu to open a new session. Preferably to have quick live search bind to hotkey</li>
+<li>Having only hostname in clipboard and no such session configured, open new one based on some predefined settings in couple of keypress</li>
+<li>When session was dropped, restart it without touching mouse (like pressing Enter in it)</li>
+</ol>
+<br>
+<a href="https://code.google.com/p/superputty/">SuperPuTTY</a> has almost 2 bullets from 3 above. And most importantly it is opensource. So, next time I got mad from putty-nd frozen tabs I'd decided to move to SuperPuTTY. A little patching and it became a usable client for me ;)<br>
+<br>
+Here is what was done:<br>
+<br>
+1. Open Session dialog<br>
+<img src="opensess.png" border="0"><br>
+Now search field always stay focused, pressing Up/Down you changing selection in table. Second column shows only folder name of session in tree. To search for all sessions in some folder start searching with '/' (as in example). Searching for hostname was changed to be matched from beginning, to search for any part of hostname - prepend search with '%'.<br>
+For example to find connection 'i.sepa.spb.ru' from screenshot, one could search for '%sepa'<br>
+<br>
+2. Added detection of dropped connection. For such tabs icon will be changed (to icon from putty-nd ;)<br>
+<img src="tabs.png" border="0"><br>
+For those first two tabs context menu will be also reduced. When you switch to such tab and press Enter in console, session will try to reconnect.<br>
+<br>
+For other changes see commit history: <a href="https://github.com/sepich/superputty/commits/master">github.com/sepich/superputty/commits/master</a><br>
+Download precompiled binaries here: <a href="https://github.com/sepich/superputty/releases">github.com/sepich/superputty/releases</a><br>
+<br>
+Main <a href="https://code.google.com/p/superputty/issues/detail?id=466">patches</a> <a href="https://code.google.com/p/superputty/issues/detail?id=465">were</a> <a href="https://code.google.com/p/superputty/issues/detail?id=464">submitted </a>back to SuperPuTTY community - hope some of them would be merged upstream.
+<div style="clear: both;"></div>
+</div>
+<div class="post-footer">
+<div class="post-footer-line post-footer-line-1"><span class="post-author vcard">
+Posted by
+<span class="fn">sepa</span>
+</span>
+<span class="post-timestamp">
+at
+<a class="timestamp-link" href="#" rel="bookmark" title="permanent link"><abbr class="published" title="2014-09-28T15:34:00+04:00">15:34</abbr></a>
+</span>
+<span class="post-comment-link">
+</span>
+<span class="post-icons">
+<span class="item-control blog-admin pid-1747730816">
+<a href="https://www.blogger.com/post-edit.g?blogID=6332425732664082644&amp;postID=2819668781582547187&amp;from=pencil" title="Edit Post">
+<img alt="" class="icon-action" src="icon18_edit_allbkg.gif" height="18" width="18">
+</a>
+</span>
+</span>
+<div class="post-share-buttons goog-inline-block">
+<a class="goog-inline-block share-button sb-email" href="https://www.blogger.com/share-post.g?blogID=6332425732664082644&amp;postID=2819668781582547187&amp;target=email" target="_blank" title="Email This"><span class="share-button-link-text">Email This</span></a><a class="goog-inline-block share-button sb-blog" href="https://www.blogger.com/share-post.g?blogID=6332425732664082644&amp;postID=2819668781582547187&amp;target=blog" target="_blank" title="BlogThis!"><span class="share-button-link-text">BlogThis!</span></a><a class="goog-inline-block share-button sb-twitter" href="https://www.blogger.com/share-post.g?blogID=6332425732664082644&amp;postID=2819668781582547187&amp;target=twitter" target="_blank" title="Share to Twitter"><span class="share-button-link-text">Share to Twitter</span></a><a class="goog-inline-block share-button sb-facebook" href="https://www.blogger.com/share-post.g?blogID=6332425732664082644&amp;postID=2819668781582547187&amp;target=facebook" target="_blank" title="Share to Facebook"><span class="share-button-link-text">Share to Facebook</span></a><a class="goog-inline-block share-button sb-pinterest" href="https://www.blogger.com/share-post.g?blogID=6332425732664082644&amp;postID=2819668781582547187&amp;target=pinterest" target="_blank" title="Share to Pinterest"><span class="share-button-link-text">Share to Pinterest</span></a><div class="goog-inline-block google-plus-share-container"><div style="text-indent: 0px; margin: 0px; padding: 0px; background: transparent none repeat scroll 0% 0%; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 300px; height: 20px;" id="___plusone_0"><iframe ng-non-bindable="" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position: static; top: 0px; width: 300px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 20px;" tabindex="0" vspace="0" id="I0_1499181777044" name="I0_1499181777044" src="index_4.html" data-gapiattached="true" title="+1" width="100%" frameborder="0"></iframe></div></div>
+</div>
+<span class="post-backlinks post-comment-link">
+</span>
+</div>
+<div class="post-footer-line post-footer-line-2"><span class="post-labels">
+Labels:
+<a href="http://blog.sepa.spb.ru/search/label/linux" rel="tag">linux</a>
+</span>
+</div>
+<div class="post-footer-line post-footer-line-3"><span class="post-location">
+</span>
+</div>
+</div>
+</div>
+<div class="comments" id="comments">
+<a name="comments"></a>
+<h4>No comments:</h4>
+<div id="Blog1_comments-block-wrapper">
+<dl class="avatar-comment-indent" id="comments-block">
+</dl>
+</div>
+<p class="comment-footer">
+</p><div class="comment-form">
+<a name="comment-form"></a>
+<h4 id="comment-post-message">Post a Comment</h4>
+<p>
+</p>
+<a href="https://www.blogger.com/comment-iframe.g?blogID=6332425732664082644&amp;postID=2819668781582547187&amp;blogspotRpcToken=5143415" id="comment-editor-src"></a>
+<iframe allowtransparency="true" class="blogger-iframe-colorize blogger-comment-from-post" id="comment-editor" name="comment-editor" src="index_5.html" data-resized="true" height="210px" width="100%" frameborder="0"></iframe>
+<script src="about:blank" type="text/javascript"></script>
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+</div>
+<p></p>
+<div id="backlinks-container">
+<div id="Blog1_backlinks-container"><a name="links"></a><h4>Links to this post</h4>
+<p class="comment-footer">
+<a class="comment-link" href="https://www.blogger.com/blog-this.g" id="Blog1_backlinks-create-link" target="_blank">Create a Link</a>
+</p>
+</div>
+</div>
+</div>
+</div>
+
+        </div></div>
+      
+</div>
+<div class="blog-pager" id="blog-pager">
+<span id="blog-pager-newer-link">
+<a class="blog-pager-newer-link" href="http://blog.sepa.spb.ru/2014/10/userscript-aws-docs-column-reader.html" id="Blog1_blog-pager-newer-link" title="Newer Post">Newer Post</a>
+</span>
+<span id="blog-pager-older-link">
+<a class="blog-pager-older-link" href="http://blog.sepa.spb.ru/2014/02/elasticsearch-internals-monitoring-by.html" id="Blog1_blog-pager-older-link" title="Older Post">Older Post</a>
+</span>
+<a class="home-link" href="http://blog.sepa.spb.ru/">Home</a>
+</div>
+<div class="clear"></div>
+<div class="post-feeds">
+<div class="feed-links">
+Subscribe to:
+<a class="feed-link" href="http://blog.sepa.spb.ru/feeds/2819668781582547187/comments/default" target="_blank" type="application/atom+xml">Post Comments (Atom)</a>
+</div>
+</div>
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+</div></div>
+</div>
+</div>
+<div class="column-left-outer">
+<div class="column-left-inner">
+<aside>
+</aside>
+</div>
+</div>
+<div class="column-right-outer">
+<div class="column-right-inner">
+<aside>
+<div class="sidebar section" id="sidebar-right-1"><div class="widget BlogSearch" data-version="1" id="BlogSearch1">
+<h2 class="title">Search This Blog</h2>
+<div class="widget-content">
+<div id="BlogSearch1_form">
+<form action="http://blog.sepa.spb.ru/search" class="gsc-search-box" target="_top">
+<table class="gsc-search-box" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td class="gsc-input">
+<input autocomplete="off" class="gsc-input" name="q" size="10" title="search" value="" type="text">
+</td>
+<td class="gsc-search-button">
+<input class="gsc-search-button" title="search" value="Search" type="submit">
+</td>
+</tr>
+</tbody>
+</table>
+</form>
+</div>
+</div>
+<div class="clear"></div>
+<span class="widget-item-control">
+<span class="item-control blog-admin">
+<a class="quickedit" href="http://www.blogger.com/rearrange?blogID=6332425732664082644&amp;widgetType=BlogSearch&amp;widgetId=BlogSearch1&amp;action=editWidget&amp;sectionId=sidebar-right-1" target="configBlogSearch1" title="Edit">
+<img alt="" src="icon18_wrench_allbkg.png" height="18" width="18">
+</a>
+</span>
+</span>
+<div class="clear"></div>
+</div><div class="widget Label" data-version="1" id="Label1">
+<h2>Labels</h2>
+<div class="widget-content list-label-widget-content">
+<ul>
+<li>
+<a dir="ltr" href="http://blog.sepa.spb.ru/search/label/ad">ad</a>
+<span dir="ltr">(10)</span>
+</li>
+<li>
+<a dir="ltr" href="http://blog.sepa.spb.ru/search/label/art">art</a>
+<span dir="ltr">(13)</span>
+</li>
+<li>
+<a dir="ltr" href="http://blog.sepa.spb.ru/search/label/AWS">AWS</a>
+<span dir="ltr">(1)</span>
+</li>
+<li>
+<a dir="ltr" href="http://blog.sepa.spb.ru/search/label/boot">boot</a>
+<span dir="ltr">(1)</span>
+</li>
+<li>
+<a dir="ltr" href="http://blog.sepa.spb.ru/search/label/dedup">dedup</a>
+<span dir="ltr">(1)</span>
+</li>
+<li>
+<a dir="ltr" href="http://blog.sepa.spb.ru/search/label/delphi">delphi</a>
+<span dir="ltr">(6)</span>
+</li>
+<li>
+<a dir="ltr" href="http://blog.sepa.spb.ru/search/label/dir620">dir620</a>
+<span dir="ltr">(1)</span>
+</li>
+<li>
+<a dir="ltr" href="http://blog.sepa.spb.ru/search/label/linux">linux</a>
+<span dir="ltr">(16)</span>
+</li>
+<li>
+<a dir="ltr" href="http://blog.sepa.spb.ru/search/label/MDMA">MDMA</a>
+<span dir="ltr">(7)</span>
+</li>
+<li>
+<a dir="ltr" href="http://blog.sepa.spb.ru/search/label/mele">mele</a>
+<span dir="ltr">(2)</span>
+</li>
+<li>
+<a dir="ltr" href="http://blog.sepa.spb.ru/search/label/msi">msi</a>
+<span dir="ltr">(5)</span>
+</li>
+<li>
+<a dir="ltr" href="http://blog.sepa.spb.ru/search/label/openwrt">openwrt</a>
+<span dir="ltr">(1)</span>
+</li>
+<li>
+<a dir="ltr" href="http://blog.sepa.spb.ru/search/label/quake">quake</a>
+<span dir="ltr">(2)</span>
+</li>
+<li>
+<a dir="ltr" href="http://blog.sepa.spb.ru/search/label/skin">skin</a>
+<span dir="ltr">(3)</span>
+</li>
+<li>
+<a dir="ltr" href="http://blog.sepa.spb.ru/search/label/syn">syn</a>
+<span dir="ltr">(6)</span>
+</li>
+<li>
+<a dir="ltr" href="http://blog.sepa.spb.ru/search/label/video">video</a>
+<span dir="ltr">(4)</span>
+</li>
+<li>
+<a dir="ltr" href="http://blog.sepa.spb.ru/search/label/www">www</a>
+<span dir="ltr">(13)</span>
+</li>
+<li>
+<a dir="ltr" href="http://blog.sepa.spb.ru/search/label/zabbix">zabbix</a>
+<span dir="ltr">(7)</span>
+</li>
+</ul>
+<div class="clear"></div>
+<span class="widget-item-control">
+<span class="item-control blog-admin">
+<a class="quickedit" href="http://www.blogger.com/rearrange?blogID=6332425732664082644&amp;widgetType=Label&amp;widgetId=Label1&amp;action=editWidget&amp;sectionId=sidebar-right-1" target="configLabel1" title="Edit">
+<img alt="" src="icon18_wrench_allbkg.png" height="18" width="18">
+</a>
+</span>
+</span>
+<div class="clear"></div>
+</div>
+</div><div class="widget BlogArchive" data-version="1" id="BlogArchive1">
+<h2>Blog Archive</h2>
+<div class="widget-content">
+<div id="ArchiveList">
+<div id="BlogArchive1_ArchiveList">
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://blog.sepa.spb.ru/2016/">
+2016
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://blog.sepa.spb.ru/2016/01/">
+January
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://blog.sepa.spb.ru/2015/">
+2015
+</a>
+<span class="post-count" dir="ltr">(3)</span>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://blog.sepa.spb.ru/2015/09/">
+September
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://blog.sepa.spb.ru/2015/08/">
+August
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://blog.sepa.spb.ru/2015/02/">
+February
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate expanded">
+<a class="toggle">
+<span class="zippy toggle-open">
+
+        ▼&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://blog.sepa.spb.ru/2014/">
+2014
+</a>
+<span class="post-count" dir="ltr">(8)</span>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://blog.sepa.spb.ru/2014/12/">
+December
+</a>
+<span class="post-count" dir="ltr">(2)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://blog.sepa.spb.ru/2014/11/">
+November
+</a>
+<span class="post-count" dir="ltr">(2)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://blog.sepa.spb.ru/2014/10/">
+October
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate expanded">
+<a class="toggle">
+<span class="zippy toggle-open">
+
+        ▼&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://blog.sepa.spb.ru/2014/09/">
+September
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+<ul class="posts">
+<li><a href="#">putty-nd vs SuperPuTTY</a></li>
+</ul>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://blog.sepa.spb.ru/2014/02/">
+February
+</a>
+<span class="post-count" dir="ltr">(2)</span>
+</li>
+</ul>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://blog.sepa.spb.ru/2013/">
+2013
+</a>
+<span class="post-count" dir="ltr">(6)</span>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://blog.sepa.spb.ru/2013/05/">
+May
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://blog.sepa.spb.ru/2013/04/">
+April
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://blog.sepa.spb.ru/2013/03/">
+March
+</a>
+<span class="post-count" dir="ltr">(2)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://blog.sepa.spb.ru/2013/01/">
+January
+</a>
+<span class="post-count" dir="ltr">(2)</span>
+</li>
+</ul>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://blog.sepa.spb.ru/2012/">
+2012
+</a>
+<span class="post-count" dir="ltr">(5)</span>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://blog.sepa.spb.ru/2012/11/">
+November
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://blog.sepa.spb.ru/2012/10/">
+October
+</a>
+<span class="post-count" dir="ltr">(2)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://blog.sepa.spb.ru/2012/04/">
+April
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://blog.sepa.spb.ru/2012/01/">
+January
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://blog.sepa.spb.ru/2011/">
+2011
+</a>
+<span class="post-count" dir="ltr">(11)</span>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://blog.sepa.spb.ru/2011/11/">
+November
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://blog.sepa.spb.ru/2011/09/">
+September
+</a>
+<span class="post-count" dir="ltr">(8)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://blog.sepa.spb.ru/2011/08/">
+August
+</a>
+<span class="post-count" dir="ltr">(2)</span>
+</li>
+</ul>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://blog.sepa.spb.ru/2007/">
+2007
+</a>
+<span class="post-count" dir="ltr">(3)</span>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://blog.sepa.spb.ru/2007/12/">
+December
+</a>
+<span class="post-count" dir="ltr">(2)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://blog.sepa.spb.ru/2007/05/">
+May
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://blog.sepa.spb.ru/2006/">
+2006
+</a>
+<span class="post-count" dir="ltr">(9)</span>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://blog.sepa.spb.ru/2006/11/">
+November
+</a>
+<span class="post-count" dir="ltr">(2)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://blog.sepa.spb.ru/2006/10/">
+October
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://blog.sepa.spb.ru/2006/08/">
+August
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://blog.sepa.spb.ru/2006/07/">
+July
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://blog.sepa.spb.ru/2006/05/">
+May
+</a>
+<span class="post-count" dir="ltr">(2)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://blog.sepa.spb.ru/2006/04/">
+April
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://blog.sepa.spb.ru/2006/01/">
+January
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://blog.sepa.spb.ru/2005/">
+2005
+</a>
+<span class="post-count" dir="ltr">(7)</span>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://blog.sepa.spb.ru/2005/11/">
+November
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://blog.sepa.spb.ru/2005/09/">
+September
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://blog.sepa.spb.ru/2005/08/">
+August
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://blog.sepa.spb.ru/2005/06/">
+June
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://blog.sepa.spb.ru/2005/05/">
+May
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://blog.sepa.spb.ru/2005/03/">
+March
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://blog.sepa.spb.ru/2005/01/">
+January
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://blog.sepa.spb.ru/2004/">
+2004
+</a>
+<span class="post-count" dir="ltr">(5)</span>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://blog.sepa.spb.ru/2004/12/">
+December
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://blog.sepa.spb.ru/2004/10/">
+October
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://blog.sepa.spb.ru/2004/05/">
+May
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://blog.sepa.spb.ru/2004/04/">
+April
+</a>
+<span class="post-count" dir="ltr">(2)</span>
+</li>
+</ul>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://blog.sepa.spb.ru/2003/">
+2003
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://blog.sepa.spb.ru/2003/08/">
+August
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://blog.sepa.spb.ru/2001/">
+2001
+</a>
+<span class="post-count" dir="ltr">(2)</span>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://blog.sepa.spb.ru/2001/10/">
+October
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://blog.sepa.spb.ru/2001/05/">
+May
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://blog.sepa.spb.ru/1998/">
+1998
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle">
+<span class="zippy">
+
+        ►&nbsp;
+      
+</span>
+</a>
+<a class="post-count-link" href="http://blog.sepa.spb.ru/1998/05/">
+May
+</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="clear"></div>
+<span class="widget-item-control">
+<span class="item-control blog-admin">
+<a class="quickedit" href="http://www.blogger.com/rearrange?blogID=6332425732664082644&amp;widgetType=BlogArchive&amp;widgetId=BlogArchive1&amp;action=editWidget&amp;sectionId=sidebar-right-1" target="configBlogArchive1" title="Edit">
+<img alt="" src="icon18_wrench_allbkg.png" height="18" width="18">
+</a>
+</span>
+</span>
+<div class="clear"></div>
+</div>
+</div></div>
+</aside>
+</div>
+</div>
+</div>
+<div style="clear: both;"></div>
+<!-- columns -->
+</div>
+<!-- main -->
+</div>
+</div>
+<div class="main-cap-bottom cap-bottom">
+<div class="cap-left"></div>
+<div class="cap-right"></div>
+</div>
+</div>
+<footer>
+<div class="footer-outer">
+<div class="footer-cap-top cap-top">
+<div class="cap-left"></div>
+<div class="cap-right"></div>
+</div>
+<div class="fauxborder-left footer-fauxborder-left">
+<div class="fauxborder-right footer-fauxborder-right"></div>
+<div class="region-inner footer-inner">
+<div class="foot no-items section" id="footer-1"></div>
+<!-- outside of the include in order to lock Attribution widget -->
+<div class="foot section" id="footer-3"><div class="widget Attribution" data-version="1" id="Attribution1">
+<div class="widget-content" style="text-align: center;">
+(c) sepa.spb.ru. Simple theme. Powered by <a href="https://www.blogger.com/" target="_blank">Blogger</a>.
+</div>
+<div class="clear"></div>
+<span class="widget-item-control">
+<span class="item-control blog-admin">
+<a class="quickedit" href="http://www.blogger.com/rearrange?blogID=6332425732664082644&amp;widgetType=Attribution&amp;widgetId=Attribution1&amp;action=editWidget&amp;sectionId=footer-3" target="configAttribution1" title="Edit">
+<img alt="" src="icon18_wrench_allbkg.png" height="18" width="18">
+</a>
+</span>
+</span>
+<div class="clear"></div>
+</div></div>
+</div>
+</div>
+<div class="footer-cap-bottom cap-bottom">
+<div class="cap-left"></div>
+<div class="cap-right"></div>
+</div>
+</div>
+</footer>
+<!-- content -->
+</div>
+</div>
+<div class="content-cap-bottom cap-bottom">
+<div class="cap-left"></div>
+<div class="cap-right"></div>
+</div>
+</div>
+</div>
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+<script src="about:blank" type="text/javascript" gapi_processed="true"></script>
+
+<script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+
+<iframe name="oauth2relay497446580" id="oauth2relay497446580" src="index_6.html" style="width: 1px; height: 1px; position: absolute; top: -100px;" tabindex="-1" aria-hidden="true"></iframe></body>
+</html>

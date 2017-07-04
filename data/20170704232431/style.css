@@ -1,0 +1,10 @@
+/* Code tidied up by ScrapBook */
+html { position: absolute; top: 0px; bottom: 0px; left: 0px; right: 0px; margin: 0px; padding: 0px; background-color: rgb(153, 153, 153); }
+body { margin: 0px; padding: 0px; text-align: center; }
+#header { font-size: 24px; padding: 16px; font-family: monospace; color: rgb(240, 240, 240); }
+#header a { text-decoration: none; color: inherit ! important; }
+#content { max-width: 750px; margin: 0px auto 60px; padding: 16px; text-align: left; background-color: white; font-size: 16px; font-family: Arial,Helvetica,sans-serif; }
+#date { float: right; margin-left: 16px; }
+code { background-color: rgb(244, 244, 244); padding: 2px; font-size: 85%; }
+pre { margin: 0px 32px; padding: 16px; background-color: rgb(224, 224, 224); overflow-x: auto; }
+pre > code { background-color: inherit; padding: 0px; }

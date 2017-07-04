@@ -1,0 +1,85 @@
+/* Code tidied up by ScrapBook */
+body, div, dl, fieldset, form, h1, h2, h3, h4, h5, h6, html, img, ol, p, pre, ul { margin: 0px; padding: 0px; }
+fieldset, img { border: 0px none; }
+body, html { height: 100%; width: 100%; }
+body { background-color: rgb(255, 255, 255); color: rgb(23, 43, 77); font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans",Oxygen,Ubuntu,"Droid Sans","Helvetica Neue",sans-serif; font-size: 14px; font-style: normal; font-weight: 400; line-height: 1.42857; letter-spacing: -0.005em; }
+blockquote, dl, form, h1, h2, h3, h4, h5, h6, ol, p, pre, table, ul { margin: 12px 0px 0px; }
+a { color: rgb(0, 82, 204); text-decoration: none; }
+a:hover { color: rgb(0, 101, 255); text-decoration: underline; }
+a:active { color: rgb(0, 73, 176); }
+a:focus { outline: 2px solid rgb(76, 154, 255); outline-offset: 2px; }
+h1 { font-size: 2.07143em; font-style: inherit; font-weight: 600; letter-spacing: -0.01em; line-height: 1.10345; margin-top: 40px; }
+h2 { font-size: 1.71429em; font-style: inherit; font-weight: 500; letter-spacing: -0.01em; line-height: 1.16667; margin-top: 28px; }
+dl, ol, ul { padding-left: 40px; }
+dd, dd + dt, li + li { margin-top: 4px; }
+ol ol:not(:first-child), ol ul:not(:first-child), ul ol:not(:first-child), ul ul:not(:first-child) { margin-top: 4px; }
+blockquote:first-child, dl:first-child, form:first-child, h1:first-child, h2:first-child, h3:first-child, h4:first-child, h5:first-child, h6:first-child, ol:first-child, p:first-child, pre:first-child, table:first-child, ul:first-child { margin-top: 0px; }
+code, kbd { font-family: monospace; }
+table { border-collapse: collapse; width: 100%; }
+tbody, tfoot, thead { border-bottom: 2px solid rgb(223, 225, 230); }
+td, th { border: medium none; padding: 4px 8px; text-align: left; }
+th { vertical-align: top; }
+td:first-child, th:first-child { padding-left: 0px; }
+td:last-child, th:last-child { padding-right: 0px; }
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; }
+@-moz-document url-prefix("") {
+  img { font-size: 0px; }
+  img:-moz-broken { font-size: inherit; }
+}
+body.adg3 dl, body.adg3 dl:first-child { padding: 0px; margin: 0px; }
+body.adg3 dd + dd, body.adg3 li + li { margin: 0px; }
+body.adg3 #adg3-navigation a:focus { outline: 0px none; }
+body.adg3 pre { letter-spacing: 0px; }
+body.adg3 .wiki-content h1, body.adg3 h1 { font-size: 1.71429em; font-style: inherit; font-weight: 500; letter-spacing: -0.01em; line-height: 1.16667; margin-top: 28px; color: rgb(23, 43, 77); }
+body.adg3 .wiki-content h1:first-child, body.adg3 h1:first-child { margin-top: 0px; }
+body.adg3 .wiki-content h1.app-header--heading, body.adg3 h1.app-header--heading { margin-top: 10px; }
+body.adg3 .wiki-content h2, body.adg3 h2 { font-size: 1.42857em; font-style: inherit; font-weight: 500; letter-spacing: -0.008em; line-height: 1.2; margin-top: 28px; color: rgb(23, 43, 77); }
+body.adg3 .wiki-content h2:first-child, body.adg3 h2:first-child { margin-top: 0px; }
+body.adg3 .wiki-content h3, body.adg3 h3, body.adg3 section h1, body.adg3 section h2, body.adg3 section section h1 { font-size: 1.14286em; font-style: inherit; font-weight: 600; line-height: 1.25; letter-spacing: -0.006em; margin-top: 24px; color: rgb(23, 43, 77); }
+body.adg3 .wiki-content h3:first-child, body.adg3 h3:first-child, body.adg3 section h1:first-child, body.adg3 section h2:first-child, body.adg3 section section h1:first-child { margin-top: 0px; }
+body.adg3 input:not([type="checkbox"]):not([type="radio"]), body.adg3 select, body.adg3 textarea { outline: 0px none; }
+body.adg3 form.aui .field-group .error, body.adg3 form.aui fieldset.group .error { color: rgb(255, 86, 48); }
+body.adg3 form.aui .multi-select, body.adg3 form.aui .password, body.adg3 form.aui .select, body.adg3 form.aui .text, body.adg3 form.aui .textarea, body.adg3 form.aui .upfile { font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,"Fira Sans","Droid Sans","Helvetica Neue",sans-serif; color: rgb(23, 43, 77); font-size: 14px; font-weight: 400; font-style: normal; line-height: 20px; background-color: rgb(250, 251, 252); }
+body.adg3 form.aui .multi-select::-moz-placeholder, body.adg3 form.aui .password::-moz-placeholder, body.adg3 form.aui .select::-moz-placeholder, body.adg3 form.aui .text::-moz-placeholder, body.adg3 form.aui .textarea::-moz-placeholder, body.adg3 form.aui .upfile::-moz-placeholder { font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,"Fira Sans","Droid Sans","Helvetica Neue",sans-serif; font-size: 14px; font-weight: 400; font-style: normal; line-height: 20px; color: rgb(165, 173, 186); }
+body.adg3 form.aui .multi-select:focus, body.adg3 form.aui .password:focus, body.adg3 form.aui .select:focus, body.adg3 form.aui .text:focus, body.adg3 form.aui .textarea:focus, body.adg3 form.aui .upfile:focus { background-color: rgb(255, 255, 255); border: 2px solid rgb(76, 154, 255); }
+body.adg3 form.aui input[type="text"] { height: 32px; }
+body.adg3 .aui-button, body.adg3 .aui-button:visited, body.adg3 a.aui-button { color: rgb(80, 95, 121); background: rgb(244, 245, 247) none repeat scroll 0% 0%; border: medium none; outline: 0px none; height: 2.28571em; line-height: 1.57143em; }
+body.adg3 .repo-watch .follow:first-child, body.adg3 a.aui-button { padding-top: 5px; padding-bottom: 5px; }
+body.adg3 .aui-button:focus, body.adg3 form.aui .button:focus, body.adg3 form.aui .cancel:focus { outline: 0px none; }
+body.adg3 .aui-button:focus { box-shadow: 0px 0px 0px 2px rgb(76, 154, 255); }
+body.adg3 .aui-button-subtle.aui-button:focus, body.adg3 .aui-button-subtle.aui-button:hover, body.adg3 .aui-button:focus, body.adg3 .aui-button:hover { color: rgb(80, 95, 121); }
+body.adg3 .aui-button:focus { background: rgb(244, 245, 247) none repeat scroll 0% 0%; }
+body.adg3 .aui-button-subtle.aui-button:hover, body.adg3 .aui-button:hover { background: rgb(235, 236, 240) none repeat scroll 0% 0%; }
+body.adg3 .aui-button-subtle.aui-button.active, body.adg3 .aui-button-subtle.aui-button:active, body.adg3 .aui-button.active, body.adg3 .aui-button:active, body.adg3 .aui-header .aui-button-split-more.active { box-shadow: none; background: rgb(222, 235, 255) none repeat scroll 0% 0%; color: rgb(0, 82, 204); }
+body.adg3 .aui-button.aui-button-primary, body.adg3 .aui-button.aui-button-primary:visited { background: rgb(0, 82, 204) none repeat scroll 0% 0%; color: rgb(255, 255, 255); }
+body.adg3 .aui-button.aui-button-primary:focus { background: rgb(0, 82, 204) none repeat scroll 0% 0%; }
+body.adg3 .aui-button.aui-button-primary:hover { background: rgb(0, 101, 255) none repeat scroll 0% 0%; }
+body.adg3 .aui-button.aui-button-primary:active { background: rgb(7, 71, 166) none repeat scroll 0% 0%; }
+body.adg3 .aui-buttons .aui-button { border-radius: 0px; }
+body.adg3 .aui-buttons .aui-button ~ .aui-button { margin-left: 2px; }
+body.adg3 .aui-buttons .aui-button:first-child { border-top-left-radius: 3.01px; border-bottom-left-radius: 3.01px; }
+body.adg3 .aui-buttons .aui-button:last-child { border-top-right-radius: 3.01px; border-bottom-right-radius: 3.01px; }
+body.adg3 .aui-buttons .aui-button ~ .aui-button:active, body.adg3 .aui-buttons .aui-button ~ .aui-button:focus, body.adg3 .aui-buttons .aui-button ~ .aui-button:hover { margin-left: 2px; position: relative; }
+body.adg3 .aui-nav-breadcrumbs { margin-top: 16px; }
+body.adg3 .aui-nav-breadcrumbs a, body.adg3 .aui-nav-breadcrumbs > li, body.adg3 .aui-nav-breadcrumbs > li + li::before { color: rgb(94, 108, 132); }
+body.adg3 .aui-nav-breadcrumbs a:active, body.adg3 .aui-nav-breadcrumbs a:hover { color: rgb(0, 82, 204); text-decoration: underline; }
+body.adg3 .aui-dropdown2.aui-style-default .active, body.adg3 .aui-dropdown2.aui-style-default .aui-dropdown2-active, body.adg3 .aui-dropdown2.aui-style-default:hover .aui-dropdown2-checkbox:hover:not(.aui-dropdown2-disabled), body.adg3 .aui-dropdown2.aui-style-default:hover .aui-dropdown2-radio:hover:not(.aui-dropdown2-disabled), body.adg3 .aui-dropdown2.aui-style-default:hover a:hover:not(.aui-dropdown2-disabled) { color: rgb(9, 30, 66); background-color: rgb(244, 245, 247); }
+body.adg3 .aui-dropdown2.aui-style-default { margin-top: 4px; border: medium none; }
+body.adg3 .aui-dropdown2.aui-style-default > ul { margin: 0px; border-radius: 3px; }
+body.adg3 .aui-dropdown2.aui-style-default .aui-dropdown2-section, body.adg3 .aui-dropdown2.aui-style-default > ul > li { border: medium none; }
+body.adg3 .aui-dropdown2.aui-style-default .aui-dropdown2-section:first-child, body.adg3 .aui-dropdown2.aui-style-default > ul > li:first-child { padding-top: 4px; border-top-left-radius: 3px; border-top-right-radius: 3px; }
+body.adg3 .aui-dropdown2.aui-style-default .aui-dropdown2-section:last-child, body.adg3 .aui-dropdown2.aui-style-default > ul > li:last-child { padding-bottom: 4px; border-bottom-left-radius: 3px; border-bottom-right-radius: 3px; }
+body.adg3 .aui-button.aui-dropdown2-trigger:not(.aui-dropdown2-trigger-arrowless)::after, body.adg3 .aui-buttons .aui-button.aui-button-primary.aui-dropdown2-trigger:not(.aui-dropdown2-trigger-arrowless)::after { border-top-color: rgb(80, 95, 121); }
+body.adg3 .aui-button.aui-dropdown2-trigger:not(.aui-dropdown2-trigger-arrowless)::after { top: 11px; margin-left: -16px; content: ""; display: inline-block; width: 4px; height: 4px; border-width: 2px 2px medium medium; border-style: solid solid none none; border-color: currentcolor; -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; transform: rotate(135deg); }
+body.adg3 .aui-avatar img { border-radius: 50%; }
+body.adg3 { background: rgb(255, 255, 255) none repeat scroll 0% 0%; }
+body.adg3 .aui-page-panel { border: medium none; margin-top: 0px; }
+body.adg3 #page { box-sizing: border-box; display: flex; height: 100vh; }
+body.adg3 #wrapper { height: 100vh; overflow-y: scroll; }
+body.adg3 #adg3-navigation { z-index: 2; }
+body.adg3 #wrapper { margin-left: 0px; width: 100%; }
+.app-header { align-items: center; display: flex; margin: 20px 20px 0px; }
+.app-header--primary { align-items: center; display: flex; flex: 1 0 auto; position: relative; }
+.app-header--secondary { align-items: center; display: flex; }
+.app-header--heading { font-size: 24px; font-weight: 400; margin-top: 10px; }
+body.adg3 .issue-attrs dl, body.adg3 .issue-attrs dl:first-child { margin: 8px 0px; padding-left: 120px; }

@@ -1,0 +1,145 @@
+/* Code tidied up by ScrapBook */
+ak-editor-bitbucket .code, code, pre { font-family: Consolas,Menlo,"Liberation Mono",Courier,monospace; font-size: 12px; line-height: 1.4; }
+ak-editor-bitbucket .code, code, tt { padding: 1px 0px; border: 1px solid rgb(204, 204, 204); border-radius: 3px; background: rgb(245, 245, 245) none repeat scroll 0% 0%; }
+ak-editor-bitbucket .code::after, ak-editor-bitbucket .code::before, code::after, code::before, tt::after, tt::before { display: inline-block; width: 3px; content: ""; }
+textarea { box-sizing: border-box; border: 1px solid rgb(204, 204, 204); border-radius: 5px; padding: 7px; line-height: 1.29231; overflow: auto; font-family: Arial,sans-serif; font-size: 13px; resize: vertical; }
+img { border: medium none; }
+img:-moz-broken { -moz-force-broken-image-icon: 1; }
+.icon { background-position: center center; background-repeat: no-repeat; display: inline-block; height: 16px; text-align: left; overflow: hidden; text-indent: -9999px; width: 16px; }
+.clearfix::after { clear: both; content: ""; display: block; height: 0px; visibility: hidden; }
+.hidden { display: none ! important; }
+.mask { background: rgba(255, 255, 255, 0.5) none repeat scroll 0% 0%; display: none; position: absolute; top: 0px; left: 0px; right: 0px; bottom: 0px; }
+.mask::after { background: transparent url("loading-32.gif") no-repeat scroll center center; border-radius: 16px; content: ""; display: block; height: 32px; margin: 72px auto 0px; width: 32px; }
+.aui-buttons { position: relative; }
+input { line-height: 1.14286; }
+input[type="email"], input[type="password"], input[type="text"], input[type="url"], input[type="search"], textarea { box-sizing: border-box; border: 1px solid rgb(204, 204, 204); font-family: inherit; font-size: 14px; line-height: 1.28571; height: 28px; border-radius: 3px; padding: 4px; }
+@keyframes progress-bar-stripes {
+0% { background-position: 40px 0px; }
+100% { background-position: 0px 0px; }
+}
+@media not all, (min-resolution: 192dpi), (min-resolution: 2dppx) {
+}
+@media not all, (min-resolution: 192dpi), (min-resolution: 2dppx) {
+}
+h1 { font-size: 24px; font-weight: 400; line-height: 1.25; margin: 30px 0px 0px; }
+h2, section h1 { font-size: 20px; font-weight: 400; line-height: 1.5; margin: 30px 0px 0px; }
+h3, section h2, section section h1 { font-size: 16px; font-weight: 700; line-height: 1.5625; margin: 30px 0px 0px; }
+#aui-message-bar { left: 50%; margin-left: -300px; position: fixed; top: 20px; width: 600px; z-index: 4000; }
+.aui-badge.aui-badge-active, aui-badge[active="true"] { background-color: rgb(50, 108, 166); color: rgb(255, 255, 255); }
+.aui-page-panel-content { padding-bottom: 60px; }
+#content .aui-page-panel, #content .aui-page-panel-inner { min-height: 400px; }
+.aui-dropdown2 { max-width: 420px; }
+.wiki-content li, .wiki-content p, ak-editor-bitbucket .ProseMirror li, ak-editor-bitbucket .ProseMirror p { overflow-wrap: break-word; }
+.wiki-content li > p, ak-editor-bitbucket .ProseMirror li > p { margin-bottom: 10px; }
+.wiki-content .codehilite, ak-editor-bitbucket .ProseMirror .codehilite { margin-top: 10px; }
+.wiki-content .codehilite:first-child, ak-editor-bitbucket .ProseMirror .codehilite:first-child { margin-top: 0px; }
+.wiki-content pre, ak-editor-bitbucket .ProseMirror pre { background: rgb(245, 245, 245) none repeat scroll 0% 0%; border: 1px solid rgb(204, 204, 204); border-radius: 3px; overflow-x: auto; padding: 5px 10px; overflow-wrap: normal; }
+.wiki-content table, ak-editor-bitbucket .ProseMirror table { border-collapse: collapse; margin-top: 10px; width: 100%; }
+.wiki-content table > tbody > tr, .wiki-content table > tfoot > tr, ak-editor-bitbucket .ProseMirror table > tbody > tr, ak-editor-bitbucket .ProseMirror table > tfoot > tr { background: rgb(255, 255, 255) none repeat scroll 0% 0%; border-bottom: 1px solid rgb(204, 204, 204); color: rgb(51, 51, 51); }
+.wiki-content table > tbody > tr > td, .wiki-content table > tbody > tr > th, .wiki-content table > tfoot > tr > td, .wiki-content table > thead > tr > td, .wiki-content table > thead > tr > th, ak-editor-bitbucket .ProseMirror table > tbody > tr > td, ak-editor-bitbucket .ProseMirror table > tbody > tr > th, ak-editor-bitbucket .ProseMirror table > tfoot > tr > td, ak-editor-bitbucket .ProseMirror table > thead > tr > td, ak-editor-bitbucket .ProseMirror table > thead > tr > th { padding: 7px 10px; text-align: left; vertical-align: top; }
+.wiki-content table > thead, ak-editor-bitbucket .ProseMirror table > thead { border-bottom: 1px solid rgb(204, 204, 204); }
+.wiki-content table > tbody > tr:first-child > td, .wiki-content table > tbody > tr:first-child > th, .wiki-content table > tfoot > tr:first-child > td, ak-editor-bitbucket .ProseMirror table > tbody > tr:first-child > td, ak-editor-bitbucket .ProseMirror table > tbody > tr:first-child > th, ak-editor-bitbucket .ProseMirror table > tfoot > tr:first-child > td { border-top: 1px solid rgb(204, 204, 204); }
+.wiki-content code, ak-editor-bitbucket .ProseMirror code { box-sizing: border-box; display: inline-block; max-width: 100%; overflow-x: auto; vertical-align: bottom; white-space: nowrap; }
+.wiki-content > ul, ak-editor-bitbucket .ProseMirror > ul { list-style-type: disc; }
+.comments-list { margin: 0px; padding: 0px; list-style: outside none none; }
+.comments-list > .comment:first-of-type > article { border-top: 1px solid transparent; }
+.comments-list > .comment:first-of-type > article:target { border-top: 1px solid rgb(204, 204, 204); }
+.comments-list .comment { position: relative; }
+.comments-list .comment article { padding-top: 10px; border-top: 1px solid rgb(204, 204, 204); }
+.comments-list .comment article:target { background: rgb(235, 242, 249) none repeat scroll 0% 0%; border-bottom: 1px solid rgb(204, 204, 204); margin-bottom: -1px; margin-left: -10px; padding-left: 10px; }
+.comments-list .comment .author { font-weight: 700; line-height: 1; }
+.comments-list .comment .user-issue-lozenge { margin-left: 3px; }
+.comments-list .comment header { padding-left: 42px; }
+.comments-list .comment header .aui-avatar { position: absolute; left: 0px; top: 10px; }
+.comments-list .comment .comment-content { padding: 5px 0px 5px 42px; overflow: hidden; overflow-wrap: break-word; }
+.comments-list .comment .comment-actions { font-size: 12px; list-style: outside none none; margin: 0px 0px 0px 42px; padding: 0px 0px 25px; }
+.comments-list .comment .comment-actions > li { float: left; }
+.comments-list .comment .comment-actions > li::before { padding: 0px 3px 0px 6px; content: "•"; color: rgb(112, 112, 112); }
+.comments-list .comment .comment-actions > li:first-child::before { content: none; }
+.comments-list .comment .comment-actions > li a, .comments-list .comment .comment-actions > li span { color: rgb(112, 112, 112); }
+.comments-list .new-comment { position: relative; margin: 10px 0px; }
+.comments-list .new-comment .user .aui-avatar { position: absolute; left: 0px; }
+.comments-list .new-comment .error { clear: both; color: rgb(208, 68, 55); display: block; margin: 5px 0px 0px 45px; }
+.comments-list .comment + .new-comment { border-top: 1px solid rgb(204, 204, 204); margin-top: 0px; padding-top: 20px; }
+.comments-list .editor { margin: 0px 0px 0px 42px; }
+.comments-list .editor.top-label .field-group { margin: 0px; padding: 0px; }
+.comments-list .editor textarea { width: 100%; height: 32px; overflow: hidden; padding: 7px; }
+.comments-list .editor .cancel, .comments-list .editor button { display: none; margin: 5px 5px 5px 0px; }
+.comments-list .editor .preview-container, .comments-list .editor .private-toggle { display: none; }
+.issue-comment ul.changes { list-style: inside none disc; margin: 5px 0px 0px 42px; padding-left: 11px; }
+.issue-attrs { border: 1px solid rgb(204, 204, 204); border-radius: 5px; margin-top: 10px; padding: 10px; }
+.issue-attrs dl { margin: 5px 0px; padding-left: 120px; }
+.issue-attrs dt { float: left; margin-left: -135px; text-align: right; width: 120px; }
+.issue-attrs dd { margin: 0px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.issue-attrs dd.with-icon { padding-left: 21px; position: relative; }
+.issue-attrs dd.with-icon .aui-avatar, .issue-attrs dd.with-icon .icon { position: absolute; left: 0px; }
+.issue-attrs dd.with-icon .icon { top: 2px; }
+.issue-attrs .votes a, .issue-attrs .watchers a { margin-left: 3px; }
+.dismissable-ad { background-color: rgb(255, 255, 255); background-position: 95% bottom; background-repeat: no-repeat; border: 1px solid rgb(204, 204, 204); border-radius: 5px; margin-top: 20px; padding: 15px 20px 20px; position: relative; }
+.dismissable-ad > :first-child { margin-top: 0px; }
+.dismissable-ad a.close { color: rgb(153, 153, 153); position: absolute; right: 10px; top: 10px; }
+.dismissable-ad a.close:hover { color: rgb(112, 112, 112); }
+.bb-typeahead-suggestions { max-width: none; padding: 0px; }
+.bb-typeahead-suggestions.bb-mention-input-results { min-width: 300px; max-width: 500px; width: auto ! important; }
+.bb-typeahead-suggestions.aui-style-default ul { margin: 0px; }
+@media not all, (min-resolution: 192dpi), (min-resolution: 2dppx) {
+}
+@media not all, (min-resolution: 192dpi), (min-resolution: 2dppx) {
+}
+.omnibar { border-width: medium 1px 1px; border-style: none solid solid; border-color: currentcolor rgb(233, 233, 233) rgb(233, 233, 233); -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2); display: none; left: 50%; margin-left: -200px; overflow: hidden; position: fixed; top: 0px; width: 400px; z-index: 4000; }
+body, html { height: 100%; }
+#page { min-width: 1024px; }
+@media not all, (min-resolution: 192dpi), (min-resolution: 2dppx) {
+}
+@media not all, (min-resolution: 192dpi), (min-resolution: 2dppx) {
+}
+#account-admin-links, #account-warning, #infobox { display: none; }
+#account-warning { clear: both; }
+@media not all, (min-resolution: 192dpi), (min-resolution: 2dppx) {
+}
+#help-menu-dialog .aui-inline-dialog-contents { padding: 0px; }
+#help-menu-dialog::after, #help-menu-dialog::before { left: calc(100% - 26px); }
+#help-menu-section { padding-left: 20px; padding-right: 15px; }
+.help-menu-heading { font-size: 20px; position: relative; padding: 20px 0px; }
+#help-menu-search-form { padding-bottom: 10px; margin-top: 0px; position: relative; height: 40px; }
+#help-menu-links { width: 220px; list-style: outside none none; text-align: left; padding: 0px 0px 20px; margin-top: 6px; overflow-y: auto; }
+#help-menu-links li:nth-child(n+2) { padding-top: 6px; }
+#help-menu-search-form-input { position: absolute; top: 0px; left: 0px; width: 215px; max-width: 215px; font-size: 16px; height: 40px; padding-left: 40px; }
+#help-menu-search-icon::before { z-index: 1; font-size: 24px; top: 22px; left: 8px; color: rgb(112, 112, 112); }
+.comments-list > .activity-item:first-child, .comments-list > .comment:first-child { border-top: medium none; }
+#issues .icon.icon-minor { background-image: url("minor.svg"); }
+#issues .icon.icon-task { background-image: url("task.svg"); }
+#issue-view .sidebar { padding-left: 40px; width: 350px; }
+#issue-view .issue-toolbar { float: right; }
+#issue-view #issue-header { margin-bottom: 10px; }
+#issue-view #issue-header .aui-lozenge { margin: 2px 0px 2px 5px; vertical-align: top; }
+#issue-view #issue-title { margin-top: -5px; }
+#issue-view #issue-main-content { border-bottom: 1px solid rgb(204, 204, 204); padding-bottom: 10px; }
+#issue-view #issue-main-content .issue-author { position: relative; margin-top: 12px; padding-left: 42px; }
+#issue-view #issue-main-content .issue-author .aui-avatar { position: absolute; top: 3px; left: 0px; }
+#issue-view #issue-main-content .issue-author a { font-weight: 700; }
+#issue-view #issue-main-content .issue-author time { font-size: 12px; color: rgb(112, 112, 112); }
+#issue-view #issue-main-content .attachments, #issue-view #issue-main-content .issue-description { padding-left: 42px; }
+#issue-view #issue-main-content .issue-description { margin-top: 5px; }
+#issue-view #issue-main-content .attachments { margin: 13px 0px 0px; }
+#issue-view #issues-comments-container { margin-top: 10px; }
+#issue-view #issues-comments-container #issues-comments { margin-top: 4px; }
+#issue-view #issues-comments-container #issues-comments .issue-comment:first-child { border-top: 1px solid rgb(255, 255, 255); }
+#issue-view #issues-comments-container li.issue-comment:target article { background-color: rgb(235, 242, 249); padding-left: 10px; margin-left: -10px; border-top: 1px solid rgb(204, 204, 204); border-bottom: 1px solid rgb(204, 204, 204); margin-bottom: -1px; }
+#issue-view #issues-comments-container .comment-actions form { display: inline; }
+#issue-view #jira-issue-box { border: medium none; padding: 0px; }
+#issue-view #jira-issue-box .close { right: 15px; top: 5px; }
+#issue-view #jira-issue-box img { width: 300px; height: 140px; }
+.error { color: rgb(208, 68, 55); margin-top: 5px; }
+@font-face {
+  font-family: "LLCircularWeb-Bold";
+  src: url("circularpro-bold.eot"), url("circularpro-bold.woff"), url("circularpro-bold.ttf"), url("circularpro-bold.svg");
+}
+@font-face {
+  font-family: "LLCircularWeb-Book";
+  src: url("circularpro-book.eot"), url("circularpro-book.woff"), url("circularpro-book.ttf"), url("circularpro-book.svg");
+}
+@keyframes fadeInConnectSpinner {
+0% { opacity: 0; }
+100% { opacity: 1; }
+}

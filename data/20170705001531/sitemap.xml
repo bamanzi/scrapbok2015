@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="../../sitemap.xsl" type="text/xsl" media="all"?>
+<site>
+<page file="index.html" text="Overview | Products : Xshell 5" title="Overview | Products : Xshell 5">
+<page file="xsh_key_features.html" text="Key Features" title="Key Features | Products : Xshell 5"/>
+<page file="xsh_specification.html" text="Specification" title="Specification | Products : Xshell 5"/>
+<page file="xsh_requirements.html" text="System Requirements" title="System Requirements | Products : Xshell 5"/>
+<page file="xsh_screenshot.html" text="Screenshot" title="Screenshot | Products : Xshell 5"/>
+<page file="xsh_update.html" text="Update History" title="Update History | Products : Xshell 5"/>
+</page>
+</site>

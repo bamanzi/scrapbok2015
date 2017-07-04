@@ -1,0 +1,70 @@
+/* Code tidied up by ScrapBook */
+body { background-color: rgb(238, 238, 238); }
+#wrap { width: auto; }
+.colgroup { width: 880px; margin: auto; }
+#header { height: 69px; border-bottom: 5px solid rgb(225, 70, 45); background: rgb(52, 52, 52) none repeat scroll 0% 0%; }
+#header .colgroup { position: relative; z-index: 1; }
+#container .colgroup { border-color: rgb(202, 202, 202); border-width: 0px 1px; border-style: solid; background: rgb(243, 243, 243) none repeat scroll 0% 0%; }
+#container #snb { float: left; width: 169px; height: auto; }
+#container #content { float: left; width: 660px; height: auto; padding: 0px 25px 25px; border-color: rgb(202, 202, 202); border-width: 0px 0px 0px 1px; border-style: solid; background-color: rgb(255, 255, 255); }
+#footer .colgroup { border-color: rgb(202, 202, 202); border-width: 1px 0px 0px; border-style: solid; }
+#header .logo a { display: block; width: 169px; height: 69px; background: transparent url("ci-netsarang_header.gif") no-repeat scroll 50% center; }
+#header .gnb { position: absolute; top: 8px; right: 0px; }
+#header .gnb li { float: left; }
+#header .gnb li a { padding: 0px 10px; border-right: 1px solid rgb(86, 86, 86); color: rgb(255, 255, 255); font-size: 0.9em; font-weight: bold; text-decoration: none; white-space: nowrap; }
+#header .gnb li a.end { border-width: 0px; }
+#header .lnb * { color: rgb(67, 67, 67); text-decoration: none; }
+#header .lnb { position: absolute; top: 30px; left: 185px; }
+#header .lnb li { position: relative; float: left; cursor: pointer; }
+#header .lnb li a.thumb { padding: 5px 10px; color: rgb(159, 159, 159); font-size: 13px; line-height: 2em; }
+#header .lnb li a.thumb.on { color: rgb(255, 255, 255); font-weight: bold; }
+#header .lnb li a.thumb:hover { color: rgb(255, 255, 255); }
+#header .lnb li ul { visibility: hidden; position: absolute; top: -4px; left: 0px; padding: 3px 0px; border: 1px solid rgb(192, 192, 192); background: rgb(255, 255, 255) none repeat scroll 0% 0%; }
+#header .lnb li ul li { float: left; clear: both; width: 180px; }
+#header .lnb li ul li a:hover { color: rgb(225, 70, 45); background-color: rgb(245, 245, 245); background-position: right center ! important; }
+#header .lnb li ul li a { display: block; padding: 4px 10px; font-size: 12px; font-weight: normal; white-space: nowrap; }
+#header .g_search { position: absolute; right: 10px; bottom: 13px; }
+#header .g_search fieldset { float: right; }
+#header .g_search .text_field { width: 130px; color: gray; font-style: italic; }
+#header .service { position: absolute; top: 80px; right: 25px; z-index: -1; }
+#header .service .btn_print_view { display: block; float: right; background: transparent url("ico-print.png") no-repeat scroll 0% 0%; font-size: 1.1em; line-height: 16px; text-indent: 20px; cursor: pointer; }
+#container .snb_wrap li { list-style: outside none none; }
+#container .snb_wrap .snb { font-size: 12px; line-height: 16px; text-indent: 15px; }
+#container .snb_wrap .snb a { display: block; text-decoration: none; }
+#container .snb_wrap .snb dt { background: rgb(117, 117, 117) none repeat scroll 0% 0%; }
+#container .snb_wrap .snb dt > a { color: rgb(255, 255, 255); font-size: 12px; font-weight: bold; line-height: 30px; text-indent: 15px; }
+#container .snb_wrap .snb dd > ul > li { border-bottom: 1px solid rgb(255, 255, 255); background: rgb(215, 215, 215) none repeat scroll 0% 0%; line-height: 25px; }
+#container .snb_wrap .snb dd > ul > li > a { color: rgb(68, 68, 68); font-weight: bold; }
+#container .snb_wrap .snb dd > ul > li > a:hover { background: rgb(160, 160, 160) none repeat scroll 0% 0%; color: rgb(255, 255, 255); }
+#container .snb_wrap .snb dd > ul > li.on > a { color: rgb(255, 255, 255); background: rgb(160, 160, 160) url("bul_li_arrow_white.png") no-repeat scroll 97% 6px; }
+#container .snb_wrap .snb dd > ul > li > ul { display: none; background: rgb(243, 243, 243) none repeat scroll 0% 0%; }
+#container .snb_wrap .snb dd > ul > li > ul > li { margin-left: 10px; padding-left: 20px; border-width: 0px; background: transparent url("bul_li_arrow.png") no-repeat scroll 6px 6px; list-style: outside none none; text-indent: 0px; }
+#container .snb_wrap .snb dd > ul > li > ul > li > a { color: rgb(68, 68, 68) ! important; border-bottom: 0px none; background: rgb(243, 243, 243) none repeat scroll 0% 0%; line-height: 25px; }
+#container .snb_wrap .snb dd > ul > li > ul > li > a:hover, #container .snb_wrap .snb dd > ul > li > ul > li > a.on { background: rgb(243, 243, 243) none repeat scroll 0% 0%; color: rgb(225, 70, 45) ! important; }
+#container #content .content .path { position: relative; height: 30px; margin-bottom: 18px; border-bottom: 1px solid rgb(219, 219, 219); }
+#container #content .content .path .path_link { position: absolute; left: 0px ! important; bottom: 2px; padding: 0px; font-size: 10px; font-weight: normal; line-height: 19px ! important; }
+#container #content .content .path .path_link, #container #content .content .path .path_link * { color: rgb(76, 76, 76); font-size: 11px ! important; text-decoration: none; }
+#container #content .content .path .path_link span { color: rgb(209, 208, 208); font-size: 10px ! important; line-height: 10px; }
+#container #content .content .main::after { content: "."; display: block; visibility: hidden; clear: both; height: 0px; }
+#container #content .content .main { display: block; min-height: 500px; }
+.content .main .section { display: block; min-height: 1%; }
+.content .main .section::after { content: "."; display: block; visibility: hidden; clear: both; height: 0px; }
+#footer .fnb { padding: 10px 15px; }
+#footer .fnb * { font-size: 13px; }
+#footer .fnb li .thumb { color: rgb(68, 68, 68); font-weight: bold; }
+#footer .fnb ul li a { color: rgb(120, 120, 120); font-size: 11px; line-height: 16px; }
+#footer .fnb .fnb_list1 { float: left; width: 140px; }
+#footer .fnb .fnb_list2 { float: left; width: 120px; }
+#footer .fnb .fnb_list3 { float: left; width: 110px; }
+#footer .fnb .fnb_list4 { float: left; width: 130px; }
+#footer .fnb .fnb_list5 { float: left; width: 110px; }
+#footer .fnb .fnb_list6 { float: left; width: 140px; }
+#footer .fnb .fnb_list7 { float: left; width: 100px; }
+#footer .copyright { position: relative; left: 15px; top: 20px; font-size: 10px; }
+#footer .copyright a { position: relative; top: 1px; color: rgb(76, 76, 76); font-size: 11px; font-weight: normal; line-height: 16px; }
+#footer .logo a { display: block; float: right; width: 117px; height: 40px; background: transparent url("ci-netsarang_footer.gif") no-repeat scroll 50% top; cursor: pointer; }
+.content h1, .content h1 *, .content .h1, .content .h1 * { color: rgb(37, 37, 37); }
+.content h4, .content h4 *, .content .h4, .content .h4 * {  }
+.content p, .content .p, .content table, .content .user_wrap { font-size: 1.2em; line-height: 1.6em; overflow-wrap: break-word; }
+.content h1, .content .h1 { margin-bottom: 20px ! important; font-size: 3.5em ! important; font-weight: normal ! important; line-height: 1em ! important; }
+.content h4, .content .h4 { font-size: 1.3em ! important; font-weight: bold ! important; line-height: 1.6em ! important; }

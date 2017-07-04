@@ -1,0 +1,7 @@
+/* Code tidied up by ScrapBook */
+#sites-chrome-header { background-color: transparent ! important; }
+#sites-chrome-header-wrapper { background-color: rgb(0, 85, 150) ! important; }
+.sites-canvas-sidebar { width: 150px; }
+#sites-chrome-sidebar-left .sites-sidebar-nav a, #sites-chrome-sidebar-right .sites-sidebar-nav a { color: rgb(0, 51, 204) ! important; }
+#sites-chrome-sidebar-left .sites-sidebar-nav a:visited, #sites-chrome-sidebar-right .sites-sidebar-nav a:visited { color: rgb(0, 51, 204) ! important; }
+#sites-chrome-header-wrapper { border-bottom: 0px none ! important; }
