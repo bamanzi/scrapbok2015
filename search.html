@@ -210,15 +210,13 @@ var searchEngine = {
             "re": false,
             "default": this.config["default_field"]
         };
-        keyStr.replace(/(\-?[A-Za-z]+:|\-)(?:"((?:\\"|[^"])*)"|([^ "\u3000]*))|(?:"((?:""|[^"])*)"|([^ "\u3000]+))/g, function(match, cmd, qterm, term, qterm2, term2){
+        keyStr.replace(/(-?[A-Za-z]+:|-)(?:"((?:""|[^"])*)"|([^"\s]*))|(?:"((?:""|[^"])*)"|([^"\s]+))/g, function(match, cmd, qterm, term, qterm2, term2){
             if (cmd) {
-                var term = qterm ? qterm.replace(/""/g, '"') : term;
+                var term = (qterm !== undefined) ? qterm.replace(/""/g, '"') : term;
             }
             else {
-                var term = qterm2 ? qterm2.replace(/""/g, '"') : term2;
+                var term = (qterm2 !== undefined) ? qterm2.replace(/""/g, '"') : term2;
             }
-            // commands that don't require a term
-            // the term will then be reguarded as a "tcc include"
             switch (cmd) {
                 case "mc:":
                     key.mc = true;
@@ -232,87 +230,78 @@ var searchEngine = {
                 case "-re:":
                     key.re = false;
                     break;
-                case "type:":
-                    addRule("type", "include", term);
-                    term = false;
-                    break;
-                case "-type:":
-                    addRule("type", "exclude", term);
-                    term = false;
-                    break;
                 case "sort:":
                     addSort(term, 1);
-                    term = false;
                     break;
                 case "-sort:":
                     addSort(term, -1);
-                    term = false;
                     break;
-            }
-            // commands that require a term
-            if (term) {
-                switch (cmd) {
-                    case "id:":
-                        addRule("id", "include", parseStr(term));
-                        break;
-                    case "-id:":
-                        addRule("id", "exclude", parseStr(term));
-                        break;
-                    case "file:":
-                        addRule("file", "include", parseStr(term));
-                        break;
-                    case "-file:":
-                        addRule("file", "exclude", parseStr(term));
-                        break;
-                    case "source:":
-                        addRule("source", "include", parseStr(term));
-                        break;
-                    case "-source:":
-                        addRule("source", "exclude", parseStr(term));
-                        break;
-                    case "tcc:":
-                        addRule("tcc", "include", parseStr(term));
-                        break;
-                    case "-tcc:":
-                        addRule("tcc", "exclude", parseStr(term));
-                        break;
-                    case "title:":
-                        addRule("title", "include", parseStr(term));
-                        break;
-                    case "-title:":
-                        addRule("title", "exclude", parseStr(term));
-                        break;
-                    case "comment:":
-                        addRule("comment", "include", parseStr(term));
-                        break;
-                    case "-comment:":
-                        addRule("comment", "exclude", parseStr(term));
-                        break;
-                    case "content:":
-                        addRule("content", "include", parseStr(term));
-                        break;
-                    case "-content:":
-                        addRule("content", "exclude", parseStr(term));
-                        break;
-                    case "create:":
-                        addRule("create", "include", parseDate(term));
-                        break;
-                    case "-create:":
-                        addRule("create", "exclude", parseDate(term));
-                        break;
-                    case "modify:":
-                        addRule("modify", "include", parseDate(term));
-                        break;
-                    case "-modify:":
-                        addRule("modify", "exclude", parseDate(term));
-                        break;
-                    case "-":
-                        addRule(key["default"], "exclude", parseStr(term));
-                        break;
-                    default:
-                        addRule(key["default"], "include", parseStr(term));
-                        break;
-                }
+                case "type:":
+                    addRule("type", "include", parseStr(term, true));
+                    break;
+                case "-type:":
+                    addRule("type", "exclude", parseStr(term, true));
+                    break;
+                case "id:":
+                    addRule("id", "include", parseStr(term));
+                    break;
+                case "-id:":
+                    addRule("id", "exclude", parseStr(term));
+                    break;
+                case "file:":
+                    addRule("file", "include", parseStr(term));
+                    break;
+                case "-file:":
+                    addRule("file", "exclude", parseStr(term));
+                    break;
+                case "source:":
+                    addRule("source", "include", parseStr(term));
+                    break;
+                case "-source:":
+                    addRule("source", "exclude", parseStr(term));
+                    break;
+                case "tcc:":
+                    addRule("tcc", "include", parseStr(term));
+                    break;
+                case "-tcc:":
+                    addRule("tcc", "exclude", parseStr(term));
+                    break;
+                case "title:":
+                    addRule("title", "include", parseStr(term));
+                    break;
+                case "-title:":
+                    addRule("title", "exclude", parseStr(term));
+                    break;
+                case "comment:":
+                    addRule("comment", "include", parseStr(term));
+                    break;
+                case "-comment:":
+                    addRule("comment", "exclude", parseStr(term));
+                    break;
+                case "content:":
+                    addRule("content", "include", parseStr(term));
+                    break;
+                case "-content:":
+                    addRule("content", "exclude", parseStr(term));
+                    break;
+                case "create:":
+                    addRule("create", "include", parseDate(term));
+                    break;
+                case "-create:":
+                    addRule("create", "exclude", parseDate(term));
+                    break;
+                case "modify:":
+                    addRule("modify", "include", parseDate(term));
+                    break;
+                case "-modify:":
+                    addRule("modify", "exclude", parseDate(term));
+                    break;
+                case "-":
+                    addRule(key["default"], "exclude", parseStr(term));
+                    break;
+                default:
+                    addRule(key["default"], "include", parseStr(term));
+                    break;
             }
             return "";
 
@@ -333,7 +322,7 @@ var searchEngine = {
                 key.error.push(msg);
             }
 
-            function parseStr(term) {
+            function parseStr(term, exactMatch) {
                 var options = key.mc ? "m" : "im";
                 if (key.re) {
                     try {
@@ -344,7 +333,9 @@ var searchEngine = {
                     }
                 }
                 else {
-                    var regex = new RegExp(that.escapeRegExp(term), options);
+                    var q = that.escapeRegExp(term);
+                    if (exactMatch) q = "^" + q + "$";
+                    var regex = new RegExp(q, options);
                 }
                 return regex;
             }
@@ -408,16 +399,16 @@ var searchEngine = {
     },
 
     _match_type: function(keyitem, data) {
-        var type = data.item.type;
+        var text = data.item.type;
         for (var i=0, len=keyitem.exclude.length; i<len; i++) {
-            if (type == keyitem.exclude[i]) {
+            if (keyitem.exclude[i].test(text)) {
                 return false;
             }
         }
         // uses "or" clause
         if (!keyitem.include.length) return true;
         for (var i=0, len=keyitem.include.length; i<len; i++) {
-            if (type == keyitem.include[i]) {
+            if (keyitem.include[i].test(text)) {
                 return true;
             }
         }
